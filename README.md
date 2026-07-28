@@ -15,7 +15,8 @@
 - помощник ответов с анализом смысла, длины и проверкой уважительности;
 - погода, дождь, природные звуки, PWA-установка и Android/iOS-оболочки;
 - персональный QR-код для цветов и подарков: получатель открывает публичные первые 10 писем;
-- Supabase Auth и синхронизация прогресса между устройствами.
+- Supabase Auth, уникальный ID поддержки, синхронизация прогресса и временный VIP на 1–365 дней;
+- закрытая админ-панель владельца с точным остатком VIP и защищённым журналом действий.
 
 ## Доступ и подписка
 
@@ -35,10 +36,10 @@ Android release работает fail-closed: подписка открывае�
 - `mobile/android` — Android WebView, Play Billing и Play Integrity;
 - `mobile/ios` — SwiftUI/WKWebView и StoreKit 2;
 - `backend/cloudflare` — Workers AI и серверная проверка Google Play;
-- `supabase` — схема прогресса, RLS и удаление аккаунта;
+- `supabase` — схема прогресса, аккаунтов, RLS, VIP и удаление аккаунта;
 - `.github/workflows/mobile-build.yml` — preview-сборка APK и unsigned AAB.
 
-Подробные инструкции: [`mobile/README.md`](mobile/README.md), [`mobile/ios/README.md`](mobile/ios/README.md) и [`backend/cloudflare/README.md`](backend/cloudflare/README.md).
+Подробные инструкции: [`ADMIN-GUIDE.md`](ADMIN-GUIDE.md), [`mobile/README.md`](mobile/README.md), [`mobile/ios/README.md`](mobile/ios/README.md) и [`backend/cloudflare/README.md`](backend/cloudflare/README.md).
 
 ## Перед продажей
 

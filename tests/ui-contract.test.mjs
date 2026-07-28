@@ -9,6 +9,7 @@ const read = relative => fs.readFileSync(path.join(root, relative), "utf8");
 
 const index = read("index.html");
 const app = read("app.js");
+assert.doesNotMatch(app, /Вечер у озера, живой дождь|An evening by the lake, living rain|Un soir au bord du lac, une pluie vivante/);
 const styles = read("styles.css");
 const manifest = JSON.parse(read("manifest.webmanifest"));
 const lettersSource = read("letters.js");

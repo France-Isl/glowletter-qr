@@ -13,6 +13,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 MOBILE_ROOT = SCRIPT_DIR.parent
 DEFAULT_SOURCE = MOBILE_ROOT.parent
 DEFAULT_DESTINATION = MOBILE_ROOT / "ios" / "NurPismo" / "WebResources"
+EXCLUDED_ROOT_NAMES = {"mobile", "backend", "supabase", "tests", ".git", ".github"}
+EXCLUDED_ROOT_SUFFIXES = {".md", ".py"}
 
 
 def ensure_mobile_destination(destination: Path) -> Path:
@@ -38,7 +40,11 @@ def copy_web_app(source: Path, destination: Path) -> None:
 
     reset_destination(destination)
     for child in source.iterdir():
-        if child.name in {"mobile", "backend", ".git", ".github"} or child.name.startswith("."):
+        if (
+            child.name in EXCLUDED_ROOT_NAMES
+            or child.name.startswith(".")
+            or (child.is_file() and child.suffix.lower() in EXCLUDED_ROOT_SUFFIXES)
+        ):
             continue
         target = destination / child.name
         if child.is_dir():
