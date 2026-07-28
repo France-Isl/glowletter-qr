@@ -25,6 +25,8 @@
   const CLOUD_MAX_WRITE_ATTEMPTS = 3;
   const CLOUD_SELECT_COLUMNS = "schema_version,sender_name,recipient_name,language,current_letter_id,favorite_ids,rain_enabled,weather_enabled,built_in_track,nature_enabled,fullscreen_enabled,volume,revision,updated_at";
   const AUTH_CALLBACK_PARAMETERS = ["code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "token_type", "provider_token", "provider_refresh_token"];
+  const UI_THEMES = new Set(["moon", "rose", "forest", "sand"]);
+  const WEATHER_STORAGE_KEY = "nurWeatherSnapshotV1";
 
   const UI = {
     ru: {
@@ -44,9 +46,9 @@
     fr: { adabTitle:"Le mode adab est toujours actif",adabNote:"Uniquement des mots respectueux. Le contenu adulte, la grossièreté et les thèmes interdits sont bloqués.",ownNote:"Votre texte passe le même filtre de pudeur et sera enregistré dans le lien personnel.",qualityTitle:"Pourquoi le texte est meilleur :",qualityBody:"l’éditeur reconnaît le contexte familial, compose une lettre cohérente avec des idées vérifiées et contrôle le résultat. Aucun modèle de 500 Mo.",religiousNote:"Le filtre favorise la pudeur et le respect, mais ne constitue pas un avis religieux. Relisez la lettre avant de l’envoyer.",collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Musique et nasheeds",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Abonnement mensuel : réponses intelligentes, toutes les lettres et nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Lettres intelligentes<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle chaque mois et ouvre toutes les fonctions intelligentes.",benefit1:"50 lettres personnelles",benefit2:"analyse intelligente du message",benefit3:"nouvelles fonctions chaque mois",payButton:"S’abonner",storeNote:"Le renouvellement automatique peut être annulé dans votre compte du magasin. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre nasheed",customMusicNote:"MP3, M4A, OGG ou WAV" }
   };
   Object.keys(UI).forEach(code => Object.assign(UI[code], EXTRA_UI[code]));
-  UI.ru.brandCopyPersonal = "Вечер у озера, живой дождь и письмо, созданное именно для {to}.";
-  UI.en.brandCopyPersonal = "An evening by the lake, living rain, and a letter made especially for {to}.";
-  UI.fr.brandCopyPersonal = "Un soir au bord du lac, une pluie vivante et une lettre créée spécialement pour {to}.";
+  UI.ru.brandCopyPersonal = "Тёплые слова, выбранные с заботой специально для {to}.";
+  UI.en.brandCopyPersonal = "Warm words chosen with care especially for {to}.";
+  UI.fr.brandCopyPersonal = "Des mots chaleureux choisis avec soin spécialement pour {to}.";
   Object.assign(UI.ru, {
     setupEyebrow:"ПЕРЕД ОТКРЫТИЕМ ПИСЬМА",setupTitle:"Для кого это письмо?",setupNote:"Имена нужны только для личного обращения и подписи.",setupSubmit:"Открыть письмо",
     create:"Создать своё письмо",replyAssist:"Помочь с ответом",letterMode:"Письмо",replyMode:"Ответ на сообщение",replyTitle:"Умный ответ",replyEyebrow:"ПОМОЩНИК ДЛЯ СПОКОЙНОГО ДИАЛОГА",
@@ -100,6 +102,24 @@
     shareApp: "Partager l’application",
     shareAppText: "GlowLetter — des lettres chaleureuses pour les personnes qui comptent.",
     shareAppCopied: "Lien de l’application copié"
+  });
+  Object.assign(UI.ru, {
+    brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
+    replyHint:"Помощник отвечает только на текущее сообщение, уважительно и без 18+, грубости или двусмысленных фраз. Перед отправкой перечитайте ответ.",replyCurrent:"Ответ будет создан только по этому сообщению",
+    themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Лунный",themeRose:"Розовый",themeForest:"Лесной",themeSand:"Тёплый",
+    qrOpen:"Создать QR-код письма",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Укажите имена, скачайте QR-код и приложите его к цветам или подарку. Получатель увидит первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"В QR-коде сохраняются только выбранные имена, язык и ссылка на бесплатную версию. Ключ полного доступа не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"QR-код готов",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
+  });
+  Object.assign(UI.en, {
+    brandCopy:"Warm words for the people who truly matter.",stage:"These words found their way to you",locationDenied:"Location is unavailable — showing weather for the nearest fallback city",
+    replyHint:"The assistant replies only to the current message, respectfully and without adult, abusive, or suggestive wording. Please reread before sending.",replyCurrent:"The reply will use only this message",
+    themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Moon",themeRose:"Rose",themeForest:"Forest",themeSand:"Warm",
+    qrOpen:"Create a letter QR code",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Add the names, download the QR code, and attach it to flowers or a gift. The recipient can read the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"The QR code contains only the selected names, language, and public free-version link. Full-access keys are never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"QR code is ready",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
+  });
+  Object.assign(UI.fr, {
+    brandCopy:"Des mots chaleureux pour les personnes qui comptent vraiment.",stage:"Ces mots ont trouvé leur chemin jusqu’à toi",locationDenied:"La position est indisponible — météo de la ville de secours affichée",
+    replyHint:"L’assistant répond uniquement au message actuel, avec respect et sans contenu adulte, grossier ou ambigu. Relisez la réponse avant l’envoi.",replyCurrent:"La réponse utilisera uniquement ce message",
+    themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Lune",themeRose:"Rose",themeForest:"Forêt",themeSand:"Chaleureux",
+    qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
 
   const SELECT_OPTIONS = {
@@ -397,6 +417,15 @@
   let toastTimer = 0;
   let deferredInstallPrompt = null;
   let weatherEnabled = localStorage.getItem("nurWeather") === "on";
+  let weatherSnapshot = null;
+  try {
+    const storedWeather = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY) || "null");
+    if (storedWeather && Number.isFinite(Number(storedWeather.temperature)) && Number.isFinite(Number(storedWeather.code))) weatherSnapshot = storedWeather;
+  } catch { localStorage.removeItem(WEATHER_STORAGE_KEY); }
+  let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiTheme")) ? localStorage.getItem("nurUiTheme") : "moon";
+  let replyRequestVersion = 0;
+  let replyRevealTimer = 0;
+  let currentQrUrl = "";
   let gesturePreferencesRestored = false;
   let favorites;
   try { favorites = new Set(JSON.parse(localStorage.getItem("nurFavorites") || "[]")); }
@@ -440,8 +469,9 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), paywall: $("#paywallLayer")
   };
+  const panelTriggers = new WeakMap();
 
   function t(key) { return UI[lang][key] || UI.ru[key] || key; }
 
@@ -1206,6 +1236,7 @@
 
       $$("[data-track]").forEach(option => option.classList.toggle("is-active", Number(option.dataset.track) === selectedTrack));
       applyLanguage();
+      if(weatherEnabled)setTimeout(()=>refreshWeather({silent:true}),0);else renderWeather();
       if (storyOpened) renderLetter();
       renderLibrary();
 
@@ -1547,15 +1578,35 @@
   }
 
   function openPanel(layer) {
+    if (!layer) return;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (trigger && !layer.contains(trigger)) panelTriggers.set(layer, trigger);
     layer.classList.add("is-open");
     layer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    $("main")?.setAttribute("inert", "");
+    $(".topbar")?.setAttribute("inert", "");
+    requestAnimationFrame(() => {
+      const target = layer.querySelector(".panel-close, input:not([type='hidden']), textarea, select, button:not(.panel-backdrop)");
+      target?.focus({ preventScroll: true });
+    });
   }
 
   function closePanel(layer) {
+    if (!layer) return;
     layer.classList.remove("is-open");
     layer.setAttribute("aria-hidden", "true");
-    if (!Object.values(layers).some(item => item.classList.contains("is-open"))) document.body.style.overflow = "";
+    const anotherOpen = Object.values(layers).some(item => item.classList.contains("is-open"));
+    if (!anotherOpen) {
+      document.body.style.overflow = "";
+      $("main")?.removeAttribute("inert");
+      $(".topbar")?.removeAttribute("inert");
+    }
+    const trigger = panelTriggers.get(layer);
+    panelTriggers.delete(layer);
+    requestAnimationFrame(() => {
+      if (trigger?.isConnected && !trigger.closest('[aria-hidden="true"]')) trigger.focus({ preventScroll: true });
+    });
   }
 
   function updateUrl(includeMessage = Boolean(sharedMessage)) {
@@ -1597,6 +1648,53 @@
   function setText(selector, value) {
     const element = $(selector);
     if (element) element.textContent = value;
+  }
+
+  function applyUiTheme(value, persist = true) {
+    uiTheme = UI_THEMES.has(value) ? value : "moon";
+    document.body.dataset.uiTheme = uiTheme;
+    $$('.theme-choice-grid [data-ui-theme]').forEach(button => {
+      const active = button.dataset.uiTheme === uiTheme;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-checked", String(active));
+    });
+    if (persist) localStorage.setItem("nurUiTheme", uiTheme);
+  }
+
+  function renderWeather() {
+    const button = $("#weatherButton");
+    const icon = $("#weatherIcon");
+    const text = $("#weatherText");
+    const state = $("#weatherState");
+    const valid = weatherEnabled && weatherSnapshot && Number.isFinite(Number(weatherSnapshot.temperature));
+    if (!valid) {
+      if (icon) icon.textContent = "◌";
+      if (text) text.textContent = t("weather");
+      if (state) state.textContent = weatherEnabled ? "…" : t("stateOff");
+      button?.classList.remove("has-weather");
+      button?.removeAttribute("aria-busy");
+      button?.setAttribute("aria-label", t("weatherAria"));
+      button?.removeAttribute("title");
+      $("#weatherToggle")?.classList.toggle("is-active", weatherEnabled);
+      $("#weatherToggle")?.setAttribute("aria-pressed", String(weatherEnabled));
+      const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.textContent = "◌";
+      return;
+    }
+    const code = Number(weatherSnapshot.code) || 0;
+    const mapped = weatherMap[code] || ["◐", "Weather"];
+    const dayIcon = code <= 1 ? (Number(weatherSnapshot.isDay) === 0 ? "☾" : "☀") : mapped[0];
+    const temperature = `${Math.round(Number(weatherSnapshot.temperature))}°`;
+    if (icon) icon.textContent = dayIcon;
+    if (text) text.textContent = temperature;
+    if (state) state.textContent = temperature;
+    button?.classList.add("has-weather");
+    button?.removeAttribute("aria-busy");
+    const place = String(weatherSnapshot.place || "").trim();
+    button?.setAttribute("aria-label", `${t("weather")}: ${temperature}${place ? ` · ${place}` : ""}`);
+    button?.setAttribute("title", `${temperature}${place ? ` · ${place}` : ""}`);
+    $("#weatherToggle")?.classList.add("is-active");
+    $("#weatherToggle")?.setAttribute("aria-pressed", "true");
+    const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.textContent = dayIcon;
   }
 
   function setSelectOptions(selector, options) {
@@ -1644,7 +1742,7 @@
     $("#replyOpenHome").innerHTML = `<span>↗</span> ${escapeHtml(t("replyAssist"))} <b>PRO</b>`;
     setText("#aiOpenTop > span:last-child", t("create"));
     const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].textContent = t("full");
-    setText("#weatherText", t("weather"));
+    renderWeather();
     setText("#nextLetter", t("next")); $("#nextLetter").insertAdjacentHTML("beforeend", " <span>→</span>");
     $("#copyLetter").innerHTML = `<span>▣</span> ${t("copy")}`;
     setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`);
@@ -1664,8 +1762,8 @@
     setText("#aiForm .form-hint", t("optionalHint")); setText(".generate-label", t("generate")); setText("#ownTextToggle b", t("own")); setText(".own-text-editor label > span", t("ownWords")); $("#ownText").placeholder = t("ownPlaceholder");
     $("#useOwnText").innerHTML = `${t("useOwn")} <span>→</span>`; setText(".generated-top > span", t("ready")); setText("#regenerateButton", t("variant")); setText("#copyGenerated", t("copy")); setText("#useGenerated", t("openAs"));
     setText(".own-text-editor > small", t("ownNote")); $(".quality-note p").innerHTML = `<strong>${escapeHtml(t("qualityTitle"))}</strong> ${escapeHtml(t("qualityBody"))}`; setText(".religious-note", t("religiousNote"));
-    const replyTextLabels = $$("#replyForm .wide-label > span"); if (replyTextLabels[0]) replyTextLabels[0].textContent = t("replyIncoming"); if (replyTextLabels[1]) replyTextLabels[1].textContent = t("replyGoal");
-    $("#replyIncoming").placeholder = t("replyPlaceholder"); $("#replyGoal").placeholder = t("replyGoalPlaceholder");
+    const replyTextLabels = $$("#replyForm .wide-label > span"); if (replyTextLabels[0]) replyTextLabels[0].textContent = t("replyIncoming");
+    $("#replyIncoming").placeholder = t("replyPlaceholder");
     const replyChoices = $$("#replyForm .choice-grid label > span"); if (replyChoices[0]) replyChoices[0].textContent = t("replyRelationshipLabel"); if (replyChoices[1]) replyChoices[1].textContent = t("replyToneLabel");
     setText(".reply-length-label > span", t("replyLengthLabel"));
     setSelectOptions("#replyRelationship", SELECT_OPTIONS.replyRelationship[lang]); setSelectOptions("#replyTone", SELECT_OPTIONS.replyTone[lang]); setSelectOptions("#replyLength", SELECT_OPTIONS.replyLength[lang]);
@@ -1675,6 +1773,7 @@
     setText(".library-panel .panel-eyebrow", t("collectionEyebrow")); setText(".library-summary > span", t("collectionNote"));
     const categories = { all: t("all"), warm: t("warm"), gratitude: t("gratitude"), support: t("support"), family: t("family") }; $$("#categoryRow button").forEach(button => button.textContent = categories[button.dataset.category]);
     setText("#settingsTitle", t("settings")); setText(".settings-panel .panel-eyebrow", t("settingsEyebrow")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
+    setText(".interface-theme-picker legend", t("themeTitle")); $(".theme-choice-grid")?.setAttribute("aria-label", t("themeAria")); const themeLabels = $$(".theme-choice-grid [data-ui-theme] span"); if(themeLabels[0])themeLabels[0].textContent=t("themeMoon");if(themeLabels[1])themeLabels[1].textContent=t("themeRose");if(themeLabels[2])themeLabels[2].textContent=t("themeForest");if(themeLabels[3])themeLabels[3].textContent=t("themeSand"); applyUiTheme(uiTheme, false);
     setText(".profile-picker legend", t("namesSettings")); const settingsNameLabels = $$(".profile-picker .simple-form label > span"); if (settingsNameLabels[0]) settingsNameLabels[0].textContent = t("fromWho"); if (settingsNameLabels[1]) settingsNameLabels[1].textContent = t("forWho"); $("#settingsSenderName").placeholder = t("setupSenderPlaceholder"); $("#settingsRecipientName").placeholder = t("setupRecipientPlaceholder"); setText("#settingsNamesError", t("namesSafety"));
     setText("#rainToggle strong", t("rainTitle")); setText("#rainToggle small", t("rainNote")); setText("#natureToggle strong", t("natureTitle")); setText("#natureToggle small", t("natureNote")); setText("#weatherToggle strong", t("weatherTitle")); setText("#weatherToggle small", t("weatherNote")); setText("#fullscreenToggle strong", t("fullscreenTitle")); setText("#fullscreenToggle small", t("fullscreenNote"));
     const naturePreferenceEnabled = isNaturePlaying || localStorage.getItem("nurNature") === "on";
@@ -1685,11 +1784,13 @@
     setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
     const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("terms");if(legalLinks[2])legalLinks[2].textContent=t("deletePage");if(legalLinks[3])legalLinks[3].textContent=t("supportLink");
-    setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
+    setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
+    $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderQrCode(false);
     renderCloudAccount();
-    $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
+    $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
+    renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
-    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
+    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
     updatePurchaseConfiguration(purchaseConfigured);
     setAiMode(aiMode);
     localStorage.setItem("nurLanguage", lang);
@@ -1954,10 +2055,9 @@
     const selectedLength = REPLY_LENGTHS.has($("#replyLength")?.value) ? $("#replyLength").value : "auto";
     const tone = selectedTone === "auto" ? analysis.recommendedTone : selectedTone;
     const length = selectedLength === "auto" ? analysis.recommendedLength : selectedLength;
-    const goal = String($("#replyGoal")?.value || "").trim();
     setText("#replyInsightTitle", t("replyInsightTitle"));
     setText("#replyInsightDetails", `${REPLY_INTENT_LABELS[lang]?.[analysis.intent] || analysis.intent} · ${replyOptionLabel("replyTone", tone)} · ${replyOptionLabel("replyLength", length)}`);
-    setText("#replyInsightGoal", analysis.needsGoal && !goal ? t("replyNeedsGoal") : t("replyGoalOptional"));
+    setText("#replyInsightGoal", t("replyCurrent"));
     insight.hidden = false;
   }
 
@@ -2041,13 +2141,27 @@
     $("#replyStatus").hidden = true;
   }
 
+  function invalidateReplyDraft() {
+    replyRequestVersion += 1;
+    clearTimeout(replyRevealTimer);
+    replyRevealTimer = 0;
+    replyVariant = 0;
+    generatedReply = "";
+    $("#replyGeneratedText").value = "";
+    $("#replyGeneratedCard").hidden = true;
+    $("#replySafety").hidden = true;
+    $("#replyStatus").hidden = true;
+  }
+
   async function generateReply() {
     if (!isPremium) return openPaywall("reply");
+    clearTimeout(replyRevealTimer);
+    replyRevealTimer = 0;
+    const requestVersion = ++replyRequestVersion;
     const incoming = String($("#replyIncoming").value || "").normalize("NFKC").trim().slice(0, 1800);
     if (incoming.length < 3) return showReplySafety(t("replyShort"));
     if (containsForbidden(incoming)) return showReplySafety(t("replySafety"));
-    const goal = String($("#replyGoal").value || "").normalize("NFKC").trim().slice(0, 320);
-    if (goal && (goal.length < 2 || containsForbidden(goal))) return showReplySafety(t("replySafety"));
+    const goal = "";
     const relationship = REPLY_RELATIONSHIPS.has($("#replyRelationship").value) ? $("#replyRelationship").value : "auto";
     const tone = REPLY_TONES.has($("#replyTone").value) ? $("#replyTone").value : "auto";
     const length = REPLY_LENGTHS.has($("#replyLength").value) ? $("#replyLength").value : "auto";
@@ -2066,6 +2180,7 @@
         try { generatedReply = await remoteComposeReply(incoming, relationship, tone, goal, length); }
         catch { generatedReply = local; showToast(t("composeFail"), 3400); }
       } else { await new Promise(resolve => setTimeout(resolve, 480)); generatedReply = local; }
+      if (requestVersion !== replyRequestVersion || incoming !== String($("#replyIncoming").value || "").normalize("NFKC").trim().slice(0, 1800)) return;
       const intent = analysis.intent;
       const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(generatedReply, intent);
       const audit = replyAuditResult(generatedReply, lastReplyContext);
@@ -2073,7 +2188,13 @@
       $("#replyGeneratedText").value = generatedReply;
       renderReplyAudit(generatedReply, lastReplyContext);
       $("#replyStatusBar").style.width = "100%"; $("#replyStatusPercent").textContent = "100%";
-      setTimeout(() => { $("#replyStatus").hidden = true; $("#replyGeneratedCard").hidden = false; $("#replyGeneratedCard").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 180);
+      replyRevealTimer = setTimeout(() => {
+        if (requestVersion !== replyRequestVersion || incoming !== String($("#replyIncoming").value || "").normalize("NFKC").trim().slice(0, 1800)) return;
+        replyRevealTimer = 0;
+        $("#replyStatus").hidden = true;
+        $("#replyGeneratedCard").hidden = false;
+        $("#replyGeneratedCard").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 180);
     } catch { showReplySafety(t("replySafety")); }
     finally { clearInterval(timer); button.disabled = false; setText(".reply-generate-label", t("replyGenerate")); }
   }
@@ -2239,7 +2360,7 @@
     }
     resize() { const dpr = Math.min(devicePixelRatio || 1, 1.5); this.width = innerWidth; this.height = innerHeight; this.canvas.width = Math.round(this.width * dpr); this.canvas.height = Math.round(this.height * dpr); this.canvas.style.width = `${this.width}px`; this.canvas.style.height = `${this.height}px`; this.ctx.setTransform(dpr,0,0,dpr,0,0); const count = Math.max(18, Math.min(54, Math.round(this.width / 24))); this.drops = Array.from({ length: count }, () => this.makeDrop(true)); }
     makeDrop(randomY = false) { return { x: Math.random() * (this.width + 240) - 120, y: randomY ? Math.random() * this.height : -60, length: 22 + Math.random() * 43, speed: 7 + Math.random() * 9, width: 1.1 + Math.random() * 1.7, alpha: .11 + Math.random() * .28, drift: 1.5 + Math.random() * 2.7 }; }
-    setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.ctx.clearRect(0,0,this.width,this.height); } }
+    setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle").setAttribute("aria-pressed", String(this.enabled)); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.ctx.clearRect(0,0,this.width,this.height); } }
     setIntensity(value) { this.intensity = Math.max(.2, Math.min(1, value)); }
     start() { cancelAnimationFrame(this.frame); this.draw(); }
     draw() { if (!this.enabled || document.hidden) return; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length); gradient.addColorStop(0,"rgba(220,236,245,0)"); gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`); ctx.strokeStyle=gradient;ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){if(Math.random()<.24)this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
@@ -2260,7 +2381,7 @@
 
   function setNaturePlaying(enabled, announce = true) {
     isNaturePlaying = Boolean(enabled);
-    $("#natureButton").classList.toggle("is-playing", isNaturePlaying); $("#natureButton").setAttribute("aria-pressed", String(isNaturePlaying)); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#natureToggle").classList.toggle("is-active", isNaturePlaying); $("#natureToggle b").textContent = isNaturePlaying ? t("stateOn") : t("stateOff");
+    $("#natureButton").classList.toggle("is-playing", isNaturePlaying); $("#natureButton").setAttribute("aria-pressed", String(isNaturePlaying)); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#natureToggle").classList.toggle("is-active", isNaturePlaying); $("#natureToggle").setAttribute("aria-pressed", String(isNaturePlaying)); $("#natureToggle b").textContent = isNaturePlaying ? t("stateOn") : t("stateOff");
     if (isNaturePlaying) nature.start().catch(() => {}); else nature.stop();
     localStorage.setItem("nurNature", isNaturePlaying ? "on" : "off");
     scheduleCloudSync();
@@ -2293,24 +2414,68 @@
   async function setupBackground(){try{const saved=await loadMedia("background");if(saved?.blob){applyBackground(saved.blob);return;}}catch{}const [landscape,portrait]=await Promise.all([imageAsset("assets/campfire-lake.png"),imageAsset("assets/campfire-mobile.png")]);if(landscape){backgroundUrl=URL.createObjectURL(landscape);document.documentElement.style.setProperty("--scene-image",`url("${backgroundUrl}")`);$("#backgroundPreview").style.backgroundImage=`url("${backgroundUrl}")`;}if(portrait){mobileBackgroundUrl=URL.createObjectURL(portrait);document.documentElement.style.setProperty("--mobile-scene-image",`url("${mobileBackgroundUrl}")`);} }
   async function resetBackground(){try{await saveMedia("background",null);}catch{}if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);if(mobileBackgroundUrl&&mobileBackgroundUrl!==backgroundUrl)URL.revokeObjectURL(mobileBackgroundUrl);backgroundUrl="";mobileBackgroundUrl="";customBackgroundBlob=null;document.documentElement.style.removeProperty("--scene-image");document.documentElement.style.removeProperty("--mobile-scene-image");document.body.classList.remove("has-custom-background");$("#backgroundPreview").style.backgroundImage="";await setupBackground();showToast(t("photoReset"));}
 
-  const weatherMap={0:["☀","Clear"],1:["◐","Mostly clear"],2:["☁","Cloudy"],3:["☁","Overcast"],45:["≋","Fog"],48:["≋","Fog"],51:["☂","Drizzle"],53:["☂","Drizzle"],55:["☂","Drizzle"],61:["☂","Rain"],63:["☂","Rain"],65:["☂","Heavy rain"],71:["❄","Snow"],73:["❄","Snow"],75:["❄","Snow"],80:["☂","Showers"],81:["☂","Showers"],82:["☂","Showers"],95:["ϟ","Storm"]};
-  async function enableWeather(){if(!navigator.geolocation){showToast(t("weatherFail"));return;}$("#weatherText").textContent="…";navigator.geolocation.getCurrentPosition(async position=>{try{const {latitude,longitude}=position.coords;const url=`https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(3)}&longitude=${longitude.toFixed(3)}&current=temperature_2m,weather_code,is_day&timezone=auto`;const response=await fetch(url);if(!response.ok)throw new Error();const data=await response.json();const code=Number(data.current?.weather_code||0);const weather=weatherMap[code]||["◐","Weather"];$("#weatherIcon").textContent=weather[0];$("#weatherText").textContent=`${Math.round(data.current.temperature_2m)}°`;weatherEnabled=true;localStorage.setItem("nurWeather","on");$("#weatherToggle").classList.add("is-active");$("#weatherState").textContent=`${Math.round(data.current.temperature_2m)}°`;if([51,53,55,61,63,65,80,81,82,95].includes(code)){rainScene.setEnabled(true);rainScene.setIntensity(code>=63?1:.75);}document.body.dataset.weather=String(code);scheduleCloudSync();}catch{showToast(t("weatherFail"));$("#weatherText").textContent=t("weather");}},()=>{showToast(t("locationDenied"),3300);$("#weatherText").textContent=t("weather");},{enableHighAccuracy:false,timeout:9000,maximumAge:30*60*1000});}
+  const weatherMap={0:["☀","Clear"],1:["◐","Mostly clear"],2:["☁","Cloudy"],3:["☁","Overcast"],45:["≋","Fog"],48:["≋","Fog"],51:["☂","Drizzle"],53:["☂","Drizzle"],55:["☂","Drizzle"],61:["☂","Rain"],63:["☂","Rain"],65:["☂","Heavy rain"],71:["❄","Snow"],73:["❄","Snow"],75:["❄","Snow"],80:["☂","Showers"],81:["☂","Showers"],82:["☂","Showers"],95:["ϟ","Storm"],96:["ϟ","Storm"],99:["ϟ","Storm"]};
+  const weatherFallbacks={
+    "Europe/Paris":{latitude:48.8566,longitude:2.3522,place:"Paris"},"Europe/London":{latitude:51.5072,longitude:-.1276,place:"London"},"Europe/Moscow":{latitude:55.7558,longitude:37.6173,place:"Moscow"},
+    "America/New_York":{latitude:40.7128,longitude:-74.006,place:"New York"},"America/Los_Angeles":{latitude:34.0522,longitude:-118.2437,place:"Los Angeles"},"Asia/Dubai":{latitude:25.2048,longitude:55.2708,place:"Dubai"},
+    "Asia/Tokyo":{latitude:35.6762,longitude:139.6503,place:"Tokyo"},"Asia/Almaty":{latitude:43.2389,longitude:76.8897,place:"Almaty"},"Asia/Tashkent":{latitude:41.2995,longitude:69.2401,place:"Tashkent"}
+  };
+
+  function fallbackWeatherLocation(){
+    let timezone="";try{timezone=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch{}
+    return weatherFallbacks[timezone]||{latitude:48.8566,longitude:2.3522,place:"Paris"};
+  }
+
+  function requestWeatherPosition(){
+    return new Promise((resolve,reject)=>{
+      if(!navigator.geolocation)return reject(new Error("geolocation unavailable"));
+      navigator.geolocation.getCurrentPosition(position=>resolve({latitude:position.coords.latitude,longitude:position.coords.longitude,place:""}),reject,{enableHighAccuracy:false,timeout:7000,maximumAge:30*60*1000});
+    });
+  }
+
+  async function refreshWeather({silent=false}={}){
+    weatherEnabled=true;localStorage.setItem("nurWeather","on");
+    $("#weatherButton")?.setAttribute("aria-busy","true");if($("#weatherText"))$("#weatherText").textContent="…";
+    let locationData;
+    try{locationData=await requestWeatherPosition();}
+    catch{locationData=fallbackWeatherLocation();if(!silent)showToast(t("locationDenied"),3300);}
+    try{
+      const url=`https://api.open-meteo.com/v1/forecast?latitude=${Number(locationData.latitude).toFixed(3)}&longitude=${Number(locationData.longitude).toFixed(3)}&current=temperature_2m,weather_code,is_day&timezone=auto`;
+      const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      const data=await response.json();const temperature=Number(data.current?.temperature_2m);const code=Number(data.current?.weather_code);if(!Number.isFinite(temperature)||!Number.isFinite(code))throw new Error("invalid weather");
+      weatherSnapshot={temperature,code,isDay:Number(data.current?.is_day),place:locationData.place||"",updatedAt:Date.now()};
+      localStorage.setItem(WEATHER_STORAGE_KEY,JSON.stringify(weatherSnapshot));document.body.dataset.weather=String(code);renderWeather();scheduleCloudSync();
+    }catch{
+      $("#weatherButton")?.removeAttribute("aria-busy");renderWeather();if(!weatherSnapshot){weatherEnabled=false;localStorage.setItem("nurWeather","off");renderWeather();}if(!silent)showToast(t("weatherFail"));
+    }
+  }
+
+  function disableWeather(){
+    weatherEnabled=false;localStorage.setItem("nurWeather","off");document.body.removeAttribute("data-weather");renderWeather();scheduleCloudSync();
+  }
+
+  function toggleWeather(){if(weatherEnabled)disableWeather();else refreshWeather();}
 
   async function generatePostcard(){const entry=currentEntry();if(!canAccess(entry))return openPaywall();const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.fillStyle="#fff8ed";ctx.font="600 66px Georgia";ctx.fillText(`${t("for")} ${displayName(toName)}`,90,270);ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();ctx.fillStyle="#fffaf2";ctx.font="600 55px Georgia";wrapCanvasText(ctx,entryText(entry),90,440,900,78);ctx.fillStyle="#f0c5d3";ctx.font="italic 600 49px Georgia";ctx.textAlign="right";ctx.fillText(`${t("from")} ${displayName(fromName)}`,990,1765);ctx.textAlign="left";const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));}
   function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight){const words=text.split(/\s+/);let line="";let currentY=y;for(const word of words){const test=`${line}${word} `;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line.trim(),x,currentY);line=`${word} `;currentY+=lineHeight;if(currentY>1570)break;}else line=test;}if(line&&currentY<=1570)ctx.fillText(line.trim(),x,currentY);}
 
-  function speakLetter(){if(!("speechSynthesis" in window))return;const button=$("#speakButton");if(speechSynthesis.speaking){speechSynthesis.cancel();button.textContent=`◖ ${t("read")}`;return;}const utterance=new SpeechSynthesisUtterance(entryText(currentEntry()));utterance.lang=lang==="ru"?"ru-RU":lang==="fr"?"fr-FR":"en-US";utterance.rate=.9;utterance.pitch=1;utterance.onend=()=>button.textContent=`◖ ${t("read")}`;button.textContent=`■ ${t("stop")}`;speechSynthesis.speak(utterance);}
+  function speakLetter(){if(!("speechSynthesis" in window)){showToast(t("speechUnavailable"));return;}const button=$("#speakButton");if(speechSynthesis.speaking){speechSynthesis.cancel();button.textContent=`◖ ${t("read")}`;return;}const utterance=new SpeechSynthesisUtterance(entryText(currentEntry()));utterance.lang=lang==="ru"?"ru-RU":lang==="fr"?"fr-FR":"en-US";utterance.rate=.9;utterance.pitch=1;utterance.onend=()=>button.textContent=`◖ ${t("read")}`;button.textContent=`■ ${t("stop")}`;speechSynthesis.speak(utterance);}
 
   function toggleFavorite(){const entry=currentEntry();const key=String(entry.id);if(favorites.has(key))favorites.delete(key);else favorites.add(key);localStorage.setItem("nurFavorites",JSON.stringify([...favorites]));renderLetter();scheduleCloudSync();haptic();}
 
-  function shareLetter(){const entry=currentEntry();const url=new URL(location.href);url.searchParams.delete(BETA_PARAMETER);url.searchParams.set("from",fromName);url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));url.searchParams.delete("quote");url.hash=acceptedBetaCapability?new URLSearchParams({access:acceptedBetaCapability}).toString():"";const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};if(navigator.share)navigator.share(data).catch(()=>{});else copyText(url.toString());}
+  async function shareLetter(){
+    const entry=currentEntry();const url=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);url.search="";url.hash="";
+    if(fromName)url.searchParams.set("from",fromName);if(toName)url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));
+    const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};
+    try{if(navigator.share){await navigator.share(data);return;}}catch(error){if(error?.name==="AbortError")return;}
+    await writeClipboard(data.url);showToast(t("shareAppCopied"));haptic(10);
+  }
 
   function buildAppShareUrl() {
     const publicUrl = new URL(CONFIG.publicShareUrl || `${location.origin}${location.pathname}`, location.href);
     publicUrl.search = "";
     publicUrl.hash = "";
     if (["en", "fr"].includes(lang)) publicUrl.searchParams.set("lang", lang);
-    if (acceptedBetaCapability) publicUrl.hash = new URLSearchParams({ access: acceptedBetaCapability }).toString();
     return publicUrl.toString();
   }
 
@@ -2329,8 +2494,61 @@
     haptic(10);
   }
 
-  function updateFullscreenControl(){const active=Boolean(document.fullscreenElement);$("#fullscreenToggle")?.classList.toggle("is-active",active);const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
-  async function toggleFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen?.();else await document.exitFullscreen?.();}catch{}updateFullscreenControl();}
+  function qrPalette(){
+    return {moon:{foreground:"#302a38",background:"#fffdf8",accent:"#74677d"},rose:{foreground:"#4a2938",background:"#fffafc",accent:"#a6607b"},forest:{foreground:"#263e34",background:"#fbfdf8",accent:"#537565"},sand:{foreground:"#4b3828",background:"#fffaf3",accent:"#9a704a"}}[uiTheme]||{foreground:"#302a38",background:"#fffdf8",accent:"#74677d"};
+  }
+
+  function buildPublicQrUrl(sender,recipient){
+    const base=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);base.search="";base.hash="";
+    const parameters={lang,quote:1};if(sender)parameters.from=sender;if(recipient)parameters.to=recipient;
+    const value=window.GlowLetterQR?.buildUrl?window.GlowLetterQR.buildUrl(base.toString(),parameters):base.toString();
+    const safe=new URL(value,location.href);safe.hash="";safe.searchParams.delete(BETA_PARAMETER);safe.searchParams.delete("access");safe.searchParams.delete("beta");return safe.toString();
+  }
+
+  function qrRouteText(sender,recipient){
+    if(!sender&&!recipient)return t("qrGenericRoute");
+    return t("qrRoute").replace("{from}",displayName(sender)).replace("{to}",displayName(recipient));
+  }
+
+  function renderQrCode(notify=false){
+    const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");
+    const invalid=Boolean(sender||recipient)&&(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient));$("#qrNamesError").hidden=!invalid;if(invalid)return false;
+    if(!window.GlowLetterQR?.renderToCanvas){showToast(t("qrUnavailable"));return false;}
+    currentQrUrl=buildPublicQrUrl(sender,recipient);const palette=qrPalette();
+    window.GlowLetterQR.renderToCanvas($("#qrCanvas"),currentQrUrl,{size:280,pixelRatio:Math.min(Number(devicePixelRatio)||1,2),margin:4,level:"M",foreground:palette.foreground,background:palette.background});
+    setText("#qrRoutePreview",qrRouteText(sender,recipient));if(notify)showToast(t("qrReady"));return true;
+  }
+
+  function openQrBuilder(){
+    $("#qrSenderName").value=fromName;$("#qrRecipientName").value=toName;$("#qrNamesError").hidden=true;renderQrCode(false);openPanel(layers.qr);
+  }
+
+  function createQrCardBlob(){
+    if(!currentQrUrl&&!renderQrCode(false))return Promise.resolve(null);
+    const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=1200;canvas.height=1600;const ctx=canvas.getContext("2d");if(!ctx)return Promise.resolve(null);const palette=qrPalette();
+    const gradient=ctx.createLinearGradient(0,0,1200,1600);gradient.addColorStop(0,palette.background);gradient.addColorStop(1,"#ece8ea");ctx.fillStyle=gradient;ctx.fillRect(0,0,1200,1600);
+    ctx.strokeStyle=palette.accent;ctx.lineWidth=4;ctx.strokeRect(56,56,1088,1488);ctx.textAlign="center";ctx.fillStyle=palette.accent;ctx.font="800 30px Manrope, Arial";ctx.fillText("G L O W L E T T E R",600,155);
+    ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(({ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse"}[lang]||"GlowLetter"),600,265);
+    ctx.fillStyle="#ffffff";ctx.fillRect(176,350,848,848);ctx.drawImage(source,200,374,800,800);
+    const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");const route=qrRouteText(sender,recipient);let routeFontSize=48;ctx.fillStyle=palette.foreground;ctx.font=`600 ${routeFontSize}px Georgia, serif`;while(ctx.measureText(route).width>1000&&routeFontSize>30){routeFontSize-=2;ctx.font=`600 ${routeFontSize}px Georgia, serif`;}ctx.fillText(route,600,1285);
+    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText(t("qrCaption").toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo"}[lang]),600,1430);
+    return new Promise(resolve=>canvas.toBlob(resolve,"image/png",.96));
+  }
+
+  async function downloadQrCard(){
+    if(!renderQrCode(false))return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
+  }
+
+  async function copyQrImage(){
+    if(!renderQrCode(false))return;const blob=await createQrCardBlob();if(!blob)return;
+    try{if(!navigator.clipboard?.write||typeof ClipboardItem!=="function")throw new Error("unsupported");await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);showToast(t("qrImageCopied"));}
+    catch{showToast(t("qrImageCopyFail"),3200);}
+  }
+
+  async function copyQrLink(){if(!renderQrCode(false))return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
+
+  function updateFullscreenControl(){const active=Boolean(document.fullscreenElement);$("#fullscreenToggle")?.classList.toggle("is-active",active);$("#fullscreenToggle")?.setAttribute("aria-pressed",String(active));const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
+  async function toggleFullscreen(){if(!document.fullscreenElement&&typeof document.documentElement.requestFullscreen!=="function"){showToast(t("fullscreenUnavailable"));return;}try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen?.();}catch{showToast(t("fullscreenUnavailable"));}updateFullscreenControl();}
   function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);if(localStorage.getItem("nurFullscreen")==="on"&&!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});}
   function saveSettings(){
     const sender = cleanName($("#settingsSenderName").value);
@@ -2339,7 +2557,7 @@
     $("#settingsNamesError").hidden = !namesInvalid;
     if (namesInvalid) return;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t("settingsSaved"));closePanel(layers.settings);
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t("settingsSaved"));closePanel(layers.settings);
   }
 
   function bindEvents(){
@@ -2350,17 +2568,19 @@
     $$("[data-ai-mode]").forEach(button=>{button.addEventListener("click",()=>setAiMode(button.dataset.aiMode));button.addEventListener("keydown",event=>{if(!["ArrowLeft","ArrowRight"].includes(event.key))return;event.preventDefault();const next=button.dataset.aiMode==="letter"?$("#replyModeTab"):$("#letterModeTab");setAiMode(next.dataset.aiMode);next.focus();});});
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",saveSettings);
+    $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderQrCode(false);}));
+    $("#qrOpenButton").addEventListener("click",openQrBuilder);$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
     $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const audit=renderReplyAudit(value,lastReplyContext);if(!audit.ok){showToast(t("replyAuditWarning"),3600);return;}copyText(value);});
-    $("#replyIncoming").addEventListener("input",()=>{clearTimeout(replyInsightTimer);replyInsightTimer=setTimeout(updateReplyInsight,120);});$("#replyGoal").addEventListener("input",updateReplyInsight);[$("#replyRelationship"),$("#replyTone"),$("#replyLength")].forEach(control=>control.addEventListener("change",updateReplyInsight));$("#replyGeneratedText").addEventListener("input",()=>renderReplyAudit($("#replyGeneratedText").value,lastReplyContext));
-    $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
+    $("#replyIncoming").addEventListener("input",()=>{invalidateReplyDraft();clearTimeout(replyInsightTimer);replyInsightTimer=setTimeout(updateReplyInsight,120);});[$("#replyRelationship"),$("#replyTone"),$("#replyLength")].forEach(control=>control.addEventListener("change",()=>{invalidateReplyDraft();updateReplyInsight();}));$("#replyGeneratedText").addEventListener("input",()=>renderReplyAudit($("#replyGeneratedText").value,lastReplyContext));
+    $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);$("#ownTextToggle").setAttribute("aria-expanded",String(!editor.hidden));});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
     $("#languageButton").addEventListener("click",()=>{const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
-    $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",enableWeather);$("#weatherToggle").addEventListener("click",enableWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
+    $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
-    $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast("Max 18 MB");try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("weatherFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
+    $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
@@ -2376,7 +2596,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=13", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=14", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -2405,7 +2625,8 @@
     $$('[data-track]').forEach(option=>option.classList.toggle("is-active",Number(option.dataset.track)===selectedTrack||(selectedTrack===3&&option.id==="customTrackButton")));
     createAtmosphere();await setupBackground();
     if(params.get("compose")==="1")requestPremiumFeature("letter");else if(params.get("reply")==="1")requestPremiumFeature("reply");else if(params.get("library")==="1")openPanel(layers.library);
-    if(weatherEnabled&&navigator.permissions){try{const permission=await navigator.permissions.query({name:"geolocation"});if(permission.state==="granted")enableWeather();}catch{}}
+    renderWeather();
+    if(weatherEnabled){const stale=!weatherSnapshot||Date.now()-Number(weatherSnapshot.updatedAt||0)>30*60*1000;if(stale)refreshWeather({silent:true});}
   }
 
   init();

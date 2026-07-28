@@ -10,18 +10,18 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://france-isl.github.io/glowletter-next/assets/og-next.png" />
+  <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=13" />
+  <link rel="manifest" href="manifest.webmanifest?v=14" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13" />
-  <link rel="stylesheet" href="experience.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="experience.css?v=14" />
 </head>
-<body>
+<body data-ui-theme="moon">
   <div class="app" id="app">
     <div class="cinematic-bg" id="cinematicBg" aria-hidden="true"></div>
     <div class="chair-motion chair-motion-left" aria-hidden="true"></div>
@@ -40,7 +40,7 @@
       </button>
       <button class="round-control nature-button" id="natureButton" type="button" aria-label="Включить звуки природы" aria-pressed="false">♬</button>
       <div class="topbar-spacer"></div>
-      <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon">☾</span><span id="weatherText">Погода</span></button>
+      <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon">◌</span><span id="weatherText">Погода</span></button>
       <button class="round-control language-button" id="languageButton" type="button" aria-label="Изменить язык">RU</button>
       <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем">♡</button>
       <button class="text-control" id="aiOpenTop" type="button"><span class="spark">✦</span><span>Создать письмо</span></button>
@@ -52,7 +52,7 @@
         <div class="brand-card">
           <p class="brand-kicker">GLOWLETTER</p>
           <h1>Тёплые слова<br /><em>находят путь</em></h1>
-          <p class="brand-copy">Вечер у озера, живой дождь и слова, которые хочется сохранить.</p>
+          <p class="brand-copy">Тёплые слова для тех, кто действительно важен.</p>
         </div>
         <div class="home-bottom">
           <p class="sender-line" hidden></p>
@@ -159,7 +159,7 @@
         </form>
 
         <div class="own-text-block">
-          <button class="own-text-toggle" id="ownTextToggle" type="button"><span>✎</span><b>Написать свой текст</b><i>⌄</i></button>
+          <button class="own-text-toggle" id="ownTextToggle" type="button" aria-expanded="false" aria-controls="ownTextEditor"><span>✎</span><b>Написать свой текст</b><i>⌄</i></button>
           <div class="own-text-editor" id="ownTextEditor" hidden>
             <label class="wide-label"><span>Ваши слова</span><textarea id="ownText" rows="7" maxlength="1800" placeholder="Напишите письмо своими словами…"></textarea></label>
             <small>Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.</small>
@@ -196,7 +196,6 @@
               <span class="reply-insight-mark" aria-hidden="true">◇</span>
               <p><strong id="replyInsightTitle">Смысл сообщения</strong><small id="replyInsightDetails"></small><em id="replyInsightGoal"></em></p>
             </div>
-            <label class="wide-label reply-goal-label"><span>Что вы хотите сказать · необязательно</span><textarea id="replyGoal" rows="3" maxlength="320" placeholder="Например: принимаю предложение; приду в 19:00; хочу вежливо отказаться…"></textarea></label>
             <div class="choice-grid">
               <label><span>Кто вам написал · необязательно</span><select id="replyRelationship"><option value="auto">Не указывать</option><option value="spouse">Супруг или супруга</option><option value="family">Член семьи</option><option value="friend">Друг или подруга</option><option value="colleague">Коллега</option><option value="universal">Другой человек</option></select></label>
               <label><span>Как ответить · необязательно</span><select id="replyTone"><option value="auto">Подобрать автоматически</option><option value="calm">Спокойно</option><option value="warm">Тепло</option><option value="support">Поддержать</option><option value="reconcile">Помириться</option></select></label>
@@ -288,6 +287,16 @@
           <button type="button" data-lang="fr">FR <span>Français</span></button>
         </fieldset>
 
+        <fieldset class="interface-theme-picker">
+          <legend>Цвет интерфейса</legend>
+          <div class="theme-choice-grid" role="radiogroup" aria-label="Цвет интерфейса">
+            <button class="is-active" type="button" role="radio" aria-checked="true" data-ui-theme="moon"><i></i><span>Лунный</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="rose"><i></i><span>Розовый</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="forest"><i></i><span>Лесной</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="sand"><i></i><span>Тёплый</span></button>
+          </div>
+        </fieldset>
+
         <fieldset class="background-picker">
           <legend>Личный фон</legend>
           <div class="background-preview" id="backgroundPreview"><span>▧</span><p><strong>Своя фотография</strong><small>Останется только на этом устройстве</small></p></div>
@@ -318,9 +327,41 @@
 
         <button class="install-button" id="manageSubscriptionButton" type="button">◌ Управление подпиской</button>
         <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
+        <button class="install-button qr-open-button" id="qrOpenButton" type="button">▦ Создать QR-код письма</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
         <p class="install-hint" id="installHint" hidden>На iPhone: «Поделиться» → «На экран Домой».</p>
         <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a href="terms.html" target="_blank" rel="noopener">Условия</a><a href="delete-account.html" target="_blank" rel="noopener">Удаление аккаунта</a><a href="mailto:ggooglov9@gmail.com">Поддержка</a></div>
+      </section>
+    </div>
+
+    <div class="panel-layer center-layer" id="qrLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="qrBackdrop" type="button" aria-label="Закрыть QR-код"></button>
+      <section class="qr-card" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+        <button class="panel-close qr-close" id="qrClose" type="button" aria-label="Закрыть QR-код">×</button>
+        <p class="panel-eyebrow" id="qrEyebrow">GLOWLETTER · QR</p>
+        <h2 id="qrTitle">Письмо, которое<br /><em>откроется по камере</em></h2>
+        <p class="qr-lead" id="qrLead">Укажите имена, скачайте QR-код и приложите его к цветам или подарку. Получатель увидит первые 10 писем бесплатно.</p>
+        <form id="qrForm">
+          <div class="simple-form">
+            <label><span>От кого</span><input id="qrSenderName" type="text" maxlength="36" autocomplete="name" placeholder="Ваше имя" /></label>
+            <label><span>Для кого</span><input id="qrRecipientName" type="text" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
+          </div>
+          <p class="setup-error" id="qrNamesError" hidden>Введите обычные имена или семейные роли.</p>
+          <button class="generate-button qr-generate" id="qrGenerateButton" type="submit"><span class="generate-spark">▦</span><span>Обновить QR-код</span><i>→</i></button>
+        </form>
+        <div class="qr-preview" id="qrPreview">
+          <div class="qr-preview-head"><span>GLOWLETTER</span><small id="qrPreviewCaption">10 писем в подарок</small></div>
+          <canvas id="qrCanvas" width="280" height="280" aria-label="QR-код персонального письма"></canvas>
+          <p id="qrRoutePreview"></p>
+        </div>
+        <p class="qr-privacy" id="qrPrivacy">В QR-коде сохраняются только выбранные имена, язык и ссылка на бесплатную версию. Ключ полного доступа не передаётся.</p>
+        <div class="qr-actions">
+          <button id="qrDownloadButton" type="button">↓ Скачать PNG</button>
+          <button id="qrCopyLinkButton" type="button">▣ Скопировать ссылку</button>
+          <button id="qrCopyImageButton" type="button">▦ Скопировать QR</button>
+          <button id="qrPrintButton" type="button">⌁ Распечатать</button>
+        </div>
+        <button class="paywall-home go-home" type="button">⌂ На главную</button>
       </section>
     </div>
 
@@ -344,11 +385,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=13"></script>
-  <script src="vendor/supabase-2.110.9.js?v=13"></script>
-  <script src="letters.js?v=13"></script>
-  <script src="reply-engine.js?v=13"></script>
-  <script src="app.js?v=13"></script>
-  <script src="experience.js?v=13"></script>
+  <script src="config.js?v=14"></script>
+  <script src="vendor/supabase-2.110.9.js?v=14"></script>
+  <script src="letters.js?v=14"></script>
+  <script src="reply-engine.js?v=14"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=14"></script>
+  <script src="qr-code.js?v=14"></script>
+  <script src="app.js?v=14"></script>
+  <script src="experience.js?v=14"></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
-# GlowLetter Next
+# GlowLetter
 
 Отдельная версия атмосферного приложения персональных писем. Исходный сайт `pismo-dlya-aishi` не изменяется.
 
-- Сайт: <https://france-isl.github.io/glowletter-next/>
+- Сайт: <https://france-isl.github.io/glowletter-qr/>
 - Поддержка: <ggooglov9@gmail.com>
-- Политика конфиденциальности: <https://france-isl.github.io/glowletter-next/privacy.html>
-- Удаление аккаунта: <https://france-isl.github.io/glowletter-next/delete-account.html>
+- Политика конфиденциальности: <https://france-isl.github.io/glowletter-qr/privacy.html>
+- Удаление аккаунта: <https://france-isl.github.io/glowletter-qr/delete-account.html>
 
 ## Возможности
 
@@ -14,6 +14,7 @@
 - прозрачные открытки, премиум-рамки, палитры и умное оформление;
 - помощник ответов с анализом смысла, длины и проверкой уважительности;
 - погода, дождь, природные звуки, PWA-установка и Android/iOS-оболочки;
+- персональный QR-код для цветов и подарков: получатель открывает публичные первые 10 писем;
 - Supabase Auth и синхронизация прогресса между устройствами.
 
 ## Доступ и подписка

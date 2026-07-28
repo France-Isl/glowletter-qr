@@ -52,8 +52,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 4
-        versionName = "2.0.0"
+        versionCode = 5
+        versionName = "2.1.0"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -107,6 +107,19 @@ android {
     packaging {
         resources {
             excludes += ["META-INF/DEPENDENCIES", "META-INF/LICENSE*", "META-INF/NOTICE*"]
+        }
+    }
+}
+
+// Keep distributable filenames aligned with the customer-facing brand while
+// preserving the existing applicationId, package names, billing products and
+// update path.
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName.set(
+                    output.versionName.map { version -> "GlowLetter-${version}.apk" }
+            )
         }
     }
 }
