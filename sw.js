@@ -1,23 +1,25 @@
-const CACHE_PREFIX = "glow-letter-next-";
-const CACHE = `${CACHE_PREFIX}v13`;
+const CACHE_PREFIX = "glow-letter-";
+const CACHE = `${CACHE_PREFIX}v14`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=13",
-  "experience.css?v=13",
-  "config.js?v=13",
-  "vendor/supabase-2.110.9.js?v=13",
-  "letters.js?v=13",
-  "reply-engine.js?v=13",
-  "app.js?v=13",
-  "experience.js?v=13",
-  "manifest.webmanifest?v=13",
+  "styles.css?v=14",
+  "experience.css?v=14",
+  "config.js?v=14",
+  "vendor/supabase-2.110.9.js?v=14",
+  "vendor/qrcode-generator-1.4.4.min.js?v=14",
+  "letters.js?v=14",
+  "reply-engine.js?v=14",
+  "qr-code.js?v=14",
+  "app.js?v=14",
+  "experience.js?v=14",
+  "manifest.webmanifest?v=14",
   "icon.svg",
   "privacy.html",
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
-const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "letters.js", "reply-engine.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "from", "to", "msg", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {

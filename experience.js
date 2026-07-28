@@ -283,8 +283,6 @@
   };
   document.querySelector("#shareButton")?.addEventListener("click", event => {
     syncUrl();
-    const capability = String(localStorage.getItem("nurBetaCapability") || "").trim();
-    if (!/^[A-Za-z0-9_-]{40,128}$/.test(capability)) { notify("share"); return; }
     event.preventDefault(); event.stopImmediatePropagation();
     const canonicalShareUrl = String(window.NUR_APP_CONFIG?.publicShareUrl || "").trim();
     const url = new URL(canonicalShareUrl || location.href);
@@ -300,10 +298,9 @@
     if (state.ink !== "ink") url.searchParams.set("glInk", state.ink);
     if (state.type !== "classic") url.searchParams.set("glType", state.type);
     url.searchParams.delete("quote");
-    // Keep the full-access capability out of HTTP requests and referrer logs.
-    // GitHub Pages receives only the query (names/style); the app validates the
-    // fragment locally, stores it, and removes it from the visible URL.
-    url.hash = new URLSearchParams({ access: capability }).toString();
+    // Shared letters are always public/free links. Owner access never leaves
+    // the current device through a share action.
+    url.hash = "";
     const data = { title: document.title, text: recipient ? `${recipient}, это письмо для тебя — ${sender} ♡` : document.title, url: url.toString() };
     if (navigator.share) navigator.share(data).catch(error => { if (error?.name !== "AbortError") copyShareUrl(data.url); });
     else copyShareUrl(data.url);

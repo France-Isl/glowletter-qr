@@ -30,9 +30,9 @@ window.NUR_LETTERS = Object.freeze([
   {
     "id": 5,
     "category": "warm",
-    "ru": "{to}, ты умеешь делать красивым даже самый обычный день — достаточно одного сообщения от тебя.",
-    "en": "{to}, you know how to make even the most ordinary day beautiful — one message from you is enough.",
-    "fr": "{to}, tu sais embellir même la journée la plus ordinaire — un seul message de toi suffit."
+    "ru": "Ты умеешь делать красивым даже самый обычный день — достаточно одного сообщения от тебя.",
+    "en": "You know how to make even the most ordinary day beautiful — one message from you is enough.",
+    "fr": "Tu sais embellir même la journée la plus ordinaire — un seul message de toi suffit."
   },
   {
     "id": 6,
@@ -79,9 +79,9 @@ window.NUR_LETTERS = Object.freeze([
   {
     "id": 12,
     "category": "gratitude",
-    "ru": "{to}, ты прекрасна во всём: во взгляде, в улыбке, в голосе и в тех добрых качествах, за которые я так сильно тебя ценю.",
-    "en": "{to}, you are wonderful in every way: in your gaze, your smile, your voice, and the kind qualities I value so deeply in you.",
-    "fr": "{to}, tu es merveilleuse à tous égards : dans ton regard, ton sourire, ta voix et toutes ces belles qualités que j’apprécie tant chez toi."
+    "ru": "Ты прекрасна во всём: во взгляде, в улыбке, в голосе и в тех добрых качествах, за которые я так сильно тебя ценю.",
+    "en": "You are wonderful in every way: in your gaze, your smile, your voice, and the kind qualities I value so deeply in you.",
+    "fr": "Tu es merveilleuse à tous égards : dans ton regard, ton sourire, ta voix et toutes ces belles qualités que j’apprécie tant chez toi."
   },
   {
     "id": 13,

@@ -19,8 +19,9 @@
     ],
     distress: [
       "мне тяжело", "мне плохо", "мне грустно", "я устал", "я устала", "не справляюсь", "очень трудно", "больно на душе", "нужна помощь", "нужна поддержка", "нужен совет",
-      "i am struggling", "i feel bad", "i am sad", "i am tired", "this is hard", "i need help", "i need support",
-      "je vais mal", "je suis triste", "je suis fatigue", "je suis fatiguee", "c est difficile", "j ai besoin d aide", "j ai besoin de soutien"
+      "заболел", "заболела", "болеет", "плохое самочувствие", "переживаю за здоровье",
+      "i am struggling", "i feel bad", "i am sad", "i am tired", "this is hard", "i need help", "i need support", "is ill", "is sick", "worried about health",
+      "je vais mal", "je suis triste", "je suis fatigue", "je suis fatiguee", "c est difficile", "j ai besoin d aide", "j ai besoin de soutien", "est malade", "inquiet pour la sante", "inquiete pour la sante"
     ],
     apology: [
       "прости", "извини", "прошу прощения", "мне жаль", "виноват", "виновата",
@@ -38,9 +39,9 @@
       "merci", "remercie", "reconnaissant", "reconnaissante", "je t apprecie", "j apprecie"
     ],
     celebration: [
-      "поздравляю", "рад за тебя", "рада за тебя", "горжусь тобой", "получилось", "хорошая новость",
-      "congratulations", "happy for you", "proud of you", "great news", "you did it",
-      "felicitations", "heureux pour toi", "heureuse pour toi", "fier de toi", "fiere de toi", "bonne nouvelle"
+      "поздравляю", "рад за тебя", "рада за тебя", "горжусь тобой", "получилось", "хорошая новость", "сдал экзамен", "сдала экзамен", "получил работу", "получила работу",
+      "congratulations", "happy for you", "proud of you", "great news", "you did it", "i passed", "passed my exam", "passed the exam", "got the job",
+      "felicitations", "heureux pour toi", "heureuse pour toi", "fier de toi", "fiere de toi", "bonne nouvelle", "j ai reussi", "reussi mon examen", "reussi l examen", "obtenu le poste"
     ],
     appreciation: [
       "ты замечательный", "ты замечательная", "ты прекрасный", "ты прекрасная", "ты добрый", "ты добрая", "ты важен", "ты важна", "хорошо что ты есть",
@@ -71,6 +72,51 @@
       "скучаю", "не хватает тебя", "думаю о тебе", "береги себя",
       "miss you", "thinking of you", "take care",
       "tu me manques", "je pense a toi", "prends soin de toi"
+    ]
+  };
+
+  // Topics refine a reply without carrying any state from the previous message.
+  // They deliberately describe only what is present in the current incoming text.
+  const TOPIC_SIGNALS = {
+    call: [
+      "позвонить", "позвонишь", "созвонимся", "голосовое сообщение",
+      "call me", "phone call", "can we call", "voice message",
+      "m appeler", "appel telephonique", "peut on s appeler", "message vocal"
+    ],
+    meeting: [
+      "встретиться", "встретимся", "увидимся", "приедешь", "придешь",
+      "meet", "see each other", "come over", "will you arrive",
+      "se voir", "nous voir", "rencontrer", "viendras tu", "arrives tu"
+    ],
+    location: [
+      "где ты", "ты дома", "где находишься",
+      "where are you", "are you home", "your location",
+      "ou es tu", "es tu chez toi", "ta position"
+    ],
+    health: [
+      "здоровье", "самочувствие", "болеет", "заболел", "заболела", "врач", "больница",
+      "health", "feel well", "ill", "sick", "doctor", "hospital",
+      "sante", "malade", "medecin", "hopital"
+    ],
+    family: [
+      "мама", "мать", "папа", "отец", "родители", "семья", "семью", "семье", "брат", "сестра",
+      "mother", "mom", "mum", "father", "dad", "parents", "family", "brother", "sister",
+      "mere", "maman", "pere", "papa", "parents", "famille", "frere", "soeur"
+    ],
+    work_study: [
+      "работа", "экзамен", "учеба", "университет", "школа", "проект",
+      "work", "job", "exam", "study", "university", "school", "project",
+      "travail", "poste", "examen", "etudes", "universite", "ecole", "projet"
+    ],
+    gift: [
+      "подарок", "цветы", "букет", "открытка",
+      "gift", "flowers", "bouquet", "card",
+      "cadeau", "fleurs", "bouquet", "carte"
+    ],
+    faith: [
+      "аллах", "альхамдулиллях", "алхамдулиллах", "дуа", "намаз",
+      "allah", "alhamdulillah", "dua", "prayer",
+      "allah", "alhamdulillah", "doua", "priere"
     ]
   };
 
@@ -263,6 +309,141 @@
     }
   };
 
+  const TOPIC_RESPONSES = {
+    ru: {
+      question: {
+        call: [
+          "Я уточню свои дела и скоро скажу точно, смогу ли позвонить. Не хочу оставлять твой вопрос без ясного ответа.",
+          "Спасибо, что спросил. Я проверю, когда буду свободен для звонка, и напишу тебе точное время."
+        ],
+        meeting: [
+          "Я сверю свои планы и скоро скажу точно, получится ли встретиться. Не хочу обещать, пока не уверен.",
+          "Мне важно ответить тебе точно насчёт встречи. Я проверю обстоятельства и сразу напишу, когда буду знать."
+        ],
+        location: [
+          "Я отвечу тебе точно, где нахожусь, как только смогу проверить сообщение. Не хочу оставлять тебя в неизвестности.",
+          "Спасибо, что уточняешь. Я сообщу своё точное местоположение без догадок, как только смогу ответить."
+        ]
+      },
+      time_question: {
+        call: [
+          "Я уточню, когда освобожусь для звонка, и сразу напишу точное время.",
+          "Сейчас проверю свои дела и сообщу, во сколько смогу спокойно позвонить."
+        ],
+        meeting: [
+          "Я проверю свои планы и сразу напишу точное время встречи или приезда.",
+          "Не хочу называть время наугад. Я уточню дорогу и дела, затем сообщу, когда смогу приехать."
+        ]
+      },
+      support: {
+        health: [
+          "Мне очень жаль, что сейчас есть переживания из-за здоровья. Я рядом, могу выслушать и помочь тем, что действительно будет полезно.",
+          "Спасибо, что рассказал об этом. Пусть самочувствие скорее улучшится. Скажи, нужна ли сейчас конкретная помощь или просто поддержка."
+        ]
+      },
+      celebration: {
+        work_study: [
+          "Поздравляю с этим результатом! Твои старания принесли плод, и я искренне радуюсь вместе с тобой.",
+          "Это прекрасная новость — поздравляю! Ты вложил много сил, и твой результат заслуживает добрых слов."
+        ]
+      },
+      gratitude: {
+        gift: [
+          "Спасибо за такой внимательный подарок. Мне очень приятно, что ты выбрал его с заботой.",
+          "Спасибо тебе за этот подарок и доброе внимание. Это действительно согрело меня."
+        ]
+      }
+    },
+    en: {
+      question: {
+        call: [
+          "I will check my schedule and tell you clearly whether I can call. I do not want to leave your question unanswered.",
+          "Thank you for asking. I will see when I am free for a call and send you a precise time."
+        ],
+        meeting: [
+          "I will check my plans and tell you soon whether we can meet. I do not want to promise before I am certain.",
+          "I want to give you a clear answer about meeting. I will check the circumstances and write as soon as I know."
+        ],
+        location: [
+          "I will tell you exactly where I am as soon as I can check the message. I do not want to leave you wondering.",
+          "Thank you for checking. I will share my exact location without guessing as soon as I can reply."
+        ]
+      },
+      time_question: {
+        call: [
+          "I will check when I am free for a call and send you the exact time right away.",
+          "I will review my schedule now and tell you what time I can call without rushing."
+        ],
+        meeting: [
+          "I will check my plans and send you the exact meeting or arrival time as soon as I know.",
+          "I do not want to guess about the time. I will check the journey and my schedule, then tell you when I can arrive."
+        ]
+      },
+      support: {
+        health: [
+          "I am sorry that health concerns are making things difficult. I am here to listen and help in whatever way is genuinely useful.",
+          "Thank you for telling me. I hope things improve soon. Tell me whether practical help or quiet support would be better right now."
+        ]
+      },
+      celebration: {
+        work_study: [
+          "Congratulations on this result! Your effort has paid off, and I am sincerely happy for you.",
+          "That is wonderful news—congratulations! You put real effort into it, and the result deserves to be celebrated."
+        ]
+      },
+      gratitude: {
+        gift: [
+          "Thank you for such a thoughtful gift. It means a lot that you chose it with care.",
+          "Thank you for the gift and your kind attention. It genuinely brightened my day."
+        ]
+      }
+    },
+    fr: {
+      question: {
+        call: [
+          "Je vais vérifier mon emploi du temps et te dire clairement si je peux t’appeler. Je ne veux pas laisser ta question sans réponse.",
+          "Merci d’avoir demandé. Je vais voir quand je serai libre pour un appel et je t’enverrai une heure précise."
+        ],
+        meeting: [
+          "Je vais vérifier mes projets et te dire bientôt si nous pouvons nous voir. Je ne veux pas promettre avant d’en être certain.",
+          "Je tiens à te répondre clairement au sujet de notre rencontre. Je vérifie les circonstances et je t’écris dès que je sais."
+        ],
+        location: [
+          "Je te dirai exactement où je suis dès que je pourrai consulter le message. Je ne veux pas te laisser sans réponse.",
+          "Merci de demander. Je te communiquerai ma position exacte, sans rien inventer, dès que je pourrai répondre."
+        ]
+      },
+      time_question: {
+        call: [
+          "Je vais vérifier quand je serai libre pour un appel et je t’enverrai aussitôt l’heure exacte.",
+          "Je consulte mon emploi du temps et je te dirai à quelle heure je pourrai t’appeler tranquillement."
+        ],
+        meeting: [
+          "Je vais vérifier mes projets et t’envoyer l’heure exacte de la rencontre ou de mon arrivée dès que possible.",
+          "Je ne veux pas donner une heure au hasard. Je vérifie le trajet et mon emploi du temps, puis je te dis quand je pourrai arriver."
+        ]
+      },
+      support: {
+        health: [
+          "Je suis désolé que ces inquiétudes de santé rendent la situation difficile. Je suis là pour écouter et aider de manière réellement utile.",
+          "Merci de m’en avoir parlé. J’espère que la santé s’améliorera vite. Dis-moi si une aide concrète ou un soutien calme serait préférable maintenant."
+        ]
+      },
+      celebration: {
+        work_study: [
+          "Félicitations pour ce résultat ! Tes efforts ont porté leurs fruits et je suis sincèrement heureux pour toi.",
+          "C’est une excellente nouvelle — félicitations ! Tu as fourni de vrais efforts et ce résultat mérite d’être célébré."
+        ]
+      },
+      gratitude: {
+        gift: [
+          "Merci pour ce cadeau si attentionné. Cela me touche que tu l’aies choisi avec soin.",
+          "Merci pour ce cadeau et pour ton attention bienveillante. Cela m’a vraiment fait plaisir."
+        ]
+      }
+    }
+  };
+
   const DETAIL_EXTENSIONS = {
     ru: {
       religious_gratitude: "Пусть наша благодарность проявляется и в добрых, спокойных поступках.",
@@ -305,7 +486,26 @@
   }
 
   function includesAny(value, signals) {
-    return signals.some(signal => value.includes(normalize(signal)));
+    const normalizedValue = normalize(value);
+    const paddedValue = ` ${normalizedValue} `;
+    return signals.some(signal => {
+      const normalizedSignal = normalize(signal);
+      if (!normalizedSignal) return false;
+      // Short signals such as English “hi” must be whole words; otherwise
+      // unrelated text such as “this” is incorrectly treated as a greeting.
+      if (!normalizedSignal.includes(" ") && normalizedSignal.length <= 3) {
+        return paddedValue.includes(` ${normalizedSignal} `);
+      }
+      return normalizedValue.includes(normalizedSignal);
+    });
+  }
+
+  function inferTopic(incoming) {
+    const value = normalize(incoming);
+    for (const topic of ["call", "meeting", "location", "health", "work_study", "gift", "family", "faith"]) {
+      if (includesAny(value, TOPIC_SIGNALS[topic])) return topic;
+    }
+    return "general";
   }
 
   function inferIntent(incoming) {
@@ -381,12 +581,16 @@
   function compose({ incoming = "", language = "ru", tone = "auto", length = "auto", variant = 0 } = {}) {
     const lang = SUPPORTED_LANGUAGES.has(language) ? language : "ru";
     const intent = inferIntent(incoming);
+    const topic = inferTopic(incoming);
     const selectedTone = SUPPORTED_TONES.has(tone) ? tone : "auto";
     let responseKey = intent;
     if (selectedTone === "boundary") responseKey = "boundary";
-    else if (selectedTone === "reconcile" && !["religious_gratitude", "islamic_greeting", "gratitude", "celebration", "appreciation"].includes(intent)) responseKey = "conflict";
-    else if (selectedTone === "support" && ["neutral", "care"].includes(intent)) responseKey = "support";
-    const bank = RESPONSES[lang][responseKey] || RESPONSES[lang].neutral;
+    // A selected tone belongs only to this composition and must never turn a
+    // new greeting, question, or neutral message into an old conflict reply.
+    // Reconciliation/support wording is selected only when the current text
+    // itself carries that intent. Boundary remains an explicit user request.
+    const topicBank = responseKey === intent ? TOPIC_RESPONSES[lang]?.[intent]?.[topic] : null;
+    const bank = topicBank || RESPONSES[lang][responseKey] || RESPONSES[lang].neutral;
     const safeVariant = Number.isFinite(Number(variant)) ? Math.abs(Math.trunc(Number(variant))) : 0;
     const response = bank[safeVariant % bank.length];
     return applyLength(response, lang, intent, resolveLength(incoming, length));
@@ -401,8 +605,12 @@
         && includesAny(value, ["благодар", "хвала", "thank", "praise", "remerc", "louange", "alhamdulillah", "альхамдулиллях"])
         && noFalseConflict;
     }
-    if (["gratitude", "celebration", "appreciation"].includes(intent)) {
+    if (["gratitude", "appreciation"].includes(intent)) {
       return includesAny(value, ["спасибо", "благодар", "цен", "thank", "appreci", "merci", "remerc", "touch"])
+        && noFalseConflict;
+    }
+    if (intent === "celebration") {
+      return includesAny(value, ["поздрав", "радуюсь", "результат", "congrat", "happy for", "result", "felicit", "heureux", "resultat"])
         && noFalseConflict;
     }
     if (intent === "islamic_greeting") return includesAny(value, ["алейкум ассалям", "alaykum assalam", "alaykoum assalam"]);
@@ -449,5 +657,5 @@
     return { ok: codes.length === 0, codes: [...new Set(codes)], severity: codes.length ? "warning" : "safe" };
   }
 
-  return { normalize, inferIntent, resolveTone, analyze, resolveLength, compose, isAligned, audit };
+  return { normalize, inferIntent, inferTopic, resolveTone, analyze, resolveLength, compose, isAligned, audit };
 });

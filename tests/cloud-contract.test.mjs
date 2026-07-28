@@ -30,7 +30,7 @@ const vendorBuffer = fs.readFileSync(path.join(root, "vendor", vendorMetadata.ve
 // Production configuration must contain only public browser values.
 assert.match(config, /supabaseUrl:\s*"https:\/\/xzzngrquomyiglktroqi\.supabase\.co"/);
 assert.match(config, /supabasePublishableKey:\s*"sb_publishable_/);
-assert.match(config, /publicShareUrl:\s*"https:\/\/france-isl\.github\.io\/glowletter-next\/"/);
+assert.match(config, /publicShareUrl:\s*"https:\/\/france-isl\.github\.io\/glowletter-qr\/"/);
 assert.doesNotMatch(config, /service_role|sb_secret_/i);
 
 // Final commercial plan: one monthly subscription and a separately restorable legacy purchase.
@@ -50,8 +50,10 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=13") < index.indexOf("reply-engine.js?v=13"));
-assert.ok(index.indexOf("reply-engine.js?v=13") < index.indexOf("app.js?v=13"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=14") < index.indexOf("reply-engine.js?v=14"));
+assert.ok(index.indexOf("reply-engine.js?v=14") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=14"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=14") < index.indexOf("qr-code.js?v=14"));
+assert.ok(index.indexOf("qr-code.js?v=14") < index.indexOf("app.js?v=14"));
 assert.match(index, /id="facebookSignIn"[^>]*hidden[^>]*disabled/);
 assert.match(index, /id="shareAppButton"/);
 
@@ -119,7 +121,7 @@ assert.match(deleteAccountFunction, /auth\.admin\.deleteUser\(/);
 assert.doesNotMatch(deleteAccountFunction, /console\.(?:log|info|error)\([^\n]*serviceRoleKey/i);
 assert.doesNotMatch(deleteAccountFunction, /(?:body|error|deleted)\s*:\s*serviceRoleKey/i);
 
-// Owner capability remains device-local and is carried only by the explicitly shared owner link.
+// Owner capability remains device-local. Every ordinary public share is deliberately capability-free.
 assert.match(app, /let acceptedBetaCapability\s*=\s*""/);
 assert.match(app, /acceptedBetaCapability\s*=\s*acceptedToken/);
 assert.match(app, /localStorage\.setItem\(BETA_STORAGE_KEY/);
@@ -129,18 +131,38 @@ assert.match(app, /function buildAppShareUrl\(/);
 assert.match(app, /async function shareApplication\(/);
 const shareUrlBody = app.match(/function buildAppShareUrl\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*async function shareApplication\(/)?.[1] || "";
 assert.match(shareUrlBody, /CONFIG\.publicShareUrl/);
-assert.match(shareUrlBody, /acceptedBetaCapability/);
 assert.match(shareUrlBody, /\w+\.search\s*=\s*""/);
 assert.match(shareUrlBody, /\w+\.hash\s*=\s*""/);
-assert.match(shareUrlBody, /\w+\.hash\s*=\s*new URLSearchParams\(\{\s*access:\s*acceptedBetaCapability\s*\}\)\.toString\(\)/);
-assert.doesNotMatch(shareUrlBody, /\b(?:fromName|toName|sharedMessage|isPremium|entitlementState)\b|localStorage|gl(?:Scene|Frame|Ink|Type)/);
-assert.doesNotMatch(shareUrlBody, /searchParams\.set\(\s*["'](?:access|beta)["']/);
-const shareApplicationBody = app.match(/async function shareApplication\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function updateFullscreenControl/)?.[1] || "";
+assert.doesNotMatch(shareUrlBody, /acceptedBetaCapability|BETA_PARAMETER|localStorage|\b(?:fromName|toName|sharedMessage|isPremium|entitlementState)\b|gl(?:Scene|Frame|Ink|Type)/);
+assert.doesNotMatch(shareUrlBody, /searchParams\.set\(\s*["'](?:access|beta|gl_access)["']/);
+const shareApplicationBody = app.match(/async function shareApplication\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function qrPalette/)?.[1] || "";
 assert.match(shareApplicationBody, /navigator\.share\(\{\s*title:\s*t\("title"\),\s*text:\s*t\("shareAppText"\),\s*url\s*\}\)/);
 assert.match(shareApplicationBody, /error\?\.name\s*===\s*"AbortError"/);
 assert.match(shareApplicationBody, /writeClipboard\(url\)/);
 assert.match(shareApplicationBody, /showToast\(t\("shareAppCopied"\)\)/);
 assert.match(app, /#shareAppButton[^\n]*addEventListener\("click",\s*shareApplication\)/);
+
+const shareLetterBody = app.match(/async function shareLetter\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function buildAppShareUrl/)?.[1] || "";
+assert.match(shareLetterBody, /CONFIG\.publicShareUrl/);
+assert.match(shareLetterBody, /\w+\.search\s*=\s*""/);
+assert.match(shareLetterBody, /\w+\.hash\s*=\s*""/);
+assert.doesNotMatch(shareLetterBody, /acceptedBetaCapability|BETA_PARAMETER/);
+assert.doesNotMatch(shareLetterBody, /searchParams\.set\(\s*["'](?:access|beta|gl_access)["']/);
+
+// A QR always starts from the configured public URL and may contain only public personalization fields.
+const qrUrlBody = app.match(/function buildPublicQrUrl\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function qrRouteText/)?.[1] || "";
+assert.match(qrUrlBody, /CONFIG\.publicShareUrl/);
+assert.match(qrUrlBody, /\bbase\.search\s*=\s*""/);
+assert.match(qrUrlBody, /\bbase\.hash\s*=\s*""/);
+assert.match(qrUrlBody, /const parameters\s*=\s*\{\s*lang\s*,\s*quote\s*:\s*1\s*\}/);
+assert.match(qrUrlBody, /parameters\.from\s*=\s*sender/);
+assert.match(qrUrlBody, /parameters\.to\s*=\s*recipient/);
+assert.match(qrUrlBody, /\bsafe\.hash\s*=\s*""/);
+assert.match(qrUrlBody, /searchParams\.delete\(BETA_PARAMETER\)/);
+assert.match(qrUrlBody, /searchParams\.delete\(\s*["']access["']\s*\)/);
+assert.match(qrUrlBody, /searchParams\.delete\(\s*["']beta["']\s*\)/);
+assert.doesNotMatch(qrUrlBody, /acceptedBetaCapability|localStorage|\b(?:msg|isPremium|entitlementState|hash)\s*:/);
+assert.doesNotMatch(qrUrlBody, /searchParams\.set\(\s*["'](?:access|beta|gl_access|msg)["']/);
 
 const stateBody = app.match(/function cloudProgressState\(\) \{([\s\S]+?)\r?\n  \}\r?\n\r?\n  function cloudProgressSignature/)?.[1] || "";
 for (const allowed of ["sender_name", "recipient_name", "language", "current_letter_id", "favorite_ids", "rain_enabled", "weather_enabled", "built_in_track", "nature_enabled", "fullscreen_enabled", "volume"]) {
@@ -150,16 +172,16 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v13 must update its own cache only and never cache personalized links.
-assert.match(worker, /const CACHE_PREFIX = "glow-letter-next-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v13`/);
-for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "letters.js", "reply-engine.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=13`));
+// Service-worker v14 must update its own cache only and never cache personalized links.
+assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v14`/);
+for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=14`));
 }
-for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "letters.js", "reply-engine.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=13`));
+for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=14`));
 }
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=13"/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=14"/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
 assert.match(worker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE/);
@@ -189,12 +211,14 @@ assert.match(migration, /to authenticated[\s\S]*auth\.uid\(\)[\s\S]*user_id/i);
 assert.match(migration, /with check \(\(select auth\.uid\(\)\) = user_id\)/i);
 
 assert.equal(vendorMetadata.version, "2.110.9");
-assert.equal(crypto.createHash("sha256").update(vendorBuffer).digest("hex"), vendorMetadata.vendoredSha256);
+// Git may check text assets out with CRLF on Windows; integrity is defined over the repository's LF form.
+const normalizedVendorBuffer = Buffer.from(vendorBuffer.toString("utf8").replaceAll("\r\n", "\n"), "utf8");
+assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("hex"), vendorMetadata.vendoredSha256);
 
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v13",
+  cache: "v14",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,
@@ -203,5 +227,6 @@ console.log(JSON.stringify({
   smartReplyAudit: true,
   accountDeletion: true,
   safeAppShare: true,
+  safeQrShare: true,
   rls: true
 }));

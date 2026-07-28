@@ -10,6 +10,7 @@ assert.ok(engine, "reply-engine.js must expose globalThis.NUR_REPLY_ENGINE");
 for (const method of [
   "normalize",
   "inferIntent",
+  "inferTopic",
   "resolveTone",
   "analyze",
   "resolveLength",
@@ -122,6 +123,33 @@ for (const [incoming, expected] of intentCases) {
   assert.equal(engine.inferIntent(incoming), expected, incoming);
 }
 
+const topicCases = [
+  ["Ты сможешь позвонить сегодня?", "call"],
+  ["Мы сможем встретиться завтра?", "meeting"],
+  ["Ты уже дома? Где ты?", "location"],
+  ["Моя мама заболела и сейчас у врача", "health"],
+  ["Я сдала экзамен в университете", "work_study"],
+  ["Спасибо за цветы и красивую открытку", "gift"],
+  ["Береги свою семью", "family"],
+  ["Альхамдулиллях за эту хорошую новость", "faith"],
+  ["Can you call me today?", "call"],
+  ["My mother is ill and at the hospital", "health"],
+  ["I passed my university exam", "work_study"],
+  ["Peux-tu m’appeler aujourd’hui ?", "call"],
+  ["Ma mère est malade et elle est à l’hôpital", "health"],
+  ["J’ai réussi mon examen à l’université", "work_study"]
+];
+
+for (const [incoming, expected] of topicCases) {
+  assert.equal(engine.inferTopic(incoming), expected, incoming);
+}
+
+assert.equal(
+  engine.inferIntent("This message contains no greeting"),
+  "neutral",
+  "the short signal ‘hi’ must not match inside the word ‘this’"
+);
+
 assert.equal(engine.resolveTone("Мне тяжело"), "support");
 assert.equal(engine.resolveTone("Ты меня обидел"), "reconcile");
 assert.equal(engine.resolveTone("Обычное сообщение без особого сигнала"), "calm");
@@ -203,6 +231,79 @@ for (const language of ["ru", "en", "fr"]) {
   );
 }
 
+const sequentialCases = {
+  ru: [
+    { incoming: "Ты меня обидел", intent: "conflict", topic: "general", relevant: /(?:задел|чувств|спор|недопоним)/iu },
+    { incoming: "Доброе утро!", intent: "greeting", topic: "general", relevant: /(?:привет|здравств|день|новост)/iu },
+    { incoming: "Ты сможешь позвонить сегодня?", intent: "question", topic: "call", relevant: /(?:позвон|звонк)/iu },
+    { incoming: "Моя мама заболела и сейчас у врача", intent: "support", topic: "health", relevant: /(?:здоров|самочувств|помощ|поддерж)/iu },
+    { incoming: "Я сдала экзамен в университете", intent: "celebration", topic: "work_study", relevant: /(?:поздрав|результат|старан)/iu },
+    { incoming: "Спасибо за цветы", intent: "gratitude", topic: "gift", relevant: /(?:подар|спасибо|вниман)/iu }
+  ],
+  en: [
+    { incoming: "You hurt me", intent: "conflict", topic: "general", relevant: /(?:hurt|feelings|argument|misunderstanding)/iu },
+    { incoming: "Good morning!", intent: "greeting", topic: "general", relevant: /(?:hello|day|news)/iu },
+    { incoming: "Can you call me today?", intent: "question", topic: "call", relevant: /(?:call|phone)/iu },
+    { incoming: "My mother is ill and at the hospital", intent: "support", topic: "health", relevant: /(?:health|help|support|improve)/iu },
+    { incoming: "I passed my university exam", intent: "celebration", topic: "work_study", relevant: /(?:congrat|result|effort)/iu },
+    { incoming: "Thank you for the flowers", intent: "gratitude", topic: "gift", relevant: /(?:gift|thank|attention)/iu }
+  ],
+  fr: [
+    { incoming: "Tu m’as blessé", intent: "conflict", topic: "general", relevant: /(?:bless|sentiment|dispute|malentendu)/iu },
+    { incoming: "Bonjour !", intent: "greeting", topic: "general", relevant: /(?:bonjour|journ|nouvelle)/iu },
+    { incoming: "Peux-tu m’appeler aujourd’hui ?", intent: "question", topic: "call", relevant: /(?:appel|appeler)/iu },
+    { incoming: "Ma mère est malade et elle est à l’hôpital", intent: "support", topic: "health", relevant: /(?:sant|aide|soutien|ameliore)/iu },
+    { incoming: "J’ai réussi mon examen à l’université", intent: "celebration", topic: "work_study", relevant: /(?:felicit|resultat|effort)/iu },
+    { incoming: "Merci pour les fleurs", intent: "gratitude", topic: "gift", relevant: /(?:cadeau|merci|attention)/iu }
+  ]
+};
+
+for (const [language, messages] of Object.entries(sequentialCases)) {
+  const firstRun = [];
+  for (const [index, item] of messages.entries()) {
+    assert.equal(engine.inferIntent(item.incoming), item.intent, `${language}: intent ${item.incoming}`);
+    assert.equal(engine.inferTopic(item.incoming), item.topic, `${language}: topic ${item.incoming}`);
+
+    // Simulate the UI retaining a tone recommended for the previous message.
+    // The next answer must still follow only the new incoming text.
+    const staleTone = index === 0 ? "auto" : engine.resolveTone(messages[index - 1].incoming);
+    const reply = engine.compose({
+      incoming: item.incoming,
+      language,
+      tone: staleTone,
+      length: "standard",
+      variant: index
+    });
+    firstRun.push(reply);
+    assert.match(reply, item.relevant, `${language}: reply must address ${item.topic}`);
+    if (item.intent !== "conflict") {
+      assert.doesNotMatch(
+        reply,
+        /(?:спор|конфликт|недопоним|argument|conflict|misunderstanding|dispute|conflit|malentendu)/iu,
+        `${language}: a new ${item.intent} message must not reuse a conflict reply`
+      );
+    }
+    assert.equal(
+      engine.audit(reply, { intent: item.intent, relationship: "family", tone: staleTone }).ok,
+      true,
+      `${language}: generated reply must pass the adab audit`
+    );
+  }
+
+  const repeatedRun = messages.map((item, index) => engine.compose({
+    incoming: item.incoming,
+    language,
+    tone: index === 0 ? "auto" : engine.resolveTone(messages[index - 1].incoming),
+    length: "standard",
+    variant: index
+  }));
+  assert.deepEqual(
+    repeatedRun,
+    firstRun,
+    `${language}: compose must be stateless and deterministic across consecutive messages`
+  );
+}
+
 console.log(JSON.stringify({
   ok: true,
   languages: religiousCases.map(testCase => testCase.language),
@@ -210,5 +311,7 @@ console.log(JSON.stringify({
   analysis: true,
   lengths: true,
   audit: true,
-  problematicPhrase: "religious_gratitude"
+  problematicPhrase: "religious_gratitude",
+  topics: new Set(topicCases.map(([, topic]) => topic)).size,
+  sequential: true
 }));

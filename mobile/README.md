@@ -1,4 +1,4 @@
-# GlowLetter Next: мобильные приложения
+# GlowLetter: мобильные приложения
 
 Каталог содержит Android WebView-приложение и iOS SwiftUI/WKWebView-приложение. Android application ID и iOS bundle ID: `com.franceisl.glowletternext`. Актуальные веб-файлы автоматически копируются из корня проекта при сборке.
 
@@ -48,7 +48,7 @@ python ..\scripts\generate_store_assets.py
 .\gradlew.bat :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
 ```
 
-APK появится в `app/build/outputs/apk/debug/app-debug.apk`.
+APK появится в `app/build/outputs/apk/debug/GlowLetter-2.1.0-debug.apk`.
 
 Для закрытой owner-сборки capability передаётся только параметром Gradle или переменной окружения:
 
