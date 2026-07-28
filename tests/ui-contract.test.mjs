@@ -84,6 +84,7 @@ for (const [id, action] of [
 }
 assert.match(app, /#soundButton[^\n]*addEventListener\(["']click["'][^\n]*(?:pauseMusic|playMusic)/);
 assert.match(app, /#aiOpenTop[^\n]*addEventListener\(["']click["'][^\n]*requestPremiumFeature/);
+assert.doesNotMatch(styles, /\.ai-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "smart editor title must scroll away with its content");
 
 // Smart reply has one source-message box. A new message invalidates every old draft/request.
 assert.match(index, /id=["']replyIncoming["']/);
@@ -96,6 +97,11 @@ assert.match(app, /const requestVersion\s*=\s*\+\+replyRequestVersion/);
 assert.match(app, /requestVersion\s*!==\s*replyRequestVersion\s*\|\|\s*incoming\s*!==\s*String\(\$\(["']#replyIncoming["']\)\.value/);
 assert.match(app, /function invalidateReplyDraft\(\)[\s\S]*?clearTimeout\(replyRevealTimer\)/);
 assert.match(app, /replyRevealTimer\s*=\s*setTimeout\(\(\)\s*=>\s*\{[\s\S]*?requestVersion\s*!==\s*replyRequestVersion/);
+assert.match(app, /function replyFitsSelectedLength\(/);
+assert.match(app, /function resolveReplyLength\(/);
+assert.match(app, /minWords:\s*4[^\n]*maxWords:\s*22[^\n]*maxCharacters:\s*190[^\n]*maxSentences:\s*3/);
+assert.match(app, /!replyFitsSelectedLength\(text,\s*incoming,\s*resolvedLength\)/);
+assert.match(app, /length:\s*resolvedLength/);
 
 // Letters that used to start with a fixed recipient now start directly with their message.
 const letterContext = { window: {} };

@@ -47,6 +47,11 @@ const replyIntentPatterns = {
 };
 
 const simpleReplyIntents = new Set(["religious_gratitude", "gratitude", "greeting"]);
+const replyLengthProfiles = Object.freeze({
+  short: Object.freeze({ instruction: "Use one compact paragraph with one to three short sentences and 5–20 words. Never exceed 22 words.", minWords: 4, maxWords: 22, maxCharacters: 190, maxSentences: 3, maxTokens: 80 }),
+  standard: Object.freeze({ instruction: "Use one concise paragraph with two or three sentences and 25–45 words. Never exceed 50 words.", minWords: 12, maxWords: 50, maxCharacters: 440, maxSentences: 4, maxTokens: 150 }),
+  detailed: Object.freeze({ instruction: "Use at most two compact paragraphs with three to five sentences and 45–60 words. Never exceed 65 words.", minWords: 24, maxWords: 65, maxCharacters: 560, maxSentences: 5, maxTokens: 210 })
+});
 
 export default {
   async fetch(request, env) {
@@ -119,6 +124,7 @@ async function generateReply(request, env, body) {
   const language = ["ru", "en", "fr"].includes(body.language) ? body.language : "ru";
   const relationship = ["auto", "spouse", "family", "friend", "colleague", "universal"].includes(body.relationship) ? body.relationship : "auto";
   const tone = ["auto", "calm", "warm", "support", "reconcile", "boundary"].includes(body.tone) ? body.tone : "auto";
+  const requestedLength = ["auto", "short", "standard", "detailed"].includes(body.length) ? body.length : "auto";
   if (incoming.length < 3 || containsBlocked(incoming) || (goal && (goal.length < 2 || containsBlocked(goal) || containsImproperRomance(goal, relationship)))) throw new ApiError("invalid_message", 422);
 
   const languageName = { ru: "Russian", en: "English", fr: "French" }[language];
@@ -141,9 +147,9 @@ async function generateReply(request, env, body) {
     question: "The message contains a question. Answer only from the user's provided intended point; if it is absent, avoid inventing a decision or fact.",
     neutral: "Respond to the concrete meaning of the message. Do not invent conflict, gratitude, promises, events, or feelings that are not present."
   }[intent];
-  const lengthRule = simpleReplyIntents.has(intent)
-    ? "Use one or two natural sentences, usually 5–35 words. A short message must receive a short reply."
-    : "Use one or two concise paragraphs, usually 15–90 words, and keep the length proportional to the received message.";
+  const resolvedLength = requestedLength === "auto" ? (simpleReplyIntents.has(intent) ? "short" : "standard") : requestedLength;
+  const lengthProfile = replyLengthProfiles[resolvedLength];
+  const lengthRule = `Requested reply length: ${resolvedLength}. ${lengthProfile.instruction}`;
   const relationshipRule = relationship === "spouse"
     ? "This is a married couple. Gentle affection may refer only to respect, patience, companionship, and a peaceful home."
     : relationship === "family"
@@ -156,18 +162,18 @@ async function generateReply(request, env, body) {
 
 Strict adab policy: use respectful, modest, truthful wording only. Never produce adult or sexual content, profanity, kissing, erotic or suggestive language, physical intimacy, secret relationships, alcohol, drugs, gambling, insults, coercion, threats, violence, fabricated facts, fabricated scripture or hadith, religious rulings, fatwas, or claims that something is halal or haram. A short conventional expression of gratitude to Allah and a non-scriptural dua are allowed only when they directly fit the received message. Do not reveal reasoning, use headings, bullets, placeholders, or gender alternatives in parentheses. Do not impersonate a professional or promise a result.`;
   const prompt = `/no_think\nDetected intent: ${intent}\nReceived message begins:\n---\n${incoming}\n---\nUser's intended point begins:\n---\n${goal || "Not provided"}\n---\nReply to the actual meaning directly and naturally now.`;
-  const result = await env.AI.run(AI_MODEL, { messages: [{ role: "system", content: system }, { role: "user", content: prompt }], max_tokens: 240, temperature: 0.4, top_p: 0.74 });
+  const result = await env.AI.run(AI_MODEL, { messages: [{ role: "system", content: system }, { role: "user", content: prompt }], max_tokens: lengthProfile.maxTokens, temperature: 0.4, top_p: 0.74 });
   const text = String(result?.response || result?.result?.response || "").replace(/<think>[\s\S]*?<\/think>/gi, "").replace(/^\s*["«]|["»]\s*$/g, "").trim();
-  if (!validGeneratedReply(text, relationship, goal, tone, intent)) {
+  if (!validGeneratedReply(text, relationship, goal, tone, intent, resolvedLength)) {
     const unsafeOutput = containsBlocked(text)
       || containsImproperRomance(text, relationship)
       || containsReligiousAuthorityClaim(text)
       || /<[^>]+>|^[-*#]|\b(?:analysis|reasoning)\b/i.test(text);
     const fallback = unsafeOutput ? "" : safeReplyFallback(language, intent, goal);
-    if (!fallback || !validGeneratedReply(fallback, relationship, "", "auto", intent)) throw new ApiError("generation_rejected", 503);
-    return corsResponse(request, env, { text: fallback, provider: "policy-fallback", model: AI_MODEL, intent }, 200);
+    if (!fallback || !validGeneratedReply(fallback, relationship, "", "auto", intent, resolvedLength)) throw new ApiError("generation_rejected", 503);
+    return corsResponse(request, env, { text: fallback, provider: "policy-fallback", model: AI_MODEL, intent, length: resolvedLength }, 200);
   }
-  return corsResponse(request, env, { text, provider: "workers-ai", model: AI_MODEL, intent }, 200);
+  return corsResponse(request, env, { text, provider: "workers-ai", model: AI_MODEL, intent, length: resolvedLength }, 200);
 }
 
 async function verifyGooglePlayPurchase(request, env) {
@@ -832,15 +838,17 @@ function replyFactsPreserved(text, goal = "") {
   return topicTokens.some(topic => outputTokens.some(output => sharesReplyStem(topic, output)));
 }
 function replyTonePreserved(text, tone = "auto") { const signals = replyToneSignals[tone]; return !signals || signals.some(signal => normalize(text).includes(signal)); }
-function validGeneratedReply(text, relationship, goal = "", tone = "auto", intent = "neutral") {
+function validGeneratedReply(text, relationship, goal = "", tone = "auto", intent = "neutral", length = "standard") {
   const words = text.split(/\s+/).filter(Boolean);
-  const minimumCharacters = simpleReplyIntents.has(intent) ? 12 : 45;
-  const minimumWords = simpleReplyIntents.has(intent) ? 4 : 12;
-  const maximumWords = simpleReplyIntents.has(intent) ? 45 : 130;
+  const sentences = String(text || "").trim().split(/(?<=[.!?…])\s+/u).filter(Boolean);
+  const lengthProfile = replyLengthProfiles[length] || replyLengthProfiles.standard;
+  const minimumCharacters = length === "short" || simpleReplyIntents.has(intent) ? 12 : 45;
+  const minimumWords = lengthProfile.minWords;
   return text.length >= minimumCharacters
-    && text.length <= 1200
+    && text.length <= lengthProfile.maxCharacters
     && words.length >= minimumWords
-    && words.length <= maximumWords
+    && words.length <= lengthProfile.maxWords
+    && sentences.length <= lengthProfile.maxSentences
     && !containsBlocked(text)
     && !containsImproperRomance(text, relationship)
     && !containsReligiousAuthorityClaim(text)

@@ -388,6 +388,11 @@
   const REPLY_RELATIONSHIPS = new Set(["auto","spouse","family","friend","colleague","universal"]);
   const REPLY_TONES = new Set(["auto","calm","warm","support","reconcile","boundary"]);
   const REPLY_LENGTHS = new Set(["auto","short","standard","detailed"]);
+  const REPLY_LENGTH_LIMITS = Object.freeze({
+    short: Object.freeze({ minWords: 4, maxWords: 22, maxCharacters: 190, maxSentences: 3 }),
+    standard: Object.freeze({ minWords: 12, maxWords: 50, maxCharacters: 440, maxSentences: 4 }),
+    detailed: Object.freeze({ minWords: 24, maxWords: 65, maxCharacters: 560, maxSentences: 5 })
+  });
 
   let lang = ["ru", "en", "fr"].includes(params.get("lang")) ? params.get("lang") : (localStorage.getItem("nurLanguage") || "ru");
   if (!UI[lang]) lang = "ru";
@@ -2347,6 +2352,25 @@
     };
   }
 
+  function resolveReplyLength(incoming, selected = "auto") {
+    const safeSelected = REPLY_LENGTHS.has(selected) ? selected : "auto";
+    return REPLY_ENGINE?.resolveLength?.(incoming, safeSelected)
+      || (safeSelected === "auto" ? replyAnalysis(incoming).recommendedLength : safeSelected);
+  }
+
+  function replyFitsSelectedLength(text, incoming, selected = "auto") {
+    const resolved = resolveReplyLength(incoming, selected);
+    const limits = REPLY_LENGTH_LIMITS[resolved] || REPLY_LENGTH_LIMITS.standard;
+    const value = String(text || "").trim();
+    const words = value.split(/\s+/u).filter(Boolean).length;
+    const sentences = value.split(/(?<=[.!?…])\s+/u).filter(Boolean).length;
+    return Boolean(value)
+      && words >= limits.minWords
+      && words <= limits.maxWords
+      && value.length <= limits.maxCharacters
+      && sentences <= limits.maxSentences;
+  }
+
   function replyOptionLabel(group, value) {
     return SELECT_OPTIONS[group]?.[lang]?.find(option => option[0] === value)?.[1] || value;
   }
@@ -2431,14 +2455,15 @@
     const timeout = setTimeout(() => controller.abort(), 16000);
     try {
       const intent = replyAnalysis(incoming).intent;
+      const resolvedLength = resolveReplyLength(incoming, length);
       const headers = { "Content-Type": "application/json" };
       if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, length, intent }), signal: controller.signal });
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, length: resolvedLength, intent }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
       const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(text, intent);
-      if (text.length < 12 || text.length > 1200 || containsForbidden(text) || containsImproperRomance(text, relationship) || !replyFactsPreserved(text, goal) || !replyTonePreserved(text, tone) || !contextAligned || /<[^>]+>/.test(text)) throw new Error("Unsafe or incomplete response");
+      if (text.length < 12 || !replyFitsSelectedLength(text, incoming, resolvedLength) || containsForbidden(text) || containsImproperRomance(text, relationship) || !replyFactsPreserved(text, goal) || !replyTonePreserved(text, tone) || !contextAligned || /<[^>]+>/.test(text)) throw new Error("Unsafe or incomplete response");
       return text;
     } finally { clearTimeout(timeout); }
   }
@@ -2493,7 +2518,7 @@
       const intent = analysis.intent;
       const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(generatedReply, intent);
       const audit = replyAuditResult(generatedReply, lastReplyContext);
-      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned || !audit.ok) throw new Error("Blocked output");
+      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFitsSelectedLength(generatedReply, incoming, length) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned || !audit.ok) throw new Error("Blocked output");
       $("#replyGeneratedText").value = generatedReply;
       renderReplyAudit(generatedReply, lastReplyContext);
       $("#replyStatusBar").style.width = "100%"; $("#replyStatusPercent").textContent = "100%";
@@ -2911,7 +2936,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=15", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=16", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
