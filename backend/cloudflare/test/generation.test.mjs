@@ -51,6 +51,46 @@ test("reply generation treats the pasted message as context and returns only a s
   assert.match(capture[0].messages[1].content, /Я хочу обсудить это вечером/);
 });
 
+test("selected short reply length is enforced even when the model returns a long answer", async () => {
+  const capture = [];
+  const output = "Спасибо за твоё сообщение и за все добрые слова, которые ты написал. Мне очень приятно чувствовать такое внимание и поддержку. Я тоже ценю наше общение, доброту, уважение и каждую возможность спокойно поговорить. Пусть впереди будет ещё много светлых дней, хороших новостей и поводов благодарить друг друга за искренность.";
+  const response = await worker.fetch(makeRequest({ mode: "reply", incoming: "Спасибо тебе за помощь", language: "ru", relationship: "friend", tone: "warm", length: "short" }, "203.0.113.39"), envWithResponse(output, capture));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.length, "short");
+  assert.notEqual(result.text, output);
+  assert.ok(result.text.split(/\s+/u).filter(Boolean).length <= 22);
+  assert.match(capture[0].messages[0].content, /Requested reply length: short/);
+  assert.equal(capture[0].max_tokens, 80);
+});
+
+test("selected short length accepts a concise non-simple answer", async () => {
+  const capture = [];
+  const output = "Спасибо за сообщение, я внимательно всё прочитал.";
+  const response = await worker.fetch(makeRequest({ mode: "reply", incoming: "Я отправил тебе важное сообщение", language: "ru", relationship: "friend", tone: "calm", length: "short" }, "203.0.113.68"), envWithResponse(output, capture));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.text, output);
+  assert.equal(result.length, "short");
+  assert.ok(result.text.length <= 190);
+  assert.ok(result.text.split(/\s+/u).filter(Boolean).length <= 22);
+});
+
+test("selected detailed reply stays within the phone-sized detailed budget", async () => {
+  const capture = [];
+  const output = "Спасибо за сообщение. Я внимательно прочитал твои слова и хочу ответить спокойно, без поспешных выводов. Для меня важно сохранить уважение, понять главную мысль и не добавлять того, чего ты не говорил. Если понадобится, мы можем продолжить разговор в удобное время и спокойно уточнить детали.";
+  const response = await worker.fetch(makeRequest({ mode: "reply", incoming: "Я хочу спокойно продолжить наш разговор", language: "ru", relationship: "friend", tone: "calm", length: "detailed" }, "203.0.113.69"), envWithResponse(output, capture));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.length, "detailed");
+  assert.equal(result.text, output);
+  assert.ok(result.text.split(/\s+/u).filter(Boolean).length <= 65);
+  assert.ok(result.text.length <= 560);
+  assert.ok(result.text.split(/(?<=[.!?…])\s+/u).filter(Boolean).length <= 5);
+  assert.match(capture[0].messages[0].content, /Requested reply length: detailed/);
+  assert.equal(capture[0].max_tokens, 210);
+});
+
 test("reply generation blocks prohibited incoming content before calling AI", async () => {
   const capture = [];
   const response = await worker.fetch(makeRequest({ mode: "reply", incoming: "эротика", language: "ru" }, "203.0.113.34"), envWithResponse("unused", capture));
