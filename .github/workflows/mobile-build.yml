@@ -69,19 +69,11 @@ jobs:
           set -euo pipefail
           mkdir -p mobile/dist
           cp mobile/android/app/build/outputs/apk/debug/app-debug.apk \
-            mobile/dist/NurPismo-v1.0.0-preview-debug.apk
-          cp mobile/android/app/build/outputs/apk/debug/app-debug.apk \
             mobile/dist/GlowLetter-Next-v1.1.0-preview-debug.apk
-          cp mobile/android/app/build/outputs/bundle/release/app-release.aab \
-            mobile/dist/NurPismo-v1.0.0-preview-unsigned.aab
           cp mobile/android/app/build/outputs/bundle/release/app-release.aab \
             mobile/dist/GlowLetter-Next-v1.1.0-preview-unsigned.aab
           cp mobile/store-assets/nurpismo-play-icon-512.png \
-            mobile/dist/NurPismo-play-icon-512.png
-          cp mobile/store-assets/nurpismo-play-icon-512.png \
             mobile/dist/GlowLetter-play-icon-512.png
-          cp mobile/store-assets/nurpismo-feature-1024x500.png \
-            mobile/dist/NurPismo-feature-1024x500.png
           cp mobile/store-assets/nurpismo-feature-1024x500.png \
             mobile/dist/GlowLetter-feature-1024x500.png
 
