@@ -30,13 +30,13 @@
 
   const UI = {
     ru: {
-      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Вечер у озера, живой дождь и слова, которые хочется сохранить.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", free: "10 писем бесплатно", full: "полная версия — 21,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Подписаться за", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
+      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Тёплые слова для тех, кто по-настоящему важен.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", free: "10 писем бесплатно", full: "полная версия — 21,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Подписаться за", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
     },
     en: {
-      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "An evening by the lake, living rain, and words worth keeping.", from: "from", open: "Open the letter", create: "Create your own letter", free: "10 letters free", full: "full version — €21.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Subscribe for", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
+      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "Warm words for the people who truly matter.", from: "from", open: "Open the letter", create: "Create your own letter", free: "10 letters free", full: "full version — €21.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Subscribe for", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
     },
     fr: {
-      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Un soir au bord du lac, une pluie vivante et des mots que l’on souhaite garder.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", free: "10 lettres gratuites", full: "version complète — 21,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "S’abonner pour", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
+      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Des mots chaleureux pour les personnes qui comptent vraiment.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", free: "10 lettres gratuites", full: "version complète — 21,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "S’abonner pour", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
     }
   };
 
@@ -120,6 +120,18 @@
     replyHint:"L’assistant répond uniquement au message actuel, avec respect et sans contenu adulte, grossier ou ambigu. Relisez la réponse avant l’envoi.",replyCurrent:"La réponse utilisera uniquement ce message",
     themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Lune",themeRose:"Rose",themeForest:"Forêt",themeSand:"Chaleureux",
     qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
+  });
+  Object.assign(UI.ru, {
+    accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"План: проверяется…",accountPlanFree:"План: бесплатный",accountPlanPermanent:"План: полный доступ без ограничений",accountPlanStore:"План: Premium из магазина",accountPlanVip:"Временный VIP (бесплатно): осталось {remaining} · до {date}",
+    adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение."
+  });
+  Object.assign(UI.en, {
+    accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Plan: checking…",accountPlanFree:"Plan: Free",accountPlanPermanent:"Plan: unlimited full access",accountPlanStore:"Plan: Store Premium",accountPlanVip:"Temporary VIP (free): {remaining} left · until {date}",
+    adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection."
+  });
+  Object.assign(UI.fr, {
+    accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Offre : vérification…",accountPlanFree:"Offre : gratuite",accountPlanPermanent:"Offre : accès complet illimité",accountPlanStore:"Offre : Premium de la boutique",accountPlanVip:"VIP temporaire (gratuit) : encore {remaining} · jusqu’au {date}",
+    adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion."
   });
 
   const SELECT_OPTIONS = {
@@ -400,6 +412,8 @@
   let isMusicPlaying = false;
   let isNaturePlaying = false;
   let isPremium = false;
+  let nativePremium = false;
+  let cloudPremium = false;
   let betaAccess = false;
   let acceptedBetaCapability = "";
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
@@ -461,6 +475,12 @@
   let cloudBootstrapState = null;
   let cloudBootstrapUserId = "";
   let cloudNamesExplicitlySaved = false;
+  let cloudAccount = null;
+  let cloudAccountTimer = 0;
+  let cloudAccountRefreshTimer = 0;
+  let cloudServerNow = 0;
+  let cloudServerPerformance = 0;
+  let adminAccountResult = null;
   let cloudNames = linkNamesActive ? { sender: "", recipient: "" } : { sender: fromName, recipient: toName };
   let cloudBuiltInTrack = selectedTrack >= 0 && selectedTrack <= 2 ? selectedTrack : Math.max(0, Math.min(Number(localStorage.getItem("nurLastBuiltInTrack") || 0), 2));
   const handledAuthCodes = new Set();
@@ -705,6 +725,252 @@
     renderCloudAccount();
   }
 
+  function normalizeCloudAccount(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+    const supportId = String(value.support_id || "").trim().toUpperCase();
+    if (!/^GL-(?:[0-9A-F]{4}-){7}[0-9A-F]{4}$/.test(supportId)) return null;
+    const vipUntil = value.vip_until && Number.isFinite(Date.parse(value.vip_until)) ? new Date(value.vip_until).toISOString() : null;
+    return {
+      support_id: supportId,
+      is_admin: value.is_admin === true,
+      premium_forever: value.premium_forever === true,
+      vip_until: vipUntil,
+      premium_active: value.premium_active === true,
+      created_at: value.created_at || null,
+      updated_at: value.updated_at || null,
+      server_now: value.server_now && Number.isFinite(Date.parse(value.server_now)) ? new Date(value.server_now).toISOString() : null
+    };
+  }
+
+  function trustedCloudNow() {
+    if (cloudServerNow > 0 && cloudServerPerformance > 0 && globalThis.performance?.now) {
+      return cloudServerNow + Math.max(0, performance.now() - cloudServerPerformance);
+    }
+    return Date.now();
+  }
+
+  function cloudAccountPremiumActive(account = cloudAccount) {
+    return Boolean(account?.premium_forever || (account?.premium_active === true && account?.vip_until && Date.parse(account.vip_until) > trustedCloudNow()));
+  }
+
+  function formatVipRemaining(milliseconds) {
+    const totalMinutes = Math.max(0, Math.ceil(Number(milliseconds || 0) / 60000));
+    const days = Math.floor(totalMinutes / 1440);
+    const hours = Math.floor((totalMinutes % 1440) / 60);
+    const minutes = totalMinutes % 60;
+    if (lang === "en") return [days ? `${days} d` : "", hours ? `${hours} h` : "", `${minutes} min`].filter(Boolean).join(" ");
+    if (lang === "fr") return [days ? `${days} j` : "", hours ? `${hours} h` : "", `${minutes} min`].filter(Boolean).join(" ");
+    return [days ? `${days} дн.` : "", hours ? `${hours} ч.` : "", `${minutes} мин.`].filter(Boolean).join(" ");
+  }
+
+  function formatVipDate(value) {
+    const timestamp = Date.parse(value || "");
+    if (!Number.isFinite(timestamp)) return "—";
+    try {
+      return new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : lang === "en" ? "en-GB" : "ru-RU", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }).format(new Date(timestamp));
+    } catch { return new Date(timestamp).toLocaleString(); }
+  }
+
+  function accountPlanText(account, { includeNative = false } = {}) {
+    if (!account) return t("accountPlanChecking");
+    if (account.premium_forever) return t("accountPlanPermanent");
+    const expiry = Date.parse(account.vip_until || "");
+    if (Number.isFinite(expiry) && expiry > trustedCloudNow()) {
+      return t("accountPlanVip")
+        .replace("{remaining}", formatVipRemaining(expiry - trustedCloudNow()))
+        .replace("{date}", formatVipDate(account.vip_until));
+    }
+    if (includeNative && (nativePremium || betaAccess)) return t("accountPlanStore");
+    return t("accountPlanFree");
+  }
+
+  function setAdminStatus(message = "", state = "") {
+    const status = $("#adminStatus");
+    if (!status) return;
+    status.textContent = message;
+    if (state) status.dataset.state = state; else delete status.dataset.state;
+  }
+
+  function renderAdminResult() {
+    const result = $("#adminResult");
+    if (!result) return;
+    result.hidden = !adminAccountResult;
+    if (!adminAccountResult) return;
+    setText("#adminResultId", adminAccountResult.support_id);
+    setText("#adminResultPlan", accountPlanText(adminAccountResult));
+  }
+
+  function startCloudAccountClock() {
+    clearInterval(cloudAccountTimer);
+    clearTimeout(cloudAccountRefreshTimer);
+    cloudAccountTimer = 0;
+    cloudAccountRefreshTimer = 0;
+    if (!cloudUser?.id || !cloudAccount) return;
+    cloudAccountTimer = setInterval(() => {
+      const nextCloudPremium = cloudAccountPremiumActive();
+      if (cloudPremium !== nextCloudPremium) {
+        cloudPremium = nextCloudPremium;
+        applyEffectivePremium("cloud_access_expired");
+      } else {
+        renderCloudAccount();
+        renderAdminResult();
+      }
+    }, 30000);
+    cloudAccountRefreshTimer = setTimeout(() => {
+      if (!document.hidden && navigator.onLine && cloudUser?.id) {
+        loadCloudAccount(cloudUser).catch(error => {
+          console.info("Cloud account refresh failed", error);
+          startCloudAccountClock();
+        });
+      } else {
+        startCloudAccountClock();
+      }
+    }, 60000);
+  }
+
+  function resetCloudAccount() {
+    clearInterval(cloudAccountTimer);
+    clearTimeout(cloudAccountRefreshTimer);
+    cloudAccountTimer = 0;
+    cloudAccountRefreshTimer = 0;
+    cloudAccount = null;
+    adminAccountResult = null;
+    cloudServerNow = 0;
+    cloudServerPerformance = 0;
+    cloudPremium = false;
+    applyEffectivePremium("cloud_account_signed_out");
+  }
+
+  async function loadCloudAccount(user = cloudUser) {
+    const userId = user?.id || "";
+    if (!cloudClient || !userId) return null;
+    const { data, error } = await cloudClient.rpc("glowletter_my_access");
+    if (error) throw error;
+    if (cloudUser?.id !== userId) return null;
+    const account = rpcAccountRow(data);
+    if (!account) throw new Error("GlowLetter account record is unavailable");
+    if (account.server_now) {
+      cloudServerNow = Date.parse(account.server_now);
+      cloudServerPerformance = globalThis.performance?.now ? performance.now() : 0;
+    }
+    cloudAccount = account;
+    cloudPremium = cloudAccountPremiumActive(account);
+    applyEffectivePremium("cloud_account");
+    startCloudAccountClock();
+    return account;
+  }
+
+  function normalizedSupportId(value) {
+    const supportId = String(value || "").normalize("NFKC").trim().toUpperCase();
+    return /^GL-(?:[0-9A-F]{4}-){7}[0-9A-F]{4}$/.test(supportId) ? supportId : "";
+  }
+
+  function setAdminBusy(busy) {
+    ["#adminSupportId", "#adminLookupButton", "#adminVipDays", "#adminGrantVip", "#adminRevokeVip"].forEach(selector => {
+      const control = $(selector);
+      if (control) control.disabled = Boolean(busy);
+    });
+    $("#adminLookupButton")?.setAttribute("aria-busy", String(Boolean(busy)));
+  }
+
+  function rpcAccountRow(data) {
+    const value = Array.isArray(data) ? data[0] : data;
+    return normalizeCloudAccount(value);
+  }
+
+  async function lookupAdminAccount(event) {
+    event?.preventDefault?.();
+    if (!cloudClient || cloudAccount?.is_admin !== true) return;
+    const supportId = normalizedSupportId($("#adminSupportId").value);
+    adminAccountResult = null;
+    renderAdminResult();
+    if (!supportId) {
+      setAdminStatus(t("adminNotFound"), "error");
+      return;
+    }
+    setAdminBusy(true);
+    setAdminStatus(t("adminSearching"));
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_lookup", { p_support_id: supportId });
+      if (error) throw error;
+      adminAccountResult = rpcAccountRow(data);
+      if (!adminAccountResult) {
+        setAdminStatus(t("adminNotFound"), "error");
+        return;
+      }
+      $("#adminSupportId").value = adminAccountResult.support_id;
+      setAdminStatus();
+      renderAdminResult();
+    } catch (error) {
+      console.info("Admin lookup failed", error);
+      setAdminStatus(t("adminError"), "error");
+    } finally {
+      setAdminBusy(false);
+    }
+  }
+
+  async function grantAdminVip() {
+    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult) return;
+    const days = Number($("#adminVipDays").value);
+    if (!Number.isInteger(days) || days < 1 || days > 365) {
+      setAdminStatus(t("adminError"), "error");
+      return;
+    }
+    setAdminBusy(true);
+    setAdminStatus(t("adminSearching"));
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_grant_vip", {
+        p_support_id: adminAccountResult.support_id,
+        p_days: days
+      });
+      if (error) throw error;
+      const updated = rpcAccountRow(data);
+      if (!updated) throw new Error("VIP update returned no account");
+      adminAccountResult = updated;
+      renderAdminResult();
+      setAdminStatus(t("adminGrantDone").replace("{date}", formatVipDate(updated.vip_until)), "success");
+      if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
+    } catch (error) {
+      console.info("Admin VIP grant failed", error);
+      setAdminStatus(t("adminError"), "error");
+    } finally {
+      setAdminBusy(false);
+    }
+  }
+
+  async function revokeAdminVip() {
+    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult) return;
+    setAdminBusy(true);
+    setAdminStatus(t("adminSearching"));
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_revoke_vip", {
+        p_support_id: adminAccountResult.support_id
+      });
+      if (error) throw error;
+      const updated = rpcAccountRow(data);
+      if (!updated) throw new Error("VIP revoke returned no account");
+      adminAccountResult = updated;
+      renderAdminResult();
+      setAdminStatus(t("adminRevokeDone"), "success");
+      if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
+    } catch (error) {
+      console.info("Admin VIP revoke failed", error);
+      setAdminStatus(t("adminError"), "error");
+    } finally {
+      setAdminBusy(false);
+    }
+  }
+
+  async function copyAccountSupportId() {
+    if (!cloudAccount?.support_id) return;
+    await writeClipboard(cloudAccount.support_id);
+    showToast(t("accountIdCopied"));
+    haptic(10);
+  }
+
   function renderCloudAccount() {
     const card = $("#accountCard");
     if (!card) return;
@@ -715,6 +981,20 @@
     setText("#facebookSignIn span", t("continueFacebook"));
     setText("#accountSignOut", t("signOut"));
     setText("#accountDelete", t("deleteAccount"));
+    setText(".account-support-id > span", t("accountSupportLabel"));
+    setText("#accountSupportNote", t("accountSupportNote"));
+    setText("#copyAccountId", `⧉ ${t("accountIdCopy")}`);
+    setText(".admin-panel-heading p", t("adminEyebrow"));
+    setText("#adminPanelTitle", t("adminTitle"));
+    setText(".admin-panel-description", t("adminDescription"));
+    setText(".admin-lookup-form > label", t("adminIdLabel"));
+    $("#adminSupportId").placeholder = t("adminIdPlaceholder");
+    setText("#adminLookupButton", t("adminFind"));
+    setText(".admin-result-summary p:nth-child(2) > span", t("adminCurrentPlan"));
+    setText("#adminVipDaysLabel", t("adminDaysLabel"));
+    setText("#adminVipDaysUnit", t("adminDaysUnit"));
+    setText("#adminGrantVip", t("adminGrantVip"));
+    setText("#adminRevokeVip", t("adminRevoke"));
     setText("#accountStatus", t(cloudStatusKey));
     card.dataset.state = cloudStatusKey === "cloudSyncing" || cloudAuthBusy ? "syncing" : cloudStatusKey === "cloudError" || cloudStatusKey === "cloudSignInError" ? "error" : "ready";
 
@@ -729,6 +1009,20 @@
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
     $("#accountDelete").disabled = cloudAuthBusy;
+    const support = $("#accountSupport");
+    support.hidden = !signedIn;
+    $("#copyAccountId").disabled = !cloudAccount?.support_id;
+    setText("#accountSupportId", cloudAccount?.support_id || "—");
+    setText("#accountPlanStatus", signedIn ? accountPlanText(cloudAccount, { includeNative: true }) : t("accountPlanChecking"));
+    const adminPanel = $("#adminPanel");
+    adminPanel.hidden = !(signedIn && cloudAccount?.is_admin === true);
+    if (adminPanel.hidden) {
+      adminAccountResult = null;
+      $("#adminResult").hidden = true;
+      setAdminStatus();
+    } else {
+      renderAdminResult();
+    }
 
     if (signedIn) {
       const email = String(cloudUser.email || "");
@@ -1323,8 +1617,10 @@
     if (previousUserId && previousUserId !== nextUser?.id) saveUserProgressSnapshot(previousUserId);
     cloudSession = session || null;
     cloudUser = nextUser;
+    if (previousUserId !== (cloudUser?.id || "")) resetCloudAccount();
     renderCloudAccount();
     if (!cloudUser?.id) {
+      resetCloudAccount();
       clearTimeout(cloudSyncTimer);
       cloudLoadGeneration += 1;
       cloudSyncQueued = false;
@@ -1342,6 +1638,8 @@
       return;
     }
     if (cloudLoadedUserId === cloudUser.id && cloudReady) {
+      try { await loadCloudAccount(cloudUser); }
+      catch (error) { console.info("Cloud account refresh failed", error); }
       setCloudStatus("cloudSynced");
       return;
     }
@@ -1356,6 +1654,13 @@
     cloudRevision = readProgressEnvelope(cloudUser.id)?.baseRevision || 0;
     localStorage.setItem(CLOUD_EVER_AUTHENTICATED_KEY, "1");
     applyIsolatedProgress(cloudBootstrapState);
+    try { await loadCloudAccount(cloudUser); }
+    catch (error) {
+      console.info("Cloud account load failed", error);
+      cloudAccount = null;
+      cloudPremium = false;
+      applyEffectivePremium("cloud_account_error");
+    }
     await loadCloudProgress(cloudUser);
   }
 
@@ -1512,6 +1817,10 @@
       configured: cloudConfigurationReady(),
       signedIn: Boolean(cloudUser?.id),
       userId: cloudUser?.id || "",
+      supportId: cloudAccount?.support_id || "",
+      isAdmin: cloudAccount?.is_admin === true,
+      premiumForever: cloudAccount?.premium_forever === true,
+      vipUntil: cloudAccount?.vip_until || null,
       ready: cloudReady,
       revision: cloudRevision,
       providers: { ...cloudProviders }
@@ -2256,6 +2565,26 @@
     closePanel(layers.paywall);
   }
 
+  function applyEffectivePremium(reason = "") {
+    const wasPremium = isPremium;
+    isPremium = Boolean(betaAccess || nativePremium || cloudPremium);
+    entitlementState = isPremium ? "premium" : "free";
+    $(".premium-settings-card").hidden = isPremium;
+    setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
+    renderLibrary();
+    renderCloudAccount();
+    if (isPremium) {
+      const requested = pendingPremiumFeature;
+      pendingPremiumFeature = "";
+      closePanel(layers.paywall);
+      if (!wasPremium) showToast(t("premiumOn"), 3600);
+      if (requested) openAiMode(requested);
+    } else {
+      if (reason) console.info("Entitlement:", reason);
+      if (pendingPremiumFeature) openPaywall(pendingPremiumFeature);
+    }
+  }
+
   function updatePremium(owned, price, reason = "") {
     const transient = owned !== true && owned !== "true" && ["initializing", "restoring_purchases", "verifying_purchase"].includes(String(reason || ""));
     if (transient) {
@@ -2267,27 +2596,13 @@
       $$(".price-label").forEach(label => label.textContent = premiumPrice);
       return;
     }
-    const wasPremium = isPremium;
-    isPremium = betaAccess || owned === true || owned === "true";
-    entitlementState = isPremium ? "premium" : "free";
+    if (String(reason) !== "beta_capability") nativePremium = owned === true || owned === "true";
     if (price) {
       premiumPrice = localizedMonthlyPrice(price);
       if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
     }
     $$(".price-label").forEach(label => label.textContent = premiumPrice);
-    $(".premium-settings-card").hidden = isPremium;
-    setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
-    renderLibrary();
-    if (isPremium) {
-      const requested = pendingPremiumFeature;
-      pendingPremiumFeature = "";
-      closePanel(layers.paywall);
-      if (!wasPremium) showToast(t("premiumOn"), 3600);
-      if (requested) openAiMode(requested);
-    } else {
-      if (reason) console.info("Entitlement:", reason);
-      if (pendingPremiumFeature) openPaywall(pendingPremiumFeature);
-    }
+    applyEffectivePremium(reason);
   }
 
   function updatePurchaseConfiguration(configured) {
@@ -2310,9 +2625,9 @@
         return;
       }
       if (!trustedEntitlementSource || !window.NurBilling?.getEntitlement) {
-        entitlementState = "free";
+        nativePremium = false;
+        applyEffectivePremium("native_billing_unavailable");
         updatePurchaseConfiguration(Boolean(CONFIG.playStoreUrl || CONFIG.appStoreUrl));
-        if (pendingPremiumFeature) openPaywall(pendingPremiumFeature);
         return;
       }
       const raw = await Promise.resolve(window.NurBilling.getEntitlement());
@@ -2322,9 +2637,9 @@
         updatePurchaseConfiguration(data.purchaseConfigured);
       }
     } catch (error) {
-      entitlementState = "free";
+      nativePremium = false;
+      applyEffectivePremium("native_billing_error");
       console.info("Billing bridge not ready", error);
-      if (pendingPremiumFeature) openPaywall(pendingPremiumFeature);
     }
   }
 
@@ -2582,12 +2897,12 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);
+    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{updateFullscreenControl();localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");scheduleCloudSync();});
-    document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);});
-    addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
+    document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
+    addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleCapabilityNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
@@ -2596,7 +2911,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=14", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=15", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

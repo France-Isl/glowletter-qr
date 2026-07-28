@@ -13,13 +13,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=14" />
+  <link rel="manifest" href="manifest.webmanifest?v=15" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=14" />
-  <link rel="stylesheet" href="experience.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="experience.css?v=15" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -261,7 +261,46 @@
             <p><strong id="accountUserName">GlowLetter</strong><small id="accountUserEmail"></small></p>
             <div class="account-user-actions"><button id="accountSignOut" type="button">Выйти</button><button class="account-delete" id="accountDelete" type="button">Удалить аккаунт</button></div>
           </div>
+          <div class="account-support" id="accountSupport" hidden>
+            <div class="account-support-id">
+              <span>ID для поддержки</span>
+              <code id="accountSupportId">—</code>
+            </div>
+            <button class="account-id-copy" id="copyAccountId" type="button" aria-label="Скопировать ID аккаунта"><span aria-hidden="true">⧉</span> Скопировать</button>
+            <small class="account-support-note" id="accountSupportNote">Это не пароль. Передавайте ID только официальной поддержке GlowLetter.</small>
+            <small class="account-plan-status" id="accountPlanStatus" role="status" aria-live="polite">План: проверяется…</small>
+          </div>
           <p class="account-privacy" id="accountPrivacyNote">Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.</p>
+        </section>
+
+        <section class="admin-panel" id="adminPanel" aria-labelledby="adminPanelTitle" hidden>
+          <header class="admin-panel-heading">
+            <span class="admin-panel-mark" aria-hidden="true">◇</span>
+            <div>
+              <p>УПРАВЛЕНИЕ ДОСТУПОМ</p>
+              <h3 id="adminPanelTitle">Админ-панель</h3>
+            </div>
+          </header>
+          <p class="admin-panel-description">По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.</p>
+          <form class="admin-lookup-form" id="adminLookupForm">
+            <label for="adminSupportId">ID аккаунта</label>
+            <div class="admin-lookup-row">
+              <input id="adminSupportId" name="supportId" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="96" placeholder="Например, GL-7F3A…" aria-describedby="adminStatus" required />
+              <button id="adminLookupButton" type="submit">Найти</button>
+            </div>
+            <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+          </form>
+          <div class="admin-result" id="adminResult" hidden>
+            <div class="admin-result-summary">
+              <p><span>ID</span><strong id="adminResultId">—</strong></p>
+              <p><span>Текущий план</span><strong id="adminResultPlan">—</strong></p>
+            </div>
+            <div class="admin-access-actions">
+              <label class="admin-days-field" for="adminVipDays"><span id="adminVipDaysLabel">Срок VIP</span><span><input id="adminVipDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminVipDaysUnit">дней</b></span></label>
+              <button id="adminGrantVip" type="button">Выдать VIP</button>
+              <button class="admin-revoke" id="adminRevokeVip" type="button">Отозвать VIP</button>
+            </div>
+          </div>
         </section>
 
         <div class="atmosphere-grid">
@@ -385,13 +424,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=14"></script>
-  <script src="vendor/supabase-2.110.9.js?v=14"></script>
-  <script src="letters.js?v=14"></script>
-  <script src="reply-engine.js?v=14"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=14"></script>
-  <script src="qr-code.js?v=14"></script>
-  <script src="app.js?v=14"></script>
-  <script src="experience.js?v=14"></script>
+  <script src="config.js?v=15"></script>
+  <script src="vendor/supabase-2.110.9.js?v=15"></script>
+  <script src="letters.js?v=15"></script>
+  <script src="reply-engine.js?v=15"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=15"></script>
+  <script src="qr-code.js?v=15"></script>
+  <script src="app.js?v=15"></script>
+  <script src="experience.js?v=15"></script>
 </body>
 </html>

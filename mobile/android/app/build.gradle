@@ -52,8 +52,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 5
-        versionName = "2.1.0"
+        versionCode = 6
+        versionName = "2.2.0"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -141,7 +141,8 @@ def syncWebAssets = tasks.register("syncWebAssets", Sync) {
     group = "build setup"
     description = "Bundles the current web app into assets/web and decodes Base64 fallbacks."
     from(webRoot) {
-        exclude "mobile/**", "backend/**", ".git/**", ".github/**"
+        exclude "mobile/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**"
+        exclude "*.md", "*.py", ".gitignore"
     }
     into(generatedWebAssets.map { it.dir("web") })
 
