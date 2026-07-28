@@ -13,13 +13,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-next/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=10" />
+  <link rel="manifest" href="manifest.webmanifest?v=11" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=10" />
-  <link rel="stylesheet" href="experience.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="experience.css?v=11" />
 </head>
 <body>
   <div class="app" id="app">
@@ -310,6 +310,7 @@
           <button id="settingsPurchase" type="button">Открыть за <span class="price-label">7,99 €</span></button>
         </div>
 
+        <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
         <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a href="mailto:ggooglov9@gmail.com">Поддержка</a></div>
       </section>
@@ -334,10 +335,11 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=10"></script>
-  <script src="vendor/supabase-2.110.9.js?v=10"></script>
-  <script src="letters.js?v=10"></script>
-  <script src="app.js?v=10"></script>
-  <script src="experience.js?v=10"></script>
+  <script src="config.js?v=11"></script>
+  <script src="vendor/supabase-2.110.9.js?v=11"></script>
+  <script src="letters.js?v=11"></script>
+  <script src="reply-engine.js?v=11"></script>
+  <script src="app.js?v=11"></script>
+  <script src="experience.js?v=11"></script>
 </body>
 </html>

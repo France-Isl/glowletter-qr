@@ -1,21 +1,22 @@
-const CACHE = "glow-letter-next-v10";
+const CACHE = "glow-letter-next-v11";
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=10",
-  "experience.css?v=10",
-  "config.js?v=10",
-  "vendor/supabase-2.110.9.js?v=10",
-  "letters.js?v=10",
-  "app.js?v=10",
-  "experience.js?v=10",
-  "manifest.webmanifest?v=10",
+  "styles.css?v=11",
+  "experience.css?v=11",
+  "config.js?v=11",
+  "vendor/supabase-2.110.9.js?v=11",
+  "letters.js?v=11",
+  "reply-engine.js?v=11",
+  "app.js?v=11",
+  "experience.js?v=11",
+  "manifest.webmanifest?v=11",
   "icon.svg",
   "privacy.html",
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
-const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "letters.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "letters.js", "reply-engine.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {

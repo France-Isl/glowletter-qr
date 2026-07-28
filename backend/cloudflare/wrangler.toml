@@ -8,7 +8,8 @@ binding = "AI"
 
 [vars]
 ALLOWED_ORIGINS = "https://france-isl.github.io,https://appassets.androidplatform.net"
-NURPISMO_PACKAGE_NAME = "com.franceisl.nurpismo"
+GENERATION_ACCESS_HASH = "ec30777a49bf2ff1bbd53ce8e4ec6ab2db32dc03902cbe5607eba9f21a3c18a4"
+NURPISMO_PACKAGE_NAME = "com.franceisl.glowletternext"
 NURPISMO_PRODUCT_ID = "full_access"
 REQUIRE_PLAY_INTEGRITY = "true"
 ENTITLEMENT_HASH_KEY_ID = "v1"

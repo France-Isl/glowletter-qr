@@ -4,6 +4,7 @@
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
   const CONFIG = window.NUR_APP_CONFIG || {};
+  const REPLY_ENGINE = window.NUR_REPLY_ENGINE || null;
   const hasIosBillingBridge = location.protocol === "file:"
     && typeof window.webkit?.messageHandlers?.nurBilling?.postMessage === "function"
     && typeof window.NurBilling?.getEntitlement === "function";
@@ -79,6 +80,27 @@
   UI.ru.namesSettings = "Личное обращение";
   UI.en.namesSettings = "Personal names";
   UI.fr.namesSettings = "Personnalisation";
+  Object.assign(UI.ru, {
+    replyEyebrow: "ПОМОЩНИК, КОТОРЫЙ ПОНИМАЕТ СМЫСЛ",
+    replyGenerating: "Понимаю смысл сообщения…",
+    shareApp: "Поделиться приложением",
+    shareAppText: "GlowLetter — тёплые письма для важных людей.",
+    shareAppCopied: "Ссылка на приложение скопирована"
+  });
+  Object.assign(UI.en, {
+    replyEyebrow: "AN ASSISTANT THAT UNDERSTANDS THE MESSAGE",
+    replyGenerating: "Understanding the message…",
+    shareApp: "Share the app",
+    shareAppText: "GlowLetter — warm letters for the people who matter.",
+    shareAppCopied: "App link copied"
+  });
+  Object.assign(UI.fr, {
+    replyEyebrow: "UN ASSISTANT QUI COMPREND LE MESSAGE",
+    replyGenerating: "Je comprends le sens du message…",
+    shareApp: "Partager l’application",
+    shareAppText: "GlowLetter — des lettres chaleureuses pour les personnes qui comptent.",
+    shareAppCopied: "Lien de l’application copié"
+  });
 
   const SELECT_OPTIONS = {
     relationship: {
@@ -335,6 +357,7 @@
   let isNaturePlaying = false;
   let isPremium = false;
   let betaAccess = false;
+  let acceptedBetaCapability = "";
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
   let premiumPrice = CONFIG.defaultPrice || "7,99 €";
@@ -521,10 +544,12 @@
 
     if (acceptedToken) {
       betaAccess = true;
+      acceptedBetaCapability = acceptedToken;
       isPremium = true;
       entitlementState = "premium";
       localStorage.setItem(BETA_STORAGE_KEY, acceptedToken);
     } else if (savedToken) {
+      acceptedBetaCapability = "";
       localStorage.removeItem(BETA_STORAGE_KEY);
     }
 
@@ -1580,7 +1605,7 @@
     setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
     const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("supportLink");
-    setText("#restoreButton", t("restore")); setText("#installButton", `＋ ${t("install")}`); $$(".price-label").forEach(label => label.textContent = premiumPrice);
+    setText("#restoreButton", t("restore")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#installButton", `＋ ${t("install")}`); $$(".price-label").forEach(label => label.textContent = premiumPrice);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
@@ -1695,11 +1720,15 @@
     if (!storyOpened) openStory(); else renderLetter();
   }
 
-  async function copyText(text) {
+  async function writeClipboard(text) {
     try { await navigator.clipboard.writeText(text); }
     catch {
       const area = document.createElement("textarea"); area.value = text; area.style.position = "fixed"; area.style.opacity = "0"; document.body.append(area); area.select(); document.execCommand("copy"); area.remove();
     }
+  }
+
+  async function copyText(text) {
+    await writeClipboard(text);
     showToast(t("copied")); haptic(10);
   }
 
@@ -1800,6 +1829,7 @@
   }
 
   function inferReplyTone(incoming, selected = "auto") {
+    if (REPLY_ENGINE?.resolveTone) return REPLY_ENGINE.resolveTone(incoming, selected);
     if (REPLY_TONES.has(selected) && selected !== "auto") return selected;
     const value = normalize(incoming);
     if (["прости", "извини", "обид", "ссор", "sorry", "apolog", "argument", "pardon", "desole", "dispute"].some(word => value.includes(word))) return "reconcile";
@@ -1821,6 +1851,11 @@
       const statement = `${cleanGoal.charAt(0).toLocaleUpperCase(lang)}${cleanGoal.slice(1)}${/[.!?…]$/u.test(cleanGoal) ? "" : "."}`;
       return appendReplyContext(`${frames[0]} ${statement} ${frames[1]}`, relationship);
     }
+    if (REPLY_ENGINE?.compose) {
+      const text = REPLY_ENGINE.compose({ incoming, language: lang, tone, variant: replyVariant });
+      replyVariant += 1;
+      return text;
+    }
     const value = normalize(incoming);
     const asksTime = ["во сколько", "когда", "время", "придешь", "придете", "вернешь", "when", "what time", "arrive", "return", "quelle heure", "quand", "arriver", "rentrer"].some(word => value.includes(normalize(word)));
     const asksQuestion = incoming.includes("?") || asksTime || ["почему", "зачем", "как ты", "можно ли", "ты соглас", "что думаешь", "do you", "can you", "will you", "why", "how do", "what do you think", "est ce", "pourquoi", "comment", "peux tu", "vas tu"].some(word => value.includes(normalize(word)));
@@ -1838,11 +1873,15 @@
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 16000);
     try {
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone }), signal: controller.signal });
+      const intent = REPLY_ENGINE?.inferIntent?.(incoming) || "neutral";
+      const headers = { "Content-Type": "application/json" };
+      if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, intent }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
-      if (text.length < 45 || text.length > 1200 || containsForbidden(text) || containsImproperRomance(text, relationship) || !replyFactsPreserved(text, goal) || !replyTonePreserved(text, tone) || /<[^>]+>/.test(text)) throw new Error("Unsafe or incomplete response");
+      const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(text, intent);
+      if (text.length < 12 || text.length > 1200 || containsForbidden(text) || containsImproperRomance(text, relationship) || !replyFactsPreserved(text, goal) || !replyTonePreserved(text, tone) || !contextAligned || /<[^>]+>/.test(text)) throw new Error("Unsafe or incomplete response");
       return text;
     } finally { clearTimeout(timeout); }
   }
@@ -1876,7 +1915,9 @@
         try { generatedReply = await remoteComposeReply(incoming, relationship, tone, goal); }
         catch { generatedReply = local; showToast(t("composeFail"), 3400); }
       } else { await new Promise(resolve => setTimeout(resolve, 480)); generatedReply = local; }
-      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone)) throw new Error("Blocked output");
+      const intent = REPLY_ENGINE?.inferIntent?.(incoming) || "neutral";
+      const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(generatedReply, intent);
+      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned) throw new Error("Blocked output");
       $("#replyGeneratedText").value = generatedReply;
       $("#replyStatusBar").style.width = "100%"; $("#replyStatusPercent").textContent = "100%";
       setTimeout(() => { $("#replyStatus").hidden = true; $("#replyGeneratedCard").hidden = false; $("#replyGeneratedCard").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 180);
@@ -2093,6 +2134,30 @@
 
   function shareLetter(){const entry=currentEntry();const url=new URL(location.href);url.searchParams.delete(BETA_PARAMETER);url.searchParams.set("from",fromName);url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));url.searchParams.delete("quote");const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};if(navigator.share)navigator.share(data).catch(()=>{});else copyText(url.toString());}
 
+  function buildAppShareUrl() {
+    const publicUrl = new URL(CONFIG.publicShareUrl || `${location.origin}${location.pathname}`, location.href);
+    publicUrl.search = "";
+    publicUrl.hash = "";
+    if (["en", "fr"].includes(lang)) publicUrl.searchParams.set("lang", lang);
+    if (acceptedBetaCapability) publicUrl.hash = new URLSearchParams({ access: acceptedBetaCapability }).toString();
+    return publicUrl.toString();
+  }
+
+  async function shareApplication() {
+    const url = buildAppShareUrl();
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: t("title"), text: t("shareAppText"), url });
+        return;
+      }
+    } catch (error) {
+      if (error?.name === "AbortError") return;
+    }
+    await writeClipboard(url);
+    showToast(t("shareAppCopied"));
+    haptic(10);
+  }
+
   function updateFullscreenControl(){const active=Boolean(document.fullscreenElement);$("#fullscreenToggle")?.classList.toggle("is-active",active);const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
   async function toggleFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen?.();else await document.exitFullscreen?.();}catch{}updateFullscreenControl();}
   function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);if(localStorage.getItem("nurFullscreen")==="on"&&!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});}
@@ -2124,7 +2189,7 @@
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",enableWeather);$("#weatherToggle").addEventListener("click",enableWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast("Max 18 MB");try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("weatherFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
-    $("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
+    $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
@@ -2143,7 +2208,7 @@
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
-      const registerServiceWorker=()=>navigator.serviceWorker.register("sw.js?v=9").catch(()=>{});
+      const registerServiceWorker=()=>navigator.serviceWorker.register("sw.js?v=11").catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});
     }
     try{const savedAudio=await loadMedia("audio");if(savedAudio?.blob){customAudioBlob=savedAudio.blob;$("#customTrackName").textContent=savedAudio.name||"Custom audio";}else if(selectedTrack===3)selectedTrack=0;}catch{if(selectedTrack===3)selectedTrack=0;}
