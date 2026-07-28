@@ -563,6 +563,12 @@
     }
   }
 
+  async function handleCapabilityNavigation() {
+    const alreadyEnabled = betaAccess;
+    await initializeBetaAccess();
+    if (!alreadyEnabled && betaAccess) updatePremium(true, premiumPrice, "beta_capability");
+  }
+
   function cloudConfigurationReady() {
     try {
       return new URL(SUPABASE_URL).protocol === "https:"
@@ -2197,6 +2203,7 @@
     document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
+    addEventListener("hashchange",handleCapabilityNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
     addEventListener("pointermove",event=>{if(innerWidth<900||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const x=(event.clientX/innerWidth-.5)*1.2;const y=(event.clientY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;},{passive:true});
   }
@@ -2208,7 +2215,7 @@
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
-      const registerServiceWorker=()=>navigator.serviceWorker.register("sw.js?v=11").catch(()=>{});
+      const registerServiceWorker=()=>navigator.serviceWorker.register("sw.js?v=12").catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});
     }
     try{const savedAudio=await loadMedia("audio");if(savedAudio?.blob){customAudioBlob=savedAudio.blob;$("#customTrackName").textContent=savedAudio.name||"Custom audio";}else if(selectedTrack===3)selectedTrack=0;}catch{if(selectedTrack===3)selectedTrack=0;}
