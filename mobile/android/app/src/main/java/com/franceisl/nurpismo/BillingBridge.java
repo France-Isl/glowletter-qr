@@ -19,12 +19,18 @@ public final class BillingBridge {
 
     @JavascriptInterface
     public void purchaseFullAccess() {
-        activity.runOnUiThread(billingManager::purchaseFullAccess);
+        // Keep the existing JavaScript API name so bundled web versions remain
+        // compatible; the only newly launched Play flow is the subscription.
+        activity.runOnUiThread(billingManager::purchaseSubscription);
     }
 
     @JavascriptInterface
     public void restorePurchases() {
         activity.runOnUiThread(billingManager::restorePurchases);
     }
-}
 
+    @JavascriptInterface
+    public void manageSubscription() {
+        activity.runOnUiThread(activity::openManageSubscriptionFromWeb);
+    }
+}

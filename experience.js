@@ -187,7 +187,7 @@
   const setPalette = luminance => {
     const light = Math.max(0, Math.min(1, luminance));
     const dim = state.smart ? (.17 + light * .25) : .28;
-    const paper = state.smart ? (.78 + light * .1) : .84;
+    const paper = state.smart ? (.70 + light * .1) : .76;
     document.documentElement.style.setProperty("--gl-scene-dim", dim.toFixed(3));
     document.documentElement.style.setProperty("--gl-paper-alpha", paper.toFixed(3));
   };

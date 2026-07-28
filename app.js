@@ -28,20 +28,20 @@
 
   const UI = {
     ru: {
-      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Вечер у озера, живой дождь и слова, которые хочется сохранить.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", free: "10 писем бесплатно", full: "полная коллекция — 7,99 €", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Открыть за", restore: "Восстановить покупку", purchaseUnavailable: "Покупка станет доступна в приложении из Google Play", restored: "Покупка проверена", premiumOn: "Полный доступ открыт навсегда", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
+      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Вечер у озера, живой дождь и слова, которые хочется сохранить.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", free: "10 писем бесплатно", full: "полная версия — 21,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Подписаться за", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
     },
     en: {
-      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "An evening by the lake, living rain, and words worth keeping.", from: "from", open: "Open the letter", create: "Create your own letter", free: "10 letters free", full: "full collection — €7.99", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Unlock for", restore: "Restore purchase", purchaseUnavailable: "Purchases will be available in the Google Play app", restored: "Purchase checked", premiumOn: "Full access unlocked forever", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
+      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "An evening by the lake, living rain, and words worth keeping.", from: "from", open: "Open the letter", create: "Create your own letter", free: "10 letters free", full: "full version — €21.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Subscribe for", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
     },
     fr: {
-      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Un soir au bord du lac, une pluie vivante et des mots que l’on souhaite garder.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", free: "10 lettres gratuites", full: "collection complète — 7,99 €", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "Débloquer pour", restore: "Restaurer l’achat", purchaseUnavailable: "L’achat sera disponible dans l’application Google Play", restored: "Achat vérifié", premiumOn: "Accès complet débloqué pour toujours", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
+      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Un soir au bord du lac, une pluie vivante et des mots que l’on souhaite garder.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", free: "10 lettres gratuites", full: "version complète — 21,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "S’abonner pour", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
     }
   };
 
   const EXTRA_UI = {
-    ru: { adabTitle:"Режим адаба всегда включён",adabNote:"Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.",ownNote:"Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.",qualityTitle:"Почему текст стал лучше:",qualityBody:"редактор определяет семейный контекст, собирает цельное письмо из проверенных смыслов и проверяет результат. Никакой модели на 500 МБ.",religiousNote:"Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.",collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Музыка и нашиды",fullVersion:"ПОЛНАЯ ВЕРСИЯ",allLetters:"Откройте все 50 писем",onePurchase:"Одна покупка, восстановление через аккаунт магазина и все будущие тексты.",paywallEyebrow:"GLOWLETTER · ПОЛНЫЙ ДОСТУП",paywallTitle:"Ещё 40 писем<br><em>для важных людей</em>",paywallBody:"Первые 10 остаются бесплатными. Полная коллекция, открытки и все будущие тексты открываются навсегда.",benefit1:"50 персональных писем",benefit2:"восстановление покупки",benefit3:"обновления коллекции",payButton:"Открыть полный доступ",storeNote:"Оплата проходит через магазин. Цена может отображаться в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить свой нашид",customMusicNote:"MP3, M4A, OGG или WAV" },
-    en: { adabTitle:"Adab mode is always on",adabNote:"Respectful words only. Adult content, abuse, and prohibited themes are blocked.",ownNote:"Your text passes the same modesty filter and is saved inside the personal link.",qualityTitle:"Why the text is better:",qualityBody:"the editor identifies family context, builds one coherent letter from reviewed ideas, and validates the result. No 500 MB model download.",religiousNote:"The filter supports modest and respectful wording but is not a religious ruling. Please reread the letter before sending.",collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Music and nasheeds",fullVersion:"FULL VERSION",allLetters:"Unlock all 50 letters",onePurchase:"One purchase, store-account restoration, and all future texts.",paywallEyebrow:"GLOWLETTER · FULL ACCESS",paywallTitle:"40 more letters<br><em>for important people</em>",paywallBody:"The first 10 stay free. The complete collection, postcards, and future texts unlock forever.",benefit1:"50 personal letters",benefit2:"purchase restoration",benefit3:"collection updates",payButton:"Unlock full access",storeNote:"Payment is handled by the store. The price may appear in your local currency.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own nasheed",customMusicNote:"MP3, M4A, OGG, or WAV" },
-    fr: { adabTitle:"Le mode adab est toujours actif",adabNote:"Uniquement des mots respectueux. Le contenu adulte, la grossièreté et les thèmes interdits sont bloqués.",ownNote:"Votre texte passe le même filtre de pudeur et sera enregistré dans le lien personnel.",qualityTitle:"Pourquoi le texte est meilleur :",qualityBody:"l’éditeur reconnaît le contexte familial, compose une lettre cohérente avec des idées vérifiées et contrôle le résultat. Aucun modèle de 500 Mo.",religiousNote:"Le filtre favorise la pudeur et le respect, mais ne constitue pas un avis religieux. Relisez la lettre avant de l’envoyer.",collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Musique et nasheeds",fullVersion:"VERSION COMPLÈTE",allLetters:"Débloquez les 50 lettres",onePurchase:"Un achat, restauration via le compte du magasin et tous les futurs textes.",paywallEyebrow:"GLOWLETTER · ACCÈS COMPLET",paywallTitle:"40 lettres de plus<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières restent gratuites. La collection, les cartes et les futurs textes sont débloqués pour toujours.",benefit1:"50 lettres personnelles",benefit2:"restauration de l’achat",benefit3:"mises à jour de la collection",payButton:"Débloquer l’accès complet",storeNote:"Le paiement est géré par le magasin. Le prix peut apparaître dans votre devise locale.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre nasheed",customMusicNote:"MP3, M4A, OGG ou WAV" }
+    ru: { adabTitle:"Режим адаба всегда включён",adabNote:"Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.",ownNote:"Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.",qualityTitle:"Почему текст стал лучше:",qualityBody:"редактор определяет семейный контекст, собирает цельное письмо из проверенных смыслов и проверяет результат. Никакой модели на 500 МБ.",religiousNote:"Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.",collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Музыка и нашиды",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Ежемесячная подписка: умные ответы, все письма и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Умные письма<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Премиум продлевается ежемесячно и открывает все умные функции.",benefit1:"50 персональных писем",benefit2:"умный анализ сообщения",benefit3:"новые функции каждый месяц",payButton:"Оформить подписку",storeNote:"Автопродление можно отменить в аккаунте магазина. Цена отображается в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить свой нашид",customMusicNote:"MP3, M4A, OGG или WAV" },
+    en: { adabTitle:"Adab mode is always on",adabNote:"Respectful words only. Adult content, abuse, and prohibited themes are blocked.",ownNote:"Your text passes the same modesty filter and is saved inside the personal link.",qualityTitle:"Why the text is better:",qualityBody:"the editor identifies family context, builds one coherent letter from reviewed ideas, and validates the result. No 500 MB model download.",religiousNote:"The filter supports modest and respectful wording but is not a religious ruling. Please reread the letter before sending.",collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Music and nasheeds",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"Monthly subscription: smart replies, every letter, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Smart letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. Premium renews monthly and unlocks every smart feature.",benefit1:"50 personal letters",benefit2:"smart message analysis",benefit3:"new features every month",payButton:"Start subscription",storeNote:"Auto-renewal can be cancelled in your store account. The local store price is shown.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own nasheed",customMusicNote:"MP3, M4A, OGG, or WAV" },
+    fr: { adabTitle:"Le mode adab est toujours actif",adabNote:"Uniquement des mots respectueux. Le contenu adulte, la grossièreté et les thèmes interdits sont bloqués.",ownNote:"Votre texte passe le même filtre de pudeur et sera enregistré dans le lien personnel.",qualityTitle:"Pourquoi le texte est meilleur :",qualityBody:"l’éditeur reconnaît le contexte familial, compose une lettre cohérente avec des idées vérifiées et contrôle le résultat. Aucun modèle de 500 Mo.",religiousNote:"Le filtre favorise la pudeur et le respect, mais ne constitue pas un avis religieux. Relisez la lettre avant de l’envoyer.",collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Musique et nasheeds",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Abonnement mensuel : réponses intelligentes, toutes les lettres et nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Lettres intelligentes<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle chaque mois et ouvre toutes les fonctions intelligentes.",benefit1:"50 lettres personnelles",benefit2:"analyse intelligente du message",benefit3:"nouvelles fonctions chaque mois",payButton:"S’abonner",storeNote:"Le renouvellement automatique peut être annulé dans votre compte du magasin. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre nasheed",customMusicNote:"MP3, M4A, OGG ou WAV" }
   };
   Object.keys(UI).forEach(code => Object.assign(UI[code], EXTRA_UI[code]));
   UI.ru.brandCopyPersonal = "Вечер у озера, живой дождь и письмо, созданное именно для {to}.";
@@ -53,9 +53,9 @@
     relationshipLabel:"Кому вы пишете · необязательно",toneLabel:"Стиль письма · необязательно",optionalHint:"Выбор необязателен. Романтический стиль разрешён только для супруга или супруги; фильтр адаба остаётся включён.",romanticSpouseOnly:"Романтический стиль предназначен только для супруга или супруги. Выберите это отношение или другой стиль.",
     setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",aiSenderPlaceholder:"Ваше имя или Амина (дочь)",aiRecipientPlaceholder:"Имя или Мама",routeFrom:"ОТ",routeTo:"ДЛЯ",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",trackPrimary:"основная мелодия",trackLight:"светлая версия",trackWarm:"тёплая версия",
     homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeEditorAria:"Закрыть редактор",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",aiModeAria:"Режим помощника",generatedLetterAria:"Сгенерированное письмо",generatedReplyAria:"Сгенерированный ответ",
-    replyIncoming:"Что вам написали?",replyPlaceholder:"Вставьте сюда сообщение, на которое хотите ответить…",replyGoal:"Что вы хотите сказать · необязательно",replyGoalPlaceholder:"Например: принимаю предложение; приду в 19:00; хочу вежливо отказаться…",replyRelationshipLabel:"Кто вам написал · необязательно",replyToneLabel:"Как ответить · необязательно",replyHint:"Помощник напишет уважительный ответ без 18+, грубости и двусмысленных фраз. Если вопрос требует вашего решения, добавьте главную мысль, чтобы ИИ ничего не придумал за вас.",replyGenerate:"Подготовить ответ",replyGenerating:"Подбираю спокойный ответ…",replyReady:"ГОТОВЫЙ ОТВЕТ",replyVariant:"↻ Другой вариант",copyReply:"▣ Скопировать ответ",replySafety:"Вставьте обычное сообщение без запрещённого содержания.",replyShort:"Добавьте сообщение, чтобы помощник понял контекст.",
-    checkingPurchase:"Проверяю полный доступ…",allLetters:"Откройте полный GlowLetter",onePurchase:"Все 50 писем, ИИ‑редактор, помощник ответов и будущие функции — одной покупкой.",paywallBody:"Первые 10 писем остаются бесплатными. Полная коллекция, ИИ‑редактор, помощник ответов и будущие функции открываются навсегда.",benefit1:"все 50 персональных писем",benefit2:"ИИ‑письма с выбором стиля",benefit3:"помощник ответов",benefit4:"восстановление покупки",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",
-    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
+    replyIncoming:"Что вам написали?",replyPlaceholder:"Вставьте сюда сообщение, на которое хотите ответить…",replyGoal:"Что вы хотите сказать · необязательно",replyGoalPlaceholder:"Например: принимаю предложение; приду в 19:00; хочу вежливо отказаться…",replyRelationshipLabel:"Кто вам написал · необязательно",replyToneLabel:"Как ответить · необязательно",replyLengthLabel:"Длина ответа",replyHint:"Помощник напишет уважительный ответ без 18+, грубости и двусмысленных фраз. Если вопрос требует вашего решения, добавьте главную мысль, чтобы ИИ ничего не придумал за вас.",replyGenerate:"Подготовить ответ",replyGenerating:"Подбираю спокойный ответ…",replyReady:"ГОТОВЫЙ ОТВЕТ",replyVariant:"↻ Другой вариант",copyReply:"▣ Скопировать ответ",replySafety:"Вставьте обычное сообщение без запрещённого содержания.",replyShort:"Добавьте сообщение, чтобы помощник понял контекст.",replyInsightTitle:"Смысл сообщения",replyNeedsGoal:"Нужна ваша точная мысль — заполните поле ниже",replyGoalOptional:"Можно сразу подготовить ответ",replyAuditSafe:"Проверка adab пройдена",replyAuditSafeDetails:"Ответ уважительный, без давления и запрещённых формулировок.",replyAuditWarning:"Перед копированием нужно исправить",replyAuditWarningDetails:"Проверьте смысл, тон и формулировки ответа.",
+    checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Ежемесячная подписка: 50 писем, умный анализ, проверка adab и будущие функции.",paywallBody:"Первые 10 писем остаются бесплатными. Премиум автоматически продлевается каждый месяц, пока вы не отмените его в аккаунте магазина.",benefit1:"все 50 персональных писем",benefit2:"умный анализ сообщения",benefit3:"проверка уважительности и adab",benefit4:"новые тексты и функции",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
+    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Подписка магазина отменяется отдельно.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
@@ -63,9 +63,9 @@
     relationshipLabel:"Who are you writing to? · optional",toneLabel:"Letter style · optional",optionalHint:"Both choices are optional. Romantic style is available only for a spouse; adab filtering always stays on.",romanticSpouseOnly:"Romantic style is only for a spouse. Choose that relationship or another style.",
     setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",aiSenderPlaceholder:"Your name or Amina (daughter)",aiRecipientPlaceholder:"Name or Mum",routeFrom:"FROM",routeTo:"TO",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",trackPrimary:"main melody",trackLight:"light version",trackWarm:"warm version",
     homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeEditorAria:"Close editor",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",aiModeAria:"Assistant mode",generatedLetterAria:"Generated letter",generatedReplyAria:"Generated reply",
-    replyIncoming:"What did they write to you?",replyPlaceholder:"Paste the message you want to answer…",replyGoal:"What do you want to say? · optional",replyGoalPlaceholder:"For example: I agree; I will arrive at 7 pm; I want to decline politely…",replyRelationshipLabel:"Who wrote to you? · optional",replyToneLabel:"How should the reply sound? · optional",replyHint:"The assistant drafts a respectful reply without adult, abusive, or suggestive wording. If the question needs your decision, add your main point so the AI does not invent it.",replyGenerate:"Draft a reply",replyGenerating:"Preparing a calm reply…",replyReady:"READY TO SEND",replyVariant:"↻ Another version",copyReply:"▣ Copy reply",replySafety:"Paste an ordinary message without prohibited content.",replyShort:"Add the received message so the assistant understands the context.",
-    checkingPurchase:"Checking full access…",allLetters:"Unlock all of GlowLetter",onePurchase:"All 50 letters, the AI editor, reply assistant, and future features with one purchase.",paywallBody:"The first 10 letters stay free. The full collection, AI editor, reply assistant, and future features unlock forever.",benefit1:"all 50 personal letters",benefit2:"AI letters with style selection",benefit3:"reply assistant",benefit4:"purchase restoration",saveSettings:"Save settings",settingsSaved:"Settings saved",
-    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueFacebook:"Continue with Facebook",signOut:"Sign out",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
+    replyIncoming:"What did they write to you?",replyPlaceholder:"Paste the message you want to answer…",replyGoal:"What do you want to say? · optional",replyGoalPlaceholder:"For example: I agree; I will arrive at 7 pm; I want to decline politely…",replyRelationshipLabel:"Who wrote to you? · optional",replyToneLabel:"How should the reply sound? · optional",replyLengthLabel:"Reply length",replyHint:"The assistant drafts a respectful reply without adult, abusive, or suggestive wording. If the question needs your decision, add your main point so the AI does not invent it.",replyGenerate:"Draft a reply",replyGenerating:"Preparing a calm reply…",replyReady:"READY TO SEND",replyVariant:"↻ Another version",copyReply:"▣ Copy reply",replySafety:"Paste an ordinary message without prohibited content.",replyShort:"Add the received message so the assistant understands the context.",replyInsightTitle:"Message meaning",replyNeedsGoal:"Your exact point is needed — complete the field below",replyGoalOptional:"A reply can be drafted now",replyAuditSafe:"Adab check passed",replyAuditSafeDetails:"The reply is respectful and contains no pressure or prohibited wording.",replyAuditWarning:"Fix this before copying",replyAuditWarningDetails:"Review the meaning, tone, and wording of the reply.",
+    checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"Monthly subscription: 50 letters, smart analysis, adab checking, and future features.",paywallBody:"The first 10 letters stay free. Premium renews automatically every month until cancelled in your store account.",benefit1:"all 50 personal letters",benefit2:"smart message analysis",benefit3:"respect and adab checking",benefit4:"new letters and features",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
+    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Store subscriptions must be cancelled separately.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
@@ -73,9 +73,9 @@
     relationshipLabel:"À qui écrivez-vous ? · facultatif",toneLabel:"Style de la lettre · facultatif",optionalHint:"Ces choix sont facultatifs. Le style romantique est réservé aux époux ; le filtre d’adab reste toujours actif.",romanticSpouseOnly:"Le style romantique est réservé aux époux. Choisissez cette relation ou un autre style.",
     setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",aiSenderPlaceholder:"Votre prénom ou Amina (fille)",aiRecipientPlaceholder:"Prénom ou Maman",routeFrom:"DE",routeTo:"POUR",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",trackPrimary:"mélodie principale",trackLight:"version lumineuse",trackWarm:"version chaleureuse",
     homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeEditorAria:"Fermer l’éditeur",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",aiModeAria:"Mode de l’assistant",generatedLetterAria:"Lettre générée",generatedReplyAria:"Réponse générée",
-    replyIncoming:"Quel message avez-vous reçu ?",replyPlaceholder:"Collez le message auquel vous souhaitez répondre…",replyGoal:"Que souhaitez-vous répondre ? · facultatif",replyGoalPlaceholder:"Par exemple : je suis d’accord ; j’arriverai à 19 h ; je veux refuser poliment…",replyRelationshipLabel:"Qui vous a écrit ? · facultatif",replyToneLabel:"Quel ton employer ? · facultatif",replyHint:"L’assistant prépare une réponse respectueuse, sans contenu adulte, grossier ou ambigu. Si la question exige votre décision, ajoutez l’idée principale afin que l’IA ne l’invente pas.",replyGenerate:"Préparer une réponse",replyGenerating:"Je prépare une réponse sereine…",replyReady:"RÉPONSE PRÊTE",replyVariant:"↻ Une autre version",copyReply:"▣ Copier la réponse",replySafety:"Collez un message ordinaire sans contenu interdit.",replyShort:"Ajoutez le message reçu pour donner le contexte à l’assistant.",
-    checkingPurchase:"Vérification de l’accès complet…",allLetters:"Débloquez tout GlowLetter",onePurchase:"Les 50 lettres, l’éditeur IA, l’assistant de réponse et les futures fonctions en un seul achat.",paywallBody:"Les 10 premières lettres restent gratuites. La collection, l’éditeur IA, l’assistant de réponse et les futures fonctions sont débloqués pour toujours.",benefit1:"les 50 lettres personnelles",benefit2:"lettres IA avec choix du style",benefit3:"assistant de réponse",benefit4:"restauration de l’achat",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",
-    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
+    replyIncoming:"Quel message avez-vous reçu ?",replyPlaceholder:"Collez le message auquel vous souhaitez répondre…",replyGoal:"Que souhaitez-vous répondre ? · facultatif",replyGoalPlaceholder:"Par exemple : je suis d’accord ; j’arriverai à 19 h ; je veux refuser poliment…",replyRelationshipLabel:"Qui vous a écrit ? · facultatif",replyToneLabel:"Quel ton employer ? · facultatif",replyLengthLabel:"Longueur de la réponse",replyHint:"L’assistant prépare une réponse respectueuse, sans contenu adulte, grossier ou ambigu. Si la question exige votre décision, ajoutez l’idée principale afin que l’IA ne l’invente pas.",replyGenerate:"Préparer une réponse",replyGenerating:"Je prépare une réponse sereine…",replyReady:"RÉPONSE PRÊTE",replyVariant:"↻ Une autre version",copyReply:"▣ Copier la réponse",replySafety:"Collez un message ordinaire sans contenu interdit.",replyShort:"Ajoutez le message reçu pour donner le contexte à l’assistant.",replyInsightTitle:"Sens du message",replyNeedsGoal:"Votre intention exacte est nécessaire — complétez le champ ci-dessous",replyGoalOptional:"Une réponse peut être préparée maintenant",replyAuditSafe:"Vérification adab réussie",replyAuditSafeDetails:"La réponse reste respectueuse, sans pression ni formulation interdite.",replyAuditWarning:"À corriger avant de copier",replyAuditWarningDetails:"Vérifiez le sens, le ton et les formulations de la réponse.",
+    checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Abonnement mensuel : 50 lettres, analyse intelligente, contrôle adab et futures fonctions.",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin.",benefit1:"les 50 lettres personnelles",benefit2:"analyse intelligente du message",benefit3:"contrôle du respect et de l’adab",benefit4:"nouvelles lettres et fonctions",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
+    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? L’abonnement du magasin doit être annulé séparément.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
   });
   UI.ru.namesSettings = "Личное обращение";
   UI.en.namesSettings = "Personal names";
@@ -122,7 +122,24 @@
       ru:[["auto","Подобрать автоматически"],["calm","Спокойно"],["warm","Тепло"],["support","Поддержать"],["reconcile","Помириться"],["boundary","Обозначить границы"]],
       en:[["auto","Choose automatically"],["calm","Calmly"],["warm","Warmly"],["support","Supportively"],["reconcile","Reconcile"],["boundary","Set a boundary"]],
       fr:[["auto","Choisir automatiquement"],["calm","Avec calme"],["warm","Chaleureusement"],["support","Avec soutien"],["reconcile","Se réconcilier"],["boundary","Poser une limite"]]
+    },
+    replyLength: {
+      ru:[["auto","Подобрать автоматически"],["short","Коротко"],["standard","Обычно"],["detailed","Подробно"]],
+      en:[["auto","Choose automatically"],["short","Short"],["standard","Standard"],["detailed","Detailed"]],
+      fr:[["auto","Choisir automatiquement"],["short","Courte"],["standard","Normale"],["detailed","Détaillée"]]
     }
+  };
+
+  const REPLY_INTENT_LABELS = {
+    ru:{religious_gratitude:"Благодарность Аллаху",islamic_greeting:"Исламское приветствие",gratitude:"Благодарность",celebration:"Добрая новость",appreciation:"Тёплые слова",support:"Нужна поддержка",apology:"Извинение",conflict:"Напряжённый разговор",time_question:"Вопрос о времени",wellbeing:"Забота о самочувствии",question:"Вопрос",greeting:"Приветствие",care:"Забота",neutral:"Нейтральное сообщение"},
+    en:{religious_gratitude:"Gratitude to Allah",islamic_greeting:"Islamic greeting",gratitude:"Gratitude",celebration:"Good news",appreciation:"Warm appreciation",support:"Support needed",apology:"Apology",conflict:"Tense conversation",time_question:"Time question",wellbeing:"Checking in",question:"Question",greeting:"Greeting",care:"Care",neutral:"Neutral message"},
+    fr:{religious_gratitude:"Gratitude envers Allah",islamic_greeting:"Salutation islamique",gratitude:"Gratitude",celebration:"Bonne nouvelle",appreciation:"Paroles chaleureuses",support:"Besoin de soutien",apology:"Excuse",conflict:"Échange tendu",time_question:"Question d’horaire",wellbeing:"Prendre des nouvelles",question:"Question",greeting:"Salutation",care:"Attention",neutral:"Message neutre"}
+  };
+
+  const REPLY_AUDIT_LABELS = {
+    ru:{empty:"ответ пуст",forbidden:"есть запрещённая формулировка",religious_authority:"есть непроверенное религиозное утверждение",coercion:"ответ звучит как давление",improper_romance:"романтическая формулировка не подходит выбранному отношению",intent_mismatch:"ответ не совпадает со смыслом сообщения",goal_missing:"потеряна важная деталь из вашей мысли",tone_mismatch:"ответ не соответствует выбранному тону"},
+    en:{empty:"the reply is empty",forbidden:"prohibited wording was found",religious_authority:"an unverified religious claim was found",coercion:"the reply sounds coercive",improper_romance:"romantic wording does not fit the selected relationship",intent_mismatch:"the reply does not match the message meaning",goal_missing:"an important detail from your point is missing",tone_mismatch:"the reply does not match the selected tone"},
+    fr:{empty:"la réponse est vide",forbidden:"une formulation interdite a été détectée",religious_authority:"une affirmation religieuse non vérifiée a été détectée",coercion:"la réponse exerce une pression",improper_romance:"la formulation romantique ne convient pas à la relation choisie",intent_mismatch:"la réponse ne correspond pas au sens du message",goal_missing:"un détail important de votre intention a disparu",tone_mismatch:"la réponse ne correspond pas au ton choisi"}
   };
 
   const tracks = [
@@ -137,7 +154,8 @@
     "sexe", "eroti", "porn", "baiser", "embrasser", "intimite", "nudite", "genital", "orgasme", "excite", "masturb", "prostitu",
     "алкогол", "водк", "коньяк", "наркот", "кокаин", "героин", "казино", "букмек", "шантаж", "угрож", "убить", "избить",
     "alcohol", "vodka", "drug", "cocaine", "heroin", "casino", "gambling", "blackmail", "threat", "kill",
-    "alcool", "vodka", "drogue", "cocaine", "heroine", "casino", "parier", "chantage", "menace", "tuer"
+    "alcool", "vodka", "drogue", "cocaine", "heroine", "casino", "parier", "chantage", "menace", "tuer",
+    "бляд", "блят", "хуй", "хуе", "хуя", "хуи", "пизд", "ебан", "fuck", "shit", "bitch", "cunt", "putain", "merde", "connard", "salope"
   ];
 
   const relationshipWords = {
@@ -321,6 +339,11 @@
     en:{calm:["I read the message carefully and want to answer calmly.","We can clarify any details without rushing."],warm:["Thank you for the message and for being open with me.","I want to continue this conversation with care and respect."],support:["I am taking these words seriously and without pressure.","We can continue the conversation calmly, at a comfortable pace."],reconcile:["Restoring a calm conversation matters more to me than arguing.","Let us try to hear each other without blame."],boundary:["I want to answer honestly and without harsh words.","Please respect this decision."]},
     fr:{calm:["J’ai lu le message avec attention et je souhaite répondre calmement.","Nous pouvons préciser les détails sans nous presser."],warm:["Merci pour ce message et pour cette franchise.","Je souhaite poursuivre cet échange avec attention et respect."],support:["Je prends ces paroles au sérieux, sans mettre de pression.","Nous pouvons continuer à parler sereinement, au rythme qui convient."],reconcile:["Retrouver un dialogue calme compte davantage que prolonger un désaccord.","Essayons de nous écouter sans reproches."],boundary:["Je souhaite répondre avec sincérité et sans paroles dures.","Merci de respecter cette décision."]}
   };
+  const replyDetailedClosings = {
+    ru:"Если понадобится, я готов спокойно уточнить детали и выслушать твою точку зрения, сохраняя уважение в разговоре.",
+    en:"If needed, I am ready to clarify the details calmly and listen to your point of view while keeping the conversation respectful.",
+    fr:"Si nécessaire, je peux préciser les détails calmement et écouter ton point de vue tout en préservant le respect dans notre échange."
+  };
 
   const questionReply = {
     ru:{general:"Спасибо за прямой вопрос. Мне важно ответить честно, поэтому не хочется говорить наугад или придумывать решение. Давай сначала уточним детали, от которых зависит ответ, и спокойно их обсудим.",time:"Спасибо за вопрос о времени. Сейчас точное время назвать не получится, и мне не хочется отвечать наугад. Если время важно для твоих планов, давай сначала уточним обстоятельства, от которых оно зависит."},
@@ -332,6 +355,7 @@
   const LETTER_TONES = new Set(["auto","loving","romantic","classic","support","gratitude"]);
   const REPLY_RELATIONSHIPS = new Set(["auto","spouse","family","friend","colleague","universal"]);
   const REPLY_TONES = new Set(["auto","calm","warm","support","reconcile","boundary"]);
+  const REPLY_LENGTHS = new Set(["auto","short","standard","detailed"]);
 
   let lang = ["ru", "en", "fr"].includes(params.get("lang")) ? params.get("lang") : (localStorage.getItem("nurLanguage") || "ru");
   if (!UI[lang]) lang = "ru";
@@ -360,11 +384,14 @@
   let acceptedBetaCapability = "";
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
-  let premiumPrice = CONFIG.defaultPrice || "7,99 €";
+  let premiumPrice = CONFIG.defaultPrice || "21,99 €/месяц";
+  let premiumPriceFromStore = false;
   let generatedMessage = "";
   let generatedReply = "";
   let composerVariant = 0;
   let replyVariant = 0;
+  let lastReplyContext = { incoming: "", relationship: "auto", tone: "auto", length: "auto", goal: "", intent: "neutral" };
+  let replyInsightTimer = 0;
   let aiMode = "letter";
   let pendingPremiumFeature = "";
   let toastTimer = 0;
@@ -417,6 +444,18 @@
   };
 
   function t(key) { return UI[lang][key] || UI.ru[key] || key; }
+
+  function localizedFallbackPrice() {
+    return { ru: "21,99 €/месяц", en: "€21.99/month", fr: "21,99 €/mois" }[lang] || "€21.99/month";
+  }
+
+  function localizedMonthlyPrice(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return localizedFallbackPrice();
+    const amount = raw.replace(/\s*\/\s*(?:month|месяц|mois)\s*$/iu, "").trim();
+    const period = { ru: "/месяц", en: "/month", fr: "/mois" }[lang] || "/month";
+    return `${amount}${period}`;
+  }
 
   function normalize(value) {
     return String(value || "").normalize("NFKC").toLowerCase().replaceAll("ё", "е").replaceAll("œ", "oe").normalize("NFD").replace(/[\u0300-\u0305\u0307-\u036f]/g, "").normalize("NFC");
@@ -548,6 +587,7 @@
       isPremium = true;
       entitlementState = "premium";
       localStorage.setItem(BETA_STORAGE_KEY, acceptedToken);
+      navigator.storage?.persist?.().catch(() => {});
     } else if (savedToken) {
       acceptedBetaCapability = "";
       localStorage.removeItem(BETA_STORAGE_KEY);
@@ -644,6 +684,7 @@
     setText("#googleSignIn span", t("continueGoogle"));
     setText("#facebookSignIn span", t("continueFacebook"));
     setText("#accountSignOut", t("signOut"));
+    setText("#accountDelete", t("deleteAccount"));
     setText("#accountStatus", t(cloudStatusKey));
     card.dataset.state = cloudStatusKey === "cloudSyncing" || cloudAuthBusy ? "syncing" : cloudStatusKey === "cloudError" || cloudStatusKey === "cloudSignInError" ? "error" : "ready";
 
@@ -657,6 +698,7 @@
     google.disabled = cloudAuthBusy;
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
+    $("#accountDelete").disabled = cloudAuthBusy;
 
     if (signedIn) {
       const email = String(cloudUser.email || "");
@@ -1359,6 +1401,34 @@
     }
   }
 
+  async function deleteCloudAccount() {
+    if (!cloudClient || !cloudUser?.id || cloudAuthBusy) return;
+    if (!globalThis.confirm(t("deleteAccountConfirm"))) return;
+    const deletedUserId = cloudUser.id;
+    cloudAuthBusy = true;
+    setCloudStatus("deleteAccountDeleting");
+    try {
+      const { data, error } = await cloudClient.functions.invoke("delete-account", {
+        body: { confirmation: "DELETE_GLOWLETTER_ACCOUNT" }
+      });
+      if (error || data?.deleted !== true) throw error || new Error("account deletion was not confirmed");
+      try { await cloudClient.auth.signOut({ scope: "local" }); } catch {}
+      localStorage.removeItem(`${CLOUD_USER_SNAPSHOT_PREFIX}${deletedUserId}`);
+      localStorage.removeItem(`${CLOUD_USER_ENVELOPE_PREFIX}${deletedUserId}`);
+      cloudSession = null;
+      cloudUser = null;
+      await handleCloudSession(null);
+      showToast(t("deleteAccountDone"), 4200);
+    } catch (error) {
+      console.info("Account deletion failed", error);
+      setCloudStatus("cloudError");
+      showToast(t("deleteAccountFail"), 5200);
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
   async function initializeCloudAuth() {
     const pageCallback = authCallbackDetails(location.href);
     if (pageCallback.hasSensitiveData) stripAuthDataFromCurrentUrl();
@@ -1405,6 +1475,7 @@
   window.GlowLetterCloud = Object.freeze({
     signIn: provider => signInWithCloud(provider),
     signOut: () => signOutCloud(),
+    deleteAccount: () => deleteCloudAccount(),
     syncNow: () => flushCloudSync(true),
     getState: () => ({
       configured: cloudConfigurationReady(),
@@ -1450,7 +1521,7 @@
 
   function entryText(entry) {
     const recipient = previewRecipient();
-    return String(entry?.[lang] || entry?.ru || "").replaceAll("{to}", recipient).replaceAll("Айша", recipient);
+    return String(entry?.[lang] || entry?.ru || "").replaceAll("{to}", recipient);
   }
 
   function basePosition(entry) {
@@ -1551,6 +1622,7 @@
   }
 
   function applyLanguage(render = true) {
+    premiumPrice = premiumPriceFromStore ? localizedMonthlyPrice(premiumPrice) : localizedFallbackPrice();
     document.documentElement.lang = lang;
     document.title = displayName(toName) ? `${t("title")} · ${displayName(toName)}` : t("title");
     $("#languageButton").textContent = lang.toUpperCase();
@@ -1578,7 +1650,7 @@
     setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`);
     $$(".go-home").forEach(button => button.textContent = `⌂ ${t("home")}`);
     $("#aiOpenLetter").innerHTML = `<span>✦</span> ${escapeHtml(t("personal"))} · PRO`;
-    setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText(".signature span", t("warmSign"));
+    setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
     setText("#setupLayer .panel-eyebrow", t("setupEyebrow")); setText("#setupTitle", t("setupTitle")); setText(".setup-note", t("setupNote")); setText("#setupSubmitLabel", t("setupSubmit")); setText("#setupError", t("namesSafety"));
     const setupLabels = $$("#setupForm .simple-form label > span"); if (setupLabels[0]) setupLabels[0].textContent = t("fromWho"); if (setupLabels[1]) setupLabels[1].textContent = t("forWho");
     $("#setupSenderName").placeholder = t("setupSenderPlaceholder"); $("#setupRecipientName").placeholder = t("setupRecipientPlaceholder");
@@ -1595,8 +1667,10 @@
     const replyTextLabels = $$("#replyForm .wide-label > span"); if (replyTextLabels[0]) replyTextLabels[0].textContent = t("replyIncoming"); if (replyTextLabels[1]) replyTextLabels[1].textContent = t("replyGoal");
     $("#replyIncoming").placeholder = t("replyPlaceholder"); $("#replyGoal").placeholder = t("replyGoalPlaceholder");
     const replyChoices = $$("#replyForm .choice-grid label > span"); if (replyChoices[0]) replyChoices[0].textContent = t("replyRelationshipLabel"); if (replyChoices[1]) replyChoices[1].textContent = t("replyToneLabel");
-    setSelectOptions("#replyRelationship", SELECT_OPTIONS.replyRelationship[lang]); setSelectOptions("#replyTone", SELECT_OPTIONS.replyTone[lang]);
+    setText(".reply-length-label > span", t("replyLengthLabel"));
+    setSelectOptions("#replyRelationship", SELECT_OPTIONS.replyRelationship[lang]); setSelectOptions("#replyTone", SELECT_OPTIONS.replyTone[lang]); setSelectOptions("#replyLength", SELECT_OPTIONS.replyLength[lang]);
     setText("#replyForm .form-hint", t("replyHint")); setText(".reply-generate-label", t("replyGenerate")); setText("#replyStatusText", t("replyGenerating")); setText("#replyGeneratedCard .generated-top > span", t("replyReady")); setText("#regenerateReply", t("replyVariant")); setText("#copyReply", t("copyReply")); setText("#replySafetyReason", t("replySafety"));
+    updateReplyInsight(); renderReplyAudit();
     setText("#libraryTitle", t("library")); setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
     setText(".library-panel .panel-eyebrow", t("collectionEyebrow")); setText(".library-summary > span", t("collectionNote"));
     const categories = { all: t("all"), warm: t("warm"), gratitude: t("gratitude"), support: t("support"), family: t("family") }; $$("#categoryRow button").forEach(button => button.textContent = categories[button.dataset.category]);
@@ -1610,8 +1684,8 @@
     const trackNotes = $$(".track-option[data-track] small"); if (trackNotes[0]) trackNotes[0].textContent = t("trackPrimary"); if (trackNotes[1]) trackNotes[1].textContent = t("trackLight"); if (trackNotes[2]) trackNotes[2].textContent = t("trackWarm");
     setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
-    const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("supportLink");
-    setText("#restoreButton", t("restore")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#installButton", `＋ ${t("install")}`); $$(".price-label").forEach(label => label.textContent = premiumPrice);
+    const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("terms");if(legalLinks[2])legalLinks[2].textContent=t("deletePage");if(legalLinks[3])legalLinks[3].textContent=t("supportLink");
+    setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
@@ -1788,7 +1862,9 @@
     const timeout = setTimeout(() => controller.abort(), 16000);
     try {
       const relationship = resolveRelationship(sender, recipient, selectedRelationship);
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: lang, relationship, tone }), signal: controller.signal });
+      const headers = { "Content-Type": "application/json" };
+      if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: lang, relationship, tone }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
@@ -1849,16 +1925,82 @@
     return context && !text.includes(context) ? `${text} ${context}` : text;
   }
 
-  function localComposeReply(incoming, relationship = "auto", tone = "auto", goal = "") {
+  function replyAnalysis(incoming = $("#replyIncoming")?.value || "") {
+    if (REPLY_ENGINE?.analyze) return REPLY_ENGINE.analyze(incoming);
+    const intent = REPLY_ENGINE?.inferIntent?.(incoming) || "neutral";
+    return {
+      intent,
+      confidence: intent === "neutral" ? "low" : "medium",
+      recommendedTone: inferReplyTone(incoming, "auto"),
+      recommendedLength: ["gratitude", "religious_gratitude", "greeting"].includes(intent) ? "short" : "standard",
+      needsGoal: ["time_question", "question"].includes(intent)
+    };
+  }
+
+  function replyOptionLabel(group, value) {
+    return SELECT_OPTIONS[group]?.[lang]?.find(option => option[0] === value)?.[1] || value;
+  }
+
+  function updateReplyInsight() {
+    const insight = $("#replyInsight");
+    if (!insight) return;
+    const incoming = String($("#replyIncoming")?.value || "").normalize("NFKC").trim();
+    if (incoming.length < 3 || containsForbidden(incoming)) {
+      insight.hidden = true;
+      return;
+    }
+    const analysis = replyAnalysis(incoming);
+    const selectedTone = REPLY_TONES.has($("#replyTone")?.value) ? $("#replyTone").value : "auto";
+    const selectedLength = REPLY_LENGTHS.has($("#replyLength")?.value) ? $("#replyLength").value : "auto";
+    const tone = selectedTone === "auto" ? analysis.recommendedTone : selectedTone;
+    const length = selectedLength === "auto" ? analysis.recommendedLength : selectedLength;
+    const goal = String($("#replyGoal")?.value || "").trim();
+    setText("#replyInsightTitle", t("replyInsightTitle"));
+    setText("#replyInsightDetails", `${REPLY_INTENT_LABELS[lang]?.[analysis.intent] || analysis.intent} · ${replyOptionLabel("replyTone", tone)} · ${replyOptionLabel("replyLength", length)}`);
+    setText("#replyInsightGoal", analysis.needsGoal && !goal ? t("replyNeedsGoal") : t("replyGoalOptional"));
+    insight.hidden = false;
+  }
+
+  function replyAuditResult(value, context = lastReplyContext) {
+    const intent = context.intent || replyAnalysis(context.incoming || "").intent;
+    if (REPLY_ENGINE?.audit) return REPLY_ENGINE.audit(value, { ...context, intent });
+    const blocked = !value || containsForbidden(value) || containsImproperRomance(value, context.relationship)
+      || !replyFactsPreserved(value, context.goal) || !replyTonePreserved(value, context.tone);
+    return { ok: !blocked, codes: blocked ? ["forbidden"] : [], severity: blocked ? "warning" : "safe" };
+  }
+
+  function renderReplyAudit(value = $("#replyGeneratedText")?.value || "", context = lastReplyContext) {
+    const audit = $("#replyAudit");
+    if (!audit) return { ok: false, codes: ["empty"], severity: "warning" };
+    const result = replyAuditResult(value, context);
+    const warning = !result.ok;
+    audit.classList.toggle("is-warning", warning);
+    audit.classList.toggle("is-safe", !warning);
+    const mark = audit.querySelector(":scope > span");
+    if (mark) mark.textContent = warning ? "!" : "✓";
+    setText("#replyAuditTitle", t(warning ? "replyAuditWarning" : "replyAuditSafe"));
+    const details = warning
+      ? result.codes.map(code => REPLY_AUDIT_LABELS[lang]?.[code] || code).join("; ") || t("replyAuditWarningDetails")
+      : t("replyAuditSafeDetails");
+    setText("#replyAuditDetails", details);
+    if ($("#copyReply")) $("#copyReply").disabled = warning;
+    return result;
+  }
+
+  function localComposeReply(incoming, relationship = "auto", tone = "auto", goal = "", length = "auto") {
     const resolvedTone = inferReplyTone(incoming, tone);
     const cleanGoal = String(goal || "").normalize("NFKC").replace(/\s+/g, " ").trim().slice(0, 320);
     if (cleanGoal) {
       const frames = replyGoalFrames[lang][resolvedTone] || replyGoalFrames[lang].calm;
       const statement = `${cleanGoal.charAt(0).toLocaleUpperCase(lang)}${cleanGoal.slice(1)}${/[.!?…]$/u.test(cleanGoal) ? "" : "."}`;
-      return appendReplyContext(`${frames[0]} ${statement} ${frames[1]}`, relationship);
+      const resolvedLength = REPLY_ENGINE?.resolveLength?.(incoming, length) || (length === "auto" ? "standard" : length);
+      let composed = `${frames[0]} ${statement}`;
+      if (resolvedLength !== "short") composed += ` ${frames[1]}`;
+      if (resolvedLength === "detailed") composed += ` ${replyDetailedClosings[lang]}`;
+      return appendReplyContext(composed, relationship);
     }
     if (REPLY_ENGINE?.compose) {
-      const text = REPLY_ENGINE.compose({ incoming, language: lang, tone, variant: replyVariant });
+      const text = REPLY_ENGINE.compose({ incoming, language: lang, tone, length, variant: replyVariant });
       replyVariant += 1;
       return text;
     }
@@ -1874,15 +2016,15 @@
     return appendReplyContext(bank[index], relationship);
   }
 
-  async function remoteComposeReply(incoming, relationship = "auto", tone = "auto", goal = "") {
+  async function remoteComposeReply(incoming, relationship = "auto", tone = "auto", goal = "", length = "auto") {
     if (!CONFIG.aiEndpoint) throw new Error("No endpoint");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 16000);
     try {
-      const intent = REPLY_ENGINE?.inferIntent?.(incoming) || "neutral";
+      const intent = replyAnalysis(incoming).intent;
       const headers = { "Content-Type": "application/json" };
       if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, intent }), signal: controller.signal });
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, length, intent }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
@@ -1908,7 +2050,10 @@
     if (goal && (goal.length < 2 || containsForbidden(goal))) return showReplySafety(t("replySafety"));
     const relationship = REPLY_RELATIONSHIPS.has($("#replyRelationship").value) ? $("#replyRelationship").value : "auto";
     const tone = REPLY_TONES.has($("#replyTone").value) ? $("#replyTone").value : "auto";
+    const length = REPLY_LENGTHS.has($("#replyLength").value) ? $("#replyLength").value : "auto";
     if (containsImproperRomance(goal, relationship)) return showReplySafety(t("replySafety"));
+    const analysis = replyAnalysis(incoming);
+    lastReplyContext = { incoming, relationship, tone, length, goal, intent: analysis.intent };
     $("#replySafety").hidden = true;
     $("#replyGeneratedCard").hidden = true;
     $("#replyStatus").hidden = false;
@@ -1916,15 +2061,17 @@
     let progress = 8; $("#replyStatusBar").style.width = `${progress}%`; $("#replyStatusPercent").textContent = `${progress}%`; setText("#replyStatusText", t("replyGenerating"));
     const timer = setInterval(() => { progress = Math.min(91, progress + 11); $("#replyStatusBar").style.width = `${progress}%`; $("#replyStatusPercent").textContent = `${progress}%`; }, 90);
     try {
-      const local = localComposeReply(incoming, relationship, tone, goal);
+      const local = localComposeReply(incoming, relationship, tone, goal, length);
       if (CONFIG.aiEndpoint) {
-        try { generatedReply = await remoteComposeReply(incoming, relationship, tone, goal); }
+        try { generatedReply = await remoteComposeReply(incoming, relationship, tone, goal, length); }
         catch { generatedReply = local; showToast(t("composeFail"), 3400); }
       } else { await new Promise(resolve => setTimeout(resolve, 480)); generatedReply = local; }
-      const intent = REPLY_ENGINE?.inferIntent?.(incoming) || "neutral";
+      const intent = analysis.intent;
       const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(generatedReply, intent);
-      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned) throw new Error("Blocked output");
+      const audit = replyAuditResult(generatedReply, lastReplyContext);
+      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned || !audit.ok) throw new Error("Blocked output");
       $("#replyGeneratedText").value = generatedReply;
+      renderReplyAudit(generatedReply, lastReplyContext);
       $("#replyStatusBar").style.width = "100%"; $("#replyStatusPercent").textContent = "100%";
       setTimeout(() => { $("#replyStatus").hidden = true; $("#replyGeneratedCard").hidden = false; $("#replyGeneratedCard").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 180);
     } catch { showReplySafety(t("replySafety")); }
@@ -1992,14 +2139,20 @@
     const transient = owned !== true && owned !== "true" && ["initializing", "restoring_purchases", "verifying_purchase"].includes(String(reason || ""));
     if (transient) {
       entitlementState = "checking";
-      if (price) premiumPrice = String(price);
+      if (price) {
+        premiumPrice = localizedMonthlyPrice(price);
+        if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+      }
       $$(".price-label").forEach(label => label.textContent = premiumPrice);
       return;
     }
     const wasPremium = isPremium;
     isPremium = betaAccess || owned === true || owned === "true";
     entitlementState = isPremium ? "premium" : "free";
-    if (price) premiumPrice = String(price);
+    if (price) {
+      premiumPrice = localizedMonthlyPrice(price);
+      if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+    }
     $$(".price-label").forEach(label => label.textContent = premiumPrice);
     $(".premium-settings-card").hidden = isPremium;
     setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
@@ -2065,6 +2218,18 @@
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 3800); return; }
     if (trustedEntitlementSource && window.NurBilling?.restorePurchases) { window.NurBilling.restorePurchases(); return; }
     showToast(t("purchaseUnavailable"), 3800);
+  }
+
+  function manageSubscription() {
+    if (trustedEntitlementSource && typeof window.NurBilling?.manageSubscription === "function") {
+      window.NurBilling.manageSubscription();
+      return;
+    }
+    const isAppleDevice = /iPad|iPhone|iPod|Macintosh/u.test(navigator.userAgent) && !/Android/u.test(navigator.userAgent);
+    const target = isAppleDevice
+      ? (CONFIG.appStoreUrl || "https://apps.apple.com/account/subscriptions")
+      : (CONFIG.playStoreUrl || `https://play.google.com/store/account/subscriptions?sku=${encodeURIComponent(CONFIG.subscriptionProductId || "glowletter_premium_monthly")}&package=com.franceisl.glowletternext`);
+    window.open(target, "_blank", "noopener");
   }
 
   class RainScene {
@@ -2138,7 +2303,7 @@
 
   function toggleFavorite(){const entry=currentEntry();const key=String(entry.id);if(favorites.has(key))favorites.delete(key);else favorites.add(key);localStorage.setItem("nurFavorites",JSON.stringify([...favorites]));renderLetter();scheduleCloudSync();haptic();}
 
-  function shareLetter(){const entry=currentEntry();const url=new URL(location.href);url.searchParams.delete(BETA_PARAMETER);url.searchParams.set("from",fromName);url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));url.searchParams.delete("quote");const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};if(navigator.share)navigator.share(data).catch(()=>{});else copyText(url.toString());}
+  function shareLetter(){const entry=currentEntry();const url=new URL(location.href);url.searchParams.delete(BETA_PARAMETER);url.searchParams.set("from",fromName);url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));url.searchParams.delete("quote");url.hash=acceptedBetaCapability?new URLSearchParams({access:acceptedBetaCapability}).toString():"";const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};if(navigator.share)navigator.share(data).catch(()=>{});else copyText(url.toString());}
 
   function buildAppShareUrl() {
     const publicUrl = new URL(CONFIG.publicShareUrl || `${location.origin}${location.pathname}`, location.href);
@@ -2185,9 +2350,10 @@
     $$("[data-ai-mode]").forEach(button=>{button.addEventListener("click",()=>setAiMode(button.dataset.aiMode));button.addEventListener("keydown",event=>{if(!["ArrowLeft","ArrowRight"].includes(event.key))return;event.preventDefault();const next=button.dataset.aiMode==="letter"?$("#replyModeTab"):$("#letterModeTab");setAiMode(next.dataset.aiMode);next.focus();});});
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",saveSettings);
-    $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);
+    $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
-    $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const relationship=REPLY_RELATIONSHIPS.has($("#replyRelationship").value)?$("#replyRelationship").value:"auto";if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showReplySafety(t("replySafety"));else copyText(value);});
+    $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const audit=renderReplyAudit(value,lastReplyContext);if(!audit.ok){showToast(t("replyAuditWarning"),3600);return;}copyText(value);});
+    $("#replyIncoming").addEventListener("input",()=>{clearTimeout(replyInsightTimer);replyInsightTimer=setTimeout(updateReplyInsight,120);});$("#replyGoal").addEventListener("input",updateReplyInsight);[$("#replyRelationship"),$("#replyTone"),$("#replyLength")].forEach(control=>control.addEventListener("change",updateReplyInsight));$("#replyGeneratedText").addEventListener("input",()=>renderReplyAudit($("#replyGeneratedText").value,lastReplyContext));
     $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
@@ -2196,7 +2362,7 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast("Max 18 MB");try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("weatherFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);
+    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{updateFullscreenControl();localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");scheduleCloudSync();});
@@ -2208,6 +2374,23 @@
     addEventListener("pointermove",event=>{if(innerWidth<900||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const x=(event.clientX/innerWidth-.5)*1.2;const y=(event.clientY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;},{passive:true});
   }
 
+  async function setupServiceWorker() {
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    const registration = await navigator.serviceWorker.register("sw.js?v=13", { updateViaCache: "none" });
+    let reloading = false;
+    if (hadController) {
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloading) return;
+        reloading = true;
+        location.reload();
+      });
+    }
+    const checkForUpdate = () => registration.update().catch(() => {});
+    checkForUpdate();
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) checkForUpdate(); });
+    setInterval(checkForUpdate, 60 * 60 * 1000);
+  }
+
   async function init(){
     if(LETTERS.length!==50)console.warn(`Expected 50 letters, received ${LETTERS.length}`);
     const storedVolume=Number(localStorage.getItem("nurVolume")||.62);audio.volume=Number.isFinite(storedVolume)?Math.max(0,Math.min(storedVolume,1)):.62;
@@ -2215,7 +2398,7 @@
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
-      const registerServiceWorker=()=>navigator.serviceWorker.register("sw.js?v=12").catch(()=>{});
+      const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});
     }
     try{const savedAudio=await loadMedia("audio");if(savedAudio?.blob){customAudioBlob=savedAudio.blob;$("#customTrackName").textContent=savedAudio.name||"Custom audio";}else if(selectedTrack===3)selectedTrack=0;}catch{if(selectedTrack===3)selectedTrack=0;}

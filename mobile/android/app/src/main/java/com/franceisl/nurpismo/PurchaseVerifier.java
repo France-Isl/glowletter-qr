@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
 
+import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 
 import org.json.JSONObject;
@@ -25,7 +26,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Production verification hook. The app never embeds Play Console credentials.
  * A trusted backend must validate the purchase token with Google Play and
- * acknowledge the non-consumable before returning an entitlement.
+ * acknowledge the expected product before returning an entitlement.
  */
 final class PurchaseVerifier {
     interface Callback {
@@ -84,8 +85,19 @@ final class PurchaseVerifier {
         }
     }
 
-    void verify(Purchase purchase, Callback callback) {
+    void verify(
+            Purchase purchase,
+            String expectedProductId,
+            String expectedProductType,
+            Callback callback
+    ) {
         if (closed.get()) {
+            return;
+        }
+        if (!isExpectedProduct(expectedProductId, expectedProductType)
+                || purchase == null
+                || !purchase.getProducts().contains(expectedProductId)) {
+            callback.onResult(Result.rejection("verification_product_not_expected"));
             return;
         }
         if (!isConfigured()) {
@@ -95,7 +107,11 @@ final class PurchaseVerifier {
 
         final String requestHash;
         try {
-            requestHash = requestHashFor(purchase);
+            requestHash = requestHashFor(
+                    expectedProductId,
+                    expectedProductType,
+                    purchase.getPurchaseToken()
+            );
         } catch (Exception ignored) {
             callback.onResult(Result.failure("request_hash_failed"));
             return;
@@ -118,7 +134,13 @@ final class PurchaseVerifier {
                     }
                     Result result;
                     try {
-                        result = verifyBlocking(purchase, requestHash, integrityToken);
+                        result = verifyBlocking(
+                                purchase,
+                                expectedProductId,
+                                expectedProductType,
+                                requestHash,
+                                integrityToken
+                        );
                     } catch (Exception ignored) {
                         // Never log or expose purchaseToken or Integrity token in an exception.
                         result = Result.failure("verification_network_error");
@@ -140,17 +162,20 @@ final class PurchaseVerifier {
 
     private Result verifyBlocking(
             Purchase purchase,
+            String expectedProductId,
+            String expectedProductType,
             String requestHash,
             String integrityToken
     ) throws Exception {
         JSONObject request = new JSONObject()
                 .put("packageName", releasePackageName())
-                .put("productId", BuildConfig.FULL_ACCESS_PRODUCT_ID)
+                .put("productId", expectedProductId)
+                .put("productType", expectedProductType)
                 .put("purchaseToken", purchase.getPurchaseToken())
                 .put("purchaseState", purchase.getPurchaseState())
                 .put("acknowledgedOnDevice", purchase.isAcknowledged())
                 .put("appVersion", BuildConfig.VERSION_NAME)
-                .put("requestHashVersion", "v1")
+                .put("requestHashVersion", "v2")
                 .put("requestHash", requestHash)
                 .put("integrityToken", integrityToken);
 
@@ -191,11 +216,15 @@ final class PurchaseVerifier {
         boolean acknowledged = response.optBoolean("acknowledged", false);
         boolean integrityVerified = response.optBoolean("integrityVerified", false);
         String responseProduct = response.optString("productId", "");
+        String responseProductType = response.optString("productType", "");
         String responseRequestHash = response.optString("requestHash", "");
         String reason = response.optString("reason", valid ? "server_verified" : "server_rejected");
 
-        if (!BuildConfig.FULL_ACCESS_PRODUCT_ID.equals(responseProduct)) {
+        if (!expectedProductId.equals(responseProduct)) {
             return Result.rejection("verification_product_mismatch");
+        }
+        if (!expectedProductType.equals(responseProductType)) {
+            return Result.rejection("verification_product_type_mismatch");
         }
         if (!requestHash.equals(responseRequestHash)) {
             return Result.rejection("verification_request_hash_mismatch");
@@ -211,17 +240,40 @@ final class PurchaseVerifier {
                 || status == 422;
     }
 
-    /**
-     * Version v1 canonical string, also recomputed by the backend:
-     * packageName + "\n" + productId + "\n" + purchaseToken.
-     */
-    private static String requestHashFor(Purchase purchase) throws Exception {
-        String canonical = releasePackageName()
-                + "\n" + BuildConfig.FULL_ACCESS_PRODUCT_ID
-                + "\n" + purchase.getPurchaseToken();
+    static boolean isExpectedProduct(String productId, String productType) {
+        return (BuildConfig.SUBSCRIPTION_PRODUCT_ID.equals(productId)
+                && BillingClient.ProductType.SUBS.equals(productType))
+                || (BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID.equals(productId)
+                && BillingClient.ProductType.INAPP.equals(productType));
+    }
+
+    /** Version v2 binds the Integrity request to the exact product and product type. */
+    private static String requestHashFor(
+            String productId,
+            String productType,
+            String purchaseToken
+    ) throws Exception {
+        String canonical = canonicalRequest(
+                releasePackageName(),
+                productId,
+                productType,
+                purchaseToken
+        );
         byte[] digest = MessageDigest.getInstance("SHA-256")
                 .digest(canonical.getBytes(StandardCharsets.UTF_8));
         return Base64.encodeToString(digest, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+    }
+
+    static String canonicalRequest(
+            String packageName,
+            String productId,
+            String productType,
+            String purchaseToken
+    ) {
+        return packageName
+                + "\n" + productId
+                + "\n" + productType
+                + "\n" + purchaseToken;
     }
 
     private static String releasePackageName() {

@@ -42,10 +42,37 @@ final class BillingManager implements PurchasesUpdatedListener {
     }
 
     private interface ProductCallback {
-        void onResult(ProductDetails details, ProductDetails.OneTimePurchaseOfferDetails offer, String error);
+        void onResult(
+                ProductDetails details,
+                ProductDetails.SubscriptionOfferDetails offer,
+                String priceLabel,
+                String error
+        );
     }
 
-    private static final String DEFAULT_PRICE = "€7.99";
+    private interface PurchasesCallback {
+        void onResult(BillingResult result, List<Purchase> purchases);
+    }
+
+    private static final class PurchaseCandidate {
+        final Purchase purchase;
+        final String productId;
+        final String productType;
+
+        PurchaseCandidate(Purchase purchase, String productId, String productType) {
+            this.purchase = purchase;
+            this.productId = productId;
+            this.productType = productType;
+        }
+    }
+
+    private static final class CandidateCollection {
+        final List<PurchaseCandidate> candidates = new ArrayList<>();
+        boolean pending;
+        boolean incomplete;
+    }
+
+    private static final String DEFAULT_PRICE = "€21.99/month";
     private static final String DEBUG_PREFS = "nur_billing_debug_only";
     private static final String DEBUG_MOCK_KEY = "mock_full_access";
 
@@ -96,9 +123,9 @@ final class BillingManager implements PurchasesUpdatedListener {
         }
         integrityProvider.warmUp();
         ensureReady(() -> {
-            queryProduct((details, offer, error) -> {
+            querySubscriptionProduct((details, offer, priceLabel, error) -> {
                 if (details != null && offer != null) {
-                    emit(state.entitled, offer.getFormattedPrice(), state.reason, state.mock);
+                    emit(state.entitled, priceLabel, state.reason, state.mock);
                 }
             });
             queryOwnedPurchases("startup_restore");
@@ -120,7 +147,7 @@ final class BillingManager implements PurchasesUpdatedListener {
         }
     }
 
-    void purchaseFullAccess() {
+    void purchaseSubscription() {
         if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
             debugPreferences.edit().putBoolean(DEBUG_MOCK_KEY, true).apply();
             emit(true, DEFAULT_PRICE, "debug_mock_only_no_payment", true);
@@ -132,7 +159,7 @@ final class BillingManager implements PurchasesUpdatedListener {
         }
 
         emitTransient("opening_google_play");
-        ensureReady(() -> queryProduct((details, offer, error) -> {
+        ensureReady(() -> querySubscriptionProduct((details, offer, priceLabel, error) -> {
             if (details == null || offer == null) {
                 emitTransient(error == null ? "product_unavailable" : error);
                 return;
@@ -141,9 +168,11 @@ final class BillingManager implements PurchasesUpdatedListener {
             BillingFlowParams.ProductDetailsParams.Builder productParams =
                     BillingFlowParams.ProductDetailsParams.newBuilder().setProductDetails(details);
             String offerToken = offer.getOfferToken();
-            if (offerToken != null && !offerToken.trim().isEmpty()) {
-                productParams.setOfferToken(offerToken);
+            if (offerToken == null || offerToken.trim().isEmpty()) {
+                emitTransient("subscription_offer_token_missing");
+                return;
             }
+            productParams.setOfferToken(offerToken);
 
             BillingFlowParams flowParams = BillingFlowParams.newBuilder()
                     .setProductDetailsParamsList(Collections.singletonList(productParams.build()))
@@ -158,7 +187,7 @@ final class BillingManager implements PurchasesUpdatedListener {
             if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
                 queryOwnedPurchases("launch_already_owned_restore");
             } else {
-                emitTransient(offer.getFormattedPrice(), "billing_launch_" + responseCode);
+                emitTransient(priceLabel, "billing_launch_" + responseCode);
             }
         }));
     }
@@ -189,7 +218,13 @@ final class BillingManager implements PurchasesUpdatedListener {
         int code = billingResult.getResponseCode();
         if (code == BillingClient.BillingResponseCode.OK && purchases != null) {
             long generation = entitlementCoordinator.beginOperation();
-            processPurchases(purchases, "purchase_update", generation);
+            reconcilePurchases(
+                    purchases,
+                    "purchase_update",
+                    generation,
+                    false,
+                    "purchase_update_product_mismatch"
+            );
         } else if (code == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
             queryOwnedPurchases("callback_already_owned_restore");
         } else if (code == BillingClient.BillingResponseCode.USER_CANCELED) {
@@ -242,10 +277,10 @@ final class BillingManager implements PurchasesUpdatedListener {
         });
     }
 
-    private void queryProduct(ProductCallback callback) {
+    private void querySubscriptionProduct(ProductCallback callback) {
         QueryProductDetailsParams.Product product = QueryProductDetailsParams.Product.newBuilder()
-                .setProductId(BuildConfig.FULL_ACCESS_PRODUCT_ID)
-                .setProductType(BillingClient.ProductType.INAPP)
+                .setProductId(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
+                .setProductType(BillingClient.ProductType.SUBS)
                 .build();
         QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
                 .setProductList(Collections.singletonList(product))
@@ -257,44 +292,77 @@ final class BillingManager implements PurchasesUpdatedListener {
                         return;
                     }
                     if (billingResult.getResponseCode() != BillingClient.BillingResponseCode.OK) {
-                        callback.onResult(null, null,
+                        callback.onResult(null, null, DEFAULT_PRICE,
                                 "product_query_" + billingResult.getResponseCode());
                         return;
                     }
                     ProductDetails details = null;
                     for (ProductDetails candidate : result.getProductDetailsList()) {
-                        if (BuildConfig.FULL_ACCESS_PRODUCT_ID.equals(candidate.getProductId())) {
+                        if (BuildConfig.SUBSCRIPTION_PRODUCT_ID.equals(candidate.getProductId())
+                                && BillingClient.ProductType.SUBS.equals(candidate.getProductType())) {
                             details = candidate;
                             break;
                         }
                     }
                     if (details == null) {
-                        callback.onResult(null, null, "product_not_configured_in_play_console");
+                        callback.onResult(
+                                null,
+                                null,
+                                DEFAULT_PRICE,
+                                "subscription_not_configured_in_play_console"
+                        );
                         return;
                     }
 
-                    ProductDetails.OneTimePurchaseOfferDetails offer = null;
-                    List<ProductDetails.OneTimePurchaseOfferDetails> offers =
-                            details.getOneTimePurchaseOfferDetailsList();
-                    if (offers != null && !offers.isEmpty()) {
-                        // A permanent entitlement must never fall back to a
-                        // rental offer, even if the Play catalog is misconfigured.
-                        for (ProductDetails.OneTimePurchaseOfferDetails candidate : offers) {
-                            if (candidate.getRentalDetails() == null) {
-                                offer = candidate;
-                                break;
+                    List<ProductDetails.SubscriptionOfferDetails> offers =
+                            details.getSubscriptionOfferDetails();
+                    List<SubscriptionOfferPolicy.Candidate> policyCandidates = new ArrayList<>();
+                    if (offers != null) {
+                        for (int index = 0; index < offers.size(); index += 1) {
+                            ProductDetails.SubscriptionOfferDetails offer = offers.get(index);
+                            ProductDetails.PricingPhase recurringPhase = null;
+                            if (offer.getPricingPhases() != null
+                                    && offer.getPricingPhases().getPricingPhaseList() != null) {
+                                for (ProductDetails.PricingPhase phase
+                                        : offer.getPricingPhases().getPricingPhaseList()) {
+                                    if (phase.getRecurrenceMode()
+                                            == ProductDetails.RecurrenceMode.INFINITE_RECURRING
+                                            && SubscriptionOfferPolicy.MONTHLY_BILLING_PERIOD.equals(
+                                            phase.getBillingPeriod())) {
+                                        recurringPhase = phase;
+                                        break;
+                                    }
+                                }
                             }
+                            policyCandidates.add(new SubscriptionOfferPolicy.Candidate(
+                                    index,
+                                    offer.getBasePlanId(),
+                                    offer.getOfferId(),
+                                    offer.getOfferToken(),
+                                    recurringPhase == null ? null : recurringPhase.getFormattedPrice(),
+                                    recurringPhase == null ? null : recurringPhase.getBillingPeriod(),
+                                    recurringPhase != null
+                            ));
                         }
                     }
-                    if (offer == null) {
-                        ProductDetails.OneTimePurchaseOfferDetails legacyOffer =
-                                details.getOneTimePurchaseOfferDetails();
-                        if (legacyOffer != null && legacyOffer.getRentalDetails() == null) {
-                            offer = legacyOffer;
-                        }
+
+                    SubscriptionOfferPolicy.Selection selection =
+                            SubscriptionOfferPolicy.selectBasePlan(
+                                    policyCandidates,
+                                    BuildConfig.SUBSCRIPTION_BASE_PLAN_ID
+                            );
+                    if (selection.candidate == null || offers == null) {
+                        callback.onResult(null, null, DEFAULT_PRICE, selection.error);
+                        return;
                     }
-                    callback.onResult(details, offer,
-                            offer == null ? "no_eligible_full_access_offer" : null);
+                    ProductDetails.SubscriptionOfferDetails selectedOffer =
+                            offers.get(selection.candidate.sourceIndex);
+                    callback.onResult(
+                            details,
+                            selectedOffer,
+                            SubscriptionOfferPolicy.priceLabel(selection.candidate, DEFAULT_PRICE),
+                            null
+                    );
                 });
     }
 
@@ -313,48 +381,153 @@ final class BillingManager implements PurchasesUpdatedListener {
         if (generation < 0L) {
             return;
         }
-        QueryPurchasesParams params = QueryPurchasesParams.newBuilder()
-                .setProductType(BillingClient.ProductType.INAPP)
-                .build();
-        billingClient.queryPurchasesAsync(params, (billingResult, purchases) -> {
+        queryOwnedProductType(BillingClient.ProductType.SUBS, (subscriptionResult, subscriptions) -> {
             if (closed || !entitlementCoordinator.isCurrent(generation)) {
                 return;
             }
-            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                processPurchases(purchases, source, generation);
-            } else {
-                emitTransient("restore_failed_" + billingResult.getResponseCode());
-            }
+            queryOwnedProductType(BillingClient.ProductType.INAPP, (legacyResult, legacyPurchases) -> {
+                if (closed || !entitlementCoordinator.isCurrent(generation)) {
+                    return;
+                }
+                boolean subscriptionQuerySucceeded = subscriptionResult.getResponseCode()
+                        == BillingClient.BillingResponseCode.OK;
+                boolean legacyQuerySucceeded = legacyResult.getResponseCode()
+                        == BillingClient.BillingResponseCode.OK;
+                List<Purchase> combined = new ArrayList<>();
+                if (subscriptionQuerySucceeded && subscriptions != null) {
+                    combined.addAll(subscriptions);
+                }
+                if (legacyQuerySucceeded && legacyPurchases != null) {
+                    combined.addAll(legacyPurchases);
+                }
+                String queryFailureReason = null;
+                if (!subscriptionQuerySucceeded) {
+                    queryFailureReason = "subscription_restore_failed_"
+                            + subscriptionResult.getResponseCode();
+                } else if (!legacyQuerySucceeded) {
+                    queryFailureReason = "legacy_restore_failed_"
+                            + legacyResult.getResponseCode();
+                }
+                reconcilePurchases(
+                        combined,
+                        source,
+                        generation,
+                        subscriptionQuerySucceeded && legacyQuerySucceeded,
+                        queryFailureReason
+                );
+            });
         });
     }
 
-    private void processPurchases(List<Purchase> purchases, String source, long generation) {
+    private void queryOwnedProductType(String productType, PurchasesCallback callback) {
+        QueryPurchasesParams params = QueryPurchasesParams.newBuilder()
+                .setProductType(productType)
+                .build();
+        billingClient.queryPurchasesAsync(params, callback::onResult);
+    }
+
+    private void reconcilePurchases(
+            List<Purchase> purchases,
+            String source,
+            long generation,
+            boolean absenceIsAuthoritative,
+            String incompleteQueryReason
+    ) {
         if (closed || !entitlementCoordinator.isCurrent(generation)) {
             return;
         }
-        Purchase fullAccessPurchase = null;
+        CandidateCollection collection = collectCandidates(purchases);
+        if (collection.candidates.isEmpty()) {
+            entitlementCoordinator.invalidateVerification();
+            if (!absenceIsAuthoritative) {
+                emitTransient(incompleteQueryReason == null
+                        ? source + "_incomplete_restore"
+                        : incompleteQueryReason);
+            } else if (collection.pending) {
+                emit(false, state.priceLabel, "purchase_pending", false);
+            } else if (collection.incomplete) {
+                emit(false, state.priceLabel, "purchase_not_completed", false);
+            } else {
+                emit(false, state.priceLabel, source + "_not_owned", false);
+            }
+            return;
+        }
+        // A direct purchase callback or a partial two-type restore cannot prove
+        // that the other entitlement type is absent. Only a complete SUBS +
+        // INAPP reconciliation may authoritatively revoke the current grant.
+        verifyCandidates(
+                collection.candidates,
+                0,
+                generation,
+                !absenceIsAuthoritative,
+                incompleteQueryReason
+        );
+    }
+
+    private CandidateCollection collectCandidates(List<Purchase> purchases) {
+        CandidateCollection collection = new CandidateCollection();
+        addCandidatesForProduct(
+                purchases,
+                BuildConfig.SUBSCRIPTION_PRODUCT_ID,
+                BillingClient.ProductType.SUBS,
+                collection
+        );
+        addCandidatesForProduct(
+                purchases,
+                BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID,
+                BillingClient.ProductType.INAPP,
+                collection
+        );
+        return collection;
+    }
+
+    private void addCandidatesForProduct(
+            List<Purchase> purchases,
+            String productId,
+            String productType,
+            CandidateCollection collection
+    ) {
+        if (purchases == null) {
+            return;
+        }
         for (Purchase purchase : purchases) {
-            if (purchase.getProducts().contains(BuildConfig.FULL_ACCESS_PRODUCT_ID)) {
-                fullAccessPurchase = purchase;
-                break;
+            if (purchase == null || !purchase.getProducts().contains(productId)) {
+                continue;
+            }
+            if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                collection.candidates.add(new PurchaseCandidate(purchase, productId, productType));
+            } else if (purchase.getPurchaseState() == Purchase.PurchaseState.PENDING) {
+                collection.pending = true;
+            } else {
+                collection.incomplete = true;
             }
         }
-        if (fullAccessPurchase == null) {
-            entitlementCoordinator.invalidateVerification();
-            emit(false, state.priceLabel, source + "_not_owned", false);
+    }
+
+    private void verifyCandidates(
+            List<PurchaseCandidate> candidates,
+            int index,
+            long generation,
+            boolean encounteredTransientFailure,
+            String lastReason
+    ) {
+        if (closed || !entitlementCoordinator.isCurrent(generation)) {
             return;
         }
-        if (fullAccessPurchase.getPurchaseState() == Purchase.PurchaseState.PENDING) {
-            emitTransient("purchase_pending");
-            return;
-        }
-        if (fullAccessPurchase.getPurchaseState() != Purchase.PurchaseState.PURCHASED) {
-            entitlementCoordinator.invalidateVerification();
-            emit(false, state.priceLabel, "purchase_not_completed", false);
+        if (index >= candidates.size()) {
+            if (encounteredTransientFailure) {
+                emitTransient(lastReason == null ? "verification_failed" : lastReason);
+            } else {
+                emit(false, state.priceLabel,
+                        lastReason == null ? "verification_rejected" : lastReason,
+                        false);
+            }
             return;
         }
 
-        String purchaseToken = fullAccessPurchase.getPurchaseToken();
+        PurchaseCandidate candidate = candidates.get(index);
+        String purchaseToken = candidate.purchase.getPurchaseToken();
+
         EntitlementCoordinator.VerificationAction verificationAction =
                 entitlementCoordinator.beginVerification(purchaseToken, generation);
         if (verificationAction == EntitlementCoordinator.VerificationAction.STALE) {
@@ -364,21 +537,33 @@ final class BillingManager implements PurchasesUpdatedListener {
         if (verificationAction == EntitlementCoordinator.VerificationAction.COALESCED) {
             return;
         }
-        verifier.verify(fullAccessPurchase, result -> {
+        verifier.verify(
+                candidate.purchase,
+                candidate.productId,
+                candidate.productType,
+                result -> {
             if (closed || !entitlementCoordinator.completeVerification(purchaseToken)) {
                 return;
             }
             // Fail closed: both server verification and acknowledgement are required.
             if (result.verified && result.acknowledged && result.integrityVerified) {
                 emit(true, state.priceLabel, result.reason, false);
-            } else if (result.authoritativeRejection) {
-                emit(false, state.priceLabel, result.reason, false);
-            } else if (result.verified && result.acknowledged) {
-                emitTransient("server_did_not_verify_integrity");
-            } else if (result.verified) {
-                emitTransient("server_did_not_acknowledge");
             } else {
-                emitTransient(result.reason);
+                String failureReason;
+                if (result.verified && result.acknowledged) {
+                    failureReason = "server_did_not_verify_integrity";
+                } else if (result.verified) {
+                    failureReason = "server_did_not_acknowledge";
+                } else {
+                    failureReason = result.reason;
+                }
+                verifyCandidates(
+                        candidates,
+                        index + 1,
+                        generation,
+                        encounteredTransientFailure || !result.authoritativeRejection,
+                        failureReason
+                );
             }
         });
     }
@@ -415,13 +600,20 @@ final class BillingManager implements PurchasesUpdatedListener {
                     .put("entitled", state.entitled)
                     .put("priceLabel", state.priceLabel)
                     .put("reason", state.reason)
-                    .put("productId", BuildConfig.FULL_ACCESS_PRODUCT_ID)
+                    .put("productId", BuildConfig.SUBSCRIPTION_PRODUCT_ID)
+                    .put("productType", BillingClient.ProductType.SUBS)
+                    .put("basePlanId", BuildConfig.SUBSCRIPTION_BASE_PLAN_ID)
+                    .put("legacyProductId", BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
+                    .put("legacyProductType", BillingClient.ProductType.INAPP)
                     .put("freeLetterLimit", BuildConfig.FREE_LETTER_LIMIT)
                     .put("purchaseConfigured", isPurchaseSecurityConfigured())
                     .put("mock", state.mock)
                     .toString();
         } catch (Exception ignored) {
-            return "{\"entitled\":false,\"priceLabel\":\"€7.99\",\"reason\":\"serialization_error\"}";
+            return "{\"entitled\":false,\"priceLabel\":\"€21.99/month\","
+                    + "\"reason\":\"serialization_error\","
+                    + "\"productId\":\"glowletter_premium_monthly\","
+                    + "\"legacyProductId\":\"full_access\"}";
         }
     }
 

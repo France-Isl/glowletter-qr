@@ -1,10 +1,14 @@
 import AuthenticationServices
+import Combine
 import SwiftUI
 import WebKit
 
+@MainActor
 struct WebViewContainer: UIViewRepresentable {
+    @ObservedObject var subscriptionStore: SubscriptionStore
+
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        Coordinator(subscriptionStore: subscriptionStore)
     }
 
     func makeUIView(context: Context) -> WKWebView {
@@ -54,7 +58,8 @@ struct WebViewContainer: UIViewRepresentable {
             return webView
         }
 
-        webView.loadFileURL(index, allowingReadAccessTo: webRoot)
+        let launchURL = OwnerAccessConfiguration.launchURL(for: index)
+        webView.loadFileURL(launchURL, allowingReadAccessTo: webRoot)
         return webView
     }
 
@@ -68,23 +73,72 @@ struct WebViewContainer: UIViewRepresentable {
         coordinator.webView = nil
     }
 
+    @MainActor
     final class Coordinator: NSObject,
                              WKNavigationDelegate,
                              WKUIDelegate,
                              WKScriptMessageHandler,
                              ASWebAuthenticationPresentationContextProviding {
         weak var webView: WKWebView?
+        private let subscriptionStore: SubscriptionStore
+        private var entitlementCancellable: AnyCancellable?
         private var authSession: ASWebAuthenticationSession?
         private var trustedMainDocumentReady = false
         private var pendingAuthCallbackURL: URL?
 
+        init(subscriptionStore: SubscriptionStore) {
+            self.subscriptionStore = subscriptionStore
+            super.init()
+            entitlementCancellable = subscriptionStore.$snapshot
+                .removeDuplicates()
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] snapshot in
+                    self?.sendEntitlement(snapshot)
+                }
+        }
+
         static let billingBootstrap = """
         (function () {
-          const state = { entitled: false, priceLabel: '€7.99', reason: 'storekit2_not_configured', productId: 'full_access', freeLetterLimit: 10, purchaseConfigured: false, mock: false };
-          window.NurBilling = Object.freeze({
-            getEntitlement: function () { return JSON.stringify(state); },
-            purchaseFullAccess: function () { window.webkit.messageHandlers.nurBilling.postMessage({ action: 'purchaseFullAccess' }); },
-            restorePurchases: function () { window.webkit.messageHandlers.nurBilling.postMessage({ action: 'restorePurchases' }); }
+          const state = {
+            entitled: false,
+            owned: false,
+            premium: false,
+            priceLabel: '€21.99/month',
+            reason: 'initializing',
+            productId: 'glowletter_premium_monthly',
+            legacyProductId: 'full_access',
+            freeLetterLimit: 10,
+            purchaseConfigured: false,
+            mock: false
+          };
+          const applyNativeState = function (payload) {
+            if (!payload || typeof payload !== 'object') return;
+            Object.assign(state, payload);
+            if (typeof window.onNativeEntitlement === 'function') {
+              window.onNativeEntitlement(Boolean(state.entitled), state.priceLabel, state.reason);
+            }
+            window.dispatchEvent(new CustomEvent('nur-entitlement', { detail: Object.assign({}, state) }));
+          };
+          Object.defineProperty(window, '__nurApplyEntitlement', {
+            value: applyNativeState,
+            configurable: false,
+            writable: false
+          });
+          Object.defineProperty(window, 'NurBilling', {
+            value: Object.freeze({
+              getEntitlement: function () { return JSON.stringify(state); },
+              purchaseFullAccess: function () {
+                window.webkit.messageHandlers.nurBilling.postMessage({ action: 'purchaseFullAccess' });
+              },
+              restorePurchases: function () {
+                window.webkit.messageHandlers.nurBilling.postMessage({ action: 'restorePurchases' });
+              },
+              manageSubscription: function () {
+                window.webkit.messageHandlers.nurBilling.postMessage({ action: 'manageSubscription' });
+              }
+            }),
+            configurable: false,
+            writable: false
           });
         })();
         """
@@ -107,7 +161,7 @@ struct WebViewContainer: UIViewRepresentable {
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             trustedMainDocumentReady = isTrustedMainDocumentURL(webView.url)
-            sendUnavailable(reason: "storekit2_not_configured")
+            sendEntitlement(subscriptionStore.snapshot)
             dispatchPendingAuthCallback()
         }
 
@@ -137,11 +191,15 @@ struct WebViewContainer: UIViewRepresentable {
             case "nurBilling":
                 switch action {
                 case "purchaseFullAccess":
-                    sendUnavailable(reason: "storekit2_purchase_not_configured")
+                    Task { await subscriptionStore.purchasePremium() }
                 case "restorePurchases":
-                    sendUnavailable(reason: "storekit2_restore_not_configured")
+                    Task { await subscriptionStore.restorePurchases() }
+                case "manageSubscription":
+                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                        UIApplication.shared.open(url)
+                    }
                 default:
-                    sendUnavailable(reason: "storekit2_unknown_action")
+                    return
                 }
             case "nurAuth":
                 guard action == "openAuthorizeUrl",
@@ -219,22 +277,22 @@ struct WebViewContainer: UIViewRepresentable {
         }
 
         private func isTrustedMainDocumentURL(_ url: URL?) -> Bool {
-            guard let url,
-                  url.isFileURL,
-                  url.query == nil,
-                  url.fragment == nil,
-                  let trusted = Bundle.main.url(
-                    forResource: "index",
-                    withExtension: "html",
-                    subdirectory: "WebResources"
-                  ) else { return false }
-            return url.standardizedFileURL.path == trusted.standardizedFileURL.path
+            guard let trusted = Bundle.main.url(
+                forResource: "index",
+                withExtension: "html",
+                subdirectory: "WebResources"
+            ) else { return false }
+            return OwnerAccessConfiguration.isAllowedIndexURL(url, trustedIndexURL: trusted)
         }
 
-        private func sendUnavailable(reason: String) {
-            guard let webView else { return }
-            let encodedReason = Self.jsonString(reason)
-            let script = "if(typeof window.onNativeEntitlement==='function'){window.onNativeEntitlement(false,'€7.99',\(encodedReason));}"
+        private func sendEntitlement(_ snapshot: BillingSnapshot) {
+            guard let webView,
+                  trustedMainDocumentReady,
+                  isTrustedMainDocumentURL(webView.url),
+                  JSONSerialization.isValidJSONObject(snapshot.bridgePayload),
+                  let data = try? JSONSerialization.data(withJSONObject: snapshot.bridgePayload),
+                  let payload = String(data: data, encoding: .utf8) else { return }
+            let script = "if(typeof window.__nurApplyEntitlement==='function'){window.__nurApplyEntitlement(\(payload));}"
             webView.evaluateJavaScript(script)
         }
 

@@ -52,11 +52,13 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.1.1-next-preview"
+        versionCode = 4
+        versionName = "2.0.0"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
-        buildConfigField "String", "FULL_ACCESS_PRODUCT_ID", quoteBuildConfig("full_access")
+        buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
+        buildConfigField "String", "SUBSCRIPTION_BASE_PLAN_ID", quoteBuildConfig("monthly")
+        buildConfigField "String", "LEGACY_FULL_ACCESS_PRODUCT_ID", quoteBuildConfig("full_access")
         buildConfigField "long", "PLAY_INTEGRITY_CLOUD_PROJECT_NUMBER", "${cloudProjectNumber}L"
         buildConfigField "int", "FREE_LETTER_LIMIT", "10"
         buildConfigField "String", "OWNER_BETA_CAPABILITY", quoteBuildConfig(ownerBetaCapability)
@@ -160,6 +162,7 @@ android.sourceSets.main.assets.srcDir(generatedWebAssets.get().asFile)
 tasks.named("preBuild").configure { dependsOn(syncWebAssets) }
 
 dependencies {
+    implementation "androidx.activity:activity:1.9.0"
     implementation "androidx.webkit:webkit:1.16.0"
     implementation "com.android.billingclient:billing:9.1.0"
     implementation "com.google.android.play:integrity:1.6.0"

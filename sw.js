@@ -1,30 +1,31 @@
-const CACHE = "glow-letter-next-v12";
+const CACHE_PREFIX = "glow-letter-next-";
+const CACHE = `${CACHE_PREFIX}v13`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=12",
-  "experience.css?v=12",
-  "config.js?v=12",
-  "vendor/supabase-2.110.9.js?v=12",
-  "letters.js?v=12",
-  "reply-engine.js?v=12",
-  "app.js?v=12",
-  "experience.js?v=12",
-  "manifest.webmanifest?v=12",
+  "styles.css?v=13",
+  "experience.css?v=13",
+  "config.js?v=13",
+  "vendor/supabase-2.110.9.js?v=13",
+  "letters.js?v=13",
+  "reply-engine.js?v=13",
+  "app.js?v=13",
+  "experience.js?v=13",
+  "manifest.webmanifest?v=13",
   "icon.svg",
   "privacy.html",
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
 const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "letters.js", "reply-engine.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
-const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
+const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "from", "to", "msg", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
 });
 
 async function networkFirst(request, fallback = request) {

@@ -6,6 +6,7 @@
 
   const SUPPORTED_LANGUAGES = new Set(["ru", "en", "fr"]);
   const SUPPORTED_TONES = new Set(["auto", "calm", "warm", "support", "reconcile", "boundary"]);
+  const SUPPORTED_LENGTHS = new Set(["auto", "short", "standard", "detailed"]);
 
   const SIGNALS = {
     religiousGratitude: [
@@ -262,6 +263,33 @@
     }
   };
 
+  const DETAIL_EXTENSIONS = {
+    ru: {
+      religious_gratitude: "Пусть наша благодарность проявляется и в добрых, спокойных поступках.",
+      gratitude: "Мне хочется отвечать на такую доброту не только словами, но и внимательными поступками.",
+      support: "Если будет удобно, можно сказать, что сейчас поможет больше всего: разговор, пауза или конкретная помощь.",
+      conflict: "Когда будет спокойнее, я готов обсудить конкретные слова и найти уважительный путь дальше.",
+      question: "Если от ответа зависит решение, я сначала уточню нужные детали и затем отвечу точно.",
+      neutral: "Я хочу сохранить ясный и доброжелательный тон, не добавляя того, чего ты не говорил."
+    },
+    en: {
+      religious_gratitude: "May our gratitude also be reflected in kind and thoughtful actions.",
+      gratitude: "I want to respond to that kindness not only with words, but with thoughtful actions too.",
+      support: "If it helps, you can tell me what would be most useful now: a conversation, some space, or practical support.",
+      conflict: "When things feel calmer, I am ready to discuss the specific words and find a respectful way forward.",
+      question: "If a decision depends on my answer, I will check the necessary details first and then reply clearly.",
+      neutral: "I want to keep the reply clear and kind without adding anything you did not actually say."
+    },
+    fr: {
+      religious_gratitude: "Que notre gratitude se traduise aussi par des actes bienveillants et réfléchis.",
+      gratitude: "Je souhaite répondre à cette bonté non seulement par des mots, mais aussi par des gestes attentionnés.",
+      support: "Si cela peut aider, dis-moi ce qui serait le plus utile maintenant : parler, faire une pause ou recevoir une aide concrète.",
+      conflict: "Lorsque la situation sera plus calme, je pourrai revenir sur les paroles précises et chercher une suite respectueuse.",
+      question: "Si une décision dépend de ma réponse, je vérifierai d’abord les détails nécessaires avant de répondre clairement.",
+      neutral: "Je souhaite garder une réponse claire et bienveillante sans ajouter ce qui n’a pas été dit."
+    }
+  };
+
   function normalize(value) {
     return String(value || "")
       .normalize("NFKC")
@@ -284,14 +312,14 @@
     const value = normalize(incoming);
     const mentionsAllah = includesAny(value, ["аллах", "allah"]);
     const containsPraise = includesAny(value, ["хвала", "благодар", "альхамдулиллях", "алхамдулиллах", "praise", "thank", "grateful", "alhamdulillah", "louange", "remerc"]);
-    if (includesAny(value, SIGNALS.religiousGratitude) || (mentionsAllah && containsPraise)) return "religious_gratitude";
-    if (includesAny(value, SIGNALS.islamicGreeting)) return "islamic_greeting";
+    if (includesAny(value, SIGNALS.conflict)) return "conflict";
     if (includesAny(value, SIGNALS.distress) || includesAny(value, ["тяжел", "не справля", "need support", "besoin de soutien"])) return "support";
     if (includesAny(value, SIGNALS.apology)) return "apology";
-    if (includesAny(value, SIGNALS.conflict)) return "conflict";
     if (includesAny(value, SIGNALS.timeQuestion)) return "time_question";
     if (includesAny(value, SIGNALS.wellbeingQuestion)) return "wellbeing";
     if (value.includes("?") || includesAny(value, SIGNALS.generalQuestion)) return "question";
+    if (includesAny(value, SIGNALS.religiousGratitude) || (mentionsAllah && containsPraise)) return "religious_gratitude";
+    if (includesAny(value, SIGNALS.islamicGreeting)) return "islamic_greeting";
     if (includesAny(value, SIGNALS.gratitude)) return "gratitude";
     if (includesAny(value, SIGNALS.celebration)) return "celebration";
     if (includesAny(value, SIGNALS.appreciation)) return "appreciation";
@@ -309,7 +337,48 @@
     return "calm";
   }
 
-  function compose({ incoming = "", language = "ru", tone = "auto", variant = 0 } = {}) {
+  function analyze(incoming) {
+    const intent = inferIntent(incoming);
+    const recommendedTone = resolveTone(incoming, "auto");
+    const recommendedLength = ["religious_gratitude", "islamic_greeting", "gratitude", "celebration", "appreciation", "greeting"].includes(intent)
+      ? "short"
+      : "standard";
+    const needsGoal = ["time_question", "question"].includes(intent);
+    return {
+      intent,
+      confidence: intent === "neutral" ? "low" : (intent === "question" ? "medium" : "high"),
+      recommendedTone,
+      recommendedLength,
+      needsGoal,
+      flags: needsGoal ? ["needs_goal"] : []
+    };
+  }
+
+  function resolveLength(incoming, selected = "auto") {
+    if (SUPPORTED_LENGTHS.has(selected) && selected !== "auto") return selected;
+    return analyze(incoming).recommendedLength;
+  }
+
+  function sentenceParts(text) {
+    return String(text || "").trim().split(/(?<=[.!?…])\s+/u).filter(Boolean);
+  }
+
+  function applyLength(text, language, intent, length) {
+    if (length === "standard") return text;
+    if (length === "short") {
+      const parts = sentenceParts(text);
+      const chosen = [];
+      for (const part of parts) {
+        chosen.push(part);
+        if (chosen.join(" ").length >= 72 || chosen.length >= 2) break;
+      }
+      return chosen.join(" ") || text;
+    }
+    const extension = DETAIL_EXTENSIONS[language]?.[intent] || DETAIL_EXTENSIONS[language]?.neutral;
+    return extension && !text.includes(extension) ? `${text} ${extension}` : text;
+  }
+
+  function compose({ incoming = "", language = "ru", tone = "auto", length = "auto", variant = 0 } = {}) {
     const lang = SUPPORTED_LANGUAGES.has(language) ? language : "ru";
     const intent = inferIntent(incoming);
     const selectedTone = SUPPORTED_TONES.has(tone) ? tone : "auto";
@@ -319,7 +388,8 @@
     else if (selectedTone === "support" && ["neutral", "care"].includes(intent)) responseKey = "support";
     const bank = RESPONSES[lang][responseKey] || RESPONSES[lang].neutral;
     const safeVariant = Number.isFinite(Number(variant)) ? Math.abs(Math.trunc(Number(variant))) : 0;
-    return bank[safeVariant % bank.length];
+    const response = bank[safeVariant % bank.length];
+    return applyLength(response, lang, intent, resolveLength(incoming, length));
   }
 
   function isAligned(text, intent) {
@@ -340,5 +410,44 @@
     return true;
   }
 
-  return { normalize, inferIntent, resolveTone, compose, isAligned };
+  function audit(text, { intent = "neutral", relationship = "auto", tone = "auto", goal = "" } = {}) {
+    const value = normalize(text);
+    const codes = [];
+    const blockedSignals = [
+      "секс", "эрот", "порн", "поцелу", "интим", "обнаж", "алкогол", "наркот", "казино", "угрож", "убить",
+      "бляд", "блят", "хуй", "хуе", "хуя", "пизд", "ебан",
+      "sex", "erotic", "porn", "kiss", "intimacy", "nude", "alcohol", "drug", "casino", "gambling", "threat", "kill", "fuck", "shit", "bitch", "cunt",
+      "sexe", "eroti", "porn", "baiser", "intimite", "nudite", "alcool", "drogue", "casino", "menace", "tuer", "putain", "merde", "connard", "salope"
+    ];
+    const authorityClaims = [
+      "коран говорит", "в коране сказано", "хадис говорит", "пророк сказал", "аллах обещает", "это халяль", "это харам", "по шариату",
+      "quran says", "hadith says", "the prophet said", "allah promises", "this is halal", "this is haram", "according to sharia",
+      "le coran dit", "le hadith dit", "le prophete a dit", "allah promet", "c est halal", "c est haram", "selon la charia"
+    ];
+    const coercionSignals = [
+      "если ты меня уважаешь", "если тебе не все равно", "ты обязан доказать", "иначе я", "пожалеешь",
+      "if you respect me", "if you cared", "you must prove", "or else i", "you will regret",
+      "si tu me respectes", "si tu tenais a moi", "tu dois prouver", "sinon je", "tu le regretteras"
+    ];
+    const romanticSignals = [
+      "я люблю тебя", "влюблен в тебя", "влюблена в тебя", "любовь моей жизни", "ты моя любимая", "ты мой любимый",
+      "i love you", "in love with you", "love of my life", "my beloved", "my darling", "soulmate",
+      "je t aime", "amour de ma vie", "amoureux de toi", "amoureuse de toi", "mon amour", "ma cherie", "mon cheri", "ame soeur"
+    ];
+
+    if (!value || value.length < 3) codes.push("empty");
+    if (blockedSignals.some(signal => value.includes(normalize(signal)))) codes.push("forbidden");
+    if (authorityClaims.some(signal => value.includes(normalize(signal)))) codes.push("religious_authority");
+    if (coercionSignals.some(signal => value.includes(normalize(signal)))) codes.push("coercion");
+    if (relationship !== "spouse" && romanticSignals.some(signal => value.includes(normalize(signal)))) codes.push("improper_romance");
+    if (intent && !isAligned(text, intent)) codes.push("intent_mismatch");
+
+    const requiredFacts = String(goal || "").match(/\b\d{1,4}(?::\d{2})?\b/gu) || [];
+    if (requiredFacts.some(fact => !String(text || "").includes(fact))) codes.push("goal_missing");
+    if (tone === "boundary" && !includesAny(value, ["границ", "пауза", "уваж", "boundary", "pause", "respect", "limite", "pause", "respect"])) codes.push("tone_mismatch");
+
+    return { ok: codes.length === 0, codes: [...new Set(codes)], severity: codes.length ? "warning" : "safe" };
+  }
+
+  return { normalize, inferIntent, resolveTone, analyze, resolveLength, compose, isAligned, audit };
 });

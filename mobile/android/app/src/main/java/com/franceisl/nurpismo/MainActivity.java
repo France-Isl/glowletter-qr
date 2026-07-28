@@ -2,7 +2,6 @@ package com.franceisl.glowletternext;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,11 +25,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
 import androidx.webkit.WebViewAssetLoader;
 
 import org.json.JSONObject;
 
-public final class MainActivity extends Activity {
+public final class MainActivity extends ComponentActivity {
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
     private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html"
             + (BuildConfig.OWNER_BETA_CAPABILITY.trim().isEmpty()
@@ -59,6 +60,7 @@ public final class MainActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT
         ));
         setContentView(root);
+        configureBackNavigation();
         // Android 15/16 may not expose an InsetsController until the decor view
         // is attached. Enter immersive mode on the next UI turn to avoid a
         // startup crash on modern devices.
@@ -249,6 +251,35 @@ public final class MainActivity extends Activity {
         }
     }
 
+    void openManageSubscriptionFromWeb() {
+        if (!trustedMainDocumentReady
+                || webView == null
+                || !isTrustedAppMainDocumentUrl(webView.getUrl())) {
+            return;
+        }
+
+        Uri managementUri = Uri.parse(PlaySubscriptionLinks.manageSubscriptionUrl(
+                BuildConfig.SUBSCRIPTION_PRODUCT_ID,
+                BuildConfig.APPLICATION_ID.replaceFirst("\\.debug$", "")
+        ));
+        Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, managementUri)
+                .addCategory(Intent.CATEGORY_BROWSABLE)
+                .setPackage("com.android.vending");
+        try {
+            startActivity(playStoreIntent);
+            return;
+        } catch (ActivityNotFoundException ignored) {
+            // Devices without Play Store can use the same HTTPS management page.
+        }
+        try {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, managementUri)
+                    .addCategory(Intent.CATEGORY_BROWSABLE);
+            startActivity(browserIntent);
+        } catch (ActivityNotFoundException ignored) {
+            // Keep the trusted page open when no handler is installed.
+        }
+    }
+
     private void captureAuthCallback(Intent intent) {
         if (intent == null || !Intent.ACTION_VIEW.equals(intent.getAction())) {
             return;
@@ -333,7 +364,12 @@ public final class MainActivity extends Activity {
                 + "var d={entitled:" + state.entitled
                 + ",priceLabel:" + price
                 + ",reason:" + reason
-                + ",purchaseConfigured:" + purchaseConfigured + "};"
+                + ",purchaseConfigured:" + purchaseConfigured
+                + ",productId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
+                + ",productType:'subs'"
+                + ",basePlanId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_BASE_PLAN_ID)
+                + ",legacyProductId:" + JSONObject.quote(BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
+                + ",legacyProductType:'inapp'};"
                 + "if(typeof window.onNativeEntitlement==='function'){"
                 + "window.onNativeEntitlement(d.entitled,d.priceLabel,d.reason);"
                 + "}"
@@ -389,13 +425,21 @@ public final class MainActivity extends Activity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            super.onBackPressed();
-        }
+    private void configureBackNavigation() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                WebView target = webView;
+                if (target != null && target.canGoBack()) {
+                    target.goBack();
+                    return;
+                }
+                // Disable this callback before delegating so the dispatcher can
+                // finish the Activity without recursively invoking us.
+                setEnabled(false);
+                getOnBackPressedDispatcher().onBackPressed();
+            }
+        });
     }
 
     @Override

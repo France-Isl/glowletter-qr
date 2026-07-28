@@ -1,8 +1,25 @@
 const AI_MODEL = "@cf/qwen/qwen3-30b-a3b-fp8";
 const MAX_BODY_BYTES = 24_000;
 const GOOGLE_SCOPES = "https://www.googleapis.com/auth/androidpublisher https://www.googleapis.com/auth/playintegrity";
-const ENTITLEMENT_SCHEMA_VERSION = 1;
+const ENTITLEMENT_SCHEMA_VERSION = 2;
 const PURCHASE_TOKEN_HASH_DOMAIN = "nurpismo/google-play/purchase-token/v1";
+const LINKED_PURCHASE_TOKEN_HASH_DOMAIN = "nurpismo/google-play/linked-purchase-token/v1";
+const PRODUCT_TYPE_INAPP = "inapp";
+const PRODUCT_TYPE_SUBSCRIPTION = "subs";
+const SUBSCRIPTION_STATES = new Set([
+  "SUBSCRIPTION_STATE_UNSPECIFIED",
+  "SUBSCRIPTION_STATE_PENDING",
+  "SUBSCRIPTION_STATE_ACTIVE",
+  "SUBSCRIPTION_STATE_PAUSED",
+  "SUBSCRIPTION_STATE_IN_GRACE_PERIOD",
+  "SUBSCRIPTION_STATE_ON_HOLD",
+  "SUBSCRIPTION_STATE_CANCELED",
+  "SUBSCRIPTION_STATE_EXPIRED",
+  "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED",
+  // Google currently reports a revoked purchase as expired. Keep this explicit
+  // fail-closed state so a future/additional verdict can never grant access.
+  "SUBSCRIPTION_STATE_REVOKED"
+]);
 const localRateBuckets = new Map();
 let googleTokenCache = null;
 
@@ -159,16 +176,31 @@ async function verifyGooglePlayPurchase(request, env) {
   const billing = requireBillingConfiguration(env);
   await requireEntitlementStore(env);
   const body = await readJson(request);
-  const expectedPackage = billing.packageName;
-  const expectedProduct = billing.productId;
   const packageName = String(body.packageName || "");
   const productId = String(body.productId || "");
+  const declaredProductType = String(body.productType || "").trim();
+  const requestHashVersion = String(body.requestHashVersion || "");
+  // Old full_access clients predate productType. Preserve that one narrow
+  // v1 compatibility path. All current in-app and subscription clients use v2
+  // and bind productType into the Play Integrity request hash.
+  const legacyV1Request = requestHashVersion === "v1"
+    && !declaredProductType
+    && productId === billing.legacyProductId;
+  const productType = declaredProductType || (legacyV1Request ? PRODUCT_TYPE_INAPP : "");
   const purchaseToken = String(body.purchaseToken || "");
-  if (packageName !== expectedPackage || productId !== expectedProduct) throw new ApiError("product_mismatch", 403);
+  if (![PRODUCT_TYPE_INAPP, PRODUCT_TYPE_SUBSCRIPTION].includes(productType)) throw new ApiError("invalid_product_type", 422);
+  if (requestHashVersion !== "v2" && !legacyV1Request) throw new ApiError("request_hash_version_unsupported", 422);
+  const expectedProduct = productType === PRODUCT_TYPE_SUBSCRIPTION
+    ? billing.subscriptionProductId
+    : billing.legacyProductId;
+  if (packageName !== billing.packageName || productId !== expectedProduct) throw new ApiError("product_mismatch", 403);
   if (!/^[A-Za-z0-9._:\-]{20,4096}$/.test(purchaseToken)) throw new ApiError("invalid_purchase_token", 422);
 
-  const requestHash = await sha256Base64Url(`${packageName}\n${productId}\n${purchaseToken}`);
-  if (body.requestHashVersion !== "v1" || !constantTimeEqual(requestHash, String(body.requestHash || ""))) throw new ApiError("request_hash_mismatch", 403);
+  const canonicalRequest = legacyV1Request
+    ? `${packageName}\n${productId}\n${purchaseToken}`
+    : `${packageName}\n${productId}\n${productType}\n${purchaseToken}`;
+  const requestHash = await sha256Base64Url(canonicalRequest);
+  if (!constantTimeEqual(requestHash, String(body.requestHash || ""))) throw new ApiError("request_hash_mismatch", 403);
 
   const accessToken = await googleAccessToken(env);
   const integrityVerified = await verifyIntegrity(body.integrityToken, body.requestHash, packageName, accessToken, env);
@@ -182,6 +214,29 @@ async function verifyGooglePlayPurchase(request, env) {
     `${PURCHASE_TOKEN_HASH_DOMAIN}\n${packageName}\n${productId}\n${purchaseToken}`
   );
   const tokenKey = `${billing.hashKeyId}.${tokenHash}`;
+
+  const verification = {
+    env,
+    billing,
+    packageName,
+    productId,
+    productType,
+    purchaseToken,
+    requestHash,
+    accessToken,
+    integrityVerified,
+    tokenKey
+  };
+  return productType === PRODUCT_TYPE_SUBSCRIPTION
+    ? verifyGooglePlaySubscription(verification)
+    : verifyGooglePlayOneTimeProduct(verification);
+}
+
+async function verifyGooglePlayOneTimeProduct(context) {
+  const {
+    env, billing, packageName, productId, productType, purchaseToken,
+    requestHash, accessToken, integrityVerified, tokenKey
+  } = context;
 
   const purchaseUrl = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(packageName)}/purchases/products/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(purchaseToken)}`;
   const purchaseResponse = await fetch(purchaseUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
@@ -208,6 +263,7 @@ async function verifyGooglePlayPurchase(request, env) {
     tokenKey,
     packageName,
     productId,
+    productType,
     purchaseState,
     consumptionState,
     acknowledgementState,
@@ -263,7 +319,194 @@ async function verifyGooglePlayPurchase(request, env) {
   }
 
   await persistEntitlement(env, { ...evidence, acknowledgementState: 1, state: "active", acknowledged: true });
-  return json({ valid: true, acknowledged, integrityVerified, productId, requestHash, reason: "server_verified_play_purchase" });
+  return json({ valid: true, acknowledged, integrityVerified, productId, productType, requestHash, reason: "server_verified_play_purchase" });
+}
+
+async function verifyGooglePlaySubscription(context) {
+  const {
+    env, billing, packageName, productId, productType, purchaseToken,
+    requestHash, accessToken, integrityVerified, tokenKey
+  } = context;
+  const purchaseUrl = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(packageName)}/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`;
+  const purchaseResponse = await fetch(purchaseUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
+  if (!purchaseResponse.ok) throwGooglePlayVerificationError(purchaseResponse);
+
+  let purchase = await purchaseResponse.json();
+  let evidence = await subscriptionEvidence(purchase, {
+    billing, packageName, productId, productType, tokenKey, integrityVerified
+  });
+  let entitled = subscriptionEntitled(evidence, Date.now());
+
+  if (!entitled) {
+    await persistEntitlement(env, {
+      ...evidence,
+      state: subscriptionJournalState(evidence.subscriptionState, false, evidence.acknowledged),
+      acknowledged: evidence.acknowledged
+    });
+    throw subscriptionStateError(evidence.subscriptionState, evidence.expiryTimeMillis);
+  }
+
+  let acknowledged = evidence.acknowledged;
+  await persistEntitlement(env, {
+    ...evidence,
+    state: acknowledged ? "active" : "verified_pending_ack",
+    acknowledged
+  });
+
+  if (!acknowledged) {
+    const acknowledgeUrl = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(packageName)}/purchases/subscriptions/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(purchaseToken)}:acknowledge`;
+    const acknowledgeResponse = await fetch(acknowledgeUrl, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ developerPayload: "glowletter-server-verified-subscription-v1" })
+    });
+    if (acknowledgeResponse.ok) {
+      acknowledged = true;
+    } else {
+      // A duplicate verifier can win the acknowledgement race. Re-read the v2
+      // resource and only continue if Google now reports both entitlement and
+      // ACKNOWLEDGED; a D1 row alone is never accepted as proof.
+      const refreshedResponse = await fetch(purchaseUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
+      if (refreshedResponse.ok) {
+        purchase = await refreshedResponse.json();
+        evidence = await subscriptionEvidence(purchase, {
+          billing, packageName, productId, productType, tokenKey, integrityVerified
+        });
+        entitled = subscriptionEntitled(evidence, Date.now());
+        acknowledged = entitled && evidence.acknowledged;
+      }
+      if (!acknowledged) {
+        await persistEntitlement(env, { ...evidence, state: "ack_failed", acknowledged: false });
+        throw new ApiError("acknowledgement_failed", 502);
+      }
+    }
+  }
+
+  await persistEntitlement(env, {
+    ...evidence,
+    acknowledgementState: 1,
+    state: "active",
+    acknowledged: true
+  });
+  return json({
+    valid: true,
+    acknowledged: true,
+    integrityVerified,
+    productId,
+    productType,
+    requestHash,
+    subscriptionState: evidence.subscriptionState,
+    expiryTimeMillis: evidence.expiryTimeMillis,
+    reason: "server_verified_play_subscription"
+  });
+}
+
+async function subscriptionEvidence(purchase, context) {
+  if (!purchase || typeof purchase !== "object") throw new ApiError("google_play_response_invalid", 502);
+  const subscriptionState = String(purchase.subscriptionState || "");
+  const acknowledgement = String(purchase.acknowledgementState || "");
+  if (!SUBSCRIPTION_STATES.has(subscriptionState)
+    || !["ACKNOWLEDGEMENT_STATE_PENDING", "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"].includes(acknowledgement)) {
+    throw new ApiError("google_play_response_invalid", 502);
+  }
+
+  const lineItems = Array.isArray(purchase.lineItems) ? purchase.lineItems : [];
+  const productItems = lineItems.filter(item => item && item.productId === context.productId);
+  if (!productItems.length) throw new ApiError("purchase_product_mismatch", 403);
+  const matchingItems = productItems.filter(item => item.offerDetails?.basePlanId === context.billing.subscriptionBasePlanId);
+  if (!matchingItems.length) throw new ApiError("subscription_base_plan_mismatch", 403);
+
+  const parsedItems = matchingItems.map(item => ({ item, expiryTimeMillis: googleTimestampOrNull(item.expiryTime) }));
+  const lineItem = parsedItems.sort((left, right) => (right.expiryTimeMillis || -1) - (left.expiryTimeMillis || -1))[0];
+  const stateMayOmitExpiry = ["SUBSCRIPTION_STATE_PENDING", "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED"].includes(subscriptionState);
+  if (!lineItem || (!stateMayOmitExpiry && lineItem.expiryTimeMillis === null)) throw new ApiError("google_play_response_invalid", 502);
+
+  const autoRenewingPlan = lineItem.item.autoRenewingPlan;
+  let autoRenewEnabled = null;
+  if (autoRenewingPlan !== undefined) {
+    if (!autoRenewingPlan || typeof autoRenewingPlan.autoRenewEnabled !== "boolean") throw new ApiError("google_play_response_invalid", 502);
+    autoRenewEnabled = autoRenewingPlan.autoRenewEnabled;
+  }
+  const offerId = lineItem.item.offerDetails?.offerId;
+  if (offerId !== undefined && (typeof offerId !== "string" || !offerId || offerId.length > 128)) {
+    throw new ApiError("google_play_response_invalid", 502);
+  }
+
+  const linkedPurchaseToken = purchase.linkedPurchaseToken;
+  let linkedPurchaseTokenHash = null;
+  if (linkedPurchaseToken !== undefined) {
+    if (typeof linkedPurchaseToken !== "string" || !/^[A-Za-z0-9._:\-]{20,4096}$/.test(linkedPurchaseToken)) {
+      throw new ApiError("google_play_response_invalid", 502);
+    }
+    const digest = await hmacSha256Base64Url(
+      context.billing.hashSecret,
+      `${LINKED_PURCHASE_TOKEN_HASH_DOMAIN}\n${context.packageName}\n${linkedPurchaseToken}`
+    );
+    linkedPurchaseTokenHash = `${context.billing.hashKeyId}.${digest}`;
+  }
+  const orderId = lineItem.item.latestSuccessfulOrderId;
+  const orderIdHash = orderId
+    ? await hmacSha256Base64Url(context.billing.hashSecret, `nurpismo/google-play/order-id/v1\n${orderId}`)
+    : null;
+  const acknowledged = acknowledgement === "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
+  const provisionalEntitlement = [
+    "SUBSCRIPTION_STATE_ACTIVE",
+    "SUBSCRIPTION_STATE_IN_GRACE_PERIOD",
+    "SUBSCRIPTION_STATE_CANCELED"
+  ].includes(subscriptionState);
+
+  return {
+    tokenKey: context.tokenKey,
+    packageName: context.packageName,
+    productId: context.productId,
+    productType: context.productType,
+    purchaseState: provisionalEntitlement ? 0 : subscriptionState === "SUBSCRIPTION_STATE_PENDING" ? 2 : 1,
+    consumptionState: 0,
+    acknowledgementState: acknowledged ? 1 : 0,
+    purchaseTimeMillis: googleTimestampOrNull(purchase.startTime),
+    orderIdHash,
+    integrityVerified: context.integrityVerified,
+    subscriptionState,
+    expiryTimeMillis: lineItem.expiryTimeMillis,
+    basePlanId: context.billing.subscriptionBasePlanId,
+    offerId: offerId || null,
+    autoRenewEnabled,
+    linkedPurchaseTokenHash,
+    acknowledged
+  };
+}
+
+function subscriptionEntitled(evidence, now) {
+  const unexpired = Number.isSafeInteger(evidence.expiryTimeMillis) && evidence.expiryTimeMillis > now;
+  if (!unexpired) return false;
+  return [
+    "SUBSCRIPTION_STATE_ACTIVE",
+    "SUBSCRIPTION_STATE_IN_GRACE_PERIOD",
+    "SUBSCRIPTION_STATE_CANCELED"
+  ].includes(evidence.subscriptionState);
+}
+
+function subscriptionJournalState(subscriptionState, entitled, acknowledged) {
+  if (entitled) return acknowledged ? "active" : "verified_pending_ack";
+  return subscriptionState === "SUBSCRIPTION_STATE_PENDING" ? "pending" : "cancelled";
+}
+
+function subscriptionStateError(subscriptionState, expiryTimeMillis) {
+  if (subscriptionState === "SUBSCRIPTION_STATE_PENDING") return new ApiError("subscription_pending", 403);
+  if (subscriptionState === "SUBSCRIPTION_STATE_PAUSED") return new ApiError("subscription_paused", 403);
+  if (subscriptionState === "SUBSCRIPTION_STATE_ON_HOLD") return new ApiError("subscription_on_hold", 403);
+  if (subscriptionState === "SUBSCRIPTION_STATE_REVOKED") return new ApiError("subscription_revoked", 403);
+  if (["SUBSCRIPTION_STATE_CANCELED", "SUBSCRIPTION_STATE_EXPIRED"].includes(subscriptionState)
+    || (Number.isSafeInteger(expiryTimeMillis) && expiryTimeMillis <= Date.now())) {
+    return new ApiError("subscription_expired", 403);
+  }
+  return new ApiError("subscription_not_active", 403);
+}
+
+function throwGooglePlayVerificationError(response) {
+  if (response.status === 404 || response.status === 410) throw new ApiError("purchase_not_found", 404);
+  if (response.status === 429 || response.status >= 500) throw new ApiError("google_play_unavailable", 503);
+  throw new ApiError("google_play_verification_failed", 502);
 }
 
 function billingConfigurationReady(env) {
@@ -277,7 +520,9 @@ function billingConfigurationReady(env) {
 
 function requireBillingConfiguration(env) {
   const packageName = String(env.NURPISMO_PACKAGE_NAME || "").trim();
-  const productId = String(env.NURPISMO_PRODUCT_ID || "").trim();
+  const legacyProductId = String(env.NURPISMO_PRODUCT_ID || "").trim();
+  const subscriptionProductId = String(env.NURPISMO_SUBSCRIPTION_PRODUCT_ID || "").trim();
+  const subscriptionBasePlanId = String(env.NURPISMO_SUBSCRIPTION_BASE_PLAN_ID || "").trim();
   const hashSecret = String(env.ENTITLEMENT_HASH_SECRET || "");
   const hashKeyId = String(env.ENTITLEMENT_HASH_KEY_ID || "").trim();
   const hasD1 = env.ENTITLEMENTS_DB && typeof env.ENTITLEMENTS_DB.prepare === "function";
@@ -294,14 +539,17 @@ function requireBillingConfiguration(env) {
   }
 
   const valid = /^[A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z][A-Za-z0-9_]*)+$/.test(packageName)
-    && /^[A-Za-z0-9._-]{1,128}$/.test(productId)
+    && /^[A-Za-z0-9._-]{1,128}$/.test(legacyProductId)
+    && /^[A-Za-z0-9._-]{1,128}$/.test(subscriptionProductId)
+    && /^[A-Za-z0-9._-]{1,128}$/.test(subscriptionBasePlanId)
+    && legacyProductId !== subscriptionProductId
     && env.REQUIRE_PLAY_INTEGRITY === "true"
     && hasD1
     && credentialsValid
     && new TextEncoder().encode(hashSecret).length >= 32
     && /^[a-z0-9_-]{1,16}$/.test(hashKeyId);
   if (!valid) throw new ApiError("billing_backend_not_configured", 503);
-  return { packageName, productId, hashSecret, hashKeyId };
+  return { packageName, legacyProductId, subscriptionProductId, subscriptionBasePlanId, hashSecret, hashKeyId };
 }
 
 async function requireEntitlementStore(env) {
@@ -325,8 +573,10 @@ async function persistEntitlement(env, record) {
         token_hash, package_name, product_id, state,
         first_seen_at, first_active_at, last_verified_at, last_integrity_at, acknowledged_at,
         purchase_time_ms, order_id_hash, purchase_state_code, consumption_state_code,
-        acknowledgement_state_code, record_revision
-      ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?5, ?5, ?7, ?8, ?9, ?10, ?11, ?12, 1)
+        acknowledgement_state_code, record_revision,
+        subscription_state, expiry_time_ms, base_plan_id, offer_id,
+        auto_renew_enabled, linked_purchase_token_hash
+      ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?5, ?5, ?7, ?8, ?9, ?10, ?11, ?12, 1, ?13, ?14, ?15, ?16, ?17, ?18)
       ON CONFLICT(token_hash) DO UPDATE SET
         state = excluded.state,
         first_active_at = COALESCE(play_entitlements.first_active_at, excluded.first_active_at),
@@ -338,6 +588,12 @@ async function persistEntitlement(env, record) {
         purchase_state_code = excluded.purchase_state_code,
         consumption_state_code = excluded.consumption_state_code,
         acknowledgement_state_code = excluded.acknowledgement_state_code,
+        subscription_state = excluded.subscription_state,
+        expiry_time_ms = excluded.expiry_time_ms,
+        base_plan_id = excluded.base_plan_id,
+        offer_id = excluded.offer_id,
+        auto_renew_enabled = excluded.auto_renew_enabled,
+        linked_purchase_token_hash = COALESCE(excluded.linked_purchase_token_hash, play_entitlements.linked_purchase_token_hash),
         record_revision = play_entitlements.record_revision + 1
       WHERE play_entitlements.package_name = excluded.package_name
         AND play_entitlements.product_id = excluded.product_id
@@ -353,7 +609,13 @@ async function persistEntitlement(env, record) {
       record.orderIdHash,
       record.purchaseState,
       record.consumptionState,
-      record.acknowledgementState
+      record.acknowledgementState,
+      record.subscriptionState || null,
+      record.expiryTimeMillis ?? null,
+      record.basePlanId || null,
+      record.offerId || null,
+      typeof record.autoRenewEnabled === "boolean" ? (record.autoRenewEnabled ? 1 : 0) : null,
+      record.linkedPurchaseTokenHash || null
     ).run();
     if (!result?.success || Number(result?.meta?.changes || 0) !== 1) throw new Error("entitlement_write_failed");
   } catch {
@@ -634,4 +896,9 @@ async function hmacSha256Base64Url(secret, value) {
   return base64Url(new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(value))));
 }
 function safeIntegerOrNull(value) { const number = Number(value); return Number.isSafeInteger(number) && number >= 0 ? number : null; }
+function googleTimestampOrNull(value) {
+  if (typeof value !== "string" || !value.trim()) return null;
+  const milliseconds = Date.parse(value);
+  return Number.isSafeInteger(milliseconds) && milliseconds >= 0 ? milliseconds : null;
+}
 function constantTimeEqual(left, right) { const a = String(left), b = String(right); let mismatch = a.length ^ b.length; const length = Math.max(a.length, b.length); for (let i = 0; i < length; i++) mismatch |= (a.charCodeAt(i % Math.max(1, a.length)) || 0) ^ (b.charCodeAt(i % Math.max(1, b.length)) || 0); return mismatch === 0; }

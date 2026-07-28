@@ -1,5 +1,5 @@
 :root {
-  --gl-paper-alpha: .84;
+  --gl-paper-alpha: .76;
   --gl-scene-dim: .28;
   --gl-ink-color: #45343c;
   --gl-ink-accent: #633b4e;
@@ -21,7 +21,7 @@ body[data-gl-ink="midnight"] { --gl-ink-color:#26344b; --gl-ink-accent:#354e73; 
 body[data-gl-type="classic"] { --gl-letter-font:"Cormorant Garamond",Georgia,serif; }
 body[data-gl-type="elegant"] { --gl-letter-font:Georgia,"Times New Roman",serif; }
 body[data-gl-type="clear"] { --gl-letter-font:"Manrope",system-ui,sans-serif; }
-.letter .letter-text { color: var(--gl-ink-color); font-family: var(--gl-letter-font); text-shadow: 0 1px rgba(255,255,255,.34); }
+.letter .letter-text { color: var(--gl-ink-color); font-family: var(--gl-letter-font); font-weight: 600; text-shadow: 0 1px 2px rgba(255,255,255,.72); }
 .letter #letterTitle,.letter .signature strong,.letter .letter-meta strong { color: var(--gl-ink-accent); font-family: var(--gl-letter-font); }
 body[data-gl-type="clear"] .letter .letter-text { font-size: clamp(17px,3vw,22px); line-height: 1.62; font-weight: 560; letter-spacing: .005em; }
 body[data-gl-type="elegant"] .letter .letter-text { font-size: clamp(20px,3.7vw,27px); line-height: 1.48; font-weight: 500; }

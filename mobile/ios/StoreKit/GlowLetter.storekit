@@ -1,0 +1,97 @@
+{
+  "identifier" : "E89E3D29",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "7.99",
+      "familyShareable" : false,
+      "internalID" : "1A0F93C7",
+      "localizations" : [
+        {
+          "description" : "Legacy lifetime access retained for existing customers.",
+          "displayName" : "GlowLetter Full Access",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Ранее приобретённый пожизненный доступ.",
+          "displayName" : "Полный доступ GlowLetter",
+          "locale" : "ru_RU"
+        },
+        {
+          "description" : "Ancien accès à vie conservé pour les clients existants.",
+          "displayName" : "Accès complet GlowLetter",
+          "locale" : "fr_FR"
+        }
+      ],
+      "productID" : "full_access",
+      "referenceName" : "Legacy Full Access",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "FRA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "F7D2A8C1",
+      "localizations" : [
+
+      ],
+      "name" : "GlowLetter Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "21.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "CB329E54",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "All premium letters, smart replies, and future premium features.",
+              "displayName" : "GlowLetter Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Все премиум-письма, умные ответы и будущие премиум-функции.",
+              "displayName" : "GlowLetter Premium на месяц",
+              "locale" : "ru_RU"
+            },
+            {
+              "description" : "Toutes les lettres premium, les réponses intelligentes et les futures fonctions premium.",
+              "displayName" : "GlowLetter Premium mensuel",
+              "locale" : "fr_FR"
+            }
+          ],
+          "productID" : "glowletter_premium_monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "GlowLetter Premium Monthly",
+          "subscriptionGroupID" : "F7D2A8C1",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

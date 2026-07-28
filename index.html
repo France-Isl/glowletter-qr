@@ -13,13 +13,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-next/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=12" />
+  <link rel="manifest" href="manifest.webmanifest?v=13" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=12" />
-  <link rel="stylesheet" href="experience.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="experience.css?v=13" />
 </head>
 <body>
   <div class="app" id="app">
@@ -64,7 +64,7 @@
             <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b>PRO</b></button>
             <button class="smart-link" id="replyOpenHome" type="button"><span>↗</span> Помочь с ответом <b>PRO</b></button>
           </div>
-          <p class="free-note"><span>10 писем бесплатно</span><i></i><span>полная коллекция — 7,99 €</span></p>
+          <p class="free-note"><span>10 писем бесплатно</span><i></i><span>премиум — 21,99 €/месяц</span></p>
         </div>
       </section>
 
@@ -78,7 +78,7 @@
         <article class="letter" id="letter" aria-labelledby="letterTitle">
           <div class="paper-edge" aria-hidden="true"></div>
           <header class="letter-meta">
-            <span>для <strong id="letterTo">получателя</strong></span>
+            <span><span id="letterForLabel">для</span> <strong id="letterTo">получателя</strong></span>
             <span id="letterNumber">01 / 50</span>
           </header>
           <h2 id="letterTitle">Несколько слов для тебя</h2>
@@ -192,11 +192,16 @@
         <div id="replyComposerPane" role="tabpanel" aria-labelledby="replyModeTab" hidden>
           <form id="replyForm">
             <label class="wide-label"><span>Что вам написали?</span><textarea id="replyIncoming" rows="6" maxlength="1800" placeholder="Вставьте сюда сообщение, на которое хотите ответить…"></textarea></label>
+            <div class="reply-insight" id="replyInsight" hidden aria-live="polite">
+              <span class="reply-insight-mark" aria-hidden="true">◇</span>
+              <p><strong id="replyInsightTitle">Смысл сообщения</strong><small id="replyInsightDetails"></small><em id="replyInsightGoal"></em></p>
+            </div>
             <label class="wide-label reply-goal-label"><span>Что вы хотите сказать · необязательно</span><textarea id="replyGoal" rows="3" maxlength="320" placeholder="Например: принимаю предложение; приду в 19:00; хочу вежливо отказаться…"></textarea></label>
             <div class="choice-grid">
               <label><span>Кто вам написал · необязательно</span><select id="replyRelationship"><option value="auto">Не указывать</option><option value="spouse">Супруг или супруга</option><option value="family">Член семьи</option><option value="friend">Друг или подруга</option><option value="colleague">Коллега</option><option value="universal">Другой человек</option></select></label>
               <label><span>Как ответить · необязательно</span><select id="replyTone"><option value="auto">Подобрать автоматически</option><option value="calm">Спокойно</option><option value="warm">Тепло</option><option value="support">Поддержать</option><option value="reconcile">Помириться</option></select></label>
             </div>
+            <label class="wide-label reply-length-label"><span>Длина ответа</span><select id="replyLength"><option value="auto">Подобрать автоматически</option><option value="short">Коротко</option><option value="standard">Обычно</option><option value="detailed">Подробно</option></select></label>
             <p class="form-hint">Помощник напишет уважительный ответ без 18+, грубости и двусмысленных фраз. Перед отправкой обязательно перечитайте его.</p>
             <button class="generate-button" id="replyGenerateButton" type="submit"><span class="generate-spark">↗</span><span class="reply-generate-label">Подготовить ответ</span><i>→</i></button>
           </form>
@@ -205,6 +210,7 @@
           <div class="generated-card" id="replyGeneratedCard" hidden>
             <div class="generated-top"><span>ГОТОВЫЙ ОТВЕТ</span><button id="regenerateReply" type="button">↻ Другой вариант</button></div>
             <textarea id="replyGeneratedText" rows="7" aria-label="Сгенерированный ответ"></textarea>
+            <div class="reply-audit is-safe" id="replyAudit" role="status" aria-live="polite"><span aria-hidden="true">✓</span><p><strong id="replyAuditTitle">Проверка adab пройдена</strong><small id="replyAuditDetails">Ответ остаётся уважительным и безопасным.</small></p></div>
             <div class="generated-actions single-action"><button class="copy-button" id="copyReply" type="button">▣ Скопировать ответ</button></div>
           </div>
         </div>
@@ -254,7 +260,7 @@
           <div class="account-user" id="accountUser" hidden>
             <span class="account-avatar" id="accountAvatar" aria-hidden="true">G</span>
             <p><strong id="accountUserName">GlowLetter</strong><small id="accountUserEmail"></small></p>
-            <button id="accountSignOut" type="button">Выйти</button>
+            <div class="account-user-actions"><button id="accountSignOut" type="button">Выйти</button><button class="account-delete" id="accountDelete" type="button">Удалить аккаунт</button></div>
           </div>
           <p class="account-privacy" id="accountPrivacyNote">Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.</p>
         </section>
@@ -306,13 +312,15 @@
         <div class="premium-settings-card">
           <span class="premium-mini">ПОЛНАЯ ВЕРСИЯ</span>
           <h3>Откройте полный GlowLetter</h3>
-          <p>Все 50 писем, ИИ‑редактор, помощник ответов и будущие функции — одной покупкой.</p>
-          <button id="settingsPurchase" type="button">Открыть за <span class="price-label">7,99 €</span></button>
+          <p>Все 50 писем, умные ответы, проверка adab и новые функции по ежемесячной подписке.</p>
+          <button id="settingsPurchase" type="button">Подписаться за <span class="price-label">21,99 €/месяц</span></button>
         </div>
 
+        <button class="install-button" id="manageSubscriptionButton" type="button">◌ Управление подпиской</button>
         <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
-        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a href="mailto:ggooglov9@gmail.com">Поддержка</a></div>
+        <p class="install-hint" id="installHint" hidden>На iPhone: «Поделиться» → «На экран Домой».</p>
+        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a href="terms.html" target="_blank" rel="noopener">Условия</a><a href="delete-account.html" target="_blank" rel="noopener">Удаление аккаунта</a><a href="mailto:ggooglov9@gmail.com">Поддержка</a></div>
       </section>
     </div>
 
@@ -323,10 +331,11 @@
         <div class="paywall-orbit" aria-hidden="true"><span>✦</span><i>♡</i><b>☾</b></div>
         <p class="panel-eyebrow">GLOWLETTER · ПОЛНЫЙ ДОСТУП</p>
         <h2 id="paywallTitle">Ещё 40 писем<br /><em>для важных людей</em></h2>
-        <p>Первые 10 писем остаются бесплатными. Полная коллекция, ИИ‑редактор, помощник ответов и будущие функции открываются навсегда.</p>
-        <ul><li>все 50 персональных писем</li><li>ИИ‑письма с выбором стиля</li><li>помощник ответов</li><li>восстановление покупки</li></ul>
-        <button class="purchase-button" id="purchaseButton" type="button"><span>Открыть полный доступ</span><strong class="price-label">7,99 €</strong></button>
-        <button class="restore-button" id="restoreButton" type="button">Восстановить покупку</button>
+        <p>Первые 10 писем остаются бесплатными. Полная коллекция и умные функции доступны по автопродлеваемой ежемесячной подписке.</p>
+        <ul><li>все 50 персональных писем</li><li>умный анализ смысла сообщения</li><li>проверка уважительности и adab</li><li>новые тексты и функции</li></ul>
+        <button class="purchase-button" id="purchaseButton" type="button"><span>Оформить подписку</span><strong class="price-label">21,99 €/месяц</strong></button>
+        <button class="restore-button" id="restoreButton" type="button">Восстановить подписку</button>
+        <button class="restore-button" id="paywallManageSubscription" type="button">Управление подпиской</button>
         <button class="paywall-home go-home" type="button">⌂ На главную</button>
         <small>Оплата проходит через магазин. Цена может отображаться в местной валюте.</small>
       </section>
@@ -335,11 +344,11 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=12"></script>
-  <script src="vendor/supabase-2.110.9.js?v=12"></script>
-  <script src="letters.js?v=12"></script>
-  <script src="reply-engine.js?v=12"></script>
-  <script src="app.js?v=12"></script>
-  <script src="experience.js?v=12"></script>
+  <script src="config.js?v=13"></script>
+  <script src="vendor/supabase-2.110.9.js?v=13"></script>
+  <script src="letters.js?v=13"></script>
+  <script src="reply-engine.js?v=13"></script>
+  <script src="app.js?v=13"></script>
+  <script src="experience.js?v=13"></script>
 </body>
 </html>

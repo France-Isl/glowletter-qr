@@ -1,10 +1,15 @@
 import SwiftUI
 
+@MainActor
 struct ContentView: View {
+    @StateObject private var subscriptionStore = SubscriptionStore()
+
     var body: some View {
-        WebViewContainer()
+        WebViewContainer(subscriptionStore: subscriptionStore)
             .background(Color(red: 23 / 255, green: 23 / 255, blue: 34 / 255))
             .ignoresSafeArea()
+            .task {
+                await subscriptionStore.start()
+            }
     }
 }
-
