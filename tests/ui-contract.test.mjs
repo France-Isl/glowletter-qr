@@ -55,6 +55,7 @@ assert.match(app, /const UI_THEMES\s*=\s*new Set\(\["moon",\s*"rose",\s*"forest"
 assert.match(app, /document\.body\.dataset\.uiTheme\s*=\s*uiTheme/);
 assert.match(app, /localStorage\.setItem\(["']nurUiTheme["'],\s*uiTheme\)/);
 assert.match(app, /\$\$\(["']\.theme-choice-grid \[data-ui-theme\]["']\)[^\n]*addEventListener\(["']click["']/);
+assert.doesNotMatch(styles, /\.settings-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "settings title must scroll away with its content");
 
 // The weather chip must render live conditions and temperature, not only a static sun or moon.
 for (const id of ["weatherButton", "weatherIcon", "weatherText", "weatherToggle", "weatherState"]) {
