@@ -31,6 +31,17 @@
   const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
   const SUPPORT_MESSAGE_MIN = 20;
   const SUPPORT_MESSAGE_MAX = 2000;
+  const AUTH_PROVIDER_PRIORITY = Object.freeze(["google", "apple", "facebook"]);
+  const AUTH_PROVIDER_LABEL_KEYS = Object.freeze({
+    google: "continueGoogle",
+    apple: "continueApple",
+    facebook: "continueFacebook"
+  });
+  const APPLE_BUTTON_ARTWORK = Object.freeze({
+    ru: "assets/auth/apple-continue-ru.png",
+    en: "assets/auth/apple-continue-en.png",
+    fr: "assets/auth/apple-continue-fr.png"
+  });
 
   const UI = {
     ru: {
@@ -61,7 +72,7 @@
     homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeEditorAria:"Закрыть редактор",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",aiModeAria:"Режим помощника",generatedLetterAria:"Сгенерированное письмо",generatedReplyAria:"Сгенерированный ответ",
     replyIncoming:"Что вам написали?",replyPlaceholder:"Вставьте сюда сообщение, на которое хотите ответить…",replyGoal:"Что вы хотите сказать · необязательно",replyGoalPlaceholder:"Например: принимаю предложение; приду в 19:00; хочу вежливо отказаться…",replyRelationshipLabel:"Кто вам написал · необязательно",replyToneLabel:"Как ответить · необязательно",replyLengthLabel:"Длина ответа",replyHint:"Помощник напишет уважительный ответ без 18+, грубости и двусмысленных фраз. Если вопрос требует вашего решения, добавьте главную мысль, чтобы ИИ ничего не придумал за вас.",replyGenerate:"Подготовить ответ",replyGenerating:"Подбираю спокойный ответ…",replyReady:"ГОТОВЫЙ ОТВЕТ",replyVariant:"↻ Другой вариант",copyReply:"▣ Скопировать ответ",replySafety:"Вставьте обычное сообщение без запрещённого содержания.",replyShort:"Добавьте сообщение, чтобы помощник понял контекст.",replyInsightTitle:"Смысл сообщения",replyNeedsGoal:"Нужна ваша точная мысль — заполните поле ниже",replyGoalOptional:"Можно сразу подготовить ответ",replyAuditSafe:"Проверка adab пройдена",replyAuditSafeDetails:"Ответ уважительный, без давления и запрещённых формулировок.",replyAuditWarning:"Перед копированием нужно исправить",replyAuditWarningDetails:"Проверьте смысл, тон и формулировки ответа.",
     checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Ежемесячная подписка: 50 писем, умный анализ, проверка adab и будущие функции.",paywallBody:"Первые 10 писем остаются бесплатными. Премиум автоматически продлевается каждый месяц, пока вы не отмените его в аккаунте магазина.",benefit1:"все 50 персональных писем",benefit2:"умный анализ сообщения",benefit3:"проверка уважительности и adab",benefit4:"новые тексты и функции",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
-    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Подписка магазина отменяется отдельно.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
+    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Подписка магазина отменяется отдельно.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
@@ -71,7 +82,7 @@
     homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeEditorAria:"Close editor",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",aiModeAria:"Assistant mode",generatedLetterAria:"Generated letter",generatedReplyAria:"Generated reply",
     replyIncoming:"What did they write to you?",replyPlaceholder:"Paste the message you want to answer…",replyGoal:"What do you want to say? · optional",replyGoalPlaceholder:"For example: I agree; I will arrive at 7 pm; I want to decline politely…",replyRelationshipLabel:"Who wrote to you? · optional",replyToneLabel:"How should the reply sound? · optional",replyLengthLabel:"Reply length",replyHint:"The assistant drafts a respectful reply without adult, abusive, or suggestive wording. If the question needs your decision, add your main point so the AI does not invent it.",replyGenerate:"Draft a reply",replyGenerating:"Preparing a calm reply…",replyReady:"READY TO SEND",replyVariant:"↻ Another version",copyReply:"▣ Copy reply",replySafety:"Paste an ordinary message without prohibited content.",replyShort:"Add the received message so the assistant understands the context.",replyInsightTitle:"Message meaning",replyNeedsGoal:"Your exact point is needed — complete the field below",replyGoalOptional:"A reply can be drafted now",replyAuditSafe:"Adab check passed",replyAuditSafeDetails:"The reply is respectful and contains no pressure or prohibited wording.",replyAuditWarning:"Fix this before copying",replyAuditWarningDetails:"Review the meaning, tone, and wording of the reply.",
     checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"Monthly subscription: 50 letters, smart analysis, adab checking, and future features.",paywallBody:"The first 10 letters stay free. Premium renews automatically every month until cancelled in your store account.",benefit1:"all 50 personal letters",benefit2:"smart message analysis",benefit3:"respect and adab checking",benefit4:"new letters and features",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
-    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Store subscriptions must be cancelled separately.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
+    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Store subscriptions must be cancelled separately.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
@@ -81,7 +92,7 @@
     homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeEditorAria:"Fermer l’éditeur",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",aiModeAria:"Mode de l’assistant",generatedLetterAria:"Lettre générée",generatedReplyAria:"Réponse générée",
     replyIncoming:"Quel message avez-vous reçu ?",replyPlaceholder:"Collez le message auquel vous souhaitez répondre…",replyGoal:"Que souhaitez-vous répondre ? · facultatif",replyGoalPlaceholder:"Par exemple : je suis d’accord ; j’arriverai à 19 h ; je veux refuser poliment…",replyRelationshipLabel:"Qui vous a écrit ? · facultatif",replyToneLabel:"Quel ton employer ? · facultatif",replyLengthLabel:"Longueur de la réponse",replyHint:"L’assistant prépare une réponse respectueuse, sans contenu adulte, grossier ou ambigu. Si la question exige votre décision, ajoutez l’idée principale afin que l’IA ne l’invente pas.",replyGenerate:"Préparer une réponse",replyGenerating:"Je prépare une réponse sereine…",replyReady:"RÉPONSE PRÊTE",replyVariant:"↻ Une autre version",copyReply:"▣ Copier la réponse",replySafety:"Collez un message ordinaire sans contenu interdit.",replyShort:"Ajoutez le message reçu pour donner le contexte à l’assistant.",replyInsightTitle:"Sens du message",replyNeedsGoal:"Votre intention exacte est nécessaire — complétez le champ ci-dessous",replyGoalOptional:"Une réponse peut être préparée maintenant",replyAuditSafe:"Vérification adab réussie",replyAuditSafeDetails:"La réponse reste respectueuse, sans pression ni formulation interdite.",replyAuditWarning:"À corriger avant de copier",replyAuditWarningDetails:"Vérifiez le sens, le ton et les formulations de la réponse.",
     checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Abonnement mensuel : 50 lettres, analyse intelligente, contrôle adab et futures fonctions.",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin.",benefit1:"les 50 lettres personnelles",benefit2:"analyse intelligente du message",benefit3:"contrôle du respect et de l’adab",benefit4:"nouvelles lettres et fonctions",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
-    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? L’abonnement du magasin doit être annulé séparément.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
+    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? L’abonnement du magasin doit être annulé séparément.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
   });
   UI.ru.namesSettings = "Личное обращение";
   UI.en.namesSettings = "Personal names";
@@ -484,7 +495,8 @@
   let cloudSession = null;
   let cloudUser = null;
   let cloudProvidersKnown = false;
-  let cloudProviders = { google: false, facebook: false };
+  let cloudProviderLookupComplete = false;
+  let cloudProviders = { google: false, apple: false, facebook: false };
   let cloudAuthBusy = false;
   let cloudStatusKey = "cloudChecking";
   let cloudReady = false;
@@ -1017,6 +1029,21 @@
     haptic(10);
   }
 
+  function preferredCloudProvider() {
+    return AUTH_PROVIDER_PRIORITY.find(provider => cloudProviders[provider] === true) || "";
+  }
+
+  function cloudProviderLabel(provider) {
+    const key = AUTH_PROVIDER_LABEL_KEYS[provider];
+    return key ? t(key) : t("cloudUnavailable");
+  }
+
+  function cloudGuestStatusKey() {
+    if (!cloudProviderLookupComplete) return "cloudProvidersChecking";
+    if (!cloudProvidersKnown || !preferredCloudProvider()) return navigator.onLine ? "cloudUnavailable" : "cloudOffline";
+    return "cloudSignInPrompt";
+  }
+
   function renderCloudAccount() {
     const card = $("#accountCard");
     if (!card) return;
@@ -1024,6 +1051,9 @@
     setText("#accountGuestNote", t("accountGuestNote"));
     setText("#accountPrivacyNote", t("accountPrivacy"));
     setText("#googleSignIn span", t("continueGoogle"));
+    setText("#appleSignIn span", t("continueApple"));
+    const appleArtwork = $("#appleSignInArtwork");
+    if (appleArtwork) appleArtwork.src = APPLE_BUTTON_ARTWORK[lang] || APPLE_BUTTON_ARTWORK.en;
     setText("#facebookSignIn span", t("continueFacebook"));
     setText("#accountSignOut", t("signOut"));
     setText("#accountDelete", t("deleteAccount"));
@@ -1051,10 +1081,13 @@
     $("#accountGuest").hidden = signedIn;
     $("#accountUser").hidden = !signedIn;
     const google = $("#googleSignIn");
+    const apple = $("#appleSignIn");
     const facebook = $("#facebookSignIn");
     google.hidden = signedIn || !cloudProvidersKnown || !cloudProviders.google;
+    apple.hidden = signedIn || !cloudProvidersKnown || !cloudProviders.apple;
     facebook.hidden = signedIn || !cloudProvidersKnown || !cloudProviders.facebook;
     google.disabled = cloudAuthBusy;
+    apple.disabled = cloudAuthBusy;
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
     $("#accountDelete").disabled = cloudAuthBusy;
@@ -1124,13 +1157,15 @@
     const supportIdVisible = signedIn && Boolean(cloudAccount?.support_id) && !isAdmin;
     $("#supportIdRow").hidden = !supportIdVisible;
     setText("#supportIdValue", supportIdVisible ? cloudAccount.support_id : "—");
-    const provider = cloudProviders.google ? "google" : cloudProviders.facebook ? "facebook" : "";
+    const provider = preferredCloudProvider();
     const signInButton = $("#supportSignInButton");
     signInButton.dataset.provider = provider;
     signInButton.disabled = signedIn || cloudAuthBusy || !cloudProvidersKnown || !provider;
-    signInButton.textContent = !cloudProvidersKnown
+    signInButton.textContent = !cloudProviderLookupComplete
       ? t("cloudProvidersChecking")
-      : provider === "facebook" ? t("continueFacebook") : provider === "google" ? t("continueGoogle") : t("cloudUnavailable");
+      : provider && cloudProvidersKnown
+        ? cloudProviderLabel(provider)
+        : t(navigator.onLine ? "cloudUnavailable" : "cloudOffline");
     const statusKey = $("#supportStatus")?.dataset.key;
     if (statusKey) setSupportStatus(statusKey, $("#supportStatus").dataset.state || "");
   }
@@ -1210,6 +1245,8 @@
 
   async function detectCloudProviders() {
     if (!cloudClient) return;
+    cloudProviderLookupComplete = false;
+    if (!cloudUser) setCloudStatus("cloudProvidersChecking");
     try {
       const response = await fetch(`${SUPABASE_URL}/auth/v1/settings`, {
         headers: { apikey: SUPABASE_PUBLISHABLE_KEY },
@@ -1219,13 +1256,16 @@
       const settings = await response.json();
       cloudProviders = {
         google: settings?.external?.google === true,
+        apple: settings?.external?.apple === true,
         facebook: settings?.external?.facebook === true
       };
       cloudProvidersKnown = true;
-      if (!cloudUser) setCloudStatus("cloudSignInPrompt"); else renderCloudAccount();
+      cloudProviderLookupComplete = true;
+      if (!cloudUser) setCloudStatus(cloudGuestStatusKey()); else renderCloudAccount();
     } catch {
       cloudProvidersKnown = false;
-      if (!cloudUser) setCloudStatus(navigator.onLine ? "cloudUnavailable" : "cloudOffline");
+      cloudProviderLookupComplete = true;
+      if (!cloudUser) setCloudStatus(cloudGuestStatusKey()); else renderCloudAccount();
     }
   }
 
@@ -1812,7 +1852,7 @@
       cloudBootstrapUserId = "";
       cloudNamesExplicitlySaved = false;
       applyIsolatedProgress(guestViewState());
-      setCloudStatus(cloudProvidersKnown ? "cloudSignInPrompt" : "cloudProvidersChecking");
+      setCloudStatus(cloudGuestStatusKey());
       return;
     }
     if (cloudLoadedUserId === cloudUser.id && cloudReady) {
@@ -3138,7 +3178,7 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
+    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
@@ -3152,7 +3192,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=19", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=20", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

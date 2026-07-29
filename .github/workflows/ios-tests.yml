@@ -1,0 +1,41 @@
+name: GlowLetter iOS Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ios-tests:
+    runs-on: macos-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate project and run iOS unit tests
+        working-directory: mobile/ios
+        shell: bash
+        run: |
+          set -euo pipefail
+          xcodegen generate
+          DEVICE_UDID="$(xcrun simctl list devices available -j | python3 -c 'import json,sys; devices=json.load(sys.stdin)["devices"]; print(next(device["udid"] for runtime in devices.values() for device in runtime if "iPhone" in device["name"]))')"
+          xcodebuild \
+            -project NurPismo.xcodeproj \
+            -scheme NurPismo \
+            -destination "platform=iOS Simulator,id=$DEVICE_UDID" \
+            CODE_SIGNING_ALLOWED=NO \
+            test

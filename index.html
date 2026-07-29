@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=19" />
+  <link rel="manifest" href="manifest.webmanifest?v=20" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=19" />
-  <link rel="stylesheet" href="experience.css?v=19" />
+  <link rel="stylesheet" href="styles.css?v=20" />
+  <link rel="stylesheet" href="experience.css?v=20" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -255,6 +255,7 @@
             <p id="accountGuestNote">Войдите, чтобы сохранять письма и настройки на ваших устройствах.</p>
             <div class="account-actions">
               <button class="oauth-button google" id="googleSignIn" type="button" hidden disabled><b aria-hidden="true">G</b><span>Продолжить с Google</span></button>
+              <button class="oauth-button apple" id="appleSignIn" type="button" hidden disabled><img id="appleSignInArtwork" src="assets/auth/apple-continue-ru.png" alt="" width="375" height="44" /><span class="visually-hidden">Продолжить с Apple</span></button>
               <button class="oauth-button facebook" id="facebookSignIn" type="button" hidden disabled><b aria-hidden="true">f</b><span>Продолжить с Facebook</span></button>
             </div>
           </div>
@@ -445,7 +446,7 @@
         <div class="support-guest" id="supportGuestState" hidden>
           <span aria-hidden="true">◎</span>
           <div><strong id="supportGuestTitle">Сначала войдите в аккаунт</strong><p id="supportGuestNote">Так мы безопасно приложим ваш email и ID и сможем найти аккаунт.</p></div>
-          <button id="supportSignInButton" type="button">Продолжить с Google</button>
+          <button id="supportSignInButton" type="button" disabled>Проверяю способы входа…</button>
           <button class="support-copy-contact" id="supportCopyContact" type="button">Скопировать email поддержки</button>
         </div>
 
@@ -483,13 +484,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=19"></script>
-  <script src="vendor/supabase-2.110.9.js?v=19"></script>
-  <script src="letters.js?v=19"></script>
-  <script src="reply-engine.js?v=19"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=19"></script>
-  <script src="qr-code.js?v=19"></script>
-  <script src="app.js?v=19"></script>
-  <script src="experience.js?v=19"></script>
+  <script src="config.js?v=20"></script>
+  <script src="vendor/supabase-2.110.9.js?v=20"></script>
+  <script src="letters.js?v=20"></script>
+  <script src="reply-engine.js?v=20"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=20"></script>
+  <script src="qr-code.js?v=20"></script>
+  <script src="app.js?v=20"></script>
+  <script src="experience.js?v=20"></script>
 </body>
 </html>

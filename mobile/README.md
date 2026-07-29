@@ -36,7 +36,9 @@ window.onNativeEntitlement = (entitled, priceLabel, reason) => {
 
 Приложение также отправляет событие `nur-entitlement`. Purchase token и секреты никогда не передаются JavaScript-слою.
 
-OAuth использует Supabase PKCE и callback `com.franceisl.glowletternext://auth/callback`. Android и iOS принимают только точный Supabase authorize URL, провайдер Google/Facebook, S256 challenge и точный callback. Для production предпочтительны verified App Link и Universal Link.
+OAuth использует Supabase PKCE и callback `com.franceisl.glowletternext://auth/callback`. Android и iOS принимают только точный Supabase authorize URL, провайдер Google/Facebook/Apple, S256 challenge и точный callback. Для production предпочтительны verified App Link и Universal Link.
+
+Для Apple OAuth настройте Services ID в Supabase и укажите Supabase callback `https://xzzngrquomyiglktroqi.supabase.co/auth/v1/callback` в Apple Developer. Services ID должен стоять первым в списке Client IDs Supabase, если одновременно используется нативный App ID. Секрет Apple OAuth необходимо безопасно обновлять не реже одного раза в шесть месяцев; `.p8` и сгенерированный secret нельзя включать в приложение или репозиторий.
 
 ## Сборка Android
 
@@ -48,7 +50,7 @@ python ..\scripts\generate_store_assets.py
 .\gradlew.bat :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
 ```
 
-APK появится в `app/build/outputs/apk/debug/GlowLetter-2.2.3-debug.apk`.
+APK появится в `app/build/outputs/apk/debug/GlowLetter-2.2.4-debug.apk`.
 
 Для закрытой owner-сборки capability передаётся только параметром Gradle или переменной окружения:
 

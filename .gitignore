@@ -4,6 +4,7 @@ node_modules/
 **/build/
 mobile/dist/
 mobile/ios/*.xcodeproj/
+supabase/.temp/
 *.jks
 *.keystore
 .env

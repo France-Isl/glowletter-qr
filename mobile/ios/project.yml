@@ -14,8 +14,8 @@ settings:
     SWIFT_VERSION: "5.0"
     IPHONEOS_DEPLOYMENT_TARGET: 16.0
     TARGETED_DEVICE_FAMILY: "1,2"
-    MARKETING_VERSION: 2.2.3
-    CURRENT_PROJECT_VERSION: 9
+    MARKETING_VERSION: 2.2.4
+    CURRENT_PROJECT_VERSION: 10
 
 targets:
   NurPismo:
@@ -27,10 +27,13 @@ targets:
           - Assets.xcassets
           - Info.plist
           - WebResources
-    resources:
       - path: NurPismo/Assets.xcassets
+        buildPhase: resources
       - path: NurPismo/WebResources
         type: folder
+        buildPhase: resources
+      - path: StoreKit/GlowLetter.storekit
+        buildPhase: resources
     preBuildScripts:
       - name: Sync current web application
         basedOnDependencyAnalysis: false
@@ -43,6 +46,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.franceisl.glowletternext
         PRODUCT_NAME: GlowLetter
+        PRODUCT_MODULE_NAME: NurPismo
         INFOPLIST_FILE: NurPismo/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
@@ -55,8 +59,6 @@ targets:
     platform: iOS
     sources:
       - path: NurPismoTests
-    resources:
-      - path: StoreKit/GlowLetter.storekit
     dependencies:
       - target: NurPismo
     settings:
@@ -64,6 +66,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.franceisl.glowletternext.tests
         GENERATE_INFOPLIST_FILE: YES
         CODE_SIGN_STYLE: Automatic
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/GlowLetter.app/GlowLetter"
+        BUNDLE_LOADER: "$(TEST_HOST)"
 
 schemes:
   NurPismo:

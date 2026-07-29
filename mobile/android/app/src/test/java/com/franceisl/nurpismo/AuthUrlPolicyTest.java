@@ -14,6 +14,8 @@ public final class AuthUrlPolicyTest {
                     + "&redirect_to=com.franceisl.glowletternext.debug%3A%2F%2Fauth%2Fcallback"
                     + "&code_challenge=" + CHALLENGE
                     + "&code_challenge_method=s256";
+    private static final String REQUIRED_APPLE_QUERY =
+            REQUIRED_GOOGLE_QUERY.replace("provider=google", "provider=apple");
 
     @Test
     public void acceptsExactSupabaseAuthorizeEndpointWithRequiredPkceParameters() {
@@ -27,6 +29,9 @@ public final class AuthUrlPolicyTest {
                         + "&code_challenge=" + CHALLENGE
                         + "&code_challenge_method=S256"
                         + "&skip_http_redirect=true&scopes=email%20profile"
+        ));
+        assertTrue(AuthUrlPolicy.isAllowedAuthorizeUrl(
+                BASE + "?" + REQUIRED_APPLE_QUERY
         ));
     }
 
@@ -65,6 +70,19 @@ public final class AuthUrlPolicyTest {
         assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(BASE + "?provider=google"));
         assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
                 BASE + "?" + REQUIRED_GOOGLE_QUERY.replace("provider=google", "provider=github")
+        ));
+        assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
+                BASE + "?" + REQUIRED_GOOGLE_QUERY.replace("provider=google", "provider=Apple")
+        ));
+        assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
+                BASE + "?" + REQUIRED_APPLE_QUERY
+                        .replace("com.franceisl.glowletternext.debug%3A%2F%2Fauth%2Fcallback", "https%3A%2F%2Fevil.example%2Fcallback")
+        ));
+        assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
+                BASE + "?" + REQUIRED_APPLE_QUERY.replace(CHALLENGE, "too-short")
+        ));
+        assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
+                BASE + "?" + REQUIRED_APPLE_QUERY.replace("code_challenge_method=s256", "code_challenge_method=plain")
         ));
         assertFalse(AuthUrlPolicy.isAllowedAuthorizeUrl(
                 BASE + "?" + REQUIRED_GOOGLE_QUERY

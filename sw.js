@@ -1,21 +1,24 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v19`;
+const CACHE = `${CACHE_PREFIX}v20`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=19",
-  "experience.css?v=19",
-  "config.js?v=19",
-  "vendor/supabase-2.110.9.js?v=19",
-  "vendor/qrcode-generator-1.4.4.min.js?v=19",
-  "letters.js?v=19",
-  "reply-engine.js?v=19",
-  "qr-code.js?v=19",
-  "app.js?v=19",
-  "experience.js?v=19",
-  "manifest.webmanifest?v=19",
+  "styles.css?v=20",
+  "experience.css?v=20",
+  "config.js?v=20",
+  "vendor/supabase-2.110.9.js?v=20",
+  "vendor/qrcode-generator-1.4.4.min.js?v=20",
+  "letters.js?v=20",
+  "reply-engine.js?v=20",
+  "qr-code.js?v=20",
+  "app.js?v=20",
+  "experience.js?v=20",
+  "manifest.webmanifest?v=20",
   "icon.svg",
   "privacy.html",
+  "assets/auth/apple-continue-ru.png",
+  "assets/auth/apple-continue-en.png",
+  "assets/auth/apple-continue-fr.png",
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];

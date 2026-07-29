@@ -28,6 +28,8 @@ def ensure_mobile_destination(destination: Path) -> Path:
 def reset_destination(destination: Path) -> None:
     destination.mkdir(parents=True, exist_ok=True)
     for child in destination.iterdir():
+        if child.name == ".gitkeep":
+            continue
         if child.is_dir() and not child.is_symlink():
             shutil.rmtree(child)
         else:
