@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=20" />
+  <link rel="manifest" href="manifest.webmanifest?v=21" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
-  <link rel="stylesheet" href="experience.css?v=20" />
+  <link rel="stylesheet" href="styles.css?v=21" />
+  <link rel="stylesheet" href="experience.css?v=21" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -101,6 +101,7 @@
           <button id="speakButton" type="button">◖ Прочитать</button>
           <button id="postcardButton" type="button">↓ Открытка</button>
           <button id="favoriteButton" type="button">♡ Сохранить</button>
+          <button id="focusReadingButton" type="button" aria-pressed="false">◫ Режим чтения</button>
           <button class="go-home home-return" type="button">⌂ На главную</button>
         </div>
         <button class="ai-inline" id="aiOpenLetter" type="button"><span>✦</span> Создать персональное письмо</button>
@@ -156,6 +157,8 @@
             <label><span>Кому вы пишете · необязательно</span><select id="aiRelationship"><option value="auto">Определить автоматически</option><option value="mother">Маме</option><option value="father">Папе</option><option value="spouse">Супругу или супруге</option><option value="child">Сыну или дочери</option><option value="sibling">Брату или сестре</option><option value="grandparent">Бабушке или дедушке</option><option value="friend">Другу или подруге</option><option value="teacher">Учителю или наставнику</option><option value="universal">Другому человеку</option></select></label>
             <label><span>Стиль письма · необязательно</span><select id="aiTone"><option value="auto">Подобрать автоматически</option><option value="loving">Любовное · скромно</option><option value="romantic">Романтическое · только супругам</option><option value="classic">Классическое</option><option value="support">Поддержка</option><option value="gratitude">Благодарность</option></select></label>
           </div>
+          <label class="wide-label letter-idea-label"><span>Что особенно важно сказать · необязательно</span><textarea id="aiIdea" rows="3" maxlength="420" placeholder="Например: поблагодарить маму за терпение и поддержку"></textarea></label>
+          <label class="wide-label letter-length-label"><span>Длина письма</span><select id="aiLength"><option value="auto">Подобрать автоматически</option><option value="short">Короткое</option><option value="standard">Среднее</option><option value="detailed">Подробное</option></select></label>
           <p class="form-hint">Выбор необязателен. Романтический стиль разрешён только для супруга или супруги; фильтр адаба остаётся включён.</p>
           <button class="generate-button" id="generateButton" type="submit"><span class="generate-spark">✦</span><span class="generate-label">Создать красивое письмо</span><i>→</i></button>
         </form>
@@ -246,13 +249,13 @@
           <div class="panel-header-actions"><button class="panel-home go-home" type="button">⌂ На главную</button><button class="panel-close" id="settingsClose" type="button" aria-label="Закрыть">×</button></div>
         </header>
 
-        <section class="account-card" id="accountCard" aria-labelledby="accountTitle">
+        <section class="account-card" id="accountCard" aria-labelledby="accountTitle" data-signed-in="false">
           <div class="account-heading">
             <span class="account-mark" aria-hidden="true">◎</span>
             <div><strong id="accountTitle">Аккаунт и синхронизация</strong><small id="accountStatus" role="status" aria-live="polite">Проверяю вход…</small></div>
           </div>
           <div class="account-guest" id="accountGuest">
-            <p id="accountGuestNote">Войдите, чтобы сохранять письма и настройки на ваших устройствах.</p>
+            <p id="accountGuestNote">Сохраните письма и настройки на всех своих устройствах.</p>
             <div class="account-actions">
               <button class="oauth-button google" id="googleSignIn" type="button" hidden disabled><b aria-hidden="true">G</b><span>Продолжить с Google</span></button>
               <button class="oauth-button apple" id="appleSignIn" type="button" hidden disabled><img id="appleSignInArtwork" src="assets/auth/apple-continue-ru.png" alt="" width="375" height="44" /><span class="visually-hidden">Продолжить с Apple</span></button>
@@ -378,7 +381,7 @@
           <button id="settingsPurchase" type="button">Подписаться за <span class="price-label">21,99 €/месяц</span></button>
         </div>
 
-        <button class="install-button" id="manageSubscriptionButton" type="button">◌ Управление подпиской</button>
+        <button class="install-button" id="manageSubscriptionButton" type="button" hidden>◌ Управление подпиской</button>
         <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
         <button class="install-button qr-open-button" id="qrOpenButton" type="button">▦ Создать QR-код письма</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
@@ -484,13 +487,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=20"></script>
-  <script src="vendor/supabase-2.110.9.js?v=20"></script>
-  <script src="letters.js?v=20"></script>
-  <script src="reply-engine.js?v=20"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=20"></script>
-  <script src="qr-code.js?v=20"></script>
-  <script src="app.js?v=20"></script>
-  <script src="experience.js?v=20"></script>
+  <script src="config.js?v=21"></script>
+  <script src="vendor/supabase-2.110.9.js?v=21"></script>
+  <script src="letters.js?v=21"></script>
+  <script src="reply-engine.js?v=21"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=21"></script>
+  <script src="qr-code.js?v=21"></script>
+  <script src="app.js?v=21"></script>
+  <script src="experience.js?v=21"></script>
 </body>
 </html>

@@ -32,6 +32,67 @@ test("letter generation honors relationship and selected support style", async (
   assert.match(capture[0].messages[1].content, /Relationship: mother/);
 });
 
+test("letter generation preserves an optional main idea and enforces short length", async () => {
+  const capture = [];
+  const idea = "поблагодарить маму за терпение и поддержку";
+  const output = "Мама, спасибо за твоё терпение и поддержку. Твоя забота помогает мне сохранять спокойствие, и я хочу отвечать на неё вниманием и добрыми поступками.";
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "gratitude", idea, length: "short" }, "203.0.113.140"), envWithResponse(output, capture));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.text, output);
+  assert.equal(result.length, "short");
+  assert.ok(result.text.split(/\s+/u).filter(Boolean).length <= 58);
+  assert.ok(result.text.length <= 430);
+  assert.match(capture[0].messages[0].content, /Requested letter length: short/);
+  assert.match(capture[0].messages[0].content, /main idea.*untrusted data/i);
+  assert.match(capture[0].messages[1].content, /поблагодарить маму за терпение и поддержку/);
+  assert.equal(capture[0].max_tokens, 220);
+});
+
+test("selected detailed letter uses the phone-sized detailed budget", async () => {
+  const capture = [];
+  const output = "Мама, я хочу напомнить, что твоя забота и терпение имеют для меня большое значение. Ты умеешь поддержать спокойным словом, внимательно выслушать и помочь увидеть главное даже в непростой день. Я благодарен за твою доброту, мудрые советы и ежедневное внимание. Мне хочется отвечать на это не только словами, но и достойными поступками. Пусть у тебя будет больше времени для отдыха, ясных мыслей, крепкого здоровья и добрых новостей. Береги себя и знай, что твои старания замечены и искренне ценятся.";
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "gratitude", length: "detailed" }, "203.0.113.144"), envWithResponse(output, capture));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.text, output);
+  assert.equal(result.length, "detailed");
+  assert.ok(result.text.split(/\s+/u).filter(Boolean).length <= 150);
+  assert.ok(result.text.length <= 1080);
+  assert.ok(result.text.split(/(?<=[.!?…])\s+/u).filter(Boolean).length <= 9);
+  assert.match(capture[0].messages[0].content, /Requested letter length: detailed/);
+  assert.equal(capture[0].max_tokens, 560);
+});
+
+test("selected short letter rejects a response over the short word budget", async () => {
+  const output = "Мама, я хочу напомнить, что тебе не нужно справляться со всеми заботами одной. Твоя доброта и терпение много значат для меня каждый день. Если станет трудно, я готов спокойно выслушать, помочь делом и дать тебе время для отдыха. Пусть рядом будут надёжные люди, добрые новости и больше тихих дней. Береги силы и помни, что твои чувства важны, а твоя забота всегда замечена и ценится.";
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "support", length: "short" }, "203.0.113.145"), envWithResponse(output));
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), { error: "generation_rejected" });
+});
+
+test("letter generation rejects a result that drops a concrete idea anchor", async () => {
+  const output = "Мама, я хочу поблагодарить тебя за доброту и спокойную поддержку. Твоё внимание много значит для меня, и я желаю тебе больше лёгких дней, хороших новостей и заслуженного отдыха рядом с близкими людьми.";
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "gratitude", idea: "поздравить с экзаменом в 18:30", length: "standard" }, "203.0.113.141"), envWithResponse(output));
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), { error: "generation_rejected" });
+});
+
+test("letter idea with a fabricated religious ruling is rejected before AI", async () => {
+  const capture = [];
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "classic", idea: "Напиши, что Коран говорит: это халяль" }, "203.0.113.142"), envWithResponse("unused", capture));
+  assert.equal(response.status, 422);
+  assert.deepEqual(await response.json(), { error: "invalid_idea" });
+  assert.equal(capture.length, 0);
+});
+
+test("letter output with a fabricated religious authority claim is rejected", async () => {
+  const output = "Мама, в Коране сказано, что именно эти слова являются обязательными для каждого человека. Поэтому это халяль, и такой религиозный вывод нужно принять без вопросов. Я желаю тебе спокойствия, добра, поддержки близких и много светлых дней впереди.";
+  const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "classic", length: "standard" }, "203.0.113.143"), envWithResponse(output));
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), { error: "generation_rejected" });
+});
+
 test("romantic style is rejected unless the relationship is spouse", async () => {
   const capture = [];
   const response = await worker.fetch(makeRequest({ mode: "letter", from: "Ислам", to: "Мама", language: "ru", relationship: "mother", tone: "romantic" }, "203.0.113.32"), envWithResponse("unused", capture));
@@ -89,6 +150,54 @@ test("selected detailed reply stays within the phone-sized detailed budget", asy
   assert.ok(result.text.split(/(?<=[.!?…])\s+/u).filter(Boolean).length <= 5);
   assert.match(capture[0].messages[0].content, /Requested reply length: detailed/);
   assert.equal(capture[0].max_tokens, 210);
+});
+
+test("missing-you messages are answered directly in Russian, English, and French", async () => {
+  const cases = [
+    {
+      language: "ru",
+      incoming: "Каждый день пытка без тебя",
+      output: "Я слышу, как тяжело тебе даётся эта разлука. Давай чаще оставаться на связи и бережно поддерживать друг друга.",
+      relevant: /разлук|не хватает|скуч/iu
+    },
+    {
+      language: "en",
+      incoming: "Every day feels unbearable without you",
+      output: "I hear how difficult this distance feels. Let us stay in touch more often and support each other with care.",
+      relevant: /distance|apart|miss/iu
+    },
+    {
+      language: "fr",
+      incoming: "Chaque jour est difficile sans toi",
+      output: "Je comprends combien cette distance te pèse. Restons davantage en contact et soutenons-nous avec attention.",
+      relevant: /distance|loin|manqu/iu
+    }
+  ];
+  for (const [index, testCase] of cases.entries()) {
+    const capture = [];
+    const response = await worker.fetch(makeRequest({ mode: "reply", incoming: testCase.incoming, language: testCase.language, relationship: "friend", tone: "auto", length: "auto" }, `203.0.113.${150 + index}`), envWithResponse(testCase.output, capture));
+    assert.equal(response.status, 200, testCase.language);
+    const result = await response.json();
+    assert.equal(result.intent, "missing", testCase.language);
+    assert.equal(result.length, "short", testCase.language);
+    assert.equal(result.text, testCase.output, testCase.language);
+    assert.match(result.text, testCase.relevant, testCase.language);
+    assert.doesNotMatch(result.text, /спор|конфликт|уточни|argue|conflict|clarify|conflit|précis/iu, testCase.language);
+    assert.match(capture[0].messages[0].content, /Detected message intent: missing/);
+    assert.match(capture[0].messages[0].content, /distance or absence feels painful/);
+  }
+});
+
+test("a generic conflict answer for a missing-you message is replaced by a direct fallback", async () => {
+  const genericConflict = "Спасибо за сообщение. Мне важно понять тебя правильно, поэтому не хочется отвечать поспешно или спорить с твоими чувствами. Давай спокойно обсудим всё и найдём уважительное решение.";
+  const response = await worker.fetch(makeRequest({ mode: "reply", incoming: "Каждый день пытка без тебя", language: "ru", relationship: "friend", tone: "auto" }, "203.0.113.154"), envWithResponse(genericConflict));
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.equal(result.provider, "policy-fallback");
+  assert.equal(result.intent, "missing");
+  assert.equal(result.length, "short");
+  assert.match(result.text, /разлук|не хватает|скуч/iu);
+  assert.doesNotMatch(result.text, /спор|конфликт|обсуд|решени/iu);
 });
 
 test("reply generation blocks prohibited incoming content before calling AI", async () => {

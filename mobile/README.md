@@ -50,7 +50,7 @@ python ..\scripts\generate_store_assets.py
 .\gradlew.bat :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
 ```
 
-APK появится в `app/build/outputs/apk/debug/GlowLetter-2.2.4-debug.apk`.
+APK появится в `app/build/outputs/apk/debug/GlowLetter-2.2.5-debug.apk`.
 
 Для закрытой owner-сборки capability передаётся только параметром Gradle или переменной окружения:
 

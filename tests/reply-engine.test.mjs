@@ -107,11 +107,16 @@ const intentCases = [
   ["Ас-саляму алейкум", "islamic_greeting"],
   ["Доброе утро!", "greeting"],
   ["Скучаю по тебе, береги себя", "care"],
+  ["Каждый день пытка без тебя", "missing"],
+  ["Пожалуйста, не забудь мне помочь", "request"],
+  ["Я уже дома", "status_update"],
+  ["Пусть Аллах хранит тебя", "dua"],
   ["I am struggling and need help", "support"],
   ["I am sorry, please forgive me", "apology"],
   ["What time will you arrive?", "time_question"],
   ["Thank you for your kindness", "gratitude"],
   ["Assalamu alaikum", "islamic_greeting"],
+  ["Every day feels unbearable without you", "missing"],
   ["Je vais mal et j’ai besoin d’aide", "support"],
   ["Pardon, je suis désolée", "apology"],
   ["À quelle heure arrives-tu ?", "time_question"],
@@ -155,6 +160,12 @@ assert.equal(engine.resolveTone("Ты меня обидел"), "reconcile");
 assert.equal(engine.resolveTone("Обычное сообщение без особого сигнала"), "calm");
 assert.equal(engine.resolveTone("Спасибо", "boundary"), "boundary");
 
+const missingReply = engine.compose({ incoming: "Каждый день пытка без тебя", language: "ru", length: "auto", relationship: "spouse", variant: 0 });
+assert.equal(engine.inferIntent("Каждый день пытка без тебя"), "missing");
+assert.match(missingReply, /(?:тоск|не хватает|разлук)/iu, "reply must answer the stated feeling of separation");
+assert.doesNotMatch(missingReply, /(?:спор|конфликт|решени|уточни)/iu, "missing-you message must not receive a generic conflict/question reply");
+assert.equal(engine.isAligned(missingReply, "missing"), true);
+
 const questionAnalysis = engine.analyze("Во сколько ты придёшь?");
 assert.equal(questionAnalysis.intent, "time_question");
 assert.equal(questionAnalysis.needsGoal, true);
@@ -173,6 +184,30 @@ for (const language of ["ru", "en", "fr"]) {
   assert.equal(engine.resolveLength(lengthIncoming, "standard"), "standard");
   assert.equal(engine.resolveLength(lengthIncoming, "detailed"), "detailed");
 }
+
+const lengthBudgets = {
+  short: { words: 22, characters: 190, sentences: 3 },
+  standard: { words: 50, characters: 440, sentences: 4 },
+  detailed: { words: 65, characters: 560, sentences: 5 }
+};
+for (const language of ["ru", "en", "fr"]) {
+  for (const incoming of ["Каждый день пытка без тебя", "Мне сейчас очень тяжело, нужна поддержка", "Почему ты так думаешь?"]) {
+    for (const [length, budget] of Object.entries(lengthBudgets)) {
+      for (const variant of [0, 1]) {
+        const reply = engine.compose({ incoming, language, relationship: "friend", tone: "auto", length, variant });
+        assert.ok(reply.split(/\s+/u).filter(Boolean).length <= budget.words, `${language}/${length}: word budget`);
+        assert.ok(reply.length <= budget.characters, `${language}/${length}: character budget`);
+        assert.ok(reply.split(/(?<=[.!?…])\s+/u).filter(Boolean).length <= budget.sentences, `${language}/${length}: sentence budget`);
+      }
+    }
+  }
+}
+
+const calmNeutral = engine.compose({ incoming:"Обычное сообщение", language:"ru", relationship:"friend", tone:"calm", length:"standard", variant:0 });
+const warmNeutral = engine.compose({ incoming:"Обычное сообщение", language:"ru", relationship:"friend", tone:"warm", length:"standard", variant:0 });
+assert.notEqual(calmNeutral, warmNeutral, "an explicit tone must change the wording");
+assert.match(warmNeutral, /(?:спасибо|открыто|ценю)/iu);
+assert.match(warmNeutral, /дружб/iu, "selected relationship must affect the register");
 
 const alignmentCases = [
   ["Ва алейкум ассалям ва рахматуллахи ва баракатух.", "islamic_greeting", true],
@@ -198,6 +233,11 @@ const auditCases = [
   ["Je t’aime.", { relationship: "friend" }, "improper_romance"],
   ["Я отвечу позже.", { tone: "boundary" }, "tone_mismatch"],
   ["Я приду немного позже.", { goal: "Я приду в 19:00" }, "goal_missing"]
+  ,["s.e.x", {}, "forbidden"]
+  ,["sеx", {}, "forbidden"]
+  ,["с е к с", {}, "forbidden"]
+  ,["p-o-r-n", {}, "forbidden"]
+  ,["Это 18+ текст", {}, "forbidden"]
 ];
 for (const [text, context, expectedCode] of auditCases) {
   const result = engine.audit(text, context);

@@ -22,7 +22,7 @@
       sceneHint: "Фон повторяется без остановки", still: "Фото / озеро", mishka: "Мишка",
       kotyta: "Котята", lis: "Лисёнок", kot: "Кот", smart: "Умная читаемость",
       smartHint: "Прозрачность письма сама подстраивается под свет в видео", premium: "Премиум-оформление",
-      frame: "Рамка письма", color: "Цвет текста", type: "Стиль текста", pro: "VIP",
+      frame: "Рамка письма и ответов", color: "Цвет текста", type: "Стиль текста", pro: "VIP",
       none: "Без рамки", hearts: "Сердца", moon: "Лунный свет", forestFrame: "Лесное золото",
       pearl: "Жемчуг", ink: "Чернила", plum: "Слива", forestInk: "Лес", midnight: "Полночь",
       classic: "Классика", elegant: "Элегантный", clear: "Чёткий", locked: "Доступно в полной версии",
@@ -35,7 +35,7 @@
       sceneHint: "The background loops continuously", still: "Photo / lake", mishka: "Bear",
       kotyta: "Kittens", lis: "Little fox", kot: "Cat", smart: "Smart readability",
       smartHint: "Letter transparency adapts to the light in the video", premium: "Premium styling",
-      frame: "Letter frame", color: "Text color", type: "Text style", pro: "VIP",
+      frame: "Letter and reply frame", color: "Text color", type: "Text style", pro: "VIP",
       none: "No frame", hearts: "Hearts", moon: "Moonlight", forestFrame: "Forest gold",
       pearl: "Pearl", ink: "Ink", plum: "Plum", forestInk: "Forest", midnight: "Midnight",
       classic: "Classic", elegant: "Elegant", clear: "Clear", locked: "Available with full access",
@@ -48,7 +48,7 @@
       sceneHint: "Le fond se répète en continu", still: "Photo / lac", mishka: "Ourson",
       kotyta: "Chatons", lis: "Renardeau", kot: "Chat", smart: "Lisibilité intelligente",
       smartHint: "La transparence s’adapte à la lumière de la vidéo", premium: "Style premium",
-      frame: "Cadre de la lettre", color: "Couleur du texte", type: "Style du texte", pro: "VIP",
+      frame: "Cadre de la lettre et des réponses", color: "Couleur du texte", type: "Style du texte", pro: "VIP",
       none: "Sans cadre", hearts: "Cœurs", moon: "Clair de lune", forestFrame: "Or forestier",
       pearl: "Perle", ink: "Encre", plum: "Prune", forestInk: "Forêt", midnight: "Minuit",
       classic: "Classique", elegant: "Élégant", clear: "Clair", locked: "Disponible avec l’accès complet",
@@ -71,6 +71,8 @@
   };
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+  const liteDevice = document.documentElement.dataset.glPerf === "lite";
+  let sceneExplicitlyRequested = false;
   let premium = false;
   let sampleTimer = 0;
   let statusTimer = 0;
@@ -177,6 +179,8 @@
       studio.querySelectorAll(`[data-${key.replace(/[A-Z]/g, value => `-${value.toLowerCase()}`)}]`).forEach(button => {
         const active = button.dataset[key] === selected;
         button.classList.toggle("is-active", active); button.setAttribute("aria-checked", String(active));
+        const mark = button.querySelector(":scope > b");
+        if (mark) mark.textContent = active ? "✓" : (button.dataset.glFrame === "none" ? "—" : "✦");
       });
     });
     const smart = studio.querySelector(".gl-smart-toggle");
@@ -203,19 +207,22 @@
     } catch { setPalette(.5); }
   };
   const playVideo = () => {
-    if (state.scene === "still" || reduceMotion.matches || saveData || document.hidden) return;
+    if (state.scene === "still" || reduceMotion.matches || (saveData && !sceneExplicitlyRequested) || document.hidden) return;
     video.play().catch(() => document.addEventListener("pointerdown", () => video.play().catch(() => {}), { once: true, passive: true }));
   };
   const applyScene = () => {
     const selected = SCENES.find(item => item.id === state.scene) || SCENES[0];
     document.body.classList.toggle("gl-video-active", Boolean(selected.file));
+    document.body.classList.remove("gl-video-ready");
     document.body.dataset.glScene = selected.id;
     if (!selected.file) {
-      video.pause(); video.removeAttribute("src"); video.load(); setPalette(.5); return;
+      video.pause(); video.removeAttribute("src"); video.removeAttribute("poster"); video.load(); setPalette(.5); return;
     }
     const source = `${ASSET_ROOT}${selected.file}`;
-    if (!video.src.endsWith(source)) { video.src = source; video.preload = saveData ? "metadata" : "auto"; video.load(); }
-    if (reduceMotion.matches) notify("reduced"); else if (saveData) notify("data"); else playVideo();
+    video.poster = `${ASSET_ROOT}${selected.id}.jpg`;
+    if (!video.src.endsWith(source)) { video.src = source; video.preload = saveData || liteDevice ? "metadata" : "auto"; video.load(); }
+    else if (video.readyState >= 2) document.body.classList.add("gl-video-ready");
+    if (reduceMotion.matches) notify("reduced"); else if (saveData && !sceneExplicitlyRequested) notify("data"); else playVideo();
   };
   const applyDesign = () => {
     const sharedPresentation = params.has("msg") && params.has("glFrame");
@@ -227,9 +234,12 @@
   };
   const detectPremium = () => {
     const card = document.querySelector(".premium-settings-card");
-    premium = Boolean(card && card.hidden);
+    premium = document.body.dataset.access === "vip" || document.body.classList.contains("gl-premium-active") || Boolean(card && card.hidden);
     document.body.classList.toggle("gl-premium-active", premium);
-    studio.querySelector(".gl-premium-block").classList.toggle("is-locked", !premium);
+    const block = studio.querySelector(".gl-premium-block");
+    block.classList.toggle("is-locked", !premium);
+    const lockedHint = block.querySelector('[data-gl-text="locked"]');
+    if (lockedHint) lockedHint.hidden = premium;
     studio.querySelectorAll("[data-gl-frame],[data-gl-ink],[data-gl-type]").forEach(button => button.setAttribute("aria-disabled", String(!premium && button.dataset.glFrame !== "none")));
     applyDesign();
   };
@@ -242,6 +252,7 @@
 
   sceneGrid.addEventListener("click", event => {
     const button = event.target.closest("[data-gl-scene]"); if (!button) return;
+    sceneExplicitlyRequested = true;
     state.scene = valid(button.dataset.glScene, SCENES.map(item => item.id), "still");
     persist(); applyScene(); renderChoices(); notify("saved");
   });
@@ -306,7 +317,7 @@
     else copyShareUrl(data.url);
     notify("share");
   }, true);
-  video.addEventListener("loadeddata", () => { samplePalette(); playVideo(); });
+  video.addEventListener("loadeddata", () => { document.body.classList.add("gl-video-ready"); samplePalette(); playVideo(); });
   video.addEventListener("ended", () => { video.currentTime = 0; playVideo(); });
   video.addEventListener("error", () => { state.scene = "still"; persist(); applyScene(); renderChoices(); notify("fallback"); });
   document.addEventListener("visibilitychange", () => document.hidden ? video.pause() : playVideo());
@@ -317,6 +328,7 @@
   const premiumCard = document.querySelector(".premium-settings-card");
   if (premiumCard) new MutationObserver(detectPremium).observe(premiumCard, { attributes: true, attributeFilter: ["hidden", "style", "class"] });
   addEventListener("nur-entitlement", () => setTimeout(detectPremium));
+  addEventListener("glowletter-access-change", event => { premium = Boolean(event.detail?.premium); detectPremium(); });
   new MutationObserver(() => {
     letter.classList.remove("gl-letter-alive");
     requestAnimationFrame(() => letter.classList.add("gl-letter-alive"));
@@ -324,6 +336,6 @@
   new MutationObserver(() => setTimeout(() => { localize(); renderChoices(); }, 0)).observe(document.querySelector("#languageButton"), { childList: true, characterData: true, subtree: true });
 
   clearInterval(sampleTimer);
-  sampleTimer = setInterval(() => { if (!document.hidden && state.scene !== "still") samplePalette(); }, 4500);
+  sampleTimer = setInterval(() => { if (!document.hidden && state.scene !== "still") samplePalette(); }, liteDevice ? 9000 : 4500);
   localize(); renderChoices(); applyScene(); applyDesign(); detectPremium(); syncUrl();
 })();

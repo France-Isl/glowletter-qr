@@ -466,8 +466,24 @@ public final class MainActivity extends ComponentActivity {
     }
 
     @Override
+    protected void onPause() {
+        if (webView != null) {
+            webView.onPause();
+            // GlowLetter owns a single WebView in this process, so suspending the
+            // shared WebView timer clock safely stops rain and decorative motion
+            // while a picker, browser or another app is in front.
+            webView.pauseTimers();
+        }
+        super.onPause();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        if (webView != null) {
+            webView.onResume();
+            webView.resumeTimers();
+        }
         getWindow().getDecorView().post(this::enterImmersiveMode);
         if (billingManager != null) {
             billingManager.onResume();

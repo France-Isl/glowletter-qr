@@ -7,6 +7,12 @@
   const SUPPORTED_LANGUAGES = new Set(["ru", "en", "fr"]);
   const SUPPORTED_TONES = new Set(["auto", "calm", "warm", "support", "reconcile", "boundary"]);
   const SUPPORTED_LENGTHS = new Set(["auto", "short", "standard", "detailed"]);
+  const SUPPORTED_RELATIONSHIPS = new Set(["auto", "spouse", "family", "friend", "colleague", "universal"]);
+  const LENGTH_BUDGETS = Object.freeze({
+    short: Object.freeze({ maxWords: 22, maxCharacters: 190, maxSentences: 3 }),
+    standard: Object.freeze({ maxWords: 50, maxCharacters: 440, maxSentences: 4 }),
+    detailed: Object.freeze({ maxWords: 65, maxCharacters: 560, maxSentences: 5 })
+  });
 
   const SIGNALS = {
     religiousGratitude: [
@@ -16,6 +22,11 @@
     ],
     islamicGreeting: [
       "ассаляму алейкум", "ас саляму алейкум", "салам алейкум", "assalamu alaikum", "as salamu alaykum", "salam alaykoum", "salam alaykum"
+    ],
+    dua: [
+      "пусть аллах", "да хранит аллах", "аминь", "амин",
+      "may allah", "ameen", "amin",
+      "qu allah", "puisse allah", "amine"
     ],
     distress: [
       "мне тяжело", "мне плохо", "мне грустно", "я устал", "я устала", "не справляюсь", "очень трудно", "больно на душе", "нужна помощь", "нужна поддержка", "нужен совет",
@@ -63,6 +74,16 @@
       "why", "can you", "do you", "will you", "what do you think", "should we",
       "pourquoi", "peux tu", "es tu d accord", "qu en penses tu", "vas tu", "devrions nous"
     ],
+    request: [
+      "пожалуйста", "можешь помочь", "сможешь помочь", "не забудь", "принеси", "передай", "сделай пожалуйста",
+      "please", "could you help", "can you help", "do not forget", "don t forget", "bring", "send me",
+      "s il te plait", "pouvez vous aider", "peux tu m aider", "n oublie pas", "apporte", "envoie moi"
+    ],
+    statusUpdate: [
+      "я дома", "уже дома", "я приехал", "я приехала", "я пришел", "я пришла", "я добрался", "я добралась", "уже на месте",
+      "i am home", "i arrived", "i made it home", "i am here now",
+      "je suis chez moi", "je suis arrive", "je suis arrivee", "je suis bien rentre", "je suis bien rentree", "je suis sur place"
+    ],
     greeting: [
       "привет", "доброе утро", "добрый день", "добрый вечер", "здравствуй", "здравствуйте",
       "hello", "hi", "good morning", "good afternoon", "good evening",
@@ -72,6 +93,11 @@
       "скучаю", "не хватает тебя", "думаю о тебе", "береги себя",
       "miss you", "thinking of you", "take care",
       "tu me manques", "je pense a toi", "prends soin de toi"
+    ],
+    missing: [
+      "без тебя", "пытка без тебя", "невыносимо без тебя", "очень скучаю", "сильно скучаю", "разлука с тобой",
+      "without you", "miss you so much", "distance from you", "being apart from you",
+      "sans toi", "tu me manques tellement", "loin de toi", "cette distance"
     ]
   };
 
@@ -126,6 +152,10 @@
         "Альхамдулиллях. Я тоже благодарю Аллаха за тебя. Пусть Аллах хранит тебя, укрепляет в добре и дарует тебе благо.",
         "Альхамдулиллях за такие добрые слова. Я также благодарю Аллаха за тебя. Пусть в твоей жизни будет больше мира, добра и благословения."
       ],
+      dua: [
+        "Амин. Пусть Аллах примет твои добрые слова и дарует тебе мир, благо и защиту.",
+        "Амин, и тебе того же добра. Пусть Аллах хранит тебя и облегчает всё полезное."
+      ],
       islamic_greeting: [
         "Ва алейкум ассалям ва рахматуллахи ва баракатух. Спасибо за сообщение. Пусть твой день будет спокойным и наполненным благом.",
         "Ва алейкум ассалям ва рахматуллахи ва баракатух. Очень приятно получить твоё сообщение. Пусть Аллах дарует тебе мир и добро."
@@ -170,6 +200,14 @@
         "Хочу ответить честно и по существу, поэтому не буду придумывать решение наугад. Уточни, пожалуйста, главную деталь, от которой зависит ответ.",
         "Спасибо за прямой вопрос. Мне нужно немного больше информации, чтобы ответить точно. Уточни, пожалуйста, что для тебя здесь самое важное."
       ],
+      request: [
+        "Я понял твою просьбу и не хочу оставлять её без ответа. Проверю, что могу сделать, и сообщу тебе ясно.",
+        "Спасибо, что попросил прямо. Я постараюсь помочь; если что-то не получится, скажу об этом честно и без лишних обещаний."
+      ],
+      status_update: [
+        "Спасибо, что сообщил. Хорошо, что ты уже на месте. Береги себя и спокойно отдохни.",
+        "Хорошо, спасибо, что дал знать. Я рад, что ты добрался. Пусть дальше всё будет спокойно."
+      ],
       greeting: [
         "Привет! Спасибо за сообщение. Очень приятно тебя слышать. Надеюсь, твой день проходит спокойно и хорошо.",
         "Здравствуйте! Приятно получить ваше сообщение. Пусть сегодняшний день принесёт вам спокойствие и добрые новости."
@@ -177,6 +215,10 @@
       care: [
         "Спасибо, что говоришь об этом. Мне очень дороги такие искренние слова. Я тоже ценю наше общение и надеюсь, что скоро получится спокойно поговорить.",
         "Твои слова много для меня значат. Спасибо за внимание и заботу. Береги себя — я тоже о тебе помню."
+      ],
+      missing: [
+        "Мне важно, что ты так искренне говоришь о своей тоске. Мне тоже не хватает нашего общения. Давай беречь себя и по возможности чаще оставаться на связи.",
+        "Я слышу, как сильно тебе меня не хватает. Ты мне дорог, и мне хочется, чтобы разлука не причиняла тебе столько тяжести. Давай спокойно поговорим и поддержим друг друга."
       ],
       neutral: [
         "Спасибо за сообщение. Твои слова не останутся без внимания. Для меня важно ответить уважительно и по существу.",
@@ -187,6 +229,10 @@
       religious_gratitude: [
         "Alhamdulillah. I thank Allah for you as well. May Allah protect you, strengthen you in goodness, and grant you peace.",
         "Alhamdulillah for such kind words. I also thank Allah for you. May your life be filled with peace, goodness, and blessing."
+      ],
+      dua: [
+        "Ameen. May Allah accept your kind words and grant you peace, goodness, and protection.",
+        "Ameen, and may the same goodness reach you. May Allah protect you and make every beneficial matter easier."
       ],
       islamic_greeting: [
         "Wa alaykum assalam wa rahmatullahi wa barakatuh. Thank you for writing. May your day be peaceful and full of goodness.",
@@ -232,6 +278,14 @@
         "I want to answer honestly and clearly, so I will not invent a decision. Please clarify the main detail that the answer depends on.",
         "Thank you for asking directly. I need a little more information to answer accurately. What matters most to you in this situation?"
       ],
+      request: [
+        "I understand your request and do not want to leave it unanswered. I will check what I can do and give you a clear reply.",
+        "Thank you for asking directly. I will try to help, and if I cannot, I will tell you honestly without making an empty promise."
+      ],
+      status_update: [
+        "Thank you for letting me know. I am glad you are there safely. Take care of yourself and get some calm rest.",
+        "Good, thank you for updating me. I am glad you arrived. I hope everything stays peaceful from here."
+      ],
       greeting: [
         "Hello! Thank you for writing. It is good to hear from you. I hope your day is calm and going well.",
         "Hello! I am glad to receive your message. May today bring you peace and some good news."
@@ -239,6 +293,10 @@
       care: [
         "Thank you for sharing that. Sincere words like these mean a lot to me. I value our connection and hope we can talk calmly soon.",
         "Your words matter to me. Thank you for your care and attention. Please take care of yourself—I remember you too."
+      ],
+      missing: [
+        "It matters to me that you shared how much you miss me. I miss our conversations too. Let us take care of ourselves and stay in touch whenever we can.",
+        "I hear how heavy this distance feels for you. You matter to me, and I do not want the separation to weigh on you so painfully. Let us talk calmly and support each other."
       ],
       neutral: [
         "Thank you for the message. Your words will not be overlooked. I want to respond respectfully and address what you actually mean.",
@@ -249,6 +307,10 @@
       religious_gratitude: [
         "Alhamdulillah. Moi aussi, je remercie Allah pour toi. Qu’Allah te protège, t’affermisse dans le bien et t’accorde la paix.",
         "Alhamdulillah pour ces paroles bienveillantes. Je remercie également Allah pour toi. Que ta vie soit remplie de paix, de bien et de bénédictions."
+      ],
+      dua: [
+        "Amine. Qu’Allah accepte tes paroles bienveillantes et t’accorde la paix, le bien et Sa protection.",
+        "Amine, et que ce même bien te soit accordé. Qu’Allah te protège et facilite tout ce qui est utile."
       ],
       islamic_greeting: [
         "Wa alaykoum assalam wa rahmatullahi wa barakatuh. Merci pour ton message. Que ta journée soit paisible et remplie de bien.",
@@ -294,6 +356,14 @@
         "Je veux répondre avec sincérité et précision, sans inventer de décision. Précise, s’il te plaît, le principal détail dont dépend la réponse.",
         "Merci d’avoir posé la question directement. J’ai besoin d’un peu plus d’informations pour répondre justement. Qu’est-ce qui compte le plus pour toi ici ?"
       ],
+      request: [
+        "J’ai compris ta demande et je ne veux pas la laisser sans réponse. Je vais vérifier ce que je peux faire et te répondre clairement.",
+        "Merci d’avoir demandé directement. Je vais essayer d’aider et, si ce n’est pas possible, je te le dirai avec sincérité sans faire de promesse vide."
+      ],
+      status_update: [
+        "Merci de m’avoir prévenu. Je suis content que tu sois bien arrivé. Prends soin de toi et repose-toi tranquillement.",
+        "Très bien, merci de m’avoir donné des nouvelles. Je suis heureux que tu sois arrivé. Que la suite soit paisible."
+      ],
       greeting: [
         "Bonjour ! Merci pour ton message. Cela me fait plaisir d’avoir de tes nouvelles. J’espère que ta journée se passe calmement et agréablement.",
         "Bonjour ! Cela me fait plaisir de recevoir ton message. Que cette journée t’apporte de la paix et une bonne nouvelle."
@@ -301,6 +371,10 @@
       care: [
         "Merci d’avoir partagé cela. Ces paroles sincères comptent beaucoup pour moi. Je tiens à notre lien et j’espère que nous pourrons bientôt parler calmement.",
         "Tes mots me touchent. Merci pour ton attention et ta bienveillance. Prends soin de toi—moi aussi, je pense à toi."
+      ],
+      missing: [
+        "Cela compte pour moi que tu aies exprimé à quel point je te manque. Nos échanges me manquent aussi. Prenons soin de nous et restons en contact dès que possible.",
+        "J’entends combien cette distance te pèse. Tu comptes pour moi et je ne veux pas que la séparation soit si douloureuse. Parlons calmement et soutenons-nous."
       ],
       neutral: [
         "Merci pour ton message. Tes paroles ne resteront pas sans attention. Je souhaite répondre avec respect et tenir compte de ce que tu veux réellement dire.",
@@ -471,6 +545,33 @@
     }
   };
 
+  const TONE_FRAMES = {
+    ru: {
+      calm: "Хочу ответить спокойно и ясно.",
+      warm: "Спасибо, что написал об этом так открыто.",
+      support: "Я отношусь к твоим словам с заботой и без давления.",
+      reconcile: "Мне важно сохранить между нами спокойный и уважительный диалог."
+    },
+    en: {
+      calm: "I want to answer calmly and clearly.",
+      warm: "Thank you for sharing this so openly.",
+      support: "I am receiving your words with care and without pressure.",
+      reconcile: "It matters to me that our conversation stays calm and respectful."
+    },
+    fr: {
+      calm: "Je souhaite répondre avec calme et clarté.",
+      warm: "Merci d’avoir partagé cela avec autant de sincérité.",
+      support: "J’accueille tes paroles avec bienveillance et sans pression.",
+      reconcile: "Je tiens à préserver entre nous un dialogue calme et respectueux."
+    }
+  };
+
+  const RELATIONSHIP_FRAMES = {
+    ru: { spouse:"Для меня важно беречь уважение и спокойствие в нашей семье.",family:"Мне важно сохранить добрый семейный разговор.",friend:"Я ценю нашу дружбу и хочу отвечать честно.",colleague:"Хочу сохранить ясный и уважительный деловой тон.",universal:"Мне важно ответить внимательно и уважительно." },
+    en: { spouse:"I want to protect respect and peace within our family.",family:"I want our family conversation to stay kind.",friend:"I value our friendship and want to answer honestly.",colleague:"I want to keep this clear, professional, and respectful.",universal:"I want to answer with care and respect." },
+    fr: { spouse:"Je veux préserver le respect et la sérénité dans notre foyer.",family:"Je tiens à garder un échange familial bienveillant.",friend:"Notre amitié compte pour moi et je veux répondre avec sincérité.",colleague:"Je souhaite garder un ton clair, professionnel et respectueux.",universal:"Je souhaite répondre avec attention et respect." }
+  };
+
   function normalize(value) {
     return String(value || "")
       .normalize("NFKC")
@@ -513,25 +614,29 @@
     const mentionsAllah = includesAny(value, ["аллах", "allah"]);
     const containsPraise = includesAny(value, ["хвала", "благодар", "альхамдулиллях", "алхамдулиллах", "praise", "thank", "grateful", "alhamdulillah", "louange", "remerc"]);
     if (includesAny(value, SIGNALS.conflict)) return "conflict";
+    if (includesAny(value, SIGNALS.missing)) return "missing";
     if (includesAny(value, SIGNALS.distress) || includesAny(value, ["тяжел", "не справля", "need support", "besoin de soutien"])) return "support";
     if (includesAny(value, SIGNALS.apology)) return "apology";
     if (includesAny(value, SIGNALS.timeQuestion)) return "time_question";
     if (includesAny(value, SIGNALS.wellbeingQuestion)) return "wellbeing";
+    if (includesAny(value, SIGNALS.request)) return "request";
     if (value.includes("?") || includesAny(value, SIGNALS.generalQuestion)) return "question";
     if (includesAny(value, SIGNALS.religiousGratitude) || (mentionsAllah && containsPraise)) return "religious_gratitude";
     if (includesAny(value, SIGNALS.islamicGreeting)) return "islamic_greeting";
+    if (includesAny(value, SIGNALS.dua)) return "dua";
     if (includesAny(value, SIGNALS.gratitude)) return "gratitude";
     if (includesAny(value, SIGNALS.celebration)) return "celebration";
     if (includesAny(value, SIGNALS.appreciation)) return "appreciation";
     if (includesAny(value, SIGNALS.greeting)) return "greeting";
     if (includesAny(value, SIGNALS.care)) return "care";
+    if (includesAny(value, SIGNALS.statusUpdate)) return "status_update";
     return "neutral";
   }
 
   function resolveTone(incoming, selected = "auto") {
     if (SUPPORTED_TONES.has(selected) && selected !== "auto") return selected;
     const intent = inferIntent(incoming);
-    if (["religious_gratitude", "islamic_greeting", "gratitude", "celebration", "appreciation", "greeting", "care"].includes(intent)) return "warm";
+    if (["religious_gratitude", "islamic_greeting", "dua", "gratitude", "celebration", "appreciation", "greeting", "care", "missing", "status_update"].includes(intent)) return "warm";
     if (intent === "support") return "support";
     if (["apology", "conflict"].includes(intent)) return "reconcile";
     return "calm";
@@ -540,10 +645,10 @@
   function analyze(incoming) {
     const intent = inferIntent(incoming);
     const recommendedTone = resolveTone(incoming, "auto");
-    const recommendedLength = ["religious_gratitude", "islamic_greeting", "gratitude", "celebration", "appreciation", "greeting"].includes(intent)
+    const recommendedLength = ["religious_gratitude", "islamic_greeting", "dua", "gratitude", "celebration", "appreciation", "greeting", "missing", "status_update"].includes(intent)
       ? "short"
       : "standard";
-    const needsGoal = ["time_question", "question"].includes(intent);
+    const needsGoal = ["time_question", "question", "request"].includes(intent);
     return {
       intent,
       confidence: intent === "neutral" ? "low" : (intent === "question" ? "medium" : "high"),
@@ -564,7 +669,7 @@
   }
 
   function applyLength(text, language, intent, length) {
-    if (length === "standard") return text;
+    let output = text;
     if (length === "short") {
       const parts = sentenceParts(text);
       const chosen = [];
@@ -572,13 +677,28 @@
         chosen.push(part);
         if (chosen.join(" ").length >= 72 || chosen.length >= 2) break;
       }
-      return chosen.join(" ") || text;
+      output = chosen.join(" ") || text;
+    } else if (length === "detailed") {
+      const extension = DETAIL_EXTENSIONS[language]?.[intent] || DETAIL_EXTENSIONS[language]?.neutral;
+      output = extension && !text.includes(extension) ? `${text} ${extension}` : text;
     }
-    const extension = DETAIL_EXTENSIONS[language]?.[intent] || DETAIL_EXTENSIONS[language]?.neutral;
-    return extension && !text.includes(extension) ? `${text} ${extension}` : text;
+    const budget = LENGTH_BUDGETS[length] || LENGTH_BUDGETS.standard;
+    const selected = [];
+    for (const part of sentenceParts(output)) {
+      const candidate = [...selected, part].join(" ");
+      const words = candidate.split(/\s+/u).filter(Boolean).length;
+      if (selected.length && (words > budget.maxWords || candidate.length > budget.maxCharacters || selected.length >= budget.maxSentences)) break;
+      selected.push(part);
+    }
+    let fitted = selected.join(" ") || output;
+    if (fitted.split(/\s+/u).filter(Boolean).length > budget.maxWords || fitted.length > budget.maxCharacters) {
+      fitted = fitted.split(/\s+/u).slice(0, budget.maxWords).join(" ").slice(0, budget.maxCharacters).replace(/[,:;\-–—]+$/u, "").trim();
+      if (!/[.!?…]$/u.test(fitted)) fitted += ".";
+    }
+    return fitted;
   }
 
-  function compose({ incoming = "", language = "ru", tone = "auto", length = "auto", variant = 0 } = {}) {
+  function compose({ incoming = "", language = "ru", relationship = "auto", tone = "auto", length = "auto", variant = 0 } = {}) {
     const lang = SUPPORTED_LANGUAGES.has(language) ? language : "ru";
     const intent = inferIntent(incoming);
     const topic = inferTopic(incoming);
@@ -592,8 +712,18 @@
     const topicBank = responseKey === intent ? TOPIC_RESPONSES[lang]?.[intent]?.[topic] : null;
     const bank = topicBank || RESPONSES[lang][responseKey] || RESPONSES[lang].neutral;
     const safeVariant = Number.isFinite(Number(variant)) ? Math.abs(Math.trunc(Number(variant))) : 0;
-    const response = bank[safeVariant % bank.length];
-    return applyLength(response, lang, intent, resolveLength(incoming, length));
+    const resolvedLength = resolveLength(incoming, length);
+    let response = bank[safeVariant % bank.length];
+    if (selectedTone !== "auto" && selectedTone !== "boundary" && resolvedLength !== "short") {
+      const frame = TONE_FRAMES[lang]?.[selectedTone];
+      if (frame && !response.includes(frame)) response = `${frame} ${response}`;
+    }
+    const selectedRelationship = SUPPORTED_RELATIONSHIPS.has(relationship) ? relationship : "auto";
+    if (selectedRelationship !== "auto" && resolvedLength !== "short") {
+      const frame = RELATIONSHIP_FRAMES[lang]?.[selectedRelationship];
+      if (frame && !response.includes(frame)) response = `${frame} ${response}`;
+    }
+    return applyLength(response, lang, intent, resolvedLength);
   }
 
   function isAligned(text, intent) {
@@ -614,8 +744,38 @@
         && noFalseConflict;
     }
     if (intent === "islamic_greeting") return includesAny(value, ["алейкум ассалям", "alaykum assalam", "alaykoum assalam"]);
+    if (intent === "dua") return includesAny(value, ["амин", "ameen", "amin", "amine", "аллах", "allah"]);
     if (intent === "support") return includesAny(value, ["выслуш", "поддерж", "рядом", "listen", "support", "here", "ecout", "soutien", "aider"]);
+    if (intent === "missing") return includesAny(value, ["не хватает", "разлук", "скуч", "distance", "miss", "apart", "manqu", "distance", "loin"])
+      && noFalseConflict;
+    if (intent === "request") return includesAny(value, ["просьб", "помоч", "сделать", "провер", "request", "help", "check", "demande", "aider", "verifier"]);
+    if (intent === "status_update") return includesAny(value, ["на месте", "добрал", "приех", "arriv", "home", "rentr", "sur place"]);
     return true;
+  }
+
+  function containsBlockedObfuscation(text) {
+    const raw = String(text || "").normalize("NFKC").toLowerCase();
+    if (/(?:^|[^\d])18\s*\+(?:$|[^\d])/u.test(raw)) return true;
+    const tokens = raw.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+    const latinSkeleton = token => token
+      .replace(/[аеорсухкмтвніѕ]/g, character => ({а:"a",е:"e",о:"o",р:"p",с:"c",у:"y",х:"x",к:"k",м:"m",т:"t",в:"b",н:"h",і:"i",ѕ:"s"})[character])
+      .replace(/[0134578]/g, character => ({0:"o",1:"i",3:"e",4:"a",5:"s",7:"t",8:"b"})[character]);
+    const cyrillicSkeleton = token => token
+      .replace(/[aeopcyxkmtbhi]/g, character => ({a:"а",e:"е",o:"о",p:"р",c:"с",y:"у",x:"х",k:"к",m:"м",t:"т",b:"в",h:"н",i:"і"})[character])
+      .replace(/[0134578]/g, character => ({0:"о",1:"і",3:"е",4:"а",5:"ѕ",7:"т",8:"в"})[character]);
+    const forms = token => [token, latinSkeleton(token), cyrillicSkeleton(token)];
+    const exact = /^(?:sex|sexe|sexes|sexual|sexuality|sexting|porn|porno|erotic|kiss|kisses|kissed|kissing|секс|порн|эрот|поцелу|интим)$/u;
+    if (tokens.some(token => forms(token).some(form => exact.test(form)))) return true;
+    const roots = ["sex", "sexe", "секс", "porn", "porno", "порн", "erotic", "эрот", "kiss", "поцелу", "intim", "интим"];
+    for (let start = 0; start < tokens.length; start += 1) {
+      const joined = ["", "", ""];
+      for (let end = start; end < Math.min(tokens.length, start + 5); end += 1) {
+        const variants = forms(tokens[end]);
+        joined.forEach((_, index) => { joined[index] += variants[index]; });
+        if (end > start && joined.some(candidate => roots.some(root => candidate.startsWith(root)))) return true;
+      }
+    }
+    return false;
   }
 
   function audit(text, { intent = "neutral", relationship = "auto", tone = "auto", goal = "" } = {}) {
@@ -644,7 +804,7 @@
     ];
 
     if (!value || value.length < 3) codes.push("empty");
-    if (blockedSignals.some(signal => value.includes(normalize(signal)))) codes.push("forbidden");
+    if (blockedSignals.some(signal => value.includes(normalize(signal))) || containsBlockedObfuscation(text)) codes.push("forbidden");
     if (authorityClaims.some(signal => value.includes(normalize(signal)))) codes.push("religious_authority");
     if (coercionSignals.some(signal => value.includes(normalize(signal)))) codes.push("coercion");
     if (relationship !== "spouse" && romanticSignals.some(signal => value.includes(normalize(signal)))) codes.push("improper_romance");
