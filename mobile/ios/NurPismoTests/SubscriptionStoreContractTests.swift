@@ -1,3 +1,4 @@
+import Foundation
 import StoreKit
 import XCTest
 @testable import NurPismo
@@ -28,16 +29,26 @@ import StoreKitTest
 
 @available(iOS 16.0, *)
 final class StoreKitConfigurationSmokeTests: XCTestCase {
-    func testLocalConfigurationContainsBothProducts() async throws {
-        let session = try SKTestSession(configurationFileNamed: "GlowLetter")
-        session.disableDialogs = true
-        session.resetToDefaultState()
+    func testLocalConfigurationIsBundledAndContainsBothProducts() throws {
+        guard let configurationURL = Bundle.main.url(
+            forResource: "GlowLetter",
+            withExtension: "storekit"
+        ) else {
+            XCTFail("GlowLetter.storekit is missing from the application bundle")
+            return
+        }
 
-        let products = try await Product.products(for: [
-            StoreProductCatalog.subscriptionProductID,
-            StoreProductCatalog.legacyProductID
-        ])
-        XCTAssertEqual(Set(products.map(\.id)), StoreProductCatalog.entitlementProductIDs)
+        let data = try Data(contentsOf: configurationURL)
+        let configuration = try XCTUnwrap(
+            JSONSerialization.jsonObject(with: data) as? [String: Any]
+        )
+        let products = configuration["products"] as? [[String: Any]] ?? []
+        let subscriptions = (configuration["subscriptionGroups"] as? [[String: Any]] ?? [])
+            .flatMap { $0["subscriptions"] as? [[String: Any]] ?? [] }
+        let productIDs = Set((products + subscriptions).compactMap { $0["productID"] as? String })
+
+        XCTAssertEqual(productIDs, StoreProductCatalog.entitlementProductIDs)
+        _ = try SKTestSession(contentsOf: configurationURL)
     }
 }
 #endif

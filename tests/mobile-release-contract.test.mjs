@@ -10,6 +10,7 @@ const ios = read("mobile/ios/project.yml");
 const workflow = read(".github/workflows/mobile-build.yml");
 const iosWorkflow = read(".github/workflows/ios-tests.yml");
 const iosOAuthTests = read("mobile/ios/NurPismoTests/OAuthURLPolicyTests.swift");
+const iosSubscriptionTests = read("mobile/ios/NurPismoTests/SubscriptionStoreContractTests.swift");
 const iosSync = read("mobile/scripts/sync_web_assets.py");
 const androidMain = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/MainActivity.java");
 const androidShare = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/ShareBridge.java");
@@ -37,6 +38,8 @@ assert.doesNotMatch(workflow, /GlowLetter Next|GlowLetter-Next|app-debug\.apk|v2
 assert.match(iosWorkflow, /runs-on:\s*macos-latest/);
 assert.match(iosWorkflow, /xcodebuild[\s\S]*-scheme NurPismo[\s\S]*test/);
 assert.match(iosOAuthTests, /\["google", "facebook", "apple"\]/);
+assert.match(iosSubscriptionTests, /Bundle\.main\.url\([\s\S]*GlowLetter[\s\S]*storekit/);
+assert.match(iosSubscriptionTests, /SKTestSession\(contentsOf:\s*configurationURL\)/);
 for (const excluded of ["supabase", "tests", ".md", ".py"]) assert.match(iosSync, new RegExp(excluded.replace(".", "\\.")));
 
 // Native wrappers expose the real system share sheet only to the trusted bundled page.
