@@ -16,6 +16,8 @@ const androidShare = read("mobile/android/app/src/main/java/com/franceisl/nurpis
 const iosWebView = read("mobile/ios/NurPismo/WebViewContainer.swift");
 const iosContent = read("mobile/ios/NurPismo/ContentView.swift");
 
+assert.ok(fs.existsSync(path.join(root, "mobile/ios/NurPismo/WebResources/.gitkeep")));
+
 assert.match(android, /versionCode\s*=\s*10\b/);
 assert.match(android, /versionName\s*=\s*["']2\.2\.4["']/);
 assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/\*\*["'][\s\S]{0,180}["']tests\/\*\*["']/);
