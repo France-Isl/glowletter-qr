@@ -168,15 +168,15 @@
   });
   Object.assign(UI.ru, {
     accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и музыка остаются только на этом устройстве.",
-    letterIdeaLabel:"Что особенно важно сказать · необязательно",letterIdeaPlaceholder:"Например: поблагодарить маму за терпение и поддержку",letterLengthLabel:"Длина письма",focusRead:"◫ Режим чтения",focusExit:"× Вернуться"
+    letterIdeaLabel:"Что особенно важно сказать · необязательно",letterIdeaPlaceholder:"Например: поблагодарить маму за терпение и поддержку",letterLengthLabel:"Длина письма",focusRead:"◫ Режим чтения",focusExit:"× Вернуться",focusHint:"← Свайп или стрелки →"
   });
   Object.assign(UI.en, {
     accountTitle:"Save your progress",accountGuestNote:"Keep your letters and settings on all your devices.",accountPrivacy:"Personal photos and audio stay only on this device.",
-    letterIdeaLabel:"What matters most · optional",letterIdeaPlaceholder:"For example: thank Mum for her patience and support",letterLengthLabel:"Letter length",focusRead:"◫ Reading mode",focusExit:"× Return"
+    letterIdeaLabel:"What matters most · optional",letterIdeaPlaceholder:"For example: thank Mum for her patience and support",letterLengthLabel:"Letter length",focusRead:"◫ Reading mode",focusExit:"× Return",focusHint:"← Swipe or arrow keys →"
   });
   Object.assign(UI.fr, {
     accountTitle:"Sauvegarde",accountGuestNote:"Retrouvez vos lettres et réglages sur tous vos appareils.",accountPrivacy:"Les photos et fichiers audio personnels restent sur cet appareil.",
-    letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour"
+    letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
   });
 
   const SELECT_OPTIONS = {
@@ -454,6 +454,14 @@
     standard: Object.freeze({ minWords: 12, maxWords: 50, maxCharacters: 440, maxSentences: 4 }),
     detailed: Object.freeze({ minWords: 24, maxWords: 65, maxCharacters: 560, maxSentences: 5 })
   });
+  const READING_SWIPE = Object.freeze({
+    minDistance: 56,
+    maxDistance: 96,
+    viewportRatio: 0.14,
+    maxDuration: 1200,
+    axisRatio: 1.35,
+    intentDistance: 14
+  });
 
   let lang = ["ru", "en", "fr"].includes(params.get("lang")) ? params.get("lang") : (localStorage.getItem("nurLanguage") || "ru");
   if (!UI[lang]) lang = "ru";
@@ -494,6 +502,13 @@
   let replyInsightTimer = 0;
   let aiMode = "letter";
   let readingFocus = false;
+  let readingPointer = null;
+  let letterSpeechActive = false;
+  let letterSpeechSource = "";
+  let letterSpeechText = "";
+  let letterSpeechUtterance = null;
+  let letterSpeechStartTimer = 0;
+  let letterSpeechRequest = 0;
   let pendingPremiumFeature = "";
   let toastTimer = 0;
   let deferredInstallPrompt = null;
@@ -2320,7 +2335,8 @@
     renderWeather();
     setText("#nextLetter", t("next")); $("#nextLetter").insertAdjacentHTML("beforeend", " <span>→</span>");
     $("#copyLetter").innerHTML = `<span>▣</span> ${t("copy")}`;
-    setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`); setText("#focusReadingButton", t(readingFocus ? "focusExit" : "focusRead"));
+    updateSpeechButton(letterSpeechActive); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`); setText("#focusReadingButton", t(readingFocus ? "focusExit" : "focusRead"));
+    letterStage.dataset.navigationHint = t("focusHint");
     $$(".go-home").forEach(button => button.textContent = `⌂ ${t("home")}`);
     $("#aiOpenLetter").innerHTML = `<span>✦</span> ${escapeHtml(t("personal"))} <b class="vip-badge">VIP</b>`;
     setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
@@ -2365,7 +2381,7 @@
     setText("#supportEyebrow",t("supportFormEyebrow"));$("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderQrCode(false);
     renderCloudAccount();
-    $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
+    $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
     renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
     $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
@@ -2429,7 +2445,7 @@
   }
 
   function goHome() {
-    window.speechSynthesis?.cancel();
+    stopLetterSpeech();
     setReadingFocus(false);
     pendingPremiumFeature = "";
     storyOpened = false;
@@ -2441,13 +2457,110 @@
     haptic();
   }
 
+  function hasReadingTextSelection() {
+    const selection = window.getSelection?.();
+    return Boolean(selection && !selection.isCollapsed && String(selection).trim());
+  }
+
+  function isReadingControlTarget(target) {
+    return Boolean(target?.closest?.("button,a,input,textarea,select,label,[contenteditable='true'],[role='button'],[data-reading-no-swipe]"));
+  }
+
+  function isMouseSelectableText(target) {
+    return Boolean(target?.closest?.("#letterText,#letterTitle,.letter-meta,.signature"));
+  }
+
+  function readingSwipeDirection(deltaX, deltaY, duration, viewportWidth) {
+    const width = Number(viewportWidth) > 0 ? Number(viewportWidth) : innerWidth;
+    const threshold = Math.max(READING_SWIPE.minDistance, Math.min(READING_SWIPE.maxDistance, width * READING_SWIPE.viewportRatio));
+    const horizontal = Math.abs(deltaX);
+    const vertical = Math.abs(deltaY);
+    if (Number(duration) > READING_SWIPE.maxDuration || horizontal < threshold || horizontal < vertical * READING_SWIPE.axisRatio) return 0;
+    return deltaX < 0 ? 1 : -1;
+  }
+
+  function resetReadingSwipe(pointerId) {
+    if (pointerId !== undefined) {
+      try { if (letterStage.hasPointerCapture?.(pointerId)) letterStage.releasePointerCapture(pointerId); } catch {}
+    }
+    readingPointer = null;
+    document.body.classList.remove("is-reading-swiping");
+  }
+
+  function startReadingSwipe(event) {
+    if (!readingFocus || !storyOpened || Object.values(layers).some(layer => layer.classList.contains("is-open"))) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (isReadingControlTarget(event.target) || hasReadingTextSelection()) return;
+    // Mouse selection remains available on the actual words; drag the paper edge
+    // or the surrounding stage to turn a letter. Touch swipes work everywhere.
+    if (event.pointerType === "mouse" && isMouseSelectableText(event.target)) return;
+    readingPointer = {
+      id: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      startedAt: performance.now(),
+      horizontal: false
+    };
+  }
+
+  function updateReadingSwipe(event) {
+    if (!readingPointer || event.pointerId !== readingPointer.id) return;
+    const deltaX = event.clientX - readingPointer.startX;
+    const deltaY = event.clientY - readingPointer.startY;
+    if (!readingPointer.horizontal && Math.abs(deltaY) >= READING_SWIPE.intentDistance && Math.abs(deltaY) > Math.abs(deltaX)) {
+      resetReadingSwipe(event.pointerId);
+      return;
+    }
+    if (!readingPointer.horizontal && Math.abs(deltaX) >= READING_SWIPE.intentDistance && Math.abs(deltaX) > Math.abs(deltaY) * READING_SWIPE.axisRatio) {
+      readingPointer.horizontal = true;
+      document.body.classList.add("is-reading-swiping");
+      try { letterStage.setPointerCapture?.(event.pointerId); } catch {}
+    }
+    if (readingPointer?.horizontal && event.cancelable) event.preventDefault();
+  }
+
+  function finishReadingSwipe(event) {
+    if (!readingPointer || event.pointerId !== readingPointer.id) return;
+    const pointer = readingPointer;
+    const deltaX = event.clientX - pointer.startX;
+    const deltaY = event.clientY - pointer.startY;
+    const duration = performance.now() - pointer.startedAt;
+    resetReadingSwipe(event.pointerId);
+    if (event.type === "pointercancel" || hasReadingTextSelection()) return;
+    const direction = readingSwipeDirection(deltaX, deltaY, duration, letterStage.clientWidth);
+    if (!direction) return;
+    if (event.cancelable) event.preventDefault();
+    // Keep every navigation path behind moveLetter(): it owns the 10-letter
+    // free limit, paywall, and unlimited VIP access.
+    moveLetter(direction);
+  }
+
+  function readingKeyboardDirection(event) {
+    if (!readingFocus || event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return 0;
+    if (isReadingControlTarget(event.target) || hasReadingTextSelection()) return 0;
+    if (event.key === "ArrowRight") return 1;
+    if (event.key === "ArrowLeft") return -1;
+    return 0;
+  }
+
   function setReadingFocus(enabled) {
     readingFocus = Boolean(enabled && storyOpened);
     document.body.classList.toggle("reading-focus", readingFocus);
+    letterStage.dataset.navigationHint = t("focusHint");
     const button = $("#focusReadingButton");
     if (button) {
       button.setAttribute("aria-pressed", String(readingFocus));
       button.textContent = t(readingFocus ? "focusExit" : "focusRead");
+    }
+    const letter = $("#letter");
+    if (readingFocus) {
+      letter?.setAttribute("tabindex", "-1");
+      letter?.setAttribute("aria-keyshortcuts", "ArrowLeft ArrowRight");
+      requestAnimationFrame(() => letter?.focus({ preventScroll: true }));
+    } else {
+      resetReadingSwipe();
+      letter?.removeAttribute("tabindex");
+      letter?.removeAttribute("aria-keyshortcuts");
     }
   }
 
@@ -2461,6 +2574,7 @@
     $("#letterFrom").textContent = displayName(fromName);
     const text = $("#letterText");
     text.classList.remove("is-changing"); void text.offsetWidth; text.textContent = entryText(entry); text.classList.add("is-changing");
+    if (readingFocus) { $("#letter").scrollTop = 0; letterStage.scrollTop = 0; }
     const captions = [t("stage"), `${displayName(fromName)} · ${displayName(toName)}`, UI[lang].family, UI[lang].gratitude];
     $("#stageCaption").textContent = captions[Math.abs(Number(entry.id) || 0) % captions.length];
     const favorite = favorites.has(String(entry.id));
@@ -2475,6 +2589,7 @@
     if (!letterDeck.length) return;
     const nextIndex = (currentIndex + direction + letterDeck.length) % letterDeck.length;
     if (!canAccess(letterDeck[nextIndex])) { openPaywall(); return; }
+    stopLetterSpeech();
     currentIndex = nextIndex;
     renderLetter();
     haptic(8);
@@ -2484,6 +2599,7 @@
     const index = letterDeck.findIndex(item => Number(item.id) === Number(id));
     if (index < 0) return;
     if (!canAccess(letterDeck[index])) return openPaywall();
+    stopLetterSpeech();
     currentIndex = index;
     closePanel(layers.library);
     if (!ensureNames()) return;
@@ -3159,16 +3275,141 @@
   async function generatePostcard(){const entry=currentEntry();if(!canAccess(entry))return openPaywall();const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.fillStyle="#fff8ed";ctx.font="600 66px Georgia";ctx.fillText(`${t("for")} ${displayName(toName)}`,90,270);ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();ctx.fillStyle="#fffaf2";ctx.font="600 55px Georgia";wrapCanvasText(ctx,entryText(entry),90,440,900,78);ctx.fillStyle="#f0c5d3";ctx.font="italic 600 49px Georgia";ctx.textAlign="right";ctx.fillText(`${t("from")} ${displayName(fromName)}`,990,1765);ctx.textAlign="left";const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));}
   function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight){const words=text.split(/\s+/);let line="";let currentY=y;for(const word of words){const test=`${line}${word} `;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line.trim(),x,currentY);line=`${word} `;currentY+=lineHeight;if(currentY>1570)break;}else line=test;}if(line&&currentY<=1570)ctx.fillText(line.trim(),x,currentY);}
 
-  function speakLetter(){if(!("speechSynthesis" in window)){showToast(t("speechUnavailable"));return;}const button=$("#speakButton");if(speechSynthesis.speaking){speechSynthesis.cancel();button.textContent=`◖ ${t("read")}`;return;}const utterance=new SpeechSynthesisUtterance(entryText(currentEntry()));utterance.lang=lang==="ru"?"ru-RU":lang==="fr"?"fr-FR":"en-US";utterance.rate=.9;utterance.pitch=1;utterance.onend=()=>button.textContent=`◖ ${t("read")}`;button.textContent=`■ ${t("stop")}`;speechSynthesis.speak(utterance);}
+  function speechLocale() {
+    return lang === "fr" ? "fr-FR" : lang === "en" ? "en-US" : "ru-RU";
+  }
+
+  function nativeSpeechBridge() {
+    const bridge = window.NurSpeech;
+    return bridge && typeof bridge.speak === "function" && typeof bridge.stop === "function" ? bridge : null;
+  }
+
+  function updateSpeechButton(active) {
+    letterSpeechActive = Boolean(active);
+    const button = $("#speakButton");
+    if (!button) return;
+    button.textContent = letterSpeechActive ? `■ ${t("stop")}` : `◖ ${t("read")}`;
+    button.setAttribute("aria-pressed", String(letterSpeechActive));
+  }
+
+  function clearSpeechState() {
+    clearTimeout(letterSpeechStartTimer);
+    letterSpeechStartTimer = 0;
+    letterSpeechSource = "";
+    letterSpeechText = "";
+    letterSpeechUtterance = null;
+    updateSpeechButton(false);
+  }
+
+  function stopLetterSpeech() {
+    letterSpeechRequest += 1;
+    try { nativeSpeechBridge()?.stop(); } catch {}
+    try { window.speechSynthesis?.cancel(); } catch {}
+    clearSpeechState();
+  }
+
+  function startBrowserSpeech(text) {
+    const synthesis = window.speechSynthesis;
+    const Utterance = window.SpeechSynthesisUtterance;
+    if (!synthesis || typeof synthesis.speak !== "function" || typeof Utterance !== "function") return false;
+    try { synthesis.cancel(); } catch {}
+    const request = ++letterSpeechRequest;
+    const utterance = new Utterance(text);
+    utterance.lang = speechLocale();
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    letterSpeechSource = "browser";
+    letterSpeechText = text;
+    letterSpeechUtterance = utterance;
+    updateSpeechButton(true);
+    utterance.onstart = () => {
+      if (request === letterSpeechRequest && letterSpeechSource === "browser") updateSpeechButton(true);
+    };
+    utterance.onend = () => {
+      if (request === letterSpeechRequest && letterSpeechSource === "browser") clearSpeechState();
+    };
+    utterance.onerror = event => {
+      if (request !== letterSpeechRequest || letterSpeechSource !== "browser") return;
+      const expectedStop = event?.error === "canceled" || event?.error === "interrupted";
+      clearSpeechState();
+      if (!expectedStop) showToast(t("speechUnavailable"));
+    };
+    try {
+      synthesis.speak(utterance);
+      // Some mobile Chromium builds leave the engine paused after an app switch.
+      synthesis.resume?.();
+      return true;
+    } catch {
+      clearSpeechState();
+      return false;
+    }
+  }
+
+  function handleNativeSpeechState(event) {
+    if (letterSpeechSource !== "native") return;
+    const state = String(event?.detail?.state || "");
+    if (state === "loading" || state === "started") {
+      if (state === "started") {
+        clearTimeout(letterSpeechStartTimer);
+        letterSpeechStartTimer = 0;
+      }
+      updateSpeechButton(true);
+      return;
+    }
+    if (state === "done" || state === "stopped") {
+      clearSpeechState();
+      return;
+    }
+    if (state === "error") {
+      const text = letterSpeechText;
+      clearSpeechState();
+      if (!startBrowserSpeech(text)) showToast(t("speechUnavailable"));
+    }
+  }
+
+  function speakLetter() {
+    if (letterSpeechActive) {
+      stopLetterSpeech();
+      return;
+    }
+    const text = entryText(currentEntry()).trim();
+    if (!text) return;
+    const bridge = nativeSpeechBridge();
+    if (bridge) {
+      letterSpeechRequest += 1;
+      letterSpeechSource = "native";
+      letterSpeechText = text;
+      updateSpeechButton(true);
+      try {
+        bridge.speak(text, speechLocale());
+        letterSpeechStartTimer = setTimeout(() => {
+          if (letterSpeechSource !== "native") return;
+          const pendingText = letterSpeechText;
+          try { bridge.stop(); } catch {}
+          clearSpeechState();
+          if (!startBrowserSpeech(pendingText)) showToast(t("speechUnavailable"));
+        }, 5000);
+        return;
+      } catch {
+        clearSpeechState();
+      }
+    }
+    if (!startBrowserSpeech(text)) showToast(t("speechUnavailable"));
+  }
 
   function toggleFavorite(){const entry=currentEntry();const key=String(entry.id);if(favorites.has(key))favorites.delete(key);else favorites.add(key);localStorage.setItem("nurFavorites",JSON.stringify([...favorites]));renderLetter();scheduleCloudSync();haptic();}
 
   async function shareLetter(){
     const entry=currentEntry();const url=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);url.search="";url.hash="";
     if(fromName)url.searchParams.set("from",fromName);if(toName)url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));
+    const presentation={glScene:document.body.dataset.glScene,glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
+    const presentationDefaults={glScene:"still",glFrame:"none",glInk:"ink",glType:"classic"};
+    Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
     const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};
+    const nativeBridge=nativeShareBridge();
+    if(nativeBridge){try{nativeBridge.share(data.title,data.text,data.url);return;}catch{}}
     try{if(navigator.share){await navigator.share(data);return;}}catch(error){if(error?.name==="AbortError")return;}
-    await writeClipboard(data.url);showToast(t("shareAppCopied"));haptic(10);
+    openShareFallback(data.url,{title:data.title,message:data.text});
   }
 
   function buildAppShareUrl() {
@@ -3184,12 +3425,13 @@
     return bridge && typeof bridge.share === "function" ? bridge : null;
   }
 
-  function openShareFallback(url) {
+  function openShareFallback(url, options = {}) {
+    const title = options.title || t("title");
+    const message = options.message || t("shareAppText");
     fallbackShareUrl = url;
-    const message = t("shareAppText");
     $("#shareTelegram").href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
     $("#shareWhatsapp").href = `https://wa.me/?text=${encodeURIComponent(`${message}\n${url}`)}`;
-    $("#shareEmail").href = `mailto:?subject=${encodeURIComponent(t("title"))}&body=${encodeURIComponent(`${message}\n\n${url}`)}`;
+    $("#shareEmail").href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${message}\n\n${url}`)}`;
     openPanel(layers.share);
   }
 
@@ -3295,6 +3537,7 @@
     $("#openStoryButton").addEventListener("click",openStory);$("#homeButton").addEventListener("click",goHome);$$(".go-home").forEach(button=>button.addEventListener("click",goHome));
     $("#setupForm").addEventListener("submit",submitNameSetup);$("#setupClose").addEventListener("click",()=>closePanel(layers.setup));$("#setupBackdrop").addEventListener("click",()=>closePanel(layers.setup));
     $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#speakButton").addEventListener("click",speakLetter);$("#postcardButton").addEventListener("click",generatePostcard);$("#favoriteButton").addEventListener("click",toggleFavorite);$("#focusReadingButton").addEventListener("click",()=>setReadingFocus(!readingFocus));
+    letterStage.addEventListener("pointerdown",startReadingSwipe);letterStage.addEventListener("pointermove",updateReadingSwipe,{passive:false});letterStage.addEventListener("pointerup",finishReadingSwipe);letterStage.addEventListener("pointercancel",finishReadingSwipe);
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",()=>requestPremiumFeature("letter")));$("#replyOpenHome").addEventListener("click",()=>requestPremiumFeature("reply"));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $$("[data-ai-mode]").forEach(button=>{button.addEventListener("click",()=>setAiMode(button.dataset.aiMode));button.addEventListener("keydown",event=>{if(!["ArrowLeft","ArrowRight"].includes(event.key))return;event.preventDefault();const next=button.dataset.aiMode==="letter"?$("#replyModeTab"):$("#letterModeTab");setAiMode(next.dataset.aiMode);next.focus();});});
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
@@ -3311,27 +3554,28 @@
     $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);$("#ownTextToggle").setAttribute("aria-expanded",String(!editor.hidden));});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
-    $("#languageButton").addEventListener("click",()=>{const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
+    $("#languageButton").addEventListener("click",()=>{stopLetterSpeech();const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
-    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
-    document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
+    document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleCapabilityNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
+    addEventListener("nur-speech-state",handleNativeSpeechState);
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
     addEventListener("pointermove",event=>{if(LITE_DEVICE||innerWidth<900||REDUCED_MOTION.matches)return;scenePointerX=event.clientX;scenePointerY=event.clientY;if(scenePointerFrame)return;scenePointerFrame=requestAnimationFrame(()=>{scenePointerFrame=0;const x=(scenePointerX/innerWidth-.5)*1.2;const y=(scenePointerY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;});},{passive:true});
   }
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=21", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=22", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

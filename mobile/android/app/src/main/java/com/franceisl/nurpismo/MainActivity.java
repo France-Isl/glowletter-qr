@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -31,6 +33,8 @@ import androidx.webkit.WebViewAssetLoader;
 
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public final class MainActivity extends ComponentActivity {
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
     private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html"
@@ -39,12 +43,21 @@ public final class MainActivity extends ComponentActivity {
             : "#access=" + Uri.encode(BuildConfig.OWNER_BETA_CAPABILITY));
     private static final int FILE_CHOOSER_REQUEST = 4101;
     private static final int LOCATION_PERMISSION_REQUEST = 4102;
+    private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
+    private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
 
     private WebView webView;
     private ValueCallback<Uri[]> fileChooserCallback;
     private GeolocationPermissions.Callback geolocationCallback;
     private String geolocationOrigin;
     private BillingManager billingManager;
+    private TextToSpeech textToSpeech;
+    private boolean speechInitializationComplete;
+    private boolean speechReady;
+    private String pendingSpeechText;
+    private String pendingSpeechLanguage;
+    private long speechUtteranceSequence;
+    private volatile String activeSpeechUtteranceId;
     private boolean trustedMainDocumentReady;
     private String pendingAuthCallbackUrl;
 
@@ -68,6 +81,7 @@ public final class MainActivity extends ComponentActivity {
 
         billingManager = new BillingManager(this, this::dispatchEntitlementToWeb);
         configureWebView();
+        initializeSpeechEngine();
         billingManager.start();
         captureAuthCallback(getIntent());
         webView.loadUrl(APP_URL);
@@ -205,6 +219,166 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new BillingBridge(this, billingManager), "NurBilling");
         webView.addJavascriptInterface(new AuthBridge(this), "NurAuth");
         webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
+        webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
+    }
+
+    private void initializeSpeechEngine() {
+        textToSpeech = new TextToSpeech(this, status -> {
+            speechInitializationComplete = true;
+            speechReady = status == TextToSpeech.SUCCESS && textToSpeech != null;
+            if (!speechReady) {
+                pendingSpeechText = null;
+                pendingSpeechLanguage = null;
+                dispatchSpeechState("error");
+                return;
+            }
+            textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                @Override
+                public void onStart(String utteranceId) {
+                    dispatchCurrentSpeechState(utteranceId, "started", false);
+                }
+
+                @Override
+                public void onDone(String utteranceId) {
+                    dispatchCurrentSpeechState(utteranceId, "done", true);
+                }
+
+                @Override
+                public void onError(String utteranceId) {
+                    dispatchCurrentSpeechState(utteranceId, "error", true);
+                }
+
+                @Override
+                public void onStop(String utteranceId, boolean interrupted) {
+                    dispatchCurrentSpeechState(utteranceId, "stopped", true);
+                }
+            });
+            if (pendingSpeechText != null) {
+                String text = pendingSpeechText;
+                String language = pendingSpeechLanguage;
+                pendingSpeechText = null;
+                pendingSpeechLanguage = null;
+                speakWithSystemVoice(text, language);
+            }
+        });
+    }
+
+    void speakTextFromWeb(String rawText, String rawLanguage) {
+        if (!isTrustedSpeechRequest()) {
+            return;
+        }
+        String text = boundedSpeechText(rawText);
+        if (text.isEmpty()) {
+            dispatchSpeechState("error");
+            return;
+        }
+        String language = normalizedSpeechLanguage(rawLanguage);
+        if (!speechInitializationComplete) {
+            pendingSpeechText = text;
+            pendingSpeechLanguage = language;
+            dispatchSpeechState("loading");
+            return;
+        }
+        if (!speechReady || textToSpeech == null) {
+            dispatchSpeechState("error");
+            return;
+        }
+        speakWithSystemVoice(text, language);
+    }
+
+    void stopSpeechFromWeb() {
+        if (!isTrustedSpeechRequest()) {
+            return;
+        }
+        pendingSpeechText = null;
+        pendingSpeechLanguage = null;
+        activeSpeechUtteranceId = null;
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+        }
+        dispatchSpeechState("stopped");
+    }
+
+    private boolean isTrustedSpeechRequest() {
+        return webView != null
+                && trustedMainDocumentReady
+                && isTrustedAppMainDocumentUrl(webView.getUrl());
+    }
+
+    private void speakWithSystemVoice(String text, String language) {
+        if (textToSpeech == null) {
+            dispatchSpeechState("error");
+            return;
+        }
+        Locale preferred = Locale.forLanguageTag(language);
+        int languageResult = textToSpeech.setLanguage(preferred);
+        if (languageResult == TextToSpeech.LANG_MISSING_DATA
+                || languageResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+            languageResult = textToSpeech.setLanguage(Locale.getDefault());
+        }
+        if (languageResult == TextToSpeech.LANG_MISSING_DATA
+                || languageResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+            dispatchSpeechState("error");
+            return;
+        }
+        textToSpeech.setSpeechRate(0.9f);
+        String utteranceId = SPEECH_UTTERANCE_PREFIX + (++speechUtteranceSequence);
+        activeSpeechUtteranceId = utteranceId;
+        int result = textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+        if (result == TextToSpeech.ERROR) {
+            activeSpeechUtteranceId = null;
+            dispatchSpeechState("error");
+        }
+    }
+
+    private void dispatchCurrentSpeechState(String utteranceId, String state, boolean terminal) {
+        runOnUiThread(() -> {
+            if (utteranceId == null || !utteranceId.equals(activeSpeechUtteranceId)) {
+                return;
+            }
+            if (terminal) {
+                activeSpeechUtteranceId = null;
+            }
+            dispatchSpeechState(state);
+        });
+    }
+
+    private String boundedSpeechText(String value) {
+        if (value == null) {
+            return "";
+        }
+        StringBuilder clean = new StringBuilder(Math.min(value.length(), MAX_SPEECH_TEXT_LENGTH));
+        for (int offset = 0; offset < value.length() && clean.length() < MAX_SPEECH_TEXT_LENGTH; ) {
+            int codePoint = value.codePointAt(offset);
+            offset += Character.charCount(codePoint);
+            if (!Character.isISOControl(codePoint) || codePoint == '\n' || codePoint == '\t') {
+                clean.appendCodePoint(codePoint);
+            }
+        }
+        return clean.toString().trim();
+    }
+
+    private String normalizedSpeechLanguage(String value) {
+        String language = value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
+        if (language.startsWith("fr")) {
+            return "fr-FR";
+        }
+        if (language.startsWith("en")) {
+            return "en-US";
+        }
+        return "ru-RU";
+    }
+
+    private void dispatchSpeechState(String state) {
+        if (!isTrustedSpeechRequest()) {
+            return;
+        }
+        webView.evaluateJavascript(
+                "window.dispatchEvent(new CustomEvent('nur-speech-state',{detail:{state:'"
+                        + state
+                        + "'}}));",
+                null
+        );
     }
 
     private boolean isTrustedAppUri(Uri uri) {
@@ -289,7 +463,7 @@ public final class MainActivity extends ComponentActivity {
         }
         String rawUrl = url == null ? "" : url.trim();
         if (rawUrl.isEmpty()
-                || rawUrl.length() > 2048
+                || rawUrl.length() > 8192
                 || rawUrl.chars().anyMatch(Character::isISOControl)) {
             return;
         }
@@ -467,6 +641,13 @@ public final class MainActivity extends ComponentActivity {
 
     @Override
     protected void onPause() {
+        activeSpeechUtteranceId = null;
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+        }
+        pendingSpeechText = null;
+        pendingSpeechLanguage = null;
+        dispatchSpeechState("stopped");
         if (webView != null) {
             webView.onPause();
             // GlowLetter owns a single WebView in this process, so suspending the
@@ -520,10 +701,16 @@ public final class MainActivity extends ComponentActivity {
         if (billingManager != null) {
             billingManager.close();
         }
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+            textToSpeech = null;
+        }
         if (webView != null) {
             webView.removeJavascriptInterface("NurBilling");
             webView.removeJavascriptInterface("NurAuth");
             webView.removeJavascriptInterface("NurShare");
+            webView.removeJavascriptInterface("NurSpeech");
             webView.stopLoading();
             webView.destroy();
             webView = null;
