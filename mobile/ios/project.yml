@@ -31,6 +31,7 @@ targets:
       - path: NurPismo/Assets.xcassets
       - path: NurPismo/WebResources
         type: folder
+      - path: StoreKit/GlowLetter.storekit
     preBuildScripts:
       - name: Sync current web application
         basedOnDependencyAnalysis: false
@@ -56,8 +57,6 @@ targets:
     platform: iOS
     sources:
       - path: NurPismoTests
-    resources:
-      - path: StoreKit/GlowLetter.storekit
     dependencies:
       - target: NurPismo
     settings:

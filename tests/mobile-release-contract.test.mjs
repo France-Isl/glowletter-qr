@@ -25,6 +25,7 @@ assert.match(ios, /CURRENT_PROJECT_VERSION:\s*10\b/);
 assert.match(ios, /PRODUCT_MODULE_NAME:\s*NurPismo\b/);
 assert.match(ios, /TEST_HOST:\s*["']\$\(BUILT_PRODUCTS_DIR\)\/GlowLetter\.app\/GlowLetter["']/);
 assert.match(ios, /BUNDLE_LOADER:\s*["']\$\(TEST_HOST\)["']/);
+assert.match(ios, /NurPismo\/WebResources[\s\S]{0,100}StoreKit\/GlowLetter\.storekit/);
 assert.match(workflow, /GlowLetter-2\.2\.4-debug\.apk/);
 assert.match(workflow, /GlowLetter-2\.2\.4-preview-debug\.apk/);
 assert.match(workflow, /TAG:\s*v2\.2\.4-preview/);
