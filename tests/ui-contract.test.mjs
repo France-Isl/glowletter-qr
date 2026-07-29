@@ -83,6 +83,10 @@ for (const [id, action] of [
 ]) {
   assert.match(app, new RegExp(`#${id}[^\\n]*addEventListener\\(["']click["'][^\\n]*${action}`), `${id} must invoke ${action}`);
 }
+const goHomeBody = app.match(/function goHome\(\)\s*\{([\s\S]+?)\r?\n\s*\}/)?.[1] || "";
+assert.match(goHomeBody, /window\.speechSynthesis\?\.cancel\(\)/, "home navigation must tolerate WebViews without speech synthesis");
+assert.doesNotMatch(goHomeBody, /(?:^|[^.\w])speechSynthesis\?\.cancel\(\)/, "home navigation must not reference an undeclared speechSynthesis global");
+assert.match(app, /\$\$\(["']\.go-home["']\)\.forEach\([^\n]*addEventListener\(["']click["'],\s*goHome\)/);
 assert.match(app, /#soundButton[^\n]*addEventListener\(["']click["'][^\n]*(?:pauseMusic|playMusic)/);
 assert.match(app, /#aiOpenTop[^\n]*addEventListener\(["']click["'][^\n]*requestPremiumFeature/);
 assert.doesNotMatch(styles, /\.ai-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "smart editor title must scroll away with its content");

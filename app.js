@@ -27,6 +27,10 @@
   const AUTH_CALLBACK_PARAMETERS = ["code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "token_type", "provider_token", "provider_refresh_token"];
   const UI_THEMES = new Set(["moon", "rose", "forest", "sand"]);
   const WEATHER_STORAGE_KEY = "nurWeatherSnapshotV1";
+  const SUPPORT_EMAIL = "ggooglov9@gmail.com";
+  const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
+  const SUPPORT_MESSAGE_MIN = 20;
+  const SUPPORT_MESSAGE_MAX = 2000;
 
   const UI = {
     ru: {
@@ -125,16 +129,25 @@
     qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
-    accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
+    accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
     adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение."
   });
   Object.assign(UI.en, {
-    accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Checking access…",accountPlanFree:"Free access · 10 letters",accountPlanPermanent:"VIP · unlimited full access",accountPlanStore:"VIP · subscription active",accountPlanVip:"{remaining} left · until {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Change profile photo",profilePhotoReady:"Profile photo saved on this device",profilePhotoFail:"This photo could not be processed",profilePhotoTooLarge:"Choose a photo up to 8 MB",
+    accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Checking access…",accountPlanFree:"Free access · 10 letters",accountPlanPermanent:"VIP · unlimited full access",accountPlanStore:"VIP · subscription active",accountPlanVip:"{remaining} left · until {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATOR",profilePhotoAria:"Change profile photo",profilePhotoReady:"Profile photo saved on this device",profilePhotoFail:"This photo could not be processed",profilePhotoTooLarge:"Choose a photo up to 8 MB",
     adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection."
   });
   Object.assign(UI.fr, {
-    accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Vérification de l’accès…",accountPlanFree:"Accès gratuit · 10 lettres",accountPlanPermanent:"VIP · accès complet illimité",accountPlanStore:"VIP · abonnement actif",accountPlanVip:"Encore {remaining} · jusqu’au {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Modifier la photo de profil",profilePhotoReady:"Photo de profil enregistrée sur cet appareil",profilePhotoFail:"Cette photo n’a pas pu être traitée",profilePhotoTooLarge:"Choisissez une photo de 8 Mo maximum",
+    accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Vérification de l’accès…",accountPlanFree:"Accès gratuit · 10 lettres",accountPlanPermanent:"VIP · accès complet illimité",accountPlanStore:"VIP · abonnement actif",accountPlanVip:"Encore {remaining} · jusqu’au {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATEUR",profilePhotoAria:"Modifier la photo de profil",profilePhotoReady:"Photo de profil enregistrée sur cet appareil",profilePhotoFail:"Cette photo n’a pas pu être traitée",profilePhotoTooLarge:"Choisissez une photo de 8 Mo maximum",
     adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion."
+  });
+  Object.assign(UI.ru, {
+    supportFormEyebrow:"GLOWLETTER · ПОДДЕРЖКА",supportFormTitle:"Расскажите,<br><em>что случилось</em>",supportFormLead:"Опишите проблему прямо здесь. Email и ID аккаунта будут приложены автоматически.",supportGuestTitle:"Сначала войдите в аккаунт",supportGuestNote:"Так мы безопасно приложим ваш email и ID и сможем найти аккаунт.",supportCopyContact:"Скопировать email поддержки",supportContactCopied:"Email поддержки скопирован",supportEmailLabel:"EMAIL ДЛЯ ОТВЕТА",supportIdLabel:"ID АККАУНТА",supportCategoryLabel:"Тема обращения",supportMessageLabel:"Что произошло?",supportMessagePlaceholder:"Опишите проблему, что вы нажали и что увидели…",supportPrivacyNote:"Не указывайте пароль, банковские данные и коды подтверждения.",supportSubmit:"Отправить в поддержку",supportSending:"Отправляю обращение…",supportSent:"Обращение отправлено. Поддержка получила уведомление и ответит на email аккаунта.",supportSaved:"Обращение безопасно сохранено. Доставка уведомления на email пока настраивается.",supportSignInRequired:"Войдите в аккаунт, чтобы отправить обращение.",supportInvalid:"Опишите проблему подробнее — от 20 до 2000 символов.",supportRateLimited:"Слишком много обращений. Попробуйте немного позже.",supportFailed:"Не удалось отправить обращение. Проверьте интернет и повторите.",supportCategoryTechnical:"Техническая проблема",supportCategoryAccount:"Аккаунт и вход",supportCategorySubscription:"VIP и подписка",supportCategoryContent:"Письма и тексты",supportCategoryFeedback:"Идея или отзыв",supportCategoryOther:"Другое"
+  });
+  Object.assign(UI.en, {
+    supportFormEyebrow:"GLOWLETTER · SUPPORT",supportFormTitle:"Tell us<br><em>what happened</em>",supportFormLead:"Describe the problem here. Your account email and Support ID are attached automatically.",supportGuestTitle:"Sign in first",supportGuestNote:"This lets us securely attach your email and Support ID and find your account.",supportCopyContact:"Copy support email",supportContactCopied:"Support email copied",supportEmailLabel:"REPLY EMAIL",supportIdLabel:"ACCOUNT ID",supportCategoryLabel:"Topic",supportMessageLabel:"What happened?",supportMessagePlaceholder:"Describe what you tapped and what you saw…",supportPrivacyNote:"Do not include passwords, bank details, or verification codes.",supportSubmit:"Send to support",supportSending:"Sending your request…",supportSent:"Your request was sent. Support was notified and will reply to your account email.",supportSaved:"Your request was securely saved. Email notification delivery is still being configured.",supportSignInRequired:"Sign in to send a support request.",supportInvalid:"Please add more detail — between 20 and 2,000 characters.",supportRateLimited:"Too many requests. Please try again later.",supportFailed:"The request could not be sent. Check your connection and try again.",supportCategoryTechnical:"Technical problem",supportCategoryAccount:"Account and sign-in",supportCategorySubscription:"VIP and subscription",supportCategoryContent:"Letters and text",supportCategoryFeedback:"Idea or feedback",supportCategoryOther:"Other"
+  });
+  Object.assign(UI.fr, {
+    supportFormEyebrow:"GLOWLETTER · ASSISTANCE",supportFormTitle:"Expliquez-nous<br><em>ce qui s’est passé</em>",supportFormLead:"Décrivez le problème ici. L’email et l’ID d’assistance du compte sont joints automatiquement.",supportGuestTitle:"Connectez-vous d’abord",supportGuestNote:"Nous pourrons ainsi joindre votre email et votre ID en toute sécurité et retrouver votre compte.",supportCopyContact:"Copier l’email d’assistance",supportContactCopied:"Email d’assistance copié",supportEmailLabel:"EMAIL DE RÉPONSE",supportIdLabel:"ID DU COMPTE",supportCategoryLabel:"Sujet",supportMessageLabel:"Que s’est-il passé ?",supportMessagePlaceholder:"Décrivez ce que vous avez touché et ce qui s’est affiché…",supportPrivacyNote:"N’indiquez jamais de mot de passe, coordonnées bancaires ou code de vérification.",supportSubmit:"Envoyer à l’assistance",supportSending:"Envoi de votre demande…",supportSent:"Votre demande est envoyée. L’assistance a été avertie et répondra à l’email du compte.",supportSaved:"Votre demande est enregistrée en sécurité. L’envoi de la notification par email est encore en cours de configuration.",supportSignInRequired:"Connectez-vous pour envoyer une demande d’assistance.",supportInvalid:"Ajoutez quelques détails — entre 20 et 2 000 caractères.",supportRateLimited:"Trop de demandes. Réessayez un peu plus tard.",supportFailed:"Impossible d’envoyer la demande. Vérifiez votre connexion et réessayez.",supportCategoryTechnical:"Problème technique",supportCategoryAccount:"Compte et connexion",supportCategorySubscription:"VIP et abonnement",supportCategoryContent:"Lettres et textes",supportCategoryFeedback:"Idée ou avis",supportCategoryOther:"Autre"
   });
 
   const SELECT_OPTIONS = {
@@ -162,6 +175,11 @@
       ru:[["auto","Подобрать автоматически"],["short","Коротко"],["standard","Обычно"],["detailed","Подробно"]],
       en:[["auto","Choose automatically"],["short","Short"],["standard","Standard"],["detailed","Detailed"]],
       fr:[["auto","Choisir automatiquement"],["short","Courte"],["standard","Normale"],["detailed","Détaillée"]]
+    },
+    supportCategory: {
+      ru:[["technical",UI.ru.supportCategoryTechnical],["account",UI.ru.supportCategoryAccount],["subscription",UI.ru.supportCategorySubscription],["content",UI.ru.supportCategoryContent],["feedback",UI.ru.supportCategoryFeedback],["other",UI.ru.supportCategoryOther]],
+      en:[["technical",UI.en.supportCategoryTechnical],["account",UI.en.supportCategoryAccount],["subscription",UI.en.supportCategorySubscription],["content",UI.en.supportCategoryContent],["feedback",UI.en.supportCategoryFeedback],["other",UI.en.supportCategoryOther]],
+      fr:[["technical",UI.fr.supportCategoryTechnical],["account",UI.fr.supportCategoryAccount],["subscription",UI.fr.supportCategorySubscription],["content",UI.fr.supportCategoryContent],["feedback",UI.fr.supportCategoryFeedback],["other",UI.fr.supportCategoryOther]]
     }
   };
 
@@ -492,6 +510,7 @@
   let accountAvatarUrl = "";
   let accountAvatarUserId = "";
   let fallbackShareUrl = "";
+  let supportSubmitting = false;
   const AUTO_FULLSCREEN_KEY = "nurAutoFullscreenV17";
   let cloudNames = linkNamesActive ? { sender: "", recipient: "" } : { sender: fromName, recipient: toName };
   let cloudBuiltInTrack = selectedTrack >= 0 && selectedTrack <= 2 ? selectedTrack : Math.max(0, Math.min(Number(localStorage.getItem("nurLastBuiltInTrack") || 0), 2));
@@ -501,7 +520,7 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), support: $("#supportLayer"), paywall: $("#paywallLayer")
   };
   const panelTriggers = new WeakMap();
 
@@ -1039,17 +1058,22 @@
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
     $("#accountDelete").disabled = cloudAuthBusy;
+    const isAdmin = signedIn && cloudAccount?.is_admin === true;
     const support = $("#accountSupport");
-    support.hidden = !signedIn;
-    $("#copyAccountId").disabled = !cloudAccount?.support_id;
-    setText("#accountSupportId", cloudAccount?.support_id || "—");
+    const supportVisible = signedIn && Boolean(cloudAccount?.support_id) && !isAdmin;
+    support.hidden = !supportVisible;
+    $("#copyAccountId").disabled = !supportVisible;
+    setText("#accountSupportId", supportVisible ? cloudAccount.support_id : "—");
+    const adminBadge = $("#accountAdminBadge");
+    adminBadge.hidden = !isAdmin;
+    adminBadge.textContent = t("accountBadgeAdmin");
     const planState = signedIn ? accountPlanState(cloudAccount, { includeNative: true }) : "checking";
     const planBadge = $("#accountPlanBadge");
     planBadge.dataset.plan = planState;
     planBadge.textContent = accountPlanBadgeText(planState);
     setText("#accountPlanStatus", signedIn ? accountPlanText(cloudAccount, { includeNative: true }) : t("accountPlanChecking"));
     const adminPanel = $("#adminPanel");
-    adminPanel.hidden = !(signedIn && cloudAccount?.is_admin === true);
+    adminPanel.hidden = !isAdmin;
     if (adminPanel.hidden) {
       adminAccountResult = null;
       $("#adminResult").hidden = true;
@@ -1070,6 +1094,117 @@
       image.hidden = !hasLocalAvatar;
       $("#accountAvatar").hidden = hasLocalAvatar;
       $("#accountAvatarButton").setAttribute("aria-label", t("profilePhotoAria"));
+    }
+    renderSupportFormState();
+  }
+
+  function setSupportStatus(key = "", state = "") {
+    const status = $("#supportStatus");
+    if (!status) return;
+    status.dataset.key = key;
+    status.dataset.state = state;
+    status.textContent = key ? t(key) : "";
+  }
+
+  function updateSupportMessageCount() {
+    const message = $("#supportMessage");
+    if (!message) return;
+    setText("#supportMessageCount", `${message.value.length} / ${SUPPORT_MESSAGE_MAX}`);
+  }
+
+  function renderSupportFormState() {
+    const form = $("#supportForm");
+    const guest = $("#supportGuestState");
+    if (!form || !guest) return;
+    const signedIn = Boolean(cloudUser?.id);
+    const isAdmin = signedIn && cloudAccount?.is_admin === true;
+    form.hidden = !signedIn;
+    guest.hidden = signedIn;
+    setText("#supportEmailValue", signedIn ? String(cloudUser.email || "—") : "—");
+    const supportIdVisible = signedIn && Boolean(cloudAccount?.support_id) && !isAdmin;
+    $("#supportIdRow").hidden = !supportIdVisible;
+    setText("#supportIdValue", supportIdVisible ? cloudAccount.support_id : "—");
+    const provider = cloudProviders.google ? "google" : cloudProviders.facebook ? "facebook" : "";
+    const signInButton = $("#supportSignInButton");
+    signInButton.dataset.provider = provider;
+    signInButton.disabled = signedIn || cloudAuthBusy || !cloudProvidersKnown || !provider;
+    signInButton.textContent = !cloudProvidersKnown
+      ? t("cloudProvidersChecking")
+      : provider === "facebook" ? t("continueFacebook") : provider === "google" ? t("continueGoogle") : t("cloudUnavailable");
+    const statusKey = $("#supportStatus")?.dataset.key;
+    if (statusKey) setSupportStatus(statusKey, $("#supportStatus").dataset.state || "");
+  }
+
+  function openSupportForm() {
+    setSupportStatus();
+    updateSupportMessageCount();
+    renderSupportFormState();
+    layers.settings?.setAttribute("inert", "");
+    openPanel(layers.support);
+  }
+
+  function supportPlatform() {
+    if (location.hostname === "appassets.androidplatform.net") return "android";
+    if (hasIosBillingBridge || /iPad|iPhone|iPod/u.test(navigator.userAgent)) return "ios";
+    return "web";
+  }
+
+  async function submitSupportRequest(event) {
+    event?.preventDefault();
+    if (supportSubmitting) return;
+    if (!cloudClient || !cloudUser?.id || !cloudSession?.access_token) {
+      setSupportStatus("supportSignInRequired", "error");
+      renderSupportFormState();
+      return;
+    }
+    const categoryValue = String($("#supportCategory").value || "");
+    const category = SUPPORT_CATEGORIES.has(categoryValue) ? categoryValue : "other";
+    const message = String($("#supportMessage").value || "").normalize("NFKC").trim();
+    if (message.length < SUPPORT_MESSAGE_MIN || message.length > SUPPORT_MESSAGE_MAX) {
+      setSupportStatus("supportInvalid", "error");
+      $("#supportMessage").focus();
+      return;
+    }
+
+    supportSubmitting = true;
+    const submit = $("#supportSubmit");
+    submit.disabled = true;
+    submit.setAttribute("aria-busy", "true");
+    setText("#supportSubmitLabel", t("supportSending"));
+    setSupportStatus();
+    try {
+      const { data, error } = await cloudClient.functions.invoke("submit-support", {
+        body: {
+          category,
+          message,
+          language: lang,
+          app_version: String(CONFIG.appVersion || "web").slice(0, 32),
+          platform: supportPlatform()
+        }
+      });
+      if (error) {
+        const status = Number(error?.context?.status || 0);
+        if (status === 401) setSupportStatus("supportSignInRequired", "error");
+        else if (status === 429) setSupportStatus("supportRateLimited", "error");
+        else setSupportStatus("supportFailed", "error");
+        return;
+      }
+      if (data?.accepted !== true) {
+        setSupportStatus("supportFailed", "error");
+        return;
+      }
+      $("#supportMessage").value = "";
+      updateSupportMessageCount();
+      const emailSent = data.emailSent === true || data.email_sent === true;
+      setSupportStatus(emailSent ? "supportSent" : "supportSaved", "success");
+      haptic([12, 28, 12]);
+    } catch {
+      setSupportStatus("supportFailed", "error");
+    } finally {
+      supportSubmitting = false;
+      submit.disabled = false;
+      submit.removeAttribute("aria-busy");
+      setText("#supportSubmitLabel", t("supportSubmit"));
     }
   }
 
@@ -1948,6 +2083,7 @@
     if (!layer) return;
     layer.classList.remove("is-open");
     layer.setAttribute("aria-hidden", "true");
+    if (layer === layers.support) layers.settings?.removeAttribute("inert");
     const anotherOpen = Object.values(layers).some(item => item.classList.contains("is-open"));
     if (!anotherOpen) {
       document.body.style.overflow = "";
@@ -2135,15 +2271,16 @@
     const trackNotes = $$(".track-option[data-track] small"); if (trackNotes[0]) trackNotes[0].textContent = t("trackPrimary"); if (trackNotes[1]) trackNotes[1].textContent = t("trackLight"); if (trackNotes[2]) trackNotes[2].textContent = t("trackWarm");
     setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
-    const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("terms");if(legalLinks[2])legalLinks[2].textContent=t("deletePage");if(legalLinks[3])legalLinks[3].textContent=t("supportLink");
+    setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
     setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
+    setText("#supportEyebrow",t("supportFormEyebrow"));$("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderQrCode(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
     renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
-    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
+    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
     updatePurchaseConfiguration(purchaseConfigured);
     setAiMode(aiMode);
     localStorage.setItem("nurLanguage", lang);
@@ -2204,7 +2341,7 @@
   }
 
   function goHome() {
-    speechSynthesis?.cancel();
+    window.speechSynthesis?.cancel();
     pendingPremiumFeature = "";
     storyOpened = false;
     letterStage.hidden = true;
@@ -2988,6 +3125,7 @@
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderQrCode(false);}));
     $("#qrOpenButton").addEventListener("click",openQrBuilder);$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
+    $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
     $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const audit=renderReplyAudit(value,lastReplyContext);if(!audit.ok){showToast(t("replyAuditWarning"),3600);return;}copyText(value);});
@@ -3014,7 +3152,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=18", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=19", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

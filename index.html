@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=18" />
+  <link rel="manifest" href="manifest.webmanifest?v=19" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=18" />
-  <link rel="stylesheet" href="experience.css?v=18" />
+  <link rel="stylesheet" href="styles.css?v=19" />
+  <link rel="stylesheet" href="experience.css?v=19" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -268,6 +268,7 @@
             <div class="account-profile-copy">
               <p><strong id="accountUserName">GlowLetter</strong><small id="accountUserEmail"></small></p>
               <div class="account-plan-line">
+                <b class="account-admin-badge" id="accountAdminBadge" hidden>АДМИНИСТРАТОР</b>
                 <b class="account-plan-badge" id="accountPlanBadge" data-plan="checking">…</b>
                 <small class="account-plan-status" id="accountPlanStatus" role="status" aria-live="polite">План: проверяется…</small>
               </div>
@@ -381,7 +382,7 @@
         <button class="install-button qr-open-button" id="qrOpenButton" type="button">▦ Создать QR-код письма</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
         <p class="install-hint" id="installHint" hidden>На iPhone: «Поделиться» → «На экран Домой».</p>
-        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a href="terms.html" target="_blank" rel="noopener">Условия</a><a href="delete-account.html" target="_blank" rel="noopener">Удаление аккаунта</a><a href="mailto:ggooglov9@gmail.com">Поддержка</a></div>
+        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a id="privacyLink" href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a id="termsLink" href="terms.html" target="_blank" rel="noopener">Условия</a><a id="deleteAccountLink" href="delete-account.html" target="_blank" rel="noopener">Удаление аккаунта</a><button id="supportOpenButton" type="button">Поддержка</button></div>
       </section>
     </div>
 
@@ -432,6 +433,36 @@
       </section>
     </div>
 
+    <div class="panel-layer center-layer" id="supportLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="supportBackdrop" type="button" aria-label="Закрыть поддержку"></button>
+      <section class="setup-card support-card" role="dialog" aria-modal="true" aria-labelledby="supportTitle" aria-describedby="supportLead">
+        <button class="panel-close support-close" id="supportClose" type="button" aria-label="Закрыть поддержку">×</button>
+        <div class="support-mark" aria-hidden="true"><span>?</span><i>✦</i></div>
+        <p class="panel-eyebrow" id="supportEyebrow">GLOWLETTER · ПОДДЕРЖКА</p>
+        <h2 id="supportTitle">Расскажите,<br /><em>что случилось</em></h2>
+        <p class="support-lead" id="supportLead">Опишите проблему прямо здесь. Email и ID аккаунта будут приложены автоматически.</p>
+
+        <div class="support-guest" id="supportGuestState" hidden>
+          <span aria-hidden="true">◎</span>
+          <div><strong id="supportGuestTitle">Сначала войдите в аккаунт</strong><p id="supportGuestNote">Так мы безопасно приложим ваш email и ID и сможем найти аккаунт.</p></div>
+          <button id="supportSignInButton" type="button">Продолжить с Google</button>
+          <button class="support-copy-contact" id="supportCopyContact" type="button">Скопировать email поддержки</button>
+        </div>
+
+        <form id="supportForm">
+          <div class="support-identity" id="supportIdentity">
+            <div><span id="supportEmailLabel">EMAIL ДЛЯ ОТВЕТА</span><strong id="supportEmailValue">—</strong></div>
+            <div id="supportIdRow"><span id="supportIdLabel">ID АККАУНТА</span><code id="supportIdValue">—</code></div>
+          </div>
+          <label class="support-field" for="supportCategory"><span id="supportCategoryLabel">Тема обращения</span><select id="supportCategory" required><option value="technical">Техническая проблема</option><option value="account">Аккаунт и вход</option><option value="subscription">VIP и подписка</option><option value="content">Письма и тексты</option><option value="feedback">Идея или отзыв</option><option value="other">Другое</option></select></label>
+          <label class="support-field" for="supportMessage"><span id="supportMessageLabel">Что произошло?</span><textarea id="supportMessage" minlength="20" maxlength="2000" rows="6" placeholder="Опишите проблему, что вы нажали и что увидели…" aria-describedby="supportPrivacyNote supportMessageCount supportStatus" required></textarea></label>
+          <div class="support-message-meta"><small id="supportPrivacyNote">Не указывайте пароль, банковские данные и коды подтверждения.</small><output id="supportMessageCount" for="supportMessage">0 / 2000</output></div>
+          <p class="support-status" id="supportStatus" role="status" aria-live="polite"></p>
+          <button class="generate-button support-submit" id="supportSubmit" type="submit"><span class="generate-spark">↗</span><span id="supportSubmitLabel">Отправить в поддержку</span><i>→</i></button>
+        </form>
+      </section>
+    </div>
+
     <div class="panel-layer center-layer" id="paywallLayer" aria-hidden="true">
       <button class="panel-backdrop" id="paywallBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="paywall-card" role="dialog" aria-modal="true" aria-labelledby="paywallTitle">
@@ -452,13 +483,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=18"></script>
-  <script src="vendor/supabase-2.110.9.js?v=18"></script>
-  <script src="letters.js?v=18"></script>
-  <script src="reply-engine.js?v=18"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=18"></script>
-  <script src="qr-code.js?v=18"></script>
-  <script src="app.js?v=18"></script>
-  <script src="experience.js?v=18"></script>
+  <script src="config.js?v=19"></script>
+  <script src="vendor/supabase-2.110.9.js?v=19"></script>
+  <script src="letters.js?v=19"></script>
+  <script src="reply-engine.js?v=19"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=19"></script>
+  <script src="qr-code.js?v=19"></script>
+  <script src="app.js?v=19"></script>
+  <script src="experience.js?v=19"></script>
 </body>
 </html>

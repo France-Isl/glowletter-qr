@@ -88,8 +88,8 @@ assert.ok(ownerSeed, "the owner email must be seeded in glowletter_accounts");
 assert.match(ownerSeed, /\bis_admin\s*=\s*true\b/i);
 assert.match(ownerSeed, /\bpremium_forever\s*=\s*true\b/i);
 
-// Signed-in account UI exposes/copies the support ID. Admin controls exist but are hidden by default.
-for (const id of ["accountSupportId", "copyAccountId", "accountPlanBadge", "accountPlanStatus", "accountAvatarButton", "accountAvatarInput"]) {
+// Ordinary signed-in users can copy their support ID; admins get a compact gold role badge instead.
+for (const id of ["accountSupportId", "copyAccountId", "accountPlanBadge", "accountAdminBadge", "accountPlanStatus", "accountAvatarButton", "accountAvatarInput"]) {
   assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist in the account card`);
 }
 const adminPanelTag = index.match(/<[^>]+id=["']adminPanel["'][^>]*>/i)?.[0] || "";
@@ -104,12 +104,17 @@ assert.match(app, /\.rpc\(\s*["']glowletter_my_access["']\s*\)/);
 assert.match(sql, /function\s+public\.glowletter_my_access\s*\([\s\S]{0,1000}\bserver_now\b[\s\S]{0,600}\bsecurity\s+invoker\b/i);
 for (const field of ["support_id", "is_admin", "premium_forever", "vip_until"]) assert.match(app, new RegExp(`\\b${field}\\b`));
 assert.match(app, /#accountSupportId/);
+assert.match(app, /const supportVisible\s*=\s*signedIn\s*&&\s*Boolean\(cloudAccount\?\.support_id\)\s*&&\s*!isAdmin/);
+assert.match(app, /support\.hidden\s*=\s*!supportVisible/);
+assert.match(app, /#copyAccountId[\s\S]{0,80}disabled\s*=\s*!supportVisible/);
+assert.match(app, /supportVisible\s*\?\s*cloudAccount\.support_id\s*:\s*["']—["']/);
 assert.match(app, /#copyAccountId[^\n]*addEventListener\(["']click["']/);
 assert.match(app, /writeClipboard\([\s\S]{0,180}(?:support_id|accountSupportId)/);
 assert.match(app, /premium_forever[\s\S]{0,500}vip_until/);
 assert.match(app, /betaAccess\s*\|\|\s*nativePremium\s*\|\|\s*cloudPremium/);
 assert.match(app, /performance\.now\(\)[\s\S]{0,500}server_now|server_now[\s\S]{0,500}performance\.now\(\)/);
-assert.match(app, /#adminPanel[\s\S]{0,240}(?:hidden|toggleAttribute)[\s\S]{0,180}is_admin/i);
+assert.match(app, /const isAdmin\s*=\s*signedIn\s*&&\s*cloudAccount\?\.is_admin\s*===\s*true/);
+assert.match(app, /const adminPanel\s*=\s*\$\(["']#adminPanel["']\)[\s\S]{0,100}adminPanel\.hidden\s*=\s*!isAdmin/);
 assert.match(app, /function accountPlanState\(/);
 assert.match(app, /planBadge\.dataset\.plan\s*=\s*planState/);
 assert.match(app, /accountPlanVip:[^\n]*\{remaining\}[^\n]*\{date\}/);
@@ -117,6 +122,9 @@ assert.match(app, /formatVipRemaining\(expiry\s*-\s*trustedCloudNow\(\)\)/);
 assert.match(app, /#settingsButton[^\n]*loadCloudAccount\(cloudUser\)/, "opening settings must refresh a newly granted VIP immediately");
 assert.match(app, /quietSyncedState[\s\S]{0,180}accountStatus\.hidden\s*=\s*quietSyncedState/, "settled cloud sync must not leave a permanent success label");
 assert.match(styles, /account-plan-badge\[data-plan="vip"\][^\{]*\{[^\}]*#d7aa3e[^\}]*linear-gradient/i);
+assert.match(app, /adminBadge\.hidden\s*=\s*!isAdmin/);
+assert.match(app, /adminBadge\.textContent\s*=\s*t\(["']accountBadgeAdmin["']\)/);
+assert.match(styles, /\.account-admin-badge[^\{]*\{[^\}]*#d7aa3e[^\}]*linear-gradient/i);
 assert.match(app, /accountAvatarStorageKey\(userId\)[\s\S]{0,120}profile-avatar:/);
 assert.match(app, /saveMedia\(accountAvatarStorageKey\(userId\),\{blob\}\)/);
 assert.doesNotMatch(app.match(/function cloudProgressState\(\)[\s\S]*?\n  \}/)?.[0] || "", /avatar/i);
