@@ -87,8 +87,10 @@ for (const [id, action] of [
   assert.match(app, new RegExp(`#${id}[^\\n]*addEventListener\\(["']click["'][^\\n]*${action}`), `${id} must invoke ${action}`);
 }
 const goHomeBody = app.match(/function goHome\(\)\s*\{([\s\S]+?)\r?\n\s*\}/)?.[1] || "";
-assert.match(goHomeBody, /window\.speechSynthesis\?\.cancel\(\)/, "home navigation must tolerate WebViews without speech synthesis");
-assert.doesNotMatch(goHomeBody, /(?:^|[^.\w])speechSynthesis\?\.cancel\(\)/, "home navigation must not reference an undeclared speechSynthesis global");
+assert.match(goHomeBody, /stopLetterSpeech\(\)/, "home navigation must stop every active native or browser voice");
+const stopSpeechBody = app.match(/function stopLetterSpeech\(\)\s*\{([\s\S]+?)\r?\n\s*\}/)?.[1] || "";
+assert.match(stopSpeechBody, /window\.speechSynthesis\?\.cancel\(\)/, "speech cleanup must tolerate WebViews without browser speech synthesis");
+assert.doesNotMatch(stopSpeechBody, /(?:^|[^.\w])speechSynthesis\?\.cancel\(\)/, "speech cleanup must not reference an undeclared speechSynthesis global");
 assert.match(app, /\$\$\(["']\.go-home["']\)\.forEach\([^\n]*addEventListener\(["']click["'],\s*goHome\)/);
 assert.match(app, /#soundButton[^\n]*addEventListener\(["']click["'][^\n]*(?:pauseMusic|playMusic)/);
 assert.match(app, /#aiOpenTop[^\n]*addEventListener\(["']click["'][^\n]*requestPremiumFeature/);

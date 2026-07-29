@@ -1,4 +1,5 @@
 import AuthenticationServices
+import AVFoundation
 import Combine
 import SwiftUI
 import UIKit
@@ -17,6 +18,7 @@ struct WebViewContainer: UIViewRepresentable {
         controller.add(context.coordinator, name: "nurBilling")
         controller.add(context.coordinator, name: "nurAuth")
         controller.add(context.coordinator, name: "nurShare")
+        controller.add(context.coordinator, name: "nurSpeech")
         controller.addUserScript(WKUserScript(
             source: Coordinator.billingBootstrap,
             injectionTime: .atDocumentStart,
@@ -29,6 +31,11 @@ struct WebViewContainer: UIViewRepresentable {
         ))
         controller.addUserScript(WKUserScript(
             source: Coordinator.shareBootstrap,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        ))
+        controller.addUserScript(WKUserScript(
+            source: Coordinator.speechBootstrap,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         ))
@@ -76,8 +83,10 @@ struct WebViewContainer: UIViewRepresentable {
         uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurBilling")
         uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurAuth")
         uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurShare")
+        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurSpeech")
         uiView.stopLoading()
         coordinator.cancelAuthentication()
+        coordinator.stopSpeech()
         coordinator.webView = nil
     }
 
@@ -86,6 +95,7 @@ struct WebViewContainer: UIViewRepresentable {
                              WKNavigationDelegate,
                              WKUIDelegate,
                              WKScriptMessageHandler,
+                             AVSpeechSynthesizerDelegate,
                              ASWebAuthenticationPresentationContextProviding {
         weak var webView: WKWebView?
         private let subscriptionStore: SubscriptionStore
@@ -93,10 +103,13 @@ struct WebViewContainer: UIViewRepresentable {
         private var authSession: ASWebAuthenticationSession?
         private var trustedMainDocumentReady = false
         private var pendingAuthCallbackURL: URL?
+        private let speechSynthesizer = AVSpeechSynthesizer()
+        private var activeSpeechUtterance: AVSpeechUtterance?
 
         init(subscriptionStore: SubscriptionStore) {
             self.subscriptionStore = subscriptionStore
             super.init()
+            speechSynthesizer.delegate = self
             entitlementCancellable = subscriptionStore.$snapshot
                 .removeDuplicates()
                 .receive(on: DispatchQueue.main)
@@ -179,6 +192,24 @@ struct WebViewContainer: UIViewRepresentable {
         })();
         """
 
+        static let speechBootstrap = """
+        (function () {
+          const bridge = Object.freeze({
+            speak: function (text, language) {
+              window.webkit.messageHandlers.nurSpeech.postMessage({
+                action: 'speak',
+                text: String(text || ''),
+                language: String(language || '')
+              });
+            },
+            stop: function () {
+              window.webkit.messageHandlers.nurSpeech.postMessage({ action: 'stop' });
+            }
+          });
+          Object.defineProperty(window, 'NurSpeech', { value: bridge, configurable: false, writable: false });
+        })();
+        """
+
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             trustedMainDocumentReady = false
         }
@@ -241,6 +272,21 @@ struct WebViewContainer: UIViewRepresentable {
                     text: boundedShareText(body["text"] as? String, limit: 1_200, fallback: "GlowLetter"),
                     url: url
                 )
+            case "nurSpeech":
+                guard trustedMainDocumentReady else { return }
+                switch action {
+                case "speak":
+                    let text = boundedShareText(body["text"] as? String, limit: 6_000, fallback: "")
+                    guard !text.isEmpty else {
+                        dispatchSpeechState("error")
+                        return
+                    }
+                    speakText(text, language: body["language"] as? String)
+                case "stop":
+                    stopSpeech()
+                default:
+                    return
+                }
             default:
                 return
             }
@@ -306,6 +352,55 @@ struct WebViewContainer: UIViewRepresentable {
             presenter.present(sheet, animated: true)
         }
 
+        private func speakText(_ text: String, language rawLanguage: String?) {
+            guard trustedMainDocumentReady,
+                  isTrustedMainDocumentURL(webView?.url) else { return }
+            if speechSynthesizer.isSpeaking {
+                activeSpeechUtterance = nil
+                speechSynthesizer.stopSpeaking(at: .immediate)
+            }
+            let requested = (rawLanguage ?? "").lowercased()
+            let language = requested.hasPrefix("fr") ? "fr-FR" : requested.hasPrefix("en") ? "en-US" : "ru-RU"
+            let utterance = AVSpeechUtterance(string: text)
+            utterance.voice = AVSpeechSynthesisVoice(language: language) ?? AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first ?? language)
+            utterance.rate = 0.47
+            activeSpeechUtterance = utterance
+            speechSynthesizer.speak(utterance)
+        }
+
+        func stopSpeech() {
+            activeSpeechUtterance = nil
+            if speechSynthesizer.isSpeaking || speechSynthesizer.isPaused {
+                speechSynthesizer.stopSpeaking(at: .immediate)
+            }
+            dispatchSpeechState("stopped")
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+            guard let activeUtterance = activeSpeechUtterance, utterance === activeUtterance else { return }
+            dispatchSpeechState("started")
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+            guard let activeUtterance = activeSpeechUtterance, utterance === activeUtterance else { return }
+            activeSpeechUtterance = nil
+            dispatchSpeechState("done")
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+            guard let activeUtterance = activeSpeechUtterance, utterance === activeUtterance else { return }
+            activeSpeechUtterance = nil
+            dispatchSpeechState("stopped")
+        }
+
+        private func dispatchSpeechState(_ state: String) {
+            guard let webView,
+                  trustedMainDocumentReady,
+                  isTrustedMainDocumentURL(webView.url) else { return }
+            let script = "window.dispatchEvent(new CustomEvent('nur-speech-state',{detail:{state:'\(state)'}}));"
+            webView.evaluateJavaScript(script)
+        }
+
         private func topViewController(from root: UIViewController?) -> UIViewController? {
             if let presented = root?.presentedViewController {
                 return topViewController(from: presented)
@@ -320,7 +415,7 @@ struct WebViewContainer: UIViewRepresentable {
         }
 
         private func allowedShareURL(_ rawValue: String) -> URL? {
-            guard rawValue.count <= 2_048,
+            guard rawValue.count <= 8_192,
                   let components = URLComponents(string: rawValue),
                   components.scheme?.lowercased() == "https",
                   components.host?.isEmpty == false,

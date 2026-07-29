@@ -277,46 +277,6 @@
 
   document.querySelector("#customBackgroundInput")?.addEventListener("change", event => { if (event.target.files?.length) { state.scene = "still"; persist(); applyScene(); renderChoices(); } });
   document.querySelector("#resetBackgroundButton")?.addEventListener("click", () => { state.scene = "still"; persist(); applyScene(); renderChoices(); });
-  const encodeSharedText = text => {
-    try {
-      const bytes = new TextEncoder().encode(String(text || "").trim());
-      let binary = "";
-      for (let index = 0; index < bytes.length; index += 8192) binary += String.fromCharCode(...bytes.subarray(index, index + 8192));
-      return btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
-    } catch { return ""; }
-  };
-  const copyShareUrl = async value => {
-    try { await navigator.clipboard.writeText(value); }
-    catch {
-      const input = document.createElement("textarea"); input.value = value; input.setAttribute("readonly", ""); input.style.position = "fixed"; input.style.opacity = "0";
-      document.body.append(input); input.select(); document.execCommand("copy"); input.remove();
-    }
-  };
-  document.querySelector("#shareButton")?.addEventListener("click", event => {
-    syncUrl();
-    event.preventDefault(); event.stopImmediatePropagation();
-    const canonicalShareUrl = String(window.NUR_APP_CONFIG?.publicShareUrl || "").trim();
-    const url = new URL(canonicalShareUrl || location.href);
-    const sender = document.querySelector("#letterFrom")?.textContent?.trim() || "";
-    const recipient = document.querySelector("#letterTo")?.textContent?.trim() || "";
-    const message = encodeSharedText(document.querySelector("#letterText")?.textContent || "");
-    if (sender) url.searchParams.set("from", sender);
-    if (recipient) url.searchParams.set("to", recipient);
-    if (message) url.searchParams.set("msg", message);
-    url.searchParams.set("lang", language());
-    if (state.scene !== "still") url.searchParams.set("glScene", state.scene);
-    if (state.frame !== "none") url.searchParams.set("glFrame", state.frame);
-    if (state.ink !== "ink") url.searchParams.set("glInk", state.ink);
-    if (state.type !== "classic") url.searchParams.set("glType", state.type);
-    url.searchParams.delete("quote");
-    // Shared letters are always public/free links. Owner access never leaves
-    // the current device through a share action.
-    url.hash = "";
-    const data = { title: document.title, text: recipient ? `${recipient}, это письмо для тебя — ${sender} ♡` : document.title, url: url.toString() };
-    if (navigator.share) navigator.share(data).catch(error => { if (error?.name !== "AbortError") copyShareUrl(data.url); });
-    else copyShareUrl(data.url);
-    notify("share");
-  }, true);
   video.addEventListener("loadeddata", () => { document.body.classList.add("gl-video-ready"); samplePalette(); playVideo(); });
   video.addEventListener("ended", () => { video.currentTime = 0; playVideo(); });
   video.addEventListener("error", () => { state.scene = "still"; persist(); applyScene(); renderChoices(); notify("fallback"); });
