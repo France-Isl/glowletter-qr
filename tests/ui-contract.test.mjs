@@ -96,22 +96,13 @@ assert.match(app, /#soundButton[^\n]*addEventListener\(["']click["'][^\n]*(?:pau
 assert.match(app, /#aiOpenTop[^\n]*addEventListener\(["']click["'][^\n]*requestPremiumFeature/);
 assert.doesNotMatch(styles, /\.ai-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "smart editor title must scroll away with its content");
 
-// Smart reply has one source-message box. A new message invalidates every old draft/request.
-assert.match(index, /id=["']replyIncoming["']/);
-assert.doesNotMatch(index, /id=["']replyGoal["']/);
-assert.doesNotMatch(app, /\$\(["']#replyGoal["']\)/);
-assert.match(app, /const goal\s*=\s*""/);
-assert.match(app, /function invalidateReplyDraft\(\)\s*\{[\s\S]*?replyRequestVersion\s*\+=\s*1/);
-assert.match(app, /#replyIncoming[^\n]*addEventListener\(["']input["'],\s*\(\)\s*=>\s*\{\s*invalidateReplyDraft\(\)/);
-assert.match(app, /const requestVersion\s*=\s*\+\+replyRequestVersion/);
-assert.match(app, /requestVersion\s*!==\s*replyRequestVersion\s*\|\|\s*incoming\s*!==\s*String\(\$\(["']#replyIncoming["']\)\.value/);
-assert.match(app, /function invalidateReplyDraft\(\)[\s\S]*?clearTimeout\(replyRevealTimer\)/);
-assert.match(app, /replyRevealTimer\s*=\s*setTimeout\(\(\)\s*=>\s*\{[\s\S]*?requestVersion\s*!==\s*replyRequestVersion/);
-assert.match(app, /function replyFitsSelectedLength\(/);
-assert.match(app, /function resolveReplyLength\(/);
-assert.match(app, /minWords:\s*4[^\n]*maxWords:\s*22[^\n]*maxCharacters:\s*190[^\n]*maxSentences:\s*3/);
-assert.match(app, /!replyFitsSelectedLength\(text,\s*incoming,\s*resolvedLength\)/);
-assert.match(app, /length:\s*resolvedLength/);
+// Reply assistance is intentionally absent, including its former deep link.
+for (const id of ["replyOpenHome", "replyModeTab", "replyComposerPane", "replyForm", "replyIncoming", "replyGeneratedCard"]) {
+  assert.doesNotMatch(index, new RegExp(`id=["']${id}["']`), `${id} must stay removed`);
+}
+assert.doesNotMatch(index, /data-ai-mode=["']reply["']|reply-engine\.js/);
+assert.doesNotMatch(app, /function\s+(?:generateReply|remoteComposeReply)\s*\(|CONFIG\.aiReplyFunction|#replyIncoming|#replyOpenHome/);
+assert.doesNotMatch(app, /params\.get\(\s*["']reply["']\s*\)|[?&]reply=1/);
 
 // Personal letters use the current idea and selected length, and stale drafts are invalidated.
 for (const id of ["aiIdea", "aiLength", "focusReadingButton"]) {
@@ -158,15 +149,14 @@ assert.doesNotMatch(experience, /pro:\s*"PRO"/);
 assert.match(index, /class="vip-badge">VIP</);
 assert.match(styles, /\.vip-badge[^\{]*\{[^\}]*linear-gradient\([^\}]*#fff3b5[^\}]*#dca93a/i);
 
-// All four VIP frame choices visibly select with a checkmark and decorate AI results too.
+// All four VIP frame choices visibly select with a checkmark and decorate generated letters.
 assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl"\]/);
 for (const frame of ["hearts", "moon", "forest", "pearl"]) {
   assert.match(experienceStyles, new RegExp(`body\\.gl-premium-active\\[data-gl-frame=["']${frame}["']\\]`), `${frame} must define VIP frame tokens`);
   assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-layer`), `${frame} must decorate the opened letter`);
 }
-for (const id of ["generatedCard", "replyGeneratedCard"]) {
-  assert.match(index, new RegExp(`class=["']generated-card["'][^>]*id=["']${id}["']`), `${id} must receive the shared VIP result-card frame`);
-}
+assert.match(index, /class=["']generated-card["'][^>]*id=["']generatedCard["']/, "generated letters must receive the VIP result-card frame");
+assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
 assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.ai-panel/);
 assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.generated-card/);
 assert.match(experienceStyles, /\.generated-card::before[^\{]*\{[^\}]*border:\s*1px solid var\(--gl-vip-stroke\)/);
@@ -183,7 +173,8 @@ console.log(JSON.stringify({
   qrControls: true,
   themes: 4,
   liveWeather: true,
-  currentMessageReply: true,
+  replyAssistantRemoved: true,
+  personalLetterGenerator: true,
   neutralLetters: [5, 12],
   brand: "GlowLetter"
 }));

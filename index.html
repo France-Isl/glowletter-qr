@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=24" />
+  <link rel="manifest" href="manifest.webmanifest?v=25" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=24" />
-  <link rel="stylesheet" href="experience.css?v=24" />
+  <link rel="stylesheet" href="styles.css?v=25" />
+  <link rel="stylesheet" href="experience.css?v=25" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -71,7 +71,6 @@
           </button>
           <div class="home-smart-actions">
             <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b class="vip-badge">VIP</b></button>
-            <button class="smart-link" id="replyOpenHome" type="button"><span>↗</span> Помочь с ответом <b class="vip-badge">VIP</b></button>
           </div>
           <p class="free-note"><span>10 писем бесплатно</span><i></i><span>премиум — 21,99 €/месяц</span></p>
         </div>
@@ -156,12 +155,7 @@
           <div><strong>Режим адаба всегда включён</strong><small>Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.</small></div>
         </div>
 
-        <div class="ai-mode-tabs" role="tablist" aria-label="Режим помощника">
-          <button class="is-active" id="letterModeTab" type="button" role="tab" aria-selected="true" aria-controls="letterComposerPane" data-ai-mode="letter">✦ Письмо</button>
-          <button id="replyModeTab" type="button" role="tab" aria-selected="false" aria-controls="replyComposerPane" data-ai-mode="reply">↗ Ответ на сообщение</button>
-        </div>
-
-        <div id="letterComposerPane" role="tabpanel" aria-labelledby="letterModeTab">
+        <div id="letterComposerPane">
 
         <form id="aiForm">
           <div class="name-route" aria-hidden="true"><span>ОТ</span><i>✦</i><span>ДЛЯ</span></div>
@@ -210,30 +204,6 @@
         <div class="quality-note"><span>◆</span><p><strong>Почему текст стал лучше:</strong> редактор сначала определяет семейный контекст, затем собирает цельное письмо из проверенных смысловых блоков и проверяет результат. Никакой загрузки модели на 500 МБ.</p></div>
         </div>
 
-        <div id="replyComposerPane" role="tabpanel" aria-labelledby="replyModeTab" hidden>
-          <form id="replyForm">
-            <label class="wide-label"><span>Что вам написали?</span><textarea id="replyIncoming" rows="6" maxlength="1800" placeholder="Вставьте сюда сообщение, на которое хотите ответить…"></textarea></label>
-            <div class="reply-insight" id="replyInsight" hidden aria-live="polite">
-              <span class="reply-insight-mark" aria-hidden="true">◇</span>
-              <p><strong id="replyInsightTitle">Смысл сообщения</strong><small id="replyInsightDetails"></small><em id="replyInsightGoal"></em></p>
-            </div>
-            <div class="choice-grid">
-              <label><span>Кто вам написал · необязательно</span><select id="replyRelationship"><option value="auto">Не указывать</option><option value="spouse">Супруг или супруга</option><option value="family">Член семьи</option><option value="friend">Друг или подруга</option><option value="colleague">Коллега</option><option value="universal">Другой человек</option></select></label>
-              <label><span>Как ответить · необязательно</span><select id="replyTone"><option value="auto">Подобрать автоматически</option><option value="calm">Спокойно</option><option value="warm">Тепло</option><option value="support">Поддержать</option><option value="reconcile">Помириться</option></select></label>
-            </div>
-            <label class="wide-label reply-length-label"><span>Длина ответа</span><select id="replyLength"><option value="auto">Подобрать автоматически</option><option value="short">Коротко</option><option value="standard">Обычно</option><option value="detailed">Подробно</option></select></label>
-            <p class="form-hint">Помощник напишет уважительный ответ без 18+, грубости и двусмысленных фраз. Перед отправкой обязательно перечитайте его.</p>
-            <button class="generate-button" id="replyGenerateButton" type="submit"><span class="generate-spark">↗</span><span class="reply-generate-label">Подготовить ответ</span><i>→</i></button>
-          </form>
-          <div class="generation-status" id="replyStatus" hidden><div class="status-row"><span id="replyStatusText">Подбираю спокойный ответ…</span><strong id="replyStatusPercent">0%</strong></div><div class="status-track"><i id="replyStatusBar"></i></div></div>
-          <div class="safety-message" id="replySafety" hidden><strong>Нужен другой текст</strong><p id="replySafetyReason">Вставьте обычное сообщение без запрещённого содержания.</p></div>
-          <div class="generated-card" id="replyGeneratedCard" hidden>
-            <div class="generated-top"><span>ГОТОВЫЙ ОТВЕТ</span><button id="regenerateReply" type="button">↻ Другой вариант</button></div>
-            <textarea id="replyGeneratedText" rows="7" aria-label="Сгенерированный ответ"></textarea>
-            <div class="reply-audit is-safe" id="replyAudit" role="status" aria-live="polite"><span aria-hidden="true">✓</span><p><strong id="replyAuditTitle">Проверка adab пройдена</strong><small id="replyAuditDetails">Ответ остаётся уважительным и безопасным.</small></p></div>
-            <div class="generated-actions single-action"><button class="copy-button" id="copyReply" type="button">▣ Скопировать ответ</button></div>
-          </div>
-        </div>
         <p class="religious-note">Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.</p>
       </section>
     </div>
@@ -393,7 +363,7 @@
         <div class="premium-settings-card">
           <span class="premium-mini">ПОЛНАЯ ВЕРСИЯ</span>
           <h3>Откройте полный GlowLetter</h3>
-          <p>Все 50 писем, умные ответы, проверка adab и новые функции по ежемесячной подписке.</p>
+          <p>Все 50 писем, личный редактор, проверка adab и новые функции по ежемесячной подписке.</p>
           <button id="settingsPurchase" type="button">Подписаться за <span class="price-label">21,99 €/месяц</span></button>
         </div>
 
@@ -490,8 +460,8 @@
         <div class="paywall-orbit" aria-hidden="true"><span>✦</span><i>♡</i><b>☾</b></div>
         <p class="panel-eyebrow">GLOWLETTER · ПОЛНЫЙ ДОСТУП</p>
         <h2 id="paywallTitle">Ещё 40 писем<br /><em>для важных людей</em></h2>
-        <p>Первые 10 писем остаются бесплатными. Полная коллекция и умные функции доступны по автопродлеваемой ежемесячной подписке.</p>
-        <ul><li>все 50 персональных писем</li><li>умный анализ смысла сообщения</li><li>проверка уважительности и adab</li><li>новые тексты и функции</li></ul>
+        <p>Первые 10 писем остаются бесплатными. Полная коллекция и личный редактор доступны по автопродлеваемой ежемесячной подписке.</p>
+        <ul><li>все 50 персональных писем</li><li>создание собственного письма</li><li>проверка уважительности и adab</li><li>новые тексты и функции</li></ul>
         <button class="purchase-button" id="purchaseButton" type="button"><span>Оформить подписку</span><strong class="price-label">21,99 €/месяц</strong></button>
         <button class="restore-button" id="restoreButton" type="button">Восстановить подписку</button>
         <button class="restore-button" id="paywallManageSubscription" type="button">Управление подпиской</button>
@@ -503,13 +473,12 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=24"></script>
-  <script src="vendor/supabase-2.110.9.js?v=24"></script>
-  <script src="letters.js?v=24"></script>
-  <script src="reply-engine.js?v=24"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=24"></script>
-  <script src="qr-code.js?v=24"></script>
-  <script src="app.js?v=24"></script>
-  <script src="experience.js?v=24"></script>
+  <script src="config.js?v=25"></script>
+  <script src="vendor/supabase-2.110.9.js?v=25"></script>
+  <script src="letters.js?v=25"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=25"></script>
+  <script src="qr-code.js?v=25"></script>
+  <script src="app.js?v=25"></script>
+  <script src="experience.js?v=25"></script>
 </body>
 </html>

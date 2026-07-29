@@ -17,7 +17,6 @@
   ],
   "shortcuts": [
     { "name": "Создать письмо", "short_name": "Создать", "url": "./?compose=1" },
-    { "name": "Помочь с ответом", "short_name": "Ответ", "url": "./?reply=1" },
     { "name": "Коллекция", "short_name": "Письма", "url": "./?library=1" }
   ]
 }

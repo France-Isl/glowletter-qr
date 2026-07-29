@@ -9,13 +9,12 @@ const read = relative => fs.readFileSync(path.join(root, relative), "utf8");
 const index = read("index.html");
 const styles = read("styles.css");
 
-// The two smart entry points remain separate, keyboard-operable buttons.
-for (const id of ["aiOpenHome", "replyOpenHome"]) {
-  assert.match(index, new RegExp(`<button\\b(?=[^>]*\\bid=["']${id}["'])[^>]*\\btype=["']button["'][^>]*>`, "u"));
-}
-assert.match(styles, /\.home-smart-actions\s*\{[^}]*display\s*:\s*grid[^}]*grid-template-columns\s*:\s*repeat\(2,minmax\(0,1fr\)\)[^}]*width\s*:\s*100%/iu);
+// The home screen keeps only the personal-letter entry point.
+assert.match(index, /<button\b(?=[^>]*\bid=["']aiOpenHome["'])[^>]*\btype=["']button["'][^>]*>/u);
+assert.doesNotMatch(index, /id=["']replyOpenHome["']/u);
+assert.match(styles, /\.home-smart-actions\s*\{[^}]*display\s*:\s*grid[^}]*grid-template-columns\s*:\s*1fr[^}]*width\s*:\s*100%/iu);
+assert.doesNotMatch(styles, /\.home-smart-actions\s*\{[^}]*grid-template-columns\s*:\s*repeat\(2/iu);
 assert.match(styles, /\.home-smart-actions\s+\.smart-link\s*\{[^}]*width\s*:\s*100%[^}]*min-width\s*:\s*0[^}]*text-align\s*:\s*center/iu);
-assert.match(styles, /@media\s*\(max-width:\s*330px\)[\s\S]*?\.home-smart-actions\s*\{[^}]*grid-template-columns\s*:\s*1fr/iu);
 
 // The opening action has a decorative multi-layer heart while its visible text
 // remains the accessible button name.
