@@ -14,15 +14,15 @@ const androidShare = read("mobile/android/app/src/main/java/com/franceisl/nurpis
 const iosWebView = read("mobile/ios/NurPismo/WebViewContainer.swift");
 const iosContent = read("mobile/ios/NurPismo/ContentView.swift");
 
-assert.match(android, /versionCode\s*=\s*8\b/);
-assert.match(android, /versionName\s*=\s*["']2\.2\.2["']/);
+assert.match(android, /versionCode\s*=\s*9\b/);
+assert.match(android, /versionName\s*=\s*["']2\.2\.3["']/);
 assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/\*\*["'][\s\S]{0,180}["']tests\/\*\*["']/);
 assert.match(android, /exclude\s+["']\*\.md["'][\s\S]{0,100}["']\*\.py["']/);
-assert.match(ios, /MARKETING_VERSION:\s*2\.2\.2\b/);
-assert.match(ios, /CURRENT_PROJECT_VERSION:\s*8\b/);
-assert.match(workflow, /GlowLetter-2\.2\.2-debug\.apk/);
-assert.match(workflow, /GlowLetter-2\.2\.2-preview-debug\.apk/);
-assert.match(workflow, /TAG:\s*v2\.2\.2-preview/);
+assert.match(ios, /MARKETING_VERSION:\s*2\.2\.3\b/);
+assert.match(ios, /CURRENT_PROJECT_VERSION:\s*9\b/);
+assert.match(workflow, /GlowLetter-2\.2\.3-debug\.apk/);
+assert.match(workflow, /GlowLetter-2\.2\.3-preview-debug\.apk/);
+assert.match(workflow, /TAG:\s*v2\.2\.3-preview/);
 assert.doesNotMatch(workflow, /GlowLetter Next|GlowLetter-Next|app-debug\.apk|v2\.0\.0-next/);
 for (const excluded of ["supabase", "tests", ".md", ".py"]) assert.match(iosSync, new RegExp(excluded.replace(".", "\\.")));
 
@@ -41,4 +41,4 @@ assert.match(iosWebView, /popoverPresentationController/);
 assert.match(iosContent, /\.persistentSystemOverlays\(\.hidden\)/);
 assert.match(iosContent, /\.statusBarHidden\(true\)/);
 
-console.log(JSON.stringify({ ok: true, android: "2.2.2 (8)", ios: "2.2.2 (8)", previewTag: "v2.2.2-preview", nativeShare: true, autoFullscreen: true }));
+console.log(JSON.stringify({ ok: true, android: "2.2.3 (9)", ios: "2.2.3 (9)", previewTag: "v2.2.3-preview", nativeShare: true, autoFullscreen: true }));
