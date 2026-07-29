@@ -2963,7 +2963,7 @@
   function isFullscreenShell(){return Boolean(matchMedia?.("(display-mode: fullscreen)").matches||navigator.standalone===true||location.hostname==="appassets.androidplatform.net"||location.protocol==="file:");}
   function fullscreenActive(){return Boolean(document.fullscreenElement||isFullscreenShell());}
   async function requestAutomaticFullscreen(){if(localStorage.getItem(AUTO_FULLSCREEN_KEY)==="off"||fullscreenActive()||typeof document.documentElement.requestFullscreen!=="function")return;try{await document.documentElement.requestFullscreen({navigationUI:"hide"});localStorage.setItem("nurFullscreen","on");}catch{}}
-  function installAutomaticFullscreen(){const activate=event=>{if(event.type==="keydown"&&!['Enter',' '].includes(event.key))return;if(event.target?.closest?.("#fullscreenToggle"))return;document.removeEventListener("pointerdown",activate,true);document.removeEventListener("keydown",activate,true);requestAutomaticFullscreen();};document.addEventListener("pointerdown",activate,true);document.addEventListener("keydown",activate,true);requestAutomaticFullscreen();}
+  function installAutomaticFullscreen(){const activate=event=>{if(event.target?.closest?.("#fullscreenToggle"))return;document.removeEventListener("click",activate);requestAutomaticFullscreen();};document.addEventListener("click",activate);requestAutomaticFullscreen();}
   function updateFullscreenControl(){const active=fullscreenActive();$("#fullscreenToggle")?.classList.toggle("is-active",active);$("#fullscreenToggle")?.setAttribute("aria-pressed",String(active));const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
   async function toggleFullscreen(){if(isFullscreenShell()&&!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");updateFullscreenControl();return;}if(!document.fullscreenElement&&typeof document.documentElement.requestFullscreen!=="function"){showToast(t("fullscreenUnavailable"));return;}try{if(!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");await document.documentElement.requestFullscreen({navigationUI:"hide"});}else{localStorage.setItem(AUTO_FULLSCREEN_KEY,"off");await document.exitFullscreen?.();}}catch{showToast(t("fullscreenUnavailable"));}updateFullscreenControl();}
   function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);requestAutomaticFullscreen();}
@@ -3014,7 +3014,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=17", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=18", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

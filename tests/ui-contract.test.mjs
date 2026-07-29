@@ -123,7 +123,8 @@ assert.equal(manifest.display_override[0], "fullscreen");
 
 // Fullscreen starts automatically in installed shells and on the first legal browser gesture.
 assert.match(app, /function installAutomaticFullscreen\(/);
-assert.match(app, /document\.addEventListener\("pointerdown",activate,true\)/);
+assert.match(app, /document\.addEventListener\("click",activate\)/);
+assert.doesNotMatch(app, /document\.addEventListener\("pointerdown",activate,true\)/);
 assert.match(app, /requestAutomaticFullscreen\(\)/);
 assert.match(app, /fullscreen_enabled:\s*true/);
 const fullscreenShellBody = app.match(/function isFullscreenShell\(\)\s*\{([\s\S]+?)\}/)?.[1] || "";
