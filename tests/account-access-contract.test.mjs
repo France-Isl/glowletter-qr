@@ -89,7 +89,7 @@ assert.match(ownerSeed, /\bis_admin\s*=\s*true\b/i);
 assert.match(ownerSeed, /\bpremium_forever\s*=\s*true\b/i);
 
 // Signed-in account UI exposes/copies the support ID. Admin controls exist but are hidden by default.
-for (const id of ["accountSupportId", "copyAccountId"]) {
+for (const id of ["accountSupportId", "copyAccountId", "accountPlanBadge", "accountPlanStatus", "accountAvatarButton", "accountAvatarInput"]) {
   assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist in the account card`);
 }
 const adminPanelTag = index.match(/<[^>]+id=["']adminPanel["'][^>]*>/i)?.[0] || "";
@@ -110,6 +110,16 @@ assert.match(app, /premium_forever[\s\S]{0,500}vip_until/);
 assert.match(app, /betaAccess\s*\|\|\s*nativePremium\s*\|\|\s*cloudPremium/);
 assert.match(app, /performance\.now\(\)[\s\S]{0,500}server_now|server_now[\s\S]{0,500}performance\.now\(\)/);
 assert.match(app, /#adminPanel[\s\S]{0,240}(?:hidden|toggleAttribute)[\s\S]{0,180}is_admin/i);
+assert.match(app, /function accountPlanState\(/);
+assert.match(app, /planBadge\.dataset\.plan\s*=\s*planState/);
+assert.match(app, /accountPlanVip:[^\n]*\{remaining\}[^\n]*\{date\}/);
+assert.match(app, /formatVipRemaining\(expiry\s*-\s*trustedCloudNow\(\)\)/);
+assert.match(app, /#settingsButton[^\n]*loadCloudAccount\(cloudUser\)/, "opening settings must refresh a newly granted VIP immediately");
+assert.match(app, /quietSyncedState[\s\S]{0,180}accountStatus\.hidden\s*=\s*quietSyncedState/, "settled cloud sync must not leave a permanent success label");
+assert.match(styles, /account-plan-badge\[data-plan="vip"\][^\{]*\{[^\}]*#d7aa3e[^\}]*linear-gradient/i);
+assert.match(app, /accountAvatarStorageKey\(userId\)[\s\S]{0,120}profile-avatar:/);
+assert.match(app, /saveMedia\(accountAvatarStorageKey\(userId\),\{blob\}\)/);
+assert.doesNotMatch(app.match(/function cloudProgressState\(\)[\s\S]*?\n  \}/)?.[0] || "", /avatar/i);
 
 // Search and all VIP mutations must go through guarded public RPCs.
 for (const rpc of ["glowletter_admin_lookup", "glowletter_admin_grant_vip", "glowletter_admin_revoke_vip"]) {

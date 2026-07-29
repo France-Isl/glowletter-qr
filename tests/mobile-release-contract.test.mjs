@@ -9,17 +9,36 @@ const android = read("mobile/android/app/build.gradle");
 const ios = read("mobile/ios/project.yml");
 const workflow = read(".github/workflows/mobile-build.yml");
 const iosSync = read("mobile/scripts/sync_web_assets.py");
+const androidMain = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/MainActivity.java");
+const androidShare = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/ShareBridge.java");
+const iosWebView = read("mobile/ios/NurPismo/WebViewContainer.swift");
+const iosContent = read("mobile/ios/NurPismo/ContentView.swift");
 
-assert.match(android, /versionCode\s*=\s*6\b/);
-assert.match(android, /versionName\s*=\s*["']2\.2\.0["']/);
+assert.match(android, /versionCode\s*=\s*7\b/);
+assert.match(android, /versionName\s*=\s*["']2\.2\.1["']/);
 assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/\*\*["'][\s\S]{0,180}["']tests\/\*\*["']/);
 assert.match(android, /exclude\s+["']\*\.md["'][\s\S]{0,100}["']\*\.py["']/);
-assert.match(ios, /MARKETING_VERSION:\s*2\.2\.0\b/);
-assert.match(ios, /CURRENT_PROJECT_VERSION:\s*6\b/);
-assert.match(workflow, /GlowLetter-2\.2\.0-debug\.apk/);
-assert.match(workflow, /GlowLetter-2\.2\.0-preview-debug\.apk/);
-assert.match(workflow, /TAG:\s*v2\.2\.0-preview/);
+assert.match(ios, /MARKETING_VERSION:\s*2\.2\.1\b/);
+assert.match(ios, /CURRENT_PROJECT_VERSION:\s*7\b/);
+assert.match(workflow, /GlowLetter-2\.2\.1-debug\.apk/);
+assert.match(workflow, /GlowLetter-2\.2\.1-preview-debug\.apk/);
+assert.match(workflow, /TAG:\s*v2\.2\.1-preview/);
 assert.doesNotMatch(workflow, /GlowLetter Next|GlowLetter-Next|app-debug\.apk|v2\.0\.0-next/);
 for (const excluded of ["supabase", "tests", ".md", ".py"]) assert.match(iosSync, new RegExp(excluded.replace(".", "\\.")));
 
-console.log(JSON.stringify({ ok: true, android: "2.2.0 (6)", ios: "2.2.0 (6)", previewTag: "v2.2.0-preview" }));
+// Native wrappers expose the real system share sheet only to the trusted bundled page.
+assert.match(androidShare, /@JavascriptInterface[\s\S]{0,120}void share\(/);
+assert.match(androidMain, /addJavascriptInterface\(new ShareBridge\(this\),\s*"NurShare"\)/);
+assert.match(androidMain, /void openShareSheetFromWeb\([\s\S]{0,2200}trustedMainDocumentReady[\s\S]{0,2200}Intent\.ACTION_SEND[\s\S]{0,700}Intent\.createChooser/);
+assert.match(androidMain, /rawUrl\.length\(\)\s*>\s*2048/);
+assert.match(androidMain, /Character::isISOControl/);
+assert.match(androidMain, /shareUri\.getPort\(\)\s*!=\s*-1/);
+assert.match(androidMain, /Intent\.createChooser\([\s\S]{0,180}catch \(RuntimeException/);
+assert.match(androidMain, /onResume\(\)[\s\S]{0,180}post\(this::enterImmersiveMode\)/);
+assert.match(iosWebView, /name:\s*"nurShare"/);
+assert.match(iosWebView, /UIActivityViewController\(/);
+assert.match(iosWebView, /popoverPresentationController/);
+assert.match(iosContent, /\.persistentSystemOverlays\(\.hidden\)/);
+assert.match(iosContent, /\.statusBarHidden\(true\)/);
+
+console.log(JSON.stringify({ ok: true, android: "2.2.1 (7)", ios: "2.2.1 (7)", previewTag: "v2.2.1-preview", nativeShare: true, autoFullscreen: true }));

@@ -50,12 +50,13 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=16") < index.indexOf("reply-engine.js?v=16"));
-assert.ok(index.indexOf("reply-engine.js?v=16") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=16"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=16") < index.indexOf("qr-code.js?v=16"));
-assert.ok(index.indexOf("qr-code.js?v=16") < index.indexOf("app.js?v=16"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=17") < index.indexOf("reply-engine.js?v=17"));
+assert.ok(index.indexOf("reply-engine.js?v=17") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=17"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=17") < index.indexOf("qr-code.js?v=17"));
+assert.ok(index.indexOf("qr-code.js?v=17") < index.indexOf("app.js?v=17"));
 assert.match(index, /id="facebookSignIn"[^>]*hidden[^>]*disabled/);
 assert.match(index, /id="shareAppButton"/);
+for (const id of ["shareAppLayer", "shareTelegram", "shareWhatsapp", "shareEmail", "shareCopyLink"]) assert.match(index, new RegExp(`id=["']${id}["']`));
 
 // Names are dynamic throughout the built-in collection. A sender's custom text must not be rewritten.
 const letterContext = { window: {} };
@@ -129,17 +130,27 @@ assert.match(app, /async function handleCapabilityNavigation\(/);
 assert.match(app, /addEventListener\("hashchange",\s*handleCapabilityNavigation\)/);
 assert.match(app, /function buildAppShareUrl\(/);
 assert.match(app, /async function shareApplication\(/);
-const shareUrlBody = app.match(/function buildAppShareUrl\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*async function shareApplication\(/)?.[1] || "";
+const shareUrlBody = app.match(/function buildAppShareUrl\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function nativeShareBridge\(/)?.[1] || "";
 assert.match(shareUrlBody, /CONFIG\.publicShareUrl/);
 assert.match(shareUrlBody, /\w+\.search\s*=\s*""/);
 assert.match(shareUrlBody, /\w+\.hash\s*=\s*""/);
 assert.doesNotMatch(shareUrlBody, /acceptedBetaCapability|BETA_PARAMETER|localStorage|\b(?:fromName|toName|sharedMessage|isPremium|entitlementState)\b|gl(?:Scene|Frame|Ink|Type)/);
 assert.doesNotMatch(shareUrlBody, /searchParams\.set\(\s*["'](?:access|beta|gl_access)["']/);
 const shareApplicationBody = app.match(/async function shareApplication\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function qrPalette/)?.[1] || "";
+assert.match(app, /function nativeShareBridge\(\)[\s\S]{0,180}window\.NurShare/);
+assert.match(shareApplicationBody, /nativeBridge\.share\(t\("title"\),\s*t\("shareAppText"\),\s*url\)/);
 assert.match(shareApplicationBody, /navigator\.share\(\{\s*title:\s*t\("title"\),\s*text:\s*t\("shareAppText"\),\s*url\s*\}\)/);
 assert.match(shareApplicationBody, /error\?\.name\s*===\s*"AbortError"/);
-assert.match(shareApplicationBody, /writeClipboard\(url\)/);
-assert.match(shareApplicationBody, /showToast\(t\("shareAppCopied"\)\)/);
+assert.match(shareApplicationBody, /openShareFallback\(url\)/);
+assert.doesNotMatch(shareApplicationBody, /writeClipboard\(|shareAppCopied/);
+const shareFallbackBody = app.match(/function openShareFallback\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*async function copyFallbackShareLink/)?.[1] || "";
+assert.match(shareFallbackBody, /t\.me\/share\/url/);
+assert.match(shareFallbackBody, /wa\.me/);
+assert.match(shareFallbackBody, /mailto:/);
+assert.match(shareFallbackBody, /openPanel\(layers\.share\)/);
+const copyFallbackBody = app.match(/async function copyFallbackShareLink\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*async function shareApplication/)?.[1] || "";
+assert.match(copyFallbackBody, /writeClipboard\(fallbackShareUrl\)/);
+assert.match(copyFallbackBody, /showToast\(t\("shareAppCopied"\)\)/);
 assert.match(app, /#shareAppButton[^\n]*addEventListener\("click",\s*shareApplication\)/);
 
 const shareLetterBody = app.match(/async function shareLetter\([^)]*\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\s*\r?\n\s*function buildAppShareUrl/)?.[1] || "";
@@ -172,16 +183,16 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v16 must update its own cache only and never cache personalized links.
+// Service-worker v17 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v16`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v17`/);
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=16`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=17`));
 }
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=16`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=17`));
 }
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=16"/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=17"/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
 assert.match(worker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE/);
@@ -218,7 +229,7 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v16",
+  cache: "v17",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,

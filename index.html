@@ -6,6 +6,8 @@
   <meta name="referrer" content="no-referrer" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#211a27" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="description" content="GlowLetter — атмосферные персональные письма, умный редактор и 50 тёплых текстов." />
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
@@ -13,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=16" />
+  <link rel="manifest" href="manifest.webmanifest?v=17" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=16" />
-  <link rel="stylesheet" href="experience.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="experience.css?v=17" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -61,8 +63,8 @@
             <span>Открыть письмо</span>
           </button>
           <div class="home-smart-actions">
-            <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b>PRO</b></button>
-            <button class="smart-link" id="replyOpenHome" type="button"><span>↗</span> Помочь с ответом <b>PRO</b></button>
+            <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b class="vip-badge">VIP</b></button>
+            <button class="smart-link" id="replyOpenHome" type="button"><span>↗</span> Помочь с ответом <b class="vip-badge">VIP</b></button>
           </div>
           <p class="free-note"><span>10 писем бесплатно</span><i></i><span>премиум — 21,99 €/месяц</span></p>
         </div>
@@ -257,8 +259,19 @@
             </div>
           </div>
           <div class="account-user" id="accountUser" hidden>
-            <span class="account-avatar" id="accountAvatar" aria-hidden="true">G</span>
-            <p><strong id="accountUserName">GlowLetter</strong><small id="accountUserEmail"></small></p>
+            <button class="account-avatar-button" id="accountAvatarButton" type="button" aria-label="Изменить фото профиля">
+              <img id="accountAvatarImage" alt="" hidden />
+              <span class="account-avatar" id="accountAvatar" aria-hidden="true">G</span>
+              <span class="account-avatar-edit" aria-hidden="true">✎</span>
+            </button>
+            <input id="accountAvatarInput" type="file" accept="image/*" hidden />
+            <div class="account-profile-copy">
+              <p><strong id="accountUserName">GlowLetter</strong><small id="accountUserEmail"></small></p>
+              <div class="account-plan-line">
+                <b class="account-plan-badge" id="accountPlanBadge" data-plan="checking">…</b>
+                <small class="account-plan-status" id="accountPlanStatus" role="status" aria-live="polite">План: проверяется…</small>
+              </div>
+            </div>
             <div class="account-user-actions"><button id="accountSignOut" type="button">Выйти</button><button class="account-delete" id="accountDelete" type="button">Удалить аккаунт</button></div>
           </div>
           <div class="account-support" id="accountSupport" hidden>
@@ -268,7 +281,6 @@
             </div>
             <button class="account-id-copy" id="copyAccountId" type="button" aria-label="Скопировать ID аккаунта"><span aria-hidden="true">⧉</span> Скопировать</button>
             <small class="account-support-note" id="accountSupportNote">Это не пароль. Передавайте ID только официальной поддержке GlowLetter.</small>
-            <small class="account-plan-status" id="accountPlanStatus" role="status" aria-live="polite">План: проверяется…</small>
           </div>
           <p class="account-privacy" id="accountPrivacyNote">Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.</p>
         </section>
@@ -404,6 +416,22 @@
       </section>
     </div>
 
+    <div class="panel-layer center-layer" id="shareAppLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="shareAppBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="setup-card share-app-card" role="dialog" aria-modal="true" aria-labelledby="shareAppTitle">
+        <button class="panel-close share-app-close" id="shareAppClose" type="button" aria-label="Закрыть">×</button>
+        <p class="panel-eyebrow">GLOWLETTER · ПОДЕЛИТЬСЯ</p>
+        <h2 id="shareAppTitle">Поделиться приложением</h2>
+        <p class="share-app-lead" id="shareAppLead">Выберите удобный способ отправки.</p>
+        <div class="share-app-options">
+          <a id="shareTelegram" href="#" target="_blank" rel="noopener"><i aria-hidden="true">↗</i><span>Telegram</span></a>
+          <a id="shareWhatsapp" href="#" target="_blank" rel="noopener"><i aria-hidden="true">◉</i><span>WhatsApp</span></a>
+          <a id="shareEmail" href="#"><i aria-hidden="true">✉</i><span>Почта</span></a>
+          <button id="shareCopyLink" type="button"><i aria-hidden="true">▣</i><span>Скопировать ссылку</span></button>
+        </div>
+      </section>
+    </div>
+
     <div class="panel-layer center-layer" id="paywallLayer" aria-hidden="true">
       <button class="panel-backdrop" id="paywallBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="paywall-card" role="dialog" aria-modal="true" aria-labelledby="paywallTitle">
@@ -424,13 +452,13 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=16"></script>
-  <script src="vendor/supabase-2.110.9.js?v=16"></script>
-  <script src="letters.js?v=16"></script>
-  <script src="reply-engine.js?v=16"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=16"></script>
-  <script src="qr-code.js?v=16"></script>
-  <script src="app.js?v=16"></script>
-  <script src="experience.js?v=16"></script>
+  <script src="config.js?v=17"></script>
+  <script src="vendor/supabase-2.110.9.js?v=17"></script>
+  <script src="letters.js?v=17"></script>
+  <script src="reply-engine.js?v=17"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=17"></script>
+  <script src="qr-code.js?v=17"></script>
+  <script src="app.js?v=17"></script>
+  <script src="experience.js?v=17"></script>
 </body>
 </html>
