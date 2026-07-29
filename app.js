@@ -87,21 +87,24 @@
     replyGenerating: "Понимаю смысл сообщения…",
     shareApp: "Поделиться приложением",
     shareAppText: "GlowLetter — тёплые письма для важных людей.",
-    shareAppCopied: "Ссылка на приложение скопирована"
+    shareAppCopied: "Ссылка на приложение скопирована",
+    shareChooserEyebrow: "GLOWLETTER · ПОДЕЛИТЬСЯ", shareChooserTitle: "Поделиться приложением", shareChooserLead: "Выберите удобный способ отправки.", shareTelegram: "Telegram", shareWhatsapp: "WhatsApp", shareEmail: "Почта", shareCopy: "Скопировать ссылку"
   });
   Object.assign(UI.en, {
     replyEyebrow: "AN ASSISTANT THAT UNDERSTANDS THE MESSAGE",
     replyGenerating: "Understanding the message…",
     shareApp: "Share the app",
     shareAppText: "GlowLetter — warm letters for the people who matter.",
-    shareAppCopied: "App link copied"
+    shareAppCopied: "App link copied",
+    shareChooserEyebrow: "GLOWLETTER · SHARE", shareChooserTitle: "Share the app", shareChooserLead: "Choose how you would like to send it.", shareTelegram: "Telegram", shareWhatsapp: "WhatsApp", shareEmail: "Email", shareCopy: "Copy link"
   });
   Object.assign(UI.fr, {
     replyEyebrow: "UN ASSISTANT QUI COMPREND LE MESSAGE",
     replyGenerating: "Je comprends le sens du message…",
     shareApp: "Partager l’application",
     shareAppText: "GlowLetter — des lettres chaleureuses pour les personnes qui comptent.",
-    shareAppCopied: "Lien de l’application copié"
+    shareAppCopied: "Lien de l’application copié",
+    shareChooserEyebrow: "GLOWLETTER · PARTAGER", shareChooserTitle: "Partager l’application", shareChooserLead: "Choisissez votre mode d’envoi.", shareTelegram: "Telegram", shareWhatsapp: "WhatsApp", shareEmail: "E-mail", shareCopy: "Copier le lien"
   });
   Object.assign(UI.ru, {
     brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
@@ -122,15 +125,15 @@
     qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
-    accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"План: проверяется…",accountPlanFree:"План: бесплатный",accountPlanPermanent:"План: полный доступ без ограничений",accountPlanStore:"План: Premium из магазина",accountPlanVip:"Временный VIP (бесплатно): осталось {remaining} · до {date}",
+    accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
     adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение."
   });
   Object.assign(UI.en, {
-    accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Plan: checking…",accountPlanFree:"Plan: Free",accountPlanPermanent:"Plan: unlimited full access",accountPlanStore:"Plan: Store Premium",accountPlanVip:"Temporary VIP (free): {remaining} left · until {date}",
+    accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Checking access…",accountPlanFree:"Free access · 10 letters",accountPlanPermanent:"VIP · unlimited full access",accountPlanStore:"VIP · subscription active",accountPlanVip:"{remaining} left · until {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Change profile photo",profilePhotoReady:"Profile photo saved on this device",profilePhotoFail:"This photo could not be processed",profilePhotoTooLarge:"Choose a photo up to 8 MB",
     adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection."
   });
   Object.assign(UI.fr, {
-    accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Offre : vérification…",accountPlanFree:"Offre : gratuite",accountPlanPermanent:"Offre : accès complet illimité",accountPlanStore:"Offre : Premium de la boutique",accountPlanVip:"VIP temporaire (gratuit) : encore {remaining} · jusqu’au {date}",
+    accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Vérification de l’accès…",accountPlanFree:"Accès gratuit · 10 lettres",accountPlanPermanent:"VIP · accès complet illimité",accountPlanStore:"VIP · abonnement actif",accountPlanVip:"Encore {remaining} · jusqu’au {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",profilePhotoAria:"Modifier la photo de profil",profilePhotoReady:"Photo de profil enregistrée sur cet appareil",profilePhotoFail:"Cette photo n’a pas pu être traitée",profilePhotoTooLarge:"Choisissez une photo de 8 Mo maximum",
     adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion."
   });
 
@@ -486,6 +489,10 @@
   let cloudServerNow = 0;
   let cloudServerPerformance = 0;
   let adminAccountResult = null;
+  let accountAvatarUrl = "";
+  let accountAvatarUserId = "";
+  let fallbackShareUrl = "";
+  const AUTO_FULLSCREEN_KEY = "nurAutoFullscreenV17";
   let cloudNames = linkNamesActive ? { sender: "", recipient: "" } : { sender: fromName, recipient: toName };
   let cloudBuiltInTrack = selectedTrack >= 0 && selectedTrack <= 2 ? selectedTrack : Math.max(0, Math.min(Number(localStorage.getItem("nurLastBuiltInTrack") || 0), 2));
   const handledAuthCodes = new Set();
@@ -494,7 +501,7 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), paywall: $("#paywallLayer")
   };
   const panelTriggers = new WeakMap();
 
@@ -792,6 +799,21 @@
     return t("accountPlanFree");
   }
 
+  function accountPlanState(account, { includeNative = false } = {}) {
+    if (!account) return "checking";
+    if (account.premium_forever) return "permanent";
+    const expiry = Date.parse(account.vip_until || "");
+    if (Number.isFinite(expiry) && expiry > trustedCloudNow()) return "vip";
+    if (includeNative && (nativePremium || betaAccess)) return "store";
+    return "free";
+  }
+
+  function accountPlanBadgeText(state) {
+    if (["vip", "permanent", "store"].includes(state)) return t("accountBadgeVip");
+    if (state === "free") return t("accountBadgeFree");
+    return t("accountBadgeChecking");
+  }
+
   function setAdminStatus(message = "", state = "") {
     const status = $("#adminStatus");
     if (!status) return;
@@ -1000,10 +1022,13 @@
     setText("#adminVipDaysUnit", t("adminDaysUnit"));
     setText("#adminGrantVip", t("adminGrantVip"));
     setText("#adminRevokeVip", t("adminRevoke"));
-    setText("#accountStatus", t(cloudStatusKey));
+    const signedIn = Boolean(cloudUser?.id);
+    const accountStatus = $("#accountStatus");
+    const quietSyncedState = signedIn && cloudStatusKey === "cloudSynced";
+    setText("#accountStatus", quietSyncedState ? "" : t(cloudStatusKey));
+    accountStatus.hidden = quietSyncedState;
     card.dataset.state = cloudStatusKey === "cloudSyncing" || cloudAuthBusy ? "syncing" : cloudStatusKey === "cloudError" || cloudStatusKey === "cloudSignInError" ? "error" : "ready";
 
-    const signedIn = Boolean(cloudUser?.id);
     $("#accountGuest").hidden = signedIn;
     $("#accountUser").hidden = !signedIn;
     const google = $("#googleSignIn");
@@ -1018,6 +1043,10 @@
     support.hidden = !signedIn;
     $("#copyAccountId").disabled = !cloudAccount?.support_id;
     setText("#accountSupportId", cloudAccount?.support_id || "—");
+    const planState = signedIn ? accountPlanState(cloudAccount, { includeNative: true }) : "checking";
+    const planBadge = $("#accountPlanBadge");
+    planBadge.dataset.plan = planState;
+    planBadge.textContent = accountPlanBadgeText(planState);
     setText("#accountPlanStatus", signedIn ? accountPlanText(cloudAccount, { includeNative: true }) : t("accountPlanChecking"));
     const adminPanel = $("#adminPanel");
     adminPanel.hidden = !(signedIn && cloudAccount?.is_admin === true);
@@ -1036,6 +1065,11 @@
       setText("#accountUserName", label || "GlowLetter");
       setText("#accountUserEmail", email);
       setText("#accountAvatar", (label || email || "G").slice(0, 1).toUpperCase());
+      const hasLocalAvatar = accountAvatarUserId === cloudUser.id && Boolean(accountAvatarUrl);
+      const image = $("#accountAvatarImage");
+      image.hidden = !hasLocalAvatar;
+      $("#accountAvatar").hidden = hasLocalAvatar;
+      $("#accountAvatarButton").setAttribute("aria-label", t("profilePhotoAria"));
     }
   }
 
@@ -1082,7 +1116,7 @@
       weather_enabled: Boolean(weatherEnabled),
       built_in_track: Math.max(0, Math.min(Number(cloudBuiltInTrack) || 0, 2)),
       nature_enabled: Boolean(isNaturePlaying || localStorage.getItem("nurNature") === "on"),
-      fullscreen_enabled: Boolean(document.fullscreenElement || localStorage.getItem("nurFullscreen") === "on"),
+      fullscreen_enabled: Boolean(fullscreenActive() || localStorage.getItem(AUTO_FULLSCREEN_KEY) !== "off"),
       volume: Math.round(volume * 1000) / 1000
     };
   }
@@ -1099,7 +1133,7 @@
       weather_enabled: false,
       built_in_track: 0,
       nature_enabled: false,
-      fullscreen_enabled: false,
+      fullscreen_enabled: true,
       volume: .62
     };
   }
@@ -1622,7 +1656,11 @@
     if (previousUserId && previousUserId !== nextUser?.id) saveUserProgressSnapshot(previousUserId);
     cloudSession = session || null;
     cloudUser = nextUser;
-    if (previousUserId !== (cloudUser?.id || "")) resetCloudAccount();
+    if (previousUserId !== (cloudUser?.id || "")) {
+      resetCloudAccount();
+      clearAccountAvatarPreview();
+      if (cloudUser?.id) loadAccountAvatar(cloudUser.id);
+    }
     renderCloudAccount();
     if (!cloudUser?.id) {
       resetCloudAccount();
@@ -2052,8 +2090,8 @@
       const senderStrong = document.createElement("strong"); senderStrong.id = "homeFrom"; senderStrong.textContent = displayName(fromName); senderLine.append(senderStrong);
     }
     setText("#openStoryButton > span:last-child", t("open"));
-    $("#aiOpenHome").innerHTML = `<span>✦</span> ${escapeHtml(t("create"))} <b>PRO</b>`;
-    $("#replyOpenHome").innerHTML = `<span>↗</span> ${escapeHtml(t("replyAssist"))} <b>PRO</b>`;
+    $("#aiOpenHome").innerHTML = `<span>✦</span> ${escapeHtml(t("create"))} <b class="vip-badge">VIP</b>`;
+    $("#replyOpenHome").innerHTML = `<span>↗</span> ${escapeHtml(t("replyAssist"))} <b class="vip-badge">VIP</b>`;
     setText("#aiOpenTop > span:last-child", t("create"));
     const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].textContent = t("full");
     renderWeather();
@@ -2061,7 +2099,7 @@
     $("#copyLetter").innerHTML = `<span>▣</span> ${t("copy")}`;
     setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`);
     $$(".go-home").forEach(button => button.textContent = `⌂ ${t("home")}`);
-    $("#aiOpenLetter").innerHTML = `<span>✦</span> ${escapeHtml(t("personal"))} · PRO`;
+    $("#aiOpenLetter").innerHTML = `<span>✦</span> ${escapeHtml(t("personal"))} <b class="vip-badge">VIP</b>`;
     setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
     setText("#setupLayer .panel-eyebrow", t("setupEyebrow")); setText("#setupTitle", t("setupTitle")); setText(".setup-note", t("setupNote")); setText("#setupSubmitLabel", t("setupSubmit")); setText("#setupError", t("namesSafety"));
     const setupLabels = $$("#setupForm .simple-form label > span"); if (setupLabels[0]) setupLabels[0].textContent = t("fromWho"); if (setupLabels[1]) setupLabels[1].textContent = t("forWho");
@@ -2099,12 +2137,13 @@
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
     const legalLinks=$$(".legal-links a");if(legalLinks[0])legalLinks[0].textContent=t("privacy");if(legalLinks[1])legalLinks[1].textContent=t("terms");if(legalLinks[2])legalLinks[2].textContent=t("deletePage");if(legalLinks[3])legalLinks[3].textContent=t("supportLink");
     setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
+    setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderQrCode(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria"));
     renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $(".ai-mode-tabs").setAttribute("aria-label", t("aiModeAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria")); $("#replyGeneratedText").setAttribute("aria-label", t("generatedReplyAria"));
-    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
+    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
     updatePurchaseConfiguration(purchaseConfigured);
     setAiMode(aiMode);
     localStorage.setItem("nurLanguage", lang);
@@ -2748,6 +2787,13 @@
   async function saveMedia(key,value){const db=await openMediaDb();await new Promise((resolve,reject)=>{const tx=db.transaction("assets","readwrite");tx.objectStore("assets").put(value,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();}
   async function loadMedia(key){const db=await openMediaDb();const value=await new Promise((resolve,reject)=>{const request=db.transaction("assets").objectStore("assets").get(key);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});db.close();return value;}
 
+  function accountAvatarStorageKey(userId){return `profile-avatar:${String(userId||"")}`;}
+  function clearAccountAvatarPreview(){if(accountAvatarUrl)URL.revokeObjectURL(accountAvatarUrl);accountAvatarUrl="";accountAvatarUserId="";const image=$("#accountAvatarImage");if(image){image.hidden=true;image.removeAttribute("src");}$("#accountAvatar")?.removeAttribute("hidden");}
+  function applyAccountAvatar(blob,userId){if(!blob||cloudUser?.id!==userId)return;clearAccountAvatarPreview();accountAvatarUserId=userId;accountAvatarUrl=URL.createObjectURL(blob);const image=$("#accountAvatarImage");image.src=accountAvatarUrl;image.hidden=false;$("#accountAvatar").hidden=true;}
+  async function loadAccountAvatar(userId){clearAccountAvatarPreview();if(!userId)return;try{const saved=await loadMedia(accountAvatarStorageKey(userId));if(cloudUser?.id===userId&&saved?.blob)applyAccountAvatar(saved.blob,userId);else if(cloudUser?.id===userId)renderCloudAccount();}catch{if(cloudUser?.id===userId)renderCloudAccount();}}
+  async function optimizeAccountAvatar(file){const bitmap=await createImageBitmap(file);const side=Math.min(bitmap.width,bitmap.height);const output=Math.max(1,Math.min(512,side));const canvas=document.createElement("canvas");canvas.width=output;canvas.height=output;canvas.getContext("2d").drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,output,output);bitmap.close?.();const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.9));if(!blob)throw new Error("avatar encoding failed");return blob;}
+  async function selectAccountAvatar(event){const input=event.currentTarget;const file=input.files?.[0];input.value="";if(!file||!cloudUser?.id)return;if(!file.type.startsWith("image/")||file.size>8*1024*1024){showToast(t("profilePhotoTooLarge"));return;}const userId=cloudUser.id;try{const blob=await optimizeAccountAvatar(file);if(cloudUser?.id!==userId)return;await saveMedia(accountAvatarStorageKey(userId),{blob});applyAccountAvatar(blob,userId);showToast(t("profilePhotoReady"));}catch{showToast(t("profilePhotoFail"));}}
+
   async function optimizeBackground(file){const bitmap=await createImageBitmap(file);const scale=Math.min(1,1920/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement("canvas");canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);canvas.getContext("2d").drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close?.();return new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.88));}
   function applyBackground(blob){if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);if(mobileBackgroundUrl&&mobileBackgroundUrl!==backgroundUrl)URL.revokeObjectURL(mobileBackgroundUrl);backgroundUrl=URL.createObjectURL(blob);mobileBackgroundUrl=backgroundUrl;document.documentElement.style.setProperty("--scene-image",`url("${backgroundUrl}")`);document.documentElement.style.setProperty("--mobile-scene-image",`url("${backgroundUrl}")`);$("#backgroundPreview").style.backgroundImage=`url("${backgroundUrl}")`;document.body.classList.add("has-custom-background");customBackgroundBlob=blob;}
   async function imageAsset(path){try{const response=await fetch(path,{cache:"force-cache"});if(response.ok)return response.blob();const fallback=await fetch(`${path}.b64`);if(fallback.ok)return base64ToBlob(await fallback.text(),"image/png");}catch{}return null;}
@@ -2819,8 +2865,37 @@
     return publicUrl.toString();
   }
 
+  function nativeShareBridge() {
+    const bridge = window.NurShare;
+    return bridge && typeof bridge.share === "function" ? bridge : null;
+  }
+
+  function openShareFallback(url) {
+    fallbackShareUrl = url;
+    const message = t("shareAppText");
+    $("#shareTelegram").href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+    $("#shareWhatsapp").href = `https://wa.me/?text=${encodeURIComponent(`${message}\n${url}`)}`;
+    $("#shareEmail").href = `mailto:?subject=${encodeURIComponent(t("title"))}&body=${encodeURIComponent(`${message}\n\n${url}`)}`;
+    openPanel(layers.share);
+  }
+
+  async function copyFallbackShareLink() {
+    if (!fallbackShareUrl) return;
+    await writeClipboard(fallbackShareUrl);
+    closePanel(layers.share);
+    showToast(t("shareAppCopied"));
+    haptic(10);
+  }
+
   async function shareApplication() {
     const url = buildAppShareUrl();
+    const nativeBridge = nativeShareBridge();
+    if (nativeBridge) {
+      try {
+        nativeBridge.share(t("title"), t("shareAppText"), url);
+        return;
+      } catch {}
+    }
     try {
       if (navigator.share) {
         await navigator.share({ title: t("title"), text: t("shareAppText"), url });
@@ -2829,9 +2904,7 @@
     } catch (error) {
       if (error?.name === "AbortError") return;
     }
-    await writeClipboard(url);
-    showToast(t("shareAppCopied"));
-    haptic(10);
+    openShareFallback(url);
   }
 
   function qrPalette(){
@@ -2887,9 +2960,13 @@
 
   async function copyQrLink(){if(!renderQrCode(false))return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
 
-  function updateFullscreenControl(){const active=Boolean(document.fullscreenElement);$("#fullscreenToggle")?.classList.toggle("is-active",active);$("#fullscreenToggle")?.setAttribute("aria-pressed",String(active));const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
-  async function toggleFullscreen(){if(!document.fullscreenElement&&typeof document.documentElement.requestFullscreen!=="function"){showToast(t("fullscreenUnavailable"));return;}try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen?.();}catch{showToast(t("fullscreenUnavailable"));}updateFullscreenControl();}
-  function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);if(localStorage.getItem("nurFullscreen")==="on"&&!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});}
+  function isFullscreenShell(){return Boolean(matchMedia?.("(display-mode: fullscreen)").matches||navigator.standalone===true||location.hostname==="appassets.androidplatform.net"||location.protocol==="file:");}
+  function fullscreenActive(){return Boolean(document.fullscreenElement||isFullscreenShell());}
+  async function requestAutomaticFullscreen(){if(localStorage.getItem(AUTO_FULLSCREEN_KEY)==="off"||fullscreenActive()||typeof document.documentElement.requestFullscreen!=="function")return;try{await document.documentElement.requestFullscreen({navigationUI:"hide"});localStorage.setItem("nurFullscreen","on");}catch{}}
+  function installAutomaticFullscreen(){const activate=event=>{if(event.type==="keydown"&&!['Enter',' '].includes(event.key))return;if(event.target?.closest?.("#fullscreenToggle"))return;document.removeEventListener("pointerdown",activate,true);document.removeEventListener("keydown",activate,true);requestAutomaticFullscreen();};document.addEventListener("pointerdown",activate,true);document.addEventListener("keydown",activate,true);requestAutomaticFullscreen();}
+  function updateFullscreenControl(){const active=fullscreenActive();$("#fullscreenToggle")?.classList.toggle("is-active",active);$("#fullscreenToggle")?.setAttribute("aria-pressed",String(active));const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
+  async function toggleFullscreen(){if(isFullscreenShell()&&!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");updateFullscreenControl();return;}if(!document.fullscreenElement&&typeof document.documentElement.requestFullscreen!=="function"){showToast(t("fullscreenUnavailable"));return;}try{if(!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");await document.documentElement.requestFullscreen({navigationUI:"hide"});}else{localStorage.setItem(AUTO_FULLSCREEN_KEY,"off");await document.exitFullscreen?.();}}catch{showToast(t("fullscreenUnavailable"));}updateFullscreenControl();}
+  function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);requestAutomaticFullscreen();}
   function saveSettings(){
     const sender = cleanName($("#settingsSenderName").value);
     const recipient = cleanName($("#settingsRecipientName").value);
@@ -2897,7 +2974,7 @@
     $("#settingsNamesError").hidden = !namesInvalid;
     if (namesInvalid) return;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t("settingsSaved"));closePanel(layers.settings);
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t("settingsSaved"));closePanel(layers.settings);
   }
 
   function bindEvents(){
@@ -2907,9 +2984,10 @@
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",()=>requestPremiumFeature("letter")));$("#replyOpenHome").addEventListener("click",()=>requestPremiumFeature("reply"));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $$("[data-ai-mode]").forEach(button=>{button.addEventListener("click",()=>setAiMode(button.dataset.aiMode));button.addEventListener("keydown",event=>{if(!["ArrowLeft","ArrowRight"].includes(event.key))return;event.preventDefault();const next=button.dataset.aiMode==="letter"?$("#replyModeTab"):$("#letterModeTab");setAiMode(next.dataset.aiMode);next.focus();});});
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
-    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",saveSettings);
+    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",saveSettings);
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderQrCode(false);}));
     $("#qrOpenButton").addEventListener("click",openQrBuilder);$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
+    $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
     $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const audit=renderReplyAudit(value,lastReplyContext);if(!audit.ok){showToast(t("replyAuditWarning"),3600);return;}copyText(value);});
@@ -2922,10 +3000,10 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
+    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
-    document.addEventListener("fullscreenchange",()=>{updateFullscreenControl();localStorage.setItem("nurFullscreen",document.fullscreenElement?"on":"off");scheduleCloudSync();});
+    document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
     document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
@@ -2936,7 +3014,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=16", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=17", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -2956,7 +3034,7 @@
     const storedVolume=Number(localStorage.getItem("nurVolume")||.62);audio.volume=Number.isFinite(storedVolume)?Math.max(0,Math.min(storedVolume,1)):.62;
     await initializeBetaAccess();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
-    bindEvents();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
+    bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
       const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});

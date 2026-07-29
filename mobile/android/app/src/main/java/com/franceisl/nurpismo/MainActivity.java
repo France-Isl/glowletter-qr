@@ -204,6 +204,7 @@ public final class MainActivity extends ComponentActivity {
 
         webView.addJavascriptInterface(new BillingBridge(this, billingManager), "NurBilling");
         webView.addJavascriptInterface(new AuthBridge(this), "NurAuth");
+        webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
     }
 
     private boolean isTrustedAppUri(Uri uri) {
@@ -278,6 +279,53 @@ public final class MainActivity extends ComponentActivity {
         } catch (ActivityNotFoundException ignored) {
             // Keep the trusted page open when no handler is installed.
         }
+    }
+
+    void openShareSheetFromWeb(String title, String text, String url) {
+        if (!trustedMainDocumentReady
+                || webView == null
+                || !isTrustedAppMainDocumentUrl(webView.getUrl())) {
+            return;
+        }
+        String rawUrl = url == null ? "" : url.trim();
+        if (rawUrl.isEmpty()
+                || rawUrl.length() > 2048
+                || rawUrl.chars().anyMatch(Character::isISOControl)) {
+            return;
+        }
+        Uri shareUri;
+        try {
+            shareUri = Uri.parse(rawUrl);
+        } catch (RuntimeException ignored) {
+            return;
+        }
+        if (!"https".equalsIgnoreCase(shareUri.getScheme())
+                || shareUri.getHost() == null
+                || shareUri.getUserInfo() != null
+                || shareUri.getPort() != -1) {
+            return;
+        }
+
+        String safeTitle = boundedShareText(title, 160, "GlowLetter");
+        String safeText = boundedShareText(text, 1200, "GlowLetter");
+        String payload = safeText + "\n" + shareUri;
+        Intent sendIntent = new Intent(Intent.ACTION_SEND)
+                .setType("text/plain")
+                .putExtra(Intent.EXTRA_SUBJECT, safeTitle)
+                .putExtra(Intent.EXTRA_TEXT, payload);
+        try {
+            startActivity(Intent.createChooser(sendIntent, safeTitle));
+        } catch (RuntimeException ignored) {
+            // Keep the trusted app open when no share target is installed.
+        }
+    }
+
+    private static String boundedShareText(String value, int maxLength, String fallback) {
+        String clean = value == null ? "" : value.replaceAll("[\\p{Cntrl}&&[^\\r\\n\\t]]", "").trim();
+        if (clean.isEmpty()) {
+            return fallback;
+        }
+        return clean.length() <= maxLength ? clean : clean.substring(0, maxLength);
     }
 
     private void captureAuthCallback(Intent intent) {
@@ -420,6 +468,7 @@ public final class MainActivity extends ComponentActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        getWindow().getDecorView().post(this::enterImmersiveMode);
         if (billingManager != null) {
             billingManager.onResume();
         }
@@ -458,6 +507,7 @@ public final class MainActivity extends ComponentActivity {
         if (webView != null) {
             webView.removeJavascriptInterface("NurBilling");
             webView.removeJavascriptInterface("NurAuth");
+            webView.removeJavascriptInterface("NurShare");
             webView.stopLoading();
             webView.destroy();
             webView = null;

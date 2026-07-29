@@ -1,6 +1,7 @@
 import AuthenticationServices
 import Combine
 import SwiftUI
+import UIKit
 import WebKit
 
 @MainActor
@@ -15,6 +16,7 @@ struct WebViewContainer: UIViewRepresentable {
         let controller = WKUserContentController()
         controller.add(context.coordinator, name: "nurBilling")
         controller.add(context.coordinator, name: "nurAuth")
+        controller.add(context.coordinator, name: "nurShare")
         controller.addUserScript(WKUserScript(
             source: Coordinator.billingBootstrap,
             injectionTime: .atDocumentStart,
@@ -22,6 +24,11 @@ struct WebViewContainer: UIViewRepresentable {
         ))
         controller.addUserScript(WKUserScript(
             source: Coordinator.authBootstrap,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        ))
+        controller.addUserScript(WKUserScript(
+            source: Coordinator.shareBootstrap,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         ))
@@ -68,6 +75,7 @@ struct WebViewContainer: UIViewRepresentable {
     static func dismantleUIView(_ uiView: WKWebView, coordinator: Coordinator) {
         uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurBilling")
         uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurAuth")
+        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurShare")
         uiView.stopLoading()
         coordinator.cancelAuthentication()
         coordinator.webView = nil
@@ -155,6 +163,22 @@ struct WebViewContainer: UIViewRepresentable {
         })();
         """
 
+        static let shareBootstrap = """
+        (function () {
+          const bridge = Object.freeze({
+            share: function (title, text, url) {
+              window.webkit.messageHandlers.nurShare.postMessage({
+                action: 'share',
+                title: String(title || ''),
+                text: String(text || ''),
+                url: String(url || '')
+              });
+            }
+          });
+          Object.defineProperty(window, 'NurShare', { value: bridge, configurable: false, writable: false });
+        })();
+        """
+
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             trustedMainDocumentReady = false
         }
@@ -207,6 +231,16 @@ struct WebViewContainer: UIViewRepresentable {
                       let url = URL(string: rawURL),
                       OAuthURLPolicy.isAllowedAuthorizeURL(url) else { return }
                 beginAuthentication(at: url)
+            case "nurShare":
+                guard action == "share",
+                      trustedMainDocumentReady,
+                      let rawURL = body["url"] as? String,
+                      let url = allowedShareURL(rawURL) else { return }
+                presentShareSheet(
+                    title: boundedShareText(body["title"] as? String, limit: 160, fallback: "GlowLetter"),
+                    text: boundedShareText(body["text"] as? String, limit: 1_200, fallback: "GlowLetter"),
+                    url: url
+                )
             default:
                 return
             }
@@ -254,6 +288,57 @@ struct WebViewContainer: UIViewRepresentable {
             if !session.start() {
                 authSession = nil
             }
+        }
+
+        private func presentShareSheet(title: String, text: String, url: URL) {
+            guard let webView,
+                  trustedMainDocumentReady,
+                  isTrustedMainDocumentURL(webView.url),
+                  let presenter = topViewController(from: webView.window?.rootViewController) else { return }
+            let payload = "\(text)\n\(url.absoluteString)"
+            let sheet = UIActivityViewController(activityItems: [payload], applicationActivities: nil)
+            sheet.setValue(title, forKey: "subject")
+            if let popover = sheet.popoverPresentationController {
+                popover.sourceView = webView
+                popover.sourceRect = CGRect(x: webView.bounds.midX, y: webView.bounds.midY, width: 1, height: 1)
+                popover.permittedArrowDirections = []
+            }
+            presenter.present(sheet, animated: true)
+        }
+
+        private func topViewController(from root: UIViewController?) -> UIViewController? {
+            if let presented = root?.presentedViewController {
+                return topViewController(from: presented)
+            }
+            if let navigation = root as? UINavigationController {
+                return topViewController(from: navigation.visibleViewController)
+            }
+            if let tabs = root as? UITabBarController {
+                return topViewController(from: tabs.selectedViewController)
+            }
+            return root
+        }
+
+        private func allowedShareURL(_ rawValue: String) -> URL? {
+            guard rawValue.count <= 2_048,
+                  let components = URLComponents(string: rawValue),
+                  components.scheme?.lowercased() == "https",
+                  components.host?.isEmpty == false,
+                  components.user == nil,
+                  components.password == nil,
+                  components.port == nil else { return nil }
+            return components.url
+        }
+
+        private func boundedShareText(_ value: String?, limit: Int, fallback: String) -> String {
+            let clean = (value ?? "")
+                .unicodeScalars
+                .filter { !CharacterSet.controlCharacters.contains($0) || $0.value == 10 || $0.value == 9 }
+                .map(String.init)
+                .joined()
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !clean.isEmpty else { return fallback }
+            return String(clean.prefix(limit))
         }
 
         private func dispatchPendingAuthCallback() {

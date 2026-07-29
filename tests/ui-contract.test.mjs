@@ -13,6 +13,7 @@ assert.doesNotMatch(app, /Вечер у озера, живой дождь|An eve
 const styles = read("styles.css");
 const manifest = JSON.parse(read("manifest.webmanifest"));
 const lettersSource = read("letters.js");
+const experience = read("experience.js");
 
 // QR creation is a complete, discoverable flow rather than a decorative control.
 for (const id of [
@@ -117,6 +118,23 @@ for (const id of [5, 12]) {
 // The visible installable-app brand is GlowLetter, without the former release suffix.
 assert.equal(manifest.short_name, "GlowLetter");
 assert.doesNotMatch(manifest.name, /GlowLetter\s+Next/i);
+assert.equal(manifest.display, "fullscreen");
+assert.equal(manifest.display_override[0], "fullscreen");
+
+// Fullscreen starts automatically in installed shells and on the first legal browser gesture.
+assert.match(app, /function installAutomaticFullscreen\(/);
+assert.match(app, /document\.addEventListener\("pointerdown",activate,true\)/);
+assert.match(app, /requestAutomaticFullscreen\(\)/);
+assert.match(app, /fullscreen_enabled:\s*true/);
+const fullscreenShellBody = app.match(/function isFullscreenShell\(\)\s*\{([\s\S]+?)\}/)?.[1] || "";
+assert.match(fullscreenShellBody, /display-mode: fullscreen/);
+assert.doesNotMatch(fullscreenShellBody, /display-mode: standalone/);
+
+// Paid feature badges are consistently named VIP and use the gold treatment.
+assert.doesNotMatch(index, />\s*PRO\s*</);
+assert.doesNotMatch(experience, /pro:\s*"PRO"/);
+assert.match(index, /class="vip-badge">VIP</);
+assert.match(styles, /\.vip-badge[^\{]*\{[^\}]*linear-gradient\([^\}]*#fff3b5[^\}]*#dca93a/i);
 
 console.log(JSON.stringify({
   ok: true,
