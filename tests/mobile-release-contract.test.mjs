@@ -22,6 +22,8 @@ assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/
 assert.match(android, /exclude\s+["']\*\.md["'][\s\S]{0,100}["']\*\.py["']/);
 assert.match(ios, /MARKETING_VERSION:\s*2\.2\.4\b/);
 assert.match(ios, /CURRENT_PROJECT_VERSION:\s*10\b/);
+assert.match(ios, /TEST_HOST:\s*["']\$\(BUILT_PRODUCTS_DIR\)\/GlowLetter\.app\/GlowLetter["']/);
+assert.match(ios, /BUNDLE_LOADER:\s*["']\$\(TEST_HOST\)["']/);
 assert.match(workflow, /GlowLetter-2\.2\.4-debug\.apk/);
 assert.match(workflow, /GlowLetter-2\.2\.4-preview-debug\.apk/);
 assert.match(workflow, /TAG:\s*v2\.2\.4-preview/);
