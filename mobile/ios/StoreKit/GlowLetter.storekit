@@ -66,17 +66,17 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "All premium letters, smart replies, and future premium features.",
+              "description" : "All premium letters, the personal letter editor, and future premium features.",
               "displayName" : "GlowLetter Premium Monthly",
               "locale" : "en_US"
             },
             {
-              "description" : "Все премиум-письма, умные ответы и будущие премиум-функции.",
+              "description" : "Все премиум-письма, личный редактор писем и будущие премиум-функции.",
               "displayName" : "GlowLetter Premium на месяц",
               "locale" : "ru_RU"
             },
             {
-              "description" : "Toutes les lettres premium, les réponses intelligentes et les futures fonctions premium.",
+              "description" : "Toutes les lettres premium, l’éditeur de lettres personnelles et les futures fonctions premium.",
               "displayName" : "GlowLetter Premium mensuel",
               "locale" : "fr_FR"
             }

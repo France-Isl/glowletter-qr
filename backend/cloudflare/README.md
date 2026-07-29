@@ -2,7 +2,7 @@
 
 Cloudflare Worker выполняет две независимые задачи:
 
-- `POST /api/generate` — семейно-безопасная генерация письма (`mode: "letter"`) или ответа (`mode: "reply"`) через Workers AI;
+- `POST /api/generate` — семейно-безопасная генерация письма (`mode: "letter"`) через Workers AI; другие режимы отклоняются;
 - `POST /v1/google-play/verify` — серверная проверка Google Play Billing и Play Integrity для ежемесячной подписки `glowletter_premium_monthly` (base plan `monthly`) и прежней нерасходуемой покупки `full_access`.
 
 Платёжный endpoint работает **fail-closed**: при отсутствии D1, актуальной миграции, Play Integrity, service account, секрета HMAC или достоверного ответа Google полный доступ не выдаётся. Запись D1 служит журналом, но никогда не заменяет свежую проверку Google Play.

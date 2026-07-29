@@ -18,7 +18,6 @@ const app = read("app.js");
 const experience = read("experience.js");
 const config = read("config.js");
 const lettersSource = read("letters.js");
-const replyEngine = read("reply-engine.js");
 const worker = read("sw.js");
 const privacy = read("privacy.html");
 const terms = readRequired("terms.html");
@@ -33,6 +32,8 @@ assert.match(config, /supabaseUrl:\s*"https:\/\/xzzngrquomyiglktroqi\.supabase\.
 assert.match(config, /supabasePublishableKey:\s*"sb_publishable_/);
 assert.match(config, /publicShareUrl:\s*"https:\/\/france-isl\.github\.io\/glowletter-qr\/"/);
 assert.doesNotMatch(config, /service_role|sb_secret_/i);
+assert.match(config, /aiEndpoint:\s*""/);
+assert.doesNotMatch(config, /aiReply(?:Function|Endpoint)|generate-reply/i);
 
 // Final commercial plan: one monthly subscription and a separately restorable legacy purchase.
 assert.match(config, /productId:\s*"glowletter_premium_monthly"/);
@@ -51,10 +52,10 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=24") < index.indexOf("reply-engine.js?v=24"));
-assert.ok(index.indexOf("reply-engine.js?v=24") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=24"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=24") < index.indexOf("qr-code.js?v=24"));
-assert.ok(index.indexOf("qr-code.js?v=24") < index.indexOf("app.js?v=24"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=25") < index.indexOf("letters.js?v=25"));
+assert.ok(index.indexOf("letters.js?v=25") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=25"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=25") < index.indexOf("qr-code.js?v=25"));
+assert.ok(index.indexOf("qr-code.js?v=25") < index.indexOf("app.js?v=25"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -87,21 +88,24 @@ assert.match(index, /id="letterForLabel"/);
 assert.match(app, /setText\(\s*["']#letterForLabel["']\s*,\s*t\(["']for["']\)\s*\)/);
 for (const localized of [/for:\s*"для"/u, /for:\s*"for"/, /for:\s*"pour"/]) assert.match(app, localized);
 
-// Smart replies expose semantic analysis, length control, and a final editable-text audit.
-for (const method of ["analyze", "resolveLength", "audit"]) {
-  assert.match(replyEngine, new RegExp(`function ${method}\\(`));
+// The removed reply assistant must not leave UI, configuration, deep links, or deployable code behind.
+assert.equal(fs.existsSync(filePath("reply-engine.js")), false);
+assert.equal(fs.existsSync(filePath("supabase/functions/generate-reply/index.ts")), false);
+for (const id of ["replyOpenHome", "replyModeTab", "replyComposerPane", "replyForm", "replyIncoming", "replyGeneratedCard"]) {
+  assert.doesNotMatch(index, new RegExp(`id=["']${id}["']`), `${id} must stay removed`);
 }
-assert.match(index, /id="replyLength"/);
-assert.match(index, /id="replyInsight"/);
-assert.match(index, /id="replyAudit"/);
-assert.match(app, /REPLY_ENGINE\.analyze\(/);
-assert.match(app, /REPLY_ENGINE\.audit\(/);
-assert.match(app, /#replyLength/);
-assert.match(app, /function updateReplyInsight\(/);
-assert.match(app, /function renderReplyAudit\(/);
-assert.match(app, /#replyGeneratedText[^\n]*addEventListener\(\s*["']input["']/);
-assert.match(app, /#copyReply[^\n]*renderReplyAudit\(/);
-assert.match(app, /window\.NUR_REPLY_ENGINE/);
+assert.doesNotMatch(index, /reply-engine\.js|data-ai-mode=["']reply["']|Помочь с ответом|Ответ на сообщение/u);
+assert.doesNotMatch(app, /CONFIG\.aiReplyFunction|function\s+(?:generateReply|remoteComposeReply)\s*\(|#replyIncoming|#replyOpenHome/);
+assert.doesNotMatch(app, /params\.get\(\s*["']reply["']\s*\)|[?&]reply=1/);
+
+// Personal letter creation remains available after the reply-only feature is removed.
+for (const id of ["aiOpenHome", "letterComposerPane", "aiForm", "aiIdea", "aiLength", "generatedCard"]) {
+  assert.match(index, new RegExp(`id=["']${id}["']`), `${id} is required by the letter generator`);
+}
+assert.match(app, /async function generateLetter\(/);
+assert.match(app, /JSON\.stringify\(\{ mode: "letter"/);
+assert.match(app, /#aiForm[^\n]*addEventListener\(["']submit["'][^\n]*generateLetter\(\)/);
+assert.match(app, /params\.get\(\s*["']compose["']\s*\)\s*===\s*["']1["']/);
 
 // Supabase OAuth, row-level progress sync, and in-app deletion contracts.
 assert.match(app, /flowType:\s*"pkce"/);
@@ -209,16 +213,17 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v24 must update its own cache only and never cache personalized links.
+// Service-worker v25 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v24`/);
-for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=24`));
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v25`/);
+for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=25`));
 }
-for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=24`));
+for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=25`));
 }
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=24"/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=25"/);
+assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
 assert.match(worker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE/);
@@ -233,9 +238,8 @@ assert.match(index, /href="delete-account\.html"/);
 assert.match(privacy, /Supabase Auth/);
 assert.match(privacy, /Google или Facebook/u);
 assert.doesNotMatch(privacy, /Apple ID/u);
-assert.match(privacy, /Google Gemini/u);
-assert.match(privacy, /не помещает секрет модели в сайт или приложение/u);
-assert.match(privacy, /не сохраняются в таблицах прогресса/u);
+assert.doesNotMatch(privacy, /Google Gemini|секрет модели/u);
+assert.match(privacy, /Персональный редактор создаёт письмо/u);
 assert.match(privacy, /(?:ежемесячн|monthly|mensuel)/iu);
 assert.match(privacy, /(?:удалить аккаунт|удаление аккаунта)/iu);
 assert.match(terms, /(?:21[,.]99|цена[^<]*(?:магазин|store))/iu);
@@ -258,13 +262,14 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v24",
+  cache: "v25",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,
   dynamicRecipient: true,
   localizedLetterFor: true,
-  smartReplyAudit: true,
+  personalLetterGenerator: true,
+  replyAssistantRemoved: true,
   accountDeletion: true,
   safeAppShare: true,
   safeQrShare: true,

@@ -1,19 +1,18 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v24`;
+const CACHE = `${CACHE_PREFIX}v25`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=24",
-  "experience.css?v=24",
-  "config.js?v=24",
-  "vendor/supabase-2.110.9.js?v=24",
-  "vendor/qrcode-generator-1.4.4.min.js?v=24",
-  "letters.js?v=24",
-  "reply-engine.js?v=24",
-  "qr-code.js?v=24",
-  "app.js?v=24",
-  "experience.js?v=24",
-  "manifest.webmanifest?v=24",
+  "styles.css?v=25",
+  "experience.css?v=25",
+  "config.js?v=25",
+  "vendor/supabase-2.110.9.js?v=25",
+  "vendor/qrcode-generator-1.4.4.min.js?v=25",
+  "letters.js?v=25",
+  "qr-code.js?v=25",
+  "app.js?v=25",
+  "experience.js?v=25",
+  "manifest.webmanifest?v=25",
   "icon.svg",
   "privacy.html",
   "assets/auth/apple-continue-ru.png",
@@ -22,7 +21,7 @@ const CORE = [
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
-const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "from", "to", "msg", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {
