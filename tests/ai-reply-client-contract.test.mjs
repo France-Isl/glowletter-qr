@@ -24,10 +24,12 @@ const remoteComposeReply = extractFunction(
 );
 assert.match(remoteComposeReply, /CONFIG\.aiReplyFunction/);
 assert.match(remoteComposeReply, /!cloudSession\?\.access_token\s*\|\|\s*!cloudUser\?\.id/);
-assert.match(remoteComposeReply, /cloudClient\.functions\.invoke\(functionName/);
-assert.match(remoteComposeReply, /body:\s*\{\s*incoming,\s*language:\s*lang,\s*relationship,\s*tone,\s*length:\s*resolvedLength,\s*variant\s*\}/);
-assert.doesNotMatch(remoteComposeReply, /CONFIG\.aiEndpoint|fetch\(|localComposeReply|replyAnalysis\(|isAligned\(|\bintent\s*[,}:]/);
-assert.match(remoteComposeReply, /status\s*===\s*401\s*\?\s*["']sign_in_required["']/);
+assert.match(remoteComposeReply, /fetch\(`\$\{SUPABASE_URL\}\/functions\/v1\/\$\{encodeURIComponent\(functionName\)\}`/);
+assert.match(remoteComposeReply, /Authorization:\s*`Bearer \$\{cloudSession\.access_token\}`/);
+assert.match(remoteComposeReply, /apikey:\s*SUPABASE_PUBLISHABLE_KEY/);
+assert.match(remoteComposeReply, /body:\s*JSON\.stringify\(\{\s*incoming,\s*language:\s*lang,\s*relationship,\s*tone,\s*length:\s*resolvedLength,\s*variant\s*\}\)/);
+assert.doesNotMatch(remoteComposeReply, /CONFIG\.aiEndpoint|cloudClient\.functions\.invoke|localComposeReply|replyAnalysis\(|isAligned\(|\bintent\s*[,}:]/);
+assert.match(remoteComposeReply, /response\.status\s*===\s*401\s*\?\s*["']sign_in_required["']/);
 
 const generateReply = extractFunction(
   app,

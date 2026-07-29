@@ -2918,13 +2918,21 @@
       const resolvedLength = resolveReplyLength(incoming, length);
       const variant = replyVariant;
       replyVariant += 1;
-      const { data, error } = await cloudClient.functions.invoke(functionName, {
-        body: { incoming, language: lang, relationship, tone, length: resolvedLength, variant },
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/${encodeURIComponent(functionName)}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${cloudSession.access_token}`,
+          "X-Client-Info": `glowletter/${String(CONFIG.appVersion || "web")}`
+        },
+        body: JSON.stringify({ incoming, language: lang, relationship, tone, length: resolvedLength, variant }),
         signal: controller.signal
       });
-      if (error) {
-        const status = Number(error.context?.status || 0);
-        throw replyAiFailure(status === 401 ? "sign_in_required" : (status === 422 ? "rejected" : "unavailable"));
+      let data = null;
+      try { data = await response.json(); } catch { data = null; }
+      if (!response.ok) {
+        throw replyAiFailure(response.status === 401 ? "sign_in_required" : (response.status === 422 ? "rejected" : "unavailable"));
       }
       const text = String(data?.text || "").trim();
       if (text.length < 12 || !replyFitsSelectedLength(text, incoming, resolvedLength) || containsForbidden(text) || containsReligiousAuthorityClaim(text) || containsImproperRomance(text, relationship) || /<[^>]+>/.test(text)) throw replyAiFailure("rejected");
@@ -3591,7 +3599,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=23", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=24", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

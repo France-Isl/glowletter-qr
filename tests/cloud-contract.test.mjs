@@ -51,10 +51,10 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=23") < index.indexOf("reply-engine.js?v=23"));
-assert.ok(index.indexOf("reply-engine.js?v=23") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=23"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=23") < index.indexOf("qr-code.js?v=23"));
-assert.ok(index.indexOf("qr-code.js?v=23") < index.indexOf("app.js?v=23"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=24") < index.indexOf("reply-engine.js?v=24"));
+assert.ok(index.indexOf("reply-engine.js?v=24") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=24"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=24") < index.indexOf("qr-code.js?v=24"));
+assert.ok(index.indexOf("qr-code.js?v=24") < index.indexOf("app.js?v=24"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -209,16 +209,16 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v23 must update its own cache only and never cache personalized links.
+// Service-worker v24 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v23`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v24`/);
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=23`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=24`));
 }
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=23`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=24`));
 }
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=23"/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=24"/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
 assert.match(worker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE/);
@@ -258,7 +258,7 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v23",
+  cache: "v24",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,

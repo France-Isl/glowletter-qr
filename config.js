@@ -1,5 +1,5 @@
 window.NUR_APP_CONFIG = Object.freeze({
-  appVersion: "2.2.7",
+  appVersion: "2.2.8",
   aiEndpoint: "",
   aiReplyFunction: "generate-reply",
   freeLetterCount: 10,
