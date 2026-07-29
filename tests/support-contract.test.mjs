@@ -38,6 +38,7 @@ for (const id of [
   "supportIdValue",
   "supportCategory",
   "supportMessage",
+  "supportSignInButton",
   "supportSubmit"
 ]) {
   assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist in the support flow`);
@@ -60,6 +61,10 @@ assert.match(renderSupportState, /const signedIn\s*=\s*Boolean\(cloudUser\?\.id\
 assert.match(renderSupportState, /form\.hidden\s*=\s*!signedIn/);
 assert.match(renderSupportState, /#supportEmailValue[\s\S]{0,160}cloudUser\.email/);
 assert.match(renderSupportState, /#supportIdValue[\s\S]{0,180}cloudAccount\.support_id/);
+assert.match(app, /AUTH_PROVIDER_PRIORITY\s*=\s*Object\.freeze\(\["google",\s*"apple",\s*"facebook"\]\)/);
+assert.match(renderSupportState, /const provider\s*=\s*preferredCloudProvider\(\)/);
+assert.match(renderSupportState, /cloudProviderLabel\(provider\)/);
+assert.match(index, /id=["']supportSignInButton["'][^>]*disabled/);
 assert.match(app, /\.rpc\(\s*["']glowletter_my_access["']\s*\)/, "account support data must come from the server RPC");
 
 // The category vocabulary and message limits are identical at every layer.

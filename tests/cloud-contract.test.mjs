@@ -50,11 +50,17 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=19") < index.indexOf("reply-engine.js?v=19"));
-assert.ok(index.indexOf("reply-engine.js?v=19") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=19"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=19") < index.indexOf("qr-code.js?v=19"));
-assert.ok(index.indexOf("qr-code.js?v=19") < index.indexOf("app.js?v=19"));
-assert.match(index, /id="facebookSignIn"[^>]*hidden[^>]*disabled/);
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=20") < index.indexOf("reply-engine.js?v=20"));
+assert.ok(index.indexOf("reply-engine.js?v=20") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=20"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=20") < index.indexOf("qr-code.js?v=20"));
+assert.ok(index.indexOf("qr-code.js?v=20") < index.indexOf("app.js?v=20"));
+for (const provider of ["google", "apple", "facebook"]) {
+  assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
+}
+for (const language of ["ru", "en", "fr"]) {
+  assert.ok(fs.existsSync(filePath(`assets/auth/apple-continue-${language}.png`)), `official Apple artwork is required for ${language}`);
+  assert.match(worker, new RegExp(`assets/auth/apple-continue-${language}\\.png`));
+}
 assert.match(index, /id="shareAppButton"/);
 for (const id of ["shareAppLayer", "shareTelegram", "shareWhatsapp", "shareEmail", "shareCopyLink"]) assert.match(index, new RegExp(`id=["']${id}["']`));
 
@@ -101,7 +107,19 @@ assert.match(app, /flowType:\s*"pkce"/);
 assert.match(app, /detectSessionInUrl:\s*false/);
 assert.match(app, /skipBrowserRedirect:\s*true/);
 assert.match(app, /if \(!url \|\| url\.hash\) return false/);
+assert.match(app, /AUTH_PROVIDER_PRIORITY\s*=\s*Object\.freeze\(\["google",\s*"apple",\s*"facebook"\]\)/);
+assert.match(app, /settings\?\.external\?\.apple === true/);
+assert.match(app, /cloudProviderLookupComplete/);
 assert.match(app, /settings\?\.external\?\.facebook === true/);
+assert.match(app, /apple\.hidden\s*=\s*signedIn\s*\|\|\s*!cloudProvidersKnown\s*\|\|\s*!cloudProviders\.apple/);
+assert.match(app, /#appleSignIn[^\n]*signInWithCloud\("apple"\)/);
+assert.match(app, /signInWithOAuth\(\{\s*provider,/);
+assert.match(app, /function preferredCloudProvider\(\)[\s\S]{0,180}AUTH_PROVIDER_PRIORITY\.find\(provider => cloudProviders\[provider\] === true\)/);
+for (const localized of [
+  /continueApple:"Продолжить с Apple"/u,
+  /continueApple:"Continue with Apple"/,
+  /continueApple:"Continuer avec Apple"/
+]) assert.match(app, localized);
 assert.match(app, /AUTH_CALLBACK_PARAMETERS\.forEach\(key => url\.searchParams\.delete\(key\)\)/);
 assert.match(app, /let linkNamesActive = namesCameFromUrl/);
 assert.match(app, /linkNamesActive \? \{ sender: "", recipient: "" \}/);
@@ -183,16 +201,16 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v19 must update its own cache only and never cache personalized links.
+// Service-worker v20 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v19`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v20`/);
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=19`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=20`));
 }
 for (const resource of ["styles.css", "experience.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "reply-engine.js", "qr-code.js", "app.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=19`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=20`));
 }
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=19"/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=20"/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
 assert.match(worker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE/);
@@ -205,6 +223,8 @@ for (const sensitive of ["beta", "access", "from", "to", "msg", "code", "state",
 assert.match(index, /href="terms\.html"/);
 assert.match(index, /href="delete-account\.html"/);
 assert.match(privacy, /Supabase Auth/);
+assert.match(privacy, /Google, Apple или Facebook/u);
+assert.match(privacy, /Apple ID/u);
 assert.match(privacy, /Ключ закрытого тестового доступа передаётся только сервису генерации/);
 assert.doesNotMatch(privacy, /ключ закрытого тестового доступа в облако не отправляются/);
 assert.match(privacy, /(?:ежемесячн|monthly|mensuel)/iu);
@@ -229,7 +249,7 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v19",
+  cache: "v20",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,

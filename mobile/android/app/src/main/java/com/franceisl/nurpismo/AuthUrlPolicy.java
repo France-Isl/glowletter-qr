@@ -51,7 +51,9 @@ final class AuthUrlPolicy {
         String redirect = singleValue(query, "redirect_to");
         String challenge = singleValue(query, "code_challenge");
         String method = singleValue(query, "code_challenge_method");
-        return ("google".equals(provider) || "facebook".equals(provider))
+        return ("google".equals(provider)
+                || "facebook".equals(provider)
+                || "apple".equals(provider))
                 && CALLBACK_URL.equals(redirect)
                 && challenge != null
                 && PKCE_CHALLENGE.matcher(challenge).matches()

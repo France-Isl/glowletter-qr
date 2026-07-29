@@ -48,6 +48,21 @@ verified, non-revoked, non-expired transactions for either product. Restore
 Purchases calls `AppStore.sync()` only after the user explicitly requests it.
 The Manage Subscription action opens Apple's subscription-management page.
 
+## Supabase OAuth
+
+The native shell accepts Google, Facebook, and Apple only at the exact Supabase
+`/auth/v1/authorize` endpoint. Every request must contain the exact app callback
+`com.franceisl.glowletternext://auth/callback` and a 43–128 character PKCE
+challenge using `S256`; the callback policy remains exact and rejects duplicate
+security-sensitive parameters.
+
+Apple OAuth uses a Services ID configured in Supabase. Register
+`https://xzzngrquomyiglktroqi.supabase.co/auth/v1/callback` for that Services ID
+in Apple Developer, and place the Services ID first in Supabase's Client IDs
+when a native App ID is also configured. Rotate the Apple OAuth client secret at
+least every six months and keep the `.p8` key and generated secret outside the
+app, source control, and build logs.
+
 ## Private owner build
 
 The public configuration leaves `GLOWLETTER_OWNER_CAPABILITY` empty, so it opens
@@ -70,4 +85,4 @@ must match the web app's configured capability hash. Keep it in a private
 build. The app passes it to the bundled page as `#access=...`; the page validates
 the hash and removes the fragment from browser history.
 
-Versioning is currently `2.2.3` (`CURRENT_PROJECT_VERSION` 9).
+Versioning is currently `2.2.4` (`CURRENT_PROJECT_VERSION` 10).

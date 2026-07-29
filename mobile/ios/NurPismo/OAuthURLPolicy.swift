@@ -7,6 +7,7 @@ enum OAuthURLPolicy {
     static let callbackHost = "auth"
     static let callbackPath = "/callback"
     static let callbackURLString = "\(callbackScheme)://\(callbackHost)\(callbackPath)"
+    private static let allowedProviders: Set<String> = ["google", "facebook", "apple"]
     private static let callbackSingletonParameters: Set<String> = [
         "code",
         "error",
@@ -34,7 +35,7 @@ enum OAuthURLPolicy {
               let method = singleValue(named: "code_challenge_method", in: items) else {
             return false
         }
-        return (provider == "google" || provider == "facebook")
+        return allowedProviders.contains(provider)
             && redirect == callbackURLString
             && isValidPKCEChallenge(challenge)
             && method.lowercased() == "s256"
