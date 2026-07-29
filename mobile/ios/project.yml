@@ -27,11 +27,13 @@ targets:
           - Assets.xcassets
           - Info.plist
           - WebResources
-    resources:
       - path: NurPismo/Assets.xcassets
+        buildPhase: resources
       - path: NurPismo/WebResources
         type: folder
+        buildPhase: resources
       - path: StoreKit/GlowLetter.storekit
+        buildPhase: resources
     preBuildScripts:
       - name: Sync current web application
         basedOnDependencyAnalysis: false
