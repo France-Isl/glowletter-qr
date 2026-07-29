@@ -11,6 +11,7 @@ const index = read("index.html");
 const app = read("app.js");
 assert.doesNotMatch(app, /Вечер у озера, живой дождь|An evening by the lake, living rain|Un soir au bord du lac, une pluie vivante/);
 const styles = read("styles.css");
+const experienceStyles = read("experience.css");
 const manifest = JSON.parse(read("manifest.webmanifest"));
 const lettersSource = read("letters.js");
 const experience = read("experience.js");
@@ -110,6 +111,18 @@ assert.match(app, /minWords:\s*4[^\n]*maxWords:\s*22[^\n]*maxCharacters:\s*190[^
 assert.match(app, /!replyFitsSelectedLength\(text,\s*incoming,\s*resolvedLength\)/);
 assert.match(app, /length:\s*resolvedLength/);
 
+// Personal letters use the current idea and selected length, and stale drafts are invalidated.
+for (const id of ["aiIdea", "aiLength", "focusReadingButton"]) {
+  assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist`);
+}
+assert.match(app, /function cleanLetterIdea\(/);
+assert.match(app, /function fitLetterLength\(/);
+assert.match(app, /JSON\.stringify\(\{ mode: "letter"[\s\S]{0,220}idea, length: resolvedLength/);
+assert.match(app, /#aiIdea[^\n]*addEventListener\(["']input["'],\s*invalidateLetterDraft\)/);
+assert.match(app, /#aiLength[^\n]*addEventListener\(["']change["'],\s*invalidateLetterDraft\)/);
+assert.match(app, /function setReadingFocus\(/);
+assert.match(styles, /body\.reading-focus[\s\S]{0,500}#focusReadingButton/);
+
 // Letters that used to start with a fixed recipient now start directly with their message.
 const letterContext = { window: {} };
 vm.runInNewContext(lettersSource, letterContext, { filename: "letters.js" });
@@ -142,6 +155,26 @@ assert.doesNotMatch(index, />\s*PRO\s*</);
 assert.doesNotMatch(experience, /pro:\s*"PRO"/);
 assert.match(index, /class="vip-badge">VIP</);
 assert.match(styles, /\.vip-badge[^\{]*\{[^\}]*linear-gradient\([^\}]*#fff3b5[^\}]*#dca93a/i);
+
+// All four VIP frame choices visibly select with a checkmark and decorate AI results too.
+assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl"\]/);
+for (const frame of ["hearts", "moon", "forest", "pearl"]) {
+  assert.match(experienceStyles, new RegExp(`body\\.gl-premium-active\\[data-gl-frame=["']${frame}["']\\]`), `${frame} must define VIP frame tokens`);
+  assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-layer`), `${frame} must decorate the opened letter`);
+}
+for (const id of ["generatedCard", "replyGeneratedCard"]) {
+  assert.match(index, new RegExp(`class=["']generated-card["'][^>]*id=["']${id}["']`), `${id} must receive the shared VIP result-card frame`);
+}
+assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.ai-panel/);
+assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.generated-card/);
+assert.match(experienceStyles, /\.generated-card::before[^\{]*\{[^\}]*border:\s*1px solid var\(--gl-vip-stroke\)/);
+assert.match(experienceStyles, /\.generated-card::after[^\{]*\{[^\}]*content:\s*var\(--gl-vip-mark\)/);
+assert.match(experience, /mark\.textContent\s*=\s*active\s*\?\s*["']✓["']/u);
+assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*#a75c79[^\}]*opacity:\s*1/);
+assert.match(experience, /glowletter-access-change/);
+assert.match(app, /document\.body\.dataset\.access\s*=\s*isPremium\s*\?\s*["']vip["']\s*:\s*["']free["']/);
+assert.match(app, /\$\(["']\.free-note["']\)\.hidden\s*=\s*isPremium/);
+assert.match(app, /data\.glPerf|dataset\.glPerf/);
 
 console.log(JSON.stringify({
   ok: true,

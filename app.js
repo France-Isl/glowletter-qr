@@ -5,6 +5,12 @@
   const $$ = selector => [...document.querySelectorAll(selector)];
   const CONFIG = window.NUR_APP_CONFIG || {};
   const REPLY_ENGINE = window.NUR_REPLY_ENGINE || null;
+  const REDUCED_MOTION = matchMedia("(prefers-reduced-motion: reduce)");
+  const SAVE_DATA = Boolean(navigator.connection?.saveData);
+  const LOW_MEMORY = Number(navigator.deviceMemory || 8) <= 4;
+  const LOW_CPU = Number(navigator.hardwareConcurrency || 8) <= 4;
+  const LITE_DEVICE = REDUCED_MOTION.matches || SAVE_DATA || LOW_MEMORY || LOW_CPU;
+  document.documentElement.dataset.glPerf = LITE_DEVICE ? "lite" : "full";
   const hasIosBillingBridge = location.protocol === "file:"
     && typeof window.webkit?.messageHandlers?.nurBilling?.postMessage === "function"
     && typeof window.NurBilling?.getEntitlement === "function";
@@ -160,6 +166,18 @@
   Object.assign(UI.fr, {
     supportFormEyebrow:"GLOWLETTER · ASSISTANCE",supportFormTitle:"Expliquez-nous<br><em>ce qui s’est passé</em>",supportFormLead:"Décrivez le problème ici. L’email et l’ID d’assistance du compte sont joints automatiquement.",supportGuestTitle:"Connectez-vous d’abord",supportGuestNote:"Nous pourrons ainsi joindre votre email et votre ID en toute sécurité et retrouver votre compte.",supportCopyContact:"Copier l’email d’assistance",supportContactCopied:"Email d’assistance copié",supportEmailLabel:"EMAIL DE RÉPONSE",supportIdLabel:"ID DU COMPTE",supportCategoryLabel:"Sujet",supportMessageLabel:"Que s’est-il passé ?",supportMessagePlaceholder:"Décrivez ce que vous avez touché et ce qui s’est affiché…",supportPrivacyNote:"N’indiquez jamais de mot de passe, coordonnées bancaires ou code de vérification.",supportSubmit:"Envoyer à l’assistance",supportSending:"Envoi de votre demande…",supportSent:"Votre demande est envoyée. L’assistance a été avertie et répondra à l’email du compte.",supportSaved:"Votre demande est enregistrée en sécurité. L’envoi de la notification par email est encore en cours de configuration.",supportSignInRequired:"Connectez-vous pour envoyer une demande d’assistance.",supportInvalid:"Ajoutez quelques détails — entre 20 et 2 000 caractères.",supportRateLimited:"Trop de demandes. Réessayez un peu plus tard.",supportFailed:"Impossible d’envoyer la demande. Vérifiez votre connexion et réessayez.",supportCategoryTechnical:"Problème technique",supportCategoryAccount:"Compte et connexion",supportCategorySubscription:"VIP et abonnement",supportCategoryContent:"Lettres et textes",supportCategoryFeedback:"Idée ou avis",supportCategoryOther:"Autre"
   });
+  Object.assign(UI.ru, {
+    accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и музыка остаются только на этом устройстве.",
+    letterIdeaLabel:"Что особенно важно сказать · необязательно",letterIdeaPlaceholder:"Например: поблагодарить маму за терпение и поддержку",letterLengthLabel:"Длина письма",focusRead:"◫ Режим чтения",focusExit:"× Вернуться"
+  });
+  Object.assign(UI.en, {
+    accountTitle:"Save your progress",accountGuestNote:"Keep your letters and settings on all your devices.",accountPrivacy:"Personal photos and audio stay only on this device.",
+    letterIdeaLabel:"What matters most · optional",letterIdeaPlaceholder:"For example: thank Mum for her patience and support",letterLengthLabel:"Letter length",focusRead:"◫ Reading mode",focusExit:"× Return"
+  });
+  Object.assign(UI.fr, {
+    accountTitle:"Sauvegarde",accountGuestNote:"Retrouvez vos lettres et réglages sur tous vos appareils.",accountPrivacy:"Les photos et fichiers audio personnels restent sur cet appareil.",
+    letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour"
+  });
 
   const SELECT_OPTIONS = {
     relationship: {
@@ -171,6 +189,11 @@
       ru:[["auto","Подобрать автоматически"],["loving","Любовное · скромно"],["romantic","Романтическое · только супругам"],["classic","Классическое"],["support","Поддержка"],["gratitude","Благодарность"]],
       en:[["auto","Choose automatically"],["loving","Loving · modest"],["romantic","Romantic · spouses only"],["classic","Classic"],["support","Support"],["gratitude","Gratitude"]],
       fr:[["auto","Choisir automatiquement"],["loving","Affectueux · avec pudeur"],["romantic","Romantique · époux uniquement"],["classic","Classique"],["support","Soutien"],["gratitude","Gratitude"]]
+    },
+    letterLength: {
+      ru:[["auto","Подобрать автоматически"],["short","Короткое"],["standard","Среднее"],["detailed","Подробное"]],
+      en:[["auto","Choose automatically"],["short","Short"],["standard","Medium"],["detailed","Detailed"]],
+      fr:[["auto","Choisir automatiquement"],["short","Courte"],["standard","Moyenne"],["detailed","Détaillée"]]
     },
     replyRelationship: {
       ru:[["auto","Не указывать"],["spouse","Супруг или супруга"],["family","Член семьи"],["friend","Друг или подруга"],["colleague","Коллега"],["universal","Другой человек"]],
@@ -195,9 +218,9 @@
   };
 
   const REPLY_INTENT_LABELS = {
-    ru:{religious_gratitude:"Благодарность Аллаху",islamic_greeting:"Исламское приветствие",gratitude:"Благодарность",celebration:"Добрая новость",appreciation:"Тёплые слова",support:"Нужна поддержка",apology:"Извинение",conflict:"Напряжённый разговор",time_question:"Вопрос о времени",wellbeing:"Забота о самочувствии",question:"Вопрос",greeting:"Приветствие",care:"Забота",neutral:"Нейтральное сообщение"},
-    en:{religious_gratitude:"Gratitude to Allah",islamic_greeting:"Islamic greeting",gratitude:"Gratitude",celebration:"Good news",appreciation:"Warm appreciation",support:"Support needed",apology:"Apology",conflict:"Tense conversation",time_question:"Time question",wellbeing:"Checking in",question:"Question",greeting:"Greeting",care:"Care",neutral:"Neutral message"},
-    fr:{religious_gratitude:"Gratitude envers Allah",islamic_greeting:"Salutation islamique",gratitude:"Gratitude",celebration:"Bonne nouvelle",appreciation:"Paroles chaleureuses",support:"Besoin de soutien",apology:"Excuse",conflict:"Échange tendu",time_question:"Question d’horaire",wellbeing:"Prendre des nouvelles",question:"Question",greeting:"Salutation",care:"Attention",neutral:"Message neutre"}
+    ru:{religious_gratitude:"Благодарность Аллаху",islamic_greeting:"Исламское приветствие",dua:"Доброе дуа",gratitude:"Благодарность",celebration:"Добрая новость",appreciation:"Тёплые слова",support:"Нужна поддержка",apology:"Извинение",conflict:"Напряжённый разговор",time_question:"Вопрос о времени",wellbeing:"Забота о самочувствии",question:"Вопрос",request:"Просьба",status_update:"Важная новость",greeting:"Приветствие",care:"Забота",missing:"Сильная тоска и разлука",neutral:"Нейтральное сообщение"},
+    en:{religious_gratitude:"Gratitude to Allah",islamic_greeting:"Islamic greeting",dua:"Kind dua",gratitude:"Gratitude",celebration:"Good news",appreciation:"Warm appreciation",support:"Support needed",apology:"Apology",conflict:"Tense conversation",time_question:"Time question",wellbeing:"Checking in",question:"Question",request:"Request",status_update:"Status update",greeting:"Greeting",care:"Care",missing:"Missing someone deeply",neutral:"Neutral message"},
+    fr:{religious_gratitude:"Gratitude envers Allah",islamic_greeting:"Salutation islamique",dua:"Doua bienveillante",gratitude:"Gratitude",celebration:"Bonne nouvelle",appreciation:"Paroles chaleureuses",support:"Besoin de soutien",apology:"Excuse",conflict:"Échange tendu",time_question:"Question d’horaire",wellbeing:"Prendre des nouvelles",question:"Question",request:"Demande",status_update:"Nouvelle importante",greeting:"Salutation",care:"Attention",missing:"Manque et distance",neutral:"Message neutre"}
   };
 
   const REPLY_AUDIT_LABELS = {
@@ -417,6 +440,12 @@
 
   const LETTER_RELATIONSHIPS = new Set(["auto","mother","father","spouse","child","sibling","grandparent","teacher","friend","universal"]);
   const LETTER_TONES = new Set(["auto","loving","romantic","classic","support","gratitude"]);
+  const LETTER_LENGTHS = new Set(["auto","short","standard","detailed"]);
+  const LETTER_LENGTH_LIMITS = Object.freeze({
+    short: Object.freeze({ maxWords: 58, maxCharacters: 430, maxSentences: 5 }),
+    standard: Object.freeze({ maxWords: 105, maxCharacters: 760, maxSentences: 7 }),
+    detailed: Object.freeze({ maxWords: 150, maxCharacters: 1080, maxSentences: 9 })
+  });
   const REPLY_RELATIONSHIPS = new Set(["auto","spouse","family","friend","colleague","universal"]);
   const REPLY_TONES = new Set(["auto","calm","warm","support","reconcile","boundary"]);
   const REPLY_LENGTHS = new Set(["auto","short","standard","detailed"]);
@@ -464,6 +493,7 @@
   let lastReplyContext = { incoming: "", relationship: "auto", tone: "auto", length: "auto", goal: "", intent: "neutral" };
   let replyInsightTimer = 0;
   let aiMode = "letter";
+  let readingFocus = false;
   let pendingPremiumFeature = "";
   let toastTimer = 0;
   let deferredInstallPrompt = null;
@@ -586,6 +616,16 @@
       }
     }
     return false;
+  }
+
+  function containsReligiousAuthorityClaim(value) {
+    const text = normalize(value).replace(/[^\p{L}\p{N}]+/gu, " ").replace(/\s+/g, " ").trim();
+    const claims = [
+      "коран говорит", "сказано в коране", "в коране сказано", "хадис говорит", "в хадисе сказано", "пророк сказал", "посланник сказал", "аллах говорит", "аллах обещает", "это халяль", "это харам", "является халяль", "является харам", "по шариату",
+      "quran says", "the quran says", "hadith says", "the hadith says", "prophet said", "the prophet said", "allah says", "allah promises", "this is halal", "this is haram", "it is halal", "it is haram", "according to sharia",
+      "le coran dit", "selon le coran", "le hadith dit", "selon le hadith", "le prophete a dit", "allah dit", "allah promet", "c est halal", "c est haram", "cela est halal", "cela est haram", "selon la charia"
+    ];
+    return claims.some(claim => text.includes(normalize(claim)));
   }
 
   function containsImproperRomance(value, relationship = "auto") {
@@ -1074,8 +1114,13 @@
     const signedIn = Boolean(cloudUser?.id);
     const accountStatus = $("#accountStatus");
     const quietSyncedState = signedIn && cloudStatusKey === "cloudSynced";
-    setText("#accountStatus", quietSyncedState ? "" : t(cloudStatusKey));
-    accountStatus.hidden = quietSyncedState;
+    const quietGuestState = !signedIn && cloudStatusKey === "cloudSignInPrompt";
+    setText("#accountStatus", quietSyncedState || quietGuestState ? "" : t(cloudStatusKey));
+    accountStatus.hidden = quietSyncedState || quietGuestState;
+    const accountHeading = card.querySelector(".account-heading");
+    accountHeading.hidden = quietSyncedState;
+    card.dataset.signedIn = String(signedIn);
+    $("#accountPrivacyNote").hidden = signedIn;
     card.dataset.state = cloudStatusKey === "cloudSyncing" || cloudAuthBusy ? "syncing" : cloudStatusKey === "cloudError" || cloudStatusKey === "cloudSignInError" ? "error" : "ready";
 
     $("#accountGuest").hidden = signedIn;
@@ -2269,11 +2314,13 @@
     $("#aiOpenHome").innerHTML = `<span>✦</span> ${escapeHtml(t("create"))} <b class="vip-badge">VIP</b>`;
     $("#replyOpenHome").innerHTML = `<span>↗</span> ${escapeHtml(t("replyAssist"))} <b class="vip-badge">VIP</b>`;
     setText("#aiOpenTop > span:last-child", t("create"));
+    const freeNote = $(".free-note");
     const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].textContent = t("full");
+    if (freeNote) freeNote.hidden = isPremium;
     renderWeather();
     setText("#nextLetter", t("next")); $("#nextLetter").insertAdjacentHTML("beforeend", " <span>→</span>");
     $("#copyLetter").innerHTML = `<span>▣</span> ${t("copy")}`;
-    setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`);
+    setText("#speakButton", `◖ ${t("read")}`); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`); setText("#focusReadingButton", t(readingFocus ? "focusExit" : "focusRead"));
     $$(".go-home").forEach(button => button.textContent = `⌂ ${t("home")}`);
     $("#aiOpenLetter").innerHTML = `<span>✦</span> ${escapeHtml(t("personal"))} <b class="vip-badge">VIP</b>`;
     setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
@@ -2286,7 +2333,8 @@
     $("#aiSenderName").placeholder = t("aiSenderPlaceholder"); $("#aiRecipientName").placeholder = t("aiRecipientPlaceholder");
     const nameRoute = $$("#aiForm .name-route span"); if (nameRoute[0]) nameRoute[0].textContent = t("routeFrom"); if (nameRoute[1]) nameRoute[1].textContent = t("routeTo");
     const letterChoices = $$("#aiForm .choice-grid label > span"); if (letterChoices[0]) letterChoices[0].textContent = t("relationshipLabel"); if (letterChoices[1]) letterChoices[1].textContent = t("toneLabel");
-    setSelectOptions("#aiRelationship", SELECT_OPTIONS.relationship[lang]); setSelectOptions("#aiTone", SELECT_OPTIONS.tone[lang]);
+    setSelectOptions("#aiRelationship", SELECT_OPTIONS.relationship[lang]); setSelectOptions("#aiTone", SELECT_OPTIONS.tone[lang]); setSelectOptions("#aiLength", SELECT_OPTIONS.letterLength[lang]);
+    setText(".letter-idea-label > span", t("letterIdeaLabel")); $("#aiIdea").placeholder = t("letterIdeaPlaceholder"); setText(".letter-length-label > span", t("letterLengthLabel"));
     setText("#aiForm .form-hint", t("optionalHint")); setText(".generate-label", t("generate")); setText("#ownTextToggle b", t("own")); setText(".own-text-editor label > span", t("ownWords")); $("#ownText").placeholder = t("ownPlaceholder");
     $("#useOwnText").innerHTML = `${t("useOwn")} <span>→</span>`; setText(".generated-top > span", t("ready")); setText("#regenerateButton", t("variant")); setText("#copyGenerated", t("copy")); setText("#useGenerated", t("openAs"));
     setText(".own-text-editor > small", t("ownNote")); $(".quality-note p").innerHTML = `<strong>${escapeHtml(t("qualityTitle"))}</strong> ${escapeHtml(t("qualityBody"))}`; setText(".religious-note", t("religiousNote"));
@@ -2382,6 +2430,7 @@
 
   function goHome() {
     window.speechSynthesis?.cancel();
+    setReadingFocus(false);
     pendingPremiumFeature = "";
     storyOpened = false;
     letterStage.hidden = true;
@@ -2390,6 +2439,16 @@
     $("#homeButton").hidden = true;
     Object.values(layers).forEach(closePanel);
     haptic();
+  }
+
+  function setReadingFocus(enabled) {
+    readingFocus = Boolean(enabled && storyOpened);
+    document.body.classList.toggle("reading-focus", readingFocus);
+    const button = $("#focusReadingButton");
+    if (button) {
+      button.setAttribute("aria-pressed", String(readingFocus));
+      button.textContent = t(readingFocus ? "focusExit" : "focusRead");
+    }
   }
 
   function renderLetter() {
@@ -2472,22 +2531,72 @@
     return LETTER_RELATIONSHIPS.has(selected) && selected !== "auto" ? selected : inferRelationship(sender, recipient);
   }
 
-  function localCompose(sender, recipient, selectedRelationship = "auto", tone = "auto") {
+  function cleanLetterIdea(value) {
+    return String(value || "").normalize("NFKC").replace(/[<>\r\n{}\[\]]/g, " ").replace(/\s+/g, " ").trim().slice(0, 420);
+  }
+
+  function letterSentenceParts(value) {
+    return String(value || "").trim().split(/(?<=[.!?…])\s+/u).filter(Boolean);
+  }
+
+  function resolveLetterLength(selected = "auto", tone = "auto", hasIdea = false) {
+    if (LETTER_LENGTHS.has(selected) && selected !== "auto") return selected;
+    if (tone === "support" || hasIdea) return "standard";
+    return "standard";
+  }
+
+  function ideaSentence(value) {
+    const idea = cleanLetterIdea(value).replace(/[.!?…]+$/u, "");
+    if (!idea) return "";
+    const first = idea.charAt(0).toLocaleUpperCase(lang);
+    const sentence = `${first}${idea.slice(1)}`;
+    if (lang === "en") return `What I most want you to know is this: ${sentence}.`;
+    if (lang === "fr") return `Voici ce que je tiens surtout à te dire : ${sentence}.`;
+    return `Особенно важно сказать тебе вот что: ${sentence}.`;
+  }
+
+  function fitLetterLength(value, selected = "auto", tone = "auto", hasIdea = false) {
+    const resolved = resolveLetterLength(selected, tone, hasIdea);
+    const profile = LETTER_LENGTH_LIMITS[resolved] || LETTER_LENGTH_LIMITS.standard;
+    const parts = letterSentenceParts(value);
+    const chosen = [];
+    for (const part of parts) {
+      const candidate = [...chosen, part].join(" ");
+      const words = candidate.split(/\s+/u).filter(Boolean).length;
+      if (chosen.length && (words > profile.maxWords || candidate.length > profile.maxCharacters || chosen.length >= profile.maxSentences)) break;
+      chosen.push(part);
+    }
+    return (chosen.join(" ") || String(value || "").slice(0, profile.maxCharacters)).trim();
+  }
+
+  function letterFitsSelectedLength(value, selected = "auto", tone = "auto", hasIdea = false) {
+    const resolved = resolveLetterLength(selected, tone, hasIdea);
+    const profile = LETTER_LENGTH_LIMITS[resolved] || LETTER_LENGTH_LIMITS.standard;
+    const text = String(value || "").trim();
+    const words = text.split(/\s+/u).filter(Boolean).length;
+    const sentences = letterSentenceParts(text).length;
+    const minWords = resolved === "short" ? 8 : resolved === "detailed" ? 30 : 18;
+    return words >= minWords && words <= profile.maxWords && text.length <= profile.maxCharacters && sentences <= profile.maxSentences;
+  }
+
+  function localCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto") {
     const relationship = resolveRelationship(sender, recipient, selectedRelationship);
     const useStyled = ["loving", "romantic", "support", "gratitude"].includes(tone);
     const bank = useStyled ? styledComposer[lang][tone] : (composer[lang][relationship] || composer[lang].universal);
     const index = composerVariant % bank.length;
     composerVariant += 1;
     let text = bank[index].replaceAll("{to}", displayName(recipient));
+    const personalSentence = ideaSentence(idea);
     const context = useStyled && tone !== "romantic" ? relationshipContext[lang]?.[relationship] : "";
-    if (context) {
+    if (context || personalSentence) {
       const firstStop = text.search(/[.!?](?:\s|$)/u);
-      text = firstStop >= 0 ? `${text.slice(0, firstStop + 1)} ${context} ${text.slice(firstStop + 1).trimStart()}` : `${text} ${context}`;
+      const addition = [personalSentence, context].filter(Boolean).join(" ");
+      text = firstStop >= 0 ? `${text.slice(0, firstStop + 1)} ${addition} ${text.slice(firstStop + 1).trimStart()}` : `${text} ${addition}`;
     }
-    return text;
+    return fitLetterLength(text, length, tone, Boolean(personalSentence));
   }
 
-  async function remoteCompose(sender, recipient, selectedRelationship = "auto", tone = "auto") {
+  async function remoteCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto") {
     if (!CONFIG.aiEndpoint) throw new Error("No endpoint");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 16000);
@@ -2495,11 +2604,13 @@
       const relationship = resolveRelationship(sender, recipient, selectedRelationship);
       const headers = { "Content-Type": "application/json" };
       if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: lang, relationship, tone }), signal: controller.signal });
+      if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
+      const resolvedLength = resolveLetterLength(length, tone, Boolean(idea));
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: lang, relationship, tone, idea, length: resolvedLength }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
-      if (text.length < 160 || text.length > 1800 || containsForbidden(text) || containsImproperRomance(text, relationship) || !normalize(text).includes(normalize(displayName(recipient)))) throw new Error("Unsafe or incomplete response");
+      if (!letterFitsSelectedLength(text, resolvedLength, tone, Boolean(idea)) || containsForbidden(text) || containsReligiousAuthorityClaim(text) || containsImproperRomance(text, relationship) || !normalize(text).includes(normalize(displayName(recipient)))) throw new Error("Unsafe or incomplete response");
       return text;
     } finally { clearTimeout(timeout); }
   }
@@ -2511,8 +2622,11 @@
     if (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient)) return showSafety(t("namesSafety"));
     const selectedRelationship = LETTER_RELATIONSHIPS.has($("#aiRelationship").value) ? $("#aiRelationship").value : "auto";
     const tone = LETTER_TONES.has($("#aiTone").value) ? $("#aiTone").value : "auto";
+    const idea = cleanLetterIdea($("#aiIdea").value);
+    const length = LETTER_LENGTHS.has($("#aiLength").value) ? $("#aiLength").value : "auto";
     const relationship = resolveRelationship(sender, recipient, selectedRelationship);
     if (tone === "romantic" && relationship !== "spouse") return showSafety(t("romanticSpouseOnly"));
+    if (idea && (containsForbidden(idea) || containsReligiousAuthorityClaim(idea) || containsImproperRomance(idea, relationship))) return showSafety(t("safety"));
     setNames(sender, recipient, { explicit: true });
     $("#safetyMessage").hidden = true;
     $("#generatedCard").hidden = true;
@@ -2521,12 +2635,12 @@
     let progress = 8; $("#statusBar").style.width = `${progress}%`; $("#statusPercent").textContent = `${progress}%`; setText("#statusText", t("generating"));
     const timer = setInterval(() => { progress = Math.min(91, progress + 9); $("#statusBar").style.width = `${progress}%`; $("#statusPercent").textContent = `${progress}%`; }, 90);
     try {
-      const local = localCompose(sender, recipient, selectedRelationship, tone);
+      const local = localCompose(sender, recipient, selectedRelationship, tone, idea, length);
       if (CONFIG.aiEndpoint) {
-        try { generatedMessage = await remoteCompose(sender, recipient, selectedRelationship, tone); }
+        try { generatedMessage = await remoteCompose(sender, recipient, selectedRelationship, tone, idea, length); }
         catch { generatedMessage = local; showToast(t("composeFail"), 3400); }
       } else { await new Promise(resolve => setTimeout(resolve, 520)); generatedMessage = local; }
-      if (containsForbidden(generatedMessage) || containsImproperRomance(generatedMessage, relationship)) throw new Error("Blocked output");
+      if (!letterFitsSelectedLength(generatedMessage, length, tone, Boolean(idea)) || containsForbidden(generatedMessage) || containsReligiousAuthorityClaim(generatedMessage) || containsImproperRomance(generatedMessage, relationship)) throw new Error("Blocked output");
       $("#generatedText").value = generatedMessage;
       $("#statusBar").style.width = "100%"; $("#statusPercent").textContent = "100%";
       setTimeout(() => { $("#generationStatus").hidden = true; $("#generatedCard").hidden = false; $("#generatedCard").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 180);
@@ -2538,6 +2652,15 @@
     setText("#safetyReason", reason);
     $("#safetyMessage").hidden = false;
     $("#generatedCard").hidden = true;
+    $("#generationStatus").hidden = true;
+  }
+
+  function invalidateLetterDraft() {
+    composerVariant = 0;
+    generatedMessage = "";
+    $("#generatedText").value = "";
+    $("#generatedCard").hidden = true;
+    $("#safetyMessage").hidden = true;
     $("#generationStatus").hidden = true;
   }
 
@@ -2612,10 +2735,18 @@
 
   function replyAuditResult(value, context = lastReplyContext) {
     const intent = context.intent || replyAnalysis(context.incoming || "").intent;
-    if (REPLY_ENGINE?.audit) return REPLY_ENGINE.audit(value, { ...context, intent });
-    const blocked = !value || containsForbidden(value) || containsImproperRomance(value, context.relationship)
-      || !replyFactsPreserved(value, context.goal) || !replyTonePreserved(value, context.tone);
-    return { ok: !blocked, codes: blocked ? ["forbidden"] : [], severity: blocked ? "warning" : "safe" };
+    const engineResult = REPLY_ENGINE?.audit
+      ? REPLY_ENGINE.audit(value, { ...context, intent })
+      : { ok: true, codes: [], severity: "safe" };
+    const codes = [...(engineResult.codes || [])];
+    if (!value) codes.push("empty");
+    if (containsForbidden(value)) codes.push("forbidden");
+    if (containsReligiousAuthorityClaim(value)) codes.push("religious_authority");
+    if (containsImproperRomance(value, context.relationship)) codes.push("improper_romance");
+    if (!replyFactsPreserved(value, context.goal)) codes.push("goal_missing");
+    if (!replyTonePreserved(value, context.tone)) codes.push("tone_mismatch");
+    const unique = [...new Set(codes)];
+    return { ok: unique.length === 0, codes: unique, severity: unique.length ? "warning" : "safe" };
   }
 
   function renderReplyAudit(value = $("#replyGeneratedText")?.value || "", context = lastReplyContext) {
@@ -2649,7 +2780,7 @@
       return appendReplyContext(composed, relationship);
     }
     if (REPLY_ENGINE?.compose) {
-      const text = REPLY_ENGINE.compose({ incoming, language: lang, tone, length, variant: replyVariant });
+      const text = REPLY_ENGINE.compose({ incoming, language: lang, relationship, tone, length, variant: replyVariant });
       replyVariant += 1;
       return text;
     }
@@ -2674,6 +2805,7 @@
       const resolvedLength = resolveReplyLength(incoming, length);
       const headers = { "Content-Type": "application/json" };
       if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
+      if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
       const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, length: resolvedLength, intent }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
@@ -2756,7 +2888,7 @@
     const recipient = cleanName($("#aiRecipientName").value) || toName;
     const selectedRelationship = LETTER_RELATIONSHIPS.has($("#aiRelationship").value) ? $("#aiRelationship").value : "auto";
     const relationship = resolveRelationship(sender, recipient, selectedRelationship);
-    if (!value || value.length < 12 || containsForbidden(value) || containsImproperRomance(value, relationship)) return showSafety(t("safety"));
+    if (!value || value.length < 12 || containsForbidden(value) || containsReligiousAuthorityClaim(value) || containsImproperRomance(value, relationship)) return showSafety(t("safety"));
     if (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient)) return showSafety(t("namesSafety"));
     setNames(sender, recipient, { explicit: true });
     sharedMessage = value;
@@ -2810,10 +2942,15 @@
     const wasPremium = isPremium;
     isPremium = Boolean(betaAccess || nativePremium || cloudPremium);
     entitlementState = isPremium ? "premium" : "free";
+    document.body.classList.toggle("gl-premium-active", isPremium);
+    document.body.dataset.access = isPremium ? "vip" : "free";
     $(".premium-settings-card").hidden = isPremium;
+    $(".free-note").hidden = isPremium;
+    $("#manageSubscriptionButton").hidden = !nativePremium;
     setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
     renderLibrary();
     renderCloudAccount();
+    dispatchEvent(new CustomEvent("glowletter-access-change", { detail: { premium: isPremium, reason } }));
     if (isPremium) {
       const requested = pendingPremiumFeature;
       pendingPremiumFeature = "";
@@ -2911,25 +3048,25 @@
 
   class RainScene {
     constructor(canvas) {
-      this.canvas = canvas; this.ctx = canvas.getContext("2d"); this.enabled = localStorage.getItem("nurRain") !== "off"; this.intensity = .58; this.drops = []; this.splashes = []; this.frame = 0; this.resize = this.resize.bind(this); this.draw = this.draw.bind(this);
+      this.canvas = canvas; this.ctx = canvas.getContext("2d"); this.lite = LITE_DEVICE; this.enabled = localStorage.getItem("nurRain") !== "off" && !REDUCED_MOTION.matches; this.intensity = .58; this.drops = []; this.splashes = []; this.frame = 0; this.lastPaint = 0; this.resize = this.resize.bind(this); this.draw = this.draw.bind(this);
       addEventListener("resize", this.resize, { passive: true }); document.addEventListener("visibilitychange", () => { if (!document.hidden && this.enabled) this.start(); }); this.resize(); this.setEnabled(this.enabled, false);
     }
-    resize() { const dpr = Math.min(devicePixelRatio || 1, 1.5); this.width = innerWidth; this.height = innerHeight; this.canvas.width = Math.round(this.width * dpr); this.canvas.height = Math.round(this.height * dpr); this.canvas.style.width = `${this.width}px`; this.canvas.style.height = `${this.height}px`; this.ctx.setTransform(dpr,0,0,dpr,0,0); const count = Math.max(18, Math.min(54, Math.round(this.width / 24))); this.drops = Array.from({ length: count }, () => this.makeDrop(true)); }
+    resize() { const dpr = this.lite ? 1 : Math.min(devicePixelRatio || 1, 1.5); this.width = innerWidth; this.height = innerHeight; this.canvas.width = Math.round(this.width * dpr); this.canvas.height = Math.round(this.height * dpr); this.canvas.style.width = `${this.width}px`; this.canvas.style.height = `${this.height}px`; this.ctx.setTransform(dpr,0,0,dpr,0,0); const count = this.lite ? Math.max(12, Math.min(26, Math.round(this.width / 42))) : Math.max(18, Math.min(54, Math.round(this.width / 24))); this.drops = Array.from({ length: count }, () => this.makeDrop(true)); }
     makeDrop(randomY = false) { return { x: Math.random() * (this.width + 240) - 120, y: randomY ? Math.random() * this.height : -60, length: 22 + Math.random() * 43, speed: 7 + Math.random() * 9, width: 1.1 + Math.random() * 1.7, alpha: .11 + Math.random() * .28, drift: 1.5 + Math.random() * 2.7 }; }
     setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle").setAttribute("aria-pressed", String(this.enabled)); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.ctx.clearRect(0,0,this.width,this.height); } }
     setIntensity(value) { this.intensity = Math.max(.2, Math.min(1, value)); }
-    start() { cancelAnimationFrame(this.frame); this.draw(); }
-    draw() { if (!this.enabled || document.hidden) return; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length); gradient.addColorStop(0,"rgba(220,236,245,0)"); gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`); ctx.strokeStyle=gradient;ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){if(Math.random()<.24)this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
+    start() { cancelAnimationFrame(this.frame); this.frame=requestAnimationFrame(this.draw); }
+    draw(timestamp = 0) { if (!this.enabled || document.hidden) return; if(this.lite&&timestamp-this.lastPaint<34){this.frame=requestAnimationFrame(this.draw);return;}this.lastPaint=timestamp; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; if(this.lite){ctx.strokeStyle=`rgba(221,239,248,${drop.alpha*.72})`;}else{const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length);gradient.addColorStop(0,"rgba(220,236,245,0)");gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`);ctx.strokeStyle=gradient;}ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){if(Math.random()<(this.lite ? .12 : .24)&&this.splashes.length<(this.lite?6:18))this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
       this.splashes=this.splashes.filter(s=>{ctx.strokeStyle=`rgba(220,239,247,${s.a})`;ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(s.x,s.y,s.r*2.3,s.r*.55,0,0,Math.PI*2);ctx.stroke();s.r+=.8;s.a-=.045;return s.a>0;}); this.frame=requestAnimationFrame(this.draw); }
   }
 
   class NatureSoundscape {
-    constructor() { this.context=null;this.master=null;this.wind=null;this.timers=[]; }
+    constructor() { this.context=null;this.master=null;this.wind=null;this.timers=new Set(); }
     async start() { if (!this.context) this.create(); await this.context.resume(); this.master.gain.setTargetAtTime(.58,this.context.currentTime,.6); this.scheduleCricket();this.scheduleFrog(); }
     create() { const AudioCtx=window.AudioContext||window.webkitAudioContext;this.context=new AudioCtx();this.master=this.context.createGain();this.master.gain.value=0;this.master.connect(this.context.destination); const length=this.context.sampleRate*2;const buffer=this.context.createBuffer(1,length,this.context.sampleRate);const data=buffer.getChannelData(0);for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*.34;const noise=this.context.createBufferSource();noise.buffer=buffer;noise.loop=true;const filter=this.context.createBiquadFilter();filter.type="lowpass";filter.frequency.value=520;const gain=this.context.createGain();gain.gain.value=.018;noise.connect(filter).connect(gain).connect(this.master);noise.start();this.wind=noise; }
-    stop() { if(!this.context)return;this.master.gain.setTargetAtTime(0,this.context.currentTime,.3);this.timers.forEach(clearTimeout);this.timers=[]; }
-    scheduleCricket() { if(!isNaturePlaying)return;const timer=setTimeout(()=>{if(!isNaturePlaying)return;const now=this.context.currentTime;for(let i=0;i<4;i++){const osc=this.context.createOscillator();const gain=this.context.createGain();osc.type="sine";osc.frequency.value=3900+Math.random()*800;gain.gain.setValueAtTime(0,now+i*.09);gain.gain.linearRampToValueAtTime(.018,now+i*.09+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.09+.055);osc.connect(gain).connect(this.master);osc.start(now+i*.09);osc.stop(now+i*.09+.07);}this.scheduleCricket();},3500+Math.random()*6500);this.timers.push(timer); }
-    scheduleFrog() { if(!isNaturePlaying)return;const timer=setTimeout(()=>{if(!isNaturePlaying)return;const now=this.context.currentTime;for(let i=0;i<2;i++){const osc=this.context.createOscillator();const gain=this.context.createGain();osc.type="triangle";osc.frequency.setValueAtTime(155+i*22,now+i*.2);osc.frequency.exponentialRampToValueAtTime(92,now+i*.2+.28);gain.gain.setValueAtTime(.0001,now+i*.2);gain.gain.exponentialRampToValueAtTime(.024,now+i*.2+.04);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.2+.32);osc.connect(gain).connect(this.master);osc.start(now+i*.2);osc.stop(now+i*.2+.35);}this.scheduleFrog();},11000+Math.random()*15000);this.timers.push(timer); }
+    stop() { if(!this.context)return;this.master.gain.setTargetAtTime(0,this.context.currentTime,.3);this.timers.forEach(clearTimeout);this.timers.clear();setTimeout(()=>{if(!isNaturePlaying)this.context?.suspend?.().catch(()=>{});},500); }
+    scheduleCricket() { if(!isNaturePlaying)return;const timer=setTimeout(()=>{this.timers.delete(timer);if(!isNaturePlaying)return;const now=this.context.currentTime;for(let i=0;i<4;i++){const osc=this.context.createOscillator();const gain=this.context.createGain();osc.type="sine";osc.frequency.value=3900+Math.random()*800;gain.gain.setValueAtTime(0,now+i*.09);gain.gain.linearRampToValueAtTime(.018,now+i*.09+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.09+.055);osc.connect(gain).connect(this.master);osc.start(now+i*.09);osc.stop(now+i*.09+.07);}this.scheduleCricket();},3500+Math.random()*6500);this.timers.add(timer); }
+    scheduleFrog() { if(!isNaturePlaying)return;const timer=setTimeout(()=>{this.timers.delete(timer);if(!isNaturePlaying)return;const now=this.context.currentTime;for(let i=0;i<2;i++){const osc=this.context.createOscillator();const gain=this.context.createGain();osc.type="triangle";osc.frequency.setValueAtTime(155+i*22,now+i*.2);osc.frequency.exponentialRampToValueAtTime(92,now+i*.2+.28);gain.gain.setValueAtTime(.0001,now+i*.2);gain.gain.exponentialRampToValueAtTime(.024,now+i*.2+.04);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.2+.32);osc.connect(gain).connect(this.master);osc.start(now+i*.2);osc.stop(now+i*.2+.35);}this.scheduleFrog();},11000+Math.random()*15000);this.timers.add(timer); }
   }
 
   const rainScene = new RainScene($("#rainCanvas"));
@@ -2948,8 +3085,8 @@
 
   function createAtmosphere() {
     const colors=["#b7634b","#d48a59","#d59aa8","#8c684c","#d6a75c"];
-    for(let i=0;i<18;i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
-    for(let i=0;i<15;i++){const ember=document.createElement("i");ember.className="ember";ember.style.setProperty("--left",`${42+Math.random()*19}%`);ember.style.setProperty("--size",`${1+Math.random()*3}px`);ember.style.setProperty("--duration",`${3.2+Math.random()*3}s`);ember.style.setProperty("--delay",`${-Math.random()*5}s`);ember.style.setProperty("--drift",`${-35+Math.random()*70}px`);$("#embers").append(ember);}
+    for(let i=0;i<(LITE_DEVICE?6:18);i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
+    for(let i=0;i<(LITE_DEVICE?0:15);i++){const ember=document.createElement("i");ember.className="ember";ember.style.setProperty("--left",`${42+Math.random()*19}%`);ember.style.setProperty("--size",`${1+Math.random()*3}px`);ember.style.setProperty("--duration",`${3.2+Math.random()*3}s`);ember.style.setProperty("--delay",`${-Math.random()*5}s`);ember.style.setProperty("--drift",`${-35+Math.random()*70}px`);$("#embers").append(ember);}
   }
 
   function base64ToBlob(base64, mime) { base64=String(base64).replace(/\s+/g,"");const arrays=[];for(let offset=0;offset<base64.length;offset+=512*1024){const end=Math.min(base64.length,offset+512*1024);const safeEnd=end<base64.length?end-(end-offset)%4:end;const binary=atob(base64.slice(offset,safeEnd));const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);arrays.push(bytes);offset=safeEnd-512*1024;}return new Blob(arrays,{type:mime}); }
@@ -3157,7 +3294,7 @@
   function bindEvents(){
     $("#openStoryButton").addEventListener("click",openStory);$("#homeButton").addEventListener("click",goHome);$$(".go-home").forEach(button=>button.addEventListener("click",goHome));
     $("#setupForm").addEventListener("submit",submitNameSetup);$("#setupClose").addEventListener("click",()=>closePanel(layers.setup));$("#setupBackdrop").addEventListener("click",()=>closePanel(layers.setup));
-    $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#speakButton").addEventListener("click",speakLetter);$("#postcardButton").addEventListener("click",generatePostcard);$("#favoriteButton").addEventListener("click",toggleFavorite);
+    $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#speakButton").addEventListener("click",speakLetter);$("#postcardButton").addEventListener("click",generatePostcard);$("#favoriteButton").addEventListener("click",toggleFavorite);$("#focusReadingButton").addEventListener("click",()=>setReadingFocus(!readingFocus));
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",()=>requestPremiumFeature("letter")));$("#replyOpenHome").addEventListener("click",()=>requestPremiumFeature("reply"));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $$("[data-ai-mode]").forEach(button=>{button.addEventListener("click",()=>setAiMode(button.dataset.aiMode));button.addEventListener("keydown",event=>{if(!["ArrowLeft","ArrowRight"].includes(event.key))return;event.preventDefault();const next=button.dataset.aiMode==="letter"?$("#replyModeTab"):$("#letterModeTab");setAiMode(next.dataset.aiMode);next.focus();});});
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
@@ -3167,7 +3304,8 @@
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
-    $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
+    $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsReligiousAuthorityClaim(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
+    [$("#aiSenderName"),$("#aiRecipientName"),$("#aiIdea")].forEach(control=>control.addEventListener("input",invalidateLetterDraft));[$("#aiRelationship"),$("#aiTone"),$("#aiLength")].forEach(control=>control.addEventListener("change",invalidateLetterDraft));
     $("#replyForm").addEventListener("submit",event=>{event.preventDefault();generateReply();});$("#regenerateReply").addEventListener("click",generateReply);$("#copyReply").addEventListener("click",()=>{const value=$("#replyGeneratedText").value;const audit=renderReplyAudit(value,lastReplyContext);if(!audit.ok){showToast(t("replyAuditWarning"),3600);return;}copyText(value);});
     $("#replyIncoming").addEventListener("input",()=>{invalidateReplyDraft();clearTimeout(replyInsightTimer);replyInsightTimer=setTimeout(updateReplyInsight,120);});[$("#replyRelationship"),$("#replyTone"),$("#replyLength")].forEach(control=>control.addEventListener("change",()=>{invalidateReplyDraft();updateReplyInsight();}));$("#replyGeneratedText").addEventListener("input",()=>renderReplyAudit($("#replyGeneratedText").value,lastReplyContext));
     $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);$("#ownTextToggle").setAttribute("aria-expanded",String(!editor.hidden));});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
@@ -3179,7 +3317,7 @@
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
-    document.addEventListener("keydown",event=>{if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
     document.addEventListener("visibilitychange",()=>{if(document.hidden)flushCloudSync(false);else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
@@ -3187,12 +3325,13 @@
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleCapabilityNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
-    addEventListener("pointermove",event=>{if(innerWidth<900||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const x=(event.clientX/innerWidth-.5)*1.2;const y=(event.clientY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;},{passive:true});
+    let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
+    addEventListener("pointermove",event=>{if(LITE_DEVICE||innerWidth<900||REDUCED_MOTION.matches)return;scenePointerX=event.clientX;scenePointerY=event.clientY;if(scenePointerFrame)return;scenePointerFrame=requestAnimationFrame(()=>{scenePointerFrame=0;const x=(scenePointerX/innerWidth-.5)*1.2;const y=(scenePointerY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;});},{passive:true});
   }
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=20", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=21", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
