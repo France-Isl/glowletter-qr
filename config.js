@@ -1,6 +1,7 @@
 window.NUR_APP_CONFIG = Object.freeze({
-  appVersion: "2.2.6",
+  appVersion: "2.2.7",
   aiEndpoint: "",
+  aiReplyFunction: "generate-reply",
   freeLetterCount: 10,
   productId: "glowletter_premium_monthly",
   subscriptionProductId: "glowletter_premium_monthly",

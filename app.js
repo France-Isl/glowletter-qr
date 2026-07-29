@@ -146,6 +146,15 @@
     qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
+    replySafetyTitle:"Нужен другой текст",replyErrorTitle:"Не удалось подготовить ответ",replySignInRequired:"Чтобы получить ответ от искусственного интеллекта, войдите в аккаунт.",replyAiUnavailable:"Искусственный интеллект временно недоступен. Проверьте интернет и попробуйте ещё раз.",replyAiRejected:"ИИ не смог подготовить безопасный ответ на это сообщение. Измените формулировку и попробуйте ещё раз."
+  });
+  Object.assign(UI.en, {
+    replySafetyTitle:"A different message is needed",replyErrorTitle:"The reply could not be prepared",replySignInRequired:"Sign in to receive a reply from the AI.",replyAiUnavailable:"The AI is temporarily unavailable. Check your connection and try again.",replyAiRejected:"The AI could not prepare a safe reply to this message. Rephrase it and try again."
+  });
+  Object.assign(UI.fr, {
+    replySafetyTitle:"Un autre message est nécessaire",replyErrorTitle:"La réponse n’a pas pu être préparée",replySignInRequired:"Connectez-vous pour recevoir une réponse de l’IA.",replyAiUnavailable:"L’IA est momentanément indisponible. Vérifiez votre connexion et réessayez.",replyAiRejected:"L’IA n’a pas pu préparer une réponse sûre à ce message. Reformulez-le puis réessayez."
+  });
+  Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
     adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение."
   });
@@ -2807,10 +2816,8 @@
     };
   }
 
-  function resolveReplyLength(incoming, selected = "auto") {
-    const safeSelected = REPLY_LENGTHS.has(selected) ? selected : "auto";
-    return REPLY_ENGINE?.resolveLength?.(incoming, safeSelected)
-      || (safeSelected === "auto" ? replyAnalysis(incoming).recommendedLength : safeSelected);
+  function resolveReplyLength(_incoming, selected = "auto") {
+    return REPLY_LENGTHS.has(selected) ? selected : "auto";
   }
 
   function replyFitsSelectedLength(text, incoming, selected = "auto") {
@@ -2820,7 +2827,6 @@
     const words = value.split(/\s+/u).filter(Boolean).length;
     const sentences = value.split(/(?<=[.!?…])\s+/u).filter(Boolean).length;
     return Boolean(value)
-      && words >= limits.minWords
       && words <= limits.maxWords
       && value.length <= limits.maxCharacters
       && sentences <= limits.maxSentences;
@@ -2833,34 +2839,24 @@
   function updateReplyInsight() {
     const insight = $("#replyInsight");
     if (!insight) return;
-    const incoming = String($("#replyIncoming")?.value || "").normalize("NFKC").trim();
-    if (incoming.length < 3 || containsForbidden(incoming)) {
-      insight.hidden = true;
-      return;
-    }
-    const analysis = replyAnalysis(incoming);
-    const selectedTone = REPLY_TONES.has($("#replyTone")?.value) ? $("#replyTone").value : "auto";
-    const selectedLength = REPLY_LENGTHS.has($("#replyLength")?.value) ? $("#replyLength").value : "auto";
-    const tone = selectedTone === "auto" ? analysis.recommendedTone : selectedTone;
-    const length = selectedLength === "auto" ? analysis.recommendedLength : selectedLength;
-    setText("#replyInsightTitle", t("replyInsightTitle"));
-    setText("#replyInsightDetails", `${REPLY_INTENT_LABELS[lang]?.[analysis.intent] || analysis.intent} · ${replyOptionLabel("replyTone", tone)} · ${replyOptionLabel("replyLength", length)}`);
-    setText("#replyInsightGoal", t("replyCurrent"));
-    insight.hidden = false;
+    insight.hidden = true;
   }
 
   function replyAuditResult(value, context = lastReplyContext) {
-    const intent = context.intent || replyAnalysis(context.incoming || "").intent;
+    const enforceSemantics = context.enforceSemantics !== false;
+    const intent = context.enforceIntent === false
+      ? ""
+      : (context.intent || replyAnalysis(context.incoming || "").intent);
     const engineResult = REPLY_ENGINE?.audit
-      ? REPLY_ENGINE.audit(value, { ...context, intent })
+      ? REPLY_ENGINE.audit(value, { ...context, intent, goal: enforceSemantics ? context.goal : "", tone: enforceSemantics ? context.tone : "auto" })
       : { ok: true, codes: [], severity: "safe" };
     const codes = [...(engineResult.codes || [])];
     if (!value) codes.push("empty");
     if (containsForbidden(value)) codes.push("forbidden");
     if (containsReligiousAuthorityClaim(value)) codes.push("religious_authority");
     if (containsImproperRomance(value, context.relationship)) codes.push("improper_romance");
-    if (!replyFactsPreserved(value, context.goal)) codes.push("goal_missing");
-    if (!replyTonePreserved(value, context.tone)) codes.push("tone_mismatch");
+    if (enforceSemantics && !replyFactsPreserved(value, context.goal)) codes.push("goal_missing");
+    if (enforceSemantics && !replyTonePreserved(value, context.tone)) codes.push("tone_mismatch");
     const unique = [...new Set(codes)];
     return { ok: unique.length === 0, codes: unique, severity: unique.length ? "warning" : "safe" };
   }
@@ -2913,26 +2909,45 @@
   }
 
   async function remoteComposeReply(incoming, relationship = "auto", tone = "auto", goal = "", length = "auto") {
-    if (!CONFIG.aiEndpoint) throw new Error("No endpoint");
+    const functionName = String(CONFIG.aiReplyFunction || "").trim();
+    if (!cloudClient || !/^[a-z0-9][a-z0-9-]{0,62}$/u.test(functionName)) throw replyAiFailure("unavailable");
+    if (!cloudSession?.access_token || !cloudUser?.id) throw replyAiFailure("sign_in_required");
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 16000);
+    const timeout = setTimeout(() => controller.abort(), 25000);
     try {
-      const intent = replyAnalysis(incoming).intent;
       const resolvedLength = resolveReplyLength(incoming, length);
-      const headers = { "Content-Type": "application/json" };
-      if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
-      if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "reply", incoming, goal, language: lang, relationship, tone, length: resolvedLength, intent }), signal: controller.signal });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      const text = String(data.text || "").trim();
-      const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(text, intent);
-      if (text.length < 12 || !replyFitsSelectedLength(text, incoming, resolvedLength) || containsForbidden(text) || containsImproperRomance(text, relationship) || !replyFactsPreserved(text, goal) || !replyTonePreserved(text, tone) || !contextAligned || /<[^>]+>/.test(text)) throw new Error("Unsafe or incomplete response");
+      const variant = replyVariant;
+      replyVariant += 1;
+      const { data, error } = await cloudClient.functions.invoke(functionName, {
+        body: { incoming, language: lang, relationship, tone, length: resolvedLength, variant },
+        signal: controller.signal
+      });
+      if (error) {
+        const status = Number(error.context?.status || 0);
+        throw replyAiFailure(status === 401 ? "sign_in_required" : (status === 422 ? "rejected" : "unavailable"));
+      }
+      const text = String(data?.text || "").trim();
+      if (text.length < 12 || !replyFitsSelectedLength(text, incoming, resolvedLength) || containsForbidden(text) || containsReligiousAuthorityClaim(text) || containsImproperRomance(text, relationship) || /<[^>]+>/.test(text)) throw replyAiFailure("rejected");
       return text;
     } finally { clearTimeout(timeout); }
   }
 
+  function replyAiFailure(code) {
+    const error = new Error(String(code || "unavailable"));
+    error.replyCode = code;
+    return error;
+  }
+
   function showReplySafety(reason) {
+    setText("#replySafety strong", t("replySafetyTitle"));
+    setText("#replySafetyReason", reason);
+    $("#replySafety").hidden = false;
+    $("#replyGeneratedCard").hidden = true;
+    $("#replyStatus").hidden = true;
+  }
+
+  function showReplyError(reason) {
+    setText("#replySafety strong", t("replyErrorTitle"));
     setText("#replySafetyReason", reason);
     $("#replySafety").hidden = false;
     $("#replyGeneratedCard").hidden = true;
@@ -2964,8 +2979,9 @@
     const tone = REPLY_TONES.has($("#replyTone").value) ? $("#replyTone").value : "auto";
     const length = REPLY_LENGTHS.has($("#replyLength").value) ? $("#replyLength").value : "auto";
     if (containsImproperRomance(goal, relationship)) return showReplySafety(t("replySafety"));
-    const analysis = replyAnalysis(incoming);
-    lastReplyContext = { incoming, relationship, tone, length, goal, intent: analysis.intent };
+    if (!cloudClient || !String(CONFIG.aiReplyFunction || "").trim()) return showReplyError(t("replyAiUnavailable"));
+    if (!cloudSession?.access_token || !cloudUser?.id) return showReplyError(t("replySignInRequired"));
+    lastReplyContext = { incoming, relationship, tone, length, goal, intent: "", enforceIntent: false, enforceSemantics: false };
     $("#replySafety").hidden = true;
     $("#replyGeneratedCard").hidden = true;
     $("#replyStatus").hidden = false;
@@ -2973,16 +2989,10 @@
     let progress = 8; $("#replyStatusBar").style.width = `${progress}%`; $("#replyStatusPercent").textContent = `${progress}%`; setText("#replyStatusText", t("replyGenerating"));
     const timer = setInterval(() => { progress = Math.min(91, progress + 11); $("#replyStatusBar").style.width = `${progress}%`; $("#replyStatusPercent").textContent = `${progress}%`; }, 90);
     try {
-      const local = localComposeReply(incoming, relationship, tone, goal, length);
-      if (CONFIG.aiEndpoint) {
-        try { generatedReply = await remoteComposeReply(incoming, relationship, tone, goal, length); }
-        catch { generatedReply = local; showToast(t("composeFail"), 3400); }
-      } else { await new Promise(resolve => setTimeout(resolve, 480)); generatedReply = local; }
+      generatedReply = await remoteComposeReply(incoming, relationship, tone, goal, length);
       if (requestVersion !== replyRequestVersion || incoming !== String($("#replyIncoming").value || "").normalize("NFKC").trim().slice(0, 1800)) return;
-      const intent = analysis.intent;
-      const contextAligned = tone !== "auto" || !REPLY_ENGINE?.isAligned || REPLY_ENGINE.isAligned(generatedReply, intent);
       const audit = replyAuditResult(generatedReply, lastReplyContext);
-      if (containsForbidden(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFitsSelectedLength(generatedReply, incoming, length) || !replyFactsPreserved(generatedReply, goal) || !replyTonePreserved(generatedReply, tone) || !contextAligned || !audit.ok) throw new Error("Blocked output");
+      if (containsForbidden(generatedReply) || containsReligiousAuthorityClaim(generatedReply) || containsImproperRomance(generatedReply, relationship) || !replyFitsSelectedLength(generatedReply, incoming, length) || !audit.ok) throw replyAiFailure("rejected");
       $("#replyGeneratedText").value = generatedReply;
       renderReplyAudit(generatedReply, lastReplyContext);
       $("#replyStatusBar").style.width = "100%"; $("#replyStatusPercent").textContent = "100%";
@@ -2993,7 +3003,13 @@
         $("#replyGeneratedCard").hidden = false;
         $("#replyGeneratedCard").scrollIntoView({ behavior: "smooth", block: "nearest" });
       }, 180);
-    } catch { showReplySafety(t("replySafety")); }
+    } catch (error) {
+      if (requestVersion !== replyRequestVersion) return;
+      const key = error?.replyCode === "sign_in_required"
+        ? "replySignInRequired"
+        : (error?.replyCode === "rejected" ? "replyAiRejected" : "replyAiUnavailable");
+      showReplyError(t(key));
+    }
     finally { clearInterval(timer); button.disabled = false; setText(".reply-generate-label", t("replyGenerate")); }
   }
 
@@ -3575,7 +3591,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=22", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=23", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
