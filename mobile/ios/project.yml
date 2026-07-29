@@ -43,6 +43,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.franceisl.glowletternext
         PRODUCT_NAME: GlowLetter
+        PRODUCT_MODULE_NAME: NurPismo
         INFOPLIST_FILE: NurPismo/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
