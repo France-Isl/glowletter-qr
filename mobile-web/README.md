@@ -17,7 +17,7 @@ mobile-web/
     manifest.json
     manifest.sig
   releases/
-    29/
+    30/
       bundle.zip
 ```
 
@@ -34,14 +34,14 @@ must be version 29 or higher.
   "schema": 1,
   "channel": "stable",
   "applicationId": "com.franceisl.glowletternext",
-  "bundleVersion": 29,
-  "releaseId": "web-2026-08-02-29",
+  "bundleVersion": 30,
+  "releaseId": "web-2026-08-02-30",
   "appVersion": "2.4.0",
   "minNativeVersionCode": 15,
   "requiredBridgeApi": 1,
   "entrypoint": "index.html",
   "archive": {
-    "url": "https://bezam.org/mobile-web/releases/29/bundle.zip",
+    "url": "https://bezam.org/mobile-web/releases/30/bundle.zip",
     "size": 123456,
     "sha256": "64-lowercase-hex-characters"
   },
@@ -73,18 +73,18 @@ bytes, and verifies the result with the public key pinned in the APK:
 ```powershell
 # Safe dry run: packages, hashes, signs and verifies without changing mobile-web/.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 29 `
+  -BundleVersion 30 `
   -Channel stable `
   -ValidateOnly
 
 # Production channel consumed by release builds.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 29 `
+  -BundleVersion 30 `
   -Channel stable
 
 # Preview channel consumed by debug builds. It reuses the identical immutable archive.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 29 `
+  -BundleVersion 30 `
   -Channel preview
 ```
 

@@ -2,27 +2,27 @@
   "schema": 1,
   "channel": "preview",
   "applicationId": "com.franceisl.glowletternext.debug",
-  "bundleVersion": 29,
-  "releaseId": "web-preview-29",
+  "bundleVersion": 30,
+  "releaseId": "web-preview-30",
   "appVersion": "2.4.0",
   "minNativeVersionCode": 15,
   "requiredBridgeApi": 1,
   "entrypoint": "index.html",
   "archive": {
-    "url": "https://bezam.org/mobile-web/releases/29/bundle.zip",
-    "size": 20973034,
-    "sha256": "7e11d92c39a9be3b6ef0ccfaf882976246279be99548cf9e0c43c1c2df48a0fc"
+    "url": "https://bezam.org/mobile-web/releases/30/bundle.zip",
+    "size": 20983001,
+    "sha256": "cdc9e24c9a3fdb6ce876f4741988c35fba447801695a3366df8194452244f802"
   },
   "files": [
     {
       "path": "CNAME",
-      "size": 10,
-      "sha256": "4717406f1e8037cb3df33e61c9740abd46b11092d8a24ab81f4c4370bbc75bfb"
+      "size": 9,
+      "sha256": "26e2b6bc0da2b58d6cc217ea3bfa0355f9e6566c0d80d812266b3a3ef11055f9"
     },
     {
       "path": "app.js",
-      "size": 306733,
-      "sha256": "41fe38cf25caa06816ee89b9f52df3afa43967a686dbef50e7292292197e856b"
+      "size": 334464,
+      "sha256": "c4500db90a756036247a0067b47e8a63565a06a4f31a0a39b5be01b25461af9b"
     },
     {
       "path": "assets/auth/README.md",
@@ -101,8 +101,8 @@
     },
     {
       "path": "delete-account.html",
-      "size": 10298,
-      "sha256": "42b60625bc69266d38ee762ec66ddb114bd1885b7b60c981f5c336fd841777e3"
+      "size": 10408,
+      "sha256": "c96ce8242adc3cd38a2500c339fb69fdbefbffd5a5a0a3006adcef761bb953ee"
     },
     {
       "path": "email-auth.css",
@@ -131,8 +131,8 @@
     },
     {
       "path": "index.html",
-      "size": 45496,
-      "sha256": "41e48745e886bb8b217e0e327f7f27c5e0597545229155f8de10c412e1b1c935"
+      "size": 49336,
+      "sha256": "cbd668b7e080207e2fe07907424dd8d2a94b751edc8b6fead4bb8abdd82af8ce"
     },
     {
       "path": "letters.js",
@@ -156,8 +156,8 @@
     },
     {
       "path": "privacy.html",
-      "size": 25888,
-      "sha256": "2f397b6b7a93650bce6e82452f7ee2abac4bf1d8f28d0f76f865eab811999f63"
+      "size": 28207,
+      "sha256": "ac5f00966a0ff23c8816a0cf7f2546eb915cfa45bb81add0111e533fda515462"
     },
     {
       "path": "qr-code.js",
@@ -166,18 +166,18 @@
     },
     {
       "path": "styles.css",
-      "size": 75281,
-      "sha256": "4b293bbef95213ceae9280e3d9358122dcdb3350c907b2c427719ede4ef70f0c"
+      "size": 85477,
+      "sha256": "b6cb6f29f8e735be859cde1903cbd8ca582f83f0e3d3cf2c20fbbfccec9838be"
     },
     {
       "path": "sw.js",
       "size": 3418,
-      "sha256": "e873a362627c1f4e4efb8f82e3379cefcb56ac04285eb2da823b4856af974d80"
+      "sha256": "1d157609164ad55929aa02f3a2be49fef0179d87f13bab17624999638fda3bdb"
     },
     {
       "path": "terms.html",
-      "size": 19599,
-      "sha256": "0bd8e8ad8d5e68ae9f30ce995a8e8b73bb50fc4751f3fe949d8b687cd9fa92c0"
+      "size": 20857,
+      "sha256": "b47f2704cbb729bef1c45e3ad692375497968c7accf7bffcf8c174d1d22e18e8"
     },
     {
       "path": "vendor/qrcode-generator-1.4.4.min.js",

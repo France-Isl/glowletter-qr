@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' data: blob: https://xzzngrquomyiglktroqi.supabase.co; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' data: blob: https://xzzngrquomyiglktroqi.supabase.co; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co wss://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
   <meta name="referrer" content="no-referrer" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#211a27" />
@@ -15,15 +15,15 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=28" />
+  <link rel="manifest" href="manifest.webmanifest?v=29" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Literata:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=28" />
-  <link rel="stylesheet" href="experience.css?v=28" />
-  <link rel="stylesheet" href="email-auth.css?v=28" />
-  <link rel="stylesheet" href="moments.css?v=28" data-glowletter-moments-style />
+  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="experience.css?v=29" />
+  <link rel="stylesheet" href="email-auth.css?v=29" />
+  <link rel="stylesheet" href="moments.css?v=29" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -295,7 +295,14 @@
                 <small class="account-plan-status" id="accountPlanStatus" role="status" aria-live="polite">План: проверяется…</small>
               </div>
             </div>
-            <div class="account-user-actions"><button id="accountSignOut" type="button">Выйти</button><button class="account-delete" id="accountDelete" type="button">Удалить аккаунт</button></div>
+            <div class="account-user-actions">
+              <button class="account-notification-button" id="notificationBell" type="button" aria-label="Уведомления" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg>
+                <span id="notificationBellLabel">Уведомления</span>
+                <b id="notificationUnreadBadge" aria-hidden="true" hidden>0</b>
+              </button>
+              <button id="accountSignOut" type="button">Выйти</button><button class="account-delete" id="accountDelete" type="button">Удалить аккаунт</button>
+            </div>
           </div>
           <div class="account-support" id="accountSupport" hidden>
             <div class="account-support-id">
@@ -332,6 +339,9 @@
             </div>
             <div class="admin-access-actions">
               <label class="admin-days-field" for="adminVipDays"><span id="adminVipDaysLabel">Срок VIP</span><span><input id="adminVipDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminVipDaysUnit">дней</b></span></label>
+              <label class="admin-notice-reason" for="adminVipReason"><span id="adminVipReasonLabel">Причина уведомления</span><select id="adminVipReason"><option value="gift">Подарок</option><option value="compensation">Компенсация</option><option value="promotion">Акция</option><option value="other">Другое</option></select></label>
+              <label class="admin-notice-message" for="adminVipMessage"><span id="adminVipMessageLabel">Личное сообщение · необязательно</span><textarea id="adminVipMessage" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter" aria-describedby="adminVipMessageHint adminVipMessageCount"></textarea></label>
+              <div class="admin-notice-meta"><small id="adminVipMessageHint">Получатель увидит это сообщение внутри приложения.</small><output id="adminVipMessageCount" for="adminVipMessage">0 / 240</output></div>
               <button id="adminGrantVip" type="button">Выдать VIP</button>
               <button class="admin-revoke" id="adminRevokeVip" type="button">Отозвать VIP</button>
             </div>
@@ -484,6 +494,34 @@
       </section>
     </div>
 
+    <div class="panel-layer center-layer" id="notificationLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="notificationBackdrop" type="button" aria-label="Закрыть уведомления"></button>
+      <section class="vip-notification-card" role="dialog" aria-modal="true" aria-labelledby="notificationTitle" aria-describedby="notificationLead">
+        <button class="panel-close vip-notification-close" id="notificationClose" type="button" aria-label="Закрыть уведомления">×</button>
+        <header class="vip-notification-heading">
+          <div class="vip-notification-emblem" aria-hidden="true"><span>VIP</span><i>✦</i></div>
+          <div><p class="panel-eyebrow" id="notificationEyebrow">GLOWLETTER · VIP</p><h2 id="notificationTitle">Ваши уведомления</h2></div>
+        </header>
+        <p class="vip-notification-lead" id="notificationLead">Здесь сохраняются подарки и изменения VIP-доступа.</p>
+
+        <section class="vip-notice-hero" id="vipNoticeHero" aria-labelledby="vipNoticeTitle" hidden>
+          <div class="vip-notice-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i></div>
+          <div class="vip-notice-topline"><span id="vipNoticeReason">Подарок</span><time id="vipNoticeDate"></time></div>
+          <h3 id="vipNoticeTitle">VIP уже активен</h3>
+          <p id="vipNoticeBody">Полный доступ открыт.</p>
+          <blockquote id="vipNoticeMessage" hidden></blockquote>
+          <button id="notificationAcknowledge" type="button">Отлично</button>
+        </section>
+
+        <section class="vip-notification-history" aria-labelledby="notificationHistoryTitle">
+          <div class="vip-notification-history-heading"><h3 id="notificationHistoryTitle">История</h3><span id="notificationHistoryState">Всё прочитано</span></div>
+          <ul id="notificationHistoryList"></ul>
+          <p class="vip-notification-empty" id="notificationEmpty">Здесь появятся сообщения о VIP-доступе.</p>
+        </section>
+        <p class="vip-notification-status" id="notificationStatus" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+
     <div class="panel-layer center-layer" id="paywallLayer" aria-hidden="true">
       <button class="panel-backdrop" id="paywallBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="paywall-card" role="dialog" aria-modal="true" aria-labelledby="paywallTitle">
@@ -504,14 +542,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=28"></script>
-  <script src="vendor/supabase-2.110.9.js?v=28"></script>
-  <script src="letters.js?v=28"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=28"></script>
-  <script src="qr-code.js?v=28"></script>
-  <script src="app.js?v=28"></script>
-  <script src="email-auth.js?v=28"></script>
-  <script src="moments.js?v=28"></script>
-  <script src="experience.js?v=28"></script>
+  <script src="config.js?v=29"></script>
+  <script src="vendor/supabase-2.110.9.js?v=29"></script>
+  <script src="letters.js?v=29"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=29"></script>
+  <script src="qr-code.js?v=29"></script>
+  <script src="app.js?v=29"></script>
+  <script src="email-auth.js?v=29"></script>
+  <script src="moments.js?v=29"></script>
+  <script src="experience.js?v=29"></script>
 </body>
 </html>
