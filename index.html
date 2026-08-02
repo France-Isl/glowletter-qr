@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' data: blob: https://xzzngrquomyiglktroqi.supabase.co; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
   <meta name="referrer" content="no-referrer" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#211a27" />
@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=25" />
+  <link rel="manifest" href="manifest.webmanifest?v=26" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=25" />
-  <link rel="stylesheet" href="experience.css?v=25" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Literata:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=26" />
+  <link rel="stylesheet" href="experience.css?v=26" />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -37,7 +37,7 @@
 
     <header class="topbar">
       <button class="round-control home-control" id="homeButton" type="button" aria-label="На главный экран" hidden>⌂</button>
-      <button class="round-control sound-button" id="soundButton" type="button" aria-label="Включить нашид" aria-pressed="false">
+      <button class="round-control sound-button" id="soundButton" type="button" aria-label="Включить аудио" aria-pressed="false" hidden>
         <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
       <button class="round-control nature-button" id="natureButton" type="button" aria-label="Включить звуки природы" aria-pressed="false">♬</button>
@@ -273,7 +273,7 @@
             <button class="account-id-copy" id="copyAccountId" type="button" aria-label="Скопировать ID аккаунта"><span aria-hidden="true">⧉</span> Скопировать</button>
             <small class="account-support-note" id="accountSupportNote">Это не пароль. Передавайте ID только официальной поддержке GlowLetter.</small>
           </div>
-          <p class="account-privacy" id="accountPrivacyNote">Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.</p>
+          <p class="account-privacy" id="accountPrivacyNote">Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов.</p>
         </section>
 
         <section class="admin-panel" id="adminPanel" aria-labelledby="adminPanelTitle" hidden>
@@ -350,12 +350,11 @@
         </fieldset>
 
         <fieldset class="track-picker">
-          <legend>Музыка и нашиды</legend>
-          <button class="track-option is-active" type="button" data-track="0"><i>01</i><span><strong>Мураджан · slowed</strong><small>основная мелодия</small></span><b>✓</b></button>
-          <button class="track-option" type="button" data-track="1"><i>02</i><span><strong>Азан · nasheed</strong><small>светлая версия</small></span><b>✓</b></button>
-          <button class="track-option" type="button" data-track="2"><i>03</i><span><strong>Лучшие нашиды</strong><small>тёплая версия</small></span><b>✓</b></button>
-          <button class="track-option custom-track" id="customTrackButton" type="button"><i>＋</i><span><strong>Добавить свой нашид</strong><small id="customTrackName">MP3, M4A, OGG или WAV</small></span><b>✓</b></button>
-          <input class="visually-hidden" id="customTrackInput" type="file" accept="audio/*,.mp3,.m4a,.ogg,.wav" />
+          <legend>Аудио письма</legend>
+          <button class="track-option custom-track" id="customTrackButton" type="button"><i>＋</i><span><strong>Добавить своё аудио</strong><small id="customTrackName">MP3, M4A, AAC, OGG или WAV · до 12 МБ</small></span><b>✓</b></button>
+          <button class="audio-remove" id="removeAudioButton" type="button" hidden>× Убрать аудио</button>
+          <small class="audio-share-note" id="audioShareNote">В персональной ссылке аудио доступно получателю до 12 часов.</small>
+          <input class="visually-hidden" id="customTrackInput" type="file" accept="audio/mpeg,audio/mp4,audio/aac,audio/ogg,audio/wav,.mp3,.m4a,.aac,.ogg,.wav" />
         </fieldset>
 
         <button class="save-settings" id="saveSettingsButton" type="button">Сохранить настройки</button>
@@ -473,12 +472,12 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=25"></script>
-  <script src="vendor/supabase-2.110.9.js?v=25"></script>
-  <script src="letters.js?v=25"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=25"></script>
-  <script src="qr-code.js?v=25"></script>
-  <script src="app.js?v=25"></script>
-  <script src="experience.js?v=25"></script>
+  <script src="config.js?v=26"></script>
+  <script src="vendor/supabase-2.110.9.js?v=26"></script>
+  <script src="letters.js?v=26"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=26"></script>
+  <script src="qr-code.js?v=26"></script>
+  <script src="app.js?v=26"></script>
+  <script src="experience.js?v=26"></script>
 </body>
 </html>

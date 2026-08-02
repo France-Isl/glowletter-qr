@@ -36,6 +36,17 @@
   const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
   const SUPPORT_MESSAGE_MIN = 20;
   const SUPPORT_MESSAGE_MAX = 2000;
+  const SHARED_AUDIO_FUNCTION = "shared-audio";
+  const SHARED_AUDIO_BUCKET = "glowletter-shared-audio";
+  const SHARED_AUDIO_MAX_BYTES = 12 * 1024 * 1024;
+  const SHARED_AUDIO_TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/u;
+  const SHARED_AUDIO_TYPES = Object.freeze({
+    mp3: "audio/mpeg",
+    m4a: "audio/mp4",
+    aac: "audio/aac",
+    ogg: "audio/ogg",
+    wav: "audio/wav"
+  });
   const AUTH_PROVIDER_PRIORITY = Object.freeze(["google", "apple", "facebook"]);
   const AUTH_PROVIDER_LABEL_KEYS = Object.freeze({
     google: "continueGoogle",
@@ -61,9 +72,9 @@
   };
 
   const EXTRA_UI = {
-    ru: { adabTitle:"Режим адаба всегда включён",adabNote:"Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.",ownNote:"Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.",qualityTitle:"Почему текст стал лучше:",qualityBody:"редактор определяет семейный контекст, собирает цельное письмо из проверенных смыслов и проверяет результат. Никакой модели на 500 МБ.",religiousNote:"Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.",collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Музыка и нашиды",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Ежемесячная подписка: личный редактор, все письма и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Умные письма<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Премиум продлевается ежемесячно и открывает полную коллекцию и личный редактор.",benefit1:"50 персональных писем",benefit2:"личный редактор писем",benefit3:"новые функции каждый месяц",payButton:"Оформить подписку",storeNote:"Автопродление можно отменить в аккаунте магазина. Цена отображается в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить свой нашид",customMusicNote:"MP3, M4A, OGG или WAV" },
-    en: { adabTitle:"Adab mode is always on",adabNote:"Respectful words only. Adult content, abuse, and prohibited themes are blocked.",ownNote:"Your text passes the same modesty filter and is saved inside the personal link.",qualityTitle:"Why the text is better:",qualityBody:"the editor identifies family context, builds one coherent letter from reviewed ideas, and validates the result. No 500 MB model download.",religiousNote:"The filter supports modest and respectful wording but is not a religious ruling. Please reread the letter before sending.",collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Music and nasheeds",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"Monthly subscription: the personal editor, every letter, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Smart letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. Premium renews monthly and unlocks the full collection and personal editor.",benefit1:"50 personal letters",benefit2:"personal letter editor",benefit3:"new features every month",payButton:"Start subscription",storeNote:"Auto-renewal can be cancelled in your store account. The local store price is shown.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own nasheed",customMusicNote:"MP3, M4A, OGG, or WAV" },
-    fr: { adabTitle:"Le mode adab est toujours actif",adabNote:"Uniquement des mots respectueux. Le contenu adulte, la grossièreté et les thèmes interdits sont bloqués.",ownNote:"Votre texte passe le même filtre de pudeur et sera enregistré dans le lien personnel.",qualityTitle:"Pourquoi le texte est meilleur :",qualityBody:"l’éditeur reconnaît le contexte familial, compose une lettre cohérente avec des idées vérifiées et contrôle le résultat. Aucun modèle de 500 Mo.",religiousNote:"Le filtre favorise la pudeur et le respect, mais ne constitue pas un avis religieux. Relisez la lettre avant de l’envoyer.",collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Musique et nasheeds",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Abonnement mensuel : éditeur personnel, toutes les lettres et nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Lettres intelligentes<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle chaque mois et ouvre la collection complète et l’éditeur personnel.",benefit1:"50 lettres personnelles",benefit2:"éditeur de lettres personnelles",benefit3:"nouvelles fonctions chaque mois",payButton:"S’abonner",storeNote:"Le renouvellement automatique peut être annulé dans votre compte du magasin. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre nasheed",customMusicNote:"MP3, M4A, OGG ou WAV" }
+    ru: { adabTitle:"Режим адаба всегда включён",adabNote:"Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.",ownNote:"Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.",qualityTitle:"Почему текст стал лучше:",qualityBody:"редактор определяет семейный контекст, собирает цельное письмо из проверенных смыслов и проверяет результат. Никакой модели на 500 МБ.",religiousNote:"Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.",collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Аудио письма",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Ежемесячная подписка: личный редактор, все письма и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Умные письма<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Премиум продлевается ежемесячно и открывает полную коллекцию и личный редактор.",benefit1:"50 персональных писем",benefit2:"личный редактор писем",benefit3:"новые функции каждый месяц",payButton:"Оформить подписку",storeNote:"Автопродление можно отменить в аккаунте магазина. Цена отображается в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ" },
+    en: { adabTitle:"Adab mode is always on",adabNote:"Respectful words only. Adult content, abuse, and prohibited themes are blocked.",ownNote:"Your text passes the same modesty filter and is saved inside the personal link.",qualityTitle:"Why the text is better:",qualityBody:"the editor identifies family context, builds one coherent letter from reviewed ideas, and validates the result. No 500 MB model download.",religiousNote:"The filter supports modest and respectful wording but is not a religious ruling. Please reread the letter before sending.",collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Letter audio",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"Monthly subscription: the personal editor, every letter, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Smart letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. Premium renews monthly and unlocks the full collection and personal editor.",benefit1:"50 personal letters",benefit2:"personal letter editor",benefit3:"new features every month",payButton:"Start subscription",storeNote:"Auto-renewal can be cancelled in your store account. The local store price is shown.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB" },
+    fr: { adabTitle:"Le mode adab est toujours actif",adabNote:"Uniquement des mots respectueux. Le contenu adulte, la grossièreté et les thèmes interdits sont bloqués.",ownNote:"Votre texte passe le même filtre de pudeur et sera enregistré dans le lien personnel.",qualityTitle:"Pourquoi le texte est meilleur :",qualityBody:"l’éditeur reconnaît le contexte familial, compose une lettre cohérente avec des idées vérifiées et contrôle le résultat. Aucun modèle de 500 Mo.",religiousNote:"Le filtre favorise la pudeur et le respect, mais ne constitue pas un avis religieux. Relisez la lettre avant de l’envoyer.",collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Audio de la lettre",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Abonnement mensuel : éditeur personnel, toutes les lettres et nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"Lettres intelligentes<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle chaque mois et ouvre la collection complète et l’éditeur personnel.",benefit1:"50 lettres personnelles",benefit2:"éditeur de lettres personnelles",benefit3:"nouvelles fonctions chaque mois",payButton:"S’abonner",storeNote:"Le renouvellement automatique peut être annulé dans votre compte du magasin. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum" }
   };
   Object.keys(UI).forEach(code => Object.assign(UI[code], EXTRA_UI[code]));
   UI.ru.brandCopyPersonal = "Тёплые слова, выбранные с заботой специально для {to}.";
@@ -165,6 +176,15 @@
     accountTitle:"Sauvegarde",accountGuestNote:"Retrouvez vos lettres et réglages sur tous vos appareils.",accountPrivacy:"Les photos et fichiers audio personnels restent sur cet appareil.",
     letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
   });
+  Object.assign(UI.ru, {
+    music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
+  });
+  Object.assign(UI.en, {
+    music:"Letter audio",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB",audioShareNote:"In a personal link, recipients can play the audio for up to 12 hours.",removeAudio:"× Remove audio",soundOnAria:"Play audio",soundOffAria:"Pause audio",audioTooLarge:"Choose an audio file up to 12 MB",audioUnsupported:"MP3, M4A, AAC, OGG, and WAV are supported",audioSignIn:"Sign in to attach audio securely, or remove the audio before sharing",audioPreparing:"Preparing temporary audio for the recipient…",audioShareFailed:"Audio could not be attached securely. Check your connection and try again.",audioExpired:"This audio link has expired",audioPlayFail:"Tap again to play audio",audioRemoved:"Audio removed",accountPrivacy:"Personal audio stays on this device; a temporary copy is available for up to 12 hours only when you share a personal link."
+  });
+  Object.assign(UI.fr, {
+    music:"Audio de la lettre",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",audioShareNote:"Dans un lien personnel, le destinataire peut écouter l’audio pendant 12 heures maximum.",removeAudio:"× Retirer l’audio",soundOnAria:"Lire l’audio",soundOffAria:"Mettre l’audio en pause",audioTooLarge:"Choisissez un fichier audio de 12 Mo maximum",audioUnsupported:"Formats acceptés : MP3, M4A, AAC, OGG et WAV",audioSignIn:"Connectez-vous pour joindre l’audio en sécurité, ou retirez-le avant le partage",audioPreparing:"Préparation de l’audio temporaire pour le destinataire…",audioShareFailed:"Impossible de joindre l’audio en sécurité. Vérifiez la connexion et réessayez.",audioExpired:"Le lien audio a expiré",audioPlayFail:"Touchez à nouveau pour lire l’audio",audioRemoved:"Audio retiré",accountPrivacy:"L’audio personnel reste sur cet appareil ; une copie temporaire est disponible jusqu’à 12 heures uniquement lors du partage d’un lien personnel."
+  });
 
   const SELECT_OPTIONS = {
     relationship: {
@@ -188,12 +208,6 @@
       fr:[["technical",UI.fr.supportCategoryTechnical],["account",UI.fr.supportCategoryAccount],["subscription",UI.fr.supportCategorySubscription],["content",UI.fr.supportCategoryContent],["feedback",UI.fr.supportCategoryFeedback],["other",UI.fr.supportCategoryOther]]
     }
   };
-
-  const tracks = [
-    { name: "Мураджан · slowed", source: "audio/track-1.mp3", fallback: "audio/track-1.b64" },
-    { name: "Азан · nasheed", source: "audio/track-2.mp3", fallback: "audio/track-2.b64" },
-    { name: "Лучшие нашиды", source: "audio/track-3.mp3", fallback: "audio/track-3.b64" }
-  ];
 
   const forbiddenStems = [
     "секс", "эрот", "порн", "поцелу", "интим", "обнаж", "генитал", "оргазм", "возбужд", "мастурб", "проститу",
@@ -382,9 +396,15 @@
   let currentIndex = sharedMessage ? 0 : Math.max(0, Math.min(Number(params.get("quote") || (initialNamesReady ? localStorage.getItem("nurLetterIndex") : 1) || 1) - 1, Math.max(0, letterDeck.length - 1)));
   let storyOpened = false;
   let selectedCategory = "all";
-  let selectedTrack = Math.max(0, Math.min(Number(localStorage.getItem("nurTrack") || 0), 3));
+  let selectedTrack = localStorage.getItem("nurTrack") === "3" ? 3 : -1;
   let currentAudioUrl = "";
   let customAudioBlob = null;
+  let customAudioName = "";
+  let customAudioFingerprint = "";
+  let outgoingAudioShare = null;
+  let incomingSharedAudioToken = readSharedAudioToken(location.href);
+  let resolvedSharedAudio = null;
+  let audioRecoveryAttempted = false;
   let backgroundUrl = "";
   let mobileBackgroundUrl = "";
   let customBackgroundBlob = null;
@@ -468,7 +488,7 @@
   let supportSubmitting = false;
   const AUTO_FULLSCREEN_KEY = "nurAutoFullscreenV17";
   let cloudNames = linkNamesActive ? { sender: "", recipient: "" } : { sender: fromName, recipient: toName };
-  let cloudBuiltInTrack = selectedTrack >= 0 && selectedTrack <= 2 ? selectedTrack : Math.max(0, Math.min(Number(localStorage.getItem("nurLastBuiltInTrack") || 0), 2));
+  let cloudBuiltInTrack = 0;
   const handledAuthCodes = new Set();
 
   const audio = $("#nasheed");
@@ -979,6 +999,8 @@
     setText("#adminGrantVip", t("adminGrantVip"));
     setText("#adminRevokeVip", t("adminRevoke"));
     const signedIn = Boolean(cloudUser?.id);
+    const isAdmin = signedIn && cloudAccount?.is_admin === true;
+    const identityReady = signedIn && cloudAccount !== null && !isAdmin;
     const accountStatus = $("#accountStatus");
     const quietSyncedState = signedIn && cloudStatusKey === "cloudSynced";
     const quietGuestState = !signedIn && cloudStatusKey === "cloudSignInPrompt";
@@ -987,6 +1009,7 @@
     const accountHeading = card.querySelector(".account-heading");
     accountHeading.hidden = quietSyncedState;
     card.dataset.signedIn = String(signedIn);
+    card.classList.toggle("is-admin", isAdmin);
     $("#accountPrivacyNote").hidden = signedIn;
     card.dataset.state = cloudStatusKey === "cloudSyncing" || cloudAuthBusy ? "syncing" : cloudStatusKey === "cloudError" || cloudStatusKey === "cloudSignInError" ? "error" : "ready";
 
@@ -1003,7 +1026,6 @@
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
     $("#accountDelete").disabled = cloudAuthBusy;
-    const isAdmin = signedIn && cloudAccount?.is_admin === true;
     const support = $("#accountSupport");
     const supportVisible = signedIn && Boolean(cloudAccount?.support_id) && !isAdmin;
     support.hidden = !supportVisible;
@@ -1017,6 +1039,9 @@
     planBadge.dataset.plan = planState;
     planBadge.textContent = accountPlanBadgeText(planState);
     setText("#accountPlanStatus", signedIn ? accountPlanText(cloudAccount, { includeNative: true }) : t("accountPlanChecking"));
+    $("#accountPlanStatus").hidden = isAdmin;
+    $("#accountAvatarButton").hidden = !identityReady;
+    card.querySelector(".account-profile-copy > p").hidden = !identityReady;
     const adminPanel = $("#adminPanel");
     adminPanel.hidden = !isAdmin;
     if (adminPanel.hidden) {
@@ -1027,7 +1052,7 @@
       renderAdminResult();
     }
 
-    if (signedIn) {
+    if (identityReady) {
       const email = String(cloudUser.email || "");
       const metadata = cloudUser.user_metadata || {};
       const label = cleanName(metadata.full_name || metadata.name || email.split("@")[0] || "GlowLetter");
@@ -1039,6 +1064,9 @@
       image.hidden = !hasLocalAvatar;
       $("#accountAvatar").hidden = hasLocalAvatar;
       $("#accountAvatarButton").setAttribute("aria-label", t("profilePhotoAria"));
+    } else {
+      setText("#accountUserName", "");
+      setText("#accountUserEmail", "");
     }
     renderSupportFormState();
   }
@@ -1640,10 +1668,8 @@
       weatherEnabled = row.weather_enabled === true;
       localStorage.setItem("nurWeather", weatherEnabled ? "on" : "off");
 
-      cloudBuiltInTrack = Math.max(0, Math.min(Number(row.built_in_track) || 0, 2));
-      selectedTrack = cloudBuiltInTrack;
-      localStorage.setItem("nurTrack", String(selectedTrack));
-      localStorage.setItem("nurLastBuiltInTrack", String(cloudBuiltInTrack));
+      // Kept only for backward compatibility with cloud schema v1.
+      cloudBuiltInTrack = 0;
 
       const remoteNature = row.nature_enabled === true;
       localStorage.setItem("nurNature", remoteNature ? "on" : "off");
@@ -1654,7 +1680,7 @@
       audio.volume = Number.isFinite(volume) ? volume : .62;
       localStorage.setItem("nurVolume", String(audio.volume));
 
-      $$("[data-track]").forEach(option => option.classList.toggle("is-active", Number(option.dataset.track) === selectedTrack));
+      renderAudioControls();
       applyLanguage();
       if(weatherEnabled)setTimeout(()=>refreshWeather({silent:true}),0);else renderWeather();
       if (storyOpened) renderLetter();
@@ -2201,8 +2227,8 @@
     const naturePreferenceEnabled = isNaturePlaying || localStorage.getItem("nurNature") === "on";
     $("#natureToggle").classList.toggle("is-active", naturePreferenceEnabled); $("#weatherToggle").classList.toggle("is-active", weatherEnabled);
     setText("#rainToggle b", rainScene.enabled ? t("stateOn") : t("stateOff")); setText("#natureToggle b", naturePreferenceEnabled ? t("stateOn") : t("stateOff")); if (!$("#weatherState").textContent.includes("°")) setText("#weatherState", weatherEnabled ? t("stateOn") : t("stateOff")); updateFullscreenControl(); setText("#saveSettingsButton", t("saveSettings"));
-    setText(".background-picker legend", t("personalBg")); setText(".background-preview strong", t("ownPhoto")); setText(".background-preview small", t("localOnly")); setText(".track-picker legend", t("music")); setText("#customTrackButton strong", t("customMusic")); if (!customAudioBlob) setText("#customTrackName", t("customMusicNote"));
-    const trackNotes = $$(".track-option[data-track] small"); if (trackNotes[0]) trackNotes[0].textContent = t("trackPrimary"); if (trackNotes[1]) trackNotes[1].textContent = t("trackLight"); if (trackNotes[2]) trackNotes[2].textContent = t("trackWarm");
+    setText(".background-picker legend", t("personalBg")); setText(".background-preview strong", t("ownPhoto")); setText(".background-preview small", t("localOnly")); setText(".track-picker legend", t("music")); setText("#customTrackButton strong", t("customMusic")); if (!customAudioBlob) setText("#customTrackName", t("customMusicNote")); setText("#removeAudioButton", t("removeAudio")); setText("#audioShareNote", t("audioShareNote"));
+    renderAudioControls();
     setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText(".paywall-card > p", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText(".paywall-card > small", t("storeNote"));
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
@@ -2815,11 +2841,217 @@
 
   function base64ToBlob(base64, mime) { base64=String(base64).replace(/\s+/g,"");const arrays=[];for(let offset=0;offset<base64.length;offset+=512*1024){const end=Math.min(base64.length,offset+512*1024);const safeEnd=end<base64.length?end-(end-offset)%4:end;const binary=atob(base64.slice(offset,safeEnd));const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);arrays.push(bytes);offset=safeEnd-512*1024;}return new Blob(arrays,{type:mime}); }
 
-  async function getBuiltinBlob(index) { const response=await fetch(tracks[index].source);if(response.ok)return response.blob();const fallback=await fetch(tracks[index].fallback);if(!fallback.ok)throw new Error("Track missing");return base64ToBlob((await fallback.text()).trim(),"audio/mpeg"); }
-  async function setAudioSource(index) { if(currentAudioUrl)URL.revokeObjectURL(currentAudioUrl);const blob=index===3?customAudioBlob:await getBuiltinBlob(index);if(!blob)throw new Error("Choose audio first");currentAudioUrl=URL.createObjectURL(blob);audio.src=currentAudioUrl;audio.load(); }
-  async function playMusic(quiet=false) { try{if(!audio.src)await setAudioSource(selectedTrack);await audio.play();isMusicPlaying=true;$("#soundButton").classList.add("is-playing");$("#soundButton").setAttribute("aria-pressed","true");$("#soundButton").setAttribute("aria-label",t("soundOffAria"));}catch{if(!quiet)showToast("Tap again to start audio");} }
-  function pauseMusic(){audio.pause();isMusicPlaying=false;$("#soundButton").classList.remove("is-playing");$("#soundButton").setAttribute("aria-pressed","false");$("#soundButton").setAttribute("aria-label",t("soundOnAria"));}
-  async function selectTrack(index){const resume=isMusicPlaying;selectedTrack=index;localStorage.setItem("nurTrack",String(index));if(index>=0&&index<=2){cloudBuiltInTrack=index;localStorage.setItem("nurLastBuiltInTrack",String(index));scheduleCloudSync();}$$('.track-option').forEach(option=>option.classList.toggle("is-active",Number(option.dataset.track)===index||(index===3&&option.id==="customTrackButton")));audio.pause();audio.removeAttribute("src");audio.load();try{await setAudioSource(index);if(resume)await playMusic();showToast(index===3?$("#customTrackName").textContent:tracks[index].name);}catch(error){showToast(error.message);} }
+  function readSharedAudioToken(rawUrl = location.href) {
+    try {
+      const url = new URL(String(rawUrl || location.href), location.href);
+      const token = new URLSearchParams(url.hash.replace(/^#/, "")).get("audio") || "";
+      return SHARED_AUDIO_TOKEN_PATTERN.test(token) ? token : "";
+    } catch {
+      return "";
+    }
+  }
+
+  function audioDescriptor(blob, name = customAudioName) {
+    if (!(blob instanceof Blob) || blob.size < 1 || blob.size > SHARED_AUDIO_MAX_BYTES) return null;
+    const extension = String(name || "").split(".").pop()?.toLowerCase() || "";
+    const mimeType = SHARED_AUDIO_TYPES[extension];
+    if (!mimeType) return null;
+    const declared = String(blob.type || "").split(";", 1)[0].trim().toLowerCase();
+    const accepted = new Set(["", mimeType, "audio/mp3", "audio/x-mp3", "audio/m4a", "audio/x-m4a", "audio/x-aac", "audio/x-wav", "audio/vnd.wave", "application/ogg", "video/mp4"]);
+    return accepted.has(declared) ? { extension, mimeType } : null;
+  }
+
+  async function audioFingerprint(blob) {
+    const digest = await crypto.subtle.digest("SHA-256", await blob.arrayBuffer());
+    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function sharedAudioRequest(action, payload = {}, requireUser = false) {
+    if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) throw new Error("audio_service_unavailable");
+    if (requireUser && (!cloudUser?.id || !cloudSession?.access_token)) throw new Error("authentication_required");
+    const headers = { "Content-Type": "application/json", apikey: SUPABASE_PUBLISHABLE_KEY };
+    if (requireUser) headers.Authorization = `Bearer ${cloudSession.access_token}`;
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/${SHARED_AUDIO_FUNCTION}`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ action, ...payload }),
+      cache: "no-store",
+      credentials: "omit",
+      referrerPolicy: "no-referrer"
+    });
+    let data = null;
+    try { data = await response.json(); } catch {}
+    if (!response.ok) {
+      const error = new Error(String(data?.error || "audio_service_unavailable"));
+      error.status = response.status;
+      throw error;
+    }
+    return data || {};
+  }
+
+  function clearAudioSource() {
+    audio.pause();
+    if (currentAudioUrl.startsWith("blob:")) URL.revokeObjectURL(currentAudioUrl);
+    currentAudioUrl = "";
+    audio.removeAttribute("src");
+    audio.load();
+    isMusicPlaying = false;
+    $("#soundButton").classList.remove("is-playing");
+    $("#soundButton").setAttribute("aria-pressed", "false");
+  }
+
+  function renderAudioControls() {
+    const hasLocalAudio = customAudioBlob instanceof Blob;
+    const hasSharedAudio = Boolean(incomingSharedAudioToken);
+    selectedTrack = hasLocalAudio ? 3 : -1;
+    $("#customTrackButton")?.classList.toggle("is-active", hasLocalAudio);
+    if ($("#customTrackName")) $("#customTrackName").textContent = hasLocalAudio ? (customAudioName || t("customMusic")) : t("customMusicNote");
+    if ($("#removeAudioButton")) $("#removeAudioButton").hidden = !hasLocalAudio;
+    if ($("#soundButton")) $("#soundButton").hidden = !(hasLocalAudio || hasSharedAudio);
+  }
+
+  async function persistCustomAudio() {
+    if (!customAudioBlob) return saveMedia("audio", null);
+    return saveMedia("audio", {
+      blob: customAudioBlob,
+      name: customAudioName,
+      fingerprint: customAudioFingerprint,
+      temporaryShare: outgoingAudioShare
+    });
+  }
+
+  async function ensureTemporarySharedAudio() {
+    if (!customAudioBlob) return incomingSharedAudioToken || "";
+    if (!cloudUser?.id || !cloudSession?.access_token || !cloudClient) throw new Error("authentication_required");
+    const descriptor = audioDescriptor(customAudioBlob, customAudioName);
+    if (!descriptor) throw new Error("invalid_audio_metadata");
+    if (!customAudioFingerprint) customAudioFingerprint = await audioFingerprint(customAudioBlob);
+    const reusable = outgoingAudioShare
+      && outgoingAudioShare.fingerprint === customAudioFingerprint
+      && SHARED_AUDIO_TOKEN_PATTERN.test(outgoingAudioShare.token || "")
+      && Date.parse(outgoingAudioShare.expiresAt || "") > Date.now() + 5 * 60 * 1000;
+    if (reusable) return outgoingAudioShare.token;
+
+    showToast(t("audioPreparing"), 5000);
+    const reservation = await sharedAudioRequest("reserve", {
+      mimeType: descriptor.mimeType,
+      sizeBytes: customAudioBlob.size
+    }, true);
+    if (!reservation.objectPath || !reservation.uploadToken || !reservation.shareToken) throw new Error("audio_upload_unavailable");
+    const { error: uploadError } = await cloudClient.storage
+      .from(SHARED_AUDIO_BUCKET)
+      .uploadToSignedUrl(reservation.objectPath, reservation.uploadToken, customAudioBlob, {
+        contentType: reservation.contentType || descriptor.mimeType,
+        upsert: false
+      });
+    if (uploadError) throw new Error("audio_upload_unavailable");
+    const finalized = await sharedAudioRequest("finalize", { shareToken: reservation.shareToken }, true);
+    if (finalized.ready !== true || !SHARED_AUDIO_TOKEN_PATTERN.test(finalized.shareToken || "")) throw new Error("audio_finalize_failed");
+    outgoingAudioShare = {
+      token: finalized.shareToken,
+      expiresAt: finalized.expiresAt,
+      fingerprint: customAudioFingerprint
+    };
+    await persistCustomAudio();
+    return outgoingAudioShare.token;
+  }
+
+  async function resolveIncomingSharedAudio(force = false) {
+    if (!incomingSharedAudioToken) throw new Error("audio_unavailable");
+    if (!force && resolvedSharedAudio?.token === incomingSharedAudioToken && resolvedSharedAudio.refreshAt > Date.now()) return resolvedSharedAudio.url;
+    const result = await sharedAudioRequest("resolve", { shareToken: incomingSharedAudioToken });
+    if (!result.signedPlaybackUrl) throw new Error("audio_unavailable");
+    const ttl = Math.max(1, Math.min(Number(result.playbackExpiresIn) || 300, 300));
+    resolvedSharedAudio = {
+      token: incomingSharedAudioToken,
+      url: result.signedPlaybackUrl,
+      refreshAt: Date.now() + Math.max(15, ttl - 15) * 1000
+    };
+    return resolvedSharedAudio.url;
+  }
+
+  async function setAudioSource({ refreshRemote = false } = {}) {
+    clearAudioSource();
+    if (incomingSharedAudioToken) {
+      currentAudioUrl = await resolveIncomingSharedAudio(refreshRemote);
+      audio.src = currentAudioUrl;
+    } else if (customAudioBlob) {
+      currentAudioUrl = URL.createObjectURL(customAudioBlob);
+      audio.src = currentAudioUrl;
+    } else {
+      throw new Error("audio_unavailable");
+    }
+    audio.load();
+  }
+
+  async function playMusic(quiet = false) {
+    try {
+      if (!audio.src) await setAudioSource();
+      await audio.play();
+      isMusicPlaying = true;
+      audioRecoveryAttempted = false;
+      $("#soundButton").classList.add("is-playing");
+      $("#soundButton").setAttribute("aria-pressed", "true");
+      $("#soundButton").setAttribute("aria-label", t("soundOffAria"));
+    } catch (error) {
+      const unavailable = ["audio_unavailable", "invalid_share_token"].includes(String(error?.message || "")) || error?.status === 404;
+      if (unavailable && incomingSharedAudioToken) {
+        incomingSharedAudioToken = "";
+        resolvedSharedAudio = null;
+        renderAudioControls();
+        showToast(t("audioExpired"));
+      } else if (!quiet) {
+        showToast(t("audioPlayFail"));
+      }
+    }
+  }
+
+  function pauseMusic() {
+    audio.pause();
+    isMusicPlaying = false;
+    $("#soundButton").classList.remove("is-playing");
+    $("#soundButton").setAttribute("aria-pressed", "false");
+    $("#soundButton").setAttribute("aria-label", t("soundOnAria"));
+  }
+
+  async function selectCustomAudio(file) {
+    if (!file) return;
+    if (file.size > SHARED_AUDIO_MAX_BYTES) return showToast(t("audioTooLarge"));
+    if (!audioDescriptor(file, file.name)) return showToast(t("audioUnsupported"));
+    clearAudioSource();
+    customAudioBlob = file;
+    customAudioName = file.name;
+    customAudioFingerprint = "";
+    outgoingAudioShare = null;
+    selectedTrack = 3;
+    localStorage.setItem("nurTrack", "3");
+    renderAudioControls();
+    try { await persistCustomAudio(); } catch {}
+    await playMusic();
+  }
+
+  async function removeCustomAudio() {
+    clearAudioSource();
+    customAudioBlob = null;
+    customAudioName = "";
+    customAudioFingerprint = "";
+    outgoingAudioShare = null;
+    selectedTrack = -1;
+    localStorage.removeItem("nurTrack");
+    try { await saveMedia("audio", null); } catch {}
+    renderAudioControls();
+    showToast(t("audioRemoved"));
+  }
+
+  function handleSharedAudioNavigation() {
+    const nextToken = readSharedAudioToken(location.href);
+    if (nextToken === incomingSharedAudioToken) return;
+    clearAudioSource();
+    incomingSharedAudioToken = nextToken;
+    resolvedSharedAudio = null;
+    audioRecoveryAttempted = false;
+    renderAudioControls();
+  }
 
   function openMediaDb(){return new Promise((resolve,reject)=>{const request=indexedDB.open("nur-letter-media",1);request.onupgradeneeded=()=>request.result.createObjectStore("assets");request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});}
   async function saveMedia(key,value){const db=await openMediaDb();await new Promise((resolve,reject)=>{const tx=db.transaction("assets","readwrite");tx.objectStore("assets").put(value,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();}
@@ -2880,7 +3112,39 @@
 
   function toggleWeather(){if(weatherEnabled)disableWeather();else refreshWeather();}
 
-  async function generatePostcard(){const entry=currentEntry();if(!canAccess(entry))return openPaywall();const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.fillStyle="#fff8ed";ctx.font="600 66px Georgia";ctx.fillText(`${t("for")} ${displayName(toName)}`,90,270);ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();ctx.fillStyle="#fffaf2";ctx.font="600 55px Georgia";wrapCanvasText(ctx,entryText(entry),90,440,900,78);ctx.fillStyle="#f0c5d3";ctx.font="italic 600 49px Georgia";ctx.textAlign="right";ctx.fillText(`${t("from")} ${displayName(fromName)}`,990,1765);ctx.textAlign="left";const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));}
+  function canvasLetterTypography() {
+    const style = getComputedStyle(document.body);
+    return {
+      family: style.getPropertyValue("--gl-letter-font").trim() || '"Cormorant Garamond", Georgia, serif',
+      bodyStyle: style.getPropertyValue("--gl-letter-style").trim() || "normal",
+      signatureStyle: style.getPropertyValue("--gl-letter-signature-style").trim() || "italic",
+      bodyWeight: style.getPropertyValue("--gl-letter-body-weight").trim() || "600",
+      headingWeight: style.getPropertyValue("--gl-letter-heading-weight").trim() || "600"
+    };
+  }
+
+  function canvasLetterFont(typography, size, { signature = false, heading = false } = {}) {
+    const fontStyle = signature ? typography.signatureStyle : typography.bodyStyle;
+    const weight = heading ? typography.headingWeight : typography.bodyWeight;
+    return `${fontStyle} ${weight} ${size}px ${typography.family}`;
+  }
+
+  async function generatePostcard(){
+    const entry=currentEntry();if(!canAccess(entry))return openPaywall();
+    const typography=canvasLetterTypography();
+    try{await Promise.all([document.fonts?.load(canvasLetterFont(typography,55)),document.fonts?.load(canvasLetterFont(typography,66,{heading:true}))].filter(Boolean));}catch{}
+    const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";
+    try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}
+    const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.letterSpacing="0px";
+    ctx.fillStyle="#fff8ed";ctx.font=canvasLetterFont(typography,66,{heading:true});ctx.fillText(`${t("for")} ${displayName(toName)}`,90,270);
+    ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();
+    ctx.fillStyle="#fffaf2";ctx.font=canvasLetterFont(typography,55);wrapCanvasText(ctx,entryText(entry),90,440,900,78);
+    ctx.fillStyle="#f0c5d3";ctx.font=canvasLetterFont(typography,49,{signature:true,heading:true});ctx.textAlign="right";ctx.fillText(`${t("from")} ${displayName(fromName)}`,990,1765);ctx.textAlign="left";
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});
+    try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}
+    const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
+  }
   function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight){const words=text.split(/\s+/);let line="";let currentY=y;for(const word of words){const test=`${line}${word} `;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line.trim(),x,currentY);line=`${word} `;currentY+=lineHeight;if(currentY>1570)break;}else line=test;}if(line&&currentY<=1570)ctx.fillText(line.trim(),x,currentY);}
 
   function speechLocale() {
@@ -3013,6 +3277,19 @@
     const presentation={glScene:document.body.dataset.glScene,glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
     const presentationDefaults={glScene:"still",glFrame:"none",glInk:"ink",glType:"classic"};
     Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
+    let audioToken = incomingSharedAudioToken;
+    if(customAudioBlob){
+      try{audioToken=await ensureTemporarySharedAudio();}
+      catch(error){
+        if(error?.message==="authentication_required"){
+          showToast(t("audioSignIn"),5200);
+          openPanel(layers.settings);
+        }else if(error?.message==="invalid_audio_metadata")showToast(t("audioUnsupported"));
+        else showToast(t("audioShareFailed"));
+        return;
+      }
+    }
+    if(SHARED_AUDIO_TOKEN_PATTERN.test(audioToken||""))url.hash=new URLSearchParams({audio:audioToken}).toString();
     const data={title:t("title"),text:`${displayName(toName)}, ${t("shareText")} — ${displayName(fromName)} ♡`,url:url.toString()};
     const nativeBridge=nativeShareBridge();
     if(nativeBridge){try{nativeBridge.share(data.title,data.text,data.url);return;}catch{}}
@@ -3161,7 +3438,7 @@
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
     $("#languageButton").addEventListener("click",()=>{stopLetterSpeech();const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
-    $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$$('[data-track]').forEach(button=>button.addEventListener("click",()=>selectTrack(Number(button.dataset.track))));$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>35*1024*1024)return showToast("Max 35 MB");customAudioBlob=file;$("#customTrackName").textContent=file.name;try{await saveMedia("audio",{blob:file,name:file.name});}catch{}await selectTrack(3);});
+    $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";await selectCustomAudio(file);});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!incomingSharedAudioToken||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
@@ -3171,7 +3448,7 @@
     document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
-    addEventListener("hashchange",handleCapabilityNavigation);
+    addEventListener("hashchange",handleCapabilityNavigation);addEventListener("hashchange",handleSharedAudioNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
     addEventListener("nur-speech-state",handleNativeSpeechState);
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
@@ -3180,7 +3457,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=25", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=26", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -3205,8 +3482,16 @@
       const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});
     }
-    try{const savedAudio=await loadMedia("audio");if(savedAudio?.blob){customAudioBlob=savedAudio.blob;$("#customTrackName").textContent=savedAudio.name||"Custom audio";}else if(selectedTrack===3)selectedTrack=0;}catch{if(selectedTrack===3)selectedTrack=0;}
-    $$('[data-track]').forEach(option=>option.classList.toggle("is-active",Number(option.dataset.track)===selectedTrack||(selectedTrack===3&&option.id==="customTrackButton")));
+    try{
+      const savedAudio=await loadMedia("audio");
+      if(savedAudio?.blob&&audioDescriptor(savedAudio.blob,savedAudio.name||"")){
+        customAudioBlob=savedAudio.blob;customAudioName=String(savedAudio.name||"");customAudioFingerprint=/^[0-9a-f]{64}$/u.test(savedAudio.fingerprint||"")?savedAudio.fingerprint:"";
+        const temporary=savedAudio.temporaryShare;
+        if(temporary&&SHARED_AUDIO_TOKEN_PATTERN.test(temporary.token||"")&&Date.parse(temporary.expiresAt||"")>Date.now()+5*60*1000)outgoingAudioShare=temporary;
+        selectedTrack=3;localStorage.setItem("nurTrack","3");
+      }else{selectedTrack=-1;localStorage.removeItem("nurTrack");}
+    }catch{selectedTrack=-1;localStorage.removeItem("nurTrack");}
+    renderAudioControls();
     createAtmosphere();await setupBackground();
     if(params.get("compose")==="1")requestPremiumFeature();else if(params.get("library")==="1")openPanel(layers.library);
     renderWeather();
