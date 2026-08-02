@@ -100,7 +100,7 @@ main { min-height: 100svh; }
 .paper-edge { position: absolute; inset: 0; pointer-events: none; opacity: .16; background: repeating-linear-gradient(178deg, transparent 0 8px, rgba(123,78,90,.035) 9px 10px); }
 .letter-meta { position: relative; display: flex; justify-content: space-between; gap: 15px; color: #987680; font-size: 9px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
 .letter-meta strong { color: #694255; }
-.letter h1 { position: relative; margin: clamp(27px, 5vw, 39px) 0 18px; color: #633b4e; font-family: "Cormorant Garamond", serif; font-size: clamp(31px, 6vw, 48px); line-height: .95; font-weight: 600; letter-spacing: -.025em; }
+.letter #letterTitle { position: relative; margin: clamp(27px, 5vw, 39px) 0 18px; color: #633b4e; font-family: "Cormorant Garamond", serif; font-size: clamp(31px, 6vw, 48px); line-height: .95; font-weight: 600; letter-spacing: -.025em; }
 .letter-text { position: relative; min-height: 140px; margin: 0; color: #45343c; font-family: "Cormorant Garamond", serif; font-size: clamp(22px, 4vw, 29px); line-height: 1.42; font-weight: 600; }
 .letter-text.is-changing { animation: text-turn .75s ease both; }
 .signature { position: relative; margin-top: 25px; text-align: right; font-family: "Cormorant Garamond", serif; }

@@ -3129,24 +3129,83 @@
     return `${fontStyle} ${weight} ${size}px ${typography.family}`;
   }
 
+  function canvasWrappedLines(ctx, text, maxWidth) {
+    const lines = [];
+    const normalized = String(text || "").replace(/\r\n?/g, "\n").trim();
+    const rawParagraphs = normalized ? normalized.split(/\n{2,}/).map(paragraph => paragraph.replace(/\n+/g, " ")).filter(Boolean) : [""];
+    const paragraphs = rawParagraphs.length > 8 ? [rawParagraphs.join(" ")] : rawParagraphs;
+    const pushToken = (token, currentLine) => {
+      let line = currentLine;
+      for (const character of Array.from(token)) {
+        const candidate = `${line}${character}`;
+        if (line && ctx.measureText(candidate).width > maxWidth) {
+          lines.push(line);
+          line = character;
+        } else {
+          line = candidate;
+        }
+      }
+      return line;
+    };
+
+    paragraphs.forEach((paragraph, paragraphIndex) => {
+      const words = paragraph.trim().split(/\s+/).filter(Boolean);
+      let line = "";
+      for (const word of words) {
+        const candidate = line ? `${line} ${word}` : word;
+        if (ctx.measureText(candidate).width <= maxWidth) {
+          line = candidate;
+        } else if (line) {
+          lines.push(line);
+          line = ctx.measureText(word).width <= maxWidth ? word : pushToken(word, "");
+        } else {
+          line = pushToken(word, "");
+        }
+      }
+      if (line) lines.push(line);
+      if (paragraphIndex < paragraphs.length - 1) lines.push("");
+    });
+    return lines.length ? lines : [""];
+  }
+
+  function fitCanvasParagraph(ctx, text, typography, maxWidth, maxHeight) {
+    for (let size = 55; size >= 14; size -= 1) {
+      ctx.font = canvasLetterFont(typography, size);
+      const lineHeight = Math.round(size * 1.42);
+      const lines = canvasWrappedLines(ctx, text, maxWidth);
+      if (lines.length * lineHeight <= maxHeight) return { lines, lineHeight };
+    }
+    ctx.font = canvasLetterFont(typography, 14);
+    const lines = canvasWrappedLines(ctx, text, maxWidth);
+    return { lines, lineHeight: Math.max(1, Math.floor(maxHeight / Math.max(1, lines.length))) };
+  }
+
+  function fitCanvasSingleLine(ctx, text, typography, maxWidth, maxSize, options = {}) {
+    for (let size = maxSize; size >= 16; size -= 1) {
+      const font = canvasLetterFont(typography, size, options);
+      ctx.font = font;
+      if (ctx.measureText(text).width <= maxWidth) return font;
+    }
+    return canvasLetterFont(typography, 16, options);
+  }
+
   async function generatePostcard(){
     const entry=currentEntry();if(!canAccess(entry))return openPaywall();
     const typography=canvasLetterTypography();
-    try{await Promise.all([document.fonts?.load(canvasLetterFont(typography,55)),document.fonts?.load(canvasLetterFont(typography,66,{heading:true}))].filter(Boolean));}catch{}
+    const bodyText=entryText(entry);const recipientText=`${t("for")} ${displayName(toName)}`;const signatureText=`${t("from")} ${displayName(fromName)}`;
+    try{if(document.fonts){await Promise.all([document.fonts.load(canvasLetterFont(typography,55),bodyText),document.fonts.load(canvasLetterFont(typography,66,{heading:true}),recipientText),document.fonts.load(canvasLetterFont(typography,49,{signature:true,heading:true}),signatureText),document.fonts.ready]);}}catch{}
     const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";
     try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}
     const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);
     ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.letterSpacing="0px";
-    ctx.fillStyle="#fff8ed";ctx.font=canvasLetterFont(typography,66,{heading:true});ctx.fillText(`${t("for")} ${displayName(toName)}`,90,270);
+    ctx.fillStyle="#fff8ed";ctx.font=fitCanvasSingleLine(ctx,recipientText,typography,900,66,{heading:true});ctx.fillText(recipientText,90,270);
     ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();
-    ctx.fillStyle="#fffaf2";ctx.font=canvasLetterFont(typography,55);wrapCanvasText(ctx,entryText(entry),90,440,900,78);
-    ctx.fillStyle="#f0c5d3";ctx.font=canvasLetterFont(typography,49,{signature:true,heading:true});ctx.textAlign="right";ctx.fillText(`${t("from")} ${displayName(fromName)}`,990,1765);ctx.textAlign="left";
+    ctx.fillStyle="#fffaf2";const fittedBody=fitCanvasParagraph(ctx,bodyText,typography,900,1120);fittedBody.lines.forEach((line,index)=>ctx.fillText(line,90,440+(index*fittedBody.lineHeight)));
+    ctx.fillStyle="#f0c5d3";ctx.font=fitCanvasSingleLine(ctx,signatureText,typography,900,49,{signature:true,heading:true});ctx.textAlign="right";ctx.fillText(signatureText,990,1765);ctx.textAlign="left";
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});
     try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}
     const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
   }
-  function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight){const words=text.split(/\s+/);let line="";let currentY=y;for(const word of words){const test=`${line}${word} `;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line.trim(),x,currentY);line=`${word} `;currentY+=lineHeight;if(currentY>1570)break;}else line=test;}if(line&&currentY<=1570)ctx.fillText(line.trim(),x,currentY);}
-
   function speechLocale() {
     return lang === "fr" ? "fr-FR" : lang === "en" ? "en-US" : "ru-RU";
   }
