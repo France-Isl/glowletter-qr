@@ -33,6 +33,7 @@ assert.match(builder, /DateTimeOffset\]::new\(1980,\s*1,\s*1/);
 assert.match(builder, /Array\]::Sort\(\$sorted,\s*\[StringComparer\]::Ordinal\)/);
 assert.match(builder, /Immutable release[\s\S]*different content[\s\S]*higher bundle version/);
 assert.match(builder, /Write-AtomicBytes -TargetPath \$manifestPath/);
+assert.match(builder, /ConvertTo-Json[\s\S]*-replace \"`r`n\?\", \"`n\"/);
 assert.match(builder, /Assert-ArchiveContents/);
 assert.match(builder, /Get-StreamSha256Hex/);
 
@@ -93,6 +94,7 @@ if (artifactPresence.every(Boolean)) {
   ]) {
     const manifestBytes = fs.readFileSync(manifestPath);
     const signatureBytes = fs.readFileSync(signaturePath);
+    assert.equal(manifestBytes.includes(13), false, `${channel} manifest must use canonical LF bytes`);
     const manifest = JSON.parse(manifestBytes.toString("utf8"));
     assert.equal(manifest.schema, 1);
     assert.equal(manifest.channel, channel);

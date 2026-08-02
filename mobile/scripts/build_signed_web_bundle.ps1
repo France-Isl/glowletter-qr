@@ -308,7 +308,9 @@ function New-ManifestBytes {
         }
         files = @($FileSpecifications)
     }
-    $json = $manifest | ConvertTo-Json -Depth 8
+    # Sign one canonical byte sequence on every build host. Windows PowerShell
+    # emits CRLF from ConvertTo-Json while GitHub runners check out LF files.
+    $json = ($manifest | ConvertTo-Json -Depth 8) -replace "`r`n?", "`n"
     return $Utf8NoBom.GetBytes($json + "`n")
 }
 
