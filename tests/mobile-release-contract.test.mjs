@@ -19,28 +19,28 @@ const iosContent = read("mobile/ios/NurPismo/ContentView.swift");
 
 assert.ok(fs.existsSync(path.join(root, "mobile/ios/NurPismo/WebResources/.gitkeep")));
 
-assert.match(android, /versionCode\s*=\s*14\b/);
-assert.match(android, /versionName\s*=\s*["']2\.3\.1["']/);
+assert.match(android, /versionCode\s*=\s*15\b/);
+assert.match(android, /versionName\s*=\s*["']2\.4\.0["']/);
 assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/\*\*["'][\s\S]{0,180}["']tests\/\*\*["']/);
 assert.match(android, /exclude\s+["']\*\.md["'][\s\S]{0,100}["']\*\.py["']/);
-assert.match(ios, /MARKETING_VERSION:\s*2\.3\.1\b/);
-assert.match(ios, /CURRENT_PROJECT_VERSION:\s*14\b/);
+assert.match(ios, /MARKETING_VERSION:\s*2\.4\.0\b/);
+assert.match(ios, /CURRENT_PROJECT_VERSION:\s*15\b/);
 assert.match(ios, /PRODUCT_MODULE_NAME:\s*NurPismo\b/);
 assert.match(ios, /TEST_HOST:\s*["']\$\(BUILT_PRODUCTS_DIR\)\/GlowLetter\.app\/GlowLetter["']/);
 assert.match(ios, /BUNDLE_LOADER:\s*["']\$\(TEST_HOST\)["']/);
 assert.match(ios, /- path: NurPismo\/Assets\.xcassets\s+buildPhase: resources/);
 assert.match(ios, /- path: NurPismo\/WebResources\s+type: folder\s+buildPhase: resources/);
 assert.match(ios, /- path: StoreKit\/GlowLetter\.storekit\s+buildPhase: resources/);
-assert.match(workflow, /GlowLetter-2\.3\.1-debug\.apk/);
-assert.match(workflow, /GlowLetter-2\.3\.1-preview-debug\.apk/);
-assert.match(workflow, /TAG:\s*v2\.3\.1-preview/);
+assert.match(workflow, /GlowLetter-2\.4\.0-debug\.apk/);
+assert.match(workflow, /GlowLetter-2\.4\.0-preview-debug\.apk/);
+assert.match(workflow, /TAG:\s*v2\.4\.0-preview/);
 assert.doesNotMatch(workflow, /GlowLetter Next|GlowLetter-Next|app-debug\.apk|v2\.0\.0-next/);
 assert.match(iosWorkflow, /runs-on:\s*macos-latest/);
 assert.match(iosWorkflow, /xcodebuild[\s\S]*-scheme NurPismo[\s\S]*test/);
 assert.match(iosOAuthTests, /\["google", "facebook", "apple"\]/);
 assert.match(iosSubscriptionTests, /Bundle\.main\.url\([\s\S]*GlowLetter[\s\S]*storekit/);
 assert.match(iosSubscriptionTests, /SKTestSession\(contentsOf:\s*configurationURL\)/);
-for (const excluded of ["supabase", "tests", ".md", ".py"]) assert.match(iosSync, new RegExp(excluded.replace(".", "\\.")));
+for (const excluded of ["mobile-web", "supabase", "tests", ".md", ".py"]) assert.match(iosSync, new RegExp(excluded.replace(".", "\\.")));
 
 // Native wrappers expose the real system share sheet only to the trusted bundled page.
 assert.match(androidShare, /@JavascriptInterface[\s\S]{0,120}void share\(/);
@@ -59,4 +59,4 @@ assert.match(iosWebView, /popoverPresentationController/);
 assert.match(iosContent, /\.persistentSystemOverlays\(\.hidden\)/);
 assert.match(iosContent, /\.statusBarHidden\(true\)/);
 
-console.log(JSON.stringify({ ok: true, android: "2.3.1 (14)", ios: "2.3.1 (14)", previewTag: "v2.3.1-preview", nativeShare: true, autoFullscreen: true }));
+console.log(JSON.stringify({ ok: true, android: "2.4.0 (15)", ios: "2.4.0 (15)", previewTag: "v2.4.0-preview", nativeShare: true, autoFullscreen: true }));

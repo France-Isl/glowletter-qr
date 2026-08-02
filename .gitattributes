@@ -1,0 +1,5 @@
+/.gitattributes text eol=lf
+mobile-web/**/manifest.json text eol=lf
+mobile-web/**/*.sig binary
+mobile-web/**/*.zip binary
+mobile/android/app/src/main/res/raw/*.der binary

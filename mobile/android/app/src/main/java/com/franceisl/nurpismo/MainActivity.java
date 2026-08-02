@@ -10,8 +10,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -20,6 +23,7 @@ import android.webkit.GeolocationPermissions;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -36,6 +40,7 @@ import org.json.JSONObject;
 import java.util.Locale;
 
 public final class MainActivity extends ComponentActivity {
+    private static final String TAG = "GlowLetterMain";
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
     private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html"
             + (BuildConfig.OWNER_BETA_CAPABILITY.trim().isEmpty()
@@ -45,8 +50,11 @@ public final class MainActivity extends ComponentActivity {
     private static final int LOCATION_PERMISSION_REQUEST = 4102;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
+    private static final String NATIVE_WEB_LOAD_QUERY = "_glowletter_native_load";
+    private static final long WEB_BUNDLE_HEALTH_TIMEOUT_MILLIS = 15_000L;
 
     private WebView webView;
+    private volatile WebViewAssetLoader webAssetLoader;
     private ValueCallback<Uri[]> fileChooserCallback;
     private GeolocationPermissions.Callback geolocationCallback;
     private String geolocationOrigin;
@@ -60,6 +68,15 @@ public final class MainActivity extends ComponentActivity {
     private volatile String activeSpeechUtteranceId;
     private boolean trustedMainDocumentReady;
     private String pendingAuthCallbackUrl;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private WebBundleManager webBundleManager;
+    private WebBundleManager.Selection webBundleSelection = WebBundleManager.Selection.bundled();
+    private Runnable webBundleHealthTimeout;
+    private long mainDocumentLoadSequence;
+    private long nativeWebLoadSequence;
+    private String currentNativeWebLoadToken = "";
+    private WebBundleManager.Selection currentNativeWebLoadSelection = WebBundleManager.Selection.bundled();
+    private boolean webBundleRecoveryInProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +96,24 @@ public final class MainActivity extends ComponentActivity {
         // startup crash on modern devices.
         root.post(this::enterImmersiveMode);
 
+        initializeWebBundleManager();
         billingManager = new BillingManager(this, this::dispatchEntitlementToWeb);
         configureWebView();
         initializeSpeechEngine();
         billingManager.start();
         captureAuthCallback(getIntent());
-        webView.loadUrl(APP_URL);
+        loadSelectedWebBundle();
+    }
+
+    private void initializeWebBundleManager() {
+        try {
+            webBundleManager = new WebBundleManager(this);
+            webBundleSelection = webBundleManager.selectForColdStart();
+        } catch (Exception exception) {
+            webBundleManager = null;
+            webBundleSelection = WebBundleManager.Selection.bundled();
+            Log.i(TAG, "Signed web bundle support is unavailable; using APK assets");
+        }
     }
 
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
@@ -104,19 +133,23 @@ public final class MainActivity extends ComponentActivity {
         settings.setAllowContentAccess(true);
         settings.setMediaPlaybackRequiresUserGesture(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        // Every verified release intentionally reuses the same appassets origin and paths.
+        // Bypass WebView's HTTP cache so a newly selected or fallback release is always read
+        // from its currently mounted private directory.
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(true);
         }
 
-        WebViewAssetLoader assetLoader = new WebViewAssetLoader.Builder()
-                .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
-                .build();
+        webAssetLoader = createWebAssetLoader(webBundleSelection);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-                WebResourceResponse response = assetLoader.shouldInterceptRequest(request.getUrl());
+                WebViewAssetLoader loader = webAssetLoader;
+                WebResourceResponse response = loader == null
+                        ? null
+                        : loader.shouldInterceptRequest(request.getUrl());
                 return response != null ? response : super.shouldInterceptRequest(view, request);
             }
 
@@ -148,17 +181,72 @@ public final class MainActivity extends ComponentActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                if (isStaleNativeWebLoadUrl(url)) {
+                    return;
+                }
                 trustedMainDocumentReady = false;
+                webBundleRecoveryInProgress = false;
+                mainDocumentLoadSequence++;
+                armWebBundleHealthTimeout(
+                        url,
+                        mainDocumentLoadSequence,
+                        currentNativeWebLoadSelection
+                );
+            }
+
+            @Override
+            public void onReceivedError(
+                    WebView view,
+                    WebResourceRequest request,
+                    WebResourceError error
+            ) {
+                super.onReceivedError(view, request, error);
+                String failedUrl = request.getUrl().toString();
+                if (request.isForMainFrame() && isCurrentNativeWebLoadUrl(failedUrl)) {
+                    recoverFromWebBundleFailure(currentNativeWebLoadSelection);
+                }
+            }
+
+            @Override
+            public void onReceivedHttpError(
+                    WebView view,
+                    WebResourceRequest request,
+                    WebResourceResponse errorResponse
+            ) {
+                super.onReceivedHttpError(view, request, errorResponse);
+                String failedUrl = request.getUrl().toString();
+                if (request.isForMainFrame() && isCurrentNativeWebLoadUrl(failedUrl)) {
+                    recoverFromWebBundleFailure(currentNativeWebLoadSelection);
+                }
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                if (isTrustedAppDocumentUrl(url)) {
-                    billingManager.notifyWebState();
+                if (isStaleNativeWebLoadUrl(url)) {
+                    return;
                 }
-                trustedMainDocumentReady = isTrustedAppMainDocumentUrl(url);
+                boolean currentNativeMainDocument = isCurrentNativeWebLoadUrl(url);
+                boolean needsDownloadedBundleHealthCheck = currentNativeMainDocument
+                        && currentNativeWebLoadSelection != null
+                        && currentNativeWebLoadSelection.isDownloaded();
+                if (isTrustedAppDocumentUrl(url)) {
+                    trustedMainDocumentReady = isTrustedAppMainDocumentUrl(url)
+                            && !needsDownloadedBundleHealthCheck;
+                    if (trustedMainDocumentReady) {
+                        billingManager.notifyWebState();
+                    }
+                } else {
+                    trustedMainDocumentReady = false;
+                }
                 dispatchPendingAuthCallback();
+                if (currentNativeMainDocument) {
+                    verifyWebBundleHealth(
+                            view,
+                            mainDocumentLoadSequence,
+                            currentNativeWebLoadSelection
+                    );
+                }
             }
         });
 
@@ -220,6 +308,150 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new AuthBridge(this), "NurAuth");
         webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
         webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
+    }
+
+    private WebViewAssetLoader createWebAssetLoader(WebBundleManager.Selection selection) {
+        WebViewAssetLoader.Builder builder = new WebViewAssetLoader.Builder();
+        if (selection != null && selection.isDownloaded()) {
+            // The complete verified release owns /assets/web/. A missing file must
+            // remain a 404 rather than being mixed with a different APK release.
+            builder.addPathHandler(
+                    "/assets/web/",
+                    new WebViewAssetLoader.InternalStoragePathHandler(this, selection.webDirectory)
+            );
+        }
+        builder.addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this));
+        return builder.build();
+    }
+
+    private void loadSelectedWebBundle() {
+        if (webView == null) {
+            return;
+        }
+        nativeWebLoadSequence++;
+        String selectedVersion = webBundleSelection == null || !webBundleSelection.isDownloaded()
+                ? "apk-" + BuildConfig.BUNDLED_WEB_BUNDLE_VERSION
+                : "web-" + webBundleSelection.bundleVersion();
+        currentNativeWebLoadToken = selectedVersion + "-" + nativeWebLoadSequence;
+        currentNativeWebLoadSelection = webBundleSelection;
+        String selectedUrl = Uri.parse(APP_URL)
+                .buildUpon()
+                .appendQueryParameter(NATIVE_WEB_LOAD_QUERY, currentNativeWebLoadToken)
+                .build()
+                .toString();
+        webView.loadUrl(selectedUrl);
+    }
+
+    private boolean isCurrentNativeWebLoadUrl(String url) {
+        if (!isTrustedAppMainDocumentUrl(url)) {
+            return false;
+        }
+        return currentNativeWebLoadToken.equals(
+                Uri.parse(url).getQueryParameter(NATIVE_WEB_LOAD_QUERY)
+        );
+    }
+
+    private boolean isStaleNativeWebLoadUrl(String url) {
+        if (!isTrustedAppMainDocumentUrl(url)) {
+            return false;
+        }
+        String token = Uri.parse(url).getQueryParameter(NATIVE_WEB_LOAD_QUERY);
+        return token != null && !currentNativeWebLoadToken.equals(token);
+    }
+
+    private void armWebBundleHealthTimeout(
+            String url,
+            long sequence,
+            WebBundleManager.Selection selection
+    ) {
+        cancelWebBundleHealthTimeout();
+        if (!isCurrentNativeWebLoadUrl(url)
+                || selection == null
+                || !selection.isDownloaded()) {
+            return;
+        }
+        webBundleHealthTimeout = () -> {
+            if (sequence == mainDocumentLoadSequence && selection == webBundleSelection) {
+                recoverFromWebBundleFailure(selection);
+            }
+        };
+        mainHandler.postDelayed(webBundleHealthTimeout, WEB_BUNDLE_HEALTH_TIMEOUT_MILLIS);
+    }
+
+    private void cancelWebBundleHealthTimeout() {
+        if (webBundleHealthTimeout != null) {
+            mainHandler.removeCallbacks(webBundleHealthTimeout);
+            webBundleHealthTimeout = null;
+        }
+    }
+
+    private void verifyWebBundleHealth(
+            WebView target,
+            long sequence,
+            WebBundleManager.Selection selection
+    ) {
+        if (selection == null || !selection.isDownloaded()) {
+            cancelWebBundleHealthTimeout();
+            checkForWebBundleUpdate();
+            return;
+        }
+        String expectedAppVersion = JSONObject.quote(selection.expectedAppVersion());
+        String script = "(function(){try{return Boolean("
+                + "document.readyState==='complete'"
+                + "&&document.getElementById('app')"
+                + "&&window.NUR_APP_CONFIG"
+                + "&&String(window.NUR_APP_CONFIG.appVersion||'')===" + expectedAppVersion
+                + "&&typeof window.onNativeEntitlement==='function'"
+                + ");}catch(_){return false;}})();";
+        target.evaluateJavascript(script, result -> {
+            if (target != webView
+                    || sequence != mainDocumentLoadSequence
+                    || selection != webBundleSelection) {
+                return;
+            }
+            cancelWebBundleHealthTimeout();
+            if ("true".equals(result)) {
+                if (webBundleManager != null) {
+                    webBundleManager.markHealthy(selection);
+                }
+                trustedMainDocumentReady = target == webView
+                        && isTrustedAppMainDocumentUrl(target.getUrl());
+                if (trustedMainDocumentReady && billingManager != null) {
+                    billingManager.notifyWebState();
+                    dispatchPendingAuthCallback();
+                }
+                checkForWebBundleUpdate();
+            } else {
+                recoverFromWebBundleFailure(selection);
+            }
+        });
+    }
+
+    private void recoverFromWebBundleFailure(WebBundleManager.Selection failedSelection) {
+        if (webBundleRecoveryInProgress
+                || failedSelection == null
+                || !failedSelection.isDownloaded()
+                || failedSelection != webBundleSelection) {
+            return;
+        }
+        webBundleRecoveryInProgress = true;
+        cancelWebBundleHealthTimeout();
+        WebBundleManager.Selection fallback = webBundleManager == null
+                ? WebBundleManager.Selection.bundled()
+                : webBundleManager.fallbackAfterFailure(failedSelection);
+        webBundleSelection = fallback;
+        webAssetLoader = createWebAssetLoader(fallback);
+        trustedMainDocumentReady = false;
+        if (webView != null) {
+            webView.stopLoading();
+            loadSelectedWebBundle();
+        }
+    }
+
+    private void checkForWebBundleUpdate() {
+        if (webBundleManager != null) {
+            webBundleManager.checkForUpdateAsync();
+        }
     }
 
     private void initializeSpeechEngine() {
@@ -669,6 +901,9 @@ public final class MainActivity extends ComponentActivity {
         if (billingManager != null) {
             billingManager.onResume();
         }
+        if (trustedMainDocumentReady) {
+            checkForWebBundleUpdate();
+        }
     }
 
     private void configureBackNavigation() {
@@ -690,6 +925,7 @@ public final class MainActivity extends ComponentActivity {
 
     @Override
     protected void onDestroy() {
+        cancelWebBundleHealthTimeout();
         if (fileChooserCallback != null) {
             fileChooserCallback.onReceiveValue(null);
             fileChooserCallback = null;
@@ -700,6 +936,10 @@ public final class MainActivity extends ComponentActivity {
         }
         if (billingManager != null) {
             billingManager.close();
+        }
+        if (webBundleManager != null) {
+            webBundleManager.close();
+            webBundleManager = null;
         }
         if (textToSpeech != null) {
             textToSpeech.stop();

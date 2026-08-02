@@ -4,13 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#211a27" />
-  <title>Удаление аккаунта · GlowLetter</title>
-  <style>:root{font-family:system-ui,sans-serif;color:#41343d;background:#fbf5ef}body{margin:0}.page{width:min(760px,calc(100% - 32px));margin:auto;padding:48px 0 80px}a{color:#9b4e6c}h1{font-family:Georgia,serif;font-size:clamp(36px,7vw,64px);color:#6d4054}h2{margin-top:32px;color:#71485a}p,li{line-height:1.7;color:#6e5a64}.back{display:inline-block;margin-bottom:20px}.card{padding:24px;border:1px solid #e2ccd4;border-radius:20px;background:#fffaf7;box-shadow:0 18px 60px #5f304012}</style>
+  <title>Delete account · Удаление аккаунта · Suppression du compte · GlowLetter</title>
+  <style>:root{font-family:system-ui,sans-serif;color:#41343d;background:#fbf5ef}body{margin:0}.page{width:min(820px,calc(100% - 32px));margin:auto;padding:48px 0 80px}a{color:#9b4e6c}h1{font-family:Georgia,serif;font-size:clamp(36px,7vw,64px);color:#6d4054}h2{margin-top:32px;color:#71485a}p,li{line-height:1.7;color:#6e5a64}.back{display:inline-block;margin-bottom:20px}.languages{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}.languages a{padding:8px 12px;border:1px solid #e2ccd4;border-radius:999px;text-decoration:none}.card{padding:24px;border:1px solid #e2ccd4;border-radius:20px;background:#fffaf7;box-shadow:0 18px 60px #5f304012}.legal{scroll-margin-top:24px}.legal+.legal{margin-top:56px;padding-top:40px;border-top:1px solid #e2ccd4}.legal h1{font-size:clamp(34px,6vw,56px)}</style>
 </head>
-<body><main class="page"><a class="back" href="./">← Вернуться в приложение</a><div class="card">
-  <h1>Удаление аккаунта</h1><p>Последнее обновление: 2 августа 2026 года.</p>
-  <h2>Удаление в приложении</h2><ol><li>Откройте GlowLetter и войдите в свой аккаунт.</li><li>Откройте «Настроение».</li><li>В карточке аккаунта нажмите «Удалить аккаунт» и подтвердите действие.</li></ol><p>Аккаунт Supabase Auth и связанная облачная запись прогресса удаляются без возможности восстановления. Личные фото, локально выбранное аудио и закрытый тестовый доступ хранятся на устройстве; их можно удалить очисткой данных сайта или приложения. Если пользователь по своему выбору приложил аудио к персональной ссылке, его временная серверная копия в любом случае станет недоступной не позднее конца 12‑часового срока и будет удалена. Техническая очистка может завершиться с небольшой задержкой, но воспроизведение уже недоступно; исходное имя файла на сервере не хранится.</p>
-  <h2>Если войти не удаётся</h2><p>Отправьте запрос с адреса, связанного с аккаунтом, на <a href="mailto:ggooglov9@gmail.com?subject=GlowLetter%20account%20deletion">ggooglov9@gmail.com</a>. Укажите, что хотите удалить аккаунт GlowLetter. Для защиты данных может потребоваться подтверждение владения адресом.</p>
-  <h2>Подписка магазина</h2><p>Удаление аккаунта не отменяет подписку Google Play или App Store. Отмените её отдельно в разделе подписок аккаунта магазина.</p>
-</div></main></body>
+<body>
+  <main class="page">
+    <a class="back" href="./">← GlowLetter</a>
+    <nav class="languages" aria-label="Language"><a href="#ru" lang="ru">Русский</a><a href="#en" lang="en">English</a><a href="#fr" lang="fr">Français</a></nav>
+    <div class="card">
+      <section class="legal" id="ru" lang="ru">
+        <h1>Удаление аккаунта</h1>
+        <p>Последнее обновление: 2 августа 2026 года.</p>
+        <h2>Удаление в приложении</h2>
+        <ol><li>Откройте GlowLetter и войдите в свой аккаунт.</li><li>Откройте «Настроение».</li><li>В карточке «Аккаунт и синхронизация» нажмите «Удалить аккаунт».</li><li>Прочитайте предупреждение и подтвердите необратимое действие.</li></ol>
+        <h2>Что удаляется</h2>
+        <p>Удаляется аккаунт Supabase Auth и связанная облачная запись прогресса. Каскадное удаление также без возможности восстановления удаляет все принадлежащие аккаунту профили важных людей, важные даты и настройки напоминаний, сохранённые окончательные письма и метаданные непрозрачных QR-ссылок. Публичные ссылки после удаления перестают открываться. Черновые запросы генератору не перечислены, потому что облачная история их не хранит.</p>
+        <p>GlowLetter не хранит в «Моментах» логотип магазина или флориста, аккаунт Instagram и историю заказов, поэтому таких данных в процедуре удаления нет.</p>
+        <h2>Локальные данные и календарь</h2>
+        <p>Личные фото, локальное аудио, настройки устройства и закрытый тестовый доступ хранятся на устройстве и удаляются очисткой данных сайта или приложения. Уже импортированные календарные события находятся в календаре пользователя и удаляются там отдельно.</p>
+        <h2>Временное аудио и ограниченные журналы</h2>
+        <p>Если пользователь приложил аудио к персональной ссылке, серверная копия в любом случае станет недоступной не позднее конца 12-часового срока и будет удалена; техническая очистка может завершиться с небольшой задержкой. Обращения в поддержку и защищённые записи прежней выдачи или отзыва VIP могут храниться до шести месяцев для безопасности и решения споров, если закон не требует иного. Они не содержат текста сохранённых писем.</p>
+        <h2>Если войти не удаётся</h2>
+        <p>Отправьте запрос с подтверждённого адреса, связанного с аккаунтом, на <a href="mailto:ggooglov9@gmail.com?subject=GlowLetter%20account%20deletion">ggooglov9@gmail.com</a>. Укажите, что хотите удалить аккаунт GlowLetter. Для защиты данных потребуется подтвердить владение адресом; не отправляйте пароль или код подтверждения.</p>
+        <h2>Подписка магазина</h2>
+        <p>Удаление аккаунта не отменяет подписку Google Play или App Store. Отмените её отдельно в разделе подписок аккаунта магазина.</p>
+      </section>
+
+      <section class="legal" id="en" lang="en">
+        <h1>Delete your account</h1>
+        <p>Last updated: 2 August 2026.</p>
+        <h2>Delete in the app</h2>
+        <ol><li>Open GlowLetter and sign in.</li><li>Open “Mood”.</li><li>In “Account and sync”, select “Delete account”.</li><li>Read the warning and confirm the irreversible action.</li></ol>
+        <h2>What is deleted</h2>
+        <p>The Supabase Auth account and associated cloud progress are deleted. Cascading deletion permanently removes every important-person profile, important date and reminder choice, saved final letter, and opaque QR-link metadata owned by the account. Public links then stop resolving. Raw generator prompts are not listed because cloud history never stores them.</p>
+        <p>Moments does not store a shop or florist logo, an Instagram account, or order history, so there are no such records in the deletion process.</p>
+        <h2>Local data and calendar</h2>
+        <p>Personal photos, local audio, device settings, and private test access remain on the device until the user clears site or app data. Calendar events already imported into the user’s calendar must be removed from that calendar separately.</p>
+        <h2>Temporary audio and limited logs</h2>
+        <p>Audio attached to a personal link becomes unavailable no later than the end of its 12-hour lifetime and is deleted; technical cleanup may finish slightly later. Support requests and protected records of earlier VIP grants or revocations may remain for up to six months for security and dispute resolution unless law requires otherwise. They do not contain saved letter text.</p>
+        <h2>If you cannot sign in</h2>
+        <p>Email <a href="mailto:ggooglov9@gmail.com?subject=GlowLetter%20account%20deletion">ggooglov9@gmail.com</a> from the confirmed address associated with the account and request deletion. Ownership of the address must be verified. Never send your password or verification code.</p>
+        <h2>Store subscription</h2>
+        <p>Deleting the account does not cancel a Google Play or App Store subscription. Cancel it separately in the store account’s subscription settings.</p>
+      </section>
+
+      <section class="legal" id="fr" lang="fr">
+        <h1>Supprimer votre compte</h1>
+        <p>Dernière mise à jour : 2 août 2026.</p>
+        <h2>Suppression dans l’application</h2>
+        <ol><li>Ouvrez GlowLetter et connectez-vous.</li><li>Ouvrez « Ambiance ».</li><li>Dans « Compte et synchronisation », choisissez « Supprimer le compte ».</li><li>Lisez l’avertissement et confirmez cette action irréversible.</li></ol>
+        <h2>Données supprimées</h2>
+        <p>Le compte Supabase Auth et la progression en ligne associée sont supprimés. La suppression en cascade efface définitivement tous les profils de personnes importantes, dates et choix de rappels, lettres finales enregistrées et métadonnées de liens QR opaques appartenant au compte. Les liens publics cessent de fonctionner. Les prompts bruts ne figurent pas dans cette liste, car l’historique en ligne ne les conserve jamais.</p>
+        <p>Moments ne conserve ni logo de boutique ou de fleuriste, ni compte Instagram, ni historique des commandes ; il n’existe donc aucun enregistrement de ce type dans la procédure.</p>
+        <h2>Données locales et calendrier</h2>
+        <p>Les photos, l’audio local, les réglages de l’appareil et l’accès de test privé restent sur l’appareil jusqu’à l’effacement des données du site ou de l’application. Les événements déjà importés dans le calendrier doivent être supprimés séparément dans ce calendrier.</p>
+        <h2>Audio temporaire et journaux limités</h2>
+        <p>Un audio joint à un lien devient inaccessible au plus tard à la fin de sa durée de 12 heures et est supprimé ; le nettoyage technique peut finir un peu plus tard. Les demandes d’assistance et traces protégées d’anciennes attributions ou révocations VIP peuvent rester jusqu’à six mois pour la sécurité et les litiges, sauf obligation légale contraire. Elles ne contiennent pas le texte des lettres enregistrées.</p>
+        <h2>Si la connexion est impossible</h2>
+        <p>Écrivez à <a href="mailto:ggooglov9@gmail.com?subject=GlowLetter%20account%20deletion">ggooglov9@gmail.com</a> depuis l’adresse confirmée associée au compte et demandez sa suppression. La maîtrise de l’adresse devra être vérifiée. N’envoyez jamais votre mot de passe ou code de vérification.</p>
+        <h2>Abonnement de la boutique</h2>
+        <p>La suppression du compte n’annule pas un abonnement Google Play ou App Store. Annulez-le séparément dans les réglages d’abonnement du compte de la boutique.</p>
+      </section>
+    </div>
+  </main>
+</body>
 </html>

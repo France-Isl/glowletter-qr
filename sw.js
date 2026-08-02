@@ -1,18 +1,22 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v27`;
+const CACHE = `${CACHE_PREFIX}v28`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=27",
-  "experience.css?v=27",
-  "config.js?v=27",
-  "vendor/supabase-2.110.9.js?v=27",
-  "vendor/qrcode-generator-1.4.4.min.js?v=27",
-  "letters.js?v=27",
-  "qr-code.js?v=27",
-  "app.js?v=27",
-  "experience.js?v=27",
-  "manifest.webmanifest?v=27",
+  "styles.css?v=28",
+  "experience.css?v=28",
+  "email-auth.css?v=28",
+  "moments.css?v=28",
+  "config.js?v=28",
+  "vendor/supabase-2.110.9.js?v=28",
+  "vendor/qrcode-generator-1.4.4.min.js?v=28",
+  "letters.js?v=28",
+  "qr-code.js?v=28",
+  "app.js?v=28",
+  "email-auth.js?v=28",
+  "moments.js?v=28",
+  "experience.js?v=28",
+  "manifest.webmanifest?v=28",
   "icon.svg",
   "privacy.html",
   "assets/auth/apple-continue-ru.png",
@@ -21,8 +25,8 @@ const CORE = [
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
-const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "experience.js", "experience.css", "manifest.webmanifest"]);
-const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
+const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
+const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));

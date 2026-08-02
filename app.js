@@ -66,13 +66,13 @@
 
   const UI = {
     ru: {
-      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Тёплые слова для тех, кто по-настоящему важен.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", free: "10 писем бесплатно", full: "полная версия — 21,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Подписаться за", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
+      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Тёплые слова для тех, кто по-настоящему важен.", from: "от", open: "Открыть письмо", create: "Создать своё письмо", momentsHome: "Мои моменты", free: "10 писем бесплатно", full: "полная версия — 21,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", personal: "Создать персональное письмо", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", aiTitle: "Личное письмо", aiEyebrow: "УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ", fromWho: "От кого", forWho: "Для кого", formHint: "Можно написать роль рядом с именем: «Амина (дочь)» → «Мама». Редактор сам подберёт смысл.", generate: "Создать красивое письмо", generating: "Собираю письмо по смыслу…", own: "Написать свой текст", ownWords: "Ваши слова", ownPlaceholder: "Напишите письмо своими словами…", useOwn: "Открыть моё письмо", ready: "ГОТОВОЕ ПИСЬМО", variant: "↻ Другой вариант", openAs: "Открыть как письмо", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Подписаться за", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", composeFail: "Облачный редактор недоступен — создан проверенный вариант", close: "Закрыть"
     },
     en: {
-      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "Warm words for the people who truly matter.", from: "from", open: "Open the letter", create: "Create your own letter", free: "10 letters free", full: "full version — €21.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Subscribe for", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
+      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "Warm words for the people who truly matter.", from: "from", open: "Open the letter", create: "Create your own letter", momentsHome: "My moments", free: "10 letters free", full: "full version — €21.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", personal: "Create a personal letter", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", aiTitle: "Personal letter", aiEyebrow: "SMART EDITOR · NO RANDOM PHRASES", fromWho: "From", forWho: "To", formHint: "You may add a role next to the name: “Amina (daughter)” → “Mum”. The editor will understand the context.", generate: "Create a beautiful letter", generating: "Building a coherent letter…", own: "Write your own text", ownWords: "Your words", ownPlaceholder: "Write your letter in your own words…", useOwn: "Open my letter", ready: "YOUR LETTER", variant: "↻ Another version", openAs: "Open as a letter", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Subscribe for", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", composeFail: "Cloud editor unavailable — a verified version was created", close: "Close"
     },
     fr: {
-      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Des mots chaleureux pour les personnes qui comptent vraiment.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", free: "10 lettres gratuites", full: "version complète — 21,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "S’abonner pour", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
+      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Des mots chaleureux pour les personnes qui comptent vraiment.", from: "de", open: "Ouvrir la lettre", create: "Créer votre lettre", momentsHome: "Mes moments", free: "10 lettres gratuites", full: "version complète — 21,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", personal: "Créer une lettre personnelle", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", aiTitle: "Lettre personnelle", aiEyebrow: "ÉDITEUR INTELLIGENT · AUCUNE PHRASE ALÉATOIRE", fromWho: "De la part de", forWho: "Pour", formHint: "Vous pouvez ajouter le lien familial au nom : « Amina (fille) » → « Maman ». L’éditeur comprendra le contexte.", generate: "Créer une belle lettre", generating: "Je compose une lettre cohérente…", own: "Écrire votre propre texte", ownWords: "Vos mots", ownPlaceholder: "Écrivez votre lettre avec vos propres mots…", useOwn: "Ouvrir ma lettre", ready: "VOTRE LETTRE", variant: "↻ Une autre version", openAs: "Ouvrir comme lettre", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "S’abonner pour", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", composeFail: "L’éditeur en ligne est indisponible — une version vérifiée a été créée", close: "Fermer"
     }
   };
 
@@ -171,15 +171,15 @@
   });
   Object.assign(UI.ru, {
     accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и музыка остаются только на этом устройстве.",
-    letterIdeaLabel:"Что особенно важно сказать · необязательно",letterIdeaPlaceholder:"Например: поблагодарить маму за терпение и поддержку",letterLengthLabel:"Длина письма",focusRead:"◫ Режим чтения",focusExit:"× Вернуться",focusHint:"← Свайп или стрелки →"
+    letterIdeaLabel:"Что особенно важно сказать · необязательно",letterIdeaPlaceholder:"Например: поблагодарить маму за терпение и поддержку",letterLengthLabel:"Длина письма",letterLanguageLabel:"Язык письма",focusRead:"◫ Режим чтения",focusExit:"× Вернуться",focusHint:"← Свайп или стрелки →"
   });
   Object.assign(UI.en, {
     accountTitle:"Save your progress",accountGuestNote:"Keep your letters and settings on all your devices.",accountPrivacy:"Personal photos and audio stay only on this device.",
-    letterIdeaLabel:"What matters most · optional",letterIdeaPlaceholder:"For example: thank Mum for her patience and support",letterLengthLabel:"Letter length",focusRead:"◫ Reading mode",focusExit:"× Return",focusHint:"← Swipe or arrow keys →"
+    letterIdeaLabel:"What matters most · optional",letterIdeaPlaceholder:"For example: thank Mum for her patience and support",letterLengthLabel:"Letter length",letterLanguageLabel:"Letter language",focusRead:"◫ Reading mode",focusExit:"× Return",focusHint:"← Swipe or arrow keys →"
   });
   Object.assign(UI.fr, {
     accountTitle:"Sauvegarde",accountGuestNote:"Retrouvez vos lettres et réglages sur tous vos appareils.",accountPrivacy:"Les photos et fichiers audio personnels restent sur cet appareil.",
-    letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
+    letterIdeaLabel:"L’idée essentielle · facultatif",letterIdeaPlaceholder:"Par exemple : remercier Maman pour sa patience et son soutien",letterLengthLabel:"Longueur de la lettre",letterLanguageLabel:"Langue de la lettre",focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
   });
   Object.assign(UI.ru, {
     music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
@@ -389,6 +389,10 @@
 
   let lang = ["ru", "en", "fr"].includes(params.get("lang")) ? params.get("lang") : (localStorage.getItem("nurLanguage") || "ru");
   if (!UI[lang]) lang = "ru";
+  let composerLanguage = lang;
+  let composerContext = null;
+  let momentsIntegrationPromise = null;
+  let momentsListenersBound = false;
   const storedNamesAtLaunch = {
     sender: cleanName(localStorage.getItem("nurFrom")),
     recipient: cleanName(localStorage.getItem("nurTo"))
@@ -455,6 +459,8 @@
   } catch { localStorage.removeItem(WEATHER_STORAGE_KEY); }
   let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiTheme")) ? localStorage.getItem("nurUiTheme") : "moon";
   let currentQrUrl = "";
+  let currentQrMode = "catalog";
+  let currentQrCaption = "";
   let gesturePreferencesRestored = false;
   let favorites;
   try { favorites = new Set(JSON.parse(localStorage.getItem("nurFavorites") || "[]")); }
@@ -1789,6 +1795,11 @@
       if (cloudUser?.id) loadAccountAvatar(cloudUser.id);
     }
     renderCloudAccount();
+    dispatchEvent(new CustomEvent("glowletter-cloud-session", { detail: {
+      signedIn: Boolean(cloudUser?.id),
+      userId: cloudUser?.id || "",
+      email: cloudUser?.email || ""
+    } }));
     if (!cloudUser?.id) {
       resetCloudAccount();
       clearTimeout(cloudSyncTimer);
@@ -1889,6 +1900,100 @@
     }
   }
 
+  function normalizedAuthEmail(value) {
+    const email = String(value || "").normalize("NFKC").trim().toLowerCase();
+    if (email.length < 3 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(email)) {
+      throw new Error("invalid_email");
+    }
+    return email;
+  }
+
+  async function signInWithPassword(email, password) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    if (typeof password !== "string" || password.length < 8 || password.length > 128) throw new Error("invalid_password");
+    captureGuestBootstrap();
+    cloudAuthBusy = true;
+    setCloudStatus("cloudChecking");
+    renderCloudAccount();
+    try {
+      const { data, error } = await cloudClient.auth.signInWithPassword({ email: normalizedEmail, password });
+      if (error || !data?.session) throw error || new Error("missing_session");
+      await handleCloudSession(data.session);
+      return { session: data.session, user: data.user || data.session.user };
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
+  async function registerEmail(email, password, name = "") {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    const safeName = String(name || "").normalize("NFKC").replace(/[<>\r\n]/gu, " ").replace(/\s+/gu, " ").trim().slice(0, 60);
+    if (typeof password !== "string" || password.length < 8 || password.length > 128 || !/[\p{L}]/u.test(password) || !/\d/u.test(password)) {
+      throw new Error("invalid_password");
+    }
+    captureGuestBootstrap();
+    cloudAuthBusy = true;
+    setCloudStatus("cloudChecking");
+    renderCloudAccount();
+    try {
+      const { data, error } = await cloudClient.auth.signUp({
+        email: normalizedEmail,
+        password,
+        options: {
+          data: safeName ? { full_name: safeName } : {},
+          emailRedirectTo: cloudRedirectUrl()
+        }
+      });
+      if (error) throw error;
+      if (data?.session) await handleCloudSession(data.session);
+      return { session: data?.session || null, user: data?.user || null };
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
+  async function verifyEmailCode(email, token) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    const normalizedToken = String(token || "").replace(/\D/gu, "").slice(0, 6);
+    if (normalizedToken.length !== 6) throw new Error("invalid_code");
+    cloudAuthBusy = true;
+    setCloudStatus("cloudChecking");
+    renderCloudAccount();
+    try {
+      const { data, error } = await cloudClient.auth.verifyOtp({ email: normalizedEmail, token: normalizedToken, type: "email" });
+      if (error || !data?.session) throw error || new Error("missing_session");
+      await handleCloudSession(data.session);
+      return { session: data.session, user: data.user || data.session.user };
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
+  async function resendEmailCode(email) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    cloudAuthBusy = true;
+    renderCloudAccount();
+    try {
+      const { error } = await cloudClient.auth.resend({
+        type: "signup",
+        email: normalizedEmail,
+        options: { emailRedirectTo: cloudRedirectUrl() }
+      });
+      if (error) throw error;
+      return true;
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
   async function signOutCloud() {
     if (!cloudClient || cloudAuthBusy) return;
     cloudAuthBusy = true;
@@ -1980,9 +2085,16 @@
 
   window.GlowLetterCloud = Object.freeze({
     signIn: provider => signInWithCloud(provider),
+    signInWithPassword: (email, password) => signInWithPassword(email, password),
+    registerEmail: (email, password, name) => registerEmail(email, password, name),
+    verifyEmailCode: (email, token) => verifyEmailCode(email, token),
+    resendEmailCode: email => resendEmailCode(email),
     signOut: () => signOutCloud(),
     deleteAccount: () => deleteCloudAccount(),
     syncNow: () => flushCloudSync(true),
+    getClient: () => cloudClient,
+    getUser: () => cloudUser,
+    getSession: () => cloudSession,
     getState: () => ({
       configured: cloudConfigurationReady(),
       signedIn: Boolean(cloudUser?.id),
@@ -2205,6 +2317,7 @@
     }
     setText("#openStoryButton > span:last-child", t("open"));
     $("#aiOpenHome").innerHTML = `<span>✦</span> ${escapeHtml(t("create"))} <b class="vip-badge">VIP</b>`;
+    $("#momentsOpenHome").innerHTML = `<span>◷</span> ${escapeHtml(t("momentsHome"))}`;
     setText("#aiOpenTop > span:last-child", t("create"));
     const freeNote = $(".free-note");
     const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].textContent = t("full");
@@ -2225,8 +2338,10 @@
     const letterLabels = $$("#aiForm .simple-form label > span"); if (letterLabels[0]) letterLabels[0].textContent = t("fromWho"); if (letterLabels[1]) letterLabels[1].textContent = t("forWho");
     $("#aiSenderName").placeholder = t("aiSenderPlaceholder"); $("#aiRecipientName").placeholder = t("aiRecipientPlaceholder");
     const nameRoute = $$("#aiForm .name-route span"); if (nameRoute[0]) nameRoute[0].textContent = t("routeFrom"); if (nameRoute[1]) nameRoute[1].textContent = t("routeTo");
-    const letterChoices = $$("#aiForm .choice-grid label > span"); if (letterChoices[0]) letterChoices[0].textContent = t("relationshipLabel"); if (letterChoices[1]) letterChoices[1].textContent = t("toneLabel");
+    const letterChoices = $$("#aiForm .choice-grid label > span"); if (letterChoices[0]) letterChoices[0].textContent = t("relationshipLabel"); if (letterChoices[1]) letterChoices[1].textContent = t("toneLabel"); if (letterChoices[2]) letterChoices[2].textContent = t("letterLanguageLabel");
     setSelectOptions("#aiRelationship", SELECT_OPTIONS.relationship[lang]); setSelectOptions("#aiTone", SELECT_OPTIONS.tone[lang]); setSelectOptions("#aiLength", SELECT_OPTIONS.letterLength[lang]);
+    if (!["ru","en","fr"].includes(composerLanguage)) composerLanguage = lang;
+    $("#aiLanguage").value = composerLanguage;
     setText(".letter-idea-label > span", t("letterIdeaLabel")); $("#aiIdea").placeholder = t("letterIdeaPlaceholder"); setText(".letter-length-label > span", t("letterLengthLabel"));
     setText("#aiForm .form-hint", t("optionalHint")); setText(".generate-label", t("generate")); setText("#ownTextToggle b", t("own")); setText(".own-text-editor label > span", t("ownWords")); $("#ownText").placeholder = t("ownPlaceholder");
     $("#useOwnText").innerHTML = `${t("useOwn")} <span>→</span>`; setText(".generated-top > span", t("ready")); setText("#regenerateButton", t("variant")); setText("#copyGenerated", t("copy")); setText("#useGenerated", t("openAs"));
@@ -2249,7 +2364,7 @@
     setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
     setText("#supportEyebrow",t("supportFormEyebrow"));$("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
-    $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderQrCode(false);
+    $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
     renderWeather();
@@ -2259,6 +2374,7 @@
     localStorage.setItem("nurLanguage", lang);
     updateUrl();
     if (render) { if (storyOpened) renderLetter(); renderLibrary(); }
+    dispatchEvent(new CustomEvent("glowletter-language-changed", { detail: { language: lang } }));
   }
 
   function escapeHtml(value) {
@@ -2535,13 +2651,13 @@
     return "standard";
   }
 
-  function ideaSentence(value) {
+  function ideaSentence(value, letterLanguage = composerLanguage) {
     const idea = cleanLetterIdea(value).replace(/[.!?…]+$/u, "");
     if (!idea) return "";
-    const first = idea.charAt(0).toLocaleUpperCase(lang);
+    const first = idea.charAt(0).toLocaleUpperCase(letterLanguage);
     const sentence = `${first}${idea.slice(1)}`;
-    if (lang === "en") return `What I most want you to know is this: ${sentence}.`;
-    if (lang === "fr") return `Voici ce que je tiens surtout à te dire : ${sentence}.`;
+    if (letterLanguage === "en") return `What I most want you to know is this: ${sentence}.`;
+    if (letterLanguage === "fr") return `Voici ce que je tiens surtout à te dire : ${sentence}.`;
     return `Особенно важно сказать тебе вот что: ${sentence}.`;
   }
 
@@ -2569,15 +2685,16 @@
     return words >= minWords && words <= profile.maxWords && text.length <= profile.maxCharacters && sentences <= profile.maxSentences;
   }
 
-  function localCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto") {
+  function localCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto", letterLanguage = composerLanguage) {
     const relationship = resolveRelationship(sender, recipient, selectedRelationship);
     const useStyled = ["loving", "romantic", "support", "gratitude"].includes(tone);
-    const bank = useStyled ? styledComposer[lang][tone] : (composer[lang][relationship] || composer[lang].universal);
+    const languageBank = ["ru","en","fr"].includes(letterLanguage) ? letterLanguage : lang;
+    const bank = useStyled ? styledComposer[languageBank][tone] : (composer[languageBank][relationship] || composer[languageBank].universal);
     const index = composerVariant % bank.length;
     composerVariant += 1;
     let text = bank[index].replaceAll("{to}", displayName(recipient));
-    const personalSentence = ideaSentence(idea);
-    const context = useStyled && tone !== "romantic" ? relationshipContext[lang]?.[relationship] : "";
+    const personalSentence = ideaSentence(idea, languageBank);
+    const context = useStyled && tone !== "romantic" ? relationshipContext[languageBank]?.[relationship] : "";
     if (context || personalSentence) {
       const firstStop = text.search(/[.!?](?:\s|$)/u);
       const addition = [personalSentence, context].filter(Boolean).join(" ");
@@ -2586,7 +2703,7 @@
     return fitLetterLength(text, length, tone, Boolean(personalSentence));
   }
 
-  async function remoteCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto") {
+  async function remoteCompose(sender, recipient, selectedRelationship = "auto", tone = "auto", idea = "", length = "auto", letterLanguage = composerLanguage) {
     if (!CONFIG.aiEndpoint) throw new Error("No endpoint");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 16000);
@@ -2596,7 +2713,7 @@
       if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
       if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
       const resolvedLength = resolveLetterLength(length, tone, Boolean(idea));
-      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: lang, relationship, tone, idea, length: resolvedLength }), signal: controller.signal });
+      const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: letterLanguage, relationship, tone, idea, length: resolvedLength }), signal: controller.signal });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const text = String(data.text || "").trim();
@@ -2614,6 +2731,7 @@
     const tone = LETTER_TONES.has($("#aiTone").value) ? $("#aiTone").value : "auto";
     const idea = cleanLetterIdea($("#aiIdea").value);
     const length = LETTER_LENGTHS.has($("#aiLength").value) ? $("#aiLength").value : "auto";
+    composerLanguage = ["ru","en","fr"].includes($("#aiLanguage").value) ? $("#aiLanguage").value : lang;
     const relationship = resolveRelationship(sender, recipient, selectedRelationship);
     if (tone === "romantic" && relationship !== "spouse") return showSafety(t("romanticSpouseOnly"));
     if (idea && (containsForbidden(idea) || containsReligiousAuthorityClaim(idea) || containsImproperRomance(idea, relationship))) return showSafety(t("safety"));
@@ -2625,9 +2743,9 @@
     let progress = 8; $("#statusBar").style.width = `${progress}%`; $("#statusPercent").textContent = `${progress}%`; setText("#statusText", t("generating"));
     const timer = setInterval(() => { progress = Math.min(91, progress + 9); $("#statusBar").style.width = `${progress}%`; $("#statusPercent").textContent = `${progress}%`; }, 90);
     try {
-      const local = localCompose(sender, recipient, selectedRelationship, tone, idea, length);
+      const local = localCompose(sender, recipient, selectedRelationship, tone, idea, length, composerLanguage);
       if (CONFIG.aiEndpoint) {
-        try { generatedMessage = await remoteCompose(sender, recipient, selectedRelationship, tone, idea, length); }
+        try { generatedMessage = await remoteCompose(sender, recipient, selectedRelationship, tone, idea, length, composerLanguage); }
         catch { generatedMessage = local; showToast(t("composeFail"), 3400); }
       } else { await new Promise(resolve => setTimeout(resolve, 520)); generatedMessage = local; }
       if (!letterFitsSelectedLength(generatedMessage, length, tone, Boolean(idea)) || containsForbidden(generatedMessage) || containsReligiousAuthorityClaim(generatedMessage) || containsImproperRomance(generatedMessage, relationship)) throw new Error("Blocked output");
@@ -2654,7 +2772,7 @@
     $("#generationStatus").hidden = true;
   }
 
-  function usePersonalText(text) {
+  function usePersonalText(text, source = "own") {
     if (!isPremium) return openPaywall("letter");
     const value = String(text || "").normalize("NFKC").trim().slice(0, 1800);
     const sender = cleanName($("#aiSenderName").value) || fromName;
@@ -2664,20 +2782,48 @@
     if (!value || value.length < 12 || containsForbidden(value) || containsReligiousAuthorityClaim(value) || containsImproperRomance(value, relationship)) return showSafety(t("safety"));
     if (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient)) return showSafety(t("namesSafety"));
     setNames(sender, recipient, { explicit: true });
+    const selectedTone = LETTER_TONES.has($("#aiTone").value) ? $("#aiTone").value : "auto";
+    const creationContext = composerContext ? { ...composerContext } : null;
     sharedMessage = value;
     letterDeck = [{ id: "shared", category: "warm", shared: true, ru: value, en: value, fr: value }, ...LETTERS];
     currentIndex = 0;
     closePanel(layers.ai);
     if (!storyOpened) openStory(); else renderLetter();
     updateUrl(true);
+    const letterResult = {
+      text: value,
+      senderName: sender,
+      recipientName: recipient,
+      relationship,
+      tone: selectedTone,
+      language: composerLanguage,
+      source: String(creationContext?.source || source || "own").slice(0, 32),
+      context: creationContext
+    };
+    dispatchEvent(new CustomEvent("glowletter-letter-created", { detail: letterResult }));
+    const onComplete = creationContext?.onComplete;
+    composerContext = null;
+    if (typeof onComplete === "function") {
+      Promise.resolve(onComplete(letterResult)).catch(error => console.info("Moments letter completion failed", error));
+    }
     showToast(t("customAdded"), 3200);
   }
 
-  function openAiMode() {
-    $("#aiSenderName").value = fromName;
-    $("#aiRecipientName").value = toName;
+  function openAiMode(context = null) {
+    composerContext = context && typeof context === "object" ? { ...context } : null;
+    const sender = cleanName(composerContext?.senderName) || fromName;
+    const recipient = cleanName(composerContext?.recipientName) || toName;
+    composerLanguage = ["ru","en","fr"].includes(composerContext?.language) ? composerContext.language : lang;
+    $("#aiSenderName").value = sender;
+    $("#aiRecipientName").value = recipient;
+    $("#aiLanguage").value = composerLanguage;
+    if (LETTER_RELATIONSHIPS.has(composerContext?.relationship)) $("#aiRelationship").value = composerContext.relationship;
+    if (LETTER_TONES.has(composerContext?.tone)) $("#aiTone").value = composerContext.tone;
+    if (LETTER_LENGTHS.has(composerContext?.length)) $("#aiLength").value = composerContext.length;
+    if (composerContext?.idea) $("#aiIdea").value = cleanLetterIdea(composerContext.idea);
+    invalidateLetterDraft();
     openPanel(layers.ai);
-    requestAnimationFrame(() => (fromName ? $("#aiRecipientName") : $("#aiSenderName"))?.focus());
+    requestAnimationFrame(() => (sender ? $("#aiRecipientName") : $("#aiSenderName"))?.focus());
   }
 
   function requestPremiumFeature() {
@@ -3455,46 +3601,180 @@
   }
 
   function clearQrPreview(){
-    currentQrUrl="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
+    currentQrUrl="";currentQrMode="catalog";currentQrCaption="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
     const canvas=$("#qrCanvas");const context=canvas?.getContext?.("2d");if(context){context.save();context.setTransform(1,0,0,1,0,0);context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.restore();}
+  }
+
+  function drawQrUrl(url,sender,recipient,notify=false){
+    if(!window.GlowLetterQR?.renderToCanvas){showToast(t("qrUnavailable"));return false;}
+    const palette=qrPalette();
+    window.GlowLetterQR.renderToCanvas($("#qrCanvas"),url,{size:280,pixelRatio:Math.min(Number(devicePixelRatio)||1,2),margin:4,level:"M",foreground:palette.foreground,background:palette.background});
+    setQrActionsEnabled(true);setText("#qrRoutePreview",qrRouteText(sender,recipient));if(notify)showToast(t("qrReady"));return true;
+  }
+
+  function renderCurrentQr(notify=false){
+    if(!currentQrUrl)return false;
+    return drawQrUrl(currentQrUrl,cleanName($("#qrSenderName")?.value||""),cleanName($("#qrRecipientName")?.value||""),notify);
   }
 
   function renderQrCode(notify=false){
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");
     const invalid=!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient);$("#qrNamesError").hidden=!invalid;if(invalid){clearQrPreview();return false;}
-    if(!window.GlowLetterQR?.renderToCanvas){showToast(t("qrUnavailable"));return false;}
-    currentQrUrl=buildPublicQrUrl(sender,recipient);const palette=qrPalette();
-    window.GlowLetterQR.renderToCanvas($("#qrCanvas"),currentQrUrl,{size:280,pixelRatio:Math.min(Number(devicePixelRatio)||1,2),margin:4,level:"M",foreground:palette.foreground,background:palette.background});
-    setQrActionsEnabled(true);setText("#qrRoutePreview",qrRouteText(sender,recipient));if(notify)showToast(t("qrReady"));return true;
+    currentQrMode="catalog";currentQrCaption="";currentQrUrl=buildPublicQrUrl(sender,recipient);setText("#qrPreviewCaption",t("qrCaption"));
+    return drawQrUrl(currentQrUrl,sender,recipient,notify);
   }
 
   function openQrBuilder(){
-    $("#qrSenderName").value=fromName;$("#qrRecipientName").value=toName;$("#qrNamesError").hidden=true;renderQrCode(false);openPanel(layers.qr);
+    currentQrMode="catalog";currentQrCaption="";$("#qrSenderName").value=fromName;$("#qrRecipientName").value=toName;$("#qrNamesError").hidden=true;renderQrCode(false);openPanel(layers.qr);
+  }
+
+  function openPersonalQr(payload={}){
+    const base=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);
+    const safe=new URL(String(payload.url||""),base);
+    const token=safe.searchParams.get("moment")||"";
+    if(safe.origin!==base.origin||safe.pathname!==base.pathname||!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(token))throw new Error("invalid_personal_qr");
+    safe.hash="";safe.search="";safe.searchParams.set("moment",token);const qrLanguage=payload.language||payload.letter?.language;if(["en","fr"].includes(qrLanguage))safe.searchParams.set("lang",qrLanguage);
+    const sender=cleanName(payload.senderName||payload.sender||payload.letter?.sender_name_snapshot)||fromName;const recipient=cleanName(payload.recipientName||payload.recipient||payload.letter?.recipient_name_snapshot)||toName;
+    if(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_qr_names");
+    currentQrMode="personal";currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle"}[lang])).slice(0,48);currentQrUrl=safe.toString();
+    $("#qrSenderName").value=sender;$("#qrRecipientName").value=recipient;$("#qrNamesError").hidden=true;setText("#qrPreviewCaption",currentQrCaption);drawQrUrl(currentQrUrl,sender,recipient,false);openPanel(layers.qr);
+  }
+
+  function openResolvedMoment(payload={}){
+    const value=String(payload.text||"").normalize("NFKC").trim().slice(0,4000);
+    const sender=cleanName(payload.senderName);const recipient=cleanName(payload.recipientName);
+    if(!value||!sender||!recipient||containsForbidden(value)||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_resolved_letter");
+    if(["ru","en","fr"].includes(payload.language))lang=payload.language;
+    setNames(sender,recipient,{persist:false,explicit:false});
+    sharedMessage=value;letterDeck=[{id:"shared",category:"warm",shared:true,ru:value,en:value,fr:value},...LETTERS];currentIndex=0;
+    const safe=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);safe.search="";safe.hash="";const token=String(payload.publicId||params.get("moment")||"");if(token)safe.searchParams.set("moment",token);if(lang!=="ru")safe.searchParams.set("lang",lang);history.replaceState({},"",safe);
+    applyLanguage(false);Object.values(layers).forEach(closePanel);if(!storyOpened)openStory();else renderLetter();
+  }
+
+  window.GlowLetterApp=Object.freeze({
+    getState:()=>({language:lang,senderName:fromName,recipientName:toName,premium:isPremium,publicShareUrl:CONFIG.publicShareUrl||`${location.origin}${location.pathname}`}),
+    openComposer:context=>{pendingPremiumFeature="letter";if(!isPremium){openPaywall("letter");return false;}pendingPremiumFeature="";openAiMode(context);return true;},
+    openQr:payload=>openPersonalQr(payload),
+    openResolvedLetter:payload=>openResolvedMoment(payload),
+    notify:(message,duration)=>showToast(String(message||""),duration),
+    goHome:()=>goHome()
+  });
+
+  function momentsComposerRequest(request = {}) {
+    return {
+      ...request,
+      senderName: request.senderName || request.sender || "",
+      recipientName: request.recipientName || request.recipient || "",
+      idea: request.idea || request.note || ""
+    };
+  }
+
+  function bindMomentsIntegrationEvents() {
+    if (momentsListenersBound) return;
+    momentsListenersBound = true;
+    addEventListener("glowletter-cloud-session", () => {
+      const moments = window.GlowLetterMoments;
+      if (!moments) return;
+      Promise.resolve(moments.setSession(cloudUser)).catch(error => console.info("Moments session sync failed", error));
+    });
+    addEventListener("glowletter-language-changed", event => {
+      const moments = window.GlowLetterMoments;
+      if (!moments) return;
+      moments.setLanguage(event.detail?.language || lang);
+    });
+    addEventListener("glowletter-letter-created", event => {
+      const moments = window.GlowLetterMoments;
+      const detail = event.detail && typeof event.detail === "object" ? event.detail : {};
+      const context = detail.context && typeof detail.context === "object" ? detail.context : {};
+      if (!moments || typeof context.onComplete === "function") return;
+      Promise.resolve(moments.recordLetter({
+        text: detail.text,
+        sender: detail.senderName,
+        recipient: detail.recipientName,
+        language: detail.language,
+        tone: detail.tone,
+        source: detail.source || context.source || "own",
+        personId: context.personId,
+        momentId: context.momentId,
+        note: context.note || context.idea || ""
+      })).catch(error => console.info("Moments history save failed", error));
+    });
+    addEventListener("glowletter-moment-resolved", event => {
+      const detail = event.detail && typeof event.detail === "object" ? event.detail : {};
+      const letter = detail.letter && typeof detail.letter === "object" ? detail.letter : null;
+      if (detail.locked || detail.status !== "ready" || !letter) return;
+      try {
+        window.GlowLetterApp.openResolvedLetter({
+          text: letter.letter_text,
+          senderName: letter.sender_name,
+          recipientName: letter.recipient_name,
+          language: letter.language,
+          publicId: detail.publicId
+        });
+        window.GlowLetterMoments?.close();
+      } catch (error) {
+        console.info("Moments resolved letter could not be opened", error);
+      }
+    });
+  }
+
+  function initializeMomentsIntegration() {
+    if (momentsIntegrationPromise) return momentsIntegrationPromise;
+    const moments = window.GlowLetterMoments;
+    if (!moments) return Promise.resolve(false);
+    bindMomentsIntegrationEvents();
+    momentsIntegrationPromise = Promise.resolve(moments.init({
+      getClient: () => window.GlowLetterCloud?.getClient?.() || cloudClient,
+      getUser: () => window.GlowLetterCloud?.getUser?.() || cloudUser,
+      getLanguage: () => lang,
+      openComposer: request => window.GlowLetterApp.openComposer(momentsComposerRequest(request)),
+      openQr: request => window.GlowLetterApp.openQr({
+        ...request,
+        senderName: request?.senderName || request?.sender || request?.letter?.sender_name_snapshot || "",
+        recipientName: request?.recipientName || request?.recipient || request?.letter?.recipient_name_snapshot || "",
+        language: request?.language || request?.letter?.language || lang
+      })
+    })).then(async () => {
+      await moments.setSession(cloudUser);
+      moments.setLanguage(lang);
+      return true;
+    }).catch(error => {
+      momentsIntegrationPromise = null;
+      console.info("Moments initialization failed", error);
+      return false;
+    });
+    return momentsIntegrationPromise;
+  }
+
+  function openMomentsHome() {
+    initializeMomentsIntegration().then(ready => {
+      if (ready) window.GlowLetterMoments?.open("people");
+    });
   }
 
   function createQrCardBlob(){
-    if(!currentQrUrl&&!renderQrCode(false))return Promise.resolve(null);
+    if(!currentQrUrl&& !renderQrCode(false))return Promise.resolve(null);
     const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=1200;canvas.height=1600;const ctx=canvas.getContext("2d");if(!ctx)return Promise.resolve(null);const palette=qrPalette();
     const gradient=ctx.createLinearGradient(0,0,1200,1600);gradient.addColorStop(0,palette.background);gradient.addColorStop(1,"#ece8ea");ctx.fillStyle=gradient;ctx.fillRect(0,0,1200,1600);
     ctx.strokeStyle=palette.accent;ctx.lineWidth=4;ctx.strokeRect(56,56,1088,1488);ctx.textAlign="center";ctx.fillStyle=palette.accent;ctx.font="800 30px Manrope, Arial";ctx.fillText("G L O W L E T T E R",600,155);
     ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(({ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse"}[lang]||"GlowLetter"),600,265);
     ctx.fillStyle="#ffffff";ctx.fillRect(176,350,848,848);ctx.drawImage(source,200,374,800,800);
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");const route=qrRouteText(sender,recipient);let routeFontSize=48;ctx.fillStyle=palette.foreground;ctx.font=`600 ${routeFontSize}px Georgia, serif`;while(ctx.measureText(route).width>1000&&routeFontSize>30){routeFontSize-=2;ctx.font=`600 ${routeFontSize}px Georgia, serif`;}ctx.fillText(route,600,1285);
-    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText(t("qrCaption").toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo"}[lang]),600,1430);
+    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText((currentQrCaption||t("qrCaption")).toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo"}[lang]),600,1430);
     return new Promise(resolve=>canvas.toBlob(resolve,"image/png",.96));
   }
 
   async function downloadQrCard(){
-    if(!renderQrCode(false))return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
   }
 
   async function copyQrImage(){
-    if(!renderQrCode(false))return;const blob=await createQrCardBlob();if(!blob)return;
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;const blob=await createQrCardBlob();if(!blob)return;
     try{if(!navigator.clipboard?.write||typeof ClipboardItem!=="function")throw new Error("unsupported");await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);showToast(t("qrImageCopied"));}
     catch{showToast(t("qrImageCopyFail"),3200);}
   }
 
-  async function copyQrLink(){if(!renderQrCode(false))return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
+  async function copyQrLink(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
 
   function isFullscreenShell(){return Boolean(matchMedia?.("(display-mode: fullscreen)").matches||navigator.standalone===true||location.hostname==="appassets.androidplatform.net"||location.protocol==="file:");}
   function fullscreenActive(){return Boolean(document.fullscreenElement||isFullscreenShell());}
@@ -3515,20 +3795,21 @@
 
   function bindEvents(){
     $("#openStoryButton").addEventListener("click",openStory);$("#homeButton").addEventListener("click",goHome);$$(".go-home").forEach(button=>button.addEventListener("click",goHome));
+    $("#momentsOpenHome").addEventListener("click",openMomentsHome);
     $("#setupForm").addEventListener("submit",submitNameSetup);$("#setupClose").addEventListener("click",()=>closePanel(layers.setup));$("#setupBackdrop").addEventListener("click",()=>closePanel(layers.setup));
     $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#speakButton").addEventListener("click",speakLetter);$("#postcardButton").addEventListener("click",generatePostcard);$("#favoriteButton").addEventListener("click",toggleFavorite);$("#focusReadingButton").addEventListener("click",()=>setReadingFocus(!readingFocus));
     letterStage.addEventListener("pointerdown",startReadingSwipe);letterStage.addEventListener("pointermove",updateReadingSwipe,{passive:false});letterStage.addEventListener("pointerup",finishReadingSwipe);letterStage.addEventListener("pointercancel",finishReadingSwipe);
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",requestPremiumFeature));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
-    $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderQrCode(false);}));
-    $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
+    $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderCurrentQr(false);}));
+    $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false))window.print();});
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
-    $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsReligiousAuthorityClaim(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value));
-    [$("#aiSenderName"),$("#aiRecipientName"),$("#aiIdea")].forEach(control=>control.addEventListener("input",invalidateLetterDraft));[$("#aiRelationship"),$("#aiTone"),$("#aiLength")].forEach(control=>control.addEventListener("change",invalidateLetterDraft));
-    $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);$("#ownTextToggle").setAttribute("aria-expanded",String(!editor.hidden));});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value));
+    $("#aiForm").addEventListener("submit",event=>{event.preventDefault();generateLetter();});$("#regenerateButton").addEventListener("click",generateLetter);$("#copyGenerated").addEventListener("click",()=>{const value=$("#generatedText").value;const sender=cleanName($("#aiSenderName").value)||fromName;const recipient=cleanName($("#aiRecipientName").value)||toName;const selected=LETTER_RELATIONSHIPS.has($("#aiRelationship").value)?$("#aiRelationship").value:"auto";const relationship=resolveRelationship(sender,recipient,selected);if(!value||containsForbidden(value)||containsReligiousAuthorityClaim(value)||containsImproperRomance(value,relationship))showSafety(t("safety"));else copyText(value);});$("#useGenerated").addEventListener("click",()=>usePersonalText($("#generatedText").value,"ai"));
+    [$("#aiSenderName"),$("#aiRecipientName"),$("#aiIdea")].forEach(control=>control.addEventListener("input",invalidateLetterDraft));[$("#aiRelationship"),$("#aiTone"),$("#aiLength"),$("#aiLanguage")].forEach(control=>control.addEventListener("change",()=>{composerLanguage=$("#aiLanguage").value;invalidateLetterDraft();}));
+    $("#ownTextToggle").addEventListener("click",()=>{const editor=$("#ownTextEditor");editor.hidden=!editor.hidden;$("#ownTextToggle").classList.toggle("is-open",!editor.hidden);$("#ownTextToggle").setAttribute("aria-expanded",String(!editor.hidden));});$("#useOwnText").addEventListener("click",()=>usePersonalText($("#ownText").value,"own"));
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
     $("#languageButton").addEventListener("click",()=>{stopLetterSpeech();const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
@@ -3552,7 +3833,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=27", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=28", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -3573,6 +3854,7 @@
     await initializeBetaAccess();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
+    setTimeout(() => { initializeMomentsIntegration(); }, 0);
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
       const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});
