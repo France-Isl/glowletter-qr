@@ -12,6 +12,8 @@ const app = read("app.js");
 const worker = read("sw.js");
 const config = read("supabase/config.toml");
 const migration = read("supabase/migrations/20260802103909_temporary_shared_audio.sql");
+const permissionFix = read("supabase/migrations/20260802170628_fix_audio_reservation_permissions.sql");
+const qualifiedFix = read("supabase/migrations/20260802170825_qualify_audio_reservation_columns.sql");
 const sharedFunction = read("supabase/functions/shared-audio/index.ts");
 const cleanupFunction = read("supabase/functions/cleanup-shared-audio/index.ts");
 
@@ -46,6 +48,13 @@ assert.match(migration, /glowletter_validate_cleanup_secret/iu);
 assert.match(migration, /X-GlowLetter-Cleanup/iu);
 assert.match(migration, /'\*\/5 \* \* \* \*'/u);
 assert.doesNotMatch(migration, /sb_secret_|service_role_key/iu);
+assert.match(permissionFix, /create or replace function public\.glowletter_reserve_audio_share/iu);
+assert.match(permissionFix, /security invoker/iu);
+assert.match(permissionFix, /if p_user_id is null then/iu);
+assert.doesNotMatch(permissionFix, /(?:from|join)\s+auth\.users/iu);
+assert.match(qualifiedFix, /security invoker/iu);
+assert.match(qualifiedFix, /audio_share\.expires_at > now\(\)/iu);
+assert.doesNotMatch(qualifiedFix, /(?:from|join)\s+auth\.users/iu);
 
 for (const name of ["shared-audio", "cleanup-shared-audio"]) {
   assert.match(config, new RegExp(`\\[functions\\.${name}\\][\\s\\S]{0,80}verify_jwt = false`, "u"));
