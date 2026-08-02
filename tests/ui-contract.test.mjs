@@ -35,7 +35,7 @@ for (const id of [
 }
 assert.match(index, /Получатель увидит первые 10 писем бесплатно/u);
 assert.match(index, /Ключ полного доступа не передаётся/u);
-assert.match(app, /#qrOpenButton[^\n]*addEventListener\(["']click["'],\s*openQrBuilder\)/);
+assert.match(app, /#qrOpenButton[^\n]*addEventListener\(["']click["'],\s*\(\)\s*=>\s*saveSettings\(\{\s*openQr\s*:\s*true\s*\}\)\)/);
 assert.match(app, /#qrForm[^\n]*addEventListener\(["']submit["']/);
 assert.match(app, /#qrDownloadButton[^\n]*addEventListener\(["']click["'],\s*downloadQrCard\)/);
 assert.match(app, /#qrCopyLinkButton[^\n]*addEventListener\(["']click["'],\s*copyQrLink\)/);

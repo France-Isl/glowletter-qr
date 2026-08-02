@@ -68,10 +68,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p mobile/dist
-          cp mobile/android/app/build/outputs/apk/debug/GlowLetter-2.3.0-debug.apk \
-            mobile/dist/GlowLetter-2.3.0-preview-debug.apk
+          cp mobile/android/app/build/outputs/apk/debug/GlowLetter-2.3.1-debug.apk \
+            mobile/dist/GlowLetter-2.3.1-preview-debug.apk
           cp mobile/android/app/build/outputs/bundle/release/app-release.aab \
-            mobile/dist/GlowLetter-2.3.0-preview-unsigned.aab
+            mobile/dist/GlowLetter-2.3.1-preview-unsigned.aab
           cp mobile/store-assets/nurpismo-play-icon-512.png \
             mobile/dist/GlowLetter-play-icon-512.png
           cp mobile/store-assets/nurpismo-feature-1024x500.png \
@@ -80,7 +80,7 @@ jobs:
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: glowletter-v2.3.0-preview
+          name: glowletter-v2.3.1-preview
           path: mobile/dist/*
           if-no-files-found: error
           retention-days: 30
@@ -88,14 +88,14 @@ jobs:
       - name: Create or update preview prerelease
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: v2.3.0-preview
+          TAG: v2.3.1-preview
         shell: bash
         run: |
           set -euo pipefail
           NOTES='Preview only. Both public artifacts fail closed: they do not contain owner access or a mock entitlement. The unsigned AAB targets the monthly GlowLetter Premium subscription and cannot be submitted to production until Play App Signing/upload-key, the purchase-verification backend, Play Console subscription and RTDN are configured.'
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release edit "$TAG" --target "$GITHUB_SHA" --title "GlowLetter 2.3.0 preview" --notes "$NOTES" --prerelease
+            gh release edit "$TAG" --target "$GITHUB_SHA" --title "GlowLetter 2.3.1 preview" --notes "$NOTES" --prerelease
           else
-            gh release create "$TAG" --target "$GITHUB_SHA" --title "GlowLetter 2.3.0 preview" --notes "$NOTES" --prerelease
+            gh release create "$TAG" --target "$GITHUB_SHA" --title "GlowLetter 2.3.1 preview" --notes "$NOTES" --prerelease
           fi
           gh release upload "$TAG" mobile/dist/* --clobber

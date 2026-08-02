@@ -74,6 +74,7 @@
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   const liteDevice = document.documentElement.dataset.glPerf === "lite";
+  const mobileDevice = document.documentElement.dataset.glPerf === "mobile";
   let sceneExplicitlyRequested = false;
   let premium = false;
   let sampleTimer = 0;
@@ -94,6 +95,10 @@
   const video = videoLayer.querySelector("video");
   video.defaultMuted = true;
   video.muted = true;
+  const paletteCanvas = document.createElement("canvas");
+  paletteCanvas.width = 32;
+  paletteCanvas.height = 18;
+  const paletteContext = paletteCanvas.getContext("2d", { willReadFrequently: true });
 
   const frameLayer = document.createElement("div");
   frameLayer.className = "gl-frame-layer";
@@ -198,17 +203,17 @@
   const setPalette = luminance => {
     const light = Math.max(0, Math.min(1, luminance));
     const dim = state.smart ? (.17 + light * .25) : .28;
-    const paper = state.smart ? (.70 + light * .1) : .76;
+    const paper = mobileDevice
+      ? (state.smart ? (.80 + light * .08) : .84)
+      : (state.smart ? (.70 + light * .1) : .76);
     document.documentElement.style.setProperty("--gl-scene-dim", dim.toFixed(3));
     document.documentElement.style.setProperty("--gl-paper-alpha", paper.toFixed(3));
   };
   const samplePalette = () => {
-    if (!state.smart || video.readyState < 2 || !video.videoWidth) return setPalette(.5);
+    if (!state.smart || video.readyState < 2 || !video.videoWidth || !paletteContext) return setPalette(.5);
     try {
-      const canvas = document.createElement("canvas"); canvas.width = 32; canvas.height = 18;
-      const context = canvas.getContext("2d", { willReadFrequently: true });
-      context.drawImage(video, 0, 0, 32, 18);
-      const pixels = context.getImageData(0, 0, 32, 18).data;
+      paletteContext.drawImage(video, 0, 0, 32, 18);
+      const pixels = paletteContext.getImageData(0, 0, 32, 18).data;
       let sum = 0; for (let index = 0; index < pixels.length; index += 4) sum += (.2126 * pixels[index] + .7152 * pixels[index + 1] + .0722 * pixels[index + 2]) / 255;
       setPalette(sum / (pixels.length / 4));
     } catch { setPalette(.5); }
@@ -227,7 +232,7 @@
     }
     const source = `${ASSET_ROOT}${selected.file}`;
     video.poster = `${ASSET_ROOT}${selected.id}.jpg`;
-    if (!video.src.endsWith(source)) { video.src = source; video.preload = saveData || liteDevice ? "metadata" : "auto"; video.load(); }
+    if (!video.src.endsWith(source)) { video.src = source; video.preload = saveData || liteDevice || mobileDevice ? "metadata" : "auto"; video.load(); }
     else if (video.readyState >= 2) document.body.classList.add("gl-video-ready");
     if (reduceMotion.matches) notify("reduced"); else if (saveData && !sceneExplicitlyRequested) notify("data"); else playVideo();
   };
@@ -303,6 +308,6 @@
   new MutationObserver(() => setTimeout(() => { localize(); renderChoices(); }, 0)).observe(document.querySelector("#languageButton"), { childList: true, characterData: true, subtree: true });
 
   clearInterval(sampleTimer);
-  sampleTimer = setInterval(() => { if (!document.hidden && state.scene !== "still") samplePalette(); }, liteDevice ? 9000 : 4500);
+  sampleTimer = setInterval(() => { if (!document.hidden && state.scene !== "still") samplePalette(); }, mobileDevice ? 12000 : (liteDevice ? 9000 : 4500));
   localize(); renderChoices(); applyScene(); applyDesign(); detectPremium(); syncUrl();
 })();

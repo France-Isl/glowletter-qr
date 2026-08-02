@@ -9,7 +9,12 @@
   const LOW_MEMORY = Number(navigator.deviceMemory || 8) <= 4;
   const LOW_CPU = Number(navigator.hardwareConcurrency || 8) <= 4;
   const LITE_DEVICE = REDUCED_MOTION.matches || SAVE_DATA || LOW_MEMORY || LOW_CPU;
-  document.documentElement.dataset.glPerf = LITE_DEVICE ? "lite" : "full";
+  const MOBILE_DEVICE = Boolean(navigator.userAgentData?.mobile)
+    || /Android|iPhone|iPad|iPod/iu.test(navigator.userAgent || "")
+    || matchMedia("(pointer: coarse)").matches
+    || matchMedia("(max-width: 900px)").matches;
+  const PERFORMANCE_MODE = LITE_DEVICE ? "lite" : (MOBILE_DEVICE ? "mobile" : "full");
+  document.documentElement.dataset.glPerf = PERFORMANCE_MODE;
   const hasIosBillingBridge = location.protocol === "file:"
     && typeof window.webkit?.messageHandlers?.nurBilling?.postMessage === "function"
     && typeof window.NurBilling?.getEntitlement === "function";
@@ -131,17 +136,17 @@
   Object.assign(UI.ru, {
     brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
     themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Лунный",themeRose:"Розовый",themeForest:"Лесной",themeSand:"Тёплый",
-    qrOpen:"Создать QR-код письма",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Укажите имена, скачайте QR-код и приложите его к цветам или подарку. Получатель увидит первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"В QR-коде сохраняются только выбранные имена, язык и ссылка на бесплатную версию. Ключ полного доступа не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"QR-код готов",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
+    qrOpen:"Сохранить имена и создать QR",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
   });
   Object.assign(UI.en, {
     brandCopy:"Warm words for the people who truly matter.",stage:"These words found their way to you",locationDenied:"Location is unavailable — showing weather for the nearest fallback city",
     themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Moon",themeRose:"Rose",themeForest:"Forest",themeSand:"Warm",
-    qrOpen:"Create a letter QR code",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Add the names, download the QR code, and attach it to flowers or a gift. The recipient can read the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"The QR code contains only the selected names, language, and public free-version link. Full-access keys are never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"QR code is ready",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
+    qrOpen:"Save names and create QR",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
   });
   Object.assign(UI.fr, {
     brandCopy:"Des mots chaleureux pour les personnes qui comptent vraiment.",stage:"Ces mots ont trouvé leur chemin jusqu’à toi",locationDenied:"La position est indisponible — météo de la ville de secours affichée",
     themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Lune",themeRose:"Rose",themeForest:"Forêt",themeSand:"Chaleureux",
-    qrOpen:"Créer le QR d’une lettre",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Ajoutez les prénoms, téléchargez le QR code et joignez-le à des fleurs ou à un cadeau. Le destinataire lira gratuitement les 10 premières lettres.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Le QR code contient uniquement les prénoms choisis, la langue et le lien public gratuit. La clé d’accès complet n’est jamais transmise.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code est prêt",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
+    qrOpen:"Enregistrer les prénoms et créer le QR",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
@@ -388,8 +393,17 @@
     sender: cleanName(localStorage.getItem("nurFrom")),
     recipient: cleanName(localStorage.getItem("nurTo"))
   };
-  let fromName = cleanName(params.has("from") ? params.get("from") : storedNamesAtLaunch.sender);
-  let toName = cleanName(params.has("to") ? params.get("to") : storedNamesAtLaunch.recipient);
+  const urlNamesAtLaunch = {
+    sender: cleanName(params.get("from")),
+    recipient: cleanName(params.get("to"))
+  };
+  const namesCameFromUrl = params.has("from")
+    && params.has("to")
+    && Boolean(urlNamesAtLaunch.sender && urlNamesAtLaunch.recipient)
+    && !containsForbidden(urlNamesAtLaunch.sender)
+    && !containsForbidden(urlNamesAtLaunch.recipient);
+  let fromName = namesCameFromUrl ? urlNamesAtLaunch.sender : storedNamesAtLaunch.sender;
+  let toName = namesCameFromUrl ? urlNamesAtLaunch.recipient : storedNamesAtLaunch.recipient;
   const initialNamesReady = Boolean(fromName && toName);
   let sharedMessage = initialNamesReady ? decodeSharedMessage(params.get("msg")) : "";
   let letterDeck = sharedMessage ? [{ id: "shared", category: "warm", shared: true, ru: sharedMessage, en: sharedMessage, fr: sharedMessage }, ...LETTERS] : [...LETTERS];
@@ -422,6 +436,7 @@
   let generatedMessage = "";
   let composerVariant = 0;
   let readingFocus = false;
+  let letterAnimationFrame = 0;
   let readingPointer = null;
   let letterSpeechActive = false;
   let letterSpeechSource = "";
@@ -444,9 +459,8 @@
   let favorites;
   try { favorites = new Set(JSON.parse(localStorage.getItem("nurFavorites") || "[]")); }
   catch { favorites = new Set(); localStorage.removeItem("nurFavorites"); }
-  const namesCameFromUrl = params.has("from") || params.has("to");
   const initialLinkNames = namesCameFromUrl
-    ? { sender: cleanName(params.get("from")), recipient: cleanName(params.get("to")) }
+    ? { ...urlNamesAtLaunch }
     : null;
   let linkNamesActive = namesCameFromUrl;
   const CLOUD_EVER_AUTHENTICATED_KEY = "nurCloudEverAuthenticatedV1";
@@ -2428,7 +2442,12 @@
     $("#letterTo").textContent = displayName(toName);
     $("#letterFrom").textContent = displayName(fromName);
     const text = $("#letterText");
-    text.classList.remove("is-changing"); void text.offsetWidth; text.textContent = entryText(entry); text.classList.add("is-changing");
+    text.classList.remove("is-changing");
+    text.textContent = entryText(entry);
+    cancelAnimationFrame(letterAnimationFrame);
+    letterAnimationFrame = requestAnimationFrame(() => {
+      letterAnimationFrame = requestAnimationFrame(() => text.classList.add("is-changing"));
+    });
     if (readingFocus) { $("#letter").scrollTop = 0; letterStage.scrollTop = 0; }
     const captions = [t("stage"), `${displayName(fromName)} · ${displayName(toName)}`, UI[lang].family, UI[lang].gratitude];
     $("#stageCaption").textContent = captions[Math.abs(Number(entry.id) || 0) % captions.length];
@@ -2798,15 +2817,22 @@
 
   class RainScene {
     constructor(canvas) {
-      this.canvas = canvas; this.ctx = canvas.getContext("2d"); this.lite = LITE_DEVICE; this.enabled = localStorage.getItem("nurRain") !== "off" && !REDUCED_MOTION.matches; this.intensity = .58; this.drops = []; this.splashes = []; this.frame = 0; this.lastPaint = 0; this.resize = this.resize.bind(this); this.draw = this.draw.bind(this);
-      addEventListener("resize", this.resize, { passive: true }); document.addEventListener("visibilitychange", () => { if (!document.hidden && this.enabled) this.start(); }); this.resize(); this.setEnabled(this.enabled, false);
+      this.canvas = canvas; this.ctx = canvas.getContext("2d", { alpha: true, desynchronized: true }); this.lite = LITE_DEVICE; this.mobile = MOBILE_DEVICE && !this.lite; this.enabled = localStorage.getItem("nurRain") !== "off" && !REDUCED_MOTION.matches; this.intensity = .58; this.drops = []; this.splashes = []; this.frame = 0; this.resizeFrame = 0; this.lastPaint = 0; this.scheduleResize = this.scheduleResize.bind(this); this.draw = this.draw.bind(this);
+      addEventListener("resize", this.scheduleResize, { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) { cancelAnimationFrame(this.frame); this.frame = 0; }
+        else if (this.enabled) this.start();
+      });
+      addEventListener("pagehide", () => { cancelAnimationFrame(this.frame); this.frame = 0; }, { passive: true });
+      this.resize(); this.setEnabled(this.enabled, false);
     }
-    resize() { const dpr = this.lite ? 1 : Math.min(devicePixelRatio || 1, 1.5); this.width = innerWidth; this.height = innerHeight; this.canvas.width = Math.round(this.width * dpr); this.canvas.height = Math.round(this.height * dpr); this.canvas.style.width = `${this.width}px`; this.canvas.style.height = `${this.height}px`; this.ctx.setTransform(dpr,0,0,dpr,0,0); const count = this.lite ? Math.max(12, Math.min(26, Math.round(this.width / 42))) : Math.max(18, Math.min(54, Math.round(this.width / 24))); this.drops = Array.from({ length: count }, () => this.makeDrop(true)); }
+    scheduleResize() { if (this.resizeFrame) return; this.resizeFrame=requestAnimationFrame(()=>{this.resizeFrame=0;this.resize();}); }
+    resize() { const dpr = this.lite ? 1 : Math.min(devicePixelRatio || 1, this.mobile ? 1.2 : 1.5); this.width = innerWidth; this.height = innerHeight; this.canvas.width = Math.round(this.width * dpr); this.canvas.height = Math.round(this.height * dpr); this.canvas.style.width = `${this.width}px`; this.canvas.style.height = `${this.height}px`; this.ctx.setTransform(dpr,0,0,dpr,0,0); const count = this.lite ? Math.max(12, Math.min(26, Math.round(this.width / 42))) : this.mobile ? Math.max(14, Math.min(32, Math.round(this.width / 34))) : Math.max(18, Math.min(54, Math.round(this.width / 24))); this.drops = Array.from({ length: count }, () => this.makeDrop(true)); this.splashes=[]; }
     makeDrop(randomY = false) { return { x: Math.random() * (this.width + 240) - 120, y: randomY ? Math.random() * this.height : -60, length: 22 + Math.random() * 43, speed: 7 + Math.random() * 9, width: 1.1 + Math.random() * 1.7, alpha: .11 + Math.random() * .28, drift: 1.5 + Math.random() * 2.7 }; }
-    setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle").setAttribute("aria-pressed", String(this.enabled)); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.ctx.clearRect(0,0,this.width,this.height); } }
+    setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle").setAttribute("aria-pressed", String(this.enabled)); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.frame=0; this.ctx.clearRect(0,0,this.width,this.height); } }
     setIntensity(value) { this.intensity = Math.max(.2, Math.min(1, value)); }
-    start() { cancelAnimationFrame(this.frame); this.frame=requestAnimationFrame(this.draw); }
-    draw(timestamp = 0) { if (!this.enabled || document.hidden) return; if(this.lite&&timestamp-this.lastPaint<34){this.frame=requestAnimationFrame(this.draw);return;}this.lastPaint=timestamp; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; if(this.lite){ctx.strokeStyle=`rgba(221,239,248,${drop.alpha*.72})`;}else{const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length);gradient.addColorStop(0,"rgba(220,236,245,0)");gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`);ctx.strokeStyle=gradient;}ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){if(Math.random()<(this.lite ? .12 : .24)&&this.splashes.length<(this.lite?6:18))this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
+    start() { if(!this.enabled||document.hidden)return;cancelAnimationFrame(this.frame);this.frame=requestAnimationFrame(this.draw); }
+    draw(timestamp = 0) { if (!this.enabled || document.hidden) { this.frame=0; return; } if((this.lite||this.mobile)&&timestamp-this.lastPaint<32){this.frame=requestAnimationFrame(this.draw);return;}this.lastPaint=timestamp; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; if(this.lite||this.mobile){ctx.strokeStyle=`rgba(221,239,248,${drop.alpha*(this.lite ? .72 : .86)})`;}else{const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length);gradient.addColorStop(0,"rgba(220,236,245,0)");gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`);ctx.strokeStyle=gradient;}ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){const splashChance=this.lite ? .1 : (this.mobile ? .14 : .24);const splashLimit=this.lite?5:(this.mobile?8:18);if(Math.random()<splashChance&&this.splashes.length<splashLimit)this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
       this.splashes=this.splashes.filter(s=>{ctx.strokeStyle=`rgba(220,239,247,${s.a})`;ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(s.x,s.y,s.r*2.3,s.r*.55,0,0,Math.PI*2);ctx.stroke();s.r+=.8;s.a-=.045;return s.a>0;}); this.frame=requestAnimationFrame(this.draw); }
   }
 
@@ -2835,8 +2861,9 @@
 
   function createAtmosphere() {
     const colors=["#b7634b","#d48a59","#d59aa8","#8c684c","#d6a75c"];
-    for(let i=0;i<(LITE_DEVICE?6:18);i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
-    for(let i=0;i<(LITE_DEVICE?0:15);i++){const ember=document.createElement("i");ember.className="ember";ember.style.setProperty("--left",`${42+Math.random()*19}%`);ember.style.setProperty("--size",`${1+Math.random()*3}px`);ember.style.setProperty("--duration",`${3.2+Math.random()*3}s`);ember.style.setProperty("--delay",`${-Math.random()*5}s`);ember.style.setProperty("--drift",`${-35+Math.random()*70}px`);$("#embers").append(ember);}
+    const leafCount=LITE_DEVICE?6:(MOBILE_DEVICE?9:18);const emberCount=LITE_DEVICE?0:(MOBILE_DEVICE?5:15);
+    for(let i=0;i<leafCount;i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
+    for(let i=0;i<emberCount;i++){const ember=document.createElement("i");ember.className="ember";ember.style.setProperty("--left",`${42+Math.random()*19}%`);ember.style.setProperty("--size",`${1+Math.random()*3}px`);ember.style.setProperty("--duration",`${3.2+Math.random()*3}s`);ember.style.setProperty("--delay",`${-Math.random()*5}s`);ember.style.setProperty("--drift",`${-35+Math.random()*70}px`);$("#embers").append(ember);}
   }
 
   function base64ToBlob(base64, mime) { base64=String(base64).replace(/\s+/g,"");const arrays=[];for(let offset=0;offset<base64.length;offset+=512*1024){const end=Math.min(base64.length,offset+512*1024);const safeEnd=end<base64.length?end-(end-offset)%4:end;const binary=atob(base64.slice(offset,safeEnd));const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);arrays.push(bytes);offset=safeEnd-512*1024;}return new Blob(arrays,{type:mime}); }
@@ -3423,13 +3450,22 @@
     return t("qrRoute").replace("{from}",displayName(sender)).replace("{to}",displayName(recipient));
   }
 
+  function setQrActionsEnabled(enabled){
+    ["#qrDownloadButton","#qrCopyLinkButton","#qrCopyImageButton","#qrPrintButton"].forEach(selector=>{const button=$(selector);if(button)button.disabled=!enabled;});
+  }
+
+  function clearQrPreview(){
+    currentQrUrl="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
+    const canvas=$("#qrCanvas");const context=canvas?.getContext?.("2d");if(context){context.save();context.setTransform(1,0,0,1,0,0);context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.restore();}
+  }
+
   function renderQrCode(notify=false){
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");
-    const invalid=Boolean(sender||recipient)&&(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient));$("#qrNamesError").hidden=!invalid;if(invalid)return false;
+    const invalid=!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient);$("#qrNamesError").hidden=!invalid;if(invalid){clearQrPreview();return false;}
     if(!window.GlowLetterQR?.renderToCanvas){showToast(t("qrUnavailable"));return false;}
     currentQrUrl=buildPublicQrUrl(sender,recipient);const palette=qrPalette();
     window.GlowLetterQR.renderToCanvas($("#qrCanvas"),currentQrUrl,{size:280,pixelRatio:Math.min(Number(devicePixelRatio)||1,2),margin:4,level:"M",foreground:palette.foreground,background:palette.background});
-    setText("#qrRoutePreview",qrRouteText(sender,recipient));if(notify)showToast(t("qrReady"));return true;
+    setQrActionsEnabled(true);setText("#qrRoutePreview",qrRouteText(sender,recipient));if(notify)showToast(t("qrReady"));return true;
   }
 
   function openQrBuilder(){
@@ -3467,14 +3503,14 @@
   function updateFullscreenControl(){const active=fullscreenActive();$("#fullscreenToggle")?.classList.toggle("is-active",active);$("#fullscreenToggle")?.setAttribute("aria-pressed",String(active));const state=$("#fullscreenToggle b");if(state)state.textContent=active?t("stateOn"):t("stateOpen");}
   async function toggleFullscreen(){if(isFullscreenShell()&&!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");updateFullscreenControl();return;}if(!document.fullscreenElement&&typeof document.documentElement.requestFullscreen!=="function"){showToast(t("fullscreenUnavailable"));return;}try{if(!document.fullscreenElement){localStorage.setItem(AUTO_FULLSCREEN_KEY,"on");await document.documentElement.requestFullscreen({navigationUI:"hide"});}else{localStorage.setItem(AUTO_FULLSCREEN_KEY,"off");await document.exitFullscreen?.();}}catch{showToast(t("fullscreenUnavailable"));}updateFullscreenControl();}
   function restoreGesturePreferences(){if(gesturePreferencesRestored)return;gesturePreferencesRestored=true;if(localStorage.getItem("nurNature")==="on"&&!isNaturePlaying)setNaturePlaying(true,false);requestAutomaticFullscreen();}
-  function saveSettings(){
+  function saveSettings({openQr=false}={}){
     const sender = cleanName($("#settingsSenderName").value);
     const recipient = cleanName($("#settingsRecipientName").value);
-    const namesInvalid = Boolean(sender || recipient) && (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient));
+    const namesInvalid = openQr ? (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient)) : (Boolean(sender || recipient) && (!sender || !recipient || containsForbidden(sender) || containsForbidden(recipient)));
     $("#settingsNamesError").hidden = !namesInvalid;
-    if (namesInvalid) return;
+    if (namesInvalid) return false;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t("settingsSaved"));closePanel(layers.settings);
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
   }
 
   function bindEvents(){
@@ -3484,9 +3520,9 @@
     letterStage.addEventListener("pointerdown",startReadingSwipe);letterStage.addEventListener("pointermove",updateReadingSwipe,{passive:false});letterStage.addEventListener("pointerup",finishReadingSwipe);letterStage.addEventListener("pointercancel",finishReadingSwipe);
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",requestPremiumFeature));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
-    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",saveSettings);
+    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderQrCode(false);}));
-    $("#qrOpenButton").addEventListener("click",openQrBuilder);$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
+    $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(renderQrCode(false))window.print();});
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
@@ -3516,7 +3552,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=26", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=27", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
