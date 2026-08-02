@@ -19,21 +19,21 @@ const iosContent = read("mobile/ios/NurPismo/ContentView.swift");
 
 assert.ok(fs.existsSync(path.join(root, "mobile/ios/NurPismo/WebResources/.gitkeep")));
 
-assert.match(android, /versionCode\s*=\s*12\b/);
-assert.match(android, /versionName\s*=\s*["']2\.2\.6["']/);
+assert.match(android, /versionCode\s*=\s*13\b/);
+assert.match(android, /versionName\s*=\s*["']2\.3\.0["']/);
 assert.match(android, /exclude\s+["']mobile\/\*\*["'][\s\S]{0,180}["']supabase\/\*\*["'][\s\S]{0,180}["']tests\/\*\*["']/);
 assert.match(android, /exclude\s+["']\*\.md["'][\s\S]{0,100}["']\*\.py["']/);
-assert.match(ios, /MARKETING_VERSION:\s*2\.2\.6\b/);
-assert.match(ios, /CURRENT_PROJECT_VERSION:\s*12\b/);
+assert.match(ios, /MARKETING_VERSION:\s*2\.3\.0\b/);
+assert.match(ios, /CURRENT_PROJECT_VERSION:\s*13\b/);
 assert.match(ios, /PRODUCT_MODULE_NAME:\s*NurPismo\b/);
 assert.match(ios, /TEST_HOST:\s*["']\$\(BUILT_PRODUCTS_DIR\)\/GlowLetter\.app\/GlowLetter["']/);
 assert.match(ios, /BUNDLE_LOADER:\s*["']\$\(TEST_HOST\)["']/);
 assert.match(ios, /- path: NurPismo\/Assets\.xcassets\s+buildPhase: resources/);
 assert.match(ios, /- path: NurPismo\/WebResources\s+type: folder\s+buildPhase: resources/);
 assert.match(ios, /- path: StoreKit\/GlowLetter\.storekit\s+buildPhase: resources/);
-assert.match(workflow, /GlowLetter-2\.2\.6-debug\.apk/);
-assert.match(workflow, /GlowLetter-2\.2\.6-preview-debug\.apk/);
-assert.match(workflow, /TAG:\s*v2\.2\.6-preview/);
+assert.match(workflow, /GlowLetter-2\.3\.0-debug\.apk/);
+assert.match(workflow, /GlowLetter-2\.3\.0-preview-debug\.apk/);
+assert.match(workflow, /TAG:\s*v2\.3\.0-preview/);
 assert.doesNotMatch(workflow, /GlowLetter Next|GlowLetter-Next|app-debug\.apk|v2\.0\.0-next/);
 assert.match(iosWorkflow, /runs-on:\s*macos-latest/);
 assert.match(iosWorkflow, /xcodebuild[\s\S]*-scheme NurPismo[\s\S]*test/);
@@ -59,4 +59,4 @@ assert.match(iosWebView, /popoverPresentationController/);
 assert.match(iosContent, /\.persistentSystemOverlays\(\.hidden\)/);
 assert.match(iosContent, /\.statusBarHidden\(true\)/);
 
-console.log(JSON.stringify({ ok: true, android: "2.2.6 (12)", ios: "2.2.6 (12)", previewTag: "v2.2.6-preview", nativeShare: true, autoFullscreen: true }));
+console.log(JSON.stringify({ ok: true, android: "2.3.0 (13)", ios: "2.3.0 (13)", previewTag: "v2.3.0-preview", nativeShare: true, autoFullscreen: true }));
