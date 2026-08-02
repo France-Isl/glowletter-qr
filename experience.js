@@ -10,22 +10,21 @@
     { id: "still", file: "", icon: "▧" },
     { id: "mishka", file: "mishka.mp4", icon: "🐻" },
     { id: "kotyta", file: "kotyta.mp4", icon: "🐱" },
-    { id: "lis", file: "lis.mp4", icon: "🦊" },
-    { id: "kot", file: "kot.mp4", icon: "🐈" }
+    { id: "lis", file: "lis.mp4", icon: "🦊" }
   ];
   const FRAMES = ["none", "hearts", "moon", "forest", "pearl"];
   const INKS = ["ink", "plum", "forest", "midnight"];
-  const TYPES = ["classic", "elegant", "clear"];
+  const TYPES = ["classic", "elegant", "clear", "poetic", "literary"];
   const TEXT = {
     ru: {
       eyebrow: "ВИЗУАЛЬНАЯ СТУДИЯ", title: "Живой фон", scene: "Видео-фон",
       sceneHint: "Фон повторяется без остановки", still: "Фото / озеро", mishka: "Мишка",
-      kotyta: "Котята", lis: "Лисёнок", kot: "Кот", smart: "Умная читаемость",
+      kotyta: "Котята", lis: "Лисёнок", smart: "Умная читаемость",
       smartHint: "Прозрачность письма сама подстраивается под свет в видео", premium: "Премиум-оформление",
       frame: "Рамка письма", color: "Цвет текста", type: "Стиль текста", pro: "VIP",
       none: "Без рамки", hearts: "Сердца", moon: "Лунный свет", forestFrame: "Лесное золото",
       pearl: "Жемчуг", ink: "Чернила", plum: "Слива", forestInk: "Лес", midnight: "Полночь",
-      classic: "Классика", elegant: "Элегантный", clear: "Чёткий", locked: "Доступно в полной версии",
+      classic: "Классика", elegant: "Элегантный", clear: "Чёткий", poetic: "Поэтичный", literary: "Литературный", locked: "Доступно в полной версии",
       saved: "Оформление сохранено", fallback: "Видео недоступно — возвращён фон с фотографией",
       reduced: "Видео приостановлено системной настройкой движения", data: "Видео приостановлено для экономии трафика",
       on: "ВКЛ", off: "ВЫКЛ", share: "Оформление добавлено в ссылку"
@@ -33,12 +32,12 @@
     en: {
       eyebrow: "VISUAL STUDIO", title: "Living background", scene: "Video background",
       sceneHint: "The background loops continuously", still: "Photo / lake", mishka: "Bear",
-      kotyta: "Kittens", lis: "Little fox", kot: "Cat", smart: "Smart readability",
+      kotyta: "Kittens", lis: "Little fox", smart: "Smart readability",
       smartHint: "Letter transparency adapts to the light in the video", premium: "Premium styling",
       frame: "Letter frame", color: "Text color", type: "Text style", pro: "VIP",
       none: "No frame", hearts: "Hearts", moon: "Moonlight", forestFrame: "Forest gold",
       pearl: "Pearl", ink: "Ink", plum: "Plum", forestInk: "Forest", midnight: "Midnight",
-      classic: "Classic", elegant: "Elegant", clear: "Clear", locked: "Available with full access",
+      classic: "Classic", elegant: "Elegant", clear: "Clear", poetic: "Poetic", literary: "Literary", locked: "Available with full access",
       saved: "Style saved", fallback: "Video unavailable — restored the photo background",
       reduced: "Video paused by the reduced-motion setting", data: "Video paused to save data",
       on: "ON", off: "OFF", share: "Styling added to the link"
@@ -46,12 +45,12 @@
     fr: {
       eyebrow: "STUDIO VISUEL", title: "Fond vivant", scene: "Fond vidéo",
       sceneHint: "Le fond se répète en continu", still: "Photo / lac", mishka: "Ourson",
-      kotyta: "Chatons", lis: "Renardeau", kot: "Chat", smart: "Lisibilité intelligente",
+      kotyta: "Chatons", lis: "Renardeau", smart: "Lisibilité intelligente",
       smartHint: "La transparence s’adapte à la lumière de la vidéo", premium: "Style premium",
       frame: "Cadre de la lettre", color: "Couleur du texte", type: "Style du texte", pro: "VIP",
       none: "Sans cadre", hearts: "Cœurs", moon: "Clair de lune", forestFrame: "Or forestier",
       pearl: "Perle", ink: "Encre", plum: "Prune", forestInk: "Forêt", midnight: "Minuit",
-      classic: "Classique", elegant: "Élégant", clear: "Clair", locked: "Disponible avec l’accès complet",
+      classic: "Classique", elegant: "Élégant", clear: "Clair", poetic: "Poétique", literary: "Littéraire", locked: "Disponible avec l’accès complet",
       saved: "Style enregistré", fallback: "Vidéo indisponible — retour au fond photo",
       reduced: "Vidéo en pause selon le réglage de mouvement", data: "Vidéo en pause pour économiser les données",
       on: "OUI", off: "NON", share: "Style ajouté au lien"
@@ -62,13 +61,16 @@
   const safeJson = value => { try { return JSON.parse(value || "null") || {}; } catch { return {}; } };
   const stored = safeJson(localStorage.getItem(STORAGE_KEY));
   const params = new URLSearchParams(location.search);
+  const requestedScene = params.get("glScene") || stored.scene;
+  const migratedScene = requestedScene === "kot" ? "kotyta" : requestedScene;
   const state = {
-    scene: valid(params.get("glScene") || stored.scene, SCENES.map(item => item.id), "still"),
+    scene: valid(migratedScene, SCENES.map(item => item.id), "still"),
     frame: valid(params.get("glFrame") || stored.frame, FRAMES, "none"),
     ink: valid(params.get("glInk") || stored.ink, INKS, "ink"),
     type: valid(params.get("glType") || stored.type, TYPES, "classic"),
     smart: stored.smart !== false
   };
+  if (stored.scene === "kot") localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...stored, scene: "kotyta" }));
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   const liteDevice = document.documentElement.dataset.glPerf === "lite";
@@ -119,11 +121,12 @@
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.glScene = item.id;
+    button.dataset.sceneLabelKey = item.id;
     button.setAttribute("role", "radio");
     const preview = item.file
       ? `<img loading="lazy" decoding="async" src="${ASSET_ROOT}${item.id}.jpg" alt="" />`
       : '<span class="gl-still-preview" aria-hidden="true">▧</span>';
-    button.innerHTML = `${preview}<span><i aria-hidden="true">${item.icon}</i><b data-scene-label="${item.id}"></b></span>`;
+    button.innerHTML = `${preview}<span aria-hidden="true"><i>${item.icon}</i></span>`;
     sceneGrid.append(button);
   });
 
@@ -139,7 +142,7 @@
   };
   makeChoices(studio.querySelector(".gl-frame-grid"), FRAMES, "glFrame", { none: "none", hearts: "hearts", moon: "moon", forest: "forestFrame", pearl: "pearl" });
   makeChoices(studio.querySelector(".gl-ink-grid"), INKS, "glInk", { ink: "ink", plum: "plum", forest: "forestInk", midnight: "midnight" });
-  makeChoices(studio.querySelector(".gl-type-grid"), TYPES, "glType", { classic: "classic", elegant: "elegant", clear: "clear" });
+  makeChoices(studio.querySelector(".gl-type-grid"), TYPES, "glType", { classic: "classic", elegant: "elegant", clear: "clear", poetic: "poetic", literary: "literary" });
 
   const language = () => {
     const current = String(localStorage.getItem("nurLanguage") || document.querySelector("#languageButton")?.textContent || "ru").trim().toLowerCase();
@@ -154,7 +157,11 @@
   };
   const localize = () => {
     studio.querySelectorAll("[data-gl-text]").forEach(node => { node.textContent = copy(node.dataset.glText); });
-    studio.querySelectorAll("[data-scene-label]").forEach(node => { node.textContent = copy(node.dataset.sceneLabel); });
+    studio.querySelectorAll("[data-scene-label-key]").forEach(button => {
+      const label = copy(button.dataset.sceneLabelKey);
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    });
     studio.querySelectorAll("[data-choice-label]").forEach(node => { node.textContent = copy(node.dataset.choiceLabel); });
     studio.querySelector(".gl-smart-toggle b").textContent = state.smart ? copy("on") : copy("off");
   };
@@ -225,7 +232,7 @@
     if (reduceMotion.matches) notify("reduced"); else if (saveData && !sceneExplicitlyRequested) notify("data"); else playVideo();
   };
   const applyDesign = () => {
-    const sharedPresentation = params.has("msg") && params.has("glFrame");
+    const sharedPresentation = params.has("msg") && ["glFrame", "glInk", "glType"].some(key => params.has(key));
     const shownFrame = premium || sharedPresentation ? state.frame : "none";
     document.body.dataset.glFrame = shownFrame;
     document.body.dataset.glInk = premium || sharedPresentation ? state.ink : "ink";

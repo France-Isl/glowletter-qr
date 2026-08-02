@@ -20,7 +20,7 @@ const sorted = values => [...values].sort();
 const index = readRequired("index.html");
 const app = readRequired("app.js");
 const edge = readRequired("supabase/functions/submit-support/index.ts");
-const migration = readRequired("supabase/migrations/20260729112353_support_tickets.sql");
+const migration = readRequired("supabase/migrations/20260729113434_support_tickets.sql");
 const configPath = filePath("supabase/config.toml");
 const supabaseConfig = fs.existsSync(configPath) ? fs.readFileSync(configPath, "utf8") : "";
 

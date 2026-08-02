@@ -85,4 +85,4 @@ must match the web app's configured capability hash. Keep it in a private
 build. The app passes it to the bundled page as `#access=...`; the page validates
 the hash and removes the fragment from browser history.
 
-Versioning is currently `2.2.6` (`CURRENT_PROJECT_VERSION` 12).
+Versioning is currently `2.3.0` (`CURRENT_PROJECT_VERSION` 13).
