@@ -41,6 +41,10 @@
   const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
   const SUPPORT_MESSAGE_MIN = 20;
   const SUPPORT_MESSAGE_MAX = 2000;
+  const VIP_NOTIFICATION_TABLE = "glowletter_notifications";
+  const VIP_NOTIFICATION_KINDS = new Set(["vip_granted", "vip_grant", "vip"]);
+  const VIP_NOTICE_REASONS = new Set(["gift", "compensation", "promotion", "other"]);
+  const VIP_NOTICE_MESSAGE_MAX = 240;
   const SHARED_AUDIO_FUNCTION = "shared-audio";
   const SHARED_AUDIO_BUCKET = "glowletter-shared-audio";
   const SHARED_AUDIO_MAX_BYTES = 12 * 1024 * 1024;
@@ -150,15 +154,18 @@
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
-    adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение."
+    adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение.",adminNoticeReasonLabel:"Причина уведомления",adminNoticeMessageLabel:"Личное сообщение · необязательно",adminNoticeMessagePlaceholder:"Например: спасибо, что помогли нам улучшить GlowLetter",adminNoticeHint:"Получатель увидит это сообщение внутри приложения.",adminNoticeInvalid:"Сообщение содержит запрещённую формулировку или длиннее 240 символов.",
+    notificationBell:"Уведомления",notificationBellAria:"Уведомления: {count} новых",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Ваши уведомления",notificationsLead:"Здесь сохраняются подарки и изменения VIP-доступа.",vipNoticeTitle:"VIP уже активен",vipNoticeTitleExpired:"VIP-период завершён",vipNoticeBodyDays:"Вам открыт VIP на {duration}. Полный доступ активен до {date}.",vipNoticeBodyUntil:"Полный VIP-доступ активен до {date}.",vipNoticeBodyActive:"Полный VIP-доступ активирован.",vipNoticeBodyExpired:"VIP-доступ действовал до {date}. Уведомление сохранено в истории.",notificationMessageLabel:"Сообщение",notificationAcknowledge:"Отлично",notificationHistoryTitle:"История",notificationsUnread:"Новых: {count}",notificationsAllRead:"Всё прочитано",notificationsEmpty:"Здесь появятся сообщения о VIP-доступе.",notificationNew:"НОВОЕ",notificationRead:"ПРОЧИТАНО",notificationLoading:"Загружаю уведомления…",notificationLoadFailed:"Не удалось загрузить уведомления. Проверьте интернет.",notificationReadFailed:"Не удалось сохранить прочтение. Попробуйте ещё раз.",notificationReasonGift:"Подарок",notificationReasonCompensation:"Компенсация",notificationReasonPromotion:"Акция",notificationReasonOther:"Другое"
   });
   Object.assign(UI.en, {
     accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Checking access…",accountPlanFree:"Free access · 10 letters",accountPlanPermanent:"VIP · unlimited full access",accountPlanStore:"VIP · subscription active",accountPlanVip:"{remaining} left · until {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATOR",profilePhotoAria:"Change profile photo",profilePhotoReady:"Profile photo saved on this device",profilePhotoFail:"This photo could not be processed",profilePhotoTooLarge:"Choose a photo up to 8 MB",
-    adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection."
+    adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection.",adminNoticeReasonLabel:"Notification reason",adminNoticeMessageLabel:"Personal message · optional",adminNoticeMessagePlaceholder:"For example: thank you for helping us improve GlowLetter",adminNoticeHint:"The recipient will see this message inside the app.",adminNoticeInvalid:"The message contains prohibited wording or is longer than 240 characters.",
+    notificationBell:"Notifications",notificationBellAria:"Notifications: {count} new",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Your notifications",notificationsLead:"VIP gifts and access changes are kept here.",vipNoticeTitle:"Your VIP is active",vipNoticeTitleExpired:"VIP period ended",vipNoticeBodyDays:"You received VIP for {duration}. Full access is active until {date}.",vipNoticeBodyUntil:"Full VIP access is active until {date}.",vipNoticeBodyActive:"Full VIP access is now active.",vipNoticeBodyExpired:"VIP access was active until {date}. This notice remains in your history.",notificationMessageLabel:"Message",notificationAcknowledge:"Wonderful",notificationHistoryTitle:"History",notificationsUnread:"{count} new",notificationsAllRead:"All read",notificationsEmpty:"VIP access messages will appear here.",notificationNew:"NEW",notificationRead:"READ",notificationLoading:"Loading notifications…",notificationLoadFailed:"Notifications could not be loaded. Check your connection.",notificationReadFailed:"Could not save as read. Please try again.",notificationReasonGift:"Gift",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Other"
   });
   Object.assign(UI.fr, {
     accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Vérification de l’accès…",accountPlanFree:"Accès gratuit · 10 lettres",accountPlanPermanent:"VIP · accès complet illimité",accountPlanStore:"VIP · abonnement actif",accountPlanVip:"Encore {remaining} · jusqu’au {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATEUR",profilePhotoAria:"Modifier la photo de profil",profilePhotoReady:"Photo de profil enregistrée sur cet appareil",profilePhotoFail:"Cette photo n’a pas pu être traitée",profilePhotoTooLarge:"Choisissez une photo de 8 Mo maximum",
-    adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion."
+    adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion.",adminNoticeReasonLabel:"Motif de la notification",adminNoticeMessageLabel:"Message personnel · facultatif",adminNoticeMessagePlaceholder:"Par exemple : merci de nous aider à améliorer GlowLetter",adminNoticeHint:"Le destinataire verra ce message dans l’application.",adminNoticeInvalid:"Le message contient une formulation interdite ou dépasse 240 caractères.",
+    notificationBell:"Notifications",notificationBellAria:"Notifications : {count} nouvelles",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Vos notifications",notificationsLead:"Les cadeaux et changements d’accès VIP sont conservés ici.",vipNoticeTitle:"Votre VIP est actif",vipNoticeTitleExpired:"La période VIP est terminée",vipNoticeBodyDays:"Vous avez reçu le VIP pour {duration}. L’accès complet est actif jusqu’au {date}.",vipNoticeBodyUntil:"L’accès VIP complet est actif jusqu’au {date}.",vipNoticeBodyActive:"L’accès VIP complet est maintenant actif.",vipNoticeBodyExpired:"L’accès VIP était actif jusqu’au {date}. Cette notification reste dans votre historique.",notificationMessageLabel:"Message",notificationAcknowledge:"Parfait",notificationHistoryTitle:"Historique",notificationsUnread:"{count} nouvelles",notificationsAllRead:"Tout est lu",notificationsEmpty:"Les messages concernant l’accès VIP apparaîtront ici.",notificationNew:"NOUVEAU",notificationRead:"LU",notificationLoading:"Chargement des notifications…",notificationLoadFailed:"Impossible de charger les notifications. Vérifiez la connexion.",notificationReadFailed:"Impossible d’enregistrer la lecture. Réessayez.",notificationReasonGift:"Cadeau",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Autre"
   });
   Object.assign(UI.ru, {
     supportFormEyebrow:"GLOWLETTER · ПОДДЕРЖКА",supportFormTitle:"Расскажите,<br><em>что случилось</em>",supportFormLead:"Опишите проблему прямо здесь. Email и ID аккаунта будут приложены автоматически.",supportGuestTitle:"Сначала войдите в аккаунт",supportGuestNote:"Так мы безопасно приложим ваш email и ID и сможем найти аккаунт.",supportCopyContact:"Скопировать email поддержки",supportContactCopied:"Email поддержки скопирован",supportEmailLabel:"EMAIL ДЛЯ ОТВЕТА",supportIdLabel:"ID АККАУНТА",supportCategoryLabel:"Тема обращения",supportMessageLabel:"Что произошло?",supportMessagePlaceholder:"Опишите проблему, что вы нажали и что увидели…",supportPrivacyNote:"Не указывайте пароль, банковские данные и коды подтверждения.",supportSubmit:"Отправить в поддержку",supportSending:"Отправляю обращение…",supportSent:"Обращение отправлено. Поддержка получила уведомление и ответит на email аккаунта.",supportSaved:"Обращение безопасно сохранено. Доставка уведомления на email пока настраивается.",supportSignInRequired:"Войдите в аккаунт, чтобы отправить обращение.",supportInvalid:"Опишите проблему подробнее — от 20 до 2000 символов.",supportRateLimited:"Слишком много обращений. Попробуйте немного позже.",supportFailed:"Не удалось отправить обращение. Проверьте интернет и повторите.",supportCategoryTechnical:"Техническая проблема",supportCategoryAccount:"Аккаунт и вход",supportCategorySubscription:"VIP и подписка",supportCategoryContent:"Письма и тексты",supportCategoryFeedback:"Идея или отзыв",supportCategoryOther:"Другое"
@@ -211,6 +218,11 @@
       ru:[["technical",UI.ru.supportCategoryTechnical],["account",UI.ru.supportCategoryAccount],["subscription",UI.ru.supportCategorySubscription],["content",UI.ru.supportCategoryContent],["feedback",UI.ru.supportCategoryFeedback],["other",UI.ru.supportCategoryOther]],
       en:[["technical",UI.en.supportCategoryTechnical],["account",UI.en.supportCategoryAccount],["subscription",UI.en.supportCategorySubscription],["content",UI.en.supportCategoryContent],["feedback",UI.en.supportCategoryFeedback],["other",UI.en.supportCategoryOther]],
       fr:[["technical",UI.fr.supportCategoryTechnical],["account",UI.fr.supportCategoryAccount],["subscription",UI.fr.supportCategorySubscription],["content",UI.fr.supportCategoryContent],["feedback",UI.fr.supportCategoryFeedback],["other",UI.fr.supportCategoryOther]]
+    },
+    vipNoticeReason: {
+      ru:[["gift",UI.ru.notificationReasonGift],["compensation",UI.ru.notificationReasonCompensation],["promotion",UI.ru.notificationReasonPromotion],["other",UI.ru.notificationReasonOther]],
+      en:[["gift",UI.en.notificationReasonGift],["compensation",UI.en.notificationReasonCompensation],["promotion",UI.en.notificationReasonPromotion],["other",UI.en.notificationReasonOther]],
+      fr:[["gift",UI.fr.notificationReasonGift],["compensation",UI.fr.notificationReasonCompensation],["promotion",UI.fr.notificationReasonPromotion],["other",UI.fr.notificationReasonOther]]
     }
   };
 
@@ -502,6 +514,15 @@
   let cloudServerNow = 0;
   let cloudServerPerformance = 0;
   let adminAccountResult = null;
+  let vipNotifications = [];
+  let vipNotificationsLoadedUserId = "";
+  let vipNotificationChannel = null;
+  let vipNotificationChannelUserId = "";
+  let vipNotificationLoadGeneration = 0;
+  let vipNotificationRevision = 0;
+  let activeVipNotificationId = "";
+  let notificationLoading = false;
+  const presentedVipNotificationIds = new Set();
   let accountAvatarUrl = "";
   let accountAvatarUserId = "";
   let fallbackShareUrl = "";
@@ -515,9 +536,10 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), support: $("#supportLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer")
   };
   const panelTriggers = new WeakMap();
+  const notificationInertedLayers = new Set();
 
   function t(key) { return UI[lang][key] || UI.ru[key] || key; }
 
@@ -792,6 +814,410 @@
     return t("accountBadgeChecking");
   }
 
+  function normalizeVipNotification(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+    const id = String(value.id || "").trim();
+    const userId = String(value.user_id || "").trim();
+    const kind = String(value.kind || "").trim().toLowerCase();
+    if (!id || id.length > 128 || !userId || userId !== cloudUser?.id || !VIP_NOTIFICATION_KINDS.has(kind)) return null;
+    const createdTimestamp = Date.parse(value.created_at || "");
+    if (!Number.isFinite(createdTimestamp)) return null;
+    const readTimestamp = value.read_at ? Date.parse(value.read_at) : NaN;
+    const reason = VIP_NOTICE_REASONS.has(value.reason) ? value.reason : "other";
+    const grantedDays = Number(value.granted_days);
+    const vipUntilTimestamp = Date.parse(value.vip_until || "");
+    const normalizedMessage = String(value.message || "")
+      .normalize("NFKC")
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/gu, "")
+      .replace(/\r\n?/gu, "\n")
+      .trim()
+      .slice(0, VIP_NOTICE_MESSAGE_MAX);
+    return {
+      id,
+      user_id: userId,
+      kind,
+      reason,
+      message: normalizedMessage && !containsForbidden(normalizedMessage) ? normalizedMessage : "",
+      granted_days: Number.isInteger(grantedDays) && grantedDays > 0 && grantedDays <= 365 ? grantedDays : null,
+      vip_until: Number.isFinite(vipUntilTimestamp) ? new Date(vipUntilTimestamp).toISOString() : null,
+      created_at: new Date(createdTimestamp).toISOString(),
+      read_at: Number.isFinite(readTimestamp) ? new Date(readTimestamp).toISOString() : null
+    };
+  }
+
+  function notificationReasonText(reason) {
+    const key = {
+      gift: "notificationReasonGift",
+      compensation: "notificationReasonCompensation",
+      promotion: "notificationReasonPromotion",
+      other: "notificationReasonOther"
+    }[reason] || "notificationReasonOther";
+    return t(key);
+  }
+
+  function formatVipGrantDuration(days) {
+    const amount = Math.max(1, Math.round(Number(days) || 1));
+    if (lang === "en") return `${amount} ${amount === 1 ? "day" : "days"}`;
+    if (lang === "fr") return `${amount} ${amount === 1 ? "jour" : "jours"}`;
+    const mod10 = amount % 10;
+    const mod100 = amount % 100;
+    const word = mod10 === 1 && mod100 !== 11 ? "день" : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? "дня" : "дней";
+    return `${amount} ${word}`;
+  }
+
+  function notificationVipExpiry(notification) {
+    const notificationTimestamp = Date.parse(notification?.vip_until || "");
+    if (Number.isFinite(notificationTimestamp)) return new Date(notificationTimestamp).toISOString();
+    if (!notification?.read_at && cloudAccount?.vip_until && Number.isFinite(Date.parse(cloudAccount.vip_until))) return cloudAccount.vip_until;
+    return null;
+  }
+
+  function notificationVipDays(notification) {
+    const explicit = Number(notification?.granted_days);
+    if (Number.isInteger(explicit) && explicit > 0 && explicit <= 365) return explicit;
+    const expiry = Date.parse(notificationVipExpiry(notification) || "");
+    const created = Date.parse(notification?.created_at || "");
+    return Number.isFinite(expiry) && Number.isFinite(created) && expiry > created ? Math.max(1, Math.ceil((expiry - created) / 86400000)) : 0;
+  }
+
+  function notificationVipExpired(notification) {
+    const expiry = Date.parse(notificationVipExpiry(notification) || "");
+    return Number.isFinite(expiry) && expiry <= trustedCloudNow();
+  }
+
+  function formatNotificationDate(value) {
+    const timestamp = Date.parse(value || "");
+    if (!Number.isFinite(timestamp)) return "";
+    try {
+      return new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : lang === "en" ? "en-GB" : "ru-RU", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }).format(new Date(timestamp));
+    } catch { return new Date(timestamp).toLocaleString(); }
+  }
+
+  function notificationBodyText(notification) {
+    const expiry = notificationVipExpiry(notification);
+    if (expiry && notificationVipExpired(notification)) return t("vipNoticeBodyExpired").replace("{date}", formatVipDate(expiry));
+    const days = notificationVipDays(notification);
+    if (expiry && days) return t("vipNoticeBodyDays").replace("{duration}", formatVipGrantDuration(days)).replace("{date}", formatVipDate(expiry));
+    if (expiry) return t("vipNoticeBodyUntil").replace("{date}", formatVipDate(expiry));
+    return t("vipNoticeBodyActive");
+  }
+
+  function unreadVipNotifications() {
+    return vipNotifications.filter(notification => !notification.read_at);
+  }
+
+  function mergeVipNotificationSnapshots(snapshot, current = vipNotifications) {
+    const merged = new Map(snapshot.map(notification => [notification.id, notification]));
+    current.forEach(notification => {
+      const olderSnapshot = merged.get(notification.id);
+      merged.set(notification.id, olderSnapshot ? {
+        ...olderSnapshot,
+        ...notification,
+        read_at: notification.read_at || olderSnapshot.read_at || null
+      } : notification);
+    });
+    return [...merged.values()]
+      .sort((left, right) => Date.parse(right.created_at) - Date.parse(left.created_at))
+      .slice(0, 40);
+  }
+
+  function setNotificationStatus(key = "", state = "") {
+    const status = $("#notificationStatus");
+    if (!status) return;
+    status.textContent = key ? t(key) : "";
+    if (state) status.dataset.state = state; else delete status.dataset.state;
+  }
+
+  function buildNotificationHistoryItem(notification) {
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.notificationId = notification.id;
+    button.className = `vip-notification-history-item${notification.read_at ? "" : " is-unread"}${notification.id === activeVipNotificationId ? " is-active" : ""}`;
+    if (notification.id === activeVipNotificationId) button.setAttribute("aria-current", "true");
+
+    const top = document.createElement("span");
+    const reason = document.createElement("strong");
+    reason.textContent = notificationReasonText(notification.reason);
+    const date = document.createElement("time");
+    date.dateTime = notification.created_at;
+    date.textContent = formatNotificationDate(notification.created_at);
+    top.append(reason, date);
+
+    const body = document.createElement("span");
+    body.textContent = notificationBodyText(notification);
+    const state = document.createElement("b");
+    state.textContent = t(notification.read_at ? "notificationRead" : "notificationNew");
+    button.append(top, body, state);
+    item.append(button);
+    return item;
+  }
+
+  function renderVipNotifications() {
+    const signedIn = Boolean(cloudUser?.id);
+    const unread = unreadVipNotifications();
+    const bell = $("#notificationBell");
+    const badge = $("#notificationUnreadBadge");
+    if (bell) {
+      bell.hidden = !signedIn;
+      bell.classList.toggle("has-unread", unread.length > 0);
+      bell.setAttribute("aria-label", t("notificationBellAria").replace("{count}", String(unread.length)));
+      setText("#notificationBellLabel", t("notificationBell"));
+    }
+    if (badge) {
+      badge.hidden = unread.length === 0;
+      badge.textContent = unread.length > 99 ? "99+" : String(unread.length);
+    }
+
+    setText("#notificationEyebrow", t("notificationsEyebrow"));
+    setText("#notificationTitle", t("notificationsTitle"));
+    setText("#notificationLead", t("notificationsLead"));
+    setText("#notificationHistoryTitle", t("notificationHistoryTitle"));
+    setText("#notificationHistoryState", unread.length ? t("notificationsUnread").replace("{count}", String(unread.length)) : t("notificationsAllRead"));
+    setText("#notificationEmpty", t("notificationsEmpty"));
+    setText("#notificationAcknowledge", t("notificationAcknowledge"));
+
+    const list = $("#notificationHistoryList");
+    if (list) {
+      list.replaceChildren(...vipNotifications.map(buildNotificationHistoryItem));
+      list.hidden = vipNotifications.length === 0;
+    }
+    const empty = $("#notificationEmpty");
+    if (empty) empty.hidden = vipNotifications.length > 0 || notificationLoading;
+
+    let active = vipNotifications.find(notification => notification.id === activeVipNotificationId) || unread[0] || vipNotifications[0] || null;
+    if (active && activeVipNotificationId !== active.id) activeVipNotificationId = active.id;
+    const hero = $("#vipNoticeHero");
+    if (!hero) return;
+    hero.hidden = !active;
+    if (!active) return;
+    hero.classList.toggle("is-unread", !active.read_at);
+    setText("#vipNoticeReason", notificationReasonText(active.reason));
+    const date = $("#vipNoticeDate");
+    date.dateTime = active.created_at;
+    date.textContent = formatNotificationDate(active.created_at);
+    setText("#vipNoticeTitle", t(notificationVipExpired(active) ? "vipNoticeTitleExpired" : "vipNoticeTitle"));
+    setText("#vipNoticeBody", notificationBodyText(active));
+    const message = $("#vipNoticeMessage");
+    message.hidden = !active.message;
+    message.textContent = active.message;
+    const acknowledge = $("#notificationAcknowledge");
+    acknowledge.hidden = Boolean(active.read_at);
+    acknowledge.disabled = false;
+  }
+
+  function releaseNotificationLayerContext() {
+    notificationInertedLayers.forEach(layer => layer.removeAttribute("inert"));
+    notificationInertedLayers.clear();
+  }
+
+  function openVipNotifications({ notificationId = "", automatic = false } = {}) {
+    if (!cloudUser?.id || !layers.notifications) return;
+    if (notificationId && vipNotifications.some(notification => notification.id === notificationId)) activeVipNotificationId = notificationId;
+    if (automatic && activeVipNotificationId) presentedVipNotificationIds.add(activeVipNotificationId);
+    if (!layers.notifications.classList.contains("is-open")) {
+      notificationInertedLayers.clear();
+      Object.values(layers).forEach(layer => {
+        if (layer && layer !== layers.notifications && layer.classList.contains("is-open") && !layer.hasAttribute("inert")) {
+          layer.setAttribute("inert", "");
+          notificationInertedLayers.add(layer);
+        }
+      });
+    }
+    renderVipNotifications();
+    openPanel(layers.notifications);
+  }
+
+  function closeVipNotifications() {
+    closePanel(layers.notifications);
+  }
+
+  function presentNextUnreadVipNotification() {
+    const next = unreadVipNotifications().find(notification => !presentedVipNotificationIds.has(notification.id));
+    if (!next) return;
+    activeVipNotificationId = next.id;
+    openVipNotifications({ notificationId: next.id, automatic: true });
+  }
+
+  function stopVipNotificationSubscription() {
+    const channel = vipNotificationChannel;
+    vipNotificationChannel = null;
+    vipNotificationChannelUserId = "";
+    if (channel && cloudClient?.removeChannel) cloudClient.removeChannel(channel).catch(() => {});
+  }
+
+  function resetVipNotifications() {
+    stopVipNotificationSubscription();
+    vipNotificationLoadGeneration += 1;
+    vipNotificationRevision += 1;
+    vipNotifications = [];
+    vipNotificationsLoadedUserId = "";
+    activeVipNotificationId = "";
+    notificationLoading = false;
+    presentedVipNotificationIds.clear();
+    if (layers.notifications?.classList.contains("is-open")) closeVipNotifications();
+    renderVipNotifications();
+  }
+
+  async function loadVipNotifications({ presentUnread = true } = {}) {
+    const userId = cloudUser?.id || "";
+    if (!cloudClient || !userId) return [];
+    const requestGeneration = ++vipNotificationLoadGeneration;
+    const revisionAtStart = vipNotificationRevision;
+    notificationLoading = true;
+    setNotificationStatus("notificationLoading");
+    renderVipNotifications();
+    try {
+      const { data, error } = await cloudClient
+        .from(VIP_NOTIFICATION_TABLE)
+        .select("id,user_id,kind,reason,message,granted_days,vip_until,created_at,read_at")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false })
+        .limit(40);
+      if (error) throw error;
+      if (cloudUser?.id !== userId || requestGeneration !== vipNotificationLoadGeneration) return vipNotifications;
+      const snapshot = (Array.isArray(data) ? data : []).map(normalizeVipNotification).filter(Boolean);
+      vipNotifications = vipNotificationRevision === revisionAtStart ? snapshot : mergeVipNotificationSnapshots(snapshot);
+      vipNotificationsLoadedUserId = userId;
+      if (activeVipNotificationId && !vipNotifications.some(notification => notification.id === activeVipNotificationId)) activeVipNotificationId = "";
+      setNotificationStatus();
+      renderVipNotifications();
+      if (presentUnread) presentNextUnreadVipNotification();
+      return vipNotifications;
+    } catch (error) {
+      console.info("VIP notification load failed", error);
+      if (cloudUser?.id === userId && requestGeneration === vipNotificationLoadGeneration) setNotificationStatus("notificationLoadFailed", "error");
+      return vipNotifications;
+    } finally {
+      if (cloudUser?.id === userId && requestGeneration === vipNotificationLoadGeneration) {
+        notificationLoading = false;
+        renderVipNotifications();
+      }
+    }
+  }
+
+  function startVipNotificationSubscription(userId) {
+    if (!cloudClient || !userId || vipNotificationChannelUserId === userId) return;
+    stopVipNotificationSubscription();
+    vipNotificationChannelUserId = userId;
+    vipNotificationChannel = cloudClient
+      .channel(`glowletter-vip-notifications:${userId}`)
+      .on("postgres_changes", {
+        event: "INSERT",
+        schema: "public",
+        table: VIP_NOTIFICATION_TABLE,
+        filter: `user_id=eq.${userId}`
+      }, payload => {
+        if (cloudUser?.id !== userId) return;
+        const notification = normalizeVipNotification(payload?.new);
+        if (!notification) return;
+        vipNotificationRevision += 1;
+        vipNotifications = [notification, ...vipNotifications.filter(item => item.id !== notification.id)].slice(0, 40);
+        activeVipNotificationId = notification.id;
+        renderVipNotifications();
+        loadCloudAccount(cloudUser).catch(error => console.info("Cloud account refresh after VIP notice failed", error));
+        presentNextUnreadVipNotification();
+      })
+      .on("postgres_changes", {
+        event: "UPDATE",
+        schema: "public",
+        table: VIP_NOTIFICATION_TABLE,
+        filter: `user_id=eq.${userId}`
+      }, payload => {
+        if (cloudUser?.id !== userId) return;
+        const notification = normalizeVipNotification(payload?.new);
+        if (!notification) return;
+        vipNotificationRevision += 1;
+        const existingIndex = vipNotifications.findIndex(item => item.id === notification.id);
+        if (existingIndex < 0) vipNotifications = [notification, ...vipNotifications].slice(0, 40);
+        else vipNotifications = vipNotifications.map(item => item.id === notification.id ? notification : item);
+        renderVipNotifications();
+      })
+      .subscribe((status, error) => {
+        if ((status === "CHANNEL_ERROR" || status === "TIMED_OUT") && error) console.info("VIP notification channel failed", status, error);
+      });
+  }
+
+  async function ensureVipNotifications(user = cloudUser, { reload = false, presentUnread = true } = {}) {
+    const userId = user?.id || "";
+    if (!cloudClient || !userId || cloudUser?.id !== userId) return;
+    startVipNotificationSubscription(userId);
+    if (reload || vipNotificationsLoadedUserId !== userId) await loadVipNotifications({ presentUnread });
+  }
+
+  async function markActiveVipNotificationRead() {
+    const active = vipNotifications.find(notification => notification.id === activeVipNotificationId);
+    if (!cloudClient || !cloudUser?.id || !active || active.read_at) return;
+    const userId = cloudUser.id;
+    const button = $("#notificationAcknowledge");
+    button.disabled = true;
+    setNotificationStatus();
+    const createdAt = Date.parse(active.created_at || "");
+    const readAt = new Date(Math.max(trustedCloudNow(), Number.isFinite(createdAt) ? createdAt + 1 : 0)).toISOString();
+    try {
+      const { data, error } = await cloudClient
+        .from(VIP_NOTIFICATION_TABLE)
+        .update({ read_at: readAt })
+        .eq("id", active.id)
+        .eq("user_id", userId)
+        .is("read_at", null)
+        .select("id,read_at")
+        .maybeSingle();
+      if (error) throw error;
+      let persistedReadAt = data?.read_at || "";
+      if (!data?.id) {
+        const { data: current, error: currentError } = await cloudClient
+          .from(VIP_NOTIFICATION_TABLE)
+          .select("id,read_at")
+          .eq("id", active.id)
+          .eq("user_id", userId)
+          .maybeSingle();
+        if (currentError) throw currentError;
+        persistedReadAt = current?.read_at || "";
+      }
+      if (!persistedReadAt) throw new Error("VIP notification was not marked as read");
+      if (cloudUser?.id !== userId) return;
+      vipNotificationRevision += 1;
+      vipNotifications = vipNotifications.map(notification => notification.id === active.id ? { ...notification, read_at: persistedReadAt } : notification);
+      const next = unreadVipNotifications()[0];
+      activeVipNotificationId = next?.id || active.id;
+      renderVipNotifications();
+      haptic(12);
+      if (!next) closeVipNotifications();
+    } catch (error) {
+      console.info("VIP notification read failed", error);
+      setNotificationStatus("notificationReadFailed", "error");
+      button.disabled = false;
+    }
+  }
+
+  function selectVipNotificationFromHistory(event) {
+    const button = event.target.closest("[data-notification-id]");
+    if (!button || !vipNotifications.some(notification => notification.id === button.dataset.notificationId)) return;
+    activeVipNotificationId = button.dataset.notificationId;
+    renderVipNotifications();
+    $("#vipNoticeHero")?.scrollIntoView({ behavior: REDUCED_MOTION.matches ? "auto" : "smooth", block: "nearest" });
+  }
+
+  function normalizeAdminVipMessage(value) {
+    return String(value || "")
+      .normalize("NFKC")
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/gu, "")
+      .replace(/\r\n?/gu, "\n")
+      .replace(/[ \t]+/gu, " ")
+      .replace(/\n{3,}/gu, "\n\n")
+      .trim();
+  }
+
+  function updateAdminVipMessageCount() {
+    const field = $("#adminVipMessage");
+    if (!field) return;
+    setText("#adminVipMessageCount", `${field.value.length} / ${VIP_NOTICE_MESSAGE_MAX}`);
+  }
+
   function setAdminStatus(message = "", state = "") {
     const status = $("#adminStatus");
     if (!status) return;
@@ -846,6 +1272,7 @@
     cloudServerNow = 0;
     cloudServerPerformance = 0;
     cloudPremium = false;
+    resetVipNotifications();
     applyEffectivePremium("cloud_account_signed_out");
   }
 
@@ -865,6 +1292,7 @@
     cloudPremium = cloudAccountPremiumActive(account);
     applyEffectivePremium("cloud_account");
     startCloudAccountClock();
+    ensureVipNotifications(user).catch(error => console.info("VIP notification initialization failed", error));
     return account;
   }
 
@@ -874,7 +1302,7 @@
   }
 
   function setAdminBusy(busy) {
-    ["#adminSupportId", "#adminLookupButton", "#adminVipDays", "#adminGrantVip", "#adminRevokeVip"].forEach(selector => {
+    ["#adminSupportId", "#adminLookupButton", "#adminVipDays", "#adminVipReason", "#adminVipMessage", "#adminGrantVip", "#adminRevokeVip"].forEach(selector => {
       const control = $(selector);
       if (control) control.disabled = Boolean(busy);
     });
@@ -924,12 +1352,22 @@
       setAdminStatus(t("adminError"), "error");
       return;
     }
+    const reason = VIP_NOTICE_REASONS.has($("#adminVipReason").value) ? $("#adminVipReason").value : "gift";
+    const rawMessage = $("#adminVipMessage").value;
+    const message = normalizeAdminVipMessage(rawMessage);
+    if (message.length > VIP_NOTICE_MESSAGE_MAX || containsForbidden(message) || containsReligiousAuthorityClaim(message)) {
+      setAdminStatus(t("adminNoticeInvalid"), "error");
+      $("#adminVipMessage").focus();
+      return;
+    }
     setAdminBusy(true);
     setAdminStatus(t("adminSearching"));
     try {
-      const { data, error } = await cloudClient.rpc("glowletter_admin_grant_vip", {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_grant_vip_with_notice", {
         p_support_id: adminAccountResult.support_id,
-        p_days: days
+        p_days: days,
+        p_reason: reason,
+        p_message: message || null
       });
       if (error) throw error;
       const updated = rpcAccountRow(data);
@@ -937,6 +1375,8 @@
       adminAccountResult = updated;
       renderAdminResult();
       setAdminStatus(t("adminGrantDone").replace("{date}", formatVipDate(updated.vip_until)), "success");
+      $("#adminVipMessage").value = "";
+      updateAdminVipMessageCount();
       if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
     } catch (error) {
       console.info("Admin VIP grant failed", error);
@@ -1016,6 +1456,12 @@
     setText(".admin-result-summary p:nth-child(2) > span", t("adminCurrentPlan"));
     setText("#adminVipDaysLabel", t("adminDaysLabel"));
     setText("#adminVipDaysUnit", t("adminDaysUnit"));
+    setText("#adminVipReasonLabel", t("adminNoticeReasonLabel"));
+    setSelectOptions("#adminVipReason", SELECT_OPTIONS.vipNoticeReason[lang]);
+    setText("#adminVipMessageLabel", t("adminNoticeMessageLabel"));
+    $("#adminVipMessage").placeholder = t("adminNoticeMessagePlaceholder");
+    setText("#adminVipMessageHint", t("adminNoticeHint"));
+    updateAdminVipMessageCount();
     setText("#adminGrantVip", t("adminGrantVip"));
     setText("#adminRevokeVip", t("adminRevoke"));
     const signedIn = Boolean(cloudUser?.id);
@@ -1088,6 +1534,7 @@
       setText("#accountUserName", "");
       setText("#accountUserEmail", "");
     }
+    renderVipNotifications();
     renderSupportFormState();
   }
 
@@ -2188,6 +2635,7 @@
     layer.classList.remove("is-open");
     layer.setAttribute("aria-hidden", "true");
     if (layer === layers.support) layers.settings?.removeAttribute("inert");
+    if (layer === layers.notifications) releaseNotificationLayerContext();
     const anotherOpen = Object.values(layers).some(item => item.classList.contains("is-open"));
     if (!anotherOpen) {
       document.body.style.overflow = "";
@@ -2369,7 +2817,7 @@
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
     renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria"));
-    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
+    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#notificationBackdrop").setAttribute("aria-label", t("closeAria")); $("#notificationClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
     updatePurchaseConfiguration(purchaseConfigured);
     localStorage.setItem("nurLanguage", lang);
     updateUrl();
@@ -3801,7 +4249,7 @@
     letterStage.addEventListener("pointerdown",startReadingSwipe);letterStage.addEventListener("pointermove",updateReadingSwipe,{passive:false});letterStage.addEventListener("pointerup",finishReadingSwipe);letterStage.addEventListener("pointercancel",finishReadingSwipe);
     [$("#aiOpenTop"),$("#aiOpenHome"),$("#aiOpenLetter")].forEach(button=>button.addEventListener("click",requestPremiumFeature));$("#aiClose").addEventListener("click",()=>closePanel(layers.ai));$("#aiBackdrop").addEventListener("click",()=>closePanel(layers.ai));
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
-    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
+    $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderCurrentQr(false);}));
     $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false))window.print();});
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
@@ -3817,12 +4265,12 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";await selectCustomAudio(file);});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!incomingSharedAudioToken||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
+    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
-    document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id)loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));});
-    addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
+    document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});
+    addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleCapabilityNavigation);addEventListener("hashchange",handleSharedAudioNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
@@ -3833,7 +4281,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=28", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=29", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

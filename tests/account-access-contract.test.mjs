@@ -144,7 +144,7 @@ assert.match(app, /saveMedia\(accountAvatarStorageKey\(userId\),\{blob\}\)/);
 assert.doesNotMatch(app.match(/function cloudProgressState\(\)[\s\S]*?\n  \}/)?.[0] || "", /avatar/i);
 
 // Search and all VIP mutations must go through guarded public RPCs.
-for (const rpc of ["glowletter_admin_lookup", "glowletter_admin_grant_vip", "glowletter_admin_revoke_vip"]) {
+for (const rpc of ["glowletter_admin_lookup", "glowletter_admin_grant_vip_with_notice", "glowletter_admin_revoke_vip"]) {
   assert.match(app, new RegExp(`\\.rpc\\(\\s*["']${rpc}["']`), `${rpc} must be called through Supabase RPC`);
 }
 assert.match(app, /#adminLookupForm[^\n]*addEventListener\(["']submit["']/);
