@@ -82,6 +82,16 @@ for (const action of ["grant_vip", "revoke_vip"]) {
 }
 assert.match(sql, /revoke\s+all\s+on\s+function\s+private\.glowletter_admin_(?:grant|revoke)_vip/i);
 
+// The public SECURITY INVOKER wrappers must be able to traverse the private
+// schema. Keep table access revoked; only the explicitly granted functions are
+// reachable, and each of those verifies auth.uid() is an administrator.
+const privateSchemaPrivilegeChanges = [...sql.matchAll(
+  /(?:grant\s+usage|revoke\s+all)\s+on\s+schema\s+private\s+(?:to|from)\s+[^;]+;/giu
+)].map(match => match[0]).filter(statement => /\bauthenticated\b/iu.test(statement));
+assert.match(privateSchemaPrivilegeChanges.at(-1) || "", /^grant\s+usage\s+on\s+schema\s+private\s+to\s+authenticated\s*;/iu);
+const adminSchemaRepair = read("supabase/migrations/20260802173011_restore_admin_private_schema_access.sql");
+assert.doesNotMatch(adminSchemaRepair, /grant\s+(?:all|select|insert|update|delete)\s+on\s+(?:all\s+)?tables?/iu);
+
 // The product owner starts as an administrator with permanent cloud premium.
 const ownerSeed = sql.match(/update\s+public\.glowletter_accounts[\s\S]{0,1400}?ggooglov9@gmail\.com[\s\S]{0,160}?;/i)?.[0] || "";
 assert.ok(ownerSeed, "the owner email must be seeded in glowletter_accounts");
