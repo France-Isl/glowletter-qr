@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "channel": "preview",
+  "applicationId": "com.franceisl.glowletternext.debug",
+  "bundleVersion": 29,
+  "releaseId": "web-preview-29",
+  "appVersion": "2.4.0",
+  "minNativeVersionCode": 15,
+  "requiredBridgeApi": 1,
+  "entrypoint": "index.html",
+  "archive": {
+    "url": "https://bezam.org/mobile-web/releases/29/bundle.zip",
+    "size": 20973034,
+    "sha256": "7e11d92c39a9be3b6ef0ccfaf882976246279be99548cf9e0c43c1c2df48a0fc"
+  },
+  "files": [
+    {
+      "path": "CNAME",
+      "size": 10,
+      "sha256": "4717406f1e8037cb3df33e61c9740abd46b11092d8a24ab81f4c4370bbc75bfb"
+    },
+    {
+      "path": "app.js",
+      "size": 306733,
+      "sha256": "41fe38cf25caa06816ee89b9f52df3afa43967a686dbef50e7292292197e856b"
+    },
+    {
+      "path": "assets/auth/README.md",
+      "size": 392,
+      "sha256": "cab75e602146df92caa696f604b99834810bb89f18b04fb9e26d2ccdd063bcec"
+    },
+    {
+      "path": "assets/auth/apple-continue-en.png",
+      "size": 4480,
+      "sha256": "8f22e24226b33dd467a5983a8daeaaecf7dc3bf04ea4173cb4cf5f9c3a65d0ff"
+    },
+    {
+      "path": "assets/auth/apple-continue-fr.png",
+      "size": 4555,
+      "sha256": "048195e9fce9e8e921ceae3a44e05eff972ca5db909f488f3f881874e9d4b8d8"
+    },
+    {
+      "path": "assets/auth/apple-continue-ru.png",
+      "size": 4308,
+      "sha256": "96b37f56bee8bb6a6bad29587ff4edffe043adc74240f9cf75051c3641106f35"
+    },
+    {
+      "path": "assets/campfire-lake.png",
+      "size": 2473022,
+      "sha256": "c7f5f8e48166acc7e574b8237f18fe8a3aaa6c2c947c416cf94f5f124a48eda6"
+    },
+    {
+      "path": "assets/campfire-mobile.png",
+      "size": 2275671,
+      "sha256": "525282eb6a0d062903137ccc698c30a4921fe021d0e243b35717c92afca0b8ca"
+    },
+    {
+      "path": "assets/og-next.png",
+      "size": 2405528,
+      "sha256": "6192ac401d4bbed07b7d0605dd511ca86f36d8b86862ca93ad043059a1a655d3"
+    },
+    {
+      "path": "assets/share-card.png",
+      "size": 2495592,
+      "sha256": "f340a15c16232e3bdf808a625e7a84713b5c212bb8b1f81ffe94fbe078e09945"
+    },
+    {
+      "path": "assets/video/kotyta.jpg",
+      "size": 30056,
+      "sha256": "c722a656ae7e97f8047c9cf443efe51350c373b286e13eb2808d1bf2c65ffff8"
+    },
+    {
+      "path": "assets/video/kotyta.mp4",
+      "size": 3867615,
+      "sha256": "6be2605960004d20a042339b8458fb25dcd48b39d72cc0bcaebb3ffc86584a1d"
+    },
+    {
+      "path": "assets/video/lis.jpg",
+      "size": 27781,
+      "sha256": "4b7de03ae9770b64ad2d6f43977498938ea4d50aa2a4d5deb0f9c84534cd4c4b"
+    },
+    {
+      "path": "assets/video/lis.mp4",
+      "size": 4010568,
+      "sha256": "8267a4e317553ec8c8241f51afda82350481cdcc405853eda2f635722eb53ff7"
+    },
+    {
+      "path": "assets/video/mishka.jpg",
+      "size": 20962,
+      "sha256": "24ade522c0c4a9c0eceeb1110b5b950981f289e726feaa0a8e3022c2667e295b"
+    },
+    {
+      "path": "assets/video/mishka.mp4",
+      "size": 3333983,
+      "sha256": "8549cb4cf691a0e812129351b3c997d466981c150ae5b20eaf94ac3e930a23fa"
+    },
+    {
+      "path": "config.js",
+      "size": 630,
+      "sha256": "efc927f538652538589d389a75f436a715f68ca7029cc397c485d0fd48c7a750"
+    },
+    {
+      "path": "delete-account.html",
+      "size": 10298,
+      "sha256": "42b60625bc69266d38ee762ec66ddb114bd1885b7b60c981f5c336fd841777e3"
+    },
+    {
+      "path": "email-auth.css",
+      "size": 3787,
+      "sha256": "ce7f13136670dd0fec7b60242675c4304ec63dc5b286fcc84e66c21872cd3dae"
+    },
+    {
+      "path": "email-auth.js",
+      "size": 18097,
+      "sha256": "ec8415cc26160c8643874bccee87816faa28eb07c56f8518c8d74925ddbfec2e"
+    },
+    {
+      "path": "experience.css",
+      "size": 17186,
+      "sha256": "75f7ecc8ee284c6ae7a25dda4aba96fb401c7f7a4646886997727462fbb28691"
+    },
+    {
+      "path": "experience.js",
+      "size": 20643,
+      "sha256": "deb709758e661825f650496b2baa1f4121c5966ddbf1adfa8aa5e221ecd3e9df"
+    },
+    {
+      "path": "icon.svg",
+      "size": 652,
+      "sha256": "43725d05cad2ffb8f0beb98d0eb8d7c48e50d3228fd07bf880afa114e8894bea"
+    },
+    {
+      "path": "index.html",
+      "size": 45496,
+      "sha256": "41e48745e886bb8b217e0e327f7f27c5e0597545229155f8de10c412e1b1c935"
+    },
+    {
+      "path": "letters.js",
+      "size": 29562,
+      "sha256": "34c65a79e786e9af35c55f078b4a44989583c354ef2c8649d517bbe5ccc1166c"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "size": 881,
+      "sha256": "bb6d5b5617134645568a7318d7e8dc9925f90be21ef98cda0a67d8a77361b6b2"
+    },
+    {
+      "path": "moments.css",
+      "size": 17734,
+      "sha256": "d2ade83fdf7c1542932f6575be03fbde82582908751bf12664514dac5fa1548a"
+    },
+    {
+      "path": "moments.js",
+      "size": 78192,
+      "sha256": "c146b7f1465718dc2424ceddb2fe2f62118004cc5a32cd1906fccabc11dbb78e"
+    },
+    {
+      "path": "privacy.html",
+      "size": 25888,
+      "sha256": "2f397b6b7a93650bce6e82452f7ee2abac4bf1d8f28d0f76f865eab811999f63"
+    },
+    {
+      "path": "qr-code.js",
+      "size": 11523,
+      "sha256": "0e2c37dcee0203e7509510047523edf837c055f4e1d207d92646b0afef28a3dc"
+    },
+    {
+      "path": "styles.css",
+      "size": 75281,
+      "sha256": "4b293bbef95213ceae9280e3d9358122dcdb3350c907b2c427719ede4ef70f0c"
+    },
+    {
+      "path": "sw.js",
+      "size": 3418,
+      "sha256": "e873a362627c1f4e4efb8f82e3379cefcb56ac04285eb2da823b4856af974d80"
+    },
+    {
+      "path": "terms.html",
+      "size": 19599,
+      "sha256": "0bd8e8ad8d5e68ae9f30ce995a8e8b73bb50fc4751f3fe949d8b687cd9fa92c0"
+    },
+    {
+      "path": "vendor/qrcode-generator-1.4.4.min.js",
+      "size": 20517,
+      "sha256": "e3c7beaf9c18ef6f594a0bbc6e0820b78dcd9d02df7d11986882d7dce91ebeac"
+    },
+    {
+      "path": "vendor/qrcode-generator.LICENSE",
+      "size": 1092,
+      "sha256": "ba71bb22186b5dbdbcf6bb95ca1a4cc0736821efa1f059188891aa2d0fbd3f69"
+    },
+    {
+      "path": "vendor/qrcode-generator.NOTICE.md",
+      "size": 585,
+      "sha256": "24535313593840b6f3aa6ac013d4792361a4e38696d4b28290702a2c9b6fda44"
+    },
+    {
+      "path": "vendor/supabase-2.110.9.js",
+      "size": 208109,
+      "sha256": "cb10f129411ea0168f4b8abe1241e8de4278e62a256d5355b7490e3d79756293"
+    },
+    {
+      "path": "vendor/supabase-js.LICENSE",
+      "size": 1088,
+      "sha256": "52bb504945ae1d89bfb2e1f77f0a5ad89a3b2d43db7a29c4cf7da20e8018789d"
+    },
+    {
+      "path": "vendor/supabase-js.version.json",
+      "size": 435,
+      "sha256": "ccb88540cacae0aae50c7edd695980cfafaccd9d3d413e41d6f6adada5cad02a"
+    }
+  ]
+}

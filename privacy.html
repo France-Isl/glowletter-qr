@@ -4,45 +4,129 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#211a27" />
-  <title>Конфиденциальность · GlowLetter</title>
+  <title>Privacy · Конфиденциальность · Confidentialité · GlowLetter</title>
   <style>
-    :root{font-family:system-ui,sans-serif;color:#41343d;background:#fbf5ef}body{margin:0}.page{width:min(760px,calc(100% - 32px));margin:auto;padding:48px 0 80px}a{color:#9b4e6c}h1{font-family:Georgia,serif;font-size:clamp(36px,7vw,64px);color:#6d4054}h2{margin-top:32px;color:#71485a}p,li{line-height:1.7;color:#6e5a64}.back{display:inline-block;margin-bottom:20px}.card{padding:24px;border:1px solid #e2ccd4;border-radius:20px;background:#fffaf7;box-shadow:0 18px 60px #5f304012}
+    :root{font-family:system-ui,sans-serif;color:#41343d;background:#fbf5ef}body{margin:0}.page{width:min(820px,calc(100% - 32px));margin:auto;padding:48px 0 80px}a{color:#9b4e6c}h1{font-family:Georgia,serif;font-size:clamp(36px,7vw,64px);color:#6d4054}h2{margin-top:32px;color:#71485a}p,li{line-height:1.7;color:#6e5a64}.back{display:inline-block;margin-bottom:20px}.languages{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}.languages a{padding:8px 12px;border:1px solid #e2ccd4;border-radius:999px;text-decoration:none}.card{padding:24px;border:1px solid #e2ccd4;border-radius:20px;background:#fffaf7;box-shadow:0 18px 60px #5f304012}.legal{scroll-margin-top:24px}.legal+.legal{margin-top:56px;padding-top:40px;border-top:1px solid #e2ccd4}.legal h1{font-size:clamp(34px,6vw,56px)}
   </style>
 </head>
 <body>
   <main class="page">
-    <a class="back" href="./">← Вернуться в приложение</a>
+    <a class="back" href="./">← GlowLetter</a>
+    <nav class="languages" aria-label="Language"><a href="#ru" lang="ru">Русский</a><a href="#en" lang="en">English</a><a href="#fr" lang="fr">Français</a></nav>
     <div class="card">
-      <h1>Конфиденциальность</h1>
-      <p>Последнее обновление: 2 августа 2026 года.</p>
-      <h2>Кто отвечает за данные</h2>
-      <p>Оператор GlowLetter — Islam Akhtakhanov. Контакт по вопросам данных: <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. Данные обрабатываются для работы аккаунта, синхронизации выбранных настроек, управления доступом, поддержки пользователя, безопасности сервиса и выполнения запрошенных функций.</p>
-      <h2>Что хранится</h2>
-      <p>Без входа данные приложения сохраняются только на устройстве. После добровольного входа GlowLetter синхронизирует через Supabase имена отправителя и получателя, язык, номер текущего письма, избранное, выбранный встроенный трек, громкость и настройки дождя, погоды, звуков природы и полного экрана. Записи отделены по идентификатору аккаунта и доступны только вошедшему пользователю.</p>
-      <p>Личные фото, координаты и локально выбранное аудио не синхронизируются с Supabase. По умолчанию выбранный аудиофайл хранится только на устройстве. Временная серверная копия создаётся только по отдельному выбору пользователя при создании персональной ссылки. Текст, который пользователь сам отправляет через форму поддержки, обрабатывается отдельно.</p>
-      <h2>Вход через внешний аккаунт</h2>
-      <p>Для входа используется Supabase Auth и доступные поставщики авторизации Google или Facebook — только если соответствующий способ включён владельцем сервиса. GlowLetter получает идентификатор аккаунта и основные данные профиля, необходимые для показа аккаунта и синхронизации. Пароли Google или Facebook приложению не передаются. Сессия входа сохраняется на устройстве, чтобы не требовать повторный вход при каждом запуске.</p>
-      <h2>ID поддержки и VIP‑доступ</h2>
-      <p>При регистрации аккаунту автоматически присваивается случайный псевдонимный ID поддержки. Он не является паролем и не даёт входа в аккаунт. По нему администратор видит только ID, дату создания, состояние и срок доступа — без email, писем, фото, музыки и сообщений. ID используется, чтобы по запросу пользователя выдать или отозвать бесплатный временный VIP‑доступ.</p>
-      <p>Выдача и отзыв VIP записываются в защищённый журнал: сохраняются ID поддержки, вид операции, число дней, прежняя и новая дата окончания, время и идентификатор администратора. Обычным пользователям журнал недоступен. Записи автоматически удаляются после шести месяцев; очистка выполняется ежедневно.</p>
-      <h2>Редактор писем</h2>
-      <p>Персональный редактор создаёт письмо из указанных имён, выбранного стиля и вашей главной мысли. Не вставляйте пароли, банковские данные, медицинские сведения и другую конфиденциальную информацию.</p>
-      <h2>Обращения в поддержку</h2>
-      <p>Форма поддержки доступна после входа в аккаунт. При отправке GlowLetter прикладывает подтверждённый email аккаунта и псевдонимный ID поддержки автоматически; пользователь вводит категорию и описание проблемы. Также сохраняются язык приложения, тип платформы, версия приложения, состояние доставки уведомления и время обращения. Не отправляйте через форму пароль, банковские данные, коды подтверждения или другие секреты.</p>
-      <p>Обращение сначала сохраняется в закрытом разделе Supabase, недоступном другим пользователям. Если настроена доставка уведомлений, текст обращения, email и ID передаются почтовому провайдеру для отправки владельцу GlowLetter. В базе обращения автоматически удаляются через шесть месяцев. Копия в служебном почтовом ящике удаляется после решения вопроса, но не позднее шести месяцев, если более длительное хранение не требуется для защиты прав или выполнения закона.</p>
-      <h2>Погода</h2>
-      <p>Только после нажатия пользователя приложение запрашивает примерные координаты и передаёт широту и долготу погодному сервису Open‑Meteo, чтобы показать текущую погоду. Координаты не сохраняются на сервере приложения и не входят в облачную синхронизацию.</p>
-      <h2>Покупки</h2>
-      <p>В мобильной версии оплату и ежемесячное автопродление обрабатывает Google Play или App Store. Приложение получает только состояние подписки и данные, необходимые для её серверной проверки; платёжные реквизиты приложению не передаются. Подписку можно восстановить или отменить через аккаунт магазина.</p>
-      <h2>Сроки хранения и поставщики</h2>
-      <p>Данные аккаунта, ID поддержки, состояние доступа и облачный прогресс хранятся до удаления аккаунта. Локальные настройки и локальное аудио хранятся до очистки данных сайта или приложения. Временная копия аудио для персональной ссылки хранится на сервере не более 12 часов. После истечения срока доступ к файлу блокируется и файл удаляется; техническая очистка может завершиться с небольшой задержкой, но воспроизведение уже недоступно. Журнал административных изменений и обращения в поддержку хранятся до шести месяцев. Для инфраструктуры, входа и приёма обращений используется Supabase; уведомления поддержки может доставлять настроенный почтовый провайдер; покупки обрабатывают Google Play или App Store; погоду предоставляет Open‑Meteo.</p>
-      <h2>Персональные ссылки</h2>
-      <p>Если пользователь делится письмом, имена и текст могут быть включены в созданную ссылку. По отдельному выбору пользователя к персональной ссылке можно приложить аудио: его копия приватно загружается на сервер максимум на 12 часов. Получатель, у которого есть секретная ссылка, может прослушать аудио только в течение этого срока. Исходное имя файла на сервере не хранится. Обычная функция «Поделиться приложением» и QR‑код аудио не передают.</p>
-      <p>QR‑код содержит выбранные имена, язык и публичную ссылку на бесплатные 10 писем, но никогда не содержит ключ полного доступа. Любой человек, получивший персональную ссылку или QR‑код, сможет прочитать её содержимое. Данные из такой ссылки не заменяют облачные имена автоматически: для этого пользователь должен явно сохранить имена в настройках. Не добавляйте конфиденциальные данные.</p>
-      <h2>Удаление и связь</h2>
-      <p>Вошедший пользователь может удалить аккаунт и облачный прогресс кнопкой «Удалить аккаунт» в настройках. Подробная инструкция доступна на <a href="delete-account.html">странице удаления</a>. При удалении удаляются профиль доступа и действующий VIP; запись ранее выполненного административного действия может оставаться в защищённом журнале до истечения шестимесячного срока. Локальные данные удаляются очисткой данных сайта или приложения.</p>
-      <h2>Права пользователя</h2>
-      <p>Пользователь может запросить доступ, исправление или удаление своих данных, ограничение обработки либо возразить против обработки, написав на <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a> и указав ID поддержки. Если вопрос не решён, пользователь во Франции и ЕС может обратиться в национальный орган по защите данных; во Франции — в <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+      <section class="legal" id="ru" lang="ru">
+        <h1>Конфиденциальность</h1>
+        <p>Последнее обновление: 2 августа 2026 года.</p>
+        <h2>Кто отвечает за данные</h2>
+        <p>Оператор GlowLetter — Islam Akhtakhanov. Контакт по вопросам данных: <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. Данные обрабатываются для работы выбранных пользователем функций, аккаунта, синхронизации, поддержки и безопасности сервиса.</p>
+        <h2>Аккаунт и подтверждение e-mail</h2>
+        <p>Для входа используется Supabase Auth. При регистрации по e-mail обрабатываются адрес, выбранное имя профиля, пароль в защищённом потоке авторизации и шестизначный код подтверждения. Код действует ограниченное время, не сохраняется GlowLetter в локальном или облачном хранилище и не должен передаваться другим людям. Также могут быть доступны Google или Facebook, только если владелец сервиса включил соответствующий способ. Пароли внешних провайдеров GlowLetter не получает.</p>
+        <h2>Добровольная облачная история «Моменты»</h2>
+        <p>Без входа и без выбора облачного сохранения данные остаются на устройстве. Вошедший пользователь может добровольно сохранять в Supabase:</p>
+        <ul>
+          <li>профили важных людей: отображаемое имя, отношение, язык и выбранные настройки тона и длины;</li>
+          <li>важные даты: название, тип события, дата, ежегодный повтор, часовой пояс и выбранные напоминания;</li>
+          <li>только готовые, окончательные письма и необходимые снимки имени получателя, отправителя, повода, языка и тона;</li>
+          <li>метаданные QR-ссылки: случайный публичный идентификатор, связь с письмом, состояние, время открытия и окончания действия.</li>
+        </ul>
+        <p>Черновые запросы, подсказки и исходные мысли, введённые для генерации письма, в облачной истории не сохраняются. Персональный редактор создаёт письмо из выбранного контекста; в историю попадает только текст, который пользователь решил сохранить как окончательный.</p>
+        <p>GlowLetter не собирает для этой функции логотип цветочного магазина, профиль или логин Instagram и историю заказов. Эти сведения не входят в модель данных «Моментов».</p>
+        <h2>Кто видит облачные данные</h2>
+        <p>Таблицы людей, дат, писем и QR-метаданных защищены Row Level Security. Обычный вошедший пользователь может читать и изменять только строки со своим идентификатором аккаунта. Другим пользователям и анонимным посетителям прямой доступ к таблицам не предоставляется.</p>
+        <h2>Публичная непрозрачная QR-ссылка</h2>
+        <p>QR-код содержит непрозрачный случайный идентификатор, а не текст письма, имя, e-mail или ключ полного доступа. До назначенного времени открытия публичный сервер возвращает только состояние «закрыто» и время открытия; текст и имена не раскрываются. После открытия человек, у которого есть ссылка, сможет получить текст письма и минимальные данные для его показа: имена отправителя и получателя, заголовок и язык. Отозванная или истёкшая ссылка текст не раскрывает. Считайте QR-ссылку секретной и передавайте её только предполагаемому получателю.</p>
+        <h2>Напоминания и календарь</h2>
+        <p>Выбранные напоминания показываются внутри приложения. По отдельному действию пользователя GlowLetter создаёт календарный файл для импорта в системный календарь; дальнейшие уведомления обрабатывает выбранное календарное приложение по его правилам. GlowLetter не отправляет письма получателю и не загружает список событий из календаря пользователя.</p>
+        <h2>Прочая синхронизация и локальные данные</h2>
+        <p>После добровольного входа GlowLetter также может синхронизировать имена отправителя и получателя, язык, номер текущего письма, избранное, выбранный встроенный трек, громкость и настройки атмосферы. Личные фото, координаты и локально выбранное аудио не синхронизируются с этими таблицами. Сессия входа хранится на устройстве, чтобы не требовать повторный вход при каждом запуске.</p>
+        <h2>Пользовательское аудио</h2>
+        <p>По умолчанию аудио остаётся только на устройстве. Только по отдельному выбору пользователя при создании персональной ссылки приватная копия загружается на сервер максимум на 12 часов. Получатель с секретной ссылкой может слушать её в этот период. Затем доступ блокируется и файл удаляется; техническая очистка может завершиться с небольшой задержкой. Исходное имя файла на сервере не хранится. Обычная функция «Поделиться приложением» и QR-код без выбранного аудио файл не передают.</p>
+        <h2>ID поддержки, VIP и обращения</h2>
+        <p>Аккаунту присваивается случайный псевдонимный ID поддержки. Он не является паролем. По нему администратор видит только ID, дату создания и состояние доступа. Выдача и отзыв VIP записываются в защищённый журнал с прежним и новым сроком; обычным пользователям журнал недоступен, записи удаляются через шесть месяцев.</p>
+        <p>При отправке формы поддержки Supabase сохраняет подтверждённый e-mail, ID поддержки, категорию, описание, язык, платформу, версию и состояние доставки. Не отправляйте пароли, платёжные данные или коды. Обращения закрыты от других пользователей и удаляются через шесть месяцев. Если включены уведомления, их содержимое передаётся настроенному почтовому провайдеру для доставки владельцу GlowLetter.</p>
+        <h2>Погода и покупки</h2>
+        <p>Только после действия пользователя приложение передаёт примерные координаты Open-Meteo, чтобы показать текущую погоду; координаты не сохраняются GlowLetter. В мобильной версии ежемесячную подписку и автопродление обрабатывает Google Play или App Store. GlowLetter получает состояние подписки, но не платёжные реквизиты.</p>
+        <h2>Хранение и удаление</h2>
+        <p>Аккаунт, облачный прогресс, люди, важные даты, окончательные письма и QR-метаданные хранятся до удаления пользователем либо до удаления отдельных записей. Удаление аккаунта каскадно удаляет принадлежащие ему профили людей, даты, письма и QR-метаданные; публичные ссылки после этого перестают открываться. Инструкция доступна на <a href="delete-account.html">странице удаления аккаунта</a>. Локальные данные удаляются очисткой данных сайта или приложения. Временное аудио хранится не более 12 часов, а обращения и административный журнал — до шести месяцев, кроме случаев, когда закон требует иного.</p>
+        <h2>Права пользователя</h2>
+        <p>Пользователь может запросить доступ, исправление, перенос или удаление данных, ограничить обработку либо возразить против неё, написав на <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. Во Франции жалобу можно направить в <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+      </section>
+
+      <section class="legal" id="en" lang="en">
+        <h1>Privacy</h1>
+        <p>Last updated: 2 August 2026.</p>
+        <h2>Controller</h2>
+        <p>GlowLetter is operated by Islam Akhtakhanov. Privacy requests may be sent to <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. Data is processed to provide the features selected by the user, operate accounts and synchronisation, deliver support, and secure the service.</p>
+        <h2>Account and email verification</h2>
+        <p>Authentication is provided by Supabase Auth. Email registration processes the email address, optional profile name, password within the secure authentication flow, and a six-digit verification code. The code is time-limited, is not stored by GlowLetter in local or cloud history, and must not be shared. Google or Facebook may also be offered when enabled. GlowLetter never receives the password used with an external provider.</p>
+        <h2>Optional Moments cloud history</h2>
+        <p>Without signing in and choosing cloud storage, data remains on the device. A signed-in user may opt in to storing the following in Supabase:</p>
+        <ul>
+          <li>important people: display name, relationship, language, and preferred tone and length;</li>
+          <li>important dates: title, event type, date, yearly recurrence, time zone, and reminder choices;</li>
+          <li>only final letters that the user deliberately saves, with the sender, recipient, occasion, language, and tone snapshots needed to display them;</li>
+          <li>QR-link metadata: an opaque public identifier, the related letter, status, unlock time, and expiry time.</li>
+        </ul>
+        <p>Raw prompts, draft instructions, and the original idea entered for generation are not stored in cloud history. The personal editor creates a letter from the selected context; only a final letter explicitly saved by the user is retained.</p>
+        <p>Moments does not collect a florist or shop logo, an Instagram profile or handle, or order history. Those fields are not part of the Moments data model.</p>
+        <h2>Access control</h2>
+        <p>People, dates, letters, and QR metadata are protected by Row Level Security. An ordinary authenticated user can read or change only rows owned by their account. Other users and anonymous visitors have no direct table access.</p>
+        <h2>Opaque public QR links</h2>
+        <p>A QR code contains an opaque random identifier, not letter text, a name, an email address, or a premium-access key. Before the configured unlock time, the public resolver returns only a locked state and the unlock time; it does not reveal text or names. Once unlocked, anyone holding the link can receive the letter text and the minimum display fields: sender and recipient names, title, and language. Revoked or expired links do not reveal the letter. Treat a QR link as a secret and share it only with the intended recipient.</p>
+        <h2>Reminders and calendar</h2>
+        <p>Selected reminders are shown in the app. At the user’s request GlowLetter creates a calendar file for import into the system calendar; the selected calendar app then controls its notifications under its own terms. GlowLetter neither sends the letter to the recipient nor uploads the user’s calendar event list.</p>
+        <h2>Other synchronised and local data</h2>
+        <p>After an optional sign-in, GlowLetter may also synchronise sender and recipient names, language, current letter, favourites, built-in track selection, volume, and atmosphere settings. Personal photos, coordinates, and locally selected audio are not placed in these tables. The login session is stored on the device so the user does not have to sign in on every launch.</p>
+        <h2>User audio</h2>
+        <p>Audio normally remains on the device. Only when the user expressly attaches it to a personal link is a private copy uploaded for no more than 12 hours. A recipient with the secret link may play it during that period. Access is then blocked and the file is deleted, although technical cleanup may finish slightly later. The original filename is not retained.</p>
+        <h2>Support ID, VIP, and support requests</h2>
+        <p>An account receives a random pseudonymous support ID. It is not a password. Administrators see only the ID, creation date, and access state. VIP grants and revocations are recorded in a protected audit log and removed after six months.</p>
+        <p>A support request stores the confirmed email, support ID, category, description, language, platform, app version, and delivery state. Do not send passwords, payment details, or verification codes. Requests are inaccessible to other users and are deleted after six months. If notifications are configured, the request is passed to the configured email provider for delivery to the GlowLetter owner.</p>
+        <h2>Weather and purchases</h2>
+        <p>Only after a user action are approximate coordinates sent to Open-Meteo to display current weather; GlowLetter does not retain them. In mobile builds, Google Play or App Store processes the monthly subscription and auto-renewal. GlowLetter receives subscription status, not payment credentials.</p>
+        <h2>Retention and deletion</h2>
+        <p>The account, cloud progress, people, important dates, final letters, and QR metadata remain until the user deletes them or deletes the account. Account deletion cascades to all owned people, moments, letters, and QR metadata, and public links then stop resolving. See the <a href="delete-account.html">account deletion page</a>. Local data is removed by clearing the site or app data. Temporary audio lasts no more than 12 hours; support requests and administrative audit records last up to six months unless law requires otherwise.</p>
+        <h2>Your rights</h2>
+        <p>You may request access, correction, portability, deletion, restriction, or objection by emailing <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. In France, complaints may be submitted to the <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+      </section>
+
+      <section class="legal" id="fr" lang="fr">
+        <h1>Confidentialité</h1>
+        <p>Dernière mise à jour : 2 août 2026.</p>
+        <h2>Responsable du traitement</h2>
+        <p>GlowLetter est exploité par Islam Akhtakhanov. Toute demande relative aux données peut être envoyée à <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. Les données sont traitées pour fournir les fonctions choisies, gérer le compte et la synchronisation, assurer l’assistance et protéger le service.</p>
+        <h2>Compte et vérification de l’adresse e-mail</h2>
+        <p>L’authentification utilise Supabase Auth. L’inscription par e-mail traite l’adresse, le nom de profil facultatif, le mot de passe dans le flux sécurisé d’authentification et un code de vérification à six chiffres. Ce code expire, n’est pas conservé par GlowLetter dans l’historique local ou en ligne et ne doit pas être communiqué. Google ou Facebook peuvent aussi être proposés lorsqu’ils sont activés. GlowLetter ne reçoit jamais le mot de passe d’un fournisseur externe.</p>
+        <h2>Historique « Moments » facultatif</h2>
+        <p>Sans connexion et sans choix de la sauvegarde en ligne, les données restent sur l’appareil. Un utilisateur connecté peut choisir de conserver dans Supabase :</p>
+        <ul>
+          <li>les personnes importantes : nom affiché, relation, langue, ton et longueur préférés ;</li>
+          <li>les dates importantes : titre, type, date, récurrence annuelle, fuseau horaire et rappels choisis ;</li>
+          <li>uniquement les lettres finales enregistrées volontairement, avec les instantanés nécessaires du destinataire, de l’expéditeur, de l’occasion, de la langue et du ton ;</li>
+          <li>les métadonnées du lien QR : identifiant public opaque, lettre associée, état, heure d’ouverture et expiration.</li>
+        </ul>
+        <p>Les prompts bruts, consignes de brouillon et idées initiales utilisés pour la génération ne sont pas conservés dans l’historique en ligne. L’éditeur personnel crée une lettre à partir du contexte choisi ; seule une lettre finale explicitement enregistrée est conservée.</p>
+        <p>Moments ne collecte ni logo de fleuriste ou de boutique, ni profil ou identifiant Instagram, ni historique des commandes. Ces champs ne font pas partie de son modèle de données.</p>
+        <h2>Contrôle d’accès</h2>
+        <p>Les personnes, dates, lettres et métadonnées QR sont protégées par Row Level Security. Un utilisateur authentifié ne peut lire ou modifier que les lignes de son propre compte. Les autres utilisateurs et visiteurs anonymes n’ont aucun accès direct aux tables.</p>
+        <h2>Lien QR public opaque</h2>
+        <p>Le QR contient un identifiant aléatoire opaque, jamais le texte, un nom, une adresse e-mail ou une clé premium. Avant l’heure prévue, le résolveur public renvoie uniquement l’état verrouillé et l’heure d’ouverture ; aucun texte ni nom n’est révélé. Après l’ouverture, toute personne possédant le lien peut recevoir le texte et les seuls champs nécessaires à l’affichage : noms, titre et langue. Un lien révoqué ou expiré ne révèle pas la lettre. Le lien doit être traité comme un secret.</p>
+        <h2>Rappels et calendrier</h2>
+        <p>Les rappels choisis s’affichent dans l’application. À la demande de l’utilisateur, GlowLetter crée un fichier calendrier à importer dans le calendrier du système ; l’application de calendrier choisie gère ensuite les notifications selon ses propres règles. GlowLetter n’envoie pas la lettre au destinataire et ne téléverse pas la liste des événements du calendrier.</p>
+        <h2>Autres données synchronisées et locales</h2>
+        <p>Après une connexion facultative, GlowLetter peut aussi synchroniser les noms, la langue, la lettre courante, les favoris, la piste intégrée, le volume et les réglages d’ambiance. Les photos personnelles, coordonnées et fichiers audio locaux ne sont pas placés dans ces tables. La session est conservée sur l’appareil pour éviter une reconnexion à chaque ouverture.</p>
+        <h2>Audio personnel</h2>
+        <p>L’audio reste normalement sur l’appareil. Une copie privée n’est téléversée que si l’utilisateur l’ajoute expressément à un lien personnel, pour un maximum de 12 heures. Le destinataire muni du lien secret peut l’écouter pendant ce délai. L’accès est ensuite bloqué et le fichier supprimé, même si le nettoyage technique se termine un peu plus tard. Le nom original du fichier n’est pas conservé.</p>
+        <h2>ID d’assistance, VIP et demandes</h2>
+        <p>Chaque compte reçoit un ID d’assistance aléatoire et pseudonyme. Ce n’est pas un mot de passe. L’administrateur voit seulement l’ID, la date de création et l’état d’accès. Les attributions et retraits VIP figurent dans un journal protégé supprimé après six mois.</p>
+        <p>Une demande d’assistance conserve l’e-mail confirmé, l’ID, la catégorie, la description, la langue, la plateforme, la version et l’état de livraison. N’envoyez jamais de mot de passe, de données de paiement ou de code. Les demandes sont invisibles aux autres utilisateurs et supprimées après six mois. Si les notifications sont configurées, le fournisseur e-mail configuré transmet la demande au propriétaire.</p>
+        <h2>Météo et achats</h2>
+        <p>Après une action de l’utilisateur seulement, des coordonnées approximatives sont envoyées à Open-Meteo pour afficher la météo ; GlowLetter ne les conserve pas. Sur mobile, Google Play ou App Store gère l’abonnement mensuel et son renouvellement automatique. GlowLetter reçoit l’état de l’abonnement, jamais les données de paiement.</p>
+        <h2>Conservation et suppression</h2>
+        <p>Le compte, la progression, les personnes, dates importantes, lettres finales et métadonnées QR restent jusqu’à leur suppression ou celle du compte. La suppression du compte efface en cascade toutes les personnes, moments, lettres et métadonnées QR appartenant à l’utilisateur ; les liens publics cessent alors de fonctionner. Consultez la <a href="delete-account.html">page de suppression du compte</a>. Les données locales sont retirées en effaçant les données du site ou de l’application. L’audio temporaire dure au plus 12 heures ; les demandes d’assistance et journaux administratifs, au plus six mois sauf obligation légale contraire.</p>
+        <h2>Vos droits</h2>
+        <p>Vous pouvez demander l’accès, la rectification, la portabilité, l’effacement, la limitation ou vous opposer au traitement en écrivant à <a href="mailto:ggooglov9@gmail.com">ggooglov9@gmail.com</a>. En France, vous pouvez saisir la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+      </section>
     </div>
   </main>
 </body>

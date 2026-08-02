@@ -42,7 +42,7 @@ assert.match(saveSettings, /if\s*\(openQr\)\s*requestAnimationFrame\(openQrBuild
 assert.ok(saveSettings.indexOf("setNames(sender, recipient") < saveSettings.indexOf("requestAnimationFrame(openQrBuilder)"));
 assert.match(app, /#qrOpenButton[^\n]*addEventListener\(["']click["'],\s*\(\)\s*=>\s*saveSettings\(\{\s*openQr:\s*true\s*\}\)\)/);
 
-const openQrBuilder = app.match(/function openQrBuilder\(\)\s*\{([\s\S]+?)\r?\n\s*\}\r?\n\r?\n\s*function createQrCardBlob/)?.[1] || "";
+const openQrBuilder = app.match(/function openQrBuilder\(\)\s*\{([\s\S]+?)\}\r?\n\s*\r?\n\s*function openPersonalQr/)?.[1] || "";
 assert.match(openQrBuilder, /qrSenderName["']\)\.value\s*=\s*fromName/);
 assert.match(openQrBuilder, /qrRecipientName["']\)\.value\s*=\s*toName/);
 
@@ -50,7 +50,7 @@ const renderQrCode = app.match(/function renderQrCode\([^)]*\)\s*\{([\s\S]+?)\r?
 assert.match(renderQrCode, /const invalid\s*=\s*!sender\s*\|\|\s*!recipient/);
 assert.match(renderQrCode, /currentQrUrl\s*=\s*buildPublicQrUrl\(sender,\s*recipient\)/);
 
-const printedUrl = qr.buildUrl("https://france-isl.github.io/glowletter-qr/", {
+const printedUrl = qr.buildUrl("https://bezam.org/", {
   from: "Maison Rose",
   to: "Élodie",
   lang: "fr",

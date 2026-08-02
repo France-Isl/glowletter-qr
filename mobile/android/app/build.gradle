@@ -15,6 +15,14 @@ def quoteBuildConfig = { String value ->
 def verificationUrl = valueOrEnvironment("purchaseVerificationUrl", "NURPISMO_VERIFICATION_URL") ?: ""
 def ownerBetaCapability = valueOrEnvironment("ownerBetaCapability", "GLOWLETTER_OWNER_BETA_CAPABILITY") ?: ""
 def mockBilling = providers.gradleProperty("enableBillingMock").orNull == "true"
+def stableWebBundleManifestUrl = valueOrEnvironment(
+        "webBundleManifestUrl",
+        "GLOWLETTER_WEB_BUNDLE_MANIFEST_URL"
+) ?: "https://bezam.org/mobile-web/stable/manifest.json"
+def previewWebBundleManifestUrl = valueOrEnvironment(
+        "previewWebBundleManifestUrl",
+        "GLOWLETTER_PREVIEW_WEB_BUNDLE_MANIFEST_URL"
+) ?: "https://bezam.org/mobile-web/preview/manifest.json"
 def cloudProjectNumberText = valueOrEnvironment("playIntegrityCloudProjectNumber", "NURPISMO_CLOUD_PROJECT_NUMBER") ?: "0"
 def cloudProjectNumber = 0L
 try {
@@ -23,10 +31,22 @@ try {
     logger.warn("Invalid Play Integrity Cloud project number; release entitlement will fail closed.")
 }
 
-def keystorePath = valueOrEnvironment("NURPISMO_KEYSTORE_PATH", "NURPISMO_KEYSTORE_PATH")
-def keystorePassword = valueOrEnvironment("NURPISMO_KEYSTORE_PASSWORD", "NURPISMO_KEYSTORE_PASSWORD")
-def keyAliasValue = valueOrEnvironment("NURPISMO_KEY_ALIAS", "NURPISMO_KEY_ALIAS")
-def keyPasswordValue = valueOrEnvironment("NURPISMO_KEY_PASSWORD", "NURPISMO_KEY_PASSWORD")
+def keystorePath = valueOrEnvironment(
+        "glowletterReleaseKeystorePath",
+        "GLOWLETTER_RELEASE_KEYSTORE_PATH"
+) ?: valueOrEnvironment("NURPISMO_KEYSTORE_PATH", "NURPISMO_KEYSTORE_PATH")
+def keystorePassword = valueOrEnvironment(
+        "glowletterReleaseKeystorePassword",
+        "GLOWLETTER_RELEASE_KEYSTORE_PASSWORD"
+) ?: valueOrEnvironment("NURPISMO_KEYSTORE_PASSWORD", "NURPISMO_KEYSTORE_PASSWORD")
+def keyAliasValue = valueOrEnvironment(
+        "glowletterReleaseKeyAlias",
+        "GLOWLETTER_RELEASE_KEY_ALIAS"
+) ?: valueOrEnvironment("NURPISMO_KEY_ALIAS", "NURPISMO_KEY_ALIAS")
+def keyPasswordValue = valueOrEnvironment(
+        "glowletterReleaseKeyPassword",
+        "GLOWLETTER_RELEASE_KEY_PASSWORD"
+) ?: valueOrEnvironment("NURPISMO_KEY_PASSWORD", "NURPISMO_KEY_PASSWORD")
 def hasReleaseSigning = [keystorePath, keystorePassword, keyAliasValue, keyPasswordValue].every { it != null && !it.isBlank() }
 def hasHttpsVerificationUrl = false
 try {
@@ -52,8 +72,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 14
-        versionName = "2.3.1"
+        versionCode = 15
+        versionName = "2.4.0"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -62,6 +82,10 @@ android {
         buildConfigField "long", "PLAY_INTEGRITY_CLOUD_PROJECT_NUMBER", "${cloudProjectNumber}L"
         buildConfigField "int", "FREE_LETTER_LIMIT", "10"
         buildConfigField "String", "OWNER_BETA_CAPABILITY", quoteBuildConfig(ownerBetaCapability)
+        buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "28"
+        buildConfigField "int", "NATIVE_BRIDGE_API", "1"
+        buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("stable")
+        buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(stableWebBundleManifestUrl)
     }
 
     signingConfigs {
@@ -83,6 +107,8 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
             buildConfigField "boolean", "ALLOW_DEBUG_MOCK_ENTITLEMENT", mockBilling.toString()
+            buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("preview")
+            buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(previewWebBundleManifestUrl)
         }
         release {
             minifyEnabled = true
@@ -127,7 +153,10 @@ androidComponents {
 // An unsigned preview may intentionally demonstrate fail-closed behavior. A
 // signed artifact, however, could take real money, so never let it compile with
 // an unusable verification chain.
-if (hasReleaseSigning && !hasProductionBillingSecurity) {
+def releaseTaskRequested = gradle.startParameter.taskNames.any {
+    it.toLowerCase(java.util.Locale.ROOT).contains("release")
+}
+if (releaseTaskRequested && hasReleaseSigning && !hasProductionBillingSecurity) {
     throw new GradleException(
             "Signed release requires an HTTPS purchaseVerificationUrl and a positive "
                     + "playIntegrityCloudProjectNumber. Refusing to build a paid app that cannot unlock."
@@ -141,7 +170,7 @@ def syncWebAssets = tasks.register("syncWebAssets", Sync) {
     group = "build setup"
     description = "Bundles the current web app into assets/web and decodes Base64 fallbacks."
     from(webRoot) {
-        exclude "mobile/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**"
+        exclude "mobile/**", "mobile-web/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**"
         exclude "*.md", "*.py", ".gitignore"
     }
     into(generatedWebAssets.map { it.dir("web") })
@@ -181,4 +210,5 @@ dependencies {
     implementation "com.android.billingclient:billing:9.1.0"
     implementation "com.google.android.play:integrity:1.6.0"
     testImplementation "junit:junit:4.13.2"
+    testImplementation "org.json:json:20250517"
 }

@@ -112,7 +112,7 @@ assert.match(app, /function cleanLetterIdea\(/);
 assert.match(app, /function fitLetterLength\(/);
 assert.match(app, /JSON\.stringify\(\{ mode: "letter"[\s\S]{0,220}idea, length: resolvedLength/);
 assert.match(app, /#aiIdea[^\n]*addEventListener\(["']input["'],\s*invalidateLetterDraft\)/);
-assert.match(app, /#aiLength[^\n]*addEventListener\(["']change["'],\s*invalidateLetterDraft\)/);
+assert.match(app, /#aiLength[^\n]{0,260}addEventListener\(["']change["'][^\n]{0,220}invalidateLetterDraft\(\)/);
 assert.match(app, /function setReadingFocus\(/);
 assert.match(styles, /body\.reading-focus[\s\S]{0,500}#focusReadingButton/);
 

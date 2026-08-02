@@ -13,7 +13,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 MOBILE_ROOT = SCRIPT_DIR.parent
 DEFAULT_SOURCE = MOBILE_ROOT.parent
 DEFAULT_DESTINATION = MOBILE_ROOT / "ios" / "NurPismo" / "WebResources"
-EXCLUDED_ROOT_NAMES = {"mobile", "backend", "supabase", "tests", ".git", ".github"}
+EXCLUDED_ROOT_NAMES = {"mobile", "mobile-web", "backend", "supabase", "tests", ".git", ".github"}
 EXCLUDED_ROOT_SUFFIXES = {".md", ".py"}
 
 

@@ -12,16 +12,18 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://france-isl.github.io/glowletter-qr/assets/og-next.png" />
+  <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=27" />
+  <link rel="manifest" href="manifest.webmanifest?v=28" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Literata:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=27" />
-  <link rel="stylesheet" href="experience.css?v=27" />
+  <link rel="stylesheet" href="styles.css?v=28" />
+  <link rel="stylesheet" href="experience.css?v=28" />
+  <link rel="stylesheet" href="email-auth.css?v=28" />
+  <link rel="stylesheet" href="moments.css?v=28" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -71,6 +73,7 @@
           </button>
           <div class="home-smart-actions">
             <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b class="vip-badge">VIP</b></button>
+            <button class="smart-link moments-link" id="momentsOpenHome" type="button"><span>◷</span> Мои моменты</button>
           </div>
           <p class="free-note"><span>10 писем бесплатно</span><i></i><span>премиум — 21,99 €/месяц</span></p>
         </div>
@@ -166,6 +169,7 @@
           <div class="choice-grid">
             <label><span>Кому вы пишете · необязательно</span><select id="aiRelationship"><option value="auto">Определить автоматически</option><option value="mother">Маме</option><option value="father">Папе</option><option value="spouse">Супругу или супруге</option><option value="child">Сыну или дочери</option><option value="sibling">Брату или сестре</option><option value="grandparent">Бабушке или дедушке</option><option value="friend">Другу или подруге</option><option value="teacher">Учителю или наставнику</option><option value="universal">Другому человеку</option></select></label>
             <label><span>Стиль письма · необязательно</span><select id="aiTone"><option value="auto">Подобрать автоматически</option><option value="loving">Любовное · скромно</option><option value="romantic">Романтическое · только супругам</option><option value="classic">Классическое</option><option value="support">Поддержка</option><option value="gratitude">Благодарность</option></select></label>
+            <label><span>Язык письма</span><select id="aiLanguage"><option value="ru">Русский</option><option value="en">English</option><option value="fr">Français</option></select></label>
           </div>
           <label class="wide-label letter-idea-label"><span>Что особенно важно сказать · необязательно</span><textarea id="aiIdea" rows="3" maxlength="420" placeholder="Например: поблагодарить маму за терпение и поддержку"></textarea></label>
           <label class="wide-label letter-length-label"><span>Длина письма</span><select id="aiLength"><option value="auto">Подобрать автоматически</option><option value="short">Короткое</option><option value="standard">Среднее</option><option value="detailed">Подробное</option></select></label>
@@ -247,6 +251,34 @@
               <button class="oauth-button apple" id="appleSignIn" type="button" hidden disabled><img id="appleSignInArtwork" src="assets/auth/apple-continue-ru.png" alt="" width="375" height="44" /><span class="visually-hidden">Продолжить с Apple</span></button>
               <button class="oauth-button facebook" id="facebookSignIn" type="button" hidden disabled><b aria-hidden="true">f</b><span>Продолжить с Facebook</span></button>
             </div>
+            <section class="email-auth" id="emailAuth" aria-labelledby="emailAuthTitle">
+              <div class="email-auth-divider"><span></span><b id="emailAuthOr">или по e-mail</b><span></span></div>
+              <h3 class="visually-hidden" id="emailAuthTitle">Вход или регистрация по e-mail</h3>
+              <div class="email-auth-tabs" role="tablist">
+                <button class="is-active" id="emailLoginTab" type="button" role="tab" aria-selected="true" aria-controls="emailLoginPane">Войти</button>
+                <button id="emailRegisterTab" type="button" role="tab" aria-selected="false" aria-controls="emailRegisterPane">Регистрация</button>
+              </div>
+              <form class="email-auth-form" id="emailLoginPane" autocomplete="on">
+                <label><span id="emailLoginEmailLabel">E-mail</span><input id="emailLoginEmail" type="email" autocomplete="email" maxlength="254" required /></label>
+                <label><span id="emailLoginPasswordLabel">Пароль</span><input id="emailLoginPassword" type="password" autocomplete="current-password" minlength="8" maxlength="128" required /></label>
+                <button class="email-auth-primary" id="emailLoginSubmit" type="submit">Войти</button>
+              </form>
+              <form class="email-auth-form" id="emailRegisterPane" autocomplete="on" hidden>
+                <label><span id="emailRegisterNameLabel">Ваше имя</span><input id="emailRegisterName" type="text" autocomplete="name" maxlength="60" /></label>
+                <label><span id="emailRegisterEmailLabel">E-mail</span><input id="emailRegisterEmail" type="email" autocomplete="email" maxlength="254" required /></label>
+                <label><span id="emailRegisterPasswordLabel">Придумайте пароль</span><input id="emailRegisterPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128" required /></label>
+                <small id="emailPasswordHint">Минимум 8 символов. Никому не сообщайте пароль и код.</small>
+                <button class="email-auth-primary" id="emailRegisterSubmit" type="submit">Получить код</button>
+              </form>
+              <form class="email-auth-form email-code-form" id="emailVerifyPane" autocomplete="one-time-code" hidden>
+                <div class="email-code-heading"><span aria-hidden="true">✉</span><div><strong id="emailCodeTitle">Введите код из письма</strong><small id="emailCodeSentTo"></small></div></div>
+                <label><span id="emailCodeLabel">Код подтверждения</span><input id="emailCode" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required /></label>
+                <button class="email-auth-primary" id="emailVerifySubmit" type="submit">Подтвердить e-mail</button>
+                <button class="email-auth-secondary" id="emailResendCode" type="button">Отправить код ещё раз</button>
+                <button class="email-auth-secondary" id="emailChangeAddress" type="button">Изменить e-mail</button>
+              </form>
+              <p class="email-auth-status" id="emailAuthStatus" role="status" aria-live="polite"></p>
+            </section>
           </div>
           <div class="account-user" id="accountUser" hidden>
             <button class="account-avatar-button" id="accountAvatarButton" type="button" aria-label="Изменить фото профиля">
@@ -472,12 +504,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=27"></script>
-  <script src="vendor/supabase-2.110.9.js?v=27"></script>
-  <script src="letters.js?v=27"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=27"></script>
-  <script src="qr-code.js?v=27"></script>
-  <script src="app.js?v=27"></script>
-  <script src="experience.js?v=27"></script>
+  <script src="config.js?v=28"></script>
+  <script src="vendor/supabase-2.110.9.js?v=28"></script>
+  <script src="letters.js?v=28"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=28"></script>
+  <script src="qr-code.js?v=28"></script>
+  <script src="app.js?v=28"></script>
+  <script src="email-auth.js?v=28"></script>
+  <script src="moments.js?v=28"></script>
+  <script src="experience.js?v=28"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const qr = require(path.join(root, "qr-code.js"));
-const publicUrl = qr.buildUrl("https://france-isl.github.io/glowletter-qr/", {
+const publicUrl = qr.buildUrl("https://bezam.org/", {
   to: "Айша",
   quote: 1,
   lang: "ru",
@@ -31,7 +31,7 @@ for (const method of [
 
 assert.equal(
   publicUrl,
-  "https://france-isl.github.io/glowletter-qr/?from=%D0%98%D1%81%D0%BB%D0%B0%D0%BC&lang=ru&quote=1&to=%D0%90%D0%B9%D1%88%D0%B0"
+  "https://bezam.org/?from=%D0%98%D1%81%D0%BB%D0%B0%D0%BC&lang=ru&quote=1&to=%D0%90%D0%B9%D1%88%D0%B0"
 );
 const parsedUrl = new URL(publicUrl);
 assert.equal(parsedUrl.searchParams.get("from"), "Ислам");
@@ -45,7 +45,7 @@ assert.deepEqual(qr.encodeUtf8("\ud800"), [0xef, 0xbf, 0xbd], "lone surrogates u
 
 const matrix = qr.createMatrix(publicUrl, { level: "M" });
 const secondMatrix = qr.createMatrix(publicUrl, { level: "M" });
-assert.equal(matrix.size, 49);
+assert.equal(matrix.size, 41);
 assert.deepEqual(matrix, secondMatrix, "the same personalized URL must always produce the same matrix");
 assert.ok(matrix.modules.every(row => row.length === matrix.size));
 assert.ok(matrix.modules.flat().every(module => typeof module === "boolean"));
@@ -53,10 +53,10 @@ assert.ok(matrix.modules.flat().every(module => typeof module === "boolean"));
 const matrixBits = matrix.modules.map(row => row.map(module => module ? "1" : "0").join("")).join("");
 assert.equal(
   crypto.createHash("sha256").update(matrixBits).digest("hex"),
-  "330cab959e7aa129a5b6d59214b1be209f78528f402d90af552817c65dfab1c9",
+  "b3f225b8dd1fe603cea0754e10ea5de798181b6a0ab3588922ea7a6726ae14a0",
   "the UTF-8 QR matrix is a stable release contract"
 );
-assert.equal([...matrixBits].filter(bit => bit === "1").length, 1242);
+assert.equal([...matrixBits].filter(bit => bit === "1").length, 849);
 
 const svg = qr.createSvg(publicUrl, {
   size: 640,
@@ -67,7 +67,7 @@ const svg = qr.createSvg(publicUrl, {
 });
 assert.match(svg, /^<svg /);
 assert.match(svg, /width="640" height="640"/);
-assert.match(svg, /viewBox="0 0 57 57"/);
+assert.match(svg, /viewBox="0 0 49 49"/);
 assert.match(svg, /aria-label="Письмо для Айши &amp; семьи"/);
 assert.match(svg, /shape-rendering="crispEdges"/);
 assert.match(svg, /<path fill="#211a2f" d="M/);
@@ -112,7 +112,7 @@ assert.equal(canvas.style.height, "570px");
 assert.deepEqual(transformCalls, [[2, 0, 0, 2, 0, 0]]);
 assert.equal(context2d.imageSmoothingEnabled, false);
 assert.deepEqual(fillCalls[0], { color: "#fffafc", args: [0, 0, 570, 570] });
-assert.equal(fillCalls.length, 1243, "canvas paints one background plus every dark module");
+assert.equal(fillCalls.length, 850, "canvas paints one background plus every dark module");
 assert.equal(rendered.matrix.text, publicUrl);
 assert.equal(qr.toDataURL(publicUrl, { canvas, size: 570, pixelRatio: 1 }), "data:image/png;base64,TEST");
 
