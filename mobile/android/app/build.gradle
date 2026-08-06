@@ -82,7 +82,7 @@ android {
         buildConfigField "long", "PLAY_INTEGRITY_CLOUD_PROJECT_NUMBER", "${cloudProjectNumber}L"
         buildConfigField "int", "FREE_LETTER_LIMIT", "10"
         buildConfigField "String", "OWNER_BETA_CAPABILITY", quoteBuildConfig(ownerBetaCapability)
-        buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "28"
+        buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "30"
         buildConfigField "int", "NATIVE_BRIDGE_API", "1"
         buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("stable")
         buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(stableWebBundleManifestUrl)

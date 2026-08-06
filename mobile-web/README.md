@@ -24,8 +24,8 @@ mobile-web/
 `manifest.sig` is a binary DER ECDSA P-256/SHA-256 signature over the exact UTF-8 bytes of
 `manifest.json`. Do not Base64-decode or reformat the manifest after it has been signed.
 Never overwrite an existing `releases/<bundleVersion>/bundle.zip`; publish a higher integer
-version instead. Android 2.4.0 bundles web version 28, so its first over-the-air web release
-must be version 29 or higher.
+version instead. Android 2.4.0 now bundles web version 30, so its next over-the-air web release
+must be version 31 or higher.
 
 ## Manifest schema 1
 

@@ -52,8 +52,8 @@ assert.match(builder, /\$MaximumSingleFileBytes\s*=\s*32MB/);
 assert.match(builder, /\$MaximumFileCount\s*=\s*256/);
 assert.match(builder, /\$MaximumPathLength\s*=\s*240/);
 
-assert.match(gradle, /BUNDLED_WEB_BUNDLE_VERSION",\s*"28"/);
-assert.match(readme, /first over-the-air web release[\s\S]*version 29 or higher/i);
+assert.match(gradle, /BUNDLED_WEB_BUNDLE_VERSION",\s*"30"/);
+assert.match(readme, /next over-the-air web release[\s\S]*version 31 or higher/i);
 assert.match(readme, /build_signed_web_bundle\.ps1[\s\S]*-ValidateOnly/);
 assert.match(readme, /-Channel stable/);
 assert.match(readme, /-Channel preview/);
