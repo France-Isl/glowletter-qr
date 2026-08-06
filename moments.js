@@ -46,7 +46,7 @@
       cloudSynced: "Данные синхронизированы", cloudLoading: "Загружаю личные данные…", localMode: "Локальный режим", cloudNeeded: "Войдите в аккаунт, чтобы создать постоянный QR.",
       qrCreated: "Постоянный QR готов", qrCreateFailed: "Не удалось создать QR. Проверьте вход и интернет.", qrRevokedDone: "QR отключён", qrRevokeFailed: "Не удалось отключить QR.",
       sharedLoading: "Открываю письмо…", sharedLockedTitle: "Письмо ждёт своего момента", sharedLocked: "Оно откроется {date}.",
-      sharedReady: "Письмо для вас", sharedUnavailable: "Эта ссылка недоступна или была отключена.", sharedOffline: "Для открытия письма нужен интернет.",
+      sharedReady: "Письмо для вас", sharedUnavailable: "Эта ссылка недоступна или была отключена.", sharedOffline: "Для открытия письма нужен интернет.", sharedReport: "⚑ Пожаловаться на письмо",
       fromLabel: "От", forLabel: "Для", sourceAi: "Помощник", sourceOwn: "Свой текст", sourceFlorist: "Флорист", sourceCatalog: "Коллекция", sourceUnknown: "Письмо",
       relationAuto: "Определить автоматически", relationMother: "Мама", relationFather: "Папа", relationSpouse: "Супруг или супруга", relationChild: "Сын или дочь", relationSibling: "Брат или сестра", relationGrandparent: "Бабушка или дедушка", relationFriend: "Друг или подруга", relationTeacher: "Учитель или наставник", relationUniversal: "Другой человек",
       toneAuto: "Подбирать автоматически", toneLoving: "Тёплый", toneRomantic: "Романтический · супругам", toneClassic: "Классический", toneSupport: "Поддержка", toneGratitude: "Благодарность",
@@ -82,7 +82,7 @@
       cloudSynced: "Data synced", cloudLoading: "Loading your private data…", localMode: "Local mode", cloudNeeded: "Sign in to create a permanent QR.",
       qrCreated: "Permanent QR is ready", qrCreateFailed: "Could not create the QR. Check your account and connection.", qrRevokedDone: "QR disabled", qrRevokeFailed: "Could not disable the QR.",
       sharedLoading: "Opening the letter…", sharedLockedTitle: "This letter is waiting for its moment", sharedLocked: "It will open {date}.",
-      sharedReady: "A letter for you", sharedUnavailable: "This link is unavailable or has been disabled.", sharedOffline: "An internet connection is required to open this letter.",
+      sharedReady: "A letter for you", sharedUnavailable: "This link is unavailable or has been disabled.", sharedOffline: "An internet connection is required to open this letter.", sharedReport: "⚑ Report this letter",
       fromLabel: "From", forLabel: "To", sourceAi: "Assistant", sourceOwn: "Own text", sourceFlorist: "Florist", sourceCatalog: "Collection", sourceUnknown: "Letter",
       relationAuto: "Detect automatically", relationMother: "Mother", relationFather: "Father", relationSpouse: "Spouse", relationChild: "Son or daughter", relationSibling: "Brother or sister", relationGrandparent: "Grandparent", relationFriend: "Friend", relationTeacher: "Teacher or mentor", relationUniversal: "Someone else",
       toneAuto: "Choose automatically", toneLoving: "Warm", toneRomantic: "Romantic · spouses", toneClassic: "Classic", toneSupport: "Support", toneGratitude: "Gratitude",
@@ -118,7 +118,7 @@
       cloudSynced: "Données synchronisées", cloudLoading: "Chargement de vos données privées…", localMode: "Mode local", cloudNeeded: "Connectez-vous pour créer un QR permanent.",
       qrCreated: "Le QR permanent est prêt", qrCreateFailed: "Impossible de créer le QR. Vérifiez le compte et la connexion.", qrRevokedDone: "QR désactivé", qrRevokeFailed: "Impossible de désactiver le QR.",
       sharedLoading: "Ouverture de la lettre…", sharedLockedTitle: "Cette lettre attend son moment", sharedLocked: "Elle s’ouvrira le {date}.",
-      sharedReady: "Une lettre pour vous", sharedUnavailable: "Ce lien est indisponible ou a été désactivé.", sharedOffline: "Une connexion internet est nécessaire pour ouvrir cette lettre.",
+      sharedReady: "Une lettre pour vous", sharedUnavailable: "Ce lien est indisponible ou a été désactivé.", sharedOffline: "Une connexion internet est nécessaire pour ouvrir cette lettre.", sharedReport: "⚑ Signaler cette lettre",
       fromLabel: "De", forLabel: "Pour", sourceAi: "Assistant", sourceOwn: "Texte personnel", sourceFlorist: "Fleuriste", sourceCatalog: "Collection", sourceUnknown: "Lettre",
       relationAuto: "Détecter automatiquement", relationMother: "Mère", relationFather: "Père", relationSpouse: "Époux ou épouse", relationChild: "Fils ou fille", relationSibling: "Frère ou sœur", relationGrandparent: "Grand-parent", relationFriend: "Ami ou amie", relationTeacher: "Professeur ou mentor", relationUniversal: "Une autre personne",
       toneAuto: "Choisir automatiquement", toneLoving: "Chaleureux", toneRomantic: "Romantique · époux", toneClassic: "Classique", toneSupport: "Soutien", toneGratitude: "Gratitude",
@@ -134,7 +134,9 @@
     getLanguage: () => "ru",
     translate: null,
     openComposer: null,
-    openQr: null
+    openQr: null,
+    requestPublishConsent: null,
+    reportContent: null
   };
 
   const state = {
@@ -154,6 +156,7 @@
     previousFocus: null,
     previousOverflow: "",
     sharedMode: false,
+    sharedReportContext: null,
     toastTimer: 0,
     statusKey: ""
   };
@@ -616,6 +619,7 @@
           <p class="glm-shared-route" id="momentsSharedRoute"></p>
           <div class="glm-shared-letter" id="momentsSharedLetter" hidden></div>
           <time id="momentsSharedUnlock"></time>
+          <button class="glm-shared-report" type="button" data-action="shared-report" data-i18n="sharedReport" hidden></button>
         </section>
         <div class="glm-toast" id="momentsToast" role="status" aria-live="polite"></div>
       </section>`;
@@ -951,6 +955,10 @@
     state.client = await Promise.resolve(safeClient());
     if (!letter || !state.client || !validUuid(state.user?.id)) { showToast("cloudNeeded"); return null; }
     const unlockAt = cleanText(options.unlockAt || options.unlock_at, 40) || null;
+    if (typeof config.requestPublishConsent === "function") {
+      const accepted = await Promise.resolve(config.requestPublishConsent({ kind: "moment_letter", text: letter.text, sender: letter.sender_name_snapshot, recipient: letter.recipient_name_snapshot, audioAttached: false }));
+      if (!accepted) return null;
+    }
     try {
       const result = await state.client.rpc("glowletter_create_qr_link", {
         p_kind: "letter", p_letter_id: letter.id, p_person_id: letter.person_id || null,
@@ -1026,6 +1034,7 @@
     if (action === "qr-create") return createQrForLetter(id);
     if (action === "qr-open") return openQrLink(state.qrLinks.find(item => item.id === id));
     if (action === "qr-revoke") return revokeQrLink(id);
+    if (action === "shared-report" && state.sharedReportContext && typeof config.reportContent === "function") return config.reportContent(state.sharedReportContext);
   }
 
   function bindDomEvents() {
@@ -1100,12 +1109,14 @@
     query("#momentsSharedRoute").textContent = [sender ? `${tr("fromLabel")}: ${sender}` : "", recipient ? `${tr("forLabel")}: ${recipient}` : ""].filter(Boolean).join(" · ");
     const letter = query("#momentsSharedLetter"); letter.hidden = locked || !result?.letter_text; letter.textContent = cleanText(result?.letter_text, 1800);
     const unlock = query("#momentsSharedUnlock"); unlock.textContent = locked ? tr("sharedLocked", { date: formatDisplayDate(result.unlock_at, true) }) : ""; unlock.dateTime = cleanText(result?.unlock_at, 40);
+    const reportButton=query(".glm-shared-report");if(reportButton)reportButton.hidden=locked||status!=="ready"||!state.sharedReportContext;
     requestAnimationFrame(() => query("#momentsClose")?.focus({ preventScroll: true }));
   }
 
   async function handleSharedToken(url = location.href) {
     const publicId = validUuid(url) || validUuid(new URL(url, location.href).searchParams.get("moment"));
     if (!publicId) return null;
+    state.sharedReportContext=null;
     renderShared({ title: tr("sharedLoading") }, "loading");
     const appConfig = window.NUR_APP_CONFIG || {};
     const base = cleanText(appConfig.supabaseUrl, 500).replace(/\/+$/u, "");
@@ -1136,6 +1147,7 @@
         expires_at: cleanText(raw.expires_at ?? raw.expiresAt, 40)
       };
       if (["revoked", "expired", "missing", "not_found"].includes(status)) { renderShared({}, "error"); return { status }; }
+      state.sharedReportContext={publicId,sender:row.sender_name,recipient:row.recipient_name,text:row.letter_text};
       renderShared(row, status);
       window.dispatchEvent(new CustomEvent("glowletter-moment-resolved", {
         detail: { publicId, status, locked: status === "locked", letter: status === "ready" ? { ...row } : null }

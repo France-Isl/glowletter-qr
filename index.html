@@ -123,6 +123,7 @@
           <button class="go-home home-return" type="button">⌂ На главную</button>
         </div>
         <button class="ai-inline" id="aiOpenLetter" type="button"><span>✦</span> Создать персональное письмо</button>
+        <button class="content-report-link" id="reportLetterButton" type="button" hidden>⚑ Пожаловаться на письмо</button>
       </section>
     </main>
 
@@ -461,6 +462,41 @@
           <a id="shareEmail" href="#"><i aria-hidden="true">✉</i><span>Почта</span></a>
           <button id="shareCopyLink" type="button"><i aria-hidden="true">▣</i><span>Скопировать ссылку</span></button>
         </div>
+      </section>
+    </div>
+
+    <div class="panel-layer center-layer" id="publicationLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="publicationBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="setup-card compliance-card" role="dialog" aria-modal="true" aria-labelledby="publicationTitle" aria-describedby="publicationLead">
+        <button class="panel-close" id="publicationClose" type="button" aria-label="Закрыть">×</button>
+        <p class="panel-eyebrow" id="publicationEyebrow">ПЕРЕД ПУБЛИКАЦИЕЙ</p>
+        <h2 id="publicationTitle">Проверьте письмо</h2>
+        <p class="setup-note" id="publicationLead">Ссылка или QR-код смогут открыть все, кому их передадут.</p>
+        <label class="publication-consent">
+          <input id="publicationConsent" type="checkbox" />
+          <span id="publicationConsentText">Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.</span>
+        </label>
+        <p class="compliance-links"><span id="publicationAgreement">Продолжая, вы принимаете</span> <a href="terms.html" target="_blank" rel="noopener" id="publicationTerms">Условия</a> <span id="publicationAnd">и</span> <a href="privacy.html" target="_blank" rel="noopener" id="publicationPrivacy">Политику конфиденциальности</a>.</p>
+        <p class="setup-error" id="publicationError" role="alert" hidden>Подтвердите согласие перед публикацией.</p>
+        <div class="compliance-actions"><button id="publicationCancel" type="button">Отмена</button><button class="generate-button" id="publicationConfirm" type="button" disabled><span id="publicationConfirmLabel">Продолжить</span><i>→</i></button></div>
+      </section>
+    </div>
+
+    <div class="panel-layer center-layer" id="reportLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="reportBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="setup-card compliance-card" role="dialog" aria-modal="true" aria-labelledby="reportTitle" aria-describedby="reportLead">
+        <button class="panel-close" id="reportClose" type="button" aria-label="Закрыть">×</button>
+        <p class="panel-eyebrow" id="reportEyebrow">БЕЗОПАСНОСТЬ</p>
+        <h2 id="reportTitle">Пожаловаться</h2>
+        <p class="setup-note" id="reportLead">Сообщение проверит администратор. Не добавляйте пароли, банковские данные или коды.</p>
+        <form id="reportForm">
+          <label class="support-field" for="reportCategory"><span id="reportCategoryLabel">Причина</span><select id="reportCategory" required>
+            <option value="adult">Содержание 18+</option><option value="harassment">Оскорбление или давление</option><option value="hate">Ненависть</option><option value="threat">Угроза</option><option value="fraud">Обман</option><option value="privacy">Личные данные</option><option value="spam">Спам</option><option value="other">Другое</option>
+          </select></label>
+          <label class="support-field" for="reportDetails"><span id="reportDetailsLabel">Комментарий · необязательно</span><textarea id="reportDetails" maxlength="500" rows="4" placeholder="Кратко объясните проблему"></textarea></label>
+          <p class="support-status" id="reportStatus" role="status" aria-live="polite"></p>
+          <button class="generate-button" id="reportSubmit" type="submit"><span>⚑</span><span id="reportSubmitLabel">Отправить жалобу</span><i>→</i></button>
+        </form>
       </section>
     </div>
 

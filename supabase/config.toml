@@ -397,6 +397,9 @@ verify_jwt = false
 [functions.google-play-verify]
 verify_jwt = false
 
+[functions.submit-content-report]
+verify_jwt = false
+
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 
