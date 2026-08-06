@@ -98,6 +98,11 @@ com.franceisl.glowletternext\nPRODUCT_ID\nPRODUCT_TYPE\nPURCHASE_TOKEN
 
 Backend должен независимо пересчитать hash, проверить Standard Play Integrity token, запросить авторитетное состояние у Google Play Developer API, проверить SKU/base plan/срок/состояние, выполнить acknowledgement и вернуть совпадающие `productId`, `productType` и `requestHash`. RTDN через Pub/Sub обязателен для своевременной обработки продлений, отмен, hold и возвратов. Подробности находятся в [`backend/cloudflare/README.md`](../backend/cloudflare/README.md).
 
+Готовая реализация того же строгого контракта для Supabase находится в
+[`supabase/functions/google-play-verify/README.md`](../supabase/functions/google-play-verify/README.md).
+До настройки Google Cloud, Play Integrity, Play Console permissions и
+Supabase secrets её нельзя указывать в production-сборке.
+
 Play Integrity и R8 повышают стоимость атаки, но не делают APK невзламываемым. Ценный premium-контент лучше выдавать сервером только после короткоживущего проверенного entitlement.
 
 ## Подпись Android

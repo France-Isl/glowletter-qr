@@ -391,6 +391,12 @@ verify_jwt = false
 [functions.resolve-letter]
 verify_jwt = false
 
+# Gateway JWT verification stays disabled because this function validates the
+# bearer token explicitly with Supabase Auth, then also requires request-bound
+# Standard Play Integrity and an authoritative Google Play purchase.
+[functions.google-play-verify]
+verify_jwt = false
+
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 
