@@ -38,6 +38,8 @@ final class PurchaseVerifier {
         final boolean acknowledged;
         final boolean integrityVerified;
         final boolean authoritativeRejection;
+        final long expiryTimeMillis;
+        final long serverTimeMillis;
         final String reason;
 
         Result(
@@ -45,21 +47,37 @@ final class PurchaseVerifier {
                 boolean acknowledged,
                 boolean integrityVerified,
                 boolean authoritativeRejection,
+                long expiryTimeMillis,
+                long serverTimeMillis,
                 String reason
         ) {
             this.verified = verified;
             this.acknowledged = acknowledged;
             this.integrityVerified = integrityVerified;
             this.authoritativeRejection = authoritativeRejection;
+            this.expiryTimeMillis = expiryTimeMillis;
+            this.serverTimeMillis = serverTimeMillis;
             this.reason = reason;
         }
 
         static Result failure(String reason) {
-            return new Result(false, false, false, false, reason);
+            return new Result(false, false, false, false, 0L, 0L, reason);
         }
 
         static Result rejection(String reason) {
-            return new Result(false, false, false, true, reason);
+            return new Result(false, false, false, true, 0L, 0L, reason);
+        }
+    }
+
+    static final class AuthUpdate {
+        final boolean authenticated;
+        final boolean identityChanged;
+        final boolean tokenChanged;
+
+        AuthUpdate(boolean authenticated, boolean identityChanged, boolean tokenChanged) {
+            this.authenticated = authenticated;
+            this.identityChanged = identityChanged;
+            this.tokenChanged = tokenChanged;
         }
     }
 
@@ -68,6 +86,7 @@ final class PurchaseVerifier {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final AtomicBoolean closed = new AtomicBoolean(false);
+    private volatile SupabaseSessionBinding.Session authSession;
 
     PurchaseVerifier(String endpoint, PlayIntegrityProvider integrityProvider) {
         this.endpoint = endpoint == null ? "" : endpoint.trim();
@@ -83,6 +102,33 @@ final class PurchaseVerifier {
         } catch (Exception ignored) {
             return false;
         }
+    }
+
+    synchronized AuthUpdate updateAccessToken(String accessToken) {
+        SupabaseSessionBinding.Session previous = authSession;
+        SupabaseSessionBinding.Session next = SupabaseSessionBinding.fromAccessToken(accessToken);
+        String previousBinding = previous == null ? "" : previous.obfuscatedAccountId;
+        String nextBinding = next == null ? "" : next.obfuscatedAccountId;
+        String previousToken = previous == null ? "" : previous.accessToken;
+        String nextToken = next == null ? "" : next.accessToken;
+        boolean tokenChanged = !previousToken.equals(nextToken);
+        // Keep the same object identity for duplicate session notifications so
+        // an in-flight verification is not discarded without a replacement.
+        authSession = tokenChanged ? next : previous;
+        return new AuthUpdate(
+                next != null,
+                !previousBinding.equals(nextBinding),
+                tokenChanged
+        );
+    }
+
+    boolean hasAuthSession() {
+        return authSession != null;
+    }
+
+    String obfuscatedAccountId() {
+        SupabaseSessionBinding.Session session = authSession;
+        return session == null ? "" : session.obfuscatedAccountId;
     }
 
     void verify(
@@ -104,6 +150,11 @@ final class PurchaseVerifier {
             callback.onResult(Result.failure("verification_backend_not_configured"));
             return;
         }
+        final SupabaseSessionBinding.Session session = authSession;
+        if (session == null) {
+            callback.onResult(Result.failure("authentication_required"));
+            return;
+        }
 
         final String requestHash;
         try {
@@ -118,7 +169,7 @@ final class PurchaseVerifier {
         }
 
         integrityProvider.requestToken(requestHash, (integrityToken, integrityError) -> {
-            if (closed.get()) {
+            if (closed.get() || authSession != session) {
                 return;
             }
             if (integrityToken == null || integrityToken.trim().isEmpty()) {
@@ -139,16 +190,17 @@ final class PurchaseVerifier {
                                 expectedProductId,
                                 expectedProductType,
                                 requestHash,
-                                integrityToken
+                                integrityToken,
+                                session
                         );
                     } catch (Exception ignored) {
                         // Never log or expose purchaseToken or Integrity token in an exception.
                         result = Result.failure("verification_network_error");
                     }
                     Result finalResult = result;
-                    if (!closed.get()) {
+                    if (!closed.get() && authSession == session) {
                         mainHandler.post(() -> {
-                            if (!closed.get()) {
+                            if (!closed.get() && authSession == session) {
                                 callback.onResult(finalResult);
                             }
                         });
@@ -165,7 +217,8 @@ final class PurchaseVerifier {
             String expectedProductId,
             String expectedProductType,
             String requestHash,
-            String integrityToken
+            String integrityToken,
+            SupabaseSessionBinding.Session session
     ) throws Exception {
         JSONObject request = new JSONObject()
                 .put("packageName", releasePackageName())
@@ -188,6 +241,7 @@ final class PurchaseVerifier {
         connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
         connection.setRequestProperty("Accept", "application/json");
         connection.setRequestProperty("X-NurPismo-Client", "android");
+        connection.setRequestProperty("Authorization", "Bearer " + session.accessToken);
 
         byte[] body = request.toString().getBytes(StandardCharsets.UTF_8);
         connection.setFixedLengthStreamingMode(body.length);
@@ -229,11 +283,46 @@ final class PurchaseVerifier {
         if (!requestHash.equals(responseRequestHash)) {
             return Result.rejection("verification_request_hash_mismatch");
         }
-        return new Result(valid, acknowledged, integrityVerified, !valid, reason);
+        long expiryTimeMillis = 0L;
+        long serverTimeMillis = 0L;
+        if (valid && BillingClient.ProductType.SUBS.equals(expectedProductType)) {
+            expiryTimeMillis = positiveLong(response, "expiryTimeMillis");
+            serverTimeMillis = positiveLong(response, "serverTimeMillis");
+            if (expiryTimeMillis <= serverTimeMillis || serverTimeMillis <= 0L) {
+                return Result.rejection("verification_subscription_expired_or_missing_time");
+            }
+        }
+        return new Result(
+                valid,
+                acknowledged,
+                integrityVerified,
+                !valid,
+                expiryTimeMillis,
+                serverTimeMillis,
+                reason
+        );
+    }
+
+    private static long positiveLong(JSONObject object, String key) {
+        Object value = object.opt(key);
+        if (value instanceof Number) {
+            long parsed = ((Number) value).longValue();
+            return parsed > 0L ? parsed : 0L;
+        }
+        if (value instanceof String) {
+            try {
+                long parsed = Long.parseLong(((String) value).trim());
+                return parsed > 0L ? parsed : 0L;
+            } catch (NumberFormatException ignored) {
+                return 0L;
+            }
+        }
+        return 0L;
     }
 
     static boolean isAuthoritativeRejectionStatus(int status) {
         return status == 400
+                || status == 401
                 || status == 403
                 || status == 404
                 || status == 410
@@ -297,6 +386,7 @@ final class PurchaseVerifier {
 
     void close() {
         if (closed.compareAndSet(false, true)) {
+            authSession = null;
             integrityProvider.close();
             mainHandler.removeCallbacksAndMessages(null);
             executor.shutdownNow();

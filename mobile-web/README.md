@@ -17,15 +17,15 @@ mobile-web/
     manifest.json
     manifest.sig
   releases/
-    30/
+    31/
       bundle.zip
 ```
 
 `manifest.sig` is a binary DER ECDSA P-256/SHA-256 signature over the exact UTF-8 bytes of
 `manifest.json`. Do not Base64-decode or reformat the manifest after it has been signed.
 Never overwrite an existing `releases/<bundleVersion>/bundle.zip`; publish a higher integer
-version instead. Android 2.4.0 now bundles web version 30, so its next over-the-air web release
-must be version 31 or higher.
+version instead. Android 2.4.1 now bundles web version 31, so its next over-the-air web release
+must be version 32 or higher.
 
 ## Manifest schema 1
 
@@ -34,14 +34,14 @@ must be version 31 or higher.
   "schema": 1,
   "channel": "stable",
   "applicationId": "com.franceisl.glowletternext",
-  "bundleVersion": 30,
-  "releaseId": "web-2026-08-02-30",
-  "appVersion": "2.4.0",
+  "bundleVersion": 31,
+  "releaseId": "web-2026-08-06-31",
+  "appVersion": "2.4.1",
   "minNativeVersionCode": 15,
   "requiredBridgeApi": 1,
   "entrypoint": "index.html",
   "archive": {
-    "url": "https://bezam.org/mobile-web/releases/30/bundle.zip",
+    "url": "https://bezam.org/mobile-web/releases/31/bundle.zip",
     "size": 123456,
     "sha256": "64-lowercase-hex-characters"
   },
@@ -73,18 +73,18 @@ bytes, and verifies the result with the public key pinned in the APK:
 ```powershell
 # Safe dry run: packages, hashes, signs and verifies without changing mobile-web/.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 30 `
+  -BundleVersion 31 `
   -Channel stable `
   -ValidateOnly
 
 # Production channel consumed by release builds.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 30 `
+  -BundleVersion 31 `
   -Channel stable
 
 # Preview channel consumed by debug builds. It reuses the identical immutable archive.
 & .\mobile\scripts\build_signed_web_bundle.ps1 `
-  -BundleVersion 30 `
+  -BundleVersion 31 `
   -Channel preview
 ```
 

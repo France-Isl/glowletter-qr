@@ -1,22 +1,43 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v29`;
+const CACHE = `${CACHE_PREFIX}v31`;
 const CORE = [
   "./",
   "index.html",
-  "styles.css?v=29",
-  "experience.css?v=29",
-  "email-auth.css?v=29",
-  "moments.css?v=29",
-  "config.js?v=29",
-  "vendor/supabase-2.110.9.js?v=29",
-  "vendor/qrcode-generator-1.4.4.min.js?v=29",
-  "letters.js?v=29",
-  "qr-code.js?v=29",
-  "app.js?v=29",
-  "email-auth.js?v=29",
-  "moments.js?v=29",
-  "experience.js?v=29",
-  "manifest.webmanifest?v=29",
+  "fonts/local-fonts.css?v=31",
+  "fonts/cormorant-normal-cyrillic-ext.woff2",
+  "fonts/cormorant-normal-cyrillic.woff2",
+  "fonts/cormorant-normal-latin-ext.woff2",
+  "fonts/cormorant-normal-latin.woff2",
+  "fonts/cormorant-italic-cyrillic-ext.woff2",
+  "fonts/cormorant-italic-cyrillic.woff2",
+  "fonts/cormorant-italic-latin-ext.woff2",
+  "fonts/cormorant-italic-latin.woff2",
+  "fonts/literata-normal-cyrillic-ext.woff2",
+  "fonts/literata-normal-cyrillic.woff2",
+  "fonts/literata-normal-latin-ext.woff2",
+  "fonts/literata-normal-latin.woff2",
+  "fonts/literata-italic-cyrillic-ext.woff2",
+  "fonts/literata-italic-cyrillic.woff2",
+  "fonts/literata-italic-latin-ext.woff2",
+  "fonts/literata-italic-latin.woff2",
+  "fonts/manrope-normal-cyrillic-ext.woff2",
+  "fonts/manrope-normal-cyrillic.woff2",
+  "fonts/manrope-normal-latin-ext.woff2",
+  "fonts/manrope-normal-latin.woff2",
+  "styles.css?v=31",
+  "experience.css?v=31",
+  "email-auth.css?v=31",
+  "moments.css?v=31",
+  "config.js?v=31",
+  "vendor/supabase-2.110.9.js?v=31",
+  "vendor/qrcode-generator-1.4.4.min.js?v=31",
+  "letters.js?v=31",
+  "qr-code.js?v=31",
+  "app.js?v=31",
+  "email-auth.js?v=31",
+  "moments.js?v=31",
+  "experience.js?v=31",
+  "manifest.webmanifest?v=31",
   "icon.svg",
   "privacy.html",
   "assets/auth/apple-continue-ru.png",
@@ -25,7 +46,7 @@ const CORE = [
   "assets/campfire-lake.png",
   "assets/campfire-mobile.png"
 ];
-const CORE_FILES = new Set(["", "index.html", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {

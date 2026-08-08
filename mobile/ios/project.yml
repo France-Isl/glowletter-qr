@@ -14,8 +14,8 @@ settings:
     SWIFT_VERSION: "5.0"
     IPHONEOS_DEPLOYMENT_TARGET: 16.0
     TARGETED_DEVICE_FAMILY: "1,2"
-    MARKETING_VERSION: 2.4.0
-    CURRENT_PROJECT_VERSION: 15
+    MARKETING_VERSION: 2.4.1
+    CURRENT_PROJECT_VERSION: 16
 
 targets:
   NurPismo:
@@ -26,11 +26,14 @@ targets:
         excludes:
           - Assets.xcassets
           - Info.plist
+          - PrivacyInfo.xcprivacy
           - WebResources
       - path: NurPismo/Assets.xcassets
         buildPhase: resources
       - path: NurPismo/WebResources
         type: folder
+        buildPhase: resources
+      - path: NurPismo/PrivacyInfo.xcprivacy
         buildPhase: resources
       - path: StoreKit/GlowLetter.storekit
         buildPhase: resources
@@ -50,7 +53,6 @@ targets:
         INFOPLIST_FILE: NurPismo/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
-        GLOWLETTER_OWNER_CAPABILITY: ""
         ENABLE_USER_SCRIPT_SANDBOXING: NO
         GENERATE_INFOPLIST_FILE: NO
 

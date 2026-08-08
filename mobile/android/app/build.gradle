@@ -13,7 +13,8 @@ def quoteBuildConfig = { String value ->
 }
 
 def verificationUrl = valueOrEnvironment("purchaseVerificationUrl", "NURPISMO_VERIFICATION_URL") ?: ""
-def ownerBetaCapability = valueOrEnvironment("ownerBetaCapability", "GLOWLETTER_OWNER_BETA_CAPABILITY") ?: ""
+def productionVerificationUrl = "https://xzzngrquomyiglktroqi.supabase.co/functions/v1/google-play-verify"
+def productionCloudProjectNumber = 96836561934L
 def mockBilling = providers.gradleProperty("enableBillingMock").orNull == "true"
 def stableWebBundleManifestUrl = valueOrEnvironment(
         "webBundleManifestUrl",
@@ -48,16 +49,8 @@ def keyPasswordValue = valueOrEnvironment(
         "GLOWLETTER_RELEASE_KEY_PASSWORD"
 ) ?: valueOrEnvironment("NURPISMO_KEY_PASSWORD", "NURPISMO_KEY_PASSWORD")
 def hasReleaseSigning = [keystorePath, keystorePassword, keyAliasValue, keyPasswordValue].every { it != null && !it.isBlank() }
-def hasHttpsVerificationUrl = false
-try {
-    def verificationUri = new java.net.URI(verificationUrl.toString())
-    hasHttpsVerificationUrl = verificationUri.scheme?.equalsIgnoreCase("https")
-            && verificationUri.host != null
-            && !verificationUri.host.isBlank()
-} catch (Exception ignored) {
-    hasHttpsVerificationUrl = false
-}
-def hasProductionBillingSecurity = hasHttpsVerificationUrl && cloudProjectNumber > 0L
+def hasProductionBillingSecurity = verificationUrl.toString() == productionVerificationUrl
+        && cloudProjectNumber == productionCloudProjectNumber
 
 android {
     namespace = "com.franceisl.glowletternext"
@@ -72,8 +65,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 15
-        versionName = "2.4.0"
+        versionCode = 16
+        versionName = "2.4.1"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -81,8 +74,7 @@ android {
         buildConfigField "String", "LEGACY_FULL_ACCESS_PRODUCT_ID", quoteBuildConfig("full_access")
         buildConfigField "long", "PLAY_INTEGRITY_CLOUD_PROJECT_NUMBER", "${cloudProjectNumber}L"
         buildConfigField "int", "FREE_LETTER_LIMIT", "10"
-        buildConfigField "String", "OWNER_BETA_CAPABILITY", quoteBuildConfig(ownerBetaCapability)
-        buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "30"
+        buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "31"
         buildConfigField "int", "NATIVE_BRIDGE_API", "1"
         buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("stable")
         buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(stableWebBundleManifestUrl)
@@ -158,8 +150,8 @@ def releaseTaskRequested = gradle.startParameter.taskNames.any {
 }
 if (releaseTaskRequested && hasReleaseSigning && !hasProductionBillingSecurity) {
     throw new GradleException(
-            "Signed release requires an HTTPS purchaseVerificationUrl and a positive "
-                    + "playIntegrityCloudProjectNumber. Refusing to build a paid app that cannot unlock."
+            "Signed release requires GlowLetter's exact Supabase purchase verification URL and "
+                    + "Play Integrity project 96836561934. Refusing to build against an unsupported backend."
     )
 }
 

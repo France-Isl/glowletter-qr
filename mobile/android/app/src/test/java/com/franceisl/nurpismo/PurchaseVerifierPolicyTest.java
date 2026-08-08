@@ -19,6 +19,7 @@ public final class PurchaseVerifierPolicyTest {
     @Test
     public void rejectedPurchaseAndIntegrityResponsesAreAuthoritative() {
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(400));
+        assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(401));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(403));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(404));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(410));
@@ -27,7 +28,6 @@ public final class PurchaseVerifierPolicyTest {
 
     @Test
     public void throttlingAndServerFailuresRemainTransient() {
-        assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(401));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(429));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(500));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(503));

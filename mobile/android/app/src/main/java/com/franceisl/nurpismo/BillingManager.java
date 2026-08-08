@@ -3,6 +3,9 @@ package com.franceisl.glowletternext;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
@@ -32,12 +35,23 @@ final class BillingManager implements PurchasesUpdatedListener {
         final String priceLabel;
         final String reason;
         final boolean mock;
+        final long expiryTimeMillis;
+        final long monotonicDeadlineMillis;
 
-        EntitlementState(boolean entitled, String priceLabel, String reason, boolean mock) {
+        EntitlementState(
+                boolean entitled,
+                String priceLabel,
+                String reason,
+                boolean mock,
+                long expiryTimeMillis,
+                long monotonicDeadlineMillis
+        ) {
             this.entitled = entitled;
             this.priceLabel = priceLabel;
             this.reason = reason;
             this.mock = mock;
+            this.expiryTimeMillis = expiryTimeMillis;
+            this.monotonicDeadlineMillis = monotonicDeadlineMillis;
         }
     }
 
@@ -82,10 +96,19 @@ final class BillingManager implements PurchasesUpdatedListener {
     private final PurchaseVerifier verifier;
     private final PlayIntegrityProvider integrityProvider;
     private final SharedPreferences debugPreferences;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final EntitlementCoordinator entitlementCoordinator = new EntitlementCoordinator();
     private final List<Runnable> readyActions = new ArrayList<>();
+    private final Runnable entitlementExpiryAction = this::handleEntitlementExpiry;
 
-    private volatile EntitlementState state = new EntitlementState(false, DEFAULT_PRICE, "initializing", false);
+    private volatile EntitlementState state = new EntitlementState(
+            false,
+            DEFAULT_PRICE,
+            "initializing",
+            false,
+            0L,
+            0L
+    );
     private boolean connecting;
     private boolean firstResume = true;
     private boolean purchaseFlowInProgress;
@@ -117,15 +140,19 @@ final class BillingManager implements PurchasesUpdatedListener {
                     mockOwned);
             return;
         }
-        if (!isPurchaseSecurityConfigured()) {
+        if (!isBillingBackendConfigured()) {
             emit(false, DEFAULT_PRICE, "billing_security_not_configured", false);
+            return;
+        }
+        if (!verifier.hasAuthSession()) {
+            emit(false, DEFAULT_PRICE, "authentication_required", false);
             return;
         }
         integrityProvider.warmUp();
         ensureReady(() -> {
             querySubscriptionProduct((details, offer, priceLabel, error) -> {
                 if (details != null && offer != null) {
-                    emit(state.entitled, priceLabel, state.reason, state.mock);
+                    emitTransient(priceLabel, state.reason);
                 }
             });
             queryOwnedPurchases("startup_restore");
@@ -154,12 +181,24 @@ final class BillingManager implements PurchasesUpdatedListener {
             return;
         }
         if (!isPurchaseSecurityConfigured()) {
-            emitTransient("billing_security_not_configured");
+            emitTransient(isBillingBackendConfigured()
+                    ? "authentication_required"
+                    : "billing_security_not_configured");
+            return;
+        }
+
+        String obfuscatedAccountId = verifier.obfuscatedAccountId();
+        if (obfuscatedAccountId.isEmpty()) {
+            emitTransient("authentication_required");
             return;
         }
 
         emitTransient("opening_google_play");
         ensureReady(() -> querySubscriptionProduct((details, offer, priceLabel, error) -> {
+            if (!obfuscatedAccountId.equals(verifier.obfuscatedAccountId())) {
+                emitTransient("account_session_changed");
+                return;
+            }
             if (details == null || offer == null) {
                 emitTransient(error == null ? "product_unavailable" : error);
                 return;
@@ -176,6 +215,7 @@ final class BillingManager implements PurchasesUpdatedListener {
 
             BillingFlowParams flowParams = BillingFlowParams.newBuilder()
                     .setProductDetailsParamsList(Collections.singletonList(productParams.build()))
+                    .setObfuscatedAccountId(obfuscatedAccountId)
                     .build();
             purchaseFlowInProgress = true;
             BillingResult result = billingClient.launchBillingFlow(activity, flowParams);
@@ -201,12 +241,54 @@ final class BillingManager implements PurchasesUpdatedListener {
             return;
         }
         if (!isPurchaseSecurityConfigured()) {
-            emitTransient("billing_security_not_configured");
+            emitTransient(isBillingBackendConfigured()
+                    ? "authentication_required"
+                    : "billing_security_not_configured");
             return;
         }
         purchaseFlowInProgress = false;
         emitTransient("restoring_purchases");
         ensureReady(() -> queryOwnedPurchases("manual_restore"));
+    }
+
+    void updateAuthSession(String accessToken) {
+        if (closed) {
+            return;
+        }
+        PurchaseVerifier.AuthUpdate update = verifier.updateAccessToken(accessToken);
+        if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
+            return;
+        }
+        if (!update.tokenChanged) {
+            return;
+        }
+
+        // A result authenticated with the previous bearer token must not be
+        // allowed to complete a newer account's reconciliation.
+        entitlementCoordinator.beginOperation();
+        entitlementCoordinator.invalidateVerification();
+        purchaseFlowInProgress = false;
+
+        if (update.identityChanged) {
+            emit(false, state.priceLabel,
+                    update.authenticated ? "account_session_changed" : "authentication_required",
+                    false);
+        }
+        if (!update.authenticated) {
+            if (!update.identityChanged) {
+                emit(false, state.priceLabel, "authentication_required", false);
+            }
+            return;
+        }
+        if (!isBillingBackendConfigured()) {
+            emit(false, state.priceLabel, "billing_security_not_configured", false);
+            return;
+        }
+
+        integrityProvider.warmUp();
+        ensureReady(() -> queryOwnedPurchases(
+                update.identityChanged ? "account_restore" : "session_refresh_restore"
+        ));
     }
 
     @Override
@@ -371,7 +453,9 @@ final class BillingManager implements PurchasesUpdatedListener {
             return;
         }
         if (!isPurchaseSecurityConfigured()) {
-            emitTransient("billing_security_not_configured");
+            emitTransient(isBillingBackendConfigured()
+                    ? "authentication_required"
+                    : "billing_security_not_configured");
             return;
         }
         if (purchaseFlowInProgress || entitlementCoordinator.hasVerificationInFlight()) {
@@ -547,7 +631,38 @@ final class BillingManager implements PurchasesUpdatedListener {
             }
             // Fail closed: both server verification and acknowledgement are required.
             if (result.verified && result.acknowledged && result.integrityVerified) {
-                emit(true, state.priceLabel, result.reason, false);
+                if (BillingClient.ProductType.SUBS.equals(candidate.productType)) {
+                    long deadline = EntitlementExpiryPolicy.subscriptionDeadline(
+                            result.serverTimeMillis,
+                            result.expiryTimeMillis,
+                            SystemClock.elapsedRealtime()
+                    );
+                    if (deadline == EntitlementExpiryPolicy.INVALID_DEADLINE) {
+                        emit(false, state.priceLabel,
+                                "verification_subscription_expired_or_missing_time",
+                                false);
+                    } else {
+                        emitState(
+                                true,
+                                state.priceLabel,
+                                result.reason,
+                                false,
+                                result.expiryTimeMillis,
+                                deadline
+                        );
+                    }
+                } else {
+                    // The historical one-time full_access product never expires,
+                    // but its purchase token is still bound server-side to one user.
+                    emitState(
+                            true,
+                            state.priceLabel,
+                            result.reason,
+                            false,
+                            0L,
+                            EntitlementExpiryPolicy.NO_DEADLINE
+                    );
+                }
             } else {
                 String failureReason;
                 if (result.verified && result.acknowledged) {
@@ -569,14 +684,44 @@ final class BillingManager implements PurchasesUpdatedListener {
     }
 
     private void emitTransient(String reason) {
-        emit(state.entitled, state.priceLabel, reason, state.mock);
+        emitTransient(state.priceLabel, reason);
     }
 
     private void emitTransient(String priceLabel, String reason) {
-        emit(state.entitled, priceLabel, reason, state.mock);
+        EntitlementState current = activeState();
+        if (!current.entitled) {
+            emit(false, priceLabel, reason, false);
+            return;
+        }
+        emitState(
+                true,
+                priceLabel,
+                reason,
+                current.mock,
+                current.expiryTimeMillis,
+                current.monotonicDeadlineMillis
+        );
     }
 
     private void emit(boolean entitled, String priceLabel, String reason, boolean mock) {
+        emitState(
+                entitled,
+                priceLabel,
+                reason,
+                mock,
+                0L,
+                entitled ? EntitlementExpiryPolicy.NO_DEADLINE : 0L
+        );
+    }
+
+    private void emitState(
+            boolean entitled,
+            String priceLabel,
+            String reason,
+            boolean mock,
+            long expiryTimeMillis,
+            long monotonicDeadlineMillis
+    ) {
         if (closed) {
             return;
         }
@@ -584,9 +729,12 @@ final class BillingManager implements PurchasesUpdatedListener {
                 entitled,
                 priceLabel == null || priceLabel.trim().isEmpty() ? DEFAULT_PRICE : priceLabel,
                 reason == null ? "unknown" : reason,
-                mock
+                mock,
+                entitled ? Math.max(0L, expiryTimeMillis) : 0L,
+                entitled ? monotonicDeadlineMillis : 0L
         );
         state = next;
+        scheduleEntitlementExpiry(next);
         activity.runOnUiThread(() -> {
             if (!closed && state == next) {
                 listener.onEntitlementChanged(next);
@@ -594,12 +742,60 @@ final class BillingManager implements PurchasesUpdatedListener {
         });
     }
 
+    private EntitlementState activeState() {
+        EntitlementState current = state;
+        if (current.entitled && !EntitlementExpiryPolicy.isActive(
+                true,
+                current.monotonicDeadlineMillis,
+                SystemClock.elapsedRealtime()
+        )) {
+            emit(false, current.priceLabel, "subscription_expired", false);
+            return state;
+        }
+        return current;
+    }
+
+    private void scheduleEntitlementExpiry(EntitlementState next) {
+        mainHandler.removeCallbacks(entitlementExpiryAction);
+        if (!next.entitled
+                || next.monotonicDeadlineMillis == EntitlementExpiryPolicy.NO_DEADLINE) {
+            return;
+        }
+        long delay = EntitlementExpiryPolicy.remainingDelay(
+                next.monotonicDeadlineMillis,
+                SystemClock.elapsedRealtime()
+        );
+        mainHandler.postDelayed(entitlementExpiryAction, delay);
+    }
+
+    private void handleEntitlementExpiry() {
+        if (closed) {
+            return;
+        }
+        EntitlementState current = state;
+        if (!current.entitled
+                || current.monotonicDeadlineMillis == EntitlementExpiryPolicy.NO_DEADLINE) {
+            return;
+        }
+        long delay = EntitlementExpiryPolicy.remainingDelay(
+                current.monotonicDeadlineMillis,
+                SystemClock.elapsedRealtime()
+        );
+        if (delay > 0L) {
+            mainHandler.postDelayed(entitlementExpiryAction, delay);
+            return;
+        }
+        emit(false, current.priceLabel, "subscription_expired", false);
+    }
+
     String getEntitlementJson() {
+        EntitlementState current = activeState();
         try {
             return new JSONObject()
-                    .put("entitled", state.entitled)
-                    .put("priceLabel", state.priceLabel)
-                    .put("reason", state.reason)
+                    .put("entitled", current.entitled)
+                    .put("priceLabel", current.priceLabel)
+                    .put("reason", current.reason)
+                    .put("expiryTimeMillis", current.expiryTimeMillis)
                     .put("productId", BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                     .put("productType", BillingClient.ProductType.SUBS)
                     .put("basePlanId", BuildConfig.SUBSCRIPTION_BASE_PLAN_ID)
@@ -607,7 +803,7 @@ final class BillingManager implements PurchasesUpdatedListener {
                     .put("legacyProductType", BillingClient.ProductType.INAPP)
                     .put("freeLetterLimit", BuildConfig.FREE_LETTER_LIMIT)
                     .put("purchaseConfigured", isPurchaseSecurityConfigured())
-                    .put("mock", state.mock)
+                    .put("mock", current.mock)
                     .toString();
         } catch (Exception ignored) {
             return "{\"entitled\":false,\"priceLabel\":\"€21.99/month\","
@@ -618,12 +814,12 @@ final class BillingManager implements PurchasesUpdatedListener {
     }
 
     EntitlementState getState() {
-        return state;
+        return activeState();
     }
 
     void notifyWebState() {
         if (!closed) {
-            listener.onEntitlementChanged(state);
+            listener.onEntitlementChanged(activeState());
         }
     }
 
@@ -635,6 +831,7 @@ final class BillingManager implements PurchasesUpdatedListener {
         purchaseFlowInProgress = false;
         entitlementCoordinator.close();
         readyActions.clear();
+        mainHandler.removeCallbacksAndMessages(null);
         verifier.close();
         if (billingClient.isReady()) {
             billingClient.endConnection();
@@ -645,6 +842,10 @@ final class BillingManager implements PurchasesUpdatedListener {
         if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
             return true;
         }
+        return isBillingBackendConfigured() && verifier.hasAuthSession();
+    }
+
+    private boolean isBillingBackendConfigured() {
         return verifier.isConfigured() && integrityProvider.isConfigured();
     }
 }

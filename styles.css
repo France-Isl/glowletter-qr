@@ -126,6 +126,7 @@ main { min-height: 100svh; }
 .ai-inline span { color: #ffd794; margin-right: 4px; }
 
 .panel-layer { position: fixed; z-index: 60; inset: 0; visibility: hidden; pointer-events: none; }
+#publicationLayer, #reportLayer { z-index:140; }
 .panel-layer.is-open { visibility: visible; pointer-events: auto; }
 .panel-backdrop { position: absolute; inset: 0; border: 0; background: rgba(9,8,12,.48); backdrop-filter: blur(12px); opacity: 0; transition: opacity .45s ease; }
 .panel-layer.is-open .panel-backdrop { opacity: 1; }
@@ -288,6 +289,8 @@ body.has-custom-background .chair-motion { display: none; }
 .free-note i { width: 3px; height: 3px; border-radius: 50%; background: #dd9bb1; }
 
 .weather-chip { display: inline-flex; align-items: center; gap: 7px; min-height: 43px; padding: 0 13px; border: 1px solid var(--border); border-radius: 999px; color: #fff8ee; background: var(--glass); backdrop-filter: blur(20px); font-size: 9px; font-weight: 700; box-shadow: inset 0 1px rgba(255,255,255,.09); }
+html[data-gl-platform="android-play"] #weatherButton,
+html[data-gl-platform="android-play"] #weatherToggle { display:none!important; }
 .weather-chip span:first-child { color: #ffd893; font-size: 14px; }
 .language-button { font-size: 9px; font-weight: 800; letter-spacing: .04em; }
 .nature-button.is-playing { border-color: rgba(224,170,191,.6); color: #ffe6ee; background: rgba(141,72,101,.45); box-shadow: 0 0 24px rgba(224,128,166,.18); }
@@ -297,6 +300,7 @@ body.has-custom-background .chair-motion { display: none; }
 .secondary-actions button { min-height: 34px; padding: 0 11px; border: 1px solid rgba(255,247,237,.17); border-radius: 999px; color: rgba(255,248,239,.77); background: rgba(25,20,28,.33); backdrop-filter: blur(13px); font-size: 8px; font-weight: 700; }
 .secondary-actions button.is-active { color: #ffe8ef; border-color: rgba(233,171,194,.45); background: rgba(135,72,98,.45); }
 .secondary-actions .home-return { border-color:rgba(255,247,237,.38);color:#fff8ef;background:rgba(118,68,91,.55); }
+.content-report-link { margin-top:8px;padding:7px 10px;border:0;color:rgba(255,248,239,.72);background:transparent;font-size:8px;text-decoration:underline;text-underline-offset:3px; }
 
 .name-route { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 13px; margin: 8px 0 6px; color: #a17688; font-size: 8px; font-weight: 800; letter-spacing: .17em; }
 .name-route span:last-child { text-align: left; }
@@ -521,6 +525,16 @@ body.has-custom-background .chair-motion { display: none; }
 .setup-card h2 { margin:8px 0 7px;color:#633e50;font-family:"Cormorant Garamond",serif;font-size:clamp(34px,8vw,46px);line-height:.95; }
 .setup-note { margin:0 0 20px;color:#8b717d;font-size:9px;line-height:1.55; }
 .setup-card .generate-button { margin-top:16px; }
+.compliance-card { width:min(520px,calc(100% - 28px)); }
+.publication-consent { display:grid;grid-template-columns:20px 1fr;gap:11px;align-items:start;padding:15px;border:1px solid var(--ui-border);border-radius:16px;color:var(--ui-ink);background:var(--ui-surface);font-size:10px;line-height:1.55;cursor:pointer; }
+.publication-consent input { width:18px;height:18px;margin:1px 0 0;accent-color:var(--ui-accent-deep); }
+.compliance-links { margin:12px 2px 0;color:var(--ui-muted);font-size:8px;line-height:1.55; }
+.compliance-links a { color:var(--ui-accent-deep);text-underline-offset:2px; }
+.compliance-actions { display:grid;grid-template-columns:.7fr 1.3fr;gap:9px;margin-top:14px; }
+.compliance-actions > button { min-height:46px;border:1px solid var(--ui-border);border-radius:14px;color:var(--ui-accent-deep);background:var(--ui-surface);font-size:9px;font-weight:800; }
+.compliance-actions .generate-button { margin:0; }
+.compliance-actions .generate-button:disabled { opacity:.48;cursor:not-allowed; }
+#reportForm .generate-button { margin-top:15px; }
 .share-app-card { width:min(460px,calc(100% - 28px));text-align:center; }
 .share-app-card h2 { margin-bottom:10px; }
 .share-app-close { position:absolute;top:18px;right:18px; }

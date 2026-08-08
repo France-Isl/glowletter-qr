@@ -22,23 +22,23 @@ const MIME_ALIASES = new Map<string, string>([
   ["audio/x-mp3", "audio/mpeg"],
   ["audio/mp4", "audio/mp4"],
   ["audio/m4a", "audio/mp4"],
-  ["audio/x-m4a", "audio/x-m4a"],
+  ["audio/x-m4a", "audio/mp4"],
+  ["video/mp4", "audio/mp4"],
   ["audio/aac", "audio/aac"],
   ["audio/x-aac", "audio/aac"],
   ["audio/ogg", "audio/ogg"],
   ["audio/wav", "audio/wav"],
-  ["audio/x-wav", "audio/x-wav"],
+  ["audio/x-wav", "audio/wav"],
   ["audio/vnd.wave", "audio/wav"],
+  ["application/ogg", "audio/ogg"],
 ]);
 
 const MIME_EXTENSIONS = new Map<string, string>([
   ["audio/mpeg", "mp3"],
   ["audio/mp4", "m4a"],
-  ["audio/x-m4a", "m4a"],
   ["audio/aac", "aac"],
   ["audio/ogg", "ogg"],
   ["audio/wav", "wav"],
-  ["audio/x-wav", "wav"],
 ]);
 
 type JsonObject = Record<string, unknown>;

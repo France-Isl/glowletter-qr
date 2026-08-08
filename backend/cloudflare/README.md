@@ -1,5 +1,10 @@
 # Backend GlowLetter
 
+> **Не использовать для Google Play production.** Платёжный маршрут в этом
+> экспериментальном Worker предшествует текущему контракту Android: в нём нет
+> привязки Supabase-пользователя и обязательных серверных времён подписки.
+> Production-проверка находится в `supabase/functions/google-play-verify`.
+
 Cloudflare Worker выполняет две независимые задачи:
 
 - `POST /api/generate` — семейно-безопасная генерация письма (`mode: "letter"`) через Workers AI; другие режимы отклоняются;

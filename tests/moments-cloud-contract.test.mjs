@@ -133,7 +133,7 @@ assert.doesNotMatch(resolver, /\.from\(\s*["']glowletter_/i, "the public resolve
 assert.match(resolver, /"Cache-Control":\s*"no-store, max-age=0"/);
 assert.match(resolver, /"Referrer-Policy":\s*"no-referrer"/);
 assert.match(resolver, /ALLOWED_ORIGINS/);
-const nonReadyResponse = resolver.match(/if\s*\(state\s*!==\s*"ready"\)\s*\{([\s\S]*?)\n\s*\}\n\s*return\s+json\(request,\s*\{\s*\n\s*state:\s*"ready"/)?.[1] || "";
+const nonReadyResponse = resolver.match(/if\s*\(state\s*!==\s*"ready"\)\s*\{([\s\S]*?)\r?\n\s*\}\r?\n\s*return\s+json\(request,\s*\{\s*\r?\n\s*state:\s*"ready"/)?.[1] || "";
 assert.ok(nonReadyResponse, "resolve-letter must have an explicit non-ready response");
 assert.match(nonReadyResponse, /unlockAt:\s*state\s*===\s*"locked"/);
 assert.doesNotMatch(nonReadyResponse, /\b(?:text|senderName|recipientName)\s*:/, "locked, expired, and revoked responses must omit content");

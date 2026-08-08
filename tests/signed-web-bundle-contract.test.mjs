@@ -52,14 +52,14 @@ assert.match(builder, /\$MaximumSingleFileBytes\s*=\s*32MB/);
 assert.match(builder, /\$MaximumFileCount\s*=\s*256/);
 assert.match(builder, /\$MaximumPathLength\s*=\s*240/);
 
-assert.match(gradle, /BUNDLED_WEB_BUNDLE_VERSION",\s*"30"/);
-assert.match(readme, /next over-the-air web release[\s\S]*version 31 or higher/i);
+assert.match(gradle, /BUNDLED_WEB_BUNDLE_VERSION",\s*"31"/);
+assert.match(readme, /next over-the-air web release[\s\S]*version 32 or higher/i);
 assert.match(readme, /build_signed_web_bundle\.ps1[\s\S]*-ValidateOnly/);
 assert.match(readme, /-Channel stable/);
 assert.match(readme, /-Channel preview/);
 
 const webRoot = path.join(root, "mobile-web");
-const archivePath = path.join(webRoot, "releases", "30", "bundle.zip");
+const archivePath = path.join(webRoot, "releases", "31", "bundle.zip");
 const stableManifestPath = path.join(webRoot, "stable", "manifest.json");
 const stableSignaturePath = path.join(webRoot, "stable", "manifest.sig");
 const previewManifestPath = path.join(webRoot, "preview", "manifest.json");
@@ -99,8 +99,8 @@ if (artifactPresence.every(Boolean)) {
     assert.equal(manifest.schema, 1);
     assert.equal(manifest.channel, channel);
     assert.equal(manifest.applicationId, applicationId);
-    assert.equal(manifest.bundleVersion, 30);
-    assert.equal(manifest.appVersion, "2.4.0");
+    assert.equal(manifest.bundleVersion, 31);
+    assert.equal(manifest.appVersion, "2.4.1");
     assert.equal(manifest.minNativeVersionCode, 15);
     assert.equal(manifest.requiredBridgeApi, 1);
     assert.equal(manifest.entrypoint, "index.html");
@@ -108,7 +108,7 @@ if (artifactPresence.every(Boolean)) {
     assert.equal(manifest.archive.sha256, sha256(archiveBytes));
     assert.equal(
       manifest.archive.url,
-      "https://bezam.org/mobile-web/releases/30/bundle.zip",
+      "https://bezam.org/mobile-web/releases/31/bundle.zip",
     );
     assert.ok(crypto.verify("sha256", manifestBytes, publicKey, signatureBytes));
     assert.ok(signatureBytes.length > 0 && signatureBytes.length <= 1024);
@@ -131,5 +131,5 @@ console.log(JSON.stringify({
   ok: true,
   deterministicBuilder: true,
   signedArtifacts: artifactPresence.every(Boolean),
-  bundleVersion: 30,
+  bundleVersion: 31,
 }));

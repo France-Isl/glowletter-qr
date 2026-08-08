@@ -15,6 +15,8 @@
     || matchMedia("(max-width: 900px)").matches;
   const PERFORMANCE_MODE = LITE_DEVICE ? "lite" : (MOBILE_DEVICE ? "mobile" : "full");
   document.documentElement.dataset.glPerf = PERFORMANCE_MODE;
+  const IS_ANDROID_PLAY_APP = location.hostname === "appassets.androidplatform.net";
+  if (IS_ANDROID_PLAY_APP) document.documentElement.dataset.glPlatform = "android-play";
   const hasIosBillingBridge = location.protocol === "file:"
     && typeof window.webkit?.messageHandlers?.nurBilling?.postMessage === "function"
     && typeof window.NurBilling?.getEntitlement === "function";
@@ -26,7 +28,6 @@
   const FREE_COUNT = Number(CONFIG.freeLetterCount) || 10;
   const params = new URLSearchParams(location.search);
   const BETA_PARAMETER = "beta";
-  const BETA_STORAGE_KEY = "nurBetaCapability";
   const SUPABASE_URL = String(CONFIG.supabaseUrl || "").replace(/\/+$/, "");
   const SUPABASE_PUBLISHABLE_KEY = String(CONFIG.supabasePublishableKey || "").trim();
   const CLOUD_TABLE = "glowletter_progress";
@@ -39,6 +40,8 @@
   const WEATHER_STORAGE_KEY = "nurWeatherSnapshotV1";
   const SUPPORT_EMAIL = "ggooglov9@gmail.com";
   const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
+  const CONTENT_REPORT_CATEGORIES = new Set(["adult", "harassment", "hate", "threat", "fraud", "privacy", "spam", "other"]);
+  const CONTENT_REPORT_KINDS = new Set(["direct_letter", "moment_letter", "shared_audio"]);
   const SUPPORT_MESSAGE_MIN = 20;
   const SUPPORT_MESSAGE_MAX = 2000;
   const VIP_NOTIFICATION_TABLE = "glowletter_notifications";
@@ -96,7 +99,7 @@
     setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",aiSenderPlaceholder:"Ваше имя или Амина (дочь)",aiRecipientPlaceholder:"Имя или Мама",routeFrom:"ОТ",routeTo:"ДЛЯ",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",trackPrimary:"основная мелодия",trackLight:"светлая версия",trackWarm:"тёплая версия",
     homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeEditorAria:"Закрыть редактор",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",generatedLetterAria:"Сгенерированное письмо",
     checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Ежемесячная подписка: 50 писем, личный редактор, проверка adab и будущие функции.",paywallBody:"Первые 10 писем остаются бесплатными. Премиум автоматически продлевается каждый месяц, пока вы не отмените его в аккаунте магазина.",benefit1:"все 50 персональных писем",benefit2:"личный редактор писем",benefit3:"проверка уважительности и adab",benefit4:"новые тексты и функции",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
-    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Подписка магазина отменяется отдельно.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
+    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка и черновики остаются только на этом устройстве, пока вы сами не опубликуете письмо.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Сначала отмените активную подписку в Google Play: после удаления её нельзя будет привязать к новому аккаунту GlowLetter.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
@@ -105,7 +108,7 @@
     setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",aiSenderPlaceholder:"Your name or Amina (daughter)",aiRecipientPlaceholder:"Name or Mum",routeFrom:"FROM",routeTo:"TO",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",trackPrimary:"main melody",trackLight:"light version",trackWarm:"warm version",
     homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeEditorAria:"Close editor",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",generatedLetterAria:"Generated letter",
     checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"Monthly subscription: 50 letters, the personal editor, adab checking, and future features.",paywallBody:"The first 10 letters stay free. Premium renews automatically every month until cancelled in your store account.",benefit1:"all 50 personal letters",benefit2:"personal letter editor",benefit3:"respect and adab checking",benefit4:"new letters and features",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
-    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Store subscriptions must be cancelled separately.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
+    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, and drafts stay on this device until you choose to publish a letter.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Cancel any active Google Play subscription first: after deletion it cannot be attached to a new GlowLetter account.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
@@ -114,7 +117,19 @@
     setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",aiSenderPlaceholder:"Votre prénom ou Amina (fille)",aiRecipientPlaceholder:"Prénom ou Maman",routeFrom:"DE",routeTo:"POUR",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",trackPrimary:"mélodie principale",trackLight:"version lumineuse",trackWarm:"version chaleureuse",
     homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeEditorAria:"Fermer l’éditeur",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",generatedLetterAria:"Lettre générée",
     checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Abonnement mensuel : 50 lettres, éditeur personnel, contrôle adab et futures fonctions.",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin.",benefit1:"les 50 lettres personnelles",benefit2:"éditeur de lettres personnelles",benefit3:"contrôle du respect et de l’adab",benefit4:"nouvelles lettres et fonctions",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
-    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? L’abonnement du magasin doit être annulé séparément.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
+    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels et les brouillons restent sur cet appareil jusqu’à ce que vous choisissiez de publier une lettre.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? Annulez d’abord tout abonnement Google Play actif : après la suppression, il ne pourra pas être rattaché à un nouveau compte GlowLetter.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
+  });
+  Object.assign(UI.ru, {
+    publishEyebrow:"ПЕРЕД ПУБЛИКАЦИЕЙ",publishTitle:"Проверьте письмо",publishLead:"Ссылку или QR-код смогут открыть все, кому их передадут.",publishConsent:"Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.",publishAgreement:"Продолжая, вы принимаете",publishTerms:"Условия",publishAnd:"и",publishPrivacy:"Политику конфиденциальности",publishRequired:"Подтвердите согласие перед публикацией.",publishCancel:"Отмена",publishConfirm:"Продолжить",
+    reportLink:"⚑ Пожаловаться на письмо",reportEyebrow:"БЕЗОПАСНОСТЬ",reportTitle:"Пожаловаться",reportLead:"Сообщение проверит администратор. Не добавляйте пароли, банковские данные или коды.",reportCategory:"Причина",reportDetails:"Комментарий · необязательно",reportPlaceholder:"Кратко объясните проблему",reportSubmit:"Отправить жалобу",reportSending:"Отправляю…",reportSent:"Спасибо. Жалоба передана на проверку.",reportFailed:"Не удалось отправить жалобу. Проверьте интернет и повторите.",reportRate:"Слишком много жалоб. Попробуйте позже."
+  });
+  Object.assign(UI.en, {
+    publishEyebrow:"BEFORE PUBLISHING",publishTitle:"Check your letter",publishLead:"Anyone who receives the link or QR code may open it.",publishConsent:"I have the right and consent to share these names, text, and audio. The content is lawful and respectful. The recipient can report it.",publishAgreement:"By continuing, you accept the",publishTerms:"Terms",publishAnd:"and",publishPrivacy:"Privacy Policy",publishRequired:"Confirm your agreement before publishing.",publishCancel:"Cancel",publishConfirm:"Continue",
+    reportLink:"⚑ Report this letter",reportEyebrow:"SAFETY",reportTitle:"Report content",reportLead:"An administrator will review the report. Do not include passwords, bank details, or verification codes.",reportCategory:"Reason",reportDetails:"Comment · optional",reportPlaceholder:"Briefly explain the problem",reportSubmit:"Send report",reportSending:"Sending…",reportSent:"Thank you. Your report was sent for review.",reportFailed:"The report could not be sent. Check your connection and try again.",reportRate:"Too many reports. Please try again later."
+  });
+  Object.assign(UI.fr, {
+    publishEyebrow:"AVANT PUBLICATION",publishTitle:"Vérifiez votre lettre",publishLead:"Toute personne recevant le lien ou le QR code pourra l’ouvrir.",publishConsent:"J’ai le droit et le consentement nécessaires pour partager ces prénoms, ce texte et cet audio. Le contenu est légal et respectueux. Le destinataire pourra le signaler.",publishAgreement:"En continuant, vous acceptez les",publishTerms:"Conditions",publishAnd:"et la",publishPrivacy:"Politique de confidentialité",publishRequired:"Confirmez votre accord avant la publication.",publishCancel:"Annuler",publishConfirm:"Continuer",
+    reportLink:"⚑ Signaler cette lettre",reportEyebrow:"SÉCURITÉ",reportTitle:"Signaler un contenu",reportLead:"Un administrateur examinera le signalement. N’ajoutez jamais de mot de passe, coordonnées bancaires ou code.",reportCategory:"Motif",reportDetails:"Commentaire · facultatif",reportPlaceholder:"Expliquez brièvement le problème",reportSubmit:"Envoyer le signalement",reportSending:"Envoi…",reportSent:"Merci. Votre signalement a été transmis pour examen.",reportFailed:"Impossible d’envoyer le signalement. Vérifiez la connexion et réessayez.",reportRate:"Trop de signalements. Réessayez plus tard."
   });
   UI.ru.namesSettings = "Личное обращение";
   UI.en.namesSettings = "Personal names";
@@ -225,6 +240,11 @@
       fr:[["gift",UI.fr.notificationReasonGift],["compensation",UI.fr.notificationReasonCompensation],["promotion",UI.fr.notificationReasonPromotion],["other",UI.fr.notificationReasonOther]]
     }
   };
+  const CONTENT_REPORT_OPTIONS = Object.freeze({
+    ru:[["adult","Содержание 18+"],["harassment","Оскорбление или давление"],["hate","Ненависть"],["threat","Угроза"],["fraud","Обман"],["privacy","Личные данные"],["spam","Спам"],["other","Другое"]],
+    en:[["adult","Adult content"],["harassment","Harassment or pressure"],["hate","Hate"],["threat","Threat"],["fraud","Fraud"],["privacy","Personal information"],["spam","Spam"],["other","Other"]],
+    fr:[["adult","Contenu pour adultes"],["harassment","Harcèlement ou pression"],["hate","Haine"],["threat","Menace"],["fraud","Fraude"],["privacy","Données personnelles"],["spam","Spam"],["other","Autre"]]
+  });
 
   const forbiddenStems = [
     "секс", "эрот", "порн", "поцелу", "интим", "обнаж", "генитал", "оргазм", "возбужд", "мастурб", "проститу",
@@ -443,8 +463,6 @@
   let isPremium = false;
   let nativePremium = false;
   let cloudPremium = false;
-  let betaAccess = false;
-  let acceptedBetaCapability = "";
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
   let premiumPrice = CONFIG.defaultPrice || "21,99 €/месяц";
@@ -463,7 +481,10 @@
   let pendingPremiumFeature = "";
   let toastTimer = 0;
   let deferredInstallPrompt = null;
-  let weatherEnabled = localStorage.getItem("nurWeather") === "on";
+  let publicationResolver = null;
+  let activeReportContext = null;
+  let reportSubmitting = false;
+  let weatherEnabled = !IS_ANDROID_PLAY_APP && localStorage.getItem("nurWeather") === "on";
   let weatherSnapshot = null;
   try {
     const storedWeather = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY) || "null");
@@ -536,7 +557,7 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), ai: $("#aiLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), publication: $("#publicationLayer"), report: $("#reportLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer")
   };
   const panelTriggers = new WeakMap();
   const notificationInertedLayers = new Set();
@@ -613,62 +634,6 @@
 
   function cleanName(value) {
     return String(value || "").normalize("NFKC").replace(/[<>\n\r{}\[\]]/g, "").replace(/\s+/g, " ").trim().slice(0, 36);
-  }
-
-  async function capabilityHash(value) {
-    if (!globalThis.crypto?.subtle) return "";
-    const bytes = new TextEncoder().encode(String(value || ""));
-    const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
-    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
-  }
-
-  async function initializeBetaAccess() {
-    const expectedHash = String(CONFIG.betaAccessHash || "").trim().toLowerCase();
-    const capabilityFragment = new URLSearchParams(location.hash.replace(/^#/, ""));
-    const fragmentToken = String(capabilityFragment.get("access") || "").trim();
-    const queryToken = String(params.get(BETA_PARAMETER) || "").trim();
-    const savedToken = String(localStorage.getItem(BETA_STORAGE_KEY) || "").trim();
-    const candidates = [...new Set([fragmentToken, queryToken, savedToken].filter(Boolean))];
-    let acceptedToken = "";
-
-    if (/^[a-f0-9]{64}$/.test(expectedHash)) {
-      for (const token of candidates) {
-        if (!/^[A-Za-z0-9_-]{40,128}$/.test(token)) continue;
-        try {
-          if ((await capabilityHash(token)) === expectedHash) {
-            acceptedToken = token;
-            break;
-          }
-        } catch {}
-      }
-    }
-
-    if (acceptedToken) {
-      betaAccess = true;
-      acceptedBetaCapability = acceptedToken;
-      isPremium = true;
-      entitlementState = "premium";
-      localStorage.setItem(BETA_STORAGE_KEY, acceptedToken);
-      navigator.storage?.persist?.().catch(() => {});
-    } else if (savedToken) {
-      acceptedBetaCapability = "";
-      localStorage.removeItem(BETA_STORAGE_KEY);
-    }
-
-    if (queryToken || fragmentToken) {
-      const url = new URL(location.href);
-      const cleanFragment = new URLSearchParams(url.hash.replace(/^#/, ""));
-      url.searchParams.delete(BETA_PARAMETER);
-      cleanFragment.delete("access");
-      url.hash = cleanFragment.toString();
-      history.replaceState(history.state || {}, "", `${url.pathname}${url.search}${url.hash}`);
-    }
-  }
-
-  async function handleCapabilityNavigation() {
-    const alreadyEnabled = betaAccess;
-    await initializeBetaAccess();
-    if (!alreadyEnabled && betaAccess) updatePremium(true, premiumPrice, "beta_capability");
   }
 
   function cloudConfigurationReady() {
@@ -795,7 +760,7 @@
         .replace("{remaining}", formatVipRemaining(expiry - trustedCloudNow()))
         .replace("{date}", formatVipDate(account.vip_until));
     }
-    if (includeNative && (nativePremium || betaAccess)) return t("accountPlanStore");
+    if (includeNative && nativePremium) return t("accountPlanStore");
     return t("accountPlanFree");
   }
 
@@ -804,7 +769,7 @@
     if (account.premium_forever) return "permanent";
     const expiry = Date.parse(account.vip_until || "");
     if (Number.isFinite(expiry) && expiry > trustedCloudNow()) return "vip";
-    if (includeNative && (nativePremium || betaAccess)) return "store";
+    if (includeNative && nativePremium) return "store";
     return "free";
   }
 
@@ -1695,7 +1660,7 @@
       current_letter_id: currentLetterId,
       favorite_ids: favoriteIds,
       rain_enabled: Boolean(rainScene.enabled),
-      weather_enabled: Boolean(weatherEnabled),
+      weather_enabled: Boolean(weatherEnabled && !IS_ANDROID_PLAY_APP),
       built_in_track: Math.max(0, Math.min(Number(cloudBuiltInTrack) || 0, 2)),
       nature_enabled: Boolean(isNaturePlaying || localStorage.getItem("nurNature") === "on"),
       fullscreen_enabled: Boolean(fullscreenActive() || localStorage.getItem(AUTO_FULLSCREEN_KEY) !== "off"),
@@ -1740,7 +1705,7 @@
       current_letter_id: Math.round(number("current_letter_id", 1, 50, defaults.current_letter_id)),
       favorite_ids: favoriteIds,
       rain_enabled: boolean("rain_enabled"),
-      weather_enabled: boolean("weather_enabled"),
+      weather_enabled: !IS_ANDROID_PLAY_APP && boolean("weather_enabled"),
       built_in_track: Math.round(number("built_in_track", 0, 2, defaults.built_in_track)),
       nature_enabled: boolean("nature_enabled"),
       fullscreen_enabled: boolean("fullscreen_enabled"),
@@ -2132,7 +2097,7 @@
 
       rainScene.setEnabled(row.rain_enabled !== false, false);
       localStorage.setItem("nurRain", rainScene.enabled ? "on" : "off");
-      weatherEnabled = row.weather_enabled === true;
+      weatherEnabled = !IS_ANDROID_PLAY_APP && row.weather_enabled === true;
       localStorage.setItem("nurWeather", weatherEnabled ? "on" : "off");
 
       // Kept only for backward compatibility with cloud schema v1.
@@ -2230,11 +2195,26 @@
     }
   }
 
+  function syncNativeBillingAuth(session = cloudSession) {
+    const accessToken = typeof session?.access_token === "string" ? session.access_token.trim() : "";
+    if (!IS_ANDROID_PLAY_APP) return Boolean(accessToken);
+    if (!trustedEntitlementSource || typeof window.NurBilling?.setAuthSession !== "function") return false;
+    try {
+      // The token stays in native memory; no raw user id is used as proof of identity.
+      window.NurBilling.setAuthSession(accessToken);
+      return Boolean(accessToken);
+    } catch (error) {
+      console.info("Native billing session bridge not ready", error);
+      return false;
+    }
+  }
+
   async function handleCloudSession(session) {
     const previousUserId = cloudUser?.id || "";
     const nextUser = session?.user || null;
     if (previousUserId && previousUserId !== nextUser?.id) saveUserProgressSnapshot(previousUserId);
     cloudSession = session || null;
+    syncNativeBillingAuth(cloudSession);
     cloudUser = nextUser;
     if (previousUserId !== (cloudUser?.id || "")) {
       resetCloudAccount();
@@ -2811,13 +2791,15 @@
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
     setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
+    setText("#publicationEyebrow",t("publishEyebrow"));setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
+    setText("#reportLetterButton",t("reportLink"));setText("#reportEyebrow",t("reportEyebrow"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]);
     setText("#supportEyebrow",t("supportFormEyebrow"));$("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#aiOpenTop").setAttribute("aria-label", t("create")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
     renderWeather();
     $("#homeScreen").setAttribute("aria-label", t("homeScreenAria")); $(".letter-actions").setAttribute("aria-label", t("letterNavAria")); $("#generatedText").setAttribute("aria-label", t("generatedLetterAria"));
-    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#notificationBackdrop").setAttribute("aria-label", t("closeAria")); $("#notificationClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
+    $("#setupBackdrop").setAttribute("aria-label", t("closeAria")); $("#setupClose").setAttribute("aria-label", t("closeAria")); $("#aiBackdrop").setAttribute("aria-label", t("closeEditorAria")); $("#aiClose").setAttribute("aria-label", t("closeEditorAria")); $("#libraryBackdrop").setAttribute("aria-label", t("closeLibraryAria")); $("#libraryClose").setAttribute("aria-label", t("closeLibraryAria")); $("#settingsBackdrop").setAttribute("aria-label", t("closeSettingsAria")); $("#settingsClose").setAttribute("aria-label", t("closeSettingsAria")); $("#qrBackdrop").setAttribute("aria-label", t("qrCloseAria")); $("#qrClose").setAttribute("aria-label", t("qrCloseAria")); $("#shareAppBackdrop").setAttribute("aria-label", t("closeAria")); $("#shareAppClose").setAttribute("aria-label", t("closeAria")); $("#publicationBackdrop").setAttribute("aria-label",t("closeAria"));$("#publicationClose").setAttribute("aria-label",t("closeAria"));$("#reportBackdrop").setAttribute("aria-label",t("closeAria"));$("#reportClose").setAttribute("aria-label",t("closeAria")); $("#supportBackdrop").setAttribute("aria-label", t("closeAria")); $("#supportClose").setAttribute("aria-label", t("closeAria")); $("#notificationBackdrop").setAttribute("aria-label", t("closeAria")); $("#notificationClose").setAttribute("aria-label", t("closeAria")); $("#paywallBackdrop").setAttribute("aria-label", t("closeAria")); $("#paywallClose").setAttribute("aria-label", t("closeAria"));
     updatePurchaseConfiguration(purchaseConfigured);
     localStorage.setItem("nurLanguage", lang);
     updateUrl();
@@ -3158,7 +3140,6 @@
     try {
       const relationship = resolveRelationship(sender, recipient, selectedRelationship);
       const headers = { "Content-Type": "application/json" };
-      if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
       if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
       const resolvedLength = resolveLetterLength(length, tone, Boolean(idea));
       const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: letterLanguage, relationship, tone, idea, length: resolvedLength }), signal: controller.signal });
@@ -3303,7 +3284,7 @@
 
   function applyEffectivePremium(reason = "") {
     const wasPremium = isPremium;
-    isPremium = Boolean(betaAccess || nativePremium || cloudPremium);
+    isPremium = Boolean(nativePremium || cloudPremium);
     entitlementState = isPremium ? "premium" : "free";
     document.body.classList.toggle("gl-premium-active", isPremium);
     document.body.dataset.access = isPremium ? "vip" : "free";
@@ -3332,15 +3313,15 @@
       entitlementState = "checking";
       if (price) {
         premiumPrice = localizedMonthlyPrice(price);
-        if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+        premiumPriceFromStore = true;
       }
       $$(".price-label").forEach(label => label.textContent = premiumPrice);
       return;
     }
-    if (String(reason) !== "beta_capability") nativePremium = owned === true || owned === "true";
+    nativePremium = owned === true || owned === "true";
     if (price) {
       premiumPrice = localizedMonthlyPrice(price);
-      if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+      premiumPriceFromStore = true;
     }
     $$(".price-label").forEach(label => label.textContent = premiumPrice);
     applyEffectivePremium(reason);
@@ -3361,10 +3342,6 @@
 
   async function requestNativeEntitlement() {
     try {
-      if (betaAccess) {
-        updatePremium(true, premiumPrice, "beta_capability");
-        return;
-      }
       if (!trustedEntitlementSource || !window.NurBilling?.getEntitlement) {
         nativePremium = false;
         applyEffectivePremium("native_billing_unavailable");
@@ -3385,6 +3362,14 @@
   }
 
   function purchaseFullAccess() {
+    if (IS_ANDROID_PLAY_APP && trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) {
+      if (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession)) {
+        showToast(t("cloudSignInPrompt"), 4300);
+        return;
+      }
+      window.NurBilling.purchaseFullAccess();
+      return;
+    }
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 4300); return; }
     if (trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) { window.NurBilling.purchaseFullAccess(); return; }
     if (CONFIG.playStoreUrl) { window.open(CONFIG.playStoreUrl, "_blank", "noopener"); return; }
@@ -3392,6 +3377,14 @@
   }
 
   function restorePurchase() {
+    if (IS_ANDROID_PLAY_APP && trustedEntitlementSource && window.NurBilling?.restorePurchases) {
+      if (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession)) {
+        showToast(t("cloudSignInPrompt"), 3800);
+        return;
+      }
+      window.NurBilling.restorePurchases();
+      return;
+    }
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 3800); return; }
     if (trustedEntitlementSource && window.NurBilling?.restorePurchases) { window.NurBilling.restorePurchases(); return; }
     showToast(t("purchaseUnavailable"), 3800);
@@ -3482,32 +3475,56 @@
     return accepted.has(declared) ? { extension, mimeType } : null;
   }
 
-  async function audioFingerprint(blob) {
-    const digest = await crypto.subtle.digest("SHA-256", await blob.arrayBuffer());
-    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  function audioFingerprint() {
+    // This value only identifies the locally persisted selection so an
+    // already-published temporary copy can be reused. It is not a security
+    // token and does not need to hash the whole file. Avoiding subtle.digest
+    // keeps audio sharing available in local iOS WKWebViews and avoids a
+    // second 12 MB allocation on memory-constrained phones.
+    const bytes = new Uint8Array(32);
+    crypto.getRandomValues(bytes);
+    return [...bytes].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function currentCloudAccessToken(forceRefresh = false) {
+    if (!cloudClient || !cloudUser?.id) throw new Error("authentication_required");
+    const result = forceRefresh
+      ? await cloudClient.auth.refreshSession()
+      : await cloudClient.auth.getSession();
+    const session = result?.data?.session || null;
+    if (result?.error || !session?.access_token || session.user?.id !== cloudUser.id) {
+      throw new Error("authentication_required");
+    }
+    // onAuthStateChange also receives refreshed sessions, but update the
+    // in-memory value immediately so a share started after app resume cannot
+    // accidentally reuse an expired bearer token.
+    cloudSession = session;
+    syncNativeBillingAuth(session);
+    return session.access_token;
   }
 
   async function sharedAudioRequest(action, payload = {}, requireUser = false) {
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) throw new Error("audio_service_unavailable");
-    if (requireUser && (!cloudUser?.id || !cloudSession?.access_token)) throw new Error("authentication_required");
-    const headers = { "Content-Type": "application/json", apikey: SUPABASE_PUBLISHABLE_KEY };
-    if (requireUser) headers.Authorization = `Bearer ${cloudSession.access_token}`;
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/${SHARED_AUDIO_FUNCTION}`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ action, ...payload }),
-      cache: "no-store",
-      credentials: "omit",
-      referrerPolicy: "no-referrer"
-    });
-    let data = null;
-    try { data = await response.json(); } catch {}
-    if (!response.ok) {
+    for (let attempt = 0; attempt < (requireUser ? 2 : 1); attempt += 1) {
+      const headers = { "Content-Type": "application/json", apikey: SUPABASE_PUBLISHABLE_KEY };
+      if (requireUser) headers.Authorization = `Bearer ${await currentCloudAccessToken(attempt > 0)}`;
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/${SHARED_AUDIO_FUNCTION}`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ action, ...payload }),
+        cache: "no-store",
+        credentials: "omit",
+        referrerPolicy: "no-referrer"
+      });
+      let data = null;
+      try { data = await response.json(); } catch {}
+      if (response.ok) return data || {};
+      if (requireUser && response.status === 401 && attempt === 0) continue;
       const error = new Error(String(data?.error || "audio_service_unavailable"));
       error.status = response.status;
       throw error;
     }
-    return data || {};
+    throw new Error("authentication_required");
   }
 
   function clearAudioSource() {
@@ -3546,7 +3563,7 @@
     if (!cloudUser?.id || !cloudSession?.access_token || !cloudClient) throw new Error("authentication_required");
     const descriptor = audioDescriptor(customAudioBlob, customAudioName);
     if (!descriptor) throw new Error("invalid_audio_metadata");
-    if (!customAudioFingerprint) customAudioFingerprint = await audioFingerprint(customAudioBlob);
+    if (!customAudioFingerprint) customAudioFingerprint = audioFingerprint();
     const reusable = outgoingAudioShare
       && outgoingAudioShare.fingerprint === customAudioFingerprint
       && SHARED_AUDIO_TOKEN_PATTERN.test(outgoingAudioShare.token || "")
@@ -3559,14 +3576,28 @@
       sizeBytes: customAudioBlob.size
     }, true);
     if (!reservation.objectPath || !reservation.uploadToken || !reservation.shareToken) throw new Error("audio_upload_unavailable");
+    // File pickers use different aliases for the same format (for example
+    // video/mp4 or audio/x-m4a on iOS). Force the canonical, server-approved
+    // type on the uploaded Blob so final verification is identical on every
+    // platform.
+    const uploadBlob = customAudioBlob.slice(0, customAudioBlob.size, descriptor.mimeType);
     const { error: uploadError } = await cloudClient.storage
       .from(SHARED_AUDIO_BUCKET)
-      .uploadToSignedUrl(reservation.objectPath, reservation.uploadToken, customAudioBlob, {
+      .uploadToSignedUrl(reservation.objectPath, reservation.uploadToken, uploadBlob, {
         contentType: reservation.contentType || descriptor.mimeType,
         upsert: false
       });
-    if (uploadError) throw new Error("audio_upload_unavailable");
-    const finalized = await sharedAudioRequest("finalize", { shareToken: reservation.shareToken }, true);
+    let finalized;
+    try {
+      // Finalize even when the browser reports an upload error: the request may
+      // have reached Storage before the response was lost. If it did not, the
+      // server securely removes the pending reservation immediately instead of
+      // leaving it to consume the user's upload limit for two hours.
+      finalized = await sharedAudioRequest("finalize", { shareToken: reservation.shareToken }, true);
+    } catch (error) {
+      if (uploadError) throw new Error("audio_upload_unavailable");
+      throw error;
+    }
     if (finalized.ready !== true || !SHARED_AUDIO_TOKEN_PATTERN.test(finalized.shareToken || "")) throw new Error("audio_finalize_failed");
     outgoingAudioShare = {
       token: finalized.shareToken,
@@ -3711,6 +3742,7 @@
   }
 
   async function refreshWeather({silent=false}={}){
+    if(IS_ANDROID_PLAY_APP){disableWeather({sync:false});return;}
     weatherEnabled=true;localStorage.setItem("nurWeather","on");
     $("#weatherButton")?.setAttribute("aria-busy","true");if($("#weatherText"))$("#weatherText").textContent="…";
     let locationData;
@@ -3727,11 +3759,11 @@
     }
   }
 
-  function disableWeather(){
-    weatherEnabled=false;localStorage.setItem("nurWeather","off");document.body.removeAttribute("data-weather");renderWeather();scheduleCloudSync();
+  function disableWeather({sync=true}={}){
+    weatherEnabled=false;localStorage.setItem("nurWeather","off");localStorage.removeItem(WEATHER_STORAGE_KEY);weatherSnapshot=null;document.body.removeAttribute("data-weather");renderWeather();if(sync)scheduleCloudSync();
   }
 
-  function toggleWeather(){if(weatherEnabled)disableWeather();else refreshWeather();}
+  function toggleWeather(){if(IS_ANDROID_PLAY_APP){disableWeather({sync:false});return;}if(weatherEnabled)disableWeather();else refreshWeather();}
 
   function canvasLetterTypography() {
     const style = getComputedStyle(document.body);
@@ -3951,12 +3983,63 @@
 
   function toggleFavorite(){const entry=currentEntry();const key=String(entry.id);if(favorites.has(key))favorites.delete(key);else favorites.add(key);localStorage.setItem("nurFavorites",JSON.stringify([...favorites]));renderLetter();scheduleCloudSync();haptic();}
 
+  function createOpaqueReportReference(){
+    if(typeof crypto?.randomUUID==="function")return crypto.randomUUID();
+    const bytes=new Uint8Array(18);crypto.getRandomValues(bytes);return [...bytes].map(value=>value.toString(16).padStart(2,"0")).join("");
+  }
+
+  function safeReportReference(value){
+    const normalized=String(value||"").trim();
+    return /^[A-Za-z0-9_-]{16,80}$/u.test(normalized)?normalized:createOpaqueReportReference();
+  }
+
+  function requestPublishConsent(){
+    if(publicationResolver)return Promise.resolve(false);
+    const checkbox=$("#publicationConsent");checkbox.checked=false;$("#publicationConfirm").disabled=true;$("#publicationError").hidden=true;openPanel(layers.publication);
+    return new Promise(resolve=>{publicationResolver=resolve;});
+  }
+
+  function finishPublishConsent(accepted){
+    if(!publicationResolver){closePanel(layers.publication);return;}
+    if(accepted&&!$("#publicationConsent").checked){$("#publicationError").hidden=false;return;}
+    const resolve=publicationResolver;publicationResolver=null;closePanel(layers.publication);resolve(Boolean(accepted));
+  }
+
+  function updateReportButton(){
+    const button=$("#reportLetterButton");if(button)button.hidden=!activeReportContext;
+  }
+
+  function openContentReport(context={}){
+    const kind=CONTENT_REPORT_KINDS.has(context.kind)?context.kind:"direct_letter";
+    activeReportContext={kind,contentRef:safeReportReference(context.contentRef),momentPublicId:/^[0-9a-f-]{36}$/iu.test(context.momentPublicId||"")?String(context.momentPublicId):"",sender:cleanName(context.sender),recipient:cleanName(context.recipient),text:String(context.text||"").normalize("NFKC").trim().slice(0,1800),audioAttached:Boolean(context.audioAttached)};
+    $("#reportForm").reset();$("#reportStatus").textContent="";$("#reportStatus").dataset.state="";reportSubmitting=false;$("#reportSubmit").disabled=false;setText("#reportSubmitLabel",t("reportSubmit"));openPanel(layers.report);
+  }
+
+  async function submitContentReport(event){
+    event.preventDefault();if(reportSubmitting||!activeReportContext)return;
+    const category=String($("#reportCategory").value||"");const details=String($("#reportDetails").value||"").normalize("NFKC").trim().slice(0,500);
+    if(!CONTENT_REPORT_CATEGORIES.has(category))return;
+    if(!/^https:\/\//iu.test(SUPABASE_URL)||!SUPABASE_PUBLISHABLE_KEY){setText("#reportStatus",t("reportFailed"));return;}
+    reportSubmitting=true;$("#reportSubmit").disabled=true;setText("#reportSubmitLabel",t("reportSending"));setText("#reportStatus","");
+    const headers={"Content-Type":"application/json",Accept:"application/json",apikey:SUPABASE_PUBLISHABLE_KEY};
+    if(cloudSession?.access_token)headers.Authorization=`Bearer ${cloudSession.access_token}`;
+    try{
+      const response=await fetch(`${SUPABASE_URL}/functions/v1/submit-content-report`,{method:"POST",headers,cache:"no-store",credentials:"omit",referrerPolicy:"no-referrer",body:JSON.stringify({contentKind:activeReportContext.kind,category,language:lang,platform:IS_ANDROID_PLAY_APP?"android_play":"web",appVersion:String(CONFIG.appVersion||"").slice(0,32),contentRef:activeReportContext.contentRef,momentPublicId:activeReportContext.momentPublicId||null,audioAttached:activeReportContext.audioAttached,sender:activeReportContext.sender,recipient:activeReportContext.recipient,text:activeReportContext.text,details})});
+      if(response.status===429){setText("#reportStatus",t("reportRate"));return;}
+      if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      setText("#reportStatus",t("reportSent"));$("#reportStatus").dataset.state="success";setTimeout(()=>closePanel(layers.report),1500);
+    }catch{setText("#reportStatus",t("reportFailed"));}
+    finally{reportSubmitting=false;$("#reportSubmit").disabled=false;setText("#reportSubmitLabel",t("reportSubmit"));}
+  }
+
   async function shareLetter(){
     const entry=currentEntry();const url=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);url.search="";url.hash="";
     if(fromName)url.searchParams.set("from",fromName);if(toName)url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));
     const presentation={glScene:document.body.dataset.glScene,glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
     const presentationDefaults={glScene:"still",glFrame:"none",glInk:"ink",glType:"classic"};
     Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
+    if(!await requestPublishConsent())return;
+    url.searchParams.set("rid",createOpaqueReportReference());
     let audioToken = incomingSharedAudioToken;
     if(customAudioBlob){
       try{audioToken=await ensureTemporarySharedAudio();}
@@ -4095,6 +4178,7 @@
     if(["ru","en","fr"].includes(payload.language))lang=payload.language;
     setNames(sender,recipient,{persist:false,explicit:false});
     sharedMessage=value;letterDeck=[{id:"shared",category:"warm",shared:true,ru:value,en:value,fr:value},...LETTERS];currentIndex=0;
+    activeReportContext={kind:"moment_letter",contentRef:safeReportReference(payload.publicId),momentPublicId:String(payload.publicId||""),sender,recipient,text:value,audioAttached:false};updateReportButton();
     const safe=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);safe.search="";safe.hash="";const token=String(payload.publicId||params.get("moment")||"");if(token)safe.searchParams.set("moment",token);if(lang!=="ru")safe.searchParams.set("lang",lang);history.replaceState({},"",safe);
     applyLanguage(false);Object.values(layers).forEach(closePanel);if(!storyOpened)openStory();else renderLetter();
   }
@@ -4176,6 +4260,8 @@
       getUser: () => window.GlowLetterCloud?.getUser?.() || cloudUser,
       getLanguage: () => lang,
       openComposer: request => window.GlowLetterApp.openComposer(momentsComposerRequest(request)),
+      requestPublishConsent: () => requestPublishConsent(),
+      reportContent: request => openContentReport({kind:"moment_letter",contentRef:request?.publicId,momentPublicId:request?.publicId,sender:request?.sender,recipient:request?.recipient,text:request?.text,audioAttached:false}),
       openQr: request => window.GlowLetterApp.openQr({
         ...request,
         senderName: request?.senderName || request?.sender || request?.letter?.sender_name_snapshot || "",
@@ -4213,16 +4299,18 @@
   }
 
   async function downloadQrCard(){
-    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
   }
 
   async function copyQrImage(){
-    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;const blob=await createQrCardBlob();if(!blob)return;
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;const blob=await createQrCardBlob();if(!blob)return;
     try{if(!navigator.clipboard?.write||typeof ClipboardItem!=="function")throw new Error("unsupported");await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);showToast(t("qrImageCopied"));}
     catch{showToast(t("qrImageCopyFail"),3200);}
   }
 
-  async function copyQrLink(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
+  async function copyQrLink(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
+
+  async function printQrCard(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;window.print();}
 
   function isFullscreenShell(){return Boolean(matchMedia?.("(display-mode: fullscreen)").matches||navigator.standalone===true||location.hostname==="appassets.androidplatform.net"||location.protocol==="file:");}
   function fullscreenActive(){return Boolean(document.fullscreenElement||isFullscreenShell());}
@@ -4238,7 +4326,7 @@
     $("#settingsNamesError").hidden = !namesInvalid;
     if (namesInvalid) return false;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled&&!IS_ANDROID_PLAY_APP?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
   }
 
   function bindEvents(){
@@ -4251,7 +4339,9 @@
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderCurrentQr(false);}));
-    $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",()=>{if(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false))window.print();});
+    $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",printQrCard);
+    $("#publicationConsent").addEventListener("change",event=>{$("#publicationConfirm").disabled=!event.target.checked;$("#publicationError").hidden=true;});$("#publicationConfirm").addEventListener("click",()=>finishPublishConsent(true));$("#publicationCancel").addEventListener("click",()=>finishPublishConsent(false));$("#publicationClose").addEventListener("click",()=>finishPublishConsent(false));$("#publicationBackdrop").addEventListener("click",()=>finishPublishConsent(false));
+    $("#reportLetterButton").addEventListener("click",()=>activeReportContext&&openContentReport(activeReportContext));$("#reportClose").addEventListener("click",()=>closePanel(layers.report));$("#reportBackdrop").addEventListener("click",()=>closePanel(layers.report));$("#reportForm").addEventListener("submit",submitContentReport);
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#settingsPurchase").addEventListener("click",purchaseFullAccess);$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
@@ -4266,13 +4356,13 @@
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
-    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open===layers.publication)finishPublishConsent(false);else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
     document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
-    addEventListener("hashchange",handleCapabilityNavigation);addEventListener("hashchange",handleSharedAudioNavigation);
+    addEventListener("hashchange",handleSharedAudioNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
     addEventListener("nur-speech-state",handleNativeSpeechState);
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
@@ -4281,7 +4371,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=29", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=31", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -4298,8 +4388,9 @@
 
   async function init(){
     if(LETTERS.length!==50)console.warn(`Expected 50 letters, received ${LETTERS.length}`);
+    if(IS_ANDROID_PLAY_APP)disableWeather({sync:false});
     const storedVolume=Number(localStorage.getItem("nurVolume")||.62);audio.volume=Number.isFinite(storedVolume)?Math.max(0,Math.min(storedVolume,1)):.62;
-    await initializeBetaAccess();
+    if(sharedMessage){activeReportContext={kind:"direct_letter",contentRef:safeReportReference(params.get("rid")),momentPublicId:"",sender:fromName,recipient:toName,text:sharedMessage,audioAttached:Boolean(incomingSharedAudioToken)};}updateReportButton();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     setTimeout(() => { initializeMomentsIntegration(); }, 0);

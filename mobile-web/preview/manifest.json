@@ -2,16 +2,16 @@
   "schema": 1,
   "channel": "preview",
   "applicationId": "com.franceisl.glowletternext.debug",
-  "bundleVersion": 30,
-  "releaseId": "web-preview-30",
-  "appVersion": "2.4.0",
+  "bundleVersion": 31,
+  "releaseId": "web-preview-31",
+  "appVersion": "2.4.1",
   "minNativeVersionCode": 15,
   "requiredBridgeApi": 1,
   "entrypoint": "index.html",
   "archive": {
-    "url": "https://bezam.org/mobile-web/releases/30/bundle.zip",
-    "size": 20983001,
-    "sha256": "cdc9e24c9a3fdb6ce876f4741988c35fba447801695a3366df8194452244f802"
+    "url": "https://bezam.org/mobile-web/releases/31/bundle.zip",
+    "size": 21406885,
+    "sha256": "069c7df1e78a58ddde66f0d085222be000570a27a1a048b2e301a3159fc9cdfe"
   },
   "files": [
     {
@@ -21,8 +21,8 @@
     },
     {
       "path": "app.js",
-      "size": 334464,
-      "sha256": "c4500db90a756036247a0067b47e8a63565a06a4f31a0a39b5be01b25461af9b"
+      "size": 348954,
+      "sha256": "1bda96d578ff58ad510b33f409ee71f5ca88432a8578c889ec089e19ce88d369"
     },
     {
       "path": "assets/auth/README.md",
@@ -96,23 +96,23 @@
     },
     {
       "path": "config.js",
-      "size": 630,
-      "sha256": "efc927f538652538589d389a75f436a715f68ca7029cc397c485d0fd48c7a750"
+      "size": 543,
+      "sha256": "31a8c8916eb97878556cc15ee9a68170ce6ece941876dfb7f3b4413a30cdaeb6"
     },
     {
       "path": "delete-account.html",
-      "size": 10408,
-      "sha256": "c96ce8242adc3cd38a2500c339fb69fdbefbffd5a5a0a3006adcef761bb953ee"
+      "size": 13192,
+      "sha256": "7b693ffa3af54c7571cb6e65ee5dfc1632ef02005ddad30ebc51ec5c5b8d4bc7"
     },
     {
       "path": "email-auth.css",
-      "size": 3787,
-      "sha256": "ce7f13136670dd0fec7b60242675c4304ec63dc5b286fcc84e66c21872cd3dae"
+      "size": 3819,
+      "sha256": "815e14e2a3532398cb923948124838206828972f39130c8dc603e4d500c88110"
     },
     {
       "path": "email-auth.js",
-      "size": 18097,
-      "sha256": "ec8415cc26160c8643874bccee87816faa28eb07c56f8518c8d74925ddbfec2e"
+      "size": 18568,
+      "sha256": "389f14264e523874dbf9f1263216ec6900ac1cb6c864c9ecff632bc636dac815"
     },
     {
       "path": "experience.css",
@@ -125,14 +125,134 @@
       "sha256": "deb709758e661825f650496b2baa1f4121c5966ddbf1adfa8aa5e221ecd3e9df"
     },
     {
+      "path": "fonts/cormorant-italic-cyrillic-ext.woff2",
+      "size": 14940,
+      "sha256": "a4be182ad5c9fdfa821ac1be04111a8651ba55956529e22300146315fa5d2699"
+    },
+    {
+      "path": "fonts/cormorant-italic-cyrillic.woff2",
+      "size": 12868,
+      "sha256": "cb92ea139b34821f3145ff5735ef3ffcfb3070125fa75c73fbd993c7e9a861cb"
+    },
+    {
+      "path": "fonts/cormorant-italic-latin-ext.woff2",
+      "size": 20392,
+      "sha256": "b367d9fced0c6964c5e7deeeb323e0d12ddc7ddc1b406e3c190724c0c71eacb4"
+    },
+    {
+      "path": "fonts/cormorant-italic-latin.woff2",
+      "size": 23784,
+      "sha256": "0b6719b25266b8f7f0b48e84eb8094db8d243c5b089a5fa48d350bc93f57127b"
+    },
+    {
+      "path": "fonts/cormorant-normal-cyrillic-ext.woff2",
+      "size": 23416,
+      "sha256": "a4d7cf345b8091e1d2c8c5c8fa3bd0f9bb9d00bc8988185471db398ddb5ae4c4"
+    },
+    {
+      "path": "fonts/cormorant-normal-cyrillic.woff2",
+      "size": 21168,
+      "sha256": "017fab69b4be8ffc08ca312823327989ade6dc3d948f0afa125e12ec2e5e7ca1"
+    },
+    {
+      "path": "fonts/cormorant-normal-latin-ext.woff2",
+      "size": 33736,
+      "sha256": "cfa9a397d86f66c5c51775a2500a712d5f632a04f0c5eca6930dfaf612d4566d"
+    },
+    {
+      "path": "fonts/cormorant-normal-latin.woff2",
+      "size": 37640,
+      "sha256": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235"
+    },
+    {
+      "path": "fonts/licenses/CormorantGaramond-OFL.txt",
+      "size": 4387,
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
+    },
+    {
+      "path": "fonts/licenses/Literata-OFL.txt",
+      "size": 4389,
+      "sha256": "8742963604cd89dc81437811a850018fc03b2bfad686d7422c8235967c87614e"
+    },
+    {
+      "path": "fonts/licenses/Manrope-OFL.txt",
+      "size": 4384,
+      "sha256": "e01b637272e0cbdfb240184dd98ea5cc671556d9894dae2668d92ab2c906787c"
+    },
+    {
+      "path": "fonts/literata-italic-cyrillic-ext.woff2",
+      "size": 4048,
+      "sha256": "2c4c9d61e37a20711706661ebe41869ee6f088486c594d8586afb368bd5a6257"
+    },
+    {
+      "path": "fonts/literata-italic-cyrillic.woff2",
+      "size": 12316,
+      "sha256": "4744bcf66c0d909316d95fcc57344ed7d2f6d4211e0b2f666713cec886fff2c0"
+    },
+    {
+      "path": "fonts/literata-italic-latin-ext.woff2",
+      "size": 18260,
+      "sha256": "a3082ac82225f7fb84bc234cf2f1e951a51e9e0e770e2e3d89280fd84f5aa5dd"
+    },
+    {
+      "path": "fonts/literata-italic-latin.woff2",
+      "size": 22824,
+      "sha256": "40f5571322fdd95c9c4105706f4e716b5ad1a4cafbe2fafbed3cc0d88405f1f2"
+    },
+    {
+      "path": "fonts/literata-normal-cyrillic-ext.woff2",
+      "size": 7396,
+      "sha256": "c2abb025bf949ecbd34d59ce32c4e04e4e6ea93ec6f45ed0b6f9c7f4dcf5a200"
+    },
+    {
+      "path": "fonts/literata-normal-cyrillic.woff2",
+      "size": 21008,
+      "sha256": "fc542002093cdaa2ed38f3768cbc8a04f639049a91cb73b6d831243517c07369"
+    },
+    {
+      "path": "fonts/literata-normal-latin-ext.woff2",
+      "size": 32260,
+      "sha256": "7be72f53edd9aba2cffe8326fbb60dd7ae00b578ff5e103b399c14dfec3257d9"
+    },
+    {
+      "path": "fonts/literata-normal-latin.woff2",
+      "size": 38996,
+      "sha256": "fde3d14f78c3431ee5e2f676a46dd18a1dd48ee4d0a71cc76c751f9e6f76f58e"
+    },
+    {
+      "path": "fonts/local-fonts.css",
+      "size": 6412,
+      "sha256": "994ec45128d07843a55d4f1fb709c75a38a657da389eb8b42a0998a05f39d329"
+    },
+    {
+      "path": "fonts/manrope-normal-cyrillic-ext.woff2",
+      "size": 2552,
+      "sha256": "de37de877dc17e4577341fa68bb5cb526b53d54cb29721e674208546a3c7849d"
+    },
+    {
+      "path": "fonts/manrope-normal-cyrillic.woff2",
+      "size": 14500,
+      "sha256": "c268b459a9329e59fecf39a17618efd44c71735532048d60b12aab76a8c14914"
+    },
+    {
+      "path": "fonts/manrope-normal-latin-ext.woff2",
+      "size": 15120,
+      "sha256": "3911b66d9f2e005a4b989223405d0e5032619c668597ba467cc76a23c8fffcfb"
+    },
+    {
+      "path": "fonts/manrope-normal-latin.woff2",
+      "size": 24836,
+      "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+    },
+    {
       "path": "icon.svg",
       "size": 652,
       "sha256": "43725d05cad2ffb8f0beb98d0eb8d7c48e50d3228fd07bf880afa114e8894bea"
     },
     {
       "path": "index.html",
-      "size": 49336,
-      "sha256": "cbd668b7e080207e2fe07907424dd8d2a94b751edc8b6fead4bb8abdd82af8ce"
+      "size": 53168,
+      "sha256": "9bcdfd92d772e8e8415437a87c9cf29db218bc8b5ecfc7ff4e6c70ee8de2e3d9"
     },
     {
       "path": "letters.js",
@@ -146,18 +266,18 @@
     },
     {
       "path": "moments.css",
-      "size": 17734,
-      "sha256": "d2ade83fdf7c1542932f6575be03fbde82582908751bf12664514dac5fa1548a"
+      "size": 18413,
+      "sha256": "099c2a633b4ef54499420ede6628d288bae70fc419db0c899d1b07f6f35d8a10"
     },
     {
       "path": "moments.js",
-      "size": 78192,
-      "sha256": "c146b7f1465718dc2424ceddb2fe2f62118004cc5a32cd1906fccabc11dbb78e"
+      "size": 80545,
+      "sha256": "e880a42decef6d271418251bc4dc5b497141ce5b7720639518741699d93ca2d1"
     },
     {
       "path": "privacy.html",
-      "size": 28207,
-      "sha256": "ac5f00966a0ff23c8816a0cf7f2546eb915cfa45bb81add0111e533fda515462"
+      "size": 42772,
+      "sha256": "b8e9696cadbf53afc52aaa3322a1824035a46f5ecf402256a525ea16cb27fab6"
     },
     {
       "path": "qr-code.js",
@@ -166,18 +286,18 @@
     },
     {
       "path": "styles.css",
-      "size": 85477,
-      "sha256": "b6cb6f29f8e735be859cde1903cbd8ca582f83f0e3d3cf2c20fbbfccec9838be"
+      "size": 87004,
+      "sha256": "6910c74ee7faf0c060fd42989661f1f4a442384d1025cbcf79c46f91e4d048a5"
     },
     {
       "path": "sw.js",
-      "size": 3418,
-      "sha256": "1d157609164ad55929aa02f3a2be49fef0179d87f13bab17624999638fda3bdb"
+      "size": 4323,
+      "sha256": "cd5b60c53db003efe8a170b7ac999480cee8bb08888be60a2400ca757df35a48"
     },
     {
       "path": "terms.html",
-      "size": 20857,
-      "sha256": "b47f2704cbb729bef1c45e3ad692375497968c7accf7bffcf8c174d1d22e18e8"
+      "size": 26317,
+      "sha256": "b5d101422cc8436b0f36cb0ea50c6fd0e4c1306cd8159097fe47f1dd69a5d1bb"
     },
     {
       "path": "vendor/qrcode-generator-1.4.4.min.js",

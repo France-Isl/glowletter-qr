@@ -1,10 +1,8 @@
 package com.franceisl.glowletternext;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -42,12 +40,8 @@ import java.util.Locale;
 public final class MainActivity extends ComponentActivity {
     private static final String TAG = "GlowLetterMain";
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
-    private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html"
-            + (BuildConfig.OWNER_BETA_CAPABILITY.trim().isEmpty()
-            ? ""
-            : "#access=" + Uri.encode(BuildConfig.OWNER_BETA_CAPABILITY));
+    private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html";
     private static final int FILE_CHOOSER_REQUEST = 4101;
-    private static final int LOCATION_PERMISSION_REQUEST = 4102;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
     private static final String NATIVE_WEB_LOAD_QUERY = "_glowletter_native_load";
@@ -56,8 +50,6 @@ public final class MainActivity extends ComponentActivity {
     private WebView webView;
     private volatile WebViewAssetLoader webAssetLoader;
     private ValueCallback<Uri[]> fileChooserCallback;
-    private GeolocationPermissions.Callback geolocationCallback;
-    private String geolocationOrigin;
     private BillingManager billingManager;
     private TextToSpeech textToSpeech;
     private boolean speechInitializationComplete;
@@ -125,7 +117,9 @@ public final class MainActivity extends ComponentActivity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
-        settings.setGeolocationEnabled(true);
+        // The Google Play build deliberately has no weather/location feature.
+        // Keep WebView geolocation disabled even if a future web bundle calls it.
+        settings.setGeolocationEnabled(false);
         settings.setAllowFileAccess(false);
         // The system audio picker returns a one-time content:// URI. Keep file://
         // access disabled, but permit WebView to consume the URI explicitly
@@ -281,20 +275,7 @@ public final class MainActivity extends ComponentActivity {
                     String origin,
                     GeolocationPermissions.Callback callback
             ) {
-                if (!isTrustedAppUri(Uri.parse(origin))) {
-                    callback.invoke(origin, false, false);
-                    return;
-                }
-                if (hasLocationPermission()) {
-                    callback.invoke(origin, true, false);
-                    return;
-                }
-                geolocationOrigin = origin;
-                geolocationCallback = callback;
-                requestPermissions(
-                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-                        LOCATION_PERMISSION_REQUEST
-                );
+                callback.invoke(origin, false, false);
             }
 
             @Override
@@ -627,7 +608,9 @@ public final class MainActivity extends ComponentActivity {
         }
         String path = uri.getPath();
         return "/assets/web/index.html".equals(path)
-                || "/assets/web/privacy.html".equals(path);
+                || "/assets/web/privacy.html".equals(path)
+                || "/assets/web/terms.html".equals(path)
+                || "/assets/web/delete-account.html".equals(path);
     }
 
     private boolean isTrustedAppDocumentUrl(String url) {
@@ -778,23 +761,6 @@ public final class MainActivity extends ComponentActivity {
         captureAuthCallback(intent);
     }
 
-    private boolean hasLocationPermission() {
-        return checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                || checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode != LOCATION_PERMISSION_REQUEST || geolocationCallback == null) {
-            return;
-        }
-        boolean granted = hasLocationPermission();
-        geolocationCallback.invoke(geolocationOrigin, granted, false);
-        geolocationCallback = null;
-        geolocationOrigin = null;
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -818,6 +784,7 @@ public final class MainActivity extends ComponentActivity {
                 + "var d={entitled:" + state.entitled
                 + ",priceLabel:" + price
                 + ",reason:" + reason
+                + ",expiryTimeMillis:" + state.expiryTimeMillis
                 + ",purchaseConfigured:" + purchaseConfigured
                 + ",productId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                 + ",productType:'subs'"
@@ -929,10 +896,6 @@ public final class MainActivity extends ComponentActivity {
         if (fileChooserCallback != null) {
             fileChooserCallback.onReceiveValue(null);
             fileChooserCallback = null;
-        }
-        if (geolocationCallback != null) {
-            geolocationCallback.invoke(geolocationOrigin, false, false);
-            geolocationCallback = null;
         }
         if (billingManager != null) {
             billingManager.close();
