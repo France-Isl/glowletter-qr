@@ -28,7 +28,6 @@
   const FREE_COUNT = Number(CONFIG.freeLetterCount) || 10;
   const params = new URLSearchParams(location.search);
   const BETA_PARAMETER = "beta";
-  const BETA_STORAGE_KEY = "nurBetaCapability";
   const SUPABASE_URL = String(CONFIG.supabaseUrl || "").replace(/\/+$/, "");
   const SUPABASE_PUBLISHABLE_KEY = String(CONFIG.supabasePublishableKey || "").trim();
   const CLOUD_TABLE = "glowletter_progress";
@@ -100,7 +99,7 @@
     setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",aiSenderPlaceholder:"Ваше имя или Амина (дочь)",aiRecipientPlaceholder:"Имя или Мама",routeFrom:"ОТ",routeTo:"ДЛЯ",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",trackPrimary:"основная мелодия",trackLight:"светлая версия",trackWarm:"тёплая версия",
     homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeEditorAria:"Закрыть редактор",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",generatedLetterAria:"Сгенерированное письмо",
     checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Ежемесячная подписка: 50 писем, личный редактор, проверка adab и будущие функции.",paywallBody:"Первые 10 писем остаются бесплатными. Премиум автоматически продлевается каждый месяц, пока вы не отмените его в аккаунте магазина.",benefit1:"все 50 персональных писем",benefit2:"личный редактор писем",benefit3:"проверка уважительности и adab",benefit4:"новые тексты и функции",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
-    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка, тексты из помощника и закрытый тестовый доступ остаются только на этом устройстве.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Подписка магазина отменяется отдельно.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
+    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка и черновики остаются только на этом устройстве, пока вы сами не опубликуете письмо.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Сначала отмените активную подписку в Google Play: после удаления её нельзя будет привязать к новому аккаунту GlowLetter.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
@@ -109,7 +108,7 @@
     setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",aiSenderPlaceholder:"Your name or Amina (daughter)",aiRecipientPlaceholder:"Name or Mum",routeFrom:"FROM",routeTo:"TO",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",trackPrimary:"main melody",trackLight:"light version",trackWarm:"warm version",
     homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeEditorAria:"Close editor",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",generatedLetterAria:"Generated letter",
     checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"Monthly subscription: 50 letters, the personal editor, adab checking, and future features.",paywallBody:"The first 10 letters stay free. Premium renews automatically every month until cancelled in your store account.",benefit1:"all 50 personal letters",benefit2:"personal letter editor",benefit3:"respect and adab checking",benefit4:"new letters and features",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
-    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, assistant text, and private beta access stay only on this device.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Store subscriptions must be cancelled separately.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
+    accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, and drafts stay on this device until you choose to publish a letter.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Cancel any active Google Play subscription first: after deletion it cannot be attached to a new GlowLetter account.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
@@ -118,7 +117,7 @@
     setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",aiSenderPlaceholder:"Votre prénom ou Amina (fille)",aiRecipientPlaceholder:"Prénom ou Maman",routeFrom:"DE",routeTo:"POUR",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",trackPrimary:"mélodie principale",trackLight:"version lumineuse",trackWarm:"version chaleureuse",
     homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeEditorAria:"Fermer l’éditeur",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",generatedLetterAria:"Lettre générée",
     checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Abonnement mensuel : 50 lettres, éditeur personnel, contrôle adab et futures fonctions.",paywallBody:"Les 10 premières lettres restent gratuites. Premium se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin.",benefit1:"les 50 lettres personnelles",benefit2:"éditeur de lettres personnelles",benefit3:"contrôle du respect et de l’adab",benefit4:"nouvelles lettres et fonctions",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
-    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels, les textes de l’assistant et l’accès bêta privé restent uniquement sur cet appareil.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? L’abonnement du magasin doit être annulé séparément.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
+    accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels et les brouillons restent sur cet appareil jusqu’à ce que vous choisissiez de publier une lettre.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? Annulez d’abord tout abonnement Google Play actif : après la suppression, il ne pourra pas être rattaché à un nouveau compte GlowLetter.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
   });
   Object.assign(UI.ru, {
     publishEyebrow:"ПЕРЕД ПУБЛИКАЦИЕЙ",publishTitle:"Проверьте письмо",publishLead:"Ссылку или QR-код смогут открыть все, кому их передадут.",publishConsent:"Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.",publishAgreement:"Продолжая, вы принимаете",publishTerms:"Условия",publishAnd:"и",publishPrivacy:"Политику конфиденциальности",publishRequired:"Подтвердите согласие перед публикацией.",publishCancel:"Отмена",publishConfirm:"Продолжить",
@@ -464,8 +463,6 @@
   let isPremium = false;
   let nativePremium = false;
   let cloudPremium = false;
-  let betaAccess = false;
-  let acceptedBetaCapability = "";
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
   let premiumPrice = CONFIG.defaultPrice || "21,99 €/месяц";
@@ -639,62 +636,6 @@
     return String(value || "").normalize("NFKC").replace(/[<>\n\r{}\[\]]/g, "").replace(/\s+/g, " ").trim().slice(0, 36);
   }
 
-  async function capabilityHash(value) {
-    if (!globalThis.crypto?.subtle) return "";
-    const bytes = new TextEncoder().encode(String(value || ""));
-    const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
-    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
-  }
-
-  async function initializeBetaAccess() {
-    const expectedHash = String(CONFIG.betaAccessHash || "").trim().toLowerCase();
-    const capabilityFragment = new URLSearchParams(location.hash.replace(/^#/, ""));
-    const fragmentToken = String(capabilityFragment.get("access") || "").trim();
-    const queryToken = String(params.get(BETA_PARAMETER) || "").trim();
-    const savedToken = String(localStorage.getItem(BETA_STORAGE_KEY) || "").trim();
-    const candidates = [...new Set([fragmentToken, queryToken, savedToken].filter(Boolean))];
-    let acceptedToken = "";
-
-    if (/^[a-f0-9]{64}$/.test(expectedHash)) {
-      for (const token of candidates) {
-        if (!/^[A-Za-z0-9_-]{40,128}$/.test(token)) continue;
-        try {
-          if ((await capabilityHash(token)) === expectedHash) {
-            acceptedToken = token;
-            break;
-          }
-        } catch {}
-      }
-    }
-
-    if (acceptedToken) {
-      betaAccess = true;
-      acceptedBetaCapability = acceptedToken;
-      isPremium = true;
-      entitlementState = "premium";
-      localStorage.setItem(BETA_STORAGE_KEY, acceptedToken);
-      navigator.storage?.persist?.().catch(() => {});
-    } else if (savedToken) {
-      acceptedBetaCapability = "";
-      localStorage.removeItem(BETA_STORAGE_KEY);
-    }
-
-    if (queryToken || fragmentToken) {
-      const url = new URL(location.href);
-      const cleanFragment = new URLSearchParams(url.hash.replace(/^#/, ""));
-      url.searchParams.delete(BETA_PARAMETER);
-      cleanFragment.delete("access");
-      url.hash = cleanFragment.toString();
-      history.replaceState(history.state || {}, "", `${url.pathname}${url.search}${url.hash}`);
-    }
-  }
-
-  async function handleCapabilityNavigation() {
-    const alreadyEnabled = betaAccess;
-    await initializeBetaAccess();
-    if (!alreadyEnabled && betaAccess) updatePremium(true, premiumPrice, "beta_capability");
-  }
-
   function cloudConfigurationReady() {
     try {
       return new URL(SUPABASE_URL).protocol === "https:"
@@ -819,7 +760,7 @@
         .replace("{remaining}", formatVipRemaining(expiry - trustedCloudNow()))
         .replace("{date}", formatVipDate(account.vip_until));
     }
-    if (includeNative && (nativePremium || betaAccess)) return t("accountPlanStore");
+    if (includeNative && nativePremium) return t("accountPlanStore");
     return t("accountPlanFree");
   }
 
@@ -828,7 +769,7 @@
     if (account.premium_forever) return "permanent";
     const expiry = Date.parse(account.vip_until || "");
     if (Number.isFinite(expiry) && expiry > trustedCloudNow()) return "vip";
-    if (includeNative && (nativePremium || betaAccess)) return "store";
+    if (includeNative && nativePremium) return "store";
     return "free";
   }
 
@@ -2254,11 +2195,26 @@
     }
   }
 
+  function syncNativeBillingAuth(session = cloudSession) {
+    const accessToken = typeof session?.access_token === "string" ? session.access_token.trim() : "";
+    if (!IS_ANDROID_PLAY_APP) return Boolean(accessToken);
+    if (!trustedEntitlementSource || typeof window.NurBilling?.setAuthSession !== "function") return false;
+    try {
+      // The token stays in native memory; no raw user id is used as proof of identity.
+      window.NurBilling.setAuthSession(accessToken);
+      return Boolean(accessToken);
+    } catch (error) {
+      console.info("Native billing session bridge not ready", error);
+      return false;
+    }
+  }
+
   async function handleCloudSession(session) {
     const previousUserId = cloudUser?.id || "";
     const nextUser = session?.user || null;
     if (previousUserId && previousUserId !== nextUser?.id) saveUserProgressSnapshot(previousUserId);
     cloudSession = session || null;
+    syncNativeBillingAuth(cloudSession);
     cloudUser = nextUser;
     if (previousUserId !== (cloudUser?.id || "")) {
       resetCloudAccount();
@@ -3184,7 +3140,6 @@
     try {
       const relationship = resolveRelationship(sender, recipient, selectedRelationship);
       const headers = { "Content-Type": "application/json" };
-      if (acceptedBetaCapability) headers["X-GlowLetter-Access"] = acceptedBetaCapability;
       if (cloudSession?.access_token) headers.Authorization = `Bearer ${cloudSession.access_token}`;
       const resolvedLength = resolveLetterLength(length, tone, Boolean(idea));
       const response = await fetch(CONFIG.aiEndpoint, { method: "POST", headers, body: JSON.stringify({ mode: "letter", from: sender, to: recipient, language: letterLanguage, relationship, tone, idea, length: resolvedLength }), signal: controller.signal });
@@ -3329,7 +3284,7 @@
 
   function applyEffectivePremium(reason = "") {
     const wasPremium = isPremium;
-    isPremium = Boolean(betaAccess || nativePremium || cloudPremium);
+    isPremium = Boolean(nativePremium || cloudPremium);
     entitlementState = isPremium ? "premium" : "free";
     document.body.classList.toggle("gl-premium-active", isPremium);
     document.body.dataset.access = isPremium ? "vip" : "free";
@@ -3358,15 +3313,15 @@
       entitlementState = "checking";
       if (price) {
         premiumPrice = localizedMonthlyPrice(price);
-        if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+        premiumPriceFromStore = true;
       }
       $$(".price-label").forEach(label => label.textContent = premiumPrice);
       return;
     }
-    if (String(reason) !== "beta_capability") nativePremium = owned === true || owned === "true";
+    nativePremium = owned === true || owned === "true";
     if (price) {
       premiumPrice = localizedMonthlyPrice(price);
-      if (String(reason) !== "beta_capability") premiumPriceFromStore = true;
+      premiumPriceFromStore = true;
     }
     $$(".price-label").forEach(label => label.textContent = premiumPrice);
     applyEffectivePremium(reason);
@@ -3387,10 +3342,6 @@
 
   async function requestNativeEntitlement() {
     try {
-      if (betaAccess) {
-        updatePremium(true, premiumPrice, "beta_capability");
-        return;
-      }
       if (!trustedEntitlementSource || !window.NurBilling?.getEntitlement) {
         nativePremium = false;
         applyEffectivePremium("native_billing_unavailable");
@@ -3411,6 +3362,14 @@
   }
 
   function purchaseFullAccess() {
+    if (IS_ANDROID_PLAY_APP && trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) {
+      if (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession)) {
+        showToast(t("cloudSignInPrompt"), 4300);
+        return;
+      }
+      window.NurBilling.purchaseFullAccess();
+      return;
+    }
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 4300); return; }
     if (trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) { window.NurBilling.purchaseFullAccess(); return; }
     if (CONFIG.playStoreUrl) { window.open(CONFIG.playStoreUrl, "_blank", "noopener"); return; }
@@ -3418,6 +3377,14 @@
   }
 
   function restorePurchase() {
+    if (IS_ANDROID_PLAY_APP && trustedEntitlementSource && window.NurBilling?.restorePurchases) {
+      if (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession)) {
+        showToast(t("cloudSignInPrompt"), 3800);
+        return;
+      }
+      window.NurBilling.restorePurchases();
+      return;
+    }
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 3800); return; }
     if (trustedEntitlementSource && window.NurBilling?.restorePurchases) { window.NurBilling.restorePurchases(); return; }
     showToast(t("purchaseUnavailable"), 3800);
@@ -3508,32 +3475,56 @@
     return accepted.has(declared) ? { extension, mimeType } : null;
   }
 
-  async function audioFingerprint(blob) {
-    const digest = await crypto.subtle.digest("SHA-256", await blob.arrayBuffer());
-    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  function audioFingerprint() {
+    // This value only identifies the locally persisted selection so an
+    // already-published temporary copy can be reused. It is not a security
+    // token and does not need to hash the whole file. Avoiding subtle.digest
+    // keeps audio sharing available in local iOS WKWebViews and avoids a
+    // second 12 MB allocation on memory-constrained phones.
+    const bytes = new Uint8Array(32);
+    crypto.getRandomValues(bytes);
+    return [...bytes].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function currentCloudAccessToken(forceRefresh = false) {
+    if (!cloudClient || !cloudUser?.id) throw new Error("authentication_required");
+    const result = forceRefresh
+      ? await cloudClient.auth.refreshSession()
+      : await cloudClient.auth.getSession();
+    const session = result?.data?.session || null;
+    if (result?.error || !session?.access_token || session.user?.id !== cloudUser.id) {
+      throw new Error("authentication_required");
+    }
+    // onAuthStateChange also receives refreshed sessions, but update the
+    // in-memory value immediately so a share started after app resume cannot
+    // accidentally reuse an expired bearer token.
+    cloudSession = session;
+    syncNativeBillingAuth(session);
+    return session.access_token;
   }
 
   async function sharedAudioRequest(action, payload = {}, requireUser = false) {
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) throw new Error("audio_service_unavailable");
-    if (requireUser && (!cloudUser?.id || !cloudSession?.access_token)) throw new Error("authentication_required");
-    const headers = { "Content-Type": "application/json", apikey: SUPABASE_PUBLISHABLE_KEY };
-    if (requireUser) headers.Authorization = `Bearer ${cloudSession.access_token}`;
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/${SHARED_AUDIO_FUNCTION}`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ action, ...payload }),
-      cache: "no-store",
-      credentials: "omit",
-      referrerPolicy: "no-referrer"
-    });
-    let data = null;
-    try { data = await response.json(); } catch {}
-    if (!response.ok) {
+    for (let attempt = 0; attempt < (requireUser ? 2 : 1); attempt += 1) {
+      const headers = { "Content-Type": "application/json", apikey: SUPABASE_PUBLISHABLE_KEY };
+      if (requireUser) headers.Authorization = `Bearer ${await currentCloudAccessToken(attempt > 0)}`;
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/${SHARED_AUDIO_FUNCTION}`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ action, ...payload }),
+        cache: "no-store",
+        credentials: "omit",
+        referrerPolicy: "no-referrer"
+      });
+      let data = null;
+      try { data = await response.json(); } catch {}
+      if (response.ok) return data || {};
+      if (requireUser && response.status === 401 && attempt === 0) continue;
       const error = new Error(String(data?.error || "audio_service_unavailable"));
       error.status = response.status;
       throw error;
     }
-    return data || {};
+    throw new Error("authentication_required");
   }
 
   function clearAudioSource() {
@@ -3572,7 +3563,7 @@
     if (!cloudUser?.id || !cloudSession?.access_token || !cloudClient) throw new Error("authentication_required");
     const descriptor = audioDescriptor(customAudioBlob, customAudioName);
     if (!descriptor) throw new Error("invalid_audio_metadata");
-    if (!customAudioFingerprint) customAudioFingerprint = await audioFingerprint(customAudioBlob);
+    if (!customAudioFingerprint) customAudioFingerprint = audioFingerprint();
     const reusable = outgoingAudioShare
       && outgoingAudioShare.fingerprint === customAudioFingerprint
       && SHARED_AUDIO_TOKEN_PATTERN.test(outgoingAudioShare.token || "")
@@ -3585,14 +3576,28 @@
       sizeBytes: customAudioBlob.size
     }, true);
     if (!reservation.objectPath || !reservation.uploadToken || !reservation.shareToken) throw new Error("audio_upload_unavailable");
+    // File pickers use different aliases for the same format (for example
+    // video/mp4 or audio/x-m4a on iOS). Force the canonical, server-approved
+    // type on the uploaded Blob so final verification is identical on every
+    // platform.
+    const uploadBlob = customAudioBlob.slice(0, customAudioBlob.size, descriptor.mimeType);
     const { error: uploadError } = await cloudClient.storage
       .from(SHARED_AUDIO_BUCKET)
-      .uploadToSignedUrl(reservation.objectPath, reservation.uploadToken, customAudioBlob, {
+      .uploadToSignedUrl(reservation.objectPath, reservation.uploadToken, uploadBlob, {
         contentType: reservation.contentType || descriptor.mimeType,
         upsert: false
       });
-    if (uploadError) throw new Error("audio_upload_unavailable");
-    const finalized = await sharedAudioRequest("finalize", { shareToken: reservation.shareToken }, true);
+    let finalized;
+    try {
+      // Finalize even when the browser reports an upload error: the request may
+      // have reached Storage before the response was lost. If it did not, the
+      // server securely removes the pending reservation immediately instead of
+      // leaving it to consume the user's upload limit for two hours.
+      finalized = await sharedAudioRequest("finalize", { shareToken: reservation.shareToken }, true);
+    } catch (error) {
+      if (uploadError) throw new Error("audio_upload_unavailable");
+      throw error;
+    }
     if (finalized.ready !== true || !SHARED_AUDIO_TOKEN_PATTERN.test(finalized.shareToken || "")) throw new Error("audio_finalize_failed");
     outgoingAudioShare = {
       token: finalized.shareToken,
@@ -4357,7 +4362,7 @@
     document.addEventListener("visibilitychange",()=>{if(document.hidden){stopLetterSpeech();flushCloudSync(false);}else if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
-    addEventListener("hashchange",handleCapabilityNavigation);addEventListener("hashchange",handleSharedAudioNavigation);
+    addEventListener("hashchange",handleSharedAudioNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
     addEventListener("nur-speech-state",handleNativeSpeechState);
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
@@ -4366,7 +4371,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=29", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=31", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -4386,7 +4391,6 @@
     if(IS_ANDROID_PLAY_APP)disableWeather({sync:false});
     const storedVolume=Number(localStorage.getItem("nurVolume")||.62);audio.volume=Number.isFinite(storedVolume)?Math.max(0,Math.min(storedVolume,1)):.62;
     if(sharedMessage){activeReportContext={kind:"direct_letter",contentRef:safeReportReference(params.get("rid")),momentPublicId:"",sender:fromName,recipient:toName,text:sharedMessage,audioAttached:Boolean(incomingSharedAudioToken)};}updateReportButton();
-    await initializeBetaAccess();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     setTimeout(() => { initializeMomentsIntegration(); }, 0);

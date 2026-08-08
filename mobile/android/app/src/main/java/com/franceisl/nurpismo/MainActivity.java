@@ -40,10 +40,7 @@ import java.util.Locale;
 public final class MainActivity extends ComponentActivity {
     private static final String TAG = "GlowLetterMain";
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
-    private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html"
-            + (BuildConfig.OWNER_BETA_CAPABILITY.trim().isEmpty()
-            ? ""
-            : "#access=" + Uri.encode(BuildConfig.OWNER_BETA_CAPABILITY));
+    private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html";
     private static final int FILE_CHOOSER_REQUEST = 4101;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
@@ -611,7 +608,9 @@ public final class MainActivity extends ComponentActivity {
         }
         String path = uri.getPath();
         return "/assets/web/index.html".equals(path)
-                || "/assets/web/privacy.html".equals(path);
+                || "/assets/web/privacy.html".equals(path)
+                || "/assets/web/terms.html".equals(path)
+                || "/assets/web/delete-account.html".equals(path);
     }
 
     private boolean isTrustedAppDocumentUrl(String url) {
@@ -785,6 +784,7 @@ public final class MainActivity extends ComponentActivity {
                 + "var d={entitled:" + state.entitled
                 + ",priceLabel:" + price
                 + ",reason:" + reason
+                + ",expiryTimeMillis:" + state.expiryTimeMillis
                 + ",purchaseConfigured:" + purchaseConfigured
                 + ",productId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                 + ",productType:'subs'"

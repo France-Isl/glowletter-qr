@@ -22,6 +22,14 @@ const android = read(
 const billing = read(
   "mobile/android/app/src/main/java/com/franceisl/nurpismo/BillingManager.java",
 );
+const billingBridge = read(
+  "mobile/android/app/src/main/java/com/franceisl/nurpismo/BillingBridge.java",
+);
+const sessionBinding = read(
+  "mobile/android/app/src/main/java/com/franceisl/nurpismo/SupabaseSessionBinding.java",
+);
+const webApp = read("app.js");
+const androidBuild = read("mobile/android/app/build.gradle");
 
 assert.match(
   config,
@@ -95,6 +103,23 @@ for (
   );
 }
 assert.match(android, /requestHashVersion["'],\s*["']v2["']/u);
+assert.match(android, /setRequestProperty\(["']Authorization["'],\s*["']Bearer /u);
+assert.doesNotMatch(android, /\.put\(["'](?:userId|accountBinding)["']/u);
+assert.match(billingBridge, /void setAuthSession\(String accessToken\)/u);
+assert.match(billing, /setObfuscatedAccountId\(obfuscatedAccountId\)/u);
+assert.match(billing, /EntitlementExpiryPolicy\.subscriptionDeadline/u);
+assert.match(billing, /["']subscription_expired["']/u);
+assert.match(sessionBinding, /glowletter\/play-account\/v1\\n/u);
+assert.match(webApp, /syncNativeBillingAuth\(cloudSession\)/u);
+assert.match(
+  androidBuild,
+  /productionVerificationUrl\s*=\s*["']https:\/\/xzzngrquomyiglktroqi\.supabase\.co\/functions\/v1\/google-play-verify["']/u,
+);
+assert.match(androidBuild, /productionCloudProjectNumber\s*=\s*96836561934L/u);
+assert.match(
+  androidBuild,
+  /verificationUrl\.toString\(\)\s*==\s*productionVerificationUrl[\s\S]{0,100}cloudProjectNumber\s*==\s*productionCloudProjectNumber/u,
+);
 assert.match(billing, /LEGACY_FULL_ACCESS_PRODUCT_ID/u);
 assert.match(billing, /BillingClient\.ProductType\.INAPP/u);
 assert.match(verifier, /verifyLegacyOneTimeProduct/u);

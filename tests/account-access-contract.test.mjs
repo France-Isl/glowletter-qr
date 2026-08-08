@@ -121,7 +121,8 @@ assert.match(app, /supportVisible\s*\?\s*cloudAccount\.support_id\s*:\s*["']—[
 assert.match(app, /#copyAccountId[^\n]*addEventListener\(["']click["']/);
 assert.match(app, /writeClipboard\([\s\S]{0,180}(?:support_id|accountSupportId)/);
 assert.match(app, /premium_forever[\s\S]{0,500}vip_until/);
-assert.match(app, /betaAccess\s*\|\|\s*nativePremium\s*\|\|\s*cloudPremium/);
+assert.match(app, /isPremium\s*=\s*Boolean\(nativePremium\s*\|\|\s*cloudPremium\)/);
+assert.doesNotMatch(app, /betaAccess|beta_capability|acceptedBetaCapability/);
 assert.match(app, /performance\.now\(\)[\s\S]{0,500}server_now|server_now[\s\S]{0,500}performance\.now\(\)/);
 assert.match(app, /const isAdmin\s*=\s*signedIn\s*&&\s*cloudAccount\?\.is_admin\s*===\s*true/);
 assert.match(app, /const adminPanel\s*=\s*\$\(["']#adminPanel["']\)[\s\S]{0,100}adminPanel\.hidden\s*=\s*!isAdmin/);

@@ -6,19 +6,25 @@ import UIKit
 import WebKit
 
 @MainActor
-struct WebViewContainer: UIViewRepresentable {
+struct WebViewContainer: UIViewControllerRepresentable {
     @ObservedObject var subscriptionStore: SubscriptionStore
 
     func makeCoordinator() -> Coordinator {
         Coordinator(subscriptionStore: subscriptionStore)
     }
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIViewController(context: Context) -> ImmersiveWebViewController {
         let controller = WKUserContentController()
+        controller.addUserScript(WKUserScript(
+            source: Coordinator.platformBootstrap,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        ))
         controller.add(context.coordinator, name: "nurBilling")
         controller.add(context.coordinator, name: "nurAuth")
         controller.add(context.coordinator, name: "nurShare")
         controller.add(context.coordinator, name: "nurSpeech")
+        controller.add(context.coordinator, name: "nurFullscreen")
         controller.addUserScript(WKUserScript(
             source: Coordinator.billingBootstrap,
             injectionTime: .atDocumentStart,
@@ -36,6 +42,11 @@ struct WebViewContainer: UIViewRepresentable {
         ))
         controller.addUserScript(WKUserScript(
             source: Coordinator.speechBootstrap,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        ))
+        controller.addUserScript(WKUserScript(
+            source: Coordinator.fullscreenBootstrap,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         ))
@@ -58,6 +69,8 @@ struct WebViewContainer: UIViewRepresentable {
             #endif
         }
         context.coordinator.webView = webView
+        let viewController = ImmersiveWebViewController(webView: webView)
+        context.coordinator.fullscreenController = viewController
 
         guard let webRoot = Bundle.main.resourceURL?.appendingPathComponent("WebResources", isDirectory: true),
               let index = Bundle.main.url(
@@ -69,24 +82,28 @@ struct WebViewContainer: UIViewRepresentable {
                 "<meta name='viewport' content='width=device-width'><body style='background:#171722;color:#fff7e8;font-family:-apple-system;padding:32px'>WebResources/index.html не найден. Запустите sync_web_assets.py.</body>",
                 baseURL: nil
             )
-            return webView
+            return viewController
         }
 
-        let launchURL = OwnerAccessConfiguration.launchURL(for: index)
-        webView.loadFileURL(launchURL, allowingReadAccessTo: webRoot)
-        return webView
+        webView.loadFileURL(index, allowingReadAccessTo: webRoot)
+        return viewController
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {}
+    func updateUIViewController(_ uiViewController: ImmersiveWebViewController, context: Context) {
+        uiViewController.setImmersive(true)
+    }
 
-    static func dismantleUIView(_ uiView: WKWebView, coordinator: Coordinator) {
-        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurBilling")
-        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurAuth")
-        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurShare")
-        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "nurSpeech")
-        uiView.stopLoading()
+    static func dismantleUIViewController(_ uiViewController: ImmersiveWebViewController, coordinator: Coordinator) {
+        let webView = uiViewController.webView
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "nurBilling")
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "nurAuth")
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "nurShare")
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "nurSpeech")
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "nurFullscreen")
+        webView.stopLoading()
         coordinator.cancelAuthentication()
         coordinator.stopSpeech()
+        coordinator.fullscreenController = nil
         coordinator.webView = nil
     }
 
@@ -98,6 +115,7 @@ struct WebViewContainer: UIViewRepresentable {
                              AVSpeechSynthesizerDelegate,
                              ASWebAuthenticationPresentationContextProviding {
         weak var webView: WKWebView?
+        weak var fullscreenController: ImmersiveWebViewController?
         private let subscriptionStore: SubscriptionStore
         private var entitlementCancellable: AnyCancellable?
         private var authSession: ASWebAuthenticationSession?
@@ -117,6 +135,71 @@ struct WebViewContainer: UIViewRepresentable {
                     self?.sendEntitlement(snapshot)
                 }
         }
+
+        static let socialAuthenticationEnabled = false
+
+        static let platformBootstrap = """
+        (function () {
+          const marker = Object.freeze({
+            os: 'ios',
+            native: true,
+            emailAuthentication: true,
+            socialAuthentication: false
+          });
+          Object.defineProperty(window, 'NurPlatform', {
+            value: marker,
+            configurable: false,
+            writable: false
+          });
+
+          const socialButtonIds = Object.freeze([
+            'googleSignIn',
+            'appleSignIn',
+            'facebookSignIn',
+            'supportSignInButton'
+          ]);
+          const applyIOSPolicy = function () {
+            if (document.documentElement) {
+              document.documentElement.dataset.nurPlatform = 'ios';
+            }
+            socialButtonIds.forEach(function (id) {
+              const button = document.getElementById(id);
+              if (!button) return;
+              button.hidden = true;
+              button.disabled = true;
+              button.setAttribute('aria-hidden', 'true');
+              button.style.setProperty('display', 'none', 'important');
+            });
+            const actions = document.querySelector('#accountGuest .account-actions');
+            if (actions) {
+              actions.hidden = true;
+              actions.setAttribute('aria-hidden', 'true');
+              actions.style.setProperty('display', 'none', 'important');
+            }
+            const divider = document.querySelector('#emailAuth .email-auth-divider');
+            if (divider) {
+              divider.hidden = true;
+              divider.setAttribute('aria-hidden', 'true');
+              divider.style.setProperty('display', 'none', 'important');
+            }
+            window.dispatchEvent(new CustomEvent('nur-platform-ready', { detail: marker }));
+          };
+
+          document.addEventListener('click', function (event) {
+            const element = event.target instanceof Element ? event.target : null;
+            const button = element ? element.closest('#googleSignIn,#appleSignIn,#facebookSignIn,#supportSignInButton') : null;
+            if (!button) return;
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }, true);
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', applyIOSPolicy, { once: true });
+          } else {
+            applyIOSPolicy();
+          }
+        })();
+        """
 
         static let billingBootstrap = """
         (function () {
@@ -210,12 +293,52 @@ struct WebViewContainer: UIViewRepresentable {
         })();
         """
 
+        static let fullscreenBootstrap = """
+        (function () {
+          let active = true;
+          const applyNativeState = function (payload) {
+            active = Boolean(payload && payload.active);
+            document.documentElement.classList.toggle('nur-native-fullscreen', active);
+            const control = document.getElementById('fullscreenToggle');
+            if (control) {
+              control.classList.toggle('is-active', active);
+              control.setAttribute('aria-pressed', String(active));
+            }
+            window.dispatchEvent(new CustomEvent('nur-fullscreen-state', {
+              detail: { active: active, native: true }
+            }));
+          };
+          const post = function (action) {
+            window.webkit.messageHandlers.nurFullscreen.postMessage({ action: action });
+          };
+          Object.defineProperty(window, '__nurApplyFullscreen', {
+            value: applyNativeState,
+            configurable: false,
+            writable: false
+          });
+          Object.defineProperty(window, 'NurFullscreen', {
+            value: Object.freeze({
+              isActive: function () { return active; },
+              request: function () { post('request'); }
+            }),
+            configurable: false,
+            writable: false
+          });
+          document.addEventListener('click', function (event) {
+            const element = event.target instanceof Element ? event.target : null;
+            if (element && element.closest('#fullscreenToggle')) post('request');
+          }, true);
+        })();
+        """
+
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             trustedMainDocumentReady = false
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             trustedMainDocumentReady = isTrustedMainDocumentURL(webView.url)
+            fullscreenController?.setImmersive(true)
+            dispatchFullscreenState()
             sendEntitlement(subscriptionStore.snapshot)
             dispatchPendingAuthCallback()
         }
@@ -257,7 +380,8 @@ struct WebViewContainer: UIViewRepresentable {
                     return
                 }
             case "nurAuth":
-                guard action == "openAuthorizeUrl",
+                guard Self.socialAuthenticationEnabled,
+                      action == "openAuthorizeUrl",
                       let rawURL = body["url"] as? String,
                       let url = URL(string: rawURL),
                       OAuthURLPolicy.isAllowedAuthorizeURL(url) else { return }
@@ -287,6 +411,15 @@ struct WebViewContainer: UIViewRepresentable {
                 default:
                     return
                 }
+            case "nurFullscreen":
+                guard trustedMainDocumentReady else { return }
+                switch action {
+                case "request":
+                    fullscreenController?.setImmersive(true)
+                default:
+                    return
+                }
+                dispatchFullscreenState()
             default:
                 return
             }
@@ -310,7 +443,8 @@ struct WebViewContainer: UIViewRepresentable {
         }
 
         private func beginAuthentication(at url: URL) {
-            guard trustedMainDocumentReady,
+            guard Self.socialAuthenticationEnabled,
+                  trustedMainDocumentReady,
                   isTrustedMainDocumentURL(webView?.url),
                   OAuthURLPolicy.isAllowedAuthorizeURL(url) else { return }
 
@@ -401,6 +535,15 @@ struct WebViewContainer: UIViewRepresentable {
             webView.evaluateJavaScript(script)
         }
 
+        private func dispatchFullscreenState() {
+            guard let webView,
+                  trustedMainDocumentReady,
+                  isTrustedMainDocumentURL(webView.url) else { return }
+            let active = fullscreenController?.isImmersive ?? true
+            let script = "if(typeof window.__nurApplyFullscreen==='function'){window.__nurApplyFullscreen({active:\(active ? "true" : "false")});}"
+            webView.evaluateJavaScript(script)
+        }
+
         private func topViewController(from root: UIViewController?) -> UIViewController? {
             if let presented = root?.presentedViewController {
                 return topViewController(from: presented)
@@ -462,7 +605,11 @@ struct WebViewContainer: UIViewRepresentable {
                 withExtension: "html",
                 subdirectory: "WebResources"
             ) else { return false }
-            return OwnerAccessConfiguration.isAllowedIndexURL(url, trustedIndexURL: trusted)
+            guard let url else { return false }
+            return url.isFileURL
+                && url.query == nil
+                && url.fragment == nil
+                && url.standardizedFileURL.path == trusted.standardizedFileURL.path
         }
 
         private func sendEntitlement(_ snapshot: BillingSnapshot) {
@@ -481,5 +628,56 @@ struct WebViewContainer: UIViewRepresentable {
                   let array = String(data: data, encoding: .utf8) else { return "\"unknown\"" }
             return String(array.dropFirst().dropLast())
         }
+    }
+}
+
+@MainActor
+final class ImmersiveWebViewController: UIViewController {
+    let webView: WKWebView
+    private(set) var isImmersive = true
+
+    init(webView: WKWebView) {
+        self.webView = webView
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is unavailable")
+    }
+
+    override func loadView() {
+        view = webView
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshSystemOverlays()
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        isImmersive
+    }
+
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        .fade
+    }
+
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        isImmersive
+    }
+
+    func setImmersive(_ active: Bool) {
+        guard isImmersive != active else {
+            refreshSystemOverlays()
+            return
+        }
+        isImmersive = active
+        refreshSystemOverlays()
+    }
+
+    private func refreshSystemOverlays() {
+        setNeedsStatusBarAppearanceUpdate()
+        setNeedsUpdateOfHomeIndicatorAutoHidden()
     }
 }

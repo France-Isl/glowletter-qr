@@ -29,8 +29,6 @@
     <string>$(MARKETING_VERSION)</string>
     <key>CFBundleVersion</key>
     <string>$(CURRENT_PROJECT_VERSION)</string>
-    <key>GlowLetterOwnerCapability</key>
-    <string>$(GLOWLETTER_OWNER_CAPABILITY)</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
     <key>UILaunchScreen</key>
@@ -38,7 +36,7 @@
         <key>UIColorName</key>
         <string>LaunchBackground</string>
     </dict>
-    <key>UIRequiresFullScreen</key>
+    <key>UIStatusBarHidden</key>
     <true/>
     <key>UISupportedInterfaceOrientations</key>
     <array>
@@ -54,6 +52,6 @@
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Местоположение используется только для показа погоды рядом с вами.</string>
+    <string>Your location is used only when you request local weather. Rounded coordinates are sent to Open-Meteo and are not stored by GlowLetter.</string>
 </dict>
 </plist>

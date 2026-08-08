@@ -9,8 +9,13 @@ const index = read("index.html");
 const app = read("app.js");
 const experience = read("experience.js");
 const styles = read("experience.css");
+const localFonts = read("fonts/local-fonts.css");
 
-assert.match(index, /family=Literata:ital,wght@0,500;0,600;1,600/u);
+assert.match(index, /fonts\/local-fonts\.css\?v=31/u);
+for (const family of ["Cormorant Garamond", "Literata", "Manrope"]) {
+  assert.match(localFonts, new RegExp(`font-family: "${family}"`, "u"));
+}
+assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/u);
 assert.match(experience, /const TYPES = \["classic", "elegant", "clear", "poetic", "literary"\]/u);
 for (const label of ["Поэтичный", "Литературный", "Poetic", "Literary", "Poétique", "Littéraire"]) {
   assert.match(experience, new RegExp(label, "u"));

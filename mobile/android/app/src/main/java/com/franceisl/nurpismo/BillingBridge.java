@@ -17,6 +17,12 @@ public final class BillingBridge {
         return billingManager.getEntitlementJson();
     }
 
+    /** Keeps the short-lived Supabase bearer token in native memory only. */
+    @JavascriptInterface
+    public void setAuthSession(String accessToken) {
+        activity.runOnUiThread(() -> billingManager.updateAuthSession(accessToken));
+    }
+
     @JavascriptInterface
     public void purchaseFullAccess() {
         // Keep the existing JavaScript API name so bundled web versions remain

@@ -79,6 +79,7 @@ for (const source of [privacy, terms]) {
   assert.match(source, /Play Integrity/i);
 }
 assert.match(privacy, /Google Fonts/i);
+assert.match(privacy, /no separate request to Google Fonts is made/i);
 assert.match(privacy, /Open-Meteo/i);
 assert.match(privacy, /raw IP address is not retained/i);
 assert.match(terms, /Publishing consent and reports/i);

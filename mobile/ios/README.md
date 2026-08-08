@@ -1,6 +1,13 @@
 # GlowLetter iOS
 
 The iOS wrapper uses StoreKit 2 and keeps the existing JavaScript bridge contract.
+Its native fullscreen bridge connects the existing web fullscreen control to an
+immersive iPhone/iPad view-controller fallback, including status-bar and Home
+Indicator auto-hiding. iPadOS may still show system window controls when the
+user deliberately runs the app in Stage Manager; apps cannot suppress those
+system-managed controls. The wrapper intentionally does not use Apple's
+deprecated `UIRequiresFullScreen` compatibility key, so it remains resizable in
+Split View, Stage Manager, and the iPadOS windowed-apps environment.
 
 ## Generate and test the project
 
@@ -50,39 +57,27 @@ The Manage Subscription action opens Apple's subscription-management page.
 
 ## Supabase OAuth
 
-The native shell accepts Google, Facebook, and Apple only at the exact Supabase
-`/auth/v1/authorize` endpoint. Every request must contain the exact app callback
-`com.franceisl.glowletternext://auth/callback` and a 43–128 character PKCE
-challenge using `S256`; the callback policy remains exact and rejects duplicate
-security-sensitive parameters.
+The current App Store build exposes only verified e-mail/password authentication.
+Its immutable `NurPlatform` marker identifies the trusted native iOS shell and
+marks social authentication unavailable. The wrapper hides Google, Facebook,
+and Apple buttons and also rejects native social-auth bridge requests. This
+keeps the live build consistent with the currently enabled providers and avoids
+offering a third-party login without a working Sign in with Apple equivalent.
 
-Apple OAuth uses a Services ID configured in Supabase. Register
-`https://xzzngrquomyiglktroqi.supabase.co/auth/v1/callback` for that Services ID
-in Apple Developer, and place the Services ID first in Supabase's Client IDs
-when a native App ID is also configured. Rotate the Apple OAuth client secret at
-least every six months and keep the `.p8` key and generated secret outside the
-app, source control, and build logs.
+The dormant native OAuth URL policy remains strict so social login can be
+restored later without weakening URL validation. Re-enable it only after Sign
+in with Apple is configured and tested end to end on a physical device and in
+the App Store environment; then expose every approved provider consistently.
+Every future request must still use the exact Supabase `/auth/v1/authorize`
+endpoint, the exact callback `com.franceisl.glowletternext://auth/callback`, and
+a 43–128 character PKCE challenge using `S256`.
 
-## Private owner build
+Versioning is currently `2.4.1` (`CURRENT_PROJECT_VERSION` 16).
 
-The public configuration leaves `GLOWLETTER_OWNER_CAPABILITY` empty, so it opens
-the bundled app normally. A private owner build can inject the existing beta
-capability at build time:
-
-```sh
-xcodebuild \
-  -project NurPismo.xcodeproj \
-  -scheme NurPismo \
-  -destination 'generic/platform=iOS' \
-  -archivePath "$PWD/build/GlowLetter.xcarchive" \
-  GLOWLETTER_OWNER_CAPABILITY='YOUR_40_TO_128_CHARACTER_BASE64URL_TOKEN' \
-  archive
-```
-
-The token must contain only `A-Z`, `a-z`, `0-9`, `_`, or `-`, and its SHA-256
-must match the web app's configured capability hash. Keep it in a private
-`.xcconfig` file or CI secret, and never commit or distribute it in a public
-build. The app passes it to the bundled page as `#access=...`; the page validates
-the hash and removes the fragment from browser history.
-
-Versioning is currently `2.3.1` (`CURRENT_PROJECT_VERSION` 14).
+`PrivacyInfo.xcprivacy` is bundled as an application resource. It declares no
+tracking and lists the first-party data used for app functionality: e-mail,
+optional profile name, user ID, purchase history, customer-support content,
+product interaction used for synced progress and preferences, other user
+content, audio supplied for a temporary shared letter, and precise location
+used on demand for weather. Location is not linked to the account; every other
+declared category is account-linked.

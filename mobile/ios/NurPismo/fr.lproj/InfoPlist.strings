@@ -1,0 +1,1 @@
+"NSLocationWhenInUseUsageDescription" = "Votre position est utilisée uniquement lorsque vous demandez la météo locale. Les coordonnées arrondies sont envoyées à Open-Meteo et ne sont pas conservées par GlowLetter.";

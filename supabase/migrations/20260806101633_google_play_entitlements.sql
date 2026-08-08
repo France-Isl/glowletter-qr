@@ -11,7 +11,7 @@ grant usage on schema private to service_role;
 create table private.glowletter_play_entitlements (
   token_hash text primary key
     check (token_hash ~ '^[a-z0-9_-]{1,16}\.[A-Za-z0-9_-]{43}$'),
-  user_id uuid not null references auth.users(id) on delete restrict,
+  user_id uuid not null references auth.users(id) on delete cascade,
   package_name text not null
     check (package_name ~ '^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z][A-Za-z0-9_]*)+$'),
   product_id text not null

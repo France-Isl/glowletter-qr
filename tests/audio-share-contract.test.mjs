@@ -30,11 +30,17 @@ assert.match(index, /media-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/
 assert.match(app, /const SHARED_AUDIO_MAX_BYTES\s*=\s*12 \* 1024 \* 1024/u);
 assert.match(app, /SHARED_AUDIO_TOKEN_PATTERN\s*=\s*\/\^\[A-Za-z0-9_-\]\{43\}\$/u);
 assert.match(app, /new URLSearchParams\(url\.hash\.replace\(\/\^#\//u);
-assert.match(app, /\.uploadToSignedUrl\(reservation\.objectPath, reservation\.uploadToken/u);
+assert.match(app, /function audioFingerprint\(\)[\s\S]{0,700}crypto\.getRandomValues\(bytes\)/u);
+assert.doesNotMatch(app, /crypto\.subtle\.digest\("SHA-256", await blob\.arrayBuffer\(\)\)/u);
+assert.match(app, /currentCloudAccessToken\(attempt > 0\)/u);
+assert.match(app, /response\.status === 401 && attempt === 0/u);
+assert.match(app, /customAudioBlob\.slice\(0, customAudioBlob\.size, descriptor\.mimeType\)/u);
+assert.match(app, /\.uploadToSignedUrl\(reservation\.objectPath, reservation\.uploadToken, uploadBlob/u);
+assert.match(app, /let finalized;[\s\S]{0,800}finalized = await sharedAudioRequest\("finalize"[\s\S]{0,300}if \(uploadError\) throw new Error\("audio_upload_unavailable"\)/u);
 assert.match(app, /sharedAudioRequest\("finalize", \{ shareToken: reservation\.shareToken \}, true\)/u);
 assert.match(app, /sharedAudioRequest\("resolve", \{ shareToken: incomingSharedAudioToken \}\)/u);
 assert.match(app, /if\(SHARED_AUDIO_TOKEN_PATTERN\.test\(audioToken\|\|""\)\)url\.hash=/u);
-assert.match(app, /if \(requireUser && \(!cloudUser\?\.id \|\| !cloudSession\?\.access_token\)\)/u);
+assert.match(app, /if \(!cloudClient \|\| !cloudUser\?\.id\) throw new Error\("authentication_required"\)/u);
 assert.match(app, /function buildAppShareUrl\([\s\S]{0,260}\.hash\s*=\s*""/u);
 assert.match(worker, /"audio"/u);
 
@@ -62,6 +68,9 @@ for (const name of ["shared-audio", "cleanup-shared-audio"]) {
 assert.match(sharedFunction, /admin\.auth\.getUser\(token\)/u);
 assert.match(sharedFunction, /user\.is_anonymous === true/u);
 assert.match(sharedFunction, /hasExpectedAudioSignature/u);
+assert.match(sharedFunction, /\["audio\/x-m4a", "audio\/mp4"\]/u);
+assert.match(sharedFunction, /\["video\/mp4", "audio\/mp4"\]/u);
+assert.match(sharedFunction, /\["application\/ogg", "audio\/ogg"\]/u);
 assert.match(sharedFunction, /createSignedUploadUrl\(objectPath, \{ upsert: false \}\)/u);
 assert.match(sharedFunction, /Math\.min\(MAX_PLAYBACK_SECONDS, remainingSeconds\)/u);
 assert.match(cleanupFunction, /x-glowletter-cleanup/u);

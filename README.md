@@ -4,8 +4,8 @@
 
 - Сайт: <https://bezam.org/>
 - Поддержка: <ggooglov9@gmail.com>
-- Политика конфиденциальности: <https://bezam.org/privacy.html>
-- Удаление аккаунта: <https://bezam.org/delete-account.html>
+- Политика конфиденциальности: <https://france-isl.github.io/glowletter-legal/privacy.html>
+- Удаление аккаунта: <https://france-isl.github.io/glowletter-legal/delete-account.html>
 
 ## Возможности
 
@@ -30,7 +30,7 @@
 
 Первые 10 писем открыты бесплатно. Остальные 40 писем и персональный генератор входят в ежемесячную подписку `glowletter_premium_monthly` с base plan `monthly`. `€21.99/month` — только запасная подпись: реальную локализованную цену и период всегда задают Google Play Console и App Store Connect. Прежний нерасходуемый товар `full_access` поддерживается только для восстановления старых покупок.
 
-Приватная owner-сборка использует отдельную capability, внедряемую только во время закрытой сборки. Она предназначена для владельца и выбранных тестировщиков, не зависит от магазина и не должна попадать в публичный APK/AAB, App Store-сборку или репозиторий.
+Администраторские и VIP-права выдаются только сервером после входа в аккаунт. Публичные ссылки, QR-коды и сборки не содержат ключей, которые могли бы открыть платные функции.
 
 Android release работает fail-closed: подписка открывает доступ только после ответа Google Play Billing, серверной проверки покупки, Play Integrity и acknowledgement. iOS использует StoreKit 2, проверенные транзакции, `Transaction.currentEntitlements`, обновления транзакций и явное восстановление через `AppStore.sync()`.
 

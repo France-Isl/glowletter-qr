@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' data: blob: https://xzzngrquomyiglktroqi.supabase.co; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co wss://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' data: blob: https://xzzngrquomyiglktroqi.supabase.co; connect-src 'self' https://api.open-meteo.com https://xzzngrquomyiglktroqi.supabase.co wss://xzzngrquomyiglktroqi.supabase.co; manifest-src 'self'; worker-src 'self'" />
   <meta name="referrer" content="no-referrer" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#211a27" />
@@ -15,15 +15,13 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=29" />
+  <link rel="manifest" href="manifest.webmanifest?v=31" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Literata:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=29" />
-  <link rel="stylesheet" href="experience.css?v=29" />
-  <link rel="stylesheet" href="email-auth.css?v=29" />
-  <link rel="stylesheet" href="moments.css?v=29" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=31" />
+  <link rel="stylesheet" href="styles.css?v=31" />
+  <link rel="stylesheet" href="experience.css?v=31" />
+  <link rel="stylesheet" href="email-auth.css?v=31" />
+  <link rel="stylesheet" href="moments.css?v=31" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -414,7 +412,7 @@
         <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
         <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
         <p class="install-hint" id="installHint" hidden>На iPhone: «Поделиться» → «На экран Домой».</p>
-        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a id="privacyLink" href="privacy.html" target="_blank" rel="noopener">Конфиденциальность</a><a id="termsLink" href="terms.html" target="_blank" rel="noopener">Условия</a><a id="deleteAccountLink" href="delete-account.html" target="_blank" rel="noopener">Удаление аккаунта</a><button id="supportOpenButton" type="button">Поддержка</button></div>
+        <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a id="privacyLink" href="privacy.html">Конфиденциальность</a><a id="termsLink" href="terms.html">Условия</a><a id="deleteAccountLink" href="delete-account.html">Удаление аккаунта</a><button id="supportOpenButton" type="button">Поддержка</button></div>
       </section>
     </div>
 
@@ -476,7 +474,7 @@
           <input id="publicationConsent" type="checkbox" />
           <span id="publicationConsentText">Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.</span>
         </label>
-        <p class="compliance-links"><span id="publicationAgreement">Продолжая, вы принимаете</span> <a href="terms.html" target="_blank" rel="noopener" id="publicationTerms">Условия</a> <span id="publicationAnd">и</span> <a href="privacy.html" target="_blank" rel="noopener" id="publicationPrivacy">Политику конфиденциальности</a>.</p>
+        <p class="compliance-links"><span id="publicationAgreement">Продолжая, вы принимаете</span> <a href="terms.html" id="publicationTerms">Условия</a> <span id="publicationAnd">и</span> <a href="privacy.html" id="publicationPrivacy">Политику конфиденциальности</a>.</p>
         <p class="setup-error" id="publicationError" role="alert" hidden>Подтвердите согласие перед публикацией.</p>
         <div class="compliance-actions"><button id="publicationCancel" type="button">Отмена</button><button class="generate-button" id="publicationConfirm" type="button" disabled><span id="publicationConfirmLabel">Продолжить</span><i>→</i></button></div>
       </section>
@@ -578,14 +576,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=29"></script>
-  <script src="vendor/supabase-2.110.9.js?v=29"></script>
-  <script src="letters.js?v=29"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=29"></script>
-  <script src="qr-code.js?v=29"></script>
-  <script src="app.js?v=29"></script>
-  <script src="email-auth.js?v=29"></script>
-  <script src="moments.js?v=29"></script>
-  <script src="experience.js?v=29"></script>
+  <script src="config.js?v=31"></script>
+  <script src="vendor/supabase-2.110.9.js?v=31"></script>
+  <script src="letters.js?v=31"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=31"></script>
+  <script src="qr-code.js?v=31"></script>
+  <script src="app.js?v=31"></script>
+  <script src="email-auth.js?v=31"></script>
+  <script src="moments.js?v=31"></script>
+  <script src="experience.js?v=31"></script>
 </body>
 </html>

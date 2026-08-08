@@ -14,7 +14,6 @@
 - совместимость с прежним нерасходуемым товаром `full_access`;
 - fail-closed release: локальная запись не считается подтверждением оплаты;
 - Play Integrity, R8/minify и серверная проверка Android-покупки;
-- приватная owner-сборка с отдельной capability, не попадающей в публичные артефакты.
 
 ## JavaScript-мост оплаты
 
@@ -23,8 +22,9 @@
 ```js
 const state = JSON.parse(window.NurBilling.getEntitlement());
 // { entitled, owned, premium, priceLabel, reason, productId,
-//   legacyProductId, freeLetterLimit, purchaseConfigured, mock }
+//   legacyProductId, freeLetterLimit, purchaseConfigured, expiryTimeMillis, mock }
 
+window.NurBilling.setAuthSession(supabaseSession.access_token);
 window.NurBilling.purchaseFullAccess(); // запускает ежемесячную подписку
 window.NurBilling.restorePurchases();
 window.NurBilling.manageSubscription();
@@ -52,14 +52,6 @@ python ..\scripts\generate_store_assets.py
 
 APK появится в `app/build/outputs/apk/debug/GlowLetter-2.3.1-debug.apk`.
 
-Для закрытой owner-сборки capability передаётся только параметром Gradle или переменной окружения:
-
-```powershell
-.\gradlew.bat :app:assembleDebug -PownerBetaCapability=YOUR_PRIVATE_CAPABILITY
-```
-
-Не записывайте значение в `gradle.properties`, исходники, публичный workflow или release notes. Owner APK внедряет доступ при каждом запуске и остаётся полным после перезапуска и обновления поверх предыдущей сборки с тем же application ID.
-
 Отдельный debug mock допускается только для интерфейсных тестов оплаты:
 
 ```powershell
@@ -85,23 +77,31 @@ APK появится в `app/build/outputs/apk/debug/GlowLetter-2.3.1-debug.apk`
 Подписанный release не собирается без HTTPS verification URL и положительного Play Integrity Cloud project number:
 
 ```powershell
-$env:NURPISMO_VERIFICATION_URL = "https://api.example.com/v1/google-play/verify"
-$env:NURPISMO_CLOUD_PROJECT_NUMBER = "123456789012"
+$env:NURPISMO_VERIFICATION_URL = "https://xzzngrquomyiglktroqi.supabase.co/functions/v1/google-play-verify"
+$env:NURPISMO_CLOUD_PROJECT_NUMBER = "96836561934"
 .\gradlew.bat :app:bundleRelease
 ```
 
-Клиент отправляет `productType: "subs"` для подписки или `"inapp"` для legacy, `requestHashVersion: "v2"` и Base64URL SHA-256 от строки:
+Клиент отправляет текущий Supabase access token только как `Authorization: Bearer ...`,
+а сервер валидирует его через Supabase Auth и сам получает `auth.uid()`. Для новой
+подписки BillingFlow получает `obfuscatedAccountId`: Base64URL без padding от
+SHA-256 строки `glowletter/play-account/v1\n<auth.uid()>`. Тело запроса не содержит
+доверяемого клиентского `userId`.
+
+Клиент также отправляет `productType: "subs"` для подписки или `"inapp"` для legacy, `requestHashVersion: "v2"` и Base64URL SHA-256 от строки:
 
 ```text
 com.franceisl.glowletternext\nPRODUCT_ID\nPRODUCT_TYPE\nPURCHASE_TOKEN
 ```
 
-Backend должен независимо пересчитать hash, проверить Standard Play Integrity token, запросить авторитетное состояние у Google Play Developer API, проверить SKU/base plan/срок/состояние, выполнить acknowledgement и вернуть совпадающие `productId`, `productType` и `requestHash`. RTDN через Pub/Sub обязателен для своевременной обработки продлений, отмен, hold и возвратов. Подробности находятся в [`backend/cloudflare/README.md`](../backend/cloudflare/README.md).
+Backend должен независимо пересчитать hash, проверить Standard Play Integrity token, запросить авторитетное состояние у Google Play Developer API, проверить SKU/base plan/срок/состояние и привязку аккаунта, выполнить acknowledgement и вернуть совпадающие `productId`, `productType`, `requestHash`, `expiryTimeMillis` и `serverTimeMillis`. Android переводит серверный срок в monotonic deadline и не сохраняет VIP после него даже при сетевой ошибке. RTDN через Pub/Sub обязателен для своевременной обработки продлений, отмен, hold и возвратов.
 
-Готовая реализация того же строгого контракта для Supabase находится в
+Единственная поддерживаемая production-реализация строгого контракта находится в
 [`supabase/functions/google-play-verify/README.md`](../supabase/functions/google-play-verify/README.md).
 До настройки Google Cloud, Play Integrity, Play Console permissions и
 Supabase secrets её нельзя указывать в production-сборке.
+
+Старый экспериментальный Cloudflare Worker не реализует текущую привязку Supabase-пользователя и серверный срок подписки. Не используйте его URL в Android release.
 
 Play Integrity и R8 повышают стоимость атаки, но не делают APK невзламываемым. Ценный premium-контент лучше выдавать сервером только после короткоживущего проверенного entitlement.
 
