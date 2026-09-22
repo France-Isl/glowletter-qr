@@ -1222,3 +1222,21 @@ body:not(.is-reading) .vignette { animation: medallion-in 1.2s var(--ease-weave)
   .settings-section[open] > .settings-section-body,
   .quote-list .quote-card { animation: none; }
 }
+
+/* Шапка панели: кнопка «На главную» получила иконку и вырос кегль, из-за чего
+   вылезала за свой контейнер и налезала на заголовок. На узком экране она
+   остаётся одной иконкой — подпись читает только программа чтения с экрана. */
+.panel-header-actions { min-width: 0; }
+.panel-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.panel-home .ic { flex: 0 0 auto; }
+@media (max-width: 560px) {
+  .panel-home { gap: 0; padding-inline: 11px; font-size: 0; }
+  .panel-home .ic { width: 18px; height: 18px; }
+}

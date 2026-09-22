@@ -1,0 +1,23 @@
+- generic [ref=f2e2]:
+  - banner [ref=f2e5]:
+    - button "Включить звуки природы" [ref=f2e6] [cursor=pointer]
+    - button "Показать погоду" [ref=f2e9] [cursor=pointer]
+    - button "Изменить язык" [ref=f2e13] [cursor=pointer]: RU
+    - button "Коллекция писем" [ref=f2e14] [cursor=pointer]
+    - button "Атмосфера и музыка" [ref=f2e17] [cursor=pointer]
+  - main [ref=f2e20]:
+    - region "Главный экран" [ref=f2e21]:
+      - generic [ref=f2e22]:
+        - heading [level=1] [ref=f2e23]:
+          - text: Тёплые слова
+          - emphasis [ref=f2e24]: находят путь
+        - paragraph [ref=f2e25]: Тёплые слова для тех, кто действительно важен.
+      - generic [ref=f2e26]:
+        - button "Открыть письмо" [ref=f2e27] [cursor=pointer]
+        - button "◷ Мои моменты" [ref=f2e37] [cursor=pointer]:
+          - generic [ref=f2e38]: ◷
+          - text: Мои моменты
+        - paragraph [ref=f2e39]:
+          - generic [ref=f2e40]: 10 писем бесплатно
+          - generic [ref=f2e42]: полный доступ — от 2,99 €/месяц
+  - status
