@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=33" />
+  <link rel="manifest" href="manifest.webmanifest?v=34" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=33" />
-  <link rel="stylesheet" href="styles.css?v=33" />
-  <link rel="stylesheet" href="experience.css?v=33" />
-  <link rel="stylesheet" href="email-auth.css?v=33" />
-  <link rel="stylesheet" href="moments.css?v=33" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=34" />
+  <link rel="stylesheet" href="styles.css?v=34" />
+  <link rel="stylesheet" href="experience.css?v=34" />
+  <link rel="stylesheet" href="email-auth.css?v=34" />
+  <link rel="stylesheet" href="moments.css?v=34" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -193,6 +193,7 @@
                 <label><span id="emailLoginPasswordLabel">Пароль</span><input id="emailLoginPassword" type="password" autocomplete="current-password" minlength="8" maxlength="128" required /></label>
                 <button class="email-auth-primary" id="emailLoginSubmit" type="submit">Войти</button>
                 <button class="email-auth-secondary" id="emailLoginWithCode" type="button">Войти по коду из письма</button>
+                <button class="email-auth-secondary" id="emailForgotPassword" type="button">Забыли пароль?</button>
               </form>
               <form class="email-auth-form" id="emailRegisterPane" autocomplete="on" hidden>
                 <label><span id="emailRegisterNameLabel">Ваше имя</span><input id="emailRegisterName" type="text" autocomplete="name" maxlength="60" /></label>
@@ -207,6 +208,11 @@
                 <button class="email-auth-primary" id="emailVerifySubmit" type="submit">Подтвердить e-mail</button>
                 <button class="email-auth-secondary" id="emailResendCode" type="button">Отправить код ещё раз</button>
                 <button class="email-auth-secondary" id="emailChangeAddress" type="button">Изменить e-mail</button>
+              </form>
+              <form class="email-auth-form" id="emailNewPasswordPane" autocomplete="on" hidden>
+                <div class="email-code-heading"><span aria-hidden="true">🔑</span><div><strong id="emailNewPasswordTitle">Придумайте новый пароль</strong><small id="emailNewPasswordNote">Минимум 8 символов. Никому его не сообщайте.</small></div></div>
+                <label><span id="emailNewPasswordLabel">Новый пароль</span><input id="emailNewPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128" required /></label>
+                <button class="email-auth-primary" id="emailNewPasswordSubmit" type="submit">Сохранить пароль</button>
               </form>
               <p class="email-auth-status" id="emailAuthStatus" role="status" aria-live="polite"></p>
             </section>
@@ -512,14 +518,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=33"></script>
-  <script src="vendor/supabase-2.110.9.js?v=33"></script>
-  <script src="letters.js?v=33"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=33"></script>
-  <script src="qr-code.js?v=33"></script>
-  <script src="app.js?v=33"></script>
-  <script src="email-auth.js?v=33"></script>
-  <script src="moments.js?v=33"></script>
-  <script src="experience.js?v=33"></script>
+  <script src="config.js?v=34"></script>
+  <script src="vendor/supabase-2.110.9.js?v=34"></script>
+  <script src="letters.js?v=34"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=34"></script>
+  <script src="qr-code.js?v=34"></script>
+  <script src="app.js?v=34"></script>
+  <script src="email-auth.js?v=34"></script>
+  <script src="moments.js?v=34"></script>
+  <script src="experience.js?v=34"></script>
 </body>
 </html>

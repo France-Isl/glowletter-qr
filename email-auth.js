@@ -4,6 +4,15 @@
   const $ = selector => document.querySelector(selector);
   const COPY = {
     ru: {
+      forgot: "Забыли пароль?",
+      codeRecoveryTitle: "Введите код для смены пароля",
+      codeSentRecovery: "Код для смены пароля отправлен на {email}.",
+      newPasswordTitle: "Придумайте новый пароль",
+      newPasswordNote: "Минимум 8 символов. Никому его не сообщайте.",
+      newPasswordLabel: "Новый пароль",
+      newPasswordSubmit: "Сохранить пароль",
+      passwordSaved: "Пароль сохранён. Теперь можно входить по нему.",
+      passwordShort: "Пароль должен быть не короче 8 символов.",
       loginWithCode: "Войти по коду из письма",
       codeLoginTitle: "Введите код для входа",
       codeSentLogin: "Код для входа отправлен на {email}.",
@@ -37,6 +46,15 @@
       unavailable: "Вход по e-mail временно недоступен. Проверьте интернет и повторите."
     },
     en: {
+      forgot: "Forgot your password?",
+      codeRecoveryTitle: "Enter the password-reset code",
+      codeSentRecovery: "A password-reset code was sent to {email}.",
+      newPasswordTitle: "Choose a new password",
+      newPasswordNote: "At least 8 characters. Never share it with anyone.",
+      newPasswordLabel: "New password",
+      newPasswordSubmit: "Save password",
+      passwordSaved: "Password saved. You can sign in with it now.",
+      passwordShort: "The password must be at least 8 characters.",
       loginWithCode: "Sign in with an email code",
       codeLoginTitle: "Enter the sign-in code",
       codeSentLogin: "A sign-in code was sent to {email}.",
@@ -70,6 +88,15 @@
       unavailable: "Email sign-in is temporarily unavailable. Check your connection and try again."
     },
     fr: {
+      forgot: "Mot de passe oublié ?",
+      codeRecoveryTitle: "Saisissez le code de réinitialisation",
+      codeSentRecovery: "Un code de réinitialisation a été envoyé à {email}.",
+      newPasswordTitle: "Choisissez un nouveau mot de passe",
+      newPasswordNote: "8 caractères minimum. Ne le communiquez à personne.",
+      newPasswordLabel: "Nouveau mot de passe",
+      newPasswordSubmit: "Enregistrer le mot de passe",
+      passwordSaved: "Mot de passe enregistré. Vous pouvez désormais vous connecter avec.",
+      passwordShort: "Le mot de passe doit contenir au moins 8 caractères.",
       loginWithCode: "Se connecter avec un code",
       codeLoginTitle: "Saisissez le code de connexion",
       codeSentLogin: "Un code de connexion a été envoyé à {email}.",
@@ -268,7 +295,7 @@
   }
 
   function showVerification(email, statusKey = "sent", startCooldown = true, purpose = "signup") {
-    verificationPurpose = purpose === "login" ? "login" : "signup";
+    verificationPurpose = ["login", "recovery"].includes(purpose) ? purpose : "signup";
     setPendingEmail(email);
     const tabList = $(".email-auth-tabs");
     const loginPane = $("#emailLoginPane");
@@ -279,7 +306,7 @@
     if (registerPane) registerPane.hidden = true;
     if (verifyPane) verifyPane.hidden = false;
     $("#emailCodeSentTo").textContent = email;
-    $("#emailCodeTitle").textContent = c(verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
+    $("#emailCodeTitle").textContent = c(verificationPurpose === "recovery" ? "codeRecoveryTitle" : verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
     $("#emailCode").value = "";
     localizedStatus(statusKey, statusKey === "sent" ? "success" : "", { email });
     setResendUntil(startCooldown ? Date.now() + RESEND_DELAY_MS : storedResendUntil());
@@ -313,6 +340,11 @@
       emailLoginSubmit: "signIn",
       emailRegisterSubmit: "getCode",
       emailLoginWithCode: "loginWithCode",
+      emailForgotPassword: "forgot",
+      emailNewPasswordTitle: "newPasswordTitle",
+      emailNewPasswordNote: "newPasswordNote",
+      emailNewPasswordLabel: "newPasswordLabel",
+      emailNewPasswordSubmit: "newPasswordSubmit",
       emailCodeLabel: "codeLabel",
       emailVerifySubmit: "verify",
       emailChangeAddress: "change"
@@ -322,7 +354,7 @@
       if (node) node.textContent = c(key);
     });
     const codeTitle = document.getElementById("emailCodeTitle");
-    if (codeTitle) codeTitle.textContent = c(verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
+    if (codeTitle) codeTitle.textContent = c(verificationPurpose === "recovery" ? "codeRecoveryTitle" : verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
     if (statusRecord) localizedStatus(statusRecord.key, statusRecord.state, statusRecord.replacements);
     updateCountdown();
   }
@@ -403,6 +435,64 @@
     }
   }
 
+  function showNewPasswordForm() {
+    const tabList = $(".email-auth-tabs");
+    if (tabList) tabList.hidden = true;
+    ["#emailLoginPane", "#emailRegisterPane", "#emailVerifyPane"].forEach(selector => {
+      const pane = $(selector);
+      if (pane) pane.hidden = true;
+    });
+    const pane = $("#emailNewPasswordPane");
+    if (pane) pane.hidden = false;
+    $("#emailNewPassword").value = "";
+    localizedStatus("newPasswordNote");
+    safeFocus($("#emailNewPassword"));
+  }
+
+  async function forgotPassword() {
+    if (busy) return;
+    const api = window.GlowLetterCloud;
+    const email = emailValue("#emailLoginEmail");
+    if (!email) {
+      safeFocus($("#emailLoginEmail"));
+      return localizedStatus("invalid", "error");
+    }
+    if (!api?.sendPasswordResetCode) return localizedStatus("unavailable", "error");
+    setBusy(true, "sending");
+    try {
+      await api.sendPasswordResetCode(email);
+      $("#emailLoginPassword").value = "";
+      showVerification(email, "codeSentRecovery", true, "recovery");
+    } catch (error) {
+      reportError(error);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function saveNewPassword(event) {
+    event.preventDefault();
+    if (busy) return;
+    const api = window.GlowLetterCloud;
+    const password = $("#emailNewPassword").value;
+    if (typeof password !== "string" || password.length < 8) {
+      safeFocus($("#emailNewPassword"));
+      return localizedStatus("passwordShort", "error");
+    }
+    if (!api?.updateAccountPassword) return localizedStatus("unavailable", "error");
+    setBusy(true, "checking");
+    try {
+      await api.updateAccountPassword(password);
+      $("#emailNewPassword").value = "";
+      clearPendingVerification();
+      localizedStatus("passwordSaved", "success");
+    } catch (error) {
+      reportError(error);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function verify(event) {
     event.preventDefault();
     if (busy || !validForm(event.currentTarget)) return;
@@ -410,14 +500,18 @@
     const token = String($("#emailCode").value || "").replace(/\D/g, "").slice(0, 6);
     const api = window.GlowLetterCloud;
     if (!email || token.length !== 6) return localizedStatus("invalid", "error");
-    const confirmCode = verificationPurpose === "login" ? api?.verifyLoginCode : api?.verifyEmailCode;
+    const confirmCode = verificationPurpose === "recovery" ? api?.verifyPasswordResetCode : verificationPurpose === "login" ? api?.verifyLoginCode : api?.verifyEmailCode;
     if (!confirmCode) return localizedStatus("unavailable", "error");
     let retryCode = false;
     setBusy(true, "checking");
     try {
       await confirmCode(email, token);
-      clearPendingVerification();
       $("#emailCode").value = "";
+      if (verificationPurpose === "recovery") {
+        showNewPasswordForm();
+        return;
+      }
+      clearPendingVerification();
       localizedStatus("ready", "success");
     } catch (error) {
       reportError(error);
@@ -435,7 +529,7 @@
     if (busy || Date.now() < resendUntil) return;
     const email = pendingEmail();
     const api = window.GlowLetterCloud;
-    const resendCode = verificationPurpose === "login" ? api?.sendLoginCode : api?.resendEmailCode;
+    const resendCode = verificationPurpose === "recovery" ? api?.sendPasswordResetCode : verificationPurpose === "login" ? api?.sendLoginCode : api?.resendEmailCode;
     if (!email || !resendCode) return localizedStatus("unavailable", "error");
     if (typeof navigator !== "undefined" && navigator.onLine === false) return localizedStatus("unavailable", "error");
     setBusy(true, "sending");
@@ -481,6 +575,8 @@
     $("#emailRegisterTab").addEventListener("keydown", handleTabKeydown);
     $("#emailLoginPane").addEventListener("submit", login);
     $("#emailLoginWithCode").addEventListener("click", loginWithCode);
+    $("#emailForgotPassword").addEventListener("click", forgotPassword);
+    $("#emailNewPasswordPane").addEventListener("submit", saveNewPassword);
     $("#emailRegisterPane").addEventListener("submit", register);
     $("#emailVerifyPane").addEventListener("submit", verify);
     $("#emailResendCode").addEventListener("click", resend);

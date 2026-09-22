@@ -2450,6 +2450,55 @@
     }
   }
 
+  async function sendPasswordResetCode(email) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    cloudAuthBusy = true;
+    renderCloudAccount();
+    try {
+      const { error } = await cloudClient.auth.resetPasswordForEmail(normalizedEmail, { redirectTo: cloudRedirectUrl() });
+      if (error) throw error;
+      return true;
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
+  async function verifyPasswordResetCode(email, token) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    const normalizedEmail = normalizedAuthEmail(email);
+    const normalizedToken = String(token || "").replace(/\D/gu, "").slice(0, 6);
+    if (normalizedToken.length !== 6) throw new Error("invalid_code");
+    cloudAuthBusy = true;
+    setCloudStatus("cloudChecking");
+    renderCloudAccount();
+    try {
+      const { data, error } = await cloudClient.auth.verifyOtp({ email: normalizedEmail, token: normalizedToken, type: "recovery" });
+      if (error || !data?.session) throw error || new Error("missing_session");
+      await handleCloudSession(data.session);
+      return { session: data.session, user: data.user || data.session.user };
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
+  async function updateAccountPassword(password) {
+    if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
+    if (typeof password !== "string" || password.length < 8 || password.length > 128) throw new Error("invalid_password");
+    cloudAuthBusy = true;
+    renderCloudAccount();
+    try {
+      const { error } = await cloudClient.auth.updateUser({ password });
+      if (error) throw error;
+      return true;
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  }
+
   async function resendEmailCode(email) {
     if (!cloudClient || cloudAuthBusy) throw new Error("auth_unavailable");
     const normalizedEmail = normalizedAuthEmail(email);
@@ -2564,6 +2613,9 @@
     registerEmail: (email, password, name) => registerEmail(email, password, name),
     verifyEmailCode: (email, token) => verifyEmailCode(email, token),
     resendEmailCode: email => resendEmailCode(email),
+    sendPasswordResetCode: email => sendPasswordResetCode(email),
+    verifyPasswordResetCode: (email, token) => verifyPasswordResetCode(email, token),
+    updateAccountPassword: password => updateAccountPassword(password),
     sendLoginCode: email => sendLoginCode(email),
     verifyLoginCode: (email, token) => verifyLoginCode(email, token),
     signOut: () => signOutCloud(),
@@ -4288,7 +4340,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=33", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=34", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
