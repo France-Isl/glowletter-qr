@@ -1124,3 +1124,101 @@ body:not(.is-reading) .brand-card { backdrop-filter: none; }
 .atmosphere-card > i .ic { width: 20px; height: 20px; }
 .background-preview > span .ic, .email-code-heading > span .ic { width: 19px; height: 19px; }
 .weather-chip .ic { width: 15px; height: 15px; }
+
+/* =====================================================================
+   ДВИЖЕНИЕ МИРА
+   Один авторский момент — письмо ткётся, — и одна живая деталь:
+   золотая нить в кайме ловит свет. Остальное только отвечает на касание.
+   Всё выключается системной настройкой «уменьшить движение».
+   ===================================================================== */
+:root {
+  --ease-weave: cubic-bezier(.16, 1, .3, 1);
+  --motion-fast: .26s;
+  --motion-base: .6s;
+}
+
+/* Авторский момент: текст письма проявляется по диагонали переплетения —
+   под тем же углом 135°, что и зубец каймы. */
+@keyframes weave-in {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to { -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
+.letter-stage.is-entering .letter-text,
+.letter-text.is-changing {
+  -webkit-mask-image: linear-gradient(115deg, #000 0 34%, rgba(0,0,0,.35) 50%, transparent 64%);
+  mask-image: linear-gradient(115deg, #000 0 34%, rgba(0,0,0,.35) 50%, transparent 64%);
+  -webkit-mask-size: 280% 100%;
+  mask-size: 280% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: weave-in 1.15s var(--ease-weave) both;
+}
+/* Золотая кайма письма прочерчивается следом за текстом. */
+@keyframes frame-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+.letter-stage.is-entering .letter::before { animation: frame-draw .95s .12s var(--ease-weave) both; }
+.letter-stage.is-entering .letter::after { animation: frame-draw 1.1s .2s var(--ease-weave) both; }
+
+/* Живая деталь: по золотой нити каймы проходит отблеск лампы. */
+@keyframes thread-light { from { background-position: -45% 0; } to { background-position: 145% 0; } }
+.settings-section[open] > .settings-section-body::after,
+body:not(.is-reading) .vignette::before,
+.side-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 7px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(242, 204, 116, .9), transparent);
+  background-size: 32% 100%;
+  background-repeat: no-repeat;
+  animation: thread-light 6.5s linear infinite;
+}
+body:not(.is-reading) .vignette::before { inset: auto 0 0 0; animation-duration: 8.5s; }
+.side-panel { position: relative; }
+.side-panel::after { z-index: 4; animation-duration: 7.5s; }
+
+/* Медальон собирается один раз при входе, а не мигает при каждом касании. */
+@keyframes medallion-in { from { opacity: 0; transform: scale(.988); } }
+body:not(.is-reading) .vignette { animation: medallion-in 1.2s var(--ease-weave) both; }
+
+/* Ответ на касание: край загорается золотом, поверхность чуть поднимается. */
+.seal-button, .purchase-button, .smart-link, .quote-card, .atmosphere-card,
+.settings-section > summary, .round-control, .text-control, .weather-chip, .install-button {
+  transition: transform var(--motion-fast) var(--ease-weave),
+              box-shadow var(--motion-fast) var(--ease-weave),
+              border-color var(--motion-fast) linear,
+              background-color var(--motion-fast) linear;
+}
+.seal-button:hover, .purchase-button:hover, .install-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(9, 7, 14, .42), inset 0 1px rgba(255, 244, 214, .4);
+}
+.quote-card:hover, .atmosphere-card:hover, .smart-link:hover { transform: translateY(-2px); border-color: var(--ui-gold); }
+.round-control:active, .text-control:active, .seal-button:active, .purchase-button:active { transform: translateY(0) scale(.97); }
+.settings-section > summary:hover { background: var(--ui-soft); }
+
+/* Раздел настроек раскрывается, а не возникает. */
+@keyframes section-unfold { from { opacity: 0; transform: translateY(-7px); } }
+.settings-section[open] > .settings-section-body { animation: section-unfold .42s var(--ease-weave) both; }
+
+/* Карточки коллекции въезжают лесенкой, когда открываешь её. */
+@keyframes card-settle { from { opacity: 0; transform: translateY(10px); } }
+.quote-list .quote-card { animation: card-settle .5s var(--ease-weave) both; }
+.quote-list .quote-card:nth-child(1) { animation-delay: .02s; }
+.quote-list .quote-card:nth-child(2) { animation-delay: .06s; }
+.quote-list .quote-card:nth-child(3) { animation-delay: .1s; }
+.quote-list .quote-card:nth-child(4) { animation-delay: .14s; }
+.quote-list .quote-card:nth-child(n+5) { animation-delay: .18s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .settings-section[open] > .settings-section-body::after,
+  body:not(.is-reading) .vignette::before,
+  .side-panel::after { animation: none; opacity: .5; }
+  .letter-stage.is-entering .letter-text,
+  .letter-text.is-changing { -webkit-mask-image: none; mask-image: none; animation: none; }
+  .letter-stage.is-entering .letter::before,
+  .letter-stage.is-entering .letter::after,
+  body:not(.is-reading) .vignette,
+  .settings-section[open] > .settings-section-body,
+  .quote-list .quote-card { animation: none; }
+}
