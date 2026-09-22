@@ -162,7 +162,7 @@ def syncWebAssets = tasks.register("syncWebAssets", Sync) {
     group = "build setup"
     description = "Bundles the current web app into assets/web and decodes Base64 fallbacks."
     from(webRoot) {
-        exclude "mobile/**", "mobile-web/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**"
+        exclude "mobile/**", "mobile-web/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**", ".claude/**"
         exclude "*.md", "*.py", ".gitignore"
     }
     into(generatedWebAssets.map { it.dir("web") })
