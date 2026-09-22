@@ -47,15 +47,15 @@ assert.match(app, /navigator\.clipboard\?\.write/);
 assert.match(styles, /@media\s+print[\s\S]*#qrLayer/);
 
 // Settings offer four restrained palettes, persist the choice, and restyle panels via variables.
-assert.match(index, /<body[^>]*data-ui-theme=["']moon["']/);
-for (const theme of ["moon", "rose", "forest", "sand"]) {
+assert.match(index, /<body[^>]*data-ui-theme=["']garnet["']/);
+for (const theme of ["garnet", "indigo", "saffron", "emerald"]) {
   assert.match(index, new RegExp(`data-ui-theme=["']${theme}["']`), `${theme} theme control is required`);
 }
-for (const theme of ["rose", "forest", "sand"]) {
+for (const theme of ["indigo", "saffron", "emerald"]) {
   assert.match(styles, new RegExp(`body\\[data-ui-theme=["']${theme}["']\\]`), `${theme} theme variables are required`);
 }
 assert.match(styles, /\.side-panel[^\n]*var\(--ui-panel\)[^\n]*var\(--ui-panel-alt\)/);
-assert.match(app, /const UI_THEMES\s*=\s*new Set\(\["moon",\s*"rose",\s*"forest",\s*"sand"\]\)/);
+assert.match(app, /const UI_THEMES\s*=\s*new Set\(\["garnet",\s*"indigo",\s*"saffron",\s*"emerald"\]\)/);
 assert.match(app, /document\.body\.dataset\.uiTheme\s*=\s*uiTheme/);
 assert.match(app, /localStorage\.setItem\(["']nurUiTheme["'],\s*uiTheme\)/);
 assert.match(app, /\$\$\(["']\.theme-choice-grid \[data-ui-theme\]["']\)[^\n]*addEventListener\(["']click["']/);
@@ -161,7 +161,7 @@ for (const frame of ["hearts", "moon", "forest", "pearl"]) {
 assert.doesNotMatch(index, /id=["']generatedCard["']/, "the generated-letter card left with the composer");
 assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
 assert.match(experience, /mark\.textContent\s*=\s*active\s*\?\s*["']✓["']/u);
-assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*#a75c79[^\}]*opacity:\s*1/);
+assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*var\(--ui-accent-deep\)[^\}]*opacity:\s*1/);
 assert.match(experience, /glowletter-access-change/);
 assert.match(app, /document\.body\.dataset\.access\s*=\s*isPremium\s*\?\s*["']vip["']\s*:\s*["']free["']/);
 assert.match(app, /\$\(["']\.free-note["']\)\.hidden\s*=\s*isPremium/);

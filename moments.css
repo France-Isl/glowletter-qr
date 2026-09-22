@@ -1,14 +1,14 @@
 .glm-layer {
-  --glm-bg: #fffaf6;
-  --glm-bg-soft: #f7eef3;
+  --glm-bg: #f7f1e3;
+  --glm-bg-soft: #ece0c9;
   --glm-card: rgba(255, 255, 255, .78);
   --glm-card-strong: #fff;
-  --glm-ink: #352a35;
-  --glm-muted: #766b76;
-  --glm-accent: #9b5873;
-  --glm-accent-strong: #7b3f5c;
-  --glm-gold: #b88945;
-  --glm-border: rgba(100, 68, 88, .15);
+  --glm-ink: #2a2118;
+  --glm-muted: #6f5f4a;
+  --glm-accent: #9e2b32;
+  --glm-accent-strong: #6d1a20;
+  --glm-gold: #a8791f;
+  --glm-border: rgba(158, 43, 50, .2);
   --glm-danger: #9c4b55;
   position: fixed;
   z-index: 110;

@@ -11,7 +11,7 @@ const experience = read("experience.js");
 const styles = read("experience.css");
 const localFonts = read("fonts/local-fonts.css");
 
-assert.match(index, /fonts\/local-fonts\.css\?v=34/u);
+assert.match(index, /fonts\/local-fonts\.css\?v=36/u);
 for (const family of ["Cormorant Garamond", "Literata", "Manrope"]) {
   assert.match(localFonts, new RegExp(`font-family: "${family}"`, "u"));
 }

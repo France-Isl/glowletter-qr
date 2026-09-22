@@ -36,7 +36,7 @@
   const CLOUD_MAX_WRITE_ATTEMPTS = 3;
   const CLOUD_SELECT_COLUMNS = "schema_version,sender_name,recipient_name,language,current_letter_id,favorite_ids,rain_enabled,weather_enabled,built_in_track,nature_enabled,fullscreen_enabled,volume,revision,updated_at";
   const AUTH_CALLBACK_PARAMETERS = ["code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "token_type", "provider_token", "provider_refresh_token"];
-  const UI_THEMES = new Set(["moon", "rose", "forest", "sand"]);
+  const UI_THEMES = new Set(["garnet", "indigo", "saffron", "emerald"]);
   const WEATHER_STORAGE_KEY = "nurWeatherSnapshotV1";
   const SUPPORT_EMAIL = "ggooglov9@gmail.com";
   const SUPPORT_CATEGORIES = new Set(["technical", "account", "subscription", "content", "feedback", "other"]);
@@ -112,15 +112,15 @@
   });
   Object.assign(UI.ru, {
     publishEyebrow:"ПЕРЕД ПУБЛИКАЦИЕЙ",publishTitle:"Проверьте письмо",publishLead:"Ссылку или QR-код смогут открыть все, кому их передадут.",publishConsent:"Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.",publishAgreement:"Продолжая, вы принимаете",publishTerms:"Условия",publishAnd:"и",publishPrivacy:"Политику конфиденциальности",publishRequired:"Подтвердите согласие перед публикацией.",publishCancel:"Отмена",publishConfirm:"Продолжить",
-    reportLink:"⚑ Пожаловаться на письмо",reportEyebrow:"БЕЗОПАСНОСТЬ",reportTitle:"Пожаловаться",reportLead:"Сообщение проверит администратор. Не добавляйте пароли, банковские данные или коды.",reportCategory:"Причина",reportDetails:"Комментарий · необязательно",reportPlaceholder:"Кратко объясните проблему",reportSubmit:"Отправить жалобу",reportSending:"Отправляю…",reportSent:"Спасибо. Жалоба передана на проверку.",reportFailed:"Не удалось отправить жалобу. Проверьте интернет и повторите.",reportRate:"Слишком много жалоб. Попробуйте позже."
+    reportLink:"Пожаловаться на письмо",reportEyebrow:"БЕЗОПАСНОСТЬ",reportTitle:"Пожаловаться",reportLead:"Сообщение проверит администратор. Не добавляйте пароли, банковские данные или коды.",reportCategory:"Причина",reportDetails:"Комментарий · необязательно",reportPlaceholder:"Кратко объясните проблему",reportSubmit:"Отправить жалобу",reportSending:"Отправляю…",reportSent:"Спасибо. Жалоба передана на проверку.",reportFailed:"Не удалось отправить жалобу. Проверьте интернет и повторите.",reportRate:"Слишком много жалоб. Попробуйте позже."
   });
   Object.assign(UI.en, {
     publishEyebrow:"BEFORE PUBLISHING",publishTitle:"Check your letter",publishLead:"Anyone who receives the link or QR code may open it.",publishConsent:"I have the right and consent to share these names, text, and audio. The content is lawful and respectful. The recipient can report it.",publishAgreement:"By continuing, you accept the",publishTerms:"Terms",publishAnd:"and",publishPrivacy:"Privacy Policy",publishRequired:"Confirm your agreement before publishing.",publishCancel:"Cancel",publishConfirm:"Continue",
-    reportLink:"⚑ Report this letter",reportEyebrow:"SAFETY",reportTitle:"Report content",reportLead:"An administrator will review the report. Do not include passwords, bank details, or verification codes.",reportCategory:"Reason",reportDetails:"Comment · optional",reportPlaceholder:"Briefly explain the problem",reportSubmit:"Send report",reportSending:"Sending…",reportSent:"Thank you. Your report was sent for review.",reportFailed:"The report could not be sent. Check your connection and try again.",reportRate:"Too many reports. Please try again later."
+    reportLink:"Report this letter",reportEyebrow:"SAFETY",reportTitle:"Report content",reportLead:"An administrator will review the report. Do not include passwords, bank details, or verification codes.",reportCategory:"Reason",reportDetails:"Comment · optional",reportPlaceholder:"Briefly explain the problem",reportSubmit:"Send report",reportSending:"Sending…",reportSent:"Thank you. Your report was sent for review.",reportFailed:"The report could not be sent. Check your connection and try again.",reportRate:"Too many reports. Please try again later."
   });
   Object.assign(UI.fr, {
     publishEyebrow:"AVANT PUBLICATION",publishTitle:"Vérifiez votre lettre",publishLead:"Toute personne recevant le lien ou le QR code pourra l’ouvrir.",publishConsent:"J’ai le droit et le consentement nécessaires pour partager ces prénoms, ce texte et cet audio. Le contenu est légal et respectueux. Le destinataire pourra le signaler.",publishAgreement:"En continuant, vous acceptez les",publishTerms:"Conditions",publishAnd:"et la",publishPrivacy:"Politique de confidentialité",publishRequired:"Confirmez votre accord avant la publication.",publishCancel:"Annuler",publishConfirm:"Continuer",
-    reportLink:"⚑ Signaler cette lettre",reportEyebrow:"SÉCURITÉ",reportTitle:"Signaler un contenu",reportLead:"Un administrateur examinera le signalement. N’ajoutez jamais de mot de passe, coordonnées bancaires ou code.",reportCategory:"Motif",reportDetails:"Commentaire · facultatif",reportPlaceholder:"Expliquez brièvement le problème",reportSubmit:"Envoyer le signalement",reportSending:"Envoi…",reportSent:"Merci. Votre signalement a été transmis pour examen.",reportFailed:"Impossible d’envoyer le signalement. Vérifiez la connexion et réessayez.",reportRate:"Trop de signalements. Réessayez plus tard."
+    reportLink:"Signaler cette lettre",reportEyebrow:"SÉCURITÉ",reportTitle:"Signaler un contenu",reportLead:"Un administrateur examinera le signalement. N’ajoutez jamais de mot de passe, coordonnées bancaires ou code.",reportCategory:"Motif",reportDetails:"Commentaire · facultatif",reportPlaceholder:"Expliquez brièvement le problème",reportSubmit:"Envoyer le signalement",reportSending:"Envoi…",reportSent:"Merci. Votre signalement a été transmis pour examen.",reportFailed:"Impossible d’envoyer le signalement. Vérifiez la connexion et réessayez.",reportRate:"Trop de signalements. Réessayez plus tard."
   });
   UI.ru.namesSettings = "Личное обращение";
   UI.en.namesSettings = "Personal names";
@@ -145,18 +145,18 @@
   });
   Object.assign(UI.ru, {
     brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
-    themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Лунный",themeRose:"Розовый",themeForest:"Лесной",themeSand:"Тёплый",
-    qrOpen:"Создать QR-код",settingsAtmosphere:"Атмосфера",settingsLook:"Оформление",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
+    themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Гранат",themeRose:"Индиго",themeForest:"Шафран",themeSand:"Изумруд",
+    qrOpen:"Создать QR-код",settingsAtmosphere:"Атмосфера",settingsLook:"Оформление",settingsLetter:"Письмо",settingsSound:"Звук",settingsAccountSection:"Аккаунт",settingsApp:"Приложение",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"Скачать PNG",qrCopyLink:"Скопировать ссылку",qrCopyImage:"Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
   });
   Object.assign(UI.en, {
     brandCopy:"Warm words for the people who truly matter.",stage:"These words found their way to you",locationDenied:"Location is unavailable — showing weather for the nearest fallback city",
-    themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Moon",themeRose:"Rose",themeForest:"Forest",themeSand:"Warm",
-    qrOpen:"Create a QR code",settingsAtmosphere:"Atmosphere",settingsLook:"Appearance",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
+    themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Garnet",themeRose:"Indigo",themeForest:"Saffron",themeSand:"Emerald",
+    qrOpen:"Create a QR code",settingsAtmosphere:"Atmosphere",settingsLook:"Appearance",settingsLetter:"Letter",settingsSound:"Sound",settingsAccountSection:"Account",settingsApp:"App",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"Download PNG",qrCopyLink:"Copy link",qrCopyImage:"Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
   });
   Object.assign(UI.fr, {
     brandCopy:"Des mots chaleureux pour les personnes qui comptent vraiment.",stage:"Ces mots ont trouvé leur chemin jusqu’à toi",locationDenied:"La position est indisponible — météo de la ville de secours affichée",
-    themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Lune",themeRose:"Rose",themeForest:"Forêt",themeSand:"Chaleureux",
-    qrOpen:"Créer un QR code",settingsAtmosphere:"Ambiance",settingsLook:"Apparence",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
+    themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Grenat",themeRose:"Indigo",themeForest:"Safran",themeSand:"Émeraude",
+    qrOpen:"Créer un QR code",settingsAtmosphere:"Ambiance",settingsLook:"Apparence",settingsLetter:"Lettre",settingsSound:"Son",settingsAccountSection:"Compte",settingsApp:"Application",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"Télécharger le PNG",qrCopyLink:"Copier le lien",qrCopyImage:"Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
@@ -184,15 +184,15 @@
   });
   Object.assign(UI.ru, {
     accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и музыка остаются только на этом устройстве.",
-    focusRead:"◫ Режим чтения",focusExit:"× Вернуться",focusHint:"← Свайп или стрелки →"
+    focusRead:"Режим чтения",focusExit:"Вернуться",focusHint:"← Свайп или стрелки →"
   });
   Object.assign(UI.en, {
     accountTitle:"Save your progress",accountGuestNote:"Keep your letters and settings on all your devices.",accountPrivacy:"Personal photos and audio stay only on this device.",
-    focusRead:"◫ Reading mode",focusExit:"× Return",focusHint:"← Swipe or arrow keys →"
+    focusRead:"Reading mode",focusExit:"Return",focusHint:"← Swipe or arrow keys →"
   });
   Object.assign(UI.fr, {
     accountTitle:"Sauvegarde",accountGuestNote:"Retrouvez vos lettres et réglages sur tous vos appareils.",accountPrivacy:"Les photos et fichiers audio personnels restent sur cet appareil.",
-    focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
+    focusRead:"Mode lecture",focusExit:"Retour",focusHint:"← Balayage ou flèches →"
   });
   Object.assign(UI.ru, {
     music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioSkippedSignIn:"Письмо отправлено без мелодии: чтобы вложить своё аудио, войдите в аккаунт.",audioSkippedFailed:"Письмо отправлено без мелодии: не удалось её загрузить.",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
@@ -455,7 +455,7 @@
     const storedWeather = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY) || "null");
     if (storedWeather && Number.isFinite(Number(storedWeather.temperature)) && Number.isFinite(Number(storedWeather.code))) weatherSnapshot = storedWeather;
   } catch { localStorage.removeItem(WEATHER_STORAGE_KEY); }
-  let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiTheme")) ? localStorage.getItem("nurUiTheme") : "moon";
+  let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiTheme")) ? localStorage.getItem("nurUiTheme") : "garnet";
   let currentQrUrl = "";
   let currentQrMode = "catalog";
   let currentQrCaption = "";
@@ -913,7 +913,6 @@
       badge.textContent = unread.length > 99 ? "99+" : String(unread.length);
     }
 
-    setText("#notificationEyebrow", t("notificationsEyebrow"));
     setText("#notificationTitle", t("notificationsTitle"));
     setText("#notificationLead", t("notificationsLead"));
     setText("#notificationHistoryTitle", t("notificationHistoryTitle"));
@@ -2771,7 +2770,7 @@
   }
 
   function applyUiTheme(value, persist = true) {
-    uiTheme = UI_THEMES.has(value) ? value : "moon";
+    uiTheme = UI_THEMES.has(value) ? value : "garnet";
     document.body.dataset.uiTheme = uiTheme;
     $$('.theme-choice-grid [data-ui-theme]').forEach(button => {
       const active = button.dataset.uiTheme === uiTheme;
@@ -2788,7 +2787,7 @@
     const state = $("#weatherState");
     const valid = weatherEnabled && weatherSnapshot && Number.isFinite(Number(weatherSnapshot.temperature));
     if (!valid) {
-      if (icon) icon.textContent = "◌";
+      if (icon) icon.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-cloud"/></svg>`;
       if (text) text.textContent = t("weather");
       if (state) state.textContent = weatherEnabled ? "…" : t("stateOff");
       button?.classList.remove("has-weather");
@@ -2797,7 +2796,7 @@
       button?.removeAttribute("title");
       $("#weatherToggle")?.classList.toggle("is-active", weatherEnabled);
       $("#weatherToggle")?.setAttribute("aria-pressed", String(weatherEnabled));
-      const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.textContent = "◌";
+      const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-cloud"/></svg>`;
       return;
     }
     const code = Number(weatherSnapshot.code) || 0;
@@ -2851,18 +2850,18 @@
     if (freeNote) freeNote.hidden = isPremium;
     renderWeather();
     setText("#nextLetter", t("next")); $("#nextLetter").insertAdjacentHTML("beforeend", " <span>→</span>");
-    $("#copyLetter").innerHTML = `<span>▣</span> ${t("copy")}`;
-    updateSpeechButton(letterSpeechActive); setText("#postcardButton", `↓ ${t("postcard")}`); setText("#favoriteButton", `♡ ${t("saved")}`); setText("#focusReadingButton", t(readingFocus ? "focusExit" : "focusRead"));
+    $("#copyLetter").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${t("copy")}`;
+    updateSpeechButton(letterSpeechActive); $("#postcardButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("postcard"))}`; $("#favoriteButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> ${escapeHtml(t("saved"))}`; $("#focusReadingButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> ${escapeHtml(t(readingFocus ? "focusExit" : "focusRead"))}`;
     letterStage.dataset.navigationHint = t("focusHint");
-    $$(".go-home").forEach(button => button.textContent = `⌂ ${t("home")}`);
+    $$(".go-home").forEach(button => button.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> ${escapeHtml(t("home"))}`);
     setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
-    setText("#setupLayer .panel-eyebrow", t("setupEyebrow")); setText("#setupTitle", t("setupTitle")); setText(".setup-note", t("setupNote")); setText("#setupSubmitLabel", t("setupSubmit")); setText("#setupError", t("namesSafety"));
+    setText("#setupTitle", t("setupTitle")); setText(".setup-note", t("setupNote")); setText("#setupSubmitLabel", t("setupSubmit")); setText("#setupError", t("namesSafety"));
     const setupLabels = $$("#setupForm .simple-form label > span"); if (setupLabels[0]) setupLabels[0].textContent = t("fromWho"); if (setupLabels[1]) setupLabels[1].textContent = t("forWho");
     $("#setupSenderName").placeholder = t("setupSenderPlaceholder"); $("#setupRecipientName").placeholder = t("setupRecipientPlaceholder");
     setText("#libraryTitle", t("library")); updateLetterPickerNote(); setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
-    setText(".library-panel .panel-eyebrow", t("collectionEyebrow")); setText(".library-summary > span", t("collectionNote"));
+    setText(".library-summary > span", t("collectionNote"));
     const categories = { all: t("all"), warm: t("warm"), gratitude: t("gratitude"), support: t("support"), family: t("family") }; $$("#categoryRow button").forEach(button => button.textContent = categories[button.dataset.category]);
-    setText("#settingsTitle", t("settings")); setText("#settingsAtmosphereTitle", t("settingsAtmosphere")); setText("#settingsLookTitle", t("settingsLook")); setText(".settings-panel .panel-eyebrow", t("settingsEyebrow")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
+    setText("#settingsTitle", t("settings")); setText("#settingsLetterTitle", t("settingsLetter")); setText("#settingsAtmosphereTitle", t("settingsAtmosphere")); setText("#settingsLookTitle", t("settingsLook")); setText("#settingsSoundTitle", t("settingsSound")); setText("#settingsAccountTitle", t("settingsAccountSection")); setText("#settingsAppTitle", t("settingsApp")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
     setText(".interface-theme-picker legend", t("themeTitle")); $(".theme-choice-grid")?.setAttribute("aria-label", t("themeAria")); const themeLabels = $$(".theme-choice-grid [data-ui-theme] span"); if(themeLabels[0])themeLabels[0].textContent=t("themeMoon");if(themeLabels[1])themeLabels[1].textContent=t("themeRose");if(themeLabels[2])themeLabels[2].textContent=t("themeForest");if(themeLabels[3])themeLabels[3].textContent=t("themeSand"); applyUiTheme(uiTheme, false);
     setText(".profile-picker legend", t("namesSettings")); const settingsNameLabels = $$(".profile-picker .simple-form label > span"); if (settingsNameLabels[0]) settingsNameLabels[0].textContent = t("fromWho"); if (settingsNameLabels[1]) settingsNameLabels[1].textContent = t("forWho"); $("#settingsSenderName").placeholder = t("setupSenderPlaceholder"); $("#settingsRecipientName").placeholder = t("setupRecipientPlaceholder"); setText("#settingsNamesError", t("namesSafety"));
     setText("#rainToggle strong", t("rainTitle")); setText("#rainToggle small", t("rainNote")); setText("#natureToggle strong", t("natureTitle")); setText("#natureToggle small", t("natureNote")); setText("#weatherToggle strong", t("weatherTitle")); setText("#weatherToggle small", t("weatherNote")); setText("#fullscreenToggle strong", t("fullscreenTitle")); setText("#fullscreenToggle small", t("fullscreenNote"));
@@ -2871,14 +2870,14 @@
     setText("#rainToggle b", rainScene.enabled ? t("stateOn") : t("stateOff")); setText("#natureToggle b", naturePreferenceEnabled ? t("stateOn") : t("stateOff")); if (!$("#weatherState").textContent.includes("°")) setText("#weatherState", weatherEnabled ? t("stateOn") : t("stateOff")); updateFullscreenControl(); setText("#saveSettingsButton", t("saveSettings"));
     setText(".background-picker legend", t("personalBg")); setText(".background-preview strong", t("ownPhoto")); setText(".background-preview small", t("localOnly")); setText(".track-picker legend", t("music")); setText("#customTrackButton strong", t("customMusic")); if (!customAudioBlob) setText("#customTrackName", t("customMusicNote")); setText("#removeAudioButton", t("removeAudio")); setText("#audioShareNote", t("audioShareNote"));
     renderAudioControls();
-    setText(".premium-mini", t("fullVersion")); setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
-    setText(".paywall-card > .panel-eyebrow", t("paywallEyebrow")); $("#paywallTitle").innerHTML = t("paywallTitle"); setText("#paywallLead", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText("#purchaseLifetimeButton > span", t("payLifetimeButton")); setText(".paywall-card > small", t("storeNote"));
+    setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
+    $("#paywallTitle").innerHTML = t("paywallTitle"); setText("#paywallLead", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText("#purchaseLifetimeButton > span", t("payLifetimeButton")); setText(".paywall-card > small", t("storeNote"));
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
-    setText("#restoreButton", t("restore")); setText("#manageSubscriptionButton", `◌ ${t("manageSubscription")}`); setText("#paywallManageSubscription", t("manageSubscription")); setText("#shareAppButton", `↗ ${t("shareApp")}`); setText("#qrOpenButton", `▦ ${t("qrOpen")}`); setText("#installButton", `＋ ${t("install")}`); setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
+    setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
-    setText("#publicationEyebrow",t("publishEyebrow"));setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
-    setText("#reportLetterButton",t("reportLink"));setText("#reportEyebrow",t("reportEyebrow"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]);
-    setText("#supportEyebrow",t("supportFormEyebrow"));$("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
+    setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
+    setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]);
+    $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
@@ -2936,6 +2935,7 @@
     homeScreen.classList.add("is-leaving");
     setTimeout(() => {
       homeScreen.hidden = true;
+      document.body.classList.add("is-reading");
       homeScreen.classList.remove("is-leaving");
       letterStage.hidden = false;
       letterStage.classList.add("is-entering");
@@ -2951,6 +2951,7 @@
     storyOpened = false;
     letterStage.hidden = true;
     homeScreen.hidden = false;
+    document.body.classList.remove("is-reading");
     homeScreen.classList.remove("is-leaving");
     $("#homeButton").hidden = true;
     Object.values(layers).forEach(closePanel);
@@ -3050,7 +3051,7 @@
     const button = $("#focusReadingButton");
     if (button) {
       button.setAttribute("aria-pressed", String(readingFocus));
-      button.textContent = t(readingFocus ? "focusExit" : "focusRead");
+      button.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> ${escapeHtml(t(readingFocus ? "focusExit" : "focusRead"))}`;
     }
     const letter = $("#letter");
     if (readingFocus) {
@@ -3084,7 +3085,7 @@
     $("#stageCaption").textContent = captions[Math.abs(Number(entry.id) || 0) % captions.length];
     const favorite = favorites.has(String(entry.id));
     $("#favoriteButton").classList.toggle("is-active", favorite);
-    $("#favoriteButton").textContent = `${favorite ? "♥" : "♡"} ${favorite ? t("favorite") : t("saved")}`;
+    $("#favoriteButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> ${escapeHtml(favorite ? t("favorite") : t("saved"))}`;
     if (!entry.shared) localStorage.setItem("nurLetterIndex", String(entry.id));
     updateUrl(Boolean(entry.shared));
     scheduleCloudSync();
@@ -3133,7 +3134,7 @@
       const visibleText = accessible ? text : t("locked");
       return `<article class="quote-card${accessible ? "" : " is-locked"}" data-id="${entry.id}">
         <div class="quote-body"><div class="quote-head"><b>${String(entry.id).padStart(2, "0")}</b><span>${escapeHtml(t(entry.category) || entry.category)}</span></div><p>${escapeHtml(visibleText)}</p>
-        <div class="quote-actions">${letterPickerContext && accessible ? `<button type="button" class="quote-pick" data-action="pick">✓ ${escapeHtml(pickerText("pick"))}</button>` : ""}<button type="button" data-action="open">${escapeHtml(t("openQuote"))}</button><button type="button" data-action="copy">▣ ${escapeHtml(t("copy"))}</button></div></div>
+        <div class="quote-actions">${letterPickerContext && accessible ? `<button type="button" class="quote-pick" data-action="pick">✓ ${escapeHtml(pickerText("pick"))}</button>` : ""}<button type="button" data-action="open">${escapeHtml(t("openQuote"))}</button><button type="button" data-action="copy"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${escapeHtml(t("copy"))}</button></div></div>
         ${accessible ? "" : `<div class="lock-cover"><i>◇</i><strong>${escapeHtml(t("locked"))}</strong><button type="button" data-action="unlock">${escapeHtml(t("unlock"))}</button></div>`}
       </article>`;
     }).join("");
@@ -3839,7 +3840,7 @@
     letterSpeechActive = Boolean(active);
     const button = $("#speakButton");
     if (!button) return;
-    button.textContent = letterSpeechActive ? `■ ${t("stop")}` : `◖ ${t("read")}`;
+    button.innerHTML = letterSpeechActive ? `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> ${escapeHtml(t("stop"))}` : `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg> ${escapeHtml(t("read"))}`;
     button.setAttribute("aria-pressed", String(letterSpeechActive));
   }
 
@@ -4080,7 +4081,7 @@
   }
 
   function qrPalette(){
-    return {moon:{foreground:"#302a38",background:"#fffdf8",accent:"#74677d"},rose:{foreground:"#4a2938",background:"#fffafc",accent:"#a6607b"},forest:{foreground:"#263e34",background:"#fbfdf8",accent:"#537565"},sand:{foreground:"#4b3828",background:"#fffaf3",accent:"#9a704a"}}[uiTheme]||{foreground:"#302a38",background:"#fffdf8",accent:"#74677d"};
+    return {garnet:{foreground:"#6d1a20",background:"#f8f2e4",accent:"#a8791f"},indigo:{foreground:"#1b2350",background:"#f4f4f8",accent:"#a8791f"},saffron:{foreground:"#7d4c0f",background:"#f9f2e2",accent:"#8a5a12"},emerald:{foreground:"#123a2d",background:"#f2f6f1",accent:"#a8791f"}}[uiTheme]||{foreground:"#6d1a20",background:"#f8f2e4",accent:"#a8791f"};
   }
 
   function buildPublicQrUrl(sender,recipient){
@@ -4340,7 +4341,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=34", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=36", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

@@ -15,15 +15,51 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=34" />
+  <link rel="manifest" href="manifest.webmanifest?v=36" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=34" />
-  <link rel="stylesheet" href="styles.css?v=34" />
-  <link rel="stylesheet" href="experience.css?v=34" />
-  <link rel="stylesheet" href="email-auth.css?v=34" />
-  <link rel="stylesheet" href="moments.css?v=34" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=36" />
+  <link rel="stylesheet" href="styles.css?v=36" />
+  <link rel="stylesheet" href="experience.css?v=36" />
+  <link rel="stylesheet" href="email-auth.css?v=36" />
+  <link rel="stylesheet" href="moments.css?v=36" data-glowletter-moments-style />
 </head>
-<body data-ui-theme="moon">
+<body data-ui-theme="garnet">
+  <!--
+  THESIS: письмо — это подарок-наследие, а не страница с текстом; отказ от кремовой
+  бумаги с курсивным антиквой, в которую скатывается вся категория «тёплых слов».
+  OWN-WORLD: ковёр и золотное шитьё. Индиговая стена, поле цвета марены, шафрановое
+  золото, слоновая кость. Кайма из повторяющихся полос обрамляет каждую поверхность;
+  орнамент строится градиентами, без картинок. Manrope тяжёлых начертаний — голос
+  интерфейса, Literata — голос письма. Иерархия только контрастом кегля и сеткой.
+  STORY: человек видит вещь, которую не стыдно подарить, находит своё письмо за два
+  касания и отдаёт его по ссылке или QR.
+  FIRST VIEWPORT: тёмная стена, по центру — обрамлённый каймой медальон с иллюстрацией
+  и названием; под ним одна крупная кнопка «Открыть письмо», ниже — «Мои моменты».
+  FORM: ковёр и золотное шитьё, кандидат 3 из семи, seed 81bd7076.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <symbol id="ic-home" viewBox="0 0 24 24"><path d="M4 10.6 12 4l8 6.6V19a1.4 1.4 0 0 1-1.4 1.4h-3.2v-5.6H10.6v5.6H7.4A1.4 1.4 0 0 1 6 19v-8.4Z"/></symbol>
+    <symbol id="ic-note" viewBox="0 0 24 24"><path d="M9 18V5.6l10-1.8v12.4"/><circle cx="6.6" cy="18" r="2.4"/><circle cx="16.6" cy="16.2" r="2.4"/></symbol>
+    <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M7.4 18.4a4 4 0 0 1-.4-8 5.2 5.2 0 0 1 10 1.2h.4a3.4 3.4 0 0 1 0 6.8Z"/></symbol>
+    <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M12 20 4.9 12.9a4.3 4.3 0 0 1 6.1-6.1l1 1 1-1a4.3 4.3 0 0 1 6.1 6.1Z"/></symbol>
+    <symbol id="ic-dots" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.4V12l3.2 2"/></symbol>
+    <symbol id="ic-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.2"/><path d="M15 9V6.2A2.2 2.2 0 0 0 12.8 4H6.2A2.2 2.2 0 0 0 4 6.2v6.6A2.2 2.2 0 0 0 6.2 15H9"/></symbol>
+    <symbol id="ic-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0 4.2-4.2M12 15l-4.2-4.2M4.5 19.5h15"/></symbol>
+    <symbol id="ic-bookmark" viewBox="0 0 24 24"><path d="M6.5 4.6h11v15l-5.5-3.8-5.5 3.8Z"/></symbol>
+    <symbol id="ic-book" viewBox="0 0 24 24"><path d="M12 6.4S10 4.6 4.6 4.6v12.8C10 17.4 12 19.4 12 19.4s2-2 7.4-2V4.6C14 4.6 12 6.4 12 6.4Zm0 0v13"/></symbol>
+    <symbol id="ic-flag" viewBox="0 0 24 24"><path d="M6 20.4V4.2s2.4-.8 5 .6 5 .6 7 0v9.4c-2 .6-4.4 1.4-7 0s-5-.6-5-.6"/></symbol>
+    <symbol id="ic-share" viewBox="0 0 24 24"><circle cx="18" cy="6" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="m8.3 10.8 7.4-3.6m0 9.6-7.4-3.6"/></symbol>
+    <symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5.4v13.2M5.4 12h13.2"/></symbol>
+    <symbol id="ic-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6.4" height="6.4" rx="1.2"/><rect x="13.6" y="4" width="6.4" height="6.4" rx="1.2"/><rect x="4" y="13.6" width="6.4" height="6.4" rx="1.2"/><path d="M13.6 13.6h3v3m3.4 0v3.4h-3.4"/></symbol>
+    <symbol id="ic-image" viewBox="0 0 24 24"><rect x="3.8" y="5" width="16.4" height="14" rx="2.2"/><circle cx="8.8" cy="10" r="1.6"/><path d="m4.6 17 4.8-4.4 4 3.4 2.8-2.2 3.2 2.8"/></symbol>
+    <symbol id="ic-rain" viewBox="0 0 24 24"><path d="M7.6 14.6a3.6 3.6 0 0 1-.4-7.2 4.8 4.8 0 0 1 9.2 1.1h.4a3.1 3.1 0 0 1 0 6.1Z"/><path d="M9 17.6 8 20m4-2.4L11 20m4-2.4L14 20"/></symbol>
+    <symbol id="ic-moon" viewBox="0 0 24 24"><path d="M19.4 14.6A8 8 0 0 1 9.4 4.6a8 8 0 1 0 10 10Z"/></symbol>
+    <symbol id="ic-expand" viewBox="0 0 24 24"><path d="M9 4.6H4.6V9m10.4-4.4h4.4V9M9 19.4H4.6V15m10.4 4.4h4.4V15"/></symbol>
+    <symbol id="ic-bell" viewBox="0 0 24 24"><path d="M6.6 17.2V11a5.4 5.4 0 1 1 10.8 0v6.2Zm0 0h10.8M10.4 20h3.2"/></symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3.6" y="5.4" width="16.8" height="13.2" rx="2.2"/><path d="m4.4 7.4 7.6 5.4 7.6-5.4"/></symbol>
+  </svg>
   <div class="app" id="app">
     <div class="cinematic-bg" id="cinematicBg" aria-hidden="true"></div>
     <div class="chair-motion chair-motion-left" aria-hidden="true"></div>
@@ -36,22 +72,21 @@
     <canvas class="rain-canvas" id="rainCanvas" aria-hidden="true"></canvas>
 
     <header class="topbar">
-      <button class="round-control home-control" id="homeButton" type="button" aria-label="На главный экран" hidden>⌂</button>
+      <button class="round-control home-control" id="homeButton" type="button" aria-label="На главный экран" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg></button>
       <button class="round-control sound-button" id="soundButton" type="button" aria-label="Включить аудио" aria-pressed="false" hidden>
         <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
-      <button class="round-control nature-button" id="natureButton" type="button" aria-label="Включить звуки природы" aria-pressed="false">♬</button>
+      <button class="round-control nature-button" id="natureButton" type="button" aria-label="Включить звуки природы" aria-pressed="false"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></button>
       <div class="topbar-spacer"></div>
-      <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon">◌</span><span id="weatherText">Погода</span></button>
+      <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-cloud"/></svg></span><span id="weatherText">Погода</span></button>
       <button class="round-control language-button" id="languageButton" type="button" aria-label="Изменить язык">RU</button>
-      <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем">♡</button>
-      <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и музыка">⋯</button>
+      <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></button>
+      <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и музыка"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-dots"/></svg></button>
     </header>
 
     <main>
       <section class="home-screen" id="homeScreen" aria-label="Главный экран">
         <div class="brand-card">
-          <p class="brand-kicker">GLOWLETTER</p>
           <h1>Тёплые слова<br /><em>находят путь</em></h1>
           <p class="brand-copy">Тёплые слова для тех, кто действительно важен.</p>
         </div>
@@ -60,7 +95,7 @@
           <button class="seal-button" id="openStoryButton" type="button">
             <span class="seal-mark" aria-hidden="true">
               <span class="seal-heart">
-                <span class="seal-heart-core">♥</span>
+                <svg class="seal-heart-core" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z"/></svg>
                 <i class="seal-heart-shine"></i>
                 <i class="seal-heart-spark seal-heart-spark-one"></i>
                 <i class="seal-heart-spark seal-heart-spark-two"></i>
@@ -69,7 +104,7 @@
             <span>Открыть письмо</span>
           </button>
           <div class="home-smart-actions">
-            <button class="smart-link moments-link" id="momentsOpenHome" type="button"><span>◷</span> Мои моменты</button>
+            <button class="smart-link moments-link" id="momentsOpenHome" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> Мои моменты</button>
           </div>
           <p class="free-note"><span>10 писем бесплатно</span><i></i><span>полный доступ — от 2,99 €/месяц</span></p>
         </div>
@@ -94,7 +129,7 @@
             <span>С теплом,</span>
             <strong id="letterFrom">отправитель</strong>
           </footer>
-          <button class="paper-copy" id="copyLetter" type="button"><span>▣</span> Копировать текст</button>
+          <button class="paper-copy" id="copyLetter" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> Копировать текст</button>
         </article>
 
         <nav class="letter-actions" aria-label="Переключение писем">
@@ -112,13 +147,13 @@
           </button>
         </nav>
         <div class="secondary-actions">
-          <button id="speakButton" type="button" aria-pressed="false">◖ Прочитать</button>
-          <button id="postcardButton" type="button">↓ Открытка</button>
-          <button id="favoriteButton" type="button">♡ Сохранить</button>
-          <button id="focusReadingButton" type="button" aria-pressed="false">◫ Режим чтения</button>
-          <button class="go-home home-return" type="button">⌂ На главную</button>
+          <button id="speakButton" type="button" aria-pressed="false"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg> Прочитать</button>
+          <button id="postcardButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> Открытка</button>
+          <button id="favoriteButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> Сохранить</button>
+          <button id="focusReadingButton" type="button" aria-pressed="false"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> Режим чтения</button>
+          <button class="go-home home-return" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
         </div>
-        <button class="content-report-link" id="reportLetterButton" type="button" hidden>⚑ Пожаловаться на письмо</button>
+        <button class="content-report-link" id="reportLetterButton" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-flag"/></svg> Пожаловаться на письмо</button>
       </section>
     </main>
 
@@ -126,7 +161,6 @@
       <button class="panel-backdrop" id="setupBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="setup-card" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
         <button class="panel-close setup-close" id="setupClose" type="button" aria-label="Закрыть">×</button>
-        <p class="panel-eyebrow">ПЕРЕД ОТКРЫТИЕМ ПИСЬМА</p>
         <h2 id="setupTitle">Для кого это письмо?</h2>
         <p class="setup-note">Имена нужны только для личного обращения и подписи.</p>
         <form id="setupForm">
@@ -135,9 +169,9 @@
             <label><span>Для кого</span><input id="setupRecipientName" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
           </div>
           <p class="setup-error" id="setupError" hidden>Введите обычные имена или семейные роли.</p>
-          <button class="generate-button" type="submit"><span class="generate-spark">♡</span><span id="setupSubmitLabel">Открыть письмо</span><i>→</i></button>
+          <button class="generate-button" type="submit"><span class="generate-spark"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span><span id="setupSubmitLabel">Открыть письмо</span><i>→</i></button>
         </form>
-        <button class="setup-home go-home" type="button">⌂ На главную</button>
+        <button class="setup-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
       </section>
     </div>
 
@@ -145,8 +179,8 @@
       <button class="panel-backdrop" id="libraryBackdrop" type="button" aria-label="Закрыть коллекцию"></button>
       <section class="side-panel library-panel" role="dialog" aria-modal="true" aria-labelledby="libraryTitle">
         <header class="panel-header sticky-header">
-          <div><p class="panel-eyebrow">50 ПРОВЕРЕННЫХ ТЕКСТОВ</p><h2 id="libraryTitle">Коллекция</h2></div>
-          <div class="panel-header-actions"><button class="panel-home go-home" type="button">⌂ На главную</button><button class="panel-close" id="libraryClose" type="button" aria-label="Закрыть">×</button></div>
+          <div><h2 id="libraryTitle">Коллекция</h2></div>
+          <div class="panel-header-actions"><button class="panel-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button><button class="panel-close" id="libraryClose" type="button" aria-label="Закрыть">×</button></div>
         </header>
         <p class="library-pick-note" id="libraryPickNote" hidden></p>
         <div class="library-summary"><strong id="accessLabel">10 писем открыто</strong><span>Каждый текст автоматически обращается к выбранному человеку.</span></div>
@@ -165,10 +199,89 @@
       <button class="panel-backdrop" id="settingsBackdrop" type="button" aria-label="Закрыть настройки"></button>
       <section class="side-panel settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
         <header class="panel-header">
-          <div><p class="panel-eyebrow">ВАША АТМОСФЕРА</p><h2 id="settingsTitle">Настроение</h2></div>
-          <div class="panel-header-actions"><button class="panel-home go-home" type="button">⌂ На главную</button><button class="panel-close" id="settingsClose" type="button" aria-label="Закрыть">×</button></div>
+          <div><h2 id="settingsTitle">Настроение</h2></div>
+          <div class="panel-header-actions"><button class="panel-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button><button class="panel-close" id="settingsClose" type="button" aria-label="Закрыть">×</button></div>
         </header>
 
+        <details class="settings-section" open>
+          <summary id="settingsLetterTitle">Письмо</summary>
+          <div class="settings-section-body">
+        <fieldset class="profile-picker">
+          <legend>Личное обращение</legend>
+          <div class="simple-form">
+            <label><span>От кого</span><input id="settingsSenderName" type="text" maxlength="36" autocomplete="name" placeholder="Ваше имя" /></label>
+            <label><span>Для кого</span><input id="settingsRecipientName" type="text" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
+          </div>
+          <p class="setup-error" id="settingsNamesError" hidden>Введите обычные имена или семейные роли.</p>
+        </fieldset>
+
+        <fieldset class="language-picker">
+          <legend>Язык приложения и писем</legend>
+          <button class="is-active" type="button" data-lang="ru">RU <span>Русский</span></button>
+          <button type="button" data-lang="en">EN <span>English</span></button>
+          <button type="button" data-lang="fr">FR <span>Français</span></button>
+        </fieldset>
+
+          </div>
+        </details>
+
+        <details class="settings-section">
+          <summary id="settingsAtmosphereTitle">Атмосфера</summary>
+          <div class="settings-section-body">
+        <div class="atmosphere-grid">
+          <button class="atmosphere-card is-active" id="rainToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-rain"/></svg></i><span><strong>Живой дождь</strong><small>крупные капли и брызги</small></span><b>ВКЛ</b></button>
+          <button class="atmosphere-card" id="natureToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></i><span><strong>Ночной лес</strong><small>сверчки, ветер и лягушки</small></span><b>ВЫКЛ</b></button>
+          <button class="atmosphere-card" id="weatherToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-moon"/></svg></i><span><strong>Моя погода</strong><small>атмосфера по месту</small></span><b id="weatherState">ВЫКЛ</b></button>
+          <button class="atmosphere-card" id="fullscreenToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-expand"/></svg></i><span><strong>Полный экран</strong><small>без лишних элементов</small></span><b>ОТКРЫТЬ</b></button>
+        </div>
+          </div>
+        </details>
+
+        <details class="settings-section">
+          <summary id="settingsLookTitle">Оформление</summary>
+          <div class="settings-section-body">
+        <fieldset class="interface-theme-picker">
+          <legend>Цвет интерфейса</legend>
+          <div class="theme-choice-grid" role="radiogroup" aria-label="Цвет интерфейса">
+            <button class="is-active" type="button" role="radio" aria-checked="true" data-ui-theme="garnet"><i></i><span>Гранат</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="indigo"><i></i><span>Индиго</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="saffron"><i></i><span>Шафран</span></button>
+            <button type="button" role="radio" aria-checked="false" data-ui-theme="emerald"><i></i><span>Изумруд</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="background-picker">
+          <legend>Личный фон</legend>
+          <div class="background-preview" id="backgroundPreview"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-image"/></svg></span><p><strong>Своя фотография</strong><small>Останется только на этом устройстве</small></p></div>
+          <div class="background-actions">
+            <button id="customBackgroundButton" type="button">Выбрать фото</button>
+            <button id="resetBackgroundButton" type="button">Вернуть озеро</button>
+          </div>
+          <input class="visually-hidden" id="customBackgroundInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
+        </fieldset>
+
+          </div>
+        </details>
+
+        <details class="settings-section">
+          <summary id="settingsSoundTitle">Звук</summary>
+          <div class="settings-section-body">
+        <fieldset class="track-picker">
+          <legend>Аудио письма</legend>
+          <button class="track-option custom-track" id="customTrackButton" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg></i><span><strong>Добавить своё аудио</strong><small id="customTrackName">MP3, M4A, AAC, OGG или WAV · до 12 МБ</small></span><b>✓</b></button>
+          <button class="audio-remove" id="removeAudioButton" type="button" hidden>× Убрать аудио</button>
+          <small class="audio-share-note" id="audioShareNote">В персональной ссылке аудио доступно получателю до 12 часов.</small>
+          <input class="visually-hidden" id="customTrackInput" type="file" accept="audio/mpeg,audio/mp4,audio/aac,audio/ogg,audio/wav,.mp3,.m4a,.aac,.ogg,.wav" />
+        </fieldset>
+          </div>
+        </details>
+
+        <button class="save-settings" id="saveSettingsButton" type="button">Сохранить настройки</button>
+        <button class="install-button qr-open-button settings-primary-qr" id="qrOpenButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> Создать QR-код</button>
+
+        <details class="settings-section">
+          <summary id="settingsAccountTitle">Аккаунт</summary>
+          <div class="settings-section-body">
         <section class="account-card" id="accountCard" aria-labelledby="accountTitle" data-signed-in="false">
           <div class="account-heading">
             <span class="account-mark" aria-hidden="true">◎</span>
@@ -203,7 +316,7 @@
                 <button class="email-auth-primary" id="emailRegisterSubmit" type="submit">Получить код</button>
               </form>
               <form class="email-auth-form email-code-form" id="emailVerifyPane" autocomplete="one-time-code" hidden>
-                <div class="email-code-heading"><span aria-hidden="true">✉</span><div><strong id="emailCodeTitle">Введите код из письма</strong><small id="emailCodeSentTo"></small></div></div>
+                <div class="email-code-heading"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-mail"/></svg></span><div><strong id="emailCodeTitle">Введите код из письма</strong><small id="emailCodeSentTo"></small></div></div>
                 <label><span id="emailCodeLabel">Код подтверждения</span><input id="emailCode" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required /></label>
                 <button class="email-auth-primary" id="emailVerifySubmit" type="submit">Подтвердить e-mail</button>
                 <button class="email-auth-secondary" id="emailResendCode" type="button">Отправить код ещё раз</button>
@@ -221,7 +334,7 @@
             <button class="account-avatar-button" id="accountAvatarButton" type="button" aria-label="Изменить фото профиля">
               <img id="accountAvatarImage" alt="" hidden />
               <span class="account-avatar" id="accountAvatar" aria-hidden="true">G</span>
-              <span class="account-avatar-edit" aria-hidden="true">✎</span>
+              <span class="account-avatar-edit"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-image"/></svg></span>
             </button>
             <input id="accountAvatarInput" type="file" accept="image/*" hidden />
             <div class="account-profile-copy">
@@ -246,7 +359,7 @@
               <span>ID для поддержки</span>
               <code id="accountSupportId">—</code>
             </div>
-            <button class="account-id-copy" id="copyAccountId" type="button" aria-label="Скопировать ID аккаунта"><span aria-hidden="true">⧉</span> Скопировать</button>
+            <button class="account-id-copy" id="copyAccountId" type="button" aria-label="Скопировать ID аккаунта"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> Скопировать</button>
             <small class="account-support-note" id="accountSupportNote">Это не пароль. Передавайте ID только официальной поддержке GlowLetter.</small>
           </div>
           <p class="account-privacy" id="accountPrivacyNote">Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов.</p>
@@ -256,7 +369,6 @@
           <header class="admin-panel-heading">
             <span class="admin-panel-mark" aria-hidden="true">◇</span>
             <div>
-              <p>УПРАВЛЕНИЕ ДОСТУПОМ</p>
               <h3 id="adminPanelTitle">Админ-панель</h3>
             </div>
           </header>
@@ -285,75 +397,26 @@
             </div>
           </div>
         </section>
-
-        <h3 class="settings-group-title" id="settingsAtmosphereTitle">Атмосфера</h3>
-        <div class="atmosphere-grid">
-          <button class="atmosphere-card is-active" id="rainToggle" type="button"><i>☂</i><span><strong>Живой дождь</strong><small>крупные капли и брызги</small></span><b>ВКЛ</b></button>
-          <button class="atmosphere-card" id="natureToggle" type="button"><i>♬</i><span><strong>Ночной лес</strong><small>сверчки, ветер и лягушки</small></span><b>ВЫКЛ</b></button>
-          <button class="atmosphere-card" id="weatherToggle" type="button"><i>☾</i><span><strong>Моя погода</strong><small>атмосфера по месту</small></span><b id="weatherState">ВЫКЛ</b></button>
-          <button class="atmosphere-card" id="fullscreenToggle" type="button"><i>⛶</i><span><strong>Полный экран</strong><small>без лишних элементов</small></span><b>ОТКРЫТЬ</b></button>
-        </div>
-
-        <fieldset class="profile-picker">
-          <legend>Личное обращение</legend>
-          <div class="simple-form">
-            <label><span>От кого</span><input id="settingsSenderName" type="text" maxlength="36" autocomplete="name" placeholder="Ваше имя" /></label>
-            <label><span>Для кого</span><input id="settingsRecipientName" type="text" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
           </div>
-          <p class="setup-error" id="settingsNamesError" hidden>Введите обычные имена или семейные роли.</p>
-        </fieldset>
+        </details>
 
-        <fieldset class="language-picker">
-          <legend>Язык приложения и писем</legend>
-          <button class="is-active" type="button" data-lang="ru">RU <span>Русский</span></button>
-          <button type="button" data-lang="en">EN <span>English</span></button>
-          <button type="button" data-lang="fr">FR <span>Français</span></button>
-        </fieldset>
-
-        <h3 class="settings-group-title" id="settingsLookTitle">Оформление</h3>
-        <fieldset class="interface-theme-picker">
-          <legend>Цвет интерфейса</legend>
-          <div class="theme-choice-grid" role="radiogroup" aria-label="Цвет интерфейса">
-            <button class="is-active" type="button" role="radio" aria-checked="true" data-ui-theme="moon"><i></i><span>Лунный</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="rose"><i></i><span>Розовый</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="forest"><i></i><span>Лесной</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="sand"><i></i><span>Тёплый</span></button>
-          </div>
-        </fieldset>
-
-        <fieldset class="background-picker">
-          <legend>Личный фон</legend>
-          <div class="background-preview" id="backgroundPreview"><span>▧</span><p><strong>Своя фотография</strong><small>Останется только на этом устройстве</small></p></div>
-          <div class="background-actions">
-            <button id="customBackgroundButton" type="button">Выбрать фото</button>
-            <button id="resetBackgroundButton" type="button">Вернуть озеро</button>
-          </div>
-          <input class="visually-hidden" id="customBackgroundInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
-        </fieldset>
-
-        <fieldset class="track-picker">
-          <legend>Аудио письма</legend>
-          <button class="track-option custom-track" id="customTrackButton" type="button"><i>＋</i><span><strong>Добавить своё аудио</strong><small id="customTrackName">MP3, M4A, AAC, OGG или WAV · до 12 МБ</small></span><b>✓</b></button>
-          <button class="audio-remove" id="removeAudioButton" type="button" hidden>× Убрать аудио</button>
-          <small class="audio-share-note" id="audioShareNote">В персональной ссылке аудио доступно получателю до 12 часов.</small>
-          <input class="visually-hidden" id="customTrackInput" type="file" accept="audio/mpeg,audio/mp4,audio/aac,audio/ogg,audio/wav,.mp3,.m4a,.aac,.ogg,.wav" />
-        </fieldset>
-
-        <button class="save-settings" id="saveSettingsButton" type="button">Сохранить настройки</button>
-        <button class="install-button qr-open-button settings-primary-qr" id="qrOpenButton" type="button">▦ Создать QR-код</button>
-
+        <details class="settings-section">
+          <summary id="settingsAppTitle">Приложение</summary>
+          <div class="settings-section-body">
         <div class="premium-settings-card">
-          <span class="premium-mini">ПОЛНАЯ ВЕРСИЯ</span>
           <h3>Откройте полный GlowLetter</h3>
           <p>Подписка 2,99 €/месяц или разовая покупка навсегда: все письма, моменты и новые функции.</p>
           <button id="settingsPurchase" type="button">Открыть полный доступ · <span class="price-label">2,99 €/месяц</span></button>
         </div>
 
-        <button class="install-button" id="manageSubscriptionButton" type="button" hidden>◌ Управление подпиской</button>
-        <button class="install-button" id="shareAppButton" type="button">↗ Поделиться приложением</button>
-        <button class="install-button" id="installButton" type="button" hidden>＋ Установить GlowLetter</button>
+        <button class="install-button" id="manageSubscriptionButton" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> Управление подпиской</button>
+        <button class="install-button" id="shareAppButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> Поделиться приложением</button>
+        <button class="install-button" id="installButton" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> Установить GlowLetter</button>
         <p class="install-hint" id="installHint" hidden>На iPhone: «Поделиться» → «На экран Домой».</p>
         <div class="legal-links"><button class="go-home" type="button">На главный экран</button><a id="privacyLink" href="privacy.html">Конфиденциальность</a><a id="termsLink" href="terms.html">Условия</a><a id="deleteAccountLink" href="delete-account.html">Удаление аккаунта</a><button id="supportOpenButton" type="button">Поддержка</button></div>
+          </div>
+        </details>
+
       </section>
     </div>
 
@@ -361,7 +424,6 @@
       <button class="panel-backdrop" id="qrBackdrop" type="button" aria-label="Закрыть QR-код"></button>
       <section class="qr-card" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
         <button class="panel-close qr-close" id="qrClose" type="button" aria-label="Закрыть QR-код">×</button>
-        <p class="panel-eyebrow" id="qrEyebrow">GLOWLETTER · QR</p>
         <h2 id="qrTitle">Письмо, которое<br /><em>откроется по камере</em></h2>
         <p class="qr-lead" id="qrLead">Укажите имена, скачайте QR-код и приложите его к цветам или подарку. Получатель увидит первые 10 писем бесплатно.</p>
         <form id="qrForm">
@@ -370,7 +432,7 @@
             <label><span>Для кого</span><input id="qrRecipientName" type="text" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
           </div>
           <p class="setup-error" id="qrNamesError" hidden>Введите обычные имена или семейные роли.</p>
-          <button class="generate-button qr-generate" id="qrGenerateButton" type="submit"><span class="generate-spark">▦</span><span>Обновить QR-код</span><i>→</i></button>
+          <button class="generate-button qr-generate" id="qrGenerateButton" type="submit"><span class="generate-spark"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg></span><span>Обновить QR-код</span><i>→</i></button>
         </form>
         <div class="qr-preview" id="qrPreview">
           <div class="qr-preview-head"><span>GLOWLETTER</span><small id="qrPreviewCaption">10 писем в подарок</small></div>
@@ -379,12 +441,12 @@
         </div>
         <p class="qr-privacy" id="qrPrivacy">В QR-коде сохраняются только выбранные имена, язык и ссылка на бесплатную версию. Ключ полного доступа не передаётся.</p>
         <div class="qr-actions">
-          <button id="qrDownloadButton" type="button">↓ Скачать PNG</button>
-          <button id="qrCopyLinkButton" type="button">▣ Скопировать ссылку</button>
-          <button id="qrCopyImageButton" type="button">▦ Скопировать QR</button>
+          <button id="qrDownloadButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> Скачать PNG</button>
+          <button id="qrCopyLinkButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> Скопировать ссылку</button>
+          <button id="qrCopyImageButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> Скопировать QR</button>
           <button id="qrPrintButton" type="button">⌁ Распечатать</button>
         </div>
-        <button class="paywall-home go-home" type="button">⌂ На главную</button>
+        <button class="paywall-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
       </section>
     </div>
 
@@ -392,14 +454,13 @@
       <button class="panel-backdrop" id="shareAppBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="setup-card share-app-card" role="dialog" aria-modal="true" aria-labelledby="shareAppTitle">
         <button class="panel-close share-app-close" id="shareAppClose" type="button" aria-label="Закрыть">×</button>
-        <p class="panel-eyebrow">GLOWLETTER · ПОДЕЛИТЬСЯ</p>
         <h2 id="shareAppTitle">Поделиться приложением</h2>
         <p class="share-app-lead" id="shareAppLead">Выберите удобный способ отправки.</p>
         <div class="share-app-options">
-          <a id="shareTelegram" href="#" target="_blank" rel="noopener"><i aria-hidden="true">↗</i><span>Telegram</span></a>
+          <a id="shareTelegram" href="#" target="_blank" rel="noopener"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></i><span>Telegram</span></a>
           <a id="shareWhatsapp" href="#" target="_blank" rel="noopener"><i aria-hidden="true">◉</i><span>WhatsApp</span></a>
-          <a id="shareEmail" href="#"><i aria-hidden="true">✉</i><span>Почта</span></a>
-          <button id="shareCopyLink" type="button"><i aria-hidden="true">▣</i><span>Скопировать ссылку</span></button>
+          <a id="shareEmail" href="#"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-mail"/></svg></i><span>Почта</span></a>
+          <button id="shareCopyLink" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg></i><span>Скопировать ссылку</span></button>
         </div>
       </section>
     </div>
@@ -408,7 +469,6 @@
       <button class="panel-backdrop" id="publicationBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="setup-card compliance-card" role="dialog" aria-modal="true" aria-labelledby="publicationTitle" aria-describedby="publicationLead">
         <button class="panel-close" id="publicationClose" type="button" aria-label="Закрыть">×</button>
-        <p class="panel-eyebrow" id="publicationEyebrow">ПЕРЕД ПУБЛИКАЦИЕЙ</p>
         <h2 id="publicationTitle">Проверьте письмо</h2>
         <p class="setup-note" id="publicationLead">Ссылка или QR-код смогут открыть все, кому их передадут.</p>
         <label class="publication-consent">
@@ -425,7 +485,6 @@
       <button class="panel-backdrop" id="reportBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="setup-card compliance-card" role="dialog" aria-modal="true" aria-labelledby="reportTitle" aria-describedby="reportLead">
         <button class="panel-close" id="reportClose" type="button" aria-label="Закрыть">×</button>
-        <p class="panel-eyebrow" id="reportEyebrow">БЕЗОПАСНОСТЬ</p>
         <h2 id="reportTitle">Пожаловаться</h2>
         <p class="setup-note" id="reportLead">Сообщение проверит администратор. Не добавляйте пароли, банковские данные или коды.</p>
         <form id="reportForm">
@@ -434,7 +493,7 @@
           </select></label>
           <label class="support-field" for="reportDetails"><span id="reportDetailsLabel">Комментарий · необязательно</span><textarea id="reportDetails" maxlength="500" rows="4" placeholder="Кратко объясните проблему"></textarea></label>
           <p class="support-status" id="reportStatus" role="status" aria-live="polite"></p>
-          <button class="generate-button" id="reportSubmit" type="submit"><span>⚑</span><span id="reportSubmitLabel">Отправить жалобу</span><i>→</i></button>
+          <button class="generate-button" id="reportSubmit" type="submit"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-flag"/></svg></span><span id="reportSubmitLabel">Отправить жалобу</span><i>→</i></button>
         </form>
       </section>
     </div>
@@ -444,7 +503,6 @@
       <section class="setup-card support-card" role="dialog" aria-modal="true" aria-labelledby="supportTitle" aria-describedby="supportLead">
         <button class="panel-close support-close" id="supportClose" type="button" aria-label="Закрыть поддержку">×</button>
         <div class="support-mark" aria-hidden="true"><span>?</span><i>✦</i></div>
-        <p class="panel-eyebrow" id="supportEyebrow">GLOWLETTER · ПОДДЕРЖКА</p>
         <h2 id="supportTitle">Расскажите,<br /><em>что случилось</em></h2>
         <p class="support-lead" id="supportLead">Опишите проблему прямо здесь. Email и ID аккаунта будут приложены автоматически.</p>
 
@@ -464,7 +522,7 @@
           <label class="support-field" for="supportMessage"><span id="supportMessageLabel">Что произошло?</span><textarea id="supportMessage" minlength="20" maxlength="2000" rows="6" placeholder="Опишите проблему, что вы нажали и что увидели…" aria-describedby="supportPrivacyNote supportMessageCount supportStatus" required></textarea></label>
           <div class="support-message-meta"><small id="supportPrivacyNote">Не указывайте пароль, банковские данные и коды подтверждения.</small><output id="supportMessageCount" for="supportMessage">0 / 2000</output></div>
           <p class="support-status" id="supportStatus" role="status" aria-live="polite"></p>
-          <button class="generate-button support-submit" id="supportSubmit" type="submit"><span class="generate-spark">↗</span><span id="supportSubmitLabel">Отправить в поддержку</span><i>→</i></button>
+          <button class="generate-button support-submit" id="supportSubmit" type="submit"><span class="generate-spark"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></span><span id="supportSubmitLabel">Отправить в поддержку</span><i>→</i></button>
         </form>
       </section>
     </div>
@@ -475,7 +533,7 @@
         <button class="panel-close vip-notification-close" id="notificationClose" type="button" aria-label="Закрыть уведомления">×</button>
         <header class="vip-notification-heading">
           <div class="vip-notification-emblem" aria-hidden="true"><span>VIP</span><i>✦</i></div>
-          <div><p class="panel-eyebrow" id="notificationEyebrow">GLOWLETTER · VIP</p><h2 id="notificationTitle">Ваши уведомления</h2></div>
+          <div><h2 id="notificationTitle">Ваши уведомления</h2></div>
         </header>
         <p class="vip-notification-lead" id="notificationLead">Здесь сохраняются подарки и изменения VIP-доступа.</p>
 
@@ -501,8 +559,6 @@
       <button class="panel-backdrop" id="paywallBackdrop" type="button" aria-label="Закрыть"></button>
       <section class="paywall-card" role="dialog" aria-modal="true" aria-labelledby="paywallTitle">
         <button class="panel-close paywall-close" id="paywallClose" type="button" aria-label="Закрыть">×</button>
-        <div class="paywall-orbit" aria-hidden="true"><span>✦</span><i>♡</i><b>☾</b></div>
-        <p class="panel-eyebrow">GLOWLETTER · ПОЛНЫЙ ДОСТУП</p>
         <h2 id="paywallTitle">Ещё 40 писем<br /><em>для важных людей</em></h2>
         <p id="paywallLead">Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка 2,99 €/месяц — она автоматически продлевается каждый месяц, пока вы не отмените её в аккаунте магазина, — либо разовая покупка навсегда.</p>
         <ul><li>все 50 писем на трёх языках</li><li>моменты, напоминания и QR-ссылки</li><li>новые тексты и функции</li></ul>
@@ -510,7 +566,7 @@
         <button class="purchase-button purchase-lifetime" id="purchaseLifetimeButton" type="button"><span>Купить навсегда</span><strong class="lifetime-price-label">21,99 € разово</strong></button>
         <button class="restore-button" id="restoreButton" type="button">Восстановить подписку</button>
         <button class="restore-button" id="paywallManageSubscription" type="button">Управление подпиской</button>
-        <button class="paywall-home go-home" type="button">⌂ На главную</button>
+        <button class="paywall-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
         <small>Оплата проходит через магазин. Цена может отображаться в местной валюте.</small>
       </section>
     </div>
@@ -518,14 +574,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=34"></script>
-  <script src="vendor/supabase-2.110.9.js?v=34"></script>
-  <script src="letters.js?v=34"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=34"></script>
-  <script src="qr-code.js?v=34"></script>
-  <script src="app.js?v=34"></script>
-  <script src="email-auth.js?v=34"></script>
-  <script src="moments.js?v=34"></script>
-  <script src="experience.js?v=34"></script>
+  <script src="config.js?v=36"></script>
+  <script src="vendor/supabase-2.110.9.js?v=36"></script>
+  <script src="letters.js?v=36"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=36"></script>
+  <script src="qr-code.js?v=36"></script>
+  <script src="app.js?v=36"></script>
+  <script src="email-auth.js?v=36"></script>
+  <script src="moments.js?v=36"></script>
+  <script src="experience.js?v=36"></script>
 </body>
 </html>
