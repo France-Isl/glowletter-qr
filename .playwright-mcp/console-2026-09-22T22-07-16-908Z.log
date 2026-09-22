@@ -1,7 +1,0 @@
-[     274ms] [INFO] Entitlement: native_billing_unavailable @ http://127.0.0.1:5178/app.js?v=37:3257
-[     277ms] [INFO] Entitlement: cloud_account_signed_out @ http://127.0.0.1:5178/app.js?v=37:3257
-[     312ms] [WARNING] Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture. @ http://127.0.0.1:5178/?shot=2:581
-[     315ms] [INFO] Entitlement: cloud_account_signed_out @ http://127.0.0.1:5178/app.js?v=37:3257
-[     365ms] [VERBOSE] [DOM] Password forms should have (optionally hidden) username fields for accessibility: (More info: https://goo.gl/9p2vKq) %o @ http://127.0.0.1:5178/?shot=2:0
-[     372ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://127.0.0.1:5178/?shot=2:0
-[     441ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://127.0.0.1:5178/?shot=2:0
