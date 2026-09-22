@@ -146,9 +146,9 @@ for (const [name, page] of [["privacy", privacy], ["terms", terms], ["deletion",
     assert.match(page, new RegExp(`<section[^>]+id=["']${language}["'][^>]+lang=["']${language}["']`, "i"), `${name} needs ${language}`);
   }
 }
-assert.match(privacy, /Черновые запросы[\s\S]{0,180}не сохраняются/u);
-assert.match(privacy, /Raw prompts[\s\S]{0,180}not stored/i);
-assert.match(privacy, /prompts bruts[\s\S]{0,180}ne sont pas conservés/i);
+assert.match(privacy, /черновиков и запросов к генератору не существует/u);
+assert.match(privacy, /no drafts and no generation prompts/i);
+assert.match(privacy, /ni brouillon ni prompt de génération/i);
 for (const page of [privacy, terms, deletion]) {
   assert.match(page, /Instagram/i);
   assert.match(page, /(?:истори[яи] заказов|order history|historique des commandes)/iu);

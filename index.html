@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=31" />
+  <link rel="manifest" href="manifest.webmanifest?v=32" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=31" />
-  <link rel="stylesheet" href="styles.css?v=31" />
-  <link rel="stylesheet" href="experience.css?v=31" />
-  <link rel="stylesheet" href="email-auth.css?v=31" />
-  <link rel="stylesheet" href="moments.css?v=31" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=32" />
+  <link rel="stylesheet" href="styles.css?v=32" />
+  <link rel="stylesheet" href="experience.css?v=32" />
+  <link rel="stylesheet" href="email-auth.css?v=32" />
+  <link rel="stylesheet" href="moments.css?v=32" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -45,7 +45,6 @@
       <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon">◌</span><span id="weatherText">Погода</span></button>
       <button class="round-control language-button" id="languageButton" type="button" aria-label="Изменить язык">RU</button>
       <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем">♡</button>
-      <button class="text-control" id="aiOpenTop" type="button"><span class="spark">✦</span><span>Создать письмо</span></button>
       <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и музыка">⋯</button>
     </header>
 
@@ -70,10 +69,9 @@
             <span>Открыть письмо</span>
           </button>
           <div class="home-smart-actions">
-            <button class="smart-link" id="aiOpenHome" type="button"><span>✦</span> Создать своё письмо <b class="vip-badge">VIP</b></button>
             <button class="smart-link moments-link" id="momentsOpenHome" type="button"><span>◷</span> Мои моменты</button>
           </div>
-          <p class="free-note"><span>10 писем бесплатно</span><i></i><span>премиум — 21,99 €/месяц</span></p>
+          <p class="free-note"><span>10 писем бесплатно</span><i></i><span>полный доступ — от 2,99 €/месяц</span></p>
         </div>
       </section>
 
@@ -120,7 +118,6 @@
           <button id="focusReadingButton" type="button" aria-pressed="false">◫ Режим чтения</button>
           <button class="go-home home-return" type="button">⌂ На главную</button>
         </div>
-        <button class="ai-inline" id="aiOpenLetter" type="button"><span>✦</span> Создать персональное письмо</button>
         <button class="content-report-link" id="reportLetterButton" type="button" hidden>⚑ Пожаловаться на письмо</button>
       </section>
     </main>
@@ -144,73 +141,6 @@
       </section>
     </div>
 
-    <div class="panel-layer" id="aiLayer" aria-hidden="true">
-      <button class="panel-backdrop" id="aiBackdrop" type="button" aria-label="Закрыть редактор"></button>
-      <section class="side-panel ai-panel" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
-        <header class="panel-header">
-          <div><p class="panel-eyebrow">УМНЫЙ РЕДАКТОР · БЕЗ СЛУЧАЙНЫХ ФРАЗ</p><h2 id="aiTitle">Личное письмо</h2></div>
-          <div class="panel-header-actions"><button class="panel-home go-home" type="button">⌂ На главную</button><button class="panel-close" id="aiClose" type="button" aria-label="Закрыть">×</button></div>
-        </header>
-
-        <div class="adab-banner">
-          <span class="adab-icon">✓</span>
-          <div><strong>Режим адаба всегда включён</strong><small>Только уважительные слова. Темы 18+, грубость и запретное содержание блокируются.</small></div>
-        </div>
-
-        <div id="letterComposerPane">
-
-        <form id="aiForm">
-          <div class="name-route" aria-hidden="true"><span>ОТ</span><i>✦</i><span>ДЛЯ</span></div>
-          <div class="simple-form">
-            <label><span>От кого</span><input id="aiSenderName" maxlength="36" autocomplete="name" placeholder="Ваше имя или Амина (дочь)" /></label>
-            <label><span>Для кого</span><input id="aiRecipientName" maxlength="36" autocomplete="off" placeholder="Имя или Мама" /></label>
-          </div>
-          <div class="choice-grid">
-            <label><span>Кому вы пишете · необязательно</span><select id="aiRelationship"><option value="auto">Определить автоматически</option><option value="mother">Маме</option><option value="father">Папе</option><option value="spouse">Супругу или супруге</option><option value="child">Сыну или дочери</option><option value="sibling">Брату или сестре</option><option value="grandparent">Бабушке или дедушке</option><option value="friend">Другу или подруге</option><option value="teacher">Учителю или наставнику</option><option value="universal">Другому человеку</option></select></label>
-            <label><span>Стиль письма · необязательно</span><select id="aiTone"><option value="auto">Подобрать автоматически</option><option value="loving">Любовное · скромно</option><option value="romantic">Романтическое · только супругам</option><option value="classic">Классическое</option><option value="support">Поддержка</option><option value="gratitude">Благодарность</option></select></label>
-            <label><span>Язык письма</span><select id="aiLanguage"><option value="ru">Русский</option><option value="en">English</option><option value="fr">Français</option></select></label>
-          </div>
-          <label class="wide-label letter-idea-label"><span>Что особенно важно сказать · необязательно</span><textarea id="aiIdea" rows="3" maxlength="420" placeholder="Например: поблагодарить маму за терпение и поддержку"></textarea></label>
-          <label class="wide-label letter-length-label"><span>Длина письма</span><select id="aiLength"><option value="auto">Подобрать автоматически</option><option value="short">Короткое</option><option value="standard">Среднее</option><option value="detailed">Подробное</option></select></label>
-          <p class="form-hint">Выбор необязателен. Романтический стиль разрешён только для супруга или супруги; фильтр адаба остаётся включён.</p>
-          <button class="generate-button" id="generateButton" type="submit"><span class="generate-spark">✦</span><span class="generate-label">Создать красивое письмо</span><i>→</i></button>
-        </form>
-
-        <div class="own-text-block">
-          <button class="own-text-toggle" id="ownTextToggle" type="button" aria-expanded="false" aria-controls="ownTextEditor"><span>✎</span><b>Написать свой текст</b><i>⌄</i></button>
-          <div class="own-text-editor" id="ownTextEditor" hidden>
-            <label class="wide-label"><span>Ваши слова</span><textarea id="ownText" rows="7" maxlength="1800" placeholder="Напишите письмо своими словами…"></textarea></label>
-            <small>Перед добавлением текст проходит тот же фильтр скромности. Он будет сохранён в персональной ссылке.</small>
-            <button class="use-own-text" id="useOwnText" type="button">Открыть моё письмо <span>→</span></button>
-          </div>
-        </div>
-
-        <div class="generation-status" id="generationStatus" hidden>
-          <div class="status-row"><span id="statusText">Собираю письмо по смыслу…</span><strong id="statusPercent">0%</strong></div>
-          <div class="status-track"><i id="statusBar"></i></div>
-        </div>
-
-        <div class="safety-message" id="safetyMessage" hidden>
-          <strong>Проверьте имена</strong>
-          <p id="safetyReason">Введите обычные имена или семейные роли.</p>
-        </div>
-
-        <div class="generated-card" id="generatedCard" hidden>
-          <div class="generated-top"><span>ГОТОВОЕ ПИСЬМО</span><button id="regenerateButton" type="button">↻ Другой вариант</button></div>
-          <textarea id="generatedText" rows="10" aria-label="Сгенерированное письмо"></textarea>
-          <div class="generated-actions">
-            <button class="copy-button" id="copyGenerated" type="button">Копировать</button>
-            <button class="use-button" id="useGenerated" type="button">Открыть как письмо <span>→</span></button>
-          </div>
-        </div>
-
-        <div class="quality-note"><span>◆</span><p><strong>Почему текст стал лучше:</strong> редактор сначала определяет семейный контекст, затем собирает цельное письмо из проверенных смысловых блоков и проверяет результат. Никакой загрузки модели на 500 МБ.</p></div>
-        </div>
-
-        <p class="religious-note">Фильтр помогает сохранять скромность и уважение, но не является религиозным заключением. Перед отправкой перечитайте письмо.</p>
-      </section>
-    </div>
-
     <div class="panel-layer" id="libraryLayer" aria-hidden="true">
       <button class="panel-backdrop" id="libraryBackdrop" type="button" aria-label="Закрыть коллекцию"></button>
       <section class="side-panel library-panel" role="dialog" aria-modal="true" aria-labelledby="libraryTitle">
@@ -218,6 +148,7 @@
           <div><p class="panel-eyebrow">50 ПРОВЕРЕННЫХ ТЕКСТОВ</p><h2 id="libraryTitle">Коллекция</h2></div>
           <div class="panel-header-actions"><button class="panel-home go-home" type="button">⌂ На главную</button><button class="panel-close" id="libraryClose" type="button" aria-label="Закрыть">×</button></div>
         </header>
+        <p class="library-pick-note" id="libraryPickNote" hidden></p>
         <div class="library-summary"><strong id="accessLabel">10 писем открыто</strong><span>Каждый текст автоматически обращается к выбранному человеку.</span></div>
         <div class="category-row" id="categoryRow" role="tablist">
           <button class="is-active" data-category="all" type="button">Все</button>
@@ -261,6 +192,7 @@
                 <label><span id="emailLoginEmailLabel">E-mail</span><input id="emailLoginEmail" type="email" autocomplete="email" maxlength="254" required /></label>
                 <label><span id="emailLoginPasswordLabel">Пароль</span><input id="emailLoginPassword" type="password" autocomplete="current-password" minlength="8" maxlength="128" required /></label>
                 <button class="email-auth-primary" id="emailLoginSubmit" type="submit">Войти</button>
+                <button class="email-auth-secondary" id="emailLoginWithCode" type="button">Войти по коду из письма</button>
               </form>
               <form class="email-auth-form" id="emailRegisterPane" autocomplete="on" hidden>
                 <label><span id="emailRegisterNameLabel">Ваше имя</span><input id="emailRegisterName" type="text" autocomplete="name" maxlength="60" /></label>
@@ -342,6 +274,7 @@
               <label class="admin-notice-message" for="adminVipMessage"><span id="adminVipMessageLabel">Личное сообщение · необязательно</span><textarea id="adminVipMessage" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter" aria-describedby="adminVipMessageHint adminVipMessageCount"></textarea></label>
               <div class="admin-notice-meta"><small id="adminVipMessageHint">Получатель увидит это сообщение внутри приложения.</small><output id="adminVipMessageCount" for="adminVipMessage">0 / 240</output></div>
               <button id="adminGrantVip" type="button">Выдать VIP</button>
+              <button id="adminGrantForever" type="button">Выдать навсегда</button>
               <button class="admin-revoke" id="adminRevokeVip" type="button">Отозвать VIP</button>
             </div>
           </div>
@@ -405,7 +338,7 @@
           <span class="premium-mini">ПОЛНАЯ ВЕРСИЯ</span>
           <h3>Откройте полный GlowLetter</h3>
           <p>Все 50 писем, личный редактор, проверка adab и новые функции по ежемесячной подписке.</p>
-          <button id="settingsPurchase" type="button">Подписаться за <span class="price-label">21,99 €/месяц</span></button>
+          <button id="settingsPurchase" type="button">Открыть полный доступ · <span class="price-label">2,99 €/месяц</span></button>
         </div>
 
         <button class="install-button" id="manageSubscriptionButton" type="button" hidden>◌ Управление подпиской</button>
@@ -563,9 +496,10 @@
         <div class="paywall-orbit" aria-hidden="true"><span>✦</span><i>♡</i><b>☾</b></div>
         <p class="panel-eyebrow">GLOWLETTER · ПОЛНЫЙ ДОСТУП</p>
         <h2 id="paywallTitle">Ещё 40 писем<br /><em>для важных людей</em></h2>
-        <p>Первые 10 писем остаются бесплатными. Полная коллекция и личный редактор доступны по автопродлеваемой ежемесячной подписке.</p>
-        <ul><li>все 50 персональных писем</li><li>создание собственного письма</li><li>проверка уважительности и adab</li><li>новые тексты и функции</li></ul>
-        <button class="purchase-button" id="purchaseButton" type="button"><span>Оформить подписку</span><strong class="price-label">21,99 €/месяц</strong></button>
+        <p id="paywallLead">Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка 2,99 €/месяц — она автоматически продлевается каждый месяц, пока вы не отмените её в аккаунте магазина, — либо разовая покупка навсегда.</p>
+        <ul><li>все 50 писем на трёх языках</li><li>моменты, напоминания и QR-ссылки</li><li>новые тексты и функции</li></ul>
+        <button class="purchase-button" id="purchaseButton" type="button"><span>Оформить подписку</span><strong class="price-label">2,99 €/месяц</strong></button>
+        <button class="purchase-button purchase-lifetime" id="purchaseLifetimeButton" type="button"><span>Купить навсегда</span><strong class="lifetime-price-label">21,99 € разово</strong></button>
         <button class="restore-button" id="restoreButton" type="button">Восстановить подписку</button>
         <button class="restore-button" id="paywallManageSubscription" type="button">Управление подпиской</button>
         <button class="paywall-home go-home" type="button">⌂ На главную</button>
@@ -576,14 +510,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=31"></script>
-  <script src="vendor/supabase-2.110.9.js?v=31"></script>
-  <script src="letters.js?v=31"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=31"></script>
-  <script src="qr-code.js?v=31"></script>
-  <script src="app.js?v=31"></script>
-  <script src="email-auth.js?v=31"></script>
-  <script src="moments.js?v=31"></script>
-  <script src="experience.js?v=31"></script>
+  <script src="config.js?v=32"></script>
+  <script src="vendor/supabase-2.110.9.js?v=32"></script>
+  <script src="letters.js?v=32"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=32"></script>
+  <script src="qr-code.js?v=32"></script>
+  <script src="app.js?v=32"></script>
+  <script src="email-auth.js?v=32"></script>
+  <script src="moments.js?v=32"></script>
+  <script src="experience.js?v=32"></script>
 </body>
 </html>

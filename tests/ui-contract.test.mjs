@@ -9,6 +9,7 @@ const read = relative => fs.readFileSync(path.join(root, relative), "utf8");
 
 const index = read("index.html");
 const app = read("app.js");
+const config = read("config.js");
 assert.doesNotMatch(app, /Вечер у озера, живой дождь|An evening by the lake, living rain|Un soir au bord du lac, une pluie vivante/);
 const styles = read("styles.css");
 const experienceStyles = read("experience.css");
@@ -93,8 +94,7 @@ assert.match(stopSpeechBody, /window\.speechSynthesis\?\.cancel\(\)/, "speech cl
 assert.doesNotMatch(stopSpeechBody, /(?:^|[^.\w])speechSynthesis\?\.cancel\(\)/, "speech cleanup must not reference an undeclared speechSynthesis global");
 assert.match(app, /\$\$\(["']\.go-home["']\)\.forEach\([^\n]*addEventListener\(["']click["'],\s*goHome\)/);
 assert.match(app, /#soundButton[^\n]*addEventListener\(["']click["'][^\n]*(?:pauseMusic|playMusic)/);
-assert.match(app, /#aiOpenTop[^\n]*addEventListener\(["']click["'][^\n]*requestPremiumFeature/);
-assert.doesNotMatch(styles, /\.ai-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "smart editor title must scroll away with its content");
+assert.doesNotMatch(index, /id=["']aiOpenTop["']/, "the composer entry in the top bar must stay removed");
 
 // Reply assistance is intentionally absent, including its former deep link.
 for (const id of ["replyOpenHome", "replyModeTab", "replyComposerPane", "replyForm", "replyIncoming", "replyGeneratedCard"]) {
@@ -104,15 +104,18 @@ assert.doesNotMatch(index, /data-ai-mode=["']reply["']|reply-engine\.js/);
 assert.doesNotMatch(app, /function\s+(?:generateReply|remoteComposeReply)\s*\(|CONFIG\.aiReplyFunction|#replyIncoming|#replyOpenHome/);
 assert.doesNotMatch(app, /params\.get\(\s*["']reply["']\s*\)|[?&]reply=1/);
 
-// Personal letters use the current idea and selected length, and stale drafts are invalidated.
-for (const id of ["aiIdea", "aiLength", "focusReadingButton"]) {
-  assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist`);
+// The letter composer and every trace of text generation are gone: only the 50 letters remain.
+for (const id of ["aiIdea", "aiLength", "aiLayer", "generateButton", "ownTextEditor"]) {
+  assert.doesNotMatch(index, new RegExp(`id=["']${id}["']`), `${id} must stay removed`);
 }
-assert.match(app, /function cleanLetterIdea\(/);
-assert.match(app, /function fitLetterLength\(/);
-assert.match(app, /JSON\.stringify\(\{ mode: "letter"[\s\S]{0,220}idea, length: resolvedLength/);
-assert.match(app, /#aiIdea[^\n]*addEventListener\(["']input["'],\s*invalidateLetterDraft\)/);
-assert.match(app, /#aiLength[^\n]{0,260}addEventListener\(["']change["'][^\n]{0,220}invalidateLetterDraft\(\)/);
+assert.doesNotMatch(app, /function cleanLetterIdea/);
+assert.doesNotMatch(app, /function fitLetterLength/);
+assert.doesNotMatch(app, /CONFIG.aiEndpoint/);
+assert.doesNotMatch(config, /aiEndpoint/);
+assert.match(app, /function openLetterPicker/);
+assert.match(app, /function pickLetterForContext/);
+assert.match(app, /data-action="pick"/);
+assert.match(index, /id=["']libraryPickNote["']/);
 assert.match(app, /function setReadingFocus\(/);
 assert.match(styles, /body\.reading-focus[\s\S]{0,500}#focusReadingButton/);
 
@@ -146,8 +149,8 @@ assert.doesNotMatch(fullscreenShellBody, /display-mode: standalone/);
 // Paid feature badges are consistently named VIP and use the gold treatment.
 assert.doesNotMatch(index, />\s*PRO\s*</);
 assert.doesNotMatch(experience, /pro:\s*"PRO"/);
-assert.match(index, /class="vip-badge">VIP</);
-assert.match(styles, /\.vip-badge[^\{]*\{[^\}]*linear-gradient\([^\}]*#fff3b5[^\}]*#dca93a/i);
+assert.doesNotMatch(index, /class="vip-badge"/, "the VIP badge left with the composer entries");
+// (стиль .vip-badge больше нигде не используется)
 
 // All four VIP frame choices visibly select with a checkmark and decorate generated letters.
 assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl"\]/);
@@ -155,12 +158,8 @@ for (const frame of ["hearts", "moon", "forest", "pearl"]) {
   assert.match(experienceStyles, new RegExp(`body\\.gl-premium-active\\[data-gl-frame=["']${frame}["']\\]`), `${frame} must define VIP frame tokens`);
   assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-layer`), `${frame} must decorate the opened letter`);
 }
-assert.match(index, /class=["']generated-card["'][^>]*id=["']generatedCard["']/, "generated letters must receive the VIP result-card frame");
+assert.doesNotMatch(index, /id=["']generatedCard["']/, "the generated-letter card left with the composer");
 assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
-assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.ai-panel/);
-assert.match(experienceStyles, /body\.gl-premium-active:not\(\[data-gl-frame="none"\]\) \.generated-card/);
-assert.match(experienceStyles, /\.generated-card::before[^\{]*\{[^\}]*border:\s*1px solid var\(--gl-vip-stroke\)/);
-assert.match(experienceStyles, /\.generated-card::after[^\{]*\{[^\}]*content:\s*var\(--gl-vip-mark\)/);
 assert.match(experience, /mark\.textContent\s*=\s*active\s*\?\s*["']✓["']/u);
 assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*#a75c79[^\}]*opacity:\s*1/);
 assert.match(experience, /glowletter-access-change/);
@@ -174,7 +173,8 @@ console.log(JSON.stringify({
   themes: 4,
   liveWeather: true,
   replyAssistantRemoved: true,
-  personalLetterGenerator: true,
+  personalLetterGenerator: false,
+  letterPicker: true,
   neutralLetters: [5, 12],
   brand: "GlowLetter"
 }));

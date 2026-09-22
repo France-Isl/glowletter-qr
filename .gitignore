@@ -11,3 +11,4 @@ supabase/.temp/
 .env.*
 service-account*.json
 google-play*.json
+.claude/

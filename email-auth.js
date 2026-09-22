@@ -4,6 +4,10 @@
   const $ = selector => document.querySelector(selector);
   const COPY = {
     ru: {
+      loginWithCode: "Войти по коду из письма",
+      codeLoginTitle: "Введите код для входа",
+      codeSentLogin: "Код для входа отправлен на {email}.",
+      noAccount: "Аккаунт с таким e-mail не найден. Зарегистрируйтесь.",
       title: "Вход или регистрация по e-mail",
       or: "или по e-mail",
       login: "Войти",
@@ -33,6 +37,10 @@
       unavailable: "Вход по e-mail временно недоступен. Проверьте интернет и повторите."
     },
     en: {
+      loginWithCode: "Sign in with an email code",
+      codeLoginTitle: "Enter the sign-in code",
+      codeSentLogin: "A sign-in code was sent to {email}.",
+      noAccount: "No account was found for this e-mail. Please register.",
       title: "Sign in or register with email",
       or: "or use email",
       login: "Sign in",
@@ -62,6 +70,10 @@
       unavailable: "Email sign-in is temporarily unavailable. Check your connection and try again."
     },
     fr: {
+      loginWithCode: "Se connecter avec un code",
+      codeLoginTitle: "Saisissez le code de connexion",
+      codeSentLogin: "Un code de connexion a été envoyé à {email}.",
+      noAccount: "Aucun compte ne correspond à cet e-mail. Inscrivez-vous.",
       title: "Connexion ou inscription par e-mail",
       or: "ou avec l’e-mail",
       login: "Connexion",
@@ -100,6 +112,7 @@
   let resendUntil = 0;
   let countdownTimer = 0;
   let pendingEmailMemory = "";
+  let verificationPurpose = "signup";
   let statusRecord = null;
 
   function language() {
@@ -254,7 +267,8 @@
     if (focusTab) safeFocus(mode === "login" ? loginTab : registerTab);
   }
 
-  function showVerification(email, statusKey = "sent", startCooldown = true) {
+  function showVerification(email, statusKey = "sent", startCooldown = true, purpose = "signup") {
+    verificationPurpose = purpose === "login" ? "login" : "signup";
     setPendingEmail(email);
     const tabList = $(".email-auth-tabs");
     const loginPane = $("#emailLoginPane");
@@ -265,6 +279,7 @@
     if (registerPane) registerPane.hidden = true;
     if (verifyPane) verifyPane.hidden = false;
     $("#emailCodeSentTo").textContent = email;
+    $("#emailCodeTitle").textContent = c(verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
     $("#emailCode").value = "";
     localizedStatus(statusKey, statusKey === "sent" ? "success" : "", { email });
     setResendUntil(startCooldown ? Date.now() + RESEND_DELAY_MS : storedResendUntil());
@@ -297,7 +312,7 @@
       emailPasswordHint: "hint",
       emailLoginSubmit: "signIn",
       emailRegisterSubmit: "getCode",
-      emailCodeTitle: "codeTitle",
+      emailLoginWithCode: "loginWithCode",
       emailCodeLabel: "codeLabel",
       emailVerifySubmit: "verify",
       emailChangeAddress: "change"
@@ -306,6 +321,8 @@
       const node = document.getElementById(id);
       if (node) node.textContent = c(key);
     });
+    const codeTitle = document.getElementById("emailCodeTitle");
+    if (codeTitle) codeTitle.textContent = c(verificationPurpose === "login" ? "codeLoginTitle" : "codeTitle");
     if (statusRecord) localizedStatus(statusRecord.key, statusRecord.state, statusRecord.replacements);
     updateCountdown();
   }
@@ -364,6 +381,28 @@
     }
   }
 
+  async function loginWithCode() {
+    if (busy) return;
+    const api = window.GlowLetterCloud;
+    const email = emailValue("#emailLoginEmail");
+    if (!email) {
+      safeFocus($("#emailLoginEmail"));
+      return localizedStatus("invalid", "error");
+    }
+    if (!api?.sendLoginCode) return localizedStatus("unavailable", "error");
+    setBusy(true, "sending");
+    try {
+      await api.sendLoginCode(email);
+      $("#emailLoginPassword").value = "";
+      showVerification(email, "codeSentLogin", true, "login");
+    } catch (error) {
+      if (String(error?.message || "").toLowerCase().includes("signups not allowed")) localizedStatus("noAccount", "error");
+      else reportError(error);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function verify(event) {
     event.preventDefault();
     if (busy || !validForm(event.currentTarget)) return;
@@ -371,11 +410,12 @@
     const token = String($("#emailCode").value || "").replace(/\D/g, "").slice(0, 6);
     const api = window.GlowLetterCloud;
     if (!email || token.length !== 6) return localizedStatus("invalid", "error");
-    if (!api?.verifyEmailCode) return localizedStatus("unavailable", "error");
+    const confirmCode = verificationPurpose === "login" ? api?.verifyLoginCode : api?.verifyEmailCode;
+    if (!confirmCode) return localizedStatus("unavailable", "error");
     let retryCode = false;
     setBusy(true, "checking");
     try {
-      await api.verifyEmailCode(email, token);
+      await confirmCode(email, token);
       clearPendingVerification();
       $("#emailCode").value = "";
       localizedStatus("ready", "success");
@@ -395,11 +435,12 @@
     if (busy || Date.now() < resendUntil) return;
     const email = pendingEmail();
     const api = window.GlowLetterCloud;
-    if (!email || !api?.resendEmailCode) return localizedStatus("unavailable", "error");
+    const resendCode = verificationPurpose === "login" ? api?.sendLoginCode : api?.resendEmailCode;
+    if (!email || !resendCode) return localizedStatus("unavailable", "error");
     if (typeof navigator !== "undefined" && navigator.onLine === false) return localizedStatus("unavailable", "error");
     setBusy(true, "sending");
     try {
-      await api.resendEmailCode(email);
+      await resendCode(email);
       setResendUntil(Date.now() + RESEND_DELAY_MS);
       localizedStatus("resent", "success");
     } catch (error) {
@@ -439,6 +480,7 @@
     $("#emailLoginTab").addEventListener("keydown", handleTabKeydown);
     $("#emailRegisterTab").addEventListener("keydown", handleTabKeydown);
     $("#emailLoginPane").addEventListener("submit", login);
+    $("#emailLoginWithCode").addEventListener("click", loginWithCode);
     $("#emailRegisterPane").addEventListener("submit", register);
     $("#emailVerifyPane").addEventListener("submit", verify);
     $("#emailResendCode").addEventListener("click", resend);

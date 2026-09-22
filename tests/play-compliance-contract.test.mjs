@@ -65,8 +65,8 @@ assert.match(migration, /pg_advisory_xact_lock/i);
 assert.match(migration, />= 5[\s\S]{0,180}>= 20/i);
 assert.match(migration, /interval '6 months'/i);
 
-// Public disclosures are trilingual and match the actual local-editor configuration.
-assert.match(config, /aiEndpoint:\s*["']["']/);
+// Public disclosures are trilingual; no text generation remains in the app.
+assert.doesNotMatch(config, /aiEndpoint/, "the AI endpoint must stay removed from config");
 for (const marker of ["id=\"ru\"", "id=\"en\"", "id=\"fr\""]) {
   assert.match(privacy, new RegExp(marker));
   assert.match(terms, new RegExp(marker));

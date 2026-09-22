@@ -32,7 +32,7 @@ assert.match(config, /supabaseUrl:\s*"https:\/\/xzzngrquomyiglktroqi\.supabase\.
 assert.match(config, /supabasePublishableKey:\s*"sb_publishable_/);
 assert.match(config, /publicShareUrl:\s*"https:\/\/bezam\.org\/"/);
 assert.doesNotMatch(config, /service_role|sb_secret_/i);
-assert.match(config, /aiEndpoint:\s*""/);
+assert.doesNotMatch(config, /aiEndpoint/, "the AI endpoint must stay removed from config");
 assert.doesNotMatch(config, /aiReply(?:Function|Endpoint)|generate-reply/i);
 
 // Final commercial plan: one monthly subscription and a separately restorable legacy purchase.
@@ -40,10 +40,13 @@ assert.match(config, /productId:\s*"glowletter_premium_monthly"/);
 assert.match(config, /subscriptionProductId:\s*"glowletter_premium_monthly"/);
 assert.match(config, /subscriptionBasePlanId:\s*"monthly"/);
 assert.match(config, /legacyProductId:\s*"full_access"/);
-assert.match(config, /defaultPrice:\s*"21,99\s*€\/месяц"/u);
-assert.match(index, /21,99\s*€\/месяц/u);
-assert.match(app, /€21\.99\/month/);
-assert.match(app, /21,99\s*€\/mois/u);
+assert.match(config, /defaultPrice:\s*"2,99\s*€\/месяц"/u);
+assert.match(config, /defaultLifetimePrice:\s*"21,99\s*€\s*разово"/u);
+assert.match(config, /lifetimeProductId:\s*"glowletter_lifetime"/);
+assert.match(index, /2,99\s*€\/месяц/u);
+assert.match(index, /21,99\s*€\s*разово/u);
+assert.match(app, /€2\.99\/month/);
+assert.match(app, /2,99\s*€\/mois/u);
 assert.match(app, /автоматически продлевается каждый месяц/u);
 assert.match(app, /renews automatically every month/i);
 assert.match(app, /se renouvelle automatiquement chaque mois/i);
@@ -52,10 +55,10 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=31") < index.indexOf("letters.js?v=31"));
-assert.ok(index.indexOf("letters.js?v=31") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=31"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=31") < index.indexOf("qr-code.js?v=31"));
-assert.ok(index.indexOf("qr-code.js?v=31") < index.indexOf("app.js?v=31"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=32") < index.indexOf("letters.js?v=32"));
+assert.ok(index.indexOf("letters.js?v=32") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=32"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=32") < index.indexOf("qr-code.js?v=32"));
+assert.ok(index.indexOf("qr-code.js?v=32") < index.indexOf("app.js?v=32"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -98,13 +101,14 @@ assert.doesNotMatch(index, /reply-engine\.js|data-ai-mode=["']reply["']|Помо
 assert.doesNotMatch(app, /CONFIG\.aiReplyFunction|function\s+(?:generateReply|remoteComposeReply)\s*\(|#replyIncoming|#replyOpenHome/);
 assert.doesNotMatch(app, /params\.get\(\s*["']reply["']\s*\)|[?&]reply=1/);
 
-// Personal letter creation remains available after the reply-only feature is removed.
-for (const id of ["aiOpenHome", "letterComposerPane", "aiForm", "aiIdea", "aiLength", "generatedCard"]) {
-  assert.match(index, new RegExp(`id=["']${id}["']`), `${id} is required by the letter generator`);
+// The letter composer is gone for good: the collection is the only source of letters.
+for (const id of ["aiOpenHome", "aiOpenTop", "aiOpenLetter", "aiLayer", "letterComposerPane", "aiForm", "aiIdea", "aiLength", "generatedCard", "ownTextEditor"]) {
+  assert.doesNotMatch(index, new RegExp(`id=["']${id}["']`), `${id} must stay removed with the letter composer`);
 }
-assert.match(app, /async function generateLetter\(/);
-assert.match(app, /JSON\.stringify\(\{ mode: "letter"/);
-assert.match(app, /#aiForm[^\n]*addEventListener\(["']submit["'][^\n]*generateLetter\(\)/);
+assert.match(index, /id=["']libraryPickNote["']/, "the collection needs its pick-a-letter note");
+assert.doesNotMatch(app, /async function generateLetter\(/);
+assert.doesNotMatch(app, /JSON\.stringify\(\{ mode: "letter"/);
+assert.match(app, /function openLetterPicker\(/);
 assert.match(app, /params\.get\(\s*["']compose["']\s*\)\s*===\s*["']1["']/);
 
 // Supabase OAuth, row-level progress sync, and in-app deletion contracts.
@@ -210,19 +214,19 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v31 must update its own cache only and never cache personalized links.
+// Service-worker v32 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v31`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v32`/);
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=31`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=32`));
 }
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=31`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=32`));
 }
-assert.match(index, /fonts\/local-fonts\.css\?v=31/);
+assert.match(index, /fonts\/local-fonts\.css\?v=32/);
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(worker, /fonts\/local-fonts\.css\?v=31/);
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=31"/);
+assert.match(worker, /fonts\/local-fonts\.css\?v=32/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=32"/);
 assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
@@ -239,7 +243,8 @@ assert.match(privacy, /Supabase Auth/);
 assert.match(privacy, /Google или Facebook/u);
 assert.doesNotMatch(privacy, /Apple ID/u);
 assert.doesNotMatch(privacy, /Google Gemini|секрет модели/u);
-assert.match(privacy, /Персональный редактор создаёт письмо/u);
+assert.match(privacy, /Письмо выбирается из 50 готовых текстов/u);
+assert.doesNotMatch(privacy, /Персональный редактор|искусственн\w+ интеллект\w* (?:настроен|передаётся)/u);
 assert.match(privacy, /(?:ежемесячн|monthly|mensuel)/iu);
 assert.match(privacy, /(?:удалить аккаунт|удаление аккаунта)/iu);
 assert.match(terms, /(?:21[,.]99|цена[^<]*(?:магазин|store))/iu);
@@ -262,7 +267,7 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v31",
+  cache: "v32",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,

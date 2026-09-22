@@ -11,7 +11,7 @@ const experience = read("experience.js");
 const styles = read("experience.css");
 const localFonts = read("fonts/local-fonts.css");
 
-assert.match(index, /fonts\/local-fonts\.css\?v=31/u);
+assert.match(index, /fonts\/local-fonts\.css\?v=32/u);
 for (const family of ["Cormorant Garamond", "Literata", "Manrope"]) {
   assert.match(localFonts, new RegExp(`font-family: "${family}"`, "u"));
 }
@@ -20,7 +20,7 @@ assert.match(experience, /const TYPES = \["classic", "elegant", "clear", "poetic
 for (const label of ["Поэтичный", "Литературный", "Poetic", "Literary", "Poétique", "Littéraire"]) {
   assert.match(experience, new RegExp(label, "u"));
 }
-for (const selector of ["#letterTitle", ".letter-text", ".letter-meta", ".signature", ".generated-card textarea"]) {
+for (const selector of ["#letterTitle", ".letter-text", ".letter-meta", ".signature"]) {
   assert.ok(styles.includes(selector), `${selector} must inherit the selected letter typography`);
 }
 assert.match(styles, /body\[data-gl-type="literary"\][^{]*\{[^}]*"Literata"/u);
