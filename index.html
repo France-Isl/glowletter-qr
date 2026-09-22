@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=32" />
+  <link rel="manifest" href="manifest.webmanifest?v=33" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=32" />
-  <link rel="stylesheet" href="styles.css?v=32" />
-  <link rel="stylesheet" href="experience.css?v=32" />
-  <link rel="stylesheet" href="email-auth.css?v=32" />
-  <link rel="stylesheet" href="moments.css?v=32" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=33" />
+  <link rel="stylesheet" href="styles.css?v=33" />
+  <link rel="stylesheet" href="experience.css?v=33" />
+  <link rel="stylesheet" href="email-auth.css?v=33" />
+  <link rel="stylesheet" href="moments.css?v=33" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="moon">
   <div class="app" id="app">
@@ -280,6 +280,7 @@
           </div>
         </section>
 
+        <h3 class="settings-group-title" id="settingsAtmosphereTitle">Атмосфера</h3>
         <div class="atmosphere-grid">
           <button class="atmosphere-card is-active" id="rainToggle" type="button"><i>☂</i><span><strong>Живой дождь</strong><small>крупные капли и брызги</small></span><b>ВКЛ</b></button>
           <button class="atmosphere-card" id="natureToggle" type="button"><i>♬</i><span><strong>Ночной лес</strong><small>сверчки, ветер и лягушки</small></span><b>ВЫКЛ</b></button>
@@ -303,6 +304,7 @@
           <button type="button" data-lang="fr">FR <span>Français</span></button>
         </fieldset>
 
+        <h3 class="settings-group-title" id="settingsLookTitle">Оформление</h3>
         <fieldset class="interface-theme-picker">
           <legend>Цвет интерфейса</legend>
           <div class="theme-choice-grid" role="radiogroup" aria-label="Цвет интерфейса">
@@ -332,12 +334,12 @@
         </fieldset>
 
         <button class="save-settings" id="saveSettingsButton" type="button">Сохранить настройки</button>
-        <button class="install-button qr-open-button settings-primary-qr" id="qrOpenButton" type="button">▦ Сохранить имена и создать QR</button>
+        <button class="install-button qr-open-button settings-primary-qr" id="qrOpenButton" type="button">▦ Создать QR-код</button>
 
         <div class="premium-settings-card">
           <span class="premium-mini">ПОЛНАЯ ВЕРСИЯ</span>
           <h3>Откройте полный GlowLetter</h3>
-          <p>Все 50 писем, личный редактор, проверка adab и новые функции по ежемесячной подписке.</p>
+          <p>Подписка 2,99 €/месяц или разовая покупка навсегда: все письма, моменты и новые функции.</p>
           <button id="settingsPurchase" type="button">Открыть полный доступ · <span class="price-label">2,99 €/месяц</span></button>
         </div>
 
@@ -510,14 +512,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=32"></script>
-  <script src="vendor/supabase-2.110.9.js?v=32"></script>
-  <script src="letters.js?v=32"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=32"></script>
-  <script src="qr-code.js?v=32"></script>
-  <script src="app.js?v=32"></script>
-  <script src="email-auth.js?v=32"></script>
-  <script src="moments.js?v=32"></script>
-  <script src="experience.js?v=32"></script>
+  <script src="config.js?v=33"></script>
+  <script src="vendor/supabase-2.110.9.js?v=33"></script>
+  <script src="letters.js?v=33"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=33"></script>
+  <script src="qr-code.js?v=33"></script>
+  <script src="app.js?v=33"></script>
+  <script src="email-auth.js?v=33"></script>
+  <script src="moments.js?v=33"></script>
+  <script src="experience.js?v=33"></script>
 </body>
 </html>

@@ -146,17 +146,17 @@
   Object.assign(UI.ru, {
     brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
     themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Лунный",themeRose:"Розовый",themeForest:"Лесной",themeSand:"Тёплый",
-    qrOpen:"Сохранить имена и создать QR",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
+    qrOpen:"Создать QR-код",settingsAtmosphere:"Атмосфера",settingsLook:"Оформление",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"↓ Скачать PNG",qrCopyLink:"▣ Скопировать ссылку",qrCopyImage:"▦ Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
   });
   Object.assign(UI.en, {
     brandCopy:"Warm words for the people who truly matter.",stage:"These words found their way to you",locationDenied:"Location is unavailable — showing weather for the nearest fallback city",
     themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Moon",themeRose:"Rose",themeForest:"Forest",themeSand:"Warm",
-    qrOpen:"Save names and create QR",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
+    qrOpen:"Create a QR code",settingsAtmosphere:"Atmosphere",settingsLook:"Appearance",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"↓ Download PNG",qrCopyLink:"▣ Copy link",qrCopyImage:"▦ Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
   });
   Object.assign(UI.fr, {
     brandCopy:"Des mots chaleureux pour les personnes qui comptent vraiment.",stage:"Ces mots ont trouvé leur chemin jusqu’à toi",locationDenied:"La position est indisponible — météo de la ville de secours affichée",
     themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Lune",themeRose:"Rose",themeForest:"Forêt",themeSand:"Chaleureux",
-    qrOpen:"Enregistrer les prénoms et créer le QR",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
+    qrOpen:"Créer un QR code",settingsAtmosphere:"Ambiance",settingsLook:"Apparence",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"↓ Télécharger le PNG",qrCopyLink:"▣ Copier le lien",qrCopyImage:"▦ Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
@@ -195,13 +195,13 @@
     focusRead:"◫ Mode lecture",focusExit:"× Retour",focusHint:"← Balayage ou flèches →"
   });
   Object.assign(UI.ru, {
-    music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
+    music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioSkippedSignIn:"Письмо отправлено без мелодии: чтобы вложить своё аудио, войдите в аккаунт.",audioSkippedFailed:"Письмо отправлено без мелодии: не удалось её загрузить.",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
   });
   Object.assign(UI.en, {
-    music:"Letter audio",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB",audioShareNote:"In a personal link, recipients can play the audio for up to 12 hours.",removeAudio:"× Remove audio",soundOnAria:"Play audio",soundOffAria:"Pause audio",audioTooLarge:"Choose an audio file up to 12 MB",audioUnsupported:"MP3, M4A, AAC, OGG, and WAV are supported",audioSignIn:"Sign in to attach audio securely, or remove the audio before sharing",audioPreparing:"Preparing temporary audio for the recipient…",audioShareFailed:"Audio could not be attached securely. Check your connection and try again.",audioExpired:"This audio link has expired",audioPlayFail:"Tap again to play audio",audioRemoved:"Audio removed",accountPrivacy:"Personal audio stays on this device; a temporary copy is available for up to 12 hours only when you share a personal link."
+    music:"Letter audio",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB",audioShareNote:"In a personal link, recipients can play the audio for up to 12 hours.",removeAudio:"× Remove audio",soundOnAria:"Play audio",soundOffAria:"Pause audio",audioTooLarge:"Choose an audio file up to 12 MB",audioUnsupported:"MP3, M4A, AAC, OGG, and WAV are supported",audioSignIn:"Sign in to attach audio securely, or remove the audio before sharing",audioPreparing:"Preparing temporary audio for the recipient…",audioSkippedSignIn:"The letter was shared without the melody: sign in to attach your own audio.",audioSkippedFailed:"The letter was shared without the melody: it could not be uploaded.",audioShareFailed:"Audio could not be attached securely. Check your connection and try again.",audioExpired:"This audio link has expired",audioPlayFail:"Tap again to play audio",audioRemoved:"Audio removed",accountPrivacy:"Personal audio stays on this device; a temporary copy is available for up to 12 hours only when you share a personal link."
   });
   Object.assign(UI.fr, {
-    music:"Audio de la lettre",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",audioShareNote:"Dans un lien personnel, le destinataire peut écouter l’audio pendant 12 heures maximum.",removeAudio:"× Retirer l’audio",soundOnAria:"Lire l’audio",soundOffAria:"Mettre l’audio en pause",audioTooLarge:"Choisissez un fichier audio de 12 Mo maximum",audioUnsupported:"Formats acceptés : MP3, M4A, AAC, OGG et WAV",audioSignIn:"Connectez-vous pour joindre l’audio en sécurité, ou retirez-le avant le partage",audioPreparing:"Préparation de l’audio temporaire pour le destinataire…",audioShareFailed:"Impossible de joindre l’audio en sécurité. Vérifiez la connexion et réessayez.",audioExpired:"Le lien audio a expiré",audioPlayFail:"Touchez à nouveau pour lire l’audio",audioRemoved:"Audio retiré",accountPrivacy:"L’audio personnel reste sur cet appareil ; une copie temporaire est disponible jusqu’à 12 heures uniquement lors du partage d’un lien personnel."
+    music:"Audio de la lettre",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",audioShareNote:"Dans un lien personnel, le destinataire peut écouter l’audio pendant 12 heures maximum.",removeAudio:"× Retirer l’audio",soundOnAria:"Lire l’audio",soundOffAria:"Mettre l’audio en pause",audioTooLarge:"Choisissez un fichier audio de 12 Mo maximum",audioUnsupported:"Formats acceptés : MP3, M4A, AAC, OGG et WAV",audioSignIn:"Connectez-vous pour joindre l’audio en sécurité, ou retirez-le avant le partage",audioPreparing:"Préparation de l’audio temporaire pour le destinataire…",audioSkippedSignIn:"La lettre a été partagée sans la mélodie : connectez-vous pour joindre votre audio.",audioSkippedFailed:"La lettre a été partagée sans la mélodie : le téléversement a échoué.",audioShareFailed:"Impossible de joindre l’audio en sécurité. Vérifiez la connexion et réessayez.",audioExpired:"Le lien audio a expiré",audioPlayFail:"Touchez à nouveau pour lire l’audio",audioRemoved:"Audio retiré",accountPrivacy:"L’audio personnel reste sur cet appareil ; une copie temporaire est disponible jusqu’à 12 heures uniquement lors du partage d’un lien personnel."
   });
 
   const PICKER_TEXT = {
@@ -2810,7 +2810,7 @@
     setText("#libraryTitle", t("library")); updateLetterPickerNote(); setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
     setText(".library-panel .panel-eyebrow", t("collectionEyebrow")); setText(".library-summary > span", t("collectionNote"));
     const categories = { all: t("all"), warm: t("warm"), gratitude: t("gratitude"), support: t("support"), family: t("family") }; $$("#categoryRow button").forEach(button => button.textContent = categories[button.dataset.category]);
-    setText("#settingsTitle", t("settings")); setText(".settings-panel .panel-eyebrow", t("settingsEyebrow")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
+    setText("#settingsTitle", t("settings")); setText("#settingsAtmosphereTitle", t("settingsAtmosphere")); setText("#settingsLookTitle", t("settingsLook")); setText(".settings-panel .panel-eyebrow", t("settingsEyebrow")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
     setText(".interface-theme-picker legend", t("themeTitle")); $(".theme-choice-grid")?.setAttribute("aria-label", t("themeAria")); const themeLabels = $$(".theme-choice-grid [data-ui-theme] span"); if(themeLabels[0])themeLabels[0].textContent=t("themeMoon");if(themeLabels[1])themeLabels[1].textContent=t("themeRose");if(themeLabels[2])themeLabels[2].textContent=t("themeForest");if(themeLabels[3])themeLabels[3].textContent=t("themeSand"); applyUiTheme(uiTheme, false);
     setText(".profile-picker legend", t("namesSettings")); const settingsNameLabels = $$(".profile-picker .simple-form label > span"); if (settingsNameLabels[0]) settingsNameLabels[0].textContent = t("fromWho"); if (settingsNameLabels[1]) settingsNameLabels[1].textContent = t("forWho"); $("#settingsSenderName").placeholder = t("setupSenderPlaceholder"); $("#settingsRecipientName").placeholder = t("setupRecipientPlaceholder"); setText("#settingsNamesError", t("namesSafety"));
     setText("#rainToggle strong", t("rainTitle")); setText("#rainToggle small", t("rainNote")); setText("#natureToggle strong", t("natureTitle")); setText("#natureToggle small", t("natureNote")); setText("#weatherToggle strong", t("weatherTitle")); setText("#weatherToggle small", t("weatherNote")); setText("#fullscreenToggle strong", t("fullscreenTitle")); setText("#fullscreenToggle small", t("fullscreenNote"));
@@ -3549,6 +3549,9 @@
   }
 
   async function playMusic(quiet = false) {
+    // Тихий режим не должен прятать проблему, когда в письме действительно
+    // есть мелодия: иначе получатель просто не понимает, почему тишина.
+    const silent = quiet && !incomingSharedAudioToken;
     try {
       if (!audio.src) await setAudioSource();
       await audio.play();
@@ -3564,7 +3567,7 @@
         resolvedSharedAudio = null;
         renderAudioControls();
         showToast(t("audioExpired"));
-      } else if (!quiet) {
+      } else if (!silent) {
         showToast(t("audioPlayFail"));
       }
     }
@@ -3947,21 +3950,22 @@
   async function shareLetter(){
     const entry=currentEntry();const url=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);url.search="";url.hash="";
     if(fromName)url.searchParams.set("from",fromName);if(toName)url.searchParams.set("to",toName);url.searchParams.set("lang",lang);url.searchParams.set("msg",encodeSharedMessage(entryText(entry)));
-    const presentation={glScene:document.body.dataset.glScene,glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
-    const presentationDefaults={glScene:"still",glFrame:"none",glInk:"ink",glType:"classic"};
+    const presentation={glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
+    const presentationDefaults={glFrame:"none",glInk:"ink",glType:"classic"};
     Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
     if(!await requestPublishConsent())return;
     url.searchParams.set("rid",createOpaqueReportReference());
     let audioToken = incomingSharedAudioToken;
     if(customAudioBlob){
+      // Если мелодию приложить не удалось, письмо всё равно должно уйти: раньше
+      // здесь стоял return, и человек без входа в аккаунт вообще не мог
+      // поделиться письмом, хотя текст никакого аккаунта не требует.
       try{audioToken=await ensureTemporarySharedAudio();}
       catch(error){
-        if(error?.message==="authentication_required"){
-          showToast(t("audioSignIn"),5200);
-          openPanel(layers.settings);
-        }else if(error?.message==="invalid_audio_metadata")showToast(t("audioUnsupported"));
-        else showToast(t("audioShareFailed"));
-        return;
+        audioToken="";
+        if(error?.message==="authentication_required")showToast(t("audioSkippedSignIn"),6000);
+        else if(error?.message==="invalid_audio_metadata")showToast(t("audioUnsupported"),5200);
+        else showToast(t("audioSkippedFailed"),5200);
       }
     }
     if(SHARED_AUDIO_TOKEN_PATTERN.test(audioToken||""))url.hash=new URLSearchParams({audio:audioToken}).toString();
@@ -4284,7 +4288,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=32", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=33", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -4321,6 +4325,10 @@
       }else{selectedTrack=-1;localStorage.removeItem("nurTrack");}
     }catch{selectedTrack=-1;localStorage.removeItem("nurTrack");}
     renderAudioControls();
+    // Готовим ссылку на присланное аудио заранее. Иначе первый тап уходит на
+    // сетевой запрос, и к моменту play() жест уже «протух» — на iPhone браузер
+    // отклоняет воспроизведение, причём молча.
+    if(incomingSharedAudioToken)setAudioSource().catch(()=>{});
     createAtmosphere();await setupBackground();
     if(params.get("compose")==="1"||params.get("library")==="1")openPanel(layers.library);
     renderWeather();

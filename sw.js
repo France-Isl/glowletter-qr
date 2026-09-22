@@ -1,9 +1,9 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v32`;
+const CACHE = `${CACHE_PREFIX}v33`;
 const CORE = [
   "./",
   "index.html",
-  "fonts/local-fonts.css?v=32",
+  "fonts/local-fonts.css?v=33",
   "fonts/cormorant-normal-cyrillic-ext.woff2",
   "fonts/cormorant-normal-cyrillic.woff2",
   "fonts/cormorant-normal-latin-ext.woff2",
@@ -24,20 +24,20 @@ const CORE = [
   "fonts/manrope-normal-cyrillic.woff2",
   "fonts/manrope-normal-latin-ext.woff2",
   "fonts/manrope-normal-latin.woff2",
-  "styles.css?v=32",
-  "experience.css?v=32",
-  "email-auth.css?v=32",
-  "moments.css?v=32",
-  "config.js?v=32",
-  "vendor/supabase-2.110.9.js?v=32",
-  "vendor/qrcode-generator-1.4.4.min.js?v=32",
-  "letters.js?v=32",
-  "qr-code.js?v=32",
-  "app.js?v=32",
-  "email-auth.js?v=32",
-  "moments.js?v=32",
-  "experience.js?v=32",
-  "manifest.webmanifest?v=32",
+  "styles.css?v=33",
+  "experience.css?v=33",
+  "email-auth.css?v=33",
+  "moments.css?v=33",
+  "config.js?v=33",
+  "vendor/supabase-2.110.9.js?v=33",
+  "vendor/qrcode-generator-1.4.4.min.js?v=33",
+  "letters.js?v=33",
+  "qr-code.js?v=33",
+  "app.js?v=33",
+  "email-auth.js?v=33",
+  "moments.js?v=33",
+  "experience.js?v=33",
+  "manifest.webmanifest?v=33",
   "icon.svg",
   "privacy.html",
   "assets/auth/apple-continue-ru.png",
@@ -73,9 +73,9 @@ self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  // Safari and Android WebView use byte ranges for MP4 playback. Do not put a
-  // partial 206 response into the normal asset cache.
-  if (event.request.destination === "video" || event.request.headers.has("range")) {
+  // Byte-range requests (audio playback) must not land in the asset cache as
+  // partial 206 responses.
+  if (event.request.headers.has("range")) {
     event.respondWith(fetch(event.request));
     return;
   }

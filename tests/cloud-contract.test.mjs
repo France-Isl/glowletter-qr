@@ -55,10 +55,10 @@ assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=32") < index.indexOf("letters.js?v=32"));
-assert.ok(index.indexOf("letters.js?v=32") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=32"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=32") < index.indexOf("qr-code.js?v=32"));
-assert.ok(index.indexOf("qr-code.js?v=32") < index.indexOf("app.js?v=32"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=33") < index.indexOf("letters.js?v=33"));
+assert.ok(index.indexOf("letters.js?v=33") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=33"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=33") < index.indexOf("qr-code.js?v=33"));
+assert.ok(index.indexOf("qr-code.js?v=33") < index.indexOf("app.js?v=33"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -185,7 +185,8 @@ assert.match(shareLetterBody, /nativeShareBridge\(\)/);
 assert.match(shareLetterBody, /nativeBridge\.share\(data\.title,data\.text,data\.url\)/);
 assert.match(shareLetterBody, /navigator\.share\(data\)/);
 assert.match(shareLetterBody, /openShareFallback\(data\.url,\{title:data\.title,message:data\.text\}\)/);
-for (const key of ["glScene", "glFrame", "glInk", "glType"]) assert.match(shareLetterBody, new RegExp(key));
+for (const key of ["glFrame", "glInk", "glType"]) assert.match(shareLetterBody, new RegExp(key));
+assert.doesNotMatch(shareLetterBody, /glScene/, "video scenes are gone, nothing to carry in the link");
 assert.doesNotMatch(shareLetterBody, /acceptedBetaCapability|BETA_PARAMETER/);
 assert.doesNotMatch(shareLetterBody, /searchParams\.set\(\s*["'](?:access|beta|gl_access)["']/);
 assert.doesNotMatch(experience, /#shareButton[\s\S]{0,100}addEventListener/, "experience styling must not intercept the single share action");
@@ -214,19 +215,19 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
   assert.doesNotMatch(stateBody, new RegExp(`\\b${forbidden}\\b`));
 }
 
-// Service-worker v32 must update its own cache only and never cache personalized links.
+// Service-worker v33 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v32`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v33`/);
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=32`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=33`));
 }
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=32`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=33`));
 }
-assert.match(index, /fonts\/local-fonts\.css\?v=32/);
+assert.match(index, /fonts\/local-fonts\.css\?v=33/);
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(worker, /fonts\/local-fonts\.css\?v=32/);
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=32"/);
+assert.match(worker, /fonts\/local-fonts\.css\?v=33/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=33"/);
 assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
@@ -267,7 +268,7 @@ assert.equal(crypto.createHash("sha256").update(normalizedVendorBuffer).digest("
 console.log(JSON.stringify({
   ok: true,
   sdk: vendorMetadata.version,
-  cache: "v32",
+  cache: "v33",
   subscription: "glowletter_premium_monthly/monthly",
   price: "EUR 21.99 monthly",
   letters: letters.length,

@@ -11,7 +11,7 @@ const experience = read("experience.js");
 const styles = read("experience.css");
 const localFonts = read("fonts/local-fonts.css");
 
-assert.match(index, /fonts\/local-fonts\.css\?v=32/u);
+assert.match(index, /fonts\/local-fonts\.css\?v=33/u);
 for (const family of ["Cormorant Garamond", "Literata", "Manrope"]) {
   assert.match(localFonts, new RegExp(`font-family: "${family}"`, "u"));
 }
@@ -36,13 +36,11 @@ assert.match(app, /Math\.floor\(maxHeight \/ Math\.max\(1, lines\.length\)\)/u);
 assert.match(app, /function fitCanvasSingleLine\(/u);
 assert.match(read("styles.css"), /\.letter #letterTitle\s*\{/u);
 
-assert.doesNotMatch(experience, /\{ id: "kot",/u);
-assert.match(experience, /requestedScene === "kot" \? "kotyta"/u);
-assert.equal(fs.existsSync(path.join(root, "assets/video/kot.mp4")), false);
-assert.equal(fs.existsSync(path.join(root, "assets/video/kot.jpg")), false);
-assert.match(experience, /dataset\.sceneLabelKey/u);
-assert.match(experience, /setAttribute\("aria-label", label\)/u);
-assert.match(styles, /\.gl-scene-grid\s*\{[^}]*grid-template-columns:repeat\(2/u);
+// Видеофоны убраны целиком: остаётся одна фотография озера.
+assert.doesNotMatch(experience, /SCENES|gl-video|assets\/video|mishka|kotyta/u, "no video background may survive");
+assert.equal(fs.existsSync(path.join(root, "assets/video")), false, "the video folder must be gone");
+assert.match(experience, /--gl-paper-alpha/u, "letter paper opacity is now a fixed, readable value");
+assert.doesNotMatch(read("sw.js"), /destination === "video"/u);
 assert.match(experience, /\["glFrame", "glInk", "glType"\]\.some/u);
 
-console.log(JSON.stringify({ ok: true, textStyles: 5, newStyles: ["poetic", "literary"], liveScenes: 3 }));
+  console.log(JSON.stringify({ ok: true, textStyles: 5, newStyles: ["poetic", "literary"], liveScenes: 0 }));

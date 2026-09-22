@@ -149,11 +149,12 @@ main { min-height: 100svh; }
 
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
 .form-grid label, .wide-label { display: grid; gap: 7px; }
-.form-grid label > span, .wide-label > span, .track-picker legend, .gender-picker legend { color: #927281; font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-input, textarea, select { width: 100%; border: 1px solid rgba(143,91,112,.18); border-radius: 13px; outline: 0; color: #513846; background: rgba(255,255,255,.72); transition: border-color .2s, box-shadow .2s; }
+.form-grid label > span, .wide-label > span, .track-picker legend, .gender-picker legend { color: #66414f; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
+input, textarea, select { width: 100%; border: 1px solid rgba(143,91,112,.28); border-radius: 13px; outline: 0; color: #35232c; font-weight: 600; background: rgba(255,255,255,.88); transition: border-color .2s, box-shadow .2s; }
 input, select { height: 48px; padding: 0 13px; }
 textarea { resize: vertical; min-height: 110px; padding: 13px; line-height: 1.55; }
-input:focus, textarea:focus, select:focus { border-color: #c47b97; box-shadow: 0 0 0 4px rgba(197,113,145,.1); }
+input::placeholder, textarea::placeholder { color: #8d7580; font-weight: 500; opacity: 1; }
+input:focus, textarea:focus, select:focus { border-color: #c47b97; box-shadow: 0 0 0 4px rgba(197,113,145,.12); }
 .wide-label { margin-top: 15px; }
 .model-note { display: flex; gap: 11px; align-items: flex-start; margin: 14px 0; padding: 12px 14px; border-radius: 14px; color: #76616b; background: rgba(221,205,217,.35); }
 .model-note > span { color: #aa6982; font-size: 10px; }
@@ -184,7 +185,7 @@ input:focus, textarea:focus, select:focus { border-color: #c47b97; box-shadow: 0
 
 .settings-panel { width: min(500px, 100%); }
 .interface-theme-picker { margin:18px 0 0;padding:0;border:0; }
-.interface-theme-picker legend { margin-bottom:8px;color:var(--ui-muted);font-size:9px;font-weight:800;letter-spacing:.11em;text-transform:uppercase; }
+.interface-theme-picker legend { margin-bottom:9px;color:var(--ui-accent-deep);font-size:12px;font-weight:800;letter-spacing:.02em; }
 .theme-choice-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px; }
 .theme-choice-grid button { display:grid;place-items:center;gap:6px;min-width:0;min-height:57px;padding:8px 4px;border:1px solid var(--ui-border);border-radius:13px;color:var(--ui-muted);background:var(--ui-surface);font-size:7px;font-weight:800; }
 .theme-choice-grid button i { width:23px;height:23px;border:2px solid rgba(255,255,255,.75);border-radius:50%;box-shadow:0 3px 10px rgba(38,30,40,.13);background:linear-gradient(135deg,#656071,#e7e6eb); }
@@ -308,7 +309,7 @@ html[data-gl-platform="android-play"] #weatherToggle { display:none!important; }
 .name-route i { color: #d392aa; font-style: normal; }
 .simple-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .simple-form label { display: grid; gap: 7px; }
-.simple-form label > span { color: #927281; font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.simple-form label > span { color: #66414f; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
 .form-hint { margin: 10px 2px 14px; color: #927e88; font-size: 8px; line-height: 1.55; }
 .quality-note { display: flex; gap: 11px; margin: 16px 0 0; padding: 13px; border: 1px solid rgba(126,102,144,.14); border-radius: 15px; color: #796a76; background: rgba(231,224,238,.42); }
 .quality-note > span { color: #956e9d; }
@@ -497,7 +498,8 @@ html[data-gl-platform="android-play"] #weatherToggle { display:none!important; }
 .atmosphere-card.is-active { border-color: #c77f9a; background: #fff0f4; }
 .atmosphere-card.is-active b { color: #a34f70; }
 .profile-picker, .language-picker, .background-picker { margin: 18px 0 0; padding: 0; border: 0; }
-.profile-picker legend, .language-picker legend, .background-picker legend { margin-bottom: 8px; color: #927281; font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.settings-group-title { margin: 26px 0 12px; padding-bottom: 9px; border-bottom: 1px solid rgba(146,89,110,.16); color: #5c3a48; font-size: 15px; font-weight: 800; letter-spacing: .01em; }
+.profile-picker legend, .language-picker legend, .background-picker legend { margin-bottom: 9px; color: #66414f; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
 .profile-picker .simple-form { gap: 9px; }
 .language-picker { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
 .language-picker legend { grid-column: 1/-1; }
