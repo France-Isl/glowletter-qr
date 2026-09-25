@@ -147,6 +147,7 @@ function fixture({
   acknowledgeStatus = 204,
   refreshedPurchase,
   journalFailure = false,
+  journalMismatch = false,
   rateLimited = false,
   rateLimitFailure = false,
   authenticationFailure = false,
@@ -202,6 +203,7 @@ function fixture({
     },
     async record(record) {
       if (journalFailure) throw new Error("database unavailable");
+      if (journalMismatch) throw new Error("purchase_account_mismatch");
       records.push(structuredClone(record));
     },
   };
@@ -349,6 +351,55 @@ test("a different base plan cannot unlock GlowLetter", async () => {
     error: "subscription_base_plan_mismatch",
   });
   assert.equal(setup.records.length, 0);
+});
+
+test("the yearly base plan unlocks GlowLetter next to the monthly one", async () => {
+  const setup = fixture({
+    env: environment({ GLOWLETTER_PLAY_SUBSCRIPTION_BASE_PLAN_ID: "monthly,yearly" }),
+    purchase: subscriptionPurchase({
+      lineItems: [{
+        productId: SUBSCRIPTION_PRODUCT_ID,
+        expiryTime: new Date(NOW + 365 * 86_400_000).toISOString(),
+        autoRenewingPlan: { autoRenewEnabled: true },
+        offerDetails: { basePlanId: "yearly" },
+      }],
+    }),
+  });
+  const response = await setup.handler(await subscriptionRequest());
+  assert.equal(response.status, 200);
+  assert.equal(setup.records.at(-1).basePlanId, "yearly");
+});
+
+test("a base plan outside the configured list still cannot unlock GlowLetter", async () => {
+  const setup = fixture({
+    env: environment({ GLOWLETTER_PLAY_SUBSCRIPTION_BASE_PLAN_ID: "monthly,yearly" }),
+    purchase: subscriptionPurchase({
+      lineItems: [{
+        productId: SUBSCRIPTION_PRODUCT_ID,
+        expiryTime: new Date(NOW + 30 * 86_400_000).toISOString(),
+        autoRenewingPlan: { autoRenewEnabled: true },
+        offerDetails: { basePlanId: "weekly" },
+      }],
+    }),
+  });
+  const response = await setup.handler(await subscriptionRequest());
+  assert.equal(response.status, 403);
+  assert.deepEqual(await response.json(), {
+    error: "subscription_base_plan_mismatch",
+  });
+});
+
+test("a purchase token bound to another account is a final 403, not a retry", async () => {
+  const setup = fixture({ journalMismatch: true });
+  const response = await setup.handler(await subscriptionRequest());
+  assert.equal(response.status, 403);
+  assert.deepEqual(await response.json(), {
+    error: "purchase_account_mismatch",
+  });
+  assert.equal(
+    setup.calls.some((call) => call.url.endsWith(":acknowledge")),
+    false,
+  );
 });
 
 test("a journal outage prevents acknowledgement and entitlement", async () => {

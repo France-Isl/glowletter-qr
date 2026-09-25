@@ -121,6 +121,23 @@ assert.match(
   /verificationUrl\.toString\(\)\s*==\s*productionVerificationUrl[\s\S]{0,100}cloudProjectNumber\s*==\s*productionCloudProjectNumber/u,
 );
 assert.match(billing, /LEGACY_FULL_ACCESS_PRODUCT_ID/u);
+
+// Подписка на год — тот же товар, основной план yearly. Разовая покупка больше
+// не продаётся: запуска нет, а купленная раньше восстанавливается по пути INAPP.
+assert.match(androidBuild, /"SUBSCRIPTION_YEARLY_BASE_PLAN_ID", quoteBuildConfig\("yearly"\)/u);
+assert.match(billing, /void purchaseYearlySubscription\(\)[\s\S]{0,160}SUBSCRIPTION_YEARLY_BASE_PLAN_ID[\s\S]{0,120}YEARLY_BILLING_PERIOD/u);
+assert.match(billing, /private void purchaseSubscriptionPlan\(String basePlanId, String billingPeriod\)[\s\S]{0,2800}setObfuscatedAccountId[\s\S]{0,400}launchBillingFlow/u);
+assert.doesNotMatch(billing, /void purchaseLifetime\(\)|queryLifetimeProduct/u);
+// Цена за год приходит из Google Play (с налогом страны), а не из кода.
+assert.match(billing, /\.put\("yearlyPriceLabel", yearlyPriceLabel\)/u);
+// Цены грузятся при запуске до проверки входа: каталогу аккаунт не нужен.
+assert.match(billing, /void start\(\)[\s\S]{0,900}refreshStorePrices\(\);[\s\S]{0,120}if \(!verifier\.hasAuthSession\(\)\)/u);
+assert.match(billing, /void onResume\(\)[\s\S]{0,900}!storePricesLoaded[\s\S]{0,200}refreshStorePrices\(\)/u);
+// Запасная DEFAULT_PRICE не выдаётся веб-слою за цену магазина.
+assert.match(billing, /String webPriceLabel\(EntitlementState current\)[\s\S]{0,120}storePricesLoaded && current != null \? current\.priceLabel : ""/u);
+assert.match(billing, /\.put\("priceLabel", webPriceLabel\(current\)\)/u);
+assert.match(billingBridge, /@JavascriptInterface[\s\S]{0,160}void purchaseYearly\(\)/u);
+assert.doesNotMatch(billingBridge, /purchaseLifetime/u);
 assert.match(billing, /BillingClient\.ProductType\.INAPP/u);
 assert.match(verifier, /verifyLegacyOneTimeProduct/u);
 

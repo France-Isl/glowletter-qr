@@ -97,7 +97,7 @@ Deno.serve(async (request: Request) => {
     state: "ready",
     senderName: String(row.sender_name || "").slice(0, 36),
     recipientName: String(row.recipient_name || "").slice(0, 36),
-    language: ["ru", "en", "fr"].includes(String(row.language))
+    language: ["ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"].includes(String(row.language))
       ? row.language
       : "ru",
     title: String(row.title || "").slice(0, 80),

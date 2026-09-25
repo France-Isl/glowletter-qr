@@ -104,7 +104,7 @@ assert.match(styles, /\.vip-notification-card[^{]*\{[^}]*env\(safe-area-inset-bo
 assert.match(styles, /@media\s*\(max-width:\s*360px\)[\s\S]*?\.vip-notification-card/i);
 assert.match(styles, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
 assert.match(styles, /html\[data-gl-perf="lite"\][^{]*\.vip-notice-sparkles/i);
-assert.match(styles, /linear-gradient\([^)]*#fff8d8[^)]*#f0d58a/i, "the unread VIP card must use the gold treatment");
+assert.match(styles, /\.vip-notice-hero \{[^}]*linear-gradient\(145deg,#fdf6e4,var\(--gold-bright\)\)/i, "the unread VIP card must use the gold treatment");
 assert.match(styles, /\.account-user-actions \.account-notification-button\s*\{[^}]*min-height:\s*44px/i);
 
 console.log(JSON.stringify({

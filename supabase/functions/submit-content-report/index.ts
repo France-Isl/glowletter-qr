@@ -38,7 +38,8 @@ async function readJson(request: Request): Promise<Record<string, unknown> | nul
 }
 
 async function sourceHash(request: Request, salt: string): Promise<string> {
-  const forwarded = clean(request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for")?.split(",")[0], 80);
+  const forwardedChain = (request.headers.get("x-forwarded-for") || "").split(",").map((part) => part.trim()).filter(Boolean);
+  const forwarded = clean(request.headers.get("cf-connecting-ip") || forwardedChain[forwardedChain.length - 1], 80);
   const agent = clean(request.headers.get("user-agent"), 300);
   const day = new Date().toISOString().slice(0, 10);
   const bytes = new TextEncoder().encode(`${salt}|${day}|${forwarded}|${agent}`);
@@ -71,7 +72,7 @@ Deno.serve(async (request: Request) => {
   const appVersion = clean(body.appVersion, 32) || "unknown";
   const contentRef = clean(body.contentRef, 80);
   const momentPublicId = clean(body.momentPublicId, 36);
-  if (!KINDS.has(kind) || !CATEGORIES.has(category) || !["ru", "en", "fr"].includes(language) || !["web", "android_play", "ios"].includes(platform) || !REFERENCE.test(contentRef) || (momentPublicId && !UUID.test(momentPublicId))) return json(request, { state: "invalid" }, 400);
+  if (!KINDS.has(kind) || !CATEGORIES.has(category) || !["ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"].includes(language) || !["web", "android_play", "ios"].includes(platform) || !REFERENCE.test(contentRef) || (momentPublicId && !UUID.test(momentPublicId))) return json(request, { state: "invalid" }, 400);
 
   const admin = createClient(supabaseUrl, serviceKey, { auth: { persistSession: false, autoRefreshToken: false }, global: { headers: { "X-Client-Info": "glowletter-content-report/1" } } });
   let reporterUserId: string | null = null;

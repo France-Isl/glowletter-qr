@@ -13,7 +13,10 @@ const androidBridge = read("mobile/android/app/src/main/java/com/franceisl/nurpi
 const androidManifest = read("mobile/android/app/src/main/AndroidManifest.xml");
 const ios = read("mobile/ios/NurPismo/WebViewContainer.swift");
 
-assert.match(index, /id=["']speakButton["'][^>]*aria-pressed=["']false["']/u);
+// Кнопка «Прочитать» убрана по просьбе владельца: озвучка больше не вызывается
+// из интерфейса. Мост к системному движку оставлен рабочим и проверяется ниже,
+// чтобы нативный код не сгнил, пока функция не нужна.
+assert.doesNotMatch(index, /id=["']speakButton["']/u);
 
 // Installed apps prefer their system speech engine; regular browsers retain
 // a guarded Web Speech fallback and never depend on an undeclared global.

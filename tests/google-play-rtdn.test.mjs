@@ -368,6 +368,40 @@ test("numeric Google Cloud project number is accepted in subscription name", asy
   assert.equal(setup.applied.length, 1);
 });
 
+test("authentic notifications this backend does not handle are acknowledged", async () => {
+  for (const notification of [
+    subscriptionNotification({ type: 99 }),
+    {
+      version: "1.0",
+      packageName: PACKAGE_NAME,
+      eventTimeMillis: String(NOW - 2_000),
+      futureNotification: { version: "1.0" },
+    },
+  ]) {
+    const setup = fixture();
+    const response = await setup.handler(await pubSubRequest(notification));
+    assert.equal(response.status, 204);
+    assert.equal(setup.began.length, 0);
+    assert.equal(setup.applied.length, 0);
+    assert.equal(
+      setup.calls.filter((call) => call.url.includes("androidpublisher"))
+        .length,
+      0,
+    );
+  }
+});
+
+test("a forged OIDC token still fails before any notification is parsed", async () => {
+  const setup = fixture();
+  const response = await setup.handler(
+    await pubSubRequest(subscriptionNotification({ type: 99 }), {
+      jwtOverrides: { aud: `${AUDIENCE}/wrong` },
+    }),
+  );
+  assert.equal(response.status, 401);
+  assert.equal(setup.began.length, 0);
+});
+
 test("duplicate Pub/Sub message is acknowledged without a Play API call", async () => {
   const setup = fixture({ beginResult: "duplicate" });
   const response = await setup.handler(

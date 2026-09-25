@@ -5,7 +5,7 @@ import StoreKit
 enum StoreProductCatalog {
     static let subscriptionProductID = "glowletter_premium_monthly"
     static let legacyProductID = "full_access"
-    static let fallbackPriceLabel = "€21.99/month"
+    static let fallbackPriceLabel = "€2.99/month"
     static let entitlementProductIDs: Set<String> = [subscriptionProductID, legacyProductID]
 }
 

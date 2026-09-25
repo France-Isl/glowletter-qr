@@ -39,6 +39,7 @@
       resent: "Новый код отправлен.",
       ready: "E-mail подтверждён. Аккаунт готов.",
       invalid: "Проверьте e-mail, пароль или код и повторите.",
+      invalidCredentials: "Неверный e-mail или пароль. Проверьте раскладку и заглавные буквы (нажмите на глаз, чтобы увидеть пароль) — или войдите по коду из письма.",
       confirmFirst: "Сначала подтвердите e-mail кодом из письма.",
       passwordRule: "Пароль должен содержать от 8 до 128 символов, букву и цифру.",
       wait: "Повторить через {seconds} сек.",
@@ -81,6 +82,7 @@
       resent: "A new code was sent.",
       ready: "Email verified. Your account is ready.",
       invalid: "Check your email, password, or code and try again.",
+      invalidCredentials: "Wrong email or password. Check the keyboard layout and capital letters (tap the eye to see the password), or sign in with an email code.",
       confirmFirst: "Verify your email first using the code in your message.",
       passwordRule: "Use 8–128 characters with a letter and a number.",
       wait: "Try again in {seconds}s.",
@@ -123,6 +125,7 @@
       resent: "Un nouveau code a été envoyé.",
       ready: "E-mail confirmé. Votre compte est prêt.",
       invalid: "Vérifiez l’e-mail, le mot de passe ou le code puis réessayez.",
+      invalidCredentials: "E-mail ou mot de passe incorrect. Vérifiez la disposition du clavier et les majuscules (touchez l’œil pour voir le mot de passe), ou connectez-vous avec un code par e-mail.",
       confirmFirst: "Confirmez d’abord votre e-mail avec le code reçu.",
       passwordRule: "Utilisez 8 à 128 caractères, avec une lettre et un chiffre.",
       wait: "Nouvel envoi dans {seconds} s.",
@@ -130,6 +133,10 @@
       unavailable: "La connexion par e-mail est momentanément indisponible. Vérifiez votre connexion puis réessayez."
     }
   };
+  // German, Spanish, Italian and Polish come from i18n-extra.js on top of English.
+  Object.entries(window.NUR_I18N_EXTRA || {}).forEach(([code, extra]) => {
+    if (!COPY[code] && extra?.email) COPY[code] = { ...COPY.en, ...extra.email };
+  });
 
   const PENDING_KEY = "glowletter-pending-email";
   const RESEND_KEY = "glowletter-email-resend-after";
@@ -144,11 +151,11 @@
 
   function language() {
     const value = String(document.documentElement.lang || "ru").toLowerCase().split("-")[0];
-    return COPY[value] ? value : "ru";
+    return COPY[value] ? value : "en";
   }
 
   function c(key) {
-    return COPY[language()][key] || COPY.ru[key] || key;
+    return COPY[language()][key] || COPY.en[key] || COPY.ru[key] || key;
   }
 
   function normalizeEmail(value) {
@@ -380,6 +387,7 @@
       localizedStatus("ready", "success");
     } catch (error) {
       if (isUnconfirmedError(error)) showVerification(email, "confirmFirst", false);
+      else if (String(error?.code || "").toLowerCase() === "invalid_credentials") localizedStatus("invalidCredentials", "error");
       else reportError(error);
     } finally {
       setBusy(false);

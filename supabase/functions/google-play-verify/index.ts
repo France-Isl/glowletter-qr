@@ -88,7 +88,13 @@ const journal = {
       },
     );
     if (error || data !== true) {
-      throw new Error("entitlement_store_write_failed");
+      // 42501 is raised by the database when the purchase token is already
+      // bound to a different account: a final answer, not an outage.
+      throw new Error(
+        error?.code === "42501"
+          ? "purchase_account_mismatch"
+          : "entitlement_store_write_failed",
+      );
     }
   },
 };

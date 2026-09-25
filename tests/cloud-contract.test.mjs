@@ -35,30 +35,34 @@ assert.doesNotMatch(config, /service_role|sb_secret_/i);
 assert.doesNotMatch(config, /aiEndpoint/, "the AI endpoint must stay removed from config");
 assert.doesNotMatch(config, /aiReply(?:Function|Endpoint)|generate-reply/i);
 
-// Final commercial plan: one monthly subscription and a separately restorable legacy purchase.
+// Commercial plan: one subscription with monthly and yearly base plans; the old
+// one-time purchase is no longer sold but still restores.
 assert.match(config, /productId:\s*"glowletter_premium_monthly"/);
 assert.match(config, /subscriptionProductId:\s*"glowletter_premium_monthly"/);
 assert.match(config, /subscriptionBasePlanId:\s*"monthly"/);
-assert.match(config, /legacyProductId:\s*"full_access"/);
-assert.match(config, /defaultPrice:\s*"2,99\s*€\/месяц"/u);
-assert.match(config, /defaultLifetimePrice:\s*"21,99\s*€\s*разово"/u);
+assert.match(config, /legacyProductId:\s*"glowletter_lifetime"/);
+// Запасные цены — то, что покупатель платит в странах евро с налогом;
+// цену своей страны каждый видит из Google Play.
+assert.match(config, /defaultPrice:\s*"5,99\s*€\/месяц"/u);
+assert.match(config, /defaultYearlyPrice:\s*"24,99\s*€\/год"/u);
 assert.match(config, /lifetimeProductId:\s*"glowletter_lifetime"/);
-assert.match(index, /2,99\s*€\/месяц/u);
-assert.match(index, /21,99\s*€\s*разово/u);
-assert.match(app, /€2\.99\/month/);
-assert.match(app, /2,99\s*€\/mois/u);
-assert.match(app, /автоматически продлевается каждый месяц/u);
-assert.match(app, /renews automatically every month/i);
-assert.match(app, /se renouvelle automatiquement chaque mois/i);
-assert.doesNotMatch(index, /(?:4[,.]99|7[,.]99)\s*€/u);
+assert.match(index, /5,99\s*€\/месяц/u);
+assert.match(index, /24,99\s*€\/год/u);
+assert.doesNotMatch(index, /Купить навсегда|разово/u);
+assert.match(app, /€5\.99\/month/);
+assert.match(app, /5,99\s*€\/mois/u);
+assert.match(app, /продлевается автоматически, пока вы не отмените её/u);
+assert.match(app, /renews automatically until you cancel it/i);
+assert.match(app, /Il se renouvelle automatiquement jusqu’à son annulation/i);
+assert.doesNotMatch(index, /(?<!\d)(?:4[,.]99|7[,.]99)\s*€/u);
 
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=38") < index.indexOf("letters.js?v=38"));
-assert.ok(index.indexOf("letters.js?v=38") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=38"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=38") < index.indexOf("qr-code.js?v=38"));
-assert.ok(index.indexOf("qr-code.js?v=38") < index.indexOf("app.js?v=38"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=49") < index.indexOf("letters.js?v=49"));
+assert.ok(index.indexOf("letters.js?v=49") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=49"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=49") < index.indexOf("qr-code.js?v=49"));
+assert.ok(index.indexOf("qr-code.js?v=49") < index.indexOf("app.js?v=49"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -217,17 +221,17 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
 
 // Service-worker v38 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v38`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v49`/);
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=38`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=49`));
 }
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=38`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=49`));
 }
-assert.match(index, /fonts\/local-fonts\.css\?v=38/);
+assert.match(index, /fonts\/local-fonts\.css\?v=49/);
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(worker, /fonts\/local-fonts\.css\?v=38/);
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=38"/);
+assert.match(worker, /fonts\/local-fonts\.css\?v=49/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=49"/);
 assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");

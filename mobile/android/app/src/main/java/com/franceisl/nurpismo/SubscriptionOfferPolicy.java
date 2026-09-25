@@ -2,9 +2,10 @@ package com.franceisl.glowletternext;
 
 import java.util.List;
 
-/** Pure selection policy for the single subscription base plan sold by the app. */
+/** Pure selection policy for the subscription base plans sold by the app: monthly and yearly. */
 final class SubscriptionOfferPolicy {
     static final String MONTHLY_BILLING_PERIOD = "P1M";
+    static final String YEARLY_BILLING_PERIOD = "P1Y";
 
     static final class Candidate {
         final int sourceIndex;
@@ -56,6 +57,14 @@ final class SubscriptionOfferPolicy {
     }
 
     static Selection selectBasePlan(List<Candidate> candidates, String expectedBasePlanId) {
+        return selectBasePlan(candidates, expectedBasePlanId, MONTHLY_BILLING_PERIOD);
+    }
+
+    static Selection selectBasePlan(
+            List<Candidate> candidates,
+            String expectedBasePlanId,
+            String expectedBillingPeriod
+    ) {
         Candidate selected = null;
         if (candidates != null) {
             for (Candidate candidate : candidates) {
@@ -63,7 +72,7 @@ final class SubscriptionOfferPolicy {
                         || !expectedBasePlanId.equals(candidate.basePlanId)
                         || !isBlank(candidate.offerId)
                         || isBlank(candidate.offerToken)
-                        || !MONTHLY_BILLING_PERIOD.equals(candidate.billingPeriod)
+                        || !expectedBillingPeriod.equals(candidate.billingPeriod)
                         || !candidate.infiniteRecurring) {
                     continue;
                 }
@@ -82,7 +91,8 @@ final class SubscriptionOfferPolicy {
         if (candidate == null || isBlank(candidate.formattedPrice)) {
             return fallback;
         }
-        return candidate.formattedPrice.trim() + "/month";
+        String period = YEARLY_BILLING_PERIOD.equals(candidate.billingPeriod) ? "/year" : "/month";
+        return candidate.formattedPrice.trim() + period;
     }
 
     private static boolean isBlank(String value) {

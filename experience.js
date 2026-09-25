@@ -10,7 +10,7 @@
   "use strict";
 
   const STORAGE_KEY = "glowletter-experience";
-  const FRAMES = ["none", "hearts", "moon", "forest", "pearl"];
+  const FRAMES = ["none", "hearts", "moon", "forest", "pearl", "roses"];
   const INKS = ["ink", "plum", "forest", "midnight"];
   const TYPES = ["classic", "elegant", "clear", "poetic", "literary"];
 
@@ -20,7 +20,7 @@
       premium: "Премиум-оформление",
       frame: "Рамка письма", color: "Цвет текста", type: "Стиль текста", pro: "VIP",
       none: "Без рамки", hearts: "Сердца", moon: "Лунный свет", forestFrame: "Лесное золото",
-      pearl: "Жемчуг", ink: "Чернила", plum: "Слива", forestInk: "Лес", midnight: "Полночь",
+      pearl: "Жемчуг", roses: "Розы", ink: "Чернила", plum: "Слива", forestInk: "Лес", midnight: "Полночь",
       classic: "Классика", elegant: "Элегантный", clear: "Чёткий", poetic: "Поэтичный", literary: "Литературный",
       locked: "Доступно в полной версии", saved: "Оформление сохранено", share: "Оформление добавлено в ссылку"
     },
@@ -29,7 +29,7 @@
       premium: "Premium styling",
       frame: "Letter frame", color: "Text color", type: "Text style", pro: "VIP",
       none: "No frame", hearts: "Hearts", moon: "Moonlight", forestFrame: "Forest gold",
-      pearl: "Pearl", ink: "Ink", plum: "Plum", forestInk: "Forest", midnight: "Midnight",
+      pearl: "Pearl", roses: "Roses", ink: "Ink", plum: "Plum", forestInk: "Forest", midnight: "Midnight",
       classic: "Classic", elegant: "Elegant", clear: "Clear", poetic: "Poetic", literary: "Literary",
       locked: "Available with full access", saved: "Style saved", share: "Styling added to the link"
     },
@@ -38,11 +38,14 @@
       premium: "Style premium",
       frame: "Cadre de la lettre", color: "Couleur du texte", type: "Style du texte", pro: "VIP",
       none: "Sans cadre", hearts: "Cœurs", moon: "Clair de lune", forestFrame: "Or forestier",
-      pearl: "Perle", ink: "Encre", plum: "Prune", forestInk: "Forêt", midnight: "Minuit",
+      pearl: "Perle", roses: "Roses", ink: "Encre", plum: "Prune", forestInk: "Forêt", midnight: "Minuit",
       classic: "Classique", elegant: "Élégant", clear: "Net", poetic: "Poétique", literary: "Littéraire",
       locked: "Disponible avec l’accès complet", saved: "Style enregistré", share: "Style ajouté au lien"
     }
   };
+  Object.entries(window.NUR_I18N_EXTRA || {}).forEach(([code, extra]) => {
+    if (!TEXT[code] && extra?.experience) TEXT[code] = { ...TEXT.en, ...extra.experience };
+  });
 
   const valid = (value, values, fallback) => values.includes(value) ? value : fallback;
   const safeJson = value => { try { return JSON.parse(value || "null") || {}; } catch { return {}; } };
@@ -67,14 +70,26 @@
   const frameLayer = document.createElement("div");
   frameLayer.className = "gl-frame-layer";
   frameLayer.setAttribute("aria-hidden", "true");
-  frameLayer.innerHTML = '<i class="gl-orbit gl-orbit-a">♡</i><i class="gl-orbit gl-orbit-b">✦</i><i class="gl-corner gl-corner-a">☾</i><i class="gl-corner gl-corner-b">❦</i><span class="gl-sparkles"></span>';
+  frameLayer.innerHTML = '<i class="gl-orbit gl-orbit-a"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></i><i class="gl-orbit gl-orbit-b"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg></i><i class="gl-corner gl-corner-a"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-moon"/></svg></i><i class="gl-corner gl-corner-b"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg></i><span class="gl-sparkles"></span>';
   letter.append(frameLayer);
+
+  // «Розы» — фотография гирлянды, вырезанная вокруг карточки шириной 532 px.
+  // Углы рисуются как есть, боковины повторяются, а масштаб следует за
+  // шириной письма, чтобы цветы не наползали на текст на узких экранах.
+  const photoFrame = document.createElement("div");
+  photoFrame.className = "gl-frame-photo";
+  photoFrame.setAttribute("aria-hidden", "true");
+  letter.append(photoFrame);
+  const scalePhotoFrame = () => letter.style.setProperty("--gl-frame-scale", (Math.max(letter.offsetWidth, 240) / 532).toFixed(3));
+  if ("ResizeObserver" in window) new ResizeObserver(scalePhotoFrame).observe(letter);
+  else addEventListener("resize", scalePhotoFrame);
+  scalePhotoFrame();
 
   const studio = document.createElement("section");
   studio.className = "gl-visual-studio";
   studio.setAttribute("aria-labelledby", "glVisualTitle");
   studio.innerHTML = `
-    <header class="gl-studio-head"><span aria-hidden="true">✦</span><div><small data-gl-text="eyebrow"></small><h3 id="glVisualTitle" data-gl-text="title"></h3></div></header>
+    <header class="gl-studio-head"><span aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg></span><div><small data-gl-text="eyebrow"></small><h3 id="glVisualTitle" data-gl-text="title"></h3></div></header>
     <div class="gl-premium-block"><header><div><span data-gl-text="premium"></span><small data-gl-text="locked"></small></div><b data-gl-text="pro"></b></header>
       <fieldset class="gl-studio-group"><legend data-gl-text="frame"></legend><div class="gl-frame-grid" role="radiogroup"></div></fieldset>
       <fieldset class="gl-studio-group gl-compact"><legend data-gl-text="color"></legend><div class="gl-ink-grid" role="radiogroup"></div></fieldset>
@@ -89,19 +104,19 @@
       button.type = "button";
       button.dataset[key] = id;
       button.setAttribute("role", "radio");
-      button.innerHTML = `<i aria-hidden="true"></i><span data-choice-label="${labelMap[id] || id}"></span><b aria-hidden="true">${id === "none" ? "—" : "✦"}</b>`;
+      button.innerHTML = `<i aria-hidden="true"></i><span data-choice-label="${labelMap[id] || id}"></span><b aria-hidden="true">${id === "none" ? "—" : '<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg>'}</b>`;
       target.append(button);
     });
   };
-  makeChoices(studio.querySelector(".gl-frame-grid"), FRAMES, "glFrame", { none: "none", hearts: "hearts", moon: "moon", forest: "forestFrame", pearl: "pearl" });
+  makeChoices(studio.querySelector(".gl-frame-grid"), FRAMES, "glFrame", { none: "none", hearts: "hearts", moon: "moon", forest: "forestFrame", pearl: "pearl", roses: "roses" });
   makeChoices(studio.querySelector(".gl-ink-grid"), INKS, "glInk", { ink: "ink", plum: "plum", forest: "forestInk", midnight: "midnight" });
   makeChoices(studio.querySelector(".gl-type-grid"), TYPES, "glType", { classic: "classic", elegant: "elegant", clear: "clear", poetic: "poetic", literary: "literary" });
 
   const language = () => {
-    const current = String(localStorage.getItem("nurLanguage") || document.querySelector("#languageButton")?.textContent || "ru").trim().toLowerCase();
-    return ["ru", "en", "fr"].includes(current) ? current : "ru";
+    const current = String(localStorage.getItem("nurLanguage") || document.querySelector("#languageButton")?.textContent || document.documentElement.lang || "ru").trim().toLowerCase();
+    return TEXT[current] ? current : "en";
   };
-  const copy = key => (TEXT[language()] || TEXT.ru)[key] || TEXT.ru[key] || key;
+  const copy = key => (TEXT[language()] || TEXT.en)[key] || TEXT.en[key] || TEXT.ru[key] || key;
   const notify = key => {
     const node = studio.querySelector(".gl-studio-status");
     node.textContent = copy(key);
@@ -130,7 +145,7 @@
         const active = button.dataset[key] === selected;
         button.classList.toggle("is-active", active); button.setAttribute("aria-checked", String(active));
         const mark = button.querySelector(":scope > b");
-        if (mark) mark.textContent = active ? "✓" : (button.dataset.glFrame === "none" ? "—" : "✦");
+        if (mark) mark.innerHTML = active ? '<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-check"/></svg>' : (button.dataset.glFrame === "none" ? "—" : '<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg>');
       });
     });
   };
@@ -138,8 +153,8 @@
   // Одна фотография вместо видео, поэтому и затемнение, и плотность бумаги
   // постоянные. Значения подобраны в пользу читаемости текста.
   const applyPaper = () => {
-    document.documentElement.style.setProperty("--gl-scene-dim", "0.32");
-    document.documentElement.style.setProperty("--gl-paper-alpha", mobileDevice ? "0.92" : "0.88");
+    document.documentElement.style.setProperty("--gl-scene-dim", "0.24");
+    document.documentElement.style.setProperty("--gl-paper-alpha", mobileDevice ? "0.86" : "0.82");
   };
 
   const applyDesign = () => {
@@ -190,7 +205,8 @@
   addEventListener("glowletter-access-change", event => { premium = Boolean(event.detail?.premium); detectPremium(); });
   new MutationObserver(() => {
     letter.classList.remove("gl-letter-alive");
-    requestAnimationFrame(() => letter.classList.add("gl-letter-alive"));
+    scalePhotoFrame();
+    requestAnimationFrame(() => { scalePhotoFrame(); letter.classList.add("gl-letter-alive"); });
   }).observe(document.querySelector("#letterText"), { childList: true, characterData: true, subtree: true });
   new MutationObserver(() => setTimeout(() => { localize(); renderChoices(); }, 0)).observe(document.querySelector("#languageButton"), { childList: true, characterData: true, subtree: true });
 

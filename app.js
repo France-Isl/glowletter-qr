@@ -73,20 +73,20 @@
 
   const UI = {
     ru: {
-      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Тёплые слова для тех, кто по-настоящему важен.", from: "от", open: "Открыть письмо", momentsHome: "Мои моменты", free: "10 писем бесплатно", full: "полный доступ — от 2,99 €/месяц", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", fromWho: "От кого", forWho: "Для кого", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Открыть полный доступ ·", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", close: "Закрыть"
+      title: "GlowLetter · Тёплые слова", brand: "Тёплые слова<br><em>находят путь</em>", brandCopy: "Тёплые слова для тех, кто по-настоящему важен.", from: "от", open: "Открыть письмо", momentsHome: "Мои моменты", free: "10 писем бесплатно", full: "полный доступ —", weather: "Погода", next: "Следующее письмо", copy: "Копировать текст", copied: "Текст скопирован", read: "Прочитать", stop: "Остановить", postcard: "Открытка", saved: "Сохранить", favorite: "Сохранено", home: "На главную", stage: "Вечер сохранил эти слова для тебя", letterTitle: "Несколько слов для тебя", for: "для", warmSign: "С теплом,", fromWho: "От кого", forWho: "Для кого", library: "Коллекция", openCount: "10 писем открыто", allCount: "Все 50 писем открыты", all: "Все", warm: "Тепло", gratitude: "Спасибо", support: "Поддержка", family: "Семья", openQuote: "Открыть", unlock: "Открыть полный доступ", locked: "Доступно в полной версии", settings: "Настроение", langLabel: "Язык приложения и писем", choosePhoto: "Выбрать фото", resetPhoto: "Вернуть озеро", buy: "Открыть полный доступ ·", restore: "Восстановить подписку", purchaseUnavailable: "Подписка станет доступна в приложении из Google Play или App Store", restored: "Подписка проверена", premiumOn: "Полный доступ активен", safety: "Текст содержит запрещённую или двусмысленную формулировку. Измените его.", namesSafety: "Введите обычные имена или семейные роли.", customAdded: "Ваше письмо готово и сохранено в ссылке", rainOn: "Дождь включён", rainOff: "Дождь выключен", natureOn: "Ночной лес зазвучал", natureOff: "Звуки природы выключены", photoReady: "Личный фон сохранён на этом устройстве", photoReset: "Возвращён фон у озера", locationDenied: "Без разрешения местная погода недоступна", weatherFail: "Не удалось получить погоду", install: "Установить GlowLetter", shareText: "Это письмо для тебя", downloadReady: "Открытка готова", close: "Закрыть"
     },
     en: {
-      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "Warm words for the people who truly matter.", from: "from", open: "Open the letter", momentsHome: "My moments", free: "10 letters free", full: "full access — from €2.99/month", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", fromWho: "From", forWho: "To", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Unlock full access ·", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", close: "Close"
+      title: "GlowLetter · Warm Words", brand: "Warm words<br><em>find their way</em>", brandCopy: "Warm words for the people who truly matter.", from: "from", open: "Open the letter", momentsHome: "My moments", free: "10 letters free", full: "full access —", weather: "Weather", next: "Next letter", copy: "Copy text", copied: "Text copied", read: "Read aloud", stop: "Stop", postcard: "Postcard", saved: "Save", favorite: "Saved", home: "Home", stage: "The evening kept these words for you", letterTitle: "A few words for you", for: "for", warmSign: "With warmth,", fromWho: "From", forWho: "To", library: "Collection", openCount: "10 letters unlocked", allCount: "All 50 letters unlocked", all: "All", warm: "Warmth", gratitude: "Gratitude", support: "Support", family: "Family", openQuote: "Open", unlock: "Unlock full access", locked: "Available in the full version", settings: "Atmosphere", langLabel: "App and letter language", choosePhoto: "Choose a photo", resetPhoto: "Restore the lake", buy: "Unlock full access ·", restore: "Restore subscription", purchaseUnavailable: "Subscriptions are available in the Google Play or App Store app", restored: "Subscription checked", premiumOn: "Full access is active", safety: "This text contains a prohibited or ambiguous phrase. Please change it.", namesSafety: "Enter ordinary names or family roles.", customAdded: "Your letter is ready and saved in the link", rainOn: "Rain is on", rainOff: "Rain is off", natureOn: "The night forest is alive", natureOff: "Nature sounds are off", photoReady: "Your background is saved on this device", photoReset: "The lake background is back", locationDenied: "Local weather needs location permission", weatherFail: "Weather is unavailable", install: "Install GlowLetter", shareText: "This letter is for you", downloadReady: "Your postcard is ready", close: "Close"
     },
     fr: {
-      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Des mots chaleureux pour les personnes qui comptent vraiment.", from: "de", open: "Ouvrir la lettre", momentsHome: "Mes moments", free: "10 lettres gratuites", full: "accès complet — dès 2,99 €/mois", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", fromWho: "De la part de", forWho: "Pour", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "Débloquer l’accès complet ·", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", close: "Fermer"
+      title: "GlowLetter · Mots chaleureux", brand: "Les mots sincères<br><em>trouvent leur chemin</em>", brandCopy: "Des mots chaleureux pour les personnes qui comptent vraiment.", from: "de", open: "Ouvrir la lettre", momentsHome: "Mes moments", free: "10 lettres gratuites", full: "accès complet —", weather: "Météo", next: "Lettre suivante", copy: "Copier le texte", copied: "Texte copié", read: "Lire à voix haute", stop: "Arrêter", postcard: "Carte", saved: "Enregistrer", favorite: "Enregistré", home: "Accueil", stage: "Le soir a gardé ces mots pour toi", letterTitle: "Quelques mots pour toi", for: "pour", warmSign: "Avec chaleur,", fromWho: "De la part de", forWho: "Pour", library: "Collection", openCount: "10 lettres accessibles", allCount: "Les 50 lettres sont accessibles", all: "Toutes", warm: "Chaleur", gratitude: "Merci", support: "Soutien", family: "Famille", openQuote: "Ouvrir", unlock: "Débloquer l’accès complet", locked: "Disponible dans la version complète", settings: "Atmosphère", langLabel: "Langue de l’application et des lettres", choosePhoto: "Choisir une photo", resetPhoto: "Remettre le lac", buy: "Débloquer l’accès complet ·", restore: "Restaurer l’abonnement", purchaseUnavailable: "L’abonnement est disponible dans l’application Google Play ou App Store", restored: "Abonnement vérifié", premiumOn: "L’accès complet est actif", safety: "Ce texte contient une formulation interdite ou ambiguë. Modifiez-le.", namesSafety: "Saisissez des prénoms ordinaires ou des rôles familiaux.", customAdded: "Votre lettre est prête et enregistrée dans le lien", rainOn: "La pluie est activée", rainOff: "La pluie est désactivée", natureOn: "La forêt nocturne s’éveille", natureOff: "Les sons de la nature sont désactivés", photoReady: "Votre fond est enregistré sur cet appareil", photoReset: "Le lac est de retour", locationDenied: "La météo locale nécessite votre autorisation", weatherFail: "La météo est indisponible", install: "Installer GlowLetter", shareText: "Cette lettre est pour toi", downloadReady: "Votre carte est prête", close: "Fermer"
     }
   };
 
   const EXTRA_UI = {
-    ru: { collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Аудио письма",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Подписка 2,99 €/месяц или разовая покупка навсегда: все письма, моменты и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Ещё 40 писем<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка 2,99 €/месяц — она автоматически продлевается каждый месяц, пока вы не отмените её в аккаунте магазина, — либо разовая покупка навсегда.",benefit1:"все 50 писем на трёх языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",payButton:"Оформить подписку",payLifetimeButton:"Купить навсегда",lifetimeSoon:"Покупка навсегда скоро появится в магазине. Подписка уже доступна.",storeNote:"Подписку можно отменить в аккаунте магазина. Покупка навсегда оплачивается один раз. Цена отображается в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ" },
-    en: { collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Letter audio",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"€2.99 per month or a one-time lifetime purchase: every letter, moments, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 more letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. The other 40 open with a €2.99 subscription that renews automatically every month until you cancel it in your store account, or with a one-time lifetime purchase.",benefit1:"all 50 letters in three languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",payButton:"Start subscription",payLifetimeButton:"Buy forever",lifetimeSoon:"The lifetime purchase is coming to the store soon. The subscription is already available.",storeNote:"The subscription can be cancelled in your store account. The lifetime purchase is paid once. The local store price is shown.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB" },
-    fr: { collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Audio de la lettre",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"2,99 €/mois ou un achat unique à vie : toutes les lettres, les moments et les nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 lettres de plus<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement à 2,99 € qui se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin, ou avec un achat unique à vie.",benefit1:"les 50 lettres en trois langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",payButton:"S’abonner",payLifetimeButton:"Acheter à vie",lifetimeSoon:"L’achat à vie arrive bientôt dans le magasin. L’abonnement est déjà disponible.",storeNote:"L’abonnement peut être annulé dans votre compte du magasin. L’achat à vie se paie une seule fois. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum" }
+    ru: { collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Аудио письма",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Ещё 40 писем<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"все 50 писем на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",payButton:"Подписка на месяц",payYearlyButton:"Подписка на год",yearlyBadge:"Выгоднее всего",storeNote:"Подписку можно отменить в аккаунте магазина в любой момент. Цена отображается в местной валюте.",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ" },
+    en: { collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Letter audio",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 more letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"all 50 letters in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",payButton:"Monthly subscription",payYearlyButton:"Yearly subscription",yearlyBadge:"Best value",storeNote:"You can cancel the subscription in your store account at any time. The local store price is shown.",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB" },
+    fr: { collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Audio de la lettre",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 lettres de plus<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"les 50 lettres en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",payButton:"Abonnement mensuel",payYearlyButton:"Abonnement annuel",yearlyBadge:"Le plus avantageux",storeNote:"Vous pouvez annuler l’abonnement à tout moment dans votre compte du magasin. Le prix local s’affiche.",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum" }
   };
   Object.keys(UI).forEach(code => Object.assign(UI[code], EXTRA_UI[code]));
   UI.ru.brandCopyPersonal = "Тёплые слова, выбранные с заботой специально для {to}.";
@@ -95,19 +95,19 @@
   Object.assign(UI.ru, {
     setupEyebrow:"ПЕРЕД ОТКРЫТИЕМ ПИСЬМА",setupTitle:"Для кого это письмо?",setupNote:"Имена нужны только для личного обращения и подписи.",setupSubmit:"Открыть письмо",
     setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",trackPrimary:"основная мелодия",trackLight:"светлая версия",trackWarm:"тёплая версия",
-    homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Подписка 2,99 €/месяц или разовая покупка навсегда: все письма, моменты и новые функции.",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка 2,99 €/месяц — она автоматически продлевается каждый месяц, пока вы не отмените её в аккаунте магазина, — либо разовая покупка навсегда.",benefit1:"все 50 писем на трёх языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",benefit4:"поддержка автора проекта",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
+    homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"все 50 писем на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",benefit4:"поддержка автора проекта",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",subscriptionTitle:"Ваш доступ",subscriptionRestore:"Восстановить подписку",subscriptionNoteFree:"Открыты первые 10 писем. Полный доступ добавляет остальные 40, моменты, напоминания и оформление письма.",subscriptionNoteStore:"Подписка продлевается автоматически. Отменить или сменить план можно в аккаунте магазина.",subscriptionNoteVip:"Доступ выдан вручную. Когда срок закончится, приложение вернётся к бесплатному режиму.",subscriptionNotePermanent:"Полный доступ открыт. Продлевать и платить ничего не нужно.",subscriptionNoteChecking:"Проверяю доступ в магазине и в облаке…",accountPasswordToggle:"Задать пароль для входа",accountPasswordLabel:"Новый пароль",accountPasswordNote:"Минимум 8 символов. После сохранения можно входить по адресу и паролю, а не только по коду.",accountPasswordSubmit:"Сохранить пароль",accountPasswordSaved:"Пароль сохранён. Теперь можно входить по адресу и паролю.",accountPasswordShort:"Пароль должен быть не короче 8 символов.",accountPasswordFailed:"Не удалось сохранить пароль. Попробуйте ещё раз.",purchaseNotConfigured:"Подписка ещё не заведена в Google Play. Оплата заработает, когда товар появится в магазине.",purchaseStoreSilent:"Google Play не ответил. Проверьте интернет и попробуйте ещё раз.",purchaseLaunchFailed:"Google Play не смог открыть оплату. Попробуйте ещё раз через минуту.",purchaseStoreUnavailable:"Google Play сейчас недоступен. Проверьте, что в Play Маркете выполнен вход в аккаунт Google, и попробуйте ещё раз.",purchasePending:"Платёж ещё обрабатывается. Доступ откроется сам, как только Google Play его подтвердит.",purchaseVerifyPending:"Оплата прошла, но проверка ещё не завершилась. Через минуту нажмите «Восстановить подписку» в настройках.",appUpdateAvailable:"Вышла новая версия GlowLetter",appUpdateButton:"Обновить",appUpdateDownloading:"Загружаю обновление…",appUpdateReady:"Обновление готово",appUpdateRestart:"Перезапустить",appUpdateHide:"Скрыть",homeSignIn:"Войти — покупки и прогресс сохранятся",googleSignedIn:"Вы вошли через Google",signedInAs:"Вы вошли как {email}",signInToBuy:"Сначала войдите — так покупка останется за вами и после переустановки.",accountPasswordConfirmLabel:"Повторите пароль",accountPasswordMismatch:"Пароли не совпадают.",accountPasswordSame:"Этот пароль уже установлен — входите с ним.",accountPasswordWeak:"Пароль слишком простой: добавьте буквы и цифры.",passwordShow:"Показать пароль",passwordHide:"Скрыть пароль",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
     accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка и черновики остаются только на этом устройстве, пока вы сами не опубликуете письмо.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Сначала отмените активную подписку в Google Play: после удаления её нельзя будет привязать к новому аккаунту GlowLetter.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
     setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",trackPrimary:"main melody",trackLight:"light version",trackWarm:"warm version",
-    homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"€2.99 per month or a one-time lifetime purchase: every letter, moments, and new features.",paywallBody:"The first 10 letters stay free. The other 40 open with a €2.99 subscription that renews automatically every month until you cancel it in your store account, or with a one-time lifetime purchase.",benefit1:"all 50 letters in three languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",benefit4:"support for the author",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
+    homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"all 50 letters in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",benefit4:"support for the author",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",subscriptionTitle:"Your access",subscriptionRestore:"Restore subscription",subscriptionNoteFree:"The first 10 letters are open. Full access adds the other 40, moments, reminders and letter styling.",subscriptionNoteStore:"The subscription renews automatically. Cancel or change the plan in your store account.",subscriptionNoteVip:"Access was granted manually. When it expires the app returns to the free mode.",subscriptionNotePermanent:"Full access is open. There is nothing to renew or pay.",subscriptionNoteChecking:"Checking access in the store and in the cloud…",accountPasswordToggle:"Set a sign-in password",accountPasswordLabel:"New password",accountPasswordNote:"At least 8 characters. Once saved you can sign in with your address and password, not only with a code.",accountPasswordSubmit:"Save password",accountPasswordSaved:"Password saved. You can now sign in with your address and password.",accountPasswordShort:"The password must be at least 8 characters.",accountPasswordFailed:"The password could not be saved. Please try again.",purchaseNotConfigured:"The subscription is not set up in Google Play yet. Payment will work once the product is live in the store.",purchaseStoreSilent:"Google Play did not respond. Check your connection and try again.",purchaseLaunchFailed:"Google Play could not open the payment sheet. Please try again in a minute.",purchaseStoreUnavailable:"Google Play is unavailable right now. Make sure you are signed in to your Google account in the Play Store and try again.",purchasePending:"The payment is still processing. Access opens by itself once Google Play confirms it.",purchaseVerifyPending:"The payment went through, but the check has not finished yet. In a minute, tap “Restore subscription” in settings.",appUpdateAvailable:"A new version of GlowLetter is out",appUpdateButton:"Update",appUpdateDownloading:"Downloading the update…",appUpdateReady:"The update is ready",appUpdateRestart:"Restart",appUpdateHide:"Hide",homeSignIn:"Sign in to keep purchases and progress",googleSignedIn:"Signed in with Google",signedInAs:"Signed in as {email}",signInToBuy:"Sign in first so the purchase stays yours, even after reinstalling.",accountPasswordConfirmLabel:"Repeat the password",accountPasswordMismatch:"The passwords do not match.",accountPasswordSame:"This password is already set — sign in with it.",accountPasswordWeak:"The password is too weak: use letters and numbers.",passwordShow:"Show password",passwordHide:"Hide password",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
     accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, and drafts stay on this device until you choose to publish a letter.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Cancel any active Google Play subscription first: after deletion it cannot be attached to a new GlowLetter account.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
     setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",trackPrimary:"mélodie principale",trackLight:"version lumineuse",trackWarm:"version chaleureuse",
-    homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"2,99 €/mois ou un achat unique à vie : toutes les lettres, les moments et les nouveautés.",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement à 2,99 € qui se renouvelle automatiquement chaque mois jusqu’à son annulation dans le compte du magasin, ou avec un achat unique à vie.",benefit1:"les 50 lettres en trois langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",benefit4:"soutien à l’auteur",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
+    homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"les 50 lettres en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",benefit4:"soutien à l’auteur",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",subscriptionTitle:"Votre accès",subscriptionRestore:"Restaurer l’abonnement",subscriptionNoteFree:"Les 10 premières lettres sont ouvertes. L’accès complet ajoute les 40 autres, les moments, les rappels et le style de la lettre.",subscriptionNoteStore:"L’abonnement se renouvelle automatiquement. Annulez ou changez de formule dans votre compte du magasin.",subscriptionNoteVip:"L’accès a été accordé manuellement. À l’expiration, l’application revient au mode gratuit.",subscriptionNotePermanent:"L’accès complet est ouvert. Rien à renouveler, rien à payer.",subscriptionNoteChecking:"Vérification de l’accès dans le magasin et dans le cloud…",accountPasswordToggle:"Définir un mot de passe",accountPasswordLabel:"Nouveau mot de passe",accountPasswordNote:"8 caractères minimum. Une fois enregistré, vous pourrez vous connecter avec votre adresse et ce mot de passe, et plus seulement par code.",accountPasswordSubmit:"Enregistrer le mot de passe",accountPasswordSaved:"Mot de passe enregistré. Vous pouvez désormais vous connecter avec votre adresse et ce mot de passe.",accountPasswordShort:"Le mot de passe doit contenir au moins 8 caractères.",accountPasswordFailed:"Impossible d’enregistrer le mot de passe. Réessayez.",purchaseNotConfigured:"L’abonnement n’est pas encore créé dans Google Play. Le paiement fonctionnera dès que le produit sera en ligne.",purchaseStoreSilent:"Google Play n’a pas répondu. Vérifiez la connexion et réessayez.",purchaseLaunchFailed:"Google Play n’a pas pu ouvrir le paiement. Réessayez dans une minute.",purchaseStoreUnavailable:"Google Play est indisponible pour le moment. Vérifiez que vous êtes connecté à votre compte Google dans le Play Store, puis réessayez.",purchasePending:"Le paiement est en cours de traitement. L’accès s’ouvrira tout seul dès que Google Play l’aura confirmé.",purchaseVerifyPending:"Le paiement est passé, mais la vérification n’est pas terminée. Dans une minute, touchez « Restaurer l’abonnement » dans les réglages.",appUpdateAvailable:"Une nouvelle version de GlowLetter est sortie",appUpdateButton:"Mettre à jour",appUpdateDownloading:"Téléchargement de la mise à jour…",appUpdateReady:"La mise à jour est prête",appUpdateRestart:"Redémarrer",appUpdateHide:"Masquer",homeSignIn:"Se connecter pour garder achats et progrès",googleSignedIn:"Connecté avec Google",signedInAs:"Connecté en tant que {email}",signInToBuy:"Connectez-vous d’abord : l’achat vous suivra même après une réinstallation.",accountPasswordConfirmLabel:"Répétez le mot de passe",accountPasswordMismatch:"Les mots de passe ne correspondent pas.",accountPasswordSame:"Ce mot de passe est déjà défini — connectez-vous avec.",accountPasswordWeak:"Mot de passe trop simple : ajoutez des lettres et des chiffres.",passwordShow:"Afficher le mot de passe",passwordHide:"Masquer le mot de passe",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
     accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels et les brouillons restent sur cet appareil jusqu’à ce que vous choisissiez de publier une lettre.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? Annulez d’abord tout abonnement Google Play actif : après la suppression, il ne pourra pas être rattaché à un nouveau compte GlowLetter.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
   });
   Object.assign(UI.ru, {
@@ -160,18 +160,18 @@
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
-    adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantForever:"Выдать навсегда",adminGrantForeverDone:"Полный доступ выдан навсегда",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение.",adminNoticeReasonLabel:"Причина уведомления",adminNoticeMessageLabel:"Личное сообщение · необязательно",adminNoticeMessagePlaceholder:"Например: спасибо, что помогли нам улучшить GlowLetter",adminNoticeHint:"Получатель увидит это сообщение внутри приложения.",adminNoticeInvalid:"Сообщение содержит запрещённую формулировку или длиннее 240 символов.",
-    notificationBell:"Уведомления",notificationBellAria:"Уведомления: {count} новых",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Ваши уведомления",notificationsLead:"Здесь сохраняются подарки и изменения VIP-доступа.",vipNoticeBodyForever:"Вам открыт полный доступ навсегда. Он не закончится и не требует оплаты.",vipNoticeTitleForever:"Полный доступ навсегда",vipNoticeTitle:"VIP уже активен",vipNoticeTitleExpired:"VIP-период завершён",vipNoticeBodyDays:"Вам открыт VIP на {duration}. Полный доступ активен до {date}.",vipNoticeBodyUntil:"Полный VIP-доступ активен до {date}.",vipNoticeBodyActive:"Полный VIP-доступ активирован.",vipNoticeBodyExpired:"VIP-доступ действовал до {date}. Уведомление сохранено в истории.",notificationMessageLabel:"Сообщение",notificationAcknowledge:"Отлично",notificationHistoryTitle:"История",notificationsUnread:"Новых: {count}",notificationsAllRead:"Всё прочитано",notificationsEmpty:"Здесь появятся сообщения о VIP-доступе.",notificationNew:"НОВОЕ",notificationRead:"ПРОЧИТАНО",notificationLoading:"Загружаю уведомления…",notificationLoadFailed:"Не удалось загрузить уведомления. Проверьте интернет.",notificationReadFailed:"Не удалось сохранить прочтение. Попробуйте ещё раз.",notificationReasonGift:"Подарок",notificationReasonCompensation:"Компенсация",notificationReasonPromotion:"Акция",notificationReasonOther:"Другое"
+    adminEyebrow:"УПРАВЛЕНИЕ ДОСТУПОМ",adminTitle:"Админ-панель",adminDescription:"По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.",adminIdLabel:"ID аккаунта",adminIdPlaceholder:"Вставьте полный ID GL-…",adminFind:"Найти",adminSearching:"Ищу аккаунт…",adminNotFound:"Аккаунт с таким ID не найден",adminCurrentPlan:"Текущий план",adminDaysLabel:"Срок VIP",adminDaysUnit:"дней",adminGrantForever:"Выдать без срока",adminGrantForeverDone:"Полный доступ выдан без срока",adminGrantVip:"Выдать VIP",adminRevoke:"Отозвать VIP",adminGrantDone:"VIP-доступ выдан до {date}",adminRevokeDone:"VIP-доступ отозван",adminError:"Не удалось выполнить действие. Проверьте ID и подключение.",adminNoticeReasonLabel:"Причина уведомления",adminNoticeMessageLabel:"Личное сообщение · необязательно",adminNoticeMessagePlaceholder:"Например: спасибо, что помогли нам улучшить GlowLetter",adminNoticeHint:"Получатель увидит это сообщение внутри приложения.",adminNoticeInvalid:"Сообщение содержит запрещённую формулировку или длиннее 240 символов.",adminLookupHint:"ID аккаунта (GL-…) или e-mail",adminLookupInvalid:"Введите полный ID или e-mail",adminBulkTitle:"Всем пользователям",adminBulkNote:"VIP получат все, кроме админов и тех, у кого доступ без срока. Дни добавляются к оставшемуся сроку.",adminGrantAll:"Выдать VIP всем",adminRevokeAll:"Отозвать VIP у всех",adminGrantAllConfirm:"Выдать VIP на {days} дн. всем пользователям?",adminGrantAllDone:"VIP выдан. Аккаунтов: {count}",adminRevokeAllConfirm:"Отозвать VIP у всех пользователей? Доступ без срока и админы не затрагиваются.",adminRevokeAllDone:"VIP отозван. Аккаунтов: {count}",adminRecentTitle:"Последние аккаунты",adminRefresh:"Обновить",adminRecentEmpty:"Аккаунтов пока нет",adminStatTotal:"Аккаунтов",adminStatVip:"VIP сейчас",adminStatForever:"Без срока",adminStatNew:"Новых за 7 дней",adminRowCreated:"создан",adminRowSignIn:"вход",adminRowNever:"не входил",
+    notificationBell:"Уведомления",notificationBellAria:"Уведомления: {count} новых",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Ваши уведомления",notificationsLead:"Здесь сохраняются подарки и изменения VIP-доступа.",vipNoticeBodyForever:"Вам открыт полный доступ. Продлевать и платить ничего не нужно.",vipNoticeTitleForever:"Полный доступ открыт",vipNoticeTitle:"VIP уже активен",vipNoticeTitleExpired:"VIP-период завершён",vipNoticeBodyDays:"Вам открыт VIP на {duration}. Полный доступ активен до {date}.",vipNoticeBodyUntil:"Полный VIP-доступ активен до {date}.",vipNoticeBodyActive:"Полный VIP-доступ активирован.",vipNoticeBodyExpired:"VIP-доступ действовал до {date}. Уведомление сохранено в истории.",notificationMessageLabel:"Сообщение",notificationAcknowledge:"Отлично",notificationHistoryTitle:"История",notificationsUnread:"Новых: {count}",notificationsAllRead:"Всё прочитано",notificationsEmpty:"Здесь появятся сообщения о VIP-доступе.",notificationNew:"НОВОЕ",notificationRead:"ПРОЧИТАНО",notificationLoading:"Загружаю уведомления…",notificationLoadFailed:"Не удалось загрузить уведомления. Проверьте интернет.",notificationReadFailed:"Не удалось сохранить прочтение. Попробуйте ещё раз.",notificationReasonGift:"Подарок",notificationReasonCompensation:"Компенсация",notificationReasonPromotion:"Акция",notificationReasonOther:"Другое"
   });
   Object.assign(UI.en, {
     accountSupportLabel:"Support ID",accountSupportNote:"This is not a password. Share it only with official GlowLetter support.",accountIdCopy:"Copy",accountIdCopied:"Account ID copied",accountPlanChecking:"Checking access…",accountPlanFree:"Free access · 10 letters",accountPlanPermanent:"VIP · unlimited full access",accountPlanStore:"VIP · subscription active",accountPlanVip:"{remaining} left · until {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATOR",profilePhotoAria:"Change profile photo",profilePhotoReady:"Profile photo saved on this device",profilePhotoFail:"This photo could not be processed",profilePhotoTooLarge:"Choose a photo up to 8 MB",
-    adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantForever:"Grant forever",adminGrantForeverDone:"Full access granted forever",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection.",adminNoticeReasonLabel:"Notification reason",adminNoticeMessageLabel:"Personal message · optional",adminNoticeMessagePlaceholder:"For example: thank you for helping us improve GlowLetter",adminNoticeHint:"The recipient will see this message inside the app.",adminNoticeInvalid:"The message contains prohibited wording or is longer than 240 characters.",
-    notificationBell:"Notifications",notificationBellAria:"Notifications: {count} new",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Your notifications",notificationsLead:"VIP gifts and access changes are kept here.",vipNoticeBodyForever:"You have full access forever. It never expires and needs no payment.",vipNoticeTitleForever:"Full access forever",vipNoticeTitle:"Your VIP is active",vipNoticeTitleExpired:"VIP period ended",vipNoticeBodyDays:"You received VIP for {duration}. Full access is active until {date}.",vipNoticeBodyUntil:"Full VIP access is active until {date}.",vipNoticeBodyActive:"Full VIP access is now active.",vipNoticeBodyExpired:"VIP access was active until {date}. This notice remains in your history.",notificationMessageLabel:"Message",notificationAcknowledge:"Wonderful",notificationHistoryTitle:"History",notificationsUnread:"{count} new",notificationsAllRead:"All read",notificationsEmpty:"VIP access messages will appear here.",notificationNew:"NEW",notificationRead:"READ",notificationLoading:"Loading notifications…",notificationLoadFailed:"Notifications could not be loaded. Check your connection.",notificationReadFailed:"Could not save as read. Please try again.",notificationReasonGift:"Gift",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Other"
+    adminEyebrow:"ACCESS MANAGEMENT",adminTitle:"Admin panel",adminDescription:"Only access status and expiry are shown. VIP grants and revocations are written to a protected audit log.",adminIdLabel:"Account ID",adminIdPlaceholder:"Paste the full GL-… ID",adminFind:"Find",adminSearching:"Finding account…",adminNotFound:"No account was found with this ID",adminCurrentPlan:"Current plan",adminDaysLabel:"VIP duration",adminDaysUnit:"days",adminGrantForever:"Grant with no end date",adminGrantForeverDone:"Full access granted with no end date",adminGrantVip:"Grant VIP",adminRevoke:"Revoke VIP",adminGrantDone:"VIP access granted until {date}",adminRevokeDone:"VIP access revoked",adminError:"The action could not be completed. Check the ID and connection.",adminNoticeReasonLabel:"Notification reason",adminNoticeMessageLabel:"Personal message · optional",adminNoticeMessagePlaceholder:"For example: thank you for helping us improve GlowLetter",adminNoticeHint:"The recipient will see this message inside the app.",adminNoticeInvalid:"The message contains prohibited wording or is longer than 240 characters.",adminLookupHint:"Account ID (GL-…) or e-mail",adminLookupInvalid:"Enter a full ID or an e-mail",adminBulkTitle:"Everyone",adminBulkNote:"Every account gets VIP except admins and access with no end date. Days are added to the time left.",adminGrantAll:"Grant VIP to everyone",adminRevokeAll:"Revoke VIP from everyone",adminGrantAllConfirm:"Grant {days} days of VIP to every user?",adminGrantAllDone:"VIP granted. Accounts: {count}",adminRevokeAllConfirm:"Revoke VIP from every user? Access with no end date and admins are not affected.",adminRevokeAllDone:"VIP revoked. Accounts: {count}",adminRecentTitle:"Latest accounts",adminRefresh:"Refresh",adminRecentEmpty:"No accounts yet",adminStatTotal:"Accounts",adminStatVip:"VIP now",adminStatForever:"No end date",adminStatNew:"New in 7 days",adminRowCreated:"created",adminRowSignIn:"signed in",adminRowNever:"never signed in",
+    notificationBell:"Notifications",notificationBellAria:"Notifications: {count} new",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Your notifications",notificationsLead:"VIP gifts and access changes are kept here.",vipNoticeBodyForever:"You have full access. There is nothing to renew or pay.",vipNoticeTitleForever:"Full access is open",vipNoticeTitle:"Your VIP is active",vipNoticeTitleExpired:"VIP period ended",vipNoticeBodyDays:"You received VIP for {duration}. Full access is active until {date}.",vipNoticeBodyUntil:"Full VIP access is active until {date}.",vipNoticeBodyActive:"Full VIP access is now active.",vipNoticeBodyExpired:"VIP access was active until {date}. This notice remains in your history.",notificationMessageLabel:"Message",notificationAcknowledge:"Wonderful",notificationHistoryTitle:"History",notificationsUnread:"{count} new",notificationsAllRead:"All read",notificationsEmpty:"VIP access messages will appear here.",notificationNew:"NEW",notificationRead:"READ",notificationLoading:"Loading notifications…",notificationLoadFailed:"Notifications could not be loaded. Check your connection.",notificationReadFailed:"Could not save as read. Please try again.",notificationReasonGift:"Gift",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Other"
   });
   Object.assign(UI.fr, {
     accountSupportLabel:"ID d’assistance",accountSupportNote:"Ce n’est pas un mot de passe. Partagez-le uniquement avec l’assistance officielle GlowLetter.",accountIdCopy:"Copier",accountIdCopied:"ID du compte copié",accountPlanChecking:"Vérification de l’accès…",accountPlanFree:"Accès gratuit · 10 lettres",accountPlanPermanent:"VIP · accès complet illimité",accountPlanStore:"VIP · abonnement actif",accountPlanVip:"Encore {remaining} · jusqu’au {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"ADMINISTRATEUR",profilePhotoAria:"Modifier la photo de profil",profilePhotoReady:"Photo de profil enregistrée sur cet appareil",profilePhotoFail:"Cette photo n’a pas pu être traitée",profilePhotoTooLarge:"Choisissez une photo de 8 Mo maximum",
-    adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantForever:"Accorder à vie",adminGrantForeverDone:"Accès complet accordé à vie",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion.",adminNoticeReasonLabel:"Motif de la notification",adminNoticeMessageLabel:"Message personnel · facultatif",adminNoticeMessagePlaceholder:"Par exemple : merci de nous aider à améliorer GlowLetter",adminNoticeHint:"Le destinataire verra ce message dans l’application.",adminNoticeInvalid:"Le message contient une formulation interdite ou dépasse 240 caractères.",
-    notificationBell:"Notifications",notificationBellAria:"Notifications : {count} nouvelles",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Vos notifications",notificationsLead:"Les cadeaux et changements d’accès VIP sont conservés ici.",vipNoticeBodyForever:"Vous avez l’accès complet à vie. Il n’expire jamais et ne demande aucun paiement.",vipNoticeTitleForever:"Accès complet à vie",vipNoticeTitle:"Votre VIP est actif",vipNoticeTitleExpired:"La période VIP est terminée",vipNoticeBodyDays:"Vous avez reçu le VIP pour {duration}. L’accès complet est actif jusqu’au {date}.",vipNoticeBodyUntil:"L’accès VIP complet est actif jusqu’au {date}.",vipNoticeBodyActive:"L’accès VIP complet est maintenant actif.",vipNoticeBodyExpired:"L’accès VIP était actif jusqu’au {date}. Cette notification reste dans votre historique.",notificationMessageLabel:"Message",notificationAcknowledge:"Parfait",notificationHistoryTitle:"Historique",notificationsUnread:"{count} nouvelles",notificationsAllRead:"Tout est lu",notificationsEmpty:"Les messages concernant l’accès VIP apparaîtront ici.",notificationNew:"NOUVEAU",notificationRead:"LU",notificationLoading:"Chargement des notifications…",notificationLoadFailed:"Impossible de charger les notifications. Vérifiez la connexion.",notificationReadFailed:"Impossible d’enregistrer la lecture. Réessayez.",notificationReasonGift:"Cadeau",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Autre"
+    adminEyebrow:"GESTION DES ACCÈS",adminTitle:"Espace administrateur",adminDescription:"Seuls le statut et l’échéance sont visibles. Les attributions et retraits de VIP sont consignés dans un journal protégé.",adminIdLabel:"ID du compte",adminIdPlaceholder:"Collez l’ID GL-… complet",adminFind:"Rechercher",adminSearching:"Recherche du compte…",adminNotFound:"Aucun compte ne correspond à cet ID",adminCurrentPlan:"Offre actuelle",adminDaysLabel:"Durée VIP",adminDaysUnit:"jours",adminGrantForever:"Accorder sans date de fin",adminGrantForeverDone:"Accès complet accordé sans date de fin",adminGrantVip:"Accorder le VIP",adminRevoke:"Retirer le VIP",adminGrantDone:"Accès VIP accordé jusqu’au {date}",adminRevokeDone:"Accès VIP retiré",adminError:"Action impossible. Vérifiez l’ID et la connexion.",adminNoticeReasonLabel:"Motif de la notification",adminNoticeMessageLabel:"Message personnel · facultatif",adminNoticeMessagePlaceholder:"Par exemple : merci de nous aider à améliorer GlowLetter",adminNoticeHint:"Le destinataire verra ce message dans l’application.",adminNoticeInvalid:"Le message contient une formulation interdite ou dépasse 240 caractères.",adminLookupHint:"ID du compte (GL-…) ou e-mail",adminLookupInvalid:"Saisissez un ID complet ou un e-mail",adminBulkTitle:"Tout le monde",adminBulkNote:"Tous les comptes reçoivent le VIP, sauf les administrateurs et les accès sans date de fin. Les jours s’ajoutent au temps restant.",adminGrantAll:"Accorder le VIP à tous",adminRevokeAll:"Retirer le VIP à tous",adminGrantAllConfirm:"Accorder {days} jours de VIP à tous les utilisateurs ?",adminGrantAllDone:"VIP accordé. Comptes : {count}",adminRevokeAllConfirm:"Retirer le VIP à tous les utilisateurs ? Les accès sans date de fin et les administrateurs ne sont pas concernés.",adminRevokeAllDone:"VIP retiré. Comptes : {count}",adminRecentTitle:"Derniers comptes",adminRefresh:"Actualiser",adminRecentEmpty:"Aucun compte pour l’instant",adminStatTotal:"Comptes",adminStatVip:"VIP actifs",adminStatForever:"Sans date de fin",adminStatNew:"Nouveaux en 7 jours",adminRowCreated:"créé",adminRowSignIn:"connexion",adminRowNever:"jamais connecté",
+    notificationBell:"Notifications",notificationBellAria:"Notifications : {count} nouvelles",notificationsEyebrow:"GLOWLETTER · VIP",notificationsTitle:"Vos notifications",notificationsLead:"Les cadeaux et changements d’accès VIP sont conservés ici.",vipNoticeBodyForever:"Vous avez l’accès complet. Rien à renouveler, rien à payer.",vipNoticeTitleForever:"Accès complet ouvert",vipNoticeTitle:"Votre VIP est actif",vipNoticeTitleExpired:"La période VIP est terminée",vipNoticeBodyDays:"Vous avez reçu le VIP pour {duration}. L’accès complet est actif jusqu’au {date}.",vipNoticeBodyUntil:"L’accès VIP complet est actif jusqu’au {date}.",vipNoticeBodyActive:"L’accès VIP complet est maintenant actif.",vipNoticeBodyExpired:"L’accès VIP était actif jusqu’au {date}. Cette notification reste dans votre historique.",notificationMessageLabel:"Message",notificationAcknowledge:"Parfait",notificationHistoryTitle:"Historique",notificationsUnread:"{count} nouvelles",notificationsAllRead:"Tout est lu",notificationsEmpty:"Les messages concernant l’accès VIP apparaîtront ici.",notificationNew:"NOUVEAU",notificationRead:"LU",notificationLoading:"Chargement des notifications…",notificationLoadFailed:"Impossible de charger les notifications. Vérifiez la connexion.",notificationReadFailed:"Impossible d’enregistrer la lecture. Réessayez.",notificationReasonGift:"Cadeau",notificationReasonCompensation:"Compensation",notificationReasonPromotion:"Promotion",notificationReasonOther:"Autre"
   });
   Object.assign(UI.ru, {
     supportFormEyebrow:"GLOWLETTER · ПОДДЕРЖКА",supportFormTitle:"Расскажите,<br><em>что случилось</em>",supportFormLead:"Опишите проблему прямо здесь. Email и ID аккаунта будут приложены автоматически.",supportGuestTitle:"Сначала войдите в аккаунт",supportGuestNote:"Так мы безопасно приложим ваш email и ID и сможем найти аккаунт.",supportCopyContact:"Скопировать email поддержки",supportContactCopied:"Email поддержки скопирован",supportEmailLabel:"EMAIL ДЛЯ ОТВЕТА",supportIdLabel:"ID АККАУНТА",supportCategoryLabel:"Тема обращения",supportMessageLabel:"Что произошло?",supportMessagePlaceholder:"Опишите проблему, что вы нажали и что увидели…",supportPrivacyNote:"Не указывайте пароль, банковские данные и коды подтверждения.",supportSubmit:"Отправить в поддержку",supportSending:"Отправляю обращение…",supportSent:"Обращение отправлено. Поддержка получила уведомление и ответит на email аккаунта.",supportSaved:"Обращение безопасно сохранено. Доставка уведомления на email пока настраивается.",supportSignInRequired:"Войдите в аккаунт, чтобы отправить обращение.",supportInvalid:"Опишите проблему подробнее — от 20 до 2000 символов.",supportRateLimited:"Слишком много обращений. Попробуйте немного позже.",supportFailed:"Не удалось отправить обращение. Проверьте интернет и повторите.",supportCategoryTechnical:"Техническая проблема",supportCategoryAccount:"Аккаунт и вход",supportCategorySubscription:"VIP и подписка",supportCategoryContent:"Письма и тексты",supportCategoryFeedback:"Идея или отзыв",supportCategoryOther:"Другое"
@@ -210,6 +210,57 @@
     fr: { note: "Choisissez une lettre · pour {name}", noteGeneric: "Choisissez une lettre de la collection", pick: "Choisir" }
   };
 
+  // German, Spanish, Italian and Polish come from i18n-extra.js. A phrase that
+  // is missing there shows in English rather than in Russian.
+  const SUPPORTED_LANGUAGES = Object.freeze(Array.isArray(window.NUR_LANGUAGES) ? window.NUR_LANGUAGES.slice() : ["ru", "en", "fr"]);
+  SUPPORTED_LANGUAGES.forEach(code => {
+    const extra = window.NUR_I18N_EXTRA?.[code];
+    if (!extra || UI[code]) return;
+    UI[code] = { ...UI.en, ...extra.app };
+    PICKER_TEXT[code] = { ...PICKER_TEXT.en, ...extra.picker };
+  });
+
+  // First launch speaks the phone's language when GlowLetter knows it.
+  // Norwegian phones report Bokmål or Nynorsk (the app calls both "no"), and
+  // Indonesian is "ind" inside the app because the letters already use the key
+  // "id" for their numbers; phones say "id" or, on old Android, "in".
+  const LANGUAGE_ALIASES = Object.freeze({ nb: "no", nn: "no", id: "ind", in: "ind" });
+  function deviceLanguage() {
+    const preferred = Array.isArray(navigator.languages) && navigator.languages.length ? navigator.languages : [navigator.language];
+    for (const tag of preferred) {
+      const raw = String(tag || "").toLowerCase().split(/[-_]/)[0];
+      const code = LANGUAGE_ALIASES[raw] || raw;
+      if (SUPPORTED_LANGUAGES.includes(code) && UI[code]) return code;
+    }
+    return "en";
+  }
+  // The app follows the phone's language until the person picks one. Before
+  // 2.4.7 every install stored Russian by default, so only another stored
+  // language counts as a real choice.
+  const LANGUAGE_CHOICE_KEY = "nurLanguageChoice";
+  function chosenLanguage() {
+    let stored = "";
+    let choice = "";
+    try {
+      stored = localStorage.getItem("nurLanguage") || "";
+      choice = localStorage.getItem(LANGUAGE_CHOICE_KEY) || "";
+    } catch { return ""; }
+    const picked = SUPPORTED_LANGUAGES.includes(stored) && Boolean(UI[stored])
+      && (choice === "chosen" || (!choice && stored !== "ru"));
+    try { localStorage.setItem(LANGUAGE_CHOICE_KEY, picked ? "chosen" : "auto"); } catch { /* storage can be unavailable */ }
+    return picked ? stored : "";
+  }
+  function rememberLanguageChoice() {
+    try { localStorage.setItem(LANGUAGE_CHOICE_KEY, "chosen"); } catch { /* storage can be unavailable */ }
+  }
+  const DATE_LOCALES = Object.freeze({ ru: "ru-RU", en: "en-GB", fr: "fr-FR", de: "de-DE", es: "es-ES", it: "it-IT", pl: "pl-PL", uk: "uk-UA", pt: "pt-PT", nl: "nl-NL", tr: "tr-TR", ro: "ro-RO", cs: "cs-CZ", sv: "sv-SE", el: "el-GR", da: "da-DK", no: "nb-NO", fi: "fi-FI", ja: "ja-JP", ko: "ko-KR", zh: "zh-TW", th: "th-TH", ar: "ar-u-nu-latn", ind: "id-ID", vi: "vi-VN" });
+  // Arabic dates keep the Western digits the rest of the app shows; the voice is Saudi Arabic.
+  const SPEECH_LOCALES = Object.freeze({ ...DATE_LOCALES, en: "en-US", ar: "ar-SA" });
+  // Chinese is Traditional (Taiwan, Hong Kong) and Arabic reads right to left.
+  const HTML_LANGS = Object.freeze({ zh: "zh-Hant", ind: "id" });
+  const RTL_LANGUAGES = new Set(["ar"]);
+  const isRtl = () => RTL_LANGUAGES.has(lang);
+
   const SELECT_OPTIONS = {
     supportCategory: {
       ru:[["technical",UI.ru.supportCategoryTechnical],["account",UI.ru.supportCategoryAccount],["subscription",UI.ru.supportCategorySubscription],["content",UI.ru.supportCategoryContent],["feedback",UI.ru.supportCategoryFeedback],["other",UI.ru.supportCategoryOther]],
@@ -222,10 +273,37 @@
       fr:[["gift",UI.fr.notificationReasonGift],["compensation",UI.fr.notificationReasonCompensation],["promotion",UI.fr.notificationReasonPromotion],["other",UI.fr.notificationReasonOther]]
     }
   };
+  const capitalized = value => value[0].toUpperCase() + value.slice(1);
+  SUPPORTED_LANGUAGES.filter(code => UI[code]).forEach(code => {
+    SELECT_OPTIONS.supportCategory[code] ||= SELECT_OPTIONS.supportCategory.en.map(([value]) => [value, UI[code][`supportCategory${capitalized(value)}`]]);
+    SELECT_OPTIONS.vipNoticeReason[code] ||= SELECT_OPTIONS.vipNoticeReason.en.map(([value]) => [value, UI[code][`notificationReason${capitalized(value)}`]]);
+  });
   const CONTENT_REPORT_OPTIONS = Object.freeze({
     ru:[["adult","Содержание 18+"],["harassment","Оскорбление или давление"],["hate","Ненависть"],["threat","Угроза"],["fraud","Обман"],["privacy","Личные данные"],["spam","Спам"],["other","Другое"]],
     en:[["adult","Adult content"],["harassment","Harassment or pressure"],["hate","Hate"],["threat","Threat"],["fraud","Fraud"],["privacy","Personal information"],["spam","Spam"],["other","Other"]],
-    fr:[["adult","Contenu pour adultes"],["harassment","Harcèlement ou pression"],["hate","Haine"],["threat","Menace"],["fraud","Fraude"],["privacy","Données personnelles"],["spam","Spam"],["other","Autre"]]
+    fr:[["adult","Contenu pour adultes"],["harassment","Harcèlement ou pression"],["hate","Haine"],["threat","Menace"],["fraud","Fraude"],["privacy","Données personnelles"],["spam","Spam"],["other","Autre"]],
+    de:[["adult","Inhalte für Erwachsene"],["harassment","Belästigung oder Druck"],["hate","Hass"],["threat","Drohung"],["fraud","Betrug"],["privacy","Persönliche Daten"],["spam","Spam"],["other","Sonstiges"]],
+    es:[["adult","Contenido para adultos"],["harassment","Acoso o presión"],["hate","Odio"],["threat","Amenaza"],["fraud","Fraude"],["privacy","Datos personales"],["spam","Spam"],["other","Otro"]],
+    it:[["adult","Contenuti per adulti"],["harassment","Molestie o pressioni"],["hate","Odio"],["threat","Minaccia"],["fraud","Frode"],["privacy","Dati personali"],["spam","Spam"],["other","Altro"]],
+    pl:[["adult","Treści dla dorosłych"],["harassment","Nękanie lub presja"],["hate","Nienawiść"],["threat","Groźba"],["fraud","Oszustwo"],["privacy","Dane osobowe"],["spam","Spam"],["other","Inne"]],
+    uk:[["adult","Вміст 18+"],["harassment","Образа або тиск"],["hate","Ненависть"],["threat","Погроза"],["fraud","Шахрайство"],["privacy","Особисті дані"],["spam","Спам"],["other","Інше"]],
+    pt:[["adult","Conteúdo para adultos"],["harassment","Assédio ou pressão"],["hate","Ódio"],["threat","Ameaça"],["fraud","Fraude"],["privacy","Dados pessoais"],["spam","Spam"],["other","Outro"]],
+    nl:[["adult","Inhoud voor volwassenen"],["harassment","Intimidatie of druk"],["hate","Haat"],["threat","Bedreiging"],["fraud","Fraude"],["privacy","Persoonsgegevens"],["spam","Spam"],["other","Anders"]],
+    tr:[["adult","Yetişkin içeriği"],["harassment","Taciz veya baskı"],["hate","Nefret"],["threat","Tehdit"],["fraud","Dolandırıcılık"],["privacy","Kişisel bilgiler"],["spam","Spam"],["other","Diğer"]],
+    ro:[["adult","Conținut pentru adulți"],["harassment","Hărțuire sau presiune"],["hate","Ură"],["threat","Amenințare"],["fraud","Fraudă"],["privacy","Date personale"],["spam","Spam"],["other","Altele"]],
+    cs:[["adult","Obsah pro dospělé"],["harassment","Obtěžování nebo nátlak"],["hate","Nenávist"],["threat","Výhrůžka"],["fraud","Podvod"],["privacy","Osobní údaje"],["spam","Spam"],["other","Jiné"]],
+    sv:[["adult","Vuxeninnehåll"],["harassment","Trakasserier eller press"],["hate","Hat"],["threat","Hot"],["fraud","Bedrägeri"],["privacy","Personuppgifter"],["spam","Spam"],["other","Annat"]],
+    el:[["adult","Περιεχόμενο για ενήλικες"],["harassment","Παρενόχληση ή πίεση"],["hate","Μίσος"],["threat","Απειλή"],["fraud","Απάτη"],["privacy","Προσωπικά δεδομένα"],["spam","Spam"],["other","Άλλο"]],
+    da:[["adult","Voksenindhold"],["harassment","Chikane eller pres"],["hate","Had"],["threat","Trussel"],["fraud","Svindel"],["privacy","Personoplysninger"],["spam","Spam"],["other","Andet"]],
+    no:[["adult","Innhold for voksne"],["harassment","Trakassering eller press"],["hate","Hat"],["threat","Trussel"],["fraud","Svindel"],["privacy","Personopplysninger"],["spam","Spam"],["other","Annet"]],
+    fi:[["adult","Aikuissisältö"],["harassment","Häirintä tai painostus"],["hate","Viha"],["threat","Uhkaus"],["fraud","Huijaus"],["privacy","Henkilötiedot"],["spam","Roskaposti"],["other","Muu"]],
+    ja:[["adult","成人向けの内容"],["harassment","嫌がらせや圧力"],["hate","憎悪"],["threat","脅迫"],["fraud","詐欺"],["privacy","個人情報"],["spam","スパム"],["other","その他"]],
+    ko:[["adult","성인용 콘텐츠"],["harassment","괴롭힘 또는 압박"],["hate","혐오"],["threat","협박"],["fraud","사기"],["privacy","개인정보"],["spam","스팸"],["other","기타"]],
+    zh:[["adult","成人內容"],["harassment","騷擾或施壓"],["hate","仇恨"],["threat","威脅"],["fraud","詐騙"],["privacy","個人資料"],["spam","垃圾訊息"],["other","其他"]],
+    th:[["adult","เนื้อหาสำหรับผู้ใหญ่"],["harassment","การคุกคามหรือกดดัน"],["hate","ความเกลียดชัง"],["threat","การข่มขู่"],["fraud","การหลอกลวง"],["privacy","ข้อมูลส่วนตัว"],["spam","สแปม"],["other","อื่น ๆ"]],
+    ar:[["adult","محتوى للبالغين"],["harassment","تحرش أو ضغط"],["hate","كراهية"],["threat","تهديد"],["fraud","احتيال"],["privacy","بيانات شخصية"],["spam","رسائل مزعجة"],["other","أخرى"]],
+    ind:[["adult","Konten dewasa"],["harassment","Pelecehan atau tekanan"],["hate","Kebencian"],["threat","Ancaman"],["fraud","Penipuan"],["privacy","Data pribadi"],["spam","Spam"],["other","Lainnya"]],
+    vi:[["adult","Nội dung người lớn"],["harassment","Quấy rối hoặc gây áp lực"],["hate","Thù ghét"],["threat","Đe dọa"],["fraud","Lừa đảo"],["privacy","Dữ liệu cá nhân"],["spam","Spam"],["other","Khác"]]
   });
 
   const forbiddenStems = [
@@ -235,7 +313,14 @@
     "алкогол", "водк", "коньяк", "наркот", "кокаин", "героин", "казино", "букмек", "шантаж", "угрож", "убить", "избить",
     "alcohol", "vodka", "drug", "cocaine", "heroin", "casino", "gambling", "blackmail", "threat", "kill",
     "alcool", "vodka", "drogue", "cocaine", "heroine", "casino", "parier", "chantage", "menace", "tuer",
-    "бляд", "блят", "хуй", "хуе", "хуя", "хуи", "пизд", "ебан", "fuck", "shit", "bitch", "cunt", "putain", "merde", "connard", "salope"
+    "бляд", "блят", "хуй", "хуе", "хуя", "хуи", "пизд", "ебан", "fuck", "shit", "bitch", "cunt", "putain", "merde", "connard", "salope",
+    // German, Spanish, Italian and Polish. Words that are harmless in another
+    // supported language stay out: Polish "droga" means "dear", Spanish "nudo" is a knot.
+    "sexuell", "sexo", "sesso", "sessual", "seks", "eroty", "nackt", "desnud", "orgazm", "prostytut", "hure", "nutte",
+    "alkohol", "alcol", "wodka", "rauschgift", "narkot", "kokain", "cocain", "kasino", "kasyno", "glucksspiel", "azzard",
+    "erpress", "chantaj", "ricatt", "szantaz", "drohung", "drohen", "droht", "amenaz", "minacc", "grozb", "umbring", "ermord", "matar", "uccid", "zabij", "zabic",
+    "fick", "scheiß", "scheiss", "arschloch", "wichs", "schlampe", "puta", "mierda", "cabron", "gilipoll", "joder",
+    "cazzo", "stronz", "vaffancul", "coglion", "kurw", "skurw", "chuj", "pierdol", "jeba", "pizd"
   ];
 
   const relationshipWords = {
@@ -386,8 +471,8 @@
     intentDistance: 14
   });
 
-  let lang = ["ru", "en", "fr"].includes(params.get("lang")) ? params.get("lang") : (localStorage.getItem("nurLanguage") || "ru");
-  if (!UI[lang]) lang = "ru";
+  let lang = SUPPORTED_LANGUAGES.includes(params.get("lang")) ? params.get("lang") : (chosenLanguage() || deviceLanguage());
+  if (!UI[lang]) lang = deviceLanguage();
   let letterPickerContext = null;
   let momentsIntegrationPromise = null;
   let momentsListenersBound = false;
@@ -409,7 +494,11 @@
   const initialNamesReady = Boolean(fromName && toName);
   let sharedMessage = initialNamesReady ? decodeSharedMessage(params.get("msg")) : "";
   let letterDeck = sharedMessage ? [{ id: "shared", category: "warm", shared: true, ru: sharedMessage, en: sharedMessage, fr: sharedMessage }, ...LETTERS] : [...LETTERS];
-  let currentIndex = sharedMessage ? 0 : Math.max(0, Math.min(Number(params.get("quote") || (initialNamesReady ? localStorage.getItem("nurLetterIndex") : 1) || 1) - 1, Math.max(0, letterDeck.length - 1)));
+  const requestedQuote = Number.parseInt(params.get("quote") || "", 10);
+  const startLetter = Number.isInteger(requestedQuote) && requestedQuote > 0
+    ? requestedQuote
+    : (Number.parseInt((initialNamesReady && localStorage.getItem("nurLetterIndex")) || "", 10) || 1);
+  let currentIndex = sharedMessage ? 0 : Math.max(0, Math.min(startLetter - 1, Math.max(0, letterDeck.length - 1)));
   let storyOpened = false;
   let selectedCategory = "all";
   let selectedTrack = localStorage.getItem("nurTrack") === "3" ? 3 : -1;
@@ -428,12 +517,14 @@
   let isNaturePlaying = false;
   let isPremium = false;
   let nativePremium = false;
+  let purchaseAttemptPending = false;
   let cloudPremium = false;
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
-  let premiumPrice = CONFIG.defaultPrice || "2,99 €/месяц";
-  let lifetimePrice = CONFIG.defaultLifetimePrice || "21,99 € разово";
+  let premiumPrice = CONFIG.defaultPrice || "5,99 €/месяц";
+  let yearlyPrice = CONFIG.defaultYearlyPrice || "24,99 €/год";
   let premiumPriceFromStore = false;
+  let yearlyPriceFromStore = false;
   let readingFocus = false;
   let letterAnimationFrame = 0;
   let readingPointer = null;
@@ -522,27 +613,71 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), publication: $("#publicationLayer"), report: $("#reportLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer")
+    setup: $("#setupLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), publication: $("#publicationLayer"), report: $("#reportLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer"), language: $("#languageLayer")
   };
   const panelTriggers = new WeakMap();
   const notificationInertedLayers = new Set();
 
-  function t(key) { return UI[lang][key] || UI.ru[key] || key; }
+  function t(key) { return UI[lang]?.[key] || UI.en[key] || UI.ru[key] || key; }
 
-  function localizedLifetimeFallbackPrice() {
-    return { ru: "21,99 € разово", en: "€21.99 once", fr: "21,99 € une fois" }[lang] || "€21.99 forever";
+  // Euro prices the buyer pays with tax included; Google Play replaces them
+  // with the local store price as soon as the catalog answers.
+  const PRICE_WORDS = Object.freeze({
+    ru: { monthly: "5,99 €/месяц", yearly: "24,99 €/год", month: "/месяц", year: "/год" },
+    en: { monthly: "€5.99/month", yearly: "€24.99/year", month: "/month", year: "/year" },
+    fr: { monthly: "5,99 €/mois", yearly: "24,99 €/an", month: "/mois", year: "/an" },
+    de: { monthly: "5,99 €/Monat", yearly: "24,99 €/Jahr", month: "/Monat", year: "/Jahr" },
+    es: { monthly: "5,99 €/mes", yearly: "24,99 €/año", month: "/mes", year: "/año" },
+    it: { monthly: "5,99 €/mese", yearly: "24,99 €/anno", month: "/mese", year: "/anno" },
+    pl: { monthly: "5,99 €/mies.", yearly: "24,99 €/rok", month: "/mies.", year: "/rok" },
+    uk: { monthly: "5,99 €/місяць", yearly: "24,99 €/рік", month: "/місяць", year: "/рік" },
+    pt: { monthly: "5,99 €/mês", yearly: "24,99 €/ano", month: "/mês", year: "/ano" },
+    nl: { monthly: "€ 5,99/maand", yearly: "€ 24,99/jaar", month: "/maand", year: "/jaar" },
+    tr: { monthly: "5,99 €/ay", yearly: "24,99 €/yıl", month: "/ay", year: "/yıl" },
+    ro: { monthly: "5,99 €/lună", yearly: "24,99 €/an", month: "/lună", year: "/an" },
+    cs: { monthly: "5,99 €/měsíc", yearly: "24,99 €/rok", month: "/měsíc", year: "/rok" },
+    sv: { monthly: "5,99 €/månad", yearly: "24,99 €/år", month: "/månad", year: "/år" },
+    el: { monthly: "5,99 €/μήνα", yearly: "24,99 €/έτος", month: "/μήνα", year: "/έτος" },
+    da: { monthly: "5,99 €/md.", yearly: "24,99 €/år", month: "/md.", year: "/år" },
+    no: { monthly: "5,99 €/mnd", yearly: "24,99 €/år", month: "/mnd", year: "/år" },
+    fi: { monthly: "5,99 €/kk", yearly: "24,99 €/vuosi", month: "/kk", year: "/vuosi" },
+    ja: { monthly: "5,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
+    ko: { monthly: "5,99 €/월", yearly: "24,99 €/년", month: "/월", year: "/년" },
+    zh: { monthly: "5,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
+    th: { monthly: "5,99 €/เดือน", yearly: "24,99 €/ปี", month: "/เดือน", year: "/ปี" },
+    ar: { monthly: "5,99 €/شهر", yearly: "24,99 €/سنة", month: "/شهر", year: "/سنة" },
+    ind: { monthly: "5,99 €/bulan", yearly: "24,99 €/tahun", month: "/bulan", year: "/tahun" },
+    vi: { monthly: "5,99 €/tháng", yearly: "24,99 €/năm", month: "/tháng", year: "/năm" }
+  });
+  const priceWords = () => PRICE_WORDS[lang] || PRICE_WORDS.en;
+  const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // Google Play price strings arrive with whichever suffix the previous language added.
+  const periodSuffix = key => new RegExp(`\\s*\\/\\s*(?:${[...new Set(Object.values(PRICE_WORDS).map(words => words[key].slice(1)))].map(escapeRegExp).join("|")})\\s*$`, "iu");
+  const MONTH_SUFFIX = periodSuffix("month");
+  const YEAR_SUFFIX = periodSuffix("year");
+
+  function localizedYearlyFallbackPrice() {
+    return priceWords().yearly;
+  }
+
+  // Google Play отдаёт цену за год уже в местной валюте и с налогом;
+  // приложение лишь пишет «/год» на языке интерфейса.
+  function localizedYearlyPrice(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return localizedYearlyFallbackPrice();
+    const amount = raw.replace(YEAR_SUFFIX, "").trim();
+    return `${amount}${priceWords().year}`;
   }
 
   function localizedFallbackPrice() {
-    return { ru: "2,99 €/месяц", en: "€2.99/month", fr: "2,99 €/mois" }[lang] || "€2.99/month";
+    return priceWords().monthly;
   }
 
   function localizedMonthlyPrice(value) {
     const raw = String(value || "").trim();
     if (!raw) return localizedFallbackPrice();
-    const amount = raw.replace(/\s*\/\s*(?:month|месяц|mois)\s*$/iu, "").trim();
-    const period = { ru: "/месяц", en: "/month", fr: "/mois" }[lang] || "/month";
-    return `${amount}${period}`;
+    const amount = raw.replace(MONTH_SUFFIX, "").trim();
+    return `${amount}${priceWords().month}`;
   }
 
   function normalize(value) {
@@ -566,6 +701,9 @@
       if (stem === "kiss") return /^(kiss|kisses|kissed|kissing)$/u.test(token);
       if (stem === "baiser") return /^bais(?:er|e|es|ons|ez|ent|ait|aient)$/u.test(token);
       if (stem === "embrasser") return /^embrass(?:er|e|es|ons|ez|ent|ait|aient|ee|ees)$/u.test(token);
+      if (stem === "matar") return /^matar(?:te|lo|la|los|las|le|les|e|as|a|an)?$/u.test(token);
+      // Polish "drugi" means "second", so only the English word itself counts.
+      if (stem === "drug") return /^drug(?:s|gy|ged|ging)?$/u.test(token);
       return token.startsWith(stem);
     };
     if (tokens.some(token => tokenForms(token).some(form => forbiddenStems.some(stem => matches(form, stem)) || /^(sex|sexe|sexual|sexting|porn|porno|erotic|kiss|kisses|kissed|kissing)$/u.test(form)))) return true;
@@ -578,6 +716,9 @@
         joined.forEach((_, index) => { joined[index] += forms[index]; });
         if (end > start && joined.some(candidate => rootForms.some(root => candidate.startsWith(root)))) return true;
         if (joined.some(candidate => candidate.length > 32)) break;
+        // A spelled-out word is split into one- or two-letter pieces. A real
+        // word ends the run, so "до сих пор не…" and "por nosotros" stay allowed.
+        if (tokens[end].length > 2) break;
       }
     }
     return false;
@@ -699,21 +840,44 @@
     return Boolean(account?.premium_forever || (account?.premium_active === true && account?.vip_until && Date.parse(account.vip_until) > trustedCloudNow()));
   }
 
+  const VIP_TIME_UNITS = Object.freeze({
+    ru: { d: "дн.", h: "ч.", m: "мин." }, en: { d: "d", h: "h", m: "min" }, fr: { d: "j", h: "h", m: "min" },
+    de: { d: "T.", h: "Std.", m: "Min." }, es: { d: "d", h: "h", m: "min" }, it: { d: "g", h: "h", m: "min" }, pl: { d: "dn.", h: "godz.", m: "min" },
+    uk: { d: "дн.", h: "год.", m: "хв." }, pt: { d: "d", h: "h", m: "min" }, nl: { d: "d", h: "u", m: "min" },
+    tr: { d: "g", h: "sa", m: "dk" }, ro: { d: "z", h: "h", m: "min" }, cs: { d: "d", h: "h", m: "min" }, sv: { d: "d", h: "h", m: "min" }, el: { d: "ημ.", h: "ώ.", m: "λ." },
+    da: { d: "d", h: "t", m: "min" }, no: { d: "d", h: "t", m: "min" }, fi: { d: "pv", h: "t", m: "min" }, ja: { d: "日", h: "時間", m: "分" }, ko: { d: "일", h: "시간", m: "분" },
+    zh: { d: "天", h: "小時", m: "分鐘" }, th: { d: "วัน", h: "ชม.", m: "นาที" }, ar: { d: "ي", h: "س", m: "د" }, ind: { d: "hr", h: "j", m: "mnt" }, vi: { d: "ngày", h: "giờ", m: "phút" }
+  });
+  // Japanese, Korean and Chinese write the unit right after the number: 3日 4時間.
+  const COMPACT_UNIT_LANGUAGES = new Set(["ja", "ko", "zh"]);
+  const DAY_WORDS = Object.freeze({ en: ["day", "days"], fr: ["jour", "jours"], de: ["Tag", "Tage"], es: ["día", "días"], it: ["giorno", "giorni"], pl: ["dzień", "dni"], pt: ["dia", "dias"], nl: ["dag", "dagen"], tr: ["gün", "gün"], sv: ["dag", "dagar"], el: ["μέρα", "μέρες"], da: ["dag", "dage"], no: ["dag", "dager"], fi: ["päivä", "päivää"], th: ["วัน", "วัน"], ind: ["hari", "hari"], vi: ["ngày", "ngày"] });
+  // Czech and Romanian count days by their own rules (2–4 "dny", 20+ "de zile");
+  // Japanese, Korean and Chinese attach the counter to the number without a
+  // space; Arabic has a dual and changes the noun after ten.
+  const SPECIAL_DAY_WORDS = Object.freeze({
+    cs: amount => `${amount} ${amount === 1 ? "den" : amount >= 2 && amount <= 4 ? "dny" : "dní"}`,
+    ro: amount => `${amount} ${amount === 1 ? "zi" : amount < 20 ? "zile" : "de zile"}`,
+    ja: amount => `${amount}日`,
+    ko: amount => `${amount}일`,
+    zh: amount => `${amount}天`,
+    ar: amount => (amount === 1 ? "يوم واحد" : amount === 2 ? "يومان" : amount <= 10 ? `${amount} أيام` : `${amount} يومًا`)
+  });
+  const SLAVIC_DAY_WORDS = Object.freeze({ ru: ["день", "дня", "дней"], uk: ["день", "дні", "днів"] });
   function formatVipRemaining(milliseconds) {
     const totalMinutes = Math.max(0, Math.ceil(Number(milliseconds || 0) / 60000));
     const days = Math.floor(totalMinutes / 1440);
     const hours = Math.floor((totalMinutes % 1440) / 60);
     const minutes = totalMinutes % 60;
-    if (lang === "en") return [days ? `${days} d` : "", hours ? `${hours} h` : "", `${minutes} min`].filter(Boolean).join(" ");
-    if (lang === "fr") return [days ? `${days} j` : "", hours ? `${hours} h` : "", `${minutes} min`].filter(Boolean).join(" ");
-    return [days ? `${days} дн.` : "", hours ? `${hours} ч.` : "", `${minutes} мин.`].filter(Boolean).join(" ");
+    const units = VIP_TIME_UNITS[lang] || VIP_TIME_UNITS.en;
+    const glue = COMPACT_UNIT_LANGUAGES.has(lang) ? "" : " ";
+    return [days ? `${days}${glue}${units.d}` : "", hours ? `${hours}${glue}${units.h}` : "", `${minutes}${glue}${units.m}`].filter(Boolean).join(" ");
   }
 
   function formatVipDate(value) {
     const timestamp = Date.parse(value || "");
     if (!Number.isFinite(timestamp)) return "—";
     try {
-      return new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : lang === "en" ? "en-GB" : "ru-RU", {
+      return new Intl.DateTimeFormat(DATE_LOCALES[lang] || "en-GB", {
         dateStyle: "medium",
         timeStyle: "short"
       }).format(new Date(timestamp));
@@ -746,6 +910,102 @@
     if (["vip", "permanent", "store"].includes(state)) return t("accountBadgeVip");
     if (state === "free") return t("accountBadgeFree");
     return t("accountBadgeChecking");
+  }
+
+  // Состояние доступа показывается всегда: и когда его нет, и когда он уже оплачен.
+  // Раньше карточка только продавала и пряталась после покупки — человек оставался
+  // без единого ответа на вопрос «что у меня сейчас и до какого числа».
+  async function saveAccountPassword(event) {
+    event.preventDefault();
+    const field = $("#accountPasswordInput");
+    const confirmField = $("#accountPasswordConfirm");
+    const status = $("#accountPasswordStatus");
+    const password = String(field?.value || "");
+    const fail = (key, focus) => { setText("#accountPasswordStatus", t(key)); status.dataset.state = "error"; focus?.focus(); };
+    if (password.length < 8 || password.length > 128) return fail("accountPasswordShort", field);
+    // Второе поле ловит опечатку до того, как пароль уйдёт на сервер.
+    if (confirmField && String(confirmField.value || "") !== password) return fail("accountPasswordMismatch", confirmField);
+    const done = key => {
+      field.value = "";
+      if (confirmField) confirmField.value = "";
+      hidePasswords($("#accountPasswordForm"));
+      $("#accountPasswordForm").hidden = true;
+      setText("#accountPasswordStatus", t(key));
+      status.dataset.state = "success";
+      showToast(t(key), 4200);
+    };
+    try {
+      await updateAccountPassword(password);
+      done("accountPasswordSaved");
+    } catch (error) {
+      console.info("Password update failed", error);
+      const code = String(error?.code || "").toLowerCase();
+      // Раньше совпадение со старым паролем выглядело как сбой, и человек
+      // придумывал новый пароль, а входить пытался старым.
+      if (code === "same_password") done("accountPasswordSame");
+      else if (code === "weak_password") fail("accountPasswordWeak", field);
+      else fail("accountPasswordFailed", field);
+    }
+  }
+
+  // Кнопка-глаз у каждого поля пароля: на телефоне раскладку, заглавную букву
+  // или автозамену иначе не увидеть. Кнопка стоит рядом с label, не внутри него.
+  function installPasswordToggles() {
+    document.querySelectorAll('input[type="password"]').forEach(input => {
+      const label = input.closest("label");
+      if (!label || label.parentElement?.classList.contains("password-wrap")) return;
+      const wrap = document.createElement("div");
+      wrap.className = "password-wrap";
+      label.replaceWith(wrap);
+      wrap.append(label);
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "password-toggle";
+      toggle.setAttribute("aria-controls", input.id);
+      toggle.addEventListener("click", () => {
+        input.type = input.type === "password" ? "text" : "password";
+        renderPasswordToggle(toggle, input);
+      });
+      wrap.append(toggle);
+      renderPasswordToggle(toggle, input);
+    });
+  }
+
+  function hidePasswords(scope) {
+    scope?.querySelectorAll(".password-toggle").forEach(toggle => {
+      const input = document.getElementById(toggle.getAttribute("aria-controls") || "");
+      if (!input) return;
+      input.type = "password";
+      renderPasswordToggle(toggle, input);
+    });
+  }
+
+  function renderPasswordToggle(toggle, input) {
+    const visible = input.type === "text";
+    toggle.setAttribute("aria-pressed", String(visible));
+    toggle.setAttribute("aria-label", t(visible ? "passwordHide" : "passwordShow"));
+    toggle.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#${visible ? "ic-eye-off" : "ic-eye"}"/></svg>`;
+  }
+
+  function renderSubscriptionCard() {
+    const card = $("#subscriptionCard");
+    if (!card) return;
+    const account = cloudAccount || { premium_forever: false, vip_until: null, premium_active: false };
+    const waiting = Boolean(cloudUser?.id) && cloudAccount === null && !nativePremium;
+    const state = waiting ? "checking" : accountPlanState(account, { includeNative: true });
+    const noteKey = {
+      checking: "subscriptionNoteChecking",
+      free: "subscriptionNoteFree",
+      store: "subscriptionNoteStore",
+      vip: "subscriptionNoteVip",
+      permanent: "subscriptionNotePermanent"
+    }[state] || "subscriptionNoteFree";
+    card.dataset.plan = state;
+    setText("#subscriptionTitle", t("subscriptionTitle"));
+    setText("#subscriptionStatus", waiting ? t("accountPlanChecking") : accountPlanText(account, { includeNative: true }));
+    const badge = $("#subscriptionBadge");
+    if (badge) { badge.dataset.plan = state; badge.textContent = accountPlanBadgeText(state); }
+    setText("#subscriptionNote", t(noteKey));
   }
 
   function normalizeVipNotification(value) {
@@ -791,11 +1051,16 @@
 
   function formatVipGrantDuration(days) {
     const amount = Math.max(1, Math.round(Number(days) || 1));
-    if (lang === "en") return `${amount} ${amount === 1 ? "day" : "days"}`;
-    if (lang === "fr") return `${amount} ${amount === 1 ? "jour" : "jours"}`;
+    const slavic = SLAVIC_DAY_WORDS[lang];
+    if (!slavic) {
+      const special = SPECIAL_DAY_WORDS[lang];
+      if (special) return special(amount);
+      const pair = DAY_WORDS[lang] || DAY_WORDS.en;
+      return `${amount} ${amount === 1 ? pair[0] : pair[1]}`;
+    }
     const mod10 = amount % 10;
     const mod100 = amount % 100;
-    const word = mod10 === 1 && mod100 !== 11 ? "день" : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? "дня" : "дней";
+    const word = mod10 === 1 && mod100 !== 11 ? slavic[0] : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? slavic[1] : slavic[2];
     return `${amount} ${word}`;
   }
 
@@ -829,7 +1094,7 @@
     const timestamp = Date.parse(value || "");
     if (!Number.isFinite(timestamp)) return "";
     try {
-      return new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : lang === "en" ? "en-GB" : "ru-RU", {
+      return new Intl.DateTimeFormat(DATE_LOCALES[lang] || "en-GB", {
         dateStyle: "medium",
         timeStyle: "short"
       }).format(new Date(timestamp));
@@ -1209,6 +1474,8 @@
     cloudAccountRefreshTimer = 0;
     cloudAccount = null;
     adminAccountResult = null;
+    adminOverviewLoaded = false;
+    adminOverviewData = null;
     cloudServerNow = 0;
     cloudServerPerformance = 0;
     cloudPremium = false;
@@ -1242,7 +1509,7 @@
   }
 
   function setAdminBusy(busy) {
-    ["#adminSupportId", "#adminLookupButton", "#adminVipDays", "#adminVipReason", "#adminVipMessage", "#adminGrantVip", "#adminGrantForever", "#adminRevokeVip"].forEach(selector => {
+    ["#adminSupportId", "#adminLookupButton", "#adminVipDays", "#adminVipReason", "#adminVipMessage", "#adminGrantVip", "#adminGrantForever", "#adminRevokeVip", "#adminBulkDays", "#adminBulkReason", "#adminBulkMessage", "#adminGrantAll", "#adminRevokeAll", "#adminRefresh"].forEach(selector => {
       const control = $(selector);
       if (control) control.disabled = Boolean(busy);
     });
@@ -1257,17 +1524,21 @@
   async function lookupAdminAccount(event) {
     event?.preventDefault?.();
     if (!cloudClient || cloudAccount?.is_admin !== true) return;
-    const supportId = normalizedSupportId($("#adminSupportId").value);
+    const rawQuery = String($("#adminSupportId").value || "").normalize("NFKC").trim();
+    const email = rawQuery.includes("@") ? rawQuery.toLowerCase() : "";
+    const supportId = email ? "" : normalizedSupportId(rawQuery);
     adminAccountResult = null;
     renderAdminResult();
-    if (!supportId) {
-      setAdminStatus(t("adminNotFound"), "error");
+    if (!supportId && !(email && email.length <= 254 && ADMIN_EMAIL_PATTERN.test(email))) {
+      setAdminStatus(t("adminLookupInvalid"), "error");
       return;
     }
     setAdminBusy(true);
     setAdminStatus(t("adminSearching"));
     try {
-      const { data, error } = await cloudClient.rpc("glowletter_admin_lookup", { p_support_id: supportId });
+      const { data, error } = email
+        ? await cloudClient.rpc("glowletter_admin_lookup_by_email", { p_email: email })
+        : await cloudClient.rpc("glowletter_admin_lookup", { p_support_id: supportId });
       if (error) throw error;
       adminAccountResult = rpcAccountRow(data);
       if (!adminAccountResult) {
@@ -1383,6 +1654,108 @@
     }
   }
 
+  // Admin overview: counts and the latest accounts; each row opens that account.
+  let adminOverviewLoaded = false;
+  let adminOverviewData = null;
+  const ADMIN_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
+
+  function adminDateLabel(value) {
+    if (!value || !Number.isFinite(Date.parse(value))) return "";
+    return new Intl.DateTimeFormat(DATE_LOCALES[lang] || "en-GB", { day: "numeric", month: "short", year: "2-digit" }).format(new Date(value));
+  }
+
+  function renderAdminOverview(overview = adminOverviewData) {
+    const box = $("#adminOverview");
+    if (!box) return;
+    box.hidden = !overview;
+    if (!overview) return;
+    setText("#adminStatTotal", String(overview.total ?? 0));
+    setText("#adminStatVip", String(overview.vip_active ?? 0));
+    setText("#adminStatForever", String(overview.forever ?? 0));
+    setText("#adminStatNew", String(overview.new_week ?? 0));
+    const rows = Array.isArray(overview.recent) ? overview.recent : [];
+    const items = rows.map(row => {
+      const account = normalizeCloudAccount(row);
+      if (!account) return "";
+      const name = row.email ? String(row.email) : account.support_id;
+      const signIn = row.last_sign_in_at ? adminDateLabel(row.last_sign_in_at) : t("adminRowNever");
+      return `<li><button type="button" data-admin-id="${escapeHtml(account.support_id)}"><strong>${escapeHtml(name)}</strong><span>${escapeHtml(accountPlanText(account))}</span><small>${escapeHtml(t("adminRowCreated"))} ${escapeHtml(adminDateLabel(row.created_at))} · ${escapeHtml(t("adminRowSignIn"))} ${escapeHtml(signIn)}</small></button></li>`;
+    }).join("");
+    $("#adminRecentList").innerHTML = items || `<li class="admin-recent-empty">${escapeHtml(t("adminRecentEmpty"))}</li>`;
+  }
+
+  async function loadAdminOverview() {
+    if (!cloudClient || cloudAccount?.is_admin !== true) return;
+    adminOverviewLoaded = true;
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_overview");
+      if (error) throw error;
+      adminOverviewData = data && typeof data === "object" ? data : null;
+    } catch (error) {
+      console.info("Admin overview failed", error);
+      adminOverviewData = null;
+    }
+    renderAdminOverview();
+  }
+
+  function adminBulkNotice() {
+    const days = Number($("#adminBulkDays").value);
+    const reason = VIP_NOTICE_REASONS.has($("#adminBulkReason").value) ? $("#adminBulkReason").value : "gift";
+    return { days, reason, message: normalizeAdminVipMessage($("#adminBulkMessage").value) };
+  }
+
+  // VIP for everyone: the server skips admins and access with no end date.
+  async function grantAdminVipAll() {
+    if (!cloudClient || cloudAccount?.is_admin !== true) return;
+    const { days, reason, message } = adminBulkNotice();
+    if (!Number.isInteger(days) || days < 1 || days > 365) {
+      setAdminStatus(t("adminError"), "error");
+      return;
+    }
+    if (message.length > VIP_NOTICE_MESSAGE_MAX || containsForbidden(message) || containsReligiousAuthorityClaim(message)) {
+      setAdminStatus(t("adminNoticeInvalid"), "error");
+      $("#adminBulkMessage").focus();
+      return;
+    }
+    if (!globalThis.confirm(t("adminGrantAllConfirm").replace("{days}", String(days)))) return;
+    setAdminBusy(true);
+    setAdminStatus(t("adminSearching"));
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_grant_vip_all", { p_days: days, p_reason: reason, p_message: message || null });
+      if (error) throw error;
+      setAdminStatus(t("adminGrantAllDone").replace("{count}", String(Number(data) || 0)), "success");
+      $("#adminBulkMessage").value = "";
+      adminAccountResult = null;
+      renderAdminResult();
+      await loadAdminOverview();
+    } catch (error) {
+      console.info("Admin mass grant failed", error);
+      setAdminStatus(t("adminError"), "error");
+    } finally {
+      setAdminBusy(false);
+    }
+  }
+
+  async function revokeAdminVipAll() {
+    if (!cloudClient || cloudAccount?.is_admin !== true) return;
+    if (!globalThis.confirm(t("adminRevokeAllConfirm"))) return;
+    setAdminBusy(true);
+    setAdminStatus(t("adminSearching"));
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_revoke_vip_all");
+      if (error) throw error;
+      setAdminStatus(t("adminRevokeAllDone").replace("{count}", String(Number(data) || 0)), "success");
+      adminAccountResult = null;
+      renderAdminResult();
+      await loadAdminOverview();
+    } catch (error) {
+      console.info("Admin mass revoke failed", error);
+      setAdminStatus(t("adminError"), "error");
+    } finally {
+      setAdminBusy(false);
+    }
+  }
+
   async function copyAccountSupportId() {
     if (!cloudAccount?.support_id) return;
     await writeClipboard(cloudAccount.support_id);
@@ -1406,6 +1779,11 @@
   }
 
   function renderCloudAccount() {
+    renderSubscriptionCard();
+    // Вход на виду: на главном экране, пока человек не вошёл.
+    const homeSignIn = $("#homeSignIn");
+    if (homeSignIn) homeSignIn.hidden = Boolean(cloudUser?.id) || !cloudClient;
+    setText("#homeSignInLabel", t("homeSignIn"));
     const card = $("#accountCard");
     if (!card) return;
     setText("#accountTitle", t("accountTitle"));
@@ -1420,7 +1798,7 @@
     setText("#accountDelete", t("deleteAccount"));
     setText(".account-support-id > span", t("accountSupportLabel"));
     setText("#accountSupportNote", t("accountSupportNote"));
-    setText("#copyAccountId", `⧉ ${t("accountIdCopy")}`);
+    $("#copyAccountId").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${escapeHtml(t("accountIdCopy"))}`;
     setText(".admin-panel-heading p", t("adminEyebrow"));
     setText("#adminPanelTitle", t("adminTitle"));
     setText(".admin-panel-description", t("adminDescription"));
@@ -1432,12 +1810,19 @@
     setText("#adminVipDaysUnit", t("adminDaysUnit"));
     setText("#adminVipReasonLabel", t("adminNoticeReasonLabel"));
     setSelectOptions("#adminVipReason", SELECT_OPTIONS.vipNoticeReason[lang]);
+    setSelectOptions("#adminBulkReason", SELECT_OPTIONS.vipNoticeReason[lang]);
     setText("#adminVipMessageLabel", t("adminNoticeMessageLabel"));
     $("#adminVipMessage").placeholder = t("adminNoticeMessagePlaceholder");
     setText("#adminVipMessageHint", t("adminNoticeHint"));
     updateAdminVipMessageCount();
     setText("#adminGrantVip", t("adminGrantVip"));
     setText("#adminRevokeVip", t("adminRevoke"));
+    setText("#adminLookupHint", t("adminLookupHint")); setText("#adminBulkTitle", t("adminBulkTitle")); setText("#adminBulkNote", t("adminBulkNote"));
+    setText("#adminBulkDaysLabel", t("adminDaysLabel")); setText("#adminBulkDaysUnit", t("adminDaysUnit")); setText("#adminBulkReasonLabel", t("adminNoticeReasonLabel")); setText("#adminBulkMessageLabel", t("adminNoticeMessageLabel"));
+    const bulkMessage = $("#adminBulkMessage"); if (bulkMessage) bulkMessage.placeholder = t("adminNoticeMessagePlaceholder");
+    setText("#adminGrantAll", t("adminGrantAll")); setText("#adminRevokeAll", t("adminRevokeAll")); setText("#adminRecentTitle", t("adminRecentTitle")); setText("#adminRefresh", t("adminRefresh"));
+    setText("#adminStatTotalLabel", t("adminStatTotal")); setText("#adminStatVipLabel", t("adminStatVip")); setText("#adminStatForeverLabel", t("adminStatForever")); setText("#adminStatNewLabel", t("adminStatNew"));
+    renderAdminOverview();
     const signedIn = Boolean(cloudUser?.id);
     const isAdmin = signedIn && cloudAccount?.is_admin === true;
     const identityReady = signedIn && cloudAccount !== null && !isAdmin;
@@ -1466,6 +1851,17 @@
     facebook.disabled = cloudAuthBusy;
     $("#accountSignOut").disabled = cloudAuthBusy;
     $("#accountDelete").disabled = cloudAuthBusy;
+    // Пароль можно задать прямо здесь: у аккаунтов, заведённых через Google,
+    // пароля нет вовсе, и вход «адрес + пароль» у них не работал в принципе.
+    const passwordBlock = $("#accountPassword");
+    if (passwordBlock) {
+      passwordBlock.hidden = !signedIn;
+      $("#accountPasswordToggle").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-lock"/></svg> ${escapeHtml(t("accountPasswordToggle"))}`;
+      setText("#accountPasswordLabel", t("accountPasswordLabel"));
+      setText("#accountPasswordConfirmLabel", t("accountPasswordConfirmLabel"));
+      setText("#accountPasswordNote", t("accountPasswordNote"));
+      setText("#accountPasswordSubmit", t("accountPasswordSubmit"));
+    }
     const support = $("#accountSupport");
     const supportVisible = signedIn && Boolean(cloudAccount?.support_id) && !isAdmin;
     support.hidden = !supportVisible;
@@ -1484,6 +1880,7 @@
     card.querySelector(".account-profile-copy > p").hidden = !identityReady;
     const adminPanel = $("#adminPanel");
     adminPanel.hidden = !isAdmin;
+    if (isAdmin && !adminOverviewLoaded) loadAdminOverview();
     if (adminPanel.hidden) {
       adminAccountResult = null;
       $("#adminResult").hidden = true;
@@ -1648,6 +2045,7 @@
       cloudProviderLookupComplete = true;
       if (!cloudUser) setCloudStatus(cloudGuestStatusKey()); else renderCloudAccount();
     }
+    maybePromptGoogleSignIn();
   }
 
   function cloudProgressState() {
@@ -1665,7 +2063,7 @@
       schema_version: CLOUD_SCHEMA_VERSION,
       sender_name: cleanName(cloudNames.sender),
       recipient_name: cleanName(cloudNames.recipient),
-      language: ["ru", "en", "fr"].includes(lang) ? lang : "ru",
+      language: SUPPORTED_LANGUAGES.includes(lang) ? lang : "en",
       current_letter_id: currentLetterId,
       favorite_ids: favoriteIds,
       rain_enabled: Boolean(rainScene.enabled),
@@ -1682,7 +2080,7 @@
       schema_version: CLOUD_SCHEMA_VERSION,
       sender_name: "",
       recipient_name: "",
-      language: "ru",
+      language: SUPPORTED_LANGUAGES.includes(lang) ? lang : "en",
       current_letter_id: 1,
       favorite_ids: [],
       rain_enabled: true,
@@ -1710,7 +2108,7 @@
       schema_version: CLOUD_SCHEMA_VERSION,
       sender_name: cleanName(value.sender_name),
       recipient_name: cleanName(value.recipient_name),
-      language: ["ru", "en", "fr"].includes(value.language) ? value.language : defaults.language,
+      language: SUPPORTED_LANGUAGES.includes(value.language) ? value.language : defaults.language,
       current_letter_id: Math.round(number("current_letter_id", 1, 50, defaults.current_letter_id)),
       favorite_ids: favoriteIds,
       rain_enabled: boolean("rain_enabled"),
@@ -2088,7 +2486,7 @@
       if (!cloudNamesExplicitlySaved) cloudNames = remoteNames;
       if (!linkNamesActive && !cloudNamesExplicitlySaved) setNames(remoteNames.sender, remoteNames.recipient, { explicit: false });
 
-      lang = ["ru", "en", "fr"].includes(row.language) ? row.language : "ru";
+      lang = SUPPORTED_LANGUAGES.includes(row.language) && UI[row.language] ? row.language : lang;
       localStorage.setItem("nurLanguage", lang);
 
       const remoteLetterId = Math.max(1, Math.min(Number(row.current_letter_id) || 1, 50));
@@ -2236,6 +2634,7 @@
       userId: cloudUser?.id || "",
       email: cloudUser?.email || ""
     } }));
+    if (cloudUser?.id) resumePurchaseAfterSignIn();
     if (!cloudUser?.id) {
       resetCloudAccount();
       clearTimeout(cloudSyncTimer);
@@ -2299,6 +2698,7 @@
       const { data, error } = await cloudClient.auth.exchangeCodeForSession(callback.code);
       if (error) throw error;
       await handleCloudSession(data?.session || null);
+      announceSignedInAccount();
     } catch {
       setCloudStatus("cloudSignInError");
       showToast(t("cloudSignInError"), 3800);
@@ -2314,9 +2714,13 @@
     cloudAuthBusy = true;
     setCloudStatus("cloudSigningIn");
     try {
+      // Google always shows its account chooser: the phone's browser may already
+      // hold another account, and a silent sign-in with it looked like a
+      // privilege bug (every account "became" the owner).
+      const queryParams = provider === "google" ? { prompt: "select_account" } : undefined;
       const { data, error } = await cloudClient.auth.signInWithOAuth({
         provider,
-        options: { redirectTo: cloudRedirectUrl(), skipBrowserRedirect: true }
+        options: { redirectTo: cloudRedirectUrl(), skipBrowserRedirect: true, queryParams }
       });
       if (error || !data?.url) throw error || new Error("missing authorization URL");
       const authorizeUrl = new URL(data.url);
@@ -2334,6 +2738,135 @@
       setCloudStatus("cloudSignInError");
       showToast(t("cloudSignInError"), 3800);
     }
+  }
+
+  // «Продолжить с Google» аккаунтом телефона (Android): Google выдаёт ID-токен,
+  // Supabase обменивает его на сессию. Сам nonce живёт только здесь, в натив
+  // уходит его SHA-256. В браузере остаётся обычный вход через страницу Google.
+  const GOOGLE_PROMPT_KEY = "nurGoogleSignInPromptV1";
+  const GOOGLE_PROMPT_INTERVAL = 3 * 24 * 60 * 60 * 1000;
+  let googleNonce = "";
+  let googleSignInPending = false;
+  let googleSignInAutomatic = false;
+  let googleSignInOrigin = "";
+  let googleAutoPromptArmed = false;
+  let purchaseAfterSignIn = "";
+
+  function nativeGoogleSignInAvailable() {
+    return IS_ANDROID_PLAY_APP && typeof window.NurAuth?.signInWithGoogle === "function";
+  }
+
+  async function sha256Hex(value) {
+    const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function signInWithGoogle({ automatic = false, origin = "" } = {}) {
+    if (!nativeGoogleSignInAvailable()) {
+      if (!automatic) signInWithCloud("google");
+      return;
+    }
+    if (!cloudClient || googleSignInPending || cloudAuthBusy || cloudUser?.id) return;
+    const raw = new Uint8Array(32);
+    crypto.getRandomValues(raw);
+    googleNonce = [...raw].map(byte => byte.toString(16).padStart(2, "0")).join("");
+    googleSignInPending = true;
+    googleSignInAutomatic = automatic;
+    googleSignInOrigin = origin;
+    try {
+      window.NurAuth.signInWithGoogle(await sha256Hex(googleNonce), automatic);
+    } catch {
+      googleSignInPending = false;
+      googleNonce = "";
+      if (!automatic) signInWithCloud("google");
+    }
+  }
+
+  window.onNativeGoogleCredential = async detail => {
+    if (!googleSignInPending || !IS_ANDROID_PLAY_APP) return;
+    const automatic = googleSignInAutomatic;
+    const origin = googleSignInOrigin;
+    const nonce = googleNonce;
+    googleSignInPending = false;
+    googleNonce = "";
+    const status = String(detail?.status || "");
+    if (status !== "success" || !detail?.idToken) {
+      // Отказ человека уважаем; сбой в ручном входе ведём на страницу Google.
+      if (!automatic && status !== "canceled") signInWithCloud("google");
+      if (status === "canceled") purchaseAfterSignIn = "";
+      // С главного экрана после отказа показываем другие способы входа.
+      if (status === "canceled" && origin === "home") openAccountSection();
+      return;
+    }
+    captureGuestBootstrap();
+    cloudAuthBusy = true;
+    setCloudStatus("cloudSigningIn");
+    renderCloudAccount();
+    try {
+      const { data, error } = await cloudClient.auth.signInWithIdToken({ provider: "google", token: detail.idToken, nonce });
+      if (error || !data?.session) throw error || new Error("missing_session");
+      await handleCloudSession(data.session);
+      announceSignedInAccount();
+    } catch (error) {
+      console.info("Google sign-in failed", error);
+      purchaseAfterSignIn = "";
+      setCloudStatus("cloudSignInError");
+      if (!automatic) showToast(t("cloudSignInError"), 3800);
+    } finally {
+      cloudAuthBusy = false;
+      renderCloudAccount();
+    }
+  };
+
+  // Первый запуск и переустановка: аккаунт, которым уже входили, входит сам,
+  // иначе Google предлагает аккаунты телефона. Не чаще раза в три дня.
+  function scheduleGoogleSignInPrompt() {
+    googleAutoPromptArmed = true;
+    maybePromptGoogleSignIn();
+  }
+
+  function maybePromptGoogleSignIn() {
+    if (!googleAutoPromptArmed || !cloudProviderLookupComplete) return;
+    googleAutoPromptArmed = false;
+    if (!nativeGoogleSignInAvailable() || cloudUser?.id || cloudProviders.google !== true) return;
+    let last = 0;
+    try { last = Number(localStorage.getItem(GOOGLE_PROMPT_KEY)) || 0; } catch { /* storage can be unavailable */ }
+    if (Date.now() - last < GOOGLE_PROMPT_INTERVAL) return;
+    try { localStorage.setItem(GOOGLE_PROMPT_KEY, String(Date.now())); } catch { /* prompt once this session */ }
+    setTimeout(() => { if (!cloudUser?.id) signInWithGoogle({ automatic: true }); }, 1200);
+  }
+
+  // Which account just signed in, by address: a wrong account is visible at once.
+  function announceSignedInAccount() {
+    const email = String(cloudUser?.email || "").trim();
+    showToast(email ? t("signedInAs").replace("{email}", () => email) : t("googleSignedIn"), 4200);
+  }
+
+  function openAccountSection() {
+    $("#settingsButton").click();
+    const section = $("#settingsAccountTitle")?.closest("details");
+    if (section) section.open = true;
+    requestAnimationFrame(() => $("#accountCard")?.scrollIntoView({ block: "start", behavior: REDUCED_MOTION.matches ? "auto" : "smooth" }));
+  }
+
+  // Покупка требует входа: вместо тоста сразу предлагаем войти, а после входа
+  // окно оплаты Google Play открывается само.
+  function requestSignInForPurchase(kind) {
+    purchaseAfterSignIn = kind === "yearly" ? "yearly" : "monthly";
+    showToast(t("signInToBuy"), 4300);
+    if (nativeGoogleSignInAvailable() && cloudProviders.google === true) {
+      signInWithGoogle();
+      return;
+    }
+    closePaywall();
+    openAccountSection();
+  }
+
+  function resumePurchaseAfterSignIn() {
+    const kind = purchaseAfterSignIn;
+    if (!kind || !cloudSession?.access_token) return;
+    purchaseAfterSignIn = "";
+    setTimeout(() => (kind === "yearly" ? purchaseYearly() : purchaseFullAccess()), 600);
   }
 
   function normalizedAuthEmail(value) {
@@ -2547,8 +3080,7 @@
       });
       if (error || data?.deleted !== true) throw error || new Error("account deletion was not confirmed");
       try { await cloudClient.auth.signOut({ scope: "local" }); } catch {}
-      localStorage.removeItem(`${CLOUD_USER_SNAPSHOT_PREFIX}${deletedUserId}`);
-      localStorage.removeItem(`${CLOUD_USER_ENVELOPE_PREFIX}${deletedUserId}`);
+      forgetDeletedAccountData(deletedUserId);
       cloudSession = null;
       cloudUser = null;
       await handleCloudSession(null);
@@ -2561,6 +3093,23 @@
       cloudAuthBusy = false;
       renderCloudAccount();
     }
+  }
+
+  // After a deletion nothing of the account may survive on the device: cloud
+  // snapshots, revision markers, the Moments cache, reminder choices and the
+  // profile photo are all keyed by the user id.
+  function forgetDeletedAccountData(userId) {
+    const id = String(userId || "");
+    if (!id) return;
+    try {
+      const doomed = [];
+      for (let index = 0; index < localStorage.length; index += 1) {
+        const key = localStorage.key(index);
+        if (key && key.includes(id)) doomed.push(key);
+      }
+      doomed.forEach(key => localStorage.removeItem(key));
+    } catch {}
+    deleteMedia(accountAvatarStorageKey(id)).catch(() => {});
   }
 
   async function initializeCloudAuth() {
@@ -2604,6 +3153,7 @@
       return;
     }
     await handleCloudSession(data?.session || null);
+    scheduleGoogleSignInPrompt();
   }
 
   window.GlowLetterCloud = Object.freeze({
@@ -2647,7 +3197,7 @@
 
   function previewRecipient() {
     if (displayName(toName)) return displayName(toName);
-    return lang === "en" ? "someone special" : lang === "fr" ? "une personne importante" : "важного человека";
+    return { ru: "важного человека", en: "someone special", fr: "une personne importante", de: "einen besonderen Menschen", es: "alguien especial", it: "una persona speciale", pl: "kogoś wyjątkowego", uk: "важливу людину", pt: "alguém especial", nl: "iemand die belangrijk is", tr: "özel biri", ro: "cineva special", cs: "někoho výjimečného", sv: "någon speciell", el: "κάποιον ξεχωριστό", da: "en særlig person", no: "en som betyr mye", fi: "tärkeälle ihmiselle", ja: "大切な人", ko: "소중한 사람", zh: "重要的人", th: "คนพิเศษ", ar: "شخص عزيز", ind: "seseorang yang spesial", vi: "người đặc biệt" }[lang] || "someone special";
   }
 
   function encodeSharedMessage(text) {
@@ -2671,7 +3221,7 @@
 
   function entryText(entry) {
     const recipient = previewRecipient();
-    return String(entry?.[lang] || entry?.ru || "").replaceAll("{to}", recipient);
+    return String(entry?.[lang] || entry?.en || entry?.ru || "").replaceAll("{to}", recipient);
   }
 
   function basePosition(entry) {
@@ -2736,7 +3286,8 @@
     AUTH_CALLBACK_PARAMETERS.forEach(key => url.searchParams.delete(key));
     if (fromName) url.searchParams.set("from", fromName); else url.searchParams.delete("from");
     if (toName) url.searchParams.set("to", toName); else url.searchParams.delete("to");
-    if (lang === "ru") url.searchParams.delete("lang"); else url.searchParams.set("lang", lang);
+    // Links always name their language: without it a reader gets their phone's language.
+    url.searchParams.set("lang", lang);
     const position = basePosition(currentEntry());
     if (position && namesReady()) url.searchParams.set("quote", String(position)); else url.searchParams.delete("quote");
     if (includeMessage && sharedMessage && namesReady()) url.searchParams.set("msg", encodeSharedMessage(sharedMessage));
@@ -2800,10 +3351,10 @@
       return;
     }
     const code = Number(weatherSnapshot.code) || 0;
-    const mapped = weatherMap[code] || ["◐", "Weather"];
-    const dayIcon = code <= 1 ? (Number(weatherSnapshot.isDay) === 0 ? "☾" : "☀") : mapped[0];
+    const mapped = weatherMap[code] || ["cloud", "Weather"];
+    const dayIcon = code <= 1 ? (Number(weatherSnapshot.isDay) === 0 ? "moon" : "sun") : mapped[0];
     const temperature = `${Math.round(Number(weatherSnapshot.temperature))}°`;
-    if (icon) icon.textContent = dayIcon;
+    if (icon) icon.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-${dayIcon}"/></svg>`;
     if (text) text.textContent = temperature;
     if (state) state.textContent = temperature;
     button?.classList.add("has-weather");
@@ -2813,7 +3364,7 @@
     button?.setAttribute("title", `${temperature}${place ? ` · ${place}` : ""}`);
     $("#weatherToggle")?.classList.add("is-active");
     $("#weatherToggle")?.setAttribute("aria-pressed", "true");
-    const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.textContent = dayIcon;
+    const settingsIcon = $("#weatherToggle > i"); if (settingsIcon) settingsIcon.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-${dayIcon}"/></svg>`;
   }
 
   function setSelectOptions(selector, options) {
@@ -2826,15 +3377,23 @@
 
   function applyLanguage(render = true) {
     premiumPrice = premiumPriceFromStore ? localizedMonthlyPrice(premiumPrice) : localizedFallbackPrice();
-    lifetimePrice = localizedLifetimeFallbackPrice();
-    document.documentElement.lang = lang;
+    yearlyPrice = yearlyPriceFromStore ? localizedYearlyPrice(yearlyPrice) : localizedYearlyFallbackPrice();
+    document.documentElement.lang = HTML_LANGS[lang] || lang;
+    document.documentElement.dir = isRtl() ? "rtl" : "ltr";
     document.title = displayName(toName) ? `${t("title")} · ${displayName(toName)}` : t("title");
     $("#languageButton").textContent = lang.toUpperCase();
-    $$('[data-lang]').forEach(button => button.classList.toggle("is-active", button.dataset.lang === lang));
+    $$('[data-lang]').forEach(button => {
+      const active = button.dataset.lang === lang;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    setText("#languageTitle", t("langLabel"));
+    $("#languageClose")?.setAttribute("aria-label", t("closeAria"));
+    $("#languageBackdrop")?.setAttribute("aria-label", t("closeAria"));
     $(".brand-card h1").innerHTML = t("brand");
     const brandCopy = $(".brand-copy");
     brandCopy.innerHTML = displayName(toName)
-      ? t("brandCopyPersonal").replace("{to}", `<strong id="homeTo">${escapeHtml(displayName(toName))}</strong>`)
+      ? t("brandCopyPersonal").replace("{to}", () => `<strong id="homeTo">${escapeHtml(displayName(toName))}</strong>`)
       : escapeHtml(t("brandCopy"));
     const senderLine = $(".sender-line");
     setText(".sender-line", "");
@@ -2844,14 +3403,14 @@
       const senderStrong = document.createElement("strong"); senderStrong.id = "homeFrom"; senderStrong.textContent = displayName(fromName); senderLine.append(senderStrong);
     }
     setText("#openStoryButton > span:last-child", t("open"));
-    $("#momentsOpenHome").innerHTML = `<span>◷</span> ${escapeHtml(t("momentsHome"))}`;
+    $("#momentsOpenHome").innerHTML = `<span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span> ${escapeHtml(t("momentsHome"))}`;
     const freeNote = $(".free-note");
-    const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].textContent = t("full");
+    const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].innerHTML = `${escapeHtml(t("full"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     if (freeNote) freeNote.hidden = isPremium;
     renderWeather();
     setText("#nextLetter", t("next")); $("#nextLetter").insertAdjacentHTML("beforeend", " <span>→</span>");
     $("#copyLetter").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${t("copy")}`;
-    updateSpeechButton(letterSpeechActive); $("#postcardButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("postcard"))}`; $("#favoriteButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> ${escapeHtml(t("saved"))}`; $("#focusReadingButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> ${escapeHtml(t(readingFocus ? "focusExit" : "focusRead"))}`;
+    updateSpeechButton(letterSpeechActive); $("#favoriteButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> ${escapeHtml(t("saved"))}`;
     letterStage.dataset.navigationHint = t("focusHint");
     $$(".go-home").forEach(button => button.innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> ${escapeHtml(t("home"))}`);
     setText("#stageCaption", t("stage")); setText("#letterTitle", t("letterTitle")); setText("#letterForLabel", t("for")); setText(".signature span", t("warmSign"));
@@ -2871,12 +3430,12 @@
     setText(".background-picker legend", t("personalBg")); setText(".background-preview strong", t("ownPhoto")); setText(".background-preview small", t("localOnly")); setText(".track-picker legend", t("music")); setText("#customTrackButton strong", t("customMusic")); if (!customAudioBlob) setText("#customTrackName", t("customMusicNote")); setText("#removeAudioButton", t("removeAudio")); setText("#audioShareNote", t("audioShareNote"));
     renderAudioControls();
     setText(".premium-settings-card h3", t("allLetters")); setText(".premium-settings-card p", t("onePurchase")); $("#settingsPurchase").innerHTML = `${escapeHtml(t("buy"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
-    $("#paywallTitle").innerHTML = t("paywallTitle"); setText("#paywallLead", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText("#purchaseLifetimeButton > span", t("payLifetimeButton")); setText(".paywall-card > small", t("storeNote"));
+    $("#paywallTitle").innerHTML = t("paywallTitle"); setText("#paywallLead", t("paywallBody")); const benefits=$$(".paywall-card li"); if(benefits[0])benefits[0].textContent=t("benefit1");if(benefits[1])benefits[1].textContent=t("benefit2");if(benefits[2])benefits[2].textContent=t("benefit3");if(benefits[3])benefits[3].textContent=t("benefit4"); setText("#purchaseButton > span", t("payButton")); setText("#purchaseYearlyButton > span", t("payYearlyButton")); setText("#purchaseYearlyButton > em", t("yearlyBadge")); setText(".paywall-card > small", t("storeNote"));
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
-    setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
+    setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#settingsRestoreButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("subscriptionRestore"))}`; renderSubscriptionCard(); renderAppUpdate(); $$(".password-toggle").forEach(toggle => { const input = document.getElementById(toggle.getAttribute("aria-controls") || ""); if (input) renderPasswordToggle(toggle, input); }); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
     setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
-    setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]);
+    setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]||CONTENT_REPORT_OPTIONS.en);
     $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
     renderCloudAccount();
@@ -2977,7 +3536,8 @@
     const horizontal = Math.abs(deltaX);
     const vertical = Math.abs(deltaY);
     if (Number(duration) > READING_SWIPE.maxDuration || horizontal < threshold || horizontal < vertical * READING_SWIPE.axisRatio) return 0;
-    return deltaX < 0 ? 1 : -1;
+    // Arabic reads right to left, so the next letter lies on the left.
+    return (deltaX < 0 ? 1 : -1) * (isRtl() ? -1 : 1);
   }
 
   function resetReadingSwipe(pointerId) {
@@ -3039,8 +3599,9 @@
   function readingKeyboardDirection(event) {
     if (!readingFocus || event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return 0;
     if (isReadingControlTarget(event.target) || hasReadingTextSelection()) return 0;
-    if (event.key === "ArrowRight") return 1;
-    if (event.key === "ArrowLeft") return -1;
+    const forward = isRtl() ? -1 : 1;
+    if (event.key === "ArrowRight") return forward;
+    if (event.key === "ArrowLeft") return -forward;
     return 0;
   }
 
@@ -3069,8 +3630,8 @@
     if (!ensureNames()) return;
     const entry = currentEntry();
     if (!entry || !canAccess(entry)) { openPaywall(); return; }
-    const position = entry.shared ? "✦" : String(entry.id).padStart(2, "0");
-    $("#letterNumber").textContent = entry.shared ? `${position} PERSONAL` : `${position} / ${LETTERS.length}`;
+    const position = entry.shared ? `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg>` : String(entry.id).padStart(2, "0");
+    $("#letterNumber").innerHTML = entry.shared ? `${position} PERSONAL` : `${escapeHtml(position)} / ${LETTERS.length}`;
     $("#letterTo").textContent = displayName(toName);
     $("#letterFrom").textContent = displayName(fromName);
     const text = $("#letterText");
@@ -3134,15 +3695,15 @@
       const visibleText = accessible ? text : t("locked");
       return `<article class="quote-card${accessible ? "" : " is-locked"}" data-id="${entry.id}">
         <div class="quote-body"><div class="quote-head"><b>${String(entry.id).padStart(2, "0")}</b><span>${escapeHtml(t(entry.category) || entry.category)}</span></div><p>${escapeHtml(visibleText)}</p>
-        <div class="quote-actions">${letterPickerContext && accessible ? `<button type="button" class="quote-pick" data-action="pick">✓ ${escapeHtml(pickerText("pick"))}</button>` : ""}<button type="button" data-action="open">${escapeHtml(t("openQuote"))}</button><button type="button" data-action="copy"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${escapeHtml(t("copy"))}</button></div></div>
-        ${accessible ? "" : `<div class="lock-cover"><i>◇</i><strong>${escapeHtml(t("locked"))}</strong><button type="button" data-action="unlock">${escapeHtml(t("unlock"))}</button></div>`}
+        <div class="quote-actions">${letterPickerContext && accessible ? `<button type="button" class="quote-pick" data-action="pick"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-check"/></svg> ${escapeHtml(pickerText("pick"))}</button>` : ""}<button type="button" data-action="open">${escapeHtml(t("openQuote"))}</button><button type="button" data-action="copy"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> ${escapeHtml(t("copy"))}</button></div></div>
+        ${accessible ? "" : `<div class="lock-cover"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-lock"/></svg></i><strong>${escapeHtml(t("locked"))}</strong><button type="button" data-action="unlock">${escapeHtml(t("unlock"))}</button></div>`}
       </article>`;
     }).join("");
     setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
   }
 
   function pickerText(key) {
-    const bank = PICKER_TEXT[lang] || PICKER_TEXT.ru;
+    const bank = PICKER_TEXT[lang] || PICKER_TEXT.en;
     return bank[key] || PICKER_TEXT.ru[key] || "";
   }
 
@@ -3164,7 +3725,7 @@
       recipientName: recipient,
       relationship: context?.relationship || "auto",
       tone: context?.tone || "auto",
-      language: ["ru", "en", "fr"].includes(context?.language) ? context.language : lang,
+      language: SUPPORTED_LANGUAGES.includes(context?.language) ? context.language : lang,
       source: String(context?.source || source || "library").slice(0, 32),
       context: context || null
     };
@@ -3182,7 +3743,7 @@
     }
     const recipient = cleanName(letterPickerContext.recipientName || letterPickerContext.recipient) || toName;
     note.textContent = recipient
-      ? pickerText("note").replace("{name}", displayName(recipient))
+      ? pickerText("note").replace("{name}", () => displayName(recipient))
       : pickerText("noteGeneric");
     note.hidden = false;
   }
@@ -3225,7 +3786,7 @@
 
   function openPaywall(feature = "") {
     if (feature === "letter") pendingPremiumFeature = "letter";
-    $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
+    $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     openPanel(layers.paywall);
     haptic([15, 40, 15]);
   }
@@ -3247,20 +3808,52 @@
     setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
     renderLibrary();
     renderCloudAccount();
+    renderSubscriptionCard();
     dispatchEvent(new CustomEvent("glowletter-access-change", { detail: { premium: isPremium, reason } }));
     if (isPremium) {
       const requested = pendingPremiumFeature;
       pendingPremiumFeature = "";
       closePanel(layers.paywall);
+      purchaseAttemptPending = false;
       if (!wasPremium) showToast(t("premiumOn"), 3600);
       if (requested === "letter") openLetterPicker();
     } else {
       if (reason) console.info("Entitlement:", reason);
+      // Раньше причина уходила только в консоль: человек жал «Оформить подписку»,
+      // и ничего не происходило. Теперь молчание заменено объяснением — но лишь
+      // тогда, когда покупку действительно запрашивали.
+      if (purchaseAttemptPending) {
+        const code = String(reason || "");
+        const message = purchaseFailureMessage(code);
+        if (code === "purchase_canceled") purchaseAttemptPending = false;
+        else if (message) { purchaseAttemptPending = false; showToast(message, 6000); }
+      }
       if (pendingPremiumFeature) openPaywall(pendingPremiumFeature);
     }
   }
 
-  function updatePremium(owned, price, reason = "") {
+  // Каждая причина, по которой окно оплаты не открылось или доступ не выдан,
+  // получает понятную фразу. Пустая строка — промежуточный шаг, ждём дальше.
+  function purchaseFailureMessage(code) {
+    if (["subscription_not_configured_in_play_console", "subscription_base_plan_not_available", "ambiguous_subscription_base_plan", "subscription_offer_token_missing", "product_unavailable"].includes(code)) return t("purchaseNotConfigured");
+    if (code === "authentication_required" || code === "account_session_changed") return t("cloudSignInPrompt");
+    if (code === "billing_security_not_configured") return t("purchaseUnavailable");
+    if (code.startsWith("product_query_")) return t("purchaseStoreSilent");
+    if (code.startsWith("billing_unavailable_") || code === "billing_disconnected") return t("purchaseStoreUnavailable");
+    if (code.startsWith("billing_launch_") || code.startsWith("purchase_update_")) return t("purchaseLaunchFailed");
+    if (code === "purchase_pending") return t("purchasePending");
+    if (code.startsWith("verification_") || code.startsWith("server_did_not_") || code === "purchase_not_completed") return t("purchaseVerifyPending");
+    return "";
+  }
+
+  function rememberStoreYearlyPrice(value) {
+    if (!String(value || "").trim()) return;
+    yearlyPrice = localizedYearlyPrice(value);
+    yearlyPriceFromStore = true;
+  }
+
+  function updatePremium(owned, price, reason = "", yearly = "") {
+    rememberStoreYearlyPrice(yearly);
     const transient = owned !== true && owned !== "true" && ["initializing", "restoring_purchases", "verifying_purchase"].includes(String(reason || ""));
     if (transient) {
       entitlementState = "checking";
@@ -3268,7 +3861,7 @@
         premiumPrice = localizedMonthlyPrice(price);
         premiumPriceFromStore = true;
       }
-      $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
+      $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
       return;
     }
     nativePremium = owned === true || owned === "true";
@@ -3276,14 +3869,14 @@
       premiumPrice = localizedMonthlyPrice(price);
       premiumPriceFromStore = true;
     }
-    $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".lifetime-price-label").forEach(label => label.textContent = lifetimePrice);
+    $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     applyEffectivePremium(reason);
   }
 
   function updatePurchaseConfiguration(configured) {
     if (typeof configured !== "boolean") return;
     purchaseConfigured = configured;
-    [$("#purchaseButton"), $("#purchaseLifetimeButton"), $("#settingsPurchase"), $("#restoreButton")].forEach(button => {
+    [$("#purchaseButton"), $("#purchaseYearlyButton"), $("#settingsPurchase"), $("#restoreButton")].forEach(button => {
       if (!button) return;
       button.classList.toggle("is-unavailable", !configured);
       button.setAttribute("aria-disabled", String(!configured));
@@ -3291,7 +3884,56 @@
     });
   }
 
-  window.onNativeEntitlement = (owned, price, reason) => { if (trustedEntitlementSource) updatePremium(owned, price, reason); };
+  window.onNativeEntitlement = (owned, price, reason, yearly) => { if (trustedEntitlementSource) updatePremium(owned, price, reason, yearly); };
+
+  // Обновление из Google Play: нативный слой сообщает состояние, плашка
+  // предлагает скачать новую версию, а после загрузки — перезапустить.
+  // «Скрыть» действует до конца сеанса и только для текущего шага.
+  const APP_UPDATE_VISIBLE = ["available", "downloading", "downloaded"];
+  let appUpdate = { status: "none", availableVersionCode: 0, progress: 0 };
+  let appUpdateDismissedKey = "";
+
+  function appUpdateKey() { return `${appUpdate.status}:${appUpdate.availableVersionCode}`; }
+
+  function renderAppUpdate() {
+    const banner = $("#appUpdateBanner");
+    if (!banner) return;
+    const visible = APP_UPDATE_VISIBLE.includes(appUpdate.status) && appUpdateDismissedKey !== appUpdateKey();
+    banner.hidden = !visible;
+    $("#appUpdateClose").setAttribute("aria-label", t("appUpdateHide"));
+    if (!visible) return;
+    const action = $("#appUpdateAction");
+    if (appUpdate.status === "downloading") {
+      setText("#appUpdateText", appUpdate.progress > 0 ? `${t("appUpdateDownloading")} ${appUpdate.progress}%` : t("appUpdateDownloading"));
+      action.hidden = true;
+      return;
+    }
+    const ready = appUpdate.status === "downloaded";
+    setText("#appUpdateText", t(ready ? "appUpdateReady" : "appUpdateAvailable"));
+    action.textContent = t(ready ? "appUpdateRestart" : "appUpdateButton");
+    action.hidden = false;
+  }
+
+  window.onNativeAppUpdate = detail => {
+    if (!trustedEntitlementSource || !detail) return;
+    const status = String(detail.status || "none");
+    appUpdate = {
+      status: APP_UPDATE_VISIBLE.includes(status) ? status : "none",
+      availableVersionCode: Number(detail.availableVersionCode) || 0,
+      progress: Math.max(0, Math.min(100, Math.round(Number(detail.progress) || 0)))
+    };
+    renderAppUpdate();
+  };
+
+  function runAppUpdateAction() {
+    if (appUpdate.status === "downloaded") window.NurAppUpdate?.completeUpdate?.();
+    else if (appUpdate.status === "available") window.NurAppUpdate?.startUpdate?.();
+  }
+
+  function dismissAppUpdate() {
+    appUpdateDismissedKey = appUpdateKey();
+    renderAppUpdate();
+  }
 
   async function requestNativeEntitlement() {
     try {
@@ -3304,7 +3946,7 @@
       const raw = await Promise.resolve(window.NurBilling.getEntitlement());
       const data = typeof raw === "string" ? JSON.parse(raw) : raw;
       if (data) {
-        updatePremium(Boolean(data.entitled ?? data.owned ?? data.premium), data.priceLabel || data.price, data.reason);
+        updatePremium(Boolean(data.entitled ?? data.owned ?? data.premium), data.priceLabel || data.price, data.reason, data.yearlyPriceLabel);
         updatePurchaseConfiguration(data.purchaseConfigured);
       }
     } catch (error) {
@@ -3317,28 +3959,31 @@
   function purchaseFullAccess() {
     if (IS_ANDROID_PLAY_APP && trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) {
       if (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession)) {
-        showToast(t("cloudSignInPrompt"), 4300);
+        requestSignInForPurchase("monthly");
         return;
       }
-      window.NurBilling.purchaseFullAccess();
+      purchaseAttemptPending = true; window.NurBilling.purchaseFullAccess();
       return;
     }
     if (purchaseConfigured === false) { showToast(t("purchaseUnavailable"), 4300); return; }
-    if (trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) { window.NurBilling.purchaseFullAccess(); return; }
+    if (trustedEntitlementSource && window.NurBilling?.purchaseFullAccess) { purchaseAttemptPending = true; window.NurBilling.purchaseFullAccess(); return; }
     if (CONFIG.playStoreUrl) { window.open(CONFIG.playStoreUrl, "_blank", "noopener"); return; }
     showToast(t("purchaseUnavailable"), 4300);
   }
 
-  function purchaseLifetime() {
-    if (trustedEntitlementSource && typeof window.NurBilling?.purchaseLifetime === "function") {
+  // Подписка на год: тот же товар Google Play, основной план yearly.
+  function purchaseYearly() {
+    if (trustedEntitlementSource && typeof window.NurBilling?.purchaseYearly === "function") {
       if (IS_ANDROID_PLAY_APP && (!cloudSession?.access_token || !syncNativeBillingAuth(cloudSession))) {
-        showToast(t("cloudSignInPrompt"), 4300);
+        requestSignInForPurchase("yearly");
         return;
       }
-      window.NurBilling.purchaseLifetime();
+      purchaseAttemptPending = true;
+      window.NurBilling.purchaseYearly();
       return;
     }
-    showToast(t("lifetimeSoon"), 4600);
+    if (CONFIG.playStoreUrl) { window.open(CONFIG.playStoreUrl, "_blank", "noopener"); return; }
+    showToast(t("purchaseUnavailable"), 4300);
   }
 
   function restorePurchase() {
@@ -3412,6 +4057,12 @@
   function toggleNature() { setNaturePlaying(!(isNaturePlaying || localStorage.getItem("nurNature") === "on")); }
 
   function createAtmosphere() {
+    // Звёзды и метеоры: небо должно жить, но не мельтешить. Мерцание у каждой
+    // звезды своё, метеор проходит раз в 9–16 секунд.
+    const starHolder=$("#nightStars");const meteorHolder=$("#meteors");
+    const starCount=LITE_DEVICE?0:(MOBILE_DEVICE?26:48);const meteorCount=LITE_DEVICE?0:(MOBILE_DEVICE?2:3);
+    for(let i=0;i<starCount;i++){const star=document.createElement("i");star.className="night-star";star.style.setProperty("--left",`${Math.random()*100}%`);star.style.setProperty("--top",`${Math.random()*46}%`);star.style.setProperty("--size",`${1.4+Math.random()*2.2}px`);star.style.setProperty("--dim",(0.45+Math.random()*0.5).toFixed(2));star.style.setProperty("--duration",`${3+Math.random()*4.5}s`);star.style.setProperty("--delay",`-${Math.random()*7}s`);starHolder?.append(star);}
+    for(let i=0;i<meteorCount;i++){const meteor=document.createElement("i");meteor.className="meteor";meteor.style.setProperty("--left",`${35+Math.random()*60}%`);meteor.style.setProperty("--top",`${4+Math.random()*26}%`);meteor.style.setProperty("--tail",`${70+Math.random()*50}px`);meteor.style.setProperty("--duration",`${9+Math.random()*7}s`);meteor.style.setProperty("--delay",`-${Math.random()*12}s`);meteorHolder?.append(meteor);}
     const colors=["#b7634b","#d48a59","#d59aa8","#8c684c","#d6a75c"];
     const leafCount=LITE_DEVICE?6:(MOBILE_DEVICE?9:18);const emberCount=LITE_DEVICE?0:(MOBILE_DEVICE?5:15);
     for(let i=0;i<leafCount;i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
@@ -3675,6 +4326,7 @@
 
   function openMediaDb(){return new Promise((resolve,reject)=>{const request=indexedDB.open("nur-letter-media",1);request.onupgradeneeded=()=>request.result.createObjectStore("assets");request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});}
   async function saveMedia(key,value){const db=await openMediaDb();await new Promise((resolve,reject)=>{const tx=db.transaction("assets","readwrite");tx.objectStore("assets").put(value,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();}
+  async function deleteMedia(key){const db=await openMediaDb();await new Promise((resolve,reject)=>{const tx=db.transaction("assets","readwrite");tx.objectStore("assets").delete(key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();}
   async function loadMedia(key){const db=await openMediaDb();const value=await new Promise((resolve,reject)=>{const request=db.transaction("assets").objectStore("assets").get(key);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});db.close();return value;}
 
   function accountAvatarStorageKey(userId){return `profile-avatar:${String(userId||"")}`;}
@@ -3690,7 +4342,7 @@
   async function setupBackground(){try{const saved=await loadMedia("background");if(saved?.blob){applyBackground(saved.blob);return;}}catch{}const [landscape,portrait]=await Promise.all([imageAsset("assets/campfire-lake.png"),imageAsset("assets/campfire-mobile.png")]);if(landscape){backgroundUrl=URL.createObjectURL(landscape);document.documentElement.style.setProperty("--scene-image",`url("${backgroundUrl}")`);$("#backgroundPreview").style.backgroundImage=`url("${backgroundUrl}")`;}if(portrait){mobileBackgroundUrl=URL.createObjectURL(portrait);document.documentElement.style.setProperty("--mobile-scene-image",`url("${mobileBackgroundUrl}")`);} }
   async function resetBackground(){try{await saveMedia("background",null);}catch{}if(backgroundUrl)URL.revokeObjectURL(backgroundUrl);if(mobileBackgroundUrl&&mobileBackgroundUrl!==backgroundUrl)URL.revokeObjectURL(mobileBackgroundUrl);backgroundUrl="";mobileBackgroundUrl="";customBackgroundBlob=null;document.documentElement.style.removeProperty("--scene-image");document.documentElement.style.removeProperty("--mobile-scene-image");document.body.classList.remove("has-custom-background");$("#backgroundPreview").style.backgroundImage="";await setupBackground();showToast(t("photoReset"));}
 
-  const weatherMap={0:["☀","Clear"],1:["◐","Mostly clear"],2:["☁","Cloudy"],3:["☁","Overcast"],45:["≋","Fog"],48:["≋","Fog"],51:["☂","Drizzle"],53:["☂","Drizzle"],55:["☂","Drizzle"],61:["☂","Rain"],63:["☂","Rain"],65:["☂","Heavy rain"],71:["❄","Snow"],73:["❄","Snow"],75:["❄","Snow"],80:["☂","Showers"],81:["☂","Showers"],82:["☂","Showers"],95:["ϟ","Storm"],96:["ϟ","Storm"],99:["ϟ","Storm"]};
+  const weatherMap={0:["sun","Clear"],1:["cloud","Mostly clear"],2:["cloud","Cloudy"],3:["cloud","Overcast"],45:["fog","Fog"],48:["fog","Fog"],51:["rain","Drizzle"],53:["rain","Drizzle"],55:["rain","Drizzle"],61:["rain","Rain"],63:["rain","Rain"],65:["rain","Heavy rain"],71:["snow","Snow"],73:["snow","Snow"],75:["snow","Snow"],80:["rain","Showers"],81:["rain","Showers"],82:["rain","Showers"],95:["bolt","Storm"],96:["bolt","Storm"],99:["bolt","Storm"]};
   const weatherFallbacks={
     "Europe/Paris":{latitude:48.8566,longitude:2.3522,place:"Paris"},"Europe/London":{latitude:51.5072,longitude:-.1276,place:"London"},"Europe/Moscow":{latitude:55.7558,longitude:37.6173,place:"Moscow"},
     "America/New_York":{latitude:40.7128,longitude:-74.006,place:"New York"},"America/Los_Angeles":{latitude:34.0522,longitude:-118.2437,place:"Los Angeles"},"Asia/Dubai":{latitude:25.2048,longitude:55.2708,place:"Dubai"},
@@ -3750,6 +4402,23 @@
     return `${fontStyle} ${weight} ${size}px ${typography.family}`;
   }
 
+  // Thai, Chinese and Japanese put no spaces between words: the browser's
+  // segmenter finds the break points, and only real spaces stay in the text.
+  const SEGMENTED_LANGUAGES = new Set(["th", "zh", "ja"]);
+  function canvasTokens(paragraph) {
+    const chunks = paragraph.trim().split(/\s+/).filter(Boolean);
+    let segmenter = null;
+    if (SEGMENTED_LANGUAGES.has(lang) && typeof Intl.Segmenter === "function") {
+      try { segmenter = new Intl.Segmenter(HTML_LANGS[lang] || lang, { granularity: "word" }); } catch {}
+    }
+    if (!segmenter) return chunks.map(text => ({ text, glue: " " }));
+    const tokens = [];
+    for (const chunk of chunks) {
+      Array.from(segmenter.segment(chunk), part => part.segment).forEach((text, index) => tokens.push({ text, glue: index ? "" : " " }));
+    }
+    return tokens;
+  }
+
   function canvasWrappedLines(ctx, text, maxWidth) {
     const lines = [];
     const normalized = String(text || "").replace(/\r\n?/g, "\n").trim();
@@ -3770,17 +4439,16 @@
     };
 
     paragraphs.forEach((paragraph, paragraphIndex) => {
-      const words = paragraph.trim().split(/\s+/).filter(Boolean);
       let line = "";
-      for (const word of words) {
-        const candidate = line ? `${line} ${word}` : word;
+      for (const token of canvasTokens(paragraph)) {
+        const candidate = line ? `${line}${token.glue}${token.text}` : token.text;
         if (ctx.measureText(candidate).width <= maxWidth) {
           line = candidate;
         } else if (line) {
           lines.push(line);
-          line = ctx.measureText(word).width <= maxWidth ? word : pushToken(word, "");
+          line = ctx.measureText(token.text).width <= maxWidth ? token.text : pushToken(token.text, "");
         } else {
-          line = pushToken(word, "");
+          line = pushToken(token.text, "");
         }
       }
       if (line) lines.push(line);
@@ -3818,17 +4486,17 @@
     const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";
     try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}
     const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.letterSpacing="0px";
-    ctx.fillStyle="#fff8ed";ctx.font=fitCanvasSingleLine(ctx,recipientText,typography,900,66,{heading:true});ctx.fillText(recipientText,90,270);
+    ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.letterSpacing="0px";const rtl=isRtl();const textStart=rtl?990:90;const textEnd=rtl?90:990;if(rtl)ctx.direction="rtl";ctx.textAlign=rtl?"right":"left";
+    ctx.fillStyle="#fff8ed";ctx.font=fitCanvasSingleLine(ctx,recipientText,typography,900,66,{heading:true});ctx.fillText(recipientText,textStart,270);
     ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();
-    ctx.fillStyle="#fffaf2";const fittedBody=fitCanvasParagraph(ctx,bodyText,typography,900,1120);fittedBody.lines.forEach((line,index)=>ctx.fillText(line,90,440+(index*fittedBody.lineHeight)));
-    ctx.fillStyle="#f0c5d3";ctx.font=fitCanvasSingleLine(ctx,signatureText,typography,900,49,{signature:true,heading:true});ctx.textAlign="right";ctx.fillText(signatureText,990,1765);ctx.textAlign="left";
+    ctx.fillStyle="#fffaf2";const fittedBody=fitCanvasParagraph(ctx,bodyText,typography,900,1120);fittedBody.lines.forEach((line,index)=>ctx.fillText(line,textStart,440+(index*fittedBody.lineHeight)));
+    ctx.fillStyle="#f0c5d3";ctx.font=fitCanvasSingleLine(ctx,signatureText,typography,900,49,{signature:true,heading:true});ctx.textAlign=rtl?"left":"right";ctx.fillText(signatureText,textEnd,1765);ctx.textAlign=rtl?"right":"left";
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});
     try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}
     const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
   }
   function speechLocale() {
-    return lang === "fr" ? "fr-FR" : lang === "en" ? "en-US" : "ru-RU";
+    return SPEECH_LOCALES[lang] || "en-US";
   }
 
   function nativeSpeechBridge() {
@@ -4033,7 +4701,7 @@
     const publicUrl = new URL(CONFIG.publicShareUrl || `${location.origin}${location.pathname}`, location.href);
     publicUrl.search = "";
     publicUrl.hash = "";
-    if (["en", "fr"].includes(lang)) publicUrl.searchParams.set("lang", lang);
+    publicUrl.searchParams.set("lang", lang);
     return publicUrl.toString();
   }
 
@@ -4133,10 +4801,10 @@
     const safe=new URL(String(payload.url||""),base);
     const token=safe.searchParams.get("moment")||"";
     if(safe.origin!==base.origin||safe.pathname!==base.pathname||!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(token))throw new Error("invalid_personal_qr");
-    safe.hash="";safe.search="";safe.searchParams.set("moment",token);const qrLanguage=payload.language||payload.letter?.language;if(["en","fr"].includes(qrLanguage))safe.searchParams.set("lang",qrLanguage);
+    safe.hash="";safe.search="";safe.searchParams.set("moment",token);const qrLanguage=payload.language||payload.letter?.language;if(SUPPORTED_LANGUAGES.includes(qrLanguage))safe.searchParams.set("lang",qrLanguage);
     const sender=cleanName(payload.senderName||payload.sender||payload.letter?.sender_name_snapshot)||fromName;const recipient=cleanName(payload.recipientName||payload.recipient||payload.letter?.recipient_name_snapshot)||toName;
     if(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_qr_names");
-    currentQrMode="personal";currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle"}[lang])).slice(0,48);currentQrUrl=safe.toString();
+    currentQrMode="personal";currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle",de:"Persönlicher Brief",es:"Carta personal",it:"Lettera personale",pl:"Osobisty list",uk:"Особистий лист",pt:"Carta pessoal",nl:"Persoonlijke brief",tr:"Kişisel mektup",ro:"Scrisoare personală",cs:"Osobní dopis",sv:"Personligt brev",el:"Προσωπικό γράμμα",da:"Personligt brev",no:"Personlig brev",fi:"Henkilökohtainen kirje",ja:"あなたへの手紙",ko:"개인 편지",zh:"私人信件",th:"จดหมายส่วนตัว",ar:"رسالة شخصية",ind:"Surat pribadi",vi:"Thư riêng"}[lang]||"Personal letter")).slice(0,48);currentQrUrl=safe.toString();
     $("#qrSenderName").value=sender;$("#qrRecipientName").value=recipient;$("#qrNamesError").hidden=true;setText("#qrPreviewCaption",currentQrCaption);drawQrUrl(currentQrUrl,sender,recipient,false);openPanel(layers.qr);
   }
 
@@ -4144,11 +4812,11 @@
     const value=String(payload.text||"").normalize("NFKC").trim().slice(0,4000);
     const sender=cleanName(payload.senderName);const recipient=cleanName(payload.recipientName);
     if(!value||!sender||!recipient||containsForbidden(value)||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_resolved_letter");
-    if(["ru","en","fr"].includes(payload.language))lang=payload.language;
+    if(SUPPORTED_LANGUAGES.includes(payload.language)&&UI[payload.language])lang=payload.language;
     setNames(sender,recipient,{persist:false,explicit:false});
     sharedMessage=value;letterDeck=[{id:"shared",category:"warm",shared:true,ru:value,en:value,fr:value},...LETTERS];currentIndex=0;
     activeReportContext={kind:"moment_letter",contentRef:safeReportReference(payload.publicId),momentPublicId:String(payload.publicId||""),sender,recipient,text:value,audioAttached:false};updateReportButton();
-    const safe=new URL(CONFIG.publicShareUrl||`${location.origin}${location.pathname}`,location.href);safe.search="";safe.hash="";const token=String(payload.publicId||params.get("moment")||"");if(token)safe.searchParams.set("moment",token);if(lang!=="ru")safe.searchParams.set("lang",lang);history.replaceState({},"",safe);
+    const safe=new URL(`${location.origin}${location.pathname}`);safe.search="";safe.hash="";const token=String(payload.publicId||params.get("moment")||"");if(token)safe.searchParams.set("moment",token);safe.searchParams.set("lang",lang);history.replaceState({},"",safe);
     applyLanguage(false);Object.values(layers).forEach(closePanel);if(!storyOpened)openStory();else renderLetter();
   }
 
@@ -4262,13 +4930,13 @@
 
   function createQrCardBlob(){
     if(!currentQrUrl&& !renderQrCode(false))return Promise.resolve(null);
-    const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=1200;canvas.height=1600;const ctx=canvas.getContext("2d");if(!ctx)return Promise.resolve(null);const palette=qrPalette();
+    const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=1200;canvas.height=1600;const ctx=canvas.getContext("2d");if(!ctx)return Promise.resolve(null);const palette=qrPalette();if(isRtl())ctx.direction="rtl";
     const gradient=ctx.createLinearGradient(0,0,1200,1600);gradient.addColorStop(0,palette.background);gradient.addColorStop(1,"#ece8ea");ctx.fillStyle=gradient;ctx.fillRect(0,0,1200,1600);
     ctx.strokeStyle=palette.accent;ctx.lineWidth=4;ctx.strokeRect(56,56,1088,1488);ctx.textAlign="center";ctx.fillStyle=palette.accent;ctx.font="800 30px Manrope, Arial";ctx.fillText("G L O W L E T T E R",600,155);
-    ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(({ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse"}[lang]||"GlowLetter"),600,265);
+    ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(({ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse",de:"Ein warmer Brief",es:"Una carta cálida",it:"Una lettera affettuosa",pl:"Ciepły list",uk:"Теплий лист",pt:"Uma carta calorosa",nl:"Een warme brief",tr:"Sıcak bir mektup",ro:"O scrisoare caldă",cs:"Vřelý dopis",sv:"Ett varmt brev",el:"Ένα ζεστό γράμμα",da:"Et varmt brev",no:"Et varmt brev",fi:"Lämmin kirje",ja:"あたたかい手紙",ko:"따뜻한 편지",zh:"一封溫暖的信",th:"จดหมายอันอบอุ่น",ar:"رسالة دافئة",ind:"Sepucuk surat hangat",vi:"Một lá thư ấm áp"}[lang]||"GlowLetter"),600,265);
     ctx.fillStyle="#ffffff";ctx.fillRect(176,350,848,848);ctx.drawImage(source,200,374,800,800);
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");const route=qrRouteText(sender,recipient);let routeFontSize=48;ctx.fillStyle=palette.foreground;ctx.font=`600 ${routeFontSize}px Georgia, serif`;while(ctx.measureText(route).width>1000&&routeFontSize>30){routeFontSize-=2;ctx.font=`600 ${routeFontSize}px Georgia, serif`;}ctx.fillText(route,600,1285);
-    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText((currentQrCaption||t("qrCaption")).toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo"}[lang]),600,1430);
+    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText((currentQrCaption||t("qrCaption")).toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo",de:"Richte die Handykamera auf den QR-Code",es:"Apunta la cámara del móvil al código QR",it:"Inquadra il codice QR con la fotocamera",pl:"Skieruj aparat telefonu na kod QR",uk:"Наведіть камеру телефону на QR-код",pt:"Aponte a câmara do telemóvel para o código QR",nl:"Richt de camera van je telefoon op de QR-code",tr:"Telefon kamerasını QR koduna tutun",ro:"Îndreaptă camera telefonului spre codul QR",cs:"Namiřte fotoaparát telefonu na QR kód",sv:"Rikta telefonens kamera mot QR-koden",el:"Στρέψτε την κάμερα του τηλεφώνου στον κωδικό QR",da:"Ret telefonens kamera mod QR-koden",no:"Rett telefonkameraet mot QR-koden",fi:"Suuntaa puhelimen kamera QR-koodiin",ja:"スマートフォンのカメラをQRコードに向けてください",ko:"휴대폰 카메라를 QR 코드에 비춰 주세요",zh:"請用手機相機對準 QR 碼",th:"หันกล้องโทรศัพท์ไปที่ QR โค้ด",ar:"وجّه كاميرا هاتفك نحو رمز QR",ind:"Arahkan kamera ponsel ke kode QR",vi:"Hướng camera điện thoại vào mã QR"}[lang]||"Point your phone camera at the QR code"),600,1430);
     return new Promise(resolve=>canvas.toBlob(resolve,"image/png",.96));
   }
 
@@ -4307,7 +4975,7 @@
     $("#openStoryButton").addEventListener("click",openStory);$("#homeButton").addEventListener("click",goHome);$$(".go-home").forEach(button=>button.addEventListener("click",goHome));
     $("#momentsOpenHome").addEventListener("click",openMomentsHome);
     $("#setupForm").addEventListener("submit",submitNameSetup);$("#setupClose").addEventListener("click",()=>closePanel(layers.setup));$("#setupBackdrop").addEventListener("click",()=>closePanel(layers.setup));
-    $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#speakButton").addEventListener("click",speakLetter);$("#postcardButton").addEventListener("click",generatePostcard);$("#favoriteButton").addEventListener("click",toggleFavorite);$("#focusReadingButton").addEventListener("click",()=>setReadingFocus(!readingFocus));
+    $("#nextLetter").addEventListener("click",()=>moveLetter(1));$("#previousLetter").addEventListener("click",()=>moveLetter(-1));$("#copyLetter").addEventListener("click",()=>copyText(entryText(currentEntry())));$("#shareButton").addEventListener("click",shareLetter);$("#favoriteButton").addEventListener("click",toggleFavorite);
     letterStage.addEventListener("pointerdown",startReadingSwipe);letterStage.addEventListener("pointermove",updateReadingSwipe,{passive:false});letterStage.addEventListener("pointerup",finishReadingSwipe);letterStage.addEventListener("pointercancel",finishReadingSwipe);
     $("#libraryButton").addEventListener("click",()=>{pendingPremiumFeature="";renderLibrary();openPanel(layers.library);});$("#libraryClose").addEventListener("click",cancelLetterPicker);$("#libraryBackdrop").addEventListener("click",cancelLetterPicker);$("#libraryClose").addEventListener("click",()=>closePanel(layers.library));$("#libraryBackdrop").addEventListener("click",()=>closePanel(layers.library));
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
@@ -4317,15 +4985,15 @@
     $("#reportLetterButton").addEventListener("click",()=>activeReportContext&&openContentReport(activeReportContext));$("#reportClose").addEventListener("click",()=>closePanel(layers.report));$("#reportBackdrop").addEventListener("click",()=>closePanel(layers.report));$("#reportForm").addEventListener("submit",submitContentReport);
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
-    $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#purchaseLifetimeButton").addEventListener("click",purchaseLifetime);$("#settingsPurchase").addEventListener("click",()=>openPaywall());$("#restoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
+    $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#purchaseYearlyButton").addEventListener("click",purchaseYearly);$("#settingsPurchase").addEventListener("click",()=>openPaywall());$("#restoreButton").addEventListener("click",restorePurchase);$("#settingsRestoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="pick")pickLetterForContext(id);else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
-    $("#languageButton").addEventListener("click",()=>{stopLetterSpeech();const order=["ru","en","fr"];lang=order[(order.indexOf(lang)+1)%order.length];applyLanguage();scheduleCloudSync();});$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;applyLanguage();scheduleCloudSync();}));
+    $("#languageButton").addEventListener("click",()=>openPanel(layers.language));$("#languageClose").addEventListener("click",()=>closePanel(layers.language));$("#languageBackdrop").addEventListener("click",()=>closePanel(layers.language));$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;rememberLanguageChoice();applyLanguage();scheduleCloudSync();if(layers.language.contains(button))closePanel(layers.language);}));
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";await selectCustomAudio(file);});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!incomingSharedAudioToken||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithCloud("google"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);
+    $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>{if(nativeGoogleSignInAvailable()&&cloudProviders.google===true)signInWithGoogle({origin:"home"});else openAccountSection();});$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open===layers.publication)finishPublishConsent(false);else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
@@ -4333,7 +5001,8 @@
     addEventListener("online",()=>{detectCloudProviders();if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));if(cloudReady)flushCloudSync(false);else loadCloudProgress(cloudUser);}});
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleSharedAudioNavigation);
-    addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason);updatePurchaseConfiguration(data.purchaseConfigured);});
+    addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason,data.yearlyPriceLabel);updatePurchaseConfiguration(data.purchaseConfigured);});
+    $("#appUpdateAction").addEventListener("click",runAppUpdateAction);$("#appUpdateClose").addEventListener("click",dismissAppUpdate);
     addEventListener("nur-speech-state",handleNativeSpeechState);
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
     addEventListener("pointermove",event=>{if(LITE_DEVICE||innerWidth<900||REDUCED_MOTION.matches)return;scenePointerX=event.clientX;scenePointerY=event.clientY;if(scenePointerFrame)return;scenePointerFrame=requestAnimationFrame(()=>{scenePointerFrame=0;const x=(scenePointerX/innerWidth-.5)*1.2;const y=(scenePointerY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;});},{passive:true});
@@ -4341,7 +5010,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=38", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=49", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -4362,7 +5031,7 @@
     const storedVolume=Number(localStorage.getItem("nurVolume")||.62);audio.volume=Number.isFinite(storedVolume)?Math.max(0,Math.min(storedVolume,1)):.62;
     if(sharedMessage){activeReportContext={kind:"direct_letter",contentRef:safeReportReference(params.get("rid")),momentPublicId:"",sender:fromName,recipient:toName,text:sharedMessage,audioAttached:Boolean(incomingSharedAudioToken)};}updateReportButton();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
-    bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
+    installPasswordToggles();bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});applyLanguage();renderLibrary();requestNativeEntitlement();
     setTimeout(() => { initializeMomentsIntegration(); }, 0);
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
       const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});

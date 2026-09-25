@@ -2,7 +2,10 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.9";
 
 const ALLOWED_ORIGINS = new Set([
   "https://france-isl.github.io",
+  "https://bezam.org",
+  "https://www.bezam.org",
   "https://appassets.androidplatform.net",
+  "capacitor://localhost",
   "null"
 ]);
 const SUPPORT_CATEGORIES = new Set([
@@ -21,7 +24,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   feedback: "Idea or feedback",
   other: "Other"
 };
-const SUPPORT_LANGUAGES = new Set(["ru", "en", "fr"]);
+const SUPPORT_LANGUAGES = new Set(["ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"]);
 const SUPPORT_PLATFORMS = new Set(["web", "android", "ios"]);
 const MAX_REQUEST_BYTES = 12 * 1024;
 const DEFAULT_SUPPORT_TO_EMAIL = "ggooglov9@gmail.com";

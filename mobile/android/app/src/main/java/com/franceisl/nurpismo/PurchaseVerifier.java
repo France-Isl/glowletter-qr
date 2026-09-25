@@ -321,8 +321,9 @@ final class PurchaseVerifier {
     }
 
     static boolean isAuthoritativeRejectionStatus(int status) {
+        // 401 means the Supabase session token expired while the app slept;
+        // the refreshed token arrives moments later, so it stays transient.
         return status == 400
-                || status == 401
                 || status == 403
                 || status == 404
                 || status == 410

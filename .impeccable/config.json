@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-23T17:39:43.884Z",
+        "reason": "Claude: #accountAvatarImage is hidden until applyAccountAvatar() in app.js sets src to the user's uploaded avatar blob; intentional runtime-filled image"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-09-23T17:47:33.359Z",
+        "reason": "Claude: all 5 hits are sanctioned or false positives - full-width 7px carpet bands and the 4px quote-card top band are the DESIGN.md border-band rule; paywall li::before is a rotated CSS checkmark"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-09-23T19:48:48.306Z",
+        "reason": "Claude: only hit is .film-grain (L79) - 1px dots from two repeating-radial-gradients at 4% opacity, an animated film-grain noise overlay over the photo scene, not a hairline grid; pre-existing since launch commit a8e9f4d"
+      }
+    ]
+  }
+}

@@ -2,7 +2,10 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.9";
 
 const ALLOWED_ORIGINS = new Set([
   "https://france-isl.github.io",
+  "https://bezam.org",
+  "https://www.bezam.org",
   "https://appassets.androidplatform.net",
+  "capacitor://localhost",
   "http://127.0.0.1",
   "http://localhost",
   "null"

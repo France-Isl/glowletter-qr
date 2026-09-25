@@ -7,7 +7,7 @@ final class SubscriptionStoreContractTests: XCTestCase {
     func testProductCatalogKeepsSubscriptionAndLegacyEntitlement() {
         XCTAssertEqual(StoreProductCatalog.subscriptionProductID, "glowletter_premium_monthly")
         XCTAssertEqual(StoreProductCatalog.legacyProductID, "full_access")
-        XCTAssertEqual(StoreProductCatalog.fallbackPriceLabel, "€21.99/month")
+        XCTAssertEqual(StoreProductCatalog.fallbackPriceLabel, "€2.99/month")
         XCTAssertEqual(
             StoreProductCatalog.entitlementProductIDs,
             Set(["glowletter_premium_monthly", "full_access"])
@@ -19,7 +19,7 @@ final class SubscriptionStoreContractTests: XCTestCase {
         let store = SubscriptionStore()
         XCTAssertFalse(store.snapshot.entitled)
         XCTAssertFalse(store.snapshot.purchaseConfigured)
-        XCTAssertEqual(store.snapshot.priceLabel, "€21.99/month")
+        XCTAssertEqual(store.snapshot.priceLabel, "€2.99/month")
         XCTAssertEqual(store.snapshot.productID, "glowletter_premium_monthly")
     }
 }

@@ -151,9 +151,11 @@ function requireConfiguration(env, journal, identity) {
   const subscriptionProductId = String(
     env("GLOWLETTER_PLAY_SUBSCRIPTION_PRODUCT_ID") || "",
   ).trim();
-  const subscriptionBasePlanId = String(
+  // One subscription, several base plans: "monthly,yearly".
+  const subscriptionBasePlanIds = String(
     env("GLOWLETTER_PLAY_SUBSCRIPTION_BASE_PLAN_ID") || "",
-  ).trim();
+  ).split(",").map((value) => value.trim()).filter(Boolean);
+  const subscriptionBasePlanId = subscriptionBasePlanIds[0] || "";
   const legacyProductId = String(
     env("GLOWLETTER_PLAY_LEGACY_PRODUCT_ID") || "",
   ).trim();
@@ -187,7 +189,8 @@ function requireConfiguration(env, journal, identity) {
   const valid = /^[A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z][A-Za-z0-9_]*)+$/u
     .test(packageName) &&
     validProduct(subscriptionProductId) &&
-    validProduct(subscriptionBasePlanId) &&
+    subscriptionBasePlanIds.length > 0 &&
+    subscriptionBasePlanIds.every(validProduct) &&
     validProduct(legacyProductId) &&
     subscriptionProductId !== legacyProductId &&
     Number.isSafeInteger(minVersionCode) &&
@@ -214,6 +217,7 @@ function requireConfiguration(env, journal, identity) {
     packageName,
     subscriptionProductId,
     subscriptionBasePlanId,
+    subscriptionBasePlanIds: new Set(subscriptionBasePlanIds),
     legacyProductId,
     hashSecret,
     hashKeyId,
@@ -466,7 +470,7 @@ async function subscriptionEvidence(purchase, context) {
     throw new ApiError("purchase_product_mismatch", 403);
   }
   const matchingItems = productItems.filter((item) => (
-    item.offerDetails?.basePlanId === context.config.subscriptionBasePlanId
+    context.config.subscriptionBasePlanIds.has(item.offerDetails?.basePlanId)
   ));
   if (!matchingItems.length) {
     throw new ApiError("subscription_base_plan_mismatch", 403);
@@ -496,7 +500,7 @@ async function subscriptionEvidence(purchase, context) {
     }
     autoRenewEnabled = autoRenewingPlan.autoRenewEnabled;
   } else if (!stateMayOmitExpiry) {
-    // GlowLetter's monthly base plan is auto-renewing, not prepaid.
+    // GlowLetter's monthly and yearly base plans auto-renew, none is prepaid.
     throw new ApiError("google_play_response_invalid", 502);
   }
 
@@ -541,7 +545,7 @@ async function subscriptionEvidence(purchase, context) {
     productType: context.productType,
     subscriptionState,
     expiryTime: selected.expiryTime,
-    basePlanId: context.config.subscriptionBasePlanId,
+    basePlanId: selected.item.offerDetails.basePlanId,
     offerId: offerId || null,
     autoRenewEnabled,
     linkedPurchaseTokenHash,
@@ -716,7 +720,10 @@ async function persist(context, record) {
       appVersionCode: context.integrity.versionCode,
       certificateSha256Digest: context.integrity.certificateDigest,
     });
-  } catch {
+  } catch (error) {
+    if (error?.message === "purchase_account_mismatch") {
+      throw new ApiError("purchase_account_mismatch", 403);
+    }
     throw new ApiError("entitlement_store_unavailable", 503);
   }
 }
@@ -995,7 +1002,14 @@ function clientNetworkIdentity(headers) {
   ) {
     const raw = headers.get(name);
     if (!raw) continue;
-    const candidate = raw.split(",")[0].trim().toLowerCase();
+    const parts = raw.split(",").map((part) => part.trim()).filter(Boolean);
+    // x-forwarded-for grows at the right: the last element was appended by the
+    // trusted gateway, the first can be chosen by the client.
+    const candidate = (
+      parts.length
+        ? (name === "x-forwarded-for" ? parts[parts.length - 1] : parts[0])
+        : ""
+    ).toLowerCase();
     if (candidate && candidate.length <= 128 && !/\s/u.test(candidate)) {
       return `${name}:${candidate}`;
     }

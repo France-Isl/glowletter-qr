@@ -31,6 +31,30 @@ public final class SubscriptionOfferPolicyTest {
     }
 
     @Test
+    public void selectsYearlyBasePlanWithItsOwnPeriodAndLabel() {
+        SubscriptionOfferPolicy.Selection selection = SubscriptionOfferPolicy.selectBasePlan(
+                Arrays.asList(
+                        candidate(0, "monthly", null, "month-token", "€5.99", "P1M", true),
+                        candidate(1, "yearly", null, "year-token", "€24.99", "P1Y", true)
+                ),
+                "yearly",
+                SubscriptionOfferPolicy.YEARLY_BILLING_PERIOD
+        );
+
+        assertNotNull(selection.candidate);
+        assertEquals("year-token", selection.candidate.offerToken);
+        assertEquals("€24.99/year", SubscriptionOfferPolicy.priceLabel(
+                selection.candidate,
+                "fallback"
+        ));
+        assertNull(SubscriptionOfferPolicy.selectBasePlan(
+                Arrays.asList(candidate(0, "yearly", null, "token", "€24.99", "P1M", true)),
+                "yearly",
+                SubscriptionOfferPolicy.YEARLY_BILLING_PERIOD
+        ).candidate);
+    }
+
+    @Test
     public void rejectsMissingTokenWrongPeriodAndFinitePlan() {
         SubscriptionOfferPolicy.Selection selection = SubscriptionOfferPolicy.selectBasePlan(
                 Arrays.asList(

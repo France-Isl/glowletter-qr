@@ -153,14 +153,16 @@ assert.doesNotMatch(index, /class="vip-badge"/, "the VIP badge left with the com
 // (стиль .vip-badge больше нигде не используется)
 
 // All four VIP frame choices visibly select with a checkmark and decorate generated letters.
-assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl"\]/);
-for (const frame of ["hearts", "moon", "forest", "pearl"]) {
+assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl",\s*"roses"\]/);
+for (const frame of ["hearts", "moon", "forest", "pearl", "roses"]) {
   assert.match(experienceStyles, new RegExp(`body\\.gl-premium-active\\[data-gl-frame=["']${frame}["']\\]`), `${frame} must define VIP frame tokens`);
   assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-layer`), `${frame} must decorate the opened letter`);
 }
 assert.doesNotMatch(index, /id=["']generatedCard["']/, "the generated-letter card left with the composer");
 assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
-assert.match(experience, /mark\.textContent\s*=\s*active\s*\?\s*["']✓["']/u);
+// Отметка выбранного пресета — символ спрайта, а не текстовый глиф:
+// правило дизайн-системы запрещает глифы вместо иконок.
+assert.match(experience, /mark\.innerHTML\s*=\s*active\s*\?\s*'<svg class="ic"[^']*#ic-check/u);
 assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*var\(--ui-accent-deep\)[^\}]*opacity:\s*1/);
 assert.match(experience, /glowletter-access-change/);
 assert.match(app, /document\.body\.dataset\.access\s*=\s*isPremium\s*\?\s*["']vip["']\s*:\s*["']free["']/);

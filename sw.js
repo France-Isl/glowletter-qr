@@ -1,9 +1,9 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v38`;
+const CACHE = `${CACHE_PREFIX}v49`;
 const CORE = [
   "./",
   "index.html",
-  "fonts/local-fonts.css?v=38",
+  "fonts/local-fonts.css?v=49",
   "fonts/cormorant-normal-cyrillic-ext.woff2",
   "fonts/cormorant-normal-cyrillic.woff2",
   "fonts/cormorant-normal-latin-ext.woff2",
@@ -24,29 +24,32 @@ const CORE = [
   "fonts/manrope-normal-cyrillic.woff2",
   "fonts/manrope-normal-latin-ext.woff2",
   "fonts/manrope-normal-latin.woff2",
-  "styles.css?v=38",
-  "experience.css?v=38",
-  "email-auth.css?v=38",
-  "moments.css?v=38",
-  "config.js?v=38",
-  "vendor/supabase-2.110.9.js?v=38",
-  "vendor/qrcode-generator-1.4.4.min.js?v=38",
-  "letters.js?v=38",
-  "qr-code.js?v=38",
-  "app.js?v=38",
-  "email-auth.js?v=38",
-  "moments.js?v=38",
-  "experience.js?v=38",
-  "manifest.webmanifest?v=38",
+  "styles.css?v=49",
+  "experience.css?v=49",
+  "email-auth.css?v=49",
+  "moments.css?v=49",
+  "config.js?v=49",
+  "vendor/supabase-2.110.9.js?v=49",
+  "vendor/qrcode-generator-1.4.4.min.js?v=49",
+  "letters.js?v=49",
+  "i18n-extra.js?v=49",
+  "qr-code.js?v=49",
+  "app.js?v=49",
+  "email-auth.js?v=49",
+  "moments.js?v=49",
+  "experience.js?v=49",
+  "manifest.webmanifest?v=49",
   "icon.svg",
   "privacy.html",
   "assets/auth/apple-continue-ru.png",
   "assets/auth/apple-continue-en.png",
   "assets/auth/apple-continue-fr.png",
   "assets/campfire-lake.png",
-  "assets/campfire-mobile.png"
+  "assets/campfire-mobile.png",
+  "assets/frame-roses.webp",
+  "assets/frame-roses-thumb.webp"
 ];
-const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {
@@ -64,7 +67,7 @@ async function networkFirst(request, fallback = request) {
     if (response.ok && response.type === "basic") await cache.put(request, response.clone());
     return response;
   } catch {
-    return (await caches.match(fallback, { ignoreSearch: true })) || (await caches.match(request, { ignoreSearch: true }));
+    return (await caches.match(request, { ignoreSearch: true })) || (await caches.match(fallback, { ignoreSearch: true }));
   }
 }
 

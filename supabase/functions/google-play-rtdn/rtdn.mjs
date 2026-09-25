@@ -22,6 +22,19 @@ const SUBSCRIPTION_STATES = new Set([
   "SUBSCRIPTION_STATE_EXPIRED",
   "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED",
 ]);
+// Parse failures of an authentic (OIDC-verified) push that a retry can never
+// fix: unknown notification types Google adds later, other products, etc.
+const UNSUPPORTED_NOTIFICATION_CODES = new Set([
+  "developer_notification_invalid",
+  "developer_notification_mismatch",
+  "subscription_notification_invalid",
+  "notification_product_mismatch",
+  "product_notification_invalid",
+  "voided_notification_invalid",
+  "pending_refund_notification_invalid",
+  "test_notification_invalid",
+  "purchase_token_invalid",
+]);
 const SUBSCRIPTION_NOTIFICATION_TYPES = new Set([
   1,
   2,
@@ -96,11 +109,22 @@ export function createGooglePlayRtdnHandler({
       const envelope = await readLimitedJson(request);
       const decoded = decodePubSubEnvelope(envelope, config);
       const payloadHash = await sha256Base64Url(decoded.bytes);
-      const notification = parseDeveloperNotification(
-        decoded.notification,
-        config,
-        now(),
-      );
+      let notification;
+      try {
+        notification = parseDeveloperNotification(
+          decoded.notification,
+          config,
+          now(),
+        );
+      } catch (error) {
+        if (
+          error instanceof ApiError &&
+          UNSUPPORTED_NOTIFICATION_CODES.has(error.code)
+        ) {
+          return emptyResponse();
+        }
+        throw error;
+      }
       const tokenHash = notification.purchaseToken
         ? await keyedHash(
           config,
@@ -256,9 +280,11 @@ function requireConfiguration(env, store) {
   const subscriptionProductId = String(
     env("GLOWLETTER_PLAY_SUBSCRIPTION_PRODUCT_ID") || "",
   ).trim();
-  const subscriptionBasePlanId = String(
+  // One subscription, several base plans: "monthly,yearly".
+  const subscriptionBasePlanIds = String(
     env("GLOWLETTER_PLAY_SUBSCRIPTION_BASE_PLAN_ID") || "",
-  ).trim();
+  ).split(",").map((value) => value.trim()).filter(Boolean);
+  const subscriptionBasePlanId = subscriptionBasePlanIds[0] || "";
   const legacyProductId = String(
     env("GLOWLETTER_PLAY_LEGACY_PRODUCT_ID") || "",
   ).trim();
@@ -303,7 +329,8 @@ function requireConfiguration(env, store) {
   const valid = /^[A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z][A-Za-z0-9_]*)+$/u
     .test(packageName) &&
     validProduct(subscriptionProductId) &&
-    validProduct(subscriptionBasePlanId) &&
+    subscriptionBasePlanIds.length > 0 &&
+    subscriptionBasePlanIds.every(validProduct) &&
     validProduct(legacyProductId) &&
     subscriptionProductId !== legacyProductId &&
     new TextEncoder().encode(hashSecret).byteLength >= 32 &&
@@ -344,6 +371,7 @@ function requireConfiguration(env, store) {
     packageName,
     subscriptionProductId,
     subscriptionBasePlanId,
+    subscriptionBasePlanIds: new Set(subscriptionBasePlanIds),
     legacyProductId,
     hashSecret,
     hashKeyId,
@@ -722,7 +750,7 @@ async function subscriptionEvidence(purchase, context) {
   const lineItems = Array.isArray(purchase.lineItems) ? purchase.lineItems : [];
   const matching = lineItems.filter((item) => (
     item?.productId === context.config.subscriptionProductId &&
-    item.offerDetails?.basePlanId === context.config.subscriptionBasePlanId
+    context.config.subscriptionBasePlanIds.has(item.offerDetails?.basePlanId)
   )).map((item) => ({
     item,
     expiryTime: googleTimestampOrNull(item.expiryTime),
@@ -775,7 +803,7 @@ async function subscriptionEvidence(purchase, context) {
     state: mappedState,
     subscriptionState: state,
     expiryTime: selected.expiryTime,
-    basePlanId: context.config.subscriptionBasePlanId,
+    basePlanId: selected.item.offerDetails.basePlanId,
     offerId: typeof selected.item.offerDetails?.offerId === "string"
       ? selected.item.offerDetails.offerId
       : null,

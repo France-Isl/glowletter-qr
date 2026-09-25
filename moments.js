@@ -10,7 +10,8 @@
   const STORAGE_PREFIX = "glowletterMomentsV2:";
   const REMINDER_OPT_IN_PREFIX = "glowletterMomentsReminderOptInV1:";
   const REMINDER_DAYS = Object.freeze([7, 3, 1]);
-  const LANGUAGES = Object.freeze(["ru", "en", "fr"]);
+  const LANGUAGES = Object.freeze(Array.isArray(window.NUR_LANGUAGES) ? window.NUR_LANGUAGES.slice() : ["ru", "en", "fr"]);
+  const LANGUAGE_NAMES = Object.freeze({ ru: "Русский", en: "English", fr: "Français", ...(window.NUR_LANGUAGE_NAMES || {}) });
   const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
   const RELATIONSHIPS = Object.freeze(["auto", "mother", "father", "spouse", "child", "sibling", "grandparent", "friend", "teacher", "universal"]);
   const TONES = Object.freeze(["auto", "loving", "romantic", "classic", "support", "gratitude"]);
@@ -21,14 +22,14 @@
     ru: {
       eyebrow: "GLOWLETTER · ВАЖНЫЕ МОМЕНТЫ", title: "Люди, даты и письма", close: "Закрыть",
       peopleTab: "Люди", datesTab: "Даты", historyTab: "История", floristTab: "Флорист",
-      peopleIntro: "Сохраните имя, отношение и любимый стиль письма.", addPerson: "＋ Добавить человека",
+      peopleIntro: "Сохраните имя, отношение и любимый стиль письма.", addPerson: "Добавить человека",
       noPeople: "Пока никого нет. Добавьте важного человека, чтобы готовить письма быстрее.",
       personName: "Имя", relationship: "Кем вам приходится", letterLanguage: "Язык письма", tone: "Стиль письма", length: "Обычная длина",
       savePerson: "Сохранить человека", cancel: "Отмена", edit: "Изменить", remove: "Удалить", write: "Написать письмо", addDate: "Добавить дату",
       personRequired: "Укажите имя.", deletePersonConfirm: "Удалить этого человека и локальные связи с ним?",
       datesIntro: "GlowLetter покажет важные даты за 7, 3 и 1 день.", reminderOptIn: "Показывать напоминания в GlowLetter",
       reminderOptInNote: "Напоминания проверяются при открытии приложения. Системные уведомления настраиваются мобильным приложением отдельно.",
-      exportAll: "↓ Экспортировать календарь", newDate: "＋ Добавить дату", noDates: "Важных дат пока нет.",
+      exportAll: "Экспортировать календарь", newDate: "Добавить дату", noDates: "Важных дат пока нет.",
       datePerson: "Человек", noPerson: "Без привязки", eventTitle: "Название события", eventKind: "Тип события", eventDate: "Дата",
       recurrence: "Повторение", annually: "Каждый год", once: "Один раз", timeZone: "Часовой пояс",
       remindBefore: "Напомнить заранее", days7: "за 7 дней", days3: "за 3 дня", days1: "за 1 день",
@@ -46,7 +47,7 @@
       cloudSynced: "Данные синхронизированы", cloudLoading: "Загружаю личные данные…", localMode: "Локальный режим", cloudNeeded: "Войдите в аккаунт, чтобы создать постоянный QR.",
       qrCreated: "Постоянный QR готов", qrCreateFailed: "Не удалось создать QR. Проверьте вход и интернет.", qrRevokedDone: "QR отключён", qrRevokeFailed: "Не удалось отключить QR.",
       sharedLoading: "Открываю письмо…", sharedLockedTitle: "Письмо ждёт своего момента", sharedLocked: "Оно откроется {date}.",
-      sharedReady: "Письмо для вас", sharedUnavailable: "Эта ссылка недоступна или была отключена.", sharedOffline: "Для открытия письма нужен интернет.", sharedReport: "⚑ Пожаловаться на письмо",
+      sharedReady: "Письмо для вас", sharedUnavailable: "Эта ссылка недоступна или была отключена.", sharedOffline: "Для открытия письма нужен интернет.", sharedReport: "Пожаловаться на письмо",
       fromLabel: "От", forLabel: "Для", sourceAi: "Помощник", sourceOwn: "Свой текст", sourceFlorist: "Флорист", sourceCatalog: "Коллекция", sourceUnknown: "Письмо",
       relationAuto: "Определить автоматически", relationMother: "Мама", relationFather: "Папа", relationSpouse: "Супруг или супруга", relationChild: "Сын или дочь", relationSibling: "Брат или сестра", relationGrandparent: "Бабушка или дедушка", relationFriend: "Друг или подруга", relationTeacher: "Учитель или наставник", relationUniversal: "Другой человек",
       toneAuto: "Подбирать автоматически", toneLoving: "Тёплый", toneRomantic: "Романтический · супругам", toneClassic: "Классический", toneSupport: "Поддержка", toneGratitude: "Благодарность",
@@ -57,14 +58,14 @@
     en: {
       eyebrow: "GLOWLETTER · IMPORTANT MOMENTS", title: "People, dates and letters", close: "Close",
       peopleTab: "People", datesTab: "Dates", historyTab: "History", floristTab: "Florist",
-      peopleIntro: "Save a name, relationship, and preferred letter style.", addPerson: "＋ Add person",
+      peopleIntro: "Save a name, relationship, and preferred letter style.", addPerson: "Add person",
       noPeople: "No one here yet. Add someone important to prepare letters faster.",
       personName: "Name", relationship: "Relationship", letterLanguage: "Letter language", tone: "Letter style", length: "Usual length",
       savePerson: "Save person", cancel: "Cancel", edit: "Edit", remove: "Delete", write: "Write a letter", addDate: "Add a date",
       personRequired: "Enter a name.", deletePersonConfirm: "Delete this person and local links to them?",
       datesIntro: "GlowLetter highlights important dates 7, 3, and 1 day ahead.", reminderOptIn: "Show reminders in GlowLetter",
       reminderOptInNote: "Reminders are checked when the app opens. System notifications are configured separately by the mobile app.",
-      exportAll: "↓ Export calendar", newDate: "＋ Add date", noDates: "No important dates yet.",
+      exportAll: "Export calendar", newDate: "Add date", noDates: "No important dates yet.",
       datePerson: "Person", noPerson: "No person", eventTitle: "Event name", eventKind: "Event type", eventDate: "Date",
       recurrence: "Repeat", annually: "Every year", once: "Once", timeZone: "Time zone",
       remindBefore: "Remind me", days7: "7 days before", days3: "3 days before", days1: "1 day before",
@@ -82,7 +83,7 @@
       cloudSynced: "Data synced", cloudLoading: "Loading your private data…", localMode: "Local mode", cloudNeeded: "Sign in to create a permanent QR.",
       qrCreated: "Permanent QR is ready", qrCreateFailed: "Could not create the QR. Check your account and connection.", qrRevokedDone: "QR disabled", qrRevokeFailed: "Could not disable the QR.",
       sharedLoading: "Opening the letter…", sharedLockedTitle: "This letter is waiting for its moment", sharedLocked: "It will open {date}.",
-      sharedReady: "A letter for you", sharedUnavailable: "This link is unavailable or has been disabled.", sharedOffline: "An internet connection is required to open this letter.", sharedReport: "⚑ Report this letter",
+      sharedReady: "A letter for you", sharedUnavailable: "This link is unavailable or has been disabled.", sharedOffline: "An internet connection is required to open this letter.", sharedReport: "Report this letter",
       fromLabel: "From", forLabel: "To", sourceAi: "Assistant", sourceOwn: "Own text", sourceFlorist: "Florist", sourceCatalog: "Collection", sourceUnknown: "Letter",
       relationAuto: "Detect automatically", relationMother: "Mother", relationFather: "Father", relationSpouse: "Spouse", relationChild: "Son or daughter", relationSibling: "Brother or sister", relationGrandparent: "Grandparent", relationFriend: "Friend", relationTeacher: "Teacher or mentor", relationUniversal: "Someone else",
       toneAuto: "Choose automatically", toneLoving: "Warm", toneRomantic: "Romantic · spouses", toneClassic: "Classic", toneSupport: "Support", toneGratitude: "Gratitude",
@@ -93,14 +94,14 @@
     fr: {
       eyebrow: "GLOWLETTER · MOMENTS IMPORTANTS", title: "Personnes, dates et lettres", close: "Fermer",
       peopleTab: "Personnes", datesTab: "Dates", historyTab: "Historique", floristTab: "Fleuriste",
-      peopleIntro: "Enregistrez un prénom, le lien et le style de lettre préféré.", addPerson: "＋ Ajouter une personne",
+      peopleIntro: "Enregistrez un prénom, le lien et le style de lettre préféré.", addPerson: "Ajouter une personne",
       noPeople: "Personne pour le moment. Ajoutez une personne importante pour préparer les lettres plus vite.",
       personName: "Prénom", relationship: "Lien", letterLanguage: "Langue de la lettre", tone: "Style de lettre", length: "Longueur habituelle",
       savePerson: "Enregistrer", cancel: "Annuler", edit: "Modifier", remove: "Supprimer", write: "Écrire une lettre", addDate: "Ajouter une date",
       personRequired: "Saisissez un prénom.", deletePersonConfirm: "Supprimer cette personne et les liens locaux associés ?",
       datesIntro: "GlowLetter signale les dates importantes 7, 3 et 1 jour à l’avance.", reminderOptIn: "Afficher les rappels dans GlowLetter",
       reminderOptInNote: "Les rappels sont vérifiés à l’ouverture de l’application. Les notifications système sont configurées séparément par l’application mobile.",
-      exportAll: "↓ Exporter le calendrier", newDate: "＋ Ajouter une date", noDates: "Aucune date importante.",
+      exportAll: "Exporter le calendrier", newDate: "Ajouter une date", noDates: "Aucune date importante.",
       datePerson: "Personne", noPerson: "Sans personne", eventTitle: "Nom de l’événement", eventKind: "Type d’événement", eventDate: "Date",
       recurrence: "Répétition", annually: "Chaque année", once: "Une fois", timeZone: "Fuseau horaire",
       remindBefore: "Me rappeler", days7: "7 jours avant", days3: "3 jours avant", days1: "1 jour avant",
@@ -118,7 +119,7 @@
       cloudSynced: "Données synchronisées", cloudLoading: "Chargement de vos données privées…", localMode: "Mode local", cloudNeeded: "Connectez-vous pour créer un QR permanent.",
       qrCreated: "Le QR permanent est prêt", qrCreateFailed: "Impossible de créer le QR. Vérifiez le compte et la connexion.", qrRevokedDone: "QR désactivé", qrRevokeFailed: "Impossible de désactiver le QR.",
       sharedLoading: "Ouverture de la lettre…", sharedLockedTitle: "Cette lettre attend son moment", sharedLocked: "Elle s’ouvrira le {date}.",
-      sharedReady: "Une lettre pour vous", sharedUnavailable: "Ce lien est indisponible ou a été désactivé.", sharedOffline: "Une connexion internet est nécessaire pour ouvrir cette lettre.", sharedReport: "⚑ Signaler cette lettre",
+      sharedReady: "Une lettre pour vous", sharedUnavailable: "Ce lien est indisponible ou a été désactivé.", sharedOffline: "Une connexion internet est nécessaire pour ouvrir cette lettre.", sharedReport: "Signaler cette lettre",
       fromLabel: "De", forLabel: "Pour", sourceAi: "Assistant", sourceOwn: "Texte personnel", sourceFlorist: "Fleuriste", sourceCatalog: "Collection", sourceUnknown: "Lettre",
       relationAuto: "Détecter automatiquement", relationMother: "Mère", relationFather: "Père", relationSpouse: "Époux ou épouse", relationChild: "Fils ou fille", relationSibling: "Frère ou sœur", relationGrandparent: "Grand-parent", relationFriend: "Ami ou amie", relationTeacher: "Professeur ou mentor", relationUniversal: "Une autre personne",
       toneAuto: "Choisir automatiquement", toneLoving: "Chaleureux", toneRomantic: "Romantique · époux", toneClassic: "Classique", toneSupport: "Soutien", toneGratitude: "Gratitude",
@@ -127,6 +128,10 @@
       languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Prêt", retry: "Réessayer"
     }
   };
+  // German, Spanish, Italian and Polish come from i18n-extra.js on top of English.
+  Object.entries(window.NUR_I18N_EXTRA || {}).forEach(([code, extra]) => {
+    if (!TEXT[code] && extra?.moments) TEXT[code] = { ...TEXT.en, ...extra.moments };
+  });
 
   const config = {
     getClient: () => null,
@@ -170,7 +175,7 @@
   }
 
   function validLanguage(value) {
-    return LANGUAGES.includes(value) ? value : "ru";
+    return LANGUAGES.includes(value) && TEXT[value] ? value : "ru";
   }
 
   function validUuid(value) {
@@ -312,7 +317,7 @@
         if (typeof translated === "string" && translated && translated !== externalKey && translated !== key) value = translated;
       } catch {}
     }
-    if (!value) value = TEXT[state.language]?.[key] || TEXT.ru[key] || key;
+    if (!value) value = TEXT[state.language]?.[key] || TEXT.en[key] || TEXT.ru[key] || key;
     return String(value).replace(/\{([a-zA-Z0-9_]+)\}/gu, (_match, name) => variables[name] ?? `{${name}}`);
   }
 
@@ -429,8 +434,9 @@
   }
 
   async function loadAll({ quiet = false } = {}) {
-    if (state.loading) return;
+    if (state.loading) { state.reloadPending = true; return; }
     state.loading = true;
+    const owner = accountKey();
     const cached = readCache();
     if (cached) Object.assign(state, cached);
     if (!quiet) setStatus("cloudLoading");
@@ -447,6 +453,13 @@
       fetchOwnerRows(PEOPLE_TABLE, normalizePerson, true), fetchOwnerRows(MOMENTS_TABLE, normalizeMoment, true),
       fetchOwnerRows(LETTERS_TABLE, normalizeLetter, false), fetchOwnerRows(QR_TABLE, normalizeQrLink, false)
     ]);
+    if (accountKey() !== owner) {
+      // The account changed while the rows were in flight: they belong to the
+      // previous user and must never land in this user's cache.
+      state.loading = false;
+      if (state.reloadPending) { state.reloadPending = false; await loadAll({ quiet }); }
+      return;
+    }
     let failed = false;
     if (!people.error) state.people = mergeLocalOnly(people.data, state.people); else failed = true;
     if (!moments.error) state.moments = mergeLocalOnly(moments.data, state.moments); else failed = true;
@@ -457,6 +470,7 @@
     writeCache();
     setStatus(failed ? "saveFailedLocal" : "cloudSynced");
     renderAll();
+    if (state.reloadPending) { state.reloadPending = false; await loadAll({ quiet: true }); }
   }
 
   function stripLocalFields(row) {
@@ -545,8 +559,8 @@
         </header>
         <p class="glm-sync-status" id="momentsSyncStatus" role="status" aria-live="polite"></p>
         <div class="glm-tabs" id="momentsTabs" role="tablist">
-          <button type="button" role="tab" data-tab="people" aria-controls="momentsPeoplePane"><span>♡</span><b data-i18n="peopleTab"></b></button>
-          <button type="button" role="tab" data-tab="dates" aria-controls="momentsDatesPane"><span>◷</span><b data-i18n="datesTab"></b></button>
+          <button type="button" role="tab" data-tab="people" aria-controls="momentsPeoplePane"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span><b data-i18n="peopleTab"></b></button>
+          <button type="button" role="tab" data-tab="dates" aria-controls="momentsDatesPane"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span><b data-i18n="datesTab"></b></button>
           <button type="button" role="tab" data-tab="history" aria-controls="momentsHistoryPane"><span>✉</span><b data-i18n="historyTab"></b></button>
           <button type="button" role="tab" data-tab="florist" aria-controls="momentsFloristPane"><span>✿</span><b data-i18n="floristTab"></b></button>
         </div>
@@ -598,7 +612,7 @@
           <section class="glm-pane" id="momentsFloristPane" role="tabpanel" data-pane="florist" hidden>
             <div class="glm-intro glm-intro-single"><p data-i18n="floristIntro"></p></div>
             <form class="glm-form glm-florist" id="momentsFloristForm">
-              <div class="glm-florist-route" aria-hidden="true"><span>✦</span><i>→</i><span>♡</span></div>
+              <div class="glm-florist-route" aria-hidden="true"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg></span><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></i><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span></div>
               <div class="glm-form-grid">
                 <label><span data-i18n="sender"></span><input id="momentsFloristSender" type="text" maxlength="36" required /></label>
                 <label><span data-i18n="recipient"></span><input id="momentsFloristRecipient" type="text" maxlength="36" required /></label>
@@ -613,7 +627,7 @@
           </section>
         </div>
         <section class="glm-shared" id="momentsSharedView" hidden aria-live="polite">
-          <div class="glm-shared-mark" aria-hidden="true">♡</div>
+          <div class="glm-shared-mark" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></div>
           <p class="glm-shared-status" id="momentsSharedStatus" role="status" aria-live="polite"></p>
           <h3 id="momentsSharedTitle"></h3>
           <p class="glm-shared-route" id="momentsSharedRoute"></p>
@@ -668,7 +682,8 @@
   }
 
   function languageOptions() {
-    return [["ru", tr("languageRu")], ["en", tr("languageEn")], ["fr", tr("languageFr")]];
+    // Each language is named in itself, so a reader always finds their own.
+    return LANGUAGES.filter(code => TEXT[code]).map(code => [code, LANGUAGE_NAMES[code] || code.toUpperCase()]);
   }
 
   function kindOptions() {
@@ -722,12 +737,14 @@
     return tr(({ ai: "sourceAi", own: "sourceOwn", florist: "sourceFlorist", catalog: "sourceCatalog" })[source] || "sourceUnknown");
   }
 
+  // Arabic dates use the Western digits the rest of the app shows.
+  const DATE_LOCALE_OVERRIDES = Object.freeze({ ar: "ar-u-nu-latn", zh: "zh-TW", ind: "id-ID" });
   function formatDisplayDate(value, withTime = false) {
     if (!value) return "";
     const parsed = withTime ? new Date(value) : parseDateOnly(String(value).slice(0, 10))?.date;
     if (!parsed || !Number.isFinite(parsed.getTime())) return "";
     try {
-      return new Intl.DateTimeFormat(state.language, withTime ? { dateStyle: "medium", timeStyle: "short" } : { dateStyle: "long", timeZone: "UTC" }).format(parsed);
+      return new Intl.DateTimeFormat(DATE_LOCALE_OVERRIDES[state.language] || state.language, withTime ? { dateStyle: "medium", timeStyle: "short" } : { dateStyle: "long", timeZone: "UTC" }).format(parsed);
     } catch { return String(value); }
   }
 
@@ -745,10 +762,10 @@
     const list = query("#momentsPeopleList");
     if (!list) return;
     const people = state.people.slice().sort((a, b) => a.display_name.localeCompare(b.display_name, state.language));
-    if (!people.length) { list.innerHTML = `<div class="glm-empty"><span>♡</span><p>${escapeHtml(tr("noPeople"))}</p></div>`; return; }
+    if (!people.length) { list.innerHTML = `<div class="glm-empty"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span><p>${escapeHtml(tr("noPeople"))}</p></div>`; return; }
     list.innerHTML = people.map(person => `
       <article class="glm-card glm-person-card" data-id="${person.id}">
-        <div class="glm-avatar" aria-hidden="true">${escapeHtml(person.display_name.slice(0, 1).toLocaleUpperCase(state.language) || "♡")}</div>
+        <div class="glm-avatar" aria-hidden="true">${escapeHtml(person.display_name.slice(0, 1).toLocaleUpperCase(state.language) || "—")}</div>
         <div class="glm-card-main"><h3>${escapeHtml(person.display_name)}</h3><p>${escapeHtml(relationshipOptions().find(([value]) => value === person.relationship)?.[1] || tr("relationUniversal"))} · ${escapeHtml(languageOptions().find(([value]) => value === person.language)?.[1] || person.language)} · ${escapeHtml(toneOptions().find(([value]) => value === person.tone)?.[1] || tr("toneAuto"))}</p></div>
         <div class="glm-card-actions"><button type="button" data-action="person-compose" data-id="${person.id}">${escapeHtml(tr("write"))}</button><button type="button" data-action="person-date" data-id="${person.id}">${escapeHtml(tr("addDate"))}</button><button type="button" data-action="person-edit" data-id="${person.id}">${escapeHtml(tr("edit"))}</button><button class="glm-danger" type="button" data-action="person-delete" data-id="${person.id}">${escapeHtml(tr("remove"))}</button></div>
       </article>`).join("");
@@ -766,7 +783,7 @@
     if (!holder) return;
     const due = reminderOptedIn() ? state.moments.flatMap(moment => getDueReminders(moment).map(reminder => ({ ...reminder, moment }))) : [];
     holder.hidden = !due.length;
-    holder.innerHTML = due.map(item => `<button type="button" data-action="date-compose" data-id="${item.moment.id}"><span>◷</span><b>${escapeHtml(tr("reminderDue", { title: item.moment.title, days: item.days }))}</b><i>→</i></button>`).join("");
+    holder.innerHTML = due.map(item => `<button type="button" data-action="date-compose" data-id="${item.moment.id}"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span><b>${escapeHtml(tr("reminderDue", { title: item.moment.title, days: item.days }))}</b><i>→</i></button>`).join("");
   }
 
   function renderDates() {
@@ -775,7 +792,7 @@
     query("#momentsReminderOptIn").checked = reminderOptedIn();
     renderDueReminders();
     const moments = state.moments.map(moment => ({ moment, occurrence: nextOccurrence(moment) })).sort((a, b) => (a.occurrence?.daysUntil ?? 999999) - (b.occurrence?.daysUntil ?? 999999));
-    if (!moments.length) { list.innerHTML = `<div class="glm-empty"><span>◷</span><p>${escapeHtml(tr("noDates"))}</p></div>`; return; }
+    if (!moments.length) { list.innerHTML = `<div class="glm-empty"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span><p>${escapeHtml(tr("noDates"))}</p></div>`; return; }
     list.innerHTML = moments.map(({ moment, occurrence }) => {
       const person = personById(moment.person_id);
       const reminderText = REMINDER_DAYS.filter(days => reminderEnabled(moment, days)).join(" · ");

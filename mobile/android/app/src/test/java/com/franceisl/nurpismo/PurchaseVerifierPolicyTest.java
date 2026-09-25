@@ -13,13 +13,14 @@ public final class PurchaseVerifierPolicyTest {
     public void productionCatalogIdentifiersRemainExact() {
         assertEquals("glowletter_premium_monthly", BuildConfig.SUBSCRIPTION_PRODUCT_ID);
         assertEquals("monthly", BuildConfig.SUBSCRIPTION_BASE_PLAN_ID);
-        assertEquals("full_access", BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID);
+        // Слот разового товара переведён на покупку «навсегда»: full_access
+        // в Google Play не продавался ни разу, приложение туда ещё не выходило.
+        assertEquals("glowletter_lifetime", BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID);
     }
 
     @Test
     public void rejectedPurchaseAndIntegrityResponsesAreAuthoritative() {
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(400));
-        assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(401));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(403));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(404));
         assertTrue(PurchaseVerifier.isAuthoritativeRejectionStatus(410));
@@ -28,6 +29,7 @@ public final class PurchaseVerifierPolicyTest {
 
     @Test
     public void throttlingAndServerFailuresRemainTransient() {
+        assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(401));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(429));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(500));
         assertFalse(PurchaseVerifier.isAuthoritativeRejectionStatus(503));

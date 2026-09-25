@@ -51,6 +51,8 @@ public final class MainActivity extends ComponentActivity {
     private volatile WebViewAssetLoader webAssetLoader;
     private ValueCallback<Uri[]> fileChooserCallback;
     private BillingManager billingManager;
+    private AppUpdateController appUpdateController;
+    private GoogleSignInController googleSignIn;
     private TextToSpeech textToSpeech;
     private boolean speechInitializationComplete;
     private boolean speechReady;
@@ -58,7 +60,9 @@ public final class MainActivity extends ComponentActivity {
     private String pendingSpeechLanguage;
     private long speechUtteranceSequence;
     private volatile String activeSpeechUtteranceId;
-    private boolean trustedMainDocumentReady;
+    private volatile boolean trustedMainDocumentReady;
+    /** The main frame is loading the bundled app (set before its scripts run). */
+    private volatile boolean trustedMainDocumentStarted;
     private String pendingAuthCallbackUrl;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private WebBundleManager webBundleManager;
@@ -90,6 +94,8 @@ public final class MainActivity extends ComponentActivity {
 
         initializeWebBundleManager();
         billingManager = new BillingManager(this, this::dispatchEntitlementToWeb);
+        appUpdateController = new AppUpdateController(this, this::dispatchAppUpdateToWeb);
+        googleSignIn = new GoogleSignInController(this, this::dispatchGoogleCredentialToWeb);
         configureWebView();
         initializeSpeechEngine();
         billingManager.start();
@@ -179,6 +185,7 @@ public final class MainActivity extends ComponentActivity {
                     return;
                 }
                 trustedMainDocumentReady = false;
+                trustedMainDocumentStarted = isTrustedAppMainDocumentUrl(url);
                 webBundleRecoveryInProgress = false;
                 mainDocumentLoadSequence++;
                 armWebBundleHealthTimeout(
@@ -229,6 +236,7 @@ public final class MainActivity extends ComponentActivity {
                             && !needsDownloadedBundleHealthCheck;
                     if (trustedMainDocumentReady) {
                         billingManager.notifyWebState();
+                        dispatchAppUpdateToWeb(appUpdateController.state());
                     }
                 } else {
                     trustedMainDocumentReady = false;
@@ -289,6 +297,7 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new AuthBridge(this), "NurAuth");
         webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
         webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
+        webView.addJavascriptInterface(new AppUpdateBridge(this), "NurAppUpdate");
     }
 
     private WebViewAssetLoader createWebAssetLoader(WebBundleManager.Selection selection) {
@@ -423,6 +432,7 @@ public final class MainActivity extends ComponentActivity {
         webBundleSelection = fallback;
         webAssetLoader = createWebAssetLoader(fallback);
         trustedMainDocumentReady = false;
+        trustedMainDocumentStarted = false;
         if (webView != null) {
             webView.stopLoading();
             loadSelectedWebBundle();
@@ -579,6 +589,72 @@ public final class MainActivity extends ComponentActivity {
         if (language.startsWith("en")) {
             return "en-US";
         }
+        if (language.startsWith("de")) {
+            return "de-DE";
+        }
+        if (language.startsWith("es")) {
+            return "es-ES";
+        }
+        if (language.startsWith("it")) {
+            return "it-IT";
+        }
+        if (language.startsWith("pl")) {
+            return "pl-PL";
+        }
+        if (language.startsWith("uk")) {
+            return "uk-UA";
+        }
+        if (language.startsWith("pt")) {
+            return "pt-PT";
+        }
+        if (language.startsWith("nl")) {
+            return "nl-NL";
+        }
+        if (language.startsWith("tr")) {
+            return "tr-TR";
+        }
+        if (language.startsWith("ro")) {
+            return "ro-RO";
+        }
+        if (language.startsWith("cs")) {
+            return "cs-CZ";
+        }
+        if (language.startsWith("sv")) {
+            return "sv-SE";
+        }
+        if (language.startsWith("el")) {
+            return "el-GR";
+        }
+        if (language.startsWith("da")) {
+            return "da-DK";
+        }
+        if (language.startsWith("no") || language.startsWith("nb") || language.startsWith("nn")) {
+            return "nb-NO";
+        }
+        if (language.startsWith("fi")) {
+            return "fi-FI";
+        }
+        if (language.startsWith("ja")) {
+            return "ja-JP";
+        }
+        if (language.startsWith("ko")) {
+            return "ko-KR";
+        }
+        if (language.startsWith("zh")) {
+            return "zh-TW";
+        }
+        if (language.startsWith("th")) {
+            return "th-TH";
+        }
+        if (language.startsWith("ar")) {
+            return "ar-SA";
+        }
+        if (language.startsWith("id") || language.startsWith("in")) {
+            return "id-ID";
+        }
+        if (language.startsWith("vi")) {
+            return "vi-VN";
+        }
         return "ru-RU";
     }
 
@@ -639,6 +715,87 @@ public final class MainActivity extends ComponentActivity {
         } catch (ActivityNotFoundException ignored) {
             // Keep the trusted local page in place if no browser can handle HTTPS.
         }
+    }
+
+    void startGoogleSignInFromWeb(String hashedNonce, boolean automatic) {
+        if (isTrustedMainDocumentActive() && googleSignIn != null) {
+            googleSignIn.signIn(hashedNonce, automatic);
+        }
+    }
+
+    /** The ID token goes only to the trusted main document, never to events. */
+    private void dispatchGoogleCredentialToWeb(String status, String idToken) {
+        WebView target = webView;
+        if (target == null) {
+            return;
+        }
+        String script = "(function(){"
+                + "var d={status:" + JSONObject.quote(status)
+                + ",idToken:" + JSONObject.quote(idToken == null ? "" : idToken) + "};"
+                + "if(typeof window.onNativeGoogleCredential==='function'){window.onNativeGoogleCredential(d);}"
+                + "})();";
+        target.post(() -> {
+            if (webView == target && isTrustedMainDocumentActive()) {
+                target.evaluateJavascript(script, null);
+            }
+        });
+    }
+
+    void startAppUpdateFromWeb() {
+        if (isTrustedMainDocumentActive() && appUpdateController != null) {
+            appUpdateController.startUpdate();
+        }
+    }
+
+    void completeAppUpdateFromWeb() {
+        if (isTrustedMainDocumentActive() && appUpdateController != null) {
+            appUpdateController.completeUpdate();
+        }
+    }
+
+    /** Entitlement snapshot for the bundled app only; called on the WebView JS thread. */
+    String billingEntitlementForWeb() {
+        if (!trustedMainDocumentStarted || billingManager == null) {
+            return "{\"entitled\":false,\"reason\":\"untrusted_document\"}";
+        }
+        return billingManager.getEntitlementJson();
+    }
+
+    void updateBillingAuthSessionFromWeb(String accessToken) {
+        if (isTrustedMainDocumentLoaded() && billingManager != null) {
+            billingManager.updateAuthSession(accessToken);
+        }
+    }
+
+    void purchaseSubscriptionFromWeb() {
+        if (isTrustedMainDocumentActive() && billingManager != null) {
+            billingManager.purchaseSubscription();
+        }
+    }
+
+    void purchaseYearlySubscriptionFromWeb() {
+        if (isTrustedMainDocumentActive() && billingManager != null) {
+            billingManager.purchaseYearlySubscription();
+        }
+    }
+
+    void restorePurchasesFromWeb() {
+        if (isTrustedMainDocumentActive() && billingManager != null) {
+            billingManager.restorePurchases();
+        }
+    }
+
+    /** The bundled app is the current main document, even while it is still loading. */
+    private boolean isTrustedMainDocumentLoaded() {
+        return trustedMainDocumentStarted
+                && webView != null
+                && isTrustedAppMainDocumentUrl(webView.getUrl());
+    }
+
+    private boolean isTrustedMainDocumentActive() {
+        return trustedMainDocumentReady
+                && webView != null
+                && isTrustedAppMainDocumentUrl(webView.getUrl());
     }
 
     void openManageSubscriptionFromWeb() {
@@ -776,25 +933,49 @@ public final class MainActivity extends ComponentActivity {
         if (target == null) {
             return;
         }
-        String price = JSONObject.quote(state.priceLabel);
+        String price = JSONObject.quote(
+                billingManager == null ? "" : billingManager.webPriceLabel(state));
+        String yearlyPrice = JSONObject.quote(
+                billingManager == null ? "" : billingManager.getYearlyPriceLabel());
         String reason = JSONObject.quote(state.reason);
         boolean purchaseConfigured = billingManager != null
                 && billingManager.isPurchaseSecurityConfigured();
         String script = "(function(){"
                 + "var d={entitled:" + state.entitled
                 + ",priceLabel:" + price
+                + ",yearlyPriceLabel:" + yearlyPrice
                 + ",reason:" + reason
                 + ",expiryTimeMillis:" + state.expiryTimeMillis
                 + ",purchaseConfigured:" + purchaseConfigured
                 + ",productId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                 + ",productType:'subs'"
                 + ",basePlanId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_BASE_PLAN_ID)
+                + ",yearlyBasePlanId:" + JSONObject.quote(BuildConfig.SUBSCRIPTION_YEARLY_BASE_PLAN_ID)
                 + ",legacyProductId:" + JSONObject.quote(BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
                 + ",legacyProductType:'inapp'};"
                 + "if(typeof window.onNativeEntitlement==='function'){"
-                + "window.onNativeEntitlement(d.entitled,d.priceLabel,d.reason);"
+                + "window.onNativeEntitlement(d.entitled,d.priceLabel,d.reason,d.yearlyPriceLabel);"
                 + "}"
                 + "window.dispatchEvent(new CustomEvent('nur-entitlement',{detail:d}));"
+                + "})();";
+        target.post(() -> {
+            if (webView == target && isTrustedAppDocumentUrl(target.getUrl())) {
+                target.evaluateJavascript(script, null);
+            }
+        });
+    }
+
+    private void dispatchAppUpdateToWeb(AppUpdateController.State state) {
+        WebView target = webView;
+        if (target == null || state == null) {
+            return;
+        }
+        String script = "(function(){"
+                + "var d={status:" + JSONObject.quote(state.status)
+                + ",availableVersionCode:" + state.availableVersionCode
+                + ",progress:" + state.progressPercent + "};"
+                + "if(typeof window.onNativeAppUpdate==='function'){window.onNativeAppUpdate(d);}"
+                + "window.dispatchEvent(new CustomEvent('nur-app-update',{detail:d}));"
                 + "})();";
         target.post(() -> {
             if (webView == target && isTrustedAppDocumentUrl(target.getUrl())) {
@@ -868,6 +1049,11 @@ public final class MainActivity extends ComponentActivity {
         if (billingManager != null) {
             billingManager.onResume();
         }
+        if (appUpdateController != null) {
+            // Каждый возврат в приложение: и новая версия, и уже скачанное
+            // обновление, которое ждёт перезапуска.
+            appUpdateController.check();
+        }
         if (trustedMainDocumentReady) {
             checkForWebBundleUpdate();
         }
@@ -900,6 +1086,12 @@ public final class MainActivity extends ComponentActivity {
         if (billingManager != null) {
             billingManager.close();
         }
+        if (appUpdateController != null) {
+            appUpdateController.close();
+        }
+        if (googleSignIn != null) {
+            googleSignIn.close();
+        }
         if (webBundleManager != null) {
             webBundleManager.close();
             webBundleManager = null;
@@ -914,6 +1106,7 @@ public final class MainActivity extends ComponentActivity {
             webView.removeJavascriptInterface("NurAuth");
             webView.removeJavascriptInterface("NurShare");
             webView.removeJavascriptInterface("NurSpeech");
+            webView.removeJavascriptInterface("NurAppUpdate");
             webView.stopLoading();
             webView.destroy();
             webView = null;

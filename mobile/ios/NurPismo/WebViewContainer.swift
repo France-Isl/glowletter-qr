@@ -207,7 +207,7 @@ struct WebViewContainer: UIViewControllerRepresentable {
             entitled: false,
             owned: false,
             premium: false,
-            priceLabel: '€21.99/month',
+            priceLabel: '€2.99/month',
             reason: 'initializing',
             productId: 'glowletter_premium_monthly',
             legacyProductId: 'full_access',
@@ -494,7 +494,8 @@ struct WebViewContainer: UIViewControllerRepresentable {
                 speechSynthesizer.stopSpeaking(at: .immediate)
             }
             let requested = (rawLanguage ?? "").lowercased()
-            let language = requested.hasPrefix("fr") ? "fr-FR" : requested.hasPrefix("en") ? "en-US" : "ru-RU"
+            let voices = ["fr": "fr-FR", "en": "en-US", "de": "de-DE", "es": "es-ES", "it": "it-IT", "pl": "pl-PL", "uk": "uk-UA", "pt": "pt-PT", "nl": "nl-NL", "tr": "tr-TR", "ro": "ro-RO", "cs": "cs-CZ", "sv": "sv-SE", "el": "el-GR", "da": "da-DK", "no": "nb-NO", "fi": "fi-FI", "ja": "ja-JP", "ko": "ko-KR", "zh": "zh-TW", "th": "th-TH", "ar": "ar-SA", "ind": "id-ID", "vi": "vi-VN"]
+            let language = voices.first { requested.hasPrefix($0.key) }?.value ?? "ru-RU"
             let utterance = AVSpeechUtterance(string: text)
             utterance.voice = AVSpeechSynthesisVoice(language: language) ?? AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first ?? language)
             utterance.rate = 0.47

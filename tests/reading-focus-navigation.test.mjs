@@ -34,7 +34,7 @@ const swipeConfigSource = app.match(/const READING_SWIPE = Object\.freeze\((\{[\
 assert.ok(swipeConfigSource, "reading swipe thresholds must be explicit and reviewable");
 const swipeConfig = vm.runInNewContext(`(${swipeConfigSource})`);
 const swipeDirectionSource = extractFunction(app, "readingSwipeDirection");
-const swipeContext = { READING_SWIPE: swipeConfig, innerWidth: 390 };
+const swipeContext = { READING_SWIPE: swipeConfig, innerWidth: 390, isRtl: () => false };
 vm.runInNewContext(`${swipeDirectionSource}; this.swipeDirection = readingSwipeDirection;`, swipeContext);
 
 // A deliberate horizontal swipe turns one letter in its natural direction.
@@ -47,6 +47,12 @@ assert.equal(swipeContext.swipeDirection(-85, 78, 300, 390), 0);
 assert.equal(swipeContext.swipeDirection(-90, 4, swipeConfig.maxDuration + 1, 390), 0);
 assert.equal(swipeContext.swipeDirection(-80, 3, 250, 1200), 0);
 assert.equal(swipeContext.swipeDirection(-120, 3, 250, 1200), 1);
+
+// Arabic reads right to left: the same swipes turn the letters the other way.
+swipeContext.isRtl = () => true;
+assert.equal(swipeContext.swipeDirection(-80, 10, 320, 390), -1);
+assert.equal(swipeContext.swipeDirection(80, 10, 320, 390), 1);
+swipeContext.isRtl = () => false;
 
 const startSwipe = extractFunction(app, "startReadingSwipe");
 const finishSwipe = extractFunction(app, "finishReadingSwipe");

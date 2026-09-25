@@ -86,7 +86,7 @@ final class BillingManager implements PurchasesUpdatedListener {
         boolean incomplete;
     }
 
-    private static final String DEFAULT_PRICE = "€21.99/month";
+    private static final String DEFAULT_PRICE = "€5.99/month";
     private static final String DEBUG_PREFS = "nur_billing_debug_only";
     private static final String DEBUG_MOCK_KEY = "mock_full_access";
 
@@ -109,6 +109,12 @@ final class BillingManager implements PurchasesUpdatedListener {
             0L,
             0L
     );
+    // Цена годовой подписки приходит из каталога Google Play уже с налогом страны.
+    // Пустая строка — магазин ещё не ответил, веб-слой покажет запасную цену.
+    private volatile String yearlyPriceLabel = "";
+    // Пока Google Play не прислал цену подписки, веб-слой получает пустую
+    // строку и показывает запасную цену, а не DEFAULT_PRICE как цену магазина.
+    private volatile boolean storePricesLoaded;
     private boolean connecting;
     private boolean firstResume = true;
     private boolean purchaseFlowInProgress;
@@ -144,18 +150,38 @@ final class BillingManager implements PurchasesUpdatedListener {
             emit(false, DEFAULT_PRICE, "billing_security_not_configured", false);
             return;
         }
+        // Каталог Google Play не требует входа в аккаунт. Раньше цены
+        // запрашивались только вместе с восстановлением покупок, а при запуске
+        // сессии ещё нет — экран оплаты показывал запасные цены вместо цен магазина.
+        refreshStorePrices();
         if (!verifier.hasAuthSession()) {
             emit(false, DEFAULT_PRICE, "authentication_required", false);
             return;
         }
         integrityProvider.warmUp();
+        ensureReady(() -> queryOwnedPurchases("startup_restore"));
+    }
+
+    /** Loads the monthly and yearly prices; each answer is re-sent to the web layer. */
+    private void refreshStorePrices() {
         ensureReady(() -> {
-            querySubscriptionProduct((details, offer, priceLabel, error) -> {
-                if (details != null && offer != null) {
-                    emitTransient(priceLabel, state.reason);
-                }
-            });
-            queryOwnedPurchases("startup_restore");
+            querySubscriptionProduct(
+                    BuildConfig.SUBSCRIPTION_BASE_PLAN_ID,
+                    SubscriptionOfferPolicy.MONTHLY_BILLING_PERIOD,
+                    (details, offer, priceLabel, error) -> {
+                        if (details != null && offer != null) {
+                            storePricesLoaded = true;
+                            emitTransient(priceLabel, state.reason);
+                        }
+                    });
+            querySubscriptionProduct(
+                    BuildConfig.SUBSCRIPTION_YEARLY_BASE_PLAN_ID,
+                    SubscriptionOfferPolicy.YEARLY_BILLING_PERIOD,
+                    (details, offer, priceLabel, error) -> {
+                        if (details != null && offer != null && rememberYearlyPrice(priceLabel)) {
+                            emitTransient(state.priceLabel, state.reason);
+                        }
+                    });
         });
     }
 
@@ -166,8 +192,14 @@ final class BillingManager implements PurchasesUpdatedListener {
             firstResume = false;
             return;
         }
-        if (!(BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT)
-                && isPurchaseSecurityConfigured()
+        if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
+            return;
+        }
+        if (!storePricesLoaded && isBillingBackendConfigured()) {
+            // Магазин не ответил при запуске (нет сети, Play обновлялся).
+            refreshStorePrices();
+        }
+        if (isPurchaseSecurityConfigured()
                 && !purchaseFlowInProgress
                 && !entitlementCoordinator.hasVerificationInFlight()) {
             ensureReady(() -> queryOwnedPurchases("resume_restore"));
@@ -175,6 +207,22 @@ final class BillingManager implements PurchasesUpdatedListener {
     }
 
     void purchaseSubscription() {
+        purchaseSubscriptionPlan(
+                BuildConfig.SUBSCRIPTION_BASE_PLAN_ID,
+                SubscriptionOfferPolicy.MONTHLY_BILLING_PERIOD
+        );
+    }
+
+    void purchaseYearlySubscription() {
+        purchaseSubscriptionPlan(
+                BuildConfig.SUBSCRIPTION_YEARLY_BASE_PLAN_ID,
+                SubscriptionOfferPolicy.YEARLY_BILLING_PERIOD
+        );
+    }
+
+    /** Both plans belong to one subscription, so Google Play lets people switch between them. */
+    private void purchaseSubscriptionPlan(String basePlanId, String billingPeriod) {
+        boolean monthly = SubscriptionOfferPolicy.MONTHLY_BILLING_PERIOD.equals(billingPeriod);
         if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
             debugPreferences.edit().putBoolean(DEBUG_MOCK_KEY, true).apply();
             emit(true, DEFAULT_PRICE, "debug_mock_only_no_payment", true);
@@ -194,7 +242,7 @@ final class BillingManager implements PurchasesUpdatedListener {
         }
 
         emitTransient("opening_google_play");
-        ensureReady(() -> querySubscriptionProduct((details, offer, priceLabel, error) -> {
+        ensureReady(() -> querySubscriptionProduct(basePlanId, billingPeriod, (details, offer, priceLabel, error) -> {
             if (!obfuscatedAccountId.equals(verifier.obfuscatedAccountId())) {
                 emitTransient("account_session_changed");
                 return;
@@ -227,7 +275,12 @@ final class BillingManager implements PurchasesUpdatedListener {
             if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
                 queryOwnedPurchases("launch_already_owned_restore");
             } else {
-                emitTransient(priceLabel, "billing_launch_" + responseCode);
+                // Only the monthly price is the subscription price the web layer shows first.
+                if (monthly) {
+                    emitTransient(priceLabel, "billing_launch_" + responseCode);
+                } else {
+                    emitTransient("billing_launch_" + responseCode);
+                }
             }
         }));
     }
@@ -359,7 +412,11 @@ final class BillingManager implements PurchasesUpdatedListener {
         });
     }
 
-    private void querySubscriptionProduct(ProductCallback callback) {
+    private void querySubscriptionProduct(
+            String basePlanId,
+            String billingPeriod,
+            ProductCallback callback
+    ) {
         QueryProductDetailsParams.Product product = QueryProductDetailsParams.Product.newBuilder()
                 .setProductId(BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                 .setProductType(BillingClient.ProductType.SUBS)
@@ -408,9 +465,7 @@ final class BillingManager implements PurchasesUpdatedListener {
                                 for (ProductDetails.PricingPhase phase
                                         : offer.getPricingPhases().getPricingPhaseList()) {
                                     if (phase.getRecurrenceMode()
-                                            == ProductDetails.RecurrenceMode.INFINITE_RECURRING
-                                            && SubscriptionOfferPolicy.MONTHLY_BILLING_PERIOD.equals(
-                                            phase.getBillingPeriod())) {
+                                            == ProductDetails.RecurrenceMode.INFINITE_RECURRING) {
                                         recurringPhase = phase;
                                         break;
                                     }
@@ -431,7 +486,8 @@ final class BillingManager implements PurchasesUpdatedListener {
                     SubscriptionOfferPolicy.Selection selection =
                             SubscriptionOfferPolicy.selectBasePlan(
                                     policyCandidates,
-                                    BuildConfig.SUBSCRIPTION_BASE_PLAN_ID
+                                    basePlanId,
+                                    billingPeriod
                             );
                     if (selection.candidate == null || offers == null) {
                         callback.onResult(null, null, DEFAULT_PRICE, selection.error);
@@ -446,6 +502,25 @@ final class BillingManager implements PurchasesUpdatedListener {
                             null
                     );
                 });
+    }
+
+    /** Returns true when the store supplied a new yearly price. */
+    private boolean rememberYearlyPrice(String priceLabel) {
+        String next = priceLabel == null ? "" : priceLabel.trim();
+        if (next.isEmpty() || next.equals(yearlyPriceLabel)) {
+            return false;
+        }
+        yearlyPriceLabel = next;
+        return true;
+    }
+
+    String getYearlyPriceLabel() {
+        return yearlyPriceLabel;
+    }
+
+    /** The subscription price for the web layer: empty until Google Play answered. */
+    String webPriceLabel(EntitlementState current) {
+        return storePricesLoaded && current != null ? current.priceLabel : "";
     }
 
     private void queryOwnedPurchases(String source) {
@@ -793,12 +868,14 @@ final class BillingManager implements PurchasesUpdatedListener {
         try {
             return new JSONObject()
                     .put("entitled", current.entitled)
-                    .put("priceLabel", current.priceLabel)
+                    .put("priceLabel", webPriceLabel(current))
+                    .put("yearlyPriceLabel", yearlyPriceLabel)
                     .put("reason", current.reason)
                     .put("expiryTimeMillis", current.expiryTimeMillis)
                     .put("productId", BuildConfig.SUBSCRIPTION_PRODUCT_ID)
                     .put("productType", BillingClient.ProductType.SUBS)
                     .put("basePlanId", BuildConfig.SUBSCRIPTION_BASE_PLAN_ID)
+                    .put("yearlyBasePlanId", BuildConfig.SUBSCRIPTION_YEARLY_BASE_PLAN_ID)
                     .put("legacyProductId", BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
                     .put("legacyProductType", BillingClient.ProductType.INAPP)
                     .put("freeLetterLimit", BuildConfig.FREE_LETTER_LIMIT)
@@ -806,10 +883,10 @@ final class BillingManager implements PurchasesUpdatedListener {
                     .put("mock", current.mock)
                     .toString();
         } catch (Exception ignored) {
-            return "{\"entitled\":false,\"priceLabel\":\"€21.99/month\","
+            return "{\"entitled\":false,\"priceLabel\":\"€5.99/month\","
                     + "\"reason\":\"serialization_error\","
                     + "\"productId\":\"glowletter_premium_monthly\","
-                    + "\"legacyProductId\":\"full_access\"}";
+                    + "\"legacyProductId\":\"glowletter_lifetime\"}";
         }
     }
 
