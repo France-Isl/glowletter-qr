@@ -35,7 +35,11 @@ import androidx.webkit.WebViewAssetLoader;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Locale;
+import androidx.core.content.FileProvider;
 
 public final class MainActivity extends ComponentActivity {
     private static final String TAG = "GlowLetterMain";
@@ -168,7 +172,10 @@ public final class MainActivity extends ComponentActivity {
                 String scheme = uri != null ? uri.getScheme() : null;
                 if ("https".equalsIgnoreCase(scheme)
                         || "http".equalsIgnoreCase(scheme)
-                        || "mailto".equalsIgnoreCase(scheme)) {
+                        || "mailto".equalsIgnoreCase(scheme)
+                        || "sms".equalsIgnoreCase(scheme)
+                        || "smsto".equalsIgnoreCase(scheme)
+                        || "tel".equalsIgnoreCase(scheme)) {
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, uri));
                     } catch (ActivityNotFoundException ignored) {
@@ -861,6 +868,66 @@ public final class MainActivity extends ComponentActivity {
                 .putExtra(Intent.EXTRA_TEXT, payload);
         try {
             startActivity(Intent.createChooser(sendIntent, safeTitle));
+        } catch (RuntimeException ignored) {
+            // Keep the trusted app open when no share target is installed.
+        }
+    }
+
+    /**
+     * Shares a card rendered by the page (PNG or PDF) through the system share
+     * sheet. The bytes land in the private cache and are exposed only through
+     * the FileProvider grant attached to this one intent.
+     */
+    void openFileShareSheetFromWeb(String base64, String mimeType, String fileName) {
+        if (base64 == null || base64.isEmpty() || base64.length() > 24_000_000) {
+            return;
+        }
+        String safeMime;
+        String extension;
+        if ("application/pdf".equals(mimeType)) {
+            safeMime = "application/pdf";
+            extension = ".pdf";
+        } else if ("image/png".equals(mimeType)) {
+            safeMime = "image/png";
+            extension = ".png";
+        } else if ("image/jpeg".equals(mimeType)) {
+            safeMime = "image/jpeg";
+            extension = ".jpg";
+        } else {
+            return;
+        }
+        String safeName = fileName == null ? "" : fileName.replaceAll("[^\\p{L}\\p{N}._-]", "-");
+        if (safeName.isEmpty() || safeName.length() > 80 || !safeName.endsWith(extension)) {
+            safeName = "GlowLetter-QR" + extension;
+        }
+        byte[] bytes;
+        try {
+            bytes = android.util.Base64.decode(base64, android.util.Base64.DEFAULT);
+        } catch (IllegalArgumentException ignored) {
+            return;
+        }
+        File directory = new File(getCacheDir(), "share");
+        if (!directory.isDirectory() && !directory.mkdirs()) {
+            return;
+        }
+        File target = new File(directory, safeName);
+        try (FileOutputStream output = new FileOutputStream(target)) {
+            output.write(bytes);
+        } catch (IOException ignored) {
+            return;
+        }
+        Uri uri;
+        try {
+            uri = FileProvider.getUriForFile(this, getPackageName() + ".files", target);
+        } catch (IllegalArgumentException ignored) {
+            return;
+        }
+        Intent sendIntent = new Intent(Intent.ACTION_SEND)
+                .setType(safeMime)
+                .putExtra(Intent.EXTRA_STREAM, uri)
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        try {
+            startActivity(Intent.createChooser(sendIntent, "GlowLetter"));
         } catch (RuntimeException ignored) {
             // Keep the trusted app open when no share target is installed.
         }

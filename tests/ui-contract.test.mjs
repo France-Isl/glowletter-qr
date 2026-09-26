@@ -42,7 +42,8 @@ assert.match(app, /#qrDownloadButton[^\n]*addEventListener\(["']click["'],\s*dow
 assert.match(app, /#qrCopyLinkButton[^\n]*addEventListener\(["']click["'],\s*copyQrLink\)/);
 assert.match(app, /#qrCopyImageButton[^\n]*addEventListener\(["']click["'],\s*copyQrImage\)/);
 assert.match(app, /#qrPrintButton[^\n]*addEventListener\(["']click["']/);
-assert.match(app, /link\.download\s*=\s*`GlowLetter-QR/);
+assert.match(app, /await deliverFile\(blob,qrFileName\("png"\),"downloadReady"\)/, "the PNG card goes through deliverFile (share sheet on phones, download elsewhere)");
+assert.match(app, /function qrFileName\(extension\)\{[^\n]*`GlowLetter-QR/);
 assert.match(app, /navigator\.clipboard\?\.write/);
 assert.match(styles, /@media\s+print[\s\S]*#qrLayer/);
 

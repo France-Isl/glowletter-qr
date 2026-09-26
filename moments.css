@@ -495,3 +495,20 @@ body[data-ui-theme="moon"] .glm-layer { --glm-bg: #fbf9fc; --glm-bg-soft: #eeeaf
   .glm-panel { position: static; width: 100%; height: auto; overflow: visible; box-shadow: none; transform: none; }
   .glm-content, .glm-shared { overflow: visible; }
 }
+
+/* Вход в аккаунт и мастер флориста (2.4.15). */
+.glm-signin { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 16px; margin: 0 clamp(18px, 6vw, 46px) 12px; padding: 13px 16px; border: 1px solid rgba(155, 88, 115, .28); border-radius: 16px; background: rgba(255, 255, 255, .72); }
+.glm-signin > div { flex: 1 1 240px; }
+.glm-signin strong { display:block; font-size: 13px; color: var(--glm-ink); }
+.glm-signin p { margin: 4px 0 0; color: var(--glm-muted); font-size: 12px; line-height: 1.5; }
+.glm-signin button { flex: 0 0 auto; min-height: 40px; padding: 0 18px; border: 0; border-radius: 12px; color: #fff; background: var(--glm-accent); font-size: 12px; font-weight: 800; cursor: pointer; }
+.glm-steps { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0 0 12px; padding: 0; list-style: none; }
+.glm-steps li { padding: 8px 6px; border-radius: 10px; background: rgba(155, 88, 115, .08); color: var(--glm-muted); font-size: 11px; font-weight: 800; text-align: center; letter-spacing: .02em; }
+.glm-steps li.is-active { color: #fff; background: var(--glm-accent); }
+.glm-text-source { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 14px 0 0; padding: 0; border: 0; }
+.glm-text-source legend { padding: 0; margin-bottom: 8px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--glm-muted); }
+.glm-text-source button { display:grid; gap: 4px; padding: 12px 13px; border: 1px solid rgba(155, 88, 115, .24); border-radius: 14px; background: rgba(255, 255, 255, .7); text-align: start; cursor: pointer; }
+.glm-text-source button b { font-size: 13px; color: var(--glm-ink); }
+.glm-text-source button small { font-size: 11px; line-height: 1.45; color: var(--glm-muted); }
+.glm-text-source button.is-active { border-color: var(--glm-accent); background: rgba(155, 88, 115, .1); box-shadow: 0 0 0 1px var(--glm-accent) inset; }
+@media (max-width: 560px) { .glm-text-source { grid-template-columns: 1fr; } .glm-steps li { font-size: 10px; padding: 7px 4px; } }

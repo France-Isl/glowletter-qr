@@ -17,6 +17,26 @@
   const TONES = Object.freeze(["auto", "loving", "romantic", "classic", "support", "gratitude"]);
   const LENGTHS = Object.freeze(["auto", "short", "standard", "detailed"]);
   const MOMENT_KINDS = Object.freeze(["birthday", "anniversary", "holiday", "meeting", "other"]);
+  // glowletter_letters.source accepts only these four values; the app also
+  // speaks of "own", "library" and "catalog" letters.
+  const DB_SOURCES = Object.freeze({ ai: "ai", custom: "custom", own: "custom", template: "template", library: "template", catalog: "template", history: "template", florist: "florist" });
+  // The tables created in August accept "universal" (not "auto"), "yearly"/"none"
+  // (not "annual"/"once") and no "meeting"/"other" kinds; rows are written in
+  // their vocabulary and read back into the app's.
+  const DB_RELATIONSHIPS = Object.freeze({ auto: "universal" });
+  const DB_RECURRENCE = Object.freeze({ annual: "yearly", once: "none" });
+  const DB_KINDS = Object.freeze({ meeting: "custom", other: "custom" });
+  function toDbRow(table, row) {
+    const out = { ...row };
+    if (table === PEOPLE_TABLE && out.relationship in DB_RELATIONSHIPS) out.relationship = DB_RELATIONSHIPS[out.relationship];
+    if (table === MOMENTS_TABLE) {
+      if (out.recurrence in DB_RECURRENCE) out.recurrence = DB_RECURRENCE[out.recurrence];
+      if (out.kind in DB_KINDS) out.kind = DB_KINDS[out.kind];
+      if (typeof out.title === "string") out.title = cleanText(out.title, 80);
+      if (typeof out.time_zone === "string") out.time_zone = cleanText(out.time_zone, 64);
+    }
+    return out;
+  }
 
   const TEXT = {
     ru: {
@@ -53,7 +73,10 @@
       toneAuto: "Подбирать автоматически", toneLoving: "Тёплый", toneRomantic: "Романтический · супругам", toneClassic: "Классический", toneSupport: "Поддержка", toneGratitude: "Благодарность",
       lengthAuto: "Подбирать автоматически", lengthShort: "Короткое", lengthStandard: "Среднее", lengthDetailed: "Подробное",
       kindBirthday: "День рождения", kindAnniversary: "Годовщина", kindHoliday: "Праздник", kindMeeting: "Встреча", kindOther: "Другое",
-      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Готово", retry: "Повторить"
+      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Готово", retry: "Повторить",
+      signInNeededTitle: "Нужен вход в аккаунт", signInNeededNote: "Люди, даты и письма хранятся в облаке, а QR-карточка создаётся только после входа. Всё, что вы добавите сейчас, поднимется в облако при входе.", signInButton: "Войти", localRowsSynced: "Записи с этого устройства сохранены в облаке",
+      floristStep1: "1 · Данные", floristStep2: "2 · Текст письма", floristStep3: "3 · QR-карточка", floristTextSource: "Текст письма", floristOwnText: "Своими словами", floristCatalogText: "Из коллекции",
+      floristOwnHint: "Слова клиента откроются в редакторе, их можно поправить.", floristCatalogHint: "Откроется коллекция из 50 писем на выбранном языке.", continueQr: "Дальше: письмо и QR-карточка"
     },
     en: {
       eyebrow: "GLOWLETTER · IMPORTANT MOMENTS", title: "People, dates and letters", close: "Close",
@@ -89,7 +112,10 @@
       toneAuto: "Choose automatically", toneLoving: "Warm", toneRomantic: "Romantic · spouses", toneClassic: "Classic", toneSupport: "Support", toneGratitude: "Gratitude",
       lengthAuto: "Choose automatically", lengthShort: "Short", lengthStandard: "Medium", lengthDetailed: "Detailed",
       kindBirthday: "Birthday", kindAnniversary: "Anniversary", kindHoliday: "Holiday", kindMeeting: "Meeting", kindOther: "Other",
-      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Ready", retry: "Retry"
+      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Ready", retry: "Retry",
+      signInNeededTitle: "Sign in to continue", signInNeededNote: "People, dates and letters live in the cloud, and a QR card is created only after you sign in. Anything you add now is uploaded when you sign in.", signInButton: "Sign in", localRowsSynced: "Entries from this device are now saved in the cloud",
+      floristStep1: "1 · Details", floristStep2: "2 · Letter text", floristStep3: "3 · QR card", floristTextSource: "Letter text", floristOwnText: "In your own words", floristCatalogText: "From the collection",
+      floristOwnHint: "The client’s words open in the editor, ready to adjust.", floristCatalogHint: "The collection of 50 letters opens in the chosen language.", continueQr: "Next: the letter and the QR card"
     },
     fr: {
       eyebrow: "GLOWLETTER · MOMENTS IMPORTANTS", title: "Personnes, dates et lettres", close: "Fermer",
@@ -125,7 +151,10 @@
       toneAuto: "Choisir automatiquement", toneLoving: "Chaleureux", toneRomantic: "Romantique · époux", toneClassic: "Classique", toneSupport: "Soutien", toneGratitude: "Gratitude",
       lengthAuto: "Choisir automatiquement", lengthShort: "Courte", lengthStandard: "Moyenne", lengthDetailed: "Détaillée",
       kindBirthday: "Anniversaire", kindAnniversary: "Anniversaire de relation", kindHoliday: "Fête", kindMeeting: "Rencontre", kindOther: "Autre",
-      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Prêt", retry: "Réessayer"
+      languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Prêt", retry: "Réessayer",
+      signInNeededTitle: "Connexion requise", signInNeededNote: "Les personnes, les dates et les lettres sont conservées dans le cloud, et la carte QR n’est créée qu’après connexion. Tout ce que vous ajoutez maintenant sera envoyé au cloud à la connexion.", signInButton: "Se connecter", localRowsSynced: "Les entrées de cet appareil sont maintenant enregistrées dans le cloud",
+      floristStep1: "1 · Informations", floristStep2: "2 · Texte de la lettre", floristStep3: "3 · Carte QR", floristTextSource: "Texte de la lettre", floristOwnText: "Avec vos mots", floristCatalogText: "Dans la collection",
+      floristOwnHint: "Les mots du client s’ouvrent dans l’éditeur, prêts à être ajustés.", floristCatalogHint: "La collection de 50 lettres s’ouvre dans la langue choisie.", continueQr: "Suite : la lettre et la carte QR"
     }
   };
   // German, Spanish, Italian and Polish come from i18n-extra.js on top of English.
@@ -134,6 +163,7 @@
   });
 
   const config = {
+    requestSignIn: null,
     getClient: () => null,
     getUser: () => null,
     getLanguage: () => "ru",
@@ -153,6 +183,7 @@
     user: null,
     client: null,
     activeTab: "people",
+    floristTextMode: "own",
     people: [],
     moments: [],
     letters: [],
@@ -339,7 +370,7 @@
       id: validUuid(row.id) || uuid(), user_id: validUuid(row.user_id), person_id: validUuid(row.person_id),
       title: cleanText(row.title, 100), kind: MOMENT_KINDS.includes(row.kind) ? row.kind : "other",
       event_date: parseDateOnly(row.event_date)?.date ? String(row.event_date).slice(0, 10) : "",
-      recurrence: row.recurrence === "annual" || row.annual === true ? "annual" : "once",
+      recurrence: row.recurrence === "annual" || row.recurrence === "yearly" || row.annual === true ? "annual" : "once",
       time_zone: cleanText(row.time_zone, 80) || localTimeZone(),
       remind_7d: typeof row.remind_7d === "boolean" ? row.remind_7d : (!reminderDays.length || reminderDays.includes(7)),
       remind_3d: typeof row.remind_3d === "boolean" ? row.remind_3d : (!reminderDays.length || reminderDays.includes(3)),
@@ -352,9 +383,9 @@
   function normalizeLetter(row = {}) {
     return {
       id: validUuid(row.id) || uuid(), user_id: validUuid(row.user_id), person_id: validUuid(row.person_id), moment_id: validUuid(row.moment_id),
-      source: cleanText(row.source, 32) || "own", text: cleanText(row.text || row.letter_text, 1800), language: validLanguage(row.language),
+      source: cleanText(row.source, 32) || "custom", text: cleanText(row.text || row.letter_text, 1800), language: validLanguage(row.language),
       tone: TONES.includes(row.tone) ? row.tone : "auto", sender_name_snapshot: cleanText(row.sender_name_snapshot || row.sender_name, 36),
-      recipient_name_snapshot: cleanText(row.recipient_name_snapshot || row.recipient_name, 36), occasion_snapshot: cleanText(row.occasion_snapshot || row.note, 420),
+      recipient_name_snapshot: cleanText(row.recipient_name_snapshot || row.recipient_name, 36), occasion_snapshot: cleanText(row.occasion_snapshot || row.note, 80),
       created_at: cleanText(row.created_at, 40) || new Date().toISOString(), updated_at: cleanText(row.updated_at, 40), _localOnly: row._localOnly === true
     };
   }
@@ -482,7 +513,7 @@
     let saved = local;
     if (state.client && validUuid(state.user?.id)) {
       try {
-        const result = await state.client.from(table).insert(stripLocalFields({ ...payload, id: local.id, user_id: state.user.id })).select("*").single();
+        const result = await state.client.from(table).insert(toDbRow(table, stripLocalFields({ ...payload, id: local.id, user_id: state.user.id }))).select("*").single();
         if (!result.error && result.data) saved = normalizer(result.data);
       } catch {}
     }
@@ -499,7 +530,7 @@
     let saved = normalizer({ ...existing, ...payload, updated_at: new Date().toISOString(), _localOnly: existing._localOnly });
     if (state.client && validUuid(state.user?.id) && !existing._localOnly) {
       try {
-        const result = await state.client.from(table).update(stripLocalFields(payload)).eq("id", id).eq("user_id", state.user.id).select("*").maybeSingle();
+        const result = await state.client.from(table).update(toDbRow(table, stripLocalFields(payload))).eq("id", id).eq("user_id", state.user.id).select("*").maybeSingle();
         if (!result.error && result.data) saved = normalizer(result.data);
         else saved._localOnly = true;
       } catch { saved._localOnly = true; }
@@ -558,6 +589,7 @@
           <button class="glm-close" id="momentsClose" type="button" data-action="close" aria-label="">×</button>
         </header>
         <p class="glm-sync-status" id="momentsSyncStatus" role="status" aria-live="polite"></p>
+        <div class="glm-signin" id="momentsSignIn" hidden><div><strong data-i18n="signInNeededTitle"></strong><p data-i18n="signInNeededNote"></p></div><button type="button" data-action="sign-in" data-i18n="signInButton"></button></div>
         <div class="glm-tabs" id="momentsTabs" role="tablist">
           <button type="button" role="tab" data-tab="people" aria-controls="momentsPeoplePane"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span><b data-i18n="peopleTab"></b></button>
           <button type="button" role="tab" data-tab="dates" aria-controls="momentsDatesPane"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span><b data-i18n="datesTab"></b></button>
@@ -611,6 +643,7 @@
           </section>
           <section class="glm-pane" id="momentsFloristPane" role="tabpanel" data-pane="florist" hidden>
             <div class="glm-intro glm-intro-single"><p data-i18n="floristIntro"></p></div>
+            <ol class="glm-steps" aria-hidden="true"><li class="is-active" data-i18n="floristStep1"></li><li data-i18n="floristStep2"></li><li data-i18n="floristStep3"></li></ol>
             <form class="glm-form glm-florist" id="momentsFloristForm">
               <div class="glm-florist-route" aria-hidden="true"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-spark"/></svg></span><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></i><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span></div>
               <div class="glm-form-grid">
@@ -621,8 +654,12 @@
                 <label><span data-i18n="floristDate"></span><input id="momentsFloristEventDate" type="date" /></label>
                 <label class="glm-wide"><span data-i18n="note"></span><textarea id="momentsFloristNote" rows="5" maxlength="420"></textarea></label>
               </div>
+              <fieldset class="glm-text-source"><legend data-i18n="floristTextSource"></legend>
+                <button type="button" class="is-active" data-text-mode="own" aria-pressed="true"><b data-i18n="floristOwnText"></b><small data-i18n="floristOwnHint"></small></button>
+                <button type="button" data-text-mode="catalog" aria-pressed="false"><b data-i18n="floristCatalogText"></b><small data-i18n="floristCatalogHint"></small></button>
+              </fieldset>
               <p class="glm-form-error" id="momentsFloristError" role="alert" hidden></p>
-              <button class="glm-primary glm-submit-wide" type="submit" data-i18n="continueComposer"></button>
+              <button class="glm-primary glm-submit-wide" type="submit" data-i18n="continueQr"></button>
             </form>
           </section>
         </div>
@@ -734,7 +771,7 @@
   }
 
   function sourceLabel(source) {
-    return tr(({ ai: "sourceAi", own: "sourceOwn", florist: "sourceFlorist", catalog: "sourceCatalog" })[source] || "sourceUnknown");
+    return tr(({ ai: "sourceAi", own: "sourceOwn", custom: "sourceOwn", florist: "sourceFlorist", catalog: "sourceCatalog", template: "sourceCatalog" })[source] || "sourceUnknown");
   }
 
   // Arabic dates use the Western digits the rest of the app shows.
@@ -832,9 +869,24 @@
     }).join("");
   }
 
+  function renderSignInNotice() {
+    const notice = query("#momentsSignIn");
+    if (notice) notice.hidden = Boolean(validUuid(state.user?.id)) || typeof config.requestSignIn !== "function";
+  }
+
+  function setFloristTextMode(mode) {
+    state.floristTextMode = mode === "catalog" ? "catalog" : "own";
+    state.root?.querySelectorAll("[data-text-mode]").forEach(button => {
+      const active = button.dataset.textMode === state.floristTextMode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
   function renderAll() {
     if (!state.root) return;
     applyLanguage();
+    renderSignInNotice();
     renderTabs();
     renderPeople();
     renderDates();
@@ -907,12 +959,16 @@
       sender: cleanText(extra.sender, 36), recipient: cleanText(extra.recipient || person?.display_name, 36),
       language: validLanguage(extra.language || person?.language || state.language), relationship: person?.relationship || "auto",
       tone: person?.tone || "auto", length: person?.default_length || "auto", note: cleanText(extra.note || extra.moment?.title, 420),
-      eventDate: extra.eventDate || extra.moment?.event_date || "", unlockAt: extra.unlockAt || ""
+      eventDate: extra.eventDate || extra.moment?.event_date || "", unlockAt: extra.unlockAt || "",
+      textMode: extra.textMode === "own" ? "own" : "catalog"
     };
   }
 
   async function invokeComposer(payload) {
     if (typeof config.openComposer !== "function") return null;
+    // The collection and the editor live under this panel (z-index), so the
+    // panel closes first; the History tab shows the letter next time.
+    close();
     let completed = false;
     const complete = async value => {
       if (completed) return null;
@@ -927,7 +983,6 @@
     try {
       const result = await Promise.resolve(config.openComposer(request));
       if (result) await complete(result);
-      showToast("composerOpened");
       return result;
     } catch { return null; }
   }
@@ -942,7 +997,8 @@
     const unlockAt = unlockValue && Number.isFinite(new Date(unlockValue).getTime()) ? new Date(unlockValue).toISOString() : "";
     await invokeComposer(composerPayloadForPerson(null, {
       mode: "florist", source: "florist", sender, recipient, language: query("#momentsFloristLanguage").value,
-      unlockAt, eventDate: query("#momentsFloristEventDate").value, note: query("#momentsFloristNote").value, createQrAfterUse: true
+      unlockAt, eventDate: query("#momentsFloristEventDate").value, note: query("#momentsFloristNote").value, createQrAfterUse: true,
+      textMode: state.floristTextMode
     }));
   }
 
@@ -952,9 +1008,9 @@
     if (!text) return null;
     const payload = {
       person_id: validUuid(value.personId || value.person_id) || null, moment_id: validUuid(value.momentId || value.moment_id) || null,
-      source: cleanText(value.source, 32) || "own", text, language: validLanguage(value.language), tone: TONES.includes(value.tone) ? value.tone : "auto",
+      source: DB_SOURCES[cleanText(value.source, 32)] || "custom", text, language: validLanguage(value.language), tone: TONES.includes(value.tone) ? value.tone : "auto",
       sender_name_snapshot: cleanText(value.sender || value.sender_name_snapshot, 36), recipient_name_snapshot: cleanText(value.recipient || value.recipient_name_snapshot, 36),
-      occasion_snapshot: cleanText(value.note || value.occasion_snapshot, 420)
+      occasion_snapshot: cleanText(value.note || value.occasion_snapshot, 80)
     };
     return createOwnerRow(table, payload, normalizeLetter, "letters");
   }
@@ -1029,6 +1085,7 @@
 
   async function handleAction(action, id) {
     if (action === "close") return close();
+    if (action === "sign-in") { close(); if (typeof config.requestSignIn === "function") await Promise.resolve(config.requestSignIn()); return; }
     if (action === "person-new") { resetPersonForm(); return showForm("#momentsPersonForm", true); }
     if (action === "person-cancel") return showForm("#momentsPersonForm", false);
     if (action === "person-edit") { const person = personById(id); resetPersonForm(person); return showForm("#momentsPersonForm", true); }
@@ -1058,6 +1115,8 @@
     state.root.addEventListener("click", event => {
       const tab = event.target.closest("[data-tab]");
       if (tab) { state.activeTab = tab.dataset.tab; renderTabs(); return; }
+      const textMode = event.target.closest("[data-text-mode]");
+      if (textMode) { setFloristTextMode(textMode.dataset.textMode); return; }
       const action = event.target.closest("[data-action]");
       if (action) handleAction(action.dataset.action, action.dataset.id || "");
     });
@@ -1184,8 +1243,63 @@
     if (changed) {
       state.people = []; state.moments = []; state.letters = []; state.qrLinks = []; state.loaded = false;
       await loadAll();
+      await pushPendingRows();
     }
     return state.user;
+  }
+
+  // Rows created before sign-in live in the guest cache; rows whose cloud save
+  // failed stay `_localOnly`. Both are inserted once a session exists.
+  function guestCacheKey() {
+    return `${STORAGE_PREFIX}guest`;
+  }
+
+  function takeGuestRows() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(guestCacheKey()) || "null");
+      if (!parsed || typeof parsed !== "object") return { people: [], moments: [], letters: [] };
+      return {
+        people: (Array.isArray(parsed.people) ? parsed.people : []).map(normalizePerson),
+        moments: (Array.isArray(parsed.moments) ? parsed.moments : []).map(normalizeMoment),
+        letters: (Array.isArray(parsed.letters) ? parsed.letters : []).map(normalizeLetter)
+      };
+    } catch { return { people: [], moments: [], letters: [] }; }
+  }
+
+  const personPayload = person => ({ id: person.id, display_name: person.display_name, relationship: person.relationship, language: person.language, tone: person.tone, default_length: person.default_length });
+  const momentPayload = moment => ({ id: moment.id, person_id: moment.person_id || null, title: cleanText(moment.title, 100), kind: moment.kind, event_date: moment.event_date, recurrence: moment.recurrence, time_zone: cleanText(moment.time_zone, 80) || localTimeZone(), remind_7d: moment.remind_7d, remind_3d: moment.remind_3d, remind_1d: moment.remind_1d });
+  const letterPayload = letter => ({ id: letter.id, person_id: letter.person_id || null, moment_id: letter.moment_id || null, source: DB_SOURCES[letter.source] || "custom", text: letter.text, language: letter.language, tone: letter.tone, sender_name_snapshot: letter.sender_name_snapshot, recipient_name_snapshot: letter.recipient_name_snapshot, occasion_snapshot: cleanText(letter.occasion_snapshot, 80) });
+
+  async function pushPendingRows() {
+    if (!state.client || !validUuid(state.user?.id)) return 0;
+    const owner = state.user.id;
+    const guest = takeGuestRows();
+    const pending = {
+      people: [...guest.people, ...state.people.filter(row => row._localOnly)],
+      moments: [...guest.moments, ...state.moments.filter(row => row._localOnly)],
+      letters: [...guest.letters, ...state.letters.filter(row => row._localOnly)]
+    };
+    if (!pending.people.length && !pending.moments.length && !pending.letters.length) return 0;
+    let pushed = 0;
+    let failed = 0;
+    const insert = async (table, payload, normalizer, collectionName) => {
+      if (accountKey() !== owner) return false;
+      try {
+        const result = await state.client.from(table).insert(toDbRow(table, stripLocalFields({ ...payload, user_id: owner }))).select("*").single();
+        if (result.error || !result.data) { failed += 1; return false; }
+        state[collectionName] = [normalizer(result.data), ...state[collectionName].filter(item => item.id !== payload.id)];
+        pushed += 1;
+        return true;
+      } catch { failed += 1; return false; }
+    };
+    for (const person of pending.people) await insert(PEOPLE_TABLE, personPayload(person), normalizePerson, "people");
+    const cloudPerson = id => (id && state.people.some(person => person.id === id && !person._localOnly) ? id : null);
+    for (const moment of pending.moments) await insert(MOMENTS_TABLE, { ...momentPayload(moment), person_id: cloudPerson(moment.person_id) }, normalizeMoment, "moments");
+    const cloudMoment = id => (id && state.moments.some(moment => moment.id === id && !moment._localOnly) ? id : null);
+    for (const letter of pending.letters) await insert(LETTERS_TABLE, { ...letterPayload(letter), person_id: cloudPerson(letter.person_id), moment_id: cloudMoment(letter.moment_id) }, normalizeLetter, "letters");
+    if (!failed) { try { localStorage.removeItem(guestCacheKey()); } catch {} }
+    if (pushed && accountKey() === owner) { writeCache(); renderAll(); showToast("localRowsSynced"); }
+    return pushed;
   }
 
   function setLanguage(language) {
@@ -1205,6 +1319,7 @@
     state.initialized = true;
     applyLanguage();
     await loadAll({ quiet: true });
+    await pushPendingRows();
     if (new URL(location.href).searchParams.has("moment")) await handleSharedToken();
     return api;
   }

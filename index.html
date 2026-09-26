@@ -12,16 +12,18 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bezam.org/assets/og-next.png" />
+  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=50" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=49" />
+  <link rel="manifest" href="manifest.webmanifest?v=50" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=49" />
-  <link rel="stylesheet" href="styles.css?v=49" />
-  <link rel="stylesheet" href="experience.css?v=49" />
-  <link rel="stylesheet" href="email-auth.css?v=49" />
-  <link rel="stylesheet" href="moments.css?v=49" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=50" />
+  <link rel="stylesheet" href="styles.css?v=50" />
+  <link rel="stylesheet" href="experience.css?v=50" />
+  <link rel="stylesheet" href="email-auth.css?v=50" />
+  <link rel="stylesheet" href="moments.css?v=50" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="garnet">
   <!--
@@ -533,8 +535,27 @@
           <button id="qrCopyLinkButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg> Скопировать ссылку</button>
           <button id="qrCopyImageButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> Скопировать QR</button>
           <button id="qrPrintButton" type="button">⌁ Распечатать</button>
+          <button id="qrPdfButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> PDF для печати</button>
+          <button id="qrSendButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> Отправить</button>
         </div>
         <button class="paywall-home go-home" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
+      </section>
+    </div>
+
+    <div class="panel-layer center-layer" id="composerLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="composerBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="setup-card composer-card" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+        <button class="panel-close composer-close" id="composerClose" type="button" aria-label="Закрыть">×</button>
+        <p class="composer-eyebrow" id="composerEyebrow">GLOWLETTER · СВОИМИ СЛОВАМИ</p>
+        <h2 id="composerTitle">Письмо своими словами</h2>
+        <p class="composer-lead" id="composerLead">Напишите то, что важно сказать. Текст сохранится в истории и попадёт в QR-карточку.</p>
+        <p class="composer-route" id="composerRoute"></p>
+        <label class="composer-field"><textarea id="composerText" rows="9" maxlength="1800" dir="auto" placeholder="Дорогая мама, сегодня я хочу сказать тебе…"></textarea><small id="composerCounter">0 / 1800</small></label>
+        <p class="setup-error" id="composerError" hidden></p>
+        <div class="composer-actions">
+          <button class="generate-button" id="composerDone" type="button"><span class="generate-spark"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-check"/></svg></span><span id="composerDoneLabel">Готово</span></button>
+          <button class="composer-secondary" id="composerCollection" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> <span>Выбрать из коллекции</span></button>
+        </div>
       </section>
     </div>
 
@@ -549,6 +570,24 @@
           <a id="shareWhatsapp" href="#" target="_blank" rel="noopener"><i aria-hidden="true">◉</i><span>WhatsApp</span></a>
           <a id="shareEmail" href="#"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-mail"/></svg></i><span>Почта</span></a>
           <button id="shareCopyLink" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg></i><span>Скопировать ссылку</span></button>
+        </div>
+      </section>
+    </div>
+
+    <div class="panel-layer center-layer" id="qrSendLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="qrSendBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="setup-card share-app-card" role="dialog" aria-modal="true" aria-labelledby="qrSendTitle">
+        <button class="panel-close share-app-close" id="qrSendClose" type="button" aria-label="Закрыть">×</button>
+        <h2 id="qrSendTitle">Отправить письмо</h2>
+        <p class="share-app-lead" id="qrSendLead">Ссылка откроет письмо на любом телефоне. Выберите, куда её отправить.</p>
+        <div class="share-app-options">
+          <a id="qrSendWhatsapp" href="#" target="_blank" rel="noopener"><i aria-hidden="true">◉</i><span>WhatsApp</span></a>
+          <a id="qrSendTelegram" href="#" target="_blank" rel="noopener"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></i><span>Telegram</span></a>
+          <a id="qrSendSms" href="#"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></i><span>SMS</span></a>
+          <a id="qrSendEmail" href="#"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-mail"/></svg></i><span>Почта</span></a>
+          <button id="qrSendOther" type="button" hidden><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg></i><span>Другое приложение</span></button>
+          <button id="qrSendFile" type="button" hidden><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-image"/></svg></i><span>Отправить карточку картинкой</span></button>
+          <button id="qrSendCopy" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-copy"/></svg></i><span>Скопировать ссылку</span></button>
         </div>
       </section>
     </div>
@@ -697,15 +736,15 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=49"></script>
-  <script src="vendor/supabase-2.110.9.js?v=49"></script>
-  <script src="letters.js?v=49"></script>
-  <script src="i18n-extra.js?v=49"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=49"></script>
-  <script src="qr-code.js?v=49"></script>
-  <script src="app.js?v=49"></script>
-  <script src="email-auth.js?v=49"></script>
-  <script src="moments.js?v=49"></script>
-  <script src="experience.js?v=49"></script>
+  <script src="config.js?v=50"></script>
+  <script src="vendor/supabase-2.110.9.js?v=50"></script>
+  <script src="letters.js?v=50"></script>
+  <script src="i18n-extra.js?v=50"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=50"></script>
+  <script src="qr-code.js?v=50"></script>
+  <script src="app.js?v=50"></script>
+  <script src="email-auth.js?v=50"></script>
+  <script src="moments.js?v=50"></script>
+  <script src="experience.js?v=50"></script>
 </body>
 </html>

@@ -146,17 +146,17 @@
   Object.assign(UI.ru, {
     brandCopy:"Тёплые слова для тех, кто действительно важен.",stage:"Эти слова нашли путь к тебе",locationDenied:"Геолокация недоступна — показываю погоду ближайшего города",
     themeTitle:"Цвет интерфейса",themeAria:"Цвет интерфейса",themeMoon:"Гранат",themeRose:"Индиго",themeForest:"Шафран",themeSand:"Изумруд",
-    qrOpen:"Создать QR-код",settingsAtmosphere:"Атмосфера",settingsLook:"Оформление",settingsLetter:"Письмо",settingsSound:"Звук",settingsAccountSection:"Аккаунт",settingsApp:"Приложение",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"Скачать PNG",qrCopyLink:"Скопировать ссылку",qrCopyImage:"Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
+    qrOpen:"Создать QR-код",composerEyebrow:"GLOWLETTER · СВОИМИ СЛОВАМИ",composerTitle:"Письмо своими словами",composerLead:"Напишите то, что важно сказать. Текст сохранится в истории и попадёт в QR-карточку.",composerPlaceholder:"Дорогая мама, сегодня я хочу сказать тебе…",composerCounter:"{count} / {max}",composerDone:"Готово",composerCollection:"Выбрать из коллекции",composerEmpty:"Напишите хотя бы несколько слов.",composerForbidden:"В тексте есть слова, которые GlowLetter не пропускает.",qrPdf:"PDF для печати",qrPdfReady:"PDF готов",qrSend:"Отправить",qrSendTitle:"Отправить письмо",qrSendLead:"Ссылка откроет письмо на любом телефоне. Выберите, куда её отправить.",qrSendMessage:"{to}, для вас письмо от {from}",qrSendSms:"SMS",qrSendOther:"Другое приложение",qrSendFile:"Отправить карточку картинкой",settingsAtmosphere:"Атмосфера",settingsLook:"Оформление",settingsLetter:"Письмо",settingsSound:"Звук",settingsAccountSection:"Аккаунт",settingsApp:"Приложение",qrCloseAria:"Закрыть QR-код",qrTitle:"Письмо, которое<br><em>откроется по камере</em>",qrLead:"Проверьте имена и скачайте QR-код для цветов или подарка. Получатель увидит именно эту пару имён и первые 10 писем бесплатно.",qrGenerate:"Обновить QR-код",qrCaption:"10 писем в подарок",qrPrivacy:"Оба имени записываются прямо внутрь QR-кода и не изменятся после печати, даже если позже поменять настройки. Ключ VIP не передаётся.",qrDownload:"Скачать PNG",qrCopyLink:"Скопировать ссылку",qrCopyImage:"Скопировать QR",qrPrint:"⌁ Распечатать",qrRoute:"Письмо от {from} для {to}",qrGenericRoute:"Тёплое письмо для вас",qrReady:"Персональный QR-код готов",qrNamesSaved:"Имена сохранены в персональном QR",qrLinkCopied:"Ссылка QR-кода скопирована",qrImageCopied:"QR-код скопирован",qrImageCopyFail:"На этом устройстве можно скачать QR-код как PNG",qrUnavailable:"QR-код временно недоступен",backgroundFail:"Не удалось обработать этот фон",backgroundTooLarge:"Выберите файл размером до 18 МБ",fullscreenUnavailable:"Полноэкранный режим недоступен на этом устройстве",speechUnavailable:"Озвучивание недоступно на этом устройстве"
   });
   Object.assign(UI.en, {
     brandCopy:"Warm words for the people who truly matter.",stage:"These words found their way to you",locationDenied:"Location is unavailable — showing weather for the nearest fallback city",
     themeTitle:"Interface color",themeAria:"Interface color",themeMoon:"Garnet",themeRose:"Indigo",themeForest:"Saffron",themeSand:"Emerald",
-    qrOpen:"Create a QR code",settingsAtmosphere:"Atmosphere",settingsLook:"Appearance",settingsLetter:"Letter",settingsSound:"Sound",settingsAccountSection:"Account",settingsApp:"App",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"Download PNG",qrCopyLink:"Copy link",qrCopyImage:"Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
+    qrOpen:"Create a QR code",composerEyebrow:"GLOWLETTER · IN YOUR OWN WORDS",composerTitle:"A letter in your own words",composerLead:"Write what matters most. The text is kept in your history and goes onto the QR card.",composerPlaceholder:"Dear Mum, today I want to tell you…",composerCounter:"{count} / {max}",composerDone:"Done",composerCollection:"Choose from the collection",composerEmpty:"Write at least a few words.",composerForbidden:"The text contains words GlowLetter does not allow.",qrPdf:"Print-ready PDF",qrPdfReady:"The PDF is ready",qrSend:"Send",qrSendTitle:"Send the letter",qrSendLead:"The link opens the letter on any phone. Choose where to send it.",qrSendMessage:"{to}, there is a letter for you from {from}",qrSendSms:"SMS",qrSendOther:"Another app",qrSendFile:"Send the card as an image",settingsAtmosphere:"Atmosphere",settingsLook:"Appearance",settingsLetter:"Letter",settingsSound:"Sound",settingsAccountSection:"Account",settingsApp:"App",qrCloseAria:"Close QR code",qrTitle:"A letter that<br><em>opens with the camera</em>",qrLead:"Check both names and download the QR code for flowers or a gift. The recipient will see this exact pair and the first 10 letters for free.",qrGenerate:"Update QR code",qrCaption:"10 letters as a gift",qrPrivacy:"Both names are written directly into the QR code and will not change after printing, even if the app settings change later. VIP access is never shared.",qrDownload:"Download PNG",qrCopyLink:"Copy link",qrCopyImage:"Copy QR",qrPrint:"⌁ Print",qrRoute:"A letter from {from} to {to}",qrGenericRoute:"A warm letter for you",qrReady:"Personal QR code is ready",qrNamesSaved:"Names saved in the personal QR",qrLinkCopied:"QR link copied",qrImageCopied:"QR code copied",qrImageCopyFail:"Download the QR code as PNG on this device",qrUnavailable:"QR code is temporarily unavailable",backgroundFail:"This background could not be processed",backgroundTooLarge:"Choose a file up to 18 MB",fullscreenUnavailable:"Full screen is unavailable on this device",speechUnavailable:"Read aloud is unavailable on this device"
   });
   Object.assign(UI.fr, {
     brandCopy:"Des mots chaleureux pour les personnes qui comptent vraiment.",stage:"Ces mots ont trouvé leur chemin jusqu’à toi",locationDenied:"La position est indisponible — météo de la ville de secours affichée",
     themeTitle:"Couleur de l’interface",themeAria:"Couleur de l’interface",themeMoon:"Grenat",themeRose:"Indigo",themeForest:"Safran",themeSand:"Émeraude",
-    qrOpen:"Créer un QR code",settingsAtmosphere:"Ambiance",settingsLook:"Apparence",settingsLetter:"Lettre",settingsSound:"Son",settingsAccountSection:"Compte",settingsApp:"Application",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"Télécharger le PNG",qrCopyLink:"Copier le lien",qrCopyImage:"Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
+    qrOpen:"Créer un QR code",composerEyebrow:"GLOWLETTER · AVEC VOS MOTS",composerTitle:"Une lettre avec vos mots",composerLead:"Écrivez ce qui compte vraiment. Le texte reste dans votre historique et figure sur la carte QR.",composerPlaceholder:"Chère maman, aujourd’hui je veux te dire…",composerCounter:"{count} / {max}",composerDone:"Terminé",composerCollection:"Choisir dans la collection",composerEmpty:"Écrivez au moins quelques mots.",composerForbidden:"Le texte contient des mots que GlowLetter n’accepte pas.",qrPdf:"PDF à imprimer",qrPdfReady:"Le PDF est prêt",qrSend:"Envoyer",qrSendTitle:"Envoyer la lettre",qrSendLead:"Le lien ouvre la lettre sur n’importe quel téléphone. Choisissez où l’envoyer.",qrSendMessage:"{to}, une lettre de {from} vous attend",qrSendSms:"SMS",qrSendOther:"Une autre application",qrSendFile:"Envoyer la carte en image",settingsAtmosphere:"Ambiance",settingsLook:"Apparence",settingsLetter:"Lettre",settingsSound:"Son",settingsAccountSection:"Compte",settingsApp:"Application",qrCloseAria:"Fermer le QR code",qrTitle:"Une lettre qui<br><em>s’ouvre avec l’appareil photo</em>",qrLead:"Vérifiez les deux prénoms et téléchargez le QR code pour des fleurs ou un cadeau. Le destinataire verra exactement cette paire et les 10 premières lettres gratuitement.",qrGenerate:"Actualiser le QR code",qrCaption:"10 lettres en cadeau",qrPrivacy:"Les deux prénoms sont inscrits directement dans le QR code et ne changeront pas après impression, même si les réglages sont modifiés. L’accès VIP n’est jamais transmis.",qrDownload:"Télécharger le PNG",qrCopyLink:"Copier le lien",qrCopyImage:"Copier le QR",qrPrint:"⌁ Imprimer",qrRoute:"Une lettre de {from} pour {to}",qrGenericRoute:"Une lettre chaleureuse pour vous",qrReady:"Le QR code personnel est prêt",qrNamesSaved:"Prénoms enregistrés dans le QR personnel",qrLinkCopied:"Lien du QR code copié",qrImageCopied:"QR code copié",qrImageCopyFail:"Téléchargez le QR code en PNG sur cet appareil",qrUnavailable:"Le QR code est momentanément indisponible",backgroundFail:"Ce fond n’a pas pu être traité",backgroundTooLarge:"Choisissez un fichier de 18 Mo maximum",fullscreenUnavailable:"Le plein écran est indisponible sur cet appareil",speechUnavailable:"La lecture à voix haute est indisponible sur cet appareil"
   });
   Object.assign(UI.ru, {
     accountSupportLabel:"ID для поддержки",accountSupportNote:"Это не пароль. Передавайте ID только официальной поддержке GlowLetter.",accountIdCopy:"Скопировать",accountIdCopied:"ID аккаунта скопирован",accountPlanChecking:"Проверяю доступ…",accountPlanFree:"Бесплатный доступ · 10 писем",accountPlanPermanent:"VIP · полный доступ без ограничений",accountPlanStore:"VIP · подписка активна",accountPlanVip:"Осталось {remaining} · до {date}",accountBadgeChecking:"…",accountBadgeFree:"FREE",accountBadgeVip:"VIP",accountBadgeAdmin:"АДМИНИСТРАТОР",profilePhotoAria:"Изменить фото профиля",profilePhotoReady:"Фото профиля сохранено на этом устройстве",profilePhotoFail:"Не удалось обработать фото",profilePhotoTooLarge:"Выберите фото размером до 8 МБ",
@@ -205,9 +205,9 @@
   });
 
   const PICKER_TEXT = {
-    ru: { note: "Выберите письмо · получатель: {name}", noteGeneric: "Выберите письмо из коллекции", pick: "Выбрать" },
-    en: { note: "Choose a letter · for {name}", noteGeneric: "Choose a letter from the collection", pick: "Choose" },
-    fr: { note: "Choisissez une lettre · pour {name}", noteGeneric: "Choisissez une lettre de la collection", pick: "Choisir" }
+    ru: { note: "Выберите письмо · получатель: {name}", noteGeneric: "Выберите письмо из коллекции", pick: "Выбрать", own: "Своими словами", ownNote: "Напишите свой текст вместо готового письма" },
+    en: { note: "Choose a letter · for {name}", noteGeneric: "Choose a letter from the collection", pick: "Choose", own: "In your own words", ownNote: "Write your own text instead of a ready letter" },
+    fr: { note: "Choisissez une lettre · pour {name}", noteGeneric: "Choisissez une lettre de la collection", pick: "Choisir", own: "Avec vos mots", ownNote: "Écrivez votre propre texte au lieu d’une lettre prête" }
   };
 
   // German, Spanish, Italian and Polish come from i18n-extra.js. A phrase that
@@ -320,7 +320,34 @@
     "alkohol", "alcol", "wodka", "rauschgift", "narkot", "kokain", "cocain", "kasino", "kasyno", "glucksspiel", "azzard",
     "erpress", "chantaj", "ricatt", "szantaz", "drohung", "drohen", "droht", "amenaz", "minacc", "grozb", "umbring", "ermord", "matar", "uccid", "zabij", "zabic",
     "fick", "scheiß", "scheiss", "arschloch", "wichs", "schlampe", "puta", "mierda", "cabron", "gilipoll", "joder",
-    "cazzo", "stronz", "vaffancul", "coglion", "kurw", "skurw", "chuj", "pierdol", "jeba", "pizd"
+    "cazzo", "stronz", "vaffancul", "coglion", "kurw", "skurw", "chuj", "pierdol", "jeba", "pizd",
+    // Украинский, португальский, нидерландский, турецкий, румынский, чешский,
+    // шведский, датский, норвежский, финский, индонезийский, греческий, арабский.
+    // Основы совпадают с безобидными словами других языков — не берутся
+    // (румынское «fut» начинает «futur», датское «nøgen» → «nogen» = «кто-то»).
+    "ерот", "поцілун", "інтим", "оголен", "геніталь", "збудж", "горілк", "погроз", "вбити", "вбий", "їба",
+    "beij", "foda", "caralho", "porra",
+    "erotis", "naakt", "zoen", "intiem", "opgewond", "neuk", "klootzak", "godverd",
+    "erotik", "cinsel", "ciplak", "mahrem", "tahrik", "fahise", "fuhus", "alkol", "votka", "uyusturucu", "eroin", "santaj", "tehdit", "oldur", "orospu", "amk", "yarrak", "sikey", "sikt",
+    "sarut", "vodca", "cazino", "amenint", "omor", "ucide", "muie", "curv",
+    "polib", "nahot", "vzrus", "vydir", "vyhroz", "zabit", "hovno", "mrdat", "zmrd",
+    "porr", "kyss", "naken", "upphets", "onan", "utpress", "knull", "fitta", "javla",
+    "kysse", "ophids", "opphiss", "afpres", "trussel", "trusl", "kneppe", "fisse", "fitte", "luder", "faen", "drep", "narko",
+    "seksi", "eroott", "suudel", "intiim", "alast", "sukupuoliel", "kiihott", "huume", "kokaii", "heroii", "kiristy", "uhkail", "tappa", "vittu", "perkele", "saatana", "huora", "paska",
+    "cium", "telanjang", "bugil", "kelamin", "birahi", "pelacur", "narkoba", "judi", "pemeras", "ancam", "bunuh", "kontol", "memek", "ngentot", "bangsat", "jancuk", "perkosa",
+    "σεξ", "ερωτικ", "πορν", "οργασμ", "γεννητικ", "αυναν", "αλκοολ", "βοτκα", "ναρκωτ", "κοκαιν", "ηρωιν", "καζινο", "εκβιασ", "απειλ", "σκοτωσ", "πουτ", "μουνι", "καυλ",
+    "سكس", "اباح", "إباح", "الاباح", "بورن", "تناسل", "نشوة", "استمن", "عاهر", "دعار", "كحول", "الكحول", "خمر", "فودكا", "مخدر", "المخدر", "كوكايين", "هيروين", "كازينو", "قمار", "ابتز", "تهديد", "هدد", "اقتل", "قتل", "شرموط", "عرص", "نيك", "اغتصاب"
+  ];
+  // Японский, китайский и тайский пишутся без пробелов, поэтому проверяются
+  // как подстроки; вьетнамские слова состоят из слогов и проверяются как
+  // последовательности токенов (диакритика уже снята).
+  const forbiddenPhrases = [
+    "セックス", "エロ", "ポルノ", "キス", "性的", "性交", "性器", "オーガズム", "自慰", "売春", "風俗", "アルコール", "麻薬", "コカイン", "ヘロイン", "カジノ", "賭博", "脅迫", "殺す", "殺し", "死ね", "レイプ", "セフレ",
+    "性愛", "性爱", "做愛", "做爱", "色情", "情色", "接吻", "親吻", "亲吻", "裸體", "裸体", "生殖器", "高潮", "自慰", "手淫", "賣淫", "卖淫", "妓女", "酒精", "毒品", "可卡因", "古柯鹼", "海洛因", "賭場", "赌场", "賭博", "赌博", "勒索", "威脅", "威胁", "殺死", "杀死", "殺了", "杀了", "他媽", "他妈", "操你", "幹你", "干你", "傻逼", "強姦", "强奸",
+    "เซ็กส์", "อีโรติก", "โป๊", "จูบ", "เปลือย", "อวัยวะเพศ", "จุดสุดยอด", "สำเร็จความใคร่", "ช่วยตัวเอง", "โสเภณี", "ขายตัว", "แอลกอฮอล์", "เหล้า", "ยาเสพติด", "โคเคน", "เฮโรอีน", "คาสิโน", "การพนัน", "แบล็กเมล", "ฆ่า", "เย็ด", "ควย", "สัส", "เหี้ย", "ข่มขืน"
+  ];
+  const forbiddenTokenPhrases = [
+    "tinh duc", "khieu dam", "khoa than", "bo phan sinh duc", "cuc khoai", "thu dam", "mai dam", "gai điem", "ma tuy", "cocain", "song bac", "co bac", "tong tien", "đe doa", "giet", "đit me", "đu ma", "cai lon", "con cac", "hiep dam", "ruou"
   ];
 
   const relationshipWords = {
@@ -550,6 +577,9 @@
   let currentQrUrl = "";
   let currentQrMode = "catalog";
   let currentQrCaption = "";
+  let currentQrSource = "";
+  let qrConsentKey = "";
+  let composerContext = null;
   let gesturePreferencesRestored = false;
   let favorites;
   try { favorites = new Set(JSON.parse(localStorage.getItem("nurFavorites") || "[]")); }
@@ -613,7 +643,7 @@
   const homeScreen = $("#homeScreen");
   const letterStage = $("#letterStage");
   const layers = {
-    setup: $("#setupLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), publication: $("#publicationLayer"), report: $("#reportLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer"), language: $("#languageLayer")
+    setup: $("#setupLayer"), library: $("#libraryLayer"), settings: $("#settingsLayer"), qr: $("#qrLayer"), share: $("#shareAppLayer"), publication: $("#publicationLayer"), report: $("#reportLayer"), support: $("#supportLayer"), notifications: $("#notificationLayer"), paywall: $("#paywallLayer"), language: $("#languageLayer"), composer: $("#composerLayer"), qrSend: $("#qrSendLayer")
   };
   const panelTriggers = new WeakMap();
   const notificationInertedLayers = new Set();
@@ -707,6 +737,9 @@
       return token.startsWith(stem);
     };
     if (tokens.some(token => tokenForms(token).some(form => forbiddenStems.some(stem => matches(form, stem)) || /^(sex|sexe|sexual|sexting|porn|porno|erotic|kiss|kisses|kissed|kissing)$/u.test(form)))) return true;
+    if (forbiddenPhrases.some(phrase => normalizedValue.includes(phrase))) return true;
+    const joinedTokens = ` ${tokens.join(" ")} `;
+    if (forbiddenTokenPhrases.some(phrase => joinedTokens.includes(` ${phrase} `))) return true;
     const separatedRoots = ["sex", "sexe", "секс", "porn", "porno", "порн", "erotic", "эрот", "kiss", "поцелу", "intim", "интим"];
     const rootForms = [...new Set(separatedRoots.flatMap(tokenForms))];
     for (let start = 0; start < tokens.length; start += 1) {
@@ -2842,6 +2875,12 @@
     showToast(email ? t("signedInAs").replace("{email}", () => email) : t("googleSignedIn"), 4200);
   }
 
+  // Вход по просьбе экрана: Google на телефоне, иначе раздел аккаунта.
+  function requestSignIn(origin = "home") {
+    if (nativeGoogleSignInAvailable() && cloudProviders.google === true) signInWithGoogle({ origin });
+    else openAccountSection();
+  }
+
   function openAccountSection() {
     $("#settingsButton").click();
     const section = $("#settingsAccountTitle")?.closest("details");
@@ -3437,7 +3476,7 @@
     setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
     setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]||CONTENT_REPORT_OPTIONS.en);
     $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
-    $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
+    $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); setText("#qrPdfButton", t("qrPdf")); setText("#qrSendButton", t("qrSend")); setText("#qrSendTitle", t("qrSendTitle")); setText("#qrSendLead", t("qrSendLead")); setText("#qrSendWhatsapp span", t("shareWhatsapp")); setText("#qrSendTelegram span", t("shareTelegram")); setText("#qrSendSms span", t("qrSendSms")); setText("#qrSendEmail span", t("shareEmail")); setText("#qrSendOther span", t("qrSendOther")); setText("#qrSendFile span", t("qrSendFile")); setText("#qrSendCopy span", t("shareCopy")); setText("#composerEyebrow", t("composerEyebrow")); setText("#composerTitle", t("composerTitle")); setText("#composerLead", t("composerLead")); setText("#composerDoneLabel", t("composerDone")); setText("#composerCollection span", t("composerCollection")); const composerField = $("#composerText"); if (composerField) composerField.placeholder = t("composerPlaceholder"); updateComposerCounter(); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
     renderCloudAccount();
     $("#homeButton").setAttribute("aria-label", t("homeAria")); $("#soundButton").setAttribute("aria-label", t(isMusicPlaying ? "soundOffAria" : "soundOnAria")); $("#natureButton").setAttribute("aria-label", t(isNaturePlaying ? "natureOffAria" : "natureOnAria")); $("#weatherButton").setAttribute("aria-label", t("weatherAria")); $("#languageButton").setAttribute("aria-label", t("languageAria")); $("#libraryButton").setAttribute("aria-label", t("libraryAria")); $("#settingsButton").setAttribute("aria-label", t("settingsAria")); $("#previousLetter").setAttribute("aria-label", t("previousAria")); $("#shareButton").setAttribute("aria-label", t("shareAria")); setText("#shareButtonLabel", t("shareAria"));
     renderWeather();
@@ -3689,7 +3728,8 @@
     const list = $("#quoteList");
     if (!list) return;
     const filtered = LETTERS.filter(entry => selectedCategory === "all" || entry.category === selectedCategory);
-    list.innerHTML = filtered.map(entry => {
+    const ownCard = letterPickerContext ? `<article class="quote-card quote-own" data-id="0"><div class="quote-body"><div class="quote-head"><b><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></b><span>${escapeHtml(pickerText("own"))}</span></div><p>${escapeHtml(pickerText("ownNote"))}</p><div class="quote-actions"><button type="button" class="quote-pick" data-action="own"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-check"/></svg> ${escapeHtml(pickerText("own"))}</button></div></div></article>` : "";
+    list.innerHTML = ownCard + filtered.map(entry => {
       const accessible = canAccess(entry);
       const text = entryText(entry);
       const visibleText = accessible ? text : t("locked");
@@ -3782,6 +3822,64 @@
       Promise.resolve(onComplete(result)).catch(error => console.info("Moments letter completion failed", error));
     }
     showToast(t("customAdded"), 3200);
+  }
+
+  // Письмо своими словами: тот же путь, что и письмо из коллекции, только текст
+  // набирает человек. Текст проходит тот же фильтр, что имена.
+  const COMPOSER_MAX = 1800;
+  function updateComposerCounter() {
+    const field = $("#composerText");
+    if (!field) return;
+    setText("#composerCounter", t("composerCounter").replace("{count}", String(field.value.length)).replace("{max}", String(COMPOSER_MAX)));
+  }
+
+  function openOwnTextComposer(context = null) {
+    composerContext = context && typeof context === "object" ? { ...context } : {};
+    letterPickerContext = null;
+    updateLetterPickerNote();
+    renderLibrary();
+    closePanel(layers.library);
+    const sender = cleanName(composerContext.senderName || composerContext.sender) || fromName;
+    const recipient = cleanName(composerContext.recipientName || composerContext.recipient) || toName;
+    if (sender && recipient) setNames(sender, recipient, { explicit: true });
+    setText("#composerRoute", sender && recipient ? qrRouteText(sender, recipient) : "");
+    const field = $("#composerText");
+    field.value = String(composerContext.initialText || "").normalize("NFKC").slice(0, COMPOSER_MAX);
+    $("#composerError").hidden = true;
+    updateComposerCounter();
+    openPanel(layers.composer);
+    requestAnimationFrame(() => field.focus({ preventScroll: true }));
+  }
+
+  function closeOwnTextComposer() {
+    composerContext = null;
+    closePanel(layers.composer);
+  }
+
+  function submitOwnText() {
+    const field = $("#composerText");
+    const value = String(field.value || "").normalize("NFKC").trim().slice(0, COMPOSER_MAX);
+    const error = $("#composerError");
+    if (value.length < 10) { error.textContent = t("composerEmpty"); error.hidden = false; field.focus(); return; }
+    if (containsForbidden(value)) { error.textContent = t("composerForbidden"); error.hidden = false; field.focus(); return; }
+    error.hidden = true;
+    const context = composerContext;
+    composerContext = null;
+    closePanel(layers.composer);
+    const result = displayPersonalLetter(value, context, context?.source || "custom");
+    if (!result) return;
+    const onComplete = context?.onComplete;
+    if (typeof onComplete === "function") {
+      Promise.resolve(onComplete(result)).catch(error => console.info("Moments letter completion failed", error));
+    }
+    showToast(t("customAdded"), 3200);
+  }
+
+  function composerToCollection() {
+    const context = composerContext;
+    composerContext = null;
+    closePanel(layers.composer);
+    openLetterPicker(context);
   }
 
   function openPaywall(feature = "") {
@@ -4486,11 +4584,14 @@
     const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=1920;const ctx=canvas.getContext("2d");const image=new Image();image.src=backgroundUrl||"assets/campfire-lake.png";
     try{await image.decode();const scale=Math.max(canvas.width/image.naturalWidth,canvas.height/image.naturalHeight);const w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(canvas.width-w)/2,(canvas.height-h)/2,w,h);}catch{ctx.fillStyle="#302335";ctx.fillRect(0,0,canvas.width,canvas.height);}
     const gradient=ctx.createLinearGradient(0,0,0,canvas.height);gradient.addColorStop(0,"rgba(20,18,28,.3)");gradient.addColorStop(.42,"rgba(26,19,28,.46)");gradient.addColorStop(1,"rgba(15,11,18,.88)");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",90,130);ctx.letterSpacing="0px";const rtl=isRtl();const textStart=rtl?990:90;const textEnd=rtl?90:990;if(rtl)ctx.direction="rtl";ctx.textAlign=rtl?"right":"left";
-    ctx.fillStyle="#fff8ed";ctx.font=fitCanvasSingleLine(ctx,recipientText,typography,900,66,{heading:true});ctx.fillText(recipientText,textStart,270);
-    ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(90,316);ctx.lineTo(990,316);ctx.stroke();
-    ctx.fillStyle="#fffaf2";const fittedBody=fitCanvasParagraph(ctx,bodyText,typography,900,1120);fittedBody.lines.forEach((line,index)=>ctx.fillText(line,textStart,440+(index*fittedBody.lineHeight)));
-    ctx.fillStyle="#f0c5d3";ctx.font=fitCanvasSingleLine(ctx,signatureText,typography,900,49,{signature:true,heading:true});ctx.textAlign=rtl?"left":"right";ctx.fillText(signatureText,textEnd,1765);ctx.textAlign=rtl?"right":"left";
+    // Рамка «Розы» ложится на края открытки так же, как на экране, и текст отодвигается от неё.
+    const inset=document.body.dataset.glFrame==="roses"?await drawRosesFrame(ctx,canvas.width,canvas.height):0;
+    const margin=Math.max(90,inset-40),textWidth=canvas.width-margin*2,top=Math.max(130,inset-10),bottom=canvas.height-Math.max(155,inset+10);
+    ctx.fillStyle="#f1b8cb";ctx.font="700 24px system-ui";ctx.letterSpacing="6px";ctx.fillText("GLOWLETTER",margin,top);ctx.letterSpacing="0px";const rtl=isRtl();const textStart=rtl?canvas.width-margin:margin;const textEnd=rtl?margin:canvas.width-margin;if(rtl)ctx.direction="rtl";ctx.textAlign=rtl?"right":"left";
+    ctx.fillStyle="#fff8ed";ctx.font=fitCanvasSingleLine(ctx,recipientText,typography,textWidth,66,{heading:true});ctx.fillText(recipientText,textStart,top+140);
+    ctx.strokeStyle="rgba(255,238,229,.38)";ctx.beginPath();ctx.moveTo(margin,top+186);ctx.lineTo(canvas.width-margin,top+186);ctx.stroke();
+    const bodyTop=top+310;ctx.fillStyle="#fffaf2";const fittedBody=fitCanvasParagraph(ctx,bodyText,typography,textWidth,bottom-bodyTop-200);fittedBody.lines.forEach((line,index)=>ctx.fillText(line,textStart,bodyTop+(index*fittedBody.lineHeight)));
+    ctx.fillStyle="#f0c5d3";ctx.font=fitCanvasSingleLine(ctx,signatureText,typography,textWidth,49,{signature:true,heading:true});ctx.textAlign=rtl?"left":"right";ctx.fillText(signatureText,textEnd,bottom);ctx.textAlign=rtl?"right":"left";
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png",.95));const file=new File([blob],"glow-letter.png",{type:"image/png"});
     try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return;}}catch(error){if(error.name==="AbortError")return;}
     const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="glow-letter.png";link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
@@ -4769,7 +4870,7 @@
   }
 
   function clearQrPreview(){
-    currentQrUrl="";currentQrMode="catalog";currentQrCaption="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
+    currentQrUrl="";currentQrMode="catalog";currentQrCaption="";currentQrSource="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
     const canvas=$("#qrCanvas");const context=canvas?.getContext?.("2d");if(context){context.save();context.setTransform(1,0,0,1,0,0);context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.restore();}
   }
 
@@ -4788,12 +4889,12 @@
   function renderQrCode(notify=false){
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");
     const invalid=!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient);$("#qrNamesError").hidden=!invalid;if(invalid){clearQrPreview();return false;}
-    currentQrMode="catalog";currentQrCaption="";currentQrUrl=buildPublicQrUrl(sender,recipient);setText("#qrPreviewCaption",t("qrCaption"));
+    currentQrMode="catalog";currentQrCaption="";currentQrSource="";currentQrUrl=buildPublicQrUrl(sender,recipient);setText("#qrPreviewCaption",t("qrCaption"));
     return drawQrUrl(currentQrUrl,sender,recipient,notify);
   }
 
   function openQrBuilder(){
-    currentQrMode="catalog";currentQrCaption="";$("#qrSenderName").value=fromName;$("#qrRecipientName").value=toName;$("#qrNamesError").hidden=true;renderQrCode(false);openPanel(layers.qr);
+    currentQrMode="catalog";currentQrCaption="";currentQrSource="";$("#qrSenderName").value=fromName;$("#qrRecipientName").value=toName;$("#qrNamesError").hidden=true;renderQrCode(false);openPanel(layers.qr);
   }
 
   function openPersonalQr(payload={}){
@@ -4804,7 +4905,7 @@
     safe.hash="";safe.search="";safe.searchParams.set("moment",token);const qrLanguage=payload.language||payload.letter?.language;if(SUPPORTED_LANGUAGES.includes(qrLanguage))safe.searchParams.set("lang",qrLanguage);
     const sender=cleanName(payload.senderName||payload.sender||payload.letter?.sender_name_snapshot)||fromName;const recipient=cleanName(payload.recipientName||payload.recipient||payload.letter?.recipient_name_snapshot)||toName;
     if(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_qr_names");
-    currentQrMode="personal";currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle",de:"Persönlicher Brief",es:"Carta personal",it:"Lettera personale",pl:"Osobisty list",uk:"Особистий лист",pt:"Carta pessoal",nl:"Persoonlijke brief",tr:"Kişisel mektup",ro:"Scrisoare personală",cs:"Osobní dopis",sv:"Personligt brev",el:"Προσωπικό γράμμα",da:"Personligt brev",no:"Personlig brev",fi:"Henkilökohtainen kirje",ja:"あなたへの手紙",ko:"개인 편지",zh:"私人信件",th:"จดหมายส่วนตัว",ar:"رسالة شخصية",ind:"Surat pribadi",vi:"Thư riêng"}[lang]||"Personal letter")).slice(0,48);currentQrUrl=safe.toString();
+    currentQrMode="personal";currentQrSource=String(payload.letter?.source||payload.source||"");currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle",de:"Persönlicher Brief",es:"Carta personal",it:"Lettera personale",pl:"Osobisty list",uk:"Особистий лист",pt:"Carta pessoal",nl:"Persoonlijke brief",tr:"Kişisel mektup",ro:"Scrisoare personală",cs:"Osobní dopis",sv:"Personligt brev",el:"Προσωπικό γράμμα",da:"Personligt brev",no:"Personlig brev",fi:"Henkilökohtainen kirje",ja:"あなたへの手紙",ko:"개인 편지",zh:"私人信件",th:"จดหมายส่วนตัว",ar:"رسالة شخصية",ind:"Surat pribadi",vi:"Thư riêng"}[lang]||"Personal letter")).slice(0,48);currentQrUrl=safe.toString();
     $("#qrSenderName").value=sender;$("#qrRecipientName").value=recipient;$("#qrNamesError").hidden=true;setText("#qrPreviewCaption",currentQrCaption);drawQrUrl(currentQrUrl,sender,recipient,false);openPanel(layers.qr);
   }
 
@@ -4825,6 +4926,7 @@
     openComposer:context=>{
       const request = context && typeof context === "object" ? { ...context } : {};
       if (request.text) { displayPersonalLetter(request.text, request, request.source || "history"); return true; }
+      if (request.textMode === "own") { openOwnTextComposer(request); return true; }
       openLetterPicker(request);
       return true;
     },
@@ -4839,7 +4941,8 @@
       ...request,
       senderName: request.senderName || request.sender || "",
       recipientName: request.recipientName || request.recipient || "",
-      idea: request.idea || request.note || ""
+      idea: request.idea || request.note || "",
+      initialText: request.textMode === "own" ? String(request.note || "") : ""
     };
   }
 
@@ -4901,6 +5004,7 @@
       getClient: () => window.GlowLetterCloud?.getClient?.() || cloudClient,
       getUser: () => window.GlowLetterCloud?.getUser?.() || cloudUser,
       getLanguage: () => lang,
+      requestSignIn: () => requestSignIn("moments"),
       openComposer: request => window.GlowLetterApp.openComposer(momentsComposerRequest(request)),
       requestPublishConsent: () => requestPublishConsent(),
       reportContent: request => openContentReport({kind:"moment_letter",contentRef:request?.publicId,momentPublicId:request?.publicId,sender:request?.sender,recipient:request?.recipient,text:request?.text,audioAttached:false}),
@@ -4928,31 +5032,128 @@
     });
   }
 
-  function createQrCardBlob(){
-    if(!currentQrUrl&& !renderQrCode(false))return Promise.resolve(null);
-    const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=1200;canvas.height=1600;const ctx=canvas.getContext("2d");if(!ctx)return Promise.resolve(null);const palette=qrPalette();if(isRtl())ctx.direction="rtl";
-    const gradient=ctx.createLinearGradient(0,0,1200,1600);gradient.addColorStop(0,palette.background);gradient.addColorStop(1,"#ece8ea");ctx.fillStyle=gradient;ctx.fillRect(0,0,1200,1600);
-    ctx.strokeStyle=palette.accent;ctx.lineWidth=4;ctx.strokeRect(56,56,1088,1488);ctx.textAlign="center";ctx.fillStyle=palette.accent;ctx.font="800 30px Manrope, Arial";ctx.fillText("G L O W L E T T E R",600,155);
-    ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(({ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse",de:"Ein warmer Brief",es:"Una carta cálida",it:"Una lettera affettuosa",pl:"Ciepły list",uk:"Теплий лист",pt:"Uma carta calorosa",nl:"Een warme brief",tr:"Sıcak bir mektup",ro:"O scrisoare caldă",cs:"Vřelý dopis",sv:"Ett varmt brev",el:"Ένα ζεστό γράμμα",da:"Et varmt brev",no:"Et varmt brev",fi:"Lämmin kirje",ja:"あたたかい手紙",ko:"따뜻한 편지",zh:"一封溫暖的信",th:"จดหมายอันอบอุ่น",ar:"رسالة دافئة",ind:"Sepucuk surat hangat",vi:"Một lá thư ấm áp"}[lang]||"GlowLetter"),600,265);
-    ctx.fillStyle="#ffffff";ctx.fillRect(176,350,848,848);ctx.drawImage(source,200,374,800,800);
-    const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");const route=qrRouteText(sender,recipient);let routeFontSize=48;ctx.fillStyle=palette.foreground;ctx.font=`600 ${routeFontSize}px Georgia, serif`;while(ctx.measureText(route).width>1000&&routeFontSize>30){routeFontSize-=2;ctx.font=`600 ${routeFontSize}px Georgia, serif`;}ctx.fillText(route,600,1285);
-    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText((currentQrCaption||t("qrCaption")).toLocaleUpperCase(lang),600,1372);ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(({ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo",de:"Richte die Handykamera auf den QR-Code",es:"Apunta la cámara del móvil al código QR",it:"Inquadra il codice QR con la fotocamera",pl:"Skieruj aparat telefonu na kod QR",uk:"Наведіть камеру телефону на QR-код",pt:"Aponte a câmara do telemóvel para o código QR",nl:"Richt de camera van je telefoon op de QR-code",tr:"Telefon kamerasını QR koduna tutun",ro:"Îndreaptă camera telefonului spre codul QR",cs:"Namiřte fotoaparát telefonu na QR kód",sv:"Rikta telefonens kamera mot QR-koden",el:"Στρέψτε την κάμερα του τηλεφώνου στον κωδικό QR",da:"Ret telefonens kamera mod QR-koden",no:"Rett telefonkameraet mot QR-koden",fi:"Suuntaa puhelimen kamera QR-koodiin",ja:"スマートフォンのカメラをQRコードに向けてください",ko:"휴대폰 카메라를 QR 코드에 비춰 주세요",zh:"請用手機相機對準 QR 碼",th:"หันกล้องโทรศัพท์ไปที่ QR โค้ด",ar:"وجّه كاميرا هاتفك نحو رمز QR",ind:"Arahkan kamera ponsel ke kode QR",vi:"Hướng camera điện thoại vào mã QR"}[lang]||"Point your phone camera at the QR code"),600,1430);
-    return new Promise(resolve=>canvas.toBlob(resolve,"image/png",.96));
+  // Карточка с QR печатается на A6 (105 × 148 мм при 300 dpi), поэтому холст
+  // 1240 × 1748. Розы рисуются той же фотографией, что и рамка письма.
+  const QR_CARD_WIDTH=1240,QR_CARD_HEIGHT=1748;
+  const QR_CARD_TITLES={ru:"Тёплое письмо",en:"A warm letter",fr:"Une lettre chaleureuse",de:"Ein warmer Brief",es:"Una carta cálida",it:"Una lettera affettuosa",pl:"Ciepły list",uk:"Теплий лист",pt:"Uma carta calorosa",nl:"Een warme brief",tr:"Sıcak bir mektup",ro:"O scrisoare caldă",cs:"Vřelý dopis",sv:"Ett varmt brev",el:"Ένα ζεστό γράμμα",da:"Et varmt brev",no:"Et varmt brev",fi:"Lämmin kirje",ja:"あたたかい手紙",ko:"따뜻한 편지",zh:"一封溫暖的信",th:"จดหมายอันอบอุ่น",ar:"رسالة دافئة",ind:"Sepucuk surat hangat",vi:"Một lá thư ấm áp"};
+  const QR_CARD_HINTS={ru:"Наведите камеру телефона на QR-код",en:"Point your phone camera at the QR code",fr:"Visez le QR code avec l’appareil photo",de:"Richte die Handykamera auf den QR-Code",es:"Apunta la cámara del móvil al código QR",it:"Inquadra il codice QR con la fotocamera",pl:"Skieruj aparat telefonu na kod QR",uk:"Наведіть камеру телефону на QR-код",pt:"Aponte a câmara do telemóvel para o código QR",nl:"Richt de camera van je telefoon op de QR-code",tr:"Telefon kamerasını QR koduna tutun",ro:"Îndreaptă camera telefonului spre codul QR",cs:"Namiřte fotoaparát telefonu na QR kód",sv:"Rikta telefonens kamera mot QR-koden",el:"Στρέψτε την κάμερα του τηλεφώνου στον κωδικό QR",da:"Ret telefonens kamera mod QR-koden",no:"Rett telefonkameraet mot QR-koden",fi:"Suuntaa puhelimen kamera QR-koodiin",ja:"スマートフォンのカメラをQRコードに向けてください",ko:"휴대폰 카메라를 QR 코드에 비춰 주세요",zh:"請用手機相機對準 QR 碼",th:"หันกล้องโทรศัพท์ไปที่ QR โค้ด",ar:"وجّه كاميرا هاتفك نحو رمز QR",ind:"Arahkan kamera ponsel ke kode QR",vi:"Hướng camera điện thoại vào mã QR"};
+  let rosesFrameImage=null;
+  function loadRosesFrame(){
+    if(!rosesFrameImage)rosesFrameImage=new Promise(resolve=>{const image=new Image();image.decoding="async";image.onload=()=>resolve(image);image.onerror=()=>resolve(null);image.src="assets/frame-roses.webp";});
+    return rosesFrameImage;
+  }
+  // Та же геометрия, что у border-image в experience.css: срезы 380 px на
+  // фотографии 2x, полоса 190 px при ширине карточки 532 px, вынос 60 px наружу.
+  // Возвращает глубину, на которую розы заходят на бумагу.
+  async function drawRosesFrame(ctx,width,height){
+    const image=await loadRosesFrame();if(!image)return 0;
+    const scale=(width/532)*.9,slice=380,band=190*scale,outset=60*scale;
+    const sw=image.naturalWidth,sh=image.naturalHeight,midW=sw-slice*2,midH=sh-slice*2;
+    const x0=-outset,y0=-outset,x1=width+outset-band,y1=height+outset-band;
+    const draw=(sx,sy,sWidth,sHeight,dx,dy,dWidth,dHeight)=>ctx.drawImage(image,sx,sy,sWidth,sHeight,dx,dy,dWidth,dHeight);
+    const spanX=width+outset*2-band*2,spanY=height+outset*2-band*2;
+    const countX=Math.max(1,Math.round(spanX/(midW*scale/2))),countY=Math.max(1,Math.round(spanY/(midH*scale/2)));
+    const stepX=spanX/countX,stepY=spanY/countY;
+    for(let i=0;i<countX;i+=1){draw(slice,0,midW,slice,x0+band+i*stepX,y0,stepX+1,band);draw(slice,sh-slice,midW,slice,x0+band+i*stepX,y1,stepX+1,band);}
+    for(let i=0;i<countY;i+=1){draw(0,slice,slice,midH,x0,y0+band+i*stepY,band,stepY+1);draw(sw-slice,slice,slice,midH,x1,y0+band+i*stepY,band,stepY+1);}
+    draw(0,0,slice,slice,x0,y0,band,band);draw(sw-slice,0,slice,slice,x1,y0,band,band);draw(0,sh-slice,slice,slice,x0,y1,band,band);draw(sw-slice,sh-slice,slice,slice,x1,y1,band,band);
+    return Math.round(band-outset);
+  }
+  function qrCardUsesRoses(){return document.body.dataset.glFrame==="roses"||currentQrSource==="florist";}
+  async function createQrCardCanvas(){
+    if(!currentQrUrl&& !renderQrCode(false))return null;
+    const source=$("#qrCanvas");const canvas=document.createElement("canvas");canvas.width=QR_CARD_WIDTH;canvas.height=QR_CARD_HEIGHT;const ctx=canvas.getContext("2d");if(!ctx)return null;const palette=qrPalette();if(isRtl())ctx.direction="rtl";
+    const gradient=ctx.createLinearGradient(0,0,canvas.width,canvas.height);gradient.addColorStop(0,palette.background);gradient.addColorStop(1,"#ece8ea");ctx.fillStyle=gradient;ctx.fillRect(0,0,canvas.width,canvas.height);
+    const inset=qrCardUsesRoses()?await drawRosesFrame(ctx,canvas.width,canvas.height):0;
+    if(!inset){ctx.strokeStyle=palette.accent;ctx.lineWidth=4;ctx.strokeRect(56,56,canvas.width-112,canvas.height-112);}
+    const safeTop=Math.max(150,inset-20),safeSide=Math.max(120,inset-30),safeBottom=canvas.height-Math.max(150,inset-20),centerX=canvas.width/2;
+    ctx.textAlign="center";ctx.fillStyle=palette.accent;ctx.font="800 30px Manrope, Arial";ctx.fillText("G L O W L E T T E R",centerX,safeTop+40);
+    ctx.fillStyle=palette.foreground;ctx.font="600 72px Georgia, serif";ctx.fillText(QR_CARD_TITLES[lang]||"GlowLetter",centerX,safeTop+150);
+    const qrSize=Math.max(420,Math.min(800,canvas.width-safeSide*2-120,safeBottom-(safeTop+220)-250)),qrTop=safeTop+220,qrLeft=centerX-qrSize/2;
+    ctx.fillStyle="#ffffff";ctx.fillRect(qrLeft-24,qrTop-24,qrSize+48,qrSize+48);ctx.drawImage(source,qrLeft,qrTop,qrSize,qrSize);
+    const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");const route=qrRouteText(sender,recipient);const routeWidth=canvas.width-safeSide*2;let routeFontSize=48;ctx.fillStyle=palette.foreground;ctx.font=`600 ${routeFontSize}px Georgia, serif`;while(ctx.measureText(route).width>routeWidth&&routeFontSize>28){routeFontSize-=2;ctx.font=`600 ${routeFontSize}px Georgia, serif`;}
+    const routeY=qrTop+qrSize+110;ctx.fillText(route,centerX,routeY);
+    ctx.fillStyle=palette.accent;ctx.font="700 25px Manrope, Arial";ctx.fillText((currentQrCaption||t("qrCaption")).toLocaleUpperCase(lang),centerX,routeY+80);
+    ctx.fillStyle="#756d77";ctx.font="500 23px Manrope, Arial";ctx.fillText(QR_CARD_HINTS[lang]||"Point your phone camera at the QR code",centerX,routeY+140);
+    return canvas;
+  }
+  function createQrCardBlob(type="image/png",quality=.96){
+    return createQrCardCanvas().then(canvas=>canvas?new Promise(resolve=>canvas.toBlob(resolve,type,quality)):null);
+  }
+  function qrFileName(extension){const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");return `GlowLetter-QR${recipient?`-${recipient}`:""}.${extension}`;}
+  function nativeFileShareBridge(){const bridge=window.NurShare;return bridge&&typeof bridge.shareFile==="function"?bridge:null;}
+  function blobToBase64(blob){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||"").split(",")[1]||"");reader.onerror=()=>reject(reader.error);reader.readAsDataURL(blob);});}
+  const isPhoneShell=()=>/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  // Файл уходит через системное окно «Поделиться» на телефоне (в приложении —
+  // через мост, у WebView нет Web Share) и скачивается на компьютере.
+  async function deliverFile(blob,filename,toastKey){
+    const bridge=nativeFileShareBridge();
+    if(bridge){try{bridge.shareFile(await blobToBase64(blob),blob.type||"application/octet-stream",filename);return true;}catch{}}
+    if(isPhoneShell()){try{const file=new File([blob],filename,{type:blob.type});if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:t("title")});return true;}}catch(error){if(error?.name==="AbortError")return false;}}
+    const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download=filename;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);if(toastKey)showToast(t(toastKey));return true;
+  }
+  // Согласие на публикацию спрашивается один раз на ссылку, а не на каждую кнопку.
+  function qrConsentSignature(){return `${currentQrMode}|${cleanName($("#qrSenderName")?.value||"")}|${cleanName($("#qrRecipientName")?.value||"")}|${currentQrMode==="personal"?currentQrUrl:""}`;}
+  async function qrConsent(){
+    if(qrConsentKey&&qrConsentKey===qrConsentSignature())return true;
+    const accepted=await requestPublishConsent();if(accepted)qrConsentKey=qrConsentSignature();return accepted;
+  }
+  // PDF из одной страницы A6 с JPEG-картинкой карточки; без библиотек.
+  async function jpegToPdf(jpegBlob,pixelWidth,pixelHeight,pageWidth,pageHeight){
+    const image=new Uint8Array(await jpegBlob.arrayBuffer());const encoder=new TextEncoder();const parts=[];const offsets=[];let length=0;
+    const push=chunk=>{const bytes=typeof chunk==="string"?encoder.encode(chunk):chunk;parts.push(bytes);length+=bytes.length;};
+    const object=(number,body)=>{offsets[number]=length;push(`${number} 0 obj\n`);if(typeof body==="string")push(body);else{push(body.head);push(body.stream);push("\nendstream");}push("\nendobj\n");};
+    push("%PDF-1.4\n");
+    object(1,"<< /Type /Catalog /Pages 2 0 R >>");
+    object(2,"<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+    object(3,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`);
+    object(4,{head:`<< /Type /XObject /Subtype /Image /Width ${pixelWidth} /Height ${pixelHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.length} >>\nstream\n`,stream:image});
+    const content=encoder.encode(`q ${pageWidth} 0 0 ${pageHeight} 0 0 cm /Im0 Do Q`);
+    object(5,{head:`<< /Length ${content.length} >>\nstream\n`,stream:content});
+    const xref=length;
+    push(`xref\n0 6\n0000000000 65535 f \n${[1,2,3,4,5].map(number=>`${String(offsets[number]).padStart(10,"0")} 00000 n \n`).join("")}trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+    return new Blob(parts,{type:"application/pdf"});
+  }
+  async function downloadQrPdf(){
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;const canvas=await createQrCardCanvas();if(!canvas)return;
+    const jpeg=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.92));if(!jpeg)return;
+    const pdf=await jpegToPdf(jpeg,canvas.width,canvas.height,297.64,419.53);
+    await deliverFile(pdf,qrFileName("pdf"),"qrPdfReady");
+  }
+  function qrSendMessage(){const sender=cleanName($("#qrSenderName")?.value||"")||fromName;const recipient=cleanName($("#qrRecipientName")?.value||"")||toName;return t("qrSendMessage").replace("{to}",displayName(recipient)).replace("{from}",displayName(sender));}
+  async function openQrSend(){
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;
+    const url=currentQrUrl;const message=qrSendMessage();const title=t("qrSendTitle");const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+    $("#qrSendWhatsapp").href=`https://wa.me/?text=${encodeURIComponent(`${message}\n${url}`)}`;
+    $("#qrSendTelegram").href=`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+    $("#qrSendSms").href=`sms:${ios?"&":"?"}body=${encodeURIComponent(`${message}\n${url}`)}`;
+    $("#qrSendEmail").href=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${message}\n\n${url}`)}`;
+    $("#qrSendOther").hidden=!(nativeShareBridge()||navigator.share);
+    $("#qrSendFile").hidden=!(nativeFileShareBridge()||(isPhoneShell()&&typeof navigator.canShare==="function"));
+    openPanel(layers.qrSend);
+  }
+  async function shareQrLinkNative(){
+    if(!currentQrUrl||!await qrConsent())return;const data={title:t("qrSendTitle"),text:qrSendMessage(),url:currentQrUrl};
+    const bridge=nativeShareBridge();if(bridge){try{bridge.share(data.title,data.text,data.url);return;}catch{}}
+    try{if(navigator.share)await navigator.share(data);}catch(error){if(error?.name!=="AbortError")await copyQrLink();}
+  }
+  async function shareQrCardFile(){
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;const blob=await createQrCardBlob();if(!blob)return;await deliverFile(blob,qrFileName("png"),"downloadReady");
   }
 
   async function downloadQrCard(){
-    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;const blob=await createQrCardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const link=document.createElement("a");const recipient=cleanName($("#qrRecipientName")?.value||"").replace(/[^\p{L}\p{N}-]+/gu,"-");link.href=url;link.download=`GlowLetter-QR${recipient?`-${recipient}`:""}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);showToast(t("downloadReady"));
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;const blob=await createQrCardBlob();if(!blob)return;await deliverFile(blob,qrFileName("png"),"downloadReady");
   }
 
   async function copyQrImage(){
-    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;const blob=await createQrCardBlob();if(!blob)return;
+    if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;const blob=await createQrCardBlob();if(!blob)return;
     try{if(!navigator.clipboard?.write||typeof ClipboardItem!=="function")throw new Error("unsupported");await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);showToast(t("qrImageCopied"));}
     catch{showToast(t("qrImageCopyFail"),3200);}
   }
 
-  async function copyQrLink(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
+  async function copyQrLink(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;await writeClipboard(currentQrUrl);showToast(t("qrLinkCopied"));haptic(10);}
 
-  async function printQrCard(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await requestPublishConsent())return;window.print();}
+  async function printQrCard(){if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;window.print();}
 
   function isFullscreenShell(){return Boolean(matchMedia?.("(display-mode: fullscreen)").matches||navigator.standalone===true||location.hostname==="appassets.androidplatform.net"||location.protocol==="file:");}
   function fullscreenActive(){return Boolean(document.fullscreenElement||isFullscreenShell());}
@@ -4981,19 +5182,21 @@
     $("#settingsButton").addEventListener("click",()=>{pendingPremiumFeature="";$("#settingsSenderName").value=fromName;$("#settingsRecipientName").value=toName;$("#settingsNamesError").hidden=true;openPanel(layers.settings);if(cloudUser?.id){loadCloudAccount(cloudUser).catch(error=>console.info("Cloud account refresh failed",error));ensureVipNotifications(cloudUser,{reload:true}).catch(error=>console.info("VIP notification refresh failed",error));}});$("#settingsClose").addEventListener("click",()=>closePanel(layers.settings));$("#settingsBackdrop").addEventListener("click",()=>closePanel(layers.settings));$("#saveSettingsButton").addEventListener("click",()=>saveSettings());
     $$('.theme-choice-grid [data-ui-theme]').forEach(button=>button.addEventListener("click",()=>{applyUiTheme(button.dataset.uiTheme);if(currentQrUrl)renderCurrentQr(false);}));
     $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",printQrCard);
+    $("#qrPdfButton").addEventListener("click",downloadQrPdf);$("#qrSendButton").addEventListener("click",openQrSend);$("#qrSendClose").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendBackdrop").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendCopy").addEventListener("click",copyQrLink);$("#qrSendOther").addEventListener("click",shareQrLinkNative);$("#qrSendFile").addEventListener("click",shareQrCardFile);
+    $("#composerClose").addEventListener("click",closeOwnTextComposer);$("#composerBackdrop").addEventListener("click",closeOwnTextComposer);$("#composerDone").addEventListener("click",submitOwnText);$("#composerCollection").addEventListener("click",composerToCollection);$("#composerText").addEventListener("input",()=>{updateComposerCounter();$("#composerError").hidden=true;});
     $("#publicationConsent").addEventListener("change",event=>{$("#publicationConfirm").disabled=!event.target.checked;$("#publicationError").hidden=true;});$("#publicationConfirm").addEventListener("click",()=>finishPublishConsent(true));$("#publicationCancel").addEventListener("click",()=>finishPublishConsent(false));$("#publicationClose").addEventListener("click",()=>finishPublishConsent(false));$("#publicationBackdrop").addEventListener("click",()=>finishPublishConsent(false));
     $("#reportLetterButton").addEventListener("click",()=>activeReportContext&&openContentReport(activeReportContext));$("#reportClose").addEventListener("click",()=>closePanel(layers.report));$("#reportBackdrop").addEventListener("click",()=>closePanel(layers.report));$("#reportForm").addEventListener("submit",submitContentReport);
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
     $("#supportOpenButton").addEventListener("click",openSupportForm);$("#supportClose").addEventListener("click",()=>closePanel(layers.support));$("#supportBackdrop").addEventListener("click",()=>closePanel(layers.support));$("#supportForm").addEventListener("submit",submitSupportRequest);$("#supportMessage").addEventListener("input",()=>{updateSupportMessageCount();if($("#supportStatus").dataset.state==="error")setSupportStatus();});$("#supportSignInButton").addEventListener("click",event=>{const provider=event.currentTarget.dataset.provider;if(provider)signInWithCloud(provider);});$("#supportCopyContact").addEventListener("click",async()=>{await writeClipboard(SUPPORT_EMAIL);showToast(t("supportContactCopied"));haptic(10);});
     $("#paywallClose").addEventListener("click",closePaywall);$("#paywallBackdrop").addEventListener("click",closePaywall);$("#purchaseButton").addEventListener("click",purchaseFullAccess);$("#purchaseYearlyButton").addEventListener("click",purchaseYearly);$("#settingsPurchase").addEventListener("click",()=>openPaywall());$("#restoreButton").addEventListener("click",restorePurchase);$("#settingsRestoreButton").addEventListener("click",restorePurchase);$("#manageSubscriptionButton").addEventListener("click",manageSubscription);$("#paywallManageSubscription").addEventListener("click",manageSubscription);
     $("#categoryRow").addEventListener("click",event=>{const button=event.target.closest("[data-category]");if(!button)return;selectedCategory=button.dataset.category;$$("#categoryRow button").forEach(item=>item.classList.toggle("is-active",item===button));renderLibrary();});
-    $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="pick")pickLetterForContext(id);else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
+    $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="own")openOwnTextComposer(letterPickerContext);else if(action.dataset.action==="pick")pickLetterForContext(id);else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryText(entry));else openPaywall();}});
     $("#languageButton").addEventListener("click",()=>openPanel(layers.language));$("#languageClose").addEventListener("click",()=>closePanel(layers.language));$("#languageBackdrop").addEventListener("click",()=>closePanel(layers.language));$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;rememberLanguageChoice();applyLanguage();scheduleCloudSync();if(layers.language.contains(button))closePanel(layers.language);}));
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";await selectCustomAudio(file);});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!incomingSharedAudioToken||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>{if(nativeGoogleSignInAvailable()&&cloudProviders.google===true)signInWithGoogle({origin:"home"});else openAccountSection();});$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
+    $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>requestSignIn("home"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open===layers.publication)finishPublishConsent(false);else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
@@ -5010,7 +5213,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=49", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=50", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

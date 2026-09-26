@@ -14,4 +14,10 @@ public final class ShareBridge {
     public void share(String title, String text, String url) {
         activity.runOnUiThread(() -> activity.openShareSheetFromWeb(title, text, url));
     }
+
+    /** Shares a PNG or PDF card rendered by the page (base64 bytes). */
+    @JavascriptInterface
+    public void shareFile(String base64, String mimeType, String fileName) {
+        activity.runOnUiThread(() -> activity.openFileShareSheetFromWeb(base64, mimeType, fileName));
+    }
 }

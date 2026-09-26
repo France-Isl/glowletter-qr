@@ -1435,3 +1435,20 @@ html[lang="zh-Hant"] .sender-line, html[lang="th"] .sender-line, html[lang="ar"]
 html[lang="ar"] *, html[lang="ar"] *::before, html[lang="ar"] *::after { letter-spacing: 0 !important; }
 html[dir="rtl"] .main-action span { display: inline-block; transform: scaleX(-1); }
 html[dir="rtl"] #previousLetter { scale: -1 1; }
+
+/* Письмо своими словами и отправка QR-карточки (2.4.15). */
+.composer-card { width:min(580px,calc(100% - 28px)); }
+.composer-eyebrow { margin:0 0 6px;color:var(--ui-accent);font-size:11px;font-weight:800;letter-spacing:.14em; }
+.composer-lead { margin:0 0 8px;color:var(--ui-muted);font-size:13px;line-height:1.55; }
+.composer-route { min-height:18px;margin:0 0 12px;color:var(--ui-accent-deep);font-size:13px;font-weight:700; }
+.composer-field { display:block;position:relative;text-align:start; }
+.composer-field textarea { display:block;width:100%;min-height:230px;padding:14px 16px 32px;border:1px solid var(--ui-border);border-radius:16px;background:var(--ui-surface);color:var(--ui-ink);font:inherit;font-size:16px;line-height:1.6;resize:vertical; }
+.composer-field textarea:focus { outline:2px solid var(--ui-accent);outline-offset:1px; }
+.composer-field small { position:absolute;inset-inline-end:14px;bottom:10px;color:var(--ui-muted);font-size:11px;font-weight:700; }
+.composer-actions { display:grid;gap:9px;margin-top:14px; }
+.composer-actions .generate-button { margin-top:0; }
+.composer-secondary { display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 16px;border:1px solid var(--ui-border);border-radius:14px;color:var(--ui-accent-deep);background:var(--ui-surface);font-size:13px;font-weight:800; }
+.composer-secondary:hover { border-color:var(--ui-accent); }
+#qrSendLayer { z-index:130; }
+.quote-own { border-style:dashed; }
+.quote-own .quote-head b { color:var(--ui-accent); }

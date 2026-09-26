@@ -65,8 +65,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 29
-        versionName = "2.4.14"
+        versionCode = 30
+        versionName = "2.4.15"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -204,6 +204,7 @@ tasks.named("preBuild").configure { dependsOn(syncWebAssets) }
 
 dependencies {
     implementation "androidx.activity:activity:1.9.0"
+    implementation "androidx.core:core:1.13.1"
     implementation "androidx.webkit:webkit:1.16.0"
     implementation "com.android.billingclient:billing:9.1.0"
     implementation "com.google.android.play:integrity:1.6.0"
