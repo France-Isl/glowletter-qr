@@ -109,6 +109,40 @@ const store = {
     }
     return data;
   },
+  async refundUsage(query: Record<string, unknown>) {
+    if (!admin) throw new Error("rtdn_store_not_configured");
+    const { data, error } = await admin.rpc(
+      "glowletter_play_refund_usage",
+      { p_order_id_hash: query.orderIdHash },
+    );
+    if (error || !Array.isArray(data)) {
+      throw new Error("refund_usage_failed");
+    }
+    const purchase = data.find((row) => row?.kind === "purchase");
+    if (!purchase) return { known: false };
+    return {
+      known: true,
+      purchaseTime: purchase.purchase_time,
+      accountBinding: purchase.account_binding,
+      events: data
+        .filter((row) => row?.kind !== "purchase")
+        .map((row) => ({ kind: row.kind, time: row.occurred_at })),
+    };
+  },
+  async resolveRefundReview(result: Record<string, unknown>) {
+    if (!admin) throw new Error("rtdn_store_not_configured");
+    const { data, error } = await admin.rpc(
+      "glowletter_resolve_play_refund_review",
+      {
+        p_message_id: result.messageId,
+        p_resolution: result.resolution,
+      },
+    );
+    if (error || typeof data !== "boolean") {
+      throw new Error("refund_review_resolve_failed");
+    }
+    return data;
+  },
   async completeRefundReviewAlert(result: Record<string, unknown>) {
     if (!admin) throw new Error("rtdn_store_not_configured");
     const { data, error } = await admin.rpc(

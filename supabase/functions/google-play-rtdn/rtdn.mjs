@@ -168,7 +168,19 @@ export function createGooglePlayRtdnHandler({
         if (!["queued", "already_queued"].includes(queued)) {
           throw new ApiError("refund_review_queue_unavailable", 503);
         }
-        await sendRefundReviewAlert({ config, event, review, fetchImpl });
+        const decision = await submitRefundReview({
+          notification,
+          review,
+          config,
+          store,
+          fetchImpl,
+          now,
+          getCache: () => googleTokenCache,
+          setCache: (value) => {
+            googleTokenCache = value;
+          },
+        });
+        await sendRefundReviewAlert({ config, event, review, fetchImpl, decision });
         const completed = await store.completeRefundReviewAlert({
           messageId: event.messageId,
           payloadHash: event.payloadHash,
@@ -365,6 +377,8 @@ function requireConfiguration(env, store) {
       "apply",
       "queueRefundReview",
       "completeRefundReviewAlert",
+      "refundUsage",
+      "resolveRefundReview",
     ].every((name) => typeof store[name] === "function");
   if (!valid) throw new ApiError("rtdn_backend_not_configured", 503);
   return {
@@ -1044,7 +1058,117 @@ async function prepareRefundReview({ notification, event, config }) {
   };
 }
 
-async function sendRefundReviewAlert({ config, event, review, fetchImpl }) {
+const REFUND_WINDOW_MS = 48 * 60 * 60_000;
+const USAGE_DESCRIPTIONS = Object.freeze({
+  qr_link: "Personal QR link created in the app with the subscription",
+  letter: "Letter created in the app with the subscription",
+  progress: "Letters read and settings saved in the app with the subscription",
+});
+
+// The developer's refund policy, answered to Google automatically: the paid
+// service was used after the purchase (letters, QR links, reading) or the
+// request comes more than 48 hours after the purchase → DECLINE, otherwise
+// NEUTRAL. Google keeps the final decision. Any failure leaves the queued row
+// for the manual runbook and is named in the alert e-mail.
+async function submitRefundReview(context) {
+  const { notification, review, config, store, fetchImpl, now } = context;
+  let usage;
+  try {
+    usage = await store.refundUsage({ orderIdHash: review.orderIdHash });
+  } catch {
+    return { status: "manual", reason: "usage_lookup_failed" };
+  }
+  if (!usage || typeof usage !== "object" || usage.known !== true) {
+    return { status: "manual", reason: "order_unknown" };
+  }
+  const purchaseTime = timestampToMillis(usage.purchaseTime);
+  const events = (Array.isArray(usage.events) ? usage.events : [])
+    .map((item) => ({ kind: String(item?.kind || ""), time: timestampToMillis(item?.time) }))
+    .filter((item) => item.time !== null && USAGE_DESCRIPTIONS[item.kind])
+    .slice(0, 200);
+  const afterWindow = purchaseTime !== null && now() - purchaseTime > REFUND_WINDOW_MS;
+  const preference = events.length > 0 || afterWindow ? "DECLINE" : "NEUTRAL";
+  let accessToken;
+  try {
+    accessToken = await googleAccessToken({
+      config,
+      fetchImpl,
+      now,
+      getCache: context.getCache,
+      setCache: context.setCache,
+    });
+  } catch {
+    return { status: "manual", reason: "google_token_failed", preference };
+  }
+  const accountBinding = typeof usage.accountBinding === "string" && usage.accountBinding
+    ? usage.accountBinding
+    : "";
+  const body = {
+    pendingRefundToken: notification.pendingRefundToken,
+    sampleContentProvided: true,
+    refundPreference: preference,
+    consumptionUsageEvents: events.map((item) => ({
+      ...(accountBinding ? { obfuscatedAccountId: accountBinding } : {}),
+      consumptionTime: new Date(item.time).toISOString(),
+      consumptionItemDescription: USAGE_DESCRIPTIONS[item.kind],
+    })),
+  };
+  const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${
+    encodeURIComponent(config.packageName)
+  }/orders/${encodeURIComponent(notification.orderId)}:reviewrefund`;
+  try {
+    const response = await fetchImpl(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    await response.body?.cancel();
+    if (!response.ok) {
+      return { status: "manual", reason: `google_${response.status}`, preference };
+    }
+  } catch {
+    return { status: "manual", reason: "google_unreachable", preference };
+  }
+  let resolved = false;
+  try {
+    resolved = (await store.resolveRefundReview({
+      messageId: review.messageId,
+      resolution: "reviewed",
+    })) === true;
+  } catch {
+    resolved = false;
+  }
+  return {
+    status: "submitted",
+    preference,
+    usageCount: events.length,
+    afterWindow,
+    resolved,
+  };
+}
+
+function describeRefundDecision(decision) {
+  if (!decision || typeof decision !== "object") return "Automatic answer: not attempted.";
+  if (decision.status === "submitted") {
+    return [
+      `Automatic answer sent to Google: ${decision.preference}`,
+      `(${decision.usageCount} usage events after the purchase${
+        decision.afterWindow ? ", request more than 48 hours after the purchase" : ""
+      }).`,
+      decision.resolved
+        ? "The queued review row is closed."
+        : "The queued review row could not be closed; close it by hand.",
+    ].join(" ");
+  }
+  return `Automatic answer NOT sent (${decision.reason}${
+    decision.preference ? `, intended ${decision.preference}` : ""
+  }). Decide manually within 24 hours.`;
+}
+
+async function sendRefundReviewAlert({ config, event, review, fetchImpl, decision }) {
   const idempotencyHash = await sha256Base64Url(
     new TextEncoder().encode(`${event.messageId}\n${event.payloadHash}`),
   );
@@ -1056,8 +1180,10 @@ async function sendRefundReviewAlert({ config, event, review, fetchImpl }) {
     `Google review deadline: ${new Date(review.reviewDueAt).toISOString()}`,
     `Refund reason code: ${review.refundReason}`,
     "",
+    describeRefundDecision(decision),
+    "",
     "Open the private GlowLetter Play refund-review queue and Google Play Console.",
-    "Evaluate the chargeback and submit ReviewRefund within 24 hours.",
+    "Evaluate the chargeback and submit ReviewRefund within 24 hours if the automatic answer was not sent.",
     "No purchase token, pending-refund token, order id, or account id is included in this email.",
   ].join("\n");
   const controller = new AbortController();

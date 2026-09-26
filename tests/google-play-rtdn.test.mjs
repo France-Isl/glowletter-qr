@@ -223,6 +223,13 @@ function fixture({
   resendStatus = 200,
   queueResult = "queued",
   completeReviewResult = true,
+  reviewRefundStatus = 200,
+  refundUsageResult = {
+    known: true,
+    purchaseTime: new Date(NOW - 3 * 24 * 60 * 60_000).toISOString(),
+    accountBinding: ACCOUNT_BINDING,
+    events: [{ kind: "qr_link", time: new Date(NOW - 2 * 24 * 60 * 60_000).toISOString() }],
+  },
   environmentValues = environment(),
 } = {}) {
   const calls = [];
@@ -231,6 +238,7 @@ function fixture({
   const finished = [];
   const queuedReviews = [];
   const completedReviews = [];
+  const resolvedReviews = [];
   const fetchImpl = async (input, init = {}) => {
     const url = String(input);
     calls.push({
@@ -249,6 +257,9 @@ function fixture({
     }
     if (url.includes(":acknowledge")) {
       return new Response(null, { status: acknowledgeStatus });
+    }
+    if (url.includes(":reviewrefund")) {
+      return new Response(null, { status: reviewRefundStatus });
     }
     if (url.includes("/purchases/subscriptionsv2/tokens/")) {
       return subscriptionStatus === 200
@@ -292,6 +303,13 @@ function fixture({
       completedReviews.push(structuredClone(result));
       return completeReviewResult;
     },
+    async refundUsage() {
+      return refundUsageResult === null ? null : structuredClone(refundUsageResult);
+    },
+    async resolveRefundReview(result) {
+      resolvedReviews.push(structuredClone(result));
+      return true;
+    },
   };
   return {
     calls,
@@ -300,6 +318,7 @@ function fixture({
     finished,
     queuedReviews,
     completedReviews,
+    resolvedReviews,
     handler: createGooglePlayRtdnHandler({
       environment: environmentValues,
       fetchImpl,
@@ -578,6 +597,82 @@ test("pending refund review is encrypted, queued, alerted, and completed", async
       new RegExp(secret.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&"), "u"),
     );
   }
+
+  // The developer's answer goes to Google itself: the paid service was used
+  // after the purchase, so the preference is DECLINE with the usage evidence.
+  const reviewCall = setup.calls.find((call) => call.url.includes(":reviewrefund"));
+  assert.ok(reviewCall, "ReviewRefund must be called");
+  assert.equal(reviewCall.method, "POST");
+  assert.ok(reviewCall.url.endsWith(`/orders/${encodeURIComponent(orderId)}:reviewrefund`));
+  assert.equal(reviewCall.headers.Authorization, "Bearer publisher-token");
+  const reviewBody = JSON.parse(reviewCall.body);
+  assert.equal(reviewBody.pendingRefundToken, pendingRefundToken);
+  assert.equal(reviewBody.sampleContentProvided, true);
+  assert.equal(reviewBody.refundPreference, "DECLINE");
+  assert.equal(reviewBody.consumptionUsageEvents.length, 1);
+  assert.equal(reviewBody.consumptionUsageEvents[0].obfuscatedAccountId, ACCOUNT_BINDING);
+  assert.match(reviewBody.consumptionUsageEvents[0].consumptionTime, /Z$/u);
+  assert.deepEqual(setup.resolvedReviews, [{ messageId, resolution: "reviewed" }]);
+  assert.match(JSON.parse(resend.body).text, /Automatic answer sent to Google: DECLINE/u);
+});
+
+test("refund review inside 48 hours without usage stays neutral", async () => {
+  const setup = fixture({
+    refundUsageResult: {
+      known: true,
+      purchaseTime: new Date(NOW - 60 * 60_000).toISOString(),
+      accountBinding: ACCOUNT_BINDING,
+      events: [],
+    },
+  });
+  const response = await setup.handler(
+    await pubSubRequest(pendingRefundNotification(), { messageId: "refund-review-neutral" }),
+  );
+  assert.equal(response.status, 204);
+  const reviewBody = JSON.parse(setup.calls.find((call) => call.url.includes(":reviewrefund")).body);
+  assert.equal(reviewBody.refundPreference, "NEUTRAL");
+  assert.deepEqual(reviewBody.consumptionUsageEvents, []);
+});
+
+test("refund review after 48 hours is declined even without recorded usage", async () => {
+  const setup = fixture({
+    refundUsageResult: {
+      known: true,
+      purchaseTime: new Date(NOW - 5 * 24 * 60 * 60_000).toISOString(),
+      accountBinding: ACCOUNT_BINDING,
+      events: [],
+    },
+  });
+  await setup.handler(
+    await pubSubRequest(pendingRefundNotification(), { messageId: "refund-review-late" }),
+  );
+  const reviewBody = JSON.parse(setup.calls.find((call) => call.url.includes(":reviewrefund")).body);
+  assert.equal(reviewBody.refundPreference, "DECLINE");
+});
+
+test("refund review falls back to the manual queue when Google rejects the answer", async () => {
+  const setup = fixture({ reviewRefundStatus: 500 });
+  const response = await setup.handler(
+    await pubSubRequest(pendingRefundNotification(), { messageId: "refund-review-google-500" }),
+  );
+  assert.equal(response.status, 204);
+  assert.equal(setup.queuedReviews.length, 1);
+  assert.equal(setup.resolvedReviews.length, 0);
+  assert.equal(setup.completedReviews.length, 1);
+  const resend = setup.calls.find((call) => call.url === "https://api.resend.com/emails");
+  assert.match(JSON.parse(resend.body).text, /Automatic answer NOT sent \(google_500, intended DECLINE\)/u);
+});
+
+test("refund review for an unknown order is left to the operator", async () => {
+  const setup = fixture({ refundUsageResult: { known: false } });
+  const response = await setup.handler(
+    await pubSubRequest(pendingRefundNotification(), { messageId: "refund-review-unknown" }),
+  );
+  assert.equal(response.status, 204);
+  assert.ok(!setup.calls.some((call) => call.url.includes(":reviewrefund")));
+  assert.equal(setup.resolvedReviews.length, 0);
+  const resend = setup.calls.find((call) => call.url === "https://api.resend.com/emails");
+  assert.match(JSON.parse(resend.body).text, /Automatic answer NOT sent \(order_unknown\)/u);
 });
 
 test("pending refund alert failure remains retryable with its private queue intact", async () => {

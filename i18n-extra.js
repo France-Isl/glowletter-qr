@@ -409,7 +409,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, hier ist ein Brief für dich von {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Andere App",
-      "qrSendFile": "Karte als Bild senden"
+      "qrSendFile": "Karte als Bild senden",
+      "refundNote": "Rückerstattungen richten sich nach den Regeln von Google Play: Ein Antrag ist innerhalb von 48 Stunden nach dem Kauf möglich. Nach einer Rückerstattung werden die kostenpflichtigen Funktionen und die mit dem Abo erstellten QR-Links deaktiviert."
     },
     picker: {
       "note": "Wähle einen Brief · für {name}",
@@ -1033,7 +1034,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, tienes una carta de {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Otra app",
-      "qrSendFile": "Enviar la tarjeta como imagen"
+      "qrSendFile": "Enviar la tarjeta como imagen",
+      "refundNote": "El reembolso sigue las normas de Google Play: puedes solicitarlo dentro de las 48 horas posteriores a la compra. Después de un reembolso, las funciones de pago y los enlaces QR creados con la suscripción se desactivan."
     },
     picker: {
       "note": "Elige una carta · para {name}",
@@ -1657,7 +1659,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, hai una lettera da {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Un’altra app",
-      "qrSendFile": "Invia il biglietto come immagine"
+      "qrSendFile": "Invia il biglietto come immagine",
+      "refundNote": "Il rimborso segue le regole di Google Play: puoi richiederlo entro 48 ore dall’acquisto. Dopo un rimborso, le funzioni a pagamento e i link QR creati con l’abbonamento vengono disattivati."
     },
     picker: {
       "note": "Scegli una lettera · per {name}",
@@ -2281,7 +2284,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, masz list od {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Inna aplikacja",
-      "qrSendFile": "Wyślij kartkę jako obraz"
+      "qrSendFile": "Wyślij kartkę jako obraz",
+      "refundNote": "Zwrot środków odbywa się zgodnie z zasadami Google Play: możesz o niego poprosić w ciągu 48 godzin od zakupu. Po zwrocie płatne funkcje i linki QR utworzone w ramach subskrypcji zostają wyłączone."
     },
     picker: {
       "note": "Wybierz list · dla: {name}",
@@ -2905,7 +2909,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, для вас лист від {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Інший застосунок",
-      "qrSendFile": "Надіслати картку як зображення"
+      "qrSendFile": "Надіслати картку як зображення",
+      "refundNote": "Повернення коштів відбувається за правилами Google Play: запит можна подати протягом 48 годин після покупки. Після повернення коштів платні функції та QR-посилання, створені за підпискою, вимикаються."
     },
     picker: {
       "note": "Виберіть лист · для {name}",
@@ -3532,7 +3537,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, tem uma carta de {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Outro app",
-      "qrSendFile": "Enviar o cartão como imagem"
+      "qrSendFile": "Enviar o cartão como imagem",
+      "refundNote": "Os reembolsos seguem as regras do Google Play: pode pedi-los até 48 horas depois da compra. Depois do reembolso, as funcionalidades pagas e os links QR criados com a assinatura são desativados."
     },
     picker: {
       "note": "Escolha uma carta · para {name}",
@@ -4159,7 +4165,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, er is een brief voor jou van {from}",
       "qrSendSms": "Sms",
       "qrSendOther": "Een andere app",
-      "qrSendFile": "De kaart als afbeelding versturen"
+      "qrSendFile": "De kaart als afbeelding versturen",
+      "refundNote": "Terugbetalingen volgen de regels van Google Play: je kunt hiervoor binnen 48 uur na aankoop een aanvraag indienen. Na een terugbetaling worden de betaalde functies en de QR-links die met het abonnement zijn gemaakt, uitgeschakeld."
     },
     picker: {
       "note": "Kies een brief · voor {name}",
@@ -4786,7 +4793,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, {from} tarafından size bir mektup var",
       "qrSendSms": "SMS",
       "qrSendOther": "Başka bir uygulama",
-      "qrSendFile": "Kartı görsel olarak gönder"
+      "qrSendFile": "Kartı görsel olarak gönder",
+      "refundNote": "İade işlemleri Google Play kurallarına göre yapılır: talebi satın alımınızdan itibaren 48 saat içinde iletebilirsiniz. İadeden sonra ücretli özellikler ve abonelikle oluşturulan QR bağlantıları devre dışı bırakılır."
     },
     picker: {
       "note": "Bir mektup seçin · {name} için",
@@ -5413,7 +5421,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, ai o scrisoare de la {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Altă aplicație",
-      "qrSendFile": "Trimite cardul ca imagine"
+      "qrSendFile": "Trimite cardul ca imagine",
+      "refundNote": "Rambursările respectă regulile lui Google Play: poți cere una în 48 de ore de la achiziție. După rambursare, funcțiile plătite și linkurile QR create prin abonament se dezactivează."
     },
     picker: {
       "note": "Alege o scrisoare · pentru {name}",
@@ -6040,7 +6049,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, máš dopis od {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Jiná aplikace",
-      "qrSendFile": "Odeslat kartičku jako obrázek"
+      "qrSendFile": "Odeslat kartičku jako obrázek",
+      "refundNote": "Vrácení peněz se řídí pravidly Google Play: požádat o něj můžete do 48 hodin od nákupu. Po vrácení peněz se deaktivují placené funkce a QR odkazy vytvořené v rámci předplatného."
     },
     picker: {
       "note": "Vyberte dopis · pro {name}",
@@ -6667,7 +6677,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, du har ett brev från {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Annan app",
-      "qrSendFile": "Skicka kortet som en bild"
+      "qrSendFile": "Skicka kortet som en bild",
+      "refundNote": "Återbetalningar följer Google Plays regler: du kan begära en inom 48 timmar efter köpet. De betalda funktionerna och QR-länkarna som skapats med prenumerationen inaktiveras efter en återbetalning."
     },
     picker: {
       "note": "Välj ett brev · till {name}",
@@ -7294,7 +7305,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, έχεις ένα γράμμα από {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Άλλη εφαρμογή",
-      "qrSendFile": "Αποστολή της κάρτας ως εικόνα"
+      "qrSendFile": "Αποστολή της κάρτας ως εικόνα",
+      "refundNote": "Η επιστροφή χρημάτων ακολουθεί τους κανόνες του Google Play: μπορείτε να τη ζητήσετε εντός 48 ωρών από την αγορά. Μετά την επιστροφή χρημάτων, οι επί πληρωμή λειτουργίες και οι σύνδεσμοι QR που δημιουργήθηκαν με τη συνδρομή απενεργοποιούνται."
     },
     picker: {
       "note": "Επιλέξτε γράμμα · για {name}",
@@ -7921,7 +7933,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, der er et brev til dig fra {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "En anden app",
-      "qrSendFile": "Send kortet som et billede"
+      "qrSendFile": "Send kortet som et billede",
+      "refundNote": "Refusion følger Google Plays regler: en anmodning er mulig inden for 48 timer efter købet. Efter en refusion deaktiveres betalte funktioner og de QR-links, der er oprettet med abonnementet."
     },
     picker: {
       "note": "Vælg et brev · til {name}",
@@ -8548,7 +8561,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, det er et brev til deg fra {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "En annen app",
-      "qrSendFile": "Send kortet som et bilde"
+      "qrSendFile": "Send kortet som et bilde",
+      "refundNote": "Refusjon følger Google Plays regler: en forespørsel er mulig innen 48 timer etter kjøpet. Etter en refusjon deaktiveres betalte funksjoner og QR-lenkene som er opprettet med abonnementet."
     },
     picker: {
       "note": "Velg et brev · til {name}",
@@ -9175,7 +9189,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, sinulle on kirje henkilöltä {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Toinen sovellus",
-      "qrSendFile": "Lähetä kortti kuvana"
+      "qrSendFile": "Lähetä kortti kuvana",
+      "refundNote": "Hyvitys noudattaa Google Playn sääntöjä: pyynnön voi tehdä 48 tunnin kuluessa ostosta. Hyvityksen jälkeen maksulliset ominaisuudet ja tilauksella luodut QR-linkit poistetaan käytöstä."
     },
     picker: {
       "note": "Valitse kirje · vastaanottaja {name}",
@@ -9802,7 +9817,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}に、{from}からお手紙が届いています",
       "qrSendSms": "SMS",
       "qrSendOther": "他のアプリ",
-      "qrSendFile": "カードを画像として送信"
+      "qrSendFile": "カードを画像として送信",
+      "refundNote": "払い戻しは Google Play のルールに従っており、購入から48時間以内にリクエストできます。払い戻し後は、有料機能とサブスクリプションで作成した QR リンクが無効化されます。"
     },
     picker: {
       "note": "手紙を選ぶ · {name}さんへ",
@@ -10429,7 +10445,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}님, {from}님이 보낸 편지가 있어요",
       "qrSendSms": "SMS",
       "qrSendOther": "다른 앱",
-      "qrSendFile": "카드를 이미지로 보내기"
+      "qrSendFile": "카드를 이미지로 보내기",
+      "refundNote": "환불은 Google Play 정책에 따라 진행되며, 구매 후 48시간 이내에 신청할 수 있습니다. 환불이 완료되면 유료 기능과 구독으로 생성된 QR 링크가 비활성화됩니다."
     },
     picker: {
       "note": "편지 고르기 · {name}님께",
@@ -11056,7 +11073,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}，你有一封來自 {from} 的信",
       "qrSendSms": "簡訊",
       "qrSendOther": "其他應用程式",
-      "qrSendFile": "以圖片傳送卡片"
+      "qrSendFile": "以圖片傳送卡片",
+      "refundNote": "退款依 Google Play 規定辦理，你可以在購買後 48 小時內提出申請。退款後，付費功能與透過訂閱產生的 QR 連結會被停用。"
     },
     picker: {
       "note": "挑一封信 · 給 {name}",
@@ -11683,7 +11701,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to} คุณมีจดหมายจาก {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "แอปอื่น",
-      "qrSendFile": "ส่งการ์ดเป็นรูปภาพ"
+      "qrSendFile": "ส่งการ์ดเป็นรูปภาพ",
+      "refundNote": "การคืนเงินเป็นไปตามกฎของ Google Play คุณสามารถขอเงินคืนได้ภายใน 48 ชั่วโมงหลังการซื้อ หลังจากได้รับเงินคืน ฟีเจอร์แบบชำระเงินและลิงก์ QR ที่สร้างจากการสมัครสมาชิกจะถูกปิดใช้งาน"
     },
     picker: {
       "note": "เลือกจดหมาย · สำหรับ {name}",
@@ -12310,7 +12329,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}، لديك رسالة من {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "تطبيق آخر",
-      "qrSendFile": "إرسال البطاقة كصورة"
+      "qrSendFile": "إرسال البطاقة كصورة",
+      "refundNote": "يخضع استرداد الأموال لقواعد Google Play: يمكن تقديم الطلب خلال 48 ساعة من الشراء. بعد الاسترداد، يتم تعطيل الميزات المدفوعة وروابط QR التي أُنشئت بالاشتراك."
     },
     picker: {
       "note": "اختيار رسالة · من أجل {name}",
@@ -12937,7 +12957,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, ada surat untukmu dari {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Aplikasi lain",
-      "qrSendFile": "Kirim kartu sebagai gambar"
+      "qrSendFile": "Kirim kartu sebagai gambar",
+      "refundNote": "Pengembalian dana mengikuti aturan Google Play: permintaan bisa diajukan dalam 48 jam setelah pembelian. Setelah dana dikembalikan, fitur berbayar dan link QR yang dibuat dari langganan dinonaktifkan."
     },
     picker: {
       "note": "Pilih surat · untuk {name}",
@@ -13564,7 +13585,8 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "qrSendMessage": "{to}, bạn có một lá thư từ {from}",
       "qrSendSms": "SMS",
       "qrSendOther": "Ứng dụng khác",
-      "qrSendFile": "Gửi thẻ dưới dạng hình ảnh"
+      "qrSendFile": "Gửi thẻ dưới dạng hình ảnh",
+      "refundNote": "Hoàn tiền tuân theo quy định của Google Play: có thể yêu cầu trong vòng 48 giờ sau khi mua. Sau khi hoàn tiền, các tính năng trả phí và liên kết QR được tạo theo gói đăng ký sẽ bị tắt."
     },
     picker: {
       "note": "Chọn một lá thư · cho {name}",

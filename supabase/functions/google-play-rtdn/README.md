@@ -103,6 +103,18 @@ the body.
 
 ## Refund-review runbook
 
+Since 2.4.16 the function answers Google itself before the alert goes out:
+`glowletter_play_refund_usage` returns the order's purchase time and every use
+of the paid service since then (QR links, letters, reading progress), and the
+function calls `orders.reviewrefund` with `DECLINE` when there is any usage or
+the request came more than 48 hours after the purchase, `NEUTRAL` otherwise,
+always with `sampleContentProvided: true` (ten free letters) and the usage
+events as evidence. A sent answer closes the queued row (`reviewed`); the
+alert e-mail names the decision. Only when the answer could not be sent
+(unknown order, Google error, token failure) does the manual procedure below
+apply — the e-mail says so.
+
+
 Google's `pendingRefundReviewNotification` requires an operator decision within
 24 hours. It is never silently ignored:
 

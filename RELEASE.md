@@ -666,6 +666,70 @@ Google (Credential Manager, «Account reauth failed»), приложение о�
 - после любого входа приложение показывает «Вы вошли как <адрес>» на семи языках;
 - `mobile/scripts/build-release.ps1` одной сборкой даёт и .aab, и .apk.
 
+## 2.4.16 (31) — правила возврата
+
+*Начато 2026-09-26 по просьбе владельца («сделай так, чтобы не было
+возврата средств… хотя бы после 48 часов, но всё в правилах»). Кэш офлайна
+v51, `?v=51`; номер версии поднят до 2.4.16 (31), сборки ещё нет.*
+
+**Что можно и что нельзя.** Отключить возвраты в Google Play нельзя: первые
+48 часов после покупки возврат решает Google, позже запросы идут разработчику,
+который «может выполнять возвраты в соответствии со своей политикой и законом»
+(support.google.com/googleplay/answer/2479637). Писать «возвратов нет» нельзя:
+это противоречит правилам Play и закону о защите потребителей. Поэтому
+политика сформулирована так: возврат по правилам Google Play в течение 48
+часов; после 48 часов не предусмотрен, кроме случаев, когда право даёт закон;
+после возврата платные функции и созданные по подписке QR-ссылки отключаются.
+
+**Что сделано.**
+- База: триггер `private.glowletter_revoke_links_after_refund` на
+  `private.glowletter_play_entitlements` — когда Google сообщает о возврате
+  или отмене платежа (state → `revoked`; обычное окончание подписки —
+  `expired` — ничего не трогает), все активные QR-ссылки аккаунта получают
+  `status = 'revoked'`: получатель видит «письмо недоступно», отправитель —
+  «QR отключён» в истории. Миграция `20260926210000_refund_revokes_links.sql`
+  применена 2026-09-26.
+- Сервер: `google-play-rtdn` отвечает Google сам на PendingRefundReviewNotification
+  (`orders.reviewrefund`, developers.google.com/android-publisher/api-ref/rest/v3/orders/reviewrefund):
+  `DECLINE`, если после покупки платный сервис использовался (QR-ссылки,
+  письма, прогресс чтения) или запрос пришёл позже 48 часов; иначе `NEUTRAL`;
+  всегда `sampleContentProvided: true` (10 бесплатных писем) и события
+  использования как доказательства. Отправленный ответ закрывает строку
+  очереди (`reviewed`), письмо-алерт называет решение. Если ответ не
+  отправлен (заказ не найден, ошибка Google, нет токена) — ручной порядок из
+  README, письмо об этом говорит. Функция задеплоена 2026-09-26.
+  Для сбора доказательств нужна функция базы `glowletter_play_refund_usage`
+  (миграция `20260926220000_refund_usage.sql`): автомат отказался её создавать
+  без явного слова владельца, до него каждый запрос на возврат уходит в
+  ручной порядок, как раньше.
+- Тексты: ключ `refundNote` под кнопками подписки (25 языков), раздел
+  «Возвраты» в terms.html (ru/en/fr), абзац для описания в Play на 27
+  локалях (`refund-listing.json` в scratchpad).
+- Тесты: `google-play-rtdn.test.mjs` — DECLINE при использовании, NEUTRAL
+  внутри 48 часов без использования, DECLINE после 48 часов, ручной порядок
+  при ошибке Google и при неизвестном заказе.
+
+**Шаблон ответа на запрос возврата после 48 часов (владельцу).**
+RU: «Здравствуйте! Возвраты за покупки в GlowLetter выполняет Google Play в
+течение 48 часов после покупки. Ваш запрос поступил позже этого срока, и по
+правилам GlowLetter возврат не предусмотрен. Подписку можно отменить в
+аккаунте Google Play, тогда следующих списаний не будет, а оплаченный период
+останется доступным до конца. Если услуга не была предоставлена, напишите
+подробности, мы разберёмся.»
+EN: “Hello! Refunds for GlowLetter purchases are issued by Google Play within
+48 hours of the purchase. Your request came after that period, and under the
+GlowLetter refund policy no refund is provided. You can cancel the
+subscription in your Google Play account: there will be no further charges,
+and the paid period stays available until it ends. If the service was not
+delivered, send us the details and we will look into it.”
+FR : « Bonjour ! Les remboursements des achats GlowLetter sont effectués par
+Google Play dans les 48 heures suivant l’achat. Votre demande est arrivée
+après ce délai et, selon la politique de GlowLetter, aucun remboursement
+n’est prévu. Vous pouvez annuler l’abonnement dans votre compte Google Play :
+il n’y aura plus de prélèvements et la période payée reste disponible jusqu’à
+sa fin. Si le service n’a pas été fourni, envoyez-nous les détails et nous
+regarderons. »
+
 ## 2.4.15 (30) — флорист, свои слова, QR-карточка
 
 *Собрано 2026-09-26 по выбору владельца из списка идей (см. память
