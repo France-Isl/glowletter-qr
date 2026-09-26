@@ -8,22 +8,22 @@
   <meta name="theme-color" content="#211a27" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="description" content="GlowLetter — атмосферные персональные письма, умный редактор и 50 тёплых текстов." />
+  <meta name="description" content="GlowLetter — атмосферные персональные письма, умный редактор и растущая коллекция тёплых текстов и стихов." />
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=51" />
+  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=52" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=51" />
+  <link rel="manifest" href="manifest.webmanifest?v=52" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=51" />
-  <link rel="stylesheet" href="styles.css?v=51" />
-  <link rel="stylesheet" href="experience.css?v=51" />
-  <link rel="stylesheet" href="email-auth.css?v=51" />
-  <link rel="stylesheet" href="moments.css?v=51" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=52" />
+  <link rel="stylesheet" href="styles.css?v=52" />
+  <link rel="stylesheet" href="experience.css?v=52" />
+  <link rel="stylesheet" href="email-auth.css?v=52" />
+  <link rel="stylesheet" href="moments.css?v=52" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="garnet">
   <!--
@@ -128,6 +128,7 @@
           </button>
           <div class="home-smart-actions">
             <button class="smart-link moments-link" id="momentsOpenHome" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> Мои моменты</button>
+            <button class="smart-link home-poem-link" id="homeNewPoem" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg> <span id="homeNewPoemLabel">Новое в коллекции</span></button>
             <button class="smart-link home-signin-link" id="homeSignIn" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-user"/></svg> <span id="homeSignInLabel">Войти — покупки и прогресс сохранятся</span></button>
           </div>
           <p class="free-note"><span>10 писем бесплатно</span><i></i><span>полный доступ — <span class="price-label">5,99 €/месяц</span></span></p>
@@ -149,6 +150,7 @@
           </header>
           <h2 id="letterTitle">Несколько слов для тебя</h2>
           <p class="letter-text" id="letterText"></p>
+          <small class="letter-author" id="letterAuthor" hidden></small>
           <footer class="signature">
             <span>С теплом,</span>
             <strong id="letterFrom">отправитель</strong>
@@ -211,6 +213,7 @@
           <button data-category="gratitude" type="button">Спасибо</button>
           <button data-category="support" type="button">Поддержка</button>
           <button data-category="family" type="button">Семья</button>
+          <button data-category="poem" type="button" hidden>Стихи</button>
         </div>
         <div class="quote-list" id="quoteList"></div>
       </section>
@@ -468,6 +471,29 @@
             </div>
             <ul class="admin-recent" id="adminRecentList"></ul>
           </div>
+          <div class="admin-catalog" id="adminCatalog">
+            <div class="admin-overview-head"><h4 id="adminCatalogTitle">Стихи и письма</h4><button id="adminCatalogRefresh" type="button">Обновить</button></div>
+            <p class="admin-bulk-note" id="adminCatalogNote">Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.</p>
+            <form class="admin-catalog-form" id="adminCatalogForm">
+              <label class="admin-notice-message admin-catalog-text" for="adminCatalogText"><span id="adminCatalogTextLabel">Текст</span><textarea id="adminCatalogText" maxlength="1500" rows="7" autocomplete="off" placeholder="Вставьте стих или письмо"></textarea></label>
+              <div class="admin-notice-meta"><small id="adminCatalogHint">Несколько текстов разделяйте строкой ***. Переносы строк сохраняются.</small><output id="adminCatalogCount" for="adminCatalogText">0 / 1500</output></div>
+              <div class="admin-catalog-grid">
+                <label class="admin-notice-reason" for="adminCatalogLanguage"><span id="adminCatalogLanguageLabel">Язык текста</span><select id="adminCatalogLanguage"></select></label>
+                <label class="admin-notice-reason" for="adminCatalogCategory"><span id="adminCatalogCategoryLabel">Категория</span><select id="adminCatalogCategory"><option value="poem">Стихи</option><option value="warm">Тепло</option><option value="gratitude">Спасибо</option><option value="support">Поддержка</option><option value="family">Семья</option></select></label>
+              </div>
+              <label class="admin-notice-reason admin-catalog-author" for="adminCatalogAuthor"><span id="adminCatalogAuthorLabel">Автор · необязательно</span><input id="adminCatalogAuthor" type="text" maxlength="80" autocomplete="off"></label>
+              <label class="admin-catalog-free" for="adminCatalogFree"><input id="adminCatalogFree" type="checkbox"><span id="adminCatalogFreeLabel">Бесплатно для всех</span></label>
+              <p class="admin-status" id="adminCatalogStatus" role="status" aria-live="polite"></p>
+              <div class="admin-access-actions admin-catalog-actions">
+                <button id="adminCatalogPublish" type="submit">Опубликовать</button>
+                <button id="adminCatalogDraft" type="button">В черновики</button>
+                <button id="adminCatalogPreview" type="button">Посмотреть</button>
+                <button class="admin-revoke" id="adminCatalogCancel" type="button" hidden>Отменить правку</button>
+              </div>
+            </form>
+            <ul class="admin-catalog-list" id="adminCatalogList"></ul>
+            <p class="admin-recent-empty" id="adminCatalogEmpty" hidden>Пока ничего не добавлено</p>
+          </div>
         </section>
           </div>
         </details>
@@ -723,7 +749,7 @@
         <button class="panel-close paywall-close" id="paywallClose" type="button" aria-label="Закрыть">×</button>
         <h2 id="paywallTitle">Ещё 40 писем<br /><em>для важных людей</em></h2>
         <p id="paywallLead">Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.</p>
-        <ul><li>все 50 писем на семи языках</li><li>моменты, напоминания и QR-ссылки</li><li>новые тексты и функции</li></ul>
+        <ul><li>вся коллекция писем и стихов на двадцати пяти языках</li><li>моменты, напоминания и QR-ссылки</li><li>новые тексты и функции</li></ul>
         <button class="purchase-button purchase-yearly" id="purchaseYearlyButton" type="button"><em>Выгоднее всего</em><span>Подписка на год</span><strong class="yearly-price-label">24,99 €/год</strong></button>
         <button class="purchase-button" id="purchaseButton" type="button"><span>Подписка на месяц</span><strong class="price-label">5,99 €/месяц</strong></button>
         <button class="restore-button" id="restoreButton" type="button">Восстановить подписку</button>
@@ -737,15 +763,15 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=51"></script>
-  <script src="vendor/supabase-2.110.9.js?v=51"></script>
-  <script src="letters.js?v=51"></script>
-  <script src="i18n-extra.js?v=51"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=51"></script>
-  <script src="qr-code.js?v=51"></script>
-  <script src="app.js?v=51"></script>
-  <script src="email-auth.js?v=51"></script>
-  <script src="moments.js?v=51"></script>
-  <script src="experience.js?v=51"></script>
+  <script src="config.js?v=52"></script>
+  <script src="vendor/supabase-2.110.9.js?v=52"></script>
+  <script src="letters.js?v=52"></script>
+  <script src="i18n-extra.js?v=52"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=52"></script>
+  <script src="qr-code.js?v=52"></script>
+  <script src="app.js?v=52"></script>
+  <script src="email-auth.js?v=52"></script>
+  <script src="moments.js?v=52"></script>
+  <script src="experience.js?v=52"></script>
 </body>
 </html>

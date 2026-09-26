@@ -1452,3 +1452,34 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 #qrSendLayer { z-index:130; }
 .quote-own { border-style:dashed; }
 .quote-own .quote-head b { color:var(--ui-accent); }
+
+/* Стихи в коллекции (2.4.16): строфы, автор, ярлык «Новое», кнопка на главной и раздел админ-панели. */
+.letter-text, .quote-body p { white-space: pre-line; }
+.letter-author { display: block; margin: 12px 0 0; color: var(--gl-ink-color, var(--ui-muted)); font-family: var(--gl-letter-font); font-size: 16px; font-weight: 600; text-align: end; opacity: .82; }
+.quote-author { display: block; margin-top: 7px; color: #a2917c; font-size: 11px; font-weight: 700; }
+.quote-new { margin-inline-start: auto; padding: 2px 8px; border-radius: 999px; color: #4d2f07; background: linear-gradient(145deg, #f8e4ae, #d9a441); font-size: 11px; font-style: normal; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.home-smart-actions .home-poem-link { border-color: color-mix(in srgb, var(--gold-bright) 45%, transparent); background: linear-gradient(135deg, color-mix(in srgb, var(--gold) 30%, transparent), color-mix(in srgb, var(--night) 30%, transparent)); }
+.home-poem-link .ic { color: var(--gold-bright); }
+.admin-catalog { display: grid; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ui-border); }
+.admin-catalog h4 { margin: 0; color: var(--ui-accent-deep); font-size: 13px; font-weight: 800; letter-spacing: -.01em; }
+.admin-catalog-form { display: grid; gap: 8px; }
+.admin-catalog-text textarea { min-height: 150px; font-size: 16px; font-weight: 500; line-height: 1.45; white-space: pre-wrap; }
+.admin-catalog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.admin-catalog-grid > label { grid-column: auto; }
+.admin-catalog-author input { width: 100%; min-height: 42px; padding: 0 11px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-ink); background: var(--ui-surface); font: 700 13px/1.4 "Manrope", sans-serif; letter-spacing: 0; }
+.admin-catalog-free { display: flex; align-items: center; gap: 9px; min-height: 42px; padding: 0 11px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-muted); background: var(--ui-surface); font-size: 11px; font-weight: 800; letter-spacing: .055em; }
+.admin-catalog-free input { width: 18px; height: 18px; margin: 0; accent-color: var(--ui-accent); }
+.admin-catalog-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.admin-catalog-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.admin-catalog-list li { display: grid; gap: 6px; padding: 10px 11px; border: 1px solid var(--ui-border); border-radius: 14px; background: var(--ui-surface); }
+.admin-catalog-row-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.admin-catalog-row-head strong { margin-inline-end: auto; color: var(--ui-ink); font-size: 13px; font-weight: 800; }
+.admin-catalog-badge { padding: 2px 8px; border-radius: 999px; color: var(--ui-muted); background: color-mix(in srgb, var(--ui-soft) 70%, transparent); font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+.admin-catalog-badge[data-status="published"] { color: var(--ui-accent-deep); background: color-mix(in srgb, var(--ui-accent) 14%, transparent); }
+.admin-catalog-badge[data-status="hidden"] { color: var(--ui-muted); background: color-mix(in srgb, var(--ui-muted) 16%, transparent); }
+.admin-catalog-badge[data-status="free"] { color: var(--gold-ink); background: var(--gold-dim); }
+.admin-catalog-list p { margin: 0; color: var(--ui-ink); font-family: var(--gl-letter-font); font-size: 16px; font-weight: 600; line-height: 1.35; white-space: pre-line; overflow-wrap: anywhere; }
+.admin-catalog-list small { color: var(--ui-muted); font-size: 11px; }
+.admin-catalog-row-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.admin-catalog-row-actions button { min-height: 34px; padding: 0 12px; border: 1px solid color-mix(in srgb, var(--ui-accent) 26%, transparent); border-radius: 999px; color: var(--ui-accent-deep); background: var(--ui-soft); font-size: 11px; font-weight: 800; }
+.admin-catalog-row-actions .admin-revoke { color: #6f5f4a; border-color: rgba(111,95,74,.2); background: rgba(253,250,242,.68); }

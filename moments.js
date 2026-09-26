@@ -76,7 +76,7 @@
       languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Готово", retry: "Повторить",
       signInNeededTitle: "Нужен вход в аккаунт", signInNeededNote: "Люди, даты и письма хранятся в облаке, а QR-карточка создаётся только после входа. Всё, что вы добавите сейчас, поднимется в облако при входе.", signInButton: "Войти", localRowsSynced: "Записи с этого устройства сохранены в облаке",
       floristStep1: "1 · Данные", floristStep2: "2 · Текст письма", floristStep3: "3 · QR-карточка", floristTextSource: "Текст письма", floristOwnText: "Своими словами", floristCatalogText: "Из коллекции",
-      floristOwnHint: "Слова клиента откроются в редакторе, их можно поправить.", floristCatalogHint: "Откроется коллекция из 50 писем на выбранном языке.", continueQr: "Дальше: письмо и QR-карточка"
+      floristOwnHint: "Слова клиента откроются в редакторе, их можно поправить.", floristCatalogHint: "Откроется коллекция писем на выбранном языке.", continueQr: "Дальше: письмо и QR-карточка"
     },
     en: {
       eyebrow: "GLOWLETTER · IMPORTANT MOMENTS", title: "People, dates and letters", close: "Close",
@@ -115,7 +115,7 @@
       languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Ready", retry: "Retry",
       signInNeededTitle: "Sign in to continue", signInNeededNote: "People, dates and letters live in the cloud, and a QR card is created only after you sign in. Anything you add now is uploaded when you sign in.", signInButton: "Sign in", localRowsSynced: "Entries from this device are now saved in the cloud",
       floristStep1: "1 · Details", floristStep2: "2 · Letter text", floristStep3: "3 · QR card", floristTextSource: "Letter text", floristOwnText: "In your own words", floristCatalogText: "From the collection",
-      floristOwnHint: "The client’s words open in the editor, ready to adjust.", floristCatalogHint: "The collection of 50 letters opens in the chosen language.", continueQr: "Next: the letter and the QR card"
+      floristOwnHint: "The client’s words open in the editor, ready to adjust.", floristCatalogHint: "The collection opens in the chosen language.", continueQr: "Next: the letter and the QR card"
     },
     fr: {
       eyebrow: "GLOWLETTER · MOMENTS IMPORTANTS", title: "Personnes, dates et lettres", close: "Fermer",
@@ -154,7 +154,7 @@
       languageRu: "Русский", languageEn: "English", languageFr: "Français", statusReady: "Prêt", retry: "Réessayer",
       signInNeededTitle: "Connexion requise", signInNeededNote: "Les personnes, les dates et les lettres sont conservées dans le cloud, et la carte QR n’est créée qu’après connexion. Tout ce que vous ajoutez maintenant sera envoyé au cloud à la connexion.", signInButton: "Se connecter", localRowsSynced: "Les entrées de cet appareil sont maintenant enregistrées dans le cloud",
       floristStep1: "1 · Informations", floristStep2: "2 · Texte de la lettre", floristStep3: "3 · Carte QR", floristTextSource: "Texte de la lettre", floristOwnText: "Avec vos mots", floristCatalogText: "Dans la collection",
-      floristOwnHint: "Les mots du client s’ouvrent dans l’éditeur, prêts à être ajustés.", floristCatalogHint: "La collection de 50 lettres s’ouvre dans la langue choisie.", continueQr: "Suite : la lettre et la carte QR"
+      floristOwnHint: "Les mots du client s’ouvrent dans l’éditeur, prêts à être ajustés.", floristCatalogHint: "La collection s’ouvre dans la langue choisie.", continueQr: "Suite : la lettre et la carte QR"
     }
   };
   // German, Spanish, Italian and Polish come from i18n-extra.js on top of English.

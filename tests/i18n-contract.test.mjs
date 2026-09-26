@@ -150,7 +150,7 @@ for (const code of LANGUAGES) {
   assert.match(index, new RegExp(`<div class="language-list">[\\s\\S]*data-lang="${code}" lang="${HTML_LANG[code] || code}" aria-pressed="false"><b>${code.toUpperCase()}</b><span>${extra.NUR_LANGUAGE_NAMES[code]}</span>`, "u"));
 }
 assert.match(read("styles.css"), /\.language-list button\.is-active \{ border-color:var\(--ui-accent\);background:var\(--ui-soft\); \}/u);
-assert.match(app, /function t\(key\) \{ return UI\[lang\]\?\.\[key\] \|\| UI\.en\[key\] \|\| UI\.ru\[key\] \|\| key; \}/u);
+assert.match(app, /function t\(key\) \{\s*const value = UI\[lang\]\?\.\[key\] \|\| UI\.en\[key\] \|\| UI\.ru\[key\] \|\| key;/u);
 assert.match(app, /url\.searchParams\.set\("lang", lang\);/u);
 assert.doesNotMatch(app, /if \(lang === "ru"\) url\.searchParams\.delete\("lang"\)/u);
 for (const [code, locale] of Object.entries({ de: "de-DE", es: "es-ES", it: "it-IT", pl: "pl-PL" })) {
