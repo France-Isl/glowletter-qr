@@ -512,3 +512,13 @@ body[data-ui-theme="moon"] .glm-layer { --glm-bg: #fbf9fc; --glm-bg-soft: #eeeaf
 .glm-text-source button small { font-size: 11px; line-height: 1.45; color: var(--glm-muted); }
 .glm-text-source button.is-active { border-color: var(--glm-accent); background: rgba(155, 88, 115, .1); box-shadow: 0 0 0 1px var(--glm-accent) inset; }
 @media (max-width: 560px) { .glm-text-source { grid-template-columns: 1fr; } .glm-steps li { font-size: 10px; padding: 7px 4px; } }
+
+/* Ответы получателей и «письмо прочитано» (2.4.17). */
+.glm-history-meta { margin: -4px 0 10px; color: var(--glm-muted); font-size: 11px; font-weight: 700; }
+.glm-history-meta.is-opened { color: var(--glm-accent); }
+.glm-replies { display: grid; gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
+.glm-replies li { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--glm-muted) 28%, transparent); border-radius: 12px; font-size: 13px; line-height: 1.4; }
+.glm-replies li.is-new { border-color: var(--glm-accent); }
+.glm-reply-emoji { flex: 0 0 auto; font-size: 16px; }
+.glm-reply-text { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.glm-replies time { flex: 0 0 auto; color: var(--glm-muted); font-size: 11px; }

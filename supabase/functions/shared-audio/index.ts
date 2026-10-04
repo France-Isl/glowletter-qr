@@ -240,6 +240,14 @@ function validUuid(value: unknown): string {
     : "";
 }
 
+function validPublicId(value: unknown): string {
+  const id = typeof value === "string" ? value.trim() : "";
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu
+      .test(id)
+    ? id.toLowerCase()
+    : "";
+}
+
 function validObjectPath(value: unknown): string {
   const path = typeof value === "string" ? value : "";
   return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.(mp3|m4a|aac|ogg|wav)$/iu
@@ -489,6 +497,58 @@ async function resolve(
   });
 }
 
+// Своё аудио в QR-письме: готовый файл отправителя привязывается к его
+// активной QR-ссылке и живёт до 30 дней (не дольше самой ссылки). Сырой токен
+// по-прежнему не хранится: база получает только его хеш.
+async function attach(
+  request: Request,
+  body: JsonObject,
+  admin: NonNullable<ReturnType<typeof adminClient>>,
+): Promise<Response> {
+  const user = await authenticatedUser(request, admin);
+  if (!user) return json(request, { error: "authentication_required" }, 401);
+
+  const shareToken = validShareToken(body.share_token ?? body.shareToken);
+  if (!shareToken) return json(request, { error: "invalid_share_token" }, 400);
+  const publicId = validPublicId(body.public_id ?? body.publicId);
+  if (!publicId) return json(request, { error: "invalid_public_id" }, 400);
+
+  const tokenHash = await sha256Hex(shareToken);
+  const { data, error } = await admin.rpc("glowletter_attach_qr_audio", {
+    p_user_id: user.id,
+    p_public_id: publicId,
+    p_token_hash: tokenHash,
+  });
+  if (error) {
+    if (error.code === "P0002") return json(request, { error: "not_found" }, 404);
+    if (error.code === "22023") {
+      return json(request, { error: "invalid_request" }, 400);
+    }
+    return json(request, { error: "audio_service_unavailable" }, 503);
+  }
+  const row = firstRow<{ expires_at?: unknown }>(data);
+  const expiresAt = validTimestamp(row?.expires_at);
+  if (!expiresAt) return json(request, { error: "audio_service_unavailable" }, 503);
+  return json(request, { action: "attach", attached: true, publicId, expiresAt });
+}
+
+async function detach(
+  request: Request,
+  body: JsonObject,
+  admin: NonNullable<ReturnType<typeof adminClient>>,
+): Promise<Response> {
+  const user = await authenticatedUser(request, admin);
+  if (!user) return json(request, { error: "authentication_required" }, 401);
+  const publicId = validPublicId(body.public_id ?? body.publicId);
+  if (!publicId) return json(request, { error: "invalid_public_id" }, 400);
+  const { data, error } = await admin.rpc("glowletter_detach_qr_audio", {
+    p_user_id: user.id,
+    p_public_id: publicId,
+  });
+  if (error) return json(request, { error: "audio_service_unavailable" }, 503);
+  return json(request, { action: "detach", detached: data === true, publicId });
+}
+
 Deno.serve(async (request) => {
   const origin = request.headers.get("origin") || "";
   if (!isAllowedOrigin(origin)) {
@@ -528,6 +588,8 @@ Deno.serve(async (request) => {
     if (action === "reserve") return await reserve(request, body, admin);
     if (action === "finalize") return await finalize(request, body, admin);
     if (action === "resolve") return await resolve(request, body, admin);
+    if (action === "attach") return await attach(request, body, admin);
+    if (action === "detach") return await detach(request, body, admin);
     return json(request, { error: "invalid_action" }, 400);
   } catch {
     // Never reflect provider errors because they may contain internal bucket or

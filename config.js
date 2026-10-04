@@ -1,5 +1,5 @@
 window.NUR_APP_CONFIG = Object.freeze({
-  appVersion: "2.4.16",
+  appVersion: "2.4.17",
   freeLetterCount: 10,
   productId: "glowletter_premium_monthly",
   subscriptionProductId: "glowletter_premium_monthly",

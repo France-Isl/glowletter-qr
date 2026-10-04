@@ -88,9 +88,9 @@
   };
 
   const EXTRA_UI = {
-    ru: { collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Аудио письма",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Ещё 40 писем<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"вся коллекция писем и стихов на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",payButton:"Подписка на месяц",payYearlyButton:"Подписка на год",yearlyBadge:"Выгоднее всего",storeNote:"Подписку можно отменить в аккаунте магазина в любой момент. Цена отображается в местной валюте.",refundNote:"Возврат средств — по правилам Google Play: запрос возможен в течение 48 часов после покупки. После возврата платные функции и QR-ссылки, созданные по подписке, отключаются.",poem:"Стихи",catalogNew:"Новое",homeNewPoem:"Новое в коллекции",adminCatalogTitle:"Стихи и письма",adminCatalogNote:"Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.",adminCatalogTextLabel:"Текст",adminCatalogPlaceholder:"Вставьте стих или письмо",adminCatalogHint:"Несколько текстов разделяйте строкой ***. Переносы строк сохраняются.",adminCatalogLanguageLabel:"Язык текста",adminCatalogCategoryLabel:"Категория",adminCatalogAuthorLabel:"Автор · необязательно",adminCatalogFreeLabel:"Бесплатно для всех",adminCatalogPublish:"Опубликовать",adminCatalogDraft:"В черновики",adminCatalogPreview:"Посмотреть",adminCatalogCancel:"Отменить правку",adminCatalogEmpty:"Пока ничего не добавлено",adminCatalogInvalid:"Текст должен быть от 10 до 1500 символов без запрещённых слов.",adminCatalogPublished:"Опубликовано",adminCatalogDraftSaved:"Черновик сохранён",adminCatalogSaved:"Изменения сохранены",adminCatalogDeleted:"Удалено",adminCatalogDeleteConfirm:"Удалить этот текст? Отменить будет нельзя.",adminCatalogStatusDraft:"Черновик",adminCatalogStatusHidden:"Скрыт",adminCatalogStatusPublished:"Опубликован",adminCatalogHide:"Скрыть",adminCatalogShow:"Показать",adminCatalogEdit:"Изменить",adminCatalogDelete:"Удалить",adminCatalogLanguages:"Языков: {count}",adminCatalogAddedMany:"Добавлено текстов: {count}",adminCatalogFreeBadge:"Бесплатно",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ" },
-    en: { collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Letter audio",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 more letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"the whole collection of letters and poems in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",payButton:"Monthly subscription",payYearlyButton:"Yearly subscription",yearlyBadge:"Best value",storeNote:"You can cancel the subscription in your store account at any time. The local store price is shown.",refundNote:"Refunds follow Google Play rules: a request is possible within 48 hours of purchase. After a refund, paid features and the QR links created with the subscription are switched off.",poem:"Poems",catalogNew:"New",homeNewPoem:"New in the collection",adminCatalogTitle:"Poems and letters",adminCatalogNote:"Publish only your own texts or poems by authors who died more than 70 years ago. A published text appears for everyone at once, without an app update.",adminCatalogTextLabel:"Text",adminCatalogPlaceholder:"Paste a poem or a letter",adminCatalogHint:"Separate several texts with a line of ***. Line breaks are kept.",adminCatalogLanguageLabel:"Text language",adminCatalogCategoryLabel:"Category",adminCatalogAuthorLabel:"Author · optional",adminCatalogFreeLabel:"Free for everyone",adminCatalogPublish:"Publish",adminCatalogDraft:"Save as draft",adminCatalogPreview:"View",adminCatalogCancel:"Cancel editing",adminCatalogEmpty:"Nothing added yet",adminCatalogInvalid:"The text must be 10 to 1500 characters without prohibited words.",adminCatalogPublished:"Published",adminCatalogDraftSaved:"Draft saved",adminCatalogSaved:"Changes saved",adminCatalogDeleted:"Deleted",adminCatalogDeleteConfirm:"Delete this text? This cannot be undone.",adminCatalogStatusDraft:"Draft",adminCatalogStatusHidden:"Hidden",adminCatalogStatusPublished:"Published",adminCatalogHide:"Hide",adminCatalogShow:"Show",adminCatalogEdit:"Edit",adminCatalogDelete:"Delete",adminCatalogLanguages:"Languages: {count}",adminCatalogAddedMany:"Texts added: {count}",adminCatalogFreeBadge:"Free",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB" },
-    fr: { collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Audio de la lettre",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 lettres de plus<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"toute la collection de lettres et de poèmes en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",payButton:"Abonnement mensuel",payYearlyButton:"Abonnement annuel",yearlyBadge:"Le plus avantageux",storeNote:"Vous pouvez annuler l’abonnement à tout moment dans votre compte du magasin. Le prix local s’affiche.",refundNote:"Remboursements selon les règles de Google Play : une demande est possible dans les 48 heures suivant l’achat. Après un remboursement, les fonctions payantes et les liens QR créés avec l’abonnement sont désactivés.",poem:"Poèmes",catalogNew:"Nouveau",homeNewPoem:"Nouveau dans la collection",adminCatalogTitle:"Poèmes et lettres",adminCatalogNote:"Publiez uniquement vos propres textes ou des poèmes d’auteurs morts depuis plus de 70 ans. Un texte publié apparaît aussitôt chez tout le monde, sans mise à jour de l’application.",adminCatalogTextLabel:"Texte",adminCatalogPlaceholder:"Collez un poème ou une lettre",adminCatalogHint:"Séparez plusieurs textes par une ligne ***. Les retours à la ligne sont conservés.",adminCatalogLanguageLabel:"Langue du texte",adminCatalogCategoryLabel:"Catégorie",adminCatalogAuthorLabel:"Auteur · facultatif",adminCatalogFreeLabel:"Gratuit pour tous",adminCatalogPublish:"Publier",adminCatalogDraft:"Enregistrer en brouillon",adminCatalogPreview:"Voir",adminCatalogCancel:"Annuler la modification",adminCatalogEmpty:"Rien n’a encore été ajouté",adminCatalogInvalid:"Le texte doit comporter de 10 à 1500 caractères, sans mots interdits.",adminCatalogPublished:"Publié",adminCatalogDraftSaved:"Brouillon enregistré",adminCatalogSaved:"Modifications enregistrées",adminCatalogDeleted:"Supprimé",adminCatalogDeleteConfirm:"Supprimer ce texte ? Impossible d’annuler.",adminCatalogStatusDraft:"Brouillon",adminCatalogStatusHidden:"Masqué",adminCatalogStatusPublished:"Publié",adminCatalogHide:"Masquer",adminCatalogShow:"Afficher",adminCatalogEdit:"Modifier",adminCatalogDelete:"Supprimer",adminCatalogLanguages:"Langues : {count}",adminCatalogAddedMany:"Textes ajoutés : {count}",adminCatalogFreeBadge:"Gratuit",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum" }
+    ru: { collectionEyebrow:"50 ПРОВЕРЕННЫХ ТЕКСТОВ",collectionNote:"Каждый текст автоматически обращается к выбранному человеку.",settingsEyebrow:"ВАША АТМОСФЕРА",rainTitle:"Живой дождь",rainNote:"крупные капли и брызги",natureTitle:"Ночной лес",natureNote:"сверчки, ветер и лягушки",weatherTitle:"Моя погода",weatherNote:"атмосфера по месту",fullscreenTitle:"Полный экран",fullscreenNote:"без лишних элементов",personalBg:"Личный фон",ownPhoto:"Своя фотография",localOnly:"Останется только на этом устройстве",music:"Аудио письма",fullVersion:"ПРЕМИУМ",allLetters:"Откройте все функции GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallEyebrow:"GLOWLETTER · ПРЕМИУМ",paywallTitle:"Ещё 40 писем<br><em>для важных людей</em>",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"вся коллекция писем и стихов на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",payButton:"Подписка на месяц",payYearlyButton:"Подписка на год",yearlyBadge:"Выгоднее всего",storeNote:"Подписку можно отменить в аккаунте магазина в любой момент. Цена отображается в местной валюте.",refundNote:"Возврат средств — по правилам Google Play: запрос возможен в течение 48 часов после покупки. После возврата платные функции и QR-ссылки, созданные по подписке, отключаются.",poem:"Стихи",catalogNew:"Новое",homeNewPoem:"Новое в коллекции",adminCatalogTitle:"Стихи и письма",adminCatalogNote:"Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.",adminCatalogTextLabel:"Текст",adminCatalogPlaceholder:"Вставьте стих или письмо",adminCatalogHint:"Несколько текстов разделяйте строкой ***. Переносы строк сохраняются.",adminCatalogLanguageLabel:"Язык текста",adminCatalogCategoryLabel:"Категория",adminCatalogAuthorLabel:"Автор · необязательно",adminCatalogFreeLabel:"Бесплатно для всех",adminCatalogPublish:"Опубликовать",adminCatalogDraft:"В черновики",adminCatalogPreview:"Посмотреть",adminCatalogCancel:"Отменить правку",adminCatalogEmpty:"Пока ничего не добавлено",adminCatalogInvalid:"Текст должен быть от 10 до 1500 символов без запрещённых слов.",adminCatalogPublished:"Опубликовано",adminCatalogDraftSaved:"Черновик сохранён",adminCatalogSaved:"Изменения сохранены",adminCatalogDeleted:"Удалено",adminCatalogDeleteConfirm:"Удалить этот текст? Отменить будет нельзя.",adminCatalogStatusDraft:"Черновик",adminCatalogStatusHidden:"Скрыт",adminCatalogStatusPublished:"Опубликован",adminCatalogHide:"Скрыть",adminCatalogShow:"Показать",adminCatalogEdit:"Изменить",adminCatalogDelete:"Удалить",adminCatalogLanguages:"Языков: {count}",adminCatalogAddedMany:"Добавлено текстов: {count}",adminCatalogFreeBadge:"Бесплатно",replyTitle:"Ответить отправителю",replyLead:"Один тап, и {name} узнает, что письмо дошло.",reactionHeart:"Тронуло",reactionThanks:"Спасибо",reactionSmile:"Улыбаюсь",reactionTears:"До слёз",replyMessageLabel:"Пара слов · необязательно",replySend:"Отправить",replySending:"Отправляю…",replySent:"Ответ отправлен",replyFailed:"Не удалось отправить. Проверьте связь и попробуйте ещё раз.",replyRate:"Слишком много ответов. Попробуйте позже.",saveLetter:"Сохранить письмо себе",saveLetterLead:"Письмо останется у вас в «Моих моментах».",saveLetterDone:"Письмо сохранено",replyToast:"Ответ от {name}: {reply}",openedToast:"Письмо для {name} открыто",publishAudioNote:"Получатель услышит его, открыв письмо · MP3, M4A, AAC, OGG или WAV · до 12 МБ",publishAudioQr:"Получатель услышит его, открыв письмо. В QR-письме аудио доступно до 30 дней.",publishAudioLink:"Получатель услышит его, открыв письмо. В ссылке аудио доступно 12 часов.",publishAudioSignIn:"Чтобы приложить аудио, войдите в аккаунт. Без входа письмо уйдёт без аудио.",publishAudioSignInButton:"Войти",publishAudioAttached:"Аудио приложено к письму",privacy:"Конфиденциальность",supportLink:"Поддержка",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ" },
+    en: { collectionEyebrow:"50 REVIEWED TEXTS",collectionNote:"Every text automatically addresses the person you selected.",settingsEyebrow:"YOUR ATMOSPHERE",rainTitle:"Living rain",rainNote:"large drops and gentle splashes",natureTitle:"Night forest",natureNote:"crickets, wind, and frogs",weatherTitle:"My weather",weatherNote:"atmosphere for your location",fullscreenTitle:"Full screen",fullscreenNote:"a clear, immersive view",personalBg:"Personal background",ownPhoto:"Your own photo",localOnly:"Stays only on this device",music:"Letter audio",fullVersion:"PREMIUM",allLetters:"Unlock every GlowLetter feature",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 more letters<br><em>for important people</em>",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"the whole collection of letters and poems in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",payButton:"Monthly subscription",payYearlyButton:"Yearly subscription",yearlyBadge:"Best value",storeNote:"You can cancel the subscription in your store account at any time. The local store price is shown.",refundNote:"Refunds follow Google Play rules: a request is possible within 48 hours of purchase. After a refund, paid features and the QR links created with the subscription are switched off.",poem:"Poems",catalogNew:"New",homeNewPoem:"New in the collection",adminCatalogTitle:"Poems and letters",adminCatalogNote:"Publish only your own texts or poems by authors who died more than 70 years ago. A published text appears for everyone at once, without an app update.",adminCatalogTextLabel:"Text",adminCatalogPlaceholder:"Paste a poem or a letter",adminCatalogHint:"Separate several texts with a line of ***. Line breaks are kept.",adminCatalogLanguageLabel:"Text language",adminCatalogCategoryLabel:"Category",adminCatalogAuthorLabel:"Author · optional",adminCatalogFreeLabel:"Free for everyone",adminCatalogPublish:"Publish",adminCatalogDraft:"Save as draft",adminCatalogPreview:"View",adminCatalogCancel:"Cancel editing",adminCatalogEmpty:"Nothing added yet",adminCatalogInvalid:"The text must be 10 to 1500 characters without prohibited words.",adminCatalogPublished:"Published",adminCatalogDraftSaved:"Draft saved",adminCatalogSaved:"Changes saved",adminCatalogDeleted:"Deleted",adminCatalogDeleteConfirm:"Delete this text? This cannot be undone.",adminCatalogStatusDraft:"Draft",adminCatalogStatusHidden:"Hidden",adminCatalogStatusPublished:"Published",adminCatalogHide:"Hide",adminCatalogShow:"Show",adminCatalogEdit:"Edit",adminCatalogDelete:"Delete",adminCatalogLanguages:"Languages: {count}",adminCatalogAddedMany:"Texts added: {count}",adminCatalogFreeBadge:"Free",replyTitle:"Reply to the sender",replyLead:"One tap, and {name} will know the letter arrived.",reactionHeart:"Touched",reactionThanks:"Thank you",reactionSmile:"Smiling",reactionTears:"Moved to tears",replyMessageLabel:"A few words · optional",replySend:"Send",replySending:"Sending…",replySent:"Reply sent",replyFailed:"The reply could not be sent. Check your connection and try again.",replyRate:"Too many replies. Please try again later.",saveLetter:"Save the letter for myself",saveLetterLead:"The letter will stay with you in “My moments”.",saveLetterDone:"Letter saved",replyToast:"Reply from {name}: {reply}",openedToast:"The letter for {name} was opened",publishAudioNote:"The recipient will hear it when the letter opens · MP3, M4A, AAC, OGG, or WAV · up to 12 MB",publishAudioQr:"The recipient will hear it when the letter opens. In a QR letter the audio stays available for up to 30 days.",publishAudioLink:"The recipient will hear it when the letter opens. In a link the audio stays available for 12 hours.",publishAudioSignIn:"Sign in to attach the audio. Without signing in, the letter goes out without audio.",publishAudioSignInButton:"Sign in",publishAudioAttached:"Audio attached to the letter",privacy:"Privacy",supportLink:"Support",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB" },
+    fr: { collectionEyebrow:"50 TEXTES VÉRIFIÉS",collectionNote:"Chaque texte s’adresse automatiquement à la personne choisie.",settingsEyebrow:"VOTRE ATMOSPHÈRE",rainTitle:"Pluie vivante",rainNote:"grosses gouttes et éclaboussures douces",natureTitle:"Forêt nocturne",natureNote:"grillons, vent et grenouilles",weatherTitle:"Ma météo",weatherNote:"une ambiance adaptée au lieu",fullscreenTitle:"Plein écran",fullscreenNote:"une vue claire et immersive",personalBg:"Fond personnel",ownPhoto:"Votre photo",localOnly:"Reste uniquement sur cet appareil",music:"Audio de la lettre",fullVersion:"PREMIUM",allLetters:"Débloquez toutes les fonctions",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallEyebrow:"GLOWLETTER · PREMIUM",paywallTitle:"40 lettres de plus<br><em>pour les personnes importantes</em>",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"toute la collection de lettres et de poèmes en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",payButton:"Abonnement mensuel",payYearlyButton:"Abonnement annuel",yearlyBadge:"Le plus avantageux",storeNote:"Vous pouvez annuler l’abonnement à tout moment dans votre compte du magasin. Le prix local s’affiche.",refundNote:"Remboursements selon les règles de Google Play : une demande est possible dans les 48 heures suivant l’achat. Après un remboursement, les fonctions payantes et les liens QR créés avec l’abonnement sont désactivés.",poem:"Poèmes",catalogNew:"Nouveau",homeNewPoem:"Nouveau dans la collection",adminCatalogTitle:"Poèmes et lettres",adminCatalogNote:"Publiez uniquement vos propres textes ou des poèmes d’auteurs morts depuis plus de 70 ans. Un texte publié apparaît aussitôt chez tout le monde, sans mise à jour de l’application.",adminCatalogTextLabel:"Texte",adminCatalogPlaceholder:"Collez un poème ou une lettre",adminCatalogHint:"Séparez plusieurs textes par une ligne ***. Les retours à la ligne sont conservés.",adminCatalogLanguageLabel:"Langue du texte",adminCatalogCategoryLabel:"Catégorie",adminCatalogAuthorLabel:"Auteur · facultatif",adminCatalogFreeLabel:"Gratuit pour tous",adminCatalogPublish:"Publier",adminCatalogDraft:"Enregistrer en brouillon",adminCatalogPreview:"Voir",adminCatalogCancel:"Annuler la modification",adminCatalogEmpty:"Rien n’a encore été ajouté",adminCatalogInvalid:"Le texte doit comporter de 10 à 1500 caractères, sans mots interdits.",adminCatalogPublished:"Publié",adminCatalogDraftSaved:"Brouillon enregistré",adminCatalogSaved:"Modifications enregistrées",adminCatalogDeleted:"Supprimé",adminCatalogDeleteConfirm:"Supprimer ce texte ? Impossible d’annuler.",adminCatalogStatusDraft:"Brouillon",adminCatalogStatusHidden:"Masqué",adminCatalogStatusPublished:"Publié",adminCatalogHide:"Masquer",adminCatalogShow:"Afficher",adminCatalogEdit:"Modifier",adminCatalogDelete:"Supprimer",adminCatalogLanguages:"Langues : {count}",adminCatalogAddedMany:"Textes ajoutés : {count}",adminCatalogFreeBadge:"Gratuit",replyTitle:"Répondre à l’expéditeur",replyLead:"Un geste, et {name} saura que la lettre est arrivée.",reactionHeart:"Touché",reactionThanks:"Merci",reactionSmile:"Je souris",reactionTears:"Jusqu’aux larmes",replyMessageLabel:"Quelques mots · facultatif",replySend:"Envoyer",replySending:"Envoi…",replySent:"Réponse envoyée",replyFailed:"Impossible d’envoyer. Vérifiez la connexion et réessayez.",replyRate:"Trop de réponses. Réessayez plus tard.",saveLetter:"Garder la lettre pour moi",saveLetterLead:"La lettre restera dans « Mes moments ».",saveLetterDone:"Lettre enregistrée",replyToast:"Réponse de {name} : {reply}",openedToast:"La lettre pour {name} a été ouverte",publishAudioNote:"Le destinataire l’entendra en ouvrant la lettre · MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",publishAudioQr:"Le destinataire l’entendra en ouvrant la lettre. Dans une lettre QR, l’audio reste disponible jusqu’à 30 jours.",publishAudioLink:"Le destinataire l’entendra en ouvrant la lettre. Dans un lien, l’audio reste disponible 12 heures.",publishAudioSignIn:"Connectez-vous pour joindre l’audio. Sans connexion, la lettre partira sans audio.",publishAudioSignInButton:"Se connecter",publishAudioAttached:"Audio joint à la lettre",privacy:"Confidentialité",supportLink:"Assistance",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum" }
   };
   Object.keys(UI).forEach(code => Object.assign(UI[code], EXTRA_UI[code]));
   UI.ru.brandCopyPersonal = "Тёплые слова, выбранные с заботой специально для {to}.";
@@ -98,20 +98,20 @@
   UI.fr.brandCopyPersonal = "Des mots chaleureux choisis avec soin spécialement pour {to}.";
   Object.assign(UI.ru, {
     setupEyebrow:"ПЕРЕД ОТКРЫТИЕМ ПИСЬМА",setupTitle:"Для кого это письмо?",setupNote:"Имена нужны только для личного обращения и подписи.",setupSubmit:"Открыть письмо",
-    setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",trackPrimary:"основная мелодия",trackLight:"светлая версия",trackWarm:"тёплая версия",
-    homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и музыка",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"вся коллекция писем и стихов на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",benefit4:"поддержка автора проекта",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",subscriptionTitle:"Ваш доступ",subscriptionRestore:"Восстановить подписку",subscriptionNoteFree:"Открыты первые 10 писем. Полный доступ добавляет остальные 40, моменты, напоминания и оформление письма.",subscriptionNoteStore:"Подписка продлевается автоматически. Отменить или сменить план можно в аккаунте магазина.",subscriptionNoteVip:"Доступ выдан вручную. Когда срок закончится, приложение вернётся к бесплатному режиму.",subscriptionNotePermanent:"Полный доступ открыт. Продлевать и платить ничего не нужно.",subscriptionNoteChecking:"Проверяю доступ в магазине и в облаке…",accountPasswordToggle:"Задать пароль для входа",accountPasswordLabel:"Новый пароль",accountPasswordNote:"Минимум 8 символов. После сохранения можно входить по адресу и паролю, а не только по коду.",accountPasswordSubmit:"Сохранить пароль",accountPasswordSaved:"Пароль сохранён. Теперь можно входить по адресу и паролю.",accountPasswordShort:"Пароль должен быть не короче 8 символов.",accountPasswordFailed:"Не удалось сохранить пароль. Попробуйте ещё раз.",purchaseNotConfigured:"Подписка ещё не заведена в Google Play. Оплата заработает, когда товар появится в магазине.",purchaseStoreSilent:"Google Play не ответил. Проверьте интернет и попробуйте ещё раз.",purchaseLaunchFailed:"Google Play не смог открыть оплату. Попробуйте ещё раз через минуту.",purchaseStoreUnavailable:"Google Play сейчас недоступен. Проверьте, что в Play Маркете выполнен вход в аккаунт Google, и попробуйте ещё раз.",purchasePending:"Платёж ещё обрабатывается. Доступ откроется сам, как только Google Play его подтвердит.",purchaseVerifyPending:"Оплата прошла, но проверка ещё не завершилась. Через минуту нажмите «Восстановить подписку» в настройках.",appUpdateAvailable:"Вышла новая версия GlowLetter",appUpdateButton:"Обновить",appUpdateDownloading:"Загружаю обновление…",appUpdateReady:"Обновление готово",appUpdateRestart:"Перезапустить",appUpdateHide:"Скрыть",homeSignIn:"Войти — покупки и прогресс сохранятся",googleSignedIn:"Вы вошли через Google",signedInAs:"Вы вошли как {email}",signInToBuy:"Сначала войдите — так покупка останется за вами и после переустановки.",accountPasswordConfirmLabel:"Повторите пароль",accountPasswordMismatch:"Пароли не совпадают.",accountPasswordSame:"Этот пароль уже установлен — входите с ним.",accountPasswordWeak:"Пароль слишком простой: добавьте буквы и цифры.",passwordShow:"Показать пароль",passwordHide:"Скрыть пароль",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
-    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своя музыка и черновики остаются только на этом устройстве, пока вы сами не опубликуете письмо.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Сначала отмените активную подписку в Google Play: после удаления её нельзя будет привязать к новому аккаунту GlowLetter.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
+    setupSenderPlaceholder:"Ваше имя",setupRecipientPlaceholder:"Имя получателя",stateOn:"ВКЛ",stateOff:"ВЫКЛ",stateOpen:"ОТКРЫТЬ",
+    homeAria:"На главный экран",soundOnAria:"Включить нашид",soundOffAria:"Выключить нашид",natureOnAria:"Включить звуки природы",natureOffAria:"Выключить звуки природы",weatherAria:"Показать погоду",languageAria:"Изменить язык",libraryAria:"Коллекция писем",settingsAria:"Атмосфера и звук",previousAria:"Предыдущее письмо",shareAria:"Поделиться письмом",closeAria:"Закрыть",closeLibraryAria:"Закрыть коллекцию",closeSettingsAria:"Закрыть настройки",homeScreenAria:"Главный экран",letterNavAria:"Переключение писем",checkingPurchase:"Проверяю подписку…",allLetters:"Откройте премиум GlowLetter",onePurchase:"Подписка на месяц или на год: все письма, моменты и новые функции.",paywallBody:"Первые 10 писем остаются бесплатными. Остальные 40 открывает подписка на месяц или на год. Она продлевается автоматически, пока вы не отмените её в аккаунте магазина.",benefit1:"вся коллекция писем и стихов на двадцати пяти языках",benefit2:"моменты, напоминания и QR-ссылки",benefit3:"новые тексты и функции",benefit4:"поддержка автора проекта",saveSettings:"Сохранить настройки",settingsSaved:"Настройки сохранены",manageSubscription:"Управление подпиской",subscriptionTitle:"Ваш доступ",subscriptionRestore:"Восстановить подписку",subscriptionNoteFree:"Открыты первые 10 писем. Полный доступ добавляет остальные 40, моменты, напоминания и оформление письма.",subscriptionNoteStore:"Подписка продлевается автоматически. Отменить или сменить план можно в аккаунте магазина.",subscriptionNoteVip:"Доступ выдан вручную. Когда срок закончится, приложение вернётся к бесплатному режиму.",subscriptionNotePermanent:"Полный доступ открыт. Продлевать и платить ничего не нужно.",subscriptionNoteChecking:"Проверяю доступ в магазине и в облаке…",accountPasswordToggle:"Задать пароль для входа",accountPasswordLabel:"Новый пароль",accountPasswordNote:"Минимум 8 символов. После сохранения можно входить по адресу и паролю, а не только по коду.",accountPasswordSubmit:"Сохранить пароль",accountPasswordSaved:"Пароль сохранён. Теперь можно входить по адресу и паролю.",accountPasswordShort:"Пароль должен быть не короче 8 символов.",accountPasswordFailed:"Не удалось сохранить пароль. Попробуйте ещё раз.",purchaseNotConfigured:"Подписка ещё не заведена в Google Play. Оплата заработает, когда товар появится в магазине.",purchaseStoreSilent:"Google Play не ответил. Проверьте интернет и попробуйте ещё раз.",purchaseLaunchFailed:"Google Play не смог открыть оплату. Попробуйте ещё раз через минуту.",purchaseStoreUnavailable:"Google Play сейчас недоступен. Проверьте, что в Play Маркете выполнен вход в аккаунт Google, и попробуйте ещё раз.",purchasePending:"Платёж ещё обрабатывается. Доступ откроется сам, как только Google Play его подтвердит.",purchaseVerifyPending:"Оплата прошла, но проверка ещё не завершилась. Через минуту нажмите «Восстановить подписку» в настройках.",appUpdateAvailable:"Вышла новая версия GlowLetter",appUpdateButton:"Обновить",appUpdateDownloading:"Загружаю обновление…",appUpdateReady:"Обновление готово",appUpdateRestart:"Перезапустить",appUpdateHide:"Скрыть",homeSignIn:"Войти — покупки и прогресс сохранятся",googleSignedIn:"Вы вошли через Google",signedInAs:"Вы вошли как {email}",signInToBuy:"Сначала войдите — так покупка останется за вами и после переустановки.",accountPasswordConfirmLabel:"Повторите пароль",accountPasswordMismatch:"Пароли не совпадают.",accountPasswordSame:"Этот пароль уже установлен — входите с ним.",accountPasswordWeak:"Пароль слишком простой: добавьте буквы и цифры.",passwordShow:"Показать пароль",passwordHide:"Скрыть пароль",terms:"Условия",deletePage:"Удаление аккаунта",installIosHint:"На iPhone: «Поделиться» → «На экран Домой».",
+    accountTitle:"Аккаунт и синхронизация",accountGuestNote:"Войдите, чтобы сохранять письма и настройки на ваших устройствах.",accountPrivacy:"Фото, своё аудио и черновики остаются только на этом устройстве, пока вы сами не опубликуете письмо.",continueGoogle:"Продолжить с Google",continueApple:"Продолжить с Apple",continueFacebook:"Продолжить с Facebook",signOut:"Выйти",deleteAccount:"Удалить аккаунт",deleteAccountConfirm:"Удалить аккаунт GlowLetter и весь облачный прогресс без возможности восстановления? Сначала отмените активную подписку в Google Play: после удаления её нельзя будет привязать к новому аккаунту GlowLetter.",deleteAccountDeleting:"Удаляю аккаунт…",deleteAccountDone:"Аккаунт и облачный прогресс удалены",deleteAccountFail:"Не удалось удалить аккаунт. Проверьте интернет или напишите в поддержку.",cloudChecking:"Проверяю вход…",cloudProvidersChecking:"Проверяю способы входа…",cloudSignInPrompt:"Войдите, чтобы включить облачное сохранение",cloudSyncing:"Сохраняю прогресс…",cloudSynced:"Прогресс сохранён в облаке",cloudOffline:"Нет связи — изменения остаются на устройстве",cloudError:"Не удалось синхронизировать. Попробую снова при подключении.",cloudUnavailable:"Облачный вход сейчас недоступен",cloudSignInError:"Не удалось войти. Попробуйте ещё раз.",cloudSigningIn:"Открываю безопасный вход…",cloudSignedOut:"Вы вышли из аккаунта"
   });
   Object.assign(UI.en, {
     setupEyebrow:"BEFORE OPENING THE LETTER",setupTitle:"Who is this letter for?",setupNote:"Names are used only for the personal greeting and signature.",setupSubmit:"Open the letter",
-    setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",trackPrimary:"main melody",trackLight:"light version",trackWarm:"warm version",
-    homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and music",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"the whole collection of letters and poems in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",benefit4:"support for the author",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",subscriptionTitle:"Your access",subscriptionRestore:"Restore subscription",subscriptionNoteFree:"The first 10 letters are open. Full access adds the other 40, moments, reminders and letter styling.",subscriptionNoteStore:"The subscription renews automatically. Cancel or change the plan in your store account.",subscriptionNoteVip:"Access was granted manually. When it expires the app returns to the free mode.",subscriptionNotePermanent:"Full access is open. There is nothing to renew or pay.",subscriptionNoteChecking:"Checking access in the store and in the cloud…",accountPasswordToggle:"Set a sign-in password",accountPasswordLabel:"New password",accountPasswordNote:"At least 8 characters. Once saved you can sign in with your address and password, not only with a code.",accountPasswordSubmit:"Save password",accountPasswordSaved:"Password saved. You can now sign in with your address and password.",accountPasswordShort:"The password must be at least 8 characters.",accountPasswordFailed:"The password could not be saved. Please try again.",purchaseNotConfigured:"The subscription is not set up in Google Play yet. Payment will work once the product is live in the store.",purchaseStoreSilent:"Google Play did not respond. Check your connection and try again.",purchaseLaunchFailed:"Google Play could not open the payment sheet. Please try again in a minute.",purchaseStoreUnavailable:"Google Play is unavailable right now. Make sure you are signed in to your Google account in the Play Store and try again.",purchasePending:"The payment is still processing. Access opens by itself once Google Play confirms it.",purchaseVerifyPending:"The payment went through, but the check has not finished yet. In a minute, tap “Restore subscription” in settings.",appUpdateAvailable:"A new version of GlowLetter is out",appUpdateButton:"Update",appUpdateDownloading:"Downloading the update…",appUpdateReady:"The update is ready",appUpdateRestart:"Restart",appUpdateHide:"Hide",homeSignIn:"Sign in to keep purchases and progress",googleSignedIn:"Signed in with Google",signedInAs:"Signed in as {email}",signInToBuy:"Sign in first so the purchase stays yours, even after reinstalling.",accountPasswordConfirmLabel:"Repeat the password",accountPasswordMismatch:"The passwords do not match.",accountPasswordSame:"This password is already set — sign in with it.",accountPasswordWeak:"The password is too weak: use letters and numbers.",passwordShow:"Show password",passwordHide:"Hide password",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
+    setupSenderPlaceholder:"Your name",setupRecipientPlaceholder:"Recipient's name",stateOn:"ON",stateOff:"OFF",stateOpen:"OPEN",
+    homeAria:"Go to the home screen",soundOnAria:"Play nasheed",soundOffAria:"Pause nasheed",natureOnAria:"Turn on nature sounds",natureOffAria:"Turn off nature sounds",weatherAria:"Show weather",languageAria:"Change language",libraryAria:"Letter collection",settingsAria:"Atmosphere and sound",previousAria:"Previous letter",shareAria:"Share letter",closeAria:"Close",closeLibraryAria:"Close collection",closeSettingsAria:"Close settings",homeScreenAria:"Home screen",letterNavAria:"Browse letters",checkingPurchase:"Checking subscription…",allLetters:"Unlock GlowLetter Premium",onePurchase:"A monthly or yearly subscription: every letter, moments, and new features.",paywallBody:"The first 10 letters stay free. The other 40 open with a monthly or yearly subscription. It renews automatically until you cancel it in your store account.",benefit1:"the whole collection of letters and poems in twenty-five languages",benefit2:"moments, reminders, and QR links",benefit3:"new texts and features",benefit4:"support for the author",saveSettings:"Save settings",settingsSaved:"Settings saved",manageSubscription:"Manage subscription",subscriptionTitle:"Your access",subscriptionRestore:"Restore subscription",subscriptionNoteFree:"The first 10 letters are open. Full access adds the other 40, moments, reminders and letter styling.",subscriptionNoteStore:"The subscription renews automatically. Cancel or change the plan in your store account.",subscriptionNoteVip:"Access was granted manually. When it expires the app returns to the free mode.",subscriptionNotePermanent:"Full access is open. There is nothing to renew or pay.",subscriptionNoteChecking:"Checking access in the store and in the cloud…",accountPasswordToggle:"Set a sign-in password",accountPasswordLabel:"New password",accountPasswordNote:"At least 8 characters. Once saved you can sign in with your address and password, not only with a code.",accountPasswordSubmit:"Save password",accountPasswordSaved:"Password saved. You can now sign in with your address and password.",accountPasswordShort:"The password must be at least 8 characters.",accountPasswordFailed:"The password could not be saved. Please try again.",purchaseNotConfigured:"The subscription is not set up in Google Play yet. Payment will work once the product is live in the store.",purchaseStoreSilent:"Google Play did not respond. Check your connection and try again.",purchaseLaunchFailed:"Google Play could not open the payment sheet. Please try again in a minute.",purchaseStoreUnavailable:"Google Play is unavailable right now. Make sure you are signed in to your Google account in the Play Store and try again.",purchasePending:"The payment is still processing. Access opens by itself once Google Play confirms it.",purchaseVerifyPending:"The payment went through, but the check has not finished yet. In a minute, tap “Restore subscription” in settings.",appUpdateAvailable:"A new version of GlowLetter is out",appUpdateButton:"Update",appUpdateDownloading:"Downloading the update…",appUpdateReady:"The update is ready",appUpdateRestart:"Restart",appUpdateHide:"Hide",homeSignIn:"Sign in to keep purchases and progress",googleSignedIn:"Signed in with Google",signedInAs:"Signed in as {email}",signInToBuy:"Sign in first so the purchase stays yours, even after reinstalling.",accountPasswordConfirmLabel:"Repeat the password",accountPasswordMismatch:"The passwords do not match.",accountPasswordSame:"This password is already set — sign in with it.",accountPasswordWeak:"The password is too weak: use letters and numbers.",passwordShow:"Show password",passwordHide:"Hide password",terms:"Terms",deletePage:"Delete account",installIosHint:"On iPhone: Share → Add to Home Screen.",
     accountTitle:"Account and sync",accountGuestNote:"Sign in to keep your letters and settings across your devices.",accountPrivacy:"Photos, custom audio, and drafts stay on this device until you choose to publish a letter.",continueGoogle:"Continue with Google",continueApple:"Continue with Apple",continueFacebook:"Continue with Facebook",signOut:"Sign out",deleteAccount:"Delete account",deleteAccountConfirm:"Permanently delete your GlowLetter account and cloud progress? Cancel any active Google Play subscription first: after deletion it cannot be attached to a new GlowLetter account.",deleteAccountDeleting:"Deleting account…",deleteAccountDone:"Account and cloud progress deleted",deleteAccountFail:"Could not delete the account. Check your connection or contact support.",cloudChecking:"Checking your account…",cloudProvidersChecking:"Checking sign-in methods…",cloudSignInPrompt:"Sign in to enable cloud saving",cloudSyncing:"Saving your progress…",cloudSynced:"Progress saved to the cloud",cloudOffline:"Offline — changes remain on this device",cloudError:"Could not sync. I will retry when you are online.",cloudUnavailable:"Cloud sign-in is currently unavailable",cloudSignInError:"Could not sign in. Please try again.",cloudSigningIn:"Opening secure sign-in…",cloudSignedOut:"You are signed out"
   });
   Object.assign(UI.fr, {
     setupEyebrow:"AVANT D’OUVRIR LA LETTRE",setupTitle:"À qui s’adresse cette lettre ?",setupNote:"Les prénoms servent uniquement à personnaliser l’adresse et la signature.",setupSubmit:"Ouvrir la lettre",
-    setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",trackPrimary:"mélodie principale",trackLight:"version lumineuse",trackWarm:"version chaleureuse",
-    homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et musique",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"toute la collection de lettres et de poèmes en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",benefit4:"soutien à l’auteur",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",subscriptionTitle:"Votre accès",subscriptionRestore:"Restaurer l’abonnement",subscriptionNoteFree:"Les 10 premières lettres sont ouvertes. L’accès complet ajoute les 40 autres, les moments, les rappels et le style de la lettre.",subscriptionNoteStore:"L’abonnement se renouvelle automatiquement. Annulez ou changez de formule dans votre compte du magasin.",subscriptionNoteVip:"L’accès a été accordé manuellement. À l’expiration, l’application revient au mode gratuit.",subscriptionNotePermanent:"L’accès complet est ouvert. Rien à renouveler, rien à payer.",subscriptionNoteChecking:"Vérification de l’accès dans le magasin et dans le cloud…",accountPasswordToggle:"Définir un mot de passe",accountPasswordLabel:"Nouveau mot de passe",accountPasswordNote:"8 caractères minimum. Une fois enregistré, vous pourrez vous connecter avec votre adresse et ce mot de passe, et plus seulement par code.",accountPasswordSubmit:"Enregistrer le mot de passe",accountPasswordSaved:"Mot de passe enregistré. Vous pouvez désormais vous connecter avec votre adresse et ce mot de passe.",accountPasswordShort:"Le mot de passe doit contenir au moins 8 caractères.",accountPasswordFailed:"Impossible d’enregistrer le mot de passe. Réessayez.",purchaseNotConfigured:"L’abonnement n’est pas encore créé dans Google Play. Le paiement fonctionnera dès que le produit sera en ligne.",purchaseStoreSilent:"Google Play n’a pas répondu. Vérifiez la connexion et réessayez.",purchaseLaunchFailed:"Google Play n’a pas pu ouvrir le paiement. Réessayez dans une minute.",purchaseStoreUnavailable:"Google Play est indisponible pour le moment. Vérifiez que vous êtes connecté à votre compte Google dans le Play Store, puis réessayez.",purchasePending:"Le paiement est en cours de traitement. L’accès s’ouvrira tout seul dès que Google Play l’aura confirmé.",purchaseVerifyPending:"Le paiement est passé, mais la vérification n’est pas terminée. Dans une minute, touchez « Restaurer l’abonnement » dans les réglages.",appUpdateAvailable:"Une nouvelle version de GlowLetter est sortie",appUpdateButton:"Mettre à jour",appUpdateDownloading:"Téléchargement de la mise à jour…",appUpdateReady:"La mise à jour est prête",appUpdateRestart:"Redémarrer",appUpdateHide:"Masquer",homeSignIn:"Se connecter pour garder achats et progrès",googleSignedIn:"Connecté avec Google",signedInAs:"Connecté en tant que {email}",signInToBuy:"Connectez-vous d’abord : l’achat vous suivra même après une réinstallation.",accountPasswordConfirmLabel:"Répétez le mot de passe",accountPasswordMismatch:"Les mots de passe ne correspondent pas.",accountPasswordSame:"Ce mot de passe est déjà défini — connectez-vous avec.",accountPasswordWeak:"Mot de passe trop simple : ajoutez des lettres et des chiffres.",passwordShow:"Afficher le mot de passe",passwordHide:"Masquer le mot de passe",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
+    setupSenderPlaceholder:"Votre prénom",setupRecipientPlaceholder:"Prénom du destinataire",stateOn:"ACTIF",stateOff:"INACTIF",stateOpen:"OUVRIR",
+    homeAria:"Aller à l’accueil",soundOnAria:"Lire le nasheed",soundOffAria:"Mettre le nasheed en pause",natureOnAria:"Activer les sons de la nature",natureOffAria:"Désactiver les sons de la nature",weatherAria:"Afficher la météo",languageAria:"Changer de langue",libraryAria:"Collection de lettres",settingsAria:"Ambiance et son",previousAria:"Lettre précédente",shareAria:"Partager la lettre",closeAria:"Fermer",closeLibraryAria:"Fermer la collection",closeSettingsAria:"Fermer les réglages",homeScreenAria:"Écran d’accueil",letterNavAria:"Parcourir les lettres",checkingPurchase:"Vérification de l’abonnement…",allLetters:"Débloquez GlowLetter Premium",onePurchase:"Un abonnement mensuel ou annuel : toutes les lettres, les moments et les nouveautés.",paywallBody:"Les 10 premières lettres restent gratuites. Les 40 autres s’ouvrent avec un abonnement mensuel ou annuel. Il se renouvelle automatiquement jusqu’à son annulation dans votre compte du magasin.",benefit1:"toute la collection de lettres et de poèmes en vingt-cinq langues",benefit2:"moments, rappels et liens QR",benefit3:"nouveaux textes et fonctions",benefit4:"soutien à l’auteur",saveSettings:"Enregistrer les réglages",settingsSaved:"Réglages enregistrés",manageSubscription:"Gérer l’abonnement",subscriptionTitle:"Votre accès",subscriptionRestore:"Restaurer l’abonnement",subscriptionNoteFree:"Les 10 premières lettres sont ouvertes. L’accès complet ajoute les 40 autres, les moments, les rappels et le style de la lettre.",subscriptionNoteStore:"L’abonnement se renouvelle automatiquement. Annulez ou changez de formule dans votre compte du magasin.",subscriptionNoteVip:"L’accès a été accordé manuellement. À l’expiration, l’application revient au mode gratuit.",subscriptionNotePermanent:"L’accès complet est ouvert. Rien à renouveler, rien à payer.",subscriptionNoteChecking:"Vérification de l’accès dans le magasin et dans le cloud…",accountPasswordToggle:"Définir un mot de passe",accountPasswordLabel:"Nouveau mot de passe",accountPasswordNote:"8 caractères minimum. Une fois enregistré, vous pourrez vous connecter avec votre adresse et ce mot de passe, et plus seulement par code.",accountPasswordSubmit:"Enregistrer le mot de passe",accountPasswordSaved:"Mot de passe enregistré. Vous pouvez désormais vous connecter avec votre adresse et ce mot de passe.",accountPasswordShort:"Le mot de passe doit contenir au moins 8 caractères.",accountPasswordFailed:"Impossible d’enregistrer le mot de passe. Réessayez.",purchaseNotConfigured:"L’abonnement n’est pas encore créé dans Google Play. Le paiement fonctionnera dès que le produit sera en ligne.",purchaseStoreSilent:"Google Play n’a pas répondu. Vérifiez la connexion et réessayez.",purchaseLaunchFailed:"Google Play n’a pas pu ouvrir le paiement. Réessayez dans une minute.",purchaseStoreUnavailable:"Google Play est indisponible pour le moment. Vérifiez que vous êtes connecté à votre compte Google dans le Play Store, puis réessayez.",purchasePending:"Le paiement est en cours de traitement. L’accès s’ouvrira tout seul dès que Google Play l’aura confirmé.",purchaseVerifyPending:"Le paiement est passé, mais la vérification n’est pas terminée. Dans une minute, touchez « Restaurer l’abonnement » dans les réglages.",appUpdateAvailable:"Une nouvelle version de GlowLetter est sortie",appUpdateButton:"Mettre à jour",appUpdateDownloading:"Téléchargement de la mise à jour…",appUpdateReady:"La mise à jour est prête",appUpdateRestart:"Redémarrer",appUpdateHide:"Masquer",homeSignIn:"Se connecter pour garder achats et progrès",googleSignedIn:"Connecté avec Google",signedInAs:"Connecté en tant que {email}",signInToBuy:"Connectez-vous d’abord : l’achat vous suivra même après une réinstallation.",accountPasswordConfirmLabel:"Répétez le mot de passe",accountPasswordMismatch:"Les mots de passe ne correspondent pas.",accountPasswordSame:"Ce mot de passe est déjà défini — connectez-vous avec.",accountPasswordWeak:"Mot de passe trop simple : ajoutez des lettres et des chiffres.",passwordShow:"Afficher le mot de passe",passwordHide:"Masquer le mot de passe",terms:"Conditions",deletePage:"Supprimer le compte",installIosHint:"Sur iPhone : Partager → Sur l’écran d’accueil.",
     accountTitle:"Compte et synchronisation",accountGuestNote:"Connectez-vous pour retrouver vos lettres et réglages sur vos appareils.",accountPrivacy:"Les photos, les fichiers audio personnels et les brouillons restent sur cet appareil jusqu’à ce que vous choisissiez de publier une lettre.",continueGoogle:"Continuer avec Google",continueApple:"Continuer avec Apple",continueFacebook:"Continuer avec Facebook",signOut:"Se déconnecter",deleteAccount:"Supprimer le compte",deleteAccountConfirm:"Supprimer définitivement votre compte GlowLetter et votre progression en ligne ? Annulez d’abord tout abonnement Google Play actif : après la suppression, il ne pourra pas être rattaché à un nouveau compte GlowLetter.",deleteAccountDeleting:"Suppression du compte…",deleteAccountDone:"Compte et progression en ligne supprimés",deleteAccountFail:"Impossible de supprimer le compte. Vérifiez la connexion ou contactez l’assistance.",cloudChecking:"Vérification du compte…",cloudProvidersChecking:"Vérification des modes de connexion…",cloudSignInPrompt:"Connectez-vous pour activer la sauvegarde en ligne",cloudSyncing:"Enregistrement de votre progression…",cloudSynced:"Progression enregistrée en ligne",cloudOffline:"Hors connexion — les changements restent sur cet appareil",cloudError:"Synchronisation impossible. Nouvel essai dès le retour du réseau.",cloudUnavailable:"La connexion en ligne est indisponible",cloudSignInError:"Connexion impossible. Réessayez.",cloudSigningIn:"Ouverture de la connexion sécurisée…",cloudSignedOut:"Vous êtes déconnecté"
   });
   Object.assign(UI.ru, {
@@ -187,7 +187,7 @@
     supportFormEyebrow:"GLOWLETTER · ASSISTANCE",supportFormTitle:"Expliquez-nous<br><em>ce qui s’est passé</em>",supportFormLead:"Décrivez le problème ici. L’email et l’ID d’assistance du compte sont joints automatiquement.",supportGuestTitle:"Connectez-vous d’abord",supportGuestNote:"Nous pourrons ainsi joindre votre email et votre ID en toute sécurité et retrouver votre compte.",supportCopyContact:"Copier l’email d’assistance",supportContactCopied:"Email d’assistance copié",supportEmailLabel:"EMAIL DE RÉPONSE",supportIdLabel:"ID DU COMPTE",supportCategoryLabel:"Sujet",supportMessageLabel:"Que s’est-il passé ?",supportMessagePlaceholder:"Décrivez ce que vous avez touché et ce qui s’est affiché…",supportPrivacyNote:"N’indiquez jamais de mot de passe, coordonnées bancaires ou code de vérification.",supportSubmit:"Envoyer à l’assistance",supportSending:"Envoi de votre demande…",supportSent:"Votre demande est envoyée. L’assistance a été avertie et répondra à l’email du compte.",supportSaved:"Votre demande est enregistrée en sécurité. L’envoi de la notification par email est encore en cours de configuration.",supportSignInRequired:"Connectez-vous pour envoyer une demande d’assistance.",supportInvalid:"Ajoutez quelques détails — entre 20 et 2 000 caractères.",supportRateLimited:"Trop de demandes. Réessayez un peu plus tard.",supportFailed:"Impossible d’envoyer la demande. Vérifiez votre connexion et réessayez.",supportCategoryTechnical:"Problème technique",supportCategoryAccount:"Compte et connexion",supportCategorySubscription:"VIP et abonnement",supportCategoryContent:"Lettres et textes",supportCategoryFeedback:"Idée ou avis",supportCategoryOther:"Autre"
   });
   Object.assign(UI.ru, {
-    accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и музыка остаются только на этом устройстве.",
+    accountTitle:"Сохранение",accountGuestNote:"Сохраните письма и настройки на всех своих устройствах.",accountPrivacy:"Личные фото и аудио остаются только на этом устройстве.",
     focusRead:"Режим чтения",focusExit:"Вернуться",focusHint:"← Свайп или стрелки →"
   });
   Object.assign(UI.en, {
@@ -199,13 +199,13 @@
     focusRead:"Mode lecture",focusExit:"Retour",focusHint:"← Balayage ou flèches →"
   });
   Object.assign(UI.ru, {
-    music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioSkippedSignIn:"Письмо отправлено без мелодии: чтобы вложить своё аудио, войдите в аккаунт.",audioSkippedFailed:"Письмо отправлено без мелодии: не удалось её загрузить.",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
+    music:"Аудио письма",customMusic:"Добавить своё аудио",customMusicNote:"MP3, M4A, AAC, OGG или WAV · до 12 МБ",audioShareNote:"В персональной ссылке аудио доступно получателю до 12 часов.",removeAudio:"× Убрать аудио",soundOnAria:"Включить аудио",soundOffAria:"Выключить аудио",audioTooLarge:"Выберите аудио размером до 12 МБ",audioUnsupported:"Поддерживаются MP3, M4A, AAC, OGG и WAV",audioSignIn:"Чтобы безопасно добавить аудио в ссылку, войдите в аккаунт или уберите аудио",audioPreparing:"Готовлю временное аудио для получателя…",audioSkippedSignIn:"Письмо отправлено без аудио: чтобы вложить своё аудио, войдите в аккаунт.",audioSkippedFailed:"Письмо отправлено без аудио: не удалось его загрузить.",audioShareFailed:"Не удалось безопасно добавить аудио. Проверьте интернет и повторите.",audioExpired:"Срок доступа к аудио закончился",audioPlayFail:"Нажмите ещё раз, чтобы включить аудио",audioRemoved:"Аудио убрано",accountPrivacy:"Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов."
   });
   Object.assign(UI.en, {
-    music:"Letter audio",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB",audioShareNote:"In a personal link, recipients can play the audio for up to 12 hours.",removeAudio:"× Remove audio",soundOnAria:"Play audio",soundOffAria:"Pause audio",audioTooLarge:"Choose an audio file up to 12 MB",audioUnsupported:"MP3, M4A, AAC, OGG, and WAV are supported",audioSignIn:"Sign in to attach audio securely, or remove the audio before sharing",audioPreparing:"Preparing temporary audio for the recipient…",audioSkippedSignIn:"The letter was shared without the melody: sign in to attach your own audio.",audioSkippedFailed:"The letter was shared without the melody: it could not be uploaded.",audioShareFailed:"Audio could not be attached securely. Check your connection and try again.",audioExpired:"This audio link has expired",audioPlayFail:"Tap again to play audio",audioRemoved:"Audio removed",accountPrivacy:"Personal audio stays on this device; a temporary copy is available for up to 12 hours only when you share a personal link."
+    music:"Letter audio",customMusic:"Add your own audio",customMusicNote:"MP3, M4A, AAC, OGG, or WAV · up to 12 MB",audioShareNote:"In a personal link, recipients can play the audio for up to 12 hours.",removeAudio:"× Remove audio",soundOnAria:"Play audio",soundOffAria:"Pause audio",audioTooLarge:"Choose an audio file up to 12 MB",audioUnsupported:"MP3, M4A, AAC, OGG, and WAV are supported",audioSignIn:"Sign in to attach audio securely, or remove the audio before sharing",audioPreparing:"Preparing temporary audio for the recipient…",audioSkippedSignIn:"The letter was shared without the audio: sign in to attach your own audio.",audioSkippedFailed:"The letter was shared without the audio: it could not be uploaded.",audioShareFailed:"Audio could not be attached securely. Check your connection and try again.",audioExpired:"This audio link has expired",audioPlayFail:"Tap again to play audio",audioRemoved:"Audio removed",accountPrivacy:"Personal audio stays on this device; a temporary copy is available for up to 12 hours only when you share a personal link."
   });
   Object.assign(UI.fr, {
-    music:"Audio de la lettre",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",audioShareNote:"Dans un lien personnel, le destinataire peut écouter l’audio pendant 12 heures maximum.",removeAudio:"× Retirer l’audio",soundOnAria:"Lire l’audio",soundOffAria:"Mettre l’audio en pause",audioTooLarge:"Choisissez un fichier audio de 12 Mo maximum",audioUnsupported:"Formats acceptés : MP3, M4A, AAC, OGG et WAV",audioSignIn:"Connectez-vous pour joindre l’audio en sécurité, ou retirez-le avant le partage",audioPreparing:"Préparation de l’audio temporaire pour le destinataire…",audioSkippedSignIn:"La lettre a été partagée sans la mélodie : connectez-vous pour joindre votre audio.",audioSkippedFailed:"La lettre a été partagée sans la mélodie : le téléversement a échoué.",audioShareFailed:"Impossible de joindre l’audio en sécurité. Vérifiez la connexion et réessayez.",audioExpired:"Le lien audio a expiré",audioPlayFail:"Touchez à nouveau pour lire l’audio",audioRemoved:"Audio retiré",accountPrivacy:"L’audio personnel reste sur cet appareil ; une copie temporaire est disponible jusqu’à 12 heures uniquement lors du partage d’un lien personnel."
+    music:"Audio de la lettre",customMusic:"Ajouter votre propre audio",customMusicNote:"MP3, M4A, AAC, OGG ou WAV · 12 Mo maximum",audioShareNote:"Dans un lien personnel, le destinataire peut écouter l’audio pendant 12 heures maximum.",removeAudio:"× Retirer l’audio",soundOnAria:"Lire l’audio",soundOffAria:"Mettre l’audio en pause",audioTooLarge:"Choisissez un fichier audio de 12 Mo maximum",audioUnsupported:"Formats acceptés : MP3, M4A, AAC, OGG et WAV",audioSignIn:"Connectez-vous pour joindre l’audio en sécurité, ou retirez-le avant le partage",audioPreparing:"Préparation de l’audio temporaire pour le destinataire…",audioSkippedSignIn:"La lettre a été partagée sans l’audio : connectez-vous pour joindre votre audio.",audioSkippedFailed:"La lettre a été partagée sans l’audio : le téléversement a échoué.",audioShareFailed:"Impossible de joindre l’audio en sécurité. Vérifiez la connexion et réessayez.",audioExpired:"Le lien audio a expiré",audioPlayFail:"Touchez à nouveau pour lire l’audio",audioRemoved:"Audio retiré",accountPrivacy:"L’audio personnel reste sur cet appareil ; une copie temporaire est disponible jusqu’à 12 heures uniquement lors du partage d’un lien personnel."
   });
 
   const PICKER_TEXT = {
@@ -538,6 +538,11 @@
   let customAudioName = "";
   let customAudioFingerprint = "";
   let outgoingAudioShare = null;
+  let incomingQrAudio = null;
+  let publicationContext = { kind: "direct", audio: false };
+  let currentQrPublicId = "";
+  let qrAudioSync = null;
+  let audioPickFromPublication = false;
   let incomingSharedAudioToken = readSharedAudioToken(location.href);
   let resolvedSharedAudio = null;
   let audioRecoveryAttempted = false;
@@ -570,6 +575,8 @@
   let deferredInstallPrompt = null;
   let publicationResolver = null;
   let activeReportContext = null;
+  let activeReplyContext = null;
+  let replySending = false;
   let reportSubmitting = false;
   let weatherEnabled = !IS_ANDROID_PLAY_APP && localStorage.getItem("nurWeather") === "on";
   let weatherSnapshot = null;
@@ -3470,7 +3477,8 @@
       const senderStrong = document.createElement("strong"); senderStrong.id = "homeFrom"; senderStrong.textContent = displayName(fromName); senderLine.append(senderStrong);
     }
     setText("#openStoryButton > span:last-child", t("open"));
-    $("#momentsOpenHome").innerHTML = `<span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span> ${escapeHtml(t("momentsHome"))}`;
+    $("#momentsOpenHome").innerHTML = `<span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span> ${escapeHtml(t("momentsHome"))} <b class="replies-badge" id="momentsRepliesBadge" hidden>0</b>`;
+    updateRepliesBadge(window.GlowLetterMoments?.unseenReplies?.() || 0);
     const freeNote = $(".free-note");
     const freeSpans = $$(".free-note span"); if (freeSpans[0]) freeSpans[0].textContent = t("free"); if (freeSpans[1]) freeSpans[1].innerHTML = `${escapeHtml(t("full"))} <span class="price-label">${escapeHtml(premiumPrice)}</span>`;
     if (freeNote) freeNote.hidden = isPremium;
@@ -3484,7 +3492,7 @@
     setText("#setupTitle", t("setupTitle")); setText(".setup-note", t("setupNote")); setText("#setupSubmitLabel", t("setupSubmit")); setText("#setupError", t("namesSafety"));
     const setupLabels = $$("#setupForm .simple-form label > span"); if (setupLabels[0]) setupLabels[0].textContent = t("fromWho"); if (setupLabels[1]) setupLabels[1].textContent = t("forWho");
     $("#setupSenderName").placeholder = t("setupSenderPlaceholder"); $("#setupRecipientName").placeholder = t("setupRecipientPlaceholder");
-    setText("#libraryTitle", t("library")); setText("#homeNewPoemLabel", t("homeNewPoem")); updateLetterPickerNote(); setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
+    setText("#libraryTitle", t("library")); setText("#homeNewPoemLabel", t("homeNewPoem")); applyReplyLanguage(); updateLetterPickerNote(); setText("#accessLabel", isPremium ? t("allCount") : t("openCount"));
     setText(".library-summary > span", t("collectionNote"));
     const categories = { all: t("all"), warm: t("warm"), gratitude: t("gratitude"), support: t("support"), family: t("family"), poem: t("poem") }; $$("#categoryRow button").forEach(button => button.textContent = categories[button.dataset.category]);
     setText("#settingsTitle", t("settings")); setText("#settingsLetterTitle", t("settingsLetter")); setText("#settingsAtmosphereTitle", t("settingsAtmosphere")); setText("#settingsLookTitle", t("settingsLook")); setText("#settingsSoundTitle", t("settingsSound")); setText("#settingsAccountTitle", t("settingsAccountSection")); setText("#settingsAppTitle", t("settingsApp")); setText(".language-picker legend", t("langLabel")); setText("#customBackgroundButton", t("choosePhoto")); setText("#resetBackgroundButton", t("resetPhoto"));
@@ -3501,7 +3509,7 @@
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));
     setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#settingsRestoreButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("subscriptionRestore"))}`; renderSubscriptionCard(); renderAppUpdate(); $$(".password-toggle").forEach(toggle => { const input = document.getElementById(toggle.getAttribute("aria-controls") || ""); if (input) renderPasswordToggle(toggle, input); }); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
-    setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));
+    setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));renderPublicationAudio();
     setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]||CONTENT_REPORT_OPTIONS.en);
     $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
     $("#qrTitle").innerHTML = t("qrTitle"); setText("#qrLead", t("qrLead")); setText("#qrPreviewCaption", currentQrMode === "personal" && currentQrCaption ? currentQrCaption : t("qrCaption")); setText("#qrPrivacy", t("qrPrivacy")); setText("#qrGenerateButton > span:nth-child(2)", t("qrGenerate")); setText("#qrDownloadButton", t("qrDownload")); setText("#qrCopyLinkButton", t("qrCopyLink")); setText("#qrCopyImageButton", t("qrCopyImage")); setText("#qrPrintButton", t("qrPrint")); setText("#qrPdfButton", t("qrPdf")); setText("#qrSendButton", t("qrSend")); setText("#qrSendTitle", t("qrSendTitle")); setText("#qrSendLead", t("qrSendLead")); setText("#qrSendWhatsapp span", t("shareWhatsapp")); setText("#qrSendTelegram span", t("shareTelegram")); setText("#qrSendSms span", t("qrSendSms")); setText("#qrSendEmail span", t("shareEmail")); setText("#qrSendOther span", t("qrSendOther")); setText("#qrSendFile span", t("qrSendFile")); setText("#qrSendCopy span", t("shareCopy")); setText("#composerEyebrow", t("composerEyebrow")); setText("#composerTitle", t("composerTitle")); setText("#composerLead", t("composerLead")); setText("#composerDoneLabel", t("composerDone")); setText("#composerCollection span", t("composerCollection")); const composerField = $("#composerText"); if (composerField) composerField.placeholder = t("composerPlaceholder"); updateComposerCounter(); const qrNameLabels=$$("#qrForm .simple-form label > span");if(qrNameLabels[0])qrNameLabels[0].textContent=t("fromWho");if(qrNameLabels[1])qrNameLabels[1].textContent=t("forWho");$("#qrSenderName").placeholder=t("setupSenderPlaceholder");$("#qrRecipientName").placeholder=t("setupRecipientPlaceholder");setText("#qrNamesError",t("namesSafety")); if(currentQrUrl) renderCurrentQr(false);
@@ -3718,6 +3726,7 @@
     $("#favoriteButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-bookmark"/></svg> ${escapeHtml(favorite ? t("favorite") : t("saved"))}`;
     if (!entry.shared) localStorage.setItem("nurLetterIndex", String(entry.id));
     updateUrl(Boolean(entry.shared));
+    updateReplyBar();
     scheduleCloudSync();
   }
 
@@ -4073,6 +4082,134 @@
     const author = cleanCatalogAuthor($("#adminCatalogAuthor")?.value);
     closePanel(layers.settings);
     displayPersonalLetter(author ? `${text}\n\n— ${author}` : text, null, "custom");
+  }
+
+  // ── Ответ получателя и «сохранить письмо себе» ──
+  // Под QR-письмом получатель одним касанием отвечает отправителю (реакция и,
+  // по желанию, пара слов) через функцию reply-letter и может сохранить письмо
+  // в свои «Моменты». Отправитель видит ответы и факт открытия в истории.
+  const REPLY_REACTIONS = ["heart", "thanks", "smile", "tears"];
+  const REPLY_SYMBOLS = Object.freeze({ heart: "❤️", thanks: "🙏", smile: "😊", tears: "🥹" });
+  const REPLY_STORAGE_KEY = "glowletterRepliesSentV1";
+  const SAVED_LETTERS_KEY = "glowletterSavedLettersV1";
+
+  function readJsonStorage(key) {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || "null");
+      return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    } catch { return {}; }
+  }
+  function writeJsonStorage(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} }
+  function sharedLetterKey() {
+    if (activeReplyContext?.publicId) return activeReplyContext.publicId;
+    const text = String(sharedMessage || "");
+    let hash = 5381;
+    for (let index = 0; index < text.length; index += 1) hash = ((hash * 33) ^ text.charCodeAt(index)) >>> 0;
+    return text ? `direct:${hash.toString(16)}` : "";
+  }
+  function reactionKey(reaction) { return `reaction${reaction[0].toUpperCase()}${reaction.slice(1)}`; }
+  function applyReplyLanguage() {
+    REPLY_REACTIONS.forEach(reaction => setText(`#${reactionKey(reaction)}Label`, t(reactionKey(reaction))));
+    setText("#replyMessageLabel", t("replyMessageLabel"));
+    setText("#replySendLabel", t("replySend"));
+    updateReplyBar();
+  }
+  function setReplyStatus(message = "", state = "") {
+    const status = $("#replyStatus");
+    if (!status) return;
+    status.textContent = message;
+    if (state) status.dataset.state = state; else delete status.dataset.state;
+  }
+  function updateReplyBar() {
+    const bar = $("#replyBar");
+    if (!bar) return;
+    const entry = currentEntry();
+    const key = sharedLetterKey();
+    const visible = Boolean(storyOpened && entry?.shared && sharedMessage && key);
+    bar.hidden = !visible;
+    if (!visible) return;
+    const canReply = Boolean(activeReplyContext?.publicId);
+    const sent = readJsonStorage(REPLY_STORAGE_KEY)[key];
+    const saved = readJsonStorage(SAVED_LETTERS_KEY)[key];
+    setText("#replyTitle", canReply ? t("replyTitle") : t("saveLetter"));
+    setText("#replyLead", canReply ? t("replyLead").replace("{name}", displayName(fromName)) : t("saveLetterLead"));
+    $("#replyReactions").hidden = !canReply;
+    $("#replyField").hidden = !canReply || Boolean(sent);
+    $("#replySend").hidden = !canReply || Boolean(sent);
+    REPLY_REACTIONS.forEach(reaction => {
+      const button = $(`#replyReactions [data-reaction="${reaction}"]`);
+      if (!button) return;
+      button.setAttribute("aria-pressed", String(sent?.reaction === reaction));
+      button.disabled = Boolean(sent) || replySending;
+    });
+    if (sent && !replySending) setReplyStatus(t("replySent"), "success");
+    const saveButton = $("#saveLetterButton");
+    if (saveButton) saveButton.disabled = Boolean(saved);
+    setText("#saveLetterLabel", saved ? t("saveLetterDone") : t("saveLetter"));
+  }
+  async function sendLetterReply(reaction) {
+    if (replySending || !activeReplyContext?.publicId || !SUPABASE_URL) return;
+    const chosen = REPLY_REACTIONS.includes(reaction) ? reaction : "heart";
+    const field = $("#replyMessage");
+    const message = String(field?.value || "").normalize("NFKC").replace(/\s+/gu, " ").trim().slice(0, 240);
+    if (message && containsForbidden(message)) { setReplyStatus(t("replyFailed"), "error"); return; }
+    replySending = true;
+    setReplyStatus(t("replySending"));
+    updateReplyBar();
+    try {
+      const headers = { "Content-Type": "application/json", Accept: "application/json" };
+      if (SUPABASE_PUBLISHABLE_KEY) headers.apikey = SUPABASE_PUBLISHABLE_KEY;
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/reply-letter`, {
+        method: "POST", headers, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer",
+        body: JSON.stringify({ publicId: activeReplyContext.publicId, reaction: chosen, message, language: lang })
+      });
+      if (response.status === 429) throw new Error("rate_limited");
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const sent = readJsonStorage(REPLY_STORAGE_KEY);
+      sent[sharedLetterKey()] = { reaction: chosen, at: Date.now() };
+      writeJsonStorage(REPLY_STORAGE_KEY, sent);
+      if (field) field.value = "";
+      replySending = false;
+      setReplyStatus(t("replySent"), "success");
+      showToast(t("replySent"), 2600);
+    } catch (error) {
+      replySending = false;
+      setReplyStatus(t(error?.message === "rate_limited" ? "replyRate" : "replyFailed"), "error");
+    }
+    updateReplyBar();
+  }
+  async function saveSharedLetterToSelf() {
+    const text = String(sharedMessage || "").trim();
+    const key = sharedLetterKey();
+    if (!text || !key) return;
+    const saved = readJsonStorage(SAVED_LETTERS_KEY);
+    if (saved[key]) return;
+    const ready = await initializeMomentsIntegration();
+    const moments = window.GlowLetterMoments;
+    if (!ready || typeof moments?.recordLetter !== "function") { showToast(t("replyFailed"), 2600); return; }
+    try {
+      const row = await moments.recordLetter({ source: "received", text, sender: fromName, recipient: toName, language: lang, note: "" });
+      if (!row) throw new Error("not_saved");
+      saved[key] = { at: Date.now(), id: row.id };
+      writeJsonStorage(SAVED_LETTERS_KEY, saved);
+      showToast(t("saveLetterDone"), 2600);
+    } catch (error) {
+      console.info("Saving the received letter failed", error);
+      showToast(t("replyFailed"), 2600);
+    }
+    updateReplyBar();
+  }
+  function updateRepliesBadge(count) {
+    const badge = $("#momentsRepliesBadge");
+    if (!badge) return;
+    const value = Math.max(0, Math.round(Number(count) || 0));
+    badge.hidden = value === 0;
+    badge.textContent = value > 99 ? "99+" : String(value);
+  }
+  function replyToastText(reply) {
+    const symbol = REPLY_SYMBOLS[reply?.reaction] || REPLY_SYMBOLS.heart;
+    const text = reply?.message ? `${symbol} ${reply.message}` : symbol;
+    return t("replyToast").replace("{name}", displayName(reply?.recipient || "")).replace("{reply}", text);
   }
 
   function pickerText(key) {
@@ -4585,14 +4722,100 @@
     $("#soundButton").setAttribute("aria-pressed", "false");
   }
 
+  // «Своё аудио» прямо в окне перед отправкой: тот же файл, что и в настройках.
+  function renderPublicationAudio() {
+    const row = $("#publicationAudio");
+    if (!row) return;
+    row.hidden = !publicationContext.audio;
+    if (row.hidden) return;
+    const hasAudio = customAudioBlob instanceof Blob;
+    const signedIn = Boolean(cloudUser?.id);
+    row.classList.toggle("has-audio", hasAudio);
+    $("#publicationAudioButton")?.setAttribute("aria-pressed", String(hasAudio));
+    $("#publicationAudioIcon")?.setAttribute("href", hasAudio ? "#ic-check" : "#ic-plus");
+    setText("#publicationAudioTitle", hasAudio ? (customAudioName || t("customMusic")) : t("customMusic"));
+    let note = t("publishAudioNote");
+    if (hasAudio) note = signedIn ? t(publicationContext.kind === "qr" ? "publishAudioQr" : "publishAudioLink") : t("publishAudioSignIn");
+    setText("#publicationAudioNote", note);
+    const remove = $("#publicationAudioRemove");
+    if (remove) { remove.hidden = !hasAudio; setText("#publicationAudioRemove", t("removeAudio")); }
+    const signIn = $("#publicationAudioSignIn");
+    if (signIn) { signIn.hidden = !(hasAudio && !signedIn); setText("#publicationAudioSignIn", t("publishAudioSignInButton")); }
+  }
+
+  // Аудио QR-письма: после согласия файл загружается и привязывается к ссылке.
+  // Письмо уходит и без него — как и в обычной ссылке.
+  async function syncQrAudio() {
+    if (currentQrMode !== "personal" || !currentQrPublicId || !(customAudioBlob instanceof Blob)) return;
+    const publicId = currentQrPublicId;
+    if (!customAudioFingerprint) customAudioFingerprint = audioFingerprint();
+    if (qrAudioSync?.publicId === publicId && qrAudioSync.fingerprint === customAudioFingerprint) return;
+    try {
+      const token = await ensureTemporarySharedAudio();
+      const result = await sharedAudioRequest("attach", { shareToken: token, publicId }, true);
+      if (result.attached !== true) throw new Error("audio_attach_failed");
+      if (outgoingAudioShare && result.expiresAt) {
+        outgoingAudioShare.expiresAt = result.expiresAt;
+        try { await persistCustomAudio(); } catch {}
+      }
+      qrAudioSync = { publicId, fingerprint: customAudioFingerprint };
+      window.GlowLetterMoments?.setLinkAudio?.(publicId, true);
+      showToast(t("publishAudioAttached"));
+    } catch (error) {
+      if (error?.message === "authentication_required") showToast(t("audioSkippedSignIn"), 6000);
+      else if (error?.message === "invalid_audio_metadata") showToast(t("audioUnsupported"), 5200);
+      else showToast(t("audioSkippedFailed"), 5200);
+    }
+  }
+
+  async function detachCurrentQrAudio() {
+    if (!currentQrPublicId) return;
+    const publicId = currentQrPublicId;
+    qrAudioSync = null;
+    try {
+      const result = await sharedAudioRequest("detach", { publicId }, true);
+      if (result.detached === true) window.GlowLetterMoments?.setLinkAudio?.(publicId, false);
+    } catch {}
+  }
+
+  function normalizeQrAudio(value) {
+    if (!value || typeof value !== "object") return null;
+    const url = String(value.url || "");
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol !== "https:" || parsed.origin !== new URL(SUPABASE_URL).origin) return null;
+    } catch { return null; }
+    const expiresIn = Math.max(30, Math.min(Number(value.expiresIn) || 300, 3600));
+    return { url, contentType: String(value.contentType || ""), refreshAt: Date.now() + (expiresIn - 20) * 1000 };
+  }
+
+  // Подписанная ссылка живёт 20 минут; обновление через `audio=refresh` не
+  // считается новым открытием письма.
+  async function resolveIncomingQrAudio(force = false) {
+    if (!incomingQrAudio?.publicId) throw new Error("audio_unavailable");
+    if (!force && incomingQrAudio.url && incomingQrAudio.refreshAt > Date.now()) return incomingQrAudio.url;
+    if (!/^https:\/\//iu.test(SUPABASE_URL)) throw new Error("audio_unavailable");
+    const headers = { Accept: "application/json" };
+    if (SUPABASE_PUBLISHABLE_KEY) headers.apikey = SUPABASE_PUBLISHABLE_KEY;
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/resolve-letter?public_id=${encodeURIComponent(incomingQrAudio.publicId)}&audio=refresh`, { headers, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" });
+    if (response.status === 404) throw new Error("audio_unavailable");
+    if (!response.ok) throw new Error("audio_service_unavailable");
+    const payload = await response.json();
+    const refreshed = normalizeQrAudio(payload?.audio);
+    if (!refreshed) throw new Error("audio_unavailable");
+    incomingQrAudio = { ...incomingQrAudio, ...refreshed };
+    return incomingQrAudio.url;
+  }
+
   function renderAudioControls() {
     const hasLocalAudio = customAudioBlob instanceof Blob;
-    const hasSharedAudio = Boolean(incomingSharedAudioToken);
+    const hasSharedAudio = Boolean(incomingSharedAudioToken) || Boolean(incomingQrAudio?.url);
     selectedTrack = hasLocalAudio ? 3 : -1;
     $("#customTrackButton")?.classList.toggle("is-active", hasLocalAudio);
     if ($("#customTrackName")) $("#customTrackName").textContent = hasLocalAudio ? (customAudioName || t("customMusic")) : t("customMusicNote");
     if ($("#removeAudioButton")) $("#removeAudioButton").hidden = !hasLocalAudio;
     if ($("#soundButton")) $("#soundButton").hidden = !(hasLocalAudio || hasSharedAudio);
+    renderPublicationAudio();
   }
 
   async function persistCustomAudio() {
@@ -4674,6 +4897,9 @@
     if (incomingSharedAudioToken) {
       currentAudioUrl = await resolveIncomingSharedAudio(refreshRemote);
       audio.src = currentAudioUrl;
+    } else if (incomingQrAudio?.publicId) {
+      currentAudioUrl = await resolveIncomingQrAudio(refreshRemote);
+      audio.src = currentAudioUrl;
     } else if (customAudioBlob) {
       currentAudioUrl = URL.createObjectURL(customAudioBlob);
       audio.src = currentAudioUrl;
@@ -4685,8 +4911,8 @@
 
   async function playMusic(quiet = false) {
     // Тихий режим не должен прятать проблему, когда в письме действительно
-    // есть мелодия: иначе получатель просто не понимает, почему тишина.
-    const silent = quiet && !incomingSharedAudioToken;
+    // есть аудио: иначе получатель просто не понимает, почему тишина.
+    const silent = quiet && !incomingSharedAudioToken && !incomingQrAudio;
     try {
       if (!audio.src) await setAudioSource();
       await audio.play();
@@ -4700,6 +4926,10 @@
       if (unavailable && incomingSharedAudioToken) {
         incomingSharedAudioToken = "";
         resolvedSharedAudio = null;
+        renderAudioControls();
+        showToast(t("audioExpired"));
+      } else if (unavailable && incomingQrAudio) {
+        incomingQrAudio = null;
         renderAudioControls();
         showToast(t("audioExpired"));
       } else if (!silent) {
@@ -4716,7 +4946,7 @@
     $("#soundButton").setAttribute("aria-label", t("soundOnAria"));
   }
 
-  async function selectCustomAudio(file) {
+  async function selectCustomAudio(file, { play = true } = {}) {
     if (!file) return;
     if (file.size > SHARED_AUDIO_MAX_BYTES) return showToast(t("audioTooLarge"));
     if (!audioDescriptor(file, file.name)) return showToast(t("audioUnsupported"));
@@ -4725,11 +4955,12 @@
     customAudioName = file.name;
     customAudioFingerprint = "";
     outgoingAudioShare = null;
+    qrAudioSync = null;
     selectedTrack = 3;
     localStorage.setItem("nurTrack", "3");
     renderAudioControls();
     try { await persistCustomAudio(); } catch {}
-    await playMusic();
+    if (play) await playMusic();
   }
 
   async function removeCustomAudio() {
@@ -4738,6 +4969,7 @@
     customAudioName = "";
     customAudioFingerprint = "";
     outgoingAudioShare = null;
+    qrAudioSync = null;
     selectedTrack = -1;
     localStorage.removeItem("nurTrack");
     try { await saveMedia("audio", null); } catch {}
@@ -5063,8 +5295,9 @@
     return /^[A-Za-z0-9_-]{16,80}$/u.test(normalized)?normalized:createOpaqueReportReference();
   }
 
-  function requestPublishConsent(){
+  function requestPublishConsent(options={}){
     if(publicationResolver)return Promise.resolve(false);
+    publicationContext={kind:options.kind==="qr"?"qr":"direct",audio:options.audio===true};renderPublicationAudio();
     const checkbox=$("#publicationConsent");checkbox.checked=false;$("#publicationConfirm").disabled=true;$("#publicationError").hidden=true;openPanel(layers.publication);
     return new Promise(resolve=>{publicationResolver=resolve;});
   }
@@ -5072,6 +5305,7 @@
   function finishPublishConsent(accepted){
     if(!publicationResolver){closePanel(layers.publication);return;}
     if(accepted&&!$("#publicationConsent").checked){$("#publicationError").hidden=false;return;}
+    audioPickFromPublication=false;
     const resolve=publicationResolver;publicationResolver=null;closePanel(layers.publication);resolve(Boolean(accepted));
   }
 
@@ -5108,11 +5342,11 @@
     const presentation={glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
     const presentationDefaults={glFrame:"none",glInk:"ink",glType:"classic"};
     Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
-    if(!await requestPublishConsent())return;
+    if(!await requestPublishConsent({kind:"direct",audio:true}))return;
     url.searchParams.set("rid",createOpaqueReportReference());
     let audioToken = incomingSharedAudioToken;
     if(customAudioBlob){
-      // Если мелодию приложить не удалось, письмо всё равно должно уйти: раньше
+      // Если аудио приложить не удалось, письмо всё равно должно уйти: раньше
       // здесь стоял return, и человек без входа в аккаунт вообще не мог
       // поделиться письмом, хотя текст никакого аккаунта не требует.
       try{audioToken=await ensureTemporarySharedAudio();}
@@ -5203,7 +5437,7 @@
   }
 
   function clearQrPreview(){
-    currentQrUrl="";currentQrMode="catalog";currentQrCaption="";currentQrSource="";setQrActionsEnabled(false);setText("#qrRoutePreview","");
+    currentQrUrl="";currentQrMode="catalog";currentQrCaption="";currentQrSource="";currentQrPublicId="";qrAudioSync=null;setQrActionsEnabled(false);setText("#qrRoutePreview","");
     const canvas=$("#qrCanvas");const context=canvas?.getContext?.("2d");if(context){context.save();context.setTransform(1,0,0,1,0,0);context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.restore();}
   }
 
@@ -5222,7 +5456,7 @@
   function renderQrCode(notify=false){
     const sender=cleanName($("#qrSenderName")?.value||"");const recipient=cleanName($("#qrRecipientName")?.value||"");
     const invalid=!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient);$("#qrNamesError").hidden=!invalid;if(invalid){clearQrPreview();return false;}
-    currentQrMode="catalog";currentQrCaption="";currentQrSource="";currentQrUrl=buildPublicQrUrl(sender,recipient);setText("#qrPreviewCaption",t("qrCaption"));
+    currentQrMode="catalog";currentQrCaption="";currentQrSource="";currentQrPublicId="";currentQrUrl=buildPublicQrUrl(sender,recipient);setText("#qrPreviewCaption",t("qrCaption"));
     return drawQrUrl(currentQrUrl,sender,recipient,notify);
   }
 
@@ -5238,8 +5472,10 @@
     safe.hash="";safe.search="";safe.searchParams.set("moment",token);const qrLanguage=payload.language||payload.letter?.language;if(SUPPORTED_LANGUAGES.includes(qrLanguage))safe.searchParams.set("lang",qrLanguage);
     const sender=cleanName(payload.senderName||payload.sender||payload.letter?.sender_name_snapshot)||fromName;const recipient=cleanName(payload.recipientName||payload.recipient||payload.letter?.recipient_name_snapshot)||toName;
     if(!sender||!recipient||containsForbidden(sender)||containsForbidden(recipient))throw new Error("invalid_qr_names");
-    currentQrMode="personal";currentQrSource=String(payload.letter?.source||payload.source||"");currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle",de:"Persönlicher Brief",es:"Carta personal",it:"Lettera personale",pl:"Osobisty list",uk:"Особистий лист",pt:"Carta pessoal",nl:"Persoonlijke brief",tr:"Kişisel mektup",ro:"Scrisoare personală",cs:"Osobní dopis",sv:"Personligt brev",el:"Προσωπικό γράμμα",da:"Personligt brev",no:"Personlig brev",fi:"Henkilökohtainen kirje",ja:"あなたへの手紙",ko:"개인 편지",zh:"私人信件",th:"จดหมายส่วนตัว",ar:"رسالة شخصية",ind:"Surat pribadi",vi:"Thư riêng"}[lang]||"Personal letter")).slice(0,48);currentQrUrl=safe.toString();
-    $("#qrSenderName").value=sender;$("#qrRecipientName").value=recipient;$("#qrNamesError").hidden=true;setText("#qrPreviewCaption",currentQrCaption);drawQrUrl(currentQrUrl,sender,recipient,false);openPanel(layers.qr);
+    currentQrMode="personal";currentQrSource=String(payload.letter?.source||payload.source||"");currentQrCaption=String(payload.caption||({ru:"Личное письмо",en:"Personal letter",fr:"Lettre personnelle",de:"Persönlicher Brief",es:"Carta personal",it:"Lettera personale",pl:"Osobisty list",uk:"Особистий лист",pt:"Carta pessoal",nl:"Persoonlijke brief",tr:"Kişisel mektup",ro:"Scrisoare personală",cs:"Osobní dopis",sv:"Personligt brev",el:"Προσωπικό γράμμα",da:"Personligt brev",no:"Personlig brev",fi:"Henkilökohtainen kirje",ja:"あなたへの手紙",ko:"개인 편지",zh:"私人信件",th:"จดหมายส่วนตัว",ar:"رسالة شخصية",ind:"Surat pribadi",vi:"Thư riêng"}[lang]||"Personal letter")).slice(0,48);currentQrUrl=safe.toString();currentQrPublicId=token;
+    qrAudioSync=payload.hasAudio===true&&customAudioFingerprint&&outgoingAudioShare?.fingerprint===customAudioFingerprint?{publicId:token,fingerprint:customAudioFingerprint}:null;
+    $("#qrSenderName").value=sender;$("#qrRecipientName").value=recipient;$("#qrNamesError").hidden=true;if(payload.consented===true)qrConsentKey=qrConsentSignature();setText("#qrPreviewCaption",currentQrCaption);drawQrUrl(currentQrUrl,sender,recipient,false);openPanel(layers.qr);
+    if(qrConsentKey===qrConsentSignature()&&customAudioBlob)syncQrAudio().catch(()=>{});
   }
 
   function openResolvedMoment(payload={}){
@@ -5249,7 +5485,9 @@
     if(SUPPORTED_LANGUAGES.includes(payload.language)&&UI[payload.language])lang=payload.language;
     setNames(sender,recipient,{persist:false,explicit:false});
     sharedMessage=value;letterDeck=[{id:"shared",category:"warm",shared:true,ru:value,en:value,fr:value},...LETTERS];currentIndex=0;
-    activeReportContext={kind:"moment_letter",contentRef:safeReportReference(payload.publicId),momentPublicId:String(payload.publicId||""),sender,recipient,text:value,audioAttached:false};updateReportButton();
+    const qrAudio=normalizeQrAudio(payload.audio);
+    activeReportContext={kind:"moment_letter",contentRef:safeReportReference(payload.publicId),momentPublicId:String(payload.publicId||""),sender,recipient,text:value,audioAttached:Boolean(qrAudio)};updateReportButton();activeReplyContext={publicId:String(payload.publicId||""),sender,recipient};
+    incomingQrAudio=null;if(qrAudio&&payload.publicId){clearAudioSource();incomingQrAudio={publicId:String(payload.publicId),...qrAudio};resolvedSharedAudio=null;audioRecoveryAttempted=false;}renderAudioControls();
     const safe=new URL(`${location.origin}${location.pathname}`);safe.search="";safe.hash="";const token=String(payload.publicId||params.get("moment")||"");if(token)safe.searchParams.set("moment",token);safe.searchParams.set("lang",lang);history.replaceState({},"",safe);
     applyLanguage(false);Object.values(layers).forEach(closePanel);if(!storyOpened)openStory();else renderLetter();
   }
@@ -5319,7 +5557,8 @@
           senderName: letter.sender_name,
           recipientName: letter.recipient_name,
           language: letter.language,
-          publicId: detail.publicId
+          publicId: detail.publicId,
+          audio: letter.audio
         });
         window.GlowLetterMoments?.close();
       } catch (error) {
@@ -5338,8 +5577,11 @@
       getUser: () => window.GlowLetterCloud?.getUser?.() || cloudUser,
       getLanguage: () => lang,
       requestSignIn: () => requestSignIn("moments"),
+      notifyReply: reply => showToast(replyToastText(reply), 4200),
+      notifyOpened: link => showToast(t("openedToast").replace("{name}", displayName(link?.recipient || "")), 3600),
+      onRepliesChanged: count => updateRepliesBadge(count),
       openComposer: request => window.GlowLetterApp.openComposer(momentsComposerRequest(request)),
-      requestPublishConsent: () => requestPublishConsent(),
+      requestPublishConsent: () => requestPublishConsent({ kind: "qr", audio: true }),
       reportContent: request => openContentReport({kind:"moment_letter",contentRef:request?.publicId,momentPublicId:request?.publicId,sender:request?.sender,recipient:request?.recipient,text:request?.text,audioAttached:false}),
       openQr: request => window.GlowLetterApp.openQr({
         ...request,
@@ -5428,8 +5670,9 @@
   // Согласие на публикацию спрашивается один раз на ссылку, а не на каждую кнопку.
   function qrConsentSignature(){return `${currentQrMode}|${cleanName($("#qrSenderName")?.value||"")}|${cleanName($("#qrRecipientName")?.value||"")}|${currentQrMode==="personal"?currentQrUrl:""}`;}
   async function qrConsent(){
-    if(qrConsentKey&&qrConsentKey===qrConsentSignature())return true;
-    const accepted=await requestPublishConsent();if(accepted)qrConsentKey=qrConsentSignature();return accepted;
+    if(qrConsentKey&&qrConsentKey===qrConsentSignature()){await syncQrAudio();return true;}
+    const personal=currentQrMode==="personal";
+    const accepted=await requestPublishConsent({kind:personal?"qr":"direct",audio:personal});if(accepted){qrConsentKey=qrConsentSignature();await syncQrAudio();}return accepted;
   }
   // PDF из одной страницы A6 с JPEG-картинкой карточки; без библиотек.
   async function jpegToPdf(jpegBlob,pixelWidth,pixelHeight,pageWidth,pageHeight){
@@ -5526,7 +5769,7 @@
     $("#quoteList").addEventListener("click",event=>{const action=event.target.closest("[data-action]");const card=event.target.closest(".quote-card");if(!action||!card)return;const id=Number(card.dataset.id);if(action.dataset.action==="unlock")openPaywall();else if(action.dataset.action==="own")openOwnTextComposer(letterPickerContext);else if(action.dataset.action==="pick")pickLetterForContext(id);else if(action.dataset.action==="open")openQuoteById(id);else if(action.dataset.action==="copy"){const entry=LETTERS.find(item=>Number(item.id)===id);if(canAccess(entry))copyText(entryLetterText(entry));else openPaywall();}});
     $("#languageButton").addEventListener("click",()=>openPanel(layers.language));$("#languageClose").addEventListener("click",()=>closePanel(layers.language));$("#languageBackdrop").addEventListener("click",()=>closePanel(layers.language));$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;rememberLanguageChoice();applyLanguage();scheduleCloudSync();if(layers.language.contains(button))closePanel(layers.language);}));
     $("#rainToggle").addEventListener("click",()=>{rainScene.setEnabled(!rainScene.enabled);showToast(rainScene.enabled?t("rainOn"):t("rainOff"));});$("#natureButton").addEventListener("click",toggleNature);$("#natureToggle").addEventListener("click",toggleNature);$("#weatherButton").addEventListener("click",()=>refreshWeather());$("#weatherToggle").addEventListener("click",toggleWeather);$("#fullscreenToggle").addEventListener("click",toggleFullscreen);
-    $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";await selectCustomAudio(file);});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!incomingSharedAudioToken||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
+    $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";const fromPublication=audioPickFromPublication;audioPickFromPublication=false;await selectCustomAudio(file,{play:!fromPublication});});$("#publicationAudioButton").addEventListener("click",()=>{audioPickFromPublication=true;$("#customTrackInput").click();});$("#publicationAudioRemove").addEventListener("click",async()=>{await removeCustomAudio();if(publicationContext.kind==="qr")detachCurrentQrAudio();});$("#publicationAudioSignIn").addEventListener("click",()=>{finishPublishConsent(false);requestSignIn("publication");});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!(incomingSharedAudioToken||incomingQrAudio)||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $("#customBackgroundButton").addEventListener("click",()=>$("#customBackgroundInput").click());$("#customBackgroundInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>18*1024*1024)return showToast(t("backgroundTooLarge"));try{const blob=await optimizeBackground(file);applyBackground(blob);await saveMedia("background",{blob});showToast(t("photoReady"));}catch{showToast(t("backgroundFail"));}});$("#resetBackgroundButton").addEventListener("click",resetBackground);
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>requestSignIn("home"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
@@ -5550,13 +5793,16 @@
     $("#adminCatalogText").addEventListener("input",updateAdminCatalogCounter);
     $("#adminCatalogList").addEventListener("click",event=>{const button=event.target.closest("[data-catalog-action]");const item=event.target.closest("li[data-id]");if(!button||!item)return;const id=Number(item.dataset.id);const row=adminCatalogRows.find(entry=>entry.id===id);if(!row)return;const action=button.dataset.catalogAction;if(action==="edit")editAdminCatalogRow(row);else if(action==="hide")changeAdminCatalogStatus(id,"hidden");else if(action==="publish")changeAdminCatalogStatus(id,"published");else if(action==="delete")deleteAdminCatalogRow(id);});
     addEventListener("online",()=>refreshCatalog().catch(error=>console.info("Catalog refresh failed",error)));
+    $("#replyReactions").addEventListener("click",event=>{const button=event.target.closest("[data-reaction]");if(button)sendLetterReply(button.dataset.reaction);});
+    $("#replySend").addEventListener("click",()=>sendLetterReply($("#replyReactions [aria-pressed='true']")?.dataset.reaction||"heart"));
+    $("#saveLetterButton").addEventListener("click",()=>{saveSharedLetterToSelf().catch(error=>console.info("Save letter failed",error));});
     let scenePointerFrame=0,scenePointerX=0,scenePointerY=0;
     addEventListener("pointermove",event=>{if(LITE_DEVICE||innerWidth<900||REDUCED_MOTION.matches)return;scenePointerX=event.clientX;scenePointerY=event.clientY;if(scenePointerFrame)return;scenePointerFrame=requestAnimationFrame(()=>{scenePointerFrame=0;const x=(scenePointerX/innerWidth-.5)*1.2;const y=(scenePointerY/innerHeight-.5)*.8;$("#cinematicBg").style.translate=`${x}% ${y}%`;});},{passive:true});
   }
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=52", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=53", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -5578,7 +5824,11 @@
     if(sharedMessage){activeReportContext={kind:"direct_letter",contentRef:safeReportReference(params.get("rid")),momentPublicId:"",sender:fromName,recipient:toName,text:sharedMessage,audioAttached:Boolean(incomingSharedAudioToken)};}updateReportButton();
     initializeCloudAuth().catch(()=>setCloudStatus("cloudUnavailable"));
     installPasswordToggles();bindEvents();installAutomaticFullscreen();setNames(fromName,toName,{persist:!linkNamesActive,explicit:false});loadCatalogCache();applyLanguage();renderLibrary();requestNativeEntitlement();
-    setTimeout(() => { initializeMomentsIntegration(); }, 0);
+    // moments.js идёт после app.js: таймер в ноль мог сработать до его загрузки,
+    // и письмо по QR-ссылке не открывалось. Ждём DOMContentLoaded, когда все
+    // скрипты страницы уже выполнены.
+    const startMomentsIntegration=()=>{initializeMomentsIntegration();};
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startMomentsIntegration,{once:true});else setTimeout(startMomentsIntegration,0);
     if("serviceWorker" in navigator&&location.protocol.startsWith("http")&&location.hostname!=="appassets.androidplatform.net"){
       const registerServiceWorker=()=>setupServiceWorker().catch(()=>{});
       if(document.readyState==="complete")registerServiceWorker();else addEventListener("load",registerServiceWorker,{once:true});

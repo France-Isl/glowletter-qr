@@ -617,6 +617,18 @@ html[data-gl-platform="android-play"] #weatherToggle { display:none!important; }
 .compliance-card { width:min(520px,calc(100% - 28px)); }
 .publication-consent { display:grid;grid-template-columns:20px 1fr;gap:11px;align-items:start;padding:15px;border:1px solid var(--ui-border);border-radius:16px;color:var(--ui-ink);background:var(--ui-surface);font-size:11px;line-height:1.55;cursor:pointer; }
 .publication-consent input { width:18px;height:18px;margin:1px 0 0;accent-color:var(--ui-accent-deep); }
+.publication-audio { display:grid;gap:8px;margin:0 0 12px; }
+.publication-audio-pick { display:flex;align-items:center;gap:11px;width:100%;min-height:56px;padding:9px 12px;border:1px solid var(--ui-border);border-radius:16px;color:var(--ui-ink);background:var(--ui-surface);font-family:inherit;text-align:start;transition:border-color .2s,background .2s; }
+.publication-audio-pick:focus-visible { outline:2px solid var(--ui-accent);outline-offset:2px; }
+.publication-audio-pick > i { display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;color:var(--cream);background:linear-gradient(145deg,var(--gold),var(--ui-gold));font-style:normal; }
+.publication-audio-pick > span { display:grid;gap:2px;flex:1;min-width:0; }
+.publication-audio-pick strong { overflow:hidden;font-size:13px;text-overflow:ellipsis;white-space:nowrap; }
+.publication-audio-pick small { color:var(--ui-muted);font-size:11px;line-height:1.45; }
+.publication-audio.has-audio .publication-audio-pick { border-color:color-mix(in srgb,var(--ui-accent) 48%,transparent);background:var(--ui-panel); }
+.publication-audio-actions { display:flex;flex-wrap:wrap;gap:8px; }
+.publication-audio-actions:empty { display:none; }
+.publication-audio-actions button { min-height:34px;padding:0 12px;border:1px solid var(--ui-border);border-radius:999px;color:var(--ui-accent-deep);background:var(--ui-surface);font-size:11px;font-weight:800; }
+.publication-audio-actions button[hidden] { display:none; }
 .compliance-links { margin:12px 2px 0;color:var(--ui-muted);font-size:11px;line-height:1.55; }
 .compliance-links a { color:var(--ui-accent-deep);text-underline-offset:2px; }
 .compliance-actions { display:grid;grid-template-columns:.7fr 1.3fr;gap:9px;margin-top:14px; }
@@ -1483,3 +1495,21 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .admin-catalog-row-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .admin-catalog-row-actions button { min-height: 34px; padding: 0 12px; border: 1px solid color-mix(in srgb, var(--ui-accent) 26%, transparent); border-radius: 999px; color: var(--ui-accent-deep); background: var(--ui-soft); font-size: 11px; font-weight: 800; }
 .admin-catalog-row-actions .admin-revoke { color: #6f5f4a; border-color: rgba(111,95,74,.2); background: rgba(253,250,242,.68); }
+
+/* Ответ получателя (2.4.17): реакции, пара слов и «сохранить письмо себе» под QR-письмом. */
+.reply-bar { display: grid; gap: 10px; width: min(560px, 100%); margin: 14px auto 0; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--cream) 17%, transparent); border-radius: 16px; color: var(--cream); background: color-mix(in srgb, var(--night) 62%, transparent); backdrop-filter: blur(10px); }
+.reply-bar h3 { margin: 0; font-size: 16px; font-weight: 800; }
+.reply-bar p { margin: 0; color: color-mix(in srgb, var(--cream) 78%, transparent); font-size: 13px; line-height: 1.45; }
+.reply-reactions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.reply-reactions button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 0 10px; border: 1px solid color-mix(in srgb, var(--gold-bright) 40%, transparent); border-radius: 999px; color: var(--cream); background: color-mix(in srgb, var(--night) 40%, transparent); font-size: 13px; font-weight: 800; }
+.reply-reactions button[aria-pressed="true"] { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 32%, transparent); }
+.reply-reactions button:disabled { opacity: .7; }
+.reply-field { display: grid; gap: 6px; color: color-mix(in srgb, var(--cream) 78%, transparent); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.reply-field textarea { width: 100%; min-height: 64px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--cream) 22%, transparent); border-radius: 14px; color: var(--cream); background: color-mix(in srgb, var(--night) 45%, transparent); font: 500 16px/1.45 "Manrope", system-ui, sans-serif; letter-spacing: 0; text-transform: none; resize: vertical; }
+.reply-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.reply-actions button { min-height: 44px; padding: 0 12px; border: 1px solid color-mix(in srgb, var(--gold-bright) 45%, transparent); border-radius: 999px; color: var(--gold-ink); background: linear-gradient(145deg, var(--gold-bright), var(--gold)); font-size: 13px; font-weight: 800; }
+.reply-actions #saveLetterButton { color: var(--cream); background: color-mix(in srgb, var(--night) 40%, transparent); }
+.reply-actions button:disabled { opacity: .6; }
+.reply-status { min-height: 1.3em; margin: 0; font-size: 13px; }
+.reply-status[data-state="error"], .reply-status[data-state="success"] { color: var(--gold-bright); }
+@media (min-width: 720px) { .reply-reactions { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

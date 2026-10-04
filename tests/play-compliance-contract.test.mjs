@@ -34,15 +34,15 @@ assert.match(styles, /data-gl-platform=["']android-play["'][\s\S]{0,140}#weather
 for (const id of ["publicationLayer", "publicationConsent", "publicationConfirm", "publicationTerms", "publicationPrivacy"]) assert.match(index, new RegExp(`id=["']${id}["']`));
 assert.match(index, /id=["']publicationConfirm["'][^>]*disabled/);
 const shareLetter = app.match(/async function shareLetter\(\)\{([\s\S]*?)\n\s*\}/)?.[1] || "";
-assert.ok(shareLetter.indexOf("await requestPublishConsent()") >= 0);
-assert.ok(shareLetter.indexOf("await requestPublishConsent()") < shareLetter.indexOf("ensureTemporarySharedAudio()"));
+assert.ok(shareLetter.indexOf('await requestPublishConsent({kind:"direct",audio:true})') >= 0);
+assert.ok(shareLetter.indexOf("await requestPublishConsent(") < shareLetter.indexOf("ensureTemporarySharedAudio()"));
 const momentQrStart = moments.indexOf("async function createQrForLetter");
 const momentConsent = moments.indexOf("requestPublishConsent", momentQrStart);
 const momentRpc = moments.indexOf("glowletter_create_qr_link", momentQrStart);
 assert.ok(momentQrStart >= 0 && momentConsent > momentQrStart && momentRpc > momentConsent);
 for (const fn of ["downloadQrCard", "copyQrImage", "copyQrLink", "printQrCard"]) assert.match(app, new RegExp(`(?:async )?function ${fn}\\([^)]*\\)\\{[\\s\\S]{0,500}(?:requestPublishConsent|await qrConsent\\(\\))`));
 // The 2.4.15 buttons ask once per link through qrConsent(), which wraps requestPublishConsent.
-assert.match(app, /async function qrConsent\(\)\{[\s\S]{0,200}requestPublishConsent\(\)/);
+assert.match(app, /async function qrConsent\(\)\{[\s\S]{0,260}requestPublishConsent\(\{kind:/);
 for (const fn of ["downloadQrPdf", "openQrSend", "shareQrLinkNative", "shareQrCardFile"]) assert.match(app, new RegExp(`(?:async )?function ${fn}\\([^)]*\\)\\{[\\s\\S]{0,400}await qrConsent\\(\\)`), `${fn} must ask for publication consent`);
 
 // Recipients get a visible report route backed by a private, rate-limited review queue.

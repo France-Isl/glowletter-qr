@@ -174,7 +174,7 @@ assert.match(experience, /TEXT\[code\] = \{ \.\.\.TEXT\.en, \.\.\.extra\.experie
 for (const table of ["glowletter_progress", "glowletter_people", "glowletter_letters", "glowletter_support_tickets", "glowletter_content_reports"]) {
   assert.match(migration, new RegExp(`${table}_language_check\\s+check \\(language in \\('ru', 'en', 'fr', 'de', 'es', 'it', 'pl', 'uk', 'pt', 'nl', 'tr', 'ro', 'cs', 'sv', 'el', 'da', 'no', 'fi', 'ja', 'ko', 'zh', 'th', 'ar', 'ind', 'vi'\\)\\)`, "u"));
 }
-for (const fn of ["submit-support", "submit-content-report", "resolve-letter"]) {
+for (const fn of ["submit-support", "submit-content-report", "resolve-letter", "reply-letter"]) {
   const source = read(`supabase/functions/${fn}/index.ts`);
   assert.match(source, /"ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"/u, `${fn} languages`);
 }

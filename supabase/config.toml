@@ -405,6 +405,11 @@ verify_jwt = false
 [functions.submit-content-report]
 verify_jwt = false
 
+# Ответ получателя приходит без аккаунта: функция сама ограничивает источник
+# и отдаёт запись в базу через service_role.
+[functions.reply-letter]
+verify_jwt = false
+
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 

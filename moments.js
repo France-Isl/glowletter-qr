@@ -7,6 +7,9 @@
   const MOMENTS_TABLE = "glowletter_moments";
   const LETTERS_TABLE = "glowletter_letters";
   const QR_TABLE = "glowletter_qr_links";
+  const REPLIES_TABLE = "glowletter_letter_replies";
+  const REACTIONS = ["heart", "thanks", "smile", "tears"];
+  const REACTION_SYMBOLS = Object.freeze({ heart: "❤️", thanks: "🙏", smile: "😊", tears: "🥹" });
   const STORAGE_PREFIX = "glowletterMomentsV2:";
   const REMINDER_OPT_IN_PREFIX = "glowletterMomentsReminderOptInV1:";
   const REMINDER_DAYS = Object.freeze([7, 3, 1]);
@@ -19,7 +22,7 @@
   const MOMENT_KINDS = Object.freeze(["birthday", "anniversary", "holiday", "meeting", "other"]);
   // glowletter_letters.source accepts only these four values; the app also
   // speaks of "own", "library" and "catalog" letters.
-  const DB_SOURCES = Object.freeze({ ai: "ai", custom: "custom", own: "custom", template: "template", library: "template", catalog: "template", history: "template", florist: "florist" });
+  const DB_SOURCES = Object.freeze({ ai: "ai", custom: "custom", own: "custom", template: "template", library: "template", catalog: "template", history: "template", florist: "florist", received: "received" });
   // The tables created in August accept "universal" (not "auto"), "yearly"/"none"
   // (not "annual"/"once") and no "meeting"/"other" kinds; rows are written in
   // their vocabulary and read back into the app's.
@@ -68,7 +71,7 @@
       qrCreated: "Постоянный QR готов", qrCreateFailed: "Не удалось создать QR. Проверьте вход и интернет.", qrRevokedDone: "QR отключён", qrRevokeFailed: "Не удалось отключить QR.",
       sharedLoading: "Открываю письмо…", sharedLockedTitle: "Письмо ждёт своего момента", sharedLocked: "Оно откроется {date}.",
       sharedReady: "Письмо для вас", sharedUnavailable: "Эта ссылка недоступна или была отключена.", sharedOffline: "Для открытия письма нужен интернет.", sharedReport: "Пожаловаться на письмо",
-      fromLabel: "От", forLabel: "Для", sourceAi: "Помощник", sourceOwn: "Свой текст", sourceFlorist: "Флорист", sourceCatalog: "Коллекция", sourceUnknown: "Письмо",
+      fromLabel: "От", forLabel: "Для", sourceAi: "Помощник", sourceOwn: "Свой текст", sourceFlorist: "Флорист", sourceCatalog: "Коллекция", sourceUnknown: "Письмо", sourceReceived: "Получено", letterOpenedAt: "Открыто {date}", letterNotOpened: "Ещё не открыто", letterOpenCount: "Открытий: {count}", letterWithAudio: "С аудио",
       relationAuto: "Определить автоматически", relationMother: "Мама", relationFather: "Папа", relationSpouse: "Супруг или супруга", relationChild: "Сын или дочь", relationSibling: "Брат или сестра", relationGrandparent: "Бабушка или дедушка", relationFriend: "Друг или подруга", relationTeacher: "Учитель или наставник", relationUniversal: "Другой человек",
       toneAuto: "Подбирать автоматически", toneLoving: "Тёплый", toneRomantic: "Романтический · супругам", toneClassic: "Классический", toneSupport: "Поддержка", toneGratitude: "Благодарность",
       lengthAuto: "Подбирать автоматически", lengthShort: "Короткое", lengthStandard: "Среднее", lengthDetailed: "Подробное",
@@ -107,7 +110,7 @@
       qrCreated: "Permanent QR is ready", qrCreateFailed: "Could not create the QR. Check your account and connection.", qrRevokedDone: "QR disabled", qrRevokeFailed: "Could not disable the QR.",
       sharedLoading: "Opening the letter…", sharedLockedTitle: "This letter is waiting for its moment", sharedLocked: "It will open {date}.",
       sharedReady: "A letter for you", sharedUnavailable: "This link is unavailable or has been disabled.", sharedOffline: "An internet connection is required to open this letter.", sharedReport: "Report this letter",
-      fromLabel: "From", forLabel: "To", sourceAi: "Assistant", sourceOwn: "Own text", sourceFlorist: "Florist", sourceCatalog: "Collection", sourceUnknown: "Letter",
+      fromLabel: "From", forLabel: "To", sourceAi: "Assistant", sourceOwn: "Own text", sourceFlorist: "Florist", sourceCatalog: "Collection", sourceUnknown: "Letter", sourceReceived: "Received", letterOpenedAt: "Opened {date}", letterNotOpened: "Not opened yet", letterOpenCount: "Opens: {count}", letterWithAudio: "With audio",
       relationAuto: "Detect automatically", relationMother: "Mother", relationFather: "Father", relationSpouse: "Spouse", relationChild: "Son or daughter", relationSibling: "Brother or sister", relationGrandparent: "Grandparent", relationFriend: "Friend", relationTeacher: "Teacher or mentor", relationUniversal: "Someone else",
       toneAuto: "Choose automatically", toneLoving: "Warm", toneRomantic: "Romantic · spouses", toneClassic: "Classic", toneSupport: "Support", toneGratitude: "Gratitude",
       lengthAuto: "Choose automatically", lengthShort: "Short", lengthStandard: "Medium", lengthDetailed: "Detailed",
@@ -146,7 +149,7 @@
       qrCreated: "Le QR permanent est prêt", qrCreateFailed: "Impossible de créer le QR. Vérifiez le compte et la connexion.", qrRevokedDone: "QR désactivé", qrRevokeFailed: "Impossible de désactiver le QR.",
       sharedLoading: "Ouverture de la lettre…", sharedLockedTitle: "Cette lettre attend son moment", sharedLocked: "Elle s’ouvrira le {date}.",
       sharedReady: "Une lettre pour vous", sharedUnavailable: "Ce lien est indisponible ou a été désactivé.", sharedOffline: "Une connexion internet est nécessaire pour ouvrir cette lettre.", sharedReport: "Signaler cette lettre",
-      fromLabel: "De", forLabel: "Pour", sourceAi: "Assistant", sourceOwn: "Texte personnel", sourceFlorist: "Fleuriste", sourceCatalog: "Collection", sourceUnknown: "Lettre",
+      fromLabel: "De", forLabel: "Pour", sourceAi: "Assistant", sourceOwn: "Texte personnel", sourceFlorist: "Fleuriste", sourceCatalog: "Collection", sourceUnknown: "Lettre", sourceReceived: "Reçue", letterOpenedAt: "Ouverte {date}", letterNotOpened: "Pas encore ouverte", letterOpenCount: "Ouvertures : {count}", letterWithAudio: "Avec audio",
       relationAuto: "Détecter automatiquement", relationMother: "Mère", relationFather: "Père", relationSpouse: "Époux ou épouse", relationChild: "Fils ou fille", relationSibling: "Frère ou sœur", relationGrandparent: "Grand-parent", relationFriend: "Ami ou amie", relationTeacher: "Professeur ou mentor", relationUniversal: "Une autre personne",
       toneAuto: "Choisir automatiquement", toneLoving: "Chaleureux", toneRomantic: "Romantique · époux", toneClassic: "Classique", toneSupport: "Soutien", toneGratitude: "Gratitude",
       lengthAuto: "Choisir automatiquement", lengthShort: "Courte", lengthStandard: "Moyenne", lengthDetailed: "Détaillée",
@@ -188,6 +191,8 @@
     moments: [],
     letters: [],
     qrLinks: [],
+    replies: [],
+    liveChannel: null,
     root: null,
     previousFocus: null,
     previousOverflow: "",
@@ -394,6 +399,8 @@
     return {
       id: validUuid(row.id) || uuid(), user_id: validUuid(row.user_id), public_id: validUuid(row.public_id), kind: cleanText(row.kind, 24) || "letter",
       letter_id: validUuid(row.letter_id), person_id: validUuid(row.person_id), status: cleanText(row.status, 24) || "active",
+      audio_share_id: validUuid(row.audio_share_id), has_audio: Boolean(validUuid(row.audio_share_id) || row.has_audio === true),
+      opened_at: cleanText(row.opened_at, 40), last_opened_at: cleanText(row.last_opened_at, 40), open_count: Math.max(0, Math.round(Number(row.open_count) || 0)),
       unlock_at: cleanText(row.unlock_at, 40), expires_at: cleanText(row.expires_at, 40), created_at: cleanText(row.created_at, 40) || new Date().toISOString()
     };
   }
@@ -418,7 +425,8 @@
         people: Array.isArray(parsed.people) ? parsed.people.map(normalizePerson) : [],
         moments: Array.isArray(parsed.moments) ? parsed.moments.map(normalizeMoment) : [],
         letters: Array.isArray(parsed.letters) ? parsed.letters.map(normalizeLetter) : [],
-        qrLinks: Array.isArray(parsed.qrLinks) ? parsed.qrLinks.map(normalizeQrLink) : []
+        qrLinks: Array.isArray(parsed.qrLinks) ? parsed.qrLinks.map(normalizeQrLink) : [],
+        replies: Array.isArray(parsed.replies) ? parsed.replies.map(normalizeReply).filter(Boolean) : []
       };
     } catch { return null; }
   }
@@ -426,7 +434,7 @@
   function writeCache() {
     try {
       localStorage.setItem(cacheKey(), JSON.stringify({
-        people: state.people, moments: state.moments, letters: state.letters, qrLinks: state.qrLinks, updatedAt: new Date().toISOString()
+        people: state.people, moments: state.moments, letters: state.letters, qrLinks: state.qrLinks, replies: state.replies, updatedAt: new Date().toISOString()
       }));
       return true;
     } catch { return false; }
@@ -480,9 +488,10 @@
       renderAll();
       return;
     }
-    const [people, moments, letters, qrLinks] = await Promise.all([
+    const [people, moments, letters, qrLinks, replies] = await Promise.all([
       fetchOwnerRows(PEOPLE_TABLE, normalizePerson, true), fetchOwnerRows(MOMENTS_TABLE, normalizeMoment, true),
-      fetchOwnerRows(LETTERS_TABLE, normalizeLetter, false), fetchOwnerRows(QR_TABLE, normalizeQrLink, false)
+      fetchOwnerRows(LETTERS_TABLE, normalizeLetter, false), fetchOwnerRows(QR_TABLE, normalizeQrLink, false),
+      fetchOwnerRows(REPLIES_TABLE, normalizeReply, false)
     ]);
     if (accountKey() !== owner) {
       // The account changed while the rows were in flight: they belong to the
@@ -496,6 +505,7 @@
     if (!moments.error) state.moments = mergeLocalOnly(moments.data, state.moments); else failed = true;
     if (!letters.error) state.letters = mergeLocalOnly(letters.data, state.letters); else failed = true;
     if (!qrLinks.error) state.qrLinks = qrLinks.data; else failed = true;
+    if (!replies.error) state.replies = (replies.data || []).filter(Boolean);
     state.loaded = true;
     state.loading = false;
     writeCache();
@@ -771,7 +781,7 @@
   }
 
   function sourceLabel(source) {
-    return tr(({ ai: "sourceAi", own: "sourceOwn", custom: "sourceOwn", florist: "sourceFlorist", catalog: "sourceCatalog", template: "sourceCatalog" })[source] || "sourceUnknown");
+    return tr(({ ai: "sourceAi", own: "sourceOwn", custom: "sourceOwn", florist: "sourceFlorist", catalog: "sourceCatalog", template: "sourceCatalog", received: "sourceReceived" })[source] || "sourceUnknown");
   }
 
   // Arabic dates use the Western digits the rest of the app shows.
@@ -853,6 +863,82 @@
     return tr("qrActive");
   }
 
+  // ── Ответы получателей и «письмо прочитано» ──
+  // Ответы пишет функция reply-letter, открытия отмечает resolve-letter;
+  // владелец читает их по RLS, помечает увиденными и получает их вживую.
+  function normalizeReply(row = {}) {
+    const id = validUuid(row.id);
+    if (!id) return null;
+    return {
+      id, user_id: validUuid(row.user_id), qr_link_id: validUuid(row.qr_link_id), letter_id: validUuid(row.letter_id), public_id: validUuid(row.public_id),
+      reaction: REACTIONS.includes(row.reaction) ? row.reaction : "heart", message: cleanText(row.message, 240),
+      created_at: cleanText(row.created_at, 40) || new Date().toISOString(), seen_at: cleanText(row.seen_at, 40)
+    };
+  }
+  function repliesForLetter(letter, link) {
+    return state.replies
+      .filter(reply => reply.letter_id === letter.id || (link && reply.qr_link_id === link.id))
+      .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
+  }
+  function unseenReplies() {
+    return state.replies.filter(reply => !reply.seen_at).length;
+  }
+  function notifyRepliesChanged() {
+    if (typeof config.onRepliesChanged !== "function") return;
+    try { config.onRepliesChanged(unseenReplies()); } catch {}
+  }
+  function scheduleRepliesSeen() {
+    clearTimeout(state.seenTimer);
+    state.seenTimer = setTimeout(() => { markRepliesSeen().catch(() => {}); }, 1500);
+  }
+  async function markRepliesSeen() {
+    if (!state.replies.some(reply => !reply.seen_at)) return;
+    const now = new Date().toISOString();
+    if (state.client && validUuid(state.user?.id)) {
+      try { await state.client.from(REPLIES_TABLE).update({ seen_at: now }).eq("user_id", state.user.id).is("seen_at", null); } catch {}
+    }
+    state.replies = state.replies.map(reply => reply.seen_at ? reply : { ...reply, seen_at: now });
+    writeCache();
+    notifyRepliesChanged();
+    state.root?.querySelectorAll(".glm-replies li.is-new").forEach(node => node.classList.remove("is-new"));
+  }
+  function subscribeLiveUpdates() {
+    if (state.liveChannel) { try { state.liveChannel.unsubscribe(); } catch {} state.liveChannel = null; }
+    const client = state.client;
+    const userId = validUuid(state.user?.id);
+    if (!client || !userId || typeof client.channel !== "function") return;
+    try {
+      state.liveChannel = client.channel(`glowletter-letter-replies:${userId}`)
+        .on("postgres_changes", { event: "INSERT", schema: "public", table: REPLIES_TABLE, filter: `user_id=eq.${userId}` }, payload => receiveLiveReply(payload?.new))
+        .on("postgres_changes", { event: "UPDATE", schema: "public", table: QR_TABLE, filter: `user_id=eq.${userId}` }, payload => receiveLiveLink(payload?.new))
+        .subscribe();
+    } catch { state.liveChannel = null; }
+  }
+  function receiveLiveReply(row) {
+    const reply = normalizeReply(row);
+    if (!reply || reply.user_id !== validUuid(state.user?.id) || state.replies.some(item => item.id === reply.id)) return;
+    state.replies = [reply, ...state.replies];
+    writeCache();
+    renderAll();
+    if (typeof config.notifyReply === "function") {
+      const letter = state.letters.find(item => item.id === reply.letter_id);
+      try { config.notifyReply({ reaction: reply.reaction, message: reply.message, recipient: letter?.recipient_name_snapshot || "" }); } catch {}
+    }
+  }
+  function receiveLiveLink(row) {
+    if (!validUuid(row?.id)) return;
+    const link = normalizeQrLink(row);
+    if (link.user_id !== validUuid(state.user?.id)) return;
+    const previous = state.qrLinks.find(item => item.id === link.id);
+    state.qrLinks = previous ? state.qrLinks.map(item => item.id === link.id ? link : item) : [link, ...state.qrLinks];
+    writeCache();
+    renderAll();
+    if (link.opened_at && !previous?.opened_at && typeof config.notifyOpened === "function") {
+      const letter = state.letters.find(item => item.id === link.letter_id);
+      try { config.notifyOpened({ recipient: letter?.recipient_name_snapshot || "", openedAt: link.opened_at }); } catch {}
+    }
+  }
+
   function renderHistory() {
     const list = query("#momentsHistoryList");
     if (!list) return;
@@ -861,12 +947,23 @@
     list.innerHTML = letters.map(letter => {
       const link = qrForLetter(letter.id);
       const active = link && !["revoked", "expired"].includes(link.status);
+      const replies = letter.source === "received" ? [] : repliesForLetter(letter, link);
+      const openedText = link?.opened_at
+        ? `${tr("letterOpenedAt", { date: formatDisplayDate(link.opened_at, true) })}${link.open_count > 1 ? ` · ${tr("letterOpenCount", { count: link.open_count })}` : ""}`
+        : (active ? tr("letterNotOpened") : "");
+      const audioText = link?.has_audio && active ? tr("letterWithAudio") : "";
+      const metaText = [openedText, audioText].filter(Boolean).join(" · ");
+      const historyMeta = letter.source === "received" || !metaText ? "" : `<p class="glm-history-meta${link?.opened_at ? " is-opened" : ""}">${escapeHtml(metaText)}</p>`;
+      const repliesMarkup = replies.length ? `<ul class="glm-replies">${replies.map(reply => `<li${reply.seen_at ? "" : ' class="is-new"'}><span class="glm-reply-emoji" aria-hidden="true">${REACTION_SYMBOLS[reply.reaction] || REACTION_SYMBOLS.heart}</span><span class="glm-reply-text">${escapeHtml(reply.message || "")}</span><time>${escapeHtml(formatDisplayDate(reply.created_at, true))}</time></li>`).join("")}</ul>` : "";
       return `<article class="glm-card glm-history-card" data-id="${letter.id}">
         <div class="glm-history-top"><span>${escapeHtml(sourceLabel(letter.source))}</span><time>${escapeHtml(formatDisplayDate(letter.created_at, true))}</time></div>
-        <div class="glm-card-main"><h3>${escapeHtml(letter.recipient_name_snapshot || personById(letter.person_id)?.display_name || tr("sourceUnknown"))}</h3><p>${escapeHtml(letter.text.slice(0, 230))}${letter.text.length > 230 ? "…" : ""}</p>${link ? `<small class="glm-qr-state ${escapeHtml(link.status)}">▦ ${escapeHtml(qrStatus(link))}</small>` : ""}</div>
+        ${historyMeta}
+        <div class="glm-card-main"><h3>${escapeHtml((letter.source === "received" ? letter.sender_name_snapshot : letter.recipient_name_snapshot) || personById(letter.person_id)?.display_name || tr("sourceUnknown"))}</h3><p>${escapeHtml(letter.text.slice(0, 230))}${letter.text.length > 230 ? "…" : ""}</p>${link ? `<small class="glm-qr-state ${escapeHtml(link.status)}">▦ ${escapeHtml(qrStatus(link))}</small>` : ""}</div>
+        ${repliesMarkup}
         <div class="glm-card-actions"><button type="button" data-action="letter-open" data-id="${letter.id}">${escapeHtml(tr("readLetter"))}</button>${active ? `<button type="button" data-action="qr-open" data-id="${link.id}">${escapeHtml(tr("openQr"))}</button><button type="button" data-action="qr-revoke" data-id="${link.id}">${escapeHtml(tr("revokeQr"))}</button>` : `<button type="button" data-action="qr-create" data-id="${letter.id}">${escapeHtml(tr("createQr"))}</button>`}<button class="glm-danger" type="button" data-action="letter-delete" data-id="${letter.id}">${escapeHtml(tr("deleteLetter"))}</button></div>
       </article>`;
     }).join("");
+    if (state.activeTab === "history" && state.root && !state.root.hidden && state.replies.some(reply => !reply.seen_at)) scheduleRepliesSeen();
   }
 
   function renderSignInNotice() {
@@ -884,6 +981,7 @@
   }
 
   function renderAll() {
+    notifyRepliesChanged();
     if (!state.root) return;
     applyLanguage();
     renderSignInNotice();
@@ -1044,7 +1142,7 @@
       state.qrLinks = [link, ...state.qrLinks.filter(item => item.id !== link.id)];
       writeCache(); renderHistory(); showToast("qrCreated");
       const url = publicMomentUrl(link.public_id);
-      if (typeof config.openQr === "function") await Promise.resolve(config.openQr({ url, publicId: link.public_id, link, letter, sender: letter.sender_name_snapshot, recipient: letter.recipient_name_snapshot, unlockAt: link.unlock_at }));
+      if (typeof config.openQr === "function") await Promise.resolve(config.openQr({ url, publicId: link.public_id, link, letter, sender: letter.sender_name_snapshot, recipient: letter.recipient_name_snapshot, unlockAt: link.unlock_at, consented: true, hasAudio: false }));
       return { ...link, url };
     } catch { showToast("qrCreateFailed"); return null; }
   }
@@ -1065,7 +1163,21 @@
     const letter = state.letters.find(item => item.id === link?.letter_id) || null;
     if (!link || !validUuid(link.public_id)) return;
     const url = publicMomentUrl(link.public_id);
-    if (typeof config.openQr === "function") await Promise.resolve(config.openQr({ url, publicId: link.public_id, link, letter, sender: letter?.sender_name_snapshot, recipient: letter?.recipient_name_snapshot, unlockAt: link.unlock_at }));
+    if (typeof config.openQr === "function") await Promise.resolve(config.openQr({ url, publicId: link.public_id, link, letter, sender: letter?.sender_name_snapshot, recipient: letter?.recipient_name_snapshot, unlockAt: link.unlock_at, hasAudio: Boolean(link.has_audio) }));
+  }
+
+  // Приложение сообщает о привязанном или убранном аудио, не дожидаясь Realtime.
+  function setLinkAudio(publicId, attached) {
+    const id = validUuid(publicId);
+    if (!id) return false;
+    let changed = false;
+    state.qrLinks = state.qrLinks.map(link => {
+      if (link.public_id !== id || link.has_audio === Boolean(attached)) return link;
+      changed = true;
+      return { ...link, has_audio: Boolean(attached) };
+    });
+    if (changed) { writeCache(); renderHistory(); }
+    return changed;
   }
 
   function downloadIcsFile(content, filename = "GlowLetter-Moments.ics") {
@@ -1220,7 +1332,10 @@
         recipient_name: cleanText(raw.recipient_name ?? raw.recipientName, 36),
         language: validLanguage(raw.language),
         unlock_at: cleanText(raw.unlock_at ?? raw.unlockAt, 40),
-        expires_at: cleanText(raw.expires_at ?? raw.expiresAt, 40)
+        expires_at: cleanText(raw.expires_at ?? raw.expiresAt, 40),
+        audio: raw.audio && typeof raw.audio === "object" && typeof raw.audio.url === "string"
+          ? { url: raw.audio.url.slice(0, 2000), contentType: cleanText(raw.audio.contentType, 80), expiresIn: Number(raw.audio.expiresIn) || 0 }
+          : null
       };
       if (["revoked", "expired", "missing", "not_found"].includes(status)) { renderShared({}, "error"); return { status }; }
       state.sharedReportContext={publicId,sender:row.sender_name,recipient:row.recipient_name,text:row.letter_text};
@@ -1240,8 +1355,9 @@
     const changed = validUuid(nextUser?.id) !== validUuid(state.user?.id);
     state.user = nextUser;
     state.client = await Promise.resolve(safeClient());
+    subscribeLiveUpdates();
     if (changed) {
-      state.people = []; state.moments = []; state.letters = []; state.qrLinks = []; state.loaded = false;
+      state.people = []; state.moments = []; state.letters = []; state.qrLinks = []; state.replies = []; state.loaded = false;
       await loadAll();
       await pushPendingRows();
     }
@@ -1327,6 +1443,7 @@
   const helpers = Object.freeze({ parseDateOnly, nextOccurrence, getDueReminders, createIcs, escapeIcs, formatDateOnly });
   window.GlowLetterMoments = Object.freeze({
     init, setSession, setLanguage, open, close, handleSharedToken, recordLetter, createQrForLetter, revokeQrLink,
+    reload: () => loadAll({ quiet: true }), unseenReplies, markRepliesSeen, setLinkAudio,
     nextOccurrence, getDueReminders, createIcs, helpers,
     getState: () => Object.freeze({ user: state.user, language: state.language, people: [...state.people], moments: [...state.moments], letters: [...state.letters], qrLinks: [...state.qrLinks] })
   });

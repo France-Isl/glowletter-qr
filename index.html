@@ -12,18 +12,18 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=52" />
+  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=53" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=52" />
+  <link rel="manifest" href="manifest.webmanifest?v=53" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=52" />
-  <link rel="stylesheet" href="styles.css?v=52" />
-  <link rel="stylesheet" href="experience.css?v=52" />
-  <link rel="stylesheet" href="email-auth.css?v=52" />
-  <link rel="stylesheet" href="moments.css?v=52" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=53" />
+  <link rel="stylesheet" href="styles.css?v=53" />
+  <link rel="stylesheet" href="experience.css?v=53" />
+  <link rel="stylesheet" href="email-auth.css?v=53" />
+  <link rel="stylesheet" href="moments.css?v=53" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="garnet">
   <!--
@@ -97,7 +97,7 @@
       <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-cloud"/></svg></span><span id="weatherText">Погода</span></button>
       <button class="round-control language-button" id="languageButton" type="button" aria-label="Изменить язык">RU</button>
       <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></button>
-      <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и музыка"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-dots"/></svg></button>
+      <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и звук"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-dots"/></svg></button>
     </header>
 
     <div class="app-update" id="appUpdateBanner" role="status" aria-live="polite" hidden>
@@ -127,7 +127,7 @@
             <span>Открыть письмо</span>
           </button>
           <div class="home-smart-actions">
-            <button class="smart-link moments-link" id="momentsOpenHome" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> Мои моменты</button>
+            <button class="smart-link moments-link" id="momentsOpenHome" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> Мои моменты <b class="replies-badge" id="momentsRepliesBadge" hidden>0</b></button>
             <button class="smart-link home-poem-link" id="homeNewPoem" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg> <span id="homeNewPoemLabel">Новое в коллекции</span></button>
             <button class="smart-link home-signin-link" id="homeSignIn" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-user"/></svg> <span id="homeSignInLabel">Войти — покупки и прогресс сохранятся</span></button>
           </div>
@@ -177,6 +177,22 @@
           <button class="go-home home-return" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-home"/></svg> На главную</button>
         </div>
         <button class="content-report-link" id="reportLetterButton" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-flag"/></svg> Пожаловаться на письмо</button>
+        <section class="reply-bar" id="replyBar" aria-labelledby="replyTitle" hidden>
+          <h3 id="replyTitle">Ответить отправителю</h3>
+          <p id="replyLead">Один тап, и отправитель узнает, что письмо дошло.</p>
+          <div class="reply-reactions" id="replyReactions">
+            <button type="button" data-reaction="heart" aria-pressed="false"><span aria-hidden="true">❤️</span> <span id="reactionHeartLabel">Тронуло</span></button>
+            <button type="button" data-reaction="thanks" aria-pressed="false"><span aria-hidden="true">🙏</span> <span id="reactionThanksLabel">Спасибо</span></button>
+            <button type="button" data-reaction="smile" aria-pressed="false"><span aria-hidden="true">😊</span> <span id="reactionSmileLabel">Улыбаюсь</span></button>
+            <button type="button" data-reaction="tears" aria-pressed="false"><span aria-hidden="true">🥹</span> <span id="reactionTearsLabel">До слёз</span></button>
+          </div>
+          <label class="reply-field" id="replyField" for="replyMessage"><span id="replyMessageLabel">Пара слов · необязательно</span><textarea id="replyMessage" maxlength="240" rows="2" autocomplete="off"></textarea></label>
+          <div class="reply-actions">
+            <button id="replySend" type="button"><span id="replySendLabel">Отправить</span></button>
+            <button id="saveLetterButton" type="button"><span id="saveLetterLabel">Сохранить письмо себе</span></button>
+          </div>
+          <p class="reply-status" id="replyStatus" role="status" aria-live="polite"></p>
+        </section>
       </section>
     </main>
 
@@ -659,6 +675,13 @@
         <button class="panel-close" id="publicationClose" type="button" aria-label="Закрыть">×</button>
         <h2 id="publicationTitle">Проверьте письмо</h2>
         <p class="setup-note" id="publicationLead">Ссылка или QR-код смогут открыть все, кому их передадут.</p>
+        <div class="publication-audio" id="publicationAudio" hidden>
+          <button class="publication-audio-pick" id="publicationAudioButton" type="button" aria-pressed="false"><i><svg class="ic" aria-hidden="true" focusable="false"><use id="publicationAudioIcon" href="#ic-plus"/></svg></i><span><strong id="publicationAudioTitle">Добавить своё аудио</strong><small id="publicationAudioNote">Получатель услышит его, открыв письмо · MP3, M4A, AAC, OGG или WAV · до 12 МБ</small></span></button>
+          <div class="publication-audio-actions">
+            <button id="publicationAudioRemove" type="button" hidden>× Убрать аудио</button>
+            <button id="publicationAudioSignIn" type="button" hidden>Войти</button>
+          </div>
+        </div>
         <label class="publication-consent">
           <input id="publicationConsent" type="checkbox" />
           <span id="publicationConsentText">Я имею право делиться именами, текстом и аудио; содержание законно, уважительно и опубликовано с согласия. Получатель сможет пожаловаться.</span>
@@ -763,15 +786,15 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=52"></script>
-  <script src="vendor/supabase-2.110.9.js?v=52"></script>
-  <script src="letters.js?v=52"></script>
-  <script src="i18n-extra.js?v=52"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=52"></script>
-  <script src="qr-code.js?v=52"></script>
-  <script src="app.js?v=52"></script>
-  <script src="email-auth.js?v=52"></script>
-  <script src="moments.js?v=52"></script>
-  <script src="experience.js?v=52"></script>
+  <script src="config.js?v=53"></script>
+  <script src="vendor/supabase-2.110.9.js?v=53"></script>
+  <script src="letters.js?v=53"></script>
+  <script src="i18n-extra.js?v=53"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=53"></script>
+  <script src="qr-code.js?v=53"></script>
+  <script src="app.js?v=53"></script>
+  <script src="email-auth.js?v=53"></script>
+  <script src="moments.js?v=53"></script>
+  <script src="experience.js?v=53"></script>
 </body>
 </html>
