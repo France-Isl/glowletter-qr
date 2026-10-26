@@ -3326,6 +3326,9 @@
     layer.classList.add("is-open");
     layer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    // Пока открыта панель, сцена за ней замирает: дождь, листья и звёзды под
+    // размытием перерисовывались каждый кадр, и настройки на телефоне тормозили.
+    document.body.classList.add("panel-open");
     $("main")?.setAttribute("inert", "");
     $(".topbar")?.setAttribute("inert", "");
     requestAnimationFrame(() => {
@@ -3343,6 +3346,8 @@
     const anotherOpen = Object.values(layers).some(item => item.classList.contains("is-open"));
     if (!anotherOpen) {
       document.body.style.overflow = "";
+      document.body.classList.remove("panel-open");
+      try { rainScene.start(); } catch {}
       $("main")?.removeAttribute("inert");
       $(".topbar")?.removeAttribute("inert");
     }
@@ -3624,7 +3629,8 @@
   }
 
   function startReadingSwipe(event) {
-    if (!readingFocus || !storyOpened || Object.values(layers).some(layer => layer.classList.contains("is-open"))) return;
+    // Письма листаются пальцем и в обычном чтении, не только в «режиме чтения».
+    if (!storyOpened || Object.values(layers).some(layer => layer.classList.contains("is-open"))) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
     if (isReadingControlTarget(event.target) || hasReadingTextSelection()) return;
     // Mouse selection remains available on the actual words; drag the paper edge
@@ -4597,7 +4603,7 @@
     setEnabled(enabled, persist = true) { this.enabled = Boolean(enabled); this.canvas.classList.toggle("is-off", !this.enabled); $("#rainToggle").classList.toggle("is-active", this.enabled); $("#rainToggle").setAttribute("aria-pressed", String(this.enabled)); $("#rainToggle b").textContent = this.enabled ? t("stateOn") : t("stateOff"); if (persist) { localStorage.setItem("nurRain", this.enabled ? "on" : "off"); scheduleCloudSync(); } if (this.enabled) this.start(); else { cancelAnimationFrame(this.frame); this.frame=0; this.ctx.clearRect(0,0,this.width,this.height); } }
     setIntensity(value) { this.intensity = Math.max(.2, Math.min(1, value)); }
     start() { if(!this.enabled||document.hidden)return;cancelAnimationFrame(this.frame);this.frame=requestAnimationFrame(this.draw); }
-    draw(timestamp = 0) { if (!this.enabled || document.hidden) { this.frame=0; return; } if((this.lite||this.mobile)&&timestamp-this.lastPaint<32){this.frame=requestAnimationFrame(this.draw);return;}this.lastPaint=timestamp; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; if(this.lite||this.mobile){ctx.strokeStyle=`rgba(221,239,248,${drop.alpha*(this.lite ? .72 : .86)})`;}else{const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length);gradient.addColorStop(0,"rgba(220,236,245,0)");gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`);ctx.strokeStyle=gradient;}ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){const splashChance=this.lite ? .1 : (this.mobile ? .14 : .24);const splashLimit=this.lite?5:(this.mobile?8:18);if(Math.random()<splashChance&&this.splashes.length<splashLimit)this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
+    draw(timestamp = 0) { if (!this.enabled || document.hidden || document.body.classList.contains("panel-open")) { this.frame=0; return; } if((this.lite||this.mobile)&&timestamp-this.lastPaint<32){this.frame=requestAnimationFrame(this.draw);return;}this.lastPaint=timestamp; const ctx = this.ctx; ctx.clearRect(0,0,this.width,this.height); ctx.lineCap = "round"; for (let i=0;i<this.drops.length * this.intensity;i++) { const drop=this.drops[i]; if(this.lite||this.mobile){ctx.strokeStyle=`rgba(221,239,248,${drop.alpha*(this.lite ? .72 : .86)})`;}else{const gradient=ctx.createLinearGradient(drop.x,drop.y,drop.x+drop.drift,drop.y+drop.length);gradient.addColorStop(0,"rgba(220,236,245,0)");gradient.addColorStop(1,`rgba(221,239,248,${drop.alpha})`);ctx.strokeStyle=gradient;}ctx.lineWidth=drop.width;ctx.beginPath();ctx.moveTo(drop.x,drop.y);ctx.lineTo(drop.x+drop.drift,drop.y+drop.length);ctx.stroke();drop.x+=drop.drift;drop.y+=drop.speed;if(drop.y>this.height-5){const splashChance=this.lite ? .1 : (this.mobile ? .14 : .24);const splashLimit=this.lite?5:(this.mobile?8:18);if(Math.random()<splashChance&&this.splashes.length<splashLimit)this.splashes.push({x:drop.x,y:this.height-4,r:1,a:.35});this.drops[i]=this.makeDrop(false);} }
       this.splashes=this.splashes.filter(s=>{ctx.strokeStyle=`rgba(220,239,247,${s.a})`;ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(s.x,s.y,s.r*2.3,s.r*.55,0,0,Math.PI*2);ctx.stroke();s.r+=.8;s.a-=.045;return s.a>0;}); this.frame=requestAnimationFrame(this.draw); }
   }
 
@@ -5802,7 +5808,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=53", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=54", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
