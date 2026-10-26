@@ -4463,8 +4463,12 @@
   // Обновление из Google Play: нативный слой сообщает состояние, плашка
   // предлагает скачать новую версию, а после загрузки — перезапустить.
   // «Скрыть» действует до конца сеанса и только для текущего шага.
-  const APP_UPDATE_VISIBLE = ["available", "downloading", "downloaded"];
+  const APP_UPDATE_VISIBLE = ["available", "downloading", "downloaded", "store"];
+  const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.franceisl.glowletternext";
   let appUpdate = { status: "none", availableVersionCode: 0, progress: 0 };
+  // Последняя версия в Google Play из базы: встроенный механизм Play часто
+  // часами не сообщает о новой сборке, а здесь приложение узнаёт сразу.
+  let storeRelease = null;
   let appUpdateDismissedKey = "";
 
   function appUpdateKey() { return `${appUpdate.status}:${appUpdate.availableVersionCode}`; }
@@ -4491,9 +4495,10 @@
   window.onNativeAppUpdate = detail => {
     if (!trustedEntitlementSource || !detail) return;
     const status = String(detail.status || "none");
+    const nativeStatus = ["available", "downloading", "downloaded"].includes(status) ? status : "none";
     appUpdate = {
-      status: APP_UPDATE_VISIBLE.includes(status) ? status : "none",
-      availableVersionCode: Number(detail.availableVersionCode) || 0,
+      status: nativeStatus === "none" && storeRelease ? "store" : nativeStatus,
+      availableVersionCode: nativeStatus === "none" && storeRelease ? storeRelease.versionCode : (Number(detail.availableVersionCode) || 0),
       progress: Math.max(0, Math.min(100, Math.round(Number(detail.progress) || 0)))
     };
     renderAppUpdate();
@@ -4502,6 +4507,34 @@
   function runAppUpdateAction() {
     if (appUpdate.status === "downloaded") window.NurAppUpdate?.completeUpdate?.();
     else if (appUpdate.status === "available") window.NurAppUpdate?.startUpdate?.();
+    // Ссылка https уходит из WebView наружу и открывает страницу в Play Маркете.
+    else if (appUpdate.status === "store") location.assign(PLAY_STORE_URL);
+  }
+
+  function compareAppVersions(left, right) {
+    const a = String(left || "").split(".").map(part => Number(part) || 0);
+    const b = String(right || "").split(".").map(part => Number(part) || 0);
+    for (let index = 0; index < Math.max(a.length, b.length); index += 1) {
+      if ((a[index] || 0) !== (b[index] || 0)) return (a[index] || 0) > (b[index] || 0) ? 1 : -1;
+    }
+    return 0;
+  }
+
+  async function checkStoreRelease() {
+    if (!IS_ANDROID_PLAY_APP || !/^https:\/\//iu.test(SUPABASE_URL) || !SUPABASE_PUBLISHABLE_KEY) return;
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/glowletter_app_release?select=version_name,version_code&platform=eq.android&limit=1`, {
+        headers: { apikey: SUPABASE_PUBLISHABLE_KEY, Accept: "application/json" },
+        cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer"
+      });
+      if (!response.ok) return;
+      const row = (await response.json())?.[0];
+      const newer = row && /^\d+\.\d+\.\d+$/u.test(String(row.version_name || "")) && compareAppVersions(row.version_name, CONFIG.appVersion) > 0;
+      storeRelease = newer ? { versionName: String(row.version_name), versionCode: Number(row.version_code) || 0 } : null;
+      if (storeRelease && appUpdate.status === "none") appUpdate = { status: "store", availableVersionCode: storeRelease.versionCode, progress: 0 };
+      else if (!storeRelease && appUpdate.status === "store") appUpdate = { status: "none", availableVersionCode: 0, progress: 0 };
+      renderAppUpdate();
+    } catch {}
   }
 
   function dismissAppUpdate() {
@@ -5787,7 +5820,7 @@
     addEventListener("offline",()=>setCloudStatus("cloudOffline"));
     addEventListener("hashchange",handleSharedAudioNavigation);
     addEventListener("nur-entitlement",event=>{if(!trustedEntitlementSource)return;const data=event.detail||{};updatePremium(data.entitled??data.owned??false,data.priceLabel||data.price,data.reason,data.yearlyPriceLabel);updatePurchaseConfiguration(data.purchaseConfigured);});
-    $("#appUpdateAction").addEventListener("click",runAppUpdateAction);$("#appUpdateClose").addEventListener("click",dismissAppUpdate);
+    $("#appUpdateAction").addEventListener("click",runAppUpdateAction);checkStoreRelease();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkStoreRelease();});$("#appUpdateClose").addEventListener("click",dismissAppUpdate);
     addEventListener("nur-speech-state",handleNativeSpeechState);
     $("#homeNewPoem").addEventListener("click",openCatalogNews);
     $("#categoryRow").addEventListener("click",event=>{if(event.target.closest('[data-category="poem"]'))markCatalogSeen();});
@@ -5808,7 +5841,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=54", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=55", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
