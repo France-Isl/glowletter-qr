@@ -42,6 +42,6 @@ assert.doesNotMatch(experience, /SCENES|gl-video|assets\/video|mishka|kotyta/u, 
 assert.equal(fs.existsSync(path.join(root, "assets/video")), false, "the video folder must be gone");
 assert.match(experience, /--gl-paper-alpha/u, "letter paper opacity is now a fixed, readable value");
 assert.doesNotMatch(read("sw.js"), /destination === "video"/u);
-assert.match(experience, /\["glFrame", "glType"\]\.some/u);
+assert.match(experience, /\["glType"\]\.some/u);
 
   console.log(JSON.stringify({ ok: true, textStyles: 3, newStyles: ["poetic", "clear"], liveScenes: 0 }));

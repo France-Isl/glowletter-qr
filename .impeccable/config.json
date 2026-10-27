@@ -29,6 +29,21 @@
         ],
         "createdAt": "2026-09-23T19:48:48.306Z",
         "reason": "Claude: only hit is .film-grain (L79) - 1px dots from two repeating-radial-gradients at 4% opacity, an animated film-grain noise overlay over the photo scene, not a hairline grid; pre-existing since launch commit a8e9f4d"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#5a3b00",
+        "createdAt": "2026-10-27T00:41:54.485Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff3b5",
+        "createdAt": "2026-10-27T00:41:54.589Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#dca93a",
+        "createdAt": "2026-10-27T00:41:54.680Z"
       }
     ]
   }

@@ -9,7 +9,6 @@
   --gl-letter-heading-weight: 600;
   --gl-letter-meta-weight: 700;
   --gl-letter-signature-style: italic;
-  --gl-frame-gold: #b8863b;
 }
 
 /* Три самых красивых стиля текста. */
@@ -26,32 +25,8 @@ body[data-gl-type="clear"] { --gl-letter-font:"Manrope",system-ui,sans-serif;--g
 body[data-gl-type="clear"] .letter .letter-text { font-size: clamp(17px,3vw,22px); line-height: 1.62; font-weight: 560; letter-spacing: .005em; }
 body[data-gl-type="poetic"] .letter .letter-text { font-size:clamp(20px,3.7vw,27px);line-height:1.52;letter-spacing:.004em; }
 
-/* Рамки — векторные уголки и линии поверх бумаги, чёткие на любом экране. */
-.gl-frame-art { position:absolute; z-index:3; inset:0; pointer-events:none; border-radius:inherit; }
-.gl-frame-art::before,.gl-frame-art::after { content:""; position:absolute; border-radius:inherit; pointer-events:none; }
-.gl-frame-art i { position:absolute; display:block; font-style:normal; }
-.gl-frame-art svg { display:block; width:100%; height:100%; }
-.gl-corner { width:clamp(64px,17vw,96px); height:clamp(64px,17vw,96px); }
-.gl-tl { top:0; left:0; } .gl-tr { top:0; right:0; transform:scaleX(-1); } .gl-bl { bottom:0; left:0; transform:scaleY(-1); } .gl-br { bottom:0; right:0; transform:scale(-1,-1); }
-
-body[data-gl-frame="gold"] .gl-frame-art::before { inset:10px; border:2px solid var(--gl-frame-gold); border-radius:14px; }
-body[data-gl-frame="gold"] .gl-frame-art::after { inset:17px; border:1px solid rgba(184,134,59,.5); border-radius:7px; }
-
-body[data-gl-frame="roses"] .gl-frame-art::before { inset:14px; border:1.5px solid rgba(184,134,59,.7); border-radius:14px; }
-body[data-gl-frame="roses"] .gl-corner { width:clamp(86px,23vw,132px); height:clamp(86px,23vw,132px); }
-
-body[data-gl-frame="night"] .gl-frame-art::before { inset:12px; border:1px solid rgba(125,31,43,.35); border-radius:14px; }
-body[data-gl-frame="night"] .gl-frame-art::after { inset:18px; border:1px dashed rgba(184,134,59,.45); border-radius:7px; }
-.gl-night-top { top:-2px; left:50%; width:150px; height:44px; transform:translateX(-50%); }
-.gl-night-bottom { bottom:0; left:50%; width:120px; height:36px; transform:translateX(-50%); }
-.gl-night-top::before,.gl-night-bottom::before { content:""; position:absolute; inset:9px 18px; z-index:-1; border-radius:999px; background:var(--paper, #fdf6ea); }
-
-/* С новой рамкой старая полосатая кайма и внутренняя линия письма не нужны. */
-body:not([data-gl-frame="none"]) .letter::before, body:not([data-gl-frame="none"]) .letter::after { display:none; }
-.letter .paper-edge { display:none; }
-
-/* Текст не заходит под уголки рамки. */
-body:not([data-gl-frame="none"]) .letter { padding-inline:max(clamp(32px,7vw,58px), 34px); padding-block:max(clamp(32px,7vw,58px), 40px); }
+/* Рамок нет: письмо — чистая бумага. Старая полосатая кайма и внутренняя линия убраны. */
+.letter::before, .letter::after, .letter .paper-edge { display:none !important; }
 
 /* Студия оформления в настройках. */
 .gl-visual-studio { margin-top:18px; padding:16px; border:1px solid var(--ui-border); border-radius:18px; background:var(--ui-surface); }
@@ -62,15 +37,10 @@ body:not([data-gl-frame="none"]) .letter { padding-inline:max(clamp(32px,7vw,58p
 body.gl-premium-active .gl-pro { display:none; }
 .gl-studio-group { min-width:0; margin:14px 0 0; padding:0; border:0; }
 .gl-studio-group legend { margin-bottom:8px; color:var(--ui-muted); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
-.gl-frame-grid,.gl-type-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
-.gl-type-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.gl-frame-grid button,.gl-type-grid button { display:flex; flex-direction:column; align-items:center; gap:7px; min-width:0; min-height:44px; padding:10px 8px; border:1px solid var(--ui-border); border-radius:14px; color:var(--ui-ink); background:var(--ui-panel); font-size:13px; font-weight:700; transition:border-color .2s, background .2s; }
-.gl-frame-grid button.is-active,.gl-type-grid button.is-active { border-color:var(--ui-accent); background:var(--ui-soft); color:var(--ui-accent-deep); box-shadow:inset 0 0 0 1px var(--ui-accent); }
-.gl-frame-grid button:focus-visible,.gl-type-grid button:focus-visible { outline:2px solid var(--ui-accent); outline-offset:2px; }
-.gl-frame-swatch { position:relative; display:block; width:48px; height:62px; border-radius:7px; background:#fbf5ea; box-shadow:0 2px 8px rgba(40,20,20,.14); }
-.gl-swatch-gold { box-shadow:inset 0 0 0 3px #fbf5ea, inset 0 0 0 4.5px var(--gl-frame-gold), inset 0 0 0 7px #fbf5ea, inset 0 0 0 7.8px rgba(184,134,59,.55), 0 2px 8px rgba(40,20,20,.14); }
-.gl-swatch-roses { box-shadow:inset 0 0 0 4px #fbf5ea, inset 0 0 0 5px rgba(184,134,59,.7), 0 2px 8px rgba(40,20,20,.14); background:radial-gradient(circle at 7px 7px,#c25b6b 0 5px,transparent 5.5px),radial-gradient(circle at calc(100% - 7px) calc(100% - 7px),#c25b6b 0 5px,transparent 5.5px),#fbf5ea; }
-.gl-swatch-night { box-shadow:inset 0 0 0 4px #fbf5ea, inset 0 0 0 5px rgba(125,31,43,.35), 0 2px 8px rgba(40,20,20,.14); background:radial-gradient(circle at 50% 6px,#d6a85a 0 3.5px,transparent 4px),#fbf5ea; }
+.gl-type-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.gl-type-grid button { display:flex; flex-direction:column; align-items:center; gap:7px; min-width:0; min-height:44px; padding:10px 8px; border:1px solid var(--ui-border); border-radius:14px; color:var(--ui-ink); background:var(--ui-panel); font-size:13px; font-weight:700; transition:border-color .2s, background .2s; }
+.gl-type-grid button.is-active { border-color:var(--ui-accent); background:var(--ui-soft); color:var(--ui-accent-deep); box-shadow:inset 0 0 0 1px var(--ui-accent); }
+.gl-type-grid button:focus-visible { outline:2px solid var(--ui-accent); outline-offset:2px; }
 .gl-type-sample { font-style:normal; font-size:22px; line-height:1; color:var(--ui-accent-deep); }
 [data-gl-type="classic"] .gl-type-sample { font-family:"Literata",Georgia,serif; font-weight:600; }
 [data-gl-type="poetic"] .gl-type-sample { font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-weight:600; font-size:25px; }

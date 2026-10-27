@@ -146,15 +146,13 @@ assert.doesNotMatch(experience, /pro:\s*"PRO"/);
 assert.doesNotMatch(index, /class="vip-badge"/, "the VIP badge left with the composer entries");
 // (стиль .vip-badge больше нигде не используется)
 
-// Новые векторные рамки (2.4.20): золото, розы, ночное небо; старые рамки удалены.
-assert.match(experience, /const FRAMES = \["gold", "roses", "night", "none"\]/);
-for (const frame of ["gold", "roses", "night"]) {
-  assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-art`), `${frame} must decorate the opened letter`);
-}
-assert.doesNotMatch(experience, /hearts|pearl|frame-roses\.webp/);
+// Рамок нет (2.4.20, решение владельца): письмо — чистая бумага на фоне-картинке.
+assert.doesNotMatch(experience, /const FRAMES|gl-frame-grid|frame-roses\.webp/);
+assert.match(experience, /document\.body\.dataset\.glFrame = "none";/);
+assert.match(experienceStyles, /\.letter::before, \.letter::after, \.letter \.paper-edge \{ display:none !important; \}/);
 assert.doesNotMatch(index, /id=["']generatedCard["']/, "the generated-letter card left with the composer");
 assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
-assert.match(experienceStyles, /\.gl-frame-grid button\.is-active,\.gl-type-grid button\.is-active \{/);
+assert.match(experienceStyles, /\.gl-type-grid button\.is-active \{/);
 assert.match(experience, /glowletter-access-change/);
 assert.match(app, /document\.body\.dataset\.access\s*=\s*isPremium\s*\?\s*["']vip["']\s*:\s*["']free["']/);
 assert.match(app, /\$\(["']\.free-note["']\)\.hidden\s*=\s*isPremium/);
