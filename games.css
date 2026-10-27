@@ -316,12 +316,22 @@ html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
 
 /* «Правда или ложь». */
 .glg-tf-card { padding-top: 22px; }
-.glg-tf-card h3 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; }
-.glg-tf-chips b:first-child { color: #2f6b45; }
-.glg-tf-verdict { margin: 0 0 6px; font-size: 22px; font-weight: 900; }
-.glg-tf-verdict.is-true { color: #2f7d4f; }
+.glg-tf-card h3 { font-size: clamp(19px, 3.5vw, 26px); line-height: 1.3; }
+.glg-tf-chips b:first-child { color: var(--emerald); }
+.glg-tf-verdict { margin: 0 0 6px; font-size: clamp(16px, 1.6vw, 22px); font-weight: 900; }
+.glg-tf-verdict.is-true { color: var(--emerald); }
 .glg-tf-verdict.is-false { color: var(--ui-accent-deep); }
-.glg-tf-fact { margin: 0 0 12px; color: var(--ui-ink); font-size: 14px; line-height: 1.5; }
+.glg-tf-fact { margin: 0 0 12px; color: var(--ui-ink); font-size: 13px; line-height: 1.5; }
 .glg-tf-answer { font-weight: 800; }
-.glg-tf-answer.is-right { color: #2f7d4f; }
+.glg-tf-answer.is-right { color: var(--emerald); }
 .glg-tf-answer.is-wrong { color: var(--ui-accent-deep); opacity: .85; }
+
+/* «Угадай страну». */
+.glg-co-art { aspect-ratio: 3 / 2; margin: 4px 0 12px; border-radius: 18px; background-position: center; background-size: cover; box-shadow: 0 14px 34px color-mix(in srgb, var(--ink) 18%, transparent); }
+.glg-co-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.glg-co-option { position: relative; min-height: 54px; padding: 8px 10px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-ink); background: var(--ui-surface); font-size: 13px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; transition: transform .15s ease, border-color .2s ease, background-color .2s ease; }
+.glg-co-option:not(:disabled):active { transform: scale(.97); }
+.glg-co-option.is-picked { border-color: var(--ui-accent); background: color-mix(in srgb, var(--ui-accent) 10%, var(--ui-surface)); }
+.glg-co-option.is-right { border-color: var(--emerald); color: var(--emerald); background: color-mix(in srgb, var(--emerald) 14%, var(--ui-surface)); }
+.glg-co-option.is-wrong { border-color: var(--ui-accent-deep); opacity: .8; }
+.glg-co-option .glg-lv-badge { top: -9px; }

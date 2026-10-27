@@ -64,14 +64,14 @@
 /* Большое окно приглашения в игру — поверх любого экрана. */
 .glf-invite-pop { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .22s ease; }
 .glf-invite-pop.is-open { opacity: 1; }
-.glf-invite-pop-backdrop { position: absolute; inset: 0; background: rgba(8, 6, 14, .62); backdrop-filter: blur(6px); }
-.glf-invite-pop-card { position: relative; width: min(420px, 100%); padding: 30px 24px 24px; border: 1px solid color-mix(in srgb, var(--gold-bright) 55%, transparent); border-radius: 26px; color: var(--cream); background: linear-gradient(160deg, color-mix(in srgb, var(--madder) 80%, #1b1222), #17121f); box-shadow: 0 30px 80px rgba(4, 3, 9, .6); text-align: center; transform: translateY(18px) scale(.96); transition: transform .32s cubic-bezier(.16, 1, .3, 1); }
+.glf-invite-pop-backdrop { position: absolute; inset: 0; background: color-mix(in srgb, var(--night-deep) 62%, transparent); backdrop-filter: blur(6px); }
+.glf-invite-pop-card { position: relative; width: min(420px, 100%); padding: 30px 24px 24px; border: 1px solid color-mix(in srgb, var(--gold-bright) 55%, transparent); border-radius: 26px; color: var(--cream); background: linear-gradient(160deg, color-mix(in srgb, var(--madder) 80%, var(--night)), var(--night-deep)); box-shadow: 0 30px 80px color-mix(in srgb, var(--night-deep) 60%, transparent); text-align: center; transform: translateY(18px) scale(.96); transition: transform .32s cubic-bezier(.16, 1, .3, 1); }
 .glf-invite-pop.is-open .glf-invite-pop-card { transform: none; }
-.glf-invite-pop-icon { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 14px; border: 1px solid color-mix(in srgb, var(--gold-bright) 60%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--gold-bright) 16%, transparent); font-size: 38px; animation: glf-invite-bounce 1.4s ease-in-out infinite; }
+.glf-invite-pop-icon { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 14px; border: 1px solid color-mix(in srgb, var(--gold-bright) 60%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--gold-bright) 16%, transparent); font-size: clamp(30px, 7.4vw, 40px); animation: glf-invite-bounce 1.4s ease-in-out infinite; }
 .glf-invite-pop-eyebrow { margin: 0 0 6px; color: var(--gold-bright); font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
-.glf-invite-pop-card h2 { margin: 0 0 22px; font-family: "Manrope", system-ui, sans-serif; font-size: clamp(21px, 5.6vw, 26px); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.glf-invite-pop-card h2 { margin: 0 0 22px; font-family: "Manrope", system-ui, sans-serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
 .glf-invite-pop-actions { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; }
-.glf-invite-pop .glg-primary { min-height: 56px; border: 0; color: #3b2306; background: linear-gradient(145deg, #f8e4ae, #d9a441); font-size: 16px; }
-.glf-invite-pop .glg-secondary { min-height: 56px; border: 1px solid rgba(255, 247, 237, .3); color: var(--cream); background: rgba(255, 247, 237, .08); }
+.glf-invite-pop .glg-primary { min-height: 56px; border: 0; color: var(--gold-ink); background: linear-gradient(145deg, var(--gold-bright), var(--gold)); font-size: 16px; }
+.glf-invite-pop .glg-secondary { min-height: 56px; border: 1px solid color-mix(in srgb, var(--cream) 30%, transparent); color: var(--cream); background: color-mix(in srgb, var(--cream) 8%, transparent); }
 @keyframes glf-invite-bounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .glf-invite-pop-icon { animation: none; } }
