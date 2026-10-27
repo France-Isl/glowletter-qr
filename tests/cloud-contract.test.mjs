@@ -43,18 +43,18 @@ assert.match(config, /subscriptionBasePlanId:\s*"monthly"/);
 assert.match(config, /legacyProductId:\s*"glowletter_lifetime"/);
 // Запасные цены — то, что покупатель платит в странах евро с налогом;
 // цену своей страны каждый видит из Google Play.
-assert.match(config, /defaultPrice:\s*"5,99\s*€\/месяц"/u);
+assert.match(config, /defaultPrice:\s*"7,99\s*€\/месяц"/u);
 assert.match(config, /defaultYearlyPrice:\s*"24,99\s*€\/год"/u);
 assert.match(config, /lifetimeProductId:\s*"glowletter_lifetime"/);
-assert.match(index, /5,99\s*€\/месяц/u);
+assert.match(index, /7,99\s*€\/месяц/u);
 assert.match(index, /24,99\s*€\/год/u);
 assert.doesNotMatch(index, /Купить навсегда|разово/u);
-assert.match(app, /€5\.99\/month/);
-assert.match(app, /5,99\s*€\/mois/u);
+assert.match(app, /€7\.99\/month/);
+assert.match(app, /7,99\s*€\/mois/u);
 assert.match(app, /продлевается автоматически, пока вы не отмените её/u);
 assert.match(app, /renews automatically until you cancel it/i);
 assert.match(app, /Il se renouvelle automatiquement jusqu’à son annulation/i);
-assert.doesNotMatch(index, /(?<!\d)(?:4[,.]99|7[,.]99)\s*€/u);
+assert.doesNotMatch(index, /(?<!\d)(?:4[,.]99|5[,.]99)\s*€/u);
 
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);

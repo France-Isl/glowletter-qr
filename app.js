@@ -557,12 +557,12 @@
   let cloudPremium = false;
   let entitlementState = window.NurBilling?.getEntitlement ? "checking" : "free";
   let purchaseConfigured = null;
-  let premiumPrice = CONFIG.defaultPrice || "5,99 €/месяц";
+  let premiumPrice = CONFIG.defaultPrice || "7,99 €/месяц";
   let yearlyPrice = CONFIG.defaultYearlyPrice || "24,99 €/год";
   let premiumPriceFromStore = false;
   let yearlyPriceFromStore = false;
   // «Навсегда» — разовая покупка glowletter_lifetime; цена приходит из Google Play.
-  let lifetimePrice = CONFIG.defaultLifetimePrice || "29,99 €";
+  let lifetimePrice = CONFIG.defaultLifetimePrice || "49,99 €";
   let readingFocus = false;
   let letterAnimationFrame = 0;
   let readingPointer = null;
@@ -670,31 +670,31 @@
   // Euro prices the buyer pays with tax included; Google Play replaces them
   // with the local store price as soon as the catalog answers.
   const PRICE_WORDS = Object.freeze({
-    ru: { monthly: "5,99 €/месяц", yearly: "24,99 €/год", month: "/месяц", year: "/год" },
-    en: { monthly: "€5.99/month", yearly: "€24.99/year", month: "/month", year: "/year" },
-    fr: { monthly: "5,99 €/mois", yearly: "24,99 €/an", month: "/mois", year: "/an" },
-    de: { monthly: "5,99 €/Monat", yearly: "24,99 €/Jahr", month: "/Monat", year: "/Jahr" },
-    es: { monthly: "5,99 €/mes", yearly: "24,99 €/año", month: "/mes", year: "/año" },
-    it: { monthly: "5,99 €/mese", yearly: "24,99 €/anno", month: "/mese", year: "/anno" },
-    pl: { monthly: "5,99 €/mies.", yearly: "24,99 €/rok", month: "/mies.", year: "/rok" },
-    uk: { monthly: "5,99 €/місяць", yearly: "24,99 €/рік", month: "/місяць", year: "/рік" },
-    pt: { monthly: "5,99 €/mês", yearly: "24,99 €/ano", month: "/mês", year: "/ano" },
-    nl: { monthly: "€ 5,99/maand", yearly: "€ 24,99/jaar", month: "/maand", year: "/jaar" },
-    tr: { monthly: "5,99 €/ay", yearly: "24,99 €/yıl", month: "/ay", year: "/yıl" },
-    ro: { monthly: "5,99 €/lună", yearly: "24,99 €/an", month: "/lună", year: "/an" },
-    cs: { monthly: "5,99 €/měsíc", yearly: "24,99 €/rok", month: "/měsíc", year: "/rok" },
-    sv: { monthly: "5,99 €/månad", yearly: "24,99 €/år", month: "/månad", year: "/år" },
-    el: { monthly: "5,99 €/μήνα", yearly: "24,99 €/έτος", month: "/μήνα", year: "/έτος" },
-    da: { monthly: "5,99 €/md.", yearly: "24,99 €/år", month: "/md.", year: "/år" },
-    no: { monthly: "5,99 €/mnd", yearly: "24,99 €/år", month: "/mnd", year: "/år" },
-    fi: { monthly: "5,99 €/kk", yearly: "24,99 €/vuosi", month: "/kk", year: "/vuosi" },
-    ja: { monthly: "5,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
-    ko: { monthly: "5,99 €/월", yearly: "24,99 €/년", month: "/월", year: "/년" },
-    zh: { monthly: "5,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
-    th: { monthly: "5,99 €/เดือน", yearly: "24,99 €/ปี", month: "/เดือน", year: "/ปี" },
-    ar: { monthly: "5,99 €/شهر", yearly: "24,99 €/سنة", month: "/شهر", year: "/سنة" },
-    ind: { monthly: "5,99 €/bulan", yearly: "24,99 €/tahun", month: "/bulan", year: "/tahun" },
-    vi: { monthly: "5,99 €/tháng", yearly: "24,99 €/năm", month: "/tháng", year: "/năm" }
+    ru: { monthly: "7,99 €/месяц", yearly: "24,99 €/год", month: "/месяц", year: "/год" },
+    en: { monthly: "€7.99/month", yearly: "€24.99/year", month: "/month", year: "/year" },
+    fr: { monthly: "7,99 €/mois", yearly: "24,99 €/an", month: "/mois", year: "/an" },
+    de: { monthly: "7,99 €/Monat", yearly: "24,99 €/Jahr", month: "/Monat", year: "/Jahr" },
+    es: { monthly: "7,99 €/mes", yearly: "24,99 €/año", month: "/mes", year: "/año" },
+    it: { monthly: "7,99 €/mese", yearly: "24,99 €/anno", month: "/mese", year: "/anno" },
+    pl: { monthly: "7,99 €/mies.", yearly: "24,99 €/rok", month: "/mies.", year: "/rok" },
+    uk: { monthly: "7,99 €/місяць", yearly: "24,99 €/рік", month: "/місяць", year: "/рік" },
+    pt: { monthly: "7,99 €/mês", yearly: "24,99 €/ano", month: "/mês", year: "/ano" },
+    nl: { monthly: "€ 7,99/maand", yearly: "€ 24,99/jaar", month: "/maand", year: "/jaar" },
+    tr: { monthly: "7,99 €/ay", yearly: "24,99 €/yıl", month: "/ay", year: "/yıl" },
+    ro: { monthly: "7,99 €/lună", yearly: "24,99 €/an", month: "/lună", year: "/an" },
+    cs: { monthly: "7,99 €/měsíc", yearly: "24,99 €/rok", month: "/měsíc", year: "/rok" },
+    sv: { monthly: "7,99 €/månad", yearly: "24,99 €/år", month: "/månad", year: "/år" },
+    el: { monthly: "7,99 €/μήνα", yearly: "24,99 €/έτος", month: "/μήνα", year: "/έτος" },
+    da: { monthly: "7,99 €/md.", yearly: "24,99 €/år", month: "/md.", year: "/år" },
+    no: { monthly: "7,99 €/mnd", yearly: "24,99 €/år", month: "/mnd", year: "/år" },
+    fi: { monthly: "7,99 €/kk", yearly: "24,99 €/vuosi", month: "/kk", year: "/vuosi" },
+    ja: { monthly: "7,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
+    ko: { monthly: "7,99 €/월", yearly: "24,99 €/년", month: "/월", year: "/년" },
+    zh: { monthly: "7,99 €/月", yearly: "24,99 €/年", month: "/月", year: "/年" },
+    th: { monthly: "7,99 €/เดือน", yearly: "24,99 €/ปี", month: "/เดือน", year: "/ปี" },
+    ar: { monthly: "7,99 €/شهر", yearly: "24,99 €/سنة", month: "/شهر", year: "/سنة" },
+    ind: { monthly: "7,99 €/bulan", yearly: "24,99 €/tahun", month: "/bulan", year: "/tahun" },
+    vi: { monthly: "7,99 €/tháng", yearly: "24,99 €/năm", month: "/tháng", year: "/năm" }
   });
   const priceWords = () => PRICE_WORDS[lang] || PRICE_WORDS.en;
   const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

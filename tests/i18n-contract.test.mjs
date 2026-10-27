@@ -160,7 +160,7 @@ for (const [code, locale] of Object.entries({ de: "de-DE", es: "es-ES", it: "it-
 }
 
 // Цены по умолчанию «в месяц» и «в год» есть на каждом языке.
-for (const [code, words] of Object.entries({ de: ["5,99 €/Monat", "24,99 €/Jahr"], es: ["5,99 €/mes", "24,99 €/año"], it: ["5,99 €/mese", "24,99 €/anno"], pl: ["5,99 €/mies.", "24,99 €/rok"] })) {
+for (const [code, words] of Object.entries({ de: ["7,99 €/Monat", "24,99 €/Jahr"], es: ["7,99 €/mes", "24,99 €/año"], it: ["7,99 €/mese", "24,99 €/anno"], pl: ["7,99 €/mies.", "24,99 €/rok"] })) {
   for (const word of words) assert.ok(app.includes(`"${word}"`), `${code} price word ${word}`);
 }
 
