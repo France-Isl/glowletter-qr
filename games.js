@@ -326,7 +326,7 @@
   const YES_NO_ART_FILES = Object.freeze({
     hug: "assets/cards/hug.webp", sea: "assets/cards/sea.webp", rain: "assets/cards/rain.webp",
     picnic: "assets/cards/picnic.webp", kitchen: "assets/cards/kitchen.webp", dance: "assets/cards/dance.webp",
-    sunrise: "assets/cards/sunrise.webp", bears: "assets/scenes/bears-thumb.webp", roses: "assets/scenes/roses-thumb.webp",
+    sunrise: "assets/cards/sunrise.webp", skating: "assets/cards/skating.webp", bears: "assets/scenes/bears-thumb.webp", roses: "assets/scenes/roses-thumb.webp",
     kitten: "assets/scenes/kitten-thumb.webp"
   });
   const YES_NO_ART = Object.freeze({
@@ -334,7 +334,7 @@
     c09: "picnic", c10: "kitchen", c11: "kitten", c12: "dance", c13: "picnic", c14: "roses", c15: "hug", c16: "rain",
     c17: "bears", c18: "kitchen", c19: "kitten", c20: "bears", c21: "dance", c22: "hug", c23: "bears", c24: "sunrise",
     c25: "bears", c26: "hug", c27: "sea", c28: "roses", c29: "hug", c30: "roses", c31: "picnic", c32: "hug",
-    c33: "kitchen", c34: "bears", c35: "sunrise", c36: "sunrise", c37: "kitten", c38: "roses", c39: "hug", c40: "kitten"
+    c33: "kitchen", c34: "bears", c35: "skating", c36: "sunrise", c37: "kitten", c38: "roses", c39: "hug", c40: "kitten"
   });
   const YES_NO_IDS = Object.freeze(Array.from({ length: 40 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`));
   const YES_NO_ROUNDS = 20;

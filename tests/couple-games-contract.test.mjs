@@ -70,10 +70,10 @@ assert.match(edge, /glowletter_get_game_room/u);
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=61") < index.indexOf("games-i18n.js?v=61"));
-assert.ok(index.indexOf("games-i18n.js?v=61") < index.indexOf("games.js?v=61"));
-assert.match(index, /games\.css\?v=61/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=61"`, "u"));
+assert.ok(index.indexOf("experience.js?v=62") < index.indexOf("games-i18n.js?v=62"));
+assert.ok(index.indexOf("games-i18n.js?v=62") < index.indexOf("games.js?v=62"));
+assert.match(index, /games\.css\?v=62/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=62"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
