@@ -1524,10 +1524,10 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .scene-picker { margin:0; padding:0; border:0; }
 .scene-picker legend { margin-bottom:8px; color:var(--ui-muted); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
 .scene-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
-.scene-grid button { position:relative; display:block; min-width:0; padding:0; overflow:hidden; aspect-ratio:2/3; border:2px solid transparent; border-radius:14px; background:var(--night); box-shadow:0 4px 14px rgba(20,10,20,.18); }
+.scene-grid button { position:relative; display:block; min-width:0; padding:0; overflow:hidden; aspect-ratio:2/3; border:2px solid transparent; border-radius:14px; background:var(--night); box-shadow:0 4px 14px color-mix(in srgb, var(--night) 18%, transparent); }
 .scene-grid img { display:block; width:100%; height:100%; object-fit:cover; }
 .scene-grid span { position:absolute; inset:auto 0 0; padding:18px 6px 7px; color:var(--cream); background:linear-gradient(transparent,rgba(10,8,16,.82)); font-size:11px; font-weight:800; line-height:1.25; text-align:center; }
-.scene-grid button.is-active { border-color:var(--gold); box-shadow:0 0 0 2px var(--gold-dim),0 6px 18px rgba(20,10,20,.25); }
+.scene-grid button.is-active { border-color:var(--gold); box-shadow:0 0 0 2px var(--gold-dim),0 6px 18px color-mix(in srgb, var(--night) 25%, transparent); }
 .scene-grid button:focus-visible { outline:2px solid var(--ui-accent); outline-offset:2px; }
 /* Новые фоны вертикальные: на широком экране держим в кадре героев. */
 .cinematic-bg { background-position: center 62%; }
@@ -1544,7 +1544,7 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .admin-screen-close { position:absolute; top:max(14px, env(safe-area-inset-top)); right:16px; z-index:5; }
 .admin-screen .admin-panel { margin:0; padding:0; border:0; background:none; box-shadow:none; }
 .admin-tabs { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin:14px 0 16px; padding:6px; border:1px solid var(--ui-border); border-radius:16px; background:var(--ui-panel); }
-.admin-tabs button { min-height:40px; border:0; border-radius:12px; color:var(--ui-muted); background:none; font-size:13px; font-weight:800; }
+.admin-tabs button { min-height:40px; border:0; border-radius:14px; color:var(--ui-muted); background:none; font-size:13px; font-weight:800; }
 .admin-tabs button[aria-selected="true"] { color:var(--cream); background:var(--ui-accent-deep); }
 #adminPanel[data-tab="accounts"] [data-admin-pane]:not([data-admin-pane="accounts"]),
 #adminPanel[data-tab="catalog"] [data-admin-pane]:not([data-admin-pane="catalog"]),
@@ -1557,11 +1557,11 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .admin-card-access small { color:var(--ui-muted); font-size:13px; }
 .admin-chip { justify-self:start; padding:4px 10px; border-radius:999px; color:var(--ui-ink); background:var(--ui-soft); font-size:13px; font-weight:800; }
 .admin-chip.is-forever,.admin-chip.is-vip { color:#5a3b00; background:linear-gradient(145deg,#fff3b5,#dca93a); }
-.admin-chip.is-play { color:#0f5132; background:#d6f2e2; }
-.admin-chip.is-ended { color:#6b1a1a; background:#f6d9d9; }
+.admin-chip.is-play { color:var(--emerald); background:color-mix(in srgb, var(--emerald) 16%, var(--cream)); }
+.admin-chip.is-ended { color:var(--ui-accent-deep); background:color-mix(in srgb, var(--madder) 14%, var(--cream)); }
 .admin-chip.is-admin { color:var(--cream); background:var(--ui-accent-deep); }
 .admin-card-facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:0; }
-.admin-card-facts div { padding:9px 11px; border-radius:12px; background:var(--ui-panel); }
+.admin-card-facts div { padding:9px 11px; border-radius:14px; background:var(--ui-panel); }
 .admin-card-facts dt { color:var(--ui-muted); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
 .admin-card-facts dd { margin:3px 0 0; color:var(--ui-ink); font-size:13px; font-weight:700; overflow-wrap:anywhere; }
 .admin-account-card h5 { margin:14px 0 6px; color:var(--ui-muted); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
