@@ -148,6 +148,13 @@
     const button = event.target.closest("[data-gl-type]"); if (!button) return;
     if (!premium && button.dataset.glType !== "classic") return requestPremium();
     state.type = valid(button.dataset.glType, TYPES, "classic"); persist(); applyDesign(); renderChoices(); notify("saved");
+    dispatchEvent(new CustomEvent("glowletter-appearance-changed"));
+  });
+  // Стиль письма, пришедший из аккаунта (настройки на другом устройстве).
+  addEventListener("glowletter-experience-apply", event => {
+    const type = valid(event.detail?.type, TYPES, "");
+    if (!type || type === state.type) return;
+    state.type = type; persist(); applyDesign(); renderChoices();
   });
 
   const premiumCard = document.querySelector(".premium-settings-card");

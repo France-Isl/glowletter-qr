@@ -22,7 +22,12 @@ const supabaseConfig = read("supabase/config.toml");
 assert.doesNotMatch(manifest, /ACCESS_(?:COARSE|FINE|BACKGROUND)_LOCATION|hardware\.location/i);
 assert.match(android, /setGeolocationEnabled\(false\)/);
 assert.match(android, /onGeolocationPermissionsShowPrompt[\s\S]{0,300}callback\.invoke\(origin, false, false\)/);
-assert.doesNotMatch(android, /requestPermissions\s*\(|Manifest\.permission\.(?:ACCESS_COARSE_LOCATION|ACCESS_FINE_LOCATION)/);
+assert.doesNotMatch(android, /Manifest\.permission\.(?:ACCESS_COARSE_LOCATION|ACCESS_FINE_LOCATION)/);
+// «Голосовое письмо» (2.4.22): единственный запрос разрешения — микрофон, и только для своей страницы.
+assert.deepEqual([...android.matchAll(/requestPermissions\s*\(([^;]*)\)/gu)].map(match => match[1].includes("Manifest.permission.RECORD_AUDIO")), [true]);
+assert.match(android, /RESOURCE_AUDIO_CAPTURE\.equals\(resources\[0\]\)[\s\S]{0,200}APP_ORIGIN_HOST\.equals\(origin\.getHost\(\)\)/);
+assert.match(manifest, /android\.permission\.RECORD_AUDIO/);
+assert.doesNotMatch(manifest, /android\.permission\.CAMERA/);
 assert.match(app, /IS_ANDROID_PLAY_APP\s*=\s*location\.hostname\s*===\s*["']appassets\.androidplatform\.net["']/);
 const refresh = app.match(/async function refreshWeather\([^)]*\)\{([\s\S]*?)\n\s*\}/)?.[1] || "";
 assert.ok(refresh.indexOf("if(IS_ANDROID_PLAY_APP)") >= 0);
@@ -34,7 +39,7 @@ assert.match(styles, /data-gl-platform=["']android-play["'][\s\S]{0,140}#weather
 for (const id of ["publicationLayer", "publicationConsent", "publicationConfirm", "publicationTerms", "publicationPrivacy"]) assert.match(index, new RegExp(`id=["']${id}["']`));
 assert.match(index, /id=["']publicationConfirm["'][^>]*disabled/);
 const shareLetter = app.match(/async function shareLetter\(\)\{([\s\S]*?)\n\s*\}/)?.[1] || "";
-assert.ok(shareLetter.indexOf('await requestPublishConsent({kind:"direct",audio:true})') >= 0);
+assert.ok(shareLetter.indexOf('await requestPublishConsent({kind:"direct",audio:true,schedule:true})') >= 0);
 assert.ok(shareLetter.indexOf("await requestPublishConsent(") < shareLetter.indexOf("ensureTemporarySharedAudio()"));
 const momentQrStart = moments.indexOf("async function createQrForLetter");
 const momentConsent = moments.indexOf("requestPublishConsent", momentQrStart);

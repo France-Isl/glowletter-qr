@@ -1,9 +1,9 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v68`;
+const CACHE = `${CACHE_PREFIX}v69`;
 const CORE = [
   "./",
   "index.html",
-  "fonts/local-fonts.css?v=68",
+  "fonts/local-fonts.css?v=69",
   "fonts/cormorant-normal-cyrillic-ext.woff2",
   "fonts/cormorant-normal-cyrillic.woff2",
   "fonts/cormorant-normal-latin-ext.woff2",
@@ -24,27 +24,28 @@ const CORE = [
   "fonts/manrope-normal-cyrillic.woff2",
   "fonts/manrope-normal-latin-ext.woff2",
   "fonts/manrope-normal-latin.woff2",
-  "styles.css?v=68",
-  "experience.css?v=68",
-  "email-auth.css?v=68",
-  "moments.css?v=68",
-  "games.css?v=68",
-  "config.js?v=68",
-  "vendor/supabase-2.110.9.js?v=68",
-  "vendor/qrcode-generator-1.4.4.min.js?v=68",
-  "letters.js?v=68",
-  "i18n-extra.js?v=68",
-  "qr-code.js?v=68",
-  "app.js?v=68",
-  "email-auth.js?v=68",
-  "moments.js?v=68",
-  "experience.js?v=68",
-  "games-i18n.js?v=68",
-  "games.js?v=68",
-  "friends.css?v=68",
-  "friends-i18n.js?v=68",
-  "friends.js?v=68",
-  "manifest.webmanifest?v=68",
+  "styles.css?v=69",
+  "experience.css?v=69",
+  "email-auth.css?v=69",
+  "moments.css?v=69",
+  "games.css?v=69",
+  "config.js?v=69",
+  "vendor/supabase-2.110.9.js?v=69",
+  "vendor/qrcode-generator-1.4.4.min.js?v=69",
+  "letters.js?v=69",
+  "i18n-extra.js?v=69",
+  "qr-code.js?v=69",
+  "app.js?v=69",
+  "email-auth.js?v=69",
+  "moments.js?v=69",
+  "experience.js?v=69",
+  "games-i18n.js?v=69",
+  "games.js?v=69",
+  "friends.css?v=69",
+  "friends-i18n.js?v=69",
+  "friends.js?v=69",
+  "voice.js?v=69",
+  "manifest.webmanifest?v=69",
   "icon-192.png",
   "icon-512.png",
   "favicon-48.png",
@@ -60,7 +61,7 @@ const CORE = [
   "assets/frame-roses.webp",
   "assets/frame-roses-thumb.webp"
 ];
-const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "games-i18n.js", "games.js", "games.css", "friends-i18n.js", "friends.js", "friends.css", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "games-i18n.js", "games.js", "games.css", "friends-i18n.js", "friends.js", "friends.css", "voice.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "quiz", "yn", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {

@@ -1631,3 +1631,38 @@ body:not(.reading-focus) .secondary-actions { grid-template-columns: repeat(2, m
 .contact-card strong { font-size: 13px; }
 .contact-card small { color: var(--ui-muted); font-size: 11px; line-height: 1.4; }
 .contact-card b { color: var(--ui-accent-deep); font-size: 13px; overflow-wrap: anywhere; }
+
+/* «Голосовое письмо»: кнопка рядом со «Своим аудио» и окно записи. */
+.glv-open { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; margin-top: 8px; padding: 0 14px; border: 1px dashed var(--ui-border); border-radius: 14px; color: var(--ui-accent-deep); background: transparent; font-size: 13px; font-weight: 800; }
+.glv-open .ic, .glv-mic .ic { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.glv-open .ic { width: 18px; height: 18px; }
+.glv-layer { position: fixed; inset: 0; z-index: 1300; display: grid; place-items: center; padding: 16px; }
+.glv-layer[hidden] { display: none; }
+.glv-backdrop { position: absolute; inset: 0; width: 100%; border: 0; background: color-mix(in srgb, var(--night-deep) 58%, transparent); opacity: 0; transition: opacity .24s ease; }
+.glv-card { position: relative; width: min(100%, 420px); padding: 28px 22px 22px; border-radius: 28px; color: var(--ui-ink); background: var(--ui-panel); box-shadow: 0 30px 70px color-mix(in srgb, var(--night-deep) 35%, transparent); text-align: center; opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .24s ease, transform .24s ease; }
+.glv-layer.is-open .glv-backdrop, .glv-layer.is-open .glv-card { opacity: 1; transform: none; }
+.glv-close { position: absolute; top: 12px; inset-inline-end: 12px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: var(--ui-ink); background: color-mix(in srgb, var(--ui-ink) 7%, transparent); font-size: 22px; }
+.glv-mic { display: grid; place-items: center; width: 84px; height: 84px; margin: 4px auto 14px; border-radius: 50%; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-accent-deep) 30%, transparent); }
+.glv-mic .ic { width: 38px; height: 38px; }
+.glv-layer.is-recording .glv-mic { animation: glv-pulse 1.3s ease-in-out infinite; }
+.glv-card h2 { margin: 0 0 8px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 600; }
+.glv-lead { margin: 0 0 12px; color: var(--ui-muted); font-size: 13px; line-height: 1.5; }
+.glv-status { min-height: 1.4em; margin: 0 0 12px; font-size: 13px; font-weight: 800; }
+.glv-preview { width: 100%; margin-bottom: 12px; }
+.glv-actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; }
+.glv-primary, .glv-secondary { min-height: 50px; padding: 0 14px; border-radius: 16px; font-size: 13px; font-weight: 800; }
+.glv-primary { border: 0; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); }
+.glv-secondary { border: 1px solid var(--ui-border); color: var(--ui-ink); background: var(--ui-surface); }
+@keyframes glv-pulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ui-accent) 40%, transparent); } 50% { box-shadow: 0 0 0 16px color-mix(in srgb, var(--ui-accent) 0%, transparent); } }
+@media (prefers-reduced-motion: reduce) { .glv-layer.is-recording .glv-mic { animation: none; } .glv-card, .glv-backdrop { transition: none; } }
+
+/* «Письмо в выбранный день» в окне публикации. */
+.publication-schedule { display: grid; gap: 10px; margin: 0 0 14px; padding: 14px; border: 1px solid var(--ui-border); border-radius: 16px; }
+.publication-schedule legend { padding: 0 6px; font-size: 13px; font-weight: 800; }
+.publication-schedule-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.publication-schedule-options label { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border: 1px solid var(--ui-border); border-radius: 14px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.publication-schedule-options label:has(input:checked) { border-color: var(--ui-accent); background: color-mix(in srgb, var(--ui-accent) 8%, transparent); }
+.publication-schedule input[type="datetime-local"] { min-height: 48px; padding: 0 12px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-ink); background: var(--ui-panel); font: inherit; font-size: 16px; }
+.publication-schedule small { color: var(--ui-muted); font-size: 11px; line-height: 1.45; }
+.publication-schedule-options input[type="radio"] { flex: none; width: 18px; height: 18px; min-height: 0; margin: 0; padding: 0; border: 0; appearance: auto; -webkit-appearance: radio; background: none; box-shadow: none; accent-color: var(--ui-accent); }
+.publication-schedule-options label span { line-height: 1.2; }

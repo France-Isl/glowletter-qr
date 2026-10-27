@@ -69,13 +69,13 @@ for (const id of ["publicationAudio", "publicationAudioButton", "publicationAudi
 assert.match(index, /id="publicationAudioTitle">Добавить своё аудио</);
 assert.match(index, /id="settingsButton"[^>]*aria-label="Настройки"/);
 assert.match(styles, /\.publication-audio \{/);
-assert.match(app, /function requestPublishConsent\(options=\{\}\)\{[\s\S]{0,200}publicationContext=\{kind:options\.kind==="qr"\?"qr":"direct",audio:options\.audio===true\};renderPublicationAudio\(\);/);
+assert.match(app, /function requestPublishConsent\(options=\{\}\)\{[\s\S]{0,200}publicationContext=\{kind:options\.kind==="qr"\?"qr":"direct",audio:options\.audio===true,schedule:options\.schedule===true\};renderPublicationAudio\(\);/);
 assert.match(app, /function renderPublicationAudio\(\) \{[\s\S]{0,1200}t\(publicationContext\.kind === "qr" \? "publishAudioQr" : "publishAudioLink"\)/);
 assert.match(app, /async function syncQrAudio\(\) \{[\s\S]{0,900}sharedAudioRequest\("attach", \{ shareToken: token, publicId \}, true\)/);
 assert.match(app, /async function detachCurrentQrAudio\(\) \{[\s\S]{0,400}sharedAudioRequest\("detach", \{ publicId \}, true\)/);
 assert.match(app, /async function qrConsent\(\)\{[\s\S]{0,120}await syncQrAudio\(\);return true;\}/);
 assert.match(app, /requestPublishConsent\(\{kind:personal\?"qr":"direct",audio:personal\}\)/);
-assert.match(app, /await requestPublishConsent\(\{kind:"direct",audio:true\}\)/);
+assert.match(app, /await requestPublishConsent\(\{kind:"direct",audio:true,schedule:true\}\)/);
 assert.match(app, /requestPublishConsent: \(\) => requestPublishConsent\(\{ kind: "qr", audio: true \}\)/);
 assert.match(app, /if\(payload\.consented===true\)qrConsentKey=qrConsentSignature\(\);/);
 assert.match(app, /\$\("#publicationAudioButton"\)\.addEventListener\("click",\(\)=>\{audioPickFromPublication=true;\$\("#customTrackInput"\)\.click\(\);\}\)/);

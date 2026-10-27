@@ -1126,7 +1126,7 @@
     state.client = await Promise.resolve(safeClient());
     if (!letter || !state.client || !validUuid(state.user?.id)) { showToast("cloudNeeded"); return null; }
     const unlockAt = cleanText(options.unlockAt || options.unlock_at, 40) || null;
-    if (typeof config.requestPublishConsent === "function") {
+    if (!options.consented && typeof config.requestPublishConsent === "function") {
       const accepted = await Promise.resolve(config.requestPublishConsent({ kind: "moment_letter", text: letter.text, sender: letter.sender_name_snapshot, recipient: letter.recipient_name_snapshot, audioAttached: false }));
       if (!accepted) return null;
     }

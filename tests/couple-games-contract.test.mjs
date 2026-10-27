@@ -83,21 +83,42 @@ assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind i
 assert.match(read("supabase/migrations/20261028130000_cards_rooms.sql"), /kind in \('yesno', 'loves', 'cards'\)/u);
 assert.match(games, /const CARD_LEVELS = Object\.freeze\(\[\{ cards: 8,.*\{ cards: 12,.*\{ cards: 16,/u);
 assert.match(games, /type: "mflip", index/u);
-assert.match(games, /\["featCards"\], \["featGamesSoon3", true\]/u);
+assert.match(games, /\["featCards"\], \["featDuel"\]\]\) \+ group\("groupFun", \[\["featWho"\], \["featPhrase"\]\]\)/u);
+
+// «Кто быстрее», «Кто из нас?», «Закончи фразу» (2.4.22): 40 вопросов и 30 фраз на всех языках.
+const WHO = grab(games, "const WHO = {", "\n  const PHRASES = {");
+const PHRASES = grab(games, "const PHRASES = {", "\n  Object.entries(window.GLOWLETTER_GAMES_I18N || {}).forEach(([code, pack]) => {\n    if (!WHO[code]");
+for (const code of LANGUAGES) {
+  const who = WHO[code] || extra[code]?.who;
+  const phrases = PHRASES[code] || extra[code]?.phrases;
+  assert.ok(Array.isArray(who) && who.length === 40 && who.every(value => typeof value === "string" && value.trim()), `${code} who`);
+  assert.ok(Array.isArray(phrases) && phrases.length === 30 && phrases.every(value => typeof value === "string" && /…$/u.test(value.trim())), `${code} phrases`);
+  assert.doesNotMatch(JSON.stringify([who, phrases]), /18\s*\+|мелоди|песн|музык|поцел|kiss/iu, `${code} who/phrases wording`);
+}
+const moreGames = read("supabase/migrations/20261028150000_more_games_book_settings.sql");
+assert.match(moreGames, /kind in \('yesno', 'loves', 'cards', 'duel', 'who', 'phrase'\)/u);
+assert.match(moreGames, /function public\.glowletter_check_phrase\(p_text text\)[\s\S]*?glowletter_phrase_is_forbidden/u);
+assert.match(moreGames, /function public\.glowletter_book_add[\s\S]*?glowletter_phrase_is_forbidden\(clean_mine\)/u);
+assert.match(moreGames, /alter table public\.glowletter_couple_book enable row level security/u);
+assert.match(moreGames, /alter table public\.glowletter_user_settings enable row level security/u);
+assert.match(games, /const ROOM_TITLES = Object\.freeze\(\{ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle", duel: "duTitle", who: "whoTitle", phrase: "phTitle" \}\)/u);
+// Текст партнёра в «Закончи фразу» проверяется на сервере до показа и выводится только через escapeHtml.
+assert.match(games, /if \(yn\.kind === "phrase" && guest && !\(await phraseAllowed\(guest\)\)\) guest = null;/u);
+assert.match(games, /escapeHtml\(theirs \|\| tr\("phSkipped"\)\)/u);
 
 // Владелец: слов поклонения («обожаю», adore, adoro, обожнюю…) в приложении быть не должно.
 const WORSHIP_WORDS = /[Оо]божа|[Оо]божн|[Бб]оготвор|[Aa]dor(?:e|es|o|a|as|ar|er)|’adore/u;
-for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "moments.js", "experience.js", "i18n-extra.js"]) {
+for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "moments.js", "experience.js", "i18n-extra.js", "friends.js", "friends-i18n.js", "voice.js"]) {
   assert.doesNotMatch(read(file), WORSHIP_WORDS, `${file} has a worship word`);
 }
 
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=68") < index.indexOf("games-i18n.js?v=68"));
-assert.ok(index.indexOf("games-i18n.js?v=68") < index.indexOf("games.js?v=68"));
-assert.match(index, /games\.css\?v=68/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=68"`, "u"));
+assert.ok(index.indexOf("experience.js?v=69") < index.indexOf("games-i18n.js?v=69"));
+assert.ok(index.indexOf("games-i18n.js?v=69") < index.indexOf("games.js?v=69"));
+assert.match(index, /games\.css\?v=69/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=69"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
@@ -126,6 +147,8 @@ assert.doesNotMatch(edge, /answer["']?\s*:\s*row/u);
 
 // Своих вопросов нет: игрок и автор работают только с проверенным списком.
 assert.match(games, /QUESTION_IDS\.includes\(id\)/u);
-assert.doesNotMatch(games, /<textarea/u);
+// Единственное поле для своего текста — ответ в «Закончи фразу», он проходит фильтр слов.
+assert.equal((games.match(/<textarea/gu) || []).length, 1);
+assert.match(games, /<form class="glg-form glg-ph-form" data-submit="ph-submit" novalidate>\s*<textarea name="answer"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, questions: QUESTION_IDS.length, texts: keys.length }));

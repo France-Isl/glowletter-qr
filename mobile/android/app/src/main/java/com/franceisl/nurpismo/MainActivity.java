@@ -1,8 +1,10 @@
 package com.franceisl.glowletternext;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -46,6 +48,7 @@ public final class MainActivity extends ComponentActivity {
     private static final String APP_ORIGIN_HOST = "appassets.androidplatform.net";
     private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html";
     private static final int FILE_CHOOSER_REQUEST = 4101;
+    private static final int MICROPHONE_REQUEST = 4102;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
     private static final String NATIVE_WEB_LOAD_QUERY = "_glowletter_native_load";
@@ -54,6 +57,8 @@ public final class MainActivity extends ComponentActivity {
     private WebView webView;
     private volatile WebViewAssetLoader webAssetLoader;
     private ValueCallback<Uri[]> fileChooserCallback;
+    /** «Голосовое письмо»: запрос микрофона от страницы ждёт ответа системы. */
+    private PermissionRequest pendingMicrophoneRequest;
     private BillingManager billingManager;
     private AppUpdateController appUpdateController;
     private GoogleSignInController googleSignIn;
@@ -295,8 +300,23 @@ public final class MainActivity extends ComponentActivity {
 
             @Override
             public void onPermissionRequest(PermissionRequest request) {
-                // Camera and microphone are intentionally outside this app's scope.
-                request.deny();
+                // Only the microphone, only for the bundled app («Голосовое письмо»).
+                // The camera stays outside this app's scope.
+                String[] resources = request.getResources();
+                Uri origin = request.getOrigin();
+                boolean microphoneOnly = resources != null && resources.length == 1
+                        && PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resources[0]);
+                if (!microphoneOnly || origin == null || !APP_ORIGIN_HOST.equals(origin.getHost())) {
+                    request.deny();
+                    return;
+                }
+                if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                    request.grant(resources);
+                    return;
+                }
+                if (pendingMicrophoneRequest != null) pendingMicrophoneRequest.deny();
+                pendingMicrophoneRequest = request;
+                requestPermissions(new String[] { Manifest.permission.RECORD_AUDIO }, MICROPHONE_REQUEST);
             }
         });
 
@@ -305,6 +325,26 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
         webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
         webView.addJavascriptInterface(new AppUpdateBridge(this), "NurAppUpdate");
+        // «Голосовое письмо»: страница узнаёт, что эта сборка умеет давать микрофон.
+        webView.addJavascriptInterface(new Object() {
+            @android.webkit.JavascriptInterface
+            public boolean available() {
+                return true;
+            }
+        }, "NurMicrophone");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != MICROPHONE_REQUEST || pendingMicrophoneRequest == null) return;
+        PermissionRequest request = pendingMicrophoneRequest;
+        pendingMicrophoneRequest = null;
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            request.grant(new String[] { PermissionRequest.RESOURCE_AUDIO_CAPTURE });
+        } else {
+            request.deny();
+        }
     }
 
     private WebViewAssetLoader createWebAssetLoader(WebBundleManager.Selection selection) {

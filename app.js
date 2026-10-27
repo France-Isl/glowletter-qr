@@ -214,6 +214,11 @@
     fr: { note: "Choisissez une lettre · pour {name}", noteGeneric: "Choisissez une lettre de la collection", pick: "Choisir", own: "Avec vos mots", ownNote: "Écrivez votre propre texte au lieu d’une lettre prête" }
   };
 
+  // 2.4.22: настройки в аккаунте, голосовое письмо и письмо в выбранный день.
+  Object.assign(UI.ru, {"settingsCloudSaved": "Настройки сохранены в аккаунте", "settingsCloudNote": "Тема, фон и стиль письма хранятся в аккаунте и появятся на других устройствах.", "voiceRecord": "Записать голос", "voiceTitle": "Голосовое письмо", "voiceLead": "Скажите несколько тёплых слов — запись приложится к письму. До 2 минут.", "voiceStart": "Начать запись", "voiceStop": "Остановить", "voiceAgain": "Записать заново", "voiceUse": "Приложить к письму", "voiceRecording": "Идёт запись… {time}", "voiceDenied": "Разрешите доступ к микрофону, чтобы записать голос.", "voiceUnsupported": "Запись голоса здесь недоступна. Можно приложить готовый аудиофайл.", "voiceAttached": "Ваш голос приложен к письму", "voiceName": "Голосовое письмо", "scheduleTitle": "Когда открыть письмо?", "scheduleNow": "Сразу", "scheduleLater": "В выбранный день", "scheduleNote": "До этого времени получатель увидит только дату, когда письмо откроется.", "scheduleSignIn": "Войдите, чтобы отправить письмо на выбранный день.", "schedulePast": "Выберите время в будущем, не дальше чем через год.", "scheduleReady": "Письмо откроется {date}"});
+  Object.assign(UI.en, {"settingsCloudSaved": "Settings saved in your account", "settingsCloudNote": "Theme, background and letter style are saved in your account and follow you to other devices.", "voiceRecord": "Record your voice", "voiceTitle": "Voice letter", "voiceLead": "Say a few warm words — the recording is attached to the letter. Up to 2 minutes.", "voiceStart": "Start recording", "voiceStop": "Stop", "voiceAgain": "Record again", "voiceUse": "Attach to the letter", "voiceRecording": "Recording… {time}", "voiceDenied": "Allow microphone access to record your voice.", "voiceUnsupported": "Voice recording isn’t available here. You can attach an audio file instead.", "voiceAttached": "Your voice is attached to the letter", "voiceName": "Voice letter", "scheduleTitle": "When should the letter open?", "scheduleNow": "Right away", "scheduleLater": "On a chosen day", "scheduleNote": "Before this time the recipient sees only the date when the letter opens.", "scheduleSignIn": "Sign in to send a letter on a chosen day.", "schedulePast": "Choose a time in the future, up to one year ahead.", "scheduleReady": "The letter will open on {date}"});
+  Object.assign(UI.fr, {"settingsCloudSaved": "Réglages enregistrés dans votre compte", "settingsCloudNote": "Le thème, le fond et le style de la lettre sont gardés dans votre compte et vous suivent sur vos autres appareils.", "voiceRecord": "Enregistrer ma voix", "voiceTitle": "Lettre vocale", "voiceLead": "Dites quelques mots tendres — l’enregistrement sera joint à la lettre. Jusqu’à 2 minutes.", "voiceStart": "Commencer l’enregistrement", "voiceStop": "Arrêter", "voiceAgain": "Recommencer", "voiceUse": "Joindre à la lettre", "voiceRecording": "Enregistrement… {time}", "voiceDenied": "Autorisez l’accès au micro pour enregistrer votre voix.", "voiceUnsupported": "L’enregistrement de la voix n’est pas disponible ici. Vous pouvez joindre un fichier audio.", "voiceAttached": "Votre voix est jointe à la lettre", "voiceName": "Lettre vocale", "scheduleTitle": "Quand la lettre doit-elle s’ouvrir ?", "scheduleNow": "Tout de suite", "scheduleLater": "Un jour choisi", "scheduleNote": "Avant cette date, le destinataire ne voit que le jour d’ouverture de la lettre.", "scheduleSignIn": "Connectez-vous pour envoyer une lettre à une date choisie.", "schedulePast": "Choisissez un moment futur, au plus dans un an.", "scheduleReady": "La lettre s’ouvrira le {date}"});
+
   // German, Spanish, Italian and Polish come from i18n-extra.js. A phrase that
   // is missing there shows in English rather than in Russian.
   const SUPPORTED_LANGUAGES = Object.freeze(Array.isArray(window.NUR_LANGUAGES) ? window.NUR_LANGUAGES.slice() : ["ru", "en", "fr"]);
@@ -540,6 +545,8 @@
   let outgoingAudioShare = null;
   let incomingQrAudio = null;
   let publicationContext = { kind: "direct", audio: false };
+  // «Письмо в выбранный день»: время открытия, выбранное в окне публикации.
+  let publicationUnlockAt = "";
   let currentQrPublicId = "";
   let qrAudioSync = null;
   let audioPickFromPublication = false;
@@ -3623,6 +3630,7 @@
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));setText("#contactTitle",t("contactTitle"));setText("#contactNote",t("contactNote"));setText("#homeContactLabel",t("contactTitle"));$("#homeContact").hidden=IS_ANDROID_PLAY_APP;
     setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#settingsRestoreButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("subscriptionRestore"))}`; renderSubscriptionCard(); renderAppUpdate(); $$(".password-toggle").forEach(toggle => { const input = document.getElementById(toggle.getAttribute("aria-controls") || ""); if (input) renderPasswordToggle(toggle, input); }); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
+    setText("#scheduleTitle",t("scheduleTitle"));setText("#scheduleNowLabel",t("scheduleNow"));setText("#scheduleLaterLabel",t("scheduleLater"));setText("#scheduleNote",t("scheduleNote"));
     setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));renderPublicationAudio();renderSetupAudio();
     setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]||CONTENT_REPORT_OPTIONS.en);
     $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
@@ -5204,6 +5212,57 @@
   }
   async function setupBackground(){ try { await deleteMedia("background"); } catch {} applyScene(currentSceneId()); }
 
+  // Настройки в аккаунте (2.4.22): фон и стиль письма следуют за аккаунтом на
+  // другие устройства. При входе берём сохранённое, при изменении — записываем.
+  const SETTINGS_TABLE = "glowletter_user_settings";
+  let accountSettingsTimer = 0;
+  let accountSettingsLoadedFor = "";
+  function currentAppearance(){
+    let letterType = "classic";
+    try { letterType = String(JSON.parse(localStorage.getItem("glowletter-experience") || "{}")?.type || "classic"); } catch {}
+    return { scene: currentSceneId(), letterType, theme: uiTheme };
+  }
+  async function saveAccountSettings({ toast = false } = {}){
+    clearTimeout(accountSettingsTimer);
+    if (!cloudClient || !cloudUser?.id) return false;
+    try {
+      const row = { settings: currentAppearance(), updated_at: new Date().toISOString() };
+      const updated = await cloudClient.from(SETTINGS_TABLE).update(row).eq("user_id", cloudUser.id).select("user_id");
+      if (updated.error) throw updated.error;
+      if (!updated.data?.length) {
+        const { error } = await cloudClient.from(SETTINGS_TABLE).insert({ user_id: cloudUser.id, ...row });
+        if (error) throw error;
+      }
+      if (toast) showToast(t("settingsCloudSaved"), 2600);
+      return true;
+    } catch (error) { console.info("Account settings save failed", error); return false; }
+  }
+  function scheduleAccountSettings(){
+    if (!cloudUser?.id || accountSettingsLoadedFor !== cloudUser.id) return;
+    clearTimeout(accountSettingsTimer);
+    accountSettingsTimer = setTimeout(() => saveAccountSettings(), 1200);
+  }
+  async function loadAccountSettings(){
+    const userId = cloudUser?.id || "";
+    if (!cloudClient || !userId || accountSettingsLoadedFor === userId) return;
+    try {
+      const { data, error } = await cloudClient.from(SETTINGS_TABLE).select("settings").eq("user_id", userId).maybeSingle();
+      if (error) throw error;
+      if (cloudUser?.id !== userId) return;
+      accountSettingsLoadedFor = userId;
+      const saved = data?.settings && typeof data.settings === "object" ? data.settings : null;
+      if (!saved) { await saveAccountSettings(); return; }
+      if (SCENES[saved.scene]) applyScene(saved.scene, true);
+      if (UI_THEMES.has(saved.theme)) applyUiTheme(saved.theme);
+      if (typeof saved.letterType === "string") dispatchEvent(new CustomEvent("glowletter-experience-apply", { detail: { type: saved.letterType } }));
+    } catch (error) { console.info("Account settings load failed", error); }
+  }
+  addEventListener("glowletter-cloud-session", event => {
+    if (event.detail?.signedIn) loadAccountSettings();
+    else { accountSettingsLoadedFor = ""; clearTimeout(accountSettingsTimer); }
+  });
+  addEventListener("glowletter-appearance-changed", scheduleAccountSettings);
+
   const weatherMap={0:["sun","Clear"],1:["cloud","Mostly clear"],2:["cloud","Cloudy"],3:["cloud","Overcast"],45:["fog","Fog"],48:["fog","Fog"],51:["rain","Drizzle"],53:["rain","Drizzle"],55:["rain","Drizzle"],61:["rain","Rain"],63:["rain","Rain"],65:["rain","Heavy rain"],71:["snow","Snow"],73:["snow","Snow"],75:["snow","Snow"],80:["rain","Showers"],81:["rain","Showers"],82:["rain","Showers"],95:["bolt","Storm"],96:["bolt","Storm"],99:["bolt","Storm"]};
   const weatherFallbacks={
     "Europe/Paris":{latitude:48.8566,longitude:2.3522,place:"Paris"},"Europe/London":{latitude:51.5072,longitude:-.1276,place:"London"},"Europe/Moscow":{latitude:55.7558,longitude:37.6173,place:"Moscow"},
@@ -5496,16 +5555,53 @@
 
   function requestPublishConsent(options={}){
     if(publicationResolver)return Promise.resolve(false);
-    publicationContext={kind:options.kind==="qr"?"qr":"direct",audio:options.audio===true};renderPublicationAudio();
+    publicationContext={kind:options.kind==="qr"?"qr":"direct",audio:options.audio===true,schedule:options.schedule===true};renderPublicationAudio();resetPublicationSchedule();
     const checkbox=$("#publicationConsent");checkbox.checked=false;$("#publicationConfirm").disabled=true;$("#publicationError").hidden=true;openPanel(layers.publication);
     return new Promise(resolve=>{publicationResolver=resolve;});
   }
 
   function finishPublishConsent(accepted){
     if(!publicationResolver){closePanel(layers.publication);return;}
-    if(accepted&&!$("#publicationConsent").checked){$("#publicationError").hidden=false;return;}
+    if(accepted&&!$("#publicationConsent").checked){$("#publicationError").textContent=t("publishRequired");$("#publicationError").hidden=false;return;}
+    if(accepted&&!readPublicationSchedule())return;
     audioPickFromPublication=false;
     const resolve=publicationResolver;publicationResolver=null;closePanel(layers.publication);resolve(Boolean(accepted));
+  }
+
+  function resetPublicationSchedule(){
+    publicationUnlockAt="";
+    const box=$("#publicationSchedule");if(!box)return;
+    box.hidden=!publicationContext.schedule;
+    const now=box.querySelector('input[value="now"]');if(now)now.checked=true;
+    const field=$("#publicationUnlockAt");field.hidden=true;field.value="";$("#scheduleNote").hidden=true;
+    const pad=value=>String(value).padStart(2,"0");const local=date=>`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    field.min=local(new Date(Date.now()+5*60000));field.max=local(new Date(Date.now()+364*86400000));
+  }
+  function updatePublicationSchedule(){
+    const later=$('#publicationSchedule input[value="later"]')?.checked===true;
+    $("#publicationUnlockAt").hidden=!later;$("#scheduleNote").hidden=!later;$("#publicationError").hidden=true;
+    if(later&&!$("#publicationUnlockAt").value){const date=new Date(Date.now()+86400000);date.setHours(9,0,0,0);const pad=value=>String(value).padStart(2,"0");$("#publicationUnlockAt").value=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T09:00`;}
+  }
+  // Возвращает false и показывает подсказку, если день выбран неверно или нет входа.
+  function readPublicationSchedule(){
+    publicationUnlockAt="";
+    if(!publicationContext.schedule||!$('#publicationSchedule input[value="later"]')?.checked)return true;
+    const error=$("#publicationError");
+    if(!cloudUser?.id){error.textContent=t("scheduleSignIn");error.hidden=false;return false;}
+    const time=new Date($("#publicationUnlockAt").value).getTime();
+    if(!Number.isFinite(time)||time<Date.now()+60000||time>Date.now()+365*86400000){error.textContent=t("schedulePast");error.hidden=false;return false;}
+    publicationUnlockAt=new Date(time).toISOString();
+    return true;
+  }
+  async function shareLetterOnDay(entry,unlockAt){
+    const ready=await initializeMomentsIntegration();const moments=window.GlowLetterMoments;
+    if(!ready||typeof moments?.createQrForLetter!=="function"){showToast(t("replyFailed"),3200);return;}
+    try{
+      const letter=await moments.recordLetter({source:entry?.shared?"own":"library",text:entryText(entry),sender:fromName,recipient:toName,language:lang,note:""});
+      if(!letter)throw new Error("not_saved");
+      const link=await moments.createQrForLetter(letter,{unlockAt,consented:true});
+      if(link)showToast(t("scheduleReady").replace("{date}",new Date(unlockAt).toLocaleString(lang==="ind"?"id":lang,{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})),5200);
+    }catch(error){console.info("Scheduled letter failed",error);showToast(t("replyFailed"),3200);}
   }
 
   function updateReportButton(){
@@ -5544,7 +5640,8 @@
     const presentation={glFrame:document.body.dataset.glFrame,glInk:document.body.dataset.glInk,glType:document.body.dataset.glType};
     const presentationDefaults={glFrame:"none",glInk:"ink",glType:"classic"};
     Object.entries(presentation).forEach(([key,value])=>{if(value&&value!==presentationDefaults[key])url.searchParams.set(key,value);});
-    if(!await requestPublishConsent({kind:"direct",audio:true}))return;
+    if(!await requestPublishConsent({kind:"direct",audio:true,schedule:true}))return;
+    if(publicationUnlockAt){const unlockAt=publicationUnlockAt;publicationUnlockAt="";await shareLetterOnDay(entry,unlockAt);return;}
     url.searchParams.set("rid",createOpaqueReportReference());
     let audioToken = incomingSharedAudioToken;
     if(customAudioBlob){
@@ -5706,6 +5803,9 @@
     openQr:payload=>openPersonalQr(payload),
     openResolvedLetter:payload=>openResolvedMoment(payload),
     notify:(message,duration)=>showToast(String(message||""),duration),
+    text:key=>t(String(key||"")),
+    // «Голосовое письмо»: запись с микрофона становится аудио письма.
+    useAudioFile:file=>selectCustomAudio(file,{play:false}),
     openPaywall:()=>openPaywall(),
     requestSignIn:origin=>requestSignIn(String(origin||"home")),
     goHome:()=>goHome()
@@ -5949,7 +6049,7 @@
     $("#settingsNamesError").hidden = !namesInvalid;
     if (namesInvalid) return false;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled&&!IS_ANDROID_PLAY_APP?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled&&!IS_ANDROID_PLAY_APP?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});if(cloudUser?.id&&!openQr)saveAccountSettings({toast:true}).then(ok=>{if(!ok)showToast(t("settingsSaved"));});else showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
   }
 
   function bindEvents(){
@@ -5964,6 +6064,7 @@
     $("#qrOpenButton").addEventListener("click",()=>saveSettings({openQr:true}));$("#qrClose").addEventListener("click",()=>closePanel(layers.qr));$("#qrBackdrop").addEventListener("click",()=>closePanel(layers.qr));$("#qrForm").addEventListener("submit",event=>{event.preventDefault();renderQrCode(true);});$("#qrDownloadButton").addEventListener("click",downloadQrCard);$("#qrCopyLinkButton").addEventListener("click",copyQrLink);$("#qrCopyImageButton").addEventListener("click",copyQrImage);$("#qrPrintButton").addEventListener("click",printQrCard);
     $("#qrPdfButton").addEventListener("click",downloadQrPdf);$("#qrSendButton").addEventListener("click",openQrSend);$("#qrSendClose").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendBackdrop").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendCopy").addEventListener("click",copyQrLink);$("#qrSendOther").addEventListener("click",shareQrLinkNative);$("#qrSendFile").addEventListener("click",shareQrCardFile);
     $("#composerClose").addEventListener("click",closeOwnTextComposer);$("#composerBackdrop").addEventListener("click",closeOwnTextComposer);$("#composerDone").addEventListener("click",submitOwnText);$("#composerCollection").addEventListener("click",composerToCollection);$("#composerText").addEventListener("input",()=>{updateComposerCounter();$("#composerError").hidden=true;});
+    $$('#publicationSchedule input[name="publicationWhen"]').forEach(input=>input.addEventListener("change",updatePublicationSchedule));
     $("#publicationConsent").addEventListener("change",event=>{$("#publicationConfirm").disabled=!event.target.checked;$("#publicationError").hidden=true;});$("#publicationConfirm").addEventListener("click",()=>finishPublishConsent(true));$("#publicationCancel").addEventListener("click",()=>finishPublishConsent(false));$("#publicationClose").addEventListener("click",()=>finishPublishConsent(false));$("#publicationBackdrop").addEventListener("click",()=>finishPublishConsent(false));
     $("#reportLetterButton").addEventListener("click",()=>activeReportContext&&openContentReport(activeReportContext));$("#reportClose").addEventListener("click",()=>closePanel(layers.report));$("#reportBackdrop").addEventListener("click",()=>closePanel(layers.report));$("#reportForm").addEventListener("submit",submitContentReport);
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
@@ -5974,7 +6075,7 @@
     $("#languageButton").addEventListener("click",()=>openPanel(layers.language));$("#languageClose").addEventListener("click",()=>closePanel(layers.language));$("#languageBackdrop").addEventListener("click",()=>closePanel(layers.language));$$('[data-lang]').forEach(button=>button.addEventListener("click",()=>{stopLetterSpeech();lang=button.dataset.lang;rememberLanguageChoice();applyLanguage();scheduleCloudSync();if(layers.language.contains(button))closePanel(layers.language);}));
     
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";const fromPublication=audioPickFromPublication;audioPickFromPublication=false;await selectCustomAudio(file,{play:!fromPublication});});$("#publicationAudioButton").addEventListener("click",()=>{audioPickFromPublication=true;$("#customTrackInput").click();});$("#setupAudioButton").addEventListener("click",()=>{audioPickFromPublication=true;$("#customTrackInput").click();});$("#setupAudioRemove").addEventListener("click",()=>removeCustomAudio());$("#publicationAudioRemove").addEventListener("click",async()=>{await removeCustomAudio();if(publicationContext.kind==="qr")detachCurrentQrAudio();});$("#publicationAudioSignIn").addEventListener("click",()=>{finishPublishConsent(false);requestSignIn("publication");});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!(incomingSharedAudioToken||incomingQrAudio)||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
-    $$(".scene-grid [data-scene]").forEach(button=>button.addEventListener("click",()=>{applyScene(button.dataset.scene,true);haptic(8);}));
+    $$(".scene-grid [data-scene]").forEach(button=>button.addEventListener("click",()=>{applyScene(button.dataset.scene,true);haptic(8);scheduleAccountSettings();}));
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
     $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>requestSignIn("home"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminOpenButton").addEventListener("click",openAdminScreen);$("#adminClose").addEventListener("click",()=>closePanel(layers.admin));$("#adminBackdrop").addEventListener("click",()=>closePanel(layers.admin));$$("#adminPanel [data-admin-tab]").forEach(button=>button.addEventListener("click",()=>setAdminTab(button.dataset.adminTab)));$("#adminAccountCard").addEventListener("click",async event=>{const button=event.target.closest("[data-copy-id]");if(!button)return;await writeClipboard(button.dataset.copyId);showToast(adminCardText("copied"));});$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open===layers.publication)finishPublishConsent(false);else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
@@ -6006,7 +6107,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=68", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=69", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

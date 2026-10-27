@@ -15,6 +15,8 @@
 
   const ONLINE_MS = 150000;
   const HEARTBEAT_MS = 60000;
+  // Приглашение в живую игру — обычное сообщение особого вида, без ссылки.
+  const INVITE_PATTERN = /^\[\[game:(yesno|loves|cards|duel|who|phrase):([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\]\]$/u;
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z"/></svg>';
   const icon = id => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#${id}"/></svg>`;
 
@@ -35,7 +37,8 @@
       remove: "Удалить из друзей", removeConfirm: "Удалить {name} из друзей?", removed: "Удалено из друзей",
       report: "Пожаловаться", reportConfirm: "Пожаловаться на это сообщение?", reported: "Жалоба отправлена. Спасибо!",
       forbidden: "В сообщении есть недопустимые слова или ссылки.", rateLimited: "Слишком много сообщений. Подождите немного.", failed: "Не получилось. Проверьте связь и попробуйте ещё раз.",
-      newMessage: "{name}: {text}", newRequest: "{name} хочет добавить вас в друзья", safety: "Пишите только тем, кого знаете. Если что-то не так — пожалуйтесь или заблокируйте."
+      newMessage: "{name}: {text}", newRequest: "{name} хочет добавить вас в друзья", safety: "Пишите только тем, кого знаете. Если что-то не так — пожалуйтесь или заблокируйте.",
+      playTogether: "Сыграть вместе", pickGame: "Выберите игру", inviteMessage: "Давай сыграем в «{game}»!", invitePlay: "Играть", inviteYou: "Вы позвали в игру «{game}»", newInvite: "{name} зовёт вас в игру «{game}»"
     },
     en: {
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
@@ -53,7 +56,8 @@
       remove: "Remove friend", removeConfirm: "Remove {name} from friends?", removed: "Removed from friends",
       report: "Report", reportConfirm: "Report this message?", reported: "Report sent. Thank you!",
       forbidden: "The message has words or links that aren’t allowed.", rateLimited: "Too many messages. Please wait a little.", failed: "Something went wrong. Check your connection and try again.",
-      newMessage: "{name}: {text}", newRequest: "{name} wants to add you as a friend", safety: "Write only to people you know. If something feels wrong, report or block."
+      newMessage: "{name}: {text}", newRequest: "{name} wants to add you as a friend", safety: "Write only to people you know. If something feels wrong, report or block.",
+      playTogether: "Play together", pickGame: "Choose a game", inviteMessage: "Let’s play “{game}”!", invitePlay: "Play", inviteYou: "You invited to play “{game}”", newInvite: "{name} invites you to play “{game}”"
     },
     fr: {
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
@@ -71,12 +75,13 @@
       remove: "Retirer des amis", removeConfirm: "Retirer {name} de vos amis ?", removed: "Retiré des amis",
       report: "Signaler", reportConfirm: "Signaler ce message ?", reported: "Signalement envoyé. Merci !",
       forbidden: "Le message contient des mots ou des liens interdits.", rateLimited: "Trop de messages. Patientez un peu.", failed: "Un problème est survenu. Vérifiez la connexion et réessayez.",
-      newMessage: "{name} : {text}", newRequest: "{name} veut vous ajouter en ami", safety: "N’écrivez qu’aux personnes que vous connaissez. En cas de souci, signalez ou bloquez."
+      newMessage: "{name} : {text}", newRequest: "{name} veut vous ajouter en ami", safety: "N’écrivez qu’aux personnes que vous connaissez. En cas de souci, signalez ou bloquez.",
+      playTogether: "Jouer ensemble", pickGame: "Choisissez un jeu", inviteMessage: "On joue à « {game} » ?", invitePlay: "Jouer", inviteYou: "Vous avez invité à jouer à « {game} »", newInvite: "{name} vous invite à jouer à « {game} »"
     }
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
 
-  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null };
+  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -102,6 +107,16 @@
   };
   const statusText = row => isOnline(row) ? tr("online") : row?.last_seen ? tr("offlineAgo", { time: ago(row.last_seen) }) : tr("offline");
   const timeOf = value => { try { return new Intl.DateTimeFormat(language() === "ind" ? "id" : language(), { hour: "2-digit", minute: "2-digit" }).format(new Date(value)); } catch { return ""; } };
+  const games = () => window.GlowLetterGames || null;
+  const gameTitle = kind => games()?.title?.(kind) || kind;
+  const parseInvite = body => {
+    const match = INVITE_PATTERN.exec(String(body || ""));
+    return match ? { kind: match[1], room: match[2] } : null;
+  };
+  const previewText = body => {
+    const invite = parseInvite(body);
+    return invite ? tr("inviteMessage", { game: gameTitle(invite.kind) }) : String(body || "");
+  };
   const initial = name => escapeHtml((cleanName(name)[0] || "♥").toUpperCase());
 
   // ——— Окно ———
@@ -219,6 +234,11 @@
     const me = userId();
     const bubbles = state.messages.map(message => {
       const mine = message.sender === me;
+      const invite = parseInvite(message.body);
+      if (invite) {
+        const text = mine ? tr("inviteYou", { game: gameTitle(invite.kind) }) : tr("newInvite", { name: nameOf(friend), game: gameTitle(invite.kind) });
+        return `<li class="glf-bubble glf-invite${mine ? " is-mine" : ""}"><span>🎲 ${escapeHtml(text)}</span>${mine ? "" : `<button class="glg-primary glf-small" type="button" data-action="join-game" data-room="${escapeHtml(invite.room)}">${escapeHtml(tr("invitePlay"))} →</button>`}<small>${escapeHtml(timeOf(message.created_at))}</small></li>`;
+      }
       return `<li class="glf-bubble${mine ? " is-mine" : ""}"><span>${escapeHtml(message.body)}</span><small>${escapeHtml(timeOf(message.created_at))}${mine ? "" : ` · <button type="button" class="glf-report" data-action="report" data-id="${escapeHtml(message.id)}">${escapeHtml(tr("report"))}</button>`}</small></li>`;
     }).join("");
     return `
@@ -232,7 +252,16 @@
         <button class="glg-primary" type="submit" aria-label="${escapeHtml(tr("send"))}"${state.busy ? " disabled" : ""}>➤</button>
       </form>
       <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
+      ${renderGamePicker()}
       <div class="glf-chat-tools"><button class="glg-link" type="button" data-action="remove">${escapeHtml(tr("remove"))}</button><button class="glg-link glg-danger" type="button" data-action="block">${escapeHtml(tr("block"))}</button></div>`;
+  }
+
+  // «Сыграть вместе»: выбор живой игры прямо из переписки.
+  function renderGamePicker() {
+    const kinds = games()?.roomKinds || [];
+    if (!kinds.length) return "";
+    if (!state.picking) return `<button class="glg-secondary glg-wide glf-play" type="button" data-action="pick-game">🎲 ${escapeHtml(tr("playTogether"))}</button>`;
+    return `<section class="glf-games"><h3>${escapeHtml(tr("pickGame"))}</h3><div class="glf-games-grid">${kinds.map(kind => `<button class="glg-secondary" type="button" data-action="start-game" data-kind="${escapeHtml(kind)}">${escapeHtml(gameTitle(kind))}</button>`).join("")}</div></section>`;
   }
 
   // ——— Действия ———
@@ -289,6 +318,16 @@
           await refresh(false);
           return;
         case "chat": return openChat(target.dataset.id);
+        case "pick-game": state.picking = !state.picking; render(); return;
+        case "start-game": {
+          const friend = state.chatWith;
+          if (!friend) return;
+          state.picking = false;
+          close();
+          games()?.createFor?.(target.dataset.kind, { id: friend.user_id, name: nameOf(friend) });
+          return;
+        }
+        case "join-game": close(); games()?.join?.(target.dataset.room); return;
         case "send": return sendMessage(target);
         case "report": {
           if (!window.confirm(tr("reportConfirm"))) return;
@@ -359,6 +398,7 @@
     const friend = state.rows.find(row => row.user_id === friendId);
     if (!friend) return;
     state.chatWith = friend;
+    state.picking = false;
     state.view = "chat";
     state.messages = [];
     render();
@@ -429,7 +469,8 @@
     updateBadge();
     if (state.root && !state.root.hidden && state.view === "list") render();
     const sender = state.rows.find(item => item.user_id === message.sender);
-    notify(tr("newMessage", { name: nameOf(sender), text: String(message.body).slice(0, 80) }), 5000);
+    const invite = parseInvite(message.body);
+    notify(invite ? tr("newInvite", { name: nameOf(sender), game: gameTitle(invite.kind) }) : tr("newMessage", { name: nameOf(sender), text: previewText(message.body).slice(0, 80) }), 5000);
   }
 
   async function onFriendship(payload) {
@@ -490,6 +531,20 @@
     if (signedIn()) startSession();
   }
 
-  window.GlowLetterFriends = Object.freeze({ open: () => open() });
+  // Для игр: список друзей и приглашение в комнату.
+  async function inviteToGame(friendId, kind, roomId) {
+    const friend = state.rows.find(row => row.user_id === friendId && row.status === "friend");
+    if (!friend || !INVITE_PATTERN.test(`[[game:${kind}:${roomId}]]`)) throw new Error("invalid");
+    const body = `[[game:${kind}:${roomId}]]`;
+    const id = await rpc("glowletter_messages_send", { p_to: friendId, p_body: body });
+    if (state.chatWith?.user_id === friendId) state.messages.push({ id, sender: userId(), recipient: friendId, body, created_at: new Date().toISOString() });
+    return nameOf(friend);
+  }
+
+  window.GlowLetterFriends = Object.freeze({
+    open: () => open(),
+    friends: () => state.rows.filter(row => row.status === "friend").map(row => ({ user_id: row.user_id, name: nameOf(row), online: isOnline(row) })),
+    inviteToGame
+  });
   init();
 })();
