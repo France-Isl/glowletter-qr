@@ -1,6 +1,6 @@
 // Игры для двоих на двадцати двух языках сверх ru/en/fr: тексты экрана
 // (text), вопросы теста (questions), карточки «Да или нет» (yesNo), темы «Что мы любим» (loves),
-// вопросы «Кто из нас?» (who) и начала фраз «Закончи фразу» (phrases). Порядок вариантов совпадает с
+// вопросы «Кто из нас?» (who) начала фраз «Закончи фразу» (phrases) и факты «Правды или лжи» (truth). Порядок вариантов совпадает с
 // games.js — номер верного варианта хранится на сервере, поэтому варианты
 // нельзя переставлять.
 window.GLOWLETTER_GAMES_I18N = Object.freeze({
@@ -211,7 +211,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Einladen",
       "invited": "Eingeladen",
       "inviteNone": "Füge im Bereich „Freunde“ Menschen hinzu, um sie mit einem Tippen einzuladen.",
-      "inviteSent": "Einladung an {name} gesendet"
+      "inviteSent": "Einladung an {name} gesendet",
+      "truth": "Wahr oder falsch",
+      "tfTitle": "Wahr oder falsch",
+      "tfNote": "Ein Live-Spiel zu zweit: erstaunliche Fakten über die Welt. 12 Sekunden — wahr oder falsch? Für jede richtige Antwort gibt es einen Punkt.",
+      "tfShareText": "{name} lädt dich zum Live-Spiel „Wahr oder falsch“ ein",
+      "tfJoinLead": "{name} wartet auf dich. Wahr oder falsch — entscheide schnell!",
+      "tfRound": "Fakt {n} von {total}",
+      "tfTrue": "Wahr",
+      "tfFalse": "Falsch",
+      "tfIsTrue": "Das stimmt!",
+      "tfIsFalse": "Das stimmt nicht!",
+      "tfFirstYou": "Du lagst als Erstes richtig!",
+      "tfFirstThem": "{name} lag als Erstes richtig",
+      "tfFinalWin": "Sieg! Du weißt mehr über die Welt.",
+      "tfFinalLose": "Diesmal weiß {name} mehr — Revanche?",
+      "tfFinalDraw": "Unentschieden — ihr wisst genau gleich viel!",
+      "featTruth": "Live-Spiel „Wahr oder falsch“ — erstaunliche Fakten über die Welt"
     },
     "questions": {
       "q01": [
@@ -633,6 +649,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Kochen",
         "Eine neue Sprache",
         "Zeichnen"
+      ],
+      "q61": [
+        "Welches Gericht gelingt mir am besten?",
+        "Suppe",
+        "Plov",
+        "Gebäck",
+        "Salat"
+      ],
+      "q62": [
+        "Welches Land möchte ich als Erstes sehen?",
+        "Türkei",
+        "Japan",
+        "Marokko",
+        "Norwegen"
+      ],
+      "q63": [
+        "Welchen Sport würde ich lieber anfangen?",
+        "Schwimmen",
+        "Laufen",
+        "Radfahren",
+        "Fußball"
+      ],
+      "q64": [
+        "Welches Buch würde ich wählen?",
+        "Ein Abenteuer",
+        "Ein Geschichtsbuch",
+        "Märchen",
+        "Ein Lexikon"
+      ],
+      "q65": [
+        "Zu welchen Tieren würde ich im Zoo zuerst gehen?",
+        "Zu den Elefanten",
+        "Zu den Affen",
+        "Zu den Pinguinen",
+        "Zu den Giraffen"
+      ],
+      "q66": [
+        "Wie stehe ich zu scharfem Essen?",
+        "Je schärfer, desto besser",
+        "Ein bisschen ist gut",
+        "Nur ganz wenig",
+        "Ich esse es gar nicht"
+      ],
+      "q67": [
+        "Welches Schulfach mochte ich am liebsten?",
+        "Mathe",
+        "Literatur",
+        "Erdkunde",
+        "Sport"
+      ],
+      "q68": [
+        "Mein Traumberuf als Kind?",
+        "Arzt oder Ärztin",
+        "Lehrer oder Lehrerin",
+        "Astronaut oder Astronautin",
+        "Koch oder Köchin"
+      ],
+      "q69": [
+        "Wie stehe ich zu Wanderungen?",
+        "Ich träume von einer langen",
+        "Nur für einen Tag",
+        "Nur mit Komfort",
+        "Zu Hause ist es schöner"
+      ],
+      "q70": [
+        "Meine Stimmung am Morgen?",
+        "Voller Energie",
+        "Noch verschlafen",
+        "Ruhig",
+        "Gesprächig"
+      ],
+      "q71": [
+        "Welche Nuss mag ich am liebsten?",
+        "Haselnuss",
+        "Walnuss",
+        "Cashew",
+        "Mandel"
+      ],
+      "q72": [
+        "Was würde ich mit einer unerwarteten freien Stunde machen?",
+        "Lesen",
+        "Spazieren gehen",
+        "Die Familie anrufen",
+        "Etwas kochen"
+      ],
+      "q73": [
+        "Welches Wetter mag ich nicht?",
+        "Hitze",
+        "Wind",
+        "Matsch",
+        "Strengen Frost"
+      ],
+      "q74": [
+        "In welcher Farbe würde ich mein Zimmer streichen?",
+        "Weiß",
+        "Beige",
+        "Grün",
+        "Hellblau"
+      ],
+      "q75": [
+        "Was würde ich lieber spielen?",
+        "Schach",
+        "Dame",
+        "Ein Puzzle",
+        "Ein Wortspiel"
+      ],
+      "q76": [
+        "Was würde ich für Gäste kochen?",
+        "Plov",
+        "Einen Kuchen",
+        "Salate",
+        "Ich bestelle Essen"
+      ],
+      "q77": [
+        "Was würde ich auf keinen Fall essen?",
+        "Pilze",
+        "Fisch",
+        "Oliven",
+        "Gekochte Zwiebeln"
+      ],
+      "q78": [
+        "Wie trinke ich meinen Tee?",
+        "Stark",
+        "Schwach",
+        "Süß",
+        "Mit Kräutern"
+      ],
+      "q79": [
+        "Was ist mir in einem Zuhause am wichtigsten?",
+        "Sauberkeit",
+        "Gemütlichkeit",
+        "Viel Licht",
+        "Ruhe"
+      ],
+      "q80": [
+        "Wie lerne ich Neues?",
+        "Durch Lesen",
+        "Mit Videokursen",
+        "Durch Ausprobieren",
+        "Durch Fragen"
+      ],
+      "q81": [
+        "Welches Wildtier fasziniert mich am meisten?",
+        "Tiger",
+        "Bär",
+        "Adler",
+        "Delfin"
+      ],
+      "q82": [
+        "Was würde ich meiner Mutter schenken?",
+        "Blumen",
+        "Etwas Selbstgemachtes",
+        "Eine Reise",
+        "Eine warme Decke"
+      ],
+      "q83": [
+        "Was mache ich auf einer Reise?",
+        "Aus dem Fenster schauen",
+        "Lesen",
+        "Mich unterhalten",
+        "Naschen"
+      ],
+      "q84": [
+        "Mein liebstes Hühnchengericht?",
+        "Hähnchenspieße",
+        "Hähnchen mit Reis",
+        "Hähnchenfrikadellen",
+        "Nuggets"
+      ],
+      "q85": [
+        "Welchen Platz wähle ich im Zug?",
+        "Am Fenster",
+        "Am Gang",
+        "Gegen die Fahrtrichtung",
+        "Ist mir egal"
+      ],
+      "q86": [
+        "Was mache ich, wenn etwas schiefgeht?",
+        "Sofort handeln",
+        "Erst nachdenken",
+        "Um Rat fragen",
+        "Mir ein wenig Sorgen machen"
+      ],
+      "q87": [
+        "Was ist meine wichtigste Eigenschaft?",
+        "Güte",
+        "Ehrlichkeit",
+        "Ausdauer",
+        "Fröhlichkeit"
+      ],
+      "q88": [
+        "Wo würde ich mich am besten erholen?",
+        "Bei Verwandten auf dem Land",
+        "In einem Hotel am Meer",
+        "Im Zelt",
+        "Zu Hause"
+      ],
+      "q89": [
+        "Welches Gebäck würde ich wählen?",
+        "Samsa",
+        "Chatschapuri",
+        "Tschak-Tschak",
+        "Ein Éclair"
+      ],
+      "q90": [
+        "Welche Sprache würde ich am liebsten lernen?",
+        "Arabisch",
+        "Englisch",
+        "Türkisch",
+        "Japanisch"
+      ],
+      "q91": [
+        "Wie lange käme ich ohne Süßes aus?",
+        "Einen Tag",
+        "Eine Woche",
+        "Einen Monat",
+        "So lange wie nötig"
+      ],
+      "q92": [
+        "Was mache ich, wenn ich spät dran bin?",
+        "So schnell wie möglich laufen",
+        "Vorher anrufen",
+        "Ein Taxi nehmen",
+        "Ich bin nie zu spät"
+      ],
+      "q93": [
+        "Was mache ich, wenn ein Gerät kaputtgeht?",
+        "Selbst reparieren",
+        "Die Anleitung lesen",
+        "Hilfe holen",
+        "Alle Knöpfe drücken"
+      ],
+      "q94": [
+        "Was kommt zuerst in meinen Koffer?",
+        "Ein Erste-Hilfe-Set",
+        "Ein Buch",
+        "Ein Ladegerät",
+        "Ein Snack"
+      ],
+      "q95": [
+        "Welche Beschäftigung beruhigt mich?",
+        "Kochen",
+        "Aufräumen",
+        "Malen",
+        "Ein Spaziergang"
+      ],
+      "q96": [
+        "Was möchte ich im Ruhestand machen?",
+        "Gärtnern",
+        "Reisen",
+        "Lesen",
+        "Zeit mit den Enkelkindern verbringen"
+      ],
+      "q97": [
+        "Was ärgert mich am meisten?",
+        "Lärm",
+        "Unordnung",
+        "Unpünktlichkeit",
+        "Unhöflichkeit"
+      ],
+      "q98": [
+        "Welchen Duft mag ich am meisten?",
+        "Frisches Brot",
+        "Regen",
+        "Blumen",
+        "Das Meer"
+      ],
+      "q99": [
+        "Was würde ich als Nachtisch wählen?",
+        "Obst",
+        "Eis",
+        "Kuchen",
+        "Einfach Tee"
       ]
     },
     "yesNo": {
@@ -835,6 +1124,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Spielen wir später noch einmal?",
         "will noch eine Runde",
         "umarmt lieber, statt zu spielen"
+      ],
+      "c41": [
+        "Magst du scharfes Essen?",
+        "je schärfer, desto besser",
+        "nimmt lieber etwas Milderes"
+      ],
+      "c42": [
+        "Kannst du schwimmen?",
+        "schwimmt wie ein Fisch",
+        "bleibt vorerst nah am Ufer"
+      ],
+      "c43": [
+        "Hättest du gern eine Katze?",
+        "überlegt schon einen Namen",
+        "mag Hunde lieber"
+      ],
+      "c44": [
+        "Möchtest du einmal Istanbul besuchen?",
+        "träumt schon vom Bosporus",
+        "würde eine andere Stadt wählen"
+      ],
+      "c45": [
+        "Kochst du gern?",
+        "kocht mit Freude",
+        "spült lieber das Geschirr"
+      ],
+      "c46": [
+        "Möchtest du lernen, Plov zu kochen?",
+        "sucht schon ein Rezept",
+        "probiert lieber den Plov von anderen"
+      ],
+      "c47": [
+        "Liest du gern Bücher?",
+        "hat immer ein Buch dabei",
+        "hört lieber Geschichten zu"
+      ],
+      "c48": [
+        "Kannst du Fahrrad fahren?",
+        "könnte sofort losfahren",
+        "verspricht, es zu lernen"
+      ],
+      "c49": [
+        "Sind dir die Berge lieber als das Meer?",
+        "wählt die Berge",
+        "wählt das Meer"
+      ],
+      "c50": [
+        "Möchtest du einmal eine Wüste sehen?",
+        "träumt von Sanddünen",
+        "wählt lieber einen Wald"
+      ],
+      "c51": [
+        "Magst du den Winter?",
+        "wartet auf den ersten Schnee",
+        "wartet auf den Sommer"
+      ],
+      "c52": [
+        "Trinkst du Tee ohne Zucker?",
+        "mag den reinen Teegeschmack",
+        "kommt nicht ohne einen Löffel Zucker aus"
+      ],
+      "c53": [
+        "Hast du Angst vor Spinnen?",
+        "hält großen Abstand",
+        "trägt sie ruhig nach draußen"
+      ],
+      "c54": [
+        "Malst du gern?",
+        "greift schon zum Pinsel",
+        "betrachtet lieber die Bilder anderer"
+      ],
+      "c55": [
+        "Möchtest du einmal Polarlichter sehen?",
+        "sucht schon, wo man sie sehen kann",
+        "schaut lieber in die Sterne"
+      ],
+      "c56": [
+        "Magst du Regenwetter?",
+        "liebt das Rauschen des Regens vor dem Fenster",
+        "wartet auf die Sonne"
+      ],
+      "c57": [
+        "Kannst du reiten?",
+        "sitzt sicher im Sattel",
+        "träumt vorerst nur davon"
+      ],
+      "c58": [
+        "Hättest du gern einen Hund?",
+        "träumt von einem treuen Freund",
+        "hat vorerst genug zu versorgen"
+      ],
+      "c59": [
+        "Ist dir Süßes lieber als Herzhaftes?",
+        "kann ohne Süßes nicht leben",
+        "wählt Herzhaftes"
+      ],
+      "c60": [
+        "Fährst du gern mit dem Zug?",
+        "liebt das Rattern der Räder",
+        "wählt das Flugzeug"
+      ],
+      "c61": [
+        "Fällt es dir leicht, früh in den Tag zu starten?",
+        "startet voller Energie in den Tag",
+        "kommt erst bis Mittag in Schwung"
+      ],
+      "c62": [
+        "Zeltest du gern?",
+        "packt schon den Rucksack",
+        "wählt ein gemütliches Hotel"
+      ],
+      "c63": [
+        "Möchtest du am Meer wohnen?",
+        "träumt vom Rauschen der Wellen",
+        "wählt die Stadt"
+      ],
+      "c64": [
+        "Isst du im Winter Eis?",
+        "isst es sogar bei Frost",
+        "nur im Sommer"
+      ],
+      "c65": [
+        "Magst du Schokolade?",
+        "kennt jede Sorte",
+        "geht gelassen daran vorbei"
+      ],
+      "c66": [
+        "Kannst du Kuchen backen?",
+        "backt wie eine Großmutter",
+        "verspricht, es zu lernen"
+      ],
+      "c67": [
+        "Schaust du gern in die Sterne?",
+        "kennt die Sternbilder",
+        "mag lieber einen sonnigen Tag"
+      ],
+      "c68": [
+        "Möchtest du einmal einen eigenen Garten anlegen?",
+        "sucht schon Setzlinge aus",
+        "fängt mit einer Blume im Topf an"
+      ],
+      "c69": [
+        "Magst du Wildblumen?",
+        "liebt Gänseblümchen und Kornblumen",
+        "mag Gartenblumen lieber"
+      ],
+      "c70": [
+        "Trinkst du Kaffee?",
+        "ohne Kaffee beginnt der Tag nicht",
+        "wählt Tee"
+      ],
+      "c71": [
+        "Magst du selbst gemachte Limonade?",
+        "schneidet schon Zitronen",
+        "trinkt lieber Wasser"
+      ],
+      "c72": [
+        "Möchtest du einmal nach Japan reisen?",
+        "träumt von der Kirschblüte",
+        "würde ein anderes Land wählen"
+      ],
+      "c73": [
+        "Magst du den Herbst?",
+        "liebt es, durchs Laub zu rascheln",
+        "wartet auf den Frühling"
+      ],
+      "c74": [
+        "Magst du den Duft von Lavendel?",
+        "liebt diesen Duft",
+        "mag andere Düfte lieber"
+      ],
+      "c75": [
+        "Magst du Brettspiele?",
+        "baut schon das Spielbrett auf",
+        "geht lieber spazieren"
+      ],
+      "c76": [
+        "Kannst du Auto fahren?",
+        "fährt sicher",
+        "fährt vorerst nur mit"
+      ],
+      "c77": [
+        "Möchtest du einmal den Ozean sehen?",
+        "träumt von einer großen Welle",
+        "das Meer reicht völlig"
+      ],
+      "c78": [
+        "Möchtest du eine Weile auf einem Bauernhof leben?",
+        "füttert schon die Hühner",
+        "bleibt in der Stadt"
+      ],
+      "c79": [
+        "Magst du große Städte?",
+        "liebt die Lichter der Stadt",
+        "wählt Ruhe und Stille"
+      ],
+      "c80": [
+        "Ist dir Obst lieber als Süßigkeiten?",
+        "wählt Obst",
+        "wählt Süßigkeiten"
+      ],
+      "c81": [
+        "Möchtest du Delfine im Meer sehen?",
+        "würde sie sehr gern sehen",
+        "liest lieber über sie"
+      ],
+      "c82": [
+        "Magst du den Sommer?",
+        "wartet auf die heißen Tage",
+        "mag es lieber kühl"
+      ],
+      "c83": [
+        "Gehst du gern im Park spazieren?",
+        "geht bei jedem Wetter",
+        "bleibt lieber zu Hause"
+      ],
+      "c84": [
+        "Schreibst du gern mit der Hand?",
+        "hat eine schöne Handschrift",
+        "tippt auf dem Handy"
+      ],
+      "c85": [
+        "Machst du gern Bootsfahrten?",
+        "greift schon nach den Rudern",
+        "bleibt am Ufer"
+      ],
+      "c86": [
+        "Möchtest du um die Welt reisen?",
+        "zeichnet schon die Route",
+        "ein paar Länder reichen"
+      ],
+      "c87": [
+        "Kannst du einen Schneemann bauen?",
+        "baut den größten",
+        "macht lieber eine Schneeballschlacht"
+      ],
+      "c88": [
+        "Möchtest du dieses Jahr etwas Neues lernen?",
+        "wählt schon einen Kurs aus",
+        "hat schon genug zu tun"
+      ],
+      "c89": [
+        "Magst du Stille?",
+        "schätzt die Ruhe",
+        "mag es, wenn etwas los ist"
+      ],
+      "c90": [
+        "Machst du deiner Familie gern Geschenke?",
+        "macht der Familie einfach so eine Freude",
+        "hilft lieber ganz praktisch"
       ]
     },
     "loves": {
@@ -949,6 +1488,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Wald",
         "Wüste",
         "Nordlicht"
+      ],
+      "s17": [
+        "Lieblingsobst?",
+        "Apfel",
+        "Erdbeere",
+        "Wassermelone",
+        "Weintrauben"
+      ],
+      "s18": [
+        "Was tun am freien Tag?",
+        "Wandern in den Bergen",
+        "Zu Hause kochen",
+        "Ein Museum",
+        "Angeln"
+      ],
+      "s19": [
+        "Lieblingsfrühstück?",
+        "Pfannkuchen",
+        "Omelett",
+        "Brei mit Beeren",
+        "Croissant"
+      ],
+      "s20": [
+        "Lieblingsvogel?",
+        "Eule",
+        "Papagei",
+        "Schwan",
+        "Pfau"
+      ],
+      "s21": [
+        "Welche Stadt besuchen?",
+        "Istanbul",
+        "Paris",
+        "Tokio",
+        "Dubai"
+      ],
+      "s22": [
+        "Lieblingssport?",
+        "Fußball",
+        "Schwimmen",
+        "Tennis",
+        "Reiten"
+      ],
+      "s23": [
+        "Was im Garten pflanzen?",
+        "Einen Apfelbaum",
+        "Rosen",
+        "Gemüse",
+        "Erdbeeren"
+      ],
+      "s24": [
+        "Lieblingsgebäck?",
+        "Kleine Teigtaschen",
+        "Krapfen",
+        "Kekse",
+        "Baklava"
+      ],
+      "s25": [
+        "Wo wohnen?",
+        "An einem Fluss",
+        "Im Wald",
+        "In einer Großstadt",
+        "Auf einer Insel"
+      ],
+      "s26": [
+        "Liebstes Meerestier?",
+        "Schildkröte",
+        "Wal",
+        "Oktopus",
+        "Seepferdchen"
+      ],
+      "s27": [
+        "Womit fahren?",
+        "Fahrrad",
+        "Roller",
+        "Heißluftballon",
+        "Boot"
+      ],
+      "s28": [
+        "Liebste Beschäftigung?",
+        "Stricken",
+        "Naturfotografie",
+        "Gärtnern",
+        "Kalligrafie"
+      ],
+      "s29": [
+        "Lieblingssuppe?",
+        "Borschtsch",
+        "Hühnersuppe",
+        "Kürbissuppe",
+        "Linsensuppe"
+      ],
+      "s30": [
+        "Waldtier?",
+        "Igel",
+        "Eichhörnchen",
+        "Fuchs",
+        "Reh"
+      ],
+      "s31": [
+        "Etwas zum Knabbern?",
+        "Datteln",
+        "Mandeln",
+        "Pistazien",
+        "Getrocknete Aprikosen"
+      ],
+      "s32": [
+        "Was auf die Wanderung mitnehmen?",
+        "Ein Zelt",
+        "Eine Thermoskanne",
+        "Eine Karte",
+        "Eine Taschenlampe"
+      ],
+      "s33": [
+        "Lieblingsnachtisch?",
+        "Pudding",
+        "Käsekuchen",
+        "Pfannkuchen mit Honig",
+        "Obstsalat"
+      ],
+      "s34": [
+        "Was im Winter tun?",
+        "Einen Schneemann bauen",
+        "Schlitten fahren",
+        "Tee am Fenster",
+        "Ski fahren"
+      ],
+      "s35": [
+        "Was im Sommer tun?",
+        "Schwimmen",
+        "Beeren pflücken",
+        "Boot fahren",
+        "Eine Sandburg bauen"
+      ],
+      "s36": [
+        "Womit malen?",
+        "Aquarellfarben",
+        "Buntstifte",
+        "Wachsmalstifte",
+        "Farben auf Leinwand"
+      ],
+      "s37": [
+        "Lieblingsgemüse?",
+        "Karotte",
+        "Tomate",
+        "Mais",
+        "Kürbis"
+      ],
+      "s38": [
+        "Was macht ein Zuhause gemütlich?",
+        "Ein Kamin",
+        "Eine weiche Decke",
+        "Zimmerpflanzen",
+        "Ein Bücherregal"
+      ],
+      "s39": [
+        "Was spielen?",
+        "Schach",
+        "Puzzles",
+        "Brettspiele",
+        "Ballspiele"
+      ],
+      "s40": [
+        "Wer lebt auf dem Bauernhof?",
+        "Kuh",
+        "Lamm",
+        "Huhn",
+        "Zicklein"
+      ],
+      "s41": [
+        "Tee mit was?",
+        "Honig",
+        "Zitrone",
+        "Marmelade",
+        "Minze"
+      ],
+      "s42": [
+        "Was gibt es am Meer?",
+        "Einen Leuchtturm",
+        "Muscheln",
+        "Ein Segelboot",
+        "Möwen"
+      ],
+      "s43": [
+        "Wie den Morgen beginnen?",
+        "Mit Gymnastik",
+        "Mit einer Tasse Tee",
+        "Mit einem Spaziergang",
+        "Mit einem Buch"
+      ],
+      "s44": [
+        "Lieblingsbeere?",
+        "Himbeere",
+        "Heidelbeere",
+        "Kirsche",
+        "Brombeere"
       ]
     },
     "who": [
@@ -991,7 +1726,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Wer von uns erinnert sich öfter an lustige Geschichten?",
       "Wer von uns hat mehr Geduld?",
       "Wer von uns sagt öfter „Danke“?",
-      "Wer von uns bietet zuerst Hilfe an?"
+      "Wer von uns bietet zuerst Hilfe an?",
+      "Wer von uns rechnet besser im Kopf?",
+      "Wer von uns liest mehr?",
+      "Wer von uns tippt schneller?",
+      "Wer von uns ruft öfter bei den Eltern an?",
+      "Wer von uns erzählt besser Geschichten?",
+      "Wer von uns hat die schönere Handschrift?",
+      "Wer von uns mag scharfes Essen mehr?",
+      "Wer von uns vergisst öfter etwas zu Hause?",
+      "Wer von uns kennt sich besser mit Technik aus?",
+      "Wer von uns lernt lieber Neues?",
+      "Wer von uns plant besser?",
+      "Wer von uns handelt auf dem Markt besser?",
+      "Wer von uns liebt die Natur mehr?",
+      "Wer von uns isst schneller?",
+      "Wer von uns trinkt mehr Tee?",
+      "Wer von uns pflegt Pflanzen besser?",
+      "Wer von uns kennt sich besser in Geografie aus?",
+      "Wer von uns spielt besser Schach?",
+      "Wer von uns sucht auf dem Markt das bessere Obst aus?",
+      "Wer von uns schaut öfter in den Wetterbericht?",
+      "Wer von uns hat mehr Angst vor Spinnen?",
+      "Wer von uns ist mutiger?",
+      "Wer von uns ist neugieriger?",
+      "Wer von uns löst Rätsel schneller?",
+      "Wer von uns malt besser?",
+      "Wer von uns hilft öfter den Nachbarn?",
+      "Wer von uns kommt besser mit Kindern zurecht?",
+      "Wer von uns geht lieber spazieren?",
+      "Wer von uns liest öfter die Anleitung?",
+      "Wer von uns merkt sich Namen besser?",
+      "Wer von uns lernt schneller Wörter in einer anderen Sprache?",
+      "Wer von uns backt besser?",
+      "Wer von uns gibt bessere Ratschläge?",
+      "Wer von uns mag kaltes Wetter mehr?",
+      "Wer von uns käme auf einer Wanderung besser zurecht?",
+      "Wer von uns liest öfter Nachrichten?",
+      "Wer von uns probiert öfter neue Gerichte?",
+      "Wer von uns packt schneller den Koffer?",
+      "Wer von uns repariert Dinge besser?",
+      "Wer von uns spricht öfter mit Tieren?",
+      "Wer von uns spült öfter das Geschirr?",
+      "Wer von uns kennt sich besser in Geschichte aus?",
+      "Wer von uns schiebt Dinge öfter auf?",
+      "Wer von uns findet schneller Anschluss an neue Leute?",
+      "Wer von uns achtet mehr auf die Gesundheit?"
     ],
     "phrases": [
       "Ich lächle, wenn du…",
@@ -1023,8 +1803,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ein Morgen mit dir ist…",
       "Wenn wir ein einziges Wort wären, wäre es…",
       "Ich möchte von dir lernen, wie man…",
-      "Danke, dass du immer…"
-    ]
+      "Danke, dass du immer…",
+      "Mein Lieblingsessen als Kind war…",
+      "Hätte ich einen Tag in einem beliebigen Land, würde ich…",
+      "Der beste Rat, den ich je bekommen habe, ist…",
+      "Ich muss immer lachen, wenn…",
+      "Mein liebster Ort in meiner Heimatstadt ist…",
+      "Hätte ich einen eigenen kleinen Laden, gäbe es dort…",
+      "Das Gericht, das mir am besten gelingt, ist…",
+      "Ein Kindheitstraum, an den ich mich noch erinnere, ist…",
+      "Mir eine Freude zu machen ist leicht, wenn…",
+      "Der erstaunlichste Ort, an dem ich je war, ist…",
+      "Ich möchte lernen…",
+      "Mein perfekter freier Tag beginnt mit…",
+      "Könnte ich jedes beliebige Tier haben, wäre es…",
+      "In meiner Familie sagt man immer, dass ich…",
+      "Ich kann mich einfach nicht gewöhnen an…",
+      "Meine nützlichste Gewohnheit ist…",
+      "Das beste Buch, das ich je gelesen habe, ist…",
+      "In zehn Jahren möchte ich…",
+      "Mein Traumhaus ist…",
+      "Das Lustigste, was mir als Kind passiert ist, ist…",
+      "Glück ist für mich…",
+      "Es fällt mir schwer, zu verzichten auf…",
+      "Hätte ich eine Superkraft, würde sie…",
+      "Am meisten schätze ich an Menschen…",
+      "Wenn ich einen freien Abend habe, …",
+      "Mein liebster Duft ist…",
+      "Was ich niemals essen würde, ist…",
+      "Ohne das gehe ich nie aus dem Haus:…",
+      "Ich würde gern … besuchen, weil…",
+      "Das schönste Geschenk, das ich je bekommen habe, ist…",
+      "Meine ungewöhnlichste Gewohnheit ist…",
+      "Hätte ich jeden Tag eine Stunde mehr, würde ich…",
+      "Jemand, von dem ich viel lerne, ist…",
+      "An einem schweren Tag hilft mir…",
+      "Das Leckerste, was ich auf einer Reise probiert habe, ist…",
+      "Könnte ich für einen Tag den Beruf wechseln, würde ich wählen…",
+      "Die Jahreszeit, die mir am nächsten ist, ist…",
+      "Meine Freunde sagen, dass ich…",
+      "Eines Tages möchte ich jemandem beibringen…",
+      "Eine kleine Freude in meinem Tag ist…"
+    ],
+    "truth": {
+      "t01": [
+        "Ein Oktopus hat drei Herzen.",
+        true,
+        "Zwei Herzen pumpen Blut durch die Kiemen, das dritte durch den Körper."
+      ],
+      "t02": [
+        "Die Chinesische Mauer ist vom Mond aus mit bloßem Auge zu sehen.",
+        false,
+        "Nein: Die Mauer ist viel zu schmal. Selbst aus der Umlaufbahn ist sie kaum zu erkennen."
+      ],
+      "t03": [
+        "Honig kann Tausende Jahre halten, ohne zu verderben.",
+        true,
+        "In altägyptischen Gräbern fand man Tausende Jahre alten Honig, der noch erhalten war."
+      ],
+      "t04": [
+        "Bananen wachsen auf Bäumen.",
+        false,
+        "Die Bananenpflanze ist ein riesiges Kraut: Ihr „Stamm“ besteht aus fest eingerollten Blättern."
+      ],
+      "t05": [
+        "Die Venus ist der heißeste Planet im Sonnensystem.",
+        true,
+        "Ihre dichte Atmosphäre heizt die Venus auf etwa 460 °C auf — heißer als Merkur."
+      ],
+      "t06": [
+        "Fledermäuse sind blind.",
+        false,
+        "Fledermäuse können sehen und orientieren sich im Dunkeln zusätzlich per Echoortung."
+      ],
+      "t07": [
+        "Ein Wal ist ein Fisch.",
+        false,
+        "Wale sind Säugetiere: Sie atmen Luft und säugen ihre Jungen mit Milch."
+      ],
+      "t08": [
+        "Die Sahara ist die größte Wüste der Welt.",
+        false,
+        "Die größte Wüste ist die Antarktis. Die Sahara ist die größte heiße Wüste."
+      ],
+      "t09": [
+        "Eine Giraffe hat genauso viele Halswirbel wie ein Mensch.",
+        true,
+        "Beide haben sieben Halswirbel — die der Giraffe sind nur sehr lang."
+      ],
+      "t10": [
+        "Botanisch gesehen ist die Tomate eine Beere.",
+        true,
+        "Botaniker zählen die Tomate zu den Beeren: eine fleischige Frucht mit Samen im Inneren."
+      ],
+      "t11": [
+        "Botanisch gesehen ist die Erdbeere eine Beere.",
+        false,
+        "Sie ist eine Scheinfrucht: Die echten Früchte sind die winzigen „Kerne“ außen."
+      ],
+      "t12": [
+        "Im Weltall kann man eine Explosion hören.",
+        false,
+        "Im Weltall gibt es fast keine Luft, also kann sich der Schall nicht ausbreiten."
+      ],
+      "t13": [
+        "Hoch in den Bergen kocht Wasser bei niedrigerer Temperatur.",
+        true,
+        "Dort ist der Luftdruck geringer, deshalb kocht Wasser schon unter 100 °C."
+      ],
+      "t14": [
+        "Pinguine leben am Nordpol.",
+        false,
+        "Wilde Pinguine leben nur auf der Südhalbkugel, nicht im hohen Norden."
+      ],
+      "t15": [
+        "Der Everest ist der höchste Berg über dem Meeresspiegel.",
+        true,
+        "Der Everest ragt etwa 8.849 Meter über den Meeresspiegel."
+      ],
+      "t16": [
+        "Menschen nutzen nur 10 % ihres Gehirns.",
+        false,
+        "Das ist ein Mythos: Im Laufe eines Tages ist fast jeder Teil des Gehirns aktiv."
+      ],
+      "t17": [
+        "Ein menschliches Herz schlägt etwa 100.000 Mal am Tag.",
+        true,
+        "Bei etwa 70 Schlägen pro Minute kommen rund 100.000 Schläge am Tag zusammen."
+      ],
+      "t18": [
+        "Ein Goldfisch hat ein Gedächtnis von nur drei Sekunden.",
+        false,
+        "Experimente zeigen, dass Goldfische sich Gelerntes monatelang merken können."
+      ],
+      "t19": [
+        "Australien ist zugleich ein Land und ein Kontinent.",
+        true,
+        "Australien ist das einzige Land, das einen ganzen Kontinent einnimmt."
+      ],
+      "t20": [
+        "Der Blitz schlägt nie zweimal an derselben Stelle ein.",
+        false,
+        "Doch: In hohe Gebäude schlägt der Blitz viele Male im Jahr ein."
+      ],
+      "t21": [
+        "Ein Strauß steckt bei Angst den Kopf in den Sand.",
+        false,
+        "Ein Mythos: Ein erschrockener Strauß rennt weg oder legt sich flach auf den Boden."
+      ],
+      "t22": [
+        "Der kleinste Vogel der Welt ist ein Kolibri.",
+        true,
+        "Die Bienenelfe aus Kuba wiegt etwa 2 Gramm — weniger als jeder andere Vogel."
+      ],
+      "t23": [
+        "Eine Wassermelone besteht zu etwa 90 % aus Wasser.",
+        true,
+        "Wassermelone besteht zu rund 92 % aus Wasser — deshalb ist sie so erfrischend."
+      ],
+      "t24": [
+        "Eine Spinne hat sechs Beine.",
+        false,
+        "Eine Spinne hat acht Beine. Insekten haben sechs, und Spinnen sind keine Insekten."
+      ],
+      "t25": [
+        "Der Mond leuchtet aus eigener Kraft.",
+        false,
+        "Der Mond hat kein eigenes Licht: Er reflektiert das Sonnenlicht."
+      ],
+      "t26": [
+        "Der Elefant ist das größte Landtier.",
+        true,
+        "Ein Afrikanischer Elefant kann mehr als 6 Tonnen wiegen."
+      ],
+      "t27": [
+        "Der Blauwal ist das größte Tier, das die Wissenschaft kennt.",
+        true,
+        "Blauwale können über 30 Meter lang werden — größer als jeder bekannte Dinosaurier."
+      ],
+      "t28": [
+        "Ein Chamäleon wechselt die Farbe nur zur Tarnung.",
+        false,
+        "Seine Farbe hängt eher von Stimmung, Temperatur und Signalen an andere Chamäleons ab."
+      ],
+      "t29": [
+        "Das Telefon wurde von Thomas Edison erfunden.",
+        false,
+        "Das Patent auf das Telefon erhielt Alexander Graham Bell im Jahr 1876."
+      ],
+      "t30": [
+        "Penicillin wurde von Alexander Fleming entdeckt.",
+        true,
+        "Fleming entdeckte Penicillin 1928 — das erste Antibiotikum."
+      ],
+      "t31": [
+        "Der höchste Vulkan im Sonnensystem steht auf dem Mars.",
+        true,
+        "Der Olympus Mons auf dem Mars ist etwa 22 km hoch — fast 2,5-mal so hoch wie der Everest."
+      ],
+      "t32": [
+        "Das Blut in unseren Venen ist blau.",
+        false,
+        "Blut ist immer rot; Venen wirken nur blau, weil Licht auf besondere Weise durch die Haut dringt."
+      ],
+      "t33": [
+        "Der Atlantik ist der größte Ozean der Erde.",
+        false,
+        "Der größte ist der Pazifik: Er ist größer als alle Landflächen der Erde zusammen."
+      ],
+      "t34": [
+        "Russland ist flächenmäßig das größte Land der Welt.",
+        true,
+        "Russland umfasst mehr als 17 Millionen Quadratkilometer."
+      ],
+      "t35": [
+        "Kanada hat die längste Küstenlinie der Welt.",
+        true,
+        "Kanadas Küste ist über 200.000 km lang — länger als die jedes anderen Landes."
+      ],
+      "t36": [
+        "Der Magen einer Kuh hat vier Abschnitte.",
+        true,
+        "Eine Kuh hat einen Magen mit vier Kammern — so verdaut sie Gras."
+      ],
+      "t37": [
+        "Der Löwe ist die größte Katze der Welt.",
+        false,
+        "Die größte Katze ist der Tiger, besonders der Sibirische Tiger."
+      ],
+      "t38": [
+        "Die Erde ist der Sonne am nächsten.",
+        false,
+        "Am nächsten ist Merkur, dann Venus; die Erde ist der dritte Planet."
+      ],
+      "t39": [
+        "Sonnenlicht braucht etwa 8 Minuten bis zur Erde.",
+        true,
+        "Das Licht legt die 150 Millionen km von der Sonne in etwa 8 Minuten und 20 Sekunden zurück."
+      ],
+      "t40": [
+        "Delfine schlafen jeweils mit einer Gehirnhälfte.",
+        true,
+        "Eine Hälfte ruht, während die andere wach bleibt und ans Atmen denkt."
+      ],
+      "t41": [
+        "Kartoffeln stammen aus Irland.",
+        false,
+        "Kartoffeln stammen aus Südamerika: In den Anden wurden sie schon vor Tausenden Jahren angebaut."
+      ],
+      "t42": [
+        "Schokolade wird aus den Samen des Kakaobaums hergestellt.",
+        true,
+        "Kakaofrüchte wachsen direkt am Stamm, und aus den Samen darin wird Schokolade."
+      ],
+      "t43": [
+        "Ein Hai ist ein Säugetier.",
+        false,
+        "Ein Hai ist ein Fisch: Er atmet durch Kiemen. Wale und Delfine sind die Säugetiere des Meeres."
+      ],
+      "t44": [
+        "Manche Bambusarten wachsen fast einen Meter am Tag.",
+        true,
+        "Bambus gehört zu den am schnellsten wachsenden Pflanzen der Erde."
+      ],
+      "t45": [
+        "Eine Eule kann ihren Kopf volle 360 Grad drehen.",
+        false,
+        "Eine Eule kann ihren Kopf etwa 270 Grad drehen — viel, aber kein voller Kreis."
+      ],
+      "t46": [
+        "Ein Diamant und Bleistiftgraphit bestehen aus demselben Stoff.",
+        true,
+        "Beide sind reiner Kohlenstoff — nur die Atome sind anders angeordnet."
+      ],
+      "t47": [
+        "Ein Kamel speichert Wasser in seinem Höcker.",
+        false,
+        "Im Höcker speichert das Kamel Fett, kein Wasser — es liefert Energie auf langen Wegen."
+      ],
+      "t48": [
+        "Der kleinste Knochen des Menschen sitzt im Ohr.",
+        true,
+        "Der Steigbügel im Mittelohr ist nur etwa 3 Millimeter lang."
+      ],
+      "t49": [
+        "Große Papageien können über 50 Jahre alt werden.",
+        true,
+        "Gut versorgte Aras und Kakadus leben oft 50 Jahre oder länger."
+      ],
+      "t50": [
+        "Die Brüder Wright schafften den ersten Motorflug.",
+        true,
+        "Sie flogen 1903; der allererste Flug dauerte 12 Sekunden."
+      ],
+      "t51": [
+        "Das Rad wurde im Mittelalter erfunden.",
+        false,
+        "Das Rad ist über 5.000 Jahre alt: In Mesopotamien nutzte man es schon um 3500 v. Chr."
+      ],
+      "t52": [
+        "Ein Seepferdchen ist ein Fisch.",
+        true,
+        "Ein Seepferdchen atmet durch Kiemen und schwimmt mit einer Flosse, wie andere Fische."
+      ],
+      "t53": [
+        "Ein Kolibri kann rückwärts fliegen.",
+        true,
+        "Kolibris sind die einzigen Vögel, die wirklich rückwärts fliegen können."
+      ],
+      "t54": [
+        "Der Eiffelturm wird im Sommer ein wenig höher.",
+        true,
+        "Durch die Wärme dehnt sich das Metall aus, und der Turm wächst um etwa 15 Zentimeter."
+      ],
+      "t55": [
+        "Die Haut ist das größte Organ des menschlichen Körpers.",
+        true,
+        "Die Haut eines Erwachsenen wiegt mehrere Kilogramm und schützt den ganzen Körper."
+      ],
+      "t56": [
+        "Die Farbe Rot macht einen Stier wütend.",
+        false,
+        "Stiere können Rot kaum unterscheiden: Sie reagieren auf die Bewegung, nicht auf die Farbe."
+      ],
+      "t57": [
+        "Eine Stubenfliege lebt nur einen Tag.",
+        false,
+        "Eine Stubenfliege lebt etwa einen Monat. Nur erwachsene Eintagsfliegen leben ein, zwei Tage."
+      ],
+      "t58": [
+        "Ananas wachsen auf Bäumen.",
+        false,
+        "Eine Ananas wächst an einer niedrigen Blattpflanze, direkt aus deren Mitte."
+      ],
+      "t59": [
+        "Die Erdnuss ist eine Nuss.",
+        false,
+        "Die Erdnuss ist eine Hülsenfrucht, verwandt mit Erbsen und Bohnen. Ihre Hülsen reifen unter der Erde."
+      ],
+      "t60": [
+        "Nord- und Südpol sind gleich kalt.",
+        false,
+        "Der Südpol ist viel kälter: Er liegt auf einem hohen, vereisten Kontinent, der Nordpol auf einem Ozean."
+      ]
+    }
   },
   "es": {
     "text": {
@@ -1233,7 +2355,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Invitar",
       "invited": "Invitación enviada",
       "inviteNone": "Añade amigos en la sección «Amigos» para invitarlos con un toque.",
-      "inviteSent": "Invitación enviada a {name}"
+      "inviteSent": "Invitación enviada a {name}",
+      "truth": "Verdadero o falso",
+      "tfTitle": "Verdadero o falso",
+      "tfNote": "Un juego en directo para dos: datos asombrosos sobre el mundo. 12 segundos: ¿verdadero o falso? Un punto por cada acierto.",
+      "tfShareText": "{name} te invita al juego en directo «Verdadero o falso»",
+      "tfJoinLead": "{name} te espera. Verdadero o falso: ¡decide rápido!",
+      "tfRound": "Dato {n} de {total}",
+      "tfTrue": "Verdadero",
+      "tfFalse": "Falso",
+      "tfIsTrue": "¡Es verdad!",
+      "tfIsFalse": "¡Es falso!",
+      "tfFirstYou": "¡Acertaste antes!",
+      "tfFirstThem": "{name} acertó antes",
+      "tfFinalWin": "¡Victoria! Sabes más sobre el mundo.",
+      "tfFinalLose": "Esta vez {name} sabe más. ¿Revancha?",
+      "tfFinalDraw": "Empate: ¡sabéis exactamente lo mismo!",
+      "featTruth": "Juego en directo «Verdadero o falso»: datos asombrosos sobre el mundo"
     },
     "questions": {
       "q01": [
@@ -1655,6 +2793,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "A cocinar",
         "Un idioma nuevo",
         "A dibujar"
+      ],
+      "q61": [
+        "¿Qué plato me sale mejor?",
+        "Sopa",
+        "Pilaf",
+        "Repostería",
+        "Ensalada"
+      ],
+      "q62": [
+        "¿Qué país quiero ver primero?",
+        "Turquía",
+        "Japón",
+        "Marruecos",
+        "Noruega"
+      ],
+      "q63": [
+        "¿Qué deporte preferiría practicar?",
+        "Natación",
+        "Correr",
+        "Ciclismo",
+        "Fútbol"
+      ],
+      "q64": [
+        "¿Qué libro elegiría?",
+        "Uno de aventuras",
+        "Uno de historia",
+        "Cuentos",
+        "Una enciclopedia"
+      ],
+      "q65": [
+        "¿Qué animales visitaría primero en el zoo?",
+        "Los elefantes",
+        "Los monos",
+        "Los pingüinos",
+        "Las jirafas"
+      ],
+      "q66": [
+        "¿Qué opino de la comida picante?",
+        "Cuanto más picante, mejor",
+        "Un poco está bien",
+        "Solo una pizca",
+        "No la como nunca"
+      ],
+      "q67": [
+        "¿Qué asignatura me gustaba más en el colegio?",
+        "Matemáticas",
+        "Literatura",
+        "Geografía",
+        "Educación física"
+      ],
+      "q68": [
+        "¿Mi trabajo soñado en la infancia?",
+        "Medicina",
+        "Enseñanza",
+        "Viajar al espacio",
+        "Cocina"
+      ],
+      "q69": [
+        "¿Qué opino de las excursiones a pie?",
+        "Sueño con una larga",
+        "Solo de un día",
+        "Solo con comodidades",
+        "Mejor en casa"
+      ],
+      "q70": [
+        "¿Mi estado de ánimo por la mañana?",
+        "Con mucha energía",
+        "Con sueño",
+        "En silencio",
+        "Con ganas de hablar"
+      ],
+      "q71": [
+        "¿Qué fruto seco me gusta más?",
+        "Avellana",
+        "Nuez",
+        "Anacardo",
+        "Almendra"
+      ],
+      "q72": [
+        "¿Qué haría con una hora libre inesperada?",
+        "Leer",
+        "Salir a pasear",
+        "Llamar a la familia",
+        "Cocinar algo"
+      ],
+      "q73": [
+        "¿Qué tiempo no me gusta?",
+        "El calor",
+        "El viento",
+        "La nieve derretida",
+        "Las heladas fuertes"
+      ],
+      "q74": [
+        "¿De qué color pintaría mi habitación?",
+        "Blanco",
+        "Beis",
+        "Verde",
+        "Azul claro"
+      ],
+      "q75": [
+        "¿A qué preferiría jugar?",
+        "Ajedrez",
+        "Damas",
+        "Un puzle",
+        "Un juego de palabras"
+      ],
+      "q76": [
+        "¿Qué cocinaría para los invitados?",
+        "Pilaf",
+        "Una tarta",
+        "Ensaladas",
+        "Pediría comida"
+      ],
+      "q77": [
+        "¿Qué no comería por nada del mundo?",
+        "Setas",
+        "Pescado",
+        "Aceitunas",
+        "Cebolla cocida"
+      ],
+      "q78": [
+        "¿Cómo tomo el té?",
+        "Fuerte",
+        "Suave",
+        "Dulce",
+        "Con hierbas"
+      ],
+      "q79": [
+        "¿Qué es lo más importante para mí en una casa?",
+        "La limpieza",
+        "Que sea acogedora",
+        "Mucha luz",
+        "La tranquilidad"
+      ],
+      "q80": [
+        "¿Cómo aprendo cosas nuevas?",
+        "Leyendo",
+        "Con vídeos",
+        "Probando en la práctica",
+        "Preguntando"
+      ],
+      "q81": [
+        "¿Qué animal salvaje me fascina más?",
+        "El tigre",
+        "El oso",
+        "El águila",
+        "El delfín"
+      ],
+      "q82": [
+        "¿Qué le regalaría a mi madre?",
+        "Flores",
+        "Algo hecho a mano",
+        "Un viaje",
+        "Una manta calentita"
+      ],
+      "q83": [
+        "¿Qué hago en un viaje?",
+        "Mirar por la ventana",
+        "Leer",
+        "Charlar",
+        "Picar algo"
+      ],
+      "q84": [
+        "¿Mi plato de pollo favorito?",
+        "Brochetas de pollo",
+        "Pollo con arroz",
+        "Hamburguesitas de pollo",
+        "Nuggets"
+      ],
+      "q85": [
+        "¿Qué asiento elijo en el tren?",
+        "Ventanilla",
+        "Pasillo",
+        "De espaldas a la marcha",
+        "Me da igual"
+      ],
+      "q86": [
+        "¿Qué hago cuando algo sale mal?",
+        "Actúo enseguida",
+        "Primero pienso",
+        "Pido consejo",
+        "Me preocupo un poco"
+      ],
+      "q87": [
+        "¿Cuál es mi principal cualidad?",
+        "La bondad",
+        "La honestidad",
+        "La constancia",
+        "La alegría"
+      ],
+      "q88": [
+        "¿Dónde descansaría mejor?",
+        "Con la familia en el pueblo",
+        "En un hotel junto al mar",
+        "En una tienda de campaña",
+        "En casa"
+      ],
+      "q89": [
+        "¿Qué pieza de bollería elegiría?",
+        "Samsa",
+        "Jachapuri",
+        "Chak-chak",
+        "Un éclair"
+      ],
+      "q90": [
+        "¿Qué idioma me gustaría más aprender?",
+        "Árabe",
+        "Inglés",
+        "Turco",
+        "Japonés"
+      ],
+      "q91": [
+        "¿Cuánto tiempo aguantaría sin dulces?",
+        "Un día",
+        "Una semana",
+        "Un mes",
+        "Lo que haga falta"
+      ],
+      "q92": [
+        "¿Qué hago cuando llego tarde?",
+        "Corro todo lo que puedo",
+        "Llamo para avisar",
+        "Cojo un taxi",
+        "Nunca llego tarde"
+      ],
+      "q93": [
+        "¿Qué hago cuando se estropea un aparato?",
+        "Lo arreglo yo",
+        "Leo el manual",
+        "Pido ayuda",
+        "Pulso todos los botones"
+      ],
+      "q94": [
+        "¿Qué meto primero en la maleta?",
+        "Un botiquín",
+        "Un libro",
+        "Un cargador",
+        "Algo para picar"
+      ],
+      "q95": [
+        "¿Qué actividad me calma?",
+        "Cocinar",
+        "Ordenar",
+        "Dibujar",
+        "Un paseo"
+      ],
+      "q96": [
+        "¿Qué quiero hacer cuando me jubile?",
+        "Cuidar el huerto",
+        "Viajar",
+        "Leer",
+        "Pasar tiempo con los nietos"
+      ],
+      "q97": [
+        "¿Qué es lo que más me molesta?",
+        "El ruido",
+        "El desorden",
+        "La impuntualidad",
+        "La mala educación"
+      ],
+      "q98": [
+        "¿Qué olor me gusta más?",
+        "Pan recién hecho",
+        "La lluvia",
+        "Las flores",
+        "El mar"
+      ],
+      "q99": [
+        "¿Qué elegiría de postre?",
+        "Fruta",
+        "Helado",
+        "Tarta",
+        "Solo un té"
       ]
     },
     "yesNo": {
@@ -1857,6 +3268,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "¿Jugamos otra vez luego?",
         "quiere otra ronda",
         "prefiere un abrazo a jugar"
+      ],
+      "c41": [
+        "¿Te gusta la comida picante?",
+        "cuanto más picante, mejor",
+        "elige algo más suave"
+      ],
+      "c42": [
+        "¿Sabes nadar?",
+        "nada como un pez",
+        "de momento no se aleja de la orilla"
+      ],
+      "c43": [
+        "¿Te gustaría tener un gato?",
+        "ya está pensando un nombre",
+        "prefiere los perros"
+      ],
+      "c44": [
+        "¿Te gustaría visitar Estambul algún día?",
+        "ya sueña con el Bósforo",
+        "elegiría otra ciudad"
+      ],
+      "c45": [
+        "¿Te gusta cocinar?",
+        "cocina con gusto",
+        "prefiere fregar los platos"
+      ],
+      "c46": [
+        "¿Te gustaría aprender a cocinar pilaf?",
+        "ya está buscando una receta",
+        "prefiere probar el de otra persona"
+      ],
+      "c47": [
+        "¿Te gusta leer libros?",
+        "siempre tiene un libro a mano",
+        "prefiere escuchar historias"
+      ],
+      "c48": [
+        "¿Sabes montar en bici?",
+        "podría salir ahora mismo",
+        "promete aprender"
+      ],
+      "c49": [
+        "¿Prefieres la montaña al mar?",
+        "elige la montaña",
+        "elige el mar"
+      ],
+      "c50": [
+        "¿Te gustaría ver un desierto?",
+        "sueña con dunas de arena",
+        "prefiere un bosque"
+      ],
+      "c51": [
+        "¿Te gusta el invierno?",
+        "espera la primera nevada",
+        "espera el verano"
+      ],
+      "c52": [
+        "¿Tomas el té sin azúcar?",
+        "le gusta el sabor puro del té",
+        "no puede pasar sin una cucharadita de azúcar"
+      ],
+      "c53": [
+        "¿Te dan miedo las arañas?",
+        "se mantiene bien lejos",
+        "las saca fuera con calma"
+      ],
+      "c54": [
+        "¿Te gusta dibujar?",
+        "ya está cogiendo el pincel",
+        "prefiere mirar los cuadros de otros"
+      ],
+      "c55": [
+        "¿Te gustaría ver la aurora boreal?",
+        "ya está mirando dónde verla",
+        "prefiere contemplar las estrellas"
+      ],
+      "c56": [
+        "¿Te gusta el tiempo lluvioso?",
+        "disfruta del sonido de la lluvia tras la ventana",
+        "espera el sol"
+      ],
+      "c57": [
+        "¿Sabes montar a caballo?",
+        "va con seguridad en la silla",
+        "de momento solo lo sueña"
+      ],
+      "c58": [
+        "¿Te gustaría tener un perro?",
+        "sueña con un amigo fiel",
+        "de momento ya tiene bastante que cuidar"
+      ],
+      "c59": [
+        "¿Prefieres lo dulce a lo salado?",
+        "no puede vivir sin dulces",
+        "elige lo salado"
+      ],
+      "c60": [
+        "¿Te gusta viajar en tren?",
+        "disfruta del traqueteo de las ruedas",
+        "elige el avión"
+      ],
+      "c61": [
+        "¿Te resulta fácil empezar el día temprano?",
+        "empieza el día con mucha energía",
+        "no arranca hasta la hora de comer"
+      ],
+      "c62": [
+        "¿Te gusta acampar en tienda de campaña?",
+        "ya está haciendo la mochila",
+        "elige un hotel acogedor"
+      ],
+      "c63": [
+        "¿Te gustaría vivir junto al mar?",
+        "sueña con el rumor de las olas",
+        "elige la ciudad"
+      ],
+      "c64": [
+        "¿Comes helado en invierno?",
+        "lo come incluso con helada",
+        "solo en verano"
+      ],
+      "c65": [
+        "¿Te gusta el chocolate?",
+        "conoce todas sus variedades",
+        "pasa de largo con calma"
+      ],
+      "c66": [
+        "¿Sabes hacer empanadas al horno?",
+        "hornea como una abuela",
+        "promete aprender"
+      ],
+      "c67": [
+        "¿Te gusta mirar las estrellas?",
+        "conoce las constelaciones",
+        "prefiere un día soleado"
+      ],
+      "c68": [
+        "¿Te gustaría plantar tu propio huerto algún día?",
+        "ya está eligiendo plantones",
+        "empezará con una flor en una maceta"
+      ],
+      "c69": [
+        "¿Te gustan las flores silvestres?",
+        "le encantan las margaritas y los acianos",
+        "prefiere las flores de jardín"
+      ],
+      "c70": [
+        "¿Tomas café?",
+        "sin café el día no empieza",
+        "elige el té"
+      ],
+      "c71": [
+        "¿Te gusta la limonada casera?",
+        "ya está cortando limones",
+        "prefiere agua"
+      ],
+      "c72": [
+        "¿Te gustaría visitar Japón algún día?",
+        "sueña con ver los cerezos en flor",
+        "elegiría otro país"
+      ],
+      "c73": [
+        "¿Te gusta el otoño?",
+        "disfruta pisando las hojas secas",
+        "espera la primavera"
+      ],
+      "c74": [
+        "¿Te gusta el olor a lavanda?",
+        "le encanta ese aroma",
+        "prefiere otros aromas"
+      ],
+      "c75": [
+        "¿Te gustan los juegos de mesa?",
+        "ya está preparando el tablero",
+        "prefiere dar un paseo"
+      ],
+      "c76": [
+        "¿Sabes conducir?",
+        "conduce con seguridad",
+        "de momento solo acompaña"
+      ],
+      "c77": [
+        "¿Te gustaría ver el océano algún día?",
+        "sueña con una gran ola",
+        "con el mar le basta"
+      ],
+      "c78": [
+        "¿Te gustaría vivir un tiempo en una granja?",
+        "ya está dando de comer a las gallinas",
+        "se queda en la ciudad"
+      ],
+      "c79": [
+        "¿Te gustan las grandes ciudades?",
+        "disfruta de las luces de la ciudad",
+        "elige la paz y la tranquilidad"
+      ],
+      "c80": [
+        "¿Prefieres la fruta a los dulces?",
+        "elige la fruta",
+        "elige los dulces"
+      ],
+      "c81": [
+        "¿Te gustaría ver delfines en el mar?",
+        "le encantaría verlos",
+        "prefiere leer sobre ellos"
+      ],
+      "c82": [
+        "¿Te gusta el verano?",
+        "espera los días de calor",
+        "prefiere el fresco"
+      ],
+      "c83": [
+        "¿Te gusta pasear por el parque?",
+        "pasea haga el tiempo que haga",
+        "prefiere quedarse en casa"
+      ],
+      "c84": [
+        "¿Te gusta escribir a mano?",
+        "tiene una letra bonita",
+        "escribe en el móvil"
+      ],
+      "c85": [
+        "¿Te gustan los paseos en barca?",
+        "ya está cogiendo los remos",
+        "se queda en la orilla"
+      ],
+      "c86": [
+        "¿Te gustaría dar la vuelta al mundo?",
+        "ya está trazando la ruta",
+        "con un par de países basta"
+      ],
+      "c87": [
+        "¿Sabes hacer un muñeco de nieve?",
+        "hará el más grande",
+        "prefiere una guerra de bolas de nieve"
+      ],
+      "c88": [
+        "¿Te gustaría aprender algo nuevo este año?",
+        "ya está eligiendo un curso",
+        "ya tiene bastante que hacer"
+      ],
+      "c89": [
+        "¿Te gusta el silencio?",
+        "valora la calma",
+        "prefiere cuando hay ambiente"
+      ],
+      "c90": [
+        "¿Te gusta hacer regalos a tu familia?",
+        "alegra a la familia sin ningún motivo",
+        "prefiere ayudar de forma práctica"
       ]
     },
     "loves": {
@@ -1971,6 +3632,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Bosque",
         "Desierto",
         "Aurora boreal"
+      ],
+      "s17": [
+        "¿Fruta favorita?",
+        "Manzana",
+        "Fresa",
+        "Sandía",
+        "Uvas"
+      ],
+      "s18": [
+        "¿Qué hacer en un día libre?",
+        "Senderismo por la montaña",
+        "Cocinar en casa",
+        "Un museo",
+        "Pescar"
+      ],
+      "s19": [
+        "¿Desayuno favorito?",
+        "Tortitas",
+        "Tortilla",
+        "Gachas con frutos rojos",
+        "Cruasán"
+      ],
+      "s20": [
+        "¿Ave favorita?",
+        "Búho",
+        "Loro",
+        "Cisne",
+        "Pavo real"
+      ],
+      "s21": [
+        "¿Qué ciudad visitar?",
+        "Estambul",
+        "París",
+        "Tokio",
+        "Dubái"
+      ],
+      "s22": [
+        "¿Deporte favorito?",
+        "Fútbol",
+        "Natación",
+        "Tenis",
+        "Equitación"
+      ],
+      "s23": [
+        "¿Qué plantar en el jardín?",
+        "Un manzano",
+        "Rosas",
+        "Verduras",
+        "Fresas"
+      ],
+      "s24": [
+        "¿Dulce horneado favorito?",
+        "Empanadillas",
+        "Rosquillas",
+        "Galletas",
+        "Baklava"
+      ],
+      "s25": [
+        "¿Dónde vivir?",
+        "Junto a un río",
+        "En un bosque",
+        "En una gran ciudad",
+        "En una isla"
+      ],
+      "s26": [
+        "¿Animal marino favorito?",
+        "Tortuga",
+        "Ballena",
+        "Pulpo",
+        "Caballito de mar"
+      ],
+      "s27": [
+        "¿En qué viajar?",
+        "Bicicleta",
+        "Patinete",
+        "Globo aerostático",
+        "Barca"
+      ],
+      "s28": [
+        "¿Afición favorita?",
+        "Tejer",
+        "Fotografía de naturaleza",
+        "Jardinería",
+        "Caligrafía"
+      ],
+      "s29": [
+        "¿Sopa favorita?",
+        "Borsch",
+        "Sopa de pollo",
+        "Crema de calabaza",
+        "Sopa de lentejas"
+      ],
+      "s30": [
+        "¿Animal del bosque?",
+        "Erizo",
+        "Ardilla",
+        "Zorro",
+        "Ciervo"
+      ],
+      "s31": [
+        "¿Algo para picar?",
+        "Dátiles",
+        "Almendras",
+        "Pistachos",
+        "Orejones"
+      ],
+      "s32": [
+        "¿Qué llevar de excursión?",
+        "Una tienda de campaña",
+        "Un termo",
+        "Un mapa",
+        "Una linterna"
+      ],
+      "s33": [
+        "¿Postre favorito?",
+        "Pudin",
+        "Tarta de queso",
+        "Tortitas con miel",
+        "Macedonia"
+      ],
+      "s34": [
+        "¿Qué hacer en invierno?",
+        "Hacer un muñeco de nieve",
+        "Montar en trineo",
+        "Té junto a la ventana",
+        "Esquiar"
+      ],
+      "s35": [
+        "¿Qué hacer en verano?",
+        "Nadar",
+        "Recoger frutos rojos",
+        "Pasear en barca",
+        "Hacer un castillo de arena"
+      ],
+      "s36": [
+        "¿Con qué pintar?",
+        "Acuarelas",
+        "Lápices de colores",
+        "Ceras",
+        "Óleo sobre lienzo"
+      ],
+      "s37": [
+        "¿Verdura favorita?",
+        "Zanahoria",
+        "Tomate",
+        "Maíz",
+        "Calabaza"
+      ],
+      "s38": [
+        "¿Qué hace acogedor un hogar?",
+        "Una chimenea",
+        "Una manta suave",
+        "Plantas de interior",
+        "Una estantería de libros"
+      ],
+      "s39": [
+        "¿A qué jugar?",
+        "Ajedrez",
+        "Puzles",
+        "Juegos de mesa",
+        "Juegos de pelota"
+      ],
+      "s40": [
+        "¿Quién vive en la granja?",
+        "Vaca",
+        "Corderito",
+        "Gallina",
+        "Cabritillo"
+      ],
+      "s41": [
+        "¿Té con qué?",
+        "Miel",
+        "Limón",
+        "Mermelada",
+        "Menta"
+      ],
+      "s42": [
+        "¿Qué hay junto al mar?",
+        "Un faro",
+        "Conchas",
+        "Un velero",
+        "Gaviotas"
+      ],
+      "s43": [
+        "¿Cómo empezar la mañana?",
+        "Con ejercicio",
+        "Con una taza de té",
+        "Con un paseo",
+        "Con un libro"
+      ],
+      "s44": [
+        "¿Baya favorita?",
+        "Frambuesa",
+        "Arándano",
+        "Cereza",
+        "Mora"
       ]
     },
     "who": [
@@ -2013,7 +3870,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "¿Quién de los dos recuerda historias divertidas más a menudo?",
       "¿Quién de los dos tiene más paciencia?",
       "¿Quién de los dos dice «gracias» más a menudo?",
-      "¿Quién de los dos ofrece ayuda primero?"
+      "¿Quién de los dos ofrece ayuda primero?",
+      "¿Quién de los dos calcula mejor de cabeza?",
+      "¿Quién de los dos lee más?",
+      "¿Quién de los dos escribe más rápido en el teclado?",
+      "¿Quién de los dos llama más a menudo a sus padres?",
+      "¿Quién de los dos cuenta mejor las historias?",
+      "¿Quién de los dos tiene la letra más bonita?",
+      "¿A quién de los dos le gusta más la comida picante?",
+      "¿Quién de los dos se olvida cosas en casa más a menudo?",
+      "¿Quién de los dos se maneja mejor con los aparatos?",
+      "¿A quién de los dos le gusta más aprender cosas nuevas?",
+      "¿Quién de los dos planifica mejor?",
+      "¿Quién de los dos regatea mejor en el mercado?",
+      "¿A quién de los dos le gusta más la naturaleza?",
+      "¿Quién de los dos come más rápido?",
+      "¿Quién de los dos toma más té?",
+      "¿Quién de los dos cuida mejor las plantas?",
+      "¿Quién de los dos sabe más geografía?",
+      "¿Quién de los dos juega mejor al ajedrez?",
+      "¿Quién de los dos elige mejor la fruta en el mercado?",
+      "¿Quién de los dos mira el pronóstico del tiempo más a menudo?",
+      "¿A quién de los dos le dan más miedo las arañas?",
+      "¿Quién de los dos tiene más valor?",
+      "¿Quién de los dos tiene más curiosidad?",
+      "¿Quién de los dos resuelve acertijos más rápido?",
+      "¿Quién de los dos dibuja mejor?",
+      "¿Quién de los dos ayuda más a menudo a los vecinos?",
+      "¿Quién de los dos se lleva mejor con los niños?",
+      "¿A quién de los dos le gusta más pasear?",
+      "¿Quién de los dos lee las instrucciones más a menudo?",
+      "¿Quién de los dos recuerda mejor los nombres?",
+      "¿Quién de los dos aprende antes palabras en otro idioma?",
+      "¿A quién de los dos le sale mejor la repostería?",
+      "¿Quién de los dos da mejores consejos?",
+      "¿A quién de los dos le gusta más el frío?",
+      "¿Quién de los dos se las arreglaría mejor en una excursión?",
+      "¿Quién de los dos lee las noticias más a menudo?",
+      "¿Quién de los dos prueba platos nuevos más a menudo?",
+      "¿Quién de los dos hace la maleta más rápido?",
+      "¿Quién de los dos arregla mejor las cosas?",
+      "¿Quién de los dos habla con los animales más a menudo?",
+      "¿Quién de los dos friega los platos más a menudo?",
+      "¿Quién de los dos sabe más historia?",
+      "¿Quién de los dos deja las cosas para más tarde más a menudo?",
+      "¿Quién de los dos conecta antes con gente nueva?",
+      "¿Quién de los dos cuida más su salud?"
     ],
     "phrases": [
       "Sonrío cuando tú…",
@@ -2045,8 +3947,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Una mañana contigo es…",
       "Si fuéramos una sola palabra, sería…",
       "Quiero aprender de ti a…",
-      "Gracias por estar siempre…"
-    ]
+      "Gracias por estar siempre…",
+      "En mi infancia, mi comida favorita era…",
+      "Si tuviera un día en cualquier país, yo…",
+      "El mejor consejo que me han dado es…",
+      "Siempre me río cuando…",
+      "Mi lugar favorito de mi ciudad natal es…",
+      "Si tuviera mi propia tiendecita, vendería…",
+      "El plato que mejor me sale es…",
+      "Un sueño de la infancia que todavía recuerdo es…",
+      "Es fácil hacerme feliz si…",
+      "El lugar más asombroso en el que he estado es…",
+      "Quiero aprender…",
+      "Mi día libre perfecto empieza con…",
+      "Si pudiera tener cualquier animal, sería…",
+      "En mi familia siempre dicen que yo…",
+      "No consigo acostumbrarme a…",
+      "Mi costumbre más útil es…",
+      "El mejor libro que he leído es…",
+      "Dentro de diez años me gustaría…",
+      "La casa de mis sueños es…",
+      "Lo más divertido que me pasó en la infancia es…",
+      "Para mí, la felicidad es…",
+      "Me cuesta renunciar a…",
+      "Si tuviera un superpoder, me permitiría…",
+      "Lo que más valoro en las personas es…",
+      "Cuando tengo una tarde libre, yo…",
+      "Mi olor favorito es…",
+      "La comida que nunca probaría es…",
+      "Lo único sin lo que nunca salgo de casa es…",
+      "Me gustaría visitar… porque…",
+      "El mejor regalo que he recibido es…",
+      "Mi costumbre más curiosa es…",
+      "Si tuviera una hora más cada día, yo…",
+      "Una persona de la que aprendo mucho es…",
+      "En un día difícil, lo que me ayuda es…",
+      "Lo más rico que he probado en un viaje es…",
+      "Si pudiera cambiar de trabajo por un día, elegiría…",
+      "La estación del año más cercana a mi corazón es…",
+      "Mis amistades dicen que yo…",
+      "Algún día me gustaría enseñar a alguien…",
+      "Una pequeña alegría de mi día es…"
+    ],
+    "truth": {
+      "t01": [
+        "El pulpo tiene tres corazones.",
+        true,
+        "Dos corazones bombean sangre a las branquias y el tercero, al resto del cuerpo."
+      ],
+      "t02": [
+        "La Gran Muralla china se ve a simple vista desde la Luna.",
+        false,
+        "No: la muralla es demasiado estrecha. Incluso desde la órbita cuesta mucho distinguirla."
+      ],
+      "t03": [
+        "La miel puede conservarse miles de años sin estropearse.",
+        true,
+        "En tumbas del antiguo Egipto se ha encontrado miel de miles de años todavía conservada."
+      ],
+      "t04": [
+        "Los plátanos crecen en árboles.",
+        false,
+        "La platanera es una hierba gigante: su «tronco» está formado por hojas muy enrolladas."
+      ],
+      "t05": [
+        "Venus es el planeta más caliente del sistema solar.",
+        true,
+        "Su densa atmósfera calienta Venus hasta unos 460 °C, más que Mercurio."
+      ],
+      "t06": [
+        "Los murciélagos son ciegos.",
+        false,
+        "Los murciélagos ven, y en la oscuridad además se orientan por ecolocalización."
+      ],
+      "t07": [
+        "La ballena es un pez.",
+        false,
+        "Las ballenas son mamíferos: respiran aire y alimentan a sus crías con leche."
+      ],
+      "t08": [
+        "El Sáhara es el desierto más grande del mundo.",
+        false,
+        "El desierto más grande es la Antártida. El Sáhara es el mayor desierto cálido."
+      ],
+      "t09": [
+        "La jirafa tiene el mismo número de vértebras en el cuello que una persona.",
+        true,
+        "Ambas tienen siete vértebras cervicales; las de la jirafa son simplemente muy largas."
+      ],
+      "t10": [
+        "Desde el punto de vista botánico, el tomate es una baya.",
+        true,
+        "La botánica clasifica el tomate como baya: un fruto carnoso con semillas dentro."
+      ],
+      "t11": [
+        "Desde el punto de vista botánico, la fresa es una baya.",
+        false,
+        "Es un falso fruto: los verdaderos frutos son las diminutas «semillas» de fuera."
+      ],
+      "t12": [
+        "En el espacio se puede oír una explosión.",
+        false,
+        "En el espacio casi no hay aire, así que el sonido no tiene por dónde viajar."
+      ],
+      "t13": [
+        "En lo alto de la montaña, el agua hierve a menor temperatura.",
+        true,
+        "Allí la presión del aire es menor, por eso el agua hierve antes de llegar a 100 °C."
+      ],
+      "t14": [
+        "Los pingüinos viven en el Polo Norte.",
+        false,
+        "Los pingüinos salvajes viven solo en el hemisferio sur, no en el extremo norte."
+      ],
+      "t15": [
+        "El Everest es la montaña más alta sobre el nivel del mar.",
+        true,
+        "El Everest se alza unos 8849 metros sobre el nivel del mar."
+      ],
+      "t16": [
+        "Las personas usan solo el 10 % de su cerebro.",
+        false,
+        "Es un mito: a lo largo del día casi todas las partes del cerebro están activas."
+      ],
+      "t17": [
+        "El corazón humano late unas 100 000 veces al día.",
+        true,
+        "A unos 70 latidos por minuto, salen aproximadamente 100 000 latidos al día."
+      ],
+      "t18": [
+        "Un pez de colores solo tiene tres segundos de memoria.",
+        false,
+        "Los experimentos muestran que los peces de colores recuerdan lo aprendido durante meses."
+      ],
+      "t19": [
+        "Australia es a la vez un país y un continente.",
+        true,
+        "Australia es el único país que ocupa todo un continente."
+      ],
+      "t20": [
+        "Un rayo nunca cae dos veces en el mismo sitio.",
+        false,
+        "Sí que cae: los edificios altos reciben rayos muchas veces al año."
+      ],
+      "t21": [
+        "El avestruz esconde la cabeza en la arena cuando tiene miedo.",
+        false,
+        "Es un mito: un avestruz asustado huye o se tumba pegado al suelo para esconderse."
+      ],
+      "t22": [
+        "El ave más pequeña del mundo es un colibrí.",
+        true,
+        "El colibrí zunzuncito de Cuba pesa unos 2 gramos, menos que cualquier otra ave."
+      ],
+      "t23": [
+        "La sandía tiene alrededor de un 90 % de agua.",
+        true,
+        "La sandía tiene cerca de un 92 % de agua; por eso es tan refrescante."
+      ],
+      "t24": [
+        "La araña tiene seis patas.",
+        false,
+        "La araña tiene ocho patas. Los insectos tienen seis, y las arañas no son insectos."
+      ],
+      "t25": [
+        "La Luna produce su propia luz.",
+        false,
+        "La Luna no tiene luz propia: refleja la luz del Sol."
+      ],
+      "t26": [
+        "El elefante es el animal terrestre más grande.",
+        true,
+        "Un elefante africano de sabana puede pesar más de 6 toneladas."
+      ],
+      "t27": [
+        "La ballena azul es el animal más grande que conoce la ciencia.",
+        true,
+        "La ballena azul puede superar los 30 metros, más que cualquier dinosaurio conocido."
+      ],
+      "t28": [
+        "El camaleón cambia de color solo para camuflarse.",
+        false,
+        "Su color depende más del estado de ánimo, la temperatura y las señales a otros camaleones."
+      ],
+      "t29": [
+        "El teléfono lo inventó Thomas Edison.",
+        false,
+        "La patente del teléfono la obtuvo Alexander Graham Bell en 1876."
+      ],
+      "t30": [
+        "La penicilina la descubrió Alexander Fleming.",
+        true,
+        "Fleming descubrió la penicilina en 1928: el primer antibiótico."
+      ],
+      "t31": [
+        "El volcán más alto del sistema solar está en Marte.",
+        true,
+        "El monte Olimpo de Marte mide unos 22 km: casi 2,5 veces más que el Everest."
+      ],
+      "t32": [
+        "La sangre de nuestras venas es azul.",
+        false,
+        "La sangre siempre es roja; las venas solo parecen azules por cómo atraviesa la luz la piel."
+      ],
+      "t33": [
+        "El Atlántico es el océano más grande de la Tierra.",
+        false,
+        "El más grande es el Pacífico: es mayor que todas las tierras emergidas juntas."
+      ],
+      "t34": [
+        "Rusia es el país más grande del mundo por superficie.",
+        true,
+        "Rusia ocupa más de 17 millones de kilómetros cuadrados."
+      ],
+      "t35": [
+        "Canadá tiene la costa más larga del mundo.",
+        true,
+        "La costa de Canadá mide más de 200 000 km, más que la de cualquier otro país."
+      ],
+      "t36": [
+        "El estómago de la vaca tiene cuatro compartimentos.",
+        true,
+        "La vaca tiene un estómago con cuatro cámaras: así digiere la hierba."
+      ],
+      "t37": [
+        "El león es el felino más grande del mundo.",
+        false,
+        "El felino más grande es el tigre, sobre todo el tigre siberiano."
+      ],
+      "t38": [
+        "La Tierra es el planeta más cercano al Sol.",
+        false,
+        "El más cercano es Mercurio, luego Venus; la Tierra es el tercer planeta."
+      ],
+      "t39": [
+        "La luz del Sol tarda unos 8 minutos en llegar a la Tierra.",
+        true,
+        "La luz recorre los 150 millones de km desde el Sol en unos 8 minutos y 20 segundos."
+      ],
+      "t40": [
+        "Los delfines duermen con una mitad del cerebro cada vez.",
+        true,
+        "Una mitad descansa mientras la otra vigila y se acuerda de respirar."
+      ],
+      "t41": [
+        "La patata es originaria de Irlanda.",
+        false,
+        "La patata viene de Sudamérica: se cultivaba en los Andes hace miles de años."
+      ],
+      "t42": [
+        "El chocolate se hace con las semillas del cacao.",
+        true,
+        "Las mazorcas de cacao crecen directamente en el tronco, y sus semillas se convierten en chocolate."
+      ],
+      "t43": [
+        "El tiburón es un mamífero.",
+        false,
+        "El tiburón es un pez: respira por branquias. Los mamíferos del mar son las ballenas y los delfines."
+      ],
+      "t44": [
+        "Algunos tipos de bambú pueden crecer casi un metro al día.",
+        true,
+        "El bambú es una de las plantas que más rápido crecen en la Tierra."
+      ],
+      "t45": [
+        "El búho puede girar la cabeza 360 grados completos.",
+        false,
+        "El búho gira la cabeza unos 270 grados: mucho, pero no una vuelta completa."
+      ],
+      "t46": [
+        "El diamante y el grafito del lápiz son la misma sustancia.",
+        true,
+        "Ambos son carbono puro; solo cambia cómo se ordenan los átomos."
+      ],
+      "t47": [
+        "El camello guarda agua en la joroba.",
+        false,
+        "La joroba del camello guarda grasa, no agua: le da energía en los viajes largos."
+      ],
+      "t48": [
+        "El hueso más pequeño del cuerpo humano está en el oído.",
+        true,
+        "El estribo, en el oído medio, mide solo unos 3 milímetros."
+      ],
+      "t49": [
+        "Los loros grandes pueden vivir más de 50 años.",
+        true,
+        "Los guacamayos y las cacatúas bien cuidados suelen vivir 50 años o más."
+      ],
+      "t50": [
+        "Los hermanos Wright hicieron el primer vuelo en avión a motor.",
+        true,
+        "Volaron en 1903; el primerísimo vuelo duró 12 segundos."
+      ],
+      "t51": [
+        "La rueda se inventó en la Edad Media.",
+        false,
+        "La rueda tiene más de 5000 años: se usaba en Mesopotamia hacia el 3500 a. C."
+      ],
+      "t52": [
+        "El caballito de mar es un pez.",
+        true,
+        "El caballito de mar respira por branquias y nada con una aleta, como otros peces."
+      ],
+      "t53": [
+        "El colibrí puede volar hacia atrás.",
+        true,
+        "Los colibríes son las únicas aves que pueden volar de verdad hacia atrás."
+      ],
+      "t54": [
+        "La torre Eiffel crece un poco en verano.",
+        true,
+        "El calor dilata el metal y la torre gana unos 15 centímetros."
+      ],
+      "t55": [
+        "La piel es el órgano más grande del cuerpo humano.",
+        true,
+        "La piel de una persona adulta pesa varios kilos y protege todo el cuerpo."
+      ],
+      "t56": [
+        "El color rojo enfurece al toro.",
+        false,
+        "El toro apenas distingue el rojo: lo que le provoca es el movimiento, no el color."
+      ],
+      "t57": [
+        "La mosca común vive solo un día.",
+        false,
+        "La mosca común vive alrededor de un mes. Son las efímeras adultas las que viven uno o dos días."
+      ],
+      "t58": [
+        "La piña crece en los árboles.",
+        false,
+        "La piña crece en una planta baja y frondosa, justo en el centro."
+      ],
+      "t59": [
+        "El cacahuete es un fruto seco.",
+        false,
+        "El cacahuete es una legumbre, pariente de los guisantes y las judías. Sus vainas maduran bajo tierra."
+      ],
+      "t60": [
+        "El Polo Norte y el Polo Sur son igual de fríos.",
+        false,
+        "El Polo Sur es mucho más frío: está sobre un continente alto y helado; el Polo Norte, sobre un océano."
+      ]
+    }
   },
   "it": {
     "text": {
@@ -2255,7 +4499,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Invita",
       "invited": "Invito inviato",
       "inviteNone": "Aggiungi persone nella sezione «Amici» per invitarle con un tocco.",
-      "inviteSent": "Invito inviato a {name}"
+      "inviteSent": "Invito inviato a {name}",
+      "truth": "Vero o falso",
+      "tfTitle": "Vero o falso",
+      "tfNote": "Un gioco dal vivo in due: fatti sorprendenti sul mondo. 12 secondi: vero o falso? Un punto per ogni risposta giusta.",
+      "tfShareText": "{name} ti invita al gioco dal vivo «Vero o falso»",
+      "tfJoinLead": "{name} ti aspetta. Vero o falso: decidi in fretta!",
+      "tfRound": "Fatto {n} di {total}",
+      "tfTrue": "Vero",
+      "tfFalse": "Falso",
+      "tfIsTrue": "È vero!",
+      "tfIsFalse": "È falso!",
+      "tfFirstYou": "Hai indovinato prima tu!",
+      "tfFirstThem": "{name} ha indovinato prima",
+      "tfFinalWin": "Vittoria! Sai più cose sul mondo.",
+      "tfFinalLose": "Questa volta {name} ne sa di più: rivincita?",
+      "tfFinalDraw": "Pareggio: ne sapete proprio lo stesso!",
+      "featTruth": "Gioco dal vivo «Vero o falso»: fatti sorprendenti sul mondo"
     },
     "questions": {
       "q01": [
@@ -2677,6 +4937,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "A cucinare",
         "Una nuova lingua",
         "A disegnare"
+      ],
+      "q61": [
+        "Quale piatto mi riesce meglio?",
+        "La zuppa",
+        "Il pilaf",
+        "I dolci al forno",
+        "L’insalata"
+      ],
+      "q62": [
+        "Quale paese voglio vedere per primo?",
+        "Turchia",
+        "Giappone",
+        "Marocco",
+        "Norvegia"
+      ],
+      "q63": [
+        "Quale sport preferirei praticare?",
+        "Nuoto",
+        "Corsa",
+        "Ciclismo",
+        "Calcio"
+      ],
+      "q64": [
+        "Quale libro sceglierei?",
+        "Un romanzo d’avventura",
+        "Un libro di storia",
+        "Le fiabe",
+        "Un’enciclopedia"
+      ],
+      "q65": [
+        "Quali animali andrei a vedere per primi allo zoo?",
+        "Gli elefanti",
+        "Le scimmie",
+        "I pinguini",
+        "Le giraffe"
+      ],
+      "q66": [
+        "Come mi trovo con il cibo piccante?",
+        "Più è piccante, meglio è",
+        "Un po’ va bene",
+        "Solo un pizzico",
+        "Non lo mangio proprio"
+      ],
+      "q67": [
+        "Quale materia scolastica mi piaceva di più?",
+        "Matematica",
+        "Letteratura",
+        "Geografia",
+        "Educazione fisica"
+      ],
+      "q68": [
+        "Il lavoro dei miei sogni nell’infanzia?",
+        "Medicina",
+        "Insegnamento",
+        "Viaggiare nello spazio",
+        "Cucina"
+      ],
+      "q69": [
+        "Come mi trovo con le escursioni a piedi?",
+        "Ne sogno una lunga",
+        "Solo per un giorno",
+        "Solo con le comodità",
+        "Meglio a casa"
+      ],
+      "q70": [
+        "Il mio umore al mattino?",
+        "Tanta energia",
+        "Ancora sonno",
+        "Silenzio",
+        "Voglia di chiacchierare"
+      ],
+      "q71": [
+        "Quale frutta secca preferisco?",
+        "Nocciola",
+        "Noce",
+        "Anacardo",
+        "Mandorla"
+      ],
+      "q72": [
+        "Cosa farei con un’ora libera inaspettata?",
+        "Leggerei",
+        "Andrei a passeggio",
+        "Chiamerei la famiglia",
+        "Cucinerei qualcosa"
+      ],
+      "q73": [
+        "Che tempo non mi piace?",
+        "Il caldo",
+        "Il vento",
+        "La neve sciolta",
+        "Il gelo intenso"
+      ],
+      "q74": [
+        "Di che colore dipingerei la mia stanza?",
+        "Bianco",
+        "Beige",
+        "Verde",
+        "Azzurro"
+      ],
+      "q75": [
+        "A cosa preferirei giocare?",
+        "Scacchi",
+        "Dama",
+        "Un puzzle",
+        "Un gioco di parole"
+      ],
+      "q76": [
+        "Cosa cucinerei per gli ospiti?",
+        "Il pilaf",
+        "Una torta",
+        "Delle insalate",
+        "Ordinerei da mangiare"
+      ],
+      "q77": [
+        "Cosa non mangerei mai?",
+        "Funghi",
+        "Pesce",
+        "Olive",
+        "Cipolla bollita"
+      ],
+      "q78": [
+        "Come preparo il tè?",
+        "Forte",
+        "Leggero",
+        "Dolce",
+        "Con le erbe"
+      ],
+      "q79": [
+        "Cosa conta di più per me in una casa?",
+        "La pulizia",
+        "L’atmosfera accogliente",
+        "Tanta luce",
+        "La quiete"
+      ],
+      "q80": [
+        "Come imparo le cose nuove?",
+        "Leggendo",
+        "Con le videolezioni",
+        "Provando in pratica",
+        "Chiedendo agli altri"
+      ],
+      "q81": [
+        "Quale animale selvatico mi affascina di più?",
+        "La tigre",
+        "L’orso",
+        "L’aquila",
+        "Il delfino"
+      ],
+      "q82": [
+        "Cosa regalerei alla mia mamma?",
+        "Dei fiori",
+        "Qualcosa fatto a mano",
+        "Un viaggio",
+        "Una coperta calda"
+      ],
+      "q83": [
+        "Cosa faccio durante un viaggio?",
+        "Guardo fuori dal finestrino",
+        "Leggo",
+        "Chiacchiero",
+        "Sgranocchio qualcosa"
+      ],
+      "q84": [
+        "Il mio piatto di pollo preferito?",
+        "Spiedini di pollo",
+        "Pollo con riso",
+        "Polpette di pollo",
+        "Nuggets"
+      ],
+      "q85": [
+        "Quale posto scelgo in treno?",
+        "Al finestrino",
+        "Lato corridoio",
+        "Contro il senso di marcia",
+        "Per me è uguale"
+      ],
+      "q86": [
+        "Cosa faccio quando qualcosa va storto?",
+        "Agisco subito",
+        "Prima rifletto",
+        "Chiedo un consiglio",
+        "Mi preoccupo un po’"
+      ],
+      "q87": [
+        "Qual è la mia qualità principale?",
+        "La gentilezza",
+        "L’onestà",
+        "La tenacia",
+        "L’allegria"
+      ],
+      "q88": [
+        "Dove mi riposerei meglio?",
+        "Dai parenti in campagna",
+        "In un hotel al mare",
+        "In tenda",
+        "A casa"
+      ],
+      "q89": [
+        "Quale prodotto da forno sceglierei?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "Un éclair"
+      ],
+      "q90": [
+        "Quale lingua vorrei imparare di più?",
+        "Arabo",
+        "Inglese",
+        "Turco",
+        "Giapponese"
+      ],
+      "q91": [
+        "Quanto resisterei senza dolci?",
+        "Un giorno",
+        "Una settimana",
+        "Un mese",
+        "Quanto serve"
+      ],
+      "q92": [
+        "Cosa faccio quando sono in ritardo?",
+        "Corro più che posso",
+        "Chiamo per avvisare",
+        "Prendo un taxi",
+        "Non sono mai in ritardo"
+      ],
+      "q93": [
+        "Cosa faccio quando si rompe un apparecchio?",
+        "Lo aggiusto io",
+        "Leggo il manuale",
+        "Chiedo aiuto",
+        "Premo tutti i pulsanti"
+      ],
+      "q94": [
+        "Cosa metto per primo in valigia?",
+        "Un kit di pronto soccorso",
+        "Un libro",
+        "Un caricabatterie",
+        "Uno spuntino"
+      ],
+      "q95": [
+        "Quale attività mi calma?",
+        "Cucinare",
+        "Mettere in ordine",
+        "Disegnare",
+        "Una passeggiata"
+      ],
+      "q96": [
+        "Cosa voglio fare quando andrò in pensione?",
+        "Curare l’orto",
+        "Viaggiare",
+        "Leggere",
+        "Passare il tempo con i nipoti"
+      ],
+      "q97": [
+        "Cosa mi dà più fastidio?",
+        "Il rumore",
+        "Il disordine",
+        "I ritardi",
+        "La maleducazione"
+      ],
+      "q98": [
+        "Quale profumo mi piace di più?",
+        "Il pane appena sfornato",
+        "La pioggia",
+        "I fiori",
+        "Il mare"
+      ],
+      "q99": [
+        "Cosa sceglierei come dessert?",
+        "Frutta",
+        "Gelato",
+        "Una torta",
+        "Solo un tè"
       ]
     },
     "yesNo": {
@@ -2879,6 +5412,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Rigiochiamo più tardi?",
         "vuole un altro round",
         "preferisce un abbraccio al gioco"
+      ],
+      "c41": [
+        "Ti piace il cibo piccante?",
+        "più è piccante, meglio è",
+        "sceglie qualcosa di più delicato"
+      ],
+      "c42": [
+        "Sai nuotare?",
+        "nuota come un pesce",
+        "per ora resta vicino alla riva"
+      ],
+      "c43": [
+        "Ti piacerebbe avere un gatto?",
+        "sta già pensando a un nome",
+        "preferisce i cani"
+      ],
+      "c44": [
+        "Ti piacerebbe visitare Istanbul un giorno?",
+        "sogna già il Bosforo",
+        "sceglierebbe un’altra città"
+      ],
+      "c45": [
+        "Ti piace cucinare?",
+        "cucina con piacere",
+        "preferisce lavare i piatti"
+      ],
+      "c46": [
+        "Ti piacerebbe imparare a cucinare il pilaf?",
+        "sta già cercando una ricetta",
+        "preferisce assaggiare quello di qualcun altro"
+      ],
+      "c47": [
+        "Ti piace leggere libri?",
+        "ha sempre un libro a portata di mano",
+        "preferisce ascoltare storie"
+      ],
+      "c48": [
+        "Sai andare in bicicletta?",
+        "potrebbe partire subito",
+        "promette di imparare"
+      ],
+      "c49": [
+        "Preferisci la montagna al mare?",
+        "sceglie la montagna",
+        "sceglie il mare"
+      ],
+      "c50": [
+        "Ti piacerebbe vedere un deserto?",
+        "sogna le dune di sabbia",
+        "sceglierebbe piuttosto un bosco"
+      ],
+      "c51": [
+        "Ti piace l’inverno?",
+        "aspetta la prima neve",
+        "aspetta l’estate"
+      ],
+      "c52": [
+        "Bevi il tè senza zucchero?",
+        "ama il gusto puro del tè",
+        "non rinuncia a un cucchiaino di zucchero"
+      ],
+      "c53": [
+        "Hai paura dei ragni?",
+        "ne sta ben alla larga",
+        "li porta fuori con calma"
+      ],
+      "c54": [
+        "Ti piace disegnare?",
+        "sta già prendendo il pennello",
+        "preferisce guardare i quadri degli altri"
+      ],
+      "c55": [
+        "Ti piacerebbe vedere l’aurora boreale?",
+        "sta già cercando dove vederla",
+        "preferisce guardare le stelle"
+      ],
+      "c56": [
+        "Ti piace il tempo piovoso?",
+        "ama il rumore della pioggia fuori dalla finestra",
+        "aspetta il sole"
+      ],
+      "c57": [
+        "Sai andare a cavallo?",
+        "sta in sella con sicurezza",
+        "per ora lo sogna soltanto"
+      ],
+      "c58": [
+        "Ti piacerebbe avere un cane?",
+        "sogna un amico fedele",
+        "per ora ha già abbastanza di cui occuparsi"
+      ],
+      "c59": [
+        "Preferisci il dolce al salato?",
+        "non può vivere senza dolci",
+        "sceglie il salato"
+      ],
+      "c60": [
+        "Ti piace viaggiare in treno?",
+        "ama il ritmo delle ruote sui binari",
+        "sceglie l’aereo"
+      ],
+      "c61": [
+        "Ti è facile iniziare la giornata presto?",
+        "inizia la giornata con tanta energia",
+        "ingrana solo verso pranzo"
+      ],
+      "c62": [
+        "Ti piace campeggiare in tenda?",
+        "sta già preparando lo zaino",
+        "sceglie un hotel accogliente"
+      ],
+      "c63": [
+        "Ti piacerebbe vivere al mare?",
+        "sogna il rumore delle onde",
+        "sceglie la città"
+      ],
+      "c64": [
+        "Mangi il gelato d’inverno?",
+        "lo mangia anche col gelo",
+        "solo d’estate"
+      ],
+      "c65": [
+        "Ti piace il cioccolato?",
+        "ne conosce ogni varietà",
+        "ci passa davanti con calma"
+      ],
+      "c66": [
+        "Sai fare le torte al forno?",
+        "sforna come una nonna",
+        "promette di imparare"
+      ],
+      "c67": [
+        "Ti piace guardare le stelle?",
+        "conosce le costellazioni",
+        "preferisce una giornata di sole"
+      ],
+      "c68": [
+        "Ti piacerebbe un giorno coltivare un orto tutto tuo?",
+        "sta già scegliendo le piantine",
+        "comincerà con un fiore in vaso"
+      ],
+      "c69": [
+        "Ti piacciono i fiori di campo?",
+        "ama margherite e fiordalisi",
+        "preferisce i fiori da giardino"
+      ],
+      "c70": [
+        "Bevi il caffè?",
+        "senza caffè la giornata non comincia",
+        "sceglie il tè"
+      ],
+      "c71": [
+        "Ti piace la limonata fatta in casa?",
+        "sta già tagliando i limoni",
+        "preferisce l’acqua"
+      ],
+      "c72": [
+        "Ti piacerebbe visitare il Giappone un giorno?",
+        "sogna di vedere i ciliegi in fiore",
+        "sceglierebbe un altro paese"
+      ],
+      "c73": [
+        "Ti piace l’autunno?",
+        "ama camminare tra le foglie che scricchiolano",
+        "aspetta la primavera"
+      ],
+      "c74": [
+        "Ti piace il profumo della lavanda?",
+        "ama quel profumo",
+        "preferisce altri profumi"
+      ],
+      "c75": [
+        "Ti piacciono i giochi da tavolo?",
+        "sta già preparando il tabellone",
+        "preferisce una passeggiata"
+      ],
+      "c76": [
+        "Sai guidare l’auto?",
+        "guida con sicurezza",
+        "per ora viaggia sul sedile accanto"
+      ],
+      "c77": [
+        "Ti piacerebbe vedere l’oceano un giorno?",
+        "sogna una grande onda",
+        "il mare basta e avanza"
+      ],
+      "c78": [
+        "Ti piacerebbe vivere per un po’ in una fattoria?",
+        "sta già dando da mangiare alle galline",
+        "resta in città"
+      ],
+      "c79": [
+        "Ti piacciono le grandi città?",
+        "ama le luci della città",
+        "sceglie pace e tranquillità"
+      ],
+      "c80": [
+        "Preferisci la frutta ai dolci?",
+        "sceglie la frutta",
+        "sceglie i dolci"
+      ],
+      "c81": [
+        "Ti piacerebbe vedere i delfini in mare?",
+        "vorrebbe tanto vederli",
+        "preferisce leggere di loro"
+      ],
+      "c82": [
+        "Ti piace l’estate?",
+        "aspetta le giornate calde",
+        "ama il fresco"
+      ],
+      "c83": [
+        "Ti piace passeggiare nel parco?",
+        "passeggia con qualsiasi tempo",
+        "preferisce restare a casa"
+      ],
+      "c84": [
+        "Ti piace scrivere a mano?",
+        "ha una calligrafia ordinata",
+        "scrive al telefono"
+      ],
+      "c85": [
+        "Ti piacciono le gite in barca?",
+        "sta già prendendo i remi",
+        "resta sulla riva"
+      ],
+      "c86": [
+        "Ti piacerebbe fare il giro del mondo?",
+        "sta già tracciando il percorso",
+        "un paio di paesi bastano"
+      ],
+      "c87": [
+        "Sai fare un pupazzo di neve?",
+        "farà il più grande di tutti",
+        "preferisce una battaglia a palle di neve"
+      ],
+      "c88": [
+        "Ti piacerebbe imparare qualcosa di nuovo quest’anno?",
+        "sta già scegliendo un corso",
+        "ha già abbastanza da fare"
+      ],
+      "c89": [
+        "Ti piace il silenzio?",
+        "apprezza la quiete",
+        "preferisce quando c’è movimento"
+      ],
+      "c90": [
+        "Ti piace fare regali alla tua famiglia?",
+        "rallegra la famiglia anche senza motivo",
+        "preferisce aiutare in modo concreto"
       ]
     },
     "loves": {
@@ -2993,6 +5776,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Bosco",
         "Deserto",
         "Aurora boreale"
+      ],
+      "s17": [
+        "Frutto preferito?",
+        "Mela",
+        "Fragola",
+        "Anguria",
+        "Uva"
+      ],
+      "s18": [
+        "Cosa fare nel giorno libero?",
+        "Escursione in montagna",
+        "Cucinare a casa",
+        "Un museo",
+        "Pescare"
+      ],
+      "s19": [
+        "Colazione preferita?",
+        "Pancake",
+        "Omelette",
+        "Porridge con frutti di bosco",
+        "Cornetto"
+      ],
+      "s20": [
+        "Uccello preferito?",
+        "Gufo",
+        "Pappagallo",
+        "Cigno",
+        "Pavone"
+      ],
+      "s21": [
+        "Quale città visitare?",
+        "Istanbul",
+        "Parigi",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Sport preferito?",
+        "Calcio",
+        "Nuoto",
+        "Tennis",
+        "Equitazione"
+      ],
+      "s23": [
+        "Cosa piantare in giardino?",
+        "Un melo",
+        "Rose",
+        "Ortaggi",
+        "Fragole"
+      ],
+      "s24": [
+        "Dolce da forno preferito?",
+        "Fagottini",
+        "Ciambelle",
+        "Biscotti",
+        "Baklava"
+      ],
+      "s25": [
+        "Dove vivere?",
+        "Vicino a un fiume",
+        "In un bosco",
+        "In una grande città",
+        "Su un’isola"
+      ],
+      "s26": [
+        "Creatura marina preferita?",
+        "Tartaruga",
+        "Balena",
+        "Polpo",
+        "Cavalluccio marino"
+      ],
+      "s27": [
+        "Su cosa viaggiare?",
+        "Bicicletta",
+        "Monopattino",
+        "Mongolfiera",
+        "Barca"
+      ],
+      "s28": [
+        "Passatempo preferito?",
+        "Lavoro a maglia",
+        "Fotografia naturalistica",
+        "Giardinaggio",
+        "Calligrafia"
+      ],
+      "s29": [
+        "Zuppa preferita?",
+        "Boršč",
+        "Brodo di pollo",
+        "Vellutata di zucca",
+        "Zuppa di lenticchie"
+      ],
+      "s30": [
+        "Animale del bosco?",
+        "Riccio",
+        "Scoiattolo",
+        "Volpe",
+        "Cervo"
+      ],
+      "s31": [
+        "Qualcosa da sgranocchiare?",
+        "Datteri",
+        "Mandorle",
+        "Pistacchi",
+        "Albicocche secche"
+      ],
+      "s32": [
+        "Cosa portare in escursione?",
+        "Una tenda",
+        "Un thermos",
+        "Una mappa",
+        "Una torcia"
+      ],
+      "s33": [
+        "Dessert preferito?",
+        "Budino",
+        "Cheesecake",
+        "Pancake con il miele",
+        "Macedonia"
+      ],
+      "s34": [
+        "Cosa fare d’inverno?",
+        "Fare un pupazzo di neve",
+        "Andare in slitta",
+        "Tè alla finestra",
+        "Sciare"
+      ],
+      "s35": [
+        "Cosa fare d’estate?",
+        "Nuotare",
+        "Raccogliere frutti di bosco",
+        "Andare in barca",
+        "Fare un castello di sabbia"
+      ],
+      "s36": [
+        "Con cosa dipingere?",
+        "Acquerelli",
+        "Matite colorate",
+        "Pastelli a cera",
+        "Colori su tela"
+      ],
+      "s37": [
+        "Verdura preferita?",
+        "Carota",
+        "Pomodoro",
+        "Mais",
+        "Zucca"
+      ],
+      "s38": [
+        "Cosa rende accogliente una casa?",
+        "Un camino",
+        "Una coperta morbida",
+        "Le piante",
+        "Uno scaffale di libri"
+      ],
+      "s39": [
+        "A cosa giocare?",
+        "Scacchi",
+        "Puzzle",
+        "Giochi da tavolo",
+        "Giochi con la palla"
+      ],
+      "s40": [
+        "Chi vive in fattoria?",
+        "Mucca",
+        "Agnellino",
+        "Gallina",
+        "Capretto"
+      ],
+      "s41": [
+        "Tè con cosa?",
+        "Miele",
+        "Limone",
+        "Marmellata",
+        "Menta"
+      ],
+      "s42": [
+        "Cosa c’è al mare?",
+        "Un faro",
+        "Le conchiglie",
+        "Una barca a vela",
+        "I gabbiani"
+      ],
+      "s43": [
+        "Come iniziare la mattina?",
+        "Con la ginnastica",
+        "Con una tazza di tè",
+        "Con una passeggiata",
+        "Con un libro"
+      ],
+      "s44": [
+        "Bacca preferita?",
+        "Lampone",
+        "Mirtillo",
+        "Ciliegia",
+        "Mora"
       ]
     },
     "who": [
@@ -3035,7 +6014,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Chi di noi ricorda più spesso storie divertenti?",
       "Chi di noi è più paziente?",
       "Chi di noi dice più spesso «grazie»?",
-      "Chi di noi offre aiuto prima?"
+      "Chi di noi offre aiuto prima?",
+      "Chi di noi fa meglio i calcoli a mente?",
+      "Chi di noi legge di più?",
+      "Chi di noi scrive più veloce sulla tastiera?",
+      "Chi di noi chiama più spesso i genitori?",
+      "Chi di noi racconta meglio le storie?",
+      "Chi di noi ha la calligrafia più ordinata?",
+      "A chi di noi piace di più il cibo piccante?",
+      "Chi di noi dimentica più spesso le cose a casa?",
+      "Chi di noi se la cava meglio con la tecnologia?",
+      "A chi di noi piace di più imparare cose nuove?",
+      "Chi di noi organizza meglio?",
+      "Chi di noi contratta meglio al mercato?",
+      "Chi di noi ama di più la natura?",
+      "Chi di noi mangia più in fretta?",
+      "Chi di noi beve più tè?",
+      "Chi di noi si prende più cura delle piante?",
+      "Chi di noi conosce meglio la geografia?",
+      "Chi di noi gioca meglio a scacchi?",
+      "Chi di noi sceglie la frutta migliore al mercato?",
+      "Chi di noi controlla più spesso le previsioni del tempo?",
+      "Chi di noi ha più paura dei ragni?",
+      "Chi di noi ha più coraggio?",
+      "Chi di noi ha più curiosità?",
+      "Chi di noi risolve gli indovinelli più in fretta?",
+      "Chi di noi disegna meglio?",
+      "Chi di noi aiuta più spesso i vicini?",
+      "Chi di noi va più d’accordo con i bambini?",
+      "A chi di noi piace di più passeggiare?",
+      "Chi di noi legge più spesso le istruzioni?",
+      "Chi di noi ricorda meglio i nomi?",
+      "Chi di noi impara più in fretta le parole di un’altra lingua?",
+      "Chi di noi riesce meglio con i dolci al forno?",
+      "Chi di noi dà consigli migliori?",
+      "A chi di noi piace di più il freddo?",
+      "Chi di noi se la caverebbe meglio in un’escursione?",
+      "Chi di noi legge più spesso le notizie?",
+      "Chi di noi assaggia più spesso piatti nuovi?",
+      "Chi di noi fa la valigia più in fretta?",
+      "Chi di noi aggiusta meglio le cose?",
+      "Chi di noi parla più spesso con gli animali?",
+      "Chi di noi lava i piatti più spesso?",
+      "Chi di noi conosce meglio la storia?",
+      "Chi di noi rimanda più spesso le cose?",
+      "Chi di noi fa amicizia più in fretta con le persone nuove?",
+      "Chi di noi si prende più cura della propria salute?"
     ],
     "phrases": [
       "Sorrido quando tu…",
@@ -3067,8 +6091,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Una mattina con te è…",
       "Se fossimo una sola parola, sarebbe…",
       "Voglio imparare da te a…",
-      "Grazie perché ogni volta tu…"
-    ]
+      "Grazie perché ogni volta tu…",
+      "Nell’infanzia il mio cibo preferito era…",
+      "Se avessi un giorno in un paese qualsiasi, io…",
+      "Il consiglio migliore che abbia mai ricevuto è…",
+      "Rido sempre quando…",
+      "Il mio posto preferito nella mia città natale è…",
+      "Se avessi un mio negozietto, venderei…",
+      "Il piatto che mi riesce meglio è…",
+      "Un sogno d’infanzia che ricordo ancora è…",
+      "È facile rendermi felice se…",
+      "Il posto più straordinario che abbia mai visto è…",
+      "Voglio imparare…",
+      "La mia giornata libera perfetta inizia con…",
+      "Se potessi avere un animale qualsiasi, sarebbe…",
+      "In famiglia dicono sempre che io…",
+      "Proprio non riesco ad abituarmi a…",
+      "La mia abitudine più utile è…",
+      "Il libro più bello che abbia mai letto è…",
+      "Tra dieci anni vorrei…",
+      "La casa dei miei sogni è…",
+      "La cosa più buffa che mi sia successa nell’infanzia è…",
+      "Per me la felicità è…",
+      "Mi è difficile rinunciare a…",
+      "Se avessi un superpotere, mi permetterebbe di…",
+      "Ciò che apprezzo di più nelle persone è…",
+      "Quando ho una serata libera, io…",
+      "Il mio profumo preferito è…",
+      "Il cibo che non mangerei mai è…",
+      "L’unica cosa senza cui non esco mai di casa è…",
+      "Vorrei visitare… perché…",
+      "Il regalo più bello che abbia mai ricevuto è…",
+      "La mia abitudine più insolita è…",
+      "Se avessi un’ora in più ogni giorno, io…",
+      "Una persona da cui imparo molto è…",
+      "In una giornata difficile, mi aiuta…",
+      "La cosa più buona che abbia assaggiato in viaggio è…",
+      "Se potessi cambiare lavoro per un giorno, sceglierei…",
+      "La stagione più vicina al mio cuore è…",
+      "I miei amici dicono che io…",
+      "Un giorno vorrei insegnare a qualcuno…",
+      "Una piccola gioia della mia giornata è…"
+    ],
+    "truth": {
+      "t01": [
+        "Il polpo ha tre cuori.",
+        true,
+        "Due cuori pompano il sangue nelle branchie, il terzo in tutto il corpo."
+      ],
+      "t02": [
+        "La Grande Muraglia cinese si vede a occhio nudo dalla Luna.",
+        false,
+        "No: la muraglia è troppo stretta. Anche dall’orbita è difficilissimo distinguerla."
+      ],
+      "t03": [
+        "Il miele può conservarsi per migliaia di anni senza andare a male.",
+        true,
+        "Nelle tombe dell’antico Egitto è stato trovato miele di migliaia di anni ancora conservato."
+      ],
+      "t04": [
+        "Le banane crescono sugli alberi.",
+        false,
+        "Il banano è un’erba gigante: il suo «tronco» è fatto di foglie strettamente arrotolate."
+      ],
+      "t05": [
+        "Venere è il pianeta più caldo del Sistema solare.",
+        true,
+        "La sua densa atmosfera scalda Venere fino a circa 460 °C, più di Mercurio."
+      ],
+      "t06": [
+        "I pipistrelli sono ciechi.",
+        false,
+        "I pipistrelli ci vedono, e al buio si orientano anche con l’ecolocalizzazione."
+      ],
+      "t07": [
+        "La balena è un pesce.",
+        false,
+        "Le balene sono mammiferi: respirano aria e allattano i piccoli."
+      ],
+      "t08": [
+        "Il Sahara è il deserto più grande del mondo.",
+        false,
+        "Il deserto più grande è l’Antartide. Il Sahara è il deserto caldo più grande."
+      ],
+      "t09": [
+        "La giraffa ha lo stesso numero di vertebre del collo di una persona.",
+        true,
+        "Entrambe ne hanno sette: quelle della giraffa sono solo molto lunghe."
+      ],
+      "t10": [
+        "Dal punto di vista botanico, il pomodoro è una bacca.",
+        true,
+        "I botanici classificano il pomodoro come bacca: un frutto carnoso con i semi all’interno."
+      ],
+      "t11": [
+        "Dal punto di vista botanico, la fragola è una bacca.",
+        false,
+        "È un falso frutto: i veri frutti sono i minuscoli «semini» all’esterno."
+      ],
+      "t12": [
+        "Nello spazio si può sentire un’esplosione.",
+        false,
+        "Nello spazio non c’è quasi aria, quindi il suono non ha nulla attraverso cui viaggiare."
+      ],
+      "t13": [
+        "In alta montagna l’acqua bolle a una temperatura più bassa.",
+        true,
+        "Lassù la pressione dell’aria è più bassa, quindi l’acqua bolle prima dei 100 °C."
+      ],
+      "t14": [
+        "I pinguini vivono al Polo Nord.",
+        false,
+        "I pinguini selvatici vivono solo nell’emisfero australe, non nell’estremo nord."
+      ],
+      "t15": [
+        "L’Everest è la montagna più alta sul livello del mare.",
+        true,
+        "L’Everest si innalza per circa 8.849 metri sul livello del mare."
+      ],
+      "t16": [
+        "Le persone usano solo il 10% del cervello.",
+        false,
+        "È un mito: nel corso della giornata quasi ogni parte del cervello è attiva."
+      ],
+      "t17": [
+        "Il cuore umano batte circa 100.000 volte al giorno.",
+        true,
+        "Con circa 70 battiti al minuto, si arriva a circa 100.000 battiti al giorno."
+      ],
+      "t18": [
+        "Un pesce rosso ha una memoria di soli tre secondi.",
+        false,
+        "Gli esperimenti dimostrano che i pesci rossi ricordano ciò che hanno imparato per mesi."
+      ],
+      "t19": [
+        "L’Australia è sia un paese sia un continente.",
+        true,
+        "L’Australia è l’unico paese che occupa un intero continente."
+      ],
+      "t20": [
+        "Un fulmine non cade mai due volte nello stesso punto.",
+        false,
+        "Invece sì: gli edifici alti vengono colpiti dai fulmini molte volte all’anno."
+      ],
+      "t21": [
+        "Lo struzzo nasconde la testa sotto la sabbia quando ha paura.",
+        false,
+        "È un mito: uno struzzo spaventato scappa o si appiattisce a terra per nascondersi."
+      ],
+      "t22": [
+        "L’uccello più piccolo del mondo è un colibrì.",
+        true,
+        "Il colibrì ape di Cuba pesa circa 2 grammi, meno di qualsiasi altro uccello."
+      ],
+      "t23": [
+        "L’anguria è composta per circa il 90% d’acqua.",
+        true,
+        "L’anguria contiene circa il 92% d’acqua: ecco perché è così rinfrescante."
+      ],
+      "t24": [
+        "Il ragno ha sei zampe.",
+        false,
+        "Il ragno ha otto zampe. Gli insetti ne hanno sei, e i ragni non sono insetti."
+      ],
+      "t25": [
+        "La Luna produce luce propria.",
+        false,
+        "La Luna non ha luce propria: riflette la luce del Sole."
+      ],
+      "t26": [
+        "L’elefante è l’animale terrestre più grande.",
+        true,
+        "Un elefante africano di savana può pesare più di 6 tonnellate."
+      ],
+      "t27": [
+        "La balenottera azzurra è l’animale più grande conosciuto dalla scienza.",
+        true,
+        "Può superare i 30 metri di lunghezza: più di qualsiasi dinosauro conosciuto."
+      ],
+      "t28": [
+        "Il camaleonte cambia colore solo per mimetizzarsi.",
+        false,
+        "Il suo colore dipende più dall’umore, dalla temperatura e dai segnali agli altri camaleonti."
+      ],
+      "t29": [
+        "Il telefono è stato inventato da Thomas Edison.",
+        false,
+        "Il brevetto del telefono fu ottenuto da Alexander Graham Bell nel 1876."
+      ],
+      "t30": [
+        "La penicillina è stata scoperta da Alexander Fleming.",
+        true,
+        "Fleming scoprì la penicillina nel 1928: il primo antibiotico."
+      ],
+      "t31": [
+        "Il vulcano più alto del Sistema solare si trova su Marte.",
+        true,
+        "L’Olympus Mons su Marte è alto circa 22 km: quasi 2,5 volte l’Everest."
+      ],
+      "t32": [
+        "Il sangue nelle nostre vene è blu.",
+        false,
+        "Il sangue è sempre rosso: le vene sembrano blu solo per come la luce attraversa la pelle."
+      ],
+      "t33": [
+        "L’Atlantico è l’oceano più grande della Terra.",
+        false,
+        "Il più grande è il Pacifico: è più vasto di tutte le terre emerse messe insieme."
+      ],
+      "t34": [
+        "La Russia è il paese più grande del mondo per superficie.",
+        true,
+        "La Russia si estende per oltre 17 milioni di chilometri quadrati."
+      ],
+      "t35": [
+        "Il Canada ha la costa più lunga del mondo.",
+        true,
+        "La costa del Canada supera i 200.000 km: più di quella di qualsiasi altro paese."
+      ],
+      "t36": [
+        "Lo stomaco della mucca ha quattro compartimenti.",
+        true,
+        "La mucca ha un solo stomaco con quattro camere: è così che digerisce l’erba."
+      ],
+      "t37": [
+        "Il leone è il felino più grande del mondo.",
+        false,
+        "Il felino più grande è la tigre, soprattutto la tigre siberiana."
+      ],
+      "t38": [
+        "La Terra è il pianeta più vicino al Sole.",
+        false,
+        "Il più vicino è Mercurio, poi Venere; la Terra è il terzo pianeta."
+      ],
+      "t39": [
+        "La luce del Sole impiega circa 8 minuti per arrivare sulla Terra.",
+        true,
+        "La luce percorre i 150 milioni di km dal Sole in circa 8 minuti e 20 secondi."
+      ],
+      "t40": [
+        "I delfini dormono con una metà del cervello alla volta.",
+        true,
+        "Una metà riposa mentre l’altra resta vigile e si ricorda di respirare."
+      ],
+      "t41": [
+        "Le patate vengono dall’Irlanda.",
+        false,
+        "Le patate vengono dal Sud America: sulle Ande si coltivavano migliaia di anni fa."
+      ],
+      "t42": [
+        "Il cioccolato si fa con i semi dell’albero del cacao.",
+        true,
+        "I frutti del cacao crescono direttamente sul tronco, e i semi all’interno diventano cioccolato."
+      ],
+      "t43": [
+        "Lo squalo è un mammifero.",
+        false,
+        "Lo squalo è un pesce: respira con le branchie. I mammiferi del mare sono balene e delfini."
+      ],
+      "t44": [
+        "Alcuni tipi di bambù possono crescere quasi un metro al giorno.",
+        true,
+        "Il bambù è tra le piante che crescono più in fretta sulla Terra."
+      ],
+      "t45": [
+        "Il gufo può girare la testa di ben 360 gradi.",
+        false,
+        "Il gufo gira la testa di circa 270 gradi: tanto, ma non un giro completo."
+      ],
+      "t46": [
+        "Il diamante e la grafite della matita sono fatti della stessa sostanza.",
+        true,
+        "Entrambi sono carbonio puro: cambia solo come sono disposti gli atomi."
+      ],
+      "t47": [
+        "Il cammello conserva l’acqua nella gobba.",
+        false,
+        "La gobba del cammello contiene grasso, non acqua: gli dà energia nei lunghi viaggi."
+      ],
+      "t48": [
+        "L’osso più piccolo del corpo umano si trova nell’orecchio.",
+        true,
+        "La staffa, nell’orecchio medio, è lunga solo circa 3 millimetri."
+      ],
+      "t49": [
+        "I pappagalli grandi possono vivere più di 50 anni.",
+        true,
+        "Ara e cacatua ben accuditi vivono spesso 50 anni o più."
+      ],
+      "t50": [
+        "I fratelli Wright compirono il primo volo con un aereo a motore.",
+        true,
+        "Volarono nel 1903; il primissimo volo durò 12 secondi."
+      ],
+      "t51": [
+        "La ruota fu inventata nel Medioevo.",
+        false,
+        "La ruota ha più di 5.000 anni: in Mesopotamia si usava già intorno al 3500 a.C."
+      ],
+      "t52": [
+        "Il cavalluccio marino è un pesce.",
+        true,
+        "Il cavalluccio marino respira con le branchie e nuota con una pinna, come gli altri pesci."
+      ],
+      "t53": [
+        "Il colibrì sa volare all’indietro.",
+        true,
+        "I colibrì sono gli unici uccelli capaci di volare davvero all’indietro."
+      ],
+      "t54": [
+        "La Torre Eiffel d’estate diventa un po’ più alta.",
+        true,
+        "Il caldo dilata il metallo e la torre cresce di circa 15 centimetri."
+      ],
+      "t55": [
+        "La pelle è l’organo più grande del corpo umano.",
+        true,
+        "La pelle di una persona adulta pesa diversi chili e protegge tutto il corpo."
+      ],
+      "t56": [
+        "Il colore rosso fa arrabbiare il toro.",
+        false,
+        "Il toro distingue a malapena il rosso: a provocarlo è il movimento, non il colore."
+      ],
+      "t57": [
+        "La mosca domestica vive un solo giorno.",
+        false,
+        "La mosca domestica vive circa un mese. Sono le effimere adulte a vivere solo un giorno o due."
+      ],
+      "t58": [
+        "Gli ananas crescono sugli alberi.",
+        false,
+        "L’ananas cresce su una pianta bassa e frondosa, proprio al centro."
+      ],
+      "t59": [
+        "L’arachide è una noce.",
+        false,
+        "L’arachide è un legume, parente di piselli e fagioli. I suoi baccelli maturano sottoterra."
+      ],
+      "t60": [
+        "Il Polo Nord e il Polo Sud sono ugualmente freddi.",
+        false,
+        "Il Polo Sud è molto più freddo: si trova su un alto continente ghiacciato, il Polo Nord su un oceano."
+      ]
+    }
   },
   "pl": {
     "text": {
@@ -3277,7 +6643,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Zaproś",
       "invited": "Zaproszono",
       "inviteNone": "Dodaj znajomych w sekcji „Znajomi”, aby zapraszać ich jednym dotknięciem.",
-      "inviteSent": "Zaproszenie wysłane: {name}"
+      "inviteSent": "Zaproszenie wysłane: {name}",
+      "truth": "Prawda czy fałsz",
+      "tfTitle": "Prawda czy fałsz",
+      "tfNote": "Gra na żywo we dwoje: niezwykłe fakty o świecie. 12 sekund — prawda czy fałsz? Punkt za każdą dobrą odpowiedź.",
+      "tfShareText": "{name} zaprasza cię do gry na żywo „Prawda czy fałsz”",
+      "tfJoinLead": "{name} czeka na ciebie. Prawda czy fałsz — decyduj szybko!",
+      "tfRound": "Fakt {n} z {total}",
+      "tfTrue": "Prawda",
+      "tfFalse": "Fałsz",
+      "tfIsTrue": "To prawda!",
+      "tfIsFalse": "To fałsz!",
+      "tfFirstYou": "Pierwsza dobra odpowiedź — twoja!",
+      "tfFirstThem": "Pierwsza dobra odpowiedź: {name}",
+      "tfFinalWin": "Wygrana! Wiesz więcej o świecie.",
+      "tfFinalLose": "Tym razem {name} wie więcej — rewanż?",
+      "tfFinalDraw": "Remis — wiecie dokładnie tyle samo!",
+      "featTruth": "Gra na żywo „Prawda czy fałsz” — niezwykłe fakty o świecie"
     },
     "questions": {
       "q01": [
@@ -3699,6 +7081,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Gotować",
         "Nowego języka",
         "Rysować"
+      ],
+      "q61": [
+        "Jakie danie wychodzi mi najlepiej?",
+        "Zupa",
+        "Pilaw",
+        "Wypieki",
+        "Sałatka"
+      ],
+      "q62": [
+        "Jaki kraj chcę zobaczyć najpierw?",
+        "Turcja",
+        "Japonia",
+        "Maroko",
+        "Norwegia"
+      ],
+      "q63": [
+        "Jaki sport chętniej uprawiam?",
+        "Pływanie",
+        "Bieganie",
+        "Jazda na rowerze",
+        "Piłka nożna"
+      ],
+      "q64": [
+        "Jaką książkę wybieram?",
+        "Przygodową",
+        "Historyczną",
+        "Baśnie",
+        "Encyklopedię"
+      ],
+      "q65": [
+        "Do których zwierząt idę najpierw w zoo?",
+        "Do słoni",
+        "Do małp",
+        "Do pingwinów",
+        "Do żyraf"
+      ],
+      "q66": [
+        "Jak podchodzę do ostrego jedzenia?",
+        "Im ostrzej, tym lepiej",
+        "Trochę może być",
+        "Tylko odrobinę",
+        "W ogóle go nie jem"
+      ],
+      "q67": [
+        "Jaki przedmiot w szkole był moim ulubionym?",
+        "Matematyka",
+        "Język polski",
+        "Geografia",
+        "WF"
+      ],
+      "q68": [
+        "Mój wymarzony zawód z dzieciństwa?",
+        "Leczenie ludzi",
+        "Uczenie dzieci",
+        "Lot w kosmos",
+        "Gotowanie"
+      ],
+      "q69": [
+        "Jak podchodzę do pieszych wędrówek?",
+        "Marzę o długiej",
+        "Tylko na jeden dzień",
+        "Tylko z wygodami",
+        "Lepiej w domu"
+      ],
+      "q70": [
+        "Mój nastrój rano?",
+        "Mnóstwo energii",
+        "Jeszcze chce mi się spać",
+        "Cisza",
+        "Ochota na rozmowę"
+      ],
+      "q71": [
+        "Jakie orzechy lubię najbardziej?",
+        "Laskowe",
+        "Włoskie",
+        "Nerkowce",
+        "Migdały"
+      ],
+      "q72": [
+        "Co robię z niespodziewaną wolną godziną?",
+        "Czytam",
+        "Idę na spacer",
+        "Dzwonię do rodziny",
+        "Gotuję coś"
+      ],
+      "q73": [
+        "Jakiej pogody nie lubię?",
+        "Upału",
+        "Wiatru",
+        "Pluchy",
+        "Siarczystego mrozu"
+      ],
+      "q74": [
+        "Na jaki kolor chcę pomalować swój pokój?",
+        "Biały",
+        "Beżowy",
+        "Zielony",
+        "Błękitny"
+      ],
+      "q75": [
+        "W co wolę zagrać?",
+        "W szachy",
+        "W warcaby",
+        "W puzzle",
+        "W grę słowną"
+      ],
+      "q76": [
+        "Co ugotuję dla gości?",
+        "Pilaw",
+        "Ciasto",
+        "Sałatki",
+        "Zamówię jedzenie"
+      ],
+      "q77": [
+        "Czego na pewno nie zjem?",
+        "Grzybów",
+        "Ryby",
+        "Oliwek",
+        "Gotowanej cebuli"
+      ],
+      "q78": [
+        "Jaką herbatę piję?",
+        "Mocną",
+        "Słabą",
+        "Słodką",
+        "Z ziołami"
+      ],
+      "q79": [
+        "Co jest dla mnie najważniejsze w domu?",
+        "Czystość",
+        "Przytulność",
+        "Dużo światła",
+        "Cisza"
+      ],
+      "q80": [
+        "Jak uczę się nowych rzeczy?",
+        "Czytam",
+        "Oglądam lekcje wideo",
+        "Próbuję w praktyce",
+        "Pytam innych"
+      ],
+      "q81": [
+        "Które dzikie zwierzę fascynuje mnie najbardziej?",
+        "Tygrys",
+        "Niedźwiedź",
+        "Orzeł",
+        "Delfin"
+      ],
+      "q82": [
+        "Co daję mamie w prezencie?",
+        "Kwiaty",
+        "Coś zrobionego ręcznie",
+        "Wycieczkę",
+        "Ciepły koc"
+      ],
+      "q83": [
+        "Co robię w podróży?",
+        "Patrzę przez okno",
+        "Czytam",
+        "Rozmawiam",
+        "Podjadam"
+      ],
+      "q84": [
+        "Moje ulubione danie z kurczaka?",
+        "Szaszłyki z kurczaka",
+        "Kurczak z ryżem",
+        "Kotlety z kurczaka",
+        "Nuggetsy"
+      ],
+      "q85": [
+        "Jakie miejsce wybieram w pociągu?",
+        "Przy oknie",
+        "Przy przejściu",
+        "Tyłem do kierunku jazdy",
+        "Wszystko jedno"
+      ],
+      "q86": [
+        "Co robię, gdy coś idzie nie tak?",
+        "Od razu działam",
+        "Najpierw myślę",
+        "Proszę o radę",
+        "Trochę się martwię"
+      ],
+      "q87": [
+        "Jaka jest moja główna cecha?",
+        "Dobroć",
+        "Szczerość",
+        "Wytrwałość",
+        "Pogoda ducha"
+      ],
+      "q88": [
+        "Gdzie najlepiej odpoczywam?",
+        "U krewnych na wsi",
+        "W hotelu nad morzem",
+        "Pod namiotem",
+        "W domu"
+      ],
+      "q89": [
+        "Jaki wypiek wybieram?",
+        "Samsa",
+        "Chaczapuri",
+        "Czak-czak",
+        "Ekler"
+      ],
+      "q90": [
+        "Jakiego języka najbardziej chcę się nauczyć?",
+        "Arabskiego",
+        "Angielskiego",
+        "Tureckiego",
+        "Japońskiego"
+      ],
+      "q91": [
+        "Jak długo wytrzymam bez słodyczy?",
+        "Dzień",
+        "Tydzień",
+        "Miesiąc",
+        "Ile trzeba"
+      ],
+      "q92": [
+        "Co robię, gdy się spóźniam?",
+        "Biegnę, ile sił",
+        "Dzwonię, żeby uprzedzić",
+        "Biorę taksówkę",
+        "Nigdy się nie spóźniam"
+      ],
+      "q93": [
+        "Co robię, gdy psuje się sprzęt?",
+        "Naprawiam bez pomocy",
+        "Czytam instrukcję",
+        "Wołam o pomoc",
+        "Wciskam wszystkie przyciski"
+      ],
+      "q94": [
+        "Co trafia do walizki najpierw?",
+        "Apteczka",
+        "Książka",
+        "Ładowarka",
+        "Przekąska"
+      ],
+      "q95": [
+        "Jakie zajęcie mnie uspokaja?",
+        "Gotowanie",
+        "Sprzątanie",
+        "Rysowanie",
+        "Spacer"
+      ],
+      "q96": [
+        "Czym chcę się zająć na emeryturze?",
+        "Ogrodem",
+        "Podróżami",
+        "Czytaniem",
+        "Wnukami"
+      ],
+      "q97": [
+        "Co mnie najbardziej denerwuje?",
+        "Hałas",
+        "Bałagan",
+        "Spóźnianie się",
+        "Niegrzeczność"
+      ],
+      "q98": [
+        "Jaki zapach lubię najbardziej?",
+        "Świeżego chleba",
+        "Deszczu",
+        "Kwiatów",
+        "Morza"
+      ],
+      "q99": [
+        "Co wybieram na deser?",
+        "Owoce",
+        "Lody",
+        "Ciasto",
+        "Samą herbatę"
       ]
     },
     "yesNo": {
@@ -3901,6 +7556,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Zagramy później jeszcze raz?",
         "chce jeszcze jedną rundę",
         "woli się przytulić niż grać"
+      ],
+      "c41": [
+        "Lubisz ostre jedzenie?",
+        "im ostrzej, tym lepiej",
+        "wybiera coś łagodniejszego"
+      ],
+      "c42": [
+        "Umiesz pływać?",
+        "pływa jak ryba",
+        "na razie trzyma się blisko brzegu"
+      ],
+      "c43": [
+        "Chcesz mieć kota?",
+        "już wymyśla imię",
+        "woli psy"
+      ],
+      "c44": [
+        "Chcesz kiedyś odwiedzić Stambuł?",
+        "już marzy o Bosforze",
+        "woli inne miasto"
+      ],
+      "c45": [
+        "Lubisz gotować?",
+        "gotuje z przyjemnością",
+        "woli pozmywać naczynia"
+      ],
+      "c46": [
+        "Chcesz nauczyć się gotować pilaw?",
+        "już szuka przepisu",
+        "woli spróbować cudzego"
+      ],
+      "c47": [
+        "Lubisz czytać książki?",
+        "zawsze ma książkę pod ręką",
+        "woli słuchać opowieści"
+      ],
+      "c48": [
+        "Umiesz jeździć na rowerze?",
+        "może ruszać choćby teraz",
+        "obiecuje się nauczyć"
+      ],
+      "c49": [
+        "Wolisz góry od morza?",
+        "wybiera góry",
+        "wybiera morze"
+      ],
+      "c50": [
+        "Chcesz zobaczyć pustynię?",
+        "marzy o piaszczystych wydmach",
+        "woli las"
+      ],
+      "c51": [
+        "Lubisz zimę?",
+        "czeka na pierwszy śnieg",
+        "czeka na lato"
+      ],
+      "c52": [
+        "Pijesz herbatę bez cukru?",
+        "lubi czysty smak herbaty",
+        "nie obejdzie się bez łyżeczki cukru"
+      ],
+      "c53": [
+        "Boisz się pająków?",
+        "trzyma się od nich z daleka",
+        "spokojnie wynosi je na dwór"
+      ],
+      "c54": [
+        "Lubisz rysować?",
+        "już sięga po pędzel",
+        "woli oglądać cudze obrazy"
+      ],
+      "c55": [
+        "Chcesz zobaczyć zorzę polarną?",
+        "już sprawdza, gdzie ją zobaczyć",
+        "woli patrzeć w gwiazdy"
+      ],
+      "c56": [
+        "Lubisz deszczową pogodę?",
+        "kocha szum deszczu za oknem",
+        "czeka na słońce"
+      ],
+      "c57": [
+        "Umiesz jeździć konno?",
+        "pewnie siedzi w siodle",
+        "na razie tylko o tym marzy"
+      ],
+      "c58": [
+        "Chcesz mieć psa?",
+        "marzy o wiernym przyjacielu",
+        "na razie ma dość obowiązków"
+      ],
+      "c59": [
+        "Wolisz słodkie od słonego?",
+        "nie wyobraża sobie życia bez słodyczy",
+        "wybiera słone"
+      ],
+      "c60": [
+        "Lubisz podróżować pociągiem?",
+        "kocha stukot kół",
+        "wybiera samolot"
+      ],
+      "c61": [
+        "Łatwo ci zacząć dzień wcześnie rano?",
+        "zaczyna dzień z mnóstwem energii",
+        "rozkręca się dopiero koło obiadu"
+      ],
+      "c62": [
+        "Lubisz biwakować pod namiotem?",
+        "już pakuje plecak",
+        "wybiera przytulny hotel"
+      ],
+      "c63": [
+        "Chcesz mieszkać nad morzem?",
+        "marzy o szumie fal",
+        "wybiera miasto"
+      ],
+      "c64": [
+        "Jesz lody zimą?",
+        "je je nawet w mróz",
+        "tylko latem"
+      ],
+      "c65": [
+        "Lubisz czekoladę?",
+        "zna każdy jej rodzaj",
+        "spokojnie przechodzi obok"
+      ],
+      "c66": [
+        "Umiesz piec ciasta?",
+        "piecze jak babcia",
+        "obiecuje się nauczyć"
+      ],
+      "c67": [
+        "Lubisz patrzeć w gwiazdy?",
+        "zna gwiazdozbiory",
+        "woli słoneczny dzień"
+      ],
+      "c68": [
+        "Chcesz kiedyś założyć własny ogród?",
+        "już wybiera sadzonki",
+        "zacznie od kwiatka w doniczce"
+      ],
+      "c69": [
+        "Lubisz polne kwiaty?",
+        "kocha stokrotki i chabry",
+        "woli kwiaty ogrodowe"
+      ],
+      "c70": [
+        "Pijesz kawę?",
+        "bez kawy dzień się nie zaczyna",
+        "wybiera herbatę"
+      ],
+      "c71": [
+        "Lubisz domową lemoniadę?",
+        "już kroi cytryny",
+        "woli wodę"
+      ],
+      "c72": [
+        "Chcesz kiedyś pojechać do Japonii?",
+        "marzy o kwitnących wiśniach",
+        "wybiera inny kraj"
+      ],
+      "c73": [
+        "Lubisz jesień?",
+        "kocha szelest liści pod stopami",
+        "czeka na wiosnę"
+      ],
+      "c74": [
+        "Lubisz zapach lawendy?",
+        "kocha ten zapach",
+        "woli inne zapachy"
+      ],
+      "c75": [
+        "Lubisz gry planszowe?",
+        "już rozkłada planszę",
+        "woli spacer"
+      ],
+      "c76": [
+        "Umiesz prowadzić samochód?",
+        "jeździ pewnie",
+        "na razie siedzi obok kierowcy"
+      ],
+      "c77": [
+        "Chcesz kiedyś zobaczyć ocean?",
+        "marzy o wielkiej fali",
+        "morze w zupełności wystarczy"
+      ],
+      "c78": [
+        "Chcesz przez jakiś czas pomieszkać na wsi w gospodarstwie?",
+        "już karmi kury",
+        "zostaje w mieście"
+      ],
+      "c79": [
+        "Lubisz duże miasta?",
+        "kocha światła miasta",
+        "wybiera ciszę i spokój"
+      ],
+      "c80": [
+        "Wolisz owoce od słodyczy?",
+        "wybiera owoce",
+        "wybiera słodycze"
+      ],
+      "c81": [
+        "Chcesz zobaczyć delfiny w morzu?",
+        "bardzo chce je zobaczyć",
+        "woli o nich poczytać"
+      ],
+      "c82": [
+        "Lubisz lato?",
+        "czeka na upalne dni",
+        "lubi chłód"
+      ],
+      "c83": [
+        "Lubisz spacery po parku?",
+        "spaceruje w każdą pogodę",
+        "woli zostać w domu"
+      ],
+      "c84": [
+        "Lubisz pisać ręcznie?",
+        "ma staranne pismo",
+        "pisze w telefonie"
+      ],
+      "c85": [
+        "Lubisz przejażdżki łódką?",
+        "już chwyta wiosła",
+        "zostaje na brzegu"
+      ],
+      "c86": [
+        "Chcesz objechać cały świat?",
+        "już rysuje trasę",
+        "wystarczy kilka krajów"
+      ],
+      "c87": [
+        "Umiesz ulepić bałwana?",
+        "ulepi największego",
+        "woli bitwę na śnieżki"
+      ],
+      "c88": [
+        "Chcesz w tym roku nauczyć się czegoś nowego?",
+        "już wybiera kurs",
+        "ma już dość zajęć"
+      ],
+      "c89": [
+        "Lubisz ciszę?",
+        "ceni spokój",
+        "lubi, gdy dużo się dzieje"
+      ],
+      "c90": [
+        "Lubisz dawać prezenty rodzinie?",
+        "sprawia rodzinie radość bez okazji",
+        "woli pomagać w praktyczny sposób"
       ]
     },
     "loves": {
@@ -4015,6 +7920,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Las",
         "Pustynia",
         "Zorza polarna"
+      ],
+      "s17": [
+        "Ulubiony owoc?",
+        "Jabłko",
+        "Truskawka",
+        "Arbuz",
+        "Winogrona"
+      ],
+      "s18": [
+        "Co robić w wolny dzień?",
+        "Wędrówka po górach",
+        "Gotowanie w domu",
+        "Muzeum",
+        "Wędkowanie"
+      ],
+      "s19": [
+        "Ulubione śniadanie?",
+        "Naleśniki",
+        "Omlet",
+        "Owsianka z owocami",
+        "Rogalik"
+      ],
+      "s20": [
+        "Ulubiony ptak?",
+        "Sowa",
+        "Papuga",
+        "Łabędź",
+        "Paw"
+      ],
+      "s21": [
+        "Jakie miasto odwiedzić?",
+        "Stambuł",
+        "Paryż",
+        "Tokio",
+        "Dubaj"
+      ],
+      "s22": [
+        "Ulubiony sport?",
+        "Piłka nożna",
+        "Pływanie",
+        "Tenis",
+        "Jazda konna"
+      ],
+      "s23": [
+        "Co posadzić w ogrodzie?",
+        "Jabłoń",
+        "Róże",
+        "Warzywa",
+        "Truskawki"
+      ],
+      "s24": [
+        "Ulubiony wypiek?",
+        "Pierożki",
+        "Pączki",
+        "Ciasteczka",
+        "Baklawa"
+      ],
+      "s25": [
+        "Gdzie mieszkać?",
+        "Nad rzeką",
+        "W lesie",
+        "W dużym mieście",
+        "Na wyspie"
+      ],
+      "s26": [
+        "Ulubione stworzenie morskie?",
+        "Żółw",
+        "Wieloryb",
+        "Ośmiornica",
+        "Konik morski"
+      ],
+      "s27": [
+        "Czym jechać?",
+        "Rower",
+        "Hulajnoga",
+        "Balon",
+        "Łódka"
+      ],
+      "s28": [
+        "Ulubione zajęcie?",
+        "Robienie na drutach",
+        "Fotografia przyrody",
+        "Ogrodnictwo",
+        "Kaligrafia"
+      ],
+      "s29": [
+        "Ulubiona zupa?",
+        "Barszcz",
+        "Rosół",
+        "Zupa dyniowa",
+        "Zupa z soczewicy"
+      ],
+      "s30": [
+        "Zwierzę leśne?",
+        "Jeż",
+        "Wiewiórka",
+        "Lis",
+        "Sarna"
+      ],
+      "s31": [
+        "Coś do pochrupania?",
+        "Daktyle",
+        "Migdały",
+        "Pistacje",
+        "Suszone morele"
+      ],
+      "s32": [
+        "Co zabrać na wędrówkę?",
+        "Namiot",
+        "Termos",
+        "Mapę",
+        "Latarkę"
+      ],
+      "s33": [
+        "Ulubiony deser?",
+        "Budyń",
+        "Sernik",
+        "Naleśniki z miodem",
+        "Sałatka owocowa"
+      ],
+      "s34": [
+        "Co robić zimą?",
+        "Lepić bałwana",
+        "Zjeżdżać na sankach",
+        "Herbata przy oknie",
+        "Jeździć na nartach"
+      ],
+      "s35": [
+        "Co robić latem?",
+        "Pływać",
+        "Zbierać jagody",
+        "Pływać łódką",
+        "Budować zamek z piasku"
+      ],
+      "s36": [
+        "Czym malować?",
+        "Akwarelami",
+        "Kredkami",
+        "Kredkami świecowymi",
+        "Farbami na płótnie"
+      ],
+      "s37": [
+        "Ulubione warzywo?",
+        "Marchewka",
+        "Pomidor",
+        "Kukurydza",
+        "Dynia"
+      ],
+      "s38": [
+        "Co czyni dom przytulnym?",
+        "Kominek",
+        "Miękki koc",
+        "Rośliny doniczkowe",
+        "Półka z książkami"
+      ],
+      "s39": [
+        "W co zagrać?",
+        "Szachy",
+        "Puzzle",
+        "Gry planszowe",
+        "Gry z piłką"
+      ],
+      "s40": [
+        "Kto mieszka w gospodarstwie?",
+        "Krowa",
+        "Owieczka",
+        "Kura",
+        "Koziołek"
+      ],
+      "s41": [
+        "Herbata z czym?",
+        "Z miodem",
+        "Z cytryną",
+        "Z konfiturą",
+        "Z miętą"
+      ],
+      "s42": [
+        "Co jest nad morzem?",
+        "Latarnia morska",
+        "Muszle",
+        "Żaglówka",
+        "Mewy"
+      ],
+      "s43": [
+        "Jak zacząć poranek?",
+        "Od gimnastyki",
+        "Od filiżanki herbaty",
+        "Od spaceru",
+        "Od książki"
+      ],
+      "s44": [
+        "Ulubiona jagoda?",
+        "Malina",
+        "Borówka",
+        "Wiśnia",
+        "Jeżyna"
       ]
     },
     "who": [
@@ -4057,7 +8158,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Kto z nas częściej wspomina zabawne historie?",
       "Kto z nas ma więcej cierpliwości?",
       "Kto z nas częściej mówi „dziękuję”?",
-      "Kto z nas szybciej oferuje pomoc?"
+      "Kto z nas szybciej oferuje pomoc?",
+      "Kto z nas lepiej liczy w pamięci?",
+      "Kto z nas więcej czyta?",
+      "Kto z nas szybciej pisze na klawiaturze?",
+      "Kto z nas częściej dzwoni do rodziców?",
+      "Kto z nas lepiej opowiada historie?",
+      "Kto z nas ma staranniejsze pismo?",
+      "Kto z nas bardziej lubi ostre jedzenie?",
+      "Kto z nas częściej zapomina czegoś z domu?",
+      "Kto z nas lepiej radzi sobie z elektroniką?",
+      "Kto z nas bardziej lubi uczyć się nowych rzeczy?",
+      "Kto z nas lepiej planuje?",
+      "Kto z nas lepiej się targuje na targu?",
+      "Kto z nas bardziej kocha przyrodę?",
+      "Kto z nas szybciej je?",
+      "Kto z nas pije więcej herbaty?",
+      "Kto z nas lepiej dba o rośliny?",
+      "Kto z nas lepiej zna geografię?",
+      "Kto z nas lepiej gra w szachy?",
+      "Kto z nas wybiera lepsze owoce na targu?",
+      "Kto z nas częściej sprawdza prognozę pogody?",
+      "Kto z nas bardziej boi się pająków?",
+      "Kto z nas ma więcej odwagi?",
+      "Kto z nas ma w sobie więcej ciekawości?",
+      "Kto z nas szybciej rozwiązuje zagadki?",
+      "Kto z nas lepiej rysuje?",
+      "Kto z nas częściej pomaga sąsiadom?",
+      "Kto z nas lepiej dogaduje się z dziećmi?",
+      "Kto z nas bardziej lubi spacery?",
+      "Kto z nas częściej czyta instrukcje?",
+      "Kto z nas lepiej zapamiętuje imiona?",
+      "Kto z nas szybciej uczy się słówek w obcym języku?",
+      "Kto z nas lepiej piecze?",
+      "Kto z nas daje lepsze rady?",
+      "Kto z nas bardziej lubi chłodną pogodę?",
+      "Kto z nas lepiej radzi sobie na wędrówce?",
+      "Kto z nas częściej czyta wiadomości?",
+      "Kto z nas częściej próbuje nowych potraw?",
+      "Kto z nas szybciej pakuje walizkę?",
+      "Kto z nas lepiej naprawia różne rzeczy?",
+      "Kto z nas częściej rozmawia ze zwierzętami?",
+      "Kto z nas częściej zmywa naczynia?",
+      "Kto z nas lepiej zna historię?",
+      "Kto z nas częściej odkłada sprawy na później?",
+      "Kto z nas szybciej nawiązuje kontakt z nowymi ludźmi?",
+      "Kto z nas bardziej dba o zdrowie?"
     ],
     "phrases": [
       "Uśmiecham się, kiedy ty…",
@@ -4089,8 +8235,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Poranek z tobą to…",
       "Jednym słowem my to…",
       "Chcę nauczyć się od ciebie…",
-      "Dziękuję, że zawsze…"
-    ]
+      "Dziękuję, że zawsze…",
+      "W dzieciństwie moim ulubionym jedzeniem było…",
+      "Mając jeden dzień w dowolnym kraju, chętnie…",
+      "Najlepsza rada, jaką udało mi się usłyszeć, to…",
+      "Zawsze się śmieję, kiedy…",
+      "Moje ulubione miejsce w rodzinnym mieście to…",
+      "W moim własnym małym sklepiku można by kupić…",
+      "Danie, które wychodzi mi najlepiej, to…",
+      "Marzenie z dzieciństwa, które wciąż pamiętam, to…",
+      "Łatwo sprawić mi radość, jeśli…",
+      "Najbardziej niezwykłe miejsce, w którym udało mi się być, to…",
+      "Chcę się nauczyć…",
+      "Mój idealny wolny dzień zaczyna się od…",
+      "Gdyby można było mieć dowolne zwierzę, mój wybór to…",
+      "W mojej rodzinie zawsze mówią, że…",
+      "Nie mogę się przyzwyczaić do…",
+      "Mój najbardziej przydatny nawyk to…",
+      "Najlepsza książka w moim życiu to…",
+      "Za dziesięć lat chcę…",
+      "Mój wymarzony dom to…",
+      "Najzabawniejsze, co przydarzyło mi się w dzieciństwie, to…",
+      "Szczęście to dla mnie…",
+      "Trudno mi zrezygnować z…",
+      "Gdyby można było mieć supermoc, moja pozwalałaby…",
+      "W ludziach najbardziej cenię…",
+      "W wolny wieczór lubię…",
+      "Mój ulubiony zapach to…",
+      "Jedzenie, którego nigdy nie spróbuję, to…",
+      "Jedyna rzecz, bez której nie wychodzę z domu, to…",
+      "Chętnie pojadę do…, bo…",
+      "Najlepszy prezent w moim życiu to…",
+      "Mój najbardziej nietypowy nawyk to…",
+      "Z dodatkową godziną każdego dnia mogę…",
+      "Osoba, od której wiele się uczę, to…",
+      "W trudny dzień pomaga mi…",
+      "Najsmaczniejsza rzecz, jakiej udało mi się spróbować w podróży, to…",
+      "Na jeden dzień chętnie zamienię swoją pracę na…",
+      "Pora roku najbliższa mojemu sercu to…",
+      "Moi przyjaciele mówią, że…",
+      "Kiedyś chcę kogoś nauczyć…",
+      "Mała radość mojego dnia to…"
+    ],
+    "truth": {
+      "t01": [
+        "Ośmiornica ma trzy serca.",
+        true,
+        "Dwa serca pompują krew przez skrzela, a trzecie — przez całe ciało."
+      ],
+      "t02": [
+        "Wielki Mur Chiński widać gołym okiem z Księżyca.",
+        false,
+        "Nie widać: mur jest o wiele za wąski. Nawet z orbity bardzo trudno go dostrzec."
+      ],
+      "t03": [
+        "Miód może przetrwać tysiące lat i się nie zepsuć.",
+        true,
+        "W starożytnych egipskich grobowcach znaleziono miód sprzed tysięcy lat, wciąż zachowany."
+      ],
+      "t04": [
+        "Banany rosną na drzewach.",
+        false,
+        "Bananowiec to olbrzymia roślina zielna: jego „pień” tworzą ciasno zwinięte liście."
+      ],
+      "t05": [
+        "Wenus to najgorętsza planeta Układu Słonecznego.",
+        true,
+        "Gęsta atmosfera rozgrzewa Wenus do około 460 °C — bardziej niż Merkurego."
+      ],
+      "t06": [
+        "Nietoperze są ślepe.",
+        false,
+        "Nietoperze widzą, a w ciemności orientują się dodatkowo dzięki echolokacji."
+      ],
+      "t07": [
+        "Wieloryb to ryba.",
+        false,
+        "Wieloryby to ssaki: oddychają powietrzem i karmią młode mlekiem."
+      ],
+      "t08": [
+        "Sahara to największa pustynia świata.",
+        false,
+        "Największą pustynią jest Antarktyda. Sahara to największa gorąca pustynia."
+      ],
+      "t09": [
+        "Żyrafa ma tyle samo kręgów szyjnych co człowiek.",
+        true,
+        "Oboje mają siedem kręgów szyjnych — u żyrafy są po prostu bardzo długie."
+      ],
+      "t10": [
+        "Z punktu widzenia botaniki pomidor to jagoda.",
+        true,
+        "Botanicy zaliczają pomidor do jagód: to mięsisty owoc z nasionami w środku."
+      ],
+      "t11": [
+        "Z punktu widzenia botaniki truskawka to jagoda.",
+        false,
+        "To owoc rzekomy: prawdziwe owoce to maleńkie „pestki” na zewnątrz."
+      ],
+      "t12": [
+        "W kosmosie można usłyszeć wybuch.",
+        false,
+        "W kosmosie prawie nie ma powietrza, więc dźwięk nie ma jak się rozchodzić."
+      ],
+      "t13": [
+        "Wysoko w górach woda wrze w niższej temperaturze.",
+        true,
+        "Ciśnienie powietrza jest tam niższe, więc woda wrze, zanim osiągnie 100 °C."
+      ],
+      "t14": [
+        "Pingwiny żyją na biegunie północnym.",
+        false,
+        "Dzikie pingwiny żyją tylko na półkuli południowej, nie na dalekiej północy."
+      ],
+      "t15": [
+        "Everest to najwyższa góra nad poziomem morza.",
+        true,
+        "Everest wznosi się na około 8849 metrów nad poziom morza."
+      ],
+      "t16": [
+        "Ludzie wykorzystują tylko 10% mózgu.",
+        false,
+        "To mit: w ciągu dnia aktywna jest niemal każda część mózgu."
+      ],
+      "t17": [
+        "Ludzkie serce bije około 100 000 razy na dobę.",
+        true,
+        "Przy około 70 uderzeniach na minutę daje to mniej więcej 100 000 uderzeń na dobę."
+      ],
+      "t18": [
+        "Złota rybka ma pamięć trwającą tylko trzy sekundy.",
+        false,
+        "Doświadczenia pokazują, że złote rybki pamiętają to, czego się nauczyły, przez miesiące."
+      ],
+      "t19": [
+        "Australia jest jednocześnie państwem i kontynentem.",
+        true,
+        "Australia to jedyne państwo, które zajmuje cały kontynent."
+      ],
+      "t20": [
+        "Piorun nigdy nie uderza dwa razy w to samo miejsce.",
+        false,
+        "Uderza: w wysokie budynki pioruny trafiają wiele razy w roku."
+      ],
+      "t21": [
+        "Przestraszony struś chowa głowę w piasek.",
+        false,
+        "To mit: przestraszony struś ucieka albo kładzie się płasko na ziemi, by się ukryć."
+      ],
+      "t22": [
+        "Najmniejszy ptak świata to koliber.",
+        true,
+        "Koliberek hawański z Kuby waży około 2 gramów — mniej niż jakikolwiek inny ptak."
+      ],
+      "t23": [
+        "Arbuz składa się w około 90% z wody.",
+        true,
+        "Arbuz to około 92% wody — dlatego tak dobrze orzeźwia."
+      ],
+      "t24": [
+        "Pająk ma sześć nóg.",
+        false,
+        "Pająk ma osiem nóg. Owady mają sześć, a pająki nie są owadami."
+      ],
+      "t25": [
+        "Księżyc świeci własnym światłem.",
+        false,
+        "Księżyc nie ma własnego światła: odbija światło Słońca."
+      ],
+      "t26": [
+        "Słoń to największe zwierzę lądowe.",
+        true,
+        "Słoń afrykański może ważyć ponad 6 ton."
+      ],
+      "t27": [
+        "Płetwal błękitny to największe zwierzę znane nauce.",
+        true,
+        "Płetwale błękitne mogą mieć ponad 30 metrów długości — więcej niż jakikolwiek znany dinozaur."
+      ],
+      "t28": [
+        "Kameleon zmienia kolor tylko po to, by się zamaskować.",
+        false,
+        "Jego kolor zależy bardziej od nastroju, temperatury i sygnałów dla innych kameleonów."
+      ],
+      "t29": [
+        "Telefon wynalazł Thomas Edison.",
+        false,
+        "Patent na telefon otrzymał Alexander Graham Bell w 1876 roku."
+      ],
+      "t30": [
+        "Penicylinę odkrył Alexander Fleming.",
+        true,
+        "Fleming odkrył penicylinę w 1928 roku — pierwszy antybiotyk."
+      ],
+      "t31": [
+        "Najwyższy wulkan Układu Słonecznego znajduje się na Marsie.",
+        true,
+        "Olympus Mons na Marsie ma około 22 km wysokości — prawie 2,5 raza więcej niż Everest."
+      ],
+      "t32": [
+        "Krew w naszych żyłach jest niebieska.",
+        false,
+        "Krew jest zawsze czerwona; żyły tylko wyglądają na niebieskie przez to, jak światło przechodzi przez skórę."
+      ],
+      "t33": [
+        "Atlantyk to największy ocean na Ziemi.",
+        false,
+        "Największy jest Pacyfik: jest większy niż cały ląd na Ziemi razem wzięty."
+      ],
+      "t34": [
+        "Rosja to największy kraj świata pod względem powierzchni.",
+        true,
+        "Rosja zajmuje ponad 17 milionów kilometrów kwadratowych."
+      ],
+      "t35": [
+        "Kanada ma najdłuższą linię brzegową na świecie.",
+        true,
+        "Wybrzeże Kanady ciągnie się na ponad 200 000 km — dłużej niż w jakimkolwiek innym kraju."
+      ],
+      "t36": [
+        "Żołądek krowy ma cztery komory.",
+        true,
+        "Krowa ma jeden żołądek z czterema komorami — tak trawi trawę."
+      ],
+      "t37": [
+        "Lew to największy kot na świecie.",
+        false,
+        "Największym kotem jest tygrys, zwłaszcza tygrys syberyjski."
+      ],
+      "t38": [
+        "Ziemia jest planetą najbliższą Słońca.",
+        false,
+        "Najbliżej jest Merkury, potem Wenus; Ziemia to trzecia planeta."
+      ],
+      "t39": [
+        "Światło słoneczne dociera do Ziemi w około 8 minut.",
+        true,
+        "Światło pokonuje 150 milionów km od Słońca w około 8 minut i 20 sekund."
+      ],
+      "t40": [
+        "Delfiny śpią, wyłączając na zmianę połowę mózgu.",
+        true,
+        "Jedna połowa odpoczywa, a druga czuwa i pamięta o oddychaniu."
+      ],
+      "t41": [
+        "Ziemniaki pochodzą z Irlandii.",
+        false,
+        "Ziemniaki pochodzą z Ameryki Południowej: uprawiano je w Andach tysiące lat temu."
+      ],
+      "t42": [
+        "Czekoladę robi się z nasion kakaowca.",
+        true,
+        "Owoce kakaowca rosną prosto na pniu, a nasiona w ich wnętrzu stają się czekoladą."
+      ],
+      "t43": [
+        "Rekin to ssak.",
+        false,
+        "Rekin to ryba: oddycha skrzelami. Ssakami morskimi są wieloryby i delfiny."
+      ],
+      "t44": [
+        "Niektóre gatunki bambusa rosną prawie metr dziennie.",
+        true,
+        "Bambus należy do najszybciej rosnących roślin na Ziemi."
+      ],
+      "t45": [
+        "Sowa potrafi obrócić głowę o pełne 360 stopni.",
+        false,
+        "Sowa obraca głowę o około 270 stopni — dużo, ale to nie pełny obrót."
+      ],
+      "t46": [
+        "Diament i grafit z ołówka są zbudowane z tej samej substancji.",
+        true,
+        "Oba to czysty węgiel — atomy są po prostu inaczej ułożone."
+      ],
+      "t47": [
+        "Wielbłąd magazynuje wodę w garbie.",
+        false,
+        "W garbie wielbłąd gromadzi tłuszcz, nie wodę — daje mu on energię w długiej drodze."
+      ],
+      "t48": [
+        "Najmniejsza kość w ludzkim ciele znajduje się w uchu.",
+        true,
+        "Strzemiączko w uchu środkowym ma tylko około 3 milimetrów."
+      ],
+      "t49": [
+        "Duże papugi mogą żyć ponad 50 lat.",
+        true,
+        "Zadbane ary i kakadu często żyją 50 lat lub dłużej."
+      ],
+      "t50": [
+        "Bracia Wright odbyli pierwszy lot samolotem z silnikiem.",
+        true,
+        "Polecieli w 1903 roku; pierwszy lot trwał 12 sekund."
+      ],
+      "t51": [
+        "Koło wynaleziono w średniowieczu.",
+        false,
+        "Koło ma ponad 5000 lat: używano go w Mezopotamii około 3500 roku p.n.e."
+      ],
+      "t52": [
+        "Konik morski to ryba.",
+        true,
+        "Konik morski oddycha skrzelami i pływa za pomocą płetwy, jak inne ryby."
+      ],
+      "t53": [
+        "Koliber potrafi latać do tyłu.",
+        true,
+        "Kolibry to jedyne ptaki, które naprawdę potrafią latać do tyłu."
+      ],
+      "t54": [
+        "Wieża Eiffla latem staje się trochę wyższa.",
+        true,
+        "Ciepło rozszerza metal, a wieża rośnie o około 15 centymetrów."
+      ],
+      "t55": [
+        "Skóra to największy narząd ludzkiego ciała.",
+        true,
+        "Skóra dorosłej osoby waży kilka kilogramów i chroni całe ciało."
+      ],
+      "t56": [
+        "Czerwony kolor rozwściecza byka.",
+        false,
+        "Byk ledwo odróżnia czerwień: drażni go ruch, a nie kolor."
+      ],
+      "t57": [
+        "Mucha domowa żyje tylko jeden dzień.",
+        false,
+        "Mucha domowa żyje około miesiąca. To dorosłe jętki żyją dzień lub dwa."
+      ],
+      "t58": [
+        "Ananasy rosną na drzewach.",
+        false,
+        "Ananas rośnie na niskiej, liściastej roślinie, prosto z jej środka."
+      ],
+      "t59": [
+        "Orzeszek ziemny to orzech.",
+        false,
+        "Orzeszek ziemny to roślina strączkowa, krewniak grochu i fasoli. Jego strąki dojrzewają pod ziemią."
+      ],
+      "t60": [
+        "Biegun północny i południowy są równie zimne.",
+        false,
+        "Biegun południowy jest znacznie zimniejszy: leży na wysokim, lodowym kontynencie, a północny — na oceanie."
+      ]
+    }
   },
   "uk": {
     "text": {
@@ -4299,7 +8787,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Запросити",
       "invited": "Запрошено",
       "inviteNone": "Додайте друзів у розділі «Друзі» — і запрошуйте їх у гру одним дотиком.",
-      "inviteSent": "Запрошення надіслано: {name}"
+      "inviteSent": "Запрошення надіслано: {name}",
+      "truth": "Правда чи ні",
+      "tfTitle": "Правда чи ні",
+      "tfNote": "Жива гра для двох: дивовижні факти про світ. 12 секунд — правда чи ні? Бал за кожну правильну відповідь.",
+      "tfShareText": "{name} кличе тебе в живу гру «Правда чи ні»",
+      "tfJoinLead": "{name} чекає на вас. Правда чи ні — вирішуйте швидко!",
+      "tfRound": "Факт {n} з {total}",
+      "tfTrue": "Правда",
+      "tfFalse": "Неправда",
+      "tfIsTrue": "Це правда!",
+      "tfIsFalse": "Це неправда!",
+      "tfFirstYou": "Перша правильна відповідь — ваша!",
+      "tfFirstThem": "Перша правильна відповідь: {name}",
+      "tfFinalWin": "Перемога! Ви знаєте про світ більше.",
+      "tfFinalLose": "Цього разу більше знає {name} — реванш?",
+      "tfFinalDraw": "Нічия — ви знаєте однаково багато!",
+      "featTruth": "Жива гра «Правда чи ні» — дивовижні факти про світ"
     },
     "questions": {
       "q01": [
@@ -4721,6 +9225,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Готувати",
         "Нової мови",
         "Малювати"
+      ],
+      "q61": [
+        "Яка страва вдається мені найкраще?",
+        "Суп",
+        "Плов",
+        "Випічка",
+        "Салат"
+      ],
+      "q62": [
+        "Яку країну я хочу побачити першою?",
+        "Туреччину",
+        "Японію",
+        "Марокко",
+        "Норвегію"
+      ],
+      "q63": [
+        "Яким спортом мені цікавіше зайнятися?",
+        "Плаванням",
+        "Бігом",
+        "Велоспортом",
+        "Футболом"
+      ],
+      "q64": [
+        "Яку книжку я оберу?",
+        "Пригодницьку",
+        "Історичну",
+        "Казки",
+        "Енциклопедію"
+      ],
+      "q65": [
+        "До яких тварин у зоопарку я піду першими?",
+        "До слонів",
+        "До мавп",
+        "До пінгвінів",
+        "До жирафів"
+      ],
+      "q66": [
+        "Як я ставлюся до гострої їжі?",
+        "Що гостріше, то краще",
+        "Трохи можна",
+        "Лише крапельку",
+        "Зовсім не їм"
+      ],
+      "q67": [
+        "Який шкільний предмет був моїм улюбленим?",
+        "Математика",
+        "Література",
+        "Географія",
+        "Фізкультура"
+      ],
+      "q68": [
+        "Моя дитяча мрія про професію?",
+        "Лікувати людей",
+        "Навчати дітей",
+        "Полетіти в космос",
+        "Готувати"
+      ],
+      "q69": [
+        "Як я ставлюся до походів?",
+        "Мрію про довгий",
+        "Тільки на день",
+        "Тільки з комфортом",
+        "Удома краще"
+      ],
+      "q70": [
+        "Мій настрій зранку?",
+        "Багато енергії",
+        "Ще хочеться спати",
+        "Тиша",
+        "Хочеться поговорити"
+      ],
+      "q71": [
+        "Які горіхи я люблю найбільше?",
+        "Фундук",
+        "Волоські",
+        "Кеш’ю",
+        "Мигдаль"
+      ],
+      "q72": [
+        "Чим я займуся в несподівану вільну годину?",
+        "Читатиму",
+        "Піду погуляти",
+        "Подзвоню рідним",
+        "Щось приготую"
+      ],
+      "q73": [
+        "Яку погоду я не люблю?",
+        "Спеку",
+        "Вітер",
+        "Сльоту",
+        "Лютий мороз"
+      ],
+      "q74": [
+        "У який колір я пофарбую свою кімнату?",
+        "Білий",
+        "Бежевий",
+        "Зелений",
+        "Блакитний"
+      ],
+      "q75": [
+        "У що мені цікавіше пограти?",
+        "У шахи",
+        "У шашки",
+        "У пазл",
+        "У гру в слова"
+      ],
+      "q76": [
+        "Що я приготую для гостей?",
+        "Плов",
+        "Пиріг",
+        "Салати",
+        "Замовлю їжу"
+      ],
+      "q77": [
+        "Чого я точно не їстиму?",
+        "Грибів",
+        "Риби",
+        "Оливок",
+        "Вареної цибулі"
+      ],
+      "q78": [
+        "Який чай я п’ю?",
+        "Міцний",
+        "Слабкий",
+        "Солодкий",
+        "З травами"
+      ],
+      "q79": [
+        "Що для мене найважливіше в домі?",
+        "Чистота",
+        "Затишок",
+        "Багато світла",
+        "Тиша"
+      ],
+      "q80": [
+        "Як я вчуся новому?",
+        "Читаю",
+        "Дивлюся відеоуроки",
+        "Пробую на практиці",
+        "Розпитую інших"
+      ],
+      "q81": [
+        "Яка дика тварина захоплює мене найбільше?",
+        "Тигр",
+        "Ведмідь",
+        "Орел",
+        "Дельфін"
+      ],
+      "q82": [
+        "Що я подарую мамі?",
+        "Квіти",
+        "Щось зроблене власноруч",
+        "Подорож",
+        "Теплий плед"
+      ],
+      "q83": [
+        "Що я роблю в дорозі?",
+        "Дивлюся у вікно",
+        "Читаю",
+        "Розмовляю",
+        "Перекушую"
+      ],
+      "q84": [
+        "Моя улюблена страва з курки?",
+        "Шашлички з курки",
+        "Курка з рисом",
+        "Курячі котлети",
+        "Нагетси"
+      ],
+      "q85": [
+        "Яке місце я обираю в потязі?",
+        "Біля вікна",
+        "Біля проходу",
+        "Спиною за рухом",
+        "Байдуже"
+      ],
+      "q86": [
+        "Що я роблю, коли щось іде не так?",
+        "Одразу дію",
+        "Спершу думаю",
+        "Прошу поради",
+        "Трохи хвилююся"
+      ],
+      "q87": [
+        "Яка моя головна риса?",
+        "Доброта",
+        "Чесність",
+        "Наполегливість",
+        "Життєрадісність"
+      ],
+      "q88": [
+        "Де я найкраще відпочину?",
+        "У рідних у селі",
+        "У готелі біля моря",
+        "У наметі",
+        "Удома"
+      ],
+      "q89": [
+        "Яку випічку я оберу?",
+        "Самсу",
+        "Хачапурі",
+        "Чак-чак",
+        "Еклер"
+      ],
+      "q90": [
+        "Яку мову мені найбільше хочеться вивчити?",
+        "Арабську",
+        "Англійську",
+        "Турецьку",
+        "Японську"
+      ],
+      "q91": [
+        "Скільки я протримаюся без солодкого?",
+        "День",
+        "Тиждень",
+        "Місяць",
+        "Скільки треба"
+      ],
+      "q92": [
+        "Що я роблю, коли запізнююся?",
+        "Біжу щодуху",
+        "Дзвоню попередити",
+        "Беру таксі",
+        "Я ніколи не запізнююся"
+      ],
+      "q93": [
+        "Що я роблю, коли ламається техніка?",
+        "Лагоджу власноруч",
+        "Читаю інструкцію",
+        "Кличу на допомогу",
+        "Натискаю всі кнопки"
+      ],
+      "q94": [
+        "Що першим потрапляє в мою валізу?",
+        "Аптечка",
+        "Книжка",
+        "Зарядка",
+        "Перекус"
+      ],
+      "q95": [
+        "Яке заняття мене заспокоює?",
+        "Готування",
+        "Прибирання",
+        "Малювання",
+        "Прогулянка"
+      ],
+      "q96": [
+        "Чим я хочу займатися на пенсії?",
+        "Садом",
+        "Подорожами",
+        "Читанням",
+        "Онуками"
+      ],
+      "q97": [
+        "Що мене найбільше дратує?",
+        "Шум",
+        "Безлад",
+        "Запізнення",
+        "Грубість"
+      ],
+      "q98": [
+        "Який запах я люблю найбільше?",
+        "Свіжого хліба",
+        "Дощу",
+        "Квітів",
+        "Моря"
+      ],
+      "q99": [
+        "Що я оберу на десерт?",
+        "Фрукти",
+        "Морозиво",
+        "Пиріг",
+        "Просто чай"
       ]
     },
     "yesNo": {
@@ -4923,6 +9700,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Зіграємо ще раз потім?",
         "хоче ще раунд",
         "хоче обійняти замість гри"
+      ],
+      "c41": [
+        "Любиш гостру їжу?",
+        "що гостріше, то краще",
+        "обирає щось м’якше"
+      ],
+      "c42": [
+        "Умієш плавати?",
+        "плаває як риба",
+        "поки що тримається біля берега"
+      ],
+      "c43": [
+        "Хочеш мати кота?",
+        "уже вигадує ім’я",
+        "більше любить собак"
+      ],
+      "c44": [
+        "Хочеш колись побувати в Стамбулі?",
+        "уже мріє про Босфор",
+        "обирає інше місто"
+      ],
+      "c45": [
+        "Любиш готувати?",
+        "готує із задоволенням",
+        "краще помиє посуд"
+      ],
+      "c46": [
+        "Хочеш навчитися готувати плов?",
+        "уже шукає рецепт",
+        "краще скуштує чужий"
+      ],
+      "c47": [
+        "Любиш читати книжки?",
+        "завжди має книжку під рукою",
+        "більше любить слухати історії"
+      ],
+      "c48": [
+        "Умієш їздити на велосипеді?",
+        "може рушати хоч зараз",
+        "обіцяє навчитися"
+      ],
+      "c49": [
+        "Гори тобі ближчі за море?",
+        "обирає гори",
+        "обирає море"
+      ],
+      "c50": [
+        "Хочеш побачити пустелю?",
+        "мріє про піщані дюни",
+        "обирає ліс"
+      ],
+      "c51": [
+        "Любиш зиму?",
+        "чекає на перший сніг",
+        "чекає на літо"
+      ],
+      "c52": [
+        "П’єш чай без цукру?",
+        "любить чистий смак чаю",
+        "не може без ложечки цукру"
+      ],
+      "c53": [
+        "Боїшся павуків?",
+        "тримається від них подалі",
+        "спокійно виносить їх надвір"
+      ],
+      "c54": [
+        "Любиш малювати?",
+        "уже береться за пензлик",
+        "краще роздивляється чужі картини"
+      ],
+      "c55": [
+        "Хочеш побачити полярне сяйво?",
+        "уже шукає, де його побачити",
+        "краще дивиться на зорі"
+      ],
+      "c56": [
+        "Любиш дощову погоду?",
+        "любить шум дощу за вікном",
+        "чекає на сонце"
+      ],
+      "c57": [
+        "Умієш їздити верхи?",
+        "упевнено тримається в сідлі",
+        "поки що тільки мріє про це"
+      ],
+      "c58": [
+        "Хочеш мати собаку?",
+        "мріє про вірного друга",
+        "поки що має досить турбот"
+      ],
+      "c59": [
+        "Солодке тобі ближче за солоне?",
+        "не уявляє життя без солодкого",
+        "обирає солоне"
+      ],
+      "c60": [
+        "Любиш подорожувати потягом?",
+        "любить стукіт коліс",
+        "обирає літак"
+      ],
+      "c61": [
+        "Тобі легко починати день рано?",
+        "починає день бадьоро",
+        "розганяється лише до обіду"
+      ],
+      "c62": [
+        "Любиш ночувати в наметі?",
+        "уже пакує рюкзак",
+        "обирає затишний готель"
+      ],
+      "c63": [
+        "Хочеш жити біля моря?",
+        "мріє про шум хвиль",
+        "обирає місто"
+      ],
+      "c64": [
+        "Їси морозиво взимку?",
+        "їсть його навіть у мороз",
+        "тільки влітку"
+      ],
+      "c65": [
+        "Любиш шоколад?",
+        "знає всі його види",
+        "спокійно проходить повз"
+      ],
+      "c66": [
+        "Умієш пекти пиріжки?",
+        "пече як бабуся",
+        "обіцяє навчитися"
+      ],
+      "c67": [
+        "Любиш дивитися на зорі?",
+        "знає сузір’я",
+        "більше любить сонячний день"
+      ],
+      "c68": [
+        "Хочеш колись посадити власний сад?",
+        "уже вибирає саджанці",
+        "почне з квітки в горщику"
+      ],
+      "c69": [
+        "Любиш польові квіти?",
+        "любить ромашки й волошки",
+        "більше любить садові квіти"
+      ],
+      "c70": [
+        "П’єш каву?",
+        "без кави день не починається",
+        "обирає чай"
+      ],
+      "c71": [
+        "Любиш домашній лимонад?",
+        "уже ріже лимони",
+        "краще вип’є води"
+      ],
+      "c72": [
+        "Хочеш колись побувати в Японії?",
+        "мріє побачити цвітіння сакури",
+        "обирає іншу країну"
+      ],
+      "c73": [
+        "Любиш осінь?",
+        "любить шурхотіти листям",
+        "чекає на весну"
+      ],
+      "c74": [
+        "Любиш запах лаванди?",
+        "любить цей аромат",
+        "більше любить інші аромати"
+      ],
+      "c75": [
+        "Любиш настільні ігри?",
+        "уже розкладає поле",
+        "краще піде на прогулянку"
+      ],
+      "c76": [
+        "Умієш водити машину?",
+        "упевнено кермує",
+        "поки що їздить пасажиром"
+      ],
+      "c77": [
+        "Хочеш колись побачити океан?",
+        "мріє про велику хвилю",
+        "вистачить і моря"
+      ],
+      "c78": [
+        "Хочеш трохи пожити на фермі?",
+        "уже годує курей",
+        "лишається в місті"
+      ],
+      "c79": [
+        "Любиш великі міста?",
+        "любить вогні міста",
+        "обирає тишу й спокій"
+      ],
+      "c80": [
+        "Фрукти тобі ближчі за солодощі?",
+        "обирає фрукти",
+        "обирає солодощі"
+      ],
+      "c81": [
+        "Хочеш побачити дельфінів у морі?",
+        "дуже хоче їх побачити",
+        "краще почитає про них"
+      ],
+      "c82": [
+        "Любиш літо?",
+        "чекає на спекотні дні",
+        "любить прохолоду"
+      ],
+      "c83": [
+        "Любиш гуляти в парку?",
+        "гуляє в будь-яку погоду",
+        "краще лишиться вдома"
+      ],
+      "c84": [
+        "Любиш писати від руки?",
+        "має акуратний почерк",
+        "набирає в телефоні"
+      ],
+      "c85": [
+        "Любиш кататися на човні?",
+        "уже береться за весла",
+        "лишається на березі"
+      ],
+      "c86": [
+        "Хочеш об’їхати весь світ?",
+        "уже малює маршрут",
+        "вистачить кількох країн"
+      ],
+      "c87": [
+        "Умієш ліпити сніговика?",
+        "зліпить найбільшого",
+        "краще пограє в сніжки"
+      ],
+      "c88": [
+        "Хочеш цього року навчитися чогось нового?",
+        "уже вибирає курс",
+        "і так має досить справ"
+      ],
+      "c89": [
+        "Любиш тишу?",
+        "цінує спокій",
+        "любить, коли навколо жваво"
+      ],
+      "c90": [
+        "Любиш дарувати подарунки рідним?",
+        "тішить родину без приводу",
+        "краще допомагає ділом"
       ]
     },
     "loves": {
@@ -5037,6 +10064,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Ліс",
         "Пустеля",
         "Північне сяйво"
+      ],
+      "s17": [
+        "Улюблений фрукт?",
+        "Яблуко",
+        "Полуниця",
+        "Кавун",
+        "Виноград"
+      ],
+      "s18": [
+        "Чим зайнятися у вихідний?",
+        "Похід у гори",
+        "Готувати вдома",
+        "Музей",
+        "Риболовля"
+      ],
+      "s19": [
+        "Улюблений сніданок?",
+        "Млинці",
+        "Омлет",
+        "Каша з ягодами",
+        "Круасан"
+      ],
+      "s20": [
+        "Улюблений птах?",
+        "Сова",
+        "Папуга",
+        "Лебідь",
+        "Павич"
+      ],
+      "s21": [
+        "Яке місто відвідати?",
+        "Стамбул",
+        "Париж",
+        "Токіо",
+        "Дубай"
+      ],
+      "s22": [
+        "Улюблений спорт?",
+        "Футбол",
+        "Плавання",
+        "Теніс",
+        "Верхова їзда"
+      ],
+      "s23": [
+        "Що посадити в саду?",
+        "Яблуню",
+        "Троянди",
+        "Овочі",
+        "Полуницю"
+      ],
+      "s24": [
+        "Улюблена випічка?",
+        "Пиріжки",
+        "Пончики",
+        "Печиво",
+        "Пахлава"
+      ],
+      "s25": [
+        "Де жити?",
+        "Біля річки",
+        "У лісі",
+        "У великому місті",
+        "На острові"
+      ],
+      "s26": [
+        "Улюблений мешканець моря?",
+        "Черепаха",
+        "Кит",
+        "Восьминіг",
+        "Морський коник"
+      ],
+      "s27": [
+        "На чому кататися?",
+        "Велосипед",
+        "Самокат",
+        "Повітряна куля",
+        "Човен"
+      ],
+      "s28": [
+        "Улюблене заняття?",
+        "В’язання",
+        "Фотографування природи",
+        "Садівництво",
+        "Каліграфія"
+      ],
+      "s29": [
+        "Улюблений суп?",
+        "Борщ",
+        "Курячий суп",
+        "Гарбузовий суп",
+        "Сочевичний суп"
+      ],
+      "s30": [
+        "Лісова тварина?",
+        "Їжачок",
+        "Білка",
+        "Лисиця",
+        "Олень"
+      ],
+      "s31": [
+        "Що погризти?",
+        "Фініки",
+        "Мигдаль",
+        "Фісташки",
+        "Курага"
+      ],
+      "s32": [
+        "Що взяти в похід?",
+        "Намет",
+        "Термос",
+        "Карту",
+        "Ліхтарик"
+      ],
+      "s33": [
+        "Улюблений десерт?",
+        "Пудинг",
+        "Чизкейк",
+        "Млинці з медом",
+        "Фруктовий салат"
+      ],
+      "s34": [
+        "Чим зайнятися взимку?",
+        "Зліпити сніговика",
+        "Покататися на санчатах",
+        "Чай біля вікна",
+        "Покататися на лижах"
+      ],
+      "s35": [
+        "Чим зайнятися влітку?",
+        "Поплавати",
+        "Збирати ягоди",
+        "Покататися на човні",
+        "Збудувати замок із піску"
+      ],
+      "s36": [
+        "Чим малювати?",
+        "Аквареллю",
+        "Олівцями",
+        "Восковими крейдами",
+        "Фарбами на полотні"
+      ],
+      "s37": [
+        "Улюблений овоч?",
+        "Морква",
+        "Помідор",
+        "Кукурудза",
+        "Гарбуз"
+      ],
+      "s38": [
+        "Що робить дім затишним?",
+        "Камін",
+        "М’який плед",
+        "Кімнатні рослини",
+        "Полиця з книжками"
+      ],
+      "s39": [
+        "У що пограти?",
+        "Шахи",
+        "Пазли",
+        "Настільні ігри",
+        "Ігри з м’ячем"
+      ],
+      "s40": [
+        "Хто живе на фермі?",
+        "Корова",
+        "Ягня",
+        "Курка",
+        "Козеня"
+      ],
+      "s41": [
+        "Чай із чим?",
+        "З медом",
+        "З лимоном",
+        "З варенням",
+        "З м’ятою"
+      ],
+      "s42": [
+        "Що є біля моря?",
+        "Маяк",
+        "Мушлі",
+        "Вітрильник",
+        "Чайки"
+      ],
+      "s43": [
+        "Як почати ранок?",
+        "Із зарядки",
+        "З чашки чаю",
+        "З прогулянки",
+        "З книжки"
+      ],
+      "s44": [
+        "Улюблена ягода?",
+        "Малина",
+        "Чорниця",
+        "Вишня",
+        "Ожина"
       ]
     },
     "who": [
@@ -5079,7 +10302,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Хто з нас частіше згадує смішні історії?",
       "Хто з нас має більше терпіння?",
       "Хто з нас частіше каже «дякую»?",
-      "Хто з нас швидше пропонує допомогу?"
+      "Хто з нас швидше пропонує допомогу?",
+      "Хто з нас краще рахує в умі?",
+      "Хто з нас більше читає?",
+      "Хто з нас швидше друкує?",
+      "Хто з нас частіше телефонує батькам?",
+      "Хто з нас краще розповідає історії?",
+      "У кого з нас акуратніший почерк?",
+      "Хто з нас більше любить гостру їжу?",
+      "Хто з нас частіше щось забуває вдома?",
+      "Хто з нас краще розуміється на техніці?",
+      "Хто з нас більше любить пізнавати нове?",
+      "Хто з нас краще планує?",
+      "Хто з нас краще торгується на ринку?",
+      "Хто з нас більше любить природу?",
+      "Хто з нас швидше їсть?",
+      "Хто з нас п’є більше чаю?",
+      "Хто з нас краще доглядає рослини?",
+      "Хто з нас краще знає географію?",
+      "Хто з нас краще грає в шахи?",
+      "Хто з нас вибирає кращі фрукти на ринку?",
+      "Хто з нас частіше дивиться прогноз погоди?",
+      "Хто з нас більше боїться павуків?",
+      "У кого з нас більше сміливості?",
+      "У кого з нас більше допитливості?",
+      "Хто з нас швидше розв’язує головоломки?",
+      "Хто з нас краще малює?",
+      "Хто з нас частіше допомагає сусідам?",
+      "Хто з нас краще ладнає з дітьми?",
+      "Хто з нас більше любить гуляти?",
+      "Хто з нас частіше читає інструкції?",
+      "Хто з нас краще запам’ятовує імена?",
+      "Хто з нас швидше вчить слова іншою мовою?",
+      "Хто з нас краще пече?",
+      "Хто з нас дає кращі поради?",
+      "Хто з нас більше любить холодну погоду?",
+      "Хто з нас краще дає собі раду в поході?",
+      "Хто з нас частіше читає новини?",
+      "Хто з нас частіше куштує нові страви?",
+      "Хто з нас швидше пакує валізу?",
+      "Хто з нас краще лагодить речі?",
+      "Хто з нас частіше розмовляє з тваринами?",
+      "Хто з нас частіше миє посуд?",
+      "Хто з нас краще знає історію?",
+      "Хто з нас частіше відкладає справи на потім?",
+      "Хто з нас швидше знаходить спільну мову з новими людьми?",
+      "Хто з нас більше дбає про здоров’я?"
     ],
     "phrases": [
       "Я усміхаюся, коли ти…",
@@ -5111,8 +10379,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ранок із тобою — це…",
       "Якщо описати нас одним словом, це…",
       "Я хочу навчитися в тебе…",
-      "Дякую, що ти завжди…"
-    ]
+      "Дякую, що ти завжди…",
+      "У дитинстві моєю улюбленою їжею була…",
+      "Якби мені дали один день у будь-якій країні, я б…",
+      "Найкраща порада, яку мені давали, —…",
+      "Я завжди сміюся, коли…",
+      "Моє улюблене місце в рідному місті —…",
+      "Якби в мене була своя маленька крамничка, там продавалися б…",
+      "Страва, яка вдається мені найкраще, —…",
+      "Мрія з дитинства, яку я досі пам’ятаю, —…",
+      "Мене легко порадувати, якщо…",
+      "Найдивовижніше місце, де мені довелося побувати, —…",
+      "Я хочу навчитися…",
+      "Мій ідеальний вихідний починається з…",
+      "Якби можна було завести будь-яку тварину, мій вибір —…",
+      "У моїй родині завжди кажуть, що я…",
+      "Я ніяк не можу звикнути до…",
+      "Моя найкорисніша звичка —…",
+      "Найкраща книжка в моєму житті —…",
+      "Через десять років я хочу…",
+      "Дім моєї мрії —…",
+      "Найсмішніше, що трапилося зі мною в дитинстві, —…",
+      "Щастя для мене —…",
+      "Мені важко відмовитися від…",
+      "Якби в мене була суперсила, вона б…",
+      "Найбільше в людях я ціную…",
+      "Коли в мене вільний вечір, я…",
+      "Мій улюблений запах —…",
+      "Їжа, якої я ніколи не скуштую, —…",
+      "Єдина річ, без якої я не виходжу з дому, —…",
+      "Хочу побувати в…, бо…",
+      "Найкращий подарунок у моєму житті —…",
+      "Моя найнезвичайніша звичка —…",
+      "Якби в мене щодня була зайва година, я б…",
+      "Людина, у якої я багато чого вчуся, —…",
+      "У важкий день мені допомагає…",
+      "Найсмачніше, що мені вдалося скуштувати в подорожі, —…",
+      "Якби можна було на день змінити роботу, мій вибір —…",
+      "Пора року, найближча моєму серцю, —…",
+      "Мої друзі кажуть, що я…",
+      "Колись я хочу навчити когось…",
+      "Маленька радість мого дня —…"
+    ],
+    "truth": {
+      "t01": [
+        "У восьминога три серця.",
+        true,
+        "Два серця качають кров через зябра, а третє — по всьому тілу."
+      ],
+      "t02": [
+        "Великий китайський мур видно з Місяця неозброєним оком.",
+        false,
+        "Не видно: мур надто вузький. Навіть з орбіти його дуже важко розгледіти."
+      ],
+      "t03": [
+        "Мед може зберігатися тисячі років і не псуватися.",
+        true,
+        "У давньоєгипетських гробницях знаходили мед, якому тисячі років, і він досі зберігся."
+      ],
+      "t04": [
+        "Банани ростуть на деревах.",
+        false,
+        "Банан — це гігантська трав’яниста рослина: її «стовбур» складається з щільно згорнутого листя."
+      ],
+      "t05": [
+        "Венера — найгарячіша планета Сонячної системи.",
+        true,
+        "Щільна атмосфера розігріває Венеру приблизно до 460 °C — більше, ніж Меркурій."
+      ],
+      "t06": [
+        "Кажани сліпі.",
+        false,
+        "Кажани бачать, а в темряві ще й орієнтуються за допомогою ехолокації."
+      ],
+      "t07": [
+        "Кит — це риба.",
+        false,
+        "Кити — ссавці: вони дихають повітрям і вигодовують дитинчат молоком."
+      ],
+      "t08": [
+        "Сахара — найбільша пустеля у світі.",
+        false,
+        "Найбільша пустеля — Антарктида. Сахара — найбільша спекотна пустеля."
+      ],
+      "t09": [
+        "У жирафа стільки ж шийних хребців, скільки в людини.",
+        true,
+        "І там, і там їх сім — просто в жирафа вони дуже довгі."
+      ],
+      "t10": [
+        "З погляду ботаніки помідор — це ягода.",
+        true,
+        "Ботаніки відносять помідор до ягід: це м’ясистий плід із насінням усередині."
+      ],
+      "t11": [
+        "З погляду ботаніки полуниця — це ягода.",
+        false,
+        "Це несправжня ягода: справжні плоди — крихітні «зернятка» зовні."
+      ],
+      "t12": [
+        "У космосі можна почути вибух.",
+        false,
+        "У космосі майже немає повітря, тож звуку нема чим поширюватися."
+      ],
+      "t13": [
+        "Високо в горах вода закипає за нижчої температури.",
+        true,
+        "Там нижчий тиск повітря, тому вода закипає, не досягнувши 100 °C."
+      ],
+      "t14": [
+        "Пінгвіни живуть на Північному полюсі.",
+        false,
+        "Дикі пінгвіни живуть лише в Південній півкулі, а не на далекій півночі."
+      ],
+      "t15": [
+        "Еверест — найвища гора над рівнем моря.",
+        true,
+        "Еверест здіймається приблизно на 8849 метрів над рівнем моря."
+      ],
+      "t16": [
+        "Люди використовують лише 10% мозку.",
+        false,
+        "Це міф: протягом доби активна майже кожна частина мозку."
+      ],
+      "t17": [
+        "Серце людини б’ється близько 100 000 разів на добу.",
+        true,
+        "За приблизно 70 ударів на хвилину виходить близько 100 000 ударів на добу."
+      ],
+      "t18": [
+        "Пам’ять золотої рибки — лише три секунди.",
+        false,
+        "Досліди показують, що золоті рибки пам’ятають вивчене місяцями."
+      ],
+      "t19": [
+        "Австралія — це водночас країна і континент.",
+        true,
+        "Австралія — єдина країна, що займає цілий континент."
+      ],
+      "t20": [
+        "Блискавка ніколи не б’є двічі в те саме місце.",
+        false,
+        "Б’є: у високі будівлі блискавка влучає багато разів на рік."
+      ],
+      "t21": [
+        "Страус ховає голову в пісок, коли боїться.",
+        false,
+        "Міф: наляканий страус тікає або притискається до землі, щоб сховатися."
+      ],
+      "t22": [
+        "Найменший птах у світі — колібрі.",
+        true,
+        "Колібрі-бджілка з Куби важить близько 2 грамів — менше за будь-якого іншого птаха."
+      ],
+      "t23": [
+        "Кавун приблизно на 90% складається з води.",
+        true,
+        "У кавуні близько 92% води — тому він так освіжає."
+      ],
+      "t24": [
+        "У павука шість ніг.",
+        false,
+        "У павука вісім ніг. Шість — у комах, а павуки не комахи."
+      ],
+      "t25": [
+        "Місяць світить власним світлом.",
+        false,
+        "Місяць не має власного світла: він відбиває сонячне."
+      ],
+      "t26": [
+        "Слон — найбільша сухопутна тварина.",
+        true,
+        "Африканський саванний слон може важити понад 6 тонн."
+      ],
+      "t27": [
+        "Синій кит — найбільша тварина, відома науці.",
+        true,
+        "Сині кити бувають понад 30 метрів завдовжки — більші за будь-якого відомого динозавра."
+      ],
+      "t28": [
+        "Хамелеон змінює колір лише для маскування.",
+        false,
+        "Його колір більше залежить від настрою, температури та сигналів іншим хамелеонам."
+      ],
+      "t29": [
+        "Телефон винайшов Томас Едісон.",
+        false,
+        "Патент на телефон отримав Александер Грейам Белл у 1876 році."
+      ],
+      "t30": [
+        "Пеніцилін відкрив Александер Флемінг.",
+        true,
+        "Флемінг відкрив пеніцилін у 1928 році — це був перший антибіотик."
+      ],
+      "t31": [
+        "Найвищий вулкан Сонячної системи — на Марсі.",
+        true,
+        "Гора Олімп на Марсі має близько 22 км заввишки — майже в 2,5 раза вища за Еверест."
+      ],
+      "t32": [
+        "Кров у наших венах синя.",
+        false,
+        "Кров завжди червона; вени лише здаються синіми через те, як світло проходить крізь шкіру."
+      ],
+      "t33": [
+        "Атлантичний океан — найбільший на Землі.",
+        false,
+        "Найбільший — Тихий: він більший за весь суходіл Землі разом узятий."
+      ],
+      "t34": [
+        "Росія — найбільша країна світу за площею.",
+        true,
+        "Росія займає понад 17 мільйонів квадратних кілометрів."
+      ],
+      "t35": [
+        "Канада має найдовшу берегову лінію у світі.",
+        true,
+        "Узбережжя Канади тягнеться понад 200 000 км — довше, ніж у будь-якої іншої країни."
+      ],
+      "t36": [
+        "Шлунок корови має чотири відділи.",
+        true,
+        "У корови один шлунок із чотирма камерами — так вона перетравлює траву."
+      ],
+      "t37": [
+        "Лев — найбільша кішка у світі.",
+        false,
+        "Найбільша кішка — тигр, особливо амурський."
+      ],
+      "t38": [
+        "Земля — найближча до Сонця планета.",
+        false,
+        "Найближчий Меркурій, далі Венера; Земля — третя планета."
+      ],
+      "t39": [
+        "Сонячне світло долітає до Землі приблизно за 8 хвилин.",
+        true,
+        "Світло долає 150 мільйонів км від Сонця приблизно за 8 хвилин 20 секунд."
+      ],
+      "t40": [
+        "Дельфіни сплять по черзі то однією, то другою половиною мозку.",
+        true,
+        "Одна половина відпочиває, а друга пильнує й не забуває дихати."
+      ],
+      "t41": [
+        "Картопля походить з Ірландії.",
+        false,
+        "Картопля походить з Південної Америки: її вирощували в Андах тисячі років тому."
+      ],
+      "t42": [
+        "Шоколад роблять із насіння какао-дерева.",
+        true,
+        "Плоди какао ростуть просто на стовбурі, а насіння всередині стає шоколадом."
+      ],
+      "t43": [
+        "Акула — ссавець.",
+        false,
+        "Акула — риба: вона дихає зябрами. Морські ссавці — це кити й дельфіни."
+      ],
+      "t44": [
+        "Деякі види бамбука можуть вирости майже на метр за день.",
+        true,
+        "Бамбук — одна з найшвидше зростаючих рослин на Землі."
+      ],
+      "t45": [
+        "Сова може повернути голову на повні 360 градусів.",
+        false,
+        "Сова повертає голову приблизно на 270 градусів — багато, але не повне коло."
+      ],
+      "t46": [
+        "Діамант і графіт в олівці складаються з однієї речовини.",
+        true,
+        "Обидва — чистий вуглець, просто атоми в них розташовані по-різному."
+      ],
+      "t47": [
+        "Верблюд зберігає воду в горбі.",
+        false,
+        "У горбі верблюда — жир, а не вода: він дає енергію в далеких переходах."
+      ],
+      "t48": [
+        "Найменша кістка людського тіла — у вусі.",
+        true,
+        "Стремінце в середньому вусі має лише близько 3 міліметрів."
+      ],
+      "t49": [
+        "Великі папуги можуть жити понад 50 років.",
+        true,
+        "Ара й какаду за доброго догляду часто живуть 50 років і довше."
+      ],
+      "t50": [
+        "Брати Райт здійснили перший політ на літаку з двигуном.",
+        true,
+        "Вони полетіли в 1903 році; найперший політ тривав 12 секунд."
+      ],
+      "t51": [
+        "Колесо винайшли в Середньовіччі.",
+        false,
+        "Колесу понад 5000 років: його використовували в Месопотамії близько 3500 року до н. е."
+      ],
+      "t52": [
+        "Морський коник — це риба.",
+        true,
+        "Морський коник дихає зябрами й плаває за допомогою плавця, як інші риби."
+      ],
+      "t53": [
+        "Колібрі вміє літати задом наперед.",
+        true,
+        "Колібрі — єдині птахи, які справді вміють літати назад."
+      ],
+      "t54": [
+        "Улітку Ейфелева вежа стає трохи вищою.",
+        true,
+        "Від тепла метал розширюється, і вежа виростає приблизно на 15 сантиметрів."
+      ],
+      "t55": [
+        "Шкіра — найбільший орган людського тіла.",
+        true,
+        "Шкіра дорослої людини важить кілька кілограмів і захищає все тіло."
+      ],
+      "t56": [
+        "Червоний колір дратує бика.",
+        false,
+        "Бик ледве розрізняє червоний: його провокує рух, а не колір."
+      ],
+      "t57": [
+        "Кімнатна муха живе лише один день.",
+        false,
+        "Кімнатна муха живе близько місяця. Лише дорослі одноденки живуть день-два."
+      ],
+      "t58": [
+        "Ананаси ростуть на деревах.",
+        false,
+        "Ананас росте на низькій листяній рослині, просто з її середини."
+      ],
+      "t59": [
+        "Арахіс — це горіх.",
+        false,
+        "Арахіс — бобова рослина, родич гороху й квасолі. Його боби дозрівають під землею."
+      ],
+      "t60": [
+        "Північний і Південний полюси однаково холодні.",
+        false,
+        "Південний полюс значно холодніший: він на високому крижаному континенті, а Північний — посеред океану."
+      ]
+    }
   },
   "pt": {
     "text": {
@@ -5321,7 +10931,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Convidar",
       "invited": "Convite enviado",
       "inviteNone": "Adicione amigos na seção «Amigos» para convidar com um toque.",
-      "inviteSent": "Convite enviado para {name}"
+      "inviteSent": "Convite enviado para {name}",
+      "truth": "Verdadeiro ou falso",
+      "tfTitle": "Verdadeiro ou falso",
+      "tfNote": "Um jogo ao vivo a dois: fatos incríveis sobre o mundo. 12 segundos — verdadeiro ou falso? Um ponto por cada acerto.",
+      "tfShareText": "{name} convida você para o jogo ao vivo «Verdadeiro ou falso»",
+      "tfJoinLead": "{name} está esperando por você. Verdadeiro ou falso — decida rápido!",
+      "tfRound": "Fato {n} de {total}",
+      "tfTrue": "Verdadeiro",
+      "tfFalse": "Falso",
+      "tfIsTrue": "É verdade!",
+      "tfIsFalse": "É falso!",
+      "tfFirstYou": "Você acertou primeiro!",
+      "tfFirstThem": "{name} acertou primeiro",
+      "tfFinalWin": "Vitória! Você sabe mais sobre o mundo.",
+      "tfFinalLose": "Desta vez {name} sabe mais — revanche?",
+      "tfFinalDraw": "Empate — vocês sabem exatamente o mesmo!",
+      "featTruth": "Jogo ao vivo «Verdadeiro ou falso» — fatos incríveis sobre o mundo"
     },
     "questions": {
       "q01": [
@@ -5743,6 +11369,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Cozinhar",
         "Uma nova língua",
         "Desenhar"
+      ],
+      "q61": [
+        "Qual prato eu faço melhor?",
+        "Sopa",
+        "Pilaf",
+        "Bolos e tortas",
+        "Salada"
+      ],
+      "q62": [
+        "Qual país eu quero conhecer primeiro?",
+        "Turquia",
+        "Japão",
+        "Marrocos",
+        "Noruega"
+      ],
+      "q63": [
+        "Qual esporte eu preferiria praticar?",
+        "Natação",
+        "Corrida",
+        "Ciclismo",
+        "Futebol"
+      ],
+      "q64": [
+        "Qual livro eu escolheria?",
+        "Um de aventura",
+        "Um de história",
+        "Contos de fadas",
+        "Uma enciclopédia"
+      ],
+      "q65": [
+        "Quais animais eu visitaria primeiro no zoológico?",
+        "Os elefantes",
+        "Os macacos",
+        "Os pinguins",
+        "As girafas"
+      ],
+      "q66": [
+        "Como eu lido com comida apimentada?",
+        "Quanto mais picante, melhor",
+        "Um pouco vai bem",
+        "Só um pouquinho",
+        "Não como de jeito nenhum"
+      ],
+      "q67": [
+        "Qual matéria da escola eu mais gostava?",
+        "Matemática",
+        "Literatura",
+        "Geografia",
+        "Educação física"
+      ],
+      "q68": [
+        "Minha profissão dos sonhos na infância?",
+        "Medicina",
+        "Ensino",
+        "Viajar ao espaço",
+        "Culinária"
+      ],
+      "q69": [
+        "O que eu acho de trilhas e caminhadas?",
+        "Sonho com uma longa",
+        "Só de um dia",
+        "Só com conforto",
+        "Melhor em casa"
+      ],
+      "q70": [
+        "Meu humor de manhã?",
+        "Com muita energia",
+        "Com sono",
+        "Em silêncio",
+        "Com vontade de conversar"
+      ],
+      "q71": [
+        "Qual castanha eu mais gosto?",
+        "Avelã",
+        "Noz",
+        "Castanha-de-caju",
+        "Amêndoa"
+      ],
+      "q72": [
+        "O que eu faria com uma hora livre inesperada?",
+        "Leria",
+        "Sairia para passear",
+        "Ligaria para a família",
+        "Cozinharia algo"
+      ],
+      "q73": [
+        "Que tempo eu não gosto?",
+        "Calor",
+        "Vento",
+        "Neve derretida",
+        "Frio intenso"
+      ],
+      "q74": [
+        "De que cor eu pintaria meu quarto?",
+        "Branco",
+        "Bege",
+        "Verde",
+        "Azul-claro"
+      ],
+      "q75": [
+        "O que eu preferiria jogar?",
+        "Xadrez",
+        "Damas",
+        "Quebra-cabeça",
+        "Um jogo de palavras"
+      ],
+      "q76": [
+        "O que eu cozinharia para visitas?",
+        "Pilaf",
+        "Uma torta",
+        "Saladas",
+        "Pediria comida"
+      ],
+      "q77": [
+        "O que eu não comeria de jeito nenhum?",
+        "Cogumelos",
+        "Peixe",
+        "Azeitonas",
+        "Cebola cozida"
+      ],
+      "q78": [
+        "Como eu tomo meu chá?",
+        "Forte",
+        "Fraco",
+        "Doce",
+        "Com ervas"
+      ],
+      "q79": [
+        "O que mais importa para mim numa casa?",
+        "Limpeza",
+        "Aconchego",
+        "Muita luz",
+        "Silêncio"
+      ],
+      "q80": [
+        "Como eu aprendo coisas novas?",
+        "Lendo",
+        "Com videoaulas",
+        "Praticando",
+        "Perguntando aos outros"
+      ],
+      "q81": [
+        "Qual animal selvagem mais me fascina?",
+        "Tigre",
+        "Urso",
+        "Águia",
+        "Golfinho"
+      ],
+      "q82": [
+        "O que eu daria para minha mãe?",
+        "Flores",
+        "Algo feito à mão",
+        "Uma viagem",
+        "Uma manta quentinha"
+      ],
+      "q83": [
+        "O que eu faço numa viagem?",
+        "Olho pela janela",
+        "Leio",
+        "Converso",
+        "Belisco alguma coisa"
+      ],
+      "q84": [
+        "Meu prato de frango favorito?",
+        "Espetinho de frango",
+        "Frango com arroz",
+        "Bolinho de frango",
+        "Nuggets"
+      ],
+      "q85": [
+        "Qual lugar eu escolho no trem?",
+        "Na janela",
+        "No corredor",
+        "De costas para o sentido da viagem",
+        "Tanto faz"
+      ],
+      "q86": [
+        "O que eu faço quando algo dá errado?",
+        "Ajo na hora",
+        "Penso primeiro",
+        "Peço conselho",
+        "Me preocupo um pouco"
+      ],
+      "q87": [
+        "Qual é a minha principal qualidade?",
+        "Bondade",
+        "Honestidade",
+        "Persistência",
+        "Alegria"
+      ],
+      "q88": [
+        "Onde eu descansaria melhor?",
+        "Com parentes no interior",
+        "Num hotel perto do mar",
+        "Numa barraca",
+        "Em casa"
+      ],
+      "q89": [
+        "Qual salgado ou doce de forno eu escolheria?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "Uma bomba (éclair)"
+      ],
+      "q90": [
+        "Qual idioma eu mais gostaria de aprender?",
+        "Árabe",
+        "Inglês",
+        "Turco",
+        "Japonês"
+      ],
+      "q91": [
+        "Quanto tempo eu ficaria sem doce?",
+        "Um dia",
+        "Uma semana",
+        "Um mês",
+        "O tempo que for preciso"
+      ],
+      "q92": [
+        "O que eu faço quando me atraso?",
+        "Corro o mais rápido possível",
+        "Ligo para avisar",
+        "Pego um táxi",
+        "Nunca me atraso"
+      ],
+      "q93": [
+        "O que eu faço quando um aparelho quebra?",
+        "Tento consertar",
+        "Leio o manual",
+        "Peço ajuda",
+        "Aperto todos os botões"
+      ],
+      "q94": [
+        "O que vai primeiro na minha mala?",
+        "Um kit de primeiros socorros",
+        "Um livro",
+        "Um carregador",
+        "Um lanchinho"
+      ],
+      "q95": [
+        "Que atividade me acalma?",
+        "Cozinhar",
+        "Arrumar a casa",
+        "Desenhar",
+        "Uma caminhada"
+      ],
+      "q96": [
+        "O que eu quero fazer quando me aposentar?",
+        "Cuidar do jardim",
+        "Viajar",
+        "Ler",
+        "Passar tempo com os netos"
+      ],
+      "q97": [
+        "O que mais me irrita?",
+        "Barulho",
+        "Bagunça",
+        "Atraso",
+        "Grosseria"
+      ],
+      "q98": [
+        "Qual cheiro eu mais gosto?",
+        "Pão fresquinho",
+        "Chuva",
+        "Flores",
+        "Mar"
+      ],
+      "q99": [
+        "O que eu escolheria de sobremesa?",
+        "Frutas",
+        "Sorvete",
+        "Torta",
+        "Só um chá"
       ]
     },
     "yesNo": {
@@ -5945,6 +11844,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Vamos jogar de novo depois?",
         "quer mais uma rodada",
         "prefere um abraço a jogar"
+      ],
+      "c41": [
+        "Você gosta de comida apimentada?",
+        "quanto mais picante, melhor",
+        "escolhe algo mais suave"
+      ],
+      "c42": [
+        "Você sabe nadar?",
+        "nada como um peixe",
+        "por enquanto fica perto da margem"
+      ],
+      "c43": [
+        "Você gostaria de ter um gato?",
+        "já está pensando num nome",
+        "prefere cachorros"
+      ],
+      "c44": [
+        "Você gostaria de conhecer Istambul um dia?",
+        "já sonha com o Bósforo",
+        "escolheria outra cidade"
+      ],
+      "c45": [
+        "Você gosta de cozinhar?",
+        "cozinha com prazer",
+        "prefere lavar a louça"
+      ],
+      "c46": [
+        "Você gostaria de aprender a fazer pilaf?",
+        "já está procurando uma receita",
+        "prefere provar o de outra pessoa"
+      ],
+      "c47": [
+        "Você gosta de ler livros?",
+        "sempre tem um livro por perto",
+        "prefere ouvir histórias"
+      ],
+      "c48": [
+        "Você sabe andar de bicicleta?",
+        "poderia sair pedalando agora mesmo",
+        "promete aprender"
+      ],
+      "c49": [
+        "Você prefere a montanha ao mar?",
+        "escolhe a montanha",
+        "escolhe o mar"
+      ],
+      "c50": [
+        "Você gostaria de ver um deserto?",
+        "sonha com dunas de areia",
+        "prefere uma floresta"
+      ],
+      "c51": [
+        "Você gosta do inverno?",
+        "espera a primeira neve",
+        "espera o verão"
+      ],
+      "c52": [
+        "Você toma chá sem açúcar?",
+        "gosta do sabor puro do chá",
+        "não fica sem uma colherzinha de açúcar"
+      ],
+      "c53": [
+        "Você tem medo de aranha?",
+        "fica bem longe delas",
+        "leva para fora com calma"
+      ],
+      "c54": [
+        "Você gosta de desenhar?",
+        "já está pegando o pincel",
+        "prefere olhar os quadros dos outros"
+      ],
+      "c55": [
+        "Você gostaria de ver a aurora boreal?",
+        "já está vendo onde dá para ver",
+        "prefere olhar as estrelas"
+      ],
+      "c56": [
+        "Você gosta de dia de chuva?",
+        "gosta do barulho da chuva lá fora",
+        "espera o sol"
+      ],
+      "c57": [
+        "Você sabe andar a cavalo?",
+        "monta com segurança",
+        "por enquanto só sonha com isso"
+      ],
+      "c58": [
+        "Você gostaria de ter um cachorro?",
+        "sonha com um amigo fiel",
+        "por enquanto já tem bastante de que cuidar"
+      ],
+      "c59": [
+        "Você prefere doce a salgado?",
+        "não vive sem doces",
+        "escolhe salgado"
+      ],
+      "c60": [
+        "Você gosta de viajar de trem?",
+        "gosta do ritmo das rodas nos trilhos",
+        "escolhe o avião"
+      ],
+      "c61": [
+        "É fácil para você começar o dia cedo?",
+        "começa o dia com muita energia",
+        "só engrena perto do almoço"
+      ],
+      "c62": [
+        "Você gosta de acampar em barraca?",
+        "já está arrumando a mochila",
+        "escolhe um hotel aconchegante"
+      ],
+      "c63": [
+        "Você gostaria de morar perto do mar?",
+        "sonha com o barulho das ondas",
+        "escolhe a cidade"
+      ],
+      "c64": [
+        "Você toma sorvete no inverno?",
+        "toma até no frio",
+        "só no verão"
+      ],
+      "c65": [
+        "Você gosta de chocolate?",
+        "conhece todos os tipos",
+        "passa por ele com calma"
+      ],
+      "c66": [
+        "Você sabe fazer tortas?",
+        "faz como uma avó",
+        "promete aprender"
+      ],
+      "c67": [
+        "Você gosta de olhar as estrelas?",
+        "conhece as constelações",
+        "prefere um dia de sol"
+      ],
+      "c68": [
+        "Você gostaria de plantar sua própria horta um dia?",
+        "já está escolhendo as mudas",
+        "vai começar com uma flor no vaso"
+      ],
+      "c69": [
+        "Você gosta de flores do campo?",
+        "gosta de margaridas e centáureas",
+        "prefere flores de jardim"
+      ],
+      "c70": [
+        "Você toma café?",
+        "sem café o dia não começa",
+        "escolhe chá"
+      ],
+      "c71": [
+        "Você gosta de limonada caseira?",
+        "já está cortando os limões",
+        "prefere água"
+      ],
+      "c72": [
+        "Você gostaria de conhecer o Japão um dia?",
+        "sonha em ver as cerejeiras em flor",
+        "escolheria outro país"
+      ],
+      "c73": [
+        "Você gosta do outono?",
+        "gosta de pisar nas folhas secas",
+        "espera a primavera"
+      ],
+      "c74": [
+        "Você gosta do cheiro de lavanda?",
+        "gosta muito desse aroma",
+        "prefere outros aromas"
+      ],
+      "c75": [
+        "Você gosta de jogos de tabuleiro?",
+        "já está montando o tabuleiro",
+        "prefere um passeio"
+      ],
+      "c76": [
+        "Você sabe dirigir?",
+        "dirige com segurança",
+        "por enquanto vai no banco do passageiro"
+      ],
+      "c77": [
+        "Você gostaria de ver o oceano um dia?",
+        "sonha com uma onda gigante",
+        "o mar já basta"
+      ],
+      "c78": [
+        "Você gostaria de morar numa fazenda por um tempo?",
+        "já está dando comida às galinhas",
+        "fica na cidade"
+      ],
+      "c79": [
+        "Você gosta de cidades grandes?",
+        "gosta das luzes da cidade",
+        "escolhe paz e sossego"
+      ],
+      "c80": [
+        "Você prefere frutas a doces?",
+        "escolhe frutas",
+        "escolhe doces"
+      ],
+      "c81": [
+        "Você gostaria de ver golfinhos no mar?",
+        "gostaria muito de vê-los",
+        "prefere ler sobre eles"
+      ],
+      "c82": [
+        "Você gosta do verão?",
+        "espera os dias quentes",
+        "gosta de tempo fresco"
+      ],
+      "c83": [
+        "Você gosta de passear no parque?",
+        "passeia com qualquer tempo",
+        "prefere ficar em casa"
+      ],
+      "c84": [
+        "Você gosta de escrever à mão?",
+        "tem uma letra caprichada",
+        "digita no celular"
+      ],
+      "c85": [
+        "Você gosta de passeios de barco?",
+        "já está pegando os remos",
+        "fica na margem"
+      ],
+      "c86": [
+        "Você gostaria de dar a volta ao mundo?",
+        "já está traçando a rota",
+        "uns dois países bastam"
+      ],
+      "c87": [
+        "Você sabe fazer um boneco de neve?",
+        "vai fazer o maior de todos",
+        "prefere uma guerra de bolas de neve"
+      ],
+      "c88": [
+        "Você gostaria de aprender algo novo este ano?",
+        "já está escolhendo um curso",
+        "já tem bastante coisa para fazer"
+      ],
+      "c89": [
+        "Você gosta de silêncio?",
+        "valoriza a calma",
+        "gosta quando tem movimento"
+      ],
+      "c90": [
+        "Você gosta de dar presentes para a família?",
+        "alegra a família sem motivo especial",
+        "prefere ajudar de forma prática"
       ]
     },
     "loves": {
@@ -6059,6 +12208,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Floresta",
         "Deserto",
         "Aurora boreal"
+      ],
+      "s17": [
+        "Fruta favorita?",
+        "Maçã",
+        "Morango",
+        "Melancia",
+        "Uva"
+      ],
+      "s18": [
+        "O que fazer no dia de folga?",
+        "Trilha na montanha",
+        "Cozinhar em casa",
+        "Um museu",
+        "Pescar"
+      ],
+      "s19": [
+        "Café da manhã favorito?",
+        "Panquecas",
+        "Omelete",
+        "Mingau com frutas vermelhas",
+        "Croissant"
+      ],
+      "s20": [
+        "Ave favorita?",
+        "Coruja",
+        "Papagaio",
+        "Cisne",
+        "Pavão"
+      ],
+      "s21": [
+        "Que cidade visitar?",
+        "Istambul",
+        "Paris",
+        "Tóquio",
+        "Dubai"
+      ],
+      "s22": [
+        "Esporte favorito?",
+        "Futebol",
+        "Natação",
+        "Tênis",
+        "Equitação"
+      ],
+      "s23": [
+        "O que plantar no jardim?",
+        "Uma macieira",
+        "Rosas",
+        "Verduras e legumes",
+        "Morangos"
+      ],
+      "s24": [
+        "Quitute de forno favorito?",
+        "Pasteizinhos assados",
+        "Sonhos",
+        "Biscoitos",
+        "Baklava"
+      ],
+      "s25": [
+        "Onde morar?",
+        "Perto de um rio",
+        "Numa floresta",
+        "Numa cidade grande",
+        "Numa ilha"
+      ],
+      "s26": [
+        "Animal marinho favorito?",
+        "Tartaruga",
+        "Baleia",
+        "Polvo",
+        "Cavalo-marinho"
+      ],
+      "s27": [
+        "Andar de quê?",
+        "Bicicleta",
+        "Patinete",
+        "Balão",
+        "Barco"
+      ],
+      "s28": [
+        "Passatempo favorito?",
+        "Tricô",
+        "Fotografia de natureza",
+        "Jardinagem",
+        "Caligrafia"
+      ],
+      "s29": [
+        "Sopa favorita?",
+        "Borsch",
+        "Canja de galinha",
+        "Sopa de abóbora",
+        "Sopa de lentilha"
+      ],
+      "s30": [
+        "Animal da floresta?",
+        "Ouriço",
+        "Esquilo",
+        "Raposa",
+        "Cervo"
+      ],
+      "s31": [
+        "Algo para beliscar?",
+        "Tâmaras",
+        "Amêndoas",
+        "Pistaches",
+        "Damascos secos"
+      ],
+      "s32": [
+        "O que levar na trilha?",
+        "Uma barraca",
+        "Uma garrafa térmica",
+        "Um mapa",
+        "Uma lanterna"
+      ],
+      "s33": [
+        "Sobremesa favorita?",
+        "Pudim",
+        "Cheesecake",
+        "Panquecas com mel",
+        "Salada de frutas"
+      ],
+      "s34": [
+        "O que fazer no inverno?",
+        "Fazer um boneco de neve",
+        "Andar de trenó",
+        "Chá perto da janela",
+        "Esquiar"
+      ],
+      "s35": [
+        "O que fazer no verão?",
+        "Nadar",
+        "Colher frutinhas",
+        "Passear de barco",
+        "Fazer um castelo de areia"
+      ],
+      "s36": [
+        "Pintar com o quê?",
+        "Aquarela",
+        "Lápis de cor",
+        "Giz de cera",
+        "Tinta na tela"
+      ],
+      "s37": [
+        "Legume favorito?",
+        "Cenoura",
+        "Tomate",
+        "Milho",
+        "Abóbora"
+      ],
+      "s38": [
+        "O que deixa a casa aconchegante?",
+        "Uma lareira",
+        "Uma manta macia",
+        "Plantas",
+        "Uma estante de livros"
+      ],
+      "s39": [
+        "Jogar o quê?",
+        "Xadrez",
+        "Quebra-cabeças",
+        "Jogos de tabuleiro",
+        "Jogos de bola"
+      ],
+      "s40": [
+        "Quem mora na fazenda?",
+        "Vaca",
+        "Cordeirinho",
+        "Galinha",
+        "Cabritinho"
+      ],
+      "s41": [
+        "Chá com quê?",
+        "Mel",
+        "Limão",
+        "Geleia",
+        "Hortelã"
+      ],
+      "s42": [
+        "O que tem perto do mar?",
+        "Um farol",
+        "Conchas",
+        "Um veleiro",
+        "Gaivotas"
+      ],
+      "s43": [
+        "Como começar a manhã?",
+        "Com exercícios",
+        "Com uma xícara de chá",
+        "Com um passeio",
+        "Com um livro"
+      ],
+      "s44": [
+        "Frutinha favorita?",
+        "Framboesa",
+        "Mirtilo",
+        "Cereja",
+        "Amora"
       ]
     },
     "who": [
@@ -6101,7 +12446,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Quem de nós lembra histórias engraçadas com mais frequência?",
       "Quem de nós tem mais paciência?",
       "Quem de nós agradece com mais frequência?",
-      "Quem de nós oferece ajuda primeiro?"
+      "Quem de nós oferece ajuda primeiro?",
+      "Quem de nós faz contas de cabeça melhor?",
+      "Quem de nós lê mais?",
+      "Quem de nós digita mais rápido?",
+      "Quem de nós liga para os pais com mais frequência?",
+      "Quem de nós conta histórias melhor?",
+      "Quem de nós tem a letra mais caprichada?",
+      "Quem de nós gosta mais de comida apimentada?",
+      "Quem de nós esquece coisas em casa com mais frequência?",
+      "Quem de nós se dá melhor com aparelhos eletrônicos?",
+      "Quem de nós gosta mais de aprender coisas novas?",
+      "Quem de nós planeja melhor?",
+      "Quem de nós pechincha melhor na feira?",
+      "Quem de nós gosta mais da natureza?",
+      "Quem de nós come mais rápido?",
+      "Quem de nós toma mais chá?",
+      "Quem de nós cuida melhor das plantas?",
+      "Quem de nós sabe mais geografia?",
+      "Quem de nós joga xadrez melhor?",
+      "Quem de nós escolhe as melhores frutas na feira?",
+      "Quem de nós olha a previsão do tempo com mais frequência?",
+      "Quem de nós tem mais medo de aranha?",
+      "Quem de nós tem mais coragem?",
+      "Quem de nós tem mais curiosidade?",
+      "Quem de nós resolve charadas mais rápido?",
+      "Quem de nós desenha melhor?",
+      "Quem de nós ajuda os vizinhos com mais frequência?",
+      "Quem de nós se dá melhor com crianças?",
+      "Quem de nós gosta mais de caminhar?",
+      "Quem de nós lê as instruções com mais frequência?",
+      "Quem de nós guarda nomes melhor?",
+      "Quem de nós aprende palavras de outro idioma mais rápido?",
+      "Quem de nós faz bolos e tortas melhor?",
+      "Quem de nós dá conselhos melhores?",
+      "Quem de nós gosta mais de frio?",
+      "Quem de nós se sairia melhor numa trilha?",
+      "Quem de nós lê notícias com mais frequência?",
+      "Quem de nós experimenta pratos novos com mais frequência?",
+      "Quem de nós arruma a mala mais rápido?",
+      "Quem de nós conserta as coisas melhor?",
+      "Quem de nós conversa com animais com mais frequência?",
+      "Quem de nós lava a louça com mais frequência?",
+      "Quem de nós sabe mais história?",
+      "Quem de nós deixa as coisas para depois com mais frequência?",
+      "Quem de nós faz amizade com gente nova mais rápido?",
+      "Quem de nós cuida mais da saúde?"
     ],
     "phrases": [
       "Eu sorrio quando você…",
@@ -6133,8 +12523,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Uma manhã com você é…",
       "Se a gente fosse uma só palavra, seria…",
       "Quero aprender com você a…",
-      "Agradeço por você sempre…"
-    ]
+      "Agradeço por você sempre…",
+      "Na infância, minha comida favorita era…",
+      "Se eu tivesse um dia em qualquer país, eu…",
+      "O melhor conselho que já recebi é…",
+      "Eu sempre dou risada quando…",
+      "Meu lugar favorito na minha cidade natal é…",
+      "Se eu tivesse uma lojinha só minha, ela venderia…",
+      "O prato que eu faço melhor é…",
+      "Um sonho de infância de que ainda me lembro é…",
+      "É fácil me deixar feliz se…",
+      "O lugar mais incrível que já conheci é…",
+      "Eu quero aprender…",
+      "Meu dia de folga perfeito começa com…",
+      "Se eu pudesse ter qualquer animal, seria…",
+      "Na minha família sempre dizem que eu…",
+      "Eu simplesmente não consigo me acostumar com…",
+      "Meu hábito mais útil é…",
+      "O melhor livro que já li é…",
+      "Daqui a dez anos, eu gostaria de…",
+      "A casa dos meus sonhos é…",
+      "A coisa mais engraçada que me aconteceu na infância foi…",
+      "Para mim, felicidade é…",
+      "É difícil para mim abrir mão de…",
+      "Se eu tivesse um superpoder, ele me permitiria…",
+      "O que eu mais valorizo nas pessoas é…",
+      "Quando tenho uma noite livre, eu…",
+      "Meu cheiro favorito é…",
+      "Uma comida que eu nunca comeria é…",
+      "A única coisa sem a qual nunca saio de casa é…",
+      "Eu gostaria de conhecer… porque…",
+      "O melhor presente que já recebi foi…",
+      "Meu hábito mais inusitado é…",
+      "Se eu tivesse uma hora a mais todo dia, eu…",
+      "Alguém com quem aprendo muito é…",
+      "Num dia difícil, o que me ajuda é…",
+      "A coisa mais gostosa que provei numa viagem foi…",
+      "Se eu pudesse trocar de profissão por um dia, escolheria…",
+      "A estação do ano mais próxima do meu coração é…",
+      "Meus amigos dizem que eu…",
+      "Um dia eu gostaria de ensinar alguém a…",
+      "Uma pequena alegria do meu dia é…"
+    ],
+    "truth": {
+      "t01": [
+        "O polvo tem três corações.",
+        true,
+        "Dois corações bombeiam sangue pelas brânquias, e o terceiro, pelo resto do corpo."
+      ],
+      "t02": [
+        "A Grande Muralha da China pode ser vista da Lua a olho nu.",
+        false,
+        "Não pode: a muralha é estreita demais. Até da órbita é muito difícil enxergá-la."
+      ],
+      "t03": [
+        "O mel pode durar milhares de anos sem estragar.",
+        true,
+        "Em túmulos do antigo Egito foi encontrado mel de milhares de anos ainda conservado."
+      ],
+      "t04": [
+        "A banana dá em árvore.",
+        false,
+        "A bananeira é uma erva gigante: o seu «tronco» é feito de folhas bem enroladas."
+      ],
+      "t05": [
+        "Vênus é o planeta mais quente do Sistema Solar.",
+        true,
+        "A atmosfera densa aquece Vênus a cerca de 460 °C — mais que Mercúrio."
+      ],
+      "t06": [
+        "Morcegos são cegos.",
+        false,
+        "Morcegos enxergam e, no escuro, também se orientam por ecolocalização."
+      ],
+      "t07": [
+        "A baleia é um peixe.",
+        false,
+        "Baleias são mamíferos: respiram ar e alimentam os filhotes com leite."
+      ],
+      "t08": [
+        "O Saara é o maior deserto do mundo.",
+        false,
+        "O maior deserto é a Antártida. O Saara é o maior deserto quente."
+      ],
+      "t09": [
+        "A girafa tem o mesmo número de vértebras no pescoço que uma pessoa.",
+        true,
+        "Ambas têm sete vértebras cervicais — as da girafa só são muito compridas."
+      ],
+      "t10": [
+        "Do ponto de vista da botânica, o tomate é uma baga.",
+        true,
+        "A botânica classifica o tomate como baga: um fruto carnoso com sementes dentro."
+      ],
+      "t11": [
+        "Do ponto de vista da botânica, o morango é uma baga.",
+        false,
+        "É um pseudofruto: os frutos de verdade são as minúsculas «sementinhas» do lado de fora."
+      ],
+      "t12": [
+        "No espaço dá para ouvir uma explosão.",
+        false,
+        "No espaço quase não há ar, então o som não tem por onde se propagar."
+      ],
+      "t13": [
+        "No alto das montanhas, a água ferve a uma temperatura mais baixa.",
+        true,
+        "Lá a pressão do ar é menor, por isso a água ferve antes de chegar a 100 °C."
+      ],
+      "t14": [
+        "Pinguins vivem no Polo Norte.",
+        false,
+        "Pinguins selvagens vivem só no Hemisfério Sul, não no extremo norte."
+      ],
+      "t15": [
+        "O Everest é a montanha mais alta acima do nível do mar.",
+        true,
+        "O Everest se eleva a cerca de 8.849 metros acima do nível do mar."
+      ],
+      "t16": [
+        "As pessoas usam só 10% do cérebro.",
+        false,
+        "É um mito: ao longo do dia quase todas as partes do cérebro ficam ativas."
+      ],
+      "t17": [
+        "O coração humano bate cerca de 100 mil vezes por dia.",
+        true,
+        "Com uns 70 batimentos por minuto, dá aproximadamente 100 mil batimentos por dia."
+      ],
+      "t18": [
+        "O peixinho-dourado tem memória de só três segundos.",
+        false,
+        "Experimentos mostram que peixinhos-dourados se lembram do que aprenderam por meses."
+      ],
+      "t19": [
+        "A Austrália é ao mesmo tempo um país e um continente.",
+        true,
+        "A Austrália é o único país que ocupa um continente inteiro."
+      ],
+      "t20": [
+        "Um raio nunca cai duas vezes no mesmo lugar.",
+        false,
+        "Cai, sim: prédios altos são atingidos por raios muitas vezes por ano."
+      ],
+      "t21": [
+        "O avestruz enterra a cabeça na areia quando sente medo.",
+        false,
+        "É um mito: um avestruz assustado foge ou se deita rente ao chão para se esconder."
+      ],
+      "t22": [
+        "A menor ave do mundo é um beija-flor.",
+        true,
+        "O beija-flor-abelha de Cuba pesa cerca de 2 gramas — menos que qualquer outra ave."
+      ],
+      "t23": [
+        "A melancia tem cerca de 90% de água.",
+        true,
+        "A melancia tem uns 92% de água — por isso é tão refrescante."
+      ],
+      "t24": [
+        "A aranha tem seis patas.",
+        false,
+        "A aranha tem oito patas. Os insetos têm seis, e aranhas não são insetos."
+      ],
+      "t25": [
+        "A Lua tem luz própria.",
+        false,
+        "A Lua não tem luz própria: ela reflete a luz do Sol."
+      ],
+      "t26": [
+        "O elefante é o maior animal terrestre.",
+        true,
+        "Um elefante-africano-da-savana pode pesar mais de 6 toneladas."
+      ],
+      "t27": [
+        "A baleia-azul é o maior animal conhecido pela ciência.",
+        true,
+        "A baleia-azul pode passar de 30 metros — maior que qualquer dinossauro conhecido."
+      ],
+      "t28": [
+        "O camaleão muda de cor só para se camuflar.",
+        false,
+        "A cor dele depende mais do humor, da temperatura e de sinais para outros camaleões."
+      ],
+      "t29": [
+        "O telefone foi inventado por Thomas Edison.",
+        false,
+        "A patente do telefone foi concedida a Alexander Graham Bell em 1876."
+      ],
+      "t30": [
+        "A penicilina foi descoberta por Alexander Fleming.",
+        true,
+        "Fleming descobriu a penicilina em 1928 — o primeiro antibiótico."
+      ],
+      "t31": [
+        "O vulcão mais alto do Sistema Solar fica em Marte.",
+        true,
+        "O Monte Olimpo, em Marte, tem cerca de 22 km de altura — quase 2,5 vezes o Everest."
+      ],
+      "t32": [
+        "O sangue nas nossas veias é azul.",
+        false,
+        "O sangue é sempre vermelho; as veias só parecem azuis por causa de como a luz atravessa a pele."
+      ],
+      "t33": [
+        "O Atlântico é o maior oceano da Terra.",
+        false,
+        "O maior é o Pacífico: ele é maior que todas as terras do planeta juntas."
+      ],
+      "t34": [
+        "A Rússia é o maior país do mundo em área.",
+        true,
+        "A Rússia ocupa mais de 17 milhões de quilômetros quadrados."
+      ],
+      "t35": [
+        "O Canadá tem o litoral mais extenso do mundo.",
+        true,
+        "O litoral do Canadá passa de 200 mil km — mais que o de qualquer outro país."
+      ],
+      "t36": [
+        "O estômago da vaca tem quatro compartimentos.",
+        true,
+        "A vaca tem um estômago com quatro câmaras — é assim que ela digere o capim."
+      ],
+      "t37": [
+        "O leão é o maior felino do mundo.",
+        false,
+        "O maior felino é o tigre, especialmente o tigre-siberiano."
+      ],
+      "t38": [
+        "A Terra é o planeta mais próximo do Sol.",
+        false,
+        "O mais próximo é Mercúrio, depois Vênus; a Terra é o terceiro planeta."
+      ],
+      "t39": [
+        "A luz do Sol leva cerca de 8 minutos para chegar à Terra.",
+        true,
+        "A luz percorre os 150 milhões de km desde o Sol em cerca de 8 minutos e 20 segundos."
+      ],
+      "t40": [
+        "Os golfinhos dormem com uma metade do cérebro de cada vez.",
+        true,
+        "Uma metade descansa enquanto a outra fica alerta e lembra de respirar."
+      ],
+      "t41": [
+        "A batata é originária da Irlanda.",
+        false,
+        "A batata vem da América do Sul: era cultivada nos Andes há milhares de anos."
+      ],
+      "t42": [
+        "O chocolate é feito das sementes do cacaueiro.",
+        true,
+        "Os frutos do cacau crescem direto no tronco, e as sementes de dentro viram chocolate."
+      ],
+      "t43": [
+        "O tubarão é um mamífero.",
+        false,
+        "O tubarão é um peixe: respira por brânquias. Os mamíferos do mar são as baleias e os golfinhos."
+      ],
+      "t44": [
+        "Alguns tipos de bambu podem crescer quase um metro por dia.",
+        true,
+        "O bambu é uma das plantas que crescem mais rápido na Terra."
+      ],
+      "t45": [
+        "A coruja consegue girar a cabeça 360 graus completos.",
+        false,
+        "A coruja gira a cabeça cerca de 270 graus — bastante, mas não uma volta inteira."
+      ],
+      "t46": [
+        "O diamante e o grafite do lápis são feitos da mesma substância.",
+        true,
+        "Os dois são carbono puro — só os átomos estão arrumados de outro jeito."
+      ],
+      "t47": [
+        "O camelo guarda água na corcova.",
+        false,
+        "A corcova do camelo guarda gordura, não água — ela dá energia nas longas jornadas."
+      ],
+      "t48": [
+        "O menor osso do corpo humano fica no ouvido.",
+        true,
+        "O estribo, no ouvido médio, tem só cerca de 3 milímetros."
+      ],
+      "t49": [
+        "Papagaios grandes podem viver mais de 50 anos.",
+        true,
+        "Araras e cacatuas bem cuidadas costumam viver 50 anos ou mais."
+      ],
+      "t50": [
+        "Os irmãos Wright fizeram o primeiro voo de avião a motor.",
+        true,
+        "Eles voaram em 1903; o primeiríssimo voo durou 12 segundos."
+      ],
+      "t51": [
+        "A roda foi inventada na Idade Média.",
+        false,
+        "A roda tem mais de 5.000 anos: já era usada na Mesopotâmia por volta de 3500 a.C."
+      ],
+      "t52": [
+        "O cavalo-marinho é um peixe.",
+        true,
+        "O cavalo-marinho respira por brânquias e nada com uma nadadeira, como outros peixes."
+      ],
+      "t53": [
+        "O beija-flor consegue voar para trás.",
+        true,
+        "Os beija-flores são as únicas aves que realmente conseguem voar para trás."
+      ],
+      "t54": [
+        "A Torre Eiffel fica um pouco mais alta no verão.",
+        true,
+        "O calor dilata o metal, e a torre cresce cerca de 15 centímetros."
+      ],
+      "t55": [
+        "A pele é o maior órgão do corpo humano.",
+        true,
+        "A pele de um adulto pesa vários quilos e protege o corpo inteiro."
+      ],
+      "t56": [
+        "A cor vermelha deixa o touro bravo.",
+        false,
+        "O touro mal distingue o vermelho: o que o provoca é o movimento, não a cor."
+      ],
+      "t57": [
+        "A mosca doméstica vive só um dia.",
+        false,
+        "A mosca doméstica vive cerca de um mês. São as efêmeras adultas que vivem só um ou dois dias."
+      ],
+      "t58": [
+        "O abacaxi dá em árvore.",
+        false,
+        "O abacaxi cresce numa planta baixa e cheia de folhas, bem no meio dela."
+      ],
+      "t59": [
+        "O amendoim é uma castanha.",
+        false,
+        "O amendoim é uma leguminosa, parente da ervilha e do feijão. As vagens amadurecem debaixo da terra."
+      ],
+      "t60": [
+        "O Polo Norte e o Polo Sul são igualmente frios.",
+        false,
+        "O Polo Sul é bem mais frio: fica num continente alto e gelado; o Polo Norte, sobre um oceano."
+      ]
+    }
   },
   "nl": {
     "text": {
@@ -6343,7 +13075,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Uitnodigen",
       "invited": "Uitgenodigd",
       "inviteNone": "Voeg vrienden toe in het onderdeel ‘Vrienden’ om ze met één tik uit te nodigen.",
-      "inviteSent": "Uitnodiging verstuurd naar {name}"
+      "inviteSent": "Uitnodiging verstuurd naar {name}",
+      "truth": "Waar of niet waar",
+      "tfTitle": "Waar of niet waar",
+      "tfNote": "Een live spel voor twee: verrassende feiten over de wereld. 12 seconden — waar of niet waar? Elk goed antwoord levert een punt op.",
+      "tfShareText": "{name} nodigt je uit voor het live spel ‘Waar of niet waar’",
+      "tfJoinLead": "{name} wacht op je. Waar of niet waar — beslis snel!",
+      "tfRound": "Feit {n} van {total}",
+      "tfTrue": "Waar",
+      "tfFalse": "Niet waar",
+      "tfIsTrue": "Het klopt!",
+      "tfIsFalse": "Het klopt niet!",
+      "tfFirstYou": "Jij had het als eerste goed!",
+      "tfFirstThem": "{name} had het als eerste goed",
+      "tfFinalWin": "Gewonnen! Jij weet meer over de wereld.",
+      "tfFinalLose": "Deze keer weet {name} meer — revanche?",
+      "tfFinalDraw": "Gelijkspel — jullie weten precies evenveel!",
+      "featTruth": "Live spel ‘Waar of niet waar’ — verrassende feiten over de wereld"
     },
     "questions": {
       "q01": [
@@ -6765,6 +13513,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Koken",
         "Een nieuwe taal",
         "Tekenen"
+      ],
+      "q61": [
+        "Welk gerecht maak ik het best?",
+        "Soep",
+        "Pilav",
+        "Gebak",
+        "Salade"
+      ],
+      "q62": [
+        "Welk land wil ik als eerste zien?",
+        "Turkije",
+        "Japan",
+        "Marokko",
+        "Noorwegen"
+      ],
+      "q63": [
+        "Welke sport zou ik eerder gaan doen?",
+        "Zwemmen",
+        "Hardlopen",
+        "Fietsen",
+        "Voetbal"
+      ],
+      "q64": [
+        "Welk boek zou ik kiezen?",
+        "Een avonturenboek",
+        "Een geschiedenisboek",
+        "Sprookjes",
+        "Een encyclopedie"
+      ],
+      "q65": [
+        "Welke dieren zou ik in de dierentuin als eerste bezoeken?",
+        "De olifanten",
+        "De apen",
+        "De pinguïns",
+        "De giraffen"
+      ],
+      "q66": [
+        "Hoe denk ik over pittig eten?",
+        "Hoe pittiger, hoe beter",
+        "Een beetje is prima",
+        "Maar heel weinig",
+        "Ik eet het helemaal niet"
+      ],
+      "q67": [
+        "Welk schoolvak vond ik het leukst?",
+        "Wiskunde",
+        "Literatuur",
+        "Aardrijkskunde",
+        "Gym"
+      ],
+      "q68": [
+        "Mijn droomberoep als kind?",
+        "Dokter",
+        "Docent",
+        "Astronaut",
+        "Kok"
+      ],
+      "q69": [
+        "Wat vind ik van trektochten?",
+        "Ik droom van een lange",
+        "Alleen voor een dag",
+        "Alleen met comfort",
+        "Thuis is het fijnst"
+      ],
+      "q70": [
+        "Mijn humeur ’s ochtends?",
+        "Vol energie",
+        "Nog slaperig",
+        "Rustig",
+        "Spraakzaam"
+      ],
+      "q71": [
+        "Welke noot vind ik het lekkerst?",
+        "Hazelnoot",
+        "Walnoot",
+        "Cashewnoot",
+        "Amandel"
+      ],
+      "q72": [
+        "Wat zou ik doen met een onverwacht vrij uur?",
+        "Lezen",
+        "Een wandeling maken",
+        "Mijn familie bellen",
+        "Iets koken"
+      ],
+      "q73": [
+        "Welk weer vind ik vervelend?",
+        "Hitte",
+        "Wind",
+        "Natte sneeuw",
+        "Strenge vorst"
+      ],
+      "q74": [
+        "In welke kleur zou ik mijn kamer verven?",
+        "Wit",
+        "Beige",
+        "Groen",
+        "Lichtblauw"
+      ],
+      "q75": [
+        "Wat zou ik liever spelen?",
+        "Schaken",
+        "Dammen",
+        "Een legpuzzel",
+        "Een woordspel"
+      ],
+      "q76": [
+        "Wat zou ik voor gasten koken?",
+        "Pilav",
+        "Een taart",
+        "Salades",
+        "Ik bestel eten"
+      ],
+      "q77": [
+        "Wat zou ik zeker niet eten?",
+        "Paddenstoelen",
+        "Vis",
+        "Olijven",
+        "Gekookte ui"
+      ],
+      "q78": [
+        "Hoe drink ik mijn thee?",
+        "Sterk",
+        "Slap",
+        "Zoet",
+        "Met kruiden"
+      ],
+      "q79": [
+        "Wat vind ik het belangrijkst in een huis?",
+        "Netheid",
+        "Gezelligheid",
+        "Veel licht",
+        "Rust"
+      ],
+      "q80": [
+        "Hoe leer ik nieuwe dingen?",
+        "Door te lezen",
+        "Met videolessen",
+        "Door het uit te proberen",
+        "Door het anderen te vragen"
+      ],
+      "q81": [
+        "Welk wild dier fascineert me het meest?",
+        "Tijger",
+        "Beer",
+        "Adelaar",
+        "Dolfijn"
+      ],
+      "q82": [
+        "Wat zou ik mijn moeder geven?",
+        "Bloemen",
+        "Iets zelfgemaakts",
+        "Een reisje",
+        "Een warme deken"
+      ],
+      "q83": [
+        "Wat doe ik onderweg?",
+        "Uit het raam kijken",
+        "Lezen",
+        "Kletsen",
+        "Wat knabbelen"
+      ],
+      "q84": [
+        "Mijn favoriete kipgerecht?",
+        "Kipspiesjes",
+        "Kip met rijst",
+        "Kipburgers",
+        "Kipnuggets"
+      ],
+      "q85": [
+        "Welke plek kies ik in de trein?",
+        "Bij het raam",
+        "Aan het gangpad",
+        "Achteruit rijdend",
+        "Maakt me niet uit"
+      ],
+      "q86": [
+        "Wat doe ik als het tegenzit?",
+        "Meteen in actie komen",
+        "Eerst nadenken",
+        "Om advies vragen",
+        "Een beetje piekeren"
+      ],
+      "q87": [
+        "Wat is mijn belangrijkste eigenschap?",
+        "Vriendelijkheid",
+        "Eerlijkheid",
+        "Doorzettingsvermogen",
+        "Opgewektheid"
+      ],
+      "q88": [
+        "Waar kan ik het best uitrusten?",
+        "Bij familie op het platteland",
+        "In een hotel aan zee",
+        "In een tent",
+        "Thuis"
+      ],
+      "q89": [
+        "Welk gebak zou ik kiezen?",
+        "Samsa",
+        "Chatsjapoeri",
+        "Tsjak-tsjak",
+        "Een eclair"
+      ],
+      "q90": [
+        "Welke taal zou ik het liefst leren?",
+        "Arabisch",
+        "Engels",
+        "Turks",
+        "Japans"
+      ],
+      "q91": [
+        "Hoelang kan ik zonder zoetigheid?",
+        "Een dag",
+        "Een week",
+        "Een maand",
+        "Zolang als nodig"
+      ],
+      "q92": [
+        "Wat doe ik als ik te laat ben?",
+        "Zo hard mogelijk rennen",
+        "Even bellen om het te laten weten",
+        "Een taxi nemen",
+        "Ik ben nooit te laat"
+      ],
+      "q93": [
+        "Wat doe ik als een apparaat kapotgaat?",
+        "Zelf repareren",
+        "De handleiding lezen",
+        "Hulp vragen",
+        "Op alle knoppen drukken"
+      ],
+      "q94": [
+        "Wat gaat als eerste in mijn koffer?",
+        "Een EHBO-set",
+        "Een boek",
+        "Een oplader",
+        "Iets te eten"
+      ],
+      "q95": [
+        "Waar word ik rustig van?",
+        "Koken",
+        "Opruimen",
+        "Tekenen",
+        "Een wandeling"
+      ],
+      "q96": [
+        "Wat wil ik doen als ik met pensioen ben?",
+        "Tuinieren",
+        "Reizen",
+        "Lezen",
+        "Tijd met de kleinkinderen"
+      ],
+      "q97": [
+        "Waar erger ik me het meest aan?",
+        "Lawaai",
+        "Rommel",
+        "Te laat komen",
+        "Onbeleefdheid"
+      ],
+      "q98": [
+        "Welke geur vind ik het fijnst?",
+        "Vers brood",
+        "Regen",
+        "Bloemen",
+        "De zee"
+      ],
+      "q99": [
+        "Wat zou ik als toetje kiezen?",
+        "Fruit",
+        "IJs",
+        "Taart",
+        "Alleen thee"
       ]
     },
     "yesNo": {
@@ -6967,6 +13988,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Spelen we straks nog een keer?",
         "wil nog een ronde",
         "knuffelt liever dan te spelen"
+      ],
+      "c41": [
+        "Hou je van pittig eten?",
+        "hoe pittiger, hoe beter",
+        "kiest iets milders"
+      ],
+      "c42": [
+        "Kun je zwemmen?",
+        "zwemt als een vis",
+        "blijft voorlopig dicht bij de kant"
+      ],
+      "c43": [
+        "Zou je een kat willen hebben?",
+        "bedenkt al een naam",
+        "heeft liever een hond"
+      ],
+      "c44": [
+        "Wil je ooit Istanbul bezoeken?",
+        "droomt al van de Bosporus",
+        "zou een andere stad kiezen"
+      ],
+      "c45": [
+        "Kook je graag?",
+        "kookt met plezier",
+        "doet liever de afwas"
+      ],
+      "c46": [
+        "Zou je pilav willen leren maken?",
+        "zoekt al een recept",
+        "proeft liever die van een ander"
+      ],
+      "c47": [
+        "Lees je graag boeken?",
+        "heeft altijd een boek bij de hand",
+        "luistert liever naar verhalen"
+      ],
+      "c48": [
+        "Kun je fietsen?",
+        "kan zo wegfietsen",
+        "belooft het te leren"
+      ],
+      "c49": [
+        "Heb je liever de bergen dan de zee?",
+        "kiest de bergen",
+        "kiest de zee"
+      ],
+      "c50": [
+        "Zou je een woestijn willen zien?",
+        "droomt van zandduinen",
+        "kiest liever een bos"
+      ],
+      "c51": [
+        "Hou je van de winter?",
+        "wacht op de eerste sneeuw",
+        "wacht op de zomer"
+      ],
+      "c52": [
+        "Drink je thee zonder suiker?",
+        "houdt van de pure smaak van thee",
+        "kan niet zonder een schepje suiker"
+      ],
+      "c53": [
+        "Ben je bang voor spinnen?",
+        "blijft er ver bij vandaan",
+        "zet ze rustig buiten"
+      ],
+      "c54": [
+        "Teken je graag?",
+        "pakt al een penseel",
+        "kijkt liever naar schilderijen van anderen"
+      ],
+      "c55": [
+        "Zou je het noorderlicht willen zien?",
+        "zoekt al uit waar dat kan",
+        "kijkt liever naar de sterren"
+      ],
+      "c56": [
+        "Hou je van regenachtig weer?",
+        "hoort de regen buiten graag",
+        "wacht op de zon"
+      ],
+      "c57": [
+        "Kun je paardrijden?",
+        "zit stevig in het zadel",
+        "droomt er voorlopig alleen van"
+      ],
+      "c58": [
+        "Zou je een hond willen hebben?",
+        "droomt van een trouwe vriend",
+        "heeft voorlopig genoeg om voor te zorgen"
+      ],
+      "c59": [
+        "Heb je liever zoet dan hartig?",
+        "kan niet zonder zoetigheid",
+        "kiest hartig"
+      ],
+      "c60": [
+        "Reis je graag met de trein?",
+        "geniet van het geratel van de wielen",
+        "kiest het vliegtuig"
+      ],
+      "c61": [
+        "Begin je de dag makkelijk vroeg?",
+        "begint de dag vol energie",
+        "komt pas rond de middag op gang"
+      ],
+      "c62": [
+        "Kampeer je graag in een tent?",
+        "pakt al een rugzak in",
+        "kiest een knus hotel"
+      ],
+      "c63": [
+        "Zou je aan zee willen wonen?",
+        "droomt van het geruis van de golven",
+        "kiest de stad"
+      ],
+      "c64": [
+        "Eet je ijs in de winter?",
+        "eet het zelfs als het vriest",
+        "alleen in de zomer"
+      ],
+      "c65": [
+        "Hou je van chocolade?",
+        "kent alle soorten",
+        "loopt er rustig langs"
+      ],
+      "c66": [
+        "Kun je taarten bakken?",
+        "bakt als een oma",
+        "belooft het te leren"
+      ],
+      "c67": [
+        "Kijk je graag naar de sterren?",
+        "kent de sterrenbeelden",
+        "houdt meer van een zonnige dag"
+      ],
+      "c68": [
+        "Zou je ooit een eigen tuin willen aanleggen?",
+        "kiest al zaailingen uit",
+        "begint met een bloem in een pot"
+      ],
+      "c69": [
+        "Hou je van wilde bloemen?",
+        "houdt van madeliefjes en korenbloemen",
+        "houdt meer van tuinbloemen"
+      ],
+      "c70": [
+        "Drink je koffie?",
+        "de dag begint niet zonder koffie",
+        "kiest thee"
+      ],
+      "c71": [
+        "Hou je van zelfgemaakte limonade?",
+        "snijdt al citroenen",
+        "neemt liever water"
+      ],
+      "c72": [
+        "Wil je ooit naar Japan?",
+        "droomt van de kersenbloesem",
+        "zou een ander land kiezen"
+      ],
+      "c73": [
+        "Hou je van de herfst?",
+        "loopt graag door ritselende bladeren",
+        "wacht op de lente"
+      ],
+      "c74": [
+        "Hou je van de geur van lavendel?",
+        "houdt van die geur",
+        "heeft liever andere geuren"
+      ],
+      "c75": [
+        "Hou je van bordspellen?",
+        "zet het bord al klaar",
+        "maakt liever een wandeling"
+      ],
+      "c76": [
+        "Kun je autorijden?",
+        "rijdt met zelfvertrouwen",
+        "is voorlopig passagier"
+      ],
+      "c77": [
+        "Zou je ooit de oceaan willen zien?",
+        "droomt van een grote golf",
+        "de zee is genoeg"
+      ],
+      "c78": [
+        "Zou je een tijdje op een boerderij willen wonen?",
+        "voert de kippen al",
+        "blijft in de stad"
+      ],
+      "c79": [
+        "Hou je van grote steden?",
+        "houdt van de lichtjes van de stad",
+        "kiest rust en stilte"
+      ],
+      "c80": [
+        "Heb je liever fruit dan snoep?",
+        "kiest fruit",
+        "kiest snoep"
+      ],
+      "c81": [
+        "Zou je dolfijnen in zee willen zien?",
+        "zou ze heel graag zien",
+        "leest er liever over"
+      ],
+      "c82": [
+        "Hou je van de zomer?",
+        "wacht op de warme dagen",
+        "houdt van koel weer"
+      ],
+      "c83": [
+        "Wandel je graag in het park?",
+        "wandelt in elk weer",
+        "blijft liever thuis"
+      ],
+      "c84": [
+        "Schrijf je graag met de hand?",
+        "heeft een net handschrift",
+        "typt op de telefoon"
+      ],
+      "c85": [
+        "Hou je van boottochtjes?",
+        "pakt de riemen al",
+        "blijft aan de kant"
+      ],
+      "c86": [
+        "Zou je de wereld rond willen reizen?",
+        "tekent al een route",
+        "een paar landen is genoeg"
+      ],
+      "c87": [
+        "Kun je een sneeuwpop maken?",
+        "maakt de allergrootste",
+        "houdt liever een sneeuwballengevecht"
+      ],
+      "c88": [
+        "Wil je dit jaar iets nieuws leren?",
+        "kiest al een cursus",
+        "heeft al genoeg te doen"
+      ],
+      "c89": [
+        "Hou je van stilte?",
+        "waardeert de rust",
+        "houdt van levendigheid"
+      ],
+      "c90": [
+        "Geef je je familie graag cadeautjes?",
+        "maakt de familie zomaar blij",
+        "helpt liever op een praktische manier"
       ]
     },
     "loves": {
@@ -7081,6 +14352,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Bos",
         "Woestijn",
         "Noorderlicht"
+      ],
+      "s17": [
+        "Lievelingsfruit?",
+        "Appel",
+        "Aardbei",
+        "Watermeloen",
+        "Druiven"
+      ],
+      "s18": [
+        "Wat doen op een vrije dag?",
+        "Wandelen in de bergen",
+        "Thuis koken",
+        "Een museum",
+        "Vissen"
+      ],
+      "s19": [
+        "Lievelingsontbijt?",
+        "Pannenkoeken",
+        "Omelet",
+        "Pap met bessen",
+        "Croissant"
+      ],
+      "s20": [
+        "Lievelingsvogel?",
+        "Uil",
+        "Papegaai",
+        "Zwaan",
+        "Pauw"
+      ],
+      "s21": [
+        "Welke stad bezoeken?",
+        "Istanbul",
+        "Parijs",
+        "Tokio",
+        "Dubai"
+      ],
+      "s22": [
+        "Lievelingssport?",
+        "Voetbal",
+        "Zwemmen",
+        "Tennis",
+        "Paardrijden"
+      ],
+      "s23": [
+        "Wat planten in de tuin?",
+        "Een appelboom",
+        "Rozen",
+        "Groenten",
+        "Aardbeien"
+      ],
+      "s24": [
+        "Lievelingsgebak?",
+        "Pasteitjes",
+        "Donuts",
+        "Koekjes",
+        "Baklava"
+      ],
+      "s25": [
+        "Waar wonen?",
+        "Aan een rivier",
+        "In een bos",
+        "In een grote stad",
+        "Op een eiland"
+      ],
+      "s26": [
+        "Lievelingszeedier?",
+        "Schildpad",
+        "Walvis",
+        "Octopus",
+        "Zeepaardje"
+      ],
+      "s27": [
+        "Waarmee op pad?",
+        "Fiets",
+        "Step",
+        "Luchtballon",
+        "Boot"
+      ],
+      "s28": [
+        "Lievelingsbezigheid?",
+        "Breien",
+        "Natuurfotografie",
+        "Tuinieren",
+        "Kalligrafie"
+      ],
+      "s29": [
+        "Lievelingssoep?",
+        "Borsjt",
+        "Kippensoep",
+        "Pompoensoep",
+        "Linzensoep"
+      ],
+      "s30": [
+        "Dier uit het bos?",
+        "Egel",
+        "Eekhoorn",
+        "Vos",
+        "Hert"
+      ],
+      "s31": [
+        "Iets om te knabbelen?",
+        "Dadels",
+        "Amandelen",
+        "Pistachenoten",
+        "Gedroogde abrikozen"
+      ],
+      "s32": [
+        "Wat mee op trektocht?",
+        "Een tent",
+        "Een thermosfles",
+        "Een kaart",
+        "Een zaklamp"
+      ],
+      "s33": [
+        "Lievelingstoetje?",
+        "Pudding",
+        "Cheesecake",
+        "Pannenkoeken met honing",
+        "Fruitsalade"
+      ],
+      "s34": [
+        "Wat doen in de winter?",
+        "Een sneeuwpop maken",
+        "Sleeën",
+        "Thee bij het raam",
+        "Skiën"
+      ],
+      "s35": [
+        "Wat doen in de zomer?",
+        "Zwemmen",
+        "Bessen plukken",
+        "Varen",
+        "Een zandkasteel bouwen"
+      ],
+      "s36": [
+        "Waarmee schilderen?",
+        "Waterverf",
+        "Potloden",
+        "Waskrijt",
+        "Verf op doek"
+      ],
+      "s37": [
+        "Lievelingsgroente?",
+        "Wortel",
+        "Tomaat",
+        "Maïs",
+        "Pompoen"
+      ],
+      "s38": [
+        "Wat maakt een huis gezellig?",
+        "Een open haard",
+        "Een zachte deken",
+        "Kamerplanten",
+        "Een plank vol boeken"
+      ],
+      "s39": [
+        "Wat spelen?",
+        "Schaken",
+        "Legpuzzels",
+        "Bordspellen",
+        "Balspellen"
+      ],
+      "s40": [
+        "Wie woont er op de boerderij?",
+        "Koe",
+        "Lammetje",
+        "Kip",
+        "Geitje"
+      ],
+      "s41": [
+        "Thee met wat?",
+        "Honing",
+        "Citroen",
+        "Jam",
+        "Munt"
+      ],
+      "s42": [
+        "Wat is er aan zee?",
+        "Een vuurtoren",
+        "Schelpen",
+        "Een zeilboot",
+        "Meeuwen"
+      ],
+      "s43": [
+        "Hoe de ochtend beginnen?",
+        "Ochtendgymnastiek",
+        "Een kopje thee",
+        "Een wandeling",
+        "Een boek"
+      ],
+      "s44": [
+        "Lievelingsbes?",
+        "Framboos",
+        "Blauwe bes",
+        "Kers",
+        "Braam"
       ]
     },
     "who": [
@@ -7123,7 +14590,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Wie van ons denkt vaker terug aan grappige verhalen?",
       "Wie van ons heeft meer geduld?",
       "Wie van ons zegt vaker ‘dank je’?",
-      "Wie van ons biedt als eerste hulp aan?"
+      "Wie van ons biedt als eerste hulp aan?",
+      "Wie van ons kan beter hoofdrekenen?",
+      "Wie van ons leest meer?",
+      "Wie van ons typt sneller?",
+      "Wie van ons belt vaker met de ouders?",
+      "Wie van ons vertelt beter verhalen?",
+      "Wie van ons heeft een netter handschrift?",
+      "Wie van ons houdt meer van pittig eten?",
+      "Wie van ons laat vaker iets thuis liggen?",
+      "Wie van ons is handiger met apparaten?",
+      "Wie van ons leert het liefst nieuwe dingen?",
+      "Wie van ons kan beter plannen?",
+      "Wie van ons kan beter afdingen op de markt?",
+      "Wie van ons houdt meer van de natuur?",
+      "Wie van ons eet sneller?",
+      "Wie van ons drinkt meer thee?",
+      "Wie van ons zorgt beter voor planten?",
+      "Wie van ons weet meer van aardrijkskunde?",
+      "Wie van ons schaakt beter?",
+      "Wie van ons kiest beter fruit uit op de markt?",
+      "Wie van ons kijkt vaker naar het weerbericht?",
+      "Wie van ons is banger voor spinnen?",
+      "Wie van ons is dapperder?",
+      "Wie van ons is nieuwsgieriger?",
+      "Wie van ons lost puzzels sneller op?",
+      "Wie van ons tekent beter?",
+      "Wie van ons helpt vaker de buren?",
+      "Wie van ons kan beter met kinderen omgaan?",
+      "Wie van ons wandelt liever?",
+      "Wie van ons leest vaker de handleiding?",
+      "Wie van ons onthoudt namen beter?",
+      "Wie van ons leert sneller woorden in een andere taal?",
+      "Wie van ons kan beter bakken?",
+      "Wie van ons geeft betere adviezen?",
+      "Wie van ons houdt meer van koud weer?",
+      "Wie van ons zou het beter doen op een trektocht?",
+      "Wie van ons leest vaker het nieuws?",
+      "Wie van ons probeert vaker nieuwe gerechten?",
+      "Wie van ons pakt sneller een koffer in?",
+      "Wie van ons kan beter dingen repareren?",
+      "Wie van ons praat vaker tegen dieren?",
+      "Wie van ons doet vaker de afwas?",
+      "Wie van ons weet meer van geschiedenis?",
+      "Wie van ons stelt dingen vaker uit?",
+      "Wie van ons maakt sneller contact met nieuwe mensen?",
+      "Wie van ons let beter op de eigen gezondheid?"
     ],
     "phrases": [
       "Ik glimlach als jij…",
@@ -7155,8 +14667,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Een ochtend met jou is…",
       "Als wij één woord waren, zou het zijn…",
       "Ik wil van jou leren hoe je…",
-      "Dank je dat je altijd…"
-    ]
+      "Dank je dat je altijd…",
+      "Als kind was mijn lievelingseten…",
+      "Als ik één dag in een land naar keuze kreeg, zou ik…",
+      "Het beste advies dat ik ooit kreeg, is…",
+      "Ik moet altijd lachen als…",
+      "Mijn favoriete plek in mijn geboorteplaats is…",
+      "In mijn eigen winkeltje zou ik verkopen…",
+      "Het gerecht dat ik het best kan maken, is…",
+      "Een kinderdroom die ik nog steeds weet, is…",
+      "Je maakt me makkelijk blij als…",
+      "De meest verbazingwekkende plek waar ik ben geweest, is…",
+      "Ik wil leren…",
+      "Mijn perfecte vrije dag begint met…",
+      "Als ik elk dier zou mogen hebben, koos ik…",
+      "Mijn familie zegt altijd dat ik…",
+      "Ik kan maar niet wennen aan…",
+      "Mijn nuttigste gewoonte is…",
+      "Het beste boek dat ik ooit las, is…",
+      "Over tien jaar zou ik graag…",
+      "Mijn droomhuis is…",
+      "Het grappigste wat me als kind overkwam, is…",
+      "Geluk is voor mij…",
+      "Het valt me zwaar om te stoppen met…",
+      "Als ik een superkracht had, zou die…",
+      "Wat ik het meest waardeer in mensen, is…",
+      "Op een vrije avond ga ik graag…",
+      "Mijn favoriete geur is…",
+      "Wat ik nooit zou eten, is…",
+      "Het enige wat ik altijd meeneem als ik de deur uitga, is…",
+      "Ik zou graag naar… gaan, omdat…",
+      "Het mooiste cadeau dat ik ooit kreeg, is…",
+      "Mijn meest ongewone gewoonte is…",
+      "Met een extra uur per dag zou ik…",
+      "Iemand van wie ik veel leer, is…",
+      "Op een zware dag helpt me…",
+      "Het lekkerste wat ik op reis heb geproefd, is…",
+      "Als ik één dag een ander beroep mocht hebben, koos ik…",
+      "Het seizoen dat het dichtst bij mijn hart ligt, is…",
+      "Mijn vrienden zeggen dat ik…",
+      "Ooit wil ik iemand leren…",
+      "Een kleine vreugde in mijn dag is…"
+    ],
+    "truth": {
+      "t01": [
+        "Een octopus heeft drie harten.",
+        true,
+        "Twee harten pompen bloed door de kieuwen, het derde pompt het door het lichaam."
+      ],
+      "t02": [
+        "De Chinese Muur is met het blote oog vanaf de maan te zien.",
+        false,
+        "Nee: de muur is veel te smal. Zelfs vanuit een baan om de aarde is hij heel moeilijk te zien."
+      ],
+      "t03": [
+        "Honing kan duizenden jaren goed blijven.",
+        true,
+        "In oude Egyptische graven is duizenden jaren oude honing gevonden die nog goed was."
+      ],
+      "t04": [
+        "Bananen groeien aan bomen.",
+        false,
+        "De bananenplant is een reuzenkruid: de ‘stam’ bestaat uit strak opgerolde bladeren."
+      ],
+      "t05": [
+        "Venus is de heetste planeet van het zonnestelsel.",
+        true,
+        "Door de dikke atmosfeer wordt Venus zo’n 460 °C — heter dan Mercurius."
+      ],
+      "t06": [
+        "Vleermuizen zijn blind.",
+        false,
+        "Vleermuizen kunnen zien, en in het donker vinden ze hun weg ook met echolocatie."
+      ],
+      "t07": [
+        "Een walvis is een vis.",
+        false,
+        "Walvissen zijn zoogdieren: ze ademen lucht en voeden hun jongen met melk."
+      ],
+      "t08": [
+        "De Sahara is de grootste woestijn ter wereld.",
+        false,
+        "De grootste woestijn is Antarctica. De Sahara is de grootste hete woestijn."
+      ],
+      "t09": [
+        "Een giraf heeft evenveel nekwervels als een mens.",
+        true,
+        "Allebei hebben ze zeven nekwervels — die van de giraf zijn alleen heel lang."
+      ],
+      "t10": [
+        "Botanisch gezien is een tomaat een bes.",
+        true,
+        "Botanici rekenen de tomaat tot de bessen: een vlezige vrucht met zaden erin."
+      ],
+      "t11": [
+        "Botanisch gezien is een aardbei een bes.",
+        false,
+        "Het is een schijnvrucht: de echte vruchtjes zijn de kleine ‘pitjes’ aan de buitenkant."
+      ],
+      "t12": [
+        "In de ruimte kun je een explosie horen.",
+        false,
+        "In de ruimte is bijna geen lucht, dus geluid kan zich nergens door verplaatsen."
+      ],
+      "t13": [
+        "Hoog in de bergen kookt water bij een lagere temperatuur.",
+        true,
+        "De luchtdruk is daar lager, dus water kookt al voordat het 100 °C is."
+      ],
+      "t14": [
+        "Pinguïns leven op de Noordpool.",
+        false,
+        "Wilde pinguïns leven alleen op het zuidelijk halfrond, niet in het hoge noorden."
+      ],
+      "t15": [
+        "De Mount Everest is de hoogste berg boven zeeniveau.",
+        true,
+        "De Everest is ongeveer 8.849 meter hoog boven zeeniveau."
+      ],
+      "t16": [
+        "Mensen gebruiken maar 10% van hun hersenen.",
+        false,
+        "Dat is een mythe: bijna elk deel van de hersenen is in de loop van een dag actief."
+      ],
+      "t17": [
+        "Een menselijk hart klopt ongeveer 100.000 keer per dag.",
+        true,
+        "Bij zo’n 70 slagen per minuut kom je op ongeveer 100.000 slagen per dag."
+      ],
+      "t18": [
+        "Een goudvis heeft een geheugen van maar drie seconden.",
+        false,
+        "Proeven laten zien dat goudvissen wat ze geleerd hebben maandenlang kunnen onthouden."
+      ],
+      "t19": [
+        "Australië is zowel een land als een continent.",
+        true,
+        "Australië is het enige land dat een heel continent beslaat."
+      ],
+      "t20": [
+        "De bliksem slaat nooit twee keer op dezelfde plek in.",
+        false,
+        "Toch wel: hoge gebouwen worden elk jaar vele keren door de bliksem getroffen."
+      ],
+      "t21": [
+        "Een struisvogel steekt zijn kop in het zand als hij bang is.",
+        false,
+        "Een mythe: een geschrokken struisvogel rent weg of gaat plat op de grond liggen om zich te verstoppen."
+      ],
+      "t22": [
+        "De kleinste vogel ter wereld is een kolibrie.",
+        true,
+        "De bijkolibrie uit Cuba weegt ongeveer 2 gram — minder dan welke andere vogel ook."
+      ],
+      "t23": [
+        "Een watermeloen bestaat voor ongeveer 90% uit water.",
+        true,
+        "Watermeloen is zo’n 92% water — daarom is hij zo verfrissend."
+      ],
+      "t24": [
+        "Een spin heeft zes poten.",
+        false,
+        "Een spin heeft acht poten. Insecten hebben er zes, en spinnen zijn geen insecten."
+      ],
+      "t25": [
+        "De maan geeft zelf licht.",
+        false,
+        "De maan heeft geen eigen licht: ze weerkaatst het zonlicht."
+      ],
+      "t26": [
+        "De olifant is het grootste landdier.",
+        true,
+        "Een Afrikaanse savanneolifant kan meer dan 6 ton wegen."
+      ],
+      "t27": [
+        "De blauwe vinvis is het grootste dier dat de wetenschap kent.",
+        true,
+        "Blauwe vinvissen kunnen meer dan 30 meter lang worden — groter dan elke bekende dinosaurus."
+      ],
+      "t28": [
+        "Een kameleon verandert alleen van kleur om zich te camoufleren.",
+        false,
+        "Zijn kleur hangt meer af van stemming, temperatuur en signalen aan andere kameleons."
+      ],
+      "t29": [
+        "De telefoon is uitgevonden door Thomas Edison.",
+        false,
+        "Alexander Graham Bell kreeg in 1876 het patent op de telefoon."
+      ],
+      "t30": [
+        "Penicilline is ontdekt door Alexander Fleming.",
+        true,
+        "Fleming ontdekte penicilline in 1928 — het eerste antibioticum."
+      ],
+      "t31": [
+        "De hoogste vulkaan van het zonnestelsel staat op Mars.",
+        true,
+        "Olympus Mons op Mars is zo’n 22 km hoog — bijna 2,5 keer zo hoog als de Everest."
+      ],
+      "t32": [
+        "Het bloed in onze aderen is blauw.",
+        false,
+        "Bloed is altijd rood; aderen lijken alleen blauw door de manier waarop licht door de huid gaat."
+      ],
+      "t33": [
+        "De Atlantische Oceaan is de grootste oceaan op aarde.",
+        false,
+        "De grootste is de Stille Oceaan: die is groter dan al het land op aarde bij elkaar."
+      ],
+      "t34": [
+        "Rusland is qua oppervlakte het grootste land ter wereld.",
+        true,
+        "Rusland beslaat meer dan 17 miljoen vierkante kilometer."
+      ],
+      "t35": [
+        "Canada heeft de langste kustlijn ter wereld.",
+        true,
+        "De kust van Canada is meer dan 200.000 km lang — langer dan die van welk ander land ook."
+      ],
+      "t36": [
+        "De maag van een koe heeft vier delen.",
+        true,
+        "Een koe heeft één maag met vier kamers — zo verteert ze gras."
+      ],
+      "t37": [
+        "De leeuw is de grootste katachtige ter wereld.",
+        false,
+        "De grootste katachtige is de tijger, vooral de Siberische tijger."
+      ],
+      "t38": [
+        "De aarde is de planeet die het dichtst bij de zon staat.",
+        false,
+        "Mercurius staat het dichtst bij, dan Venus; de aarde is de derde planeet."
+      ],
+      "t39": [
+        "Zonlicht doet er ongeveer 8 minuten over om de aarde te bereiken.",
+        true,
+        "Licht legt de 150 miljoen km vanaf de zon af in ongeveer 8 minuten en 20 seconden."
+      ],
+      "t40": [
+        "Dolfijnen slapen met telkens één helft van hun hersenen.",
+        true,
+        "De ene helft rust, terwijl de andere oplet en eraan denkt om te ademen."
+      ],
+      "t41": [
+        "De aardappel komt uit Ierland.",
+        false,
+        "De aardappel komt uit Zuid-Amerika: in de Andes werd hij al duizenden jaren geleden verbouwd."
+      ],
+      "t42": [
+        "Chocolade wordt gemaakt van de zaden van de cacaoboom.",
+        true,
+        "Cacaovruchten groeien direct aan de stam, en de zaden erin worden chocolade."
+      ],
+      "t43": [
+        "Een haai is een zoogdier.",
+        false,
+        "Een haai is een vis: hij ademt met kieuwen. Walvissen en dolfijnen zijn de zoogdieren van de zee."
+      ],
+      "t44": [
+        "Sommige bamboesoorten groeien bijna een meter per dag.",
+        true,
+        "Bamboe is een van de snelst groeiende planten op aarde."
+      ],
+      "t45": [
+        "Een uil kan zijn kop een volle 360 graden draaien.",
+        false,
+        "Een uil kan zijn kop zo’n 270 graden draaien — veel, maar geen hele cirkel."
+      ],
+      "t46": [
+        "Diamant en potloodgrafiet zijn van dezelfde stof gemaakt.",
+        true,
+        "Allebei zijn ze puur koolstof — de atomen zijn alleen anders geordend."
+      ],
+      "t47": [
+        "Een kameel bewaart water in zijn bult.",
+        false,
+        "In de bult van een kameel zit vet, geen water — dat geeft energie op lange tochten."
+      ],
+      "t48": [
+        "Het kleinste bot in het menselijk lichaam zit in het oor.",
+        true,
+        "De stijgbeugel in het middenoor is maar zo’n 3 millimeter lang."
+      ],
+      "t49": [
+        "Grote papegaaien kunnen meer dan 50 jaar oud worden.",
+        true,
+        "Goed verzorgde ara’s en kaketoes worden vaak 50 jaar of ouder."
+      ],
+      "t50": [
+        "De gebroeders Wright maakten de eerste gemotoriseerde vlucht.",
+        true,
+        "Ze vlogen in 1903; de allereerste vlucht duurde 12 seconden."
+      ],
+      "t51": [
+        "Het wiel is in de middeleeuwen uitgevonden.",
+        false,
+        "Het wiel is meer dan 5000 jaar oud: het werd al zo’n 5500 jaar geleden in Mesopotamië gebruikt."
+      ],
+      "t52": [
+        "Een zeepaardje is een vis.",
+        true,
+        "Een zeepaardje ademt met kieuwen en zwemt met een vin, net als andere vissen."
+      ],
+      "t53": [
+        "Een kolibrie kan achteruit vliegen.",
+        true,
+        "Kolibries zijn de enige vogels die echt achteruit kunnen vliegen."
+      ],
+      "t54": [
+        "De Eiffeltoren wordt in de zomer een beetje hoger.",
+        true,
+        "Door de warmte zet het metaal uit, en de toren groeit zo’n 15 centimeter."
+      ],
+      "t55": [
+        "De huid is het grootste orgaan van het menselijk lichaam.",
+        true,
+        "De huid van een volwassene weegt een paar kilo en beschermt het hele lichaam."
+      ],
+      "t56": [
+        "Een stier wordt boos van de kleur rood.",
+        false,
+        "Stieren zien rood nauwelijks: het is de beweging die ze prikkelt, niet de kleur."
+      ],
+      "t57": [
+        "Een huisvlieg leeft maar één dag.",
+        false,
+        "Een huisvlieg leeft ongeveer een maand. Volwassen eendagsvliegen leven maar een dag of twee."
+      ],
+      "t58": [
+        "Ananassen groeien aan bomen.",
+        false,
+        "Een ananas groeit op een lage bladrijke plant, recht uit het midden ervan."
+      ],
+      "t59": [
+        "Een pinda is een noot.",
+        false,
+        "Een pinda is een peulvrucht, familie van erwten en bonen. De peulen rijpen onder de grond."
+      ],
+      "t60": [
+        "De Noordpool en de Zuidpool zijn even koud.",
+        false,
+        "De Zuidpool is veel kouder: die ligt op een hoog, ijzig continent, de Noordpool op een oceaan."
+      ]
+    }
   },
   "tr": {
     "text": {
@@ -7365,7 +15219,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Davet et",
       "invited": "Davet edildi",
       "inviteNone": "Tek dokunuşla davet etmek için “Arkadaşlar” bölümünden arkadaş ekleyin.",
-      "inviteSent": "Davet gönderildi: {name}"
+      "inviteSent": "Davet gönderildi: {name}",
+      "truth": "Doğru mu yanlış mı",
+      "tfTitle": "Doğru mu yanlış mı",
+      "tfNote": "İki kişilik canlı oyun: dünya hakkında şaşırtıcı bilgiler. 12 saniye — doğru mu yanlış mı? Her doğru yanıt bir puan.",
+      "tfShareText": "{name} seni canlı “Doğru mu yanlış mı” oyununa davet ediyor",
+      "tfJoinLead": "{name} seni bekliyor. Doğru mu yanlış mı — hızlı karar ver!",
+      "tfRound": "Bilgi {n}/{total}",
+      "tfTrue": "Doğru",
+      "tfFalse": "Yanlış",
+      "tfIsTrue": "Bu doğru!",
+      "tfIsFalse": "Bu yanlış!",
+      "tfFirstYou": "İlk doğru bilen sensin!",
+      "tfFirstThem": "İlk doğru bilen: {name}",
+      "tfFinalWin": "Zafer! Dünya hakkında daha çok şey biliyorsun.",
+      "tfFinalLose": "Bu sefer {name} daha çok biliyor — rövanş?",
+      "tfFinalDraw": "Berabere — ikiniz de aynı derecede biliyorsunuz!",
+      "featTruth": "Canlı “Doğru mu yanlış mı” oyunu — dünya hakkında şaşırtıcı bilgiler"
     },
     "questions": {
       "q01": [
@@ -7787,6 +15657,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Yemek yapmayı",
         "Yeni bir dil",
         "Resim yapmayı"
+      ],
+      "q61": [
+        "En iyi hangi yemeği yaparım?",
+        "Çorba",
+        "Pilav",
+        "Hamur işi",
+        "Salata"
+      ],
+      "q62": [
+        "İlk önce hangi ülkeyi görmek isterim?",
+        "Türkiye",
+        "Japonya",
+        "Fas",
+        "Norveç"
+      ],
+      "q63": [
+        "Hangi sporla ilgilenmeyi tercih ederim?",
+        "Yüzme",
+        "Koşu",
+        "Bisiklet",
+        "Futbol"
+      ],
+      "q64": [
+        "Hangi kitabı seçerdim?",
+        "Bir macera kitabı",
+        "Bir tarih kitabı",
+        "Masallar",
+        "Bir ansiklopedi"
+      ],
+      "q65": [
+        "Hayvanat bahçesinde önce hangi hayvanlara giderdim?",
+        "Fillere",
+        "Maymunlara",
+        "Penguenlere",
+        "Zürafalara"
+      ],
+      "q66": [
+        "Acılı yemek hakkında ne düşünürüm?",
+        "Ne kadar acı, o kadar iyi",
+        "Biraz olabilir",
+        "Sadece azıcık",
+        "Hiç yemem"
+      ],
+      "q67": [
+        "Okulda en sevdiğim ders hangisiydi?",
+        "Matematik",
+        "Edebiyat",
+        "Coğrafya",
+        "Beden eğitimi"
+      ],
+      "q68": [
+        "Çocukken hayalimdeki meslek?",
+        "Doktor",
+        "Öğretmen",
+        "Astronot",
+        "Aşçı"
+      ],
+      "q69": [
+        "Doğa yürüyüşleri hakkında ne düşünürüm?",
+        "Uzun bir tanesinin hayalini kurarım",
+        "Sadece bir günlüğüne",
+        "Sadece konforlu olursa",
+        "Ev daha iyi"
+      ],
+      "q70": [
+        "Sabahları ruh hâlim nasıl?",
+        "Enerji dolu",
+        "Hâlâ uykulu",
+        "Sessiz",
+        "Konuşkan"
+      ],
+      "q71": [
+        "En sevdiğim kuruyemiş hangisi?",
+        "Fındık",
+        "Ceviz",
+        "Kaju",
+        "Badem"
+      ],
+      "q72": [
+        "Beklenmedik boş bir saatte ne yapardım?",
+        "Kitap okurdum",
+        "Yürüyüşe çıkardım",
+        "Ailemi arardım",
+        "Bir şey pişirirdim"
+      ],
+      "q73": [
+        "Hangi havayı sevmem?",
+        "Sıcak",
+        "Rüzgâr",
+        "Sulu kar",
+        "Sert ayaz"
+      ],
+      "q74": [
+        "Odamı hangi renge boyardım?",
+        "Beyaz",
+        "Bej",
+        "Yeşil",
+        "Açık mavi"
+      ],
+      "q75": [
+        "Ne oynamayı tercih ederim?",
+        "Satranç",
+        "Dama",
+        "Yapboz",
+        "Kelime oyunu"
+      ],
+      "q76": [
+        "Misafirler için ne pişirirdim?",
+        "Pilav",
+        "Börek",
+        "Salatalar",
+        "Yemek sipariş ederdim"
+      ],
+      "q77": [
+        "Kesinlikle ne yemezdim?",
+        "Mantar",
+        "Balık",
+        "Zeytin",
+        "Haşlanmış soğan"
+      ],
+      "q78": [
+        "Çayımı nasıl içerim?",
+        "Demli",
+        "Açık",
+        "Şekerli",
+        "Bitki çayı"
+      ],
+      "q79": [
+        "Bir evde benim için en önemli şey ne?",
+        "Temizlik",
+        "Sıcaklık ve rahatlık",
+        "Bol ışık",
+        "Sessizlik"
+      ],
+      "q80": [
+        "Yeni şeyleri nasıl öğrenirim?",
+        "Okuyarak",
+        "Video derslerle",
+        "Uygulayarak",
+        "Başkalarına sorarak"
+      ],
+      "q81": [
+        "Hangi vahşi hayvan beni en çok büyüler?",
+        "Kaplan",
+        "Ayı",
+        "Kartal",
+        "Yunus"
+      ],
+      "q82": [
+        "Anneme ne hediye ederdim?",
+        "Çiçek",
+        "El yapımı bir şey",
+        "Bir gezi",
+        "Sıcak bir battaniye"
+      ],
+      "q83": [
+        "Yolculukta ne yaparım?",
+        "Pencereden bakarım",
+        "Kitap okurum",
+        "Sohbet ederim",
+        "Atıştırırım"
+      ],
+      "q84": [
+        "En sevdiğim tavuk yemeği?",
+        "Tavuk şiş",
+        "Tavuklu pilav",
+        "Tavuk köfte",
+        "Nugget"
+      ],
+      "q85": [
+        "Trende hangi koltuğu seçerim?",
+        "Cam kenarı",
+        "Koridor tarafı",
+        "Ters yöne bakan",
+        "Fark etmez"
+      ],
+      "q86": [
+        "İşler ters gidince ne yaparım?",
+        "Hemen harekete geçerim",
+        "Önce düşünürüm",
+        "Akıl danışırım",
+        "Biraz endişelenirim"
+      ],
+      "q87": [
+        "En belirgin özelliğim ne?",
+        "İyilik",
+        "Dürüstlük",
+        "Azim",
+        "Neşe"
+      ],
+      "q88": [
+        "En iyi nerede dinlenirim?",
+        "Köyde akrabaların yanında",
+        "Deniz kenarında bir otelde",
+        "Çadırda",
+        "Evde"
+      ],
+      "q89": [
+        "Hangi hamur işini seçerdim?",
+        "Samsa",
+        "Haçapuri",
+        "Çak-çak",
+        "Ekler"
+      ],
+      "q90": [
+        "En çok hangi dili öğrenmek isterim?",
+        "Arapça",
+        "İngilizce",
+        "Türkçe",
+        "Japonca"
+      ],
+      "q91": [
+        "Tatlısız ne kadar dayanabilirim?",
+        "Bir gün",
+        "Bir hafta",
+        "Bir ay",
+        "Gerektiği kadar"
+      ],
+      "q92": [
+        "Geç kaldığımda ne yaparım?",
+        "Var gücümle koşarım",
+        "Önceden arayıp haber veririm",
+        "Taksiye binerim",
+        "Asla geç kalmam"
+      ],
+      "q93": [
+        "Bir cihaz bozulunca ne yaparım?",
+        "Kendim tamir ederim",
+        "Kılavuzu okurum",
+        "Yardım çağırırım",
+        "Bütün düğmelere basarım"
+      ],
+      "q94": [
+        "Bavuluma ilk ne koyarım?",
+        "İlk yardım çantası",
+        "Bir kitap",
+        "Şarj aleti",
+        "Atıştırmalık"
+      ],
+      "q95": [
+        "Hangi uğraş beni sakinleştirir?",
+        "Yemek yapmak",
+        "Toparlamak",
+        "Resim yapmak",
+        "Yürüyüş"
+      ],
+      "q96": [
+        "Emekli olunca ne yapmak isterim?",
+        "Bahçe işleri",
+        "Seyahat",
+        "Kitap okumak",
+        "Torunlarla vakit geçirmek"
+      ],
+      "q97": [
+        "Beni en çok ne rahatsız eder?",
+        "Gürültü",
+        "Dağınıklık",
+        "Geç kalmak",
+        "Kabalık"
+      ],
+      "q98": [
+        "En çok hangi kokuyu severim?",
+        "Taze ekmek",
+        "Yağmur",
+        "Çiçekler",
+        "Deniz"
+      ],
+      "q99": [
+        "Tatlı olarak ne seçerdim?",
+        "Meyve",
+        "Dondurma",
+        "Turta",
+        "Sadece çay"
       ]
     },
     "yesNo": {
@@ -7989,6 +16132,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sonra bir daha oynayalım mı?",
         "bir tur daha istiyor",
         "oyun yerine sarılmak istiyor"
+      ],
+      "c41": [
+        "Acılı yemekleri sever misin?",
+        "ne kadar acı, o kadar iyi",
+        "daha hafif bir şey seçiyor"
+      ],
+      "c42": [
+        "Yüzme bilir misin?",
+        "balık gibi yüzüyor",
+        "şimdilik kıyıya yakın duruyor"
+      ],
+      "c43": [
+        "Bir kedin olsun ister misin?",
+        "şimdiden isim düşünüyor",
+        "köpekleri tercih ediyor"
+      ],
+      "c44": [
+        "Bir gün İstanbul’u görmek ister misin?",
+        "şimdiden Boğaz’ın hayalini kuruyor",
+        "başka bir şehir seçerdi"
+      ],
+      "c45": [
+        "Yemek yapmayı sever misin?",
+        "zevkle yemek yapıyor",
+        "bulaşık yıkamayı tercih ederdi"
+      ],
+      "c46": [
+        "Pilav yapmayı öğrenmek ister misin?",
+        "şimdiden tarif arıyor",
+        "başkasınınkini tatmayı tercih ederdi"
+      ],
+      "c47": [
+        "Kitap okumayı sever misin?",
+        "yanında hep bir kitap var",
+        "hikâye dinlemeyi tercih ediyor"
+      ],
+      "c48": [
+        "Bisiklet sürebilir misin?",
+        "hemen şimdi yola çıkabilir",
+        "öğrenmeye söz veriyor"
+      ],
+      "c49": [
+        "Dağları denize tercih eder misin?",
+        "dağları seçiyor",
+        "denizi seçiyor"
+      ],
+      "c50": [
+        "Bir çöl görmek ister misin?",
+        "kum tepelerinin hayalini kuruyor",
+        "ormanı seçerdi"
+      ],
+      "c51": [
+        "Kışı sever misin?",
+        "ilk karı bekliyor",
+        "yazı bekliyor"
+      ],
+      "c52": [
+        "Çayı şekersiz mi içersin?",
+        "çayın saf tadını seviyor",
+        "bir kaşık şekersiz olmaz"
+      ],
+      "c53": [
+        "Örümceklerden korkar mısın?",
+        "onlardan uzak duruyor",
+        "sakince dışarı çıkarıyor"
+      ],
+      "c54": [
+        "Resim yapmayı sever misin?",
+        "şimdiden fırçayı eline alıyor",
+        "başkalarının resimlerine bakmayı tercih ediyor"
+      ],
+      "c55": [
+        "Kuzey ışıklarını görmek ister misin?",
+        "nerede görüleceğine şimdiden bakıyor",
+        "yıldızları izlemeyi tercih ediyor"
+      ],
+      "c56": [
+        "Yağmurlu havayı sever misin?",
+        "dışarıdaki yağmurun sesini seviyor",
+        "güneşi bekliyor"
+      ],
+      "c57": [
+        "Ata binebilir misin?",
+        "eyerde kendinden emin oturuyor",
+        "şimdilik sadece hayalini kuruyor"
+      ],
+      "c58": [
+        "Bir köpeğin olsun ister misin?",
+        "sadık bir dostun hayalini kuruyor",
+        "şimdilik bakacağı yeterince şey var"
+      ],
+      "c59": [
+        "Tatlıyı tuzluya tercih eder misin?",
+        "tatlısız yapamıyor",
+        "tuzluyu seçiyor"
+      ],
+      "c60": [
+        "Trenle yolculuğu sever misin?",
+        "tekerleklerin tıkırtısını seviyor",
+        "uçağı seçiyor"
+      ],
+      "c61": [
+        "Güne erken başlamak senin için kolay mı?",
+        "güne enerji dolu başlıyor",
+        "ancak öğlene doğru açılıyor"
+      ],
+      "c62": [
+        "Çadırda kamp yapmayı sever misin?",
+        "şimdiden sırt çantasını hazırlıyor",
+        "rahat bir otel seçiyor"
+      ],
+      "c63": [
+        "Deniz kenarında yaşamak ister misin?",
+        "dalga sesinin hayalini kuruyor",
+        "şehri seçiyor"
+      ],
+      "c64": [
+        "Kışın dondurma yer misin?",
+        "ayazda bile yiyor",
+        "sadece yazın"
+      ],
+      "c65": [
+        "Çikolatayı sever misin?",
+        "her çeşidini biliyor",
+        "yanından sakince geçiyor"
+      ],
+      "c66": [
+        "Börek çörek yapabilir misin?",
+        "nine gibi hamur işi yapıyor",
+        "öğrenmeye söz veriyor"
+      ],
+      "c67": [
+        "Yıldızlara bakmayı sever misin?",
+        "takımyıldızları biliyor",
+        "güneşli bir günü tercih ediyor"
+      ],
+      "c68": [
+        "Bir gün kendi bahçeni kurmak ister misin?",
+        "şimdiden fide seçiyor",
+        "saksıda bir çiçekle başlayacak"
+      ],
+      "c69": [
+        "Kır çiçeklerini sever misin?",
+        "papatya ve peygamber çiçeklerini seviyor",
+        "bahçe çiçeklerini tercih ediyor"
+      ],
+      "c70": [
+        "Kahve içer misin?",
+        "kahvesiz gün başlamıyor",
+        "çayı seçiyor"
+      ],
+      "c71": [
+        "Ev yapımı limonatayı sever misin?",
+        "şimdiden limon dilimliyor",
+        "su içmeyi tercih ederdi"
+      ],
+      "c72": [
+        "Bir gün Japonya’yı görmek ister misin?",
+        "kiraz çiçeklerini görmenin hayalini kuruyor",
+        "başka bir ülke seçerdi"
+      ],
+      "c73": [
+        "Sonbaharı sever misin?",
+        "yaprakları hışırdatarak yürümeyi seviyor",
+        "ilkbaharı bekliyor"
+      ],
+      "c74": [
+        "Lavanta kokusunu sever misin?",
+        "bu kokuyu çok seviyor",
+        "başka kokuları tercih ediyor"
+      ],
+      "c75": [
+        "Masa oyunlarını sever misin?",
+        "şimdiden tahtayı kuruyor",
+        "yürüyüşü tercih ediyor"
+      ],
+      "c76": [
+        "Araba kullanabilir misin?",
+        "kendinden emin sürüyor",
+        "şimdilik yolcu koltuğunda"
+      ],
+      "c77": [
+        "Bir gün okyanusu görmek ister misin?",
+        "büyük bir dalganın hayalini kuruyor",
+        "deniz yeterli"
+      ],
+      "c78": [
+        "Bir süre çiftlikte yaşamak ister misin?",
+        "şimdiden tavukları besliyor",
+        "şehirde kalıyor"
+      ],
+      "c79": [
+        "Büyük şehirleri sever misin?",
+        "şehir ışıklarını seviyor",
+        "huzuru ve sessizliği seçiyor"
+      ],
+      "c80": [
+        "Meyveyi şekerlemeye tercih eder misin?",
+        "meyveyi seçiyor",
+        "şekerlemeyi seçiyor"
+      ],
+      "c81": [
+        "Denizde yunus görmek ister misin?",
+        "görmeyi çok isterdi",
+        "onlar hakkında okumayı tercih ederdi"
+      ],
+      "c82": [
+        "Yazı sever misin?",
+        "sıcak günleri bekliyor",
+        "serin havayı seviyor"
+      ],
+      "c83": [
+        "Parkta yürümeyi sever misin?",
+        "her havada yürüyor",
+        "evde kalmayı tercih ediyor"
+      ],
+      "c84": [
+        "Elle yazmayı sever misin?",
+        "yazısı çok düzgün",
+        "telefonda yazıyor"
+      ],
+      "c85": [
+        "Tekne gezilerini sever misin?",
+        "şimdiden küreklere uzanıyor",
+        "kıyıda kalıyor"
+      ],
+      "c86": [
+        "Dünyayı dolaşmak ister misin?",
+        "şimdiden rota çiziyor",
+        "birkaç ülke yeter"
+      ],
+      "c87": [
+        "Kardan adam yapabilir misin?",
+        "en büyüğünü yapacak",
+        "kartopu oynamayı tercih eder"
+      ],
+      "c88": [
+        "Bu yıl yeni bir şey öğrenmek ister misin?",
+        "şimdiden kurs seçiyor",
+        "zaten yeterince işi var"
+      ],
+      "c89": [
+        "Sessizliği sever misin?",
+        "sessizliğin kıymetini biliyor",
+        "ortalık hareketli olsun istiyor"
+      ],
+      "c90": [
+        "Ailene hediye vermeyi sever misin?",
+        "durup dururken aileyi sevindiriyor",
+        "işe yarar yardımlarla destek olmayı tercih ediyor"
       ]
     },
     "loves": {
@@ -8103,6 +16496,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Orman",
         "Çöl",
         "Kuzey ışıkları"
+      ],
+      "s17": [
+        "En sevdiğin meyve?",
+        "Elma",
+        "Çilek",
+        "Karpuz",
+        "Üzüm"
+      ],
+      "s18": [
+        "Tatil günü ne yapılır?",
+        "Dağda yürüyüş",
+        "Evde yemek yapmak",
+        "Müze",
+        "Balık tutmak"
+      ],
+      "s19": [
+        "En sevdiğin kahvaltı?",
+        "Krep",
+        "Omlet",
+        "Meyveli lapa",
+        "Kruvasan"
+      ],
+      "s20": [
+        "En sevdiğin kuş?",
+        "Baykuş",
+        "Papağan",
+        "Kuğu",
+        "Tavus kuşu"
+      ],
+      "s21": [
+        "Hangi şehre gidilir?",
+        "İstanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "En sevdiğin spor?",
+        "Futbol",
+        "Yüzme",
+        "Tenis",
+        "Binicilik"
+      ],
+      "s23": [
+        "Bahçeye ne dikilir?",
+        "Elma ağacı",
+        "Gül",
+        "Sebze",
+        "Çilek"
+      ],
+      "s24": [
+        "En sevdiğin hamur işi?",
+        "Börek",
+        "Pişi",
+        "Kurabiye",
+        "Baklava"
+      ],
+      "s25": [
+        "Nerede yaşanır?",
+        "Nehir kenarında",
+        "Ormanda",
+        "Büyük bir şehirde",
+        "Bir adada"
+      ],
+      "s26": [
+        "En sevdiğin deniz canlısı?",
+        "Kaplumbağa",
+        "Balina",
+        "Ahtapot",
+        "Denizatı"
+      ],
+      "s27": [
+        "Neyle gezilir?",
+        "Bisiklet",
+        "Scooter",
+        "Sıcak hava balonu",
+        "Tekne"
+      ],
+      "s28": [
+        "En sevdiğin uğraş?",
+        "Örgü",
+        "Doğa fotoğrafçılığı",
+        "Bahçecilik",
+        "Hat sanatı"
+      ],
+      "s29": [
+        "En sevdiğin çorba?",
+        "Borş",
+        "Tavuk çorbası",
+        "Balkabağı çorbası",
+        "Mercimek çorbası"
+      ],
+      "s30": [
+        "Orman hayvanı?",
+        "Kirpi",
+        "Sincap",
+        "Tilki",
+        "Geyik"
+      ],
+      "s31": [
+        "Atıştırmalık?",
+        "Hurma",
+        "Badem",
+        "Antep fıstığı",
+        "Kuru kayısı"
+      ],
+      "s32": [
+        "Doğa yürüyüşüne ne alınır?",
+        "Çadır",
+        "Termos",
+        "Harita",
+        "El feneri"
+      ],
+      "s33": [
+        "En sevdiğin tatlı?",
+        "Puding",
+        "Cheesecake",
+        "Ballı pankek",
+        "Meyve salatası"
+      ],
+      "s34": [
+        "Kışın ne yapılır?",
+        "Kardan adam yapmak",
+        "Kızakla kaymak",
+        "Pencere kenarında çay",
+        "Kayak yapmak"
+      ],
+      "s35": [
+        "Yazın ne yapılır?",
+        "Yüzmek",
+        "Dut toplamak",
+        "Tekne gezisi",
+        "Kumdan kale yapmak"
+      ],
+      "s36": [
+        "Neyle resim yapılır?",
+        "Suluboya",
+        "Kurşun kalem",
+        "Pastel boya",
+        "Tuval üzerine boya"
+      ],
+      "s37": [
+        "En sevdiğin sebze?",
+        "Havuç",
+        "Domates",
+        "Mısır",
+        "Balkabağı"
+      ],
+      "s38": [
+        "Evi sıcacık yapan ne?",
+        "Şömine",
+        "Yumuşak bir battaniye",
+        "Saksı bitkileri",
+        "Bir raf dolusu kitap"
+      ],
+      "s39": [
+        "Ne oynanır?",
+        "Satranç",
+        "Yapboz",
+        "Masa oyunları",
+        "Top oyunları"
+      ],
+      "s40": [
+        "Çiftlikte kim yaşar?",
+        "İnek",
+        "Kuzu",
+        "Tavuk",
+        "Oğlak"
+      ],
+      "s41": [
+        "Çayın yanında ne?",
+        "Bal",
+        "Limon",
+        "Reçel",
+        "Nane"
+      ],
+      "s42": [
+        "Deniz kenarında ne var?",
+        "Deniz feneri",
+        "Deniz kabukları",
+        "Yelkenli",
+        "Martılar"
+      ],
+      "s43": [
+        "Sabaha nasıl başlanır?",
+        "Egzersiz",
+        "Bir fincan çay",
+        "Yürüyüş",
+        "Bir kitap"
+      ],
+      "s44": [
+        "En sevdiğin minik meyve?",
+        "Ahududu",
+        "Yaban mersini",
+        "Kiraz",
+        "Böğürtlen"
       ]
     },
     "who": [
@@ -8145,7 +16734,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Hangimiz komik hikâyeleri daha sık hatırlar?",
       "Hangimiz daha sabırlıdır?",
       "Hangimiz daha sık “teşekkürler” der?",
-      "Hangimiz yardım etmeyi ilk önerir?"
+      "Hangimiz yardım etmeyi ilk önerir?",
+      "Hangimiz akıldan hesapta daha iyi?",
+      "Hangimiz daha çok okur?",
+      "Hangimiz daha hızlı yazar?",
+      "Hangimiz anne babasını daha sık arar?",
+      "Hangimiz daha güzel hikâye anlatır?",
+      "Hangimizin el yazısı daha düzgün?",
+      "Hangimiz acılı yemeği daha çok sever?",
+      "Hangimiz evde daha sık bir şey unutur?",
+      "Hangimiz cihazlardan daha iyi anlar?",
+      "Hangimiz yeni şeyler öğrenmeyi daha çok sever?",
+      "Hangimiz plan yapmakta daha iyi?",
+      "Hangimiz pazarda daha iyi pazarlık yapar?",
+      "Hangimiz doğayı daha çok sever?",
+      "Hangimiz daha hızlı yer?",
+      "Hangimiz daha çok çay içer?",
+      "Hangimiz bitkilere daha iyi bakar?",
+      "Hangimiz coğrafyayı daha iyi bilir?",
+      "Hangimiz daha iyi satranç oynar?",
+      "Hangimiz pazarda daha iyi meyve seçer?",
+      "Hangimiz hava durumuna daha sık bakar?",
+      "Hangimiz örümceklerden daha çok korkar?",
+      "Hangimiz daha cesur?",
+      "Hangimiz daha meraklı?",
+      "Hangimiz bulmacaları daha hızlı çözer?",
+      "Hangimiz daha güzel resim yapar?",
+      "Hangimiz komşulara daha sık yardım eder?",
+      "Hangimiz çocuklarla daha iyi anlaşır?",
+      "Hangimiz yürümeyi daha çok sever?",
+      "Hangimiz kullanım kılavuzunu daha sık okur?",
+      "Hangimiz isimleri daha iyi hatırlar?",
+      "Hangimiz başka bir dilde kelimeleri daha hızlı öğrenir?",
+      "Hangimiz hamur işinde daha iyi?",
+      "Hangimiz daha iyi tavsiye verir?",
+      "Hangimiz soğuk havayı daha çok sever?",
+      "Hangimiz bir doğa yürüyüşünde daha başarılı olur?",
+      "Hangimiz haberleri daha sık okur?",
+      "Hangimiz yeni yemekleri daha sık dener?",
+      "Hangimiz bavulu daha hızlı hazırlar?",
+      "Hangimiz bir şeyleri tamir etmekte daha iyi?",
+      "Hangimiz hayvanlarla daha sık konuşur?",
+      "Hangimiz bulaşığı daha sık yıkar?",
+      "Hangimiz tarihi daha iyi bilir?",
+      "Hangimiz işleri daha sık erteler?",
+      "Hangimiz yeni insanlarla daha çabuk kaynaşır?",
+      "Hangimiz sağlığına daha çok dikkat eder?"
     ],
     "phrases": [
       "Şunu yaptığında gülümsüyorum: …",
@@ -8177,8 +16811,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Seninle bir sabah…",
       "Bizi tek kelimeyle anlatsam…",
       "Senden öğrenmek istediğim şey…",
-      "Teşekkürler, çünkü sen her zaman…"
-    ]
+      "Teşekkürler, çünkü sen her zaman…",
+      "Çocukken en sevdiğim yemek…",
+      "Bana herhangi bir ülkede bir gün verilse…",
+      "Bugüne kadar aldığım en iyi tavsiye…",
+      "Şu olduğunda hep gülerim: …",
+      "Memleketimde en sevdiğim yer…",
+      "Kendi küçük dükkânım olsa orada satılırdı…",
+      "En iyi yaptığım yemek…",
+      "Hâlâ hatırladığım bir çocukluk hayalim…",
+      "Beni mutlu etmenin kolay yolu…",
+      "Gittiğim en muhteşem yer…",
+      "Öğrenmek istediğim şey…",
+      "Mükemmel tatil günüm şununla başlar: …",
+      "İstediğim herhangi bir hayvana sahip olabilseydim, bu…",
+      "Ailem hep benim için der ki…",
+      "Bir türlü alışamadığım şey…",
+      "En faydalı alışkanlığım…",
+      "Okuduğum en iyi kitap…",
+      "On yıl sonra istediğim şey…",
+      "Hayalimdeki ev…",
+      "Çocukken başıma gelen en komik şey…",
+      "Bana göre mutluluk…",
+      "Vazgeçmekte zorlandığım şey…",
+      "Bir süper gücüm olsaydı, o…",
+      "İnsanlarda en çok değer verdiğim şey…",
+      "Boş bir akşamım olduğunda…",
+      "En sevdiğim koku…",
+      "Asla yemeyeceğim yemek…",
+      "Evden çıkarken asla yanımdan ayırmadığım şey…",
+      "Şuraya gitmek isterdim: … çünkü…",
+      "Aldığım en güzel hediye…",
+      "En sıra dışı alışkanlığım…",
+      "Her gün fazladan bir saatim olsa…",
+      "Çok şey öğrendiğim biri…",
+      "Zor bir günde bana güç veren şey…",
+      "Bir yolculukta tattığım en lezzetli şey…",
+      "Bir günlüğüne meslek değiştirebilseydim, seçimim…",
+      "Kalbime en yakın mevsim…",
+      "Arkadaşlarım benim için der ki…",
+      "Bir gün birine öğretmek istediğim şey…",
+      "Günümdeki küçük bir mutluluk…"
+    ],
+    "truth": {
+      "t01": [
+        "Ahtapotun üç kalbi vardır.",
+        true,
+        "İki kalp kanı solungaçlara pompalar, üçüncüsü ise vücuda."
+      ],
+      "t02": [
+        "Çin Seddi Ay’dan çıplak gözle görülebilir.",
+        false,
+        "Görülemez: sur çok dardır. Yörüngeden bile seçmek çok zordur."
+      ],
+      "t03": [
+        "Bal binlerce yıl bozulmadan kalabilir.",
+        true,
+        "Antik Mısır mezarlarında binlerce yıllık, hâlâ bozulmamış bal bulunmuştur."
+      ],
+      "t04": [
+        "Muz ağaçta yetişir.",
+        false,
+        "Muz bitkisi dev bir otsu bitkidir: “gövdesi” sıkıca sarılmış yapraklardan oluşur."
+      ],
+      "t05": [
+        "Venüs, Güneş Sistemi’nin en sıcak gezegenidir.",
+        true,
+        "Kalın atmosferi Venüs’ü yaklaşık 460 °C’ye kadar ısıtır — Merkür’den bile sıcaktır."
+      ],
+      "t06": [
+        "Yarasalar kördür.",
+        false,
+        "Yarasalar görebilir; karanlıkta ise yollarını ekolokasyonla da bulurlar."
+      ],
+      "t07": [
+        "Balina bir balıktır.",
+        false,
+        "Balinalar memelidir: hava solurlar ve yavrularını sütle beslerler."
+      ],
+      "t08": [
+        "Sahra dünyanın en büyük çölüdür.",
+        false,
+        "En büyük çöl Antarktika’dır. Sahra ise en büyük sıcak çöldür."
+      ],
+      "t09": [
+        "Zürafanın boyun kemiği sayısı insanınkiyle aynıdır.",
+        true,
+        "İkisinde de yedi boyun omuru vardır — zürafanınkiler sadece çok uzundur."
+      ],
+      "t10": [
+        "Botanik açıdan domates bir üzümsü meyvedir.",
+        true,
+        "Botanikçiler domatesi üzümsü meyve sayar: içinde tohumları olan etli bir meyve."
+      ],
+      "t11": [
+        "Botanik açıdan çilek bir üzümsü meyvedir.",
+        false,
+        "Çilek yalancı meyvedir: asıl meyveler dışındaki küçük “tohumlar”dır."
+      ],
+      "t12": [
+        "Uzayda bir patlamayı duyabilirsin.",
+        false,
+        "Uzayda neredeyse hiç hava yoktur, bu yüzden sesin yayılacağı bir ortam yoktur."
+      ],
+      "t13": [
+        "Yüksek dağlarda su daha düşük sıcaklıkta kaynar.",
+        true,
+        "Orada hava basıncı daha düşüktür, bu yüzden su 100 °C’ye ulaşmadan kaynar."
+      ],
+      "t14": [
+        "Penguenler Kuzey Kutbu’nda yaşar.",
+        false,
+        "Yabani penguenler yalnızca Güney Yarımküre’de yaşar, uzak kuzeyde değil."
+      ],
+      "t15": [
+        "Everest, deniz seviyesinden en yüksek dağdır.",
+        true,
+        "Everest deniz seviyesinden yaklaşık 8.849 metre yüksektir."
+      ],
+      "t16": [
+        "İnsanlar beyinlerinin yalnızca %10’unu kullanır.",
+        false,
+        "Bu bir efsane: gün boyunca beynin neredeyse her bölümü çalışır."
+      ],
+      "t17": [
+        "İnsan kalbi günde yaklaşık 100.000 kez atar.",
+        true,
+        "Dakikada yaklaşık 70 atışla bu, günde aşağı yukarı 100.000 atış eder."
+      ],
+      "t18": [
+        "Japon balığının hafızası sadece üç saniyedir.",
+        false,
+        "Deneyler, japon balıklarının öğrendiklerini aylarca hatırlayabildiğini gösteriyor."
+      ],
+      "t19": [
+        "Avustralya hem bir ülke hem de bir kıtadır.",
+        true,
+        "Avustralya, bütün bir kıtayı kaplayan tek ülkedir."
+      ],
+      "t20": [
+        "Yıldırım asla aynı yere iki kez düşmez.",
+        false,
+        "Düşer: yüksek binalara yılda pek çok kez yıldırım düşer."
+      ],
+      "t21": [
+        "Devekuşu korkunca başını kuma gömer.",
+        false,
+        "Bir efsane: korkan devekuşu kaçar ya da saklanmak için yere yapışır."
+      ],
+      "t22": [
+        "Dünyanın en küçük kuşu bir sinekkuşudur.",
+        true,
+        "Küba’daki arı sinekkuşu yaklaşık 2 gram gelir — diğer bütün kuşlardan hafiftir."
+      ],
+      "t23": [
+        "Karpuzun yaklaşık %90’ı sudur.",
+        true,
+        "Karpuzun yaklaşık %92’si sudur — bu yüzden bu kadar ferahlatıcıdır."
+      ],
+      "t24": [
+        "Örümceğin altı bacağı vardır.",
+        false,
+        "Örümceğin sekiz bacağı vardır. Böceklerin altı bacağı olur, örümcekler ise böcek değildir."
+      ],
+      "t25": [
+        "Ay kendi ışığını üretir.",
+        false,
+        "Ay’ın kendi ışığı yoktur: Güneş’in ışığını yansıtır."
+      ],
+      "t26": [
+        "Fil karadaki en büyük hayvandır.",
+        true,
+        "Bir Afrika savan fili 6 tondan ağır olabilir."
+      ],
+      "t27": [
+        "Mavi balina bilimin bildiği en büyük hayvandır.",
+        true,
+        "Mavi balinalar 30 metreyi aşabilir — bilinen her dinozordan büyüktür."
+      ],
+      "t28": [
+        "Bukalemun rengini yalnızca kamufle olmak için değiştirir.",
+        false,
+        "Rengi daha çok ruh hâline, sıcaklığa ve diğer bukalemunlara verdiği sinyallere bağlıdır."
+      ],
+      "t29": [
+        "Telefonu Thomas Edison icat etti.",
+        false,
+        "Telefon patentini 1876’da Alexander Graham Bell aldı."
+      ],
+      "t30": [
+        "Penisilini Alexander Fleming keşfetti.",
+        true,
+        "Fleming penisilini 1928’de keşfetti — ilk antibiyotik."
+      ],
+      "t31": [
+        "Güneş Sistemi’nin en yüksek yanardağı Mars’tadır.",
+        true,
+        "Mars’taki Olympus Mons yaklaşık 22 km yüksekliktedir — Everest’in neredeyse 2,5 katı."
+      ],
+      "t32": [
+        "Damarlarımızdaki kan mavidir.",
+        false,
+        "Kan her zaman kırmızıdır; damarlar yalnızca ışığın deriden geçişi yüzünden mavi görünür."
+      ],
+      "t33": [
+        "Atlas Okyanusu Dünya’nın en büyük okyanusudur.",
+        false,
+        "En büyüğü Büyük Okyanus’tur: Dünya’daki bütün karaların toplamından büyüktür."
+      ],
+      "t34": [
+        "Rusya yüzölçümü bakımından dünyanın en büyük ülkesidir.",
+        true,
+        "Rusya 17 milyon kilometrekareden fazla yer kaplar."
+      ],
+      "t35": [
+        "Kanada dünyanın en uzun kıyı şeridine sahiptir.",
+        true,
+        "Kanada’nın kıyı şeridi 200.000 km’yi aşar — diğer bütün ülkelerinkinden uzundur."
+      ],
+      "t36": [
+        "İneğin midesi dört bölmelidir.",
+        true,
+        "İneğin dört odacıklı tek bir midesi vardır — otu böyle sindirir."
+      ],
+      "t37": [
+        "Aslan dünyanın en büyük kedigilidir.",
+        false,
+        "En büyük kedigil kaplandır, özellikle de Sibirya kaplanı."
+      ],
+      "t38": [
+        "Dünya, Güneş’e en yakın gezegendir.",
+        false,
+        "En yakını Merkür, sonra Venüs’tür; Dünya üçüncü gezegendir."
+      ],
+      "t39": [
+        "Güneş ışığı Dünya’ya yaklaşık 8 dakikada ulaşır.",
+        true,
+        "Işık, Güneş’ten gelen 150 milyon km’yi yaklaşık 8 dakika 20 saniyede alır."
+      ],
+      "t40": [
+        "Yunuslar beyinlerinin bir yarısıyla uyur.",
+        true,
+        "Bir yarısı dinlenirken diğeri tetikte kalır ve nefes almayı unutmaz."
+      ],
+      "t41": [
+        "Patates İrlanda’dan gelir.",
+        false,
+        "Patates Güney Amerika’dan gelir: binlerce yıl önce And Dağları’nda yetiştiriliyordu."
+      ],
+      "t42": [
+        "Çikolata kakao ağacının tohumlarından yapılır.",
+        true,
+        "Kakao meyveleri doğrudan gövdede yetişir, içindeki tohumlar da çikolataya dönüşür."
+      ],
+      "t43": [
+        "Köpekbalığı bir memelidir.",
+        false,
+        "Köpekbalığı bir balıktır: solungaçlarla nefes alır. Denizin memelileri balinalar ve yunuslardır."
+      ],
+      "t44": [
+        "Bazı bambu türleri günde neredeyse bir metre uzayabilir.",
+        true,
+        "Bambu, Dünya’nın en hızlı büyüyen bitkilerinden biridir."
+      ],
+      "t45": [
+        "Baykuş başını tam 360 derece çevirebilir.",
+        false,
+        "Baykuş başını yaklaşık 270 derece çevirebilir — çok ama tam bir tur değil."
+      ],
+      "t46": [
+        "Elmas ile kurşun kalemdeki grafit aynı maddeden yapılmıştır.",
+        true,
+        "İkisi de saf karbondur — sadece atomları farklı dizilmiştir."
+      ],
+      "t47": [
+        "Deve hörgücünde su depolar.",
+        false,
+        "Devenin hörgücünde su değil yağ depolanır — uzun yolculuklarda enerji sağlar."
+      ],
+      "t48": [
+        "İnsan vücudundaki en küçük kemik kulaktadır.",
+        true,
+        "Orta kulaktaki üzengi kemiği yalnızca yaklaşık 3 milimetre uzunluğundadır."
+      ],
+      "t49": [
+        "Büyük papağanlar 50 yıldan fazla yaşayabilir.",
+        true,
+        "İyi bakılan ara ve kakadu papağanları çoğu zaman 50 yıl ya da daha fazla yaşar."
+      ],
+      "t50": [
+        "İlk motorlu uçak uçuşunu Wright kardeşler yaptı.",
+        true,
+        "1903’te uçtular; ilk uçuş 12 saniye sürdü."
+      ],
+      "t51": [
+        "Tekerlek Orta Çağ’da icat edildi.",
+        false,
+        "Tekerlek 5000 yıldan eskidir: yaklaşık 5500 yıl önce Mezopotamya’da kullanılıyordu."
+      ],
+      "t52": [
+        "Denizatı bir balıktır.",
+        true,
+        "Denizatı diğer balıklar gibi solungaçlarla nefes alır ve yüzgeciyle yüzer."
+      ],
+      "t53": [
+        "Sinekkuşu geriye doğru uçabilir.",
+        true,
+        "Sinekkuşları gerçekten geriye doğru uçabilen tek kuşlardır."
+      ],
+      "t54": [
+        "Eyfel Kulesi yazın biraz uzar.",
+        true,
+        "Sıcakta metal genleşir ve kule yaklaşık 15 santimetre uzar."
+      ],
+      "t55": [
+        "Deri insan vücudunun en büyük organıdır.",
+        true,
+        "Bir yetişkinin derisi birkaç kilogram gelir ve bütün vücudu korur."
+      ],
+      "t56": [
+        "Kırmızı renk boğayı kızdırır.",
+        false,
+        "Boğalar kırmızıyı neredeyse ayırt edemez: onları kışkırtan renk değil, harekettir."
+      ],
+      "t57": [
+        "Karasinek yalnızca bir gün yaşar.",
+        false,
+        "Karasinek yaklaşık bir ay yaşar. Yalnızca bir iki gün yaşayan, ergin mayıs sinekleridir."
+      ],
+      "t58": [
+        "Ananas ağaçta yetişir.",
+        false,
+        "Ananas, alçak ve yapraklı bir bitkinin tam ortasından çıkarak yetişir."
+      ],
+      "t59": [
+        "Yer fıstığı bir sert kabuklu yemiştir.",
+        false,
+        "Yer fıstığı bir baklagildir, bezelye ve fasulyenin akrabasıdır. Kabukları toprak altında olgunlaşır."
+      ],
+      "t60": [
+        "Kuzey ve Güney kutupları eşit derecede soğuktur.",
+        false,
+        "Güney Kutbu çok daha soğuktur: yüksek ve buzlu bir kıtadadır, Kuzey Kutbu ise bir okyanusun üzerindedir."
+      ]
+    }
   },
   "ro": {
     "text": {
@@ -8387,7 +17363,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Invită",
       "invited": "Invitație trimisă",
       "inviteNone": "Adăugați prieteni în secțiunea „Prieteni” ca să-i invitați dintr-o atingere.",
-      "inviteSent": "Invitație trimisă către {name}"
+      "inviteSent": "Invitație trimisă către {name}",
+      "truth": "Adevărat sau fals",
+      "tfTitle": "Adevărat sau fals",
+      "tfNote": "Un joc live în doi: fapte uimitoare despre lume. 12 secunde — adevărat sau fals? Un punct pentru fiecare răspuns corect.",
+      "tfShareText": "{name} te invită la jocul live „Adevărat sau fals”",
+      "tfJoinLead": "{name} te așteaptă. Adevărat sau fals — decide repede!",
+      "tfRound": "Faptul {n} din {total}",
+      "tfTrue": "Adevărat",
+      "tfFalse": "Fals",
+      "tfIsTrue": "E adevărat!",
+      "tfIsFalse": "E fals!",
+      "tfFirstYou": "Tu ai răspuns corect mai repede!",
+      "tfFirstThem": "Primul răspuns corect: {name}",
+      "tfFinalWin": "Victorie! Tu știi mai multe despre lume.",
+      "tfFinalLose": "De data asta {name} știe mai multe — revanșă?",
+      "tfFinalDraw": "Egalitate — știți la fel de multe!",
+      "featTruth": "Jocul live „Adevărat sau fals” — fapte uimitoare despre lume"
     },
     "questions": {
       "q01": [
@@ -8809,6 +17801,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Să gătesc",
         "O limbă nouă",
         "Să desenez"
+      ],
+      "q61": [
+        "Ce mâncare îmi iese cel mai bine?",
+        "Supa",
+        "Pilaful",
+        "Produsele de patiserie",
+        "Salata"
+      ],
+      "q62": [
+        "Ce țară vreau să văd prima?",
+        "Turcia",
+        "Japonia",
+        "Maroc",
+        "Norvegia"
+      ],
+      "q63": [
+        "Ce sport aș alege să practic?",
+        "Înotul",
+        "Alergarea",
+        "Ciclismul",
+        "Fotbalul"
+      ],
+      "q64": [
+        "Ce carte aș alege?",
+        "O carte de aventuri",
+        "O carte de istorie",
+        "Basme",
+        "O enciclopedie"
+      ],
+      "q65": [
+        "La ce animale aș merge primele la grădina zoologică?",
+        "La elefanți",
+        "La maimuțe",
+        "La pinguini",
+        "La girafe"
+      ],
+      "q66": [
+        "Cum mă împac cu mâncarea iute?",
+        "Cu cât mai iute, cu atât mai bine",
+        "Puțin e în regulă",
+        "Doar foarte puțin",
+        "Nu mănânc deloc"
+      ],
+      "q67": [
+        "Ce materie îmi plăcea cel mai mult la școală?",
+        "Matematica",
+        "Literatura",
+        "Geografia",
+        "Sportul"
+      ],
+      "q68": [
+        "Meseria visată în copilărie?",
+        "Medic",
+        "Profesor",
+        "Astronaut",
+        "Bucătar"
+      ],
+      "q69": [
+        "Ce cred despre drumeții?",
+        "Visez la una lungă",
+        "Doar pentru o zi",
+        "Doar cu confort",
+        "Acasă e mai bine"
+      ],
+      "q70": [
+        "Cum sunt dimineața?",
+        "Cu energie din plin",
+        "Încă mi-e somn",
+        "În liniște",
+        "Cu chef de vorbă"
+      ],
+      "q71": [
+        "Ce nucă îmi place cel mai mult?",
+        "Alunele",
+        "Nucile",
+        "Caju",
+        "Migdalele"
+      ],
+      "q72": [
+        "Ce aș face cu o oră liberă neașteptată?",
+        "Aș citi",
+        "M-aș plimba",
+        "Mi-aș suna familia",
+        "Aș găti ceva"
+      ],
+      "q73": [
+        "Ce vreme nu-mi place?",
+        "Căldura",
+        "Vântul",
+        "Lapovița",
+        "Gerul aspru"
+      ],
+      "q74": [
+        "În ce culoare mi-aș vopsi camera?",
+        "Alb",
+        "Bej",
+        "Verde",
+        "Bleu"
+      ],
+      "q75": [
+        "Ce aș juca mai degrabă?",
+        "Șah",
+        "Dame",
+        "Un puzzle",
+        "Un joc de cuvinte"
+      ],
+      "q76": [
+        "Ce aș găti pentru musafiri?",
+        "Pilaf",
+        "O plăcintă",
+        "Salate",
+        "Aș comanda mâncare"
+      ],
+      "q77": [
+        "Ce n-aș mânca sigur?",
+        "Ciuperci",
+        "Pește",
+        "Măsline",
+        "Ceapă fiartă"
+      ],
+      "q78": [
+        "Cum îmi beau ceaiul?",
+        "Tare",
+        "Slab",
+        "Dulce",
+        "Cu ierburi"
+      ],
+      "q79": [
+        "Ce contează cel mai mult pentru mine într-o casă?",
+        "Curățenia",
+        "Atmosfera caldă",
+        "Multă lumină",
+        "Liniștea"
+      ],
+      "q80": [
+        "Cum învăț lucruri noi?",
+        "Citind",
+        "Din lecții video",
+        "Încercând în practică",
+        "Întrebându-i pe alții"
+      ],
+      "q81": [
+        "Ce animal sălbatic mă fascinează cel mai mult?",
+        "Tigrul",
+        "Ursul",
+        "Vulturul",
+        "Delfinul"
+      ],
+      "q82": [
+        "Ce i-aș dărui mamei?",
+        "Flori",
+        "Ceva lucrat de mână",
+        "O călătorie",
+        "O pătură călduroasă"
+      ],
+      "q83": [
+        "Ce fac în timpul unei călătorii?",
+        "Mă uit pe geam",
+        "Citesc",
+        "Povestesc",
+        "Ronțăi ceva"
+      ],
+      "q84": [
+        "Mâncarea mea preferată cu pui?",
+        "Frigărui de pui",
+        "Pui cu orez",
+        "Chiftele de pui",
+        "Nuggets"
+      ],
+      "q85": [
+        "Ce loc aleg în tren?",
+        "La geam",
+        "Pe culoar",
+        "Cu spatele la direcția de mers",
+        "Nu contează"
+      ],
+      "q86": [
+        "Ce fac când ceva nu merge bine?",
+        "Acționez imediat",
+        "Întâi mă gândesc",
+        "Cer un sfat",
+        "Mă îngrijorez puțin"
+      ],
+      "q87": [
+        "Care e principala mea calitate?",
+        "Bunătatea",
+        "Sinceritatea",
+        "Perseverența",
+        "Voioșia"
+      ],
+      "q88": [
+        "Unde m-aș odihni cel mai bine?",
+        "La rude, la țară",
+        "La un hotel lângă mare",
+        "În cort",
+        "Acasă"
+      ],
+      "q89": [
+        "Ce produs de patiserie aș alege?",
+        "Samsa",
+        "Hacinapuri",
+        "Ciak-ciak",
+        "Un ecler"
+      ],
+      "q90": [
+        "Ce limbă mi-ar plăcea cel mai mult să învăț?",
+        "Araba",
+        "Engleza",
+        "Turca",
+        "Japoneza"
+      ],
+      "q91": [
+        "Cât aș rezista fără dulciuri?",
+        "O zi",
+        "O săptămână",
+        "O lună",
+        "Cât e nevoie"
+      ],
+      "q92": [
+        "Ce fac când întârzii?",
+        "Alerg cât pot de repede",
+        "Sun dinainte să anunț",
+        "Iau un taxi",
+        "Nu întârzii niciodată"
+      ],
+      "q93": [
+        "Ce fac când se strică un aparat?",
+        "Îl repar eu",
+        "Citesc instrucțiunile",
+        "Cer ajutor",
+        "Apăs pe toate butoanele"
+      ],
+      "q94": [
+        "Ce pun primul în valiză?",
+        "O trusă de prim ajutor",
+        "O carte",
+        "Un încărcător",
+        "O gustare"
+      ],
+      "q95": [
+        "Ce activitate mă liniștește?",
+        "Gătitul",
+        "Făcutul ordinii",
+        "Desenul",
+        "O plimbare"
+      ],
+      "q96": [
+        "Ce vreau să fac la pensie?",
+        "Grădinărit",
+        "Călătorii",
+        "Lectură",
+        "Timp cu nepoții"
+      ],
+      "q97": [
+        "Ce mă enervează cel mai tare?",
+        "Zgomotul",
+        "Dezordinea",
+        "Întârzierile",
+        "Lipsa de politețe"
+      ],
+      "q98": [
+        "Ce miros îmi place cel mai mult?",
+        "Pâinea proaspătă",
+        "Ploaia",
+        "Florile",
+        "Marea"
+      ],
+      "q99": [
+        "Ce aș alege la desert?",
+        "Fructe",
+        "Înghețată",
+        "Plăcintă",
+        "Doar un ceai"
       ]
     },
     "yesNo": {
@@ -9011,6 +18276,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Mai jucăm o dată mai târziu?",
         "vrea încă o rundă",
         "preferă o îmbrățișare în loc de joc"
+      ],
+      "c41": [
+        "Îți place mâncarea iute?",
+        "cu cât mai iute, cu atât mai bine",
+        "alege ceva mai blând"
+      ],
+      "c42": [
+        "Știi să înoți?",
+        "înoată ca peștele",
+        "deocamdată stă aproape de mal"
+      ],
+      "c43": [
+        "Ți-ar plăcea să ai o pisică?",
+        "se gândește deja la un nume",
+        "preferă câinii"
+      ],
+      "c44": [
+        "Ți-ar plăcea să vizitezi Istanbulul într-o zi?",
+        "visează deja la Bosfor",
+        "ar alege alt oraș"
+      ],
+      "c45": [
+        "Îți place să gătești?",
+        "gătește cu plăcere",
+        "ar spăla mai degrabă vasele"
+      ],
+      "c46": [
+        "Ți-ar plăcea să înveți să faci pilaf?",
+        "caută deja o rețetă",
+        "ar gusta mai degrabă pilaful altcuiva"
+      ],
+      "c47": [
+        "Îți place să citești cărți?",
+        "are mereu o carte la îndemână",
+        "preferă să asculte povești"
+      ],
+      "c48": [
+        "Știi să mergi pe bicicletă?",
+        "ar putea porni chiar acum",
+        "promite să învețe"
+      ],
+      "c49": [
+        "Preferi munții în locul mării?",
+        "alege munții",
+        "alege marea"
+      ],
+      "c50": [
+        "Ți-ar plăcea să vezi un deșert?",
+        "visează la dune de nisip",
+        "ar alege mai degrabă o pădure"
+      ],
+      "c51": [
+        "Îți place iarna?",
+        "așteaptă prima zăpadă",
+        "așteaptă vara"
+      ],
+      "c52": [
+        "Bei ceaiul fără zahăr?",
+        "iubește gustul curat al ceaiului",
+        "nu se poate fără o linguriță de zahăr"
+      ],
+      "c53": [
+        "Ți-e frică de păianjeni?",
+        "stă cât mai departe de ei",
+        "îi scoate liniștit afară"
+      ],
+      "c54": [
+        "Îți place să desenezi?",
+        "ia deja pensula în mână",
+        "preferă să privească picturile altora"
+      ],
+      "c55": [
+        "Ți-ar plăcea să vezi aurora boreală?",
+        "caută deja unde se poate vedea",
+        "ar privi mai degrabă stelele"
+      ],
+      "c56": [
+        "Îți place vremea ploioasă?",
+        "iubește sunetul ploii de afară",
+        "așteaptă soarele"
+      ],
+      "c57": [
+        "Știi să călărești?",
+        "stă cu încredere în șa",
+        "deocamdată doar visează la asta"
+      ],
+      "c58": [
+        "Ți-ar plăcea să ai un câine?",
+        "visează la un prieten credincios",
+        "are deocamdată destule de îngrijit"
+      ],
+      "c59": [
+        "Preferi dulcele în locul săratului?",
+        "nu poate trăi fără dulciuri",
+        "alege săratul"
+      ],
+      "c60": [
+        "Îți place să călătorești cu trenul?",
+        "iubește țăcănitul roților",
+        "alege avionul"
+      ],
+      "c61": [
+        "Îți e ușor să începi ziua devreme?",
+        "începe ziua cu multă energie",
+        "se trezește de-a binelea abia la prânz"
+      ],
+      "c62": [
+        "Îți place să campezi în cort?",
+        "își face deja rucsacul",
+        "alege un hotel primitor"
+      ],
+      "c63": [
+        "Ți-ar plăcea să locuiești lângă mare?",
+        "visează la sunetul valurilor",
+        "alege orașul"
+      ],
+      "c64": [
+        "Mănânci înghețată iarna?",
+        "o mănâncă și pe ger",
+        "doar vara"
+      ],
+      "c65": [
+        "Îți place ciocolata?",
+        "îi știe toate felurile",
+        "trece liniștit pe lângă ea"
+      ],
+      "c66": [
+        "Știi să faci plăcinte?",
+        "coace ca o bunică",
+        "promite să învețe"
+      ],
+      "c67": [
+        "Îți place să privești stelele?",
+        "cunoaște constelațiile",
+        "preferă o zi însorită"
+      ],
+      "c68": [
+        "Ți-ar plăcea să ai cândva grădina ta?",
+        "alege deja răsadurile",
+        "va începe cu o floare la ghiveci"
+      ],
+      "c69": [
+        "Îți plac florile de câmp?",
+        "iubește margaretele și albăstrelele",
+        "preferă florile de grădină"
+      ],
+      "c70": [
+        "Bei cafea?",
+        "ziua nu începe fără cafea",
+        "alege ceaiul"
+      ],
+      "c71": [
+        "Îți place limonada de casă?",
+        "taie deja lămâi",
+        "ar bea mai degrabă apă"
+      ],
+      "c72": [
+        "Ți-ar plăcea să vizitezi Japonia într-o zi?",
+        "visează să vadă cireșii înfloriți",
+        "ar alege altă țară"
+      ],
+      "c73": [
+        "Îți place toamna?",
+        "iubește foșnetul frunzelor sub pași",
+        "așteaptă primăvara"
+      ],
+      "c74": [
+        "Îți place mirosul de lavandă?",
+        "iubește acest parfum",
+        "preferă alte arome"
+      ],
+      "c75": [
+        "Îți plac jocurile de societate?",
+        "pregătește deja tabla",
+        "preferă o plimbare"
+      ],
+      "c76": [
+        "Știi să conduci mașina?",
+        "conduce cu încredere",
+        "deocamdată stă pe locul pasagerului"
+      ],
+      "c77": [
+        "Ți-ar plăcea să vezi oceanul într-o zi?",
+        "visează la un val mare",
+        "marea e de ajuns"
+      ],
+      "c78": [
+        "Ți-ar plăcea să trăiești o vreme la o fermă?",
+        "dă deja de mâncare găinilor",
+        "rămâne la oraș"
+      ],
+      "c79": [
+        "Îți plac orașele mari?",
+        "iubește luminile orașului",
+        "alege liniștea și pacea"
+      ],
+      "c80": [
+        "Preferi fructele în locul dulciurilor?",
+        "alege fructele",
+        "alege dulciurile"
+      ],
+      "c81": [
+        "Ți-ar plăcea să vezi delfini în mare?",
+        "și-ar dori tare mult să-i vadă",
+        "ar citi mai degrabă despre ei"
+      ],
+      "c82": [
+        "Îți place vara?",
+        "așteaptă zilele călduroase",
+        "iubește vremea răcoroasă"
+      ],
+      "c83": [
+        "Îți place să te plimbi prin parc?",
+        "se plimbă pe orice vreme",
+        "preferă să stea acasă"
+      ],
+      "c84": [
+        "Îți place să scrii de mână?",
+        "are un scris frumos",
+        "tastează pe telefon"
+      ],
+      "c85": [
+        "Îți plac plimbările cu barca?",
+        "ia deja vâslele",
+        "rămâne pe mal"
+      ],
+      "c86": [
+        "Ți-ar plăcea să călătorești în jurul lumii?",
+        "desenează deja traseul",
+        "câteva țări sunt de ajuns"
+      ],
+      "c87": [
+        "Știi să faci un om de zăpadă?",
+        "îl face pe cel mai mare",
+        "ar prefera o bătaie cu zăpadă"
+      ],
+      "c88": [
+        "Ți-ar plăcea să înveți ceva nou anul acesta?",
+        "își alege deja un curs",
+        "are deja destule de făcut"
+      ],
+      "c89": [
+        "Îți place liniștea?",
+        "prețuiește liniștea",
+        "îi place când e animație"
+      ],
+      "c90": [
+        "Îți place să faci cadouri familiei?",
+        "bucură familia fără niciun motiv anume",
+        "preferă să ajute în mod practic"
       ]
     },
     "loves": {
@@ -9125,6 +18640,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Pădurea",
         "Deșertul",
         "Aurora boreală"
+      ],
+      "s17": [
+        "Fructul preferat?",
+        "Măr",
+        "Căpșună",
+        "Pepene verde",
+        "Struguri"
+      ],
+      "s18": [
+        "Ce facem într-o zi liberă?",
+        "Drumeție la munte",
+        "Gătim acasă",
+        "Un muzeu",
+        "Pescuit"
+      ],
+      "s19": [
+        "Micul dejun preferat?",
+        "Clătite",
+        "Omletă",
+        "Terci cu fructe de pădure",
+        "Croissant"
+      ],
+      "s20": [
+        "Pasărea preferată?",
+        "Bufniță",
+        "Papagal",
+        "Lebădă",
+        "Păun"
+      ],
+      "s21": [
+        "Ce oraș vizităm?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Sportul preferat?",
+        "Fotbal",
+        "Înot",
+        "Tenis",
+        "Călărie"
+      ],
+      "s23": [
+        "Ce plantăm în grădină?",
+        "Un măr",
+        "Trandafiri",
+        "Legume",
+        "Căpșuni"
+      ],
+      "s24": [
+        "Produsul de patiserie preferat?",
+        "Plăcintele",
+        "Gogoșile",
+        "Biscuiții",
+        "Baclavaua"
+      ],
+      "s25": [
+        "Unde să locuim?",
+        "Lângă un râu",
+        "Într-o pădure",
+        "Într-un oraș mare",
+        "Pe o insulă"
+      ],
+      "s26": [
+        "Vietatea marină preferată?",
+        "Broasca țestoasă",
+        "Balena",
+        "Caracatița",
+        "Căluțul de mare"
+      ],
+      "s27": [
+        "Cu ce ne plimbăm?",
+        "Bicicleta",
+        "Trotineta",
+        "Balonul cu aer cald",
+        "Barca"
+      ],
+      "s28": [
+        "Pasiunea preferată?",
+        "Tricotatul",
+        "Fotografia de natură",
+        "Grădinăritul",
+        "Caligrafia"
+      ],
+      "s29": [
+        "Supa preferată?",
+        "Borș",
+        "Supă de pui",
+        "Supă de dovleac",
+        "Supă de linte"
+      ],
+      "s30": [
+        "Animal din pădure?",
+        "Arici",
+        "Veveriță",
+        "Vulpe",
+        "Cerb"
+      ],
+      "s31": [
+        "Ceva de ronțăit?",
+        "Curmale",
+        "Migdale",
+        "Fistic",
+        "Caise uscate"
+      ],
+      "s32": [
+        "Ce luăm în drumeție?",
+        "Un cort",
+        "Un termos",
+        "O hartă",
+        "O lanternă"
+      ],
+      "s33": [
+        "Desertul preferat?",
+        "Budincă",
+        "Cheesecake",
+        "Clătite cu miere",
+        "Salată de fructe"
+      ],
+      "s34": [
+        "Ce facem iarna?",
+        "Un om de zăpadă",
+        "Mers cu sania",
+        "Ceai la fereastră",
+        "Schi"
+      ],
+      "s35": [
+        "Ce facem vara?",
+        "Înotăm",
+        "Culegem fructe de pădure",
+        "Ne plimbăm cu barca",
+        "Construim un castel de nisip"
+      ],
+      "s36": [
+        "Cu ce pictăm?",
+        "Acuarele",
+        "Creioane",
+        "Creioane cerate",
+        "Culori pe pânză"
+      ],
+      "s37": [
+        "Leguma preferată?",
+        "Morcov",
+        "Roșie",
+        "Porumb",
+        "Dovleac"
+      ],
+      "s38": [
+        "Ce face casa primitoare?",
+        "Un șemineu",
+        "O pătură moale",
+        "Plante de apartament",
+        "Un raft cu cărți"
+      ],
+      "s39": [
+        "Ce jucăm?",
+        "Șah",
+        "Puzzle",
+        "Jocuri de societate",
+        "Jocuri cu mingea"
+      ],
+      "s40": [
+        "Cine trăiește la fermă?",
+        "Vaca",
+        "Mielul",
+        "Găina",
+        "Iedul"
+      ],
+      "s41": [
+        "Ceai cu ce?",
+        "Miere",
+        "Lămâie",
+        "Dulceață",
+        "Mentă"
+      ],
+      "s42": [
+        "Ce găsim la mare?",
+        "Un far",
+        "Scoici",
+        "O barcă cu pânze",
+        "Pescăruși"
+      ],
+      "s43": [
+        "Cum începem dimineața?",
+        "Gimnastică",
+        "O cană de ceai",
+        "O plimbare",
+        "O carte"
+      ],
+      "s44": [
+        "Fructul de pădure preferat?",
+        "Zmeură",
+        "Afine",
+        "Cireșe",
+        "Mure"
       ]
     },
     "who": [
@@ -9167,7 +18878,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Cine dintre noi își amintește mai des povești amuzante?",
       "Cine dintre noi are mai multă răbdare?",
       "Cine dintre noi spune mai des „mulțumesc”?",
-      "Cine dintre noi sare mai repede în ajutor?"
+      "Cine dintre noi sare mai repede în ajutor?",
+      "Cine dintre noi socotește mai bine în minte?",
+      "Cine dintre noi citește mai mult?",
+      "Cine dintre noi tastează mai repede?",
+      "Cine dintre noi își sună mai des părinții?",
+      "Cine dintre noi spune povești mai frumos?",
+      "Cine dintre noi are scrisul mai îngrijit?",
+      "Cine dintre noi iubește mai mult mâncarea iute?",
+      "Cine dintre noi uită mai des lucruri acasă?",
+      "Cine dintre noi se descurcă mai bine cu aparatele?",
+      "Cine dintre noi iubește mai mult să învețe lucruri noi?",
+      "Cine dintre noi planifică mai bine?",
+      "Cine dintre noi se tocmește mai bine la piață?",
+      "Cine dintre noi iubește mai mult natura?",
+      "Cine dintre noi mănâncă mai repede?",
+      "Cine dintre noi bea mai mult ceai?",
+      "Cine dintre noi are mai multă grijă de plante?",
+      "Cine dintre noi știe mai bine geografie?",
+      "Cine dintre noi joacă mai bine șah?",
+      "Cine dintre noi alege fructe mai bune la piață?",
+      "Cine dintre noi se uită mai des la prognoza meteo?",
+      "Cine dintre noi se teme mai mult de păianjeni?",
+      "Cine dintre noi are mai mult curaj?",
+      "Cine dintre noi are mai multă curiozitate?",
+      "Cine dintre noi rezolvă mai repede puzzle-urile?",
+      "Cine dintre noi desenează mai bine?",
+      "Cine dintre noi îi ajută mai des pe vecini?",
+      "Cine dintre noi se înțelege mai bine cu copiii?",
+      "Cine dintre noi iubește mai mult plimbările?",
+      "Cine dintre noi citește mai des instrucțiunile?",
+      "Cine dintre noi ține minte mai bine numele?",
+      "Cine dintre noi învață mai repede cuvinte într-o altă limbă?",
+      "Cine dintre noi coace mai bine?",
+      "Cine dintre noi dă sfaturi mai bune?",
+      "Cine dintre noi iubește mai mult vremea rece?",
+      "Cine dintre noi s-ar descurca mai bine într-o drumeție?",
+      "Cine dintre noi citește mai des știrile?",
+      "Cine dintre noi încearcă mai des mâncăruri noi?",
+      "Cine dintre noi face mai repede bagajul?",
+      "Cine dintre noi repară mai bine lucrurile?",
+      "Cine dintre noi vorbește mai des cu animalele?",
+      "Cine dintre noi spală mai des vasele?",
+      "Cine dintre noi știe mai bine istorie?",
+      "Cine dintre noi amână mai des lucrurile?",
+      "Cine dintre noi se împrietenește mai repede cu oameni noi?",
+      "Cine dintre noi are mai multă grijă de sănătate?"
     ],
     "phrases": [
       "Zâmbesc când tu…",
@@ -9199,8 +18955,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "O dimineață cu tine este…",
       "Dacă am fi un singur cuvânt, acesta ar fi…",
       "Vreau să învăț de la tine să…",
-      "Îți mulțumesc că mereu…"
-    ]
+      "Îți mulțumesc că mereu…",
+      "În copilărie, mâncarea mea preferată era…",
+      "Dacă aș primi o zi în orice țară, aș…",
+      "Cel mai bun sfat pe care l-am primit vreodată este…",
+      "Râd mereu când…",
+      "Locul meu preferat din orașul natal este…",
+      "Dacă aș avea un mic magazin al meu, acolo s-ar vinde…",
+      "Mâncarea pe care o gătesc cel mai bine este…",
+      "Un vis din copilărie pe care încă mi-l amintesc este…",
+      "E ușor să mă bucuri dacă…",
+      "Cel mai uimitor loc în care am fost este…",
+      "Vreau să învăț…",
+      "Ziua mea liberă perfectă începe cu…",
+      "Dacă aș putea avea orice animal, acesta ar fi…",
+      "Familia mea spune mereu că eu…",
+      "Nu mă pot obișnui deloc cu…",
+      "Cel mai util obicei al meu este…",
+      "Cea mai bună carte pe care am citit-o este…",
+      "Peste zece ani mi-ar plăcea să…",
+      "Casa visurilor mele este…",
+      "Cel mai amuzant lucru care mi s-a întâmplat în copilărie este…",
+      "Pentru mine, fericirea înseamnă…",
+      "Îmi e greu să renunț la…",
+      "Dacă aș avea o superputere, aceasta ar…",
+      "Ce prețuiesc cel mai mult la oameni este…",
+      "Când am o seară liberă, eu…",
+      "Mirosul meu preferat este…",
+      "Mâncarea pe care n-aș mânca-o niciodată este…",
+      "Singurul lucru fără de care nu plec niciodată de acasă este…",
+      "Mi-ar plăcea să vizitez… pentru că…",
+      "Cel mai frumos cadou pe care l-am primit vreodată este…",
+      "Cel mai neobișnuit obicei al meu este…",
+      "Dacă aș avea în fiecare zi o oră în plus, aș…",
+      "Cineva de la care învăț mult este…",
+      "Într-o zi grea, mă ajută…",
+      "Cel mai gustos lucru pe care l-am încercat într-o călătorie este…",
+      "Dacă aș putea schimba meseria pentru o zi, aș alege…",
+      "Anotimpul cel mai drag inimii mele este…",
+      "Prietenii mei spun că eu…",
+      "Într-o zi aș vrea să învăț pe cineva…",
+      "O mică bucurie din ziua mea este…"
+    ],
+    "truth": {
+      "t01": [
+        "Caracatița are trei inimi.",
+        true,
+        "Două inimi pompează sângele prin branhii, iar a treia îl pompează prin tot corpul."
+      ],
+      "t02": [
+        "Marele Zid Chinezesc se vede cu ochiul liber de pe Lună.",
+        false,
+        "Nu se vede: zidul e mult prea îngust. Chiar și de pe orbită e foarte greu de observat."
+      ],
+      "t03": [
+        "Mierea se poate păstra mii de ani fără să se strice.",
+        true,
+        "În mormintele din Egiptul antic s-a găsit miere veche de mii de ani, încă bine păstrată."
+      ],
+      "t04": [
+        "Bananele cresc în copaci.",
+        false,
+        "Bananierul este o plantă ierboasă uriașă: „trunchiul” lui e făcut din frunze strâns rulate."
+      ],
+      "t05": [
+        "Venus este cea mai fierbinte planetă din Sistemul Solar.",
+        true,
+        "Atmosfera groasă o încălzește pe Venus la circa 460 °C — mai mult decât Mercur."
+      ],
+      "t06": [
+        "Liliecii sunt orbi.",
+        false,
+        "Liliecii văd, iar pe întuneric se orientează și prin ecolocație."
+      ],
+      "t07": [
+        "Balena este un pește.",
+        false,
+        "Balenele sunt mamifere: respiră aer și își hrănesc puii cu lapte."
+      ],
+      "t08": [
+        "Sahara este cel mai mare deșert din lume.",
+        false,
+        "Cel mai mare deșert este Antarctica. Sahara este cel mai mare deșert fierbinte."
+      ],
+      "t09": [
+        "Girafa are tot atâtea vertebre în gât cât omul.",
+        true,
+        "Amândoi au șapte vertebre cervicale — doar că ale girafei sunt foarte lungi."
+      ],
+      "t10": [
+        "Din punct de vedere botanic, roșia este o bacă.",
+        true,
+        "Botaniștii consideră roșia o bacă: un fruct cărnos, cu semințe înăuntru."
+      ],
+      "t11": [
+        "Din punct de vedere botanic, căpșuna este o bacă.",
+        false,
+        "Este un fruct fals: fructele adevărate sunt micile „semințe” de pe exterior."
+      ],
+      "t12": [
+        "În spațiu se poate auzi o explozie.",
+        false,
+        "În spațiu aproape că nu există aer, așa că sunetul nu are prin ce să se propage."
+      ],
+      "t13": [
+        "Sus, la munte, apa fierbe la o temperatură mai mică.",
+        true,
+        "Acolo presiunea aerului e mai mică, așa că apa fierbe înainte să ajungă la 100 °C."
+      ],
+      "t14": [
+        "Pinguinii trăiesc la Polul Nord.",
+        false,
+        "Pinguinii sălbatici trăiesc doar în emisfera sudică, nu în nordul îndepărtat."
+      ],
+      "t15": [
+        "Everestul este cel mai înalt munte deasupra nivelului mării.",
+        true,
+        "Everestul se înalță la circa 8.849 de metri deasupra nivelului mării."
+      ],
+      "t16": [
+        "Oamenii își folosesc doar 10% din creier.",
+        false,
+        "E un mit: aproape fiecare parte a creierului e activă de-a lungul unei zile."
+      ],
+      "t17": [
+        "Inima omului bate de circa 100.000 de ori pe zi.",
+        true,
+        "La aproximativ 70 de bătăi pe minut, asta înseamnă cam 100.000 de bătăi pe zi."
+      ],
+      "t18": [
+        "Peștișorul auriu are o memorie de doar trei secunde.",
+        false,
+        "Experimentele arată că peștișorii aurii își amintesc luni întregi ce au învățat."
+      ],
+      "t19": [
+        "Australia este și țară, și continent.",
+        true,
+        "Australia este singura țară care ocupă un întreg continent."
+      ],
+      "t20": [
+        "Fulgerul nu lovește niciodată de două ori în același loc.",
+        false,
+        "Ba lovește: clădirile înalte sunt lovite de fulger de multe ori pe an."
+      ],
+      "t21": [
+        "Struțul își bagă capul în nisip când se sperie.",
+        false,
+        "E un mit: un struț speriat fuge sau se lipește de pământ ca să se ascundă."
+      ],
+      "t22": [
+        "Cea mai mică pasăre din lume este o pasăre colibri.",
+        true,
+        "Colibriul-albină din Cuba cântărește circa 2 grame — mai puțin decât orice altă pasăre."
+      ],
+      "t23": [
+        "Pepenele verde are cam 90% apă.",
+        true,
+        "Pepenele verde are în jur de 92% apă — de aceea e atât de răcoritor."
+      ],
+      "t24": [
+        "Păianjenul are șase picioare.",
+        false,
+        "Păianjenul are opt picioare. Insectele au șase, iar păianjenii nu sunt insecte."
+      ],
+      "t25": [
+        "Luna are lumină proprie.",
+        false,
+        "Luna nu are lumină proprie: reflectă lumina Soarelui."
+      ],
+      "t26": [
+        "Elefantul este cel mai mare animal de uscat.",
+        true,
+        "Un elefant african de savană poate cântări peste 6 tone."
+      ],
+      "t27": [
+        "Balena albastră este cel mai mare animal cunoscut de știință.",
+        true,
+        "Balenele albastre pot depăși 30 de metri lungime — mai mari decât orice dinozaur cunoscut."
+      ],
+      "t28": [
+        "Cameleonul își schimbă culoarea doar ca să se camufleze.",
+        false,
+        "Culoarea lui depinde mai mult de stare, de temperatură și de semnalele pentru alți cameleoni."
+      ],
+      "t29": [
+        "Telefonul a fost inventat de Thomas Edison.",
+        false,
+        "Alexander Graham Bell a primit brevetul pentru telefon în 1876."
+      ],
+      "t30": [
+        "Penicilina a fost descoperită de Alexander Fleming.",
+        true,
+        "Fleming a descoperit penicilina în 1928 — primul antibiotic."
+      ],
+      "t31": [
+        "Cel mai înalt vulcan din Sistemul Solar se află pe Marte.",
+        true,
+        "Olympus Mons de pe Marte are circa 22 km înălțime — de aproape 2,5 ori mai mult decât Everestul."
+      ],
+      "t32": [
+        "Sângele din venele noastre este albastru.",
+        false,
+        "Sângele e mereu roșu; venele doar par albastre din cauza felului în care lumina trece prin piele."
+      ],
+      "t33": [
+        "Atlanticul este cel mai mare ocean de pe Pământ.",
+        false,
+        "Cel mai mare este Pacificul: e mai mare decât tot uscatul de pe Pământ la un loc."
+      ],
+      "t34": [
+        "Rusia este cea mai mare țară din lume ca suprafață.",
+        true,
+        "Rusia ocupă peste 17 milioane de kilometri pătrați."
+      ],
+      "t35": [
+        "Canada are cea mai lungă linie de coastă din lume.",
+        true,
+        "Coasta Canadei măsoară peste 200.000 km — mai mult decât a oricărei alte țări."
+      ],
+      "t36": [
+        "Stomacul vacii are patru compartimente.",
+        true,
+        "Vaca are un singur stomac cu patru camere — așa digeră iarba."
+      ],
+      "t37": [
+        "Leul este cea mai mare felină din lume.",
+        false,
+        "Cea mai mare felină este tigrul, mai ales tigrul siberian."
+      ],
+      "t38": [
+        "Pământul este planeta cea mai apropiată de Soare.",
+        false,
+        "Cea mai apropiată este Mercur, apoi Venus; Pământul este a treia planetă."
+      ],
+      "t39": [
+        "Lumina Soarelui ajunge pe Pământ în circa 8 minute.",
+        true,
+        "Lumina parcurge cei 150 de milioane de km de la Soare în aproximativ 8 minute și 20 de secunde."
+      ],
+      "t40": [
+        "Delfinii dorm cu câte o jumătate de creier pe rând.",
+        true,
+        "O jumătate se odihnește, iar cealaltă rămâne atentă și nu uită să respire."
+      ],
+      "t41": [
+        "Cartoful provine din Irlanda.",
+        false,
+        "Cartoful provine din America de Sud: era cultivat în Anzi acum mii de ani."
+      ],
+      "t42": [
+        "Ciocolata se face din semințele arborelui de cacao.",
+        true,
+        "Păstăile de cacao cresc direct pe trunchi, iar semințele din ele devin ciocolată."
+      ],
+      "t43": [
+        "Rechinul este un mamifer.",
+        false,
+        "Rechinul este un pește: respiră prin branhii. Mamiferele mării sunt balenele și delfinii."
+      ],
+      "t44": [
+        "Unele specii de bambus pot crește aproape un metru pe zi.",
+        true,
+        "Bambusul este una dintre plantele cu cea mai rapidă creștere de pe Pământ."
+      ],
+      "t45": [
+        "Bufnița își poate roti capul un cerc complet, 360 de grade.",
+        false,
+        "Bufnița își poate roti capul cu circa 270 de grade — mult, dar nu un cerc întreg."
+      ],
+      "t46": [
+        "Diamantul și grafitul din creion sunt făcute din aceeași substanță.",
+        true,
+        "Amândouă sunt carbon pur — doar atomii sunt așezați diferit."
+      ],
+      "t47": [
+        "Cămila păstrează apă în cocoașă.",
+        false,
+        "Cocoașa cămilei păstrează grăsime, nu apă — îi dă energie în drumurile lungi."
+      ],
+      "t48": [
+        "Cel mai mic os din corpul omului se află în ureche.",
+        true,
+        "Scărița din urechea medie are doar circa 3 milimetri."
+      ],
+      "t49": [
+        "Papagalii mari pot trăi peste 50 de ani.",
+        true,
+        "Papagalii ara și cacadu bine îngrijiți trăiesc adesea 50 de ani sau mai mult."
+      ],
+      "t50": [
+        "Frații Wright au făcut primul zbor cu un avion cu motor.",
+        true,
+        "Au zburat în 1903; primul zbor a durat 12 secunde."
+      ],
+      "t51": [
+        "Roata a fost inventată în Evul Mediu.",
+        false,
+        "Roata are peste 5000 de ani: era folosită în Mesopotamia acum circa 5500 de ani."
+      ],
+      "t52": [
+        "Căluțul de mare este un pește.",
+        true,
+        "Căluțul de mare respiră prin branhii și înoată cu ajutorul unei înotătoare, ca alți pești."
+      ],
+      "t53": [
+        "Colibriul poate zbura înapoi.",
+        true,
+        "Colibrii sunt singurele păsări care pot zbura cu adevărat înapoi."
+      ],
+      "t54": [
+        "Turnul Eiffel crește puțin vara.",
+        true,
+        "Căldura dilată metalul, iar turnul crește cu circa 15 centimetri."
+      ],
+      "t55": [
+        "Pielea este cel mai mare organ al corpului omenesc.",
+        true,
+        "Pielea unui adult cântărește câteva kilograme și protejează tot corpul."
+      ],
+      "t56": [
+        "Culoarea roșie înfurie taurul.",
+        false,
+        "Taurii abia deosebesc roșul: îi provoacă mișcarea, nu culoarea."
+      ],
+      "t57": [
+        "Musca de casă trăiește doar o zi.",
+        false,
+        "Musca de casă trăiește cam o lună. Doar efemerele adulte trăiesc o zi sau două."
+      ],
+      "t58": [
+        "Ananasul crește în copaci.",
+        false,
+        "Ananasul crește pe o plantă joasă, cu frunze, chiar din mijlocul ei."
+      ],
+      "t59": [
+        "Arahida este o nucă.",
+        false,
+        "Arahida este o leguminoasă, rudă cu mazărea și fasolea. Păstăile ei se coc sub pământ."
+      ],
+      "t60": [
+        "Polul Nord și Polul Sud sunt la fel de reci.",
+        false,
+        "Polul Sud este mult mai rece: se află pe un continent înalt și înghețat, iar Polul Nord pe un ocean."
+      ]
+    }
   },
   "cs": {
     "text": {
@@ -9409,7 +19507,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Pozvat",
       "invited": "Pozvánka odeslána",
       "inviteNone": "Přidejte si přátele v sekci „Přátelé“ a zvěte je jedním klepnutím.",
-      "inviteSent": "Pozvánka odeslána: {name}"
+      "inviteSent": "Pozvánka odeslána: {name}",
+      "truth": "Pravda, nebo lež",
+      "tfTitle": "Pravda, nebo lež",
+      "tfNote": "Živá hra pro dva: úžasná fakta o světě. 12 sekund — pravda, nebo lež? Za každou správnou odpověď bod.",
+      "tfShareText": "{name} tě zve do živé hry „Pravda, nebo lež“",
+      "tfJoinLead": "{name} na vás čeká. Pravda, nebo lež — rozhodněte rychle!",
+      "tfRound": "Fakt {n} z {total}",
+      "tfTrue": "Pravda",
+      "tfFalse": "Lež",
+      "tfIsTrue": "Je to pravda!",
+      "tfIsFalse": "Není to pravda!",
+      "tfFirstYou": "Správně a jako první — to jste vy!",
+      "tfFirstThem": "Jako první správně: {name}",
+      "tfFinalWin": "Vítězství! O světě víte víc.",
+      "tfFinalLose": "Tentokrát ví víc {name} — odveta?",
+      "tfFinalDraw": "Remíza — víte toho přesně stejně!",
+      "featTruth": "Živá hra „Pravda, nebo lež“ — úžasná fakta o světě"
     },
     "questions": {
       "q01": [
@@ -9831,6 +19945,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Vařit",
         "Nový jazyk",
         "Kreslit"
+      ],
+      "q61": [
+        "Které jídlo mi jde nejlíp?",
+        "Polévka",
+        "Pilaf",
+        "Pečivo",
+        "Salát"
+      ],
+      "q62": [
+        "Kterou zemi chci vidět jako první?",
+        "Turecko",
+        "Japonsko",
+        "Maroko",
+        "Norsko"
+      ],
+      "q63": [
+        "Jakému sportu bych se spíš věnoval/a?",
+        "Plavání",
+        "Běh",
+        "Cyklistika",
+        "Fotbal"
+      ],
+      "q64": [
+        "Jakou knihu bych si vybral/a?",
+        "Dobrodružnou",
+        "Historickou",
+        "Pohádky",
+        "Encyklopedii"
+      ],
+      "q65": [
+        "Ke kterým zvířatům bych v zoo zamířil/a nejdřív?",
+        "K slonům",
+        "K opicím",
+        "K tučňákům",
+        "K žirafám"
+      ],
+      "q66": [
+        "Jak to mám s pálivým jídlem?",
+        "Čím pálivější, tím lepší",
+        "Trochu je fajn",
+        "Jen úplně trošku",
+        "Vůbec ho nejím"
+      ],
+      "q67": [
+        "Který školní předmět mě bavil nejvíc?",
+        "Matematika",
+        "Literatura",
+        "Zeměpis",
+        "Tělocvik"
+      ],
+      "q68": [
+        "Moje vysněné povolání v dětství?",
+        "Lékař",
+        "Učitel",
+        "Kosmonaut",
+        "Kuchař"
+      ],
+      "q69": [
+        "Jak to mám s pěšími výlety?",
+        "Sním o dlouhém putování",
+        "Jen na jeden den",
+        "Jen s pohodlím",
+        "Doma je líp"
+      ],
+      "q70": [
+        "Moje nálada po ránu?",
+        "Plno energie",
+        "Ještě se mi chce spát",
+        "Klid a ticho",
+        "Chuť povídat"
+      ],
+      "q71": [
+        "Který ořech mám nejradši?",
+        "Lískový",
+        "Vlašský",
+        "Kešu",
+        "Mandle"
+      ],
+      "q72": [
+        "Co s nečekanou volnou hodinou?",
+        "Četba",
+        "Procházka",
+        "Zavolat rodině",
+        "Uvařit něco"
+      ],
+      "q73": [
+        "Jaké počasí mi vadí?",
+        "Vedro",
+        "Vítr",
+        "Plískanice",
+        "Tuhý mráz"
+      ],
+      "q74": [
+        "Jakou barvu by měl mít můj pokoj?",
+        "Bílou",
+        "Béžovou",
+        "Zelenou",
+        "Světle modrou"
+      ],
+      "q75": [
+        "Co bych si raději zahrál/a?",
+        "Šachy",
+        "Dámu",
+        "Skládačku",
+        "Slovní hru"
+      ],
+      "q76": [
+        "Co bych uvařil/a pro hosty?",
+        "Pilaf",
+        "Koláč",
+        "Saláty",
+        "Objednám jídlo"
+      ],
+      "q77": [
+        "Co bych určitě nejedl/a?",
+        "Houby",
+        "Rybu",
+        "Olivy",
+        "Vařenou cibuli"
+      ],
+      "q78": [
+        "Jaký piju čaj?",
+        "Silný",
+        "Slabý",
+        "Sladký",
+        "Bylinkový"
+      ],
+      "q79": [
+        "Co je pro mě v domově nejdůležitější?",
+        "Čistota",
+        "Útulnost",
+        "Hodně světla",
+        "Ticho"
+      ],
+      "q80": [
+        "Jak se učím nové věci?",
+        "Čtením",
+        "Z videolekcí",
+        "Zkouším to v praxi",
+        "Ptám se druhých"
+      ],
+      "q81": [
+        "Které divoké zvíře mě nejvíc fascinuje?",
+        "Tygr",
+        "Medvěd",
+        "Orel",
+        "Delfín"
+      ],
+      "q82": [
+        "Co bych daroval/a mamince?",
+        "Květiny",
+        "Něco vlastnoručně vyrobeného",
+        "Výlet",
+        "Teplou deku"
+      ],
+      "q83": [
+        "Co dělám na cestách?",
+        "Koukám z okna",
+        "Čtu",
+        "Povídám si",
+        "Něco zobu"
+      ],
+      "q84": [
+        "Moje oblíbené kuřecí jídlo?",
+        "Kuřecí špízy",
+        "Kuře s rýží",
+        "Kuřecí karbanátky",
+        "Nugety"
+      ],
+      "q85": [
+        "Jaké místo si ve vlaku vyberu?",
+        "U okna",
+        "U uličky",
+        "Zády ke směru jízdy",
+        "Je mi to jedno"
+      ],
+      "q86": [
+        "Co dělám, když se něco nedaří?",
+        "Hned jednám",
+        "Nejdřív přemýšlím",
+        "Ptám se na radu",
+        "Trochu se trápím"
+      ],
+      "q87": [
+        "Jaká je moje hlavní vlastnost?",
+        "Laskavost",
+        "Poctivost",
+        "Vytrvalost",
+        "Veselost"
+      ],
+      "q88": [
+        "Kde si nejlíp odpočinu?",
+        "U příbuzných na venkově",
+        "V hotelu u moře",
+        "Ve stanu",
+        "Doma"
+      ],
+      "q89": [
+        "Které pečivo bych si vybral/a?",
+        "Samsa",
+        "Chačapuri",
+        "Čak-čak",
+        "Větrník"
+      ],
+      "q90": [
+        "Který jazyk bych se nejraději naučil/a?",
+        "Arabštinu",
+        "Angličtinu",
+        "Turečtinu",
+        "Japonštinu"
+      ],
+      "q91": [
+        "Jak dlouho vydržím bez sladkého?",
+        "Den",
+        "Týden",
+        "Měsíc",
+        "Jak dlouho bude potřeba"
+      ],
+      "q92": [
+        "Co dělám, když mám zpoždění?",
+        "Běžím, co to dá",
+        "Předem zavolám",
+        "Vezmu si taxi",
+        "Nikdy nechodím pozdě"
+      ],
+      "q93": [
+        "Co dělám, když se porouchá přístroj?",
+        "Opravím ho vlastníma rukama",
+        "Přečtu si návod",
+        "Zavolám o pomoc",
+        "Mačkám všechna tlačítka"
+      ],
+      "q94": [
+        "Co dám do kufru jako první?",
+        "Lékárničku",
+        "Knihu",
+        "Nabíječku",
+        "Svačinu"
+      ],
+      "q95": [
+        "Která činnost mě uklidňuje?",
+        "Vaření",
+        "Uklízení",
+        "Kreslení",
+        "Procházka"
+      ],
+      "q96": [
+        "Co chci dělat v důchodu?",
+        "Zahradničit",
+        "Cestovat",
+        "Číst",
+        "Trávit čas s vnoučaty"
+      ],
+      "q97": [
+        "Co mě nejvíc rozčiluje?",
+        "Hluk",
+        "Nepořádek",
+        "Pozdní příchody",
+        "Nezdvořilost"
+      ],
+      "q98": [
+        "Kterou vůni mám nejradši?",
+        "Čerstvý chléb",
+        "Déšť",
+        "Květiny",
+        "Moře"
+      ],
+      "q99": [
+        "Co bych si dal jako dezert?",
+        "Ovoce",
+        "Zmrzlinu",
+        "Koláč",
+        "Jen čaj"
       ]
     },
     "yesNo": {
@@ -10033,6 +20420,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Zahrajeme si pak znovu?",
         "chce další kolo",
         "radši objetí než hra"
+      ],
+      "c41": [
+        "Chutná ti pálivé jídlo?",
+        "čím pálivější, tím lepší",
+        "volí něco jemnějšího"
+      ],
+      "c42": [
+        "Umíš plavat?",
+        "plave jako ryba",
+        "zatím se drží u břehu"
+      ],
+      "c43": [
+        "Líbilo by se ti mít kočku?",
+        "už vymýšlí jméno",
+        "dává přednost psům"
+      ],
+      "c44": [
+        "Chceš jednou navštívit Istanbul?",
+        "už sní o Bosporu",
+        "vybírá jiné město"
+      ],
+      "c45": [
+        "Baví tě vaření?",
+        "vaří s chutí",
+        "raději umyje nádobí"
+      ],
+      "c46": [
+        "Chceš se naučit vařit pilaf?",
+        "už hledá recept",
+        "raději ochutná ten od někoho jiného"
+      ],
+      "c47": [
+        "Baví tě čtení knih?",
+        "má vždycky po ruce knihu",
+        "raději poslouchá příběhy"
+      ],
+      "c48": [
+        "Umíš jezdit na kole?",
+        "může vyrazit hned teď",
+        "slibuje, že se to naučí"
+      ],
+      "c49": [
+        "Máš raději hory než moře?",
+        "volí hory",
+        "volí moře"
+      ],
+      "c50": [
+        "Chceš vidět poušť?",
+        "sní o písečných dunách",
+        "raději vybírá les"
+      ],
+      "c51": [
+        "Líbí se ti zima?",
+        "čeká na první sníh",
+        "čeká na léto"
+      ],
+      "c52": [
+        "Piješ čaj bez cukru?",
+        "oceňuje čistou chuť čaje",
+        "bez lžičky cukru to nejde"
+      ],
+      "c53": [
+        "Bojíš se pavouků?",
+        "drží se od nich hodně daleko",
+        "v klidu je vynese ven"
+      ],
+      "c54": [
+        "Baví tě kreslení?",
+        "už bere do ruky štětec",
+        "raději se dívá na obrazy druhých"
+      ],
+      "c55": [
+        "Chceš vidět polární záři?",
+        "už zjišťuje, kde se dá vidět",
+        "raději pozoruje hvězdy"
+      ],
+      "c56": [
+        "Líbí se ti deštivé počasí?",
+        "poslouchá déšť za oknem s radostí",
+        "čeká na slunce"
+      ],
+      "c57": [
+        "Umíš jezdit na koni?",
+        "sedí v sedle s jistotou",
+        "zatím o tom jen sní"
+      ],
+      "c58": [
+        "Chceš psa?",
+        "sní o věrném příteli",
+        "zatím má o koho pečovat dost"
+      ],
+      "c59": [
+        "Máš raději sladké než slané?",
+        "bez sladkostí to nejde",
+        "volí slané"
+      ],
+      "c60": [
+        "Baví tě cestování vlakem?",
+        "užívá si klapot kol",
+        "volí letadlo"
+      ],
+      "c61": [
+        "Je pro tebe snadné začít den brzy?",
+        "začíná den s energií",
+        "rozjede se až k obědu"
+      ],
+      "c62": [
+        "Baví tě stanování?",
+        "už si balí batoh",
+        "volí útulný hotel"
+      ],
+      "c63": [
+        "Chceš bydlet u moře?",
+        "sní o šumění vln",
+        "volí město"
+      ],
+      "c64": [
+        "Jíš zmrzlinu i v zimě?",
+        "jí ji i v mrazu",
+        "jen v létě"
+      ],
+      "c65": [
+        "Chutná ti čokoláda?",
+        "zná všechny její druhy",
+        "klidně ji mine"
+      ],
+      "c66": [
+        "Umíš péct koláče?",
+        "peče jako babička",
+        "slibuje, že se to naučí"
+      ],
+      "c67": [
+        "Baví tě dívat se na hvězdy?",
+        "zná souhvězdí",
+        "dává přednost slunečnému dni"
+      ],
+      "c68": [
+        "Chceš mít jednou vlastní zahradu?",
+        "už vybírá sazenice",
+        "začne květinou v květináči"
+      ],
+      "c69": [
+        "Líbí se ti luční květiny?",
+        "miluje kopretiny a chrpy",
+        "dává přednost zahradním květinám"
+      ],
+      "c70": [
+        "Piješ kávu?",
+        "bez kávy den nezačne",
+        "volí čaj"
+      ],
+      "c71": [
+        "Chutná ti domácí limonáda?",
+        "už krájí citrony",
+        "raději si dá vodu"
+      ],
+      "c72": [
+        "Chceš jednou navštívit Japonsko?",
+        "sní o kvetoucích sakurách",
+        "vybírá jinou zemi"
+      ],
+      "c73": [
+        "Líbí se ti podzim?",
+        "užívá si šustění listí pod nohama",
+        "čeká na jaro"
+      ],
+      "c74": [
+        "Líbí se ti vůně levandule?",
+        "tu vůni miluje",
+        "dává přednost jiným vůním"
+      ],
+      "c75": [
+        "Baví tě deskové hry?",
+        "už rozkládá hrací plán",
+        "dává přednost procházce"
+      ],
+      "c76": [
+        "Umíš řídit auto?",
+        "řídí s jistotou",
+        "zatím jezdí na místě spolujezdce"
+      ],
+      "c77": [
+        "Chceš jednou vidět oceán?",
+        "sní o velké vlně",
+        "moře stačí"
+      ],
+      "c78": [
+        "Chceš chvíli žít na statku?",
+        "už krmí slepice",
+        "zůstává ve městě"
+      ],
+      "c79": [
+        "Líbí se ti velká města?",
+        "miluje světla města",
+        "volí klid a ticho"
+      ],
+      "c80": [
+        "Máš raději ovoce než sladkosti?",
+        "volí ovoce",
+        "volí sladkosti"
+      ],
+      "c81": [
+        "Chceš vidět delfíny v moři?",
+        "moc touží je vidět",
+        "raději si o nich přečte"
+      ],
+      "c82": [
+        "Líbí se ti léto?",
+        "čeká na horké dny",
+        "dává přednost chladnému počasí"
+      ],
+      "c83": [
+        "Baví tě procházky v parku?",
+        "chodí za každého počasí",
+        "raději zůstává doma"
+      ],
+      "c84": [
+        "Baví tě psát rukou?",
+        "má úhledné písmo",
+        "píše na telefonu"
+      ],
+      "c85": [
+        "Baví tě výlety lodí?",
+        "už bere vesla",
+        "zůstává na břehu"
+      ],
+      "c86": [
+        "Chceš procestovat svět?",
+        "už kreslí trasu",
+        "pár zemí stačí"
+      ],
+      "c87": [
+        "Umíš postavit sněhuláka?",
+        "postaví toho největšího",
+        "raději se jde koulovat"
+      ],
+      "c88": [
+        "Chceš se letos naučit něco nového?",
+        "už vybírá kurz",
+        "práce má i tak dost"
+      ],
+      "c89": [
+        "Je ti příjemné ticho?",
+        "cení si klidu",
+        "je spokojenější, když se něco děje"
+      ],
+      "c90": [
+        "Těší tě dávat dárky rodině?",
+        "dělá rodině radost jen tak",
+        "raději pomáhá prakticky"
       ]
     },
     "loves": {
@@ -10147,6 +20784,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Les",
         "Poušť",
         "Polární záře"
+      ],
+      "s17": [
+        "Oblíbené ovoce?",
+        "Jablko",
+        "Jahoda",
+        "Meloun",
+        "Hroznové víno"
+      ],
+      "s18": [
+        "Co dělat ve volný den?",
+        "Túra po horách",
+        "Vaření doma",
+        "Muzeum",
+        "Rybaření"
+      ],
+      "s19": [
+        "Oblíbená snídaně?",
+        "Lívance",
+        "Omeleta",
+        "Kaše s borůvkami",
+        "Croissant"
+      ],
+      "s20": [
+        "Oblíbený pták?",
+        "Sova",
+        "Papoušek",
+        "Labuť",
+        "Páv"
+      ],
+      "s21": [
+        "Které město navštívit?",
+        "Istanbul",
+        "Paříž",
+        "Tokio",
+        "Dubaj"
+      ],
+      "s22": [
+        "Oblíbený sport?",
+        "Fotbal",
+        "Plavání",
+        "Tenis",
+        "Jízda na koni"
+      ],
+      "s23": [
+        "Co zasadit na zahradě?",
+        "Jabloň",
+        "Růže",
+        "Zeleninu",
+        "Jahody"
+      ],
+      "s24": [
+        "Oblíbené pečivo?",
+        "Pirožky",
+        "Koblihy",
+        "Sušenky",
+        "Baklava"
+      ],
+      "s25": [
+        "Kde bydlet?",
+        "U řeky",
+        "V lese",
+        "Ve velkém městě",
+        "Na ostrově"
+      ],
+      "s26": [
+        "Oblíbený mořský tvor?",
+        "Želva",
+        "Velryba",
+        "Chobotnice",
+        "Mořský koník"
+      ],
+      "s27": [
+        "Čím se svézt?",
+        "Kolo",
+        "Koloběžka",
+        "Horkovzdušný balon",
+        "Loďka"
+      ],
+      "s28": [
+        "Oblíbený koníček?",
+        "Pletení",
+        "Fotografování přírody",
+        "Zahradničení",
+        "Kaligrafie"
+      ],
+      "s29": [
+        "Oblíbená polévka?",
+        "Boršč",
+        "Kuřecí vývar",
+        "Dýňová polévka",
+        "Čočková polévka"
+      ],
+      "s30": [
+        "Lesní zvíře?",
+        "Ježek",
+        "Veverka",
+        "Liška",
+        "Jelen"
+      ],
+      "s31": [
+        "Něco na zub?",
+        "Datle",
+        "Mandle",
+        "Pistácie",
+        "Sušené meruňky"
+      ],
+      "s32": [
+        "Co vzít na túru?",
+        "Stan",
+        "Termosku",
+        "Mapu",
+        "Baterku"
+      ],
+      "s33": [
+        "Oblíbený dezert?",
+        "Pudink",
+        "Cheesecake",
+        "Palačinky s medem",
+        "Ovocný salát"
+      ],
+      "s34": [
+        "Co dělat v zimě?",
+        "Postavit sněhuláka",
+        "Sáňkovat",
+        "Čaj u okna",
+        "Lyžovat"
+      ],
+      "s35": [
+        "Co dělat v létě?",
+        "Koupat se",
+        "Sbírat lesní plody",
+        "Jezdit na lodičce",
+        "Stavět hrad z písku"
+      ],
+      "s36": [
+        "Čím malovat?",
+        "Vodovkami",
+        "Pastelkami",
+        "Voskovkami",
+        "Barvami na plátno"
+      ],
+      "s37": [
+        "Oblíbená zelenina?",
+        "Mrkev",
+        "Rajče",
+        "Kukuřice",
+        "Dýně"
+      ],
+      "s38": [
+        "Co dělá domov útulným?",
+        "Krb",
+        "Měkká deka",
+        "Pokojové rostliny",
+        "Police s knihami"
+      ],
+      "s39": [
+        "Co hrát?",
+        "Šachy",
+        "Skládačky",
+        "Deskové hry",
+        "Míčové hry"
+      ],
+      "s40": [
+        "Kdo žije na statku?",
+        "Kráva",
+        "Jehňátko",
+        "Slepice",
+        "Kůzlátko"
+      ],
+      "s41": [
+        "Čaj s čím?",
+        "S medem",
+        "S citronem",
+        "S marmeládou",
+        "S mátou"
+      ],
+      "s42": [
+        "Co je u moře?",
+        "Maják",
+        "Mušle",
+        "Plachetnice",
+        "Racci"
+      ],
+      "s43": [
+        "Jak začít ráno?",
+        "Rozcvička",
+        "Šálek čaje",
+        "Procházka",
+        "Kniha"
+      ],
+      "s44": [
+        "Oblíbené bobulovité ovoce?",
+        "Malina",
+        "Borůvka",
+        "Třešeň",
+        "Ostružina"
       ]
     },
     "who": [
@@ -10189,7 +21022,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Kdo z nás si častěji vybavuje vtipné příhody?",
       "Kdo z nás je trpělivější?",
       "Kdo z nás častěji říká „děkuji“?",
-      "Kdo z nás jako první nabídne pomoc?"
+      "Kdo z nás jako první nabídne pomoc?",
+      "Kdo z nás umí líp počítat z hlavy?",
+      "Kdo z nás víc čte?",
+      "Kdo z nás rychleji píše na klávesnici?",
+      "Kdo z nás častěji volá rodičům?",
+      "Kdo z nás líp vypráví příběhy?",
+      "Kdo z nás má úhlednější písmo?",
+      "Komu z nás víc chutná pálivé jídlo?",
+      "Kdo z nás častěji něco zapomene doma?",
+      "Kdo z nás se líp vyzná v technice?",
+      "Koho z nás víc baví učit se nové věci?",
+      "Kdo z nás umí líp plánovat?",
+      "Kdo z nás umí líp smlouvat na trhu?",
+      "Kdo z nás má blíž k přírodě?",
+      "Kdo z nás jí rychleji?",
+      "Kdo z nás pije víc čaje?",
+      "Kdo z nás se líp stará o rostliny?",
+      "Kdo z nás se líp vyzná v zeměpisu?",
+      "Kdo z nás hraje líp šachy?",
+      "Kdo z nás vybírá na trhu lepší ovoce?",
+      "Kdo z nás se častěji dívá na předpověď počasí?",
+      "Kdo z nás se víc bojí pavouků?",
+      "Kdo z nás má víc odvahy?",
+      "Kdo z nás se víc o všechno zajímá?",
+      "Kdo z nás rychleji luští hádanky?",
+      "Kdo z nás líp kreslí?",
+      "Kdo z nás častěji pomáhá sousedům?",
+      "Kdo z nás si líp rozumí s dětmi?",
+      "Koho z nás víc baví chodit pěšky?",
+      "Kdo z nás častěji čte návody?",
+      "Kdo z nás si líp pamatuje jména?",
+      "Kdo z nás se rychleji učí slovíčka v cizím jazyce?",
+      "Kdo z nás líp peče?",
+      "Kdo z nás dává lepší rady?",
+      "Komu z nás je příjemnější chladné počasí?",
+      "Kdo z nás by to líp zvládl na túře?",
+      "Kdo z nás častěji čte zprávy?",
+      "Kdo z nás častěji zkouší nová jídla?",
+      "Kdo z nás si rychleji sbalí kufr?",
+      "Kdo z nás líp opravuje věci?",
+      "Kdo z nás častěji mluví se zvířaty?",
+      "Kdo z nás častěji myje nádobí?",
+      "Kdo z nás se líp vyzná v dějepisu?",
+      "Kdo z nás častěji věci odkládá na později?",
+      "Kdo z nás se rychleji sblíží s novými lidmi?",
+      "Kdo z nás víc dbá na své zdraví?"
     ],
     "phrases": [
       "Usmívám se, když…",
@@ -10221,8 +21099,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ráno s tebou je…",
       "Kdyby nás vystihovalo jedno slovo, bylo by to…",
       "Chci se od tebe naučit…",
-      "Děkuji, že vždycky…"
-    ]
+      "Děkuji, že vždycky…",
+      "V dětství bylo moje nejoblíbenější jídlo…",
+      "Jeden den v libovolné zemi? Můj plán: …",
+      "Nejlepší rada, jakou mi kdy někdo dal, je…",
+      "Vždycky se směju, když…",
+      "Moje nejoblíbenější místo v rodném městě je…",
+      "V mém vlastním obchůdku by se prodávalo…",
+      "Jídlo, které mi jde nejlíp, je…",
+      "Dětský sen, na který dodnes vzpomínám, je…",
+      "Snadno mi uděláte radost, když…",
+      "Nejúžasnější místo, které znám z cest, je…",
+      "Chci se naučit…",
+      "Můj dokonalý volný den začíná…",
+      "Kdyby šlo mít jakékoli zvíře, bylo by to…",
+      "Moje rodina vždycky říká, že…",
+      "Pořád si nemůžu zvyknout na…",
+      "Můj nejužitečnější zvyk je…",
+      "Nejlepší kniha mého života je…",
+      "Za deset let chci…",
+      "Můj vysněný domov je…",
+      "Nejvtipnější historka z mého dětství je…",
+      "Štěstí je pro mě…",
+      "Těžko se vzdávám…",
+      "Moje vysněná superschopnost je…",
+      "Na lidech si nejvíc cením…",
+      "Když mám volný večer, …",
+      "Moje nejoblíbenější vůně je…",
+      "Jídlo, které nikdy nesním, je…",
+      "Jediná věc, bez které nikdy neodcházím z domu, je…",
+      "Chci jednou navštívit… protože…",
+      "Nejlepší dárek mého života je…",
+      "Můj nejneobvyklejší zvyk je…",
+      "Kdyby měl můj den hodinu navíc, já bych…",
+      "Člověk, od kterého se hodně učím, je…",
+      "V těžký den mi pomáhá…",
+      "Nejchutnější jídlo z mých cest je…",
+      "Kdyby se dalo na jeden den vyměnit povolání, moje volba by byla…",
+      "Roční období, které mám nejradši, je…",
+      "Moji přátelé říkají, že…",
+      "Jednou chci někoho naučit…",
+      "Malá radost mého dne je…"
+    ],
+    "truth": {
+      "t01": [
+        "Chobotnice má tři srdce.",
+        true,
+        "Dvě srdce pumpují krev přes žábry a třetí ji rozhání po celém těle."
+      ],
+      "t02": [
+        "Velkou čínskou zeď je z Měsíce vidět pouhým okem.",
+        false,
+        "Není: zeď je na to příliš úzká. I z oběžné dráhy je velmi těžké ji zahlédnout."
+      ],
+      "t03": [
+        "Med vydrží tisíce let, aniž by se zkazil.",
+        true,
+        "Ve starověkých egyptských hrobkách se našel tisíce let starý med, který byl stále v pořádku."
+      ],
+      "t04": [
+        "Banány rostou na stromech.",
+        false,
+        "Banánovník je obří bylina: jeho „kmen“ tvoří pevně svinuté listy."
+      ],
+      "t05": [
+        "Venuše je nejteplejší planeta Sluneční soustavy.",
+        true,
+        "Hustá atmosféra ohřívá Venuši asi na 460 °C — víc než Merkur."
+      ],
+      "t06": [
+        "Netopýři jsou slepí.",
+        false,
+        "Netopýři vidí a ve tmě se navíc orientují pomocí echolokace."
+      ],
+      "t07": [
+        "Velryba je ryba.",
+        false,
+        "Velryby jsou savci: dýchají vzduch a mláďata krmí mlékem."
+      ],
+      "t08": [
+        "Sahara je největší poušť na světě.",
+        false,
+        "Největší poušť je Antarktida. Sahara je největší horká poušť."
+      ],
+      "t09": [
+        "Žirafa má stejný počet krčních obratlů jako člověk.",
+        true,
+        "Oba mají sedm krčních obratlů — žirafí jsou jen velmi dlouhé."
+      ],
+      "t10": [
+        "Z botanického hlediska je rajče bobule.",
+        true,
+        "Botanici řadí rajče mezi bobule: dužnatý plod se semeny uvnitř."
+      ],
+      "t11": [
+        "Z botanického hlediska je jahoda bobule.",
+        false,
+        "Je to nepravý plod: skutečné plody jsou drobná „semínka“ na povrchu."
+      ],
+      "t12": [
+        "Ve vesmíru je slyšet výbuch.",
+        false,
+        "Ve vesmíru není téměř žádný vzduch, takže se zvuk nemá čím šířit."
+      ],
+      "t13": [
+        "Vysoko v horách se voda vaří při nižší teplotě.",
+        true,
+        "Tlak vzduchu je tam nižší, takže voda vře dřív, než dosáhne 100 °C."
+      ],
+      "t14": [
+        "Tučňáci žijí na severním pólu.",
+        false,
+        "Divocí tučňáci žijí jen na jižní polokouli, ne na dalekém severu."
+      ],
+      "t15": [
+        "Everest je nejvyšší hora nad hladinou moře.",
+        true,
+        "Everest se tyčí asi 8 849 metrů nad mořem."
+      ],
+      "t16": [
+        "Lidé využívají jen 10 % mozku.",
+        false,
+        "To je mýtus: během dne je aktivní téměř každá část mozku."
+      ],
+      "t17": [
+        "Lidské srdce udeří zhruba 100 000krát za den.",
+        true,
+        "Při asi 70 úderech za minutu to dělá zhruba 100 000 úderů denně."
+      ],
+      "t18": [
+        "Zlatá rybka má paměť jen na tři sekundy.",
+        false,
+        "Pokusy ukazují, že si zlaté rybky pamatují, co se naučily, i celé měsíce."
+      ],
+      "t19": [
+        "Austrálie je zároveň stát i kontinent.",
+        true,
+        "Austrálie je jediný stát, který zabírá celý kontinent."
+      ],
+      "t20": [
+        "Blesk nikdy neudeří dvakrát do stejného místa.",
+        false,
+        "Udeří: do vysokých budov bije blesk mnohokrát za rok."
+      ],
+      "t21": [
+        "Pštros strká hlavu do písku, když se bojí.",
+        false,
+        "Mýtus: vyděšený pštros utíká, nebo se přitiskne k zemi, aby se schoval."
+      ],
+      "t22": [
+        "Nejmenší pták na světě je kolibřík.",
+        true,
+        "Kubánský kolibřík nejmenší váží asi 2 gramy — méně než kterýkoli jiný pták."
+      ],
+      "t23": [
+        "Meloun je asi z 90 % voda.",
+        true,
+        "Vodní meloun obsahuje kolem 92 % vody — proto tak osvěží."
+      ],
+      "t24": [
+        "Pavouk má šest nohou.",
+        false,
+        "Pavouk má osm nohou. Šest jich má hmyz a pavouci hmyz nejsou."
+      ],
+      "t25": [
+        "Měsíc vydává vlastní světlo.",
+        false,
+        "Měsíc vlastní světlo nemá: odráží sluneční světlo."
+      ],
+      "t26": [
+        "Slon je největší suchozemské zvíře.",
+        true,
+        "Slon africký může vážit přes 6 tun."
+      ],
+      "t27": [
+        "Plejtvák obrovský je největší živočich, kterého věda zná.",
+        true,
+        "Plejtváci mohou měřit přes 30 metrů — víc než kterýkoli známý dinosaurus."
+      ],
+      "t28": [
+        "Chameleon mění barvu jen kvůli maskování.",
+        false,
+        "Jeho barva víc závisí na náladě, teplotě a signálech pro ostatní chameleony."
+      ],
+      "t29": [
+        "Telefon vynalezl Thomas Edison.",
+        false,
+        "Patent na telefon získal v roce 1876 Alexander Graham Bell."
+      ],
+      "t30": [
+        "Penicilin objevil Alexander Fleming.",
+        true,
+        "Fleming objevil penicilin v roce 1928 — první antibiotikum."
+      ],
+      "t31": [
+        "Nejvyšší sopka Sluneční soustavy je na Marsu.",
+        true,
+        "Olympus Mons na Marsu je vysoký asi 22 km — téměř 2,5krát víc než Everest."
+      ],
+      "t32": [
+        "Krev v našich žilách je modrá.",
+        false,
+        "Krev je vždy červená; žíly vypadají modře jen kvůli tomu, jak kůží prochází světlo."
+      ],
+      "t33": [
+        "Atlantik je největší oceán na Zemi.",
+        false,
+        "Největší je Tichý oceán: je větší než všechna pevnina na Zemi dohromady."
+      ],
+      "t34": [
+        "Rusko je rozlohou největší stát světa.",
+        true,
+        "Rusko zabírá přes 17 milionů čtverečních kilometrů."
+      ],
+      "t35": [
+        "Kanada má nejdelší pobřeží na světě.",
+        true,
+        "Pobřeží Kanady měří přes 200 000 km — víc než pobřeží kteréhokoli jiného státu."
+      ],
+      "t36": [
+        "Kraví žaludek má čtyři oddíly.",
+        true,
+        "Kráva má jeden žaludek se čtyřmi oddíly — tak tráví trávu."
+      ],
+      "t37": [
+        "Lev je největší kočkovitá šelma na světě.",
+        false,
+        "Největší kočkovitou šelmou je tygr, hlavně tygr ussurijský."
+      ],
+      "t38": [
+        "Země je planeta nejblíž Slunci.",
+        false,
+        "Nejblíž je Merkur, pak Venuše; Země je třetí planeta."
+      ],
+      "t39": [
+        "Sluneční světlo letí na Zemi asi 8 minut.",
+        true,
+        "Světlo urazí 150 milionů km od Slunce zhruba za 8 minut a 20 sekund."
+      ],
+      "t40": [
+        "Delfíni spí vždy jen jednou polovinou mozku.",
+        true,
+        "Jedna polovina odpočívá, zatímco druhá hlídá a nezapomíná dýchat."
+      ],
+      "t41": [
+        "Brambory pocházejí z Irska.",
+        false,
+        "Brambory pocházejí z Jižní Ameriky: v Andách se pěstovaly už před tisíci let."
+      ],
+      "t42": [
+        "Čokoláda se vyrábí ze semen kakaovníku.",
+        true,
+        "Kakaové plody rostou přímo na kmeni a semena uvnitř se mění v čokoládu."
+      ],
+      "t43": [
+        "Žralok je savec.",
+        false,
+        "Žralok je ryba: dýchá žábrami. Mořskými savci jsou velryby a delfíni."
+      ],
+      "t44": [
+        "Některé druhy bambusu vyrostou za den skoro o metr.",
+        true,
+        "Bambus patří k nejrychleji rostoucím rostlinám na Zemi."
+      ],
+      "t45": [
+        "Sova dokáže otočit hlavu o celých 360 stupňů.",
+        false,
+        "Sova otočí hlavu asi o 270 stupňů — hodně, ale ne dokola."
+      ],
+      "t46": [
+        "Diamant i tuha v tužce jsou ze stejné látky.",
+        true,
+        "Obojí je čistý uhlík — atomy jsou jen jinak uspořádané."
+      ],
+      "t47": [
+        "Velbloud má v hrbu zásobu vody.",
+        false,
+        "Velbloudí hrb ukládá tuk, ne vodu — dodává energii na dlouhých cestách."
+      ],
+      "t48": [
+        "Nejmenší kost v lidském těle je v uchu.",
+        true,
+        "Třmínek ve středním uchu měří jen asi 3 milimetry."
+      ],
+      "t49": [
+        "Velcí papoušci se mohou dožít přes 50 let.",
+        true,
+        "Dobře opečovávaní arové a kakaduové se často dožívají 50 let i víc."
+      ],
+      "t50": [
+        "První let motorovým letadlem uskutečnili bratři Wrightové.",
+        true,
+        "Vzlétli v roce 1903; úplně první let trval 12 sekund."
+      ],
+      "t51": [
+        "Kolo bylo vynalezeno ve středověku.",
+        false,
+        "Kolo je starší než 5000 let: v Mezopotámii se používalo už zhruba před 5500 lety."
+      ],
+      "t52": [
+        "Mořský koník je ryba.",
+        true,
+        "Mořský koník dýchá žábrami a plave pomocí ploutve jako jiné ryby."
+      ],
+      "t53": [
+        "Kolibřík umí létat pozpátku.",
+        true,
+        "Kolibříci jsou jediní ptáci, kteří opravdu umí létat pozpátku."
+      ],
+      "t54": [
+        "Eiffelova věž je v létě o kousek vyšší.",
+        true,
+        "Teplem se kov roztahuje a věž povyroste asi o 15 centimetrů."
+      ],
+      "t55": [
+        "Kůže je největší orgán lidského těla.",
+        true,
+        "Kůže dospělého člověka váží několik kilogramů a chrání celé tělo."
+      ],
+      "t56": [
+        "Červená barva rozzuří býka.",
+        false,
+        "Býci červenou skoro nerozeznají: dráždí je pohyb, ne barva."
+      ],
+      "t57": [
+        "Moucha domácí žije jen jeden den.",
+        false,
+        "Moucha domácí žije asi měsíc. Jen den nebo dva žijí dospělé jepice."
+      ],
+      "t58": [
+        "Ananasy rostou na stromech.",
+        false,
+        "Ananas roste na nízké listnaté rostlině, přímo z jejího středu."
+      ],
+      "t59": [
+        "Arašíd je ořech.",
+        false,
+        "Arašíd je luštěnina, příbuzná hrachu a fazolí. Jeho lusky dozrávají pod zemí."
+      ],
+      "t60": [
+        "Severní a jižní pól jsou stejně studené.",
+        false,
+        "Jižní pól je mnohem chladnější: leží na vysokém ledovém kontinentu, severní pól na oceánu."
+      ]
+    }
   },
   "sv": {
     "text": {
@@ -10431,7 +21651,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Bjud in",
       "invited": "Inbjuden",
       "inviteNone": "Lägg till vänner under ”Vänner” så kan du bjuda in dem med ett tryck.",
-      "inviteSent": "Inbjudan skickad till {name}"
+      "inviteSent": "Inbjudan skickad till {name}",
+      "truth": "Sant eller falskt",
+      "tfTitle": "Sant eller falskt",
+      "tfNote": "Ett livespel för två: häpnadsväckande fakta om världen. 12 sekunder — sant eller falskt? Ett poäng för varje rätt svar.",
+      "tfShareText": "{name} bjuder in dig till livespelet ”Sant eller falskt”",
+      "tfJoinLead": "{name} väntar på dig. Sant eller falskt — bestäm dig snabbt!",
+      "tfRound": "Fakta {n} av {total}",
+      "tfTrue": "Sant",
+      "tfFalse": "Falskt",
+      "tfIsTrue": "Det stämmer!",
+      "tfIsFalse": "Det stämmer inte!",
+      "tfFirstYou": "Du hade rätt först!",
+      "tfFirstThem": "{name} hade rätt först",
+      "tfFinalWin": "Seger! Du vet mer om världen.",
+      "tfFinalLose": "{name} vet mer den här gången — revansch?",
+      "tfFinalDraw": "Oavgjort — ni vet precis lika mycket!",
+      "featTruth": "Livespelet ”Sant eller falskt” — häpnadsväckande fakta om världen"
     },
     "questions": {
       "q01": [
@@ -10853,6 +22089,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Laga mat",
         "Ett nytt språk",
         "Teckna"
+      ],
+      "q61": [
+        "Vilken rätt lagar jag bäst?",
+        "Soppa",
+        "Pilaff",
+        "Bakverk",
+        "Sallad"
+      ],
+      "q62": [
+        "Vilket land vill jag se först?",
+        "Turkiet",
+        "Japan",
+        "Marocko",
+        "Norge"
+      ],
+      "q63": [
+        "Vilken sport skulle jag hellre börja med?",
+        "Simning",
+        "Löpning",
+        "Cykling",
+        "Fotboll"
+      ],
+      "q64": [
+        "Vilken bok skulle jag välja?",
+        "En äventyrsbok",
+        "En historiebok",
+        "Sagor",
+        "Ett uppslagsverk"
+      ],
+      "q65": [
+        "Vilka djur skulle jag besöka först på zoo?",
+        "Elefanterna",
+        "Aporna",
+        "Pingvinerna",
+        "Girafferna"
+      ],
+      "q66": [
+        "Vad tycker jag om stark mat?",
+        "Ju starkare, desto bättre",
+        "Lite går bra",
+        "Bara en aning",
+        "Jag äter det inte alls"
+      ],
+      "q67": [
+        "Vilket skolämne gillade jag mest?",
+        "Matte",
+        "Litteratur",
+        "Geografi",
+        "Idrott"
+      ],
+      "q68": [
+        "Mitt drömyrke som barn?",
+        "Läkare",
+        "Lärare",
+        "Astronaut",
+        "Kock"
+      ],
+      "q69": [
+        "Vad tycker jag om vandringar?",
+        "Jag drömmer om en lång",
+        "Bara en dag",
+        "Bara med bekvämligheter",
+        "Hemma är bäst"
+      ],
+      "q70": [
+        "Mitt humör på morgonen?",
+        "Full av energi",
+        "Fortfarande sömnig",
+        "Tystlåten",
+        "Pratsam"
+      ],
+      "q71": [
+        "Vilken nöt tycker jag bäst om?",
+        "Hasselnöt",
+        "Valnöt",
+        "Cashewnöt",
+        "Mandel"
+      ],
+      "q72": [
+        "Vad skulle jag göra med en oväntad ledig timme?",
+        "Läsa",
+        "Ta en promenad",
+        "Ringa familjen",
+        "Laga något"
+      ],
+      "q73": [
+        "Vilket väder tycker jag inte om?",
+        "Hetta",
+        "Blåst",
+        "Snöslask",
+        "Sträng kyla"
+      ],
+      "q74": [
+        "Vilken färg skulle jag måla mitt rum i?",
+        "Vit",
+        "Beige",
+        "Grön",
+        "Ljusblå"
+      ],
+      "q75": [
+        "Vad skulle jag hellre spela?",
+        "Schack",
+        "Dam",
+        "Ett pussel",
+        "Ett ordspel"
+      ],
+      "q76": [
+        "Vad skulle jag laga till gäster?",
+        "Pilaff",
+        "En paj",
+        "Sallader",
+        "Jag skulle beställa mat"
+      ],
+      "q77": [
+        "Vad skulle jag absolut inte äta?",
+        "Svamp",
+        "Fisk",
+        "Oliver",
+        "Kokt lök"
+      ],
+      "q78": [
+        "Hur dricker jag mitt te?",
+        "Starkt",
+        "Svagt",
+        "Sött",
+        "Med örter"
+      ],
+      "q79": [
+        "Vad är viktigast för mig i ett hem?",
+        "Renlighet",
+        "Mysighet",
+        "Mycket ljus",
+        "Tystnad"
+      ],
+      "q80": [
+        "Hur lär jag mig nya saker?",
+        "Genom att läsa",
+        "Med videolektioner",
+        "Genom att prova själv",
+        "Genom att fråga andra"
+      ],
+      "q81": [
+        "Vilket vilt djur fascinerar mig mest?",
+        "Tiger",
+        "Björn",
+        "Örn",
+        "Delfin"
+      ],
+      "q82": [
+        "Vad skulle jag ge min mamma?",
+        "Blommor",
+        "Något hemgjort",
+        "En resa",
+        "En varm filt"
+      ],
+      "q83": [
+        "Vad gör jag under en resa?",
+        "Tittar ut genom fönstret",
+        "Läser",
+        "Pratar",
+        "Småäter"
+      ],
+      "q84": [
+        "Min favoriträtt med kyckling?",
+        "Kycklingspett",
+        "Kyckling med ris",
+        "Kycklingbiffar",
+        "Nuggets"
+      ],
+      "q85": [
+        "Vilken plats väljer jag på tåget?",
+        "Vid fönstret",
+        "Vid mittgången",
+        "Baklänges",
+        "Spelar ingen roll"
+      ],
+      "q86": [
+        "Vad gör jag när något går fel?",
+        "Agerar direkt",
+        "Tänker först",
+        "Ber om råd",
+        "Oroar mig lite"
+      ],
+      "q87": [
+        "Vilken är min främsta egenskap?",
+        "Vänlighet",
+        "Ärlighet",
+        "Envishet",
+        "Glädje"
+      ],
+      "q88": [
+        "Var skulle jag vila bäst?",
+        "Hos släktingar på landet",
+        "På ett hotell vid havet",
+        "I ett tält",
+        "Hemma"
+      ],
+      "q89": [
+        "Vilket bakverk skulle jag välja?",
+        "Samsa",
+        "Chatjapuri",
+        "Tjak-tjak",
+        "En éclair"
+      ],
+      "q90": [
+        "Vilket språk skulle jag helst vilja lära mig?",
+        "Arabiska",
+        "Engelska",
+        "Turkiska",
+        "Japanska"
+      ],
+      "q91": [
+        "Hur länge klarar jag mig utan sötsaker?",
+        "En dag",
+        "En vecka",
+        "En månad",
+        "Så länge som behövs"
+      ],
+      "q92": [
+        "Vad gör jag när jag är sen?",
+        "Springer så fort jag kan",
+        "Ringer och förvarnar",
+        "Tar en taxi",
+        "Jag är aldrig sen"
+      ],
+      "q93": [
+        "Vad gör jag när en pryl går sönder?",
+        "Lagar den själv",
+        "Läser bruksanvisningen",
+        "Ber om hjälp",
+        "Trycker på alla knappar"
+      ],
+      "q94": [
+        "Vad åker först ner i min resväska?",
+        "Ett första hjälpen-kit",
+        "En bok",
+        "En laddare",
+        "Något att äta"
+      ],
+      "q95": [
+        "Vilken sysselsättning lugnar mig?",
+        "Att laga mat",
+        "Att städa",
+        "Att teckna",
+        "En promenad"
+      ],
+      "q96": [
+        "Vad vill jag göra när jag går i pension?",
+        "Trädgårdsarbete",
+        "Resa",
+        "Läsa",
+        "Umgås med barnbarnen"
+      ],
+      "q97": [
+        "Vad irriterar mig mest?",
+        "Oväsen",
+        "Stök",
+        "Förseningar",
+        "Ohövlighet"
+      ],
+      "q98": [
+        "Vilken doft tycker jag mest om?",
+        "Nybakat bröd",
+        "Regn",
+        "Blommor",
+        "Havet"
+      ],
+      "q99": [
+        "Vad skulle jag välja till efterrätt?",
+        "Frukt",
+        "Glass",
+        "Paj",
+        "Bara te"
       ]
     },
     "yesNo": {
@@ -11055,6 +22564,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Ska vi spela igen sen?",
         "vill köra en runda till",
         "kramas hellre än spelar"
+      ],
+      "c41": [
+        "Gillar du stark mat?",
+        "ju starkare, desto bättre",
+        "väljer något mildare"
+      ],
+      "c42": [
+        "Kan du simma?",
+        "simmar som en fisk",
+        "håller sig nära stranden än så länge"
+      ],
+      "c43": [
+        "Skulle du vilja ha en katt?",
+        "funderar redan på ett namn",
+        "föredrar hundar"
+      ],
+      "c44": [
+        "Vill du besöka Istanbul någon gång?",
+        "drömmer redan om Bosporen",
+        "skulle välja en annan stad"
+      ],
+      "c45": [
+        "Gillar du att laga mat?",
+        "lagar mat med glädje",
+        "diskar hellre"
+      ],
+      "c46": [
+        "Skulle du vilja lära dig laga pilaff?",
+        "letar redan efter ett recept",
+        "smakar hellre någon annans"
+      ],
+      "c47": [
+        "Gillar du att läsa böcker?",
+        "har alltid en bok nära till hands",
+        "lyssnar hellre på berättelser"
+      ],
+      "c48": [
+        "Kan du cykla?",
+        "kan cykla iväg direkt",
+        "lovar att lära sig"
+      ],
+      "c49": [
+        "Föredrar du bergen framför havet?",
+        "väljer bergen",
+        "väljer havet"
+      ],
+      "c50": [
+        "Skulle du vilja se en öken?",
+        "drömmer om sanddyner",
+        "väljer hellre en skog"
+      ],
+      "c51": [
+        "Gillar du vintern?",
+        "väntar på den första snön",
+        "väntar på sommaren"
+      ],
+      "c52": [
+        "Dricker du te utan socker?",
+        "gillar teets rena smak",
+        "klarar sig inte utan en sked socker"
+      ],
+      "c53": [
+        "Är du rädd för spindlar?",
+        "håller sig långt borta från dem",
+        "bär lugnt ut dem"
+      ],
+      "c54": [
+        "Gillar du att teckna?",
+        "tar redan fram penseln",
+        "tittar hellre på andras tavlor"
+      ],
+      "c55": [
+        "Skulle du vilja se norrsken?",
+        "kollar redan var man kan se det",
+        "tittar hellre på stjärnorna"
+      ],
+      "c56": [
+        "Gillar du regnväder?",
+        "tycker om ljudet av regn utanför",
+        "väntar på solen"
+      ],
+      "c57": [
+        "Kan du rida?",
+        "sitter tryggt i sadeln",
+        "drömmer bara om det än så länge"
+      ],
+      "c58": [
+        "Skulle du vilja ha en hund?",
+        "drömmer om en trogen vän",
+        "har nog att ta hand om just nu"
+      ],
+      "c59": [
+        "Föredrar du sött framför salt?",
+        "klarar sig inte utan sötsaker",
+        "väljer salt"
+      ],
+      "c60": [
+        "Gillar du att resa med tåg?",
+        "tycker om hjulens dunkande",
+        "väljer flyget"
+      ],
+      "c61": [
+        "Är det lätt för dig att börja dagen tidigt?",
+        "börjar dagen full av energi",
+        "kommer i gång först till lunch"
+      ],
+      "c62": [
+        "Gillar du att tälta?",
+        "packar redan ryggsäcken",
+        "väljer ett mysigt hotell"
+      ],
+      "c63": [
+        "Skulle du vilja bo vid havet?",
+        "drömmer om vågornas brus",
+        "väljer staden"
+      ],
+      "c64": [
+        "Äter du glass på vintern?",
+        "äter den till och med i kylan",
+        "bara på sommaren"
+      ],
+      "c65": [
+        "Gillar du choklad?",
+        "känner till alla sorter",
+        "går lugnt förbi den"
+      ],
+      "c66": [
+        "Kan du baka pajer?",
+        "bakar som en mormor",
+        "lovar att lära sig"
+      ],
+      "c67": [
+        "Gillar du att titta på stjärnorna?",
+        "kan stjärnbilderna",
+        "föredrar en solig dag"
+      ],
+      "c68": [
+        "Skulle du vilja anlägga en egen trädgård någon gång?",
+        "väljer redan plantor",
+        "börjar med en blomma i kruka"
+      ],
+      "c69": [
+        "Gillar du vilda blommor?",
+        "älskar prästkragar och blåklint",
+        "föredrar trädgårdsblommor"
+      ],
+      "c70": [
+        "Dricker du kaffe?",
+        "dagen börjar inte utan kaffe",
+        "väljer te"
+      ],
+      "c71": [
+        "Gillar du hemgjord lemonad?",
+        "skivar redan citroner",
+        "tar hellre vatten"
+      ],
+      "c72": [
+        "Vill du besöka Japan någon gång?",
+        "drömmer om att se körsbärsblommorna",
+        "skulle välja ett annat land"
+      ],
+      "c73": [
+        "Gillar du hösten?",
+        "älskar att prassla i löven",
+        "väntar på våren"
+      ],
+      "c74": [
+        "Gillar du doften av lavendel?",
+        "älskar den doften",
+        "föredrar andra dofter"
+      ],
+      "c75": [
+        "Gillar du brädspel?",
+        "ställer redan i ordning brädet",
+        "föredrar en promenad"
+      ],
+      "c76": [
+        "Kan du köra bil?",
+        "kör med säker hand",
+        "åker som passagerare än så länge"
+      ],
+      "c77": [
+        "Skulle du vilja se oceanen någon gång?",
+        "drömmer om en stor våg",
+        "havet räcker"
+      ],
+      "c78": [
+        "Skulle du vilja bo på en bondgård ett tag?",
+        "matar redan hönsen",
+        "stannar i staden"
+      ],
+      "c79": [
+        "Gillar du storstäder?",
+        "älskar stadens ljus",
+        "väljer lugn och ro"
+      ],
+      "c80": [
+        "Föredrar du frukt framför godis?",
+        "väljer frukt",
+        "väljer godis"
+      ],
+      "c81": [
+        "Skulle du vilja se delfiner i havet?",
+        "skulle gärna se dem",
+        "läser hellre om dem"
+      ],
+      "c82": [
+        "Gillar du sommaren?",
+        "väntar på de varma dagarna",
+        "tycker om svalt väder"
+      ],
+      "c83": [
+        "Gillar du att promenera i parken?",
+        "promenerar i alla väder",
+        "stannar hellre hemma"
+      ],
+      "c84": [
+        "Gillar du att skriva för hand?",
+        "har en prydlig handstil",
+        "skriver på telefonen"
+      ],
+      "c85": [
+        "Gillar du båtturer?",
+        "greppar redan årorna",
+        "stannar på stranden"
+      ],
+      "c86": [
+        "Skulle du vilja resa jorden runt?",
+        "ritar redan en rutt",
+        "ett par länder räcker"
+      ],
+      "c87": [
+        "Kan du bygga en snögubbe?",
+        "bygger den största av alla",
+        "kastar hellre snöboll"
+      ],
+      "c88": [
+        "Vill du lära dig något nytt i år?",
+        "väljer redan en kurs",
+        "har redan nog att göra"
+      ],
+      "c89": [
+        "Gillar du tystnad?",
+        "uppskattar lugnet",
+        "gillar när det är liv omkring"
+      ],
+      "c90": [
+        "Gillar du att ge presenter till familjen?",
+        "gläder familjen utan särskild anledning",
+        "hjälper hellre till på praktiska sätt"
       ]
     },
     "loves": {
@@ -11169,6 +22928,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Skog",
         "Öken",
         "Norrsken"
+      ],
+      "s17": [
+        "Favoritfrukt?",
+        "Äpple",
+        "Jordgubbe",
+        "Vattenmelon",
+        "Vindruvor"
+      ],
+      "s18": [
+        "Vad gör vi en ledig dag?",
+        "Vandrar i bergen",
+        "Lagar mat hemma",
+        "Ett museum",
+        "Fiskar"
+      ],
+      "s19": [
+        "Favoritfrukost?",
+        "Pannkakor",
+        "Omelett",
+        "Gröt med bär",
+        "Croissant"
+      ],
+      "s20": [
+        "Favoritfågel?",
+        "Uggla",
+        "Papegoja",
+        "Svan",
+        "Påfågel"
+      ],
+      "s21": [
+        "Vilken stad ska vi besöka?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Favoritsport?",
+        "Fotboll",
+        "Simning",
+        "Tennis",
+        "Ridning"
+      ],
+      "s23": [
+        "Vad planterar vi i trädgården?",
+        "Ett äppelträd",
+        "Rosor",
+        "Grönsaker",
+        "Jordgubbar"
+      ],
+      "s24": [
+        "Favoritbakverk?",
+        "Små piroger",
+        "Munkar",
+        "Kakor",
+        "Baklava"
+      ],
+      "s25": [
+        "Var ska vi bo?",
+        "Vid en flod",
+        "I en skog",
+        "I en storstad",
+        "På en ö"
+      ],
+      "s26": [
+        "Favoritdjur i havet?",
+        "Sköldpadda",
+        "Val",
+        "Bläckfisk",
+        "Sjöhäst"
+      ],
+      "s27": [
+        "Vad åker vi med?",
+        "Cykel",
+        "Sparkcykel",
+        "Luftballong",
+        "Båt"
+      ],
+      "s28": [
+        "Favoritsysselsättning?",
+        "Stickning",
+        "Naturfotografering",
+        "Trädgårdsarbete",
+        "Kalligrafi"
+      ],
+      "s29": [
+        "Favoritsoppa?",
+        "Borsjtj",
+        "Kycklingsoppa",
+        "Pumpasoppa",
+        "Linssoppa"
+      ],
+      "s30": [
+        "Djur i skogen?",
+        "Igelkott",
+        "Ekorre",
+        "Räv",
+        "Hjort"
+      ],
+      "s31": [
+        "Något att smaska på?",
+        "Dadlar",
+        "Mandlar",
+        "Pistaschnötter",
+        "Torkade aprikoser"
+      ],
+      "s32": [
+        "Vad tar vi med på vandringen?",
+        "Ett tält",
+        "En termos",
+        "En karta",
+        "En ficklampa"
+      ],
+      "s33": [
+        "Favoritefterrätt?",
+        "Pudding",
+        "Cheesecake",
+        "Pannkakor med honung",
+        "Fruktsallad"
+      ],
+      "s34": [
+        "Vad gör vi på vintern?",
+        "Bygger en snögubbe",
+        "Åker pulka",
+        "Te vid fönstret",
+        "Åker skidor"
+      ],
+      "s35": [
+        "Vad gör vi på sommaren?",
+        "Badar",
+        "Plockar bär",
+        "Åker båt",
+        "Bygger ett sandslott"
+      ],
+      "s36": [
+        "Vad målar vi med?",
+        "Vattenfärger",
+        "Färgpennor",
+        "Kritor",
+        "Färg på duk"
+      ],
+      "s37": [
+        "Favoritgrönsak?",
+        "Morot",
+        "Tomat",
+        "Majs",
+        "Pumpa"
+      ],
+      "s38": [
+        "Vad gör ett hem mysigt?",
+        "En öppen spis",
+        "En mjuk filt",
+        "Krukväxter",
+        "En hylla full av böcker"
+      ],
+      "s39": [
+        "Vad spelar vi?",
+        "Schack",
+        "Pussel",
+        "Brädspel",
+        "Bollspel"
+      ],
+      "s40": [
+        "Vem bor på bondgården?",
+        "Ko",
+        "Lamm",
+        "Höna",
+        "Killing"
+      ],
+      "s41": [
+        "Te med vad?",
+        "Honung",
+        "Citron",
+        "Sylt",
+        "Mynta"
+      ],
+      "s42": [
+        "Vad finns vid havet?",
+        "En fyr",
+        "Snäckor",
+        "En segelbåt",
+        "Måsar"
+      ],
+      "s43": [
+        "Hur börjar vi morgonen?",
+        "Morgongympa",
+        "En kopp te",
+        "En promenad",
+        "En bok"
+      ],
+      "s44": [
+        "Favoritbär?",
+        "Hallon",
+        "Blåbär",
+        "Körsbär",
+        "Björnbär"
       ]
     },
     "who": [
@@ -11211,7 +23166,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Vem av oss minns roliga historier oftare?",
       "Vem av oss är mest tålmodig?",
       "Vem av oss säger ”tack” oftare?",
-      "Vem av oss erbjuder hjälp först?"
+      "Vem av oss erbjuder hjälp först?",
+      "Vem av oss är bäst på huvudräkning?",
+      "Vem av oss läser mest?",
+      "Vem av oss skriver snabbast på tangentbord?",
+      "Vem av oss ringer sina föräldrar oftast?",
+      "Vem av oss berättar bäst?",
+      "Vem av oss har prydligast handstil?",
+      "Vem av oss gillar stark mat mest?",
+      "Vem av oss glömmer oftast saker hemma?",
+      "Vem av oss är bäst med teknik?",
+      "Vem av oss tycker mest om att lära sig nytt?",
+      "Vem av oss är bäst på att planera?",
+      "Vem av oss är bäst på att pruta på marknaden?",
+      "Vem av oss tycker mest om naturen?",
+      "Vem av oss äter snabbast?",
+      "Vem av oss dricker mest te?",
+      "Vem av oss sköter växter bäst?",
+      "Vem av oss kan geografi bäst?",
+      "Vem av oss spelar schack bäst?",
+      "Vem av oss väljer bäst frukt på marknaden?",
+      "Vem av oss kollar väderprognosen oftast?",
+      "Vem av oss är mest rädd för spindlar?",
+      "Vem av oss är modigast?",
+      "Vem av oss är mest nyfiken?",
+      "Vem av oss löser pussel snabbast?",
+      "Vem av oss tecknar bäst?",
+      "Vem av oss hjälper grannarna oftast?",
+      "Vem av oss är bäst med barn?",
+      "Vem av oss tycker mest om att promenera?",
+      "Vem av oss läser bruksanvisningen oftast?",
+      "Vem av oss kommer ihåg namn bäst?",
+      "Vem av oss lär sig ord på ett annat språk snabbast?",
+      "Vem av oss är bäst på att baka?",
+      "Vem av oss ger bäst råd?",
+      "Vem av oss tycker mest om kallt väder?",
+      "Vem av oss skulle klara en vandring bäst?",
+      "Vem av oss läser nyheterna oftast?",
+      "Vem av oss provar nya rätter oftast?",
+      "Vem av oss packar en resväska snabbast?",
+      "Vem av oss är bäst på att laga saker?",
+      "Vem av oss pratar oftast med djur?",
+      "Vem av oss diskar oftast?",
+      "Vem av oss kan historia bäst?",
+      "Vem av oss skjuter oftast upp saker?",
+      "Vem av oss kommer snabbast överens med nya människor?",
+      "Vem av oss är mest rädd om sin hälsa?"
     ],
     "phrases": [
       "Jag ler när du…",
@@ -11243,8 +23243,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "En morgon med dig är…",
       "Om vi var ett enda ord skulle det vara…",
       "Jag vill lära mig av dig hur man…",
-      "Tack för att du alltid…"
-    ]
+      "Tack för att du alltid…",
+      "Som barn var min favoritmat…",
+      "Om jag fick en dag i vilket land som helst skulle jag…",
+      "Det bästa råd jag någonsin har fått är…",
+      "Jag skrattar alltid när…",
+      "Min favoritplats i min hemstad är…",
+      "Om jag hade en egen liten butik skulle den sälja…",
+      "Rätten jag lagar bäst är…",
+      "En barndomsdröm jag fortfarande minns är…",
+      "Det är lätt att göra mig glad om…",
+      "Den mest fantastiska plats jag har varit på är…",
+      "Jag vill lära mig…",
+      "Min perfekta lediga dag börjar med…",
+      "Om jag fick ha vilket djur som helst skulle det vara…",
+      "Min familj säger alltid att jag…",
+      "Jag kan bara inte vänja mig vid…",
+      "Min mest användbara vana är…",
+      "Den bästa bok jag har läst är…",
+      "Om tio år skulle jag vilja…",
+      "Mitt drömhem är…",
+      "Det roligaste som hände mig som barn är…",
+      "För mig är lycka…",
+      "Det är svårt för mig att avstå från…",
+      "Om jag hade en superkraft skulle den…",
+      "Det jag värdesätter mest hos människor är…",
+      "En ledig kväll brukar jag…",
+      "Min favoritdoft är…",
+      "Mat jag aldrig skulle äta är…",
+      "Det enda jag aldrig går hemifrån utan är…",
+      "Jag skulle vilja åka till… eftersom…",
+      "Den bästa present jag någonsin har fått är…",
+      "Min mest ovanliga vana är…",
+      "Om jag fick en extra timme varje dag skulle jag…",
+      "Någon jag lär mig mycket av är…",
+      "En tung dag är det här som hjälper mig: …",
+      "Det godaste jag har smakat på en resa är…",
+      "Om jag fick byta yrke för en dag skulle jag välja…",
+      "Årstiden som ligger mitt hjärta närmast är…",
+      "Mina vänner säger att jag…",
+      "En dag skulle jag vilja lära någon…",
+      "En liten glädje i min vardag är…"
+    ],
+    "truth": {
+      "t01": [
+        "En bläckfisk har tre hjärtan.",
+        true,
+        "Två hjärtan pumpar blod genom gälarna och det tredje pumpar det runt i kroppen."
+      ],
+      "t02": [
+        "Kinesiska muren syns från månen med blotta ögat.",
+        false,
+        "Nej: muren är alldeles för smal. Även från omloppsbana är den mycket svår att få syn på."
+      ],
+      "t03": [
+        "Honung kan hålla i tusentals år utan att bli dålig.",
+        true,
+        "I forntida egyptiska gravar har man hittat tusentals år gammal honung som fortfarande var bevarad."
+      ],
+      "t04": [
+        "Bananer växer på träd.",
+        false,
+        "Bananplantan är en jätteört: dess ”stam” består av tätt hoprullade blad."
+      ],
+      "t05": [
+        "Venus är den hetaste planeten i solsystemet.",
+        true,
+        "Den tjocka atmosfären värmer Venus till cirka 460 °C — varmare än Merkurius."
+      ],
+      "t06": [
+        "Fladdermöss är blinda.",
+        false,
+        "Fladdermöss kan se, och i mörkret hittar de dessutom rätt med hjälp av ekolokalisering."
+      ],
+      "t07": [
+        "En val är en fisk.",
+        false,
+        "Valar är däggdjur: de andas luft och ger sina ungar mjölk."
+      ],
+      "t08": [
+        "Sahara är världens största öken.",
+        false,
+        "Den största öknen är Antarktis. Sahara är den största heta öknen."
+      ],
+      "t09": [
+        "En giraff har lika många halskotor som en människa.",
+        true,
+        "Båda har sju halskotor — giraffens är bara väldigt långa."
+      ],
+      "t10": [
+        "Botaniskt sett är en tomat ett bär.",
+        true,
+        "Botaniker räknar tomaten som ett bär: en köttig frukt med frön inuti."
+      ],
+      "t11": [
+        "Botaniskt sett är en jordgubbe ett bär.",
+        false,
+        "Det är en skenfrukt: de riktiga frukterna är de små ”fröna” på utsidan."
+      ],
+      "t12": [
+        "Man kan höra en explosion i rymden.",
+        false,
+        "I rymden finns nästan ingen luft, så ljudet har inget att färdas genom."
+      ],
+      "t13": [
+        "Högt uppe i bergen kokar vatten vid en lägre temperatur.",
+        true,
+        "Lufttrycket är lägre där uppe, så vattnet kokar innan det når 100 °C."
+      ],
+      "t14": [
+        "Pingviner lever på Nordpolen.",
+        false,
+        "Vilda pingviner lever bara på södra halvklotet, inte långt uppe i norr."
+      ],
+      "t15": [
+        "Mount Everest är det högsta berget över havsytan.",
+        true,
+        "Everest reser sig cirka 8 849 meter över havet."
+      ],
+      "t16": [
+        "Människor använder bara 10 % av hjärnan.",
+        false,
+        "Det är en myt: nästan alla delar av hjärnan är aktiva under ett dygn."
+      ],
+      "t17": [
+        "Ett människohjärta slår ungefär 100 000 gånger om dagen.",
+        true,
+        "Med runt 70 slag i minuten blir det ungefär 100 000 slag per dygn."
+      ],
+      "t18": [
+        "En guldfisk har ett minne på bara tre sekunder.",
+        false,
+        "Försök visar att guldfiskar kan minnas det de har lärt sig i flera månader."
+      ],
+      "t19": [
+        "Australien är både ett land och en kontinent.",
+        true,
+        "Australien är det enda land som täcker en hel kontinent."
+      ],
+      "t20": [
+        "Blixten slår aldrig ner på samma ställe två gånger.",
+        false,
+        "Jo: höga byggnader träffas av blixten många gånger om året."
+      ],
+      "t21": [
+        "En struts gömmer huvudet i sanden när den blir rädd.",
+        false,
+        "En myt: en skrämd struts springer iväg eller lägger sig platt på marken för att gömma sig."
+      ],
+      "t22": [
+        "Världens minsta fågel är en kolibri.",
+        true,
+        "Bikolibrin från Kuba väger cirka 2 gram — mindre än någon annan fågel."
+      ],
+      "t23": [
+        "En vattenmelon består till cirka 90 % av vatten.",
+        true,
+        "Vattenmelon är runt 92 % vatten — därför är den så svalkande."
+      ],
+      "t24": [
+        "En spindel har sex ben.",
+        false,
+        "En spindel har åtta ben. Insekter har sex, och spindlar är inte insekter."
+      ],
+      "t25": [
+        "Månen lyser med eget ljus.",
+        false,
+        "Månen har inget eget ljus: den reflekterar solljuset."
+      ],
+      "t26": [
+        "Elefanten är det största landdjuret.",
+        true,
+        "En afrikansk savannelefant kan väga över 6 ton."
+      ],
+      "t27": [
+        "Blåvalen är det största djur som vetenskapen känner till.",
+        true,
+        "Blåvalar kan bli över 30 meter långa — större än någon känd dinosaurie."
+      ],
+      "t28": [
+        "En kameleont byter färg bara för att kamouflera sig.",
+        false,
+        "Färgen beror mer på sinnesstämning, temperatur och signaler till andra kameleonter."
+      ],
+      "t29": [
+        "Telefonen uppfanns av Thomas Edison.",
+        false,
+        "Alexander Graham Bell fick patent på telefonen 1876."
+      ],
+      "t30": [
+        "Penicillinet upptäcktes av Alexander Fleming.",
+        true,
+        "Fleming upptäckte penicillinet 1928 — det första antibiotikumet."
+      ],
+      "t31": [
+        "Solsystemets högsta vulkan finns på Mars.",
+        true,
+        "Olympus Mons på Mars är cirka 22 km hög — nästan 2,5 gånger högre än Everest."
+      ],
+      "t32": [
+        "Blodet i våra vener är blått.",
+        false,
+        "Blod är alltid rött; venerna ser bara blå ut på grund av hur ljuset passerar genom huden."
+      ],
+      "t33": [
+        "Atlanten är jordens största ocean.",
+        false,
+        "Störst är Stilla havet: det är större än all landyta på jorden tillsammans."
+      ],
+      "t34": [
+        "Ryssland är världens till ytan största land.",
+        true,
+        "Ryssland täcker mer än 17 miljoner kvadratkilometer."
+      ],
+      "t35": [
+        "Kanada har världens längsta kustlinje.",
+        true,
+        "Kanadas kust är över 200 000 km lång — längre än något annat lands."
+      ],
+      "t36": [
+        "En kos mage har fyra avdelningar.",
+        true,
+        "En ko har en mage med fyra kamrar — så smälter den gräs."
+      ],
+      "t37": [
+        "Lejonet är världens största kattdjur.",
+        false,
+        "Det största kattdjuret är tigern, särskilt den sibiriska tigern."
+      ],
+      "t38": [
+        "Jorden är den planet som ligger närmast solen.",
+        false,
+        "Närmast ligger Merkurius, sedan Venus; jorden är den tredje planeten."
+      ],
+      "t39": [
+        "Solljuset tar ungefär 8 minuter att nå jorden.",
+        true,
+        "Ljuset färdas de 150 miljoner km från solen på ungefär 8 minuter och 20 sekunder."
+      ],
+      "t40": [
+        "Delfiner sover med en hjärnhalva i taget.",
+        true,
+        "Ena halvan vilar medan den andra håller vakt och kommer ihåg att andas."
+      ],
+      "t41": [
+        "Potatisen kommer från Irland.",
+        false,
+        "Potatisen kommer från Sydamerika: den odlades i Anderna för tusentals år sedan."
+      ],
+      "t42": [
+        "Choklad görs av fröna från kakaoträdet.",
+        true,
+        "Kakaofrukterna växer direkt på stammen, och fröna inuti blir choklad."
+      ],
+      "t43": [
+        "En haj är ett däggdjur.",
+        false,
+        "En haj är en fisk: den andas med gälar. Havets däggdjur är valar och delfiner."
+      ],
+      "t44": [
+        "Vissa sorters bambu kan växa nästan en meter på en dag.",
+        true,
+        "Bambu är en av de snabbast växande växterna på jorden."
+      ],
+      "t45": [
+        "En uggla kan vrida huvudet hela 360 grader.",
+        false,
+        "En uggla kan vrida huvudet cirka 270 grader — mycket, men inte ett helt varv."
+      ],
+      "t46": [
+        "En diamant och grafiten i en blyertspenna består av samma ämne.",
+        true,
+        "Båda är rent kol — atomerna är bara ordnade på olika sätt."
+      ],
+      "t47": [
+        "En kamel lagrar vatten i puckeln.",
+        false,
+        "Kamelens puckel lagrar fett, inte vatten — det ger energi på långa resor."
+      ],
+      "t48": [
+        "Människokroppens minsta ben sitter i örat.",
+        true,
+        "Stigbygeln i mellanörat är bara cirka 3 millimeter lång."
+      ],
+      "t49": [
+        "Stora papegojor kan bli över 50 år gamla.",
+        true,
+        "Väl omhändertagna aror och kakaduor lever ofta i 50 år eller mer."
+      ],
+      "t50": [
+        "Bröderna Wright gjorde den första motordrivna flygningen.",
+        true,
+        "De flög 1903; den allra första flygningen varade i 12 sekunder."
+      ],
+      "t51": [
+        "Hjulet uppfanns på medeltiden.",
+        false,
+        "Hjulet är över 5 000 år gammalt: det användes i Mesopotamien för ungefär 5 500 år sedan."
+      ],
+      "t52": [
+        "En sjöhäst är en fisk.",
+        true,
+        "En sjöhäst andas med gälar och simmar med en fena, precis som andra fiskar."
+      ],
+      "t53": [
+        "En kolibri kan flyga baklänges.",
+        true,
+        "Kolibrier är de enda fåglar som verkligen kan flyga baklänges."
+      ],
+      "t54": [
+        "Eiffeltornet blir lite högre på sommaren.",
+        true,
+        "Värmen får metallen att utvidgas, och tornet växer med cirka 15 centimeter."
+      ],
+      "t55": [
+        "Huden är människokroppens största organ.",
+        true,
+        "En vuxens hud väger flera kilo och skyddar hela kroppen."
+      ],
+      "t56": [
+        "Färgen röd gör en tjur arg.",
+        false,
+        "Tjurar kan knappt urskilja rött: det är rörelsen som retar dem, inte färgen."
+      ],
+      "t57": [
+        "En husfluga lever bara en dag.",
+        false,
+        "En husfluga lever ungefär en månad. Det är vuxna dagsländor som bara lever en dag eller två."
+      ],
+      "t58": [
+        "Ananas växer på träd.",
+        false,
+        "En ananas växer på en låg, bladrik planta, rakt upp ur mitten av den."
+      ],
+      "t59": [
+        "En jordnöt är en nöt.",
+        false,
+        "En jordnöt är en balväxt, släkt med ärtor och bönor. Baljorna mognar under jorden."
+      ],
+      "t60": [
+        "Nordpolen och Sydpolen är lika kalla.",
+        false,
+        "Sydpolen är mycket kallare: den ligger på en hög, isig kontinent, Nordpolen på ett hav."
+      ]
+    }
   },
   "el": {
     "text": {
@@ -11453,7 +23795,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Πρόσκληση",
       "invited": "Στάλθηκε",
       "inviteNone": "Προσθέστε φίλους στην ενότητα «Φίλοι» για να τους προσκαλείτε με ένα πάτημα.",
-      "inviteSent": "Η πρόσκληση στάλθηκε: {name}"
+      "inviteSent": "Η πρόσκληση στάλθηκε: {name}",
+      "truth": "Αλήθεια ή ψέμα",
+      "tfTitle": "Αλήθεια ή ψέμα",
+      "tfNote": "Ζωντανό παιχνίδι για δύο: εκπληκτικά γεγονότα για τον κόσμο. 12 δευτερόλεπτα — αλήθεια ή ψέμα; Ένας πόντος για κάθε σωστή απάντηση.",
+      "tfShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Αλήθεια ή ψέμα»",
+      "tfJoinLead": "Σας περιμένει: {name}. Αλήθεια ή ψέμα — αποφασίστε γρήγορα!",
+      "tfRound": "Γεγονός {n} από {total}",
+      "tfTrue": "Αλήθεια",
+      "tfFalse": "Ψέμα",
+      "tfIsTrue": "Ισχύει!",
+      "tfIsFalse": "Δεν ισχύει!",
+      "tfFirstYou": "Σωστή απάντηση πρώτα από εσένα!",
+      "tfFirstThem": "Πρώτη σωστή απάντηση: {name}",
+      "tfFinalWin": "Νίκη! Ξέρεις περισσότερα για τον κόσμο.",
+      "tfFinalLose": "Αυτή τη φορά ξέρει περισσότερα: {name} — ρεβάνς;",
+      "tfFinalDraw": "Ισοπαλία — ξέρετε ακριβώς τα ίδια!",
+      "featTruth": "Ζωντανό παιχνίδι «Αλήθεια ή ψέμα» — εκπληκτικά γεγονότα για τον κόσμο"
     },
     "questions": {
       "q01": [
@@ -11875,6 +24233,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Να μαγειρεύω",
         "Μια νέα γλώσσα",
         "Να ζωγραφίζω"
+      ],
+      "q61": [
+        "Ποιο φαγητό φτιάχνω καλύτερα;",
+        "Σούπα",
+        "Πιλάφι",
+        "Αρτοσκευάσματα",
+        "Σαλάτα"
+      ],
+      "q62": [
+        "Ποια χώρα θέλω να δω πρώτη;",
+        "Τουρκία",
+        "Ιαπωνία",
+        "Μαρόκο",
+        "Νορβηγία"
+      ],
+      "q63": [
+        "Με ποιο άθλημα θα ασχολούμουν πιο ευχαρίστως;",
+        "Κολύμπι",
+        "Τρέξιμο",
+        "Ποδηλασία",
+        "Ποδόσφαιρο"
+      ],
+      "q64": [
+        "Ποιο βιβλίο θα διάλεγα;",
+        "Ένα βιβλίο περιπέτειας",
+        "Ένα βιβλίο ιστορίας",
+        "Παραμύθια",
+        "Μια εγκυκλοπαίδεια"
+      ],
+      "q65": [
+        "Ποια ζώα θα επισκεπτόμουν πρώτα στον ζωολογικό κήπο;",
+        "Τους ελέφαντες",
+        "Τις μαϊμούδες",
+        "Τους πιγκουίνους",
+        "Τις καμηλοπαρδάλεις"
+      ],
+      "q66": [
+        "Πώς τα πάω με το πικάντικο φαγητό;",
+        "Όσο πιο καυτερό, τόσο καλύτερα",
+        "Λίγο είναι εντάξει",
+        "Μόνο ελάχιστα",
+        "Δεν το τρώω καθόλου"
+      ],
+      "q67": [
+        "Ποιο μάθημα μου άρεσε περισσότερο στο σχολείο;",
+        "Μαθηματικά",
+        "Λογοτεχνία",
+        "Γεωγραφία",
+        "Γυμναστική"
+      ],
+      "q68": [
+        "Το επάγγελμα των παιδικών μου ονείρων;",
+        "Γιατρός",
+        "Δάσκαλος",
+        "Αστροναύτης",
+        "Μάγειρας"
+      ],
+      "q69": [
+        "Τι λέω για τις πεζοπορίες;",
+        "Ονειρεύομαι μια μεγάλη",
+        "Μόνο για μία μέρα",
+        "Μόνο με ανέσεις",
+        "Καλύτερα σπίτι"
+      ],
+      "q70": [
+        "Η διάθεσή μου το πρωί;",
+        "Με πολλή ενέργεια",
+        "Ακόμα νυστάζω",
+        "Ήσυχη",
+        "Με όρεξη για κουβέντα"
+      ],
+      "q71": [
+        "Ποιος ξηρός καρπός μου αρέσει περισσότερο;",
+        "Φουντούκι",
+        "Καρύδι",
+        "Κάσιους",
+        "Αμύγδαλο"
+      ],
+      "q72": [
+        "Τι θα έκανα με μια απρόσμενη ελεύθερη ώρα;",
+        "Θα διάβαζα",
+        "Θα έκανα βόλτα",
+        "Θα τηλεφωνούσα στην οικογένεια",
+        "Θα μαγείρευα κάτι"
+      ],
+      "q73": [
+        "Ποιον καιρό δεν συμπαθώ;",
+        "Τη ζέστη",
+        "Τον αέρα",
+        "Το χιονόνερο",
+        "Την παγωνιά"
+      ],
+      "q74": [
+        "Σε ποιο χρώμα θα έβαφα το δωμάτιό μου;",
+        "Λευκό",
+        "Μπεζ",
+        "Πράσινο",
+        "Γαλάζιο"
+      ],
+      "q75": [
+        "Τι θα προτιμούσα να παίξω;",
+        "Σκάκι",
+        "Ντάμα",
+        "Παζλ",
+        "Ένα παιχνίδι λέξεων"
+      ],
+      "q76": [
+        "Τι θα μαγείρευα για καλεσμένους;",
+        "Πιλάφι",
+        "Μια πίτα",
+        "Σαλάτες",
+        "Θα παράγγελνα φαγητό"
+      ],
+      "q77": [
+        "Τι σίγουρα δεν θα έτρωγα;",
+        "Μανιτάρια",
+        "Ψάρι",
+        "Ελιές",
+        "Βραστό κρεμμύδι"
+      ],
+      "q78": [
+        "Πώς πίνω το τσάι μου;",
+        "Δυνατό",
+        "Ελαφρύ",
+        "Γλυκό",
+        "Με βότανα"
+      ],
+      "q79": [
+        "Τι μετρά περισσότερο για μένα σε ένα σπίτι;",
+        "Η καθαριότητα",
+        "Η ζεστασιά",
+        "Το πολύ φως",
+        "Η ησυχία"
+      ],
+      "q80": [
+        "Πώς μαθαίνω καινούργια πράγματα;",
+        "Διαβάζοντας",
+        "Με βιντεομαθήματα",
+        "Δοκιμάζοντας στην πράξη",
+        "Ρωτώντας άλλους"
+      ],
+      "q81": [
+        "Ποιο άγριο ζώο με συναρπάζει περισσότερο;",
+        "Η τίγρη",
+        "Η αρκούδα",
+        "Ο αετός",
+        "Το δελφίνι"
+      ],
+      "q82": [
+        "Τι θα χάριζα στη μαμά μου;",
+        "Λουλούδια",
+        "Κάτι χειροποίητο",
+        "Ένα ταξίδι",
+        "Μια ζεστή κουβέρτα"
+      ],
+      "q83": [
+        "Τι κάνω στη διάρκεια ενός ταξιδιού;",
+        "Κοιτάζω από το παράθυρο",
+        "Διαβάζω",
+        "Κουβεντιάζω",
+        "Τσιμπολογάω"
+      ],
+      "q84": [
+        "Το αγαπημένο μου φαγητό με κοτόπουλο;",
+        "Σουβλάκια κοτόπουλο",
+        "Κοτόπουλο με ρύζι",
+        "Μπιφτέκια κοτόπουλο",
+        "Nuggets"
+      ],
+      "q85": [
+        "Ποια θέση διαλέγω στο τρένο;",
+        "Στο παράθυρο",
+        "Στον διάδρομο",
+        "Με την πλάτη προς την κατεύθυνση",
+        "Δεν με νοιάζει"
+      ],
+      "q86": [
+        "Τι κάνω όταν κάτι πάει στραβά;",
+        "Δρω αμέσως",
+        "Πρώτα σκέφτομαι",
+        "Ζητώ συμβουλή",
+        "Αγχώνομαι λίγο"
+      ],
+      "q87": [
+        "Ποιο είναι το κύριο χαρακτηριστικό μου;",
+        "Η καλοσύνη",
+        "Η ειλικρίνεια",
+        "Η επιμονή",
+        "Η κεφάτη διάθεση"
+      ],
+      "q88": [
+        "Πού θα ξεκουραζόμουν καλύτερα;",
+        "Σε συγγενείς στο χωριό",
+        "Σε ξενοδοχείο δίπλα στη θάλασσα",
+        "Σε σκηνή",
+        "Στο σπίτι"
+      ],
+      "q89": [
+        "Ποιο αρτοσκεύασμα θα διάλεγα;",
+        "Σαμσά",
+        "Χατσαπούρι",
+        "Τσακ-τσακ",
+        "Εκλέρ"
+      ],
+      "q90": [
+        "Ποια γλώσσα θα ήθελα περισσότερο να μάθω;",
+        "Αραβικά",
+        "Αγγλικά",
+        "Τουρκικά",
+        "Ιαπωνικά"
+      ],
+      "q91": [
+        "Πόσο θα άντεχα χωρίς γλυκά;",
+        "Μία μέρα",
+        "Μία εβδομάδα",
+        "Έναν μήνα",
+        "Όσο χρειαστεί"
+      ],
+      "q92": [
+        "Τι κάνω όταν αργώ;",
+        "Τρέχω όσο πιο γρήγορα μπορώ",
+        "Τηλεφωνώ από πριν να ενημερώσω",
+        "Παίρνω ταξί",
+        "Δεν αργώ ποτέ"
+      ],
+      "q93": [
+        "Τι κάνω όταν χαλάει μια συσκευή;",
+        "Την επισκευάζω με τα χέρια μου",
+        "Διαβάζω τις οδηγίες",
+        "Ζητώ βοήθεια",
+        "Πατάω όλα τα κουμπιά"
+      ],
+      "q94": [
+        "Τι μπαίνει πρώτο στη βαλίτσα μου;",
+        "Ένα φαρμακείο πρώτων βοηθειών",
+        "Ένα βιβλίο",
+        "Ένας φορτιστής",
+        "Ένα σνακ"
+      ],
+      "q95": [
+        "Ποια ασχολία με ηρεμεί;",
+        "Το μαγείρεμα",
+        "Το συμμάζεμα",
+        "Η ζωγραφική",
+        "Μια βόλτα"
+      ],
+      "q96": [
+        "Τι θέλω να κάνω όταν βγω στη σύνταξη;",
+        "Κηπουρική",
+        "Ταξίδια",
+        "Διάβασμα",
+        "Χρόνο με τα εγγόνια"
+      ],
+      "q97": [
+        "Τι με ενοχλεί περισσότερο;",
+        "Ο θόρυβος",
+        "Η ακαταστασία",
+        "Η καθυστέρηση",
+        "Η αγένεια"
+      ],
+      "q98": [
+        "Ποια μυρωδιά μου αρέσει περισσότερο;",
+        "Το φρέσκο ψωμί",
+        "Η βροχή",
+        "Τα λουλούδια",
+        "Η θάλασσα"
+      ],
+      "q99": [
+        "Τι θα διάλεγα για επιδόρπιο;",
+        "Φρούτα",
+        "Παγωτό",
+        "Πίτα",
+        "Μόνο τσάι"
       ]
     },
     "yesNo": {
@@ -12077,6 +24708,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Ξαναπαίζουμε αργότερα;",
         "θέλει άλλον έναν γύρο",
         "προτιμά μια αγκαλιά από το παιχνίδι"
+      ],
+      "c41": [
+        "Σου αρέσει το πικάντικο φαγητό;",
+        "όσο πιο καυτερό, τόσο καλύτερα",
+        "διαλέγει κάτι πιο ήπιο"
+      ],
+      "c42": [
+        "Ξέρεις κολύμπι;",
+        "κολυμπά σαν ψάρι",
+        "προς το παρόν μένει κοντά στην ακτή"
+      ],
+      "c43": [
+        "Θα ήθελες να έχεις γάτα;",
+        "σκέφτεται ήδη όνομα",
+        "προτιμά τους σκύλους"
+      ],
+      "c44": [
+        "Θα ήθελες να επισκεφθείς κάποτε την Κωνσταντινούπολη;",
+        "ονειρεύεται ήδη τον Βόσπορο",
+        "θα διάλεγε άλλη πόλη"
+      ],
+      "c45": [
+        "Σου αρέσει να μαγειρεύεις;",
+        "μαγειρεύει με ευχαρίστηση",
+        "θα προτιμούσε να πλύνει τα πιάτα"
+      ],
+      "c46": [
+        "Θα ήθελες να μάθεις να φτιάχνεις πιλάφι;",
+        "ψάχνει ήδη συνταγή",
+        "θα προτιμούσε να δοκιμάσει κάποιου άλλου"
+      ],
+      "c47": [
+        "Σου αρέσει να διαβάζεις βιβλία;",
+        "έχει πάντα ένα βιβλίο κοντά",
+        "προτιμά να ακούει ιστορίες"
+      ],
+      "c48": [
+        "Ξέρεις ποδήλατο;",
+        "θα μπορούσε να ξεκινήσει αμέσως",
+        "υπόσχεται να μάθει"
+      ],
+      "c49": [
+        "Προτιμάς το βουνό από τη θάλασσα;",
+        "διαλέγει το βουνό",
+        "διαλέγει τη θάλασσα"
+      ],
+      "c50": [
+        "Θα ήθελες να δεις μια έρημο;",
+        "ονειρεύεται αμμόλοφους",
+        "θα προτιμούσε ένα δάσος"
+      ],
+      "c51": [
+        "Σου αρέσει ο χειμώνας;",
+        "περιμένει το πρώτο χιόνι",
+        "περιμένει το καλοκαίρι"
+      ],
+      "c52": [
+        "Πίνεις τσάι χωρίς ζάχαρη;",
+        "αγαπά την καθαρή γεύση του τσαγιού",
+        "δεν μπορεί χωρίς ένα κουταλάκι ζάχαρη"
+      ],
+      "c53": [
+        "Φοβάσαι τις αράχνες;",
+        "κρατά μεγάλη απόσταση",
+        "τις βγάζει ήρεμα έξω"
+      ],
+      "c54": [
+        "Σου αρέσει να ζωγραφίζεις;",
+        "πιάνει ήδη το πινέλο",
+        "προτιμά να κοιτάζει πίνακες άλλων"
+      ],
+      "c55": [
+        "Θα ήθελες να δεις το βόρειο σέλας;",
+        "ψάχνει ήδη πού μπορεί να το δει",
+        "προτιμά να κοιτάζει τα αστέρια"
+      ],
+      "c56": [
+        "Σου αρέσει ο βροχερός καιρός;",
+        "αγαπά τον ήχο της βροχής έξω",
+        "περιμένει τον ήλιο"
+      ],
+      "c57": [
+        "Ξέρεις ιππασία;",
+        "κάθεται στη σέλα με σιγουριά",
+        "προς το παρόν μόνο το ονειρεύεται"
+      ],
+      "c58": [
+        "Θα ήθελες να έχεις σκύλο;",
+        "ονειρεύεται έναν πιστό φίλο",
+        "έχει αρκετά να φροντίσει προς το παρόν"
+      ],
+      "c59": [
+        "Προτιμάς το γλυκό από το αλμυρό;",
+        "δεν μπορεί χωρίς γλυκά",
+        "διαλέγει το αλμυρό"
+      ],
+      "c60": [
+        "Σου αρέσει να ταξιδεύεις με τρένο;",
+        "αγαπά το κροτάλισμα των τροχών",
+        "διαλέγει το αεροπλάνο"
+      ],
+      "c61": [
+        "Σου είναι εύκολο να ξεκινάς τη μέρα νωρίς;",
+        "ξεκινά τη μέρα με πολλή ενέργεια",
+        "παίρνει μπρος μόνο κατά το μεσημέρι"
+      ],
+      "c62": [
+        "Σου αρέσει η κατασκήνωση σε σκηνή;",
+        "ετοιμάζει ήδη το σακίδιο",
+        "διαλέγει ένα ζεστό ξενοδοχείο"
+      ],
+      "c63": [
+        "Θα ήθελες να μένεις δίπλα στη θάλασσα;",
+        "ονειρεύεται τον ήχο των κυμάτων",
+        "διαλέγει την πόλη"
+      ],
+      "c64": [
+        "Τρως παγωτό τον χειμώνα;",
+        "το τρώει ακόμα και στην παγωνιά",
+        "μόνο το καλοκαίρι"
+      ],
+      "c65": [
+        "Σου αρέσει η σοκολάτα;",
+        "ξέρει όλα τα είδη της",
+        "περνά δίπλα της με ηρεμία"
+      ],
+      "c66": [
+        "Ξέρεις να φτιάχνεις πίτες;",
+        "ψήνει σαν γιαγιά",
+        "υπόσχεται να μάθει"
+      ],
+      "c67": [
+        "Σου αρέσει να κοιτάζεις τα αστέρια;",
+        "ξέρει τους αστερισμούς",
+        "προτιμά μια ηλιόλουστη μέρα"
+      ],
+      "c68": [
+        "Θα ήθελες κάποτε να φτιάξεις τον δικό σου κήπο;",
+        "διαλέγει ήδη φυντάνια",
+        "θα ξεκινήσει με ένα λουλούδι σε γλάστρα"
+      ],
+      "c69": [
+        "Σου αρέσουν τα αγριολούλουδα;",
+        "αγαπά τις μαργαρίτες και τα κυανά",
+        "προτιμά τα λουλούδια του κήπου"
+      ],
+      "c70": [
+        "Πίνεις καφέ;",
+        "η μέρα δεν ξεκινά χωρίς καφέ",
+        "διαλέγει τσάι"
+      ],
+      "c71": [
+        "Σου αρέσει η σπιτική λεμονάδα;",
+        "κόβει ήδη λεμόνια",
+        "θα προτιμούσε νερό"
+      ],
+      "c72": [
+        "Θα ήθελες να επισκεφθείς κάποτε την Ιαπωνία;",
+        "ονειρεύεται να δει τις ανθισμένες κερασιές",
+        "θα διάλεγε άλλη χώρα"
+      ],
+      "c73": [
+        "Σου αρέσει το φθινόπωρο;",
+        "αγαπά το θρόισμα των φύλλων",
+        "περιμένει την άνοιξη"
+      ],
+      "c74": [
+        "Σου αρέσει η μυρωδιά της λεβάντας;",
+        "αγαπά αυτό το άρωμα",
+        "προτιμά άλλα αρώματα"
+      ],
+      "c75": [
+        "Σου αρέσουν τα επιτραπέζια παιχνίδια;",
+        "στήνει ήδη το ταμπλό",
+        "προτιμά μια βόλτα"
+      ],
+      "c76": [
+        "Ξέρεις να οδηγείς αυτοκίνητο;",
+        "οδηγεί με σιγουριά",
+        "προς το παρόν κάθεται στη θέση του συνοδηγού"
+      ],
+      "c77": [
+        "Θα ήθελες να δεις κάποτε τον ωκεανό;",
+        "ονειρεύεται ένα μεγάλο κύμα",
+        "η θάλασσα αρκεί"
+      ],
+      "c78": [
+        "Θα ήθελες να ζήσεις για λίγο σε φάρμα;",
+        "ταΐζει ήδη τις κότες",
+        "μένει στην πόλη"
+      ],
+      "c79": [
+        "Σου αρέσουν οι μεγάλες πόλεις;",
+        "αγαπά τα φώτα της πόλης",
+        "διαλέγει την ησυχία και τη γαλήνη"
+      ],
+      "c80": [
+        "Προτιμάς τα φρούτα από τα γλυκά;",
+        "διαλέγει φρούτα",
+        "διαλέγει γλυκά"
+      ],
+      "c81": [
+        "Θα ήθελες να δεις δελφίνια στη θάλασσα;",
+        "θα ήθελε πολύ να τα δει",
+        "θα προτιμούσε να διαβάσει γι’ αυτά"
+      ],
+      "c82": [
+        "Σου αρέσει το καλοκαίρι;",
+        "περιμένει τις ζεστές μέρες",
+        "αγαπά τον δροσερό καιρό"
+      ],
+      "c83": [
+        "Σου αρέσουν οι βόλτες στο πάρκο;",
+        "περπατά με κάθε καιρό",
+        "προτιμά να μένει σπίτι"
+      ],
+      "c84": [
+        "Σου αρέσει να γράφεις με το χέρι;",
+        "έχει καλλιγραφικά γράμματα",
+        "πληκτρολογεί στο κινητό"
+      ],
+      "c85": [
+        "Σου αρέσουν οι βόλτες με βάρκα;",
+        "πιάνει ήδη τα κουπιά",
+        "μένει στην ακτή"
+      ],
+      "c86": [
+        "Θα ήθελες να ταξιδέψεις σε όλο τον κόσμο;",
+        "σχεδιάζει ήδη διαδρομή",
+        "λίγες χώρες αρκούν"
+      ],
+      "c87": [
+        "Ξέρεις να φτιάχνεις χιονάνθρωπο;",
+        "θα φτιάξει τον μεγαλύτερο",
+        "προτιμά τον χιονοπόλεμο"
+      ],
+      "c88": [
+        "Θα ήθελες να μάθεις κάτι καινούργιο φέτος;",
+        "διαλέγει ήδη μάθημα",
+        "έχει ήδη αρκετές δουλειές"
+      ],
+      "c89": [
+        "Σου αρέσει η ησυχία;",
+        "εκτιμά τη γαλήνη",
+        "προτιμά τη ζωντάνια γύρω"
+      ],
+      "c90": [
+        "Σου αρέσει να κάνεις δώρα στην οικογένεια;",
+        "χαροποιεί την οικογένεια χωρίς ιδιαίτερη αφορμή",
+        "προτιμά να βοηθά με πρακτικούς τρόπους"
       ]
     },
     "loves": {
@@ -12191,6 +25072,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Δάσος",
         "Έρημος",
         "Βόρειο σέλας"
+      ],
+      "s17": [
+        "Αγαπημένο φρούτο;",
+        "Μήλο",
+        "Φράουλα",
+        "Καρπούζι",
+        "Σταφύλι"
+      ],
+      "s18": [
+        "Τι κάνουμε σε μια ελεύθερη μέρα;",
+        "Πεζοπορία στο βουνό",
+        "Μαγείρεμα στο σπίτι",
+        "Ένα μουσείο",
+        "Ψάρεμα"
+      ],
+      "s19": [
+        "Αγαπημένο πρωινό;",
+        "Τηγανίτες",
+        "Ομελέτα",
+        "Χυλός με μούρα",
+        "Κρουασάν"
+      ],
+      "s20": [
+        "Αγαπημένο πουλί;",
+        "Κουκουβάγια",
+        "Παπαγάλος",
+        "Κύκνος",
+        "Παγώνι"
+      ],
+      "s21": [
+        "Ποια πόλη να επισκεφθούμε;",
+        "Κωνσταντινούπολη",
+        "Παρίσι",
+        "Τόκιο",
+        "Ντουμπάι"
+      ],
+      "s22": [
+        "Αγαπημένο άθλημα;",
+        "Ποδόσφαιρο",
+        "Κολύμπι",
+        "Τένις",
+        "Ιππασία"
+      ],
+      "s23": [
+        "Τι να φυτέψουμε στον κήπο;",
+        "Μια μηλιά",
+        "Τριαντάφυλλα",
+        "Λαχανικά",
+        "Φράουλες"
+      ],
+      "s24": [
+        "Αγαπημένο αρτοσκεύασμα;",
+        "Πιτάκια",
+        "Λουκουμάδες",
+        "Μπισκότα",
+        "Μπακλαβάς"
+      ],
+      "s25": [
+        "Πού να μένουμε;",
+        "Δίπλα σε ποτάμι",
+        "Σε δάσος",
+        "Σε μεγάλη πόλη",
+        "Σε νησί"
+      ],
+      "s26": [
+        "Αγαπημένο θαλάσσιο πλάσμα;",
+        "Χελώνα",
+        "Φάλαινα",
+        "Χταπόδι",
+        "Ιππόκαμπος"
+      ],
+      "s27": [
+        "Με τι να κάνουμε βόλτα;",
+        "Ποδήλατο",
+        "Πατίνι",
+        "Αερόστατο",
+        "Βάρκα"
+      ],
+      "s28": [
+        "Αγαπημένη ασχολία;",
+        "Πλέξιμο",
+        "Φωτογραφία της φύσης",
+        "Κηπουρική",
+        "Καλλιγραφία"
+      ],
+      "s29": [
+        "Αγαπημένη σούπα;",
+        "Μπορς",
+        "Κοτόσουπα",
+        "Κολοκυθόσουπα",
+        "Φακές"
+      ],
+      "s30": [
+        "Ζώο του δάσους;",
+        "Σκαντζόχοιρος",
+        "Σκίουρος",
+        "Αλεπού",
+        "Ελάφι"
+      ],
+      "s31": [
+        "Κάτι για τσιμπολόγημα;",
+        "Χουρμάδες",
+        "Αμύγδαλα",
+        "Φιστίκια Αιγίνης",
+        "Αποξηραμένα βερίκοκα"
+      ],
+      "s32": [
+        "Τι παίρνουμε στην πεζοπορία;",
+        "Μια σκηνή",
+        "Ένα θερμός",
+        "Έναν χάρτη",
+        "Έναν φακό"
+      ],
+      "s33": [
+        "Αγαπημένο γλυκό;",
+        "Πουτίγκα",
+        "Τσίζκεϊκ",
+        "Τηγανίτες με μέλι",
+        "Φρουτοσαλάτα"
+      ],
+      "s34": [
+        "Τι κάνουμε τον χειμώνα;",
+        "Χιονάνθρωπο",
+        "Έλκηθρο",
+        "Τσάι στο παράθυρο",
+        "Σκι"
+      ],
+      "s35": [
+        "Τι κάνουμε το καλοκαίρι;",
+        "Κολύμπι",
+        "Μαζεύουμε μούρα",
+        "Βόλτα με βάρκα",
+        "Κάστρο στην άμμο"
+      ],
+      "s36": [
+        "Με τι ζωγραφίζουμε;",
+        "Νερομπογιές",
+        "Ξυλομπογιές",
+        "Κηρομπογιές",
+        "Χρώματα σε καμβά"
+      ],
+      "s37": [
+        "Αγαπημένο λαχανικό;",
+        "Καρότο",
+        "Ντομάτα",
+        "Καλαμπόκι",
+        "Κολοκύθα"
+      ],
+      "s38": [
+        "Τι κάνει ένα σπίτι ζεστό;",
+        "Ένα τζάκι",
+        "Μια μαλακή κουβέρτα",
+        "Φυτά εσωτερικού χώρου",
+        "Ένα ράφι με βιβλία"
+      ],
+      "s39": [
+        "Τι να παίξουμε;",
+        "Σκάκι",
+        "Παζλ",
+        "Επιτραπέζια",
+        "Παιχνίδια με μπάλα"
+      ],
+      "s40": [
+        "Ποιος ζει στη φάρμα;",
+        "Αγελάδα",
+        "Αρνάκι",
+        "Κότα",
+        "Κατσικάκι"
+      ],
+      "s41": [
+        "Τσάι με τι;",
+        "Μέλι",
+        "Λεμόνι",
+        "Μαρμελάδα",
+        "Δυόσμο"
+      ],
+      "s42": [
+        "Τι υπάρχει δίπλα στη θάλασσα;",
+        "Ένας φάρος",
+        "Κοχύλια",
+        "Ένα ιστιοφόρο",
+        "Γλάροι"
+      ],
+      "s43": [
+        "Πώς ξεκινάμε το πρωί;",
+        "Γυμναστική",
+        "Ένα φλιτζάνι τσάι",
+        "Μια βόλτα",
+        "Ένα βιβλίο"
+      ],
+      "s44": [
+        "Αγαπημένο μούρο;",
+        "Σμέουρο",
+        "Μύρτιλο",
+        "Κεράσι",
+        "Βατόμουρο"
       ]
     },
     "who": [
@@ -12233,7 +25310,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ποιος από εμάς θυμάται πιο συχνά αστείες ιστορίες;",
       "Ποιος από εμάς έχει περισσότερη υπομονή;",
       "Ποιος από εμάς λέει πιο συχνά «ευχαριστώ»;",
-      "Ποιος από εμάς προσφέρει πρώτα βοήθεια;"
+      "Ποιος από εμάς προσφέρει πρώτα βοήθεια;",
+      "Ποιος από εμάς κάνει καλύτερα υπολογισμούς με το μυαλό;",
+      "Ποιος από εμάς διαβάζει περισσότερο;",
+      "Ποιος από εμάς πληκτρολογεί πιο γρήγορα;",
+      "Ποιος από εμάς τηλεφωνεί πιο συχνά στους γονείς;",
+      "Ποιος από εμάς αφηγείται καλύτερα ιστορίες;",
+      "Ποιος από εμάς έχει πιο καθαρό γραφικό χαρακτήρα;",
+      "Ποιος από εμάς αγαπά περισσότερο το πικάντικο φαγητό;",
+      "Ποιος από εμάς ξεχνά πιο συχνά πράγματα στο σπίτι;",
+      "Ποιος από εμάς τα πάει καλύτερα με τις συσκευές;",
+      "Ποιος από εμάς αγαπά περισσότερο να μαθαίνει καινούργια πράγματα;",
+      "Ποιος από εμάς οργανώνει καλύτερα;",
+      "Ποιος από εμάς παζαρεύει καλύτερα στη λαϊκή;",
+      "Ποιος από εμάς αγαπά περισσότερο τη φύση;",
+      "Ποιος από εμάς τρώει πιο γρήγορα;",
+      "Ποιος από εμάς πίνει περισσότερο τσάι;",
+      "Ποιος από εμάς φροντίζει καλύτερα τα φυτά;",
+      "Ποιος από εμάς ξέρει καλύτερα γεωγραφία;",
+      "Ποιος από εμάς παίζει καλύτερα σκάκι;",
+      "Ποιος από εμάς διαλέγει καλύτερα φρούτα στη λαϊκή;",
+      "Ποιος από εμάς κοιτάζει πιο συχνά την πρόγνωση του καιρού;",
+      "Ποιος από εμάς φοβάται περισσότερο τις αράχνες;",
+      "Ποιος από εμάς έχει περισσότερο θάρρος;",
+      "Ποιος από εμάς έχει μεγαλύτερη περιέργεια;",
+      "Ποιος από εμάς λύνει πιο γρήγορα γρίφους;",
+      "Ποιος από εμάς ζωγραφίζει καλύτερα;",
+      "Ποιος από εμάς βοηθά πιο συχνά τους γείτονες;",
+      "Ποιος από εμάς τα πάει καλύτερα με τα παιδιά;",
+      "Ποιος από εμάς αγαπά περισσότερο το περπάτημα;",
+      "Ποιος από εμάς διαβάζει πιο συχνά τις οδηγίες;",
+      "Ποιος από εμάς θυμάται καλύτερα ονόματα;",
+      "Ποιος από εμάς μαθαίνει πιο γρήγορα λέξεις σε άλλη γλώσσα;",
+      "Ποιος από εμάς ψήνει καλύτερα;",
+      "Ποιος από εμάς δίνει καλύτερες συμβουλές;",
+      "Ποιος από εμάς αγαπά περισσότερο το κρύο;",
+      "Ποιος από εμάς θα τα πήγαινε καλύτερα σε μια πεζοπορία;",
+      "Ποιος από εμάς διαβάζει πιο συχνά ειδήσεις;",
+      "Ποιος από εμάς δοκιμάζει πιο συχνά καινούργια φαγητά;",
+      "Ποιος από εμάς ετοιμάζει πιο γρήγορα βαλίτσα;",
+      "Ποιος από εμάς επισκευάζει καλύτερα πράγματα;",
+      "Ποιος από εμάς μιλά πιο συχνά στα ζώα;",
+      "Ποιος από εμάς πλένει πιο συχνά τα πιάτα;",
+      "Ποιος από εμάς ξέρει καλύτερα ιστορία;",
+      "Ποιος από εμάς αναβάλλει πιο συχνά τις δουλειές;",
+      "Ποιος από εμάς πιάνει πιο γρήγορα κουβέντα με καινούργιους ανθρώπους;",
+      "Ποιος από εμάς προσέχει περισσότερο την υγεία του;"
     ],
     "phrases": [
       "Χαμογελάω όταν εσύ…",
@@ -12265,8 +25387,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ένα πρωινό μαζί σου είναι…",
       "Αν ήμασταν μία λέξη, θα ήταν…",
       "Θέλω να μάθω από σένα πώς να…",
-      "Σε ευχαριστώ που πάντα…"
-    ]
+      "Σε ευχαριστώ που πάντα…",
+      "Όταν ήμουν παιδί, το αγαπημένο μου φαγητό ήταν…",
+      "Αν μου έδιναν μία μέρα σε όποια χώρα θέλω, θα…",
+      "Η καλύτερη συμβουλή που μου έχουν δώσει είναι…",
+      "Πάντα γελάω όταν…",
+      "Το αγαπημένο μου μέρος στην πόλη όπου μεγάλωσα είναι…",
+      "Αν είχα ένα δικό μου μαγαζάκι, θα πουλούσε…",
+      "Το φαγητό που μαγειρεύω καλύτερα είναι…",
+      "Ένα παιδικό όνειρο που θυμάμαι ακόμα είναι…",
+      "Μου φτιάχνεις εύκολα τη διάθεση αν…",
+      "Το πιο εκπληκτικό μέρος όπου έχω πάει είναι…",
+      "Θέλω να μάθω…",
+      "Η τέλεια ρεπό μέρα μου ξεκινά με…",
+      "Αν μπορούσα να έχω οποιοδήποτε ζώο, θα ήταν…",
+      "Η οικογένειά μου λέει πάντα ότι εγώ…",
+      "Δεν μπορώ να συνηθίσω με τίποτα…",
+      "Η πιο χρήσιμη συνήθειά μου είναι…",
+      "Το καλύτερο βιβλίο που έχω διαβάσει είναι…",
+      "Σε δέκα χρόνια θα ήθελα να…",
+      "Το σπίτι των ονείρων μου είναι…",
+      "Το πιο αστείο που μου συνέβη όταν ήμουν παιδί είναι…",
+      "Για μένα ευτυχία είναι…",
+      "Μου είναι δύσκολο να κόψω…",
+      "Αν είχα μια υπερδύναμη, θα…",
+      "Αυτό που εκτιμώ περισσότερο στους ανθρώπους είναι…",
+      "Όταν έχω ένα ελεύθερο βράδυ, εγώ…",
+      "Η αγαπημένη μου μυρωδιά είναι…",
+      "Το φαγητό που δεν θα έτρωγα ποτέ είναι…",
+      "Το μόνο που δεν αφήνω ποτέ όταν βγαίνω από το σπίτι είναι…",
+      "Θα ήθελα να επισκεφθώ… επειδή…",
+      "Το καλύτερο δώρο που έχω πάρει ποτέ είναι…",
+      "Η πιο ασυνήθιστη συνήθειά μου είναι…",
+      "Αν είχα μία ώρα παραπάνω κάθε μέρα, θα…",
+      "Κάποιος από τον οποίο μαθαίνω πολλά είναι…",
+      "Μια δύσκολη μέρα με βοηθά να την περάσω…",
+      "Το πιο νόστιμο που έχω δοκιμάσει σε ταξίδι είναι…",
+      "Αν μπορούσα να αλλάξω δουλειά για μία μέρα, θα διάλεγα…",
+      "Η εποχή που είναι πιο κοντά στην καρδιά μου είναι…",
+      "Οι φίλοι μου λένε ότι εγώ…",
+      "Μια μέρα θα ήθελα να μάθω σε κάποιον…",
+      "Μια μικρή χαρά της μέρας μου είναι…"
+    ],
+    "truth": {
+      "t01": [
+        "Το χταπόδι έχει τρεις καρδιές.",
+        true,
+        "Δύο καρδιές στέλνουν αίμα στα βράγχια και η τρίτη το στέλνει σε όλο το σώμα."
+      ],
+      "t02": [
+        "Το Σινικό Τείχος φαίνεται από τη Σελήνη με γυμνό μάτι.",
+        false,
+        "Δεν φαίνεται: το τείχος είναι πολύ στενό. Ακόμα και από την τροχιά διακρίνεται πολύ δύσκολα."
+      ],
+      "t03": [
+        "Το μέλι μπορεί να διατηρηθεί χιλιάδες χρόνια χωρίς να χαλάσει.",
+        true,
+        "Σε αρχαίους αιγυπτιακούς τάφους βρέθηκε μέλι χιλιάδων ετών, ακόμα σε καλή κατάσταση."
+      ],
+      "t04": [
+        "Οι μπανάνες φυτρώνουν σε δέντρα.",
+        false,
+        "Η μπανανιά είναι ένα γιγάντιο ποώδες φυτό: ο «κορμός» της αποτελείται από σφιχτά τυλιγμένα φύλλα."
+      ],
+      "t05": [
+        "Η Αφροδίτη είναι ο πιο ζεστός πλανήτης του Ηλιακού Συστήματος.",
+        true,
+        "Η πυκνή ατμόσφαιρα ζεσταίνει την Αφροδίτη στους περίπου 460 °C — περισσότερο από τον Ερμή."
+      ],
+      "t06": [
+        "Οι νυχτερίδες είναι τυφλές.",
+        false,
+        "Οι νυχτερίδες βλέπουν, και στο σκοτάδι προσανατολίζονται επιπλέον με ηχοεντοπισμό."
+      ],
+      "t07": [
+        "Η φάλαινα είναι ψάρι.",
+        false,
+        "Οι φάλαινες είναι θηλαστικά: αναπνέουν αέρα και ταΐζουν τα μικρά τους με γάλα."
+      ],
+      "t08": [
+        "Η Σαχάρα είναι η μεγαλύτερη έρημος του κόσμου.",
+        false,
+        "Η μεγαλύτερη έρημος είναι η Ανταρκτική. Η Σαχάρα είναι η μεγαλύτερη θερμή έρημος."
+      ],
+      "t09": [
+        "Η καμηλοπάρδαλη έχει τόσους αυχενικούς σπονδύλους όσους και ο άνθρωπος.",
+        true,
+        "Και οι δύο έχουν επτά αυχενικούς σπονδύλους — απλώς της καμηλοπάρδαλης είναι πολύ μακριοί."
+      ],
+      "t10": [
+        "Βοτανικά, η ντομάτα είναι ράγα.",
+        true,
+        "Οι βοτανολόγοι κατατάσσουν τη ντομάτα στις ράγες: σαρκώδης καρπός με σπόρους μέσα."
+      ],
+      "t11": [
+        "Βοτανικά, η φράουλα είναι ράγα.",
+        false,
+        "Είναι ψευδοκαρπός: οι πραγματικοί καρποί είναι οι μικροί «σπόροι» στην επιφάνεια."
+      ],
+      "t12": [
+        "Στο διάστημα μπορείς να ακούσεις μια έκρηξη.",
+        false,
+        "Στο διάστημα δεν υπάρχει σχεδόν καθόλου αέρας, οπότε ο ήχος δεν έχει μέσο για να διαδοθεί."
+      ],
+      "t13": [
+        "Ψηλά στα βουνά το νερό βράζει σε χαμηλότερη θερμοκρασία.",
+        true,
+        "Εκεί η ατμοσφαιρική πίεση είναι χαμηλότερη, οπότε το νερό βράζει πριν φτάσει τους 100 °C."
+      ],
+      "t14": [
+        "Οι πιγκουίνοι ζουν στον Βόρειο Πόλο.",
+        false,
+        "Οι άγριοι πιγκουίνοι ζουν μόνο στο νότιο ημισφαίριο, όχι στον μακρινό βορρά."
+      ],
+      "t15": [
+        "Το Έβερεστ είναι το ψηλότερο βουνό πάνω από την επιφάνεια της θάλασσας.",
+        true,
+        "Το Έβερεστ υψώνεται περίπου 8.849 μέτρα πάνω από τη θάλασσα."
+      ],
+      "t16": [
+        "Οι άνθρωποι χρησιμοποιούν μόνο το 10% του εγκεφάλου τους.",
+        false,
+        "Είναι μύθος: σχεδόν κάθε τμήμα του εγκεφάλου είναι ενεργό μέσα σε μια μέρα."
+      ],
+      "t17": [
+        "Η ανθρώπινη καρδιά χτυπά περίπου 100.000 φορές τη μέρα.",
+        true,
+        "Με περίπου 70 χτύπους το λεπτό, αυτό κάνει γύρω στους 100.000 χτύπους τη μέρα."
+      ],
+      "t18": [
+        "Το χρυσόψαρο έχει μνήμη μόλις τριών δευτερολέπτων.",
+        false,
+        "Πειράματα δείχνουν ότι τα χρυσόψαρα θυμούνται όσα έμαθαν για μήνες."
+      ],
+      "t19": [
+        "Η Αυστραλία είναι και χώρα και ήπειρος.",
+        true,
+        "Η Αυστραλία είναι η μόνη χώρα που καλύπτει μια ολόκληρη ήπειρο."
+      ],
+      "t20": [
+        "Ο κεραυνός δεν πέφτει ποτέ δύο φορές στο ίδιο σημείο.",
+        false,
+        "Πέφτει: τα ψηλά κτίρια χτυπιούνται από κεραυνούς πολλές φορές τον χρόνο."
+      ],
+      "t21": [
+        "Η στρουθοκάμηλος κρύβει το κεφάλι της στην άμμο όταν φοβάται.",
+        false,
+        "Μύθος: μια τρομαγμένη στρουθοκάμηλος τρέχει μακριά ή ξαπλώνει κολλητά στο έδαφος για να κρυφτεί."
+      ],
+      "t22": [
+        "Το μικρότερο πουλί στον κόσμο είναι ένα κολίμπρι.",
+        true,
+        "Το κολίμπρι-μέλισσα της Κούβας ζυγίζει περίπου 2 γραμμάρια — λιγότερο από κάθε άλλο πουλί."
+      ],
+      "t23": [
+        "Το καρπούζι είναι κατά 90% περίπου νερό.",
+        true,
+        "Το καρπούζι είναι γύρω στο 92% νερό — γι’ αυτό δροσίζει τόσο."
+      ],
+      "t24": [
+        "Η αράχνη έχει έξι πόδια.",
+        false,
+        "Η αράχνη έχει οκτώ πόδια. Τα έντομα έχουν έξι, και οι αράχνες δεν είναι έντομα."
+      ],
+      "t25": [
+        "Η Σελήνη έχει δικό της φως.",
+        false,
+        "Η Σελήνη δεν έχει δικό της φως: αντανακλά το φως του Ήλιου."
+      ],
+      "t26": [
+        "Ο ελέφαντας είναι το μεγαλύτερο χερσαίο ζώο.",
+        true,
+        "Ένας αφρικανικός ελέφαντας της σαβάνας μπορεί να ζυγίζει πάνω από 6 τόνους."
+      ],
+      "t27": [
+        "Η γαλάζια φάλαινα είναι το μεγαλύτερο ζώο που γνωρίζει η επιστήμη.",
+        true,
+        "Οι γαλάζιες φάλαινες ξεπερνούν τα 30 μέτρα — μεγαλύτερες από κάθε γνωστό δεινόσαυρο."
+      ],
+      "t28": [
+        "Ο χαμαιλέοντας αλλάζει χρώμα μόνο για να καμουφλαριστεί.",
+        false,
+        "Το χρώμα του εξαρτάται περισσότερο από τη διάθεση, τη θερμοκρασία και τα σήματα προς άλλους χαμαιλέοντες."
+      ],
+      "t29": [
+        "Το τηλέφωνο το εφηύρε ο Τόμας Έντισον.",
+        false,
+        "Το δίπλωμα ευρεσιτεχνίας για το τηλέφωνο το πήρε ο Άλεξάντερ Γκράχαμ Μπελ το 1876."
+      ],
+      "t30": [
+        "Την πενικιλίνη την ανακάλυψε ο Αλεξάντερ Φλέμινγκ.",
+        true,
+        "Ο Φλέμινγκ ανακάλυψε την πενικιλίνη το 1928 — το πρώτο αντιβιοτικό."
+      ],
+      "t31": [
+        "Το ψηλότερο ηφαίστειο του Ηλιακού Συστήματος βρίσκεται στον Άρη.",
+        true,
+        "Το Όλυμπος Μονς στον Άρη έχει ύψος περίπου 22 χλμ. — σχεδόν 2,5 φορές ψηλότερο από το Έβερεστ."
+      ],
+      "t32": [
+        "Το αίμα στις φλέβες μας είναι μπλε.",
+        false,
+        "Το αίμα είναι πάντα κόκκινο· οι φλέβες απλώς φαίνονται μπλε λόγω του τρόπου που περνά το φως από το δέρμα."
+      ],
+      "t33": [
+        "Ο Ατλαντικός είναι ο μεγαλύτερος ωκεανός της Γης.",
+        false,
+        "Ο μεγαλύτερος είναι ο Ειρηνικός: είναι μεγαλύτερος από όλη τη στεριά της Γης μαζί."
+      ],
+      "t34": [
+        "Η Ρωσία είναι η μεγαλύτερη σε έκταση χώρα του κόσμου.",
+        true,
+        "Η Ρωσία καλύπτει πάνω από 17 εκατομμύρια τετραγωνικά χιλιόμετρα."
+      ],
+      "t35": [
+        "Ο Καναδάς έχει τη μεγαλύτερη ακτογραμμή στον κόσμο.",
+        true,
+        "Η ακτογραμμή του Καναδά ξεπερνά τα 200.000 χλμ. — μεγαλύτερη από κάθε άλλης χώρας."
+      ],
+      "t36": [
+        "Το στομάχι της αγελάδας έχει τέσσερα διαμερίσματα.",
+        true,
+        "Η αγελάδα έχει ένα στομάχι με τέσσερις θαλάμους — έτσι χωνεύει το χορτάρι."
+      ],
+      "t37": [
+        "Το λιοντάρι είναι το μεγαλύτερο αιλουροειδές του κόσμου.",
+        false,
+        "Το μεγαλύτερο αιλουροειδές είναι η τίγρη, ιδίως η τίγρη της Σιβηρίας."
+      ],
+      "t38": [
+        "Η Γη είναι ο πλανήτης που βρίσκεται πιο κοντά στον Ήλιο.",
+        false,
+        "Πιο κοντά είναι ο Ερμής, μετά η Αφροδίτη· η Γη είναι ο τρίτος πλανήτης."
+      ],
+      "t39": [
+        "Το φως του Ήλιου χρειάζεται περίπου 8 λεπτά για να φτάσει στη Γη.",
+        true,
+        "Το φως διανύει τα 150 εκατομμύρια χλμ. από τον Ήλιο σε περίπου 8 λεπτά και 20 δευτερόλεπτα."
+      ],
+      "t40": [
+        "Τα δελφίνια κοιμούνται με το ένα μισό του εγκεφάλου κάθε φορά.",
+        true,
+        "Το ένα μισό ξεκουράζεται, ενώ το άλλο μένει σε επιφυλακή και θυμάται να αναπνέει."
+      ],
+      "t41": [
+        "Η πατάτα κατάγεται από την Ιρλανδία.",
+        false,
+        "Η πατάτα κατάγεται από τη Νότια Αμερική: καλλιεργούνταν στις Άνδεις πριν από χιλιάδες χρόνια."
+      ],
+      "t42": [
+        "Η σοκολάτα φτιάχνεται από τους σπόρους του κακαόδεντρου.",
+        true,
+        "Οι καρποί του κακάο φυτρώνουν κατευθείαν πάνω στον κορμό, και οι σπόροι τους γίνονται σοκολάτα."
+      ],
+      "t43": [
+        "Ο καρχαρίας είναι θηλαστικό.",
+        false,
+        "Ο καρχαρίας είναι ψάρι: αναπνέει με βράγχια. Τα θηλαστικά της θάλασσας είναι οι φάλαινες και τα δελφίνια."
+      ],
+      "t44": [
+        "Κάποια είδη μπαμπού μεγαλώνουν σχεδόν ένα μέτρο τη μέρα.",
+        true,
+        "Το μπαμπού είναι από τα φυτά με τη γρηγορότερη ανάπτυξη στη Γη."
+      ],
+      "t45": [
+        "Η κουκουβάγια μπορεί να γυρίσει το κεφάλι της ολόκληρες 360 μοίρες.",
+        false,
+        "Η κουκουβάγια γυρίζει το κεφάλι της περίπου 270 μοίρες — πολύ, αλλά όχι ολόκληρο κύκλο."
+      ],
+      "t46": [
+        "Το διαμάντι και ο γραφίτης του μολυβιού είναι φτιαγμένα από την ίδια ουσία.",
+        true,
+        "Και τα δύο είναι καθαρός άνθρακας — απλώς τα άτομα είναι διαταγμένα διαφορετικά."
+      ],
+      "t47": [
+        "Η καμήλα αποθηκεύει νερό στην καμπούρα της.",
+        false,
+        "Η καμπούρα της καμήλας αποθηκεύει λίπος, όχι νερό — της δίνει ενέργεια στα μεγάλα ταξίδια."
+      ],
+      "t48": [
+        "Το μικρότερο κόκαλο του ανθρώπινου σώματος βρίσκεται στο αυτί.",
+        true,
+        "Ο αναβολέας στο μέσο αυτί έχει μήκος μόλις 3 χιλιοστά περίπου."
+      ],
+      "t49": [
+        "Οι μεγάλοι παπαγάλοι μπορούν να ζήσουν πάνω από 50 χρόνια.",
+        true,
+        "Οι καλά φροντισμένοι αράδες και κακατούες ζουν συχνά 50 χρόνια ή και περισσότερο."
+      ],
+      "t50": [
+        "Οι αδελφοί Ράιτ έκαναν την πρώτη πτήση με μηχανοκίνητο αεροπλάνο.",
+        true,
+        "Πέταξαν το 1903· η πρώτη πτήση κράτησε 12 δευτερόλεπτα."
+      ],
+      "t51": [
+        "Ο τροχός εφευρέθηκε τον Μεσαίωνα.",
+        false,
+        "Ο τροχός είναι πάνω από 5.000 χρόνων: χρησιμοποιούνταν στη Μεσοποταμία ήδη πριν από περίπου 5.500 χρόνια."
+      ],
+      "t52": [
+        "Ο ιππόκαμπος είναι ψάρι.",
+        true,
+        "Ο ιππόκαμπος αναπνέει με βράγχια και κολυμπά με ένα πτερύγιο, όπως τα άλλα ψάρια."
+      ],
+      "t53": [
+        "Το κολίμπρι μπορεί να πετάξει προς τα πίσω.",
+        true,
+        "Τα κολίμπρι είναι τα μόνα πουλιά που μπορούν πραγματικά να πετούν προς τα πίσω."
+      ],
+      "t54": [
+        "Ο Πύργος του Άιφελ ψηλώνει λίγο το καλοκαίρι.",
+        true,
+        "Η ζέστη διαστέλλει το μέταλλο και ο πύργος ψηλώνει περίπου 15 εκατοστά."
+      ],
+      "t55": [
+        "Το δέρμα είναι το μεγαλύτερο όργανο του ανθρώπινου σώματος.",
+        true,
+        "Το δέρμα ενός ενήλικα ζυγίζει μερικά κιλά και προστατεύει όλο το σώμα."
+      ],
+      "t56": [
+        "Το κόκκινο χρώμα θυμώνει τον ταύρο.",
+        false,
+        "Οι ταύροι μόλις που ξεχωρίζουν το κόκκινο: τους ερεθίζει η κίνηση, όχι το χρώμα."
+      ],
+      "t57": [
+        "Η οικιακή μύγα ζει μόνο μία μέρα.",
+        false,
+        "Η οικιακή μύγα ζει περίπου έναν μήνα. Μόνο μία ή δύο μέρες ζουν τα ενήλικα εφήμερα."
+      ],
+      "t58": [
+        "Οι ανανάδες φυτρώνουν σε δέντρα.",
+        false,
+        "Ο ανανάς φυτρώνει σε ένα χαμηλό φυλλώδες φυτό, ακριβώς από το κέντρο του."
+      ],
+      "t59": [
+        "Το φιστίκι αράπικο είναι ξηρός καρπός με κέλυφος.",
+        false,
+        "Το αράπικο φιστίκι είναι όσπριο, συγγενές με τον αρακά και τα φασόλια. Οι λοβοί του ωριμάζουν μέσα στο χώμα."
+      ],
+      "t60": [
+        "Ο Βόρειος και ο Νότιος Πόλος είναι το ίδιο κρύοι.",
+        false,
+        "Ο Νότιος Πόλος είναι πολύ πιο κρύος: βρίσκεται σε μια ψηλή παγωμένη ήπειρο, ενώ ο Βόρειος σε ωκεανό."
+      ]
+    }
   },
   "da": {
     "text": {
@@ -12475,7 +25939,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Inviter",
       "invited": "Inviteret",
       "inviteNone": "Tilføj venner under »Venner« for at invitere dem med ét tryk.",
-      "inviteSent": "Invitation sendt til {name}"
+      "inviteSent": "Invitation sendt til {name}",
+      "truth": "Sandt eller falsk",
+      "tfTitle": "Sandt eller falsk",
+      "tfNote": "Et livespil for to: forbløffende fakta om verden. 12 sekunder — sandt eller falsk? Et point for hvert rigtigt svar.",
+      "tfShareText": "{name} inviterer dig til livespillet »Sandt eller falsk«",
+      "tfJoinLead": "{name} venter på dig. Sandt eller falsk — bestem dig hurtigt!",
+      "tfRound": "Faktum {n} af {total}",
+      "tfTrue": "Sandt",
+      "tfFalse": "Falsk",
+      "tfIsTrue": "Det er sandt!",
+      "tfIsFalse": "Det er falsk!",
+      "tfFirstYou": "Du svarede rigtigt først!",
+      "tfFirstThem": "{name} svarede rigtigt først",
+      "tfFinalWin": "Sejr! Du ved mest om verden.",
+      "tfFinalLose": "{name} ved mest denne gang — revanche?",
+      "tfFinalDraw": "Uafgjort — I ved lige meget!",
+      "featTruth": "Livespillet »Sandt eller falsk« — forbløffende fakta om verden"
     },
     "questions": {
       "q01": [
@@ -12897,6 +26377,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "At lave mad",
         "Et nyt sprog",
         "At tegne"
+      ],
+      "q61": [
+        "Hvilken ret laver jeg bedst?",
+        "Suppe",
+        "Pilaf",
+        "Bagværk",
+        "Salat"
+      ],
+      "q62": [
+        "Hvilket land vil jeg se først?",
+        "Tyrkiet",
+        "Japan",
+        "Marokko",
+        "Norge"
+      ],
+      "q63": [
+        "Hvilken sport ville jeg helst gå i gang med?",
+        "Svømning",
+        "Løb",
+        "Cykling",
+        "Fodbold"
+      ],
+      "q64": [
+        "Hvilken bog ville jeg vælge?",
+        "En eventyrroman",
+        "En bog om historie",
+        "Folkeeventyr",
+        "Et leksikon"
+      ],
+      "q65": [
+        "Hvilke dyr ville jeg besøge først i zoo?",
+        "Elefanterne",
+        "Aberne",
+        "Pingvinerne",
+        "Girafferne"
+      ],
+      "q66": [
+        "Hvordan har jeg det med stærk mad?",
+        "Jo stærkere, jo bedre",
+        "Lidt er fint",
+        "Kun en lille smule",
+        "Jeg spiser det slet ikke"
+      ],
+      "q67": [
+        "Hvilket skolefag kunne jeg bedst lide?",
+        "Matematik",
+        "Litteratur",
+        "Geografi",
+        "Idræt"
+      ],
+      "q68": [
+        "Mit drømmejob som barn?",
+        "Læge",
+        "Lærer",
+        "Astronaut",
+        "Kok"
+      ],
+      "q69": [
+        "Hvordan har jeg det med vandreture?",
+        "Jeg drømmer om en lang tur",
+        "Kun en dagstur",
+        "Kun med komfort",
+        "Hjemme er bedst"
+      ],
+      "q70": [
+        "Mit humør om morgenen?",
+        "Fuld af energi",
+        "Stadig søvnig",
+        "Stille",
+        "Snakkesalig"
+      ],
+      "q71": [
+        "Hvilken nød kan jeg bedst lide?",
+        "Hasselnød",
+        "Valnød",
+        "Cashewnød",
+        "Mandel"
+      ],
+      "q72": [
+        "Hvad ville jeg gøre med en uventet fri time?",
+        "Læse",
+        "Gå en tur",
+        "Ringe til familien",
+        "Lave noget mad"
+      ],
+      "q73": [
+        "Hvilket vejr kan jeg ikke lide?",
+        "Hede",
+        "Blæst",
+        "Slud",
+        "Hård frost"
+      ],
+      "q74": [
+        "Hvilken farve ville jeg male mit værelse?",
+        "Hvid",
+        "Beige",
+        "Grøn",
+        "Lyseblå"
+      ],
+      "q75": [
+        "Hvad ville jeg helst spille?",
+        "Skak",
+        "Dam",
+        "Puslespil",
+        "Et ordspil"
+      ],
+      "q76": [
+        "Hvad ville jeg lave til gæster?",
+        "Pilaf",
+        "En tærte",
+        "Salater",
+        "Jeg ville bestille mad"
+      ],
+      "q77": [
+        "Hvad ville jeg bestemt ikke spise?",
+        "Svampe",
+        "Fisk",
+        "Oliven",
+        "Kogte løg"
+      ],
+      "q78": [
+        "Hvordan laver jeg min te?",
+        "Stærk",
+        "Svag",
+        "Sød",
+        "Med urter"
+      ],
+      "q79": [
+        "Hvad betyder mest for mig i et hjem?",
+        "Renlighed",
+        "Hygge",
+        "Masser af lys",
+        "Ro"
+      ],
+      "q80": [
+        "Hvordan lærer jeg nye ting?",
+        "Ved at læse",
+        "Med videolektioner",
+        "Ved at prøve i praksis",
+        "Ved at spørge andre"
+      ],
+      "q81": [
+        "Hvilket vildt dyr fascinerer mig mest?",
+        "Tiger",
+        "Bjørn",
+        "Ørn",
+        "Delfin"
+      ],
+      "q82": [
+        "Hvad ville jeg give min mor?",
+        "Blomster",
+        "Noget hjemmelavet",
+        "En rejse",
+        "Et varmt tæppe"
+      ],
+      "q83": [
+        "Hvad laver jeg på en rejse?",
+        "Kigger ud ad vinduet",
+        "Læser",
+        "Snakker",
+        "Spiser snacks"
+      ],
+      "q84": [
+        "Min yndlingsret med kylling?",
+        "Kyllingespyd",
+        "Kylling med ris",
+        "Kyllingefrikadeller",
+        "Nuggets"
+      ],
+      "q85": [
+        "Hvilken plads vælger jeg i toget?",
+        "Ved vinduet",
+        "Ved midtergangen",
+        "Baglæns",
+        "Det er lige meget"
+      ],
+      "q86": [
+        "Hvad gør jeg, når noget går galt?",
+        "Handler med det samme",
+        "Tænker mig om først",
+        "Spørger om råd",
+        "Bekymrer mig lidt"
+      ],
+      "q87": [
+        "Hvad er min vigtigste egenskab?",
+        "Venlighed",
+        "Ærlighed",
+        "Vedholdenhed",
+        "Munterhed"
+      ],
+      "q88": [
+        "Hvor ville jeg slappe bedst af?",
+        "Hos familie på landet",
+        "På et hotel ved havet",
+        "I telt",
+        "Derhjemme"
+      ],
+      "q89": [
+        "Hvilket bagværk ville jeg vælge?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "En éclair"
+      ],
+      "q90": [
+        "Hvilket sprog vil jeg helst lære?",
+        "Arabisk",
+        "Engelsk",
+        "Tyrkisk",
+        "Japansk"
+      ],
+      "q91": [
+        "Hvor længe kunne jeg klare mig uden slik?",
+        "En dag",
+        "En uge",
+        "En måned",
+        "Så længe det skal være"
+      ],
+      "q92": [
+        "Hvad gør jeg, når jeg er ved at komme for sent?",
+        "Løber alt, hvad jeg kan",
+        "Ringer og siger det i forvejen",
+        "Tager en taxa",
+        "Jeg kommer aldrig for sent"
+      ],
+      "q93": [
+        "Hvad gør jeg, når en dims går i stykker?",
+        "Reparerer den selv",
+        "Læser manualen",
+        "Ringer efter hjælp",
+        "Trykker på alle knapperne"
+      ],
+      "q94": [
+        "Hvad kommer først i min kuffert?",
+        "En førstehjælpskasse",
+        "En bog",
+        "En oplader",
+        "En snack"
+      ],
+      "q95": [
+        "Hvad får mig til at falde til ro?",
+        "Madlavning",
+        "Oprydning",
+        "Tegning",
+        "En gåtur"
+      ],
+      "q96": [
+        "Hvad vil jeg lave, når jeg går på pension?",
+        "Havearbejde",
+        "Rejse",
+        "Læse",
+        "Være sammen med børnebørnene"
+      ],
+      "q97": [
+        "Hvad irriterer mig mest?",
+        "Larm",
+        "Rod",
+        "Forsinkelser",
+        "Uhøflighed"
+      ],
+      "q98": [
+        "Hvilken duft kan jeg bedst lide?",
+        "Friskbagt brød",
+        "Regn",
+        "Blomster",
+        "Havet"
+      ],
+      "q99": [
+        "Hvad ville jeg vælge til dessert?",
+        "Frugt",
+        "Is",
+        "Tærte",
+        "Bare te"
       ]
     },
     "yesNo": {
@@ -13099,6 +26852,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Skal vi spille igen senere?",
         "vil have en runde til",
         "krammer hellere end at spille"
+      ],
+      "c41": [
+        "Kan du lide stærk mad?",
+        "jo stærkere, jo bedre",
+        "vælger noget mildere"
+      ],
+      "c42": [
+        "Kan du svømme?",
+        "svømmer som en fisk",
+        "holder sig tæt på bredden indtil videre"
+      ],
+      "c43": [
+        "Kunne du tænke dig en kat?",
+        "overvejer allerede et navn",
+        "foretrækker hunde"
+      ],
+      "c44": [
+        "Kunne du tænke dig at besøge Istanbul en dag?",
+        "drømmer allerede om Bosporus",
+        "ville vælge en anden by"
+      ],
+      "c45": [
+        "Kan du lide at lave mad?",
+        "laver mad med glæde",
+        "tager hellere opvasken"
+      ],
+      "c46": [
+        "Kunne du tænke dig at lære at lave pilaf?",
+        "leder allerede efter en opskrift",
+        "smager hellere en andens"
+      ],
+      "c47": [
+        "Kan du lide at læse bøger?",
+        "har altid en bog i nærheden",
+        "foretrækker at lytte til fortællinger"
+      ],
+      "c48": [
+        "Kan du cykle?",
+        "kunne cykle af sted med det samme",
+        "lover at lære det"
+      ],
+      "c49": [
+        "Foretrækker du bjergene frem for havet?",
+        "vælger bjergene",
+        "vælger havet"
+      ],
+      "c50": [
+        "Kunne du tænke dig at se en ørken?",
+        "drømmer om sandklitter",
+        "ville hellere vælge en skov"
+      ],
+      "c51": [
+        "Kan du lide vinter?",
+        "venter på den første sne",
+        "venter på sommeren"
+      ],
+      "c52": [
+        "Drikker du te uden sukker?",
+        "kan lide den rene smag af te",
+        "kan ikke undvære en skefuld sukker"
+      ],
+      "c53": [
+        "Er du bange for edderkopper?",
+        "holder god afstand til dem",
+        "bærer dem roligt udenfor"
+      ],
+      "c54": [
+        "Kan du lide at tegne?",
+        "griber allerede en pensel",
+        "ser hellere på andres billeder"
+      ],
+      "c55": [
+        "Kunne du tænke dig at se nordlys?",
+        "undersøger allerede, hvor man kan se det",
+        "kigger hellere på stjernerne"
+      ],
+      "c56": [
+        "Kan du lide regnvejr?",
+        "elsker lyden af regn udenfor",
+        "venter på solen"
+      ],
+      "c57": [
+        "Kan du ride?",
+        "sidder sikkert i sadlen",
+        "drømmer kun om det indtil videre"
+      ],
+      "c58": [
+        "Kunne du tænke dig en hund?",
+        "drømmer om en trofast ven",
+        "har nok at passe på lige nu"
+      ],
+      "c59": [
+        "Foretrækker du sødt frem for salt?",
+        "kan ikke leve uden slik",
+        "vælger salt"
+      ],
+      "c60": [
+        "Kan du lide at rejse med tog?",
+        "elsker hjulenes rytme",
+        "vælger flyet"
+      ],
+      "c61": [
+        "Er det let for dig at starte dagen tidligt?",
+        "starter dagen fuld af energi",
+        "kommer først i gang ved frokosttid"
+      ],
+      "c62": [
+        "Kan du lide at overnatte i telt?",
+        "pakker allerede rygsækken",
+        "vælger et hyggeligt hotel"
+      ],
+      "c63": [
+        "Kunne du tænke dig at bo ved havet?",
+        "drømmer om lyden af bølger",
+        "vælger byen"
+      ],
+      "c64": [
+        "Spiser du is om vinteren?",
+        "spiser den selv i frostvejr",
+        "kun om sommeren"
+      ],
+      "c65": [
+        "Kan du lide chokolade?",
+        "kender alle slags",
+        "går roligt forbi den"
+      ],
+      "c66": [
+        "Kan du bage tærter?",
+        "bager som en bedstemor",
+        "lover at lære det"
+      ],
+      "c67": [
+        "Kan du lide at se på stjernerne?",
+        "kender stjernebillederne",
+        "foretrækker en solrig dag"
+      ],
+      "c68": [
+        "Kunne du tænke dig at anlægge din egen have en dag?",
+        "vælger allerede planter",
+        "starter med en blomst i en potte"
+      ],
+      "c69": [
+        "Kan du lide markblomster?",
+        "elsker margueritter og kornblomster",
+        "foretrækker haveblomster"
+      ],
+      "c70": [
+        "Drikker du kaffe?",
+        "dagen starter ikke uden kaffe",
+        "vælger te"
+      ],
+      "c71": [
+        "Kan du lide hjemmelavet lemonade?",
+        "skærer allerede citroner",
+        "vil hellere have vand"
+      ],
+      "c72": [
+        "Kunne du tænke dig at besøge Japan en dag?",
+        "drømmer om at se kirsebærtræerne blomstre",
+        "ville vælge et andet land"
+      ],
+      "c73": [
+        "Kan du lide efteråret?",
+        "elsker at gå gennem raslende blade",
+        "venter på foråret"
+      ],
+      "c74": [
+        "Kan du lide duften af lavendel?",
+        "elsker den duft",
+        "foretrækker andre dufte"
+      ],
+      "c75": [
+        "Kan du lide brætspil?",
+        "stiller allerede brættet op",
+        "foretrækker en gåtur"
+      ],
+      "c76": [
+        "Kan du køre bil?",
+        "kører sikkert",
+        "er passager indtil videre"
+      ],
+      "c77": [
+        "Kunne du tænke dig at se oceanet en dag?",
+        "drømmer om en stor bølge",
+        "havet er nok"
+      ],
+      "c78": [
+        "Kunne du tænke dig at bo på en gård i et stykke tid?",
+        "fodrer allerede hønsene",
+        "bliver i byen"
+      ],
+      "c79": [
+        "Kan du lide storbyer?",
+        "elsker byens lys",
+        "vælger fred og ro"
+      ],
+      "c80": [
+        "Foretrækker du frugt frem for slik?",
+        "vælger frugt",
+        "vælger slik"
+      ],
+      "c81": [
+        "Kunne du tænke dig at se delfiner i havet?",
+        "ville elske at se dem",
+        "læser hellere om dem"
+      ],
+      "c82": [
+        "Kan du lide sommeren?",
+        "venter på de varme dage",
+        "elsker køligt vejr"
+      ],
+      "c83": [
+        "Kan du lide at gå tur i parken?",
+        "går tur i al slags vejr",
+        "foretrækker at blive hjemme"
+      ],
+      "c84": [
+        "Kan du lide at skrive i hånden?",
+        "har en pæn håndskrift",
+        "skriver på telefonen"
+      ],
+      "c85": [
+        "Kan du lide bådture?",
+        "griber allerede årerne",
+        "bliver på land"
+      ],
+      "c86": [
+        "Kunne du tænke dig at rejse jorden rundt?",
+        "tegner allerede en rute",
+        "et par lande er nok"
+      ],
+      "c87": [
+        "Kan du bygge en snemand?",
+        "bygger den største",
+        "holder hellere sneboldkamp"
+      ],
+      "c88": [
+        "Kunne du tænke dig at lære noget nyt i år?",
+        "vælger allerede et kursus",
+        "har nok at se til i forvejen"
+      ],
+      "c89": [
+        "Kan du lide stilhed?",
+        "værdsætter roen",
+        "kan lide, når der er liv"
+      ],
+      "c90": [
+        "Kan du lide at give gaver til din familie?",
+        "glæder familien uden særlig anledning",
+        "hjælper hellere på praktiske måder"
       ]
     },
     "loves": {
@@ -13213,6 +27216,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Skov",
         "Ørken",
         "Nordlys"
+      ],
+      "s17": [
+        "Yndlingsfrugt?",
+        "Æble",
+        "Jordbær",
+        "Vandmelon",
+        "Vindruer"
+      ],
+      "s18": [
+        "Hvad laver vi på en fridag?",
+        "Vandretur i bjergene",
+        "Laver mad derhjemme",
+        "Et museum",
+        "Fisketur"
+      ],
+      "s19": [
+        "Yndlingsmorgenmad?",
+        "Pandekager",
+        "Omelet",
+        "Grød med bær",
+        "Croissant"
+      ],
+      "s20": [
+        "Yndlingsfugl?",
+        "Ugle",
+        "Papegøje",
+        "Svane",
+        "Påfugl"
+      ],
+      "s21": [
+        "Hvilken by skal vi besøge?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Yndlingssport?",
+        "Fodbold",
+        "Svømning",
+        "Tennis",
+        "Ridning"
+      ],
+      "s23": [
+        "Hvad planter vi i haven?",
+        "Et æbletræ",
+        "Roser",
+        "Grøntsager",
+        "Jordbær"
+      ],
+      "s24": [
+        "Yndlingsbagværk?",
+        "Små pirogger",
+        "Donuts",
+        "Småkager",
+        "Baklava"
+      ],
+      "s25": [
+        "Hvor skal vi bo?",
+        "Ved en flod",
+        "I en skov",
+        "I en storby",
+        "På en ø"
+      ],
+      "s26": [
+        "Yndlingsdyr i havet?",
+        "Skildpadde",
+        "Hval",
+        "Blæksprutte",
+        "Søhest"
+      ],
+      "s27": [
+        "Hvad vil vi rejse med?",
+        "Cykel",
+        "Løbehjul",
+        "Luftballon",
+        "Båd"
+      ],
+      "s28": [
+        "Yndlingshobby?",
+        "Strikning",
+        "Naturfotografering",
+        "Havearbejde",
+        "Kalligrafi"
+      ],
+      "s29": [
+        "Yndlingssuppe?",
+        "Borsjtj",
+        "Kyllingesuppe",
+        "Græskarsuppe",
+        "Linsesuppe"
+      ],
+      "s30": [
+        "Dyr i skoven?",
+        "Pindsvin",
+        "Egern",
+        "Ræv",
+        "Rådyr"
+      ],
+      "s31": [
+        "Noget at gnaske?",
+        "Dadler",
+        "Mandler",
+        "Pistacienødder",
+        "Tørrede abrikoser"
+      ],
+      "s32": [
+        "Hvad skal med på tur?",
+        "Et telt",
+        "En termoflaske",
+        "Et kort",
+        "En lommelygte"
+      ],
+      "s33": [
+        "Yndlingsdessert?",
+        "Budding",
+        "Cheesecake",
+        "Pandekager med honning",
+        "Frugtsalat"
+      ],
+      "s34": [
+        "Hvad laver vi om vinteren?",
+        "Bygger en snemand",
+        "Kælker",
+        "Te ved vinduet",
+        "Står på ski"
+      ],
+      "s35": [
+        "Hvad laver vi om sommeren?",
+        "Bader",
+        "Plukker bær",
+        "Sejler i båd",
+        "Bygger et sandslot"
+      ],
+      "s36": [
+        "Hvad maler vi med?",
+        "Akvarelfarver",
+        "Blyanter",
+        "Farvekridt",
+        "Maling på lærred"
+      ],
+      "s37": [
+        "Yndlingsgrøntsag?",
+        "Gulerod",
+        "Tomat",
+        "Majs",
+        "Græskar"
+      ],
+      "s38": [
+        "Hvad gør et hjem hyggeligt?",
+        "En pejs",
+        "Et blødt tæppe",
+        "Stueplanter",
+        "En reol med bøger"
+      ],
+      "s39": [
+        "Hvad skal vi spille?",
+        "Skak",
+        "Puslespil",
+        "Brætspil",
+        "Boldspil"
+      ],
+      "s40": [
+        "Hvem bor på gården?",
+        "Ko",
+        "Lam",
+        "Høne",
+        "Lille ged"
+      ],
+      "s41": [
+        "Te med hvad?",
+        "Honning",
+        "Citron",
+        "Syltetøj",
+        "Mynte"
+      ],
+      "s42": [
+        "Hvad finder man ved havet?",
+        "Et fyrtårn",
+        "Muslingeskaller",
+        "En sejlbåd",
+        "Måger"
+      ],
+      "s43": [
+        "Hvordan starter vi morgenen?",
+        "Morgengymnastik",
+        "En kop te",
+        "En gåtur",
+        "En bog"
+      ],
+      "s44": [
+        "Yndlingsbær?",
+        "Hindbær",
+        "Blåbær",
+        "Kirsebær",
+        "Brombær"
       ]
     },
     "who": [
@@ -13255,7 +27454,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Hvem af os husker oftest sjove historier?",
       "Hvem af os er mest tålmodig?",
       "Hvem af os siger oftest »tak«?",
-      "Hvem af os tilbyder først hjælp?"
+      "Hvem af os tilbyder først hjælp?",
+      "Hvem af os er bedst til hovedregning?",
+      "Hvem af os læser mest?",
+      "Hvem af os skriver hurtigst på tastatur?",
+      "Hvem af os ringer oftest til sine forældre?",
+      "Hvem af os fortæller bedst historier?",
+      "Hvem af os har den pæneste håndskrift?",
+      "Hvem af os kan bedst lide stærk mad?",
+      "Hvem af os glemmer oftest ting derhjemme?",
+      "Hvem af os er bedst til teknik?",
+      "Hvem af os elsker mest at lære nyt?",
+      "Hvem af os er bedst til at planlægge?",
+      "Hvem af os er bedst til at prutte om prisen på markedet?",
+      "Hvem af os holder mest af naturen?",
+      "Hvem af os spiser hurtigst?",
+      "Hvem af os drikker mest te?",
+      "Hvem af os passer bedst på planter?",
+      "Hvem af os kan geografi bedst?",
+      "Hvem af os spiller bedst skak?",
+      "Hvem af os vælger den bedste frugt på markedet?",
+      "Hvem af os tjekker oftest vejrudsigten?",
+      "Hvem af os er mest bange for edderkopper?",
+      "Hvem af os er modigst?",
+      "Hvem af os er mest nysgerrig?",
+      "Hvem af os løser gåder hurtigst?",
+      "Hvem af os tegner bedst?",
+      "Hvem af os hjælper oftest naboerne?",
+      "Hvem af os er bedst til børn?",
+      "Hvem af os kan bedst lide at gå ture?",
+      "Hvem af os læser oftest brugsanvisningen?",
+      "Hvem af os husker bedst navne?",
+      "Hvem af os lærer hurtigst ord på et andet sprog?",
+      "Hvem af os er bedst til at bage?",
+      "Hvem af os giver de bedste råd?",
+      "Hvem af os kan bedst lide koldt vejr?",
+      "Hvem af os ville klare sig bedst på en vandretur?",
+      "Hvem af os læser oftest nyheder?",
+      "Hvem af os prøver oftest nye retter?",
+      "Hvem af os pakker en kuffert hurtigst?",
+      "Hvem af os er bedst til at reparere ting?",
+      "Hvem af os taler oftest med dyr?",
+      "Hvem af os tager oftest opvasken?",
+      "Hvem af os kan historie bedst?",
+      "Hvem af os udskyder oftest ting?",
+      "Hvem af os falder hurtigst i snak med nye mennesker?",
+      "Hvem af os passer mest på sit helbred?"
     ],
     "phrases": [
       "Jeg smiler, når du…",
@@ -13287,8 +27531,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "En morgen med dig er…",
       "Hvis vi var ét ord, ville det være…",
       "Jeg vil gerne lære af dig, hvordan man…",
-      "Tak, fordi du altid…"
-    ]
+      "Tak, fordi du altid…",
+      "Min yndlingsmad som barn var…",
+      "Hvis jeg fik én dag i et hvilket som helst land, ville jeg…",
+      "Det bedste råd, jeg nogensinde har fået, er…",
+      "Jeg griner altid, når…",
+      "Mit yndlingssted i min hjemby er…",
+      "Hvis jeg havde min egen lille butik, ville den sælge…",
+      "Den ret, jeg laver bedst, er…",
+      "En barndomsdrøm, jeg stadig husker, er…",
+      "Det er let at gøre mig glad, hvis…",
+      "Det mest forbløffende sted, jeg har været, er…",
+      "Jeg vil gerne lære…",
+      "Min perfekte fridag begynder med…",
+      "Hvis jeg kunne få et hvilket som helst dyr, ville det være…",
+      "Min familie siger altid, at jeg…",
+      "Jeg kan bare ikke vænne mig til…",
+      "Min mest nyttige vane er…",
+      "Den bedste bog, jeg har læst, er…",
+      "Om ti år vil jeg gerne…",
+      "Mit drømmehjem er…",
+      "Det sjoveste, der skete for mig som barn, var…",
+      "For mig er lykke…",
+      "Det er svært for mig at give afkald på…",
+      "Hvis jeg havde en superkraft, ville den…",
+      "Det, jeg værdsætter mest hos mennesker, er…",
+      "Når jeg har en ledig aften, plejer jeg at…",
+      "Min yndlingsduft er…",
+      "Den mad, jeg aldrig ville spise, er…",
+      "Det ene, jeg aldrig går hjemmefra uden, er…",
+      "Jeg vil gerne besøge… fordi…",
+      "Den bedste gave, jeg nogensinde har fået, er…",
+      "Min mest usædvanlige vane er…",
+      "Hvis jeg fik en ekstra time hver dag, ville jeg…",
+      "En, jeg lærer meget af, er…",
+      "På en svær dag hjælper det mig at…",
+      "Det lækreste, jeg har smagt på en rejse, er…",
+      "Hvis jeg kunne skifte job for en dag, ville jeg vælge…",
+      "Den årstid, der ligger mit hjerte nærmest, er…",
+      "Mine venner siger, at jeg…",
+      "En dag vil jeg gerne lære nogen at…",
+      "En lille glæde i min hverdag er…"
+    ],
+    "truth": {
+      "t01": [
+        "En blæksprutte har tre hjerter.",
+        true,
+        "To hjerter pumper blod gennem gællerne, og det tredje pumper det rundt i kroppen."
+      ],
+      "t02": [
+        "Den Kinesiske Mur kan ses fra Månen med det blotte øje.",
+        false,
+        "Det kan den ikke: muren er alt for smal. Selv fra kredsløb er den meget svær at få øje på."
+      ],
+      "t03": [
+        "Honning kan holde sig i tusinder af år uden at blive dårlig.",
+        true,
+        "I oldegyptiske grave er der fundet tusinder af år gammel honning, som stadig var bevaret."
+      ],
+      "t04": [
+        "Bananer vokser på træer.",
+        false,
+        "Bananplanten er en kæmpestor urt: dens »stamme« består af tæt sammenrullede blade."
+      ],
+      "t05": [
+        "Venus er den varmeste planet i Solsystemet.",
+        true,
+        "Den tykke atmosfære opvarmer Venus til omkring 460 °C — varmere end Merkur."
+      ],
+      "t06": [
+        "Flagermus er blinde.",
+        false,
+        "Flagermus kan se, og i mørke finder de også vej ved hjælp af ekkolokalisering."
+      ],
+      "t07": [
+        "En hval er en fisk.",
+        false,
+        "Hvaler er pattedyr: de ånder luft og giver deres unger mælk."
+      ],
+      "t08": [
+        "Sahara er verdens største ørken.",
+        false,
+        "Den største ørken er Antarktis. Sahara er den største varme ørken."
+      ],
+      "t09": [
+        "En giraf har lige så mange halshvirvler som et menneske.",
+        true,
+        "Begge har syv halshvirvler — girafens er bare meget lange."
+      ],
+      "t10": [
+        "Botanisk set er en tomat et bær.",
+        true,
+        "Botanikere regner tomaten for et bær: en saftig frugt med frø indeni."
+      ],
+      "t11": [
+        "Botanisk set er et jordbær et bær.",
+        false,
+        "Det er et skinbær: de egentlige frugter er de små »frø« udenpå."
+      ],
+      "t12": [
+        "Man kan høre en eksplosion i rummet.",
+        false,
+        "I rummet er der næsten ingen luft, så lyden har intet at bevæge sig igennem."
+      ],
+      "t13": [
+        "Højt oppe i bjergene koger vand ved en lavere temperatur.",
+        true,
+        "Lufttrykket er lavere deroppe, så vandet koger, før det når 100 °C."
+      ],
+      "t14": [
+        "Pingviner lever ved Nordpolen.",
+        false,
+        "Vilde pingviner lever kun på den sydlige halvkugle, ikke i det høje nord."
+      ],
+      "t15": [
+        "Mount Everest er det højeste bjerg over havets overflade.",
+        true,
+        "Everest rager omkring 8.849 meter op over havets overflade."
+      ],
+      "t16": [
+        "Mennesker bruger kun 10 % af hjernen.",
+        false,
+        "Det er en myte: næsten alle dele af hjernen er aktive i løbet af et døgn."
+      ],
+      "t17": [
+        "Et menneskehjerte slår omkring 100.000 gange i døgnet.",
+        true,
+        "Med omkring 70 slag i minuttet bliver det til cirka 100.000 slag i døgnet."
+      ],
+      "t18": [
+        "En guldfisk har en hukommelse på kun tre sekunder.",
+        false,
+        "Forsøg viser, at guldfisk kan huske det, de har lært, i flere måneder."
+      ],
+      "t19": [
+        "Australien er både et land og et kontinent.",
+        true,
+        "Australien er det eneste land, der dækker et helt kontinent."
+      ],
+      "t20": [
+        "Lynet slår aldrig ned det samme sted to gange.",
+        false,
+        "Det gør det: høje bygninger rammes af lynet mange gange om året."
+      ],
+      "t21": [
+        "En struds stikker hovedet i sandet, når den bliver bange.",
+        false,
+        "En myte: en bange struds løber væk eller lægger sig fladt ned på jorden for at gemme sig."
+      ],
+      "t22": [
+        "Verdens mindste fugl er en kolibri.",
+        true,
+        "Bikolibrien fra Cuba vejer omkring 2 gram — mindre end nogen anden fugl."
+      ],
+      "t23": [
+        "En vandmelon består af omkring 90 % vand.",
+        true,
+        "Vandmelon er cirka 92 % vand — derfor er den så forfriskende."
+      ],
+      "t24": [
+        "En edderkop har seks ben.",
+        false,
+        "En edderkop har otte ben. Insekter har seks, og edderkopper er ikke insekter."
+      ],
+      "t25": [
+        "Månen lyser af sig selv.",
+        false,
+        "Månen har intet eget lys: den kaster sollyset tilbage."
+      ],
+      "t26": [
+        "Elefanten er det største landdyr.",
+        true,
+        "En afrikansk savanneelefant kan veje over 6 tons."
+      ],
+      "t27": [
+        "Blåhvalen er det største dyr, man kender.",
+        true,
+        "Blåhvaler kan blive over 30 meter lange — større end nogen kendt dinosaur."
+      ],
+      "t28": [
+        "En kamæleon skifter kun farve for at camouflere sig.",
+        false,
+        "Farven afhænger mere af humør, temperatur og signaler til andre kamæleoner."
+      ],
+      "t29": [
+        "Telefonen blev opfundet af Thomas Edison.",
+        false,
+        "Alexander Graham Bell fik patent på telefonen i 1876."
+      ],
+      "t30": [
+        "Penicillin blev opdaget af Alexander Fleming.",
+        true,
+        "Fleming opdagede penicillin i 1928 — det første antibiotikum."
+      ],
+      "t31": [
+        "Solsystemets højeste vulkan ligger på Mars.",
+        true,
+        "Olympus Mons på Mars er omkring 22 km høj — næsten 2,5 gange højere end Everest."
+      ],
+      "t32": [
+        "Blodet i vores årer er blåt.",
+        false,
+        "Blod er altid rødt; årerne ser kun blå ud på grund af den måde, lyset går gennem huden på."
+      ],
+      "t33": [
+        "Atlanterhavet er det største ocean på Jorden.",
+        false,
+        "Det største er Stillehavet: det er større end alt land på Jorden tilsammen."
+      ],
+      "t34": [
+        "Rusland er verdens største land målt i areal.",
+        true,
+        "Rusland dækker mere end 17 millioner kvadratkilometer."
+      ],
+      "t35": [
+        "Canada har verdens længste kystlinje.",
+        true,
+        "Canadas kystlinje er over 200.000 km lang — længere end noget andet lands."
+      ],
+      "t36": [
+        "En kos mave har fire afdelinger.",
+        true,
+        "En ko har én mave med fire kamre — sådan fordøjer den græs."
+      ],
+      "t37": [
+        "Løven er verdens største kat.",
+        false,
+        "Den største kat er tigeren, især den sibiriske tiger."
+      ],
+      "t38": [
+        "Jorden er den planet, der ligger tættest på Solen.",
+        false,
+        "Merkur ligger tættest, så kommer Venus; Jorden er den tredje planet."
+      ],
+      "t39": [
+        "Sollyset er omkring 8 minutter om at nå Jorden.",
+        true,
+        "Lyset tilbagelægger de 150 millioner km fra Solen på cirka 8 minutter og 20 sekunder."
+      ],
+      "t40": [
+        "Delfiner sover med den ene halvdel af hjernen ad gangen.",
+        true,
+        "Den ene halvdel hviler, mens den anden holder vagt og husker at trække vejret."
+      ],
+      "t41": [
+        "Kartofler stammer fra Irland.",
+        false,
+        "Kartofler stammer fra Sydamerika: de blev dyrket i Andesbjergene for tusinder af år siden."
+      ],
+      "t42": [
+        "Chokolade laves af frøene fra kakaotræet.",
+        true,
+        "Kakaofrugterne vokser direkte på stammen, og frøene indeni bliver til chokolade."
+      ],
+      "t43": [
+        "En haj er et pattedyr.",
+        false,
+        "En haj er en fisk: den ånder gennem gæller. Hvaler og delfiner er havets pattedyr."
+      ],
+      "t44": [
+        "Nogle slags bambus kan vokse næsten en meter på en dag.",
+        true,
+        "Bambus er en af de hurtigst voksende planter på Jorden."
+      ],
+      "t45": [
+        "En ugle kan dreje hovedet hele 360 grader.",
+        false,
+        "En ugle kan dreje hovedet omkring 270 grader — meget, men ikke en hel omgang."
+      ],
+      "t46": [
+        "En diamant og grafitten i en blyant består af det samme stof.",
+        true,
+        "Begge er rent kulstof — atomerne er bare ordnet forskelligt."
+      ],
+      "t47": [
+        "En kamel gemmer vand i sin pukkel.",
+        false,
+        "Kamelens pukkel gemmer fedt, ikke vand — det giver energi på lange rejser."
+      ],
+      "t48": [
+        "Den mindste knogle i menneskekroppen sidder i øret.",
+        true,
+        "Stigbøjlen i mellemøret er kun omkring 3 millimeter lang."
+      ],
+      "t49": [
+        "Store papegøjer kan leve i mere end 50 år.",
+        true,
+        "Velplejede araer og kakaduer lever ofte 50 år eller mere."
+      ],
+      "t50": [
+        "Brødrene Wright foretog den første motoriserede flyvning.",
+        true,
+        "De fløj i 1903; den allerførste flyvning varede 12 sekunder."
+      ],
+      "t51": [
+        "Hjulet blev opfundet i middelalderen.",
+        false,
+        "Hjulet er over 5.000 år gammelt: det blev brugt i Mesopotamien omkring 3500 f.Kr."
+      ],
+      "t52": [
+        "En søhest er en fisk.",
+        true,
+        "En søhest ånder gennem gæller og svømmer med en finne ligesom andre fisk."
+      ],
+      "t53": [
+        "En kolibri kan flyve baglæns.",
+        true,
+        "Kolibrier er de eneste fugle, der virkelig kan flyve baglæns."
+      ],
+      "t54": [
+        "Eiffeltårnet bliver lidt højere om sommeren.",
+        true,
+        "Varmen får metallet til at udvide sig, og tårnet vokser omkring 15 centimeter."
+      ],
+      "t55": [
+        "Huden er menneskekroppens største organ.",
+        true,
+        "En voksens hud vejer flere kilo og beskytter hele kroppen."
+      ],
+      "t56": [
+        "Rød farve gør en tyr vred.",
+        false,
+        "Tyre kan knap skelne rødt: det er bevægelsen, der provokerer dem, ikke farven."
+      ],
+      "t57": [
+        "En stueflue lever kun én dag.",
+        false,
+        "En stueflue lever omkring en måned. Det er voksne døgnfluer, der kun lever en dag eller to."
+      ],
+      "t58": [
+        "Ananas vokser på træer.",
+        false,
+        "En ananas vokser på en lav, bladrig plante, lige op fra midten af den."
+      ],
+      "t59": [
+        "En jordnød er en nød.",
+        false,
+        "En jordnød er en bælgplante i familie med ærter og bønner. Dens bælge modner under jorden."
+      ],
+      "t60": [
+        "Nordpolen og Sydpolen er lige kolde.",
+        false,
+        "Sydpolen er meget koldere: den ligger på et højt, isdækket kontinent, Nordpolen på et hav."
+      ]
+    }
   },
   "no": {
     "text": {
@@ -13497,7 +28083,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Inviter",
       "invited": "Invitert",
       "inviteNone": "Legg til venner under «Venner» for å invitere dem med ett trykk.",
-      "inviteSent": "Invitasjon sendt til {name}"
+      "inviteSent": "Invitasjon sendt til {name}",
+      "truth": "Sant eller usant",
+      "tfTitle": "Sant eller usant",
+      "tfNote": "Et livespill for to: forbløffende fakta om verden. 12 sekunder — sant eller usant? Et poeng for hvert riktig svar.",
+      "tfShareText": "{name} inviterer deg til livespillet «Sant eller usant»",
+      "tfJoinLead": "{name} venter på deg. Sant eller usant — bestem deg raskt!",
+      "tfRound": "Faktum {n} av {total}",
+      "tfTrue": "Sant",
+      "tfFalse": "Usant",
+      "tfIsTrue": "Det er sant!",
+      "tfIsFalse": "Det er usant!",
+      "tfFirstYou": "Du svarte riktig først!",
+      "tfFirstThem": "{name} svarte riktig først",
+      "tfFinalWin": "Seier! Du vet mest om verden.",
+      "tfFinalLose": "{name} vet mest denne gangen — revansj?",
+      "tfFinalDraw": "Uavgjort — dere vet like mye!",
+      "featTruth": "Livespillet «Sant eller usant» — forbløffende fakta om verden"
     },
     "questions": {
       "q01": [
@@ -13919,6 +28521,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Å lage mat",
         "Et nytt språk",
         "Å tegne"
+      ],
+      "q61": [
+        "Hvilken rett lager jeg best?",
+        "Suppe",
+        "Pilaf",
+        "Bakst",
+        "Salat"
+      ],
+      "q62": [
+        "Hvilket land vil jeg se først?",
+        "Tyrkia",
+        "Japan",
+        "Marokko",
+        "Norge"
+      ],
+      "q63": [
+        "Hvilken idrett ville jeg helst begynt med?",
+        "Svømming",
+        "Løping",
+        "Sykling",
+        "Fotball"
+      ],
+      "q64": [
+        "Hvilken bok ville jeg valgt?",
+        "En eventyrroman",
+        "En historiebok",
+        "Folkeeventyr",
+        "Et leksikon"
+      ],
+      "q65": [
+        "Hvilke dyr ville jeg besøkt først i dyrehagen?",
+        "Elefantene",
+        "Apene",
+        "Pingvinene",
+        "Sjiraffene"
+      ],
+      "q66": [
+        "Hva synes jeg om sterk mat?",
+        "Jo sterkere, jo bedre",
+        "Litt går fint",
+        "Bare en liten smule",
+        "Jeg spiser det ikke i det hele tatt"
+      ],
+      "q67": [
+        "Hvilket skolefag likte jeg best?",
+        "Matematikk",
+        "Litteratur",
+        "Geografi",
+        "Gym"
+      ],
+      "q68": [
+        "Drømmeyrket mitt som barn?",
+        "Lege",
+        "Lærer",
+        "Astronaut",
+        "Kokk"
+      ],
+      "q69": [
+        "Hva synes jeg om fotturer?",
+        "Jeg drømmer om en lang en",
+        "Bare en dagstur",
+        "Bare med komfort",
+        "Hjemme er best"
+      ],
+      "q70": [
+        "Humøret mitt om morgenen?",
+        "Full av energi",
+        "Fortsatt trøtt",
+        "Stille",
+        "Pratsom"
+      ],
+      "q71": [
+        "Hvilken nøtt liker jeg best?",
+        "Hasselnøtt",
+        "Valnøtt",
+        "Cashewnøtt",
+        "Mandel"
+      ],
+      "q72": [
+        "Hva ville jeg gjort med en uventet fri time?",
+        "Lest",
+        "Gått en tur",
+        "Ringt familien",
+        "Laget noe mat"
+      ],
+      "q73": [
+        "Hvilket vær liker jeg ikke?",
+        "Hete",
+        "Vind",
+        "Sludd",
+        "Sprengkulde"
+      ],
+      "q74": [
+        "Hvilken farge ville jeg malt rommet mitt?",
+        "Hvit",
+        "Beige",
+        "Grønn",
+        "Lyseblå"
+      ],
+      "q75": [
+        "Hva ville jeg helst spilt?",
+        "Sjakk",
+        "Dam",
+        "Puslespill",
+        "Et ordspill"
+      ],
+      "q76": [
+        "Hva ville jeg laget til gjester?",
+        "Pilaf",
+        "En pai",
+        "Salater",
+        "Jeg ville bestilt mat"
+      ],
+      "q77": [
+        "Hva ville jeg absolutt ikke spist?",
+        "Sopp",
+        "Fisk",
+        "Oliven",
+        "Kokt løk"
+      ],
+      "q78": [
+        "Hvordan lager jeg teen min?",
+        "Sterk",
+        "Svak",
+        "Søt",
+        "Med urter"
+      ],
+      "q79": [
+        "Hva betyr mest for meg i et hjem?",
+        "Renslighet",
+        "Hygge",
+        "Mye lys",
+        "Ro"
+      ],
+      "q80": [
+        "Hvordan lærer jeg nye ting?",
+        "Ved å lese",
+        "Med videotimer",
+        "Ved å prøve i praksis",
+        "Ved å spørre andre"
+      ],
+      "q81": [
+        "Hvilket vilt dyr fascinerer meg mest?",
+        "Tiger",
+        "Bjørn",
+        "Ørn",
+        "Delfin"
+      ],
+      "q82": [
+        "Hva ville jeg gitt mamma?",
+        "Blomster",
+        "Noe hjemmelaget",
+        "En reise",
+        "Et varmt teppe"
+      ],
+      "q83": [
+        "Hva gjør jeg på reise?",
+        "Ser ut av vinduet",
+        "Leser",
+        "Prater",
+        "Småspiser"
+      ],
+      "q84": [
+        "Favorittretten min med kylling?",
+        "Kyllingspyd",
+        "Kylling med ris",
+        "Kyllingkarbonader",
+        "Nuggets"
+      ],
+      "q85": [
+        "Hvilket sete velger jeg på toget?",
+        "Ved vinduet",
+        "Ved midtgangen",
+        "Baklengs",
+        "Det spiller ingen rolle"
+      ],
+      "q86": [
+        "Hva gjør jeg når noe går galt?",
+        "Handler med en gang",
+        "Tenker meg om først",
+        "Spør om råd",
+        "Bekymrer meg litt"
+      ],
+      "q87": [
+        "Hva er min viktigste egenskap?",
+        "Vennlighet",
+        "Ærlighet",
+        "Utholdenhet",
+        "Godt humør"
+      ],
+      "q88": [
+        "Hvor ville jeg slappet best av?",
+        "Hos slekt på landet",
+        "På et hotell ved sjøen",
+        "I telt",
+        "Hjemme"
+      ],
+      "q89": [
+        "Hvilket bakverk ville jeg valgt?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "En éclair"
+      ],
+      "q90": [
+        "Hvilket språk vil jeg helst lære?",
+        "Arabisk",
+        "Engelsk",
+        "Tyrkisk",
+        "Japansk"
+      ],
+      "q91": [
+        "Hvor lenge kunne jeg klart meg uten godteri?",
+        "En dag",
+        "En uke",
+        "En måned",
+        "Så lenge det trengs"
+      ],
+      "q92": [
+        "Hva gjør jeg når jeg er i ferd med å bli sen?",
+        "Løper alt jeg kan",
+        "Ringer og gir beskjed",
+        "Tar taxi",
+        "Jeg blir aldri sen"
+      ],
+      "q93": [
+        "Hva gjør jeg når en dings går i stykker?",
+        "Reparerer den selv",
+        "Leser bruksanvisningen",
+        "Ringer etter hjelp",
+        "Trykker på alle knappene"
+      ],
+      "q94": [
+        "Hva legger jeg først i kofferten?",
+        "Et førstehjelpsskrin",
+        "En bok",
+        "En lader",
+        "Noe å spise"
+      ],
+      "q95": [
+        "Hva får meg til å roe meg ned?",
+        "Matlaging",
+        "Rydding",
+        "Tegning",
+        "En tur"
+      ],
+      "q96": [
+        "Hva vil jeg gjøre når jeg blir pensjonist?",
+        "Hagearbeid",
+        "Reise",
+        "Lese",
+        "Være sammen med barnebarna"
+      ],
+      "q97": [
+        "Hva irriterer meg mest?",
+        "Bråk",
+        "Rot",
+        "Forsinkelser",
+        "Uhøflighet"
+      ],
+      "q98": [
+        "Hvilken lukt liker jeg best?",
+        "Nybakt brød",
+        "Regn",
+        "Blomster",
+        "Havet"
+      ],
+      "q99": [
+        "Hva ville jeg valgt til dessert?",
+        "Frukt",
+        "Is",
+        "Pai",
+        "Bare te"
       ]
     },
     "yesNo": {
@@ -14121,6 +28996,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Skal vi spille igjen senere?",
         "vil ha en runde til",
         "klemmer heller enn å spille"
+      ],
+      "c41": [
+        "Liker du sterk mat?",
+        "jo sterkere, jo bedre",
+        "velger noe mildere"
+      ],
+      "c42": [
+        "Kan du svømme?",
+        "svømmer som en fisk",
+        "holder seg nær land inntil videre"
+      ],
+      "c43": [
+        "Kunne du tenke deg en katt?",
+        "tenker allerede på et navn",
+        "foretrekker hunder"
+      ],
+      "c44": [
+        "Kunne du tenke deg å besøke Istanbul en dag?",
+        "drømmer allerede om Bosporos",
+        "ville valgt en annen by"
+      ],
+      "c45": [
+        "Liker du å lage mat?",
+        "lager mat med glede",
+        "tar heller oppvasken"
+      ],
+      "c46": [
+        "Kunne du tenke deg å lære å lage pilaf?",
+        "leter allerede etter en oppskrift",
+        "smaker heller på en annens"
+      ],
+      "c47": [
+        "Liker du å lese bøker?",
+        "har alltid en bok i nærheten",
+        "foretrekker å lytte til fortellinger"
+      ],
+      "c48": [
+        "Kan du sykle?",
+        "kunne syklet av gårde med en gang",
+        "lover å lære det"
+      ],
+      "c49": [
+        "Foretrekker du fjellet framfor sjøen?",
+        "velger fjellet",
+        "velger sjøen"
+      ],
+      "c50": [
+        "Kunne du tenke deg å se en ørken?",
+        "drømmer om sanddyner",
+        "ville heller valgt en skog"
+      ],
+      "c51": [
+        "Liker du vinteren?",
+        "venter på den første snøen",
+        "venter på sommeren"
+      ],
+      "c52": [
+        "Drikker du te uten sukker?",
+        "liker den rene smaken av te",
+        "klarer seg ikke uten en skje sukker"
+      ],
+      "c53": [
+        "Er du redd for edderkopper?",
+        "holder god avstand til dem",
+        "bærer dem rolig ut"
+      ],
+      "c54": [
+        "Liker du å tegne?",
+        "griper allerede en pensel",
+        "ser heller på andres bilder"
+      ],
+      "c55": [
+        "Kunne du tenke deg å se nordlyset?",
+        "sjekker allerede hvor man kan se det",
+        "ser heller på stjernene"
+      ],
+      "c56": [
+        "Liker du regnvær?",
+        "elsker lyden av regn utenfor",
+        "venter på sola"
+      ],
+      "c57": [
+        "Kan du ri?",
+        "sitter trygt i salen",
+        "drømmer bare om det inntil videre"
+      ],
+      "c58": [
+        "Kunne du tenke deg en hund?",
+        "drømmer om en trofast venn",
+        "har nok å passe på akkurat nå"
+      ],
+      "c59": [
+        "Foretrekker du søtt framfor salt?",
+        "klarer seg ikke uten godteri",
+        "velger salt"
+      ],
+      "c60": [
+        "Liker du å reise med tog?",
+        "elsker rytmen fra hjulene",
+        "velger flyet"
+      ],
+      "c61": [
+        "Er det lett for deg å starte dagen tidlig?",
+        "starter dagen full av energi",
+        "kommer først i gang ved lunsjtid"
+      ],
+      "c62": [
+        "Liker du å overnatte i telt?",
+        "pakker allerede sekken",
+        "velger et koselig hotell"
+      ],
+      "c63": [
+        "Kunne du tenke deg å bo ved sjøen?",
+        "drømmer om lyden av bølger",
+        "velger byen"
+      ],
+      "c64": [
+        "Spiser du is om vinteren?",
+        "spiser den selv i kulda",
+        "bare om sommeren"
+      ],
+      "c65": [
+        "Liker du sjokolade?",
+        "kjenner alle slagene",
+        "går rolig forbi den"
+      ],
+      "c66": [
+        "Kan du bake paier?",
+        "baker som en bestemor",
+        "lover å lære det"
+      ],
+      "c67": [
+        "Liker du å se på stjernene?",
+        "kjenner stjernebildene",
+        "foretrekker en solfylt dag"
+      ],
+      "c68": [
+        "Kunne du tenke deg å anlegge din egen hage en dag?",
+        "velger allerede planter",
+        "begynner med en blomst i potte"
+      ],
+      "c69": [
+        "Liker du markblomster?",
+        "elsker prestekrager og kornblomster",
+        "foretrekker hageblomster"
+      ],
+      "c70": [
+        "Drikker du kaffe?",
+        "dagen starter ikke uten kaffe",
+        "velger te"
+      ],
+      "c71": [
+        "Liker du hjemmelaget limonade?",
+        "skjærer allerede sitroner",
+        "vil heller ha vann"
+      ],
+      "c72": [
+        "Kunne du tenke deg å besøke Japan en dag?",
+        "drømmer om å se kirsebærblomstringen",
+        "ville valgt et annet land"
+      ],
+      "c73": [
+        "Liker du høsten?",
+        "elsker å gå gjennom raslende løv",
+        "venter på våren"
+      ],
+      "c74": [
+        "Liker du duften av lavendel?",
+        "elsker den duften",
+        "foretrekker andre dufter"
+      ],
+      "c75": [
+        "Liker du brettspill?",
+        "setter allerede fram brettet",
+        "foretrekker en tur"
+      ],
+      "c76": [
+        "Kan du kjøre bil?",
+        "kjører trygt",
+        "er passasjer inntil videre"
+      ],
+      "c77": [
+        "Kunne du tenke deg å se et verdenshav en dag?",
+        "drømmer om en stor bølge",
+        "sjøen her hjemme er nok"
+      ],
+      "c78": [
+        "Kunne du tenke deg å bo på en gård en stund?",
+        "mater allerede hønene",
+        "blir i byen"
+      ],
+      "c79": [
+        "Liker du storbyer?",
+        "elsker byens lys",
+        "velger fred og ro"
+      ],
+      "c80": [
+        "Foretrekker du frukt framfor godteri?",
+        "velger frukt",
+        "velger godteri"
+      ],
+      "c81": [
+        "Kunne du tenke deg å se delfiner i havet?",
+        "ville elsket å se dem",
+        "leser heller om dem"
+      ],
+      "c82": [
+        "Liker du sommeren?",
+        "venter på de varme dagene",
+        "elsker kjølig vær"
+      ],
+      "c83": [
+        "Liker du å gå tur i parken?",
+        "går tur i all slags vær",
+        "foretrekker å være hjemme"
+      ],
+      "c84": [
+        "Liker du å skrive for hånd?",
+        "har pen håndskrift",
+        "skriver på telefonen"
+      ],
+      "c85": [
+        "Liker du båtturer?",
+        "griper allerede årene",
+        "blir på land"
+      ],
+      "c86": [
+        "Kunne du tenke deg å reise jorda rundt?",
+        "tegner allerede en rute",
+        "et par land er nok"
+      ],
+      "c87": [
+        "Kan du lage en snømann?",
+        "lager den største",
+        "har heller snøballkrig"
+      ],
+      "c88": [
+        "Kunne du tenke deg å lære noe nytt i år?",
+        "velger allerede et kurs",
+        "har nok å gjøre fra før"
+      ],
+      "c89": [
+        "Liker du stillhet?",
+        "setter pris på roen",
+        "liker når det er liv"
+      ],
+      "c90": [
+        "Liker du å gi gaver til familien din?",
+        "gleder familien uten noen spesiell grunn",
+        "hjelper heller på praktiske måter"
       ]
     },
     "loves": {
@@ -14235,6 +29360,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Skog",
         "Ørken",
         "Nordlys"
+      ],
+      "s17": [
+        "Favorittfrukt?",
+        "Eple",
+        "Jordbær",
+        "Vannmelon",
+        "Druer"
+      ],
+      "s18": [
+        "Hva gjør vi på en fridag?",
+        "Fjelltur",
+        "Lager mat hjemme",
+        "Et museum",
+        "Fisketur"
+      ],
+      "s19": [
+        "Favorittfrokost?",
+        "Pannekaker",
+        "Omelett",
+        "Grøt med bær",
+        "Croissant"
+      ],
+      "s20": [
+        "Favorittfugl?",
+        "Ugle",
+        "Papegøye",
+        "Svane",
+        "Påfugl"
+      ],
+      "s21": [
+        "Hvilken by skal vi besøke?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Favorittidrett?",
+        "Fotball",
+        "Svømming",
+        "Tennis",
+        "Ridning"
+      ],
+      "s23": [
+        "Hva planter vi i hagen?",
+        "Et epletre",
+        "Roser",
+        "Grønnsaker",
+        "Jordbær"
+      ],
+      "s24": [
+        "Favorittbakst?",
+        "Små piroger",
+        "Smultringer",
+        "Kjeks",
+        "Baklava"
+      ],
+      "s25": [
+        "Hvor skal vi bo?",
+        "Ved en elv",
+        "I skogen",
+        "I en storby",
+        "På en øy"
+      ],
+      "s26": [
+        "Favorittdyr i havet?",
+        "Skilpadde",
+        "Hval",
+        "Blekksprut",
+        "Sjøhest"
+      ],
+      "s27": [
+        "Hva vil vi reise med?",
+        "Sykkel",
+        "Sparkesykkel",
+        "Luftballong",
+        "Båt"
+      ],
+      "s28": [
+        "Favorittsyssel?",
+        "Strikking",
+        "Naturfotografering",
+        "Hagearbeid",
+        "Kalligrafi"
+      ],
+      "s29": [
+        "Favorittsuppe?",
+        "Borsjtsj",
+        "Kyllingsuppe",
+        "Gresskarsuppe",
+        "Linsesuppe"
+      ],
+      "s30": [
+        "Dyr i skogen?",
+        "Pinnsvin",
+        "Ekorn",
+        "Rev",
+        "Rådyr"
+      ],
+      "s31": [
+        "Noe å småspise?",
+        "Dadler",
+        "Mandler",
+        "Pistasjnøtter",
+        "Tørkede aprikoser"
+      ],
+      "s32": [
+        "Hva tar vi med på tur?",
+        "Et telt",
+        "En termos",
+        "Et kart",
+        "En lommelykt"
+      ],
+      "s33": [
+        "Favorittdessert?",
+        "Pudding",
+        "Ostekake",
+        "Pannekaker med honning",
+        "Fruktsalat"
+      ],
+      "s34": [
+        "Hva gjør vi om vinteren?",
+        "Lager snømann",
+        "Aker",
+        "Te ved vinduet",
+        "Går på ski"
+      ],
+      "s35": [
+        "Hva gjør vi om sommeren?",
+        "Bader",
+        "Plukker bær",
+        "Ror båt",
+        "Bygger sandslott"
+      ],
+      "s36": [
+        "Hva maler vi med?",
+        "Akvarell",
+        "Blyanter",
+        "Fargestifter",
+        "Maling på lerret"
+      ],
+      "s37": [
+        "Favorittgrønnsak?",
+        "Gulrot",
+        "Tomat",
+        "Mais",
+        "Gresskar"
+      ],
+      "s38": [
+        "Hva gjør et hjem koselig?",
+        "En peis",
+        "Et mykt pledd",
+        "Potteplanter",
+        "En hylle med bøker"
+      ],
+      "s39": [
+        "Hva skal vi spille?",
+        "Sjakk",
+        "Puslespill",
+        "Brettspill",
+        "Ballspill"
+      ],
+      "s40": [
+        "Hvem bor på gården?",
+        "Ku",
+        "Lam",
+        "Høne",
+        "Liten geit"
+      ],
+      "s41": [
+        "Te med hva?",
+        "Honning",
+        "Sitron",
+        "Syltetøy",
+        "Mynte"
+      ],
+      "s42": [
+        "Hva finner vi ved havet?",
+        "Et fyrtårn",
+        "Skjell",
+        "En seilbåt",
+        "Måker"
+      ],
+      "s43": [
+        "Hvordan starter vi morgenen?",
+        "Morgentrim",
+        "En kopp te",
+        "En tur",
+        "En bok"
+      ],
+      "s44": [
+        "Favorittbær?",
+        "Bringebær",
+        "Blåbær",
+        "Kirsebær",
+        "Bjørnebær"
       ]
     },
     "who": [
@@ -14277,7 +29598,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Hvem av oss husker morsomme historier oftest?",
       "Hvem av oss er mest tålmodig?",
       "Hvem av oss sier oftest «takk»?",
-      "Hvem av oss tilbyr hjelp først?"
+      "Hvem av oss tilbyr hjelp først?",
+      "Hvem av oss er best i hoderegning?",
+      "Hvem av oss leser mest?",
+      "Hvem av oss skriver raskest på tastatur?",
+      "Hvem av oss ringer oftest til foreldrene sine?",
+      "Hvem av oss forteller best historier?",
+      "Hvem av oss har penest håndskrift?",
+      "Hvem av oss liker sterk mat best?",
+      "Hvem av oss glemmer oftest ting hjemme?",
+      "Hvem av oss er flinkest med teknologi?",
+      "Hvem av oss elsker mest å lære nye ting?",
+      "Hvem av oss er flinkest til å planlegge?",
+      "Hvem av oss er flinkest til å prute på markedet?",
+      "Hvem av oss er mest glad i naturen?",
+      "Hvem av oss spiser raskest?",
+      "Hvem av oss drikker mest te?",
+      "Hvem av oss steller best med planter?",
+      "Hvem av oss kan mest geografi?",
+      "Hvem av oss spiller best sjakk?",
+      "Hvem av oss velger best frukt på markedet?",
+      "Hvem av oss sjekker oftest værmeldingen?",
+      "Hvem av oss er mest redd for edderkopper?",
+      "Hvem av oss er modigst?",
+      "Hvem av oss er mest nysgjerrig?",
+      "Hvem av oss løser gåter raskest?",
+      "Hvem av oss tegner best?",
+      "Hvem av oss hjelper naboene oftest?",
+      "Hvem av oss er flinkest med barn?",
+      "Hvem av oss liker best å gå turer?",
+      "Hvem av oss leser oftest bruksanvisningen?",
+      "Hvem av oss husker navn best?",
+      "Hvem av oss lærer ord på et annet språk raskest?",
+      "Hvem av oss er flinkest til å bake?",
+      "Hvem av oss gir de beste rådene?",
+      "Hvem av oss liker kaldt vær best?",
+      "Hvem av oss ville klart seg best på fjelltur?",
+      "Hvem av oss leser oftest nyheter?",
+      "Hvem av oss prøver oftest nye retter?",
+      "Hvem av oss pakker en koffert raskest?",
+      "Hvem av oss er flinkest til å reparere ting?",
+      "Hvem av oss snakker oftest med dyr?",
+      "Hvem av oss tar oftest oppvasken?",
+      "Hvem av oss kan mest historie?",
+      "Hvem av oss utsetter oftest ting?",
+      "Hvem av oss kommer raskest i prat med nye folk?",
+      "Hvem av oss tar best vare på helsa si?"
     ],
     "phrases": [
       "Jeg smiler når du…",
@@ -14309,8 +29675,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "En morgen med deg er…",
       "Hvis vi var ett ord, ville det vært…",
       "Jeg vil lære av deg hvordan man…",
-      "Takk for at du alltid…"
-    ]
+      "Takk for at du alltid…",
+      "Favorittmaten min som barn var…",
+      "Hvis jeg fikk én dag i et hvilket som helst land, ville jeg…",
+      "Det beste rådet jeg noen gang har fått, er…",
+      "Jeg ler alltid når…",
+      "Favorittstedet mitt i hjembyen er…",
+      "Hvis jeg hadde min egen lille butikk, ville den selge…",
+      "Retten jeg lager best, er…",
+      "En barndomsdrøm jeg fortsatt husker, er…",
+      "Det er lett å gjøre meg glad hvis…",
+      "Det mest forbløffende stedet jeg har vært, er…",
+      "Jeg vil lære…",
+      "Den perfekte fridagen min begynner med…",
+      "Hvis jeg kunne få et hvilket som helst dyr, ville det vært…",
+      "Familien min sier alltid at jeg…",
+      "Jeg klarer bare ikke å venne meg til…",
+      "Den nyttigste vanen min er…",
+      "Den beste boka jeg har lest, er…",
+      "Om ti år vil jeg gjerne…",
+      "Drømmehjemmet mitt er…",
+      "Det morsomste som skjedde meg som barn, var…",
+      "For meg er lykke…",
+      "Det er vanskelig for meg å gi slipp på…",
+      "Hvis jeg hadde en superkraft, ville den…",
+      "Det jeg setter mest pris på hos mennesker, er…",
+      "Når jeg har en ledig kveld, pleier jeg å…",
+      "Favorittlukten min er…",
+      "Maten jeg aldri ville spist, er…",
+      "Det ene jeg aldri går hjemmefra uten, er…",
+      "Jeg vil gjerne besøke… fordi…",
+      "Den beste gaven jeg noen gang har fått, er…",
+      "Den mest uvanlige vanen min er…",
+      "Hvis jeg fikk en ekstra time hver dag, ville jeg…",
+      "En jeg lærer mye av, er…",
+      "På en tung dag hjelper det meg å…",
+      "Det beste jeg har smakt på en reise, er…",
+      "Hvis jeg kunne bytte jobb for en dag, ville jeg valgt…",
+      "Årstiden som står hjertet mitt nærmest, er…",
+      "Vennene mine sier at jeg…",
+      "En dag vil jeg gjerne lære noen å…",
+      "En liten glede i hverdagen min er…"
+    ],
+    "truth": {
+      "t01": [
+        "En blekksprut har tre hjerter.",
+        true,
+        "To hjerter pumper blod gjennom gjellene, og det tredje pumper det rundt i kroppen."
+      ],
+      "t02": [
+        "Den kinesiske mur kan ses fra månen med det blotte øye.",
+        false,
+        "Det kan den ikke: muren er altfor smal. Selv fra bane rundt jorda er den svært vanskelig å få øye på."
+      ],
+      "t03": [
+        "Honning kan holde seg i tusenvis av år uten å bli dårlig.",
+        true,
+        "I gamle egyptiske graver er det funnet tusenvis av år gammel honning som fortsatt var bevart."
+      ],
+      "t04": [
+        "Bananer vokser på trær.",
+        false,
+        "Bananplanten er en kjempestor urt: «stammen» består av tett sammenrullede blader."
+      ],
+      "t05": [
+        "Venus er den varmeste planeten i solsystemet.",
+        true,
+        "Den tykke atmosfæren varmer Venus opp til rundt 460 °C — varmere enn Merkur."
+      ],
+      "t06": [
+        "Flaggermus er blinde.",
+        false,
+        "Flaggermus kan se, og i mørket finner de også fram ved hjelp av ekkolokalisering."
+      ],
+      "t07": [
+        "En hval er en fisk.",
+        false,
+        "Hvaler er pattedyr: de puster luft og gir ungene sine melk."
+      ],
+      "t08": [
+        "Sahara er verdens største ørken.",
+        false,
+        "Den største ørkenen er Antarktis. Sahara er den største varme ørkenen."
+      ],
+      "t09": [
+        "En sjiraff har like mange nakkevirvler som et menneske.",
+        true,
+        "Begge har sju nakkevirvler — sjiraffens er bare veldig lange."
+      ],
+      "t10": [
+        "Botanisk sett er en tomat et bær.",
+        true,
+        "Botanikere regner tomaten som et bær: en saftig frukt med frø inni."
+      ],
+      "t11": [
+        "Botanisk sett er et jordbær et bær.",
+        false,
+        "Det er et skinnbær: de egentlige fruktene er de små «frøene» utenpå."
+      ],
+      "t12": [
+        "Man kan høre en eksplosjon i verdensrommet.",
+        false,
+        "I verdensrommet er det nesten ingen luft, så lyden har ingenting å bevege seg gjennom."
+      ],
+      "t13": [
+        "Høyt oppe i fjellet koker vann ved lavere temperatur.",
+        true,
+        "Lufttrykket er lavere der oppe, så vannet koker før det når 100 °C."
+      ],
+      "t14": [
+        "Pingviner lever ved Nordpolen.",
+        false,
+        "Ville pingviner lever bare på den sørlige halvkule, ikke langt nord."
+      ],
+      "t15": [
+        "Mount Everest er det høyeste fjellet over havet.",
+        true,
+        "Everest rager rundt 8 849 meter over havet."
+      ],
+      "t16": [
+        "Mennesker bruker bare 10 % av hjernen.",
+        false,
+        "Det er en myte: nesten alle deler av hjernen er aktive i løpet av et døgn."
+      ],
+      "t17": [
+        "Et menneskehjerte slår rundt 100 000 ganger i døgnet.",
+        true,
+        "Med rundt 70 slag i minuttet blir det omtrent 100 000 slag i døgnet."
+      ],
+      "t18": [
+        "En gullfisk har en hukommelse på bare tre sekunder.",
+        false,
+        "Forsøk viser at gullfisker kan huske det de har lært, i flere måneder."
+      ],
+      "t19": [
+        "Australia er både et land og et kontinent.",
+        true,
+        "Australia er det eneste landet som dekker et helt kontinent."
+      ],
+      "t20": [
+        "Lynet slår aldri ned på samme sted to ganger.",
+        false,
+        "Det gjør det: høye bygninger blir truffet av lynet mange ganger i året."
+      ],
+      "t21": [
+        "En struts stikker hodet i sanden når den blir redd.",
+        false,
+        "En myte: en redd struts løper vekk eller legger seg flatt ned på bakken for å gjemme seg."
+      ],
+      "t22": [
+        "Verdens minste fugl er en kolibri.",
+        true,
+        "Bikolibrien fra Cuba veier rundt 2 gram — mindre enn noen annen fugl."
+      ],
+      "t23": [
+        "En vannmelon består av omtrent 90 % vann.",
+        true,
+        "Vannmelon er rundt 92 % vann — derfor er den så forfriskende."
+      ],
+      "t24": [
+        "En edderkopp har seks bein.",
+        false,
+        "En edderkopp har åtte bein. Insekter har seks, og edderkopper er ikke insekter."
+      ],
+      "t25": [
+        "Månen lyser av seg selv.",
+        false,
+        "Månen har ikke noe eget lys: den reflekterer sollyset."
+      ],
+      "t26": [
+        "Elefanten er det største landdyret.",
+        true,
+        "En afrikansk savanneelefant kan veie over 6 tonn."
+      ],
+      "t27": [
+        "Blåhvalen er det største dyret vi kjenner til.",
+        true,
+        "Blåhvaler kan bli over 30 meter lange — større enn noen kjent dinosaur."
+      ],
+      "t28": [
+        "En kameleon skifter farge bare for å kamuflere seg.",
+        false,
+        "Fargen avhenger mer av humør, temperatur og signaler til andre kameleoner."
+      ],
+      "t29": [
+        "Telefonen ble oppfunnet av Thomas Edison.",
+        false,
+        "Alexander Graham Bell fikk patent på telefonen i 1876."
+      ],
+      "t30": [
+        "Penicillin ble oppdaget av Alexander Fleming.",
+        true,
+        "Fleming oppdaget penicillin i 1928 — det første antibiotikumet."
+      ],
+      "t31": [
+        "Den høyeste vulkanen i solsystemet ligger på Mars.",
+        true,
+        "Olympus Mons på Mars er rundt 22 km høy — nesten 2,5 ganger høyere enn Everest."
+      ],
+      "t32": [
+        "Blodet i årene våre er blått.",
+        false,
+        "Blod er alltid rødt; årene ser bare blå ut på grunn av måten lyset går gjennom huden på."
+      ],
+      "t33": [
+        "Atlanterhavet er det største havet på jorda.",
+        false,
+        "Det største er Stillehavet: det er større enn alt land på jorda til sammen."
+      ],
+      "t34": [
+        "Russland er verdens største land i areal.",
+        true,
+        "Russland dekker mer enn 17 millioner kvadratkilometer."
+      ],
+      "t35": [
+        "Canada har verdens lengste kystlinje.",
+        true,
+        "Canadas kystlinje er over 200 000 km lang — lengre enn noe annet lands."
+      ],
+      "t36": [
+        "En kumage har fire avdelinger.",
+        true,
+        "En ku har én mage med fire kamre — det er slik den fordøyer gress."
+      ],
+      "t37": [
+        "Løven er verdens største kattedyr.",
+        false,
+        "Det største kattedyret er tigeren, særlig sibirtigeren."
+      ],
+      "t38": [
+        "Jorda er planeten nærmest sola.",
+        false,
+        "Merkur er nærmest, så kommer Venus; jorda er den tredje planeten."
+      ],
+      "t39": [
+        "Sollyset bruker rundt 8 minutter på å nå jorda.",
+        true,
+        "Lyset tilbakelegger de 150 millioner km fra sola på omtrent 8 minutter og 20 sekunder."
+      ],
+      "t40": [
+        "Delfiner sover med én halvdel av hjernen om gangen.",
+        true,
+        "Den ene halvdelen hviler mens den andre holder vakt og husker å puste."
+      ],
+      "t41": [
+        "Poteter kommer opprinnelig fra Irland.",
+        false,
+        "Poteter kommer fra Sør-Amerika: de ble dyrket i Andesfjellene for tusenvis av år siden."
+      ],
+      "t42": [
+        "Sjokolade lages av frøene fra kakaotreet.",
+        true,
+        "Kakaofruktene vokser rett på stammen, og frøene inni blir til sjokolade."
+      ],
+      "t43": [
+        "En hai er et pattedyr.",
+        false,
+        "En hai er en fisk: den puster med gjeller. Hvaler og delfiner er havets pattedyr."
+      ],
+      "t44": [
+        "Noen bambusarter kan vokse nesten en meter på en dag.",
+        true,
+        "Bambus er blant plantene som vokser raskest på jorda."
+      ],
+      "t45": [
+        "En ugle kan snu hodet hele 360 grader.",
+        false,
+        "En ugle kan snu hodet rundt 270 grader — mye, men ikke en hel runde."
+      ],
+      "t46": [
+        "En diamant og grafitten i en blyant består av samme stoff.",
+        true,
+        "Begge er rent karbon — atomene er bare ordnet på ulike måter."
+      ],
+      "t47": [
+        "En kamel lagrer vann i pukkelen.",
+        false,
+        "Kamelens pukkel lagrer fett, ikke vann — det gir energi på lange reiser."
+      ],
+      "t48": [
+        "Det minste beinet i menneskekroppen sitter i øret.",
+        true,
+        "Stigbøylen i mellomøret er bare rundt 3 millimeter lang."
+      ],
+      "t49": [
+        "Store papegøyer kan leve i mer enn 50 år.",
+        true,
+        "Araer og kakaduer som blir godt stelt, lever ofte i 50 år eller mer."
+      ],
+      "t50": [
+        "Brødrene Wright gjennomførte den første motoriserte flyturen.",
+        true,
+        "De fløy i 1903; den aller første flyturen varte i 12 sekunder."
+      ],
+      "t51": [
+        "Hjulet ble oppfunnet i middelalderen.",
+        false,
+        "Hjulet er over 5000 år gammelt: det ble brukt i Mesopotamia rundt 3500 f.Kr."
+      ],
+      "t52": [
+        "En sjøhest er en fisk.",
+        true,
+        "En sjøhest puster med gjeller og svømmer med en finne, akkurat som andre fisker."
+      ],
+      "t53": [
+        "En kolibri kan fly baklengs.",
+        true,
+        "Kolibrier er de eneste fuglene som virkelig kan fly baklengs."
+      ],
+      "t54": [
+        "Eiffeltårnet blir litt høyere om sommeren.",
+        true,
+        "Varmen får metallet til å utvide seg, og tårnet vokser rundt 15 centimeter."
+      ],
+      "t55": [
+        "Huden er menneskekroppens største organ.",
+        true,
+        "Huden til en voksen veier flere kilo og beskytter hele kroppen."
+      ],
+      "t56": [
+        "Rødfargen gjør en okse sint.",
+        false,
+        "Okser kan knapt skille rødt: det er bevegelsen som provoserer dem, ikke fargen."
+      ],
+      "t57": [
+        "En husflue lever bare én dag.",
+        false,
+        "En husflue lever rundt en måned. Det er voksne døgnfluer som bare lever en dag eller to."
+      ],
+      "t58": [
+        "Ananas vokser på trær.",
+        false,
+        "En ananas vokser på en lav, bladrik plante, rett opp fra midten av den."
+      ],
+      "t59": [
+        "En peanøtt er en nøtt.",
+        false,
+        "En peanøtt er en belgfrukt, i slekt med erter og bønner. Belgene modnes under jorda."
+      ],
+      "t60": [
+        "Nordpolen og Sørpolen er like kalde.",
+        false,
+        "Sørpolen er mye kaldere: den ligger på et høyt, isdekket kontinent, Nordpolen på et hav."
+      ]
+    }
   },
   "fi": {
     "text": {
@@ -14519,7 +30227,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Kutsu",
       "invited": "Kutsuttu",
       "inviteNone": "Lisää ystäviä ”Ystävät”-osiossa, niin voit kutsua heidät yhdellä napautuksella.",
-      "inviteSent": "Kutsu lähetetty: {name}"
+      "inviteSent": "Kutsu lähetetty: {name}",
+      "truth": "Totta vai tarua",
+      "tfTitle": "Totta vai tarua",
+      "tfNote": "Live-peli kahdelle: hämmästyttäviä faktoja maailmasta. 12 sekuntia — totta vai tarua? Piste jokaisesta oikeasta vastauksesta.",
+      "tfShareText": "{name} kutsuu sinut live-peliin ”Totta vai tarua”",
+      "tfJoinLead": "{name} odottaa sinua. Totta vai tarua — päätä nopeasti!",
+      "tfRound": "Fakta {n}/{total}",
+      "tfTrue": "Totta",
+      "tfFalse": "Tarua",
+      "tfIsTrue": "Se on totta!",
+      "tfIsFalse": "Se on tarua!",
+      "tfFirstYou": "Vastasit oikein ensimmäisenä!",
+      "tfFirstThem": "{name} vastasi oikein ensimmäisenä",
+      "tfFinalWin": "Voitto! Tiedät maailmasta enemmän.",
+      "tfFinalLose": "Tällä kertaa {name} tietää enemmän — revanssi?",
+      "tfFinalDraw": "Tasapeli — tiedätte yhtä paljon!",
+      "featTruth": "Live-peli ”Totta vai tarua” — hämmästyttäviä faktoja maailmasta"
     },
     "questions": {
       "q01": [
@@ -14941,6 +30665,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Kokkaamaan",
         "Uuden kielen",
         "Piirtämään"
+      ],
+      "q61": [
+        "Minkä ruoan teen parhaiten?",
+        "Keitto",
+        "Pilahvi",
+        "Leivonnaiset",
+        "Salaatti"
+      ],
+      "q62": [
+        "Minkä maan haluan nähdä ensimmäisenä?",
+        "Turkki",
+        "Japani",
+        "Marokko",
+        "Norja"
+      ],
+      "q63": [
+        "Minkä urheilulajin aloittaisin mieluiten?",
+        "Uinti",
+        "Juoksu",
+        "Pyöräily",
+        "Jalkapallo"
+      ],
+      "q64": [
+        "Minkä kirjan valitsisin?",
+        "Seikkailukirjan",
+        "Historiakirjan",
+        "Satukirjan",
+        "Tietosanakirjan"
+      ],
+      "q65": [
+        "Mitä eläimiä menisin eläintarhassa katsomaan ensin?",
+        "Norsuja",
+        "Apinoita",
+        "Pingviinejä",
+        "Kirahveja"
+      ],
+      "q66": [
+        "Mitä mieltä olen tulisesta ruoasta?",
+        "Mitä tulisempaa, sen parempi",
+        "Vähän käy",
+        "Vain ripaus",
+        "En syö sitä lainkaan"
+      ],
+      "q67": [
+        "Mikä kouluaine oli lempiaineeni?",
+        "Matematiikka",
+        "Kirjallisuus",
+        "Maantieto",
+        "Liikunta"
+      ],
+      "q68": [
+        "Lapsuuteni unelma-ammatti?",
+        "Lääkäri",
+        "Opettaja",
+        "Astronautti",
+        "Kokki"
+      ],
+      "q69": [
+        "Mitä mieltä olen vaelluksista?",
+        "Haaveilen pitkästä",
+        "Vain päiväksi",
+        "Vain mukavuuksin",
+        "Koti on parempi"
+      ],
+      "q70": [
+        "Millä tuulella olen aamulla?",
+        "Täynnä energiaa",
+        "Vielä uninen",
+        "Hiljainen",
+        "Puhelias"
+      ],
+      "q71": [
+        "Mistä pähkinästä pidän eniten?",
+        "Hasselpähkinä",
+        "Saksanpähkinä",
+        "Cashewpähkinä",
+        "Manteli"
+      ],
+      "q72": [
+        "Mitä tekisin yllättävällä vapaatunnilla?",
+        "Lukisin",
+        "Lähtisin kävelylle",
+        "Soittaisin perheelle",
+        "Laittaisin ruokaa"
+      ],
+      "q73": [
+        "Mistä säästä en pidä?",
+        "Helle",
+        "Tuuli",
+        "Räntä",
+        "Kova pakkanen"
+      ],
+      "q74": [
+        "Minkä väriseksi maalaisin huoneeni?",
+        "Valkoiseksi",
+        "Beigeksi",
+        "Vihreäksi",
+        "Vaaleansiniseksi"
+      ],
+      "q75": [
+        "Mitä pelaisin mieluummin?",
+        "Shakkia",
+        "Tammea",
+        "Palapeliä",
+        "Sanapeliä"
+      ],
+      "q76": [
+        "Mitä tekisin vieraille?",
+        "Pilahvia",
+        "Piirakan",
+        "Salaatteja",
+        "Tilaisin ruokaa"
+      ],
+      "q77": [
+        "Mitä en ainakaan söisi?",
+        "Sieniä",
+        "Kalaa",
+        "Oliiveja",
+        "Keitettyä sipulia"
+      ],
+      "q78": [
+        "Millaista teetä juon?",
+        "Vahvaa",
+        "Mietoa",
+        "Makeaa",
+        "Yrttien kanssa"
+      ],
+      "q79": [
+        "Mikä on kodissa minulle tärkeintä?",
+        "Siisteys",
+        "Kodikkuus",
+        "Paljon valoa",
+        "Hiljaisuus"
+      ],
+      "q80": [
+        "Miten opin uusia asioita?",
+        "Lukemalla",
+        "Videotunneilla",
+        "Kokeilemalla käytännössä",
+        "Kysymällä muilta"
+      ],
+      "q81": [
+        "Mikä villieläin kiehtoo minua eniten?",
+        "Tiikeri",
+        "Karhu",
+        "Kotka",
+        "Delfiini"
+      ],
+      "q82": [
+        "Mitä antaisin äidilleni lahjaksi?",
+        "Kukkia",
+        "Jotain itse tehtyä",
+        "Matkan",
+        "Lämpimän peiton"
+      ],
+      "q83": [
+        "Mitä teen matkalla?",
+        "Katselen ikkunasta",
+        "Luen",
+        "Juttelen",
+        "Napostelen"
+      ],
+      "q84": [
+        "Lempiruokani kanasta?",
+        "Kanavartaat",
+        "Kanaa ja riisiä",
+        "Kanapihvit",
+        "Nugetit"
+      ],
+      "q85": [
+        "Minkä paikan valitsen junassa?",
+        "Ikkunapaikan",
+        "Käytäväpaikan",
+        "Selkä menosuuntaan",
+        "Ihan sama"
+      ],
+      "q86": [
+        "Mitä teen, kun jokin menee pieleen?",
+        "Toimin heti",
+        "Mietin ensin",
+        "Kysyn neuvoa",
+        "Huolestun vähän"
+      ],
+      "q87": [
+        "Mikä on tärkein ominaisuuteni?",
+        "Ystävällisyys",
+        "Rehellisyys",
+        "Sinnikkyys",
+        "Iloisuus"
+      ],
+      "q88": [
+        "Missä lepäisin parhaiten?",
+        "Sukulaisten luona maalla",
+        "Hotellissa meren rannalla",
+        "Teltassa",
+        "Kotona"
+      ],
+      "q89": [
+        "Minkä leivonnaisen valitsisin?",
+        "Samsa",
+        "Hatšapuri",
+        "Tšak-tšak",
+        "Eclair"
+      ],
+      "q90": [
+        "Minkä kielen haluaisin eniten oppia?",
+        "Arabian",
+        "Englannin",
+        "Turkin",
+        "Japanin"
+      ],
+      "q91": [
+        "Kuinka kauan pärjäisin ilman makeaa?",
+        "Päivän",
+        "Viikon",
+        "Kuukauden",
+        "Niin kauan kuin tarvitaan"
+      ],
+      "q92": [
+        "Mitä teen, kun olen myöhästymässä?",
+        "Juoksen minkä jaksan",
+        "Soitan ja ilmoitan etukäteen",
+        "Otan taksin",
+        "En myöhästy koskaan"
+      ],
+      "q93": [
+        "Mitä teen, kun laite hajoaa?",
+        "Korjaan sen itse",
+        "Luen käyttöohjeen",
+        "Soitan apua",
+        "Painelen kaikkia nappeja"
+      ],
+      "q94": [
+        "Mikä menee ensimmäisenä matkalaukkuuni?",
+        "Ensiapupakkaus",
+        "Kirja",
+        "Laturi",
+        "Välipala"
+      ],
+      "q95": [
+        "Mikä puuha rauhoittaa minua?",
+        "Ruoanlaitto",
+        "Siivoaminen",
+        "Piirtäminen",
+        "Kävely"
+      ],
+      "q96": [
+        "Mitä haluan tehdä eläkkeellä?",
+        "Puutarhanhoitoa",
+        "Matkustaa",
+        "Lukea",
+        "Viettää aikaa lastenlasten kanssa"
+      ],
+      "q97": [
+        "Mikä ärsyttää minua eniten?",
+        "Melu",
+        "Sotku",
+        "Myöhästely",
+        "Epäkohteliaisuus"
+      ],
+      "q98": [
+        "Mistä tuoksusta pidän eniten?",
+        "Tuore leipä",
+        "Sade",
+        "Kukat",
+        "Meri"
+      ],
+      "q99": [
+        "Mitä valitsisin jälkiruoaksi?",
+        "Hedelmiä",
+        "Jäätelöä",
+        "Piirakkaa",
+        "Pelkkää teetä"
       ]
     },
     "yesNo": {
@@ -15143,6 +31140,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Pelataanko myöhemmin uudelleen?",
         "haluaa vielä yhden kierroksen",
         "halaa mieluummin kuin pelaa"
+      ],
+      "c41": [
+        "Pidätkö tulisesta ruoasta?",
+        "mitä tulisempaa, sen parempi",
+        "valitsee jotain miedompaa"
+      ],
+      "c42": [
+        "Osaatko uida?",
+        "ui kuin kala",
+        "pysyttelee toistaiseksi lähellä rantaa"
+      ],
+      "c43": [
+        "Haluaisitko kissan?",
+        "miettii jo nimeä",
+        "pitää enemmän koirista"
+      ],
+      "c44": [
+        "Haluaisitko joskus käydä Istanbulissa?",
+        "haaveilee jo Bosporista",
+        "valitsisi toisen kaupungin"
+      ],
+      "c45": [
+        "Pidätkö ruoanlaitosta?",
+        "kokkaa mielellään",
+        "tiskaa mieluummin"
+      ],
+      "c46": [
+        "Haluaisitko oppia tekemään pilahvia?",
+        "etsii jo reseptiä",
+        "maistaa mieluummin jonkun toisen tekemää"
+      ],
+      "c47": [
+        "Pidätkö kirjojen lukemisesta?",
+        "pitää aina kirjaa lähellä",
+        "kuuntelee mieluummin tarinoita"
+      ],
+      "c48": [
+        "Osaatko ajaa pyörällä?",
+        "voisi lähteä polkemaan heti",
+        "lupaa opetella"
+      ],
+      "c49": [
+        "Ovatko vuoret sinulle mieluisampia kuin meri?",
+        "valitsee vuoret",
+        "valitsee meren"
+      ],
+      "c50": [
+        "Haluaisitko nähdä aavikon?",
+        "haaveilee hiekkadyyneistä",
+        "valitsisi mieluummin metsän"
+      ],
+      "c51": [
+        "Pidätkö talvesta?",
+        "odottaa ensilunta",
+        "odottaa kesää"
+      ],
+      "c52": [
+        "Juotko teetä ilman sokeria?",
+        "pitää teen puhtaasta mausta",
+        "ei pärjää ilman lusikallista sokeria"
+      ],
+      "c53": [
+        "Pelkäätkö hämähäkkejä?",
+        "pysyy niistä kaukana",
+        "kantaa ne rauhallisesti ulos"
+      ],
+      "c54": [
+        "Pidätkö piirtämisestä?",
+        "tarttuu jo siveltimeen",
+        "katselee mieluummin muiden maalauksia"
+      ],
+      "c55": [
+        "Haluaisitko nähdä revontulet?",
+        "selvittää jo, missä niitä näkee",
+        "katselee mieluummin tähtiä"
+      ],
+      "c56": [
+        "Pidätkö sateisesta säästä?",
+        "rakastaa sateen ääntä ikkunan takana",
+        "odottaa aurinkoa"
+      ],
+      "c57": [
+        "Osaatko ratsastaa?",
+        "istuu satulassa varmasti",
+        "haaveilee siitä vielä"
+      ],
+      "c58": [
+        "Haluaisitko koiran?",
+        "haaveilee uskollisesta ystävästä",
+        "huolehdittavaa riittää nyt muutenkin"
+      ],
+      "c59": [
+        "Onko makea sinulle mieluisampaa kuin suolainen?",
+        "ei elä ilman makeaa",
+        "valitsee suolaisen"
+      ],
+      "c60": [
+        "Pidätkö junalla matkustamisesta?",
+        "rakastaa pyörien rytmiä",
+        "valitsee lentokoneen"
+      ],
+      "c61": [
+        "Onko sinun helppo aloittaa päivä aikaisin?",
+        "aloittaa päivän täynnä energiaa",
+        "pääsee vauhtiin vasta lounaalla"
+      ],
+      "c62": [
+        "Pidätkö teltassa yöpymisestä?",
+        "pakkaa jo reppua",
+        "valitsee kodikkaan hotellin"
+      ],
+      "c63": [
+        "Haluaisitko asua meren rannalla?",
+        "haaveilee aaltojen äänestä",
+        "valitsee kaupungin"
+      ],
+      "c64": [
+        "Syötkö jäätelöä talvella?",
+        "syö sitä pakkasellakin",
+        "vain kesällä"
+      ],
+      "c65": [
+        "Pidätkö suklaasta?",
+        "tuntee kaikki sen lajit",
+        "kävelee rauhassa ohi"
+      ],
+      "c66": [
+        "Osaatko leipoa piirakoita?",
+        "leipoo kuin isoäiti",
+        "lupaa opetella"
+      ],
+      "c67": [
+        "Pidätkö tähtien katselusta?",
+        "tuntee tähtikuviot",
+        "pitää enemmän aurinkoisesta päivästä"
+      ],
+      "c68": [
+        "Haluaisitko joskus perustaa oman puutarhan?",
+        "valitsee jo taimia",
+        "aloittaa ruukkukukasta"
+      ],
+      "c69": [
+        "Pidätkö luonnonkukista?",
+        "rakastaa päivänkakkaroita ja ruiskukkia",
+        "pitää enemmän puutarhakukista"
+      ],
+      "c70": [
+        "Juotko kahvia?",
+        "päivä ei ala ilman kahvia",
+        "valitsee teen"
+      ],
+      "c71": [
+        "Pidätkö kotitekoisesta limonadista?",
+        "viipaloi jo sitruunoita",
+        "juo mieluummin vettä"
+      ],
+      "c72": [
+        "Haluaisitko joskus käydä Japanissa?",
+        "haaveilee kirsikankukkien näkemisestä",
+        "valitsisi toisen maan"
+      ],
+      "c73": [
+        "Pidätkö syksystä?",
+        "rakastaa kahisevia lehtiä",
+        "odottaa kevättä"
+      ],
+      "c74": [
+        "Pidätkö laventelin tuoksusta?",
+        "rakastaa sitä tuoksua",
+        "pitää muista tuoksuista"
+      ],
+      "c75": [
+        "Pidätkö lautapeleistä?",
+        "asettelee jo pelilautaa",
+        "lähtee mieluummin kävelylle"
+      ],
+      "c76": [
+        "Osaatko ajaa autoa?",
+        "ajaa varmasti",
+        "on toistaiseksi matkustaja"
+      ],
+      "c77": [
+        "Haluaisitko joskus nähdä valtameren?",
+        "haaveilee isosta aallosta",
+        "meri riittää"
+      ],
+      "c78": [
+        "Haluaisitko asua jonkin aikaa maatilalla?",
+        "ruokkii jo kanoja",
+        "pysyy kaupungissa"
+      ],
+      "c79": [
+        "Pidätkö suurkaupungeista?",
+        "rakastaa kaupungin valoja",
+        "valitsee rauhan ja hiljaisuuden"
+      ],
+      "c80": [
+        "Ovatko hedelmät sinulle mieluisampia kuin makeiset?",
+        "valitsee hedelmät",
+        "valitsee makeiset"
+      ],
+      "c81": [
+        "Haluaisitko nähdä delfiinejä meressä?",
+        "haluaisi kovasti nähdä ne",
+        "lukee niistä mieluummin"
+      ],
+      "c82": [
+        "Pidätkö kesästä?",
+        "odottaa helteitä",
+        "rakastaa viileää säätä"
+      ],
+      "c83": [
+        "Pidätkö puistokävelyistä?",
+        "kävelee joka säällä",
+        "pysyy mieluummin kotona"
+      ],
+      "c84": [
+        "Pidätkö käsin kirjoittamisesta?",
+        "kirjoittaa siististi",
+        "kirjoittaa puhelimella"
+      ],
+      "c85": [
+        "Pidätkö veneretkistä?",
+        "tarttuu jo airoihin",
+        "jää rannalle"
+      ],
+      "c86": [
+        "Haluaisitko matkustaa maailman ympäri?",
+        "piirtää jo reittiä",
+        "pari maata riittää"
+      ],
+      "c87": [
+        "Osaatko tehdä lumiukon?",
+        "tekee suurimman",
+        "heittelee mieluummin lumipalloja"
+      ],
+      "c88": [
+        "Haluaisitko oppia tänä vuonna jotain uutta?",
+        "valitsee jo kurssia",
+        "tekemistä on jo tarpeeksi"
+      ],
+      "c89": [
+        "Pidätkö hiljaisuudesta?",
+        "arvostaa rauhaa",
+        "pitää siitä, kun on vilskettä"
+      ],
+      "c90": [
+        "Pidätkö lahjojen antamisesta perheellesi?",
+        "ilahduttaa perhettä ilman erityistä syytä",
+        "auttaa mieluummin käytännössä"
       ]
     },
     "loves": {
@@ -15257,6 +31504,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Metsä",
         "Aavikko",
         "Revontulet"
+      ],
+      "s17": [
+        "Lempihedelmä?",
+        "Omena",
+        "Mansikka",
+        "Vesimeloni",
+        "Viinirypäleet"
+      ],
+      "s18": [
+        "Mitä tehdä vapaapäivänä?",
+        "Vaellus vuorilla",
+        "Ruoanlaitto kotona",
+        "Museo",
+        "Kalastus"
+      ],
+      "s19": [
+        "Lempiaamiainen?",
+        "Pannukakut",
+        "Munakas",
+        "Puuro marjoilla",
+        "Croissant"
+      ],
+      "s20": [
+        "Lempilintu?",
+        "Pöllö",
+        "Papukaija",
+        "Joutsen",
+        "Riikinkukko"
+      ],
+      "s21": [
+        "Mihin kaupunkiin matkata?",
+        "Istanbul",
+        "Pariisi",
+        "Tokio",
+        "Dubai"
+      ],
+      "s22": [
+        "Lempiurheilulaji?",
+        "Jalkapallo",
+        "Uinti",
+        "Tennis",
+        "Ratsastus"
+      ],
+      "s23": [
+        "Mitä istuttaa puutarhaan?",
+        "Omenapuu",
+        "Ruusuja",
+        "Vihanneksia",
+        "Mansikoita"
+      ],
+      "s24": [
+        "Lempileivonnainen?",
+        "Pikkupiirakat",
+        "Munkit",
+        "Keksit",
+        "Baklava"
+      ],
+      "s25": [
+        "Missä asua?",
+        "Joen rannalla",
+        "Metsässä",
+        "Suurkaupungissa",
+        "Saarella"
+      ],
+      "s26": [
+        "Lempimerieläin?",
+        "Kilpikonna",
+        "Valas",
+        "Mustekala",
+        "Merihevonen"
+      ],
+      "s27": [
+        "Millä kulkea?",
+        "Polkupyörä",
+        "Potkulauta",
+        "Kuumailmapallo",
+        "Vene"
+      ],
+      "s28": [
+        "Lempiharrastus?",
+        "Neulominen",
+        "Luontokuvaus",
+        "Puutarhanhoito",
+        "Kalligrafia"
+      ],
+      "s29": [
+        "Lempikeitto?",
+        "Borssi",
+        "Kanakeitto",
+        "Kurpitsakeitto",
+        "Linssikeitto"
+      ],
+      "s30": [
+        "Metsän eläin?",
+        "Siili",
+        "Orava",
+        "Kettu",
+        "Peura"
+      ],
+      "s31": [
+        "Jotain naposteltavaa?",
+        "Taatelit",
+        "Mantelit",
+        "Pistaasit",
+        "Kuivatut aprikoosit"
+      ],
+      "s32": [
+        "Mitä ottaa retkelle?",
+        "Teltta",
+        "Termospullo",
+        "Kartta",
+        "Taskulamppu"
+      ],
+      "s33": [
+        "Lempijälkiruoka?",
+        "Vanukas",
+        "Juustokakku",
+        "Pannukakut hunajalla",
+        "Hedelmäsalaatti"
+      ],
+      "s34": [
+        "Mitä tehdä talvella?",
+        "Tehdä lumiukko",
+        "Laskea pulkalla",
+        "Teetä ikkunan ääressä",
+        "Hiihtää"
+      ],
+      "s35": [
+        "Mitä tehdä kesällä?",
+        "Uida",
+        "Poimia marjoja",
+        "Soutaa venettä",
+        "Rakentaa hiekkalinna"
+      ],
+      "s36": [
+        "Millä maalata?",
+        "Vesiväreillä",
+        "Lyijykynillä",
+        "Väriliiduilla",
+        "Maaleilla kankaalle"
+      ],
+      "s37": [
+        "Lempivihannes?",
+        "Porkkana",
+        "Tomaatti",
+        "Maissi",
+        "Kurpitsa"
+      ],
+      "s38": [
+        "Mikä tekee kodista kodikkaan?",
+        "Takka",
+        "Pehmeä viltti",
+        "Huonekasvit",
+        "Kirjahylly"
+      ],
+      "s39": [
+        "Mitä pelata?",
+        "Shakkia",
+        "Palapelejä",
+        "Lautapelejä",
+        "Pallopelejä"
+      ],
+      "s40": [
+        "Kuka asuu maatilalla?",
+        "Lehmä",
+        "Karitsa",
+        "Kana",
+        "Pikku vuohi"
+      ],
+      "s41": [
+        "Teetä minkä kanssa?",
+        "Hunaja",
+        "Sitruuna",
+        "Hillo",
+        "Minttu"
+      ],
+      "s42": [
+        "Mitä meren rannalla on?",
+        "Majakka",
+        "Simpukankuoret",
+        "Purjevene",
+        "Lokit"
+      ],
+      "s43": [
+        "Miten aloittaa aamu?",
+        "Aamuvoimistelu",
+        "Kuppi teetä",
+        "Kävely",
+        "Kirja"
+      ],
+      "s44": [
+        "Lempimarja?",
+        "Vadelma",
+        "Mustikka",
+        "Kirsikka",
+        "Karhunvatukka"
       ]
     },
     "who": [
@@ -15299,7 +31742,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Kumpi meistä muistelee hauskoja juttuja useammin?",
       "Kumpi meistä on kärsivällisempi?",
       "Kumpi meistä sanoo useammin ”kiitos”?",
-      "Kumpi meistä tarjoaa apua ensin?"
+      "Kumpi meistä tarjoaa apua ensin?",
+      "Kumpi meistä on parempi päässälaskussa?",
+      "Kumpi meistä lukee enemmän?",
+      "Kumpi meistä kirjoittaa näppäimistöllä nopeammin?",
+      "Kumpi meistä soittaa vanhemmilleen useammin?",
+      "Kumpi meistä kertoo tarinoita paremmin?",
+      "Kummalla meistä on siistimpi käsiala?",
+      "Kumpi meistä pitää tulisesta ruoasta enemmän?",
+      "Kumpi meistä unohtaa tavaroita kotiin useammin?",
+      "Kumpi meistä on taitavampi laitteiden kanssa?",
+      "Kumpi meistä rakastaa enemmän uuden oppimista?",
+      "Kumpi meistä on parempi suunnittelemaan?",
+      "Kumpi meistä tinkii torilla taitavammin?",
+      "Kumpi meistä rakastaa luontoa enemmän?",
+      "Kumpi meistä syö nopeammin?",
+      "Kumpi meistä juo enemmän teetä?",
+      "Kumpi meistä hoitaa kasveja paremmin?",
+      "Kumpi meistä tuntee maantietoa paremmin?",
+      "Kumpi meistä pelaa shakkia paremmin?",
+      "Kumpi meistä valitsee torilta parempia hedelmiä?",
+      "Kumpi meistä tarkistaa sääennusteen useammin?",
+      "Kumpi meistä pelkää hämähäkkejä enemmän?",
+      "Kumpi meistä on rohkeampi?",
+      "Kumpi meistä on uteliaampi?",
+      "Kumpi meistä ratkaisee pulmat nopeammin?",
+      "Kumpi meistä piirtää paremmin?",
+      "Kumpi meistä auttaa naapureita useammin?",
+      "Kumpi meistä tulee paremmin toimeen lasten kanssa?",
+      "Kumpi meistä pitää kävelystä enemmän?",
+      "Kumpi meistä lukee käyttöohjeet useammin?",
+      "Kumpi meistä muistaa nimet paremmin?",
+      "Kumpi meistä oppii vieraan kielen sanoja nopeammin?",
+      "Kumpi meistä leipoo paremmin?",
+      "Kumpi meistä antaa parempia neuvoja?",
+      "Kumpi meistä pitää kylmästä säästä enemmän?",
+      "Kumpi meistä pärjäisi paremmin vaelluksella?",
+      "Kumpi meistä lukee uutisia useammin?",
+      "Kumpi meistä maistaa uusia ruokia useammin?",
+      "Kumpi meistä pakkaa matkalaukun nopeammin?",
+      "Kumpi meistä korjaa tavaroita paremmin?",
+      "Kumpi meistä juttelee eläimille useammin?",
+      "Kumpi meistä tiskaa useammin?",
+      "Kumpi meistä tuntee historiaa paremmin?",
+      "Kumpi meistä lykkää asioita useammin?",
+      "Kumpi meistä tutustuu uusiin ihmisiin nopeammin?",
+      "Kumpi meistä huolehtii terveydestään enemmän?"
     ],
     "phrases": [
       "Hymyilen, kun sinä…",
@@ -15331,8 +31819,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Aamu kanssasi on…",
       "Jos olisimme yksi sana, se olisi…",
       "Haluan oppia sinulta, miten…",
-      "Kiitos, että aina…"
-    ]
+      "Kiitos, että aina…",
+      "Lapsena lempiruokani oli…",
+      "Jos saisin yhden päivän missä tahansa maassa, minä…",
+      "Paras neuvo, jonka olen koskaan saanut, on…",
+      "Nauran aina, kun…",
+      "Lempipaikkani kotikaupungissani on…",
+      "Jos minulla olisi oma pieni kauppa, siellä myytäisiin…",
+      "Ruoka, jonka teen parhaiten, on…",
+      "Lapsuuden haave, jonka muistan yhä, on…",
+      "Minut on helppo ilahduttaa, jos…",
+      "Hämmästyttävin paikka, jossa olen käynyt, on…",
+      "Haluan oppia…",
+      "Täydellinen vapaapäiväni alkaa…",
+      "Jos voisin saada minkä tahansa eläimen, se olisi…",
+      "Perheeni sanoo aina, että minä…",
+      "En vain totu siihen, että…",
+      "Hyödyllisin tapani on…",
+      "Paras lukemani kirja on…",
+      "Kymmenen vuoden päästä haluaisin…",
+      "Unelmieni koti on…",
+      "Hauskin lapsuuteni tapahtuma oli…",
+      "Minulle onni on…",
+      "Minun on vaikea luopua…",
+      "Jos minulla olisi supervoima, se…",
+      "Arvostan ihmisissä eniten…",
+      "Kun minulla on vapaa ilta, minä…",
+      "Lempituoksuni on…",
+      "Ruoka, jota en söisi ikinä, on…",
+      "Se yksi asia, jota ilman en lähde kotoa, on…",
+      "Haluaisin käydä paikassa… koska…",
+      "Paras lahja, jonka olen koskaan saanut, on…",
+      "Erikoisin tapani on…",
+      "Jos saisin joka päivä yhden ylimääräisen tunnin, minä…",
+      "Ihminen, jolta opin paljon, on…",
+      "Vaikeana päivänä minua auttaa…",
+      "Herkullisin asia, jota olen maistanut matkalla, on…",
+      "Jos voisin vaihtaa työtä päiväksi, valitsisin…",
+      "Sydäntäni lähinnä oleva vuodenaika on…",
+      "Ystäväni sanovat, että minä…",
+      "Jonain päivänä haluaisin opettaa jollekulle…",
+      "Pieni ilo päivässäni on…"
+    ],
+    "truth": {
+      "t01": [
+        "Mustekalalla on kolme sydäntä.",
+        true,
+        "Kaksi sydäntä pumppaa verta kidusten läpi, ja kolmas pumppaa sitä muualle kehoon."
+      ],
+      "t02": [
+        "Kiinan muurin voi nähdä Kuusta paljaalla silmällä.",
+        false,
+        "Ei voi: muuri on aivan liian kapea. Jopa kiertoradalta sitä on hyvin vaikea erottaa."
+      ],
+      "t03": [
+        "Hunaja voi säilyä tuhansia vuosia pilaantumatta.",
+        true,
+        "Muinaisegyptiläisistä haudoista on löydetty tuhansia vuosia vanhaa hunajaa, joka oli yhä säilynyt."
+      ],
+      "t04": [
+        "Banaanit kasvavat puissa.",
+        false,
+        "Banaanikasvi on jättimäinen ruoho: sen ”runko” on tiukasti rullautuneita lehtiä."
+      ],
+      "t05": [
+        "Venus on aurinkokunnan kuumin planeetta.",
+        true,
+        "Paksu kaasukehä lämmittää Venuksen noin 460 °C:seen — kuumemmaksi kuin Merkuriuksen."
+      ],
+      "t06": [
+        "Lepakot ovat sokeita.",
+        false,
+        "Lepakot näkevät, ja pimeässä ne suunnistavat myös kaikuluotauksen avulla."
+      ],
+      "t07": [
+        "Valas on kala.",
+        false,
+        "Valaat ovat nisäkkäitä: ne hengittävät ilmaa ja ruokkivat poikasiaan maidolla."
+      ],
+      "t08": [
+        "Sahara on maailman suurin aavikko.",
+        false,
+        "Suurin aavikko on Etelämanner. Sahara on suurin kuuma aavikko."
+      ],
+      "t09": [
+        "Kirahvilla on yhtä monta kaulanikamaa kuin ihmisellä.",
+        true,
+        "Kummallakin on seitsemän kaulanikamaa — kirahvin nikamat ovat vain hyvin pitkiä."
+      ],
+      "t10": [
+        "Kasvitieteellisesti tomaatti on marja.",
+        true,
+        "Kasvitieteilijät luokittelevat tomaatin marjaksi: se on mehevä hedelmä, jonka sisällä on siemeniä."
+      ],
+      "t11": [
+        "Kasvitieteellisesti mansikka on marja.",
+        false,
+        "Se on valemarja: varsinaiset hedelmät ovat pinnalla olevat pienet ”siemenet”."
+      ],
+      "t12": [
+        "Avaruudessa voi kuulla räjähdyksen.",
+        false,
+        "Avaruudessa ei ole juuri lainkaan ilmaa, joten äänellä ei ole väliainetta, jossa kulkea."
+      ],
+      "t13": [
+        "Korkealla vuoristossa vesi kiehuu alemmassa lämpötilassa.",
+        true,
+        "Ilmanpaine on siellä matalampi, joten vesi kiehuu ennen kuin se saavuttaa 100 °C."
+      ],
+      "t14": [
+        "Pingviinit elävät pohjoisnavalla.",
+        false,
+        "Luonnonvaraiset pingviinit elävät vain eteläisellä pallonpuoliskolla, eivät kaukana pohjoisessa."
+      ],
+      "t15": [
+        "Mount Everest on merenpinnasta mitattuna maailman korkein vuori.",
+        true,
+        "Everest kohoaa noin 8 849 metriä merenpinnan yläpuolelle."
+      ],
+      "t16": [
+        "Ihmiset käyttävät vain 10 % aivoistaan.",
+        false,
+        "Se on myytti: lähes kaikki aivojen osat ovat aktiivisia vuorokauden aikana."
+      ],
+      "t17": [
+        "Ihmisen sydän lyö noin 100 000 kertaa vuorokaudessa.",
+        true,
+        "Noin 70 lyöntiä minuutissa tekee yhteensä noin 100 000 lyöntiä vuorokaudessa."
+      ],
+      "t18": [
+        "Kultakalan muisti kestää vain kolme sekuntia.",
+        false,
+        "Kokeet osoittavat, että kultakalat muistavat oppimansa kuukausien ajan."
+      ],
+      "t19": [
+        "Australia on sekä valtio että maanosa.",
+        true,
+        "Australia on ainoa valtio, joka kattaa kokonaisen maanosan."
+      ],
+      "t20": [
+        "Salama ei koskaan iske kahdesti samaan paikkaan.",
+        false,
+        "Iskee se: korkeisiin rakennuksiin iskee salama monta kertaa vuodessa."
+      ],
+      "t21": [
+        "Strutsi pistää päänsä hiekkaan pelästyessään.",
+        false,
+        "Myytti: pelästynyt strutsi juoksee pakoon tai painautuu maahan piiloon."
+      ],
+      "t22": [
+        "Maailman pienin lintu on kolibri.",
+        true,
+        "Kuubassa elävä mehiläiskolibri painaa noin 2 grammaa — vähemmän kuin mikään muu lintu."
+      ],
+      "t23": [
+        "Vesimeloni on noin 90-prosenttisesti vettä.",
+        true,
+        "Vesimelonista noin 92 % on vettä — siksi se on niin virkistävä."
+      ],
+      "t24": [
+        "Hämähäkillä on kuusi jalkaa.",
+        false,
+        "Hämähäkillä on kahdeksan jalkaa. Hyönteisillä on kuusi, eivätkä hämähäkit ole hyönteisiä."
+      ],
+      "t25": [
+        "Kuu tuottaa omaa valoaan.",
+        false,
+        "Kuulla ei ole omaa valoa: se heijastaa auringonvaloa."
+      ],
+      "t26": [
+        "Norsu on suurin maaeläin.",
+        true,
+        "Afrikannorsu voi painaa yli 6 tonnia."
+      ],
+      "t27": [
+        "Sinivalas on suurin tunnettu eläin.",
+        true,
+        "Sinivalas voi kasvaa yli 30 metrin pituiseksi — suuremmaksi kuin yksikään tunnettu dinosaurus."
+      ],
+      "t28": [
+        "Kameleontti vaihtaa väriä vain naamioituakseen.",
+        false,
+        "Väri riippuu enemmän mielialasta, lämpötilasta ja viestinnästä muiden kameleonttien kanssa."
+      ],
+      "t29": [
+        "Puhelimen keksi Thomas Edison.",
+        false,
+        "Alexander Graham Bell sai puhelimen patentin vuonna 1876."
+      ],
+      "t30": [
+        "Penisilliinin löysi Alexander Fleming.",
+        true,
+        "Fleming löysi penisilliinin vuonna 1928 — se oli ensimmäinen antibiootti."
+      ],
+      "t31": [
+        "Aurinkokunnan korkein tulivuori on Marsissa.",
+        true,
+        "Marsin Olympus Mons on noin 22 km korkea — lähes 2,5 kertaa Everestiä korkeampi."
+      ],
+      "t32": [
+        "Suonissamme virtaava veri on sinistä.",
+        false,
+        "Veri on aina punaista; suonet näyttävät sinisiltä vain siksi, miten valo kulkee ihon läpi."
+      ],
+      "t33": [
+        "Atlantti on maapallon suurin valtameri.",
+        false,
+        "Suurin on Tyynimeri: se on suurempi kuin kaikki maapallon maa-alueet yhteensä."
+      ],
+      "t34": [
+        "Venäjä on pinta-alaltaan maailman suurin valtio.",
+        true,
+        "Venäjän pinta-ala on yli 17 miljoonaa neliökilometriä."
+      ],
+      "t35": [
+        "Kanadalla on maailman pisin rantaviiva.",
+        true,
+        "Kanadan rantaviiva on yli 200 000 km pitkä — pidempi kuin minkään muun maan."
+      ],
+      "t36": [
+        "Lehmän mahassa on neljä osaa.",
+        true,
+        "Lehmällä on yksi maha, jossa on neljä osastoa — niin se sulattaa ruohoa."
+      ],
+      "t37": [
+        "Leijona on maailman suurin kissaeläin.",
+        false,
+        "Suurin kissaeläin on tiikeri, etenkin siperiantiikeri."
+      ],
+      "t38": [
+        "Maa on Aurinkoa lähin planeetta.",
+        false,
+        "Lähin on Merkurius, sitten Venus; Maa on kolmas planeetta."
+      ],
+      "t39": [
+        "Auringonvalolta kestää noin 8 minuuttia saavuttaa Maa.",
+        true,
+        "Valo kulkee 150 miljoonan kilometrin matkan Auringosta noin 8 minuutissa ja 20 sekunnissa."
+      ],
+      "t40": [
+        "Delfiinit nukkuvat puolet aivoistaan kerrallaan.",
+        true,
+        "Toinen puolisko lepää, ja toinen pitää vahtia ja muistaa hengittää."
+      ],
+      "t41": [
+        "Peruna on kotoisin Irlannista.",
+        false,
+        "Peruna on kotoisin Etelä-Amerikasta: sitä viljeltiin Andeilla jo tuhansia vuosia sitten."
+      ],
+      "t42": [
+        "Suklaa valmistetaan kaakaopuun siemenistä.",
+        true,
+        "Kaakaohedelmät kasvavat suoraan rungossa, ja niiden sisällä olevista siemenistä tulee suklaata."
+      ],
+      "t43": [
+        "Hai on nisäkäs.",
+        false,
+        "Hai on kala: se hengittää kiduksilla. Meren nisäkkäitä ovat valaat ja delfiinit."
+      ],
+      "t44": [
+        "Jotkin bambulajit voivat kasvaa lähes metrin päivässä.",
+        true,
+        "Bambu on yksi maapallon nopeimmin kasvavista kasveista."
+      ],
+      "t45": [
+        "Pöllö voi kääntää päätään täydet 360 astetta.",
+        false,
+        "Pöllö voi kääntää päätään noin 270 astetta — paljon, mutta ei täyttä ympyrää."
+      ],
+      "t46": [
+        "Timantti ja lyijykynän grafiitti ovat samaa ainetta.",
+        true,
+        "Kumpikin on puhdasta hiiltä — atomit ovat vain järjestäytyneet eri tavalla."
+      ],
+      "t47": [
+        "Kameli varastoi vettä kyttyräänsä.",
+        false,
+        "Kamelin kyttyrään varastoituu rasvaa, ei vettä — se antaa energiaa pitkillä matkoilla."
+      ],
+      "t48": [
+        "Ihmiskehon pienin luu on korvassa.",
+        true,
+        "Välikorvan jalustin on vain noin 3 millimetriä pitkä."
+      ],
+      "t49": [
+        "Isot papukaijat voivat elää yli 50-vuotiaiksi.",
+        true,
+        "Hyvin hoidetut arat ja kakadut elävät usein 50 vuotta tai pidempään."
+      ],
+      "t50": [
+        "Wrightin veljekset tekivät ensimmäisen moottorikäyttöisen lennon.",
+        true,
+        "He lensivät vuonna 1903; aivan ensimmäinen lento kesti 12 sekuntia."
+      ],
+      "t51": [
+        "Pyörä keksittiin keskiajalla.",
+        false,
+        "Pyörä on yli 5 000 vuotta vanha: sitä käytettiin Mesopotamiassa noin 3500 eaa."
+      ],
+      "t52": [
+        "Merihevonen on kala.",
+        true,
+        "Merihevonen hengittää kiduksilla ja ui evän avulla kuten muutkin kalat."
+      ],
+      "t53": [
+        "Kolibri osaa lentää taaksepäin.",
+        true,
+        "Kolibrit ovat ainoat linnut, jotka todella osaavat lentää taaksepäin."
+      ],
+      "t54": [
+        "Eiffel-torni kasvaa kesällä hieman korkeammaksi.",
+        true,
+        "Lämpö saa metallin laajenemaan, ja torni kasvaa noin 15 senttimetriä."
+      ],
+      "t55": [
+        "Iho on ihmiskehon suurin elin.",
+        true,
+        "Aikuisen iho painaa useita kiloja ja suojaa koko kehoa."
+      ],
+      "t56": [
+        "Punainen väri suututtaa sonnin.",
+        false,
+        "Sonni tuskin erottaa punaista: sitä ärsyttää liike, ei väri."
+      ],
+      "t57": [
+        "Huonekärpänen elää vain yhden päivän.",
+        false,
+        "Huonekärpänen elää noin kuukauden. Aikuiset päivänkorennot elävät vain päivän tai kaksi."
+      ],
+      "t58": [
+        "Ananakset kasvavat puissa.",
+        false,
+        "Ananas kasvaa matalassa, lehtevässä kasvissa suoraan sen keskeltä."
+      ],
+      "t59": [
+        "Maapähkinä on pähkinä.",
+        false,
+        "Maapähkinä on palkokasvi, herneen ja papujen sukulainen. Sen palot kypsyvät maan alla."
+      ],
+      "t60": [
+        "Pohjois- ja etelänapa ovat yhtä kylmiä.",
+        false,
+        "Etelänapa on paljon kylmempi: se on korkealla jäisellä mantereella, pohjoisnapa taas meren päällä."
+      ]
+    }
   },
   "ja": {
     "text": {
@@ -15541,7 +32371,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "招待",
       "invited": "招待済み",
       "inviteNone": "「友だち」で友だちを追加すると、ワンタップで招待できます。",
-      "inviteSent": "{name}さんに招待を送りました"
+      "inviteSent": "{name}さんに招待を送りました",
+      "truth": "ほんと？うそ？",
+      "tfTitle": "ほんと？うそ？",
+      "tfNote": "ふたりで遊ぶライブゲーム：世界のおどろきの事実。12秒で、ほんとかうそかを選びましょう。正解するたびに1ポイント。",
+      "tfShareText": "{name}さんがライブゲーム「ほんと？うそ？」に招待しています",
+      "tfJoinLead": "{name}さんが待っています。ほんとかうそか、すばやく決めて！",
+      "tfRound": "事実 {n}/{total}",
+      "tfTrue": "ほんと",
+      "tfFalse": "うそ",
+      "tfIsTrue": "ほんとです！",
+      "tfIsFalse": "うそです！",
+      "tfFirstYou": "あなたが先に正解しました！",
+      "tfFirstThem": "{name}さんが先に正解しました",
+      "tfFinalWin": "勝利！世界のことをよく知っていますね。",
+      "tfFinalLose": "今回は{name}さんの方が物知り — もう一回？",
+      "tfFinalDraw": "引き分け — ふたりとも同じくらい物知り！",
+      "featTruth": "ライブゲーム「ほんと？うそ？」— 世界のおどろきの事実"
     },
     "questions": {
       "q01": [
@@ -15963,6 +32809,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "料理",
         "新しい言語",
         "絵"
+      ],
+      "q61": [
+        "わたしがいちばん上手に作れる料理は？",
+        "スープ",
+        "ピラフ",
+        "焼き菓子",
+        "サラダ"
+      ],
+      "q62": [
+        "わたしが最初に行きたい国は？",
+        "トルコ",
+        "日本",
+        "モロッコ",
+        "ノルウェー"
+      ],
+      "q63": [
+        "わたしが始めるならどのスポーツ？",
+        "水泳",
+        "ランニング",
+        "サイクリング",
+        "サッカー"
+      ],
+      "q64": [
+        "わたしが選ぶ本は？",
+        "冒険もの",
+        "歴史の本",
+        "昔話",
+        "百科事典"
+      ],
+      "q65": [
+        "動物園でわたしが最初に見に行く動物は？",
+        "ゾウ",
+        "サル",
+        "ペンギン",
+        "キリン"
+      ],
+      "q66": [
+        "辛い料理、わたしはどう？",
+        "辛ければ辛いほどいい",
+        "少しなら大丈夫",
+        "ほんの少しだけ",
+        "まったく食べない"
+      ],
+      "q67": [
+        "わたしが好きだった教科は？",
+        "数学",
+        "国語",
+        "地理",
+        "体育"
+      ],
+      "q68": [
+        "子どものころのわたしの夢の職業は？",
+        "医者",
+        "先生",
+        "宇宙飛行士",
+        "料理人"
+      ],
+      "q69": [
+        "山歩きの旅、わたしはどう？",
+        "長い旅にあこがれる",
+        "日帰りなら",
+        "快適さがあれば",
+        "家がいちばん"
+      ],
+      "q70": [
+        "朝のわたしの気分は？",
+        "元気いっぱい",
+        "まだ眠い",
+        "静か",
+        "おしゃべり"
+      ],
+      "q71": [
+        "わたしがいちばん好きなナッツは？",
+        "ヘーゼルナッツ",
+        "クルミ",
+        "カシューナッツ",
+        "アーモンド"
+      ],
+      "q72": [
+        "思いがけず一時間あいたら、わたしは？",
+        "本を読む",
+        "散歩に行く",
+        "家族に電話する",
+        "何か料理する"
+      ],
+      "q73": [
+        "わたしが苦手な天気は？",
+        "暑さ",
+        "風",
+        "みぞれ",
+        "厳しい寒さ"
+      ],
+      "q74": [
+        "わたしが部屋を塗るなら何色？",
+        "白",
+        "ベージュ",
+        "緑",
+        "水色"
+      ],
+      "q75": [
+        "わたしが遊ぶなら？",
+        "チェス",
+        "チェッカー",
+        "ジグソーパズル",
+        "言葉遊び"
+      ],
+      "q76": [
+        "お客さんにわたしが作るのは？",
+        "ピラフ",
+        "パイ",
+        "サラダ",
+        "出前を頼む"
+      ],
+      "q77": [
+        "わたしが絶対に食べないものは？",
+        "きのこ",
+        "魚",
+        "オリーブ",
+        "ゆでた玉ねぎ"
+      ],
+      "q78": [
+        "わたしのお茶の飲み方は？",
+        "濃いめ",
+        "薄め",
+        "甘め",
+        "ハーブ入り"
+      ],
+      "q79": [
+        "わたしが家でいちばん大切にするのは？",
+        "清潔さ",
+        "居心地のよさ",
+        "明るさ",
+        "静けさ"
+      ],
+      "q80": [
+        "わたしの新しいことの学び方は？",
+        "本を読む",
+        "動画で学ぶ",
+        "実際にやってみる",
+        "人に聞く"
+      ],
+      "q81": [
+        "わたしがいちばん心ひかれる野生動物は？",
+        "トラ",
+        "クマ",
+        "ワシ",
+        "イルカ"
+      ],
+      "q82": [
+        "わたしが母に贈るなら？",
+        "花",
+        "手作りのもの",
+        "旅行",
+        "暖かいブランケット"
+      ],
+      "q83": [
+        "移動中のわたしは？",
+        "窓の外を眺める",
+        "本を読む",
+        "おしゃべりする",
+        "おやつを食べる"
+      ],
+      "q84": [
+        "わたしの好きな鶏肉料理は？",
+        "焼き鳥",
+        "チキンライス",
+        "チキンハンバーグ",
+        "ナゲット"
+      ],
+      "q85": [
+        "電車でわたしが選ぶ席は？",
+        "窓側",
+        "通路側",
+        "進行方向と逆向き",
+        "どこでもいい"
+      ],
+      "q86": [
+        "うまくいかないとき、わたしは？",
+        "すぐ行動する",
+        "まず考える",
+        "人に相談する",
+        "少し心配する"
+      ],
+      "q87": [
+        "わたしのいちばんの長所は？",
+        "やさしさ",
+        "正直さ",
+        "粘り強さ",
+        "明るさ"
+      ],
+      "q88": [
+        "わたしがいちばん休まる場所は？",
+        "田舎の親戚の家",
+        "海辺のホテル",
+        "テント",
+        "自宅"
+      ],
+      "q89": [
+        "わたしが選ぶお菓子・パンは？",
+        "サムサ",
+        "ハチャプリ",
+        "チャクチャク",
+        "エクレア"
+      ],
+      "q90": [
+        "わたしがいちばん学びたい言語は？",
+        "アラビア語",
+        "英語",
+        "トルコ語",
+        "日本語"
+      ],
+      "q91": [
+        "わたしは甘いものなしでどのくらい平気？",
+        "一日",
+        "一週間",
+        "一か月",
+        "必要なだけ"
+      ],
+      "q92": [
+        "遅れそうなとき、わたしは？",
+        "全力で走る",
+        "先に電話して知らせる",
+        "タクシーに乗る",
+        "遅れたことがない"
+      ],
+      "q93": [
+        "機械が壊れたら、わたしは？",
+        "自分で直す",
+        "説明書を読む",
+        "助けを呼ぶ",
+        "ボタンを全部押す"
+      ],
+      "q94": [
+        "わたしがスーツケースに最初に入れるのは？",
+        "救急セット",
+        "本",
+        "充電器",
+        "おやつ"
+      ],
+      "q95": [
+        "わたしの心が落ち着くことは？",
+        "料理",
+        "片づけ",
+        "お絵かき",
+        "散歩"
+      ],
+      "q96": [
+        "引退したらわたしがしたいことは？",
+        "庭仕事",
+        "旅行",
+        "読書",
+        "孫と過ごす"
+      ],
+      "q97": [
+        "わたしがいちばんイライラすることは？",
+        "騒音",
+        "散らかり",
+        "遅刻",
+        "失礼な態度"
+      ],
+      "q98": [
+        "わたしがいちばん好きな香りは？",
+        "焼きたてのパン",
+        "雨",
+        "花",
+        "海"
+      ],
+      "q99": [
+        "わたしが選ぶデザートは？",
+        "果物",
+        "アイスクリーム",
+        "パイ",
+        "お茶だけ"
       ]
     },
     "yesNo": {
@@ -16165,6 +33284,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "あとでもう一回遊ぶ？",
         "もう一回やりたい",
         "ゲームよりハグしたい"
+      ],
+      "c41": [
+        "辛い料理は好き？",
+        "辛ければ辛いほどいい",
+        "もっとマイルドなものを選びます"
+      ],
+      "c42": [
+        "泳げる？",
+        "魚のように泳ぎます",
+        "今のところ岸の近くにいます"
+      ],
+      "c43": [
+        "猫を飼ってみたい？",
+        "もう名前を考えています",
+        "犬の方が好きです"
+      ],
+      "c44": [
+        "いつかイスタンブールに行ってみたい？",
+        "もうボスポラス海峡を夢見ています",
+        "別の街を選びます"
+      ],
+      "c45": [
+        "料理は好き？",
+        "楽しんで料理します",
+        "お皿洗いの方がいいです"
+      ],
+      "c46": [
+        "ピラフの作り方を覚えたい？",
+        "もうレシピを探しています",
+        "誰かが作ったものを味わいたいです"
+      ],
+      "c47": [
+        "本を読むのは好き？",
+        "いつもそばに本があります",
+        "お話を聞く方が好きです"
+      ],
+      "c48": [
+        "自転車に乗れる？",
+        "今すぐにでも走り出せます",
+        "練習すると約束します"
+      ],
+      "c49": [
+        "海より山が好き？",
+        "山を選びます",
+        "海を選びます"
+      ],
+      "c50": [
+        "砂漠を見てみたい？",
+        "砂丘を夢見ています",
+        "森の方がいいです"
+      ],
+      "c51": [
+        "冬は好き？",
+        "初雪を待っています",
+        "夏を待っています"
+      ],
+      "c52": [
+        "お茶は砂糖なしで飲む？",
+        "お茶そのままの味が好きです",
+        "砂糖ひとさじは欠かせません"
+      ],
+      "c53": [
+        "クモはこわい？",
+        "なるべく近寄りません",
+        "落ち着いて外に逃がします"
+      ],
+      "c54": [
+        "絵を描くのは好き？",
+        "もう筆を手に取っています",
+        "人の絵を見る方が好きです"
+      ],
+      "c55": [
+        "オーロラを見てみたい？",
+        "もう見られる場所を調べています",
+        "星を眺める方がいいです"
+      ],
+      "c56": [
+        "雨の日は好き？",
+        "窓の外の雨音が大好きです",
+        "晴れるのを待っています"
+      ],
+      "c57": [
+        "馬に乗れる？",
+        "鞍の上でも堂々としています",
+        "今は夢見ているだけです"
+      ],
+      "c58": [
+        "犬を飼ってみたい？",
+        "忠実な友だちを夢見ています",
+        "今はお世話することで手いっぱいです"
+      ],
+      "c59": [
+        "しょっぱいものより甘いものが好き？",
+        "甘いものなしでは生きられません",
+        "しょっぱいものを選びます"
+      ],
+      "c60": [
+        "電車の旅は好き？",
+        "車輪のリズムが大好きです",
+        "飛行機を選びます"
+      ],
+      "c61": [
+        "朝早く一日を始めるのは得意？",
+        "元気いっぱいに一日を始めます",
+        "お昼まではエンジンがかかりません"
+      ],
+      "c62": [
+        "テントで泊まるのは好き？",
+        "もうリュックに荷物を詰めています",
+        "居心地のいいホテルを選びます"
+      ],
+      "c63": [
+        "海辺に住んでみたい？",
+        "波の音を夢見ています",
+        "街を選びます"
+      ],
+      "c64": [
+        "冬にアイスクリームを食べる？",
+        "寒い日でも食べます",
+        "夏だけです"
+      ],
+      "c65": [
+        "チョコレートは好き？",
+        "あらゆる種類を知っています",
+        "平気で素通りします"
+      ],
+      "c66": [
+        "パイを焼ける？",
+        "おばあちゃんのように焼けます",
+        "練習すると約束します"
+      ],
+      "c67": [
+        "星を眺めるのは好き？",
+        "星座をよく知っています",
+        "晴れた昼間の方が好きです"
+      ],
+      "c68": [
+        "いつか自分の庭を作ってみたい？",
+        "もう苗を選んでいます",
+        "まずは鉢植えの花から始めます"
+      ],
+      "c69": [
+        "野の花は好き？",
+        "マーガレットや矢車菊が大好きです",
+        "庭の花の方が好きです"
+      ],
+      "c70": [
+        "コーヒーは飲む？",
+        "コーヒーなしでは一日が始まりません",
+        "お茶を選びます"
+      ],
+      "c71": [
+        "手作りのレモネードは好き？",
+        "もうレモンを切っています",
+        "お水の方がいいです"
+      ],
+      "c72": [
+        "いつか日本に行ってみたい？",
+        "桜を見るのを夢見ています",
+        "別の国を選びます"
+      ],
+      "c73": [
+        "秋は好き？",
+        "落ち葉をカサカサ踏むのが大好きです",
+        "春を待っています"
+      ],
+      "c74": [
+        "ラベンダーの香りは好き？",
+        "その香りが大好きです",
+        "ほかの香りの方が好きです"
+      ],
+      "c75": [
+        "ボードゲームは好き？",
+        "もう盤を並べています",
+        "散歩の方が好きです"
+      ],
+      "c76": [
+        "車の運転はできる？",
+        "自信を持って運転します",
+        "今のところ助手席です"
+      ],
+      "c77": [
+        "いつか大海原を見てみたい？",
+        "大きな波を夢見ています",
+        "近くの海で十分です"
+      ],
+      "c78": [
+        "しばらく農場で暮らしてみたい？",
+        "もうニワトリにえさをあげています",
+        "街に残ります"
+      ],
+      "c79": [
+        "大都会は好き？",
+        "街の明かりが大好きです",
+        "静かでのんびりした場所を選びます"
+      ],
+      "c80": [
+        "お菓子より果物が好き？",
+        "果物を選びます",
+        "お菓子を選びます"
+      ],
+      "c81": [
+        "海でイルカを見てみたい？",
+        "ぜひ見てみたいです",
+        "本で読む方がいいです"
+      ],
+      "c82": [
+        "夏は好き？",
+        "暑い日を待っています",
+        "涼しい天気が大好きです"
+      ],
+      "c83": [
+        "公園の散歩は好き？",
+        "どんな天気でも歩きます",
+        "家にいる方が好きです"
+      ],
+      "c84": [
+        "手書きで文字を書くのは好き？",
+        "字がきれいです",
+        "スマホで入力します"
+      ],
+      "c85": [
+        "ボートに乗るのは好き？",
+        "もうオールを握っています",
+        "岸に残ります"
+      ],
+      "c86": [
+        "世界一周旅行をしてみたい？",
+        "もうルートを描いています",
+        "二、三か国で十分です"
+      ],
+      "c87": [
+        "雪だるまを作れる？",
+        "いちばん大きいのを作ります",
+        "雪合戦の方がいいです"
+      ],
+      "c88": [
+        "今年は何か新しいことを学びたい？",
+        "もう講座を選んでいます",
+        "やることはもう十分あります"
+      ],
+      "c89": [
+        "静けさは好き？",
+        "静かな時間を大切にしています",
+        "にぎやかな方が好きです"
+      ],
+      "c90": [
+        "家族にプレゼントを贈るのは好き？",
+        "特別な理由がなくても家族を喜ばせます",
+        "実際に手を貸す方が好きです"
       ]
     },
     "loves": {
@@ -16279,6 +33648,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "森",
         "砂漠",
         "オーロラ"
+      ],
+      "s17": [
+        "好きな果物は？",
+        "りんご",
+        "いちご",
+        "スイカ",
+        "ぶどう"
+      ],
+      "s18": [
+        "休みの日に何をする？",
+        "山歩き",
+        "家で料理",
+        "博物館",
+        "釣り"
+      ],
+      "s19": [
+        "好きな朝ごはんは？",
+        "パンケーキ",
+        "オムレツ",
+        "ベリーのせおかゆ",
+        "クロワッサン"
+      ],
+      "s20": [
+        "好きな鳥は？",
+        "フクロウ",
+        "オウム",
+        "白鳥",
+        "クジャク"
+      ],
+      "s21": [
+        "どの街に行く？",
+        "イスタンブール",
+        "パリ",
+        "東京",
+        "ドバイ"
+      ],
+      "s22": [
+        "好きなスポーツは？",
+        "サッカー",
+        "水泳",
+        "テニス",
+        "乗馬"
+      ],
+      "s23": [
+        "庭に何を植える？",
+        "りんごの木",
+        "バラ",
+        "野菜",
+        "いちご"
+      ],
+      "s24": [
+        "好きな焼き菓子は？",
+        "小さなパイ",
+        "ドーナツ",
+        "クッキー",
+        "バクラヴァ"
+      ],
+      "s25": [
+        "どこに住む？",
+        "川のそば",
+        "森の中",
+        "大都会",
+        "島"
+      ],
+      "s26": [
+        "好きな海の生き物は？",
+        "ウミガメ",
+        "クジラ",
+        "タコ",
+        "タツノオトシゴ"
+      ],
+      "s27": [
+        "何に乗る？",
+        "自転車",
+        "キックボード",
+        "熱気球",
+        "ボート"
+      ],
+      "s28": [
+        "好きな趣味は？",
+        "編み物",
+        "自然の写真",
+        "庭仕事",
+        "書道"
+      ],
+      "s29": [
+        "好きなスープは？",
+        "ボルシチ",
+        "チキンスープ",
+        "かぼちゃのスープ",
+        "レンズ豆のスープ"
+      ],
+      "s30": [
+        "森の動物は？",
+        "ハリネズミ",
+        "リス",
+        "キツネ",
+        "シカ"
+      ],
+      "s31": [
+        "ちょっとつまむなら？",
+        "デーツ",
+        "アーモンド",
+        "ピスタチオ",
+        "干しあんず"
+      ],
+      "s32": [
+        "ハイキングに何を持っていく？",
+        "テント",
+        "水筒",
+        "地図",
+        "懐中電灯"
+      ],
+      "s33": [
+        "好きなデザートは？",
+        "プリン",
+        "チーズケーキ",
+        "はちみつパンケーキ",
+        "フルーツサラダ"
+      ],
+      "s34": [
+        "冬に何をする？",
+        "雪だるま作り",
+        "そり遊び",
+        "窓辺でお茶",
+        "スキー"
+      ],
+      "s35": [
+        "夏に何をする？",
+        "泳ぐ",
+        "ベリー摘み",
+        "ボート遊び",
+        "砂のお城作り"
+      ],
+      "s36": [
+        "何で絵を描く？",
+        "水彩絵の具",
+        "色鉛筆",
+        "クレヨン",
+        "キャンバスに絵の具"
+      ],
+      "s37": [
+        "好きな野菜は？",
+        "にんじん",
+        "トマト",
+        "とうもろこし",
+        "かぼちゃ"
+      ],
+      "s38": [
+        "家を居心地よくするものは？",
+        "暖炉",
+        "ふかふかのブランケット",
+        "観葉植物",
+        "本棚"
+      ],
+      "s39": [
+        "何をして遊ぶ？",
+        "チェス",
+        "ジグソーパズル",
+        "ボードゲーム",
+        "ボール遊び"
+      ],
+      "s40": [
+        "農場にいるのは？",
+        "牛",
+        "子羊",
+        "ニワトリ",
+        "子ヤギ"
+      ],
+      "s41": [
+        "お茶に何を入れる？",
+        "はちみつ",
+        "レモン",
+        "ジャム",
+        "ミント"
+      ],
+      "s42": [
+        "海辺にあるものは？",
+        "灯台",
+        "貝がら",
+        "ヨット",
+        "カモメ"
+      ],
+      "s43": [
+        "朝のはじめ方は？",
+        "体操",
+        "一杯のお茶",
+        "散歩",
+        "読書"
+      ],
+      "s44": [
+        "好きなベリーは？",
+        "ラズベリー",
+        "ブルーベリー",
+        "さくらんぼ",
+        "ブラックベリー"
       ]
     },
     "who": [
@@ -16321,7 +33886,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "面白い話をよく思い出すのはどっち？",
       "我慢強いのはどっち？",
       "「ありがとう」をよく言うのはどっち？",
-      "先に手を貸すのはどっち？"
+      "先に手を貸すのはどっち？",
+      "暗算が得意なのはどっち？",
+      "本をたくさん読むのはどっち？",
+      "文字を打つのが速いのはどっち？",
+      "親によく電話するのはどっち？",
+      "話をするのが上手なのはどっち？",
+      "字がきれいなのはどっち？",
+      "辛い料理がより好きなのはどっち？",
+      "家に忘れ物をしがちなのはどっち？",
+      "機械に強いのはどっち？",
+      "新しいことを学ぶのがより好きなのはどっち？",
+      "計画を立てるのが上手なのはどっち？",
+      "市場で値切るのが上手なのはどっち？",
+      "自然がより好きなのはどっち？",
+      "食べるのが速いのはどっち？",
+      "お茶をたくさん飲むのはどっち？",
+      "植物の世話が上手なのはどっち？",
+      "地理にくわしいのはどっち？",
+      "チェスが強いのはどっち？",
+      "市場でおいしい果物を選ぶのが上手なのはどっち？",
+      "天気予報をよくチェックするのはどっち？",
+      "クモをよりこわがるのはどっち？",
+      "勇気があるのはどっち？",
+      "好奇心が強いのはどっち？",
+      "パズルを解くのが速いのはどっち？",
+      "絵が上手なのはどっち？",
+      "近所の人をよく手伝うのはどっち？",
+      "子どもと仲良くなるのが上手なのはどっち？",
+      "散歩がより好きなのはどっち？",
+      "説明書をよく読むのはどっち？",
+      "人の名前をよく覚えているのはどっち？",
+      "外国語の単語を覚えるのが速いのはどっち？",
+      "お菓子作りが上手なのはどっち？",
+      "アドバイスが上手なのはどっち？",
+      "寒い天気がより好きなのはどっち？",
+      "ハイキングで頼りになるのはどっち？",
+      "ニュースをよく読むのはどっち？",
+      "新しい料理をよく試すのはどっち？",
+      "スーツケースに荷物を詰めるのが速いのはどっち？",
+      "物を直すのが上手なのはどっち？",
+      "動物によく話しかけるのはどっち？",
+      "お皿洗いをよくするのはどっち？",
+      "歴史にくわしいのはどっち？",
+      "物事を先延ばしにしがちなのはどっち？",
+      "初対面の人とすぐ打ち解けるのはどっち？",
+      "健康により気をつけているのはどっち？"
     ],
     "phrases": [
       "私が笑顔になるのは、あなたが…",
@@ -16353,8 +33963,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "あなたと迎える朝は…",
       "ふたりをひと言で表すと…",
       "あなたから学びたいことは…",
-      "いつもありがとう。あなたはいつも…"
-    ]
+      "いつもありがとう。あなたはいつも…",
+      "子どものころ好きだった食べ物は…",
+      "どこかの国で一日過ごせるなら、私は…",
+      "これまでにもらった一番のアドバイスは…",
+      "私がいつも笑ってしまうのは…",
+      "ふるさとの町で好きな場所は…",
+      "自分の小さなお店を持てたら、売るのは…",
+      "私がいちばん上手に作れる料理は…",
+      "今も覚えている子どものころの夢は…",
+      "私がすぐ嬉しくなるのは…",
+      "これまで行った中でいちばんおどろいた場所は…",
+      "私が学びたいのは…",
+      "理想の休日は、まず…",
+      "どんな動物でも飼えるなら、それは…",
+      "家族はいつも、私のことを…",
+      "どうしても慣れないのは…",
+      "私のいちばん役に立つ習慣は…",
+      "今まで読んだ中でいちばんの本は…",
+      "十年後、私は…",
+      "夢の家は…",
+      "子どものころいちばん面白かった出来事は…",
+      "私にとって幸せとは…",
+      "なかなかやめられないのは…",
+      "超能力があったら、それは…",
+      "私が人にいちばん大切だと思うのは…",
+      "夜に時間があいたら、私は…",
+      "好きな香りは…",
+      "絶対に食べないものは…",
+      "出かけるときに必ず持っていくものは…",
+      "行ってみたい場所は…、その理由は…",
+      "今までにもらった一番のプレゼントは…",
+      "私のちょっと変わった習慣は…",
+      "毎日あと一時間あったら、私は…",
+      "たくさんのことを学んでいる相手は…",
+      "つらい日に私を支えてくれるのは…",
+      "旅先で食べたいちばんおいしいものは…",
+      "一日だけ仕事を変えられるなら、選ぶのは…",
+      "いちばん心に近い季節は…",
+      "友だちは、私のことを…",
+      "いつか誰かに教えてあげたいのは…",
+      "毎日のささやかな楽しみは…"
+    ],
+    "truth": {
+      "t01": [
+        "タコには心臓が3つある。",
+        true,
+        "2つの心臓がえらに血液を送り、3つ目が全身に血液を送ります。"
+      ],
+      "t02": [
+        "万里の長城は月から肉眼で見える。",
+        false,
+        "見えません。長城は幅がせますぎるのです。地球を回る軌道からでも見つけるのはとても難しいです。"
+      ],
+      "t03": [
+        "はちみつは何千年も腐らずに保存できる。",
+        true,
+        "古代エジプトの墓から、何千年も前のはちみつが保存された状態で見つかっています。"
+      ],
+      "t04": [
+        "バナナは木になる。",
+        false,
+        "バナナは巨大な草です。「幹」に見えるのは、葉がきつく巻き重なったものです。"
+      ],
+      "t05": [
+        "金星は太陽系でいちばん熱い惑星だ。",
+        true,
+        "厚い大気のせいで金星は約460 °Cにもなり、水星より熱いのです。"
+      ],
+      "t06": [
+        "コウモリは目が見えない。",
+        false,
+        "コウモリは目が見えます。暗闇では反響定位（エコーロケーション）も使って進みます。"
+      ],
+      "t07": [
+        "クジラは魚だ。",
+        false,
+        "クジラはほ乳類です。空気で呼吸し、子どもをお乳で育てます。"
+      ],
+      "t08": [
+        "サハラは世界最大の砂漠だ。",
+        false,
+        "最大の砂漠は南極です。サハラは暑い砂漠の中で最大です。"
+      ],
+      "t09": [
+        "キリンの首の骨の数は人間と同じだ。",
+        true,
+        "どちらも首の骨は7つ。キリンの骨はとても長いだけです。"
+      ],
+      "t10": [
+        "植物学では、トマトはベリーの一種だ。",
+        true,
+        "植物学者はトマトをベリーに分類します。中に種がある、果肉の多い実です。"
+      ],
+      "t11": [
+        "植物学では、イチゴはベリーの一種だ。",
+        false,
+        "イチゴは偽果です。本当の果実は、表面にある小さな「種」のほうです。"
+      ],
+      "t12": [
+        "宇宙では爆発の音が聞こえる。",
+        false,
+        "宇宙にはほとんど空気がないので、音が伝わるものがありません。"
+      ],
+      "t13": [
+        "高い山の上では、水はより低い温度で沸騰する。",
+        true,
+        "高いところでは気圧が低いので、水は100 °Cになる前に沸騰します。"
+      ],
+      "t14": [
+        "ペンギンは北極にすんでいる。",
+        false,
+        "野生のペンギンは南半球にしかすんでいません。北の果てにはいないのです。"
+      ],
+      "t15": [
+        "エベレストは海抜でいちばん高い山だ。",
+        true,
+        "エベレストの高さは海抜約8,849メートルです。"
+      ],
+      "t16": [
+        "人は脳の10%しか使っていない。",
+        false,
+        "それは俗説です。一日のうちに脳のほぼすべての部分がはたらいています。"
+      ],
+      "t17": [
+        "人の心臓は一日に約10万回拍動する。",
+        true,
+        "1分間に約70回なので、一日でおよそ10万回になります。"
+      ],
+      "t18": [
+        "金魚の記憶は3秒しかもたない。",
+        false,
+        "実験では、金魚は覚えたことを何か月も記憶できるとわかっています。"
+      ],
+      "t19": [
+        "オーストラリアは国であり、大陸でもある。",
+        true,
+        "オーストラリアは、ひとつの大陸全体を占める唯一の国です。"
+      ],
+      "t20": [
+        "雷は同じ場所に二度落ちない。",
+        false,
+        "落ちます。高い建物には一年に何度も雷が落ちます。"
+      ],
+      "t21": [
+        "ダチョウはこわいと砂に頭を埋める。",
+        false,
+        "俗説です。おびえたダチョウは走って逃げるか、地面にぴったり伏せて隠れます。"
+      ],
+      "t22": [
+        "世界最小の鳥はハチドリだ。",
+        true,
+        "キューバのマメハチドリは約2グラムで、ほかのどの鳥よりも軽いのです。"
+      ],
+      "t23": [
+        "スイカはおよそ90%が水分だ。",
+        true,
+        "スイカは約92%が水分。だからあんなにさわやかなのです。"
+      ],
+      "t24": [
+        "クモの脚は6本だ。",
+        false,
+        "クモの脚は8本です。昆虫の脚は6本で、クモは昆虫ではありません。"
+      ],
+      "t25": [
+        "月は自分で光っている。",
+        false,
+        "月は自分では光りません。太陽の光を反射しているのです。"
+      ],
+      "t26": [
+        "ゾウは陸上で最大の動物だ。",
+        true,
+        "アフリカゾウは6トン以上になることもあります。"
+      ],
+      "t27": [
+        "シロナガスクジラは知られている中で最大の動物だ。",
+        true,
+        "シロナガスクジラは体長30メートルを超えることもあり、どの恐竜よりも大きいのです。"
+      ],
+      "t28": [
+        "カメレオンが色を変えるのは、身を隠すためだけだ。",
+        false,
+        "色は気分や温度、ほかのカメレオンへの合図によって変わることのほうが多いのです。"
+      ],
+      "t29": [
+        "電話を発明したのはトーマス・エジソンだ。",
+        false,
+        "電話の特許を取ったのは、1876年のアレクサンダー・グラハム・ベルです。"
+      ],
+      "t30": [
+        "ペニシリンを発見したのはアレクサンダー・フレミングだ。",
+        true,
+        "フレミングは1928年にペニシリンを発見しました。最初の抗生物質です。"
+      ],
+      "t31": [
+        "太陽系でいちばん高い火山は火星にある。",
+        true,
+        "火星のオリンポス山は高さ約22 km。エベレストの約2.5倍です。"
+      ],
+      "t32": [
+        "静脈を流れる血は青い。",
+        false,
+        "血はいつも赤です。静脈が青く見えるのは、光が皮膚を通るときの見え方のせいです。"
+      ],
+      "t33": [
+        "大西洋は地球最大の海だ。",
+        false,
+        "最大は太平洋です。地球上のすべての陸地を合わせたよりも広いのです。"
+      ],
+      "t34": [
+        "ロシアは面積で世界最大の国だ。",
+        true,
+        "ロシアの面積は1,700万平方キロメートル以上あります。"
+      ],
+      "t35": [
+        "カナダは世界でいちばん海岸線が長い。",
+        true,
+        "カナダの海岸線は20万km以上あり、ほかのどの国よりも長いのです。"
+      ],
+      "t36": [
+        "牛の胃には4つの部屋がある。",
+        true,
+        "牛の胃はひとつですが、4つの部屋に分かれています。そうやって草を消化するのです。"
+      ],
+      "t37": [
+        "ライオンは世界最大のネコ科動物だ。",
+        false,
+        "最大のネコ科動物はトラ、とくにシベリアトラです。"
+      ],
+      "t38": [
+        "地球は太陽にいちばん近い惑星だ。",
+        false,
+        "いちばん近いのは水星、次が金星。地球は3番目の惑星です。"
+      ],
+      "t39": [
+        "太陽の光が地球に届くまで約8分かかる。",
+        true,
+        "光は太陽からの1億5,000万kmを約8分20秒で進みます。"
+      ],
+      "t40": [
+        "イルカは脳の半分ずつ眠る。",
+        true,
+        "片方が休んでいるあいだ、もう片方が見張りをして呼吸を忘れないようにしています。"
+      ],
+      "t41": [
+        "ジャガイモの原産地はアイルランドだ。",
+        false,
+        "ジャガイモは南アメリカ原産です。何千年も前からアンデスで育てられていました。"
+      ],
+      "t42": [
+        "チョコレートはカカオの木の種から作られる。",
+        true,
+        "カカオの実は幹に直接なり、その中の種がチョコレートになります。"
+      ],
+      "t43": [
+        "サメはほ乳類だ。",
+        false,
+        "サメは魚で、えらで呼吸します。海のほ乳類はクジラやイルカです。"
+      ],
+      "t44": [
+        "竹の中には一日に1メートル近く伸びる種類がある。",
+        true,
+        "竹は地球上でもっとも成長の速い植物のひとつです。"
+      ],
+      "t45": [
+        "フクロウは首を360度まるごと回せる。",
+        false,
+        "フクロウが首を回せるのは約270度。かなりですが、一周ではありません。"
+      ],
+      "t46": [
+        "ダイヤモンドと鉛筆の黒鉛は同じ物質でできている。",
+        true,
+        "どちらも純粋な炭素です。原子の並び方がちがうだけなのです。"
+      ],
+      "t47": [
+        "ラクダはこぶに水をためている。",
+        false,
+        "ラクダのこぶにたまっているのは水ではなく脂肪。長い旅のエネルギーになります。"
+      ],
+      "t48": [
+        "人の体でいちばん小さい骨は耳の中にある。",
+        true,
+        "中耳にあるあぶみ骨は、長さわずか3ミリほどです。"
+      ],
+      "t49": [
+        "大型のオウムは50年以上生きることがある。",
+        true,
+        "大切に世話されたコンゴウインコやオウムは、50年以上生きることもよくあります。"
+      ],
+      "t50": [
+        "初めて動力飛行に成功したのはライト兄弟だ。",
+        true,
+        "1903年に飛び、最初の飛行は12秒間でした。"
+      ],
+      "t51": [
+        "車輪は中世に発明された。",
+        false,
+        "車輪は5,000年以上前からあります。紀元前3500年ごろのメソポタミアで使われていました。"
+      ],
+      "t52": [
+        "タツノオトシゴは魚だ。",
+        true,
+        "タツノオトシゴはほかの魚と同じように、えらで呼吸し、ひれで泳ぎます。"
+      ],
+      "t53": [
+        "ハチドリは後ろ向きに飛べる。",
+        true,
+        "本当に後ろ向きに飛べる鳥は、ハチドリだけです。"
+      ],
+      "t54": [
+        "エッフェル塔は夏になると少し高くなる。",
+        true,
+        "暑さで金属がふくらみ、塔は約15センチ高くなります。"
+      ],
+      "t55": [
+        "皮膚は人の体でいちばん大きな器官だ。",
+        true,
+        "大人の皮膚は数キロの重さがあり、体全体を守っています。"
+      ],
+      "t56": [
+        "赤い色を見ると牛は怒る。",
+        false,
+        "牛は赤色をほとんど見分けられません。興奮させるのは色ではなく動きです。"
+      ],
+      "t57": [
+        "イエバエの寿命はたった一日だ。",
+        false,
+        "イエバエは約1か月生きます。一日か二日しか生きないのは、カゲロウの成虫です。"
+      ],
+      "t58": [
+        "パイナップルは木になる。",
+        false,
+        "パイナップルは背の低い葉の多い植物の、まん中から伸びて実ります。"
+      ],
+      "t59": [
+        "ピーナッツはナッツの一種だ。",
+        false,
+        "ピーナッツは豆の仲間で、エンドウ豆やインゲン豆の親戚です。さやは土の中で実ります。"
+      ],
+      "t60": [
+        "北極と南極は同じくらい寒い。",
+        false,
+        "南極のほうがずっと寒いのです。南極は高い氷の大陸の上、北極は海の上にあります。"
+      ]
+    }
   },
   "ko": {
     "text": {
@@ -16563,7 +34515,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "초대",
       "invited": "초대함",
       "inviteNone": "“친구” 메뉴에서 친구를 추가하면 한 번에 초대할 수 있어요.",
-      "inviteSent": "{name} 님에게 초대를 보냈어요"
+      "inviteSent": "{name} 님에게 초대를 보냈어요",
+      "truth": "진짜일까 가짜일까",
+      "tfTitle": "진짜일까 가짜일까",
+      "tfNote": "둘이 하는 실시간 게임: 세상의 놀라운 사실들. 12초 안에 진짜인지 가짜인지 골라요. 맞힐 때마다 1점!",
+      "tfShareText": "{name} 님이 실시간 게임 “진짜일까 가짜일까”에 초대했어요",
+      "tfJoinLead": "{name} 님이 기다리고 있어요. 진짜일까 가짜일까 — 빨리 정해요!",
+      "tfRound": "사실 {n}/{total}",
+      "tfTrue": "진짜",
+      "tfFalse": "가짜",
+      "tfIsTrue": "진짜예요!",
+      "tfIsFalse": "가짜예요!",
+      "tfFirstYou": "내가 먼저 맞혔어요!",
+      "tfFirstThem": "{name} 님이 먼저 맞혔어요",
+      "tfFinalWin": "승리! 세상에 대해 더 많이 알고 있네요.",
+      "tfFinalLose": "이번엔 {name} 님이 더 많이 알았어요 — 한 판 더 할까요?",
+      "tfFinalDraw": "무승부 — 둘 다 똑같이 잘 아네요!",
+      "featTruth": "실시간 게임 “진짜일까 가짜일까” — 세상의 놀라운 사실들"
     },
     "questions": {
       "q01": [
@@ -16985,6 +34953,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "요리",
         "새로운 언어",
         "그림"
+      ],
+      "q61": [
+        "내가 가장 잘 만드는 음식은?",
+        "수프",
+        "필라프",
+        "빵과 과자",
+        "샐러드"
+      ],
+      "q62": [
+        "내가 가장 먼저 가 보고 싶은 나라는?",
+        "튀르키예",
+        "일본",
+        "모로코",
+        "노르웨이"
+      ],
+      "q63": [
+        "내가 시작한다면 어떤 운동?",
+        "수영",
+        "달리기",
+        "자전거",
+        "축구"
+      ],
+      "q64": [
+        "내가 고를 책은?",
+        "모험 이야기",
+        "역사책",
+        "옛날이야기",
+        "백과사전"
+      ],
+      "q65": [
+        "동물원에서 내가 가장 먼저 보러 갈 동물은?",
+        "코끼리",
+        "원숭이",
+        "펭귄",
+        "기린"
+      ],
+      "q66": [
+        "매운 음식에 대한 나의 생각은?",
+        "매울수록 좋아",
+        "조금은 괜찮아",
+        "아주 살짝만",
+        "전혀 안 먹어"
+      ],
+      "q67": [
+        "내가 가장 좋아한 과목은?",
+        "수학",
+        "문학",
+        "지리",
+        "체육"
+      ],
+      "q68": [
+        "어릴 때 나의 꿈의 직업은?",
+        "의사",
+        "선생님",
+        "우주비행사",
+        "요리사"
+      ],
+      "q69": [
+        "도보 여행에 대한 나의 생각은?",
+        "긴 여행을 꿈꿔",
+        "당일치기만",
+        "편안함이 있어야 해",
+        "집이 최고야"
+      ],
+      "q70": [
+        "아침의 나는?",
+        "기운이 넘쳐",
+        "아직 졸려",
+        "조용해",
+        "수다스러워"
+      ],
+      "q71": [
+        "내가 가장 좋아하는 견과류는?",
+        "헤이즐넛",
+        "호두",
+        "캐슈너트",
+        "아몬드"
+      ],
+      "q72": [
+        "뜻밖에 한 시간이 생기면 나는?",
+        "책을 읽어",
+        "산책을 해",
+        "가족에게 전화해",
+        "요리를 해"
+      ],
+      "q73": [
+        "내가 싫어하는 날씨는?",
+        "더위",
+        "바람",
+        "진눈깨비",
+        "혹한"
+      ],
+      "q74": [
+        "내 방을 칠한다면 어떤 색?",
+        "흰색",
+        "베이지색",
+        "초록색",
+        "하늘색"
+      ],
+      "q75": [
+        "내가 더 하고 싶은 놀이는?",
+        "체스",
+        "체커",
+        "직소 퍼즐",
+        "단어 게임"
+      ],
+      "q76": [
+        "손님에게 내가 만들 음식은?",
+        "필라프",
+        "파이",
+        "샐러드",
+        "배달을 시킬래"
+      ],
+      "q77": [
+        "내가 절대 안 먹을 음식은?",
+        "버섯",
+        "생선",
+        "올리브",
+        "삶은 양파"
+      ],
+      "q78": [
+        "내가 차를 마시는 방법은?",
+        "진하게",
+        "연하게",
+        "달게",
+        "허브를 넣어서"
+      ],
+      "q79": [
+        "집에서 나에게 가장 중요한 건?",
+        "청결",
+        "아늑함",
+        "밝은 햇빛",
+        "고요함"
+      ],
+      "q80": [
+        "나는 새로운 걸 어떻게 배울까?",
+        "책을 읽으며",
+        "영상 강의로",
+        "직접 해 보며",
+        "다른 사람에게 물어보며"
+      ],
+      "q81": [
+        "나를 가장 사로잡는 야생 동물은?",
+        "호랑이",
+        "곰",
+        "독수리",
+        "돌고래"
+      ],
+      "q82": [
+        "내가 엄마에게 줄 선물은?",
+        "꽃",
+        "직접 만든 것",
+        "여행",
+        "따뜻한 담요"
+      ],
+      "q83": [
+        "이동 중에 나는 뭘 할까?",
+        "창밖을 봐",
+        "책을 읽어",
+        "이야기를 나눠",
+        "간식을 먹어"
+      ],
+      "q84": [
+        "내가 좋아하는 닭고기 요리는?",
+        "닭꼬치",
+        "닭고기 덮밥",
+        "닭고기 패티",
+        "너겟"
+      ],
+      "q85": [
+        "기차에서 내가 고르는 자리는?",
+        "창가",
+        "통로 쪽",
+        "역방향",
+        "상관없어"
+      ],
+      "q86": [
+        "일이 잘 안 풀릴 때 나는?",
+        "바로 행동해",
+        "먼저 생각해",
+        "조언을 구해",
+        "조금 걱정해"
+      ],
+      "q87": [
+        "나의 가장 큰 장점은?",
+        "친절함",
+        "정직함",
+        "끈기",
+        "명랑함"
+      ],
+      "q88": [
+        "내가 가장 잘 쉴 수 있는 곳은?",
+        "시골 친척 집",
+        "바닷가 호텔",
+        "텐트",
+        "우리 집"
+      ],
+      "q89": [
+        "내가 고를 빵은?",
+        "삼사",
+        "하차푸리",
+        "착착",
+        "에클레어"
+      ],
+      "q90": [
+        "내가 가장 배우고 싶은 언어는?",
+        "아랍어",
+        "영어",
+        "튀르키예어",
+        "일본어"
+      ],
+      "q91": [
+        "나는 단것 없이 얼마나 버틸 수 있을까?",
+        "하루",
+        "일주일",
+        "한 달",
+        "필요한 만큼"
+      ],
+      "q92": [
+        "늦을 것 같을 때 나는?",
+        "전력으로 뛰어",
+        "미리 전화해서 알려",
+        "택시를 타",
+        "나는 절대 안 늦어"
+      ],
+      "q93": [
+        "기계가 고장 나면 나는?",
+        "직접 고쳐",
+        "설명서를 읽어",
+        "도움을 요청해",
+        "버튼을 다 눌러 봐"
+      ],
+      "q94": [
+        "내 여행 가방에 가장 먼저 들어가는 건?",
+        "구급상자",
+        "책",
+        "충전기",
+        "간식"
+      ],
+      "q95": [
+        "나를 차분하게 해 주는 활동은?",
+        "요리",
+        "정리",
+        "그림 그리기",
+        "산책"
+      ],
+      "q96": [
+        "은퇴하면 내가 하고 싶은 건?",
+        "정원 가꾸기",
+        "여행",
+        "독서",
+        "손주들과 시간 보내기"
+      ],
+      "q97": [
+        "나를 가장 짜증 나게 하는 건?",
+        "소음",
+        "어지러움",
+        "지각",
+        "무례함"
+      ],
+      "q98": [
+        "내가 가장 좋아하는 향기는?",
+        "갓 구운 빵",
+        "비",
+        "꽃",
+        "바다"
+      ],
+      "q99": [
+        "내가 고를 디저트는?",
+        "과일",
+        "아이스크림",
+        "파이",
+        "차 한 잔이면 돼"
       ]
     },
     "yesNo": {
@@ -17187,6 +35428,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "나중에 또 할까?",
         "한 판 더 하고 싶어요",
         "게임보다 포옹이 좋아요"
+      ],
+      "c41": [
+        "매운 음식 좋아해?",
+        "매울수록 좋아해요",
+        "덜 매운 걸 골라요"
+      ],
+      "c42": [
+        "수영할 줄 알아?",
+        "물고기처럼 헤엄쳐요",
+        "아직은 물가 가까이에 있어요"
+      ],
+      "c43": [
+        "고양이를 키우고 싶어?",
+        "벌써 이름을 고민하고 있어요",
+        "강아지가 더 좋아요"
+      ],
+      "c44": [
+        "언젠가 이스탄불에 가 보고 싶어?",
+        "벌써 보스포루스 해협을 꿈꿔요",
+        "다른 도시를 고를래요"
+      ],
+      "c45": [
+        "요리하는 거 좋아해?",
+        "즐겁게 요리해요",
+        "설거지가 더 좋아요"
+      ],
+      "c46": [
+        "필라프 만드는 법을 배우고 싶어?",
+        "벌써 레시피를 찾고 있어요",
+        "다른 사람이 만든 걸 맛보고 싶어요"
+      ],
+      "c47": [
+        "책 읽는 거 좋아해?",
+        "늘 곁에 책이 있어요",
+        "이야기를 듣는 게 더 좋아요"
+      ],
+      "c48": [
+        "자전거 탈 줄 알아?",
+        "지금 당장이라도 달릴 수 있어요",
+        "배우겠다고 약속해요"
+      ],
+      "c49": [
+        "바다보다 산이 더 좋아?",
+        "산을 골라요",
+        "바다를 골라요"
+      ],
+      "c50": [
+        "사막을 보고 싶어?",
+        "모래 언덕을 꿈꿔요",
+        "숲을 고를래요"
+      ],
+      "c51": [
+        "겨울 좋아해?",
+        "첫눈을 기다려요",
+        "여름을 기다려요"
+      ],
+      "c52": [
+        "차를 설탕 없이 마셔?",
+        "차 본연의 맛을 좋아해요",
+        "설탕 한 스푼은 꼭 넣어요"
+      ],
+      "c53": [
+        "거미가 무서워?",
+        "멀찍이 피해요",
+        "침착하게 밖으로 옮겨 줘요"
+      ],
+      "c54": [
+        "그림 그리는 거 좋아해?",
+        "벌써 붓을 들고 있어요",
+        "다른 사람의 그림을 보는 게 더 좋아요"
+      ],
+      "c55": [
+        "오로라를 보고 싶어?",
+        "벌써 어디서 볼 수 있는지 찾아보고 있어요",
+        "별을 바라보는 게 더 좋아요"
+      ],
+      "c56": [
+        "비 오는 날 좋아해?",
+        "창밖 빗소리를 정말 좋아해요",
+        "해가 뜨길 기다려요"
+      ],
+      "c57": [
+        "말 탈 줄 알아?",
+        "안장 위에서도 자신 있어요",
+        "아직은 꿈만 꾸고 있어요"
+      ],
+      "c58": [
+        "강아지를 키우고 싶어?",
+        "든든한 친구를 꿈꿔요",
+        "지금은 돌볼 게 충분해요"
+      ],
+      "c59": [
+        "짭짤한 것보다 단 게 더 좋아?",
+        "단 거 없이는 못 살아요",
+        "짭짤한 걸 골라요"
+      ],
+      "c60": [
+        "기차 여행 좋아해?",
+        "바퀴 소리의 리듬을 좋아해요",
+        "비행기를 골라요"
+      ],
+      "c61": [
+        "아침 일찍 하루를 시작하는 게 쉬워?",
+        "힘차게 하루를 시작해요",
+        "점심때나 돼야 시동이 걸려요"
+      ],
+      "c62": [
+        "텐트에서 자는 거 좋아해?",
+        "벌써 배낭을 싸고 있어요",
+        "아늑한 호텔을 골라요"
+      ],
+      "c63": [
+        "바닷가에 살고 싶어?",
+        "파도 소리를 꿈꿔요",
+        "도시를 골라요"
+      ],
+      "c64": [
+        "겨울에도 아이스크림을 먹어?",
+        "추운 날에도 먹어요",
+        "여름에만 먹어요"
+      ],
+      "c65": [
+        "초콜릿 좋아해?",
+        "모든 종류를 다 알아요",
+        "그냥 지나칠 수 있어요"
+      ],
+      "c66": [
+        "파이를 구울 줄 알아?",
+        "할머니처럼 잘 구워요",
+        "배우겠다고 약속해요"
+      ],
+      "c67": [
+        "별 보는 거 좋아해?",
+        "별자리를 잘 알아요",
+        "맑은 낮이 더 좋아요"
+      ],
+      "c68": [
+        "언젠가 나만의 정원을 가꾸고 싶어?",
+        "벌써 모종을 고르고 있어요",
+        "화분 하나로 시작할래요"
+      ],
+      "c69": [
+        "들꽃 좋아해?",
+        "데이지와 수레국화를 좋아해요",
+        "정원 꽃이 더 좋아요"
+      ],
+      "c70": [
+        "커피 마셔?",
+        "커피 없이는 하루가 시작되지 않아요",
+        "차를 골라요"
+      ],
+      "c71": [
+        "직접 만든 레모네이드 좋아해?",
+        "벌써 레몬을 썰고 있어요",
+        "물이 더 좋아요"
+      ],
+      "c72": [
+        "언젠가 일본에 가 보고 싶어?",
+        "벚꽃 보는 걸 꿈꿔요",
+        "다른 나라를 고를래요"
+      ],
+      "c73": [
+        "가을 좋아해?",
+        "바스락거리는 낙엽 밟기를 좋아해요",
+        "봄을 기다려요"
+      ],
+      "c74": [
+        "라벤더 향 좋아해?",
+        "그 향을 정말 좋아해요",
+        "다른 향이 더 좋아요"
+      ],
+      "c75": [
+        "보드게임 좋아해?",
+        "벌써 판을 펼치고 있어요",
+        "산책이 더 좋아요"
+      ],
+      "c76": [
+        "운전할 줄 알아?",
+        "자신 있게 운전해요",
+        "아직은 조수석이에요"
+      ],
+      "c77": [
+        "언젠가 대양을 보고 싶어?",
+        "커다란 파도를 꿈꿔요",
+        "가까운 바다로 충분해요"
+      ],
+      "c78": [
+        "잠시 농장에서 살아 보고 싶어?",
+        "벌써 닭에게 모이를 주고 있어요",
+        "도시에 남을래요"
+      ],
+      "c79": [
+        "대도시 좋아해?",
+        "도시의 불빛을 좋아해요",
+        "조용하고 평화로운 곳을 골라요"
+      ],
+      "c80": [
+        "과자보다 과일이 더 좋아?",
+        "과일을 골라요",
+        "과자를 골라요"
+      ],
+      "c81": [
+        "바다에서 돌고래를 보고 싶어?",
+        "꼭 보고 싶어 해요",
+        "책으로 읽는 게 더 좋아요"
+      ],
+      "c82": [
+        "여름 좋아해?",
+        "더운 날을 기다려요",
+        "선선한 날씨를 좋아해요"
+      ],
+      "c83": [
+        "공원 산책 좋아해?",
+        "날씨와 상관없이 걸어요",
+        "집에 있는 게 더 좋아요"
+      ],
+      "c84": [
+        "손으로 글씨 쓰는 거 좋아해?",
+        "글씨가 반듯해요",
+        "휴대폰으로 입력해요"
+      ],
+      "c85": [
+        "보트 타는 거 좋아해?",
+        "벌써 노를 잡고 있어요",
+        "물가에 남아 있어요"
+      ],
+      "c86": [
+        "세계 일주를 하고 싶어?",
+        "벌써 경로를 그리고 있어요",
+        "두세 나라면 충분해요"
+      ],
+      "c87": [
+        "눈사람 만들 줄 알아?",
+        "제일 큰 걸 만들어요",
+        "눈싸움이 더 좋아요"
+      ],
+      "c88": [
+        "올해 새로운 걸 배우고 싶어?",
+        "벌써 강좌를 고르고 있어요",
+        "이미 할 일이 충분해요"
+      ],
+      "c89": [
+        "조용한 거 좋아해?",
+        "고요함을 소중히 여겨요",
+        "북적북적한 게 좋아요"
+      ],
+      "c90": [
+        "가족에게 선물하는 거 좋아해?",
+        "특별한 이유 없이도 가족을 기쁘게 해요",
+        "실제로 도와주는 걸 더 좋아해요"
       ]
     },
     "loves": {
@@ -17301,6 +35792,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "숲",
         "사막",
         "오로라"
+      ],
+      "s17": [
+        "좋아하는 과일은?",
+        "사과",
+        "딸기",
+        "수박",
+        "포도"
+      ],
+      "s18": [
+        "쉬는 날엔 뭘 할까?",
+        "산행",
+        "집에서 요리",
+        "박물관",
+        "낚시"
+      ],
+      "s19": [
+        "좋아하는 아침 식사는?",
+        "팬케이크",
+        "오믈렛",
+        "베리를 올린 죽",
+        "크루아상"
+      ],
+      "s20": [
+        "좋아하는 새는?",
+        "부엉이",
+        "앵무새",
+        "백조",
+        "공작"
+      ],
+      "s21": [
+        "어느 도시에 가 볼까?",
+        "이스탄불",
+        "파리",
+        "도쿄",
+        "두바이"
+      ],
+      "s22": [
+        "좋아하는 운동은?",
+        "축구",
+        "수영",
+        "테니스",
+        "승마"
+      ],
+      "s23": [
+        "정원에 뭘 심을까?",
+        "사과나무",
+        "장미",
+        "채소",
+        "딸기"
+      ],
+      "s24": [
+        "좋아하는 구운 간식은?",
+        "작은 파이",
+        "도넛",
+        "쿠키",
+        "바클라바"
+      ],
+      "s25": [
+        "어디서 살까?",
+        "강가",
+        "숲속",
+        "대도시",
+        "섬"
+      ],
+      "s26": [
+        "좋아하는 바다 생물은?",
+        "바다거북",
+        "고래",
+        "문어",
+        "해마"
+      ],
+      "s27": [
+        "뭘 타 볼까?",
+        "자전거",
+        "킥보드",
+        "열기구",
+        "보트"
+      ],
+      "s28": [
+        "좋아하는 취미는?",
+        "뜨개질",
+        "자연 사진",
+        "정원 가꾸기",
+        "캘리그래피"
+      ],
+      "s29": [
+        "좋아하는 수프는?",
+        "보르시",
+        "닭고기 수프",
+        "호박 수프",
+        "렌틸콩 수프"
+      ],
+      "s30": [
+        "숲속 동물은?",
+        "고슴도치",
+        "다람쥐",
+        "여우",
+        "사슴"
+      ],
+      "s31": [
+        "군것질로 뭘 먹을까?",
+        "대추야자",
+        "아몬드",
+        "피스타치오",
+        "말린 살구"
+      ],
+      "s32": [
+        "하이킹에 뭘 챙길까?",
+        "텐트",
+        "보온병",
+        "지도",
+        "손전등"
+      ],
+      "s33": [
+        "좋아하는 디저트는?",
+        "푸딩",
+        "치즈케이크",
+        "꿀 팬케이크",
+        "과일 샐러드"
+      ],
+      "s34": [
+        "겨울엔 뭘 할까?",
+        "눈사람 만들기",
+        "썰매 타기",
+        "창가에서 차 마시기",
+        "스키 타기"
+      ],
+      "s35": [
+        "여름엔 뭘 할까?",
+        "수영하기",
+        "베리 따기",
+        "보트 타기",
+        "모래성 쌓기"
+      ],
+      "s36": [
+        "뭘로 그림을 그릴까?",
+        "수채 물감",
+        "연필",
+        "크레파스",
+        "캔버스에 물감"
+      ],
+      "s37": [
+        "좋아하는 채소는?",
+        "당근",
+        "토마토",
+        "옥수수",
+        "호박"
+      ],
+      "s38": [
+        "집을 아늑하게 만드는 건?",
+        "벽난로",
+        "포근한 담요",
+        "화분",
+        "책장"
+      ],
+      "s39": [
+        "뭘 하고 놀까?",
+        "체스",
+        "직소 퍼즐",
+        "보드게임",
+        "공놀이"
+      ],
+      "s40": [
+        "농장에 누가 살까?",
+        "소",
+        "어린 양",
+        "암탉",
+        "아기 염소"
+      ],
+      "s41": [
+        "차에 뭘 곁들일까?",
+        "꿀",
+        "레몬",
+        "잼",
+        "민트"
+      ],
+      "s42": [
+        "바닷가에 있는 건?",
+        "등대",
+        "조개껍데기",
+        "돛단배",
+        "갈매기"
+      ],
+      "s43": [
+        "아침을 어떻게 시작할까?",
+        "체조",
+        "차 한 잔",
+        "산책",
+        "책"
+      ],
+      "s44": [
+        "좋아하는 베리는?",
+        "라즈베리",
+        "블루베리",
+        "체리",
+        "블랙베리"
       ]
     },
     "who": [
@@ -17343,7 +36030,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "우리 중 누가 재미있는 이야기를 더 자주 떠올릴까요?",
       "우리 중 누가 더 참을성이 많을까요?",
       "우리 중 누가 “고마워”라는 말을 더 자주 할까요?",
-      "우리 중 누가 먼저 도와주겠다고 할까요?"
+      "우리 중 누가 먼저 도와주겠다고 할까요?",
+      "우리 중 누가 암산을 더 잘할까요?",
+      "우리 중 누가 책을 더 많이 읽을까요?",
+      "우리 중 누가 타자를 더 빨리 칠까요?",
+      "우리 중 누가 부모님께 더 자주 전화할까요?",
+      "우리 중 누가 이야기를 더 재미있게 할까요?",
+      "우리 중 누가 글씨를 더 반듯하게 쓸까요?",
+      "우리 중 누가 매운 음식을 더 좋아할까요?",
+      "우리 중 누가 집에 물건을 더 자주 두고 올까요?",
+      "우리 중 누가 기계를 더 잘 다룰까요?",
+      "우리 중 누가 새로운 걸 배우는 걸 더 좋아할까요?",
+      "우리 중 누가 계획을 더 잘 세울까요?",
+      "우리 중 누가 시장에서 값을 더 잘 깎을까요?",
+      "우리 중 누가 자연을 더 좋아할까요?",
+      "우리 중 누가 더 빨리 먹을까요?",
+      "우리 중 누가 차를 더 많이 마실까요?",
+      "우리 중 누가 식물을 더 잘 돌볼까요?",
+      "우리 중 누가 지리를 더 잘 알까요?",
+      "우리 중 누가 체스를 더 잘 둘까요?",
+      "우리 중 누가 시장에서 과일을 더 잘 고를까요?",
+      "우리 중 누가 일기예보를 더 자주 확인할까요?",
+      "우리 중 누가 거미를 더 무서워할까요?",
+      "우리 중 누가 더 용감할까요?",
+      "우리 중 누가 호기심이 더 많을까요?",
+      "우리 중 누가 퍼즐을 더 빨리 풀까요?",
+      "우리 중 누가 그림을 더 잘 그릴까요?",
+      "우리 중 누가 이웃을 더 자주 도울까요?",
+      "우리 중 누가 아이들과 더 잘 어울릴까요?",
+      "우리 중 누가 걷는 걸 더 좋아할까요?",
+      "우리 중 누가 설명서를 더 자주 읽을까요?",
+      "우리 중 누가 이름을 더 잘 기억할까요?",
+      "우리 중 누가 외국어 단어를 더 빨리 외울까요?",
+      "우리 중 누가 빵과 과자를 더 잘 구울까요?",
+      "우리 중 누가 조언을 더 잘해 줄까요?",
+      "우리 중 누가 추운 날씨를 더 좋아할까요?",
+      "우리 중 누가 하이킹에서 더 잘 버틸까요?",
+      "우리 중 누가 뉴스를 더 자주 볼까요?",
+      "우리 중 누가 새로운 음식을 더 자주 먹어 볼까요?",
+      "우리 중 누가 여행 가방을 더 빨리 쌀까요?",
+      "우리 중 누가 물건을 더 잘 고칠까요?",
+      "우리 중 누가 동물에게 더 자주 말을 걸까요?",
+      "우리 중 누가 설거지를 더 자주 할까요?",
+      "우리 중 누가 역사를 더 잘 알까요?",
+      "우리 중 누가 일을 더 자주 미룰까요?",
+      "우리 중 누가 처음 만난 사람과 더 빨리 친해질까요?",
+      "우리 중 누가 건강을 더 챙길까요?"
     ],
     "phrases": [
       "내가 미소 짓게 되는 건 네가…",
@@ -17375,8 +36107,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "너와 함께하는 아침은…",
       "우리를 한 단어로 표현하면…",
       "너에게 배우고 싶은 건…",
-      "늘 고마워, 네가 언제나…"
-    ]
+      "늘 고마워, 네가 언제나…",
+      "어릴 때 가장 좋아한 음식은…",
+      "어느 나라에서든 하루를 보낼 수 있다면, 나는…",
+      "지금까지 들은 최고의 조언은…",
+      "내가 늘 웃음이 나는 건…",
+      "내 고향에서 가장 좋아하는 곳은…",
+      "나만의 작은 가게가 있다면 팔고 싶은 건…",
+      "내가 가장 잘 만드는 음식은…",
+      "아직도 기억나는 어린 시절의 꿈은…",
+      "나를 쉽게 기쁘게 하는 건…",
+      "지금까지 가 본 곳 중 가장 놀라웠던 곳은…",
+      "내가 배우고 싶은 건…",
+      "나의 완벽한 휴일은 이렇게 시작해…",
+      "어떤 동물이든 키울 수 있다면, 그건…",
+      "우리 가족은 늘 내가…",
+      "아무리 해도 익숙해지지 않는 건…",
+      "나의 가장 유용한 습관은…",
+      "지금까지 읽은 최고의 책은…",
+      "십 년 뒤에 나는…",
+      "내가 꿈꾸는 집은…",
+      "어릴 때 있었던 가장 웃긴 일은…",
+      "나에게 행복이란…",
+      "내가 쉽게 포기하지 못하는 건…",
+      "나에게 초능력이 있다면, 그건…",
+      "사람에게서 가장 소중하게 여기는 건…",
+      "한가한 저녁이 생기면, 나는…",
+      "내가 가장 좋아하는 향기는…",
+      "절대 먹지 않을 음식은…",
+      "집을 나설 때 절대 빠뜨리지 않는 건…",
+      "가 보고 싶은 곳은… 왜냐하면…",
+      "지금까지 받은 최고의 선물은…",
+      "나의 가장 특이한 습관은…",
+      "매일 한 시간이 더 생긴다면, 나는…",
+      "내가 많이 배우는 사람은…",
+      "힘든 날 나를 버티게 해 주는 건…",
+      "여행 중에 먹어 본 가장 맛있는 건…",
+      "하루만 직업을 바꿀 수 있다면, 나는…",
+      "내 마음에 가장 가까운 계절은…",
+      "친구들은 내가…",
+      "언젠가 누군가에게 가르쳐 주고 싶은 건…",
+      "하루 중 작은 기쁨은…"
+    ],
+    "truth": {
+      "t01": [
+        "문어는 심장이 세 개다.",
+        true,
+        "두 심장은 아가미로 피를 보내고, 세 번째 심장은 온몸으로 피를 보내요."
+      ],
+      "t02": [
+        "만리장성은 달에서 맨눈으로 보인다.",
+        false,
+        "보이지 않아요. 장성은 폭이 너무 좁거든요. 지구 궤도에서도 찾기가 아주 어려워요."
+      ],
+      "t03": [
+        "꿀은 수천 년 동안 상하지 않고 보관될 수 있다.",
+        true,
+        "고대 이집트 무덤에서 수천 년 된 꿀이 여전히 보존된 채 발견되었어요."
+      ],
+      "t04": [
+        "바나나는 나무에서 자란다.",
+        false,
+        "바나나는 거대한 풀이에요. ‘줄기’처럼 보이는 건 단단히 말린 잎들이에요."
+      ],
+      "t05": [
+        "금성은 태양계에서 가장 뜨거운 행성이다.",
+        true,
+        "두꺼운 대기 때문에 금성은 약 460 °C까지 올라가요. 수성보다 뜨거워요."
+      ],
+      "t06": [
+        "박쥐는 눈이 보이지 않는다.",
+        false,
+        "박쥐는 눈이 보여요. 어둠 속에서는 반향정위로도 길을 찾아요."
+      ],
+      "t07": [
+        "고래는 물고기다.",
+        false,
+        "고래는 포유류예요. 공기로 숨 쉬고 새끼에게 젖을 먹여요."
+      ],
+      "t08": [
+        "사하라는 세계에서 가장 큰 사막이다.",
+        false,
+        "가장 큰 사막은 남극이에요. 사하라는 가장 큰 더운 사막이에요."
+      ],
+      "t09": [
+        "기린의 목뼈 개수는 사람과 같다.",
+        true,
+        "둘 다 목뼈가 일곱 개예요. 기린의 목뼈는 그저 아주 길 뿐이에요."
+      ],
+      "t10": [
+        "식물학적으로 토마토는 베리다.",
+        true,
+        "식물학자들은 토마토를 베리로 분류해요. 속에 씨가 있는 과육이 많은 열매예요."
+      ],
+      "t11": [
+        "식물학적으로 딸기는 베리다.",
+        false,
+        "딸기는 헛열매예요. 진짜 열매는 겉에 붙은 작은 ‘씨’들이에요."
+      ],
+      "t12": [
+        "우주에서는 폭발 소리를 들을 수 있다.",
+        false,
+        "우주에는 공기가 거의 없어서 소리가 전달될 수 없어요."
+      ],
+      "t13": [
+        "높은 산 위에서는 물이 더 낮은 온도에서 끓는다.",
+        true,
+        "높은 곳은 기압이 낮아서 물이 100 °C가 되기 전에 끓어요."
+      ],
+      "t14": [
+        "펭귄은 북극에 산다.",
+        false,
+        "야생 펭귄은 남반구에만 살아요. 먼 북쪽에는 없어요."
+      ],
+      "t15": [
+        "에베레스트는 해발 기준으로 가장 높은 산이다.",
+        true,
+        "에베레스트는 해발 약 8,849미터예요."
+      ],
+      "t16": [
+        "사람은 뇌의 10%만 사용한다.",
+        false,
+        "그건 속설이에요. 하루 동안 뇌의 거의 모든 부분이 활동해요."
+      ],
+      "t17": [
+        "사람의 심장은 하루에 약 10만 번 뛴다.",
+        true,
+        "1분에 약 70번 뛰니까 하루면 대략 10만 번이 돼요."
+      ],
+      "t18": [
+        "금붕어의 기억력은 3초밖에 안 된다.",
+        false,
+        "실험에 따르면 금붕어는 배운 것을 몇 달 동안 기억할 수 있어요."
+      ],
+      "t19": [
+        "오스트레일리아는 나라이면서 대륙이다.",
+        true,
+        "오스트레일리아는 대륙 하나를 통째로 차지하는 유일한 나라예요."
+      ],
+      "t20": [
+        "번개는 같은 곳에 두 번 떨어지지 않는다.",
+        false,
+        "떨어져요. 높은 건물에는 1년에도 여러 번 번개가 쳐요."
+      ],
+      "t21": [
+        "타조는 겁이 나면 모래에 머리를 묻는다.",
+        false,
+        "속설이에요. 겁먹은 타조는 도망치거나 땅에 납작 엎드려 숨어요."
+      ],
+      "t22": [
+        "세계에서 가장 작은 새는 벌새다.",
+        true,
+        "쿠바의 꿀벌벌새는 약 2그램으로, 다른 어떤 새보다 가벼워요."
+      ],
+      "t23": [
+        "수박은 약 90%가 물이다.",
+        true,
+        "수박은 약 92%가 물이에요. 그래서 그렇게 시원한 거예요."
+      ],
+      "t24": [
+        "거미의 다리는 여섯 개다.",
+        false,
+        "거미의 다리는 여덟 개예요. 곤충은 다리가 여섯 개이고, 거미는 곤충이 아니에요."
+      ],
+      "t25": [
+        "달은 스스로 빛을 낸다.",
+        false,
+        "달은 스스로 빛나지 않아요. 햇빛을 반사하는 거예요."
+      ],
+      "t26": [
+        "코끼리는 가장 큰 육상 동물이다.",
+        true,
+        "아프리카코끼리는 6톤이 넘기도 해요."
+      ],
+      "t27": [
+        "대왕고래는 알려진 동물 중 가장 크다.",
+        true,
+        "대왕고래는 길이가 30미터를 넘기도 해요. 알려진 어떤 공룡보다도 커요."
+      ],
+      "t28": [
+        "카멜레온은 오직 위장하려고 색을 바꾼다.",
+        false,
+        "색은 기분, 온도, 다른 카멜레온에게 보내는 신호에 더 많이 좌우돼요."
+      ],
+      "t29": [
+        "전화기는 토머스 에디슨이 발명했다.",
+        false,
+        "1876년에 전화기 특허를 받은 사람은 알렉산더 그레이엄 벨이에요."
+      ],
+      "t30": [
+        "페니실린은 알렉산더 플레밍이 발견했다.",
+        true,
+        "플레밍은 1928년에 최초의 항생제인 페니실린을 발견했어요."
+      ],
+      "t31": [
+        "태양계에서 가장 높은 화산은 화성에 있다.",
+        true,
+        "화성의 올림푸스 산은 높이가 약 22 km로, 에베레스트의 거의 2.5배예요."
+      ],
+      "t32": [
+        "정맥 속 피는 파란색이다.",
+        false,
+        "피는 언제나 빨간색이에요. 정맥이 파랗게 보이는 건 빛이 피부를 통과하는 방식 때문이에요."
+      ],
+      "t33": [
+        "대서양은 지구에서 가장 큰 바다다.",
+        false,
+        "가장 큰 바다는 태평양이에요. 지구의 모든 땅을 합친 것보다도 넓어요."
+      ],
+      "t34": [
+        "러시아는 면적으로 세계에서 가장 큰 나라다.",
+        true,
+        "러시아의 면적은 1,700만 제곱킬로미터가 넘어요."
+      ],
+      "t35": [
+        "캐나다는 세계에서 해안선이 가장 길다.",
+        true,
+        "캐나다의 해안선은 20만 km가 넘어서, 다른 어떤 나라보다 길어요."
+      ],
+      "t36": [
+        "소의 위는 네 부분으로 나뉜다.",
+        true,
+        "소는 위가 하나지만 네 개의 방으로 나뉘어 있어요. 그렇게 풀을 소화해요."
+      ],
+      "t37": [
+        "사자는 세계에서 가장 큰 고양잇과 동물이다.",
+        false,
+        "가장 큰 고양잇과 동물은 호랑이, 특히 시베리아호랑이예요."
+      ],
+      "t38": [
+        "지구는 태양에 가장 가까운 행성이다.",
+        false,
+        "가장 가까운 건 수성, 그다음이 금성이에요. 지구는 세 번째 행성이에요."
+      ],
+      "t39": [
+        "햇빛이 지구에 닿기까지 약 8분이 걸린다.",
+        true,
+        "빛은 태양에서 1억 5천만 km를 약 8분 20초 만에 달려와요."
+      ],
+      "t40": [
+        "돌고래는 뇌의 절반씩 번갈아 잔다.",
+        true,
+        "한쪽이 쉬는 동안 다른 쪽은 망을 보며 숨 쉬는 것을 잊지 않아요."
+      ],
+      "t41": [
+        "감자의 원산지는 아일랜드다.",
+        false,
+        "감자의 원산지는 남아메리카예요. 수천 년 전부터 안데스에서 재배되었어요."
+      ],
+      "t42": [
+        "초콜릿은 카카오나무의 씨앗으로 만든다.",
+        true,
+        "카카오 열매는 줄기에 바로 열리고, 그 안의 씨앗이 초콜릿이 돼요."
+      ],
+      "t43": [
+        "상어는 포유류다.",
+        false,
+        "상어는 아가미로 숨 쉬는 물고기예요. 바다의 포유류는 고래와 돌고래예요."
+      ],
+      "t44": [
+        "어떤 대나무는 하루에 거의 1미터나 자란다.",
+        true,
+        "대나무는 지구에서 가장 빨리 자라는 식물 중 하나예요."
+      ],
+      "t45": [
+        "부엉이는 고개를 360도 완전히 돌릴 수 있다.",
+        false,
+        "부엉이는 고개를 약 270도 돌릴 수 있어요. 많이 돌지만 한 바퀴는 아니에요."
+      ],
+      "t46": [
+        "다이아몬드와 연필심의 흑연은 같은 물질로 되어 있다.",
+        true,
+        "둘 다 순수한 탄소예요. 원자의 배열만 다를 뿐이에요."
+      ],
+      "t47": [
+        "낙타는 혹에 물을 저장한다.",
+        false,
+        "낙타의 혹에는 물이 아니라 지방이 있어요. 긴 여행에서 에너지가 되어 줘요."
+      ],
+      "t48": [
+        "사람 몸에서 가장 작은 뼈는 귀 안에 있다.",
+        true,
+        "가운데귀의 등자뼈는 길이가 약 3밀리미터밖에 안 돼요."
+      ],
+      "t49": [
+        "큰 앵무새는 50년 넘게 살 수 있다.",
+        true,
+        "잘 돌봄을 받은 금강앵무와 코카투는 50년 이상 사는 경우가 많아요."
+      ],
+      "t50": [
+        "최초의 동력 비행은 라이트 형제가 해냈다.",
+        true,
+        "1903년에 날았고, 맨 처음 비행은 12초 동안 이어졌어요."
+      ],
+      "t51": [
+        "바퀴는 중세에 발명되었다.",
+        false,
+        "바퀴는 5,000년이 넘었어요. 기원전 3500년경 메소포타미아에서 쓰였어요."
+      ],
+      "t52": [
+        "해마는 물고기다.",
+        true,
+        "해마는 다른 물고기처럼 아가미로 숨 쉬고 지느러미로 헤엄쳐요."
+      ],
+      "t53": [
+        "벌새는 뒤로 날 수 있다.",
+        true,
+        "정말로 뒤로 날 수 있는 새는 벌새뿐이에요."
+      ],
+      "t54": [
+        "에펠탑은 여름에 조금 더 높아진다.",
+        true,
+        "더위에 금속이 늘어나서 탑이 약 15센티미터 높아져요."
+      ],
+      "t55": [
+        "피부는 사람 몸에서 가장 큰 기관이다.",
+        true,
+        "어른의 피부는 몇 킬로그램이나 되고 온몸을 보호해요."
+      ],
+      "t56": [
+        "빨간색을 보면 황소가 화를 낸다.",
+        false,
+        "황소는 빨간색을 거의 구별하지 못해요. 황소를 자극하는 건 색이 아니라 움직임이에요."
+      ],
+      "t57": [
+        "집파리는 하루밖에 살지 못한다.",
+        false,
+        "집파리는 약 한 달을 살아요. 하루이틀만 사는 건 하루살이 성충이에요."
+      ],
+      "t58": [
+        "파인애플은 나무에서 자란다.",
+        false,
+        "파인애플은 키 작은 잎이 무성한 식물의 한가운데에서 자라요."
+      ],
+      "t59": [
+        "땅콩은 견과류다.",
+        false,
+        "땅콩은 완두콩, 강낭콩과 친척인 콩과 식물이에요. 꼬투리는 땅속에서 익어요."
+      ],
+      "t60": [
+        "북극과 남극은 똑같이 춥다.",
+        false,
+        "남극이 훨씬 추워요. 남극은 높은 얼음 대륙 위에, 북극은 바다 위에 있거든요."
+      ]
+    }
   },
   "zh": {
     "text": {
@@ -17585,7 +36659,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "邀請",
       "invited": "已邀請",
       "inviteNone": "在「好友」中新增好友，就能一鍵邀請。",
-      "inviteSent": "已傳送邀請給 {name}"
+      "inviteSent": "已傳送邀請給 {name}",
+      "truth": "是真是假",
+      "tfTitle": "是真是假",
+      "tfNote": "兩人即時遊戲：關於世界的驚奇知識。12 秒內判斷是真是假，答對一題得一分。",
+      "tfShareText": "{name} 邀請你玩即時遊戲「是真是假」",
+      "tfJoinLead": "{name} 在等你。是真是假？快快決定！",
+      "tfRound": "第 {n}/{total} 則",
+      "tfTrue": "真的",
+      "tfFalse": "假的",
+      "tfIsTrue": "這是真的！",
+      "tfIsFalse": "這是假的！",
+      "tfFirstYou": "你最先答對！",
+      "tfFirstThem": "{name} 最先答對",
+      "tfFinalWin": "勝利！你對世界懂得更多。",
+      "tfFinalLose": "這次 {name} 懂得更多 — 再來一局？",
+      "tfFinalDraw": "平手 — 你們懂得一樣多！",
+      "featTruth": "即時遊戲「是真是假」— 關於世界的驚奇知識"
     },
     "questions": {
       "q01": [
@@ -18007,6 +37097,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "做菜",
         "新語言",
         "畫畫"
+      ],
+      "q61": [
+        "我最拿手的菜是？",
+        "湯",
+        "抓飯",
+        "烘焙點心",
+        "沙拉"
+      ],
+      "q62": [
+        "我最想先去哪個國家？",
+        "土耳其",
+        "日本",
+        "摩洛哥",
+        "挪威"
+      ],
+      "q63": [
+        "我比較想從事哪種運動？",
+        "游泳",
+        "跑步",
+        "騎自行車",
+        "足球"
+      ],
+      "q64": [
+        "我會選哪本書？",
+        "冒險故事",
+        "歷史書",
+        "童話",
+        "百科全書"
+      ],
+      "q65": [
+        "在動物園我會先去看哪種動物？",
+        "大象",
+        "猴子",
+        "企鵝",
+        "長頸鹿"
+      ],
+      "q66": [
+        "我對辣的看法？",
+        "越辣越好",
+        "一點點可以",
+        "只能一丁點",
+        "完全不吃"
+      ],
+      "q67": [
+        "我在學校最喜歡哪一科？",
+        "數學",
+        "文學",
+        "地理",
+        "體育"
+      ],
+      "q68": [
+        "我小時候夢想的職業？",
+        "醫生",
+        "老師",
+        "太空人",
+        "廚師"
+      ],
+      "q69": [
+        "我對健行的看法？",
+        "夢想來一趟長途健行",
+        "一天就好",
+        "要有舒適的設備",
+        "家裡最好"
+      ],
+      "q70": [
+        "我早上的狀態？",
+        "精神飽滿",
+        "還沒睡醒",
+        "安安靜靜",
+        "話很多"
+      ],
+      "q71": [
+        "我最喜歡哪種堅果？",
+        "榛果",
+        "核桃",
+        "腰果",
+        "杏仁"
+      ],
+      "q72": [
+        "突然多了一小時空閒，我會做什麼？",
+        "看書",
+        "散步",
+        "打電話給家人",
+        "做點吃的"
+      ],
+      "q73": [
+        "我不喜歡哪種天氣？",
+        "酷熱",
+        "颳風",
+        "雨雪泥濘",
+        "嚴寒"
+      ],
+      "q74": [
+        "我會把房間漆成什麼顏色？",
+        "白色",
+        "米色",
+        "綠色",
+        "淺藍色"
+      ],
+      "q75": [
+        "我比較想玩什麼？",
+        "西洋棋",
+        "跳棋",
+        "拼圖",
+        "文字遊戲"
+      ],
+      "q76": [
+        "我會為客人做什麼菜？",
+        "抓飯",
+        "派",
+        "沙拉",
+        "叫外送"
+      ],
+      "q77": [
+        "我絕對不吃什麼？",
+        "蘑菇",
+        "魚",
+        "橄欖",
+        "水煮洋蔥"
+      ],
+      "q78": [
+        "我喜歡怎麼泡茶？",
+        "濃一點",
+        "淡一點",
+        "加糖",
+        "加香草"
+      ],
+      "q79": [
+        "家裡對我最重要的是？",
+        "乾淨",
+        "舒適",
+        "採光好",
+        "安靜"
+      ],
+      "q80": [
+        "我怎麼學新東西？",
+        "閱讀",
+        "看教學影片",
+        "動手實作",
+        "請教別人"
+      ],
+      "q81": [
+        "哪種野生動物最讓我著迷？",
+        "老虎",
+        "熊",
+        "老鷹",
+        "海豚"
+      ],
+      "q82": [
+        "我會送媽媽什麼？",
+        "花",
+        "手作禮物",
+        "一趟旅行",
+        "溫暖的毯子"
+      ],
+      "q83": [
+        "旅途中我會做什麼？",
+        "看窗外",
+        "看書",
+        "聊天",
+        "吃點心"
+      ],
+      "q84": [
+        "我最喜歡的雞肉料理？",
+        "烤雞肉串",
+        "雞肉飯",
+        "雞肉餅",
+        "雞塊"
+      ],
+      "q85": [
+        "搭火車我會選哪個位子？",
+        "靠窗",
+        "靠走道",
+        "背對行進方向",
+        "都可以"
+      ],
+      "q86": [
+        "事情不順時我會怎麼做？",
+        "立刻行動",
+        "先想一想",
+        "尋求建議",
+        "有點擔心"
+      ],
+      "q87": [
+        "我最主要的特質是？",
+        "善良",
+        "誠實",
+        "堅持",
+        "開朗"
+      ],
+      "q88": [
+        "我在哪裡最能好好休息？",
+        "鄉下親戚家",
+        "海邊旅館",
+        "帳篷裡",
+        "家裡"
+      ],
+      "q89": [
+        "我會選哪種糕點？",
+        "薩姆薩烤餅",
+        "喬治亞起司餅",
+        "恰克恰克蜜糖酥",
+        "閃電泡芙"
+      ],
+      "q90": [
+        "我最想學哪種語言？",
+        "阿拉伯語",
+        "英語",
+        "土耳其語",
+        "日語"
+      ],
+      "q91": [
+        "我能多久不吃甜食？",
+        "一天",
+        "一週",
+        "一個月",
+        "需要多久都行"
+      ],
+      "q92": [
+        "快遲到時我會怎麼做？",
+        "拚命跑",
+        "先打電話通知",
+        "搭計程車",
+        "我從不遲到"
+      ],
+      "q93": [
+        "東西壞了我會怎麼做？",
+        "自己修",
+        "看說明書",
+        "找人幫忙",
+        "每個按鈕都按一遍"
+      ],
+      "q94": [
+        "我第一個放進行李箱的是？",
+        "急救包",
+        "一本書",
+        "充電器",
+        "點心"
+      ],
+      "q95": [
+        "什麼活動能讓我平靜下來？",
+        "做菜",
+        "整理打掃",
+        "畫畫",
+        "散步"
+      ],
+      "q96": [
+        "退休後我想做什麼？",
+        "照顧花園",
+        "旅行",
+        "閱讀",
+        "陪伴孫輩"
+      ],
+      "q97": [
+        "什麼最讓我心煩？",
+        "噪音",
+        "雜亂",
+        "遲到",
+        "無禮"
+      ],
+      "q98": [
+        "我最喜歡什麼氣味？",
+        "剛出爐的麵包",
+        "雨",
+        "花香",
+        "大海"
+      ],
+      "q99": [
+        "甜點我會選什麼？",
+        "水果",
+        "冰淇淋",
+        "派",
+        "只喝茶"
       ]
     },
     "yesNo": {
@@ -18209,6 +37572,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "等等再玩一次好嗎？",
         "想再來一局",
         "比起遊戲更想抱抱"
+      ],
+      "c41": [
+        "你喜歡吃辣嗎？",
+        "越辣越好",
+        "選擇溫和一點的口味"
+      ],
+      "c42": [
+        "你會游泳嗎？",
+        "游得像魚一樣",
+        "目前還待在岸邊"
+      ],
+      "c43": [
+        "你想養貓嗎？",
+        "已經在想名字了",
+        "比較喜歡狗"
+      ],
+      "c44": [
+        "你想有一天去伊斯坦堡嗎？",
+        "已經夢想著博斯普魯斯海峽",
+        "會選別的城市"
+      ],
+      "c45": [
+        "你喜歡做菜嗎？",
+        "開開心心地下廚",
+        "寧願去洗碗"
+      ],
+      "c46": [
+        "你想學做抓飯嗎？",
+        "已經在找食譜了",
+        "寧願品嚐別人做的"
+      ],
+      "c47": [
+        "你喜歡看書嗎？",
+        "身邊總有一本書",
+        "比較喜歡聽故事"
+      ],
+      "c48": [
+        "你會騎腳踏車嗎？",
+        "現在就能騎出門",
+        "答應會去學"
+      ],
+      "c49": [
+        "比起大海，你更喜歡山嗎？",
+        "選山",
+        "選海"
+      ],
+      "c50": [
+        "你想看看沙漠嗎？",
+        "夢想著沙丘",
+        "寧願選森林"
+      ],
+      "c51": [
+        "你喜歡冬天嗎？",
+        "期待第一場雪",
+        "期待夏天"
+      ],
+      "c52": [
+        "你喝茶不加糖嗎？",
+        "喜歡茶的純粹滋味",
+        "少不了一匙糖"
+      ],
+      "c53": [
+        "你怕蜘蛛嗎？",
+        "離牠們遠遠的",
+        "淡定地把牠們送到屋外"
+      ],
+      "c54": [
+        "你喜歡畫畫嗎？",
+        "已經拿起畫筆",
+        "寧願欣賞別人的畫"
+      ],
+      "c55": [
+        "你想看極光嗎？",
+        "已經在查哪裡看得到",
+        "寧願仰望星星"
+      ],
+      "c56": [
+        "你喜歡下雨天嗎？",
+        "喜歡窗外的雨聲",
+        "等待太陽出來"
+      ],
+      "c57": [
+        "你會騎馬嗎？",
+        "穩穩坐在馬鞍上",
+        "目前只是夢想"
+      ],
+      "c58": [
+        "你想養狗嗎？",
+        "夢想有個忠實的朋友",
+        "目前要照顧的已經夠多了"
+      ],
+      "c59": [
+        "比起鹹的，你更喜歡甜的嗎？",
+        "沒有甜食活不下去",
+        "選鹹的"
+      ],
+      "c60": [
+        "你喜歡搭火車旅行嗎？",
+        "喜歡車輪的節奏",
+        "選飛機"
+      ],
+      "c61": [
+        "你容易一早就開始一天嗎？",
+        "精神飽滿地開始一天",
+        "要到中午才進入狀態"
+      ],
+      "c62": [
+        "你喜歡搭帳篷露營嗎？",
+        "已經在收拾背包",
+        "選舒適的旅館"
+      ],
+      "c63": [
+        "你想住在海邊嗎？",
+        "夢想著海浪聲",
+        "選城市"
+      ],
+      "c64": [
+        "你冬天也吃冰淇淋嗎？",
+        "天寒地凍也照吃",
+        "只在夏天吃"
+      ],
+      "c65": [
+        "你喜歡巧克力嗎？",
+        "每一種都認得",
+        "能淡定地走過"
+      ],
+      "c66": [
+        "你會烤派嗎？",
+        "烤得像奶奶一樣好",
+        "答應會去學"
+      ],
+      "c67": [
+        "你喜歡看星星嗎？",
+        "認得各個星座",
+        "比較喜歡晴朗的白天"
+      ],
+      "c68": [
+        "你想有一天種自己的園子嗎？",
+        "已經在挑幼苗",
+        "先從一盆花開始"
+      ],
+      "c69": [
+        "你喜歡野花嗎？",
+        "喜歡雛菊和矢車菊",
+        "比較喜歡庭園裡的花"
+      ],
+      "c70": [
+        "你喝咖啡嗎？",
+        "沒有咖啡就無法開始一天",
+        "選茶"
+      ],
+      "c71": [
+        "你喜歡自製檸檬水嗎？",
+        "已經在切檸檬",
+        "寧願喝白開水"
+      ],
+      "c72": [
+        "你想有一天去日本嗎？",
+        "夢想看到櫻花盛開",
+        "會選別的國家"
+      ],
+      "c73": [
+        "你喜歡秋天嗎？",
+        "喜歡踩著落葉沙沙作響",
+        "期待春天"
+      ],
+      "c74": [
+        "你喜歡薰衣草的香味嗎？",
+        "很喜歡這個香氣",
+        "比較喜歡別的香味"
+      ],
+      "c75": [
+        "你喜歡桌遊嗎？",
+        "已經在擺棋盤",
+        "比較想去散步"
+      ],
+      "c76": [
+        "你會開車嗎？",
+        "開車很有自信",
+        "目前還是乘客"
+      ],
+      "c77": [
+        "你想有一天看看大洋嗎？",
+        "夢想看到大浪",
+        "有海就夠了"
+      ],
+      "c78": [
+        "你想在農場住一段時間嗎？",
+        "已經在餵雞了",
+        "留在城市"
+      ],
+      "c79": [
+        "你喜歡大城市嗎？",
+        "喜歡城市的燈火",
+        "選擇寧靜"
+      ],
+      "c80": [
+        "比起甜食，你更喜歡水果嗎？",
+        "選水果",
+        "選甜食"
+      ],
+      "c81": [
+        "你想在海裡看到海豚嗎？",
+        "很想親眼看看",
+        "寧願讀讀關於牠們的書"
+      ],
+      "c82": [
+        "你喜歡夏天嗎？",
+        "期待炎熱的日子",
+        "喜歡涼爽的天氣"
+      ],
+      "c83": [
+        "你喜歡在公園散步嗎？",
+        "什麼天氣都去散步",
+        "比較喜歡待在家"
+      ],
+      "c84": [
+        "你喜歡手寫嗎？",
+        "字跡工整",
+        "在手機上打字"
+      ],
+      "c85": [
+        "你喜歡划船遊玩嗎？",
+        "已經握起船槳",
+        "留在岸上"
+      ],
+      "c86": [
+        "你想環遊世界嗎？",
+        "已經在規劃路線",
+        "幾個國家就夠了"
+      ],
+      "c87": [
+        "你會堆雪人嗎？",
+        "要堆出最大的那個",
+        "寧願打雪仗"
+      ],
+      "c88": [
+        "你今年想學點新東西嗎？",
+        "已經在挑課程",
+        "要做的事已經夠多了"
+      ],
+      "c89": [
+        "你喜歡安靜嗎？",
+        "珍惜寧靜",
+        "喜歡熱熱鬧鬧"
+      ],
+      "c90": [
+        "你喜歡送禮物給家人嗎？",
+        "不需要理由就讓家人開心",
+        "比較喜歡用實際行動幫忙"
       ]
     },
     "loves": {
@@ -18323,6 +37936,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "森林",
         "沙漠",
         "極光"
+      ],
+      "s17": [
+        "最喜歡的水果？",
+        "蘋果",
+        "草莓",
+        "西瓜",
+        "葡萄"
+      ],
+      "s18": [
+        "休假日做什麼？",
+        "去山裡健行",
+        "在家做菜",
+        "逛博物館",
+        "釣魚"
+      ],
+      "s19": [
+        "最喜歡的早餐？",
+        "鬆餅",
+        "歐姆蛋",
+        "莓果粥",
+        "可頌"
+      ],
+      "s20": [
+        "最喜歡的鳥？",
+        "貓頭鷹",
+        "鸚鵡",
+        "天鵝",
+        "孔雀"
+      ],
+      "s21": [
+        "想去哪座城市？",
+        "伊斯坦堡",
+        "巴黎",
+        "東京",
+        "杜拜"
+      ],
+      "s22": [
+        "最喜歡的運動？",
+        "足球",
+        "游泳",
+        "網球",
+        "騎馬"
+      ],
+      "s23": [
+        "花園裡種什麼？",
+        "蘋果樹",
+        "玫瑰",
+        "蔬菜",
+        "草莓"
+      ],
+      "s24": [
+        "最喜歡的烘焙點心？",
+        "小餡餅",
+        "甜甜圈",
+        "餅乾",
+        "果仁蜜餅"
+      ],
+      "s25": [
+        "住在哪裡？",
+        "河邊",
+        "森林裡",
+        "大城市",
+        "島上"
+      ],
+      "s26": [
+        "最喜歡的海洋生物？",
+        "海龜",
+        "鯨魚",
+        "章魚",
+        "海馬"
+      ],
+      "s27": [
+        "搭什麼出遊？",
+        "腳踏車",
+        "滑板車",
+        "熱氣球",
+        "小船"
+      ],
+      "s28": [
+        "最喜歡的休閒活動？",
+        "編織",
+        "拍攝大自然",
+        "園藝",
+        "書法"
+      ],
+      "s29": [
+        "最喜歡的湯？",
+        "羅宋湯",
+        "雞湯",
+        "南瓜湯",
+        "扁豆湯"
+      ],
+      "s30": [
+        "森林裡的動物？",
+        "刺蝟",
+        "松鼠",
+        "狐狸",
+        "鹿"
+      ],
+      "s31": [
+        "來點小零嘴？",
+        "椰棗",
+        "杏仁",
+        "開心果",
+        "杏桃乾"
+      ],
+      "s32": [
+        "健行要帶什麼？",
+        "帳篷",
+        "保溫瓶",
+        "地圖",
+        "手電筒"
+      ],
+      "s33": [
+        "最喜歡的甜點？",
+        "布丁",
+        "起司蛋糕",
+        "蜂蜜鬆餅",
+        "水果沙拉"
+      ],
+      "s34": [
+        "冬天做什麼？",
+        "堆雪人",
+        "坐雪橇",
+        "窗邊喝茶",
+        "滑雪"
+      ],
+      "s35": [
+        "夏天做什麼？",
+        "游泳",
+        "採莓果",
+        "划船",
+        "堆沙堡"
+      ],
+      "s36": [
+        "用什麼畫畫？",
+        "水彩",
+        "鉛筆",
+        "蠟筆",
+        "畫布顏料"
+      ],
+      "s37": [
+        "最喜歡的蔬菜？",
+        "紅蘿蔔",
+        "番茄",
+        "玉米",
+        "南瓜"
+      ],
+      "s38": [
+        "什麼讓家更溫馨？",
+        "壁爐",
+        "柔軟的毯子",
+        "室內植物",
+        "一架子的書"
+      ],
+      "s39": [
+        "玩什麼？",
+        "西洋棋",
+        "拼圖",
+        "桌遊",
+        "球類遊戲"
+      ],
+      "s40": [
+        "農場裡住著誰？",
+        "乳牛",
+        "小羊",
+        "母雞",
+        "小山羊"
+      ],
+      "s41": [
+        "茶裡加什麼？",
+        "蜂蜜",
+        "檸檬",
+        "果醬",
+        "薄荷"
+      ],
+      "s42": [
+        "海邊有什麼？",
+        "燈塔",
+        "貝殼",
+        "帆船",
+        "海鷗"
+      ],
+      "s43": [
+        "早晨怎麼開始？",
+        "做運動",
+        "一杯茶",
+        "散步",
+        "一本書"
+      ],
+      "s44": [
+        "最喜歡的莓果？",
+        "覆盆莓",
+        "藍莓",
+        "櫻桃",
+        "黑莓"
       ]
     },
     "who": [
@@ -18365,7 +38174,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "我們誰比較常想起好笑的往事？",
       "我們誰比較有耐心？",
       "我們誰比較常說「謝謝」？",
-      "我們誰會先主動幫忙？"
+      "我們誰會先主動幫忙？",
+      "我們誰心算比較好？",
+      "我們誰讀的書比較多？",
+      "我們誰打字比較快？",
+      "我們誰比較常打電話給父母？",
+      "我們誰比較會講故事？",
+      "我們誰的字比較工整？",
+      "我們誰比較愛吃辣？",
+      "我們誰比較常把東西忘在家裡？",
+      "我們誰比較擅長用電子產品？",
+      "我們誰比較喜歡學新東西？",
+      "我們誰比較會做計劃？",
+      "我們誰在市場比較會殺價？",
+      "我們誰比較熱愛大自然？",
+      "我們誰吃飯比較快？",
+      "我們誰喝茶喝得比較多？",
+      "我們誰比較會照顧植物？",
+      "我們誰比較懂地理？",
+      "我們誰西洋棋下得比較好？",
+      "我們誰在市場比較會挑水果？",
+      "我們誰比較常看天氣預報？",
+      "我們誰比較怕蜘蛛？",
+      "我們誰比較勇敢？",
+      "我們誰好奇心比較強？",
+      "我們誰解謎比較快？",
+      "我們誰畫畫比較好？",
+      "我們誰比較常幫助鄰居？",
+      "我們誰比較會跟孩子相處？",
+      "我們誰比較喜歡散步？",
+      "我們誰比較常看說明書？",
+      "我們誰比較會記名字？",
+      "我們誰學外語單字比較快？",
+      "我們誰比較會烘焙？",
+      "我們誰比較會給建議？",
+      "我們誰比較喜歡寒冷的天氣？",
+      "我們誰健行時表現會比較好？",
+      "我們誰比較常看新聞？",
+      "我們誰比較常嘗試新菜色？",
+      "我們誰收拾行李比較快？",
+      "我們誰比較會修東西？",
+      "我們誰比較常跟動物說話？",
+      "我們誰比較常洗碗？",
+      "我們誰比較懂歷史？",
+      "我們誰比較常拖延？",
+      "我們誰跟新朋友比較快熟起來？",
+      "我們誰比較注重健康？"
     ],
     "phrases": [
       "讓我微笑的是，你…",
@@ -18397,8 +38251,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "和你一起的早晨是…",
       "如果用一個詞形容我們，那就是…",
       "我想向你學習如何…",
-      "謝謝你總是…"
-    ]
+      "謝謝你總是…",
+      "小時候我最喜歡的食物是…",
+      "如果能在任何一個國家待一天，我會…",
+      "我得到過最好的建議是…",
+      "我總是忍不住笑，每當…",
+      "家鄉裡我最喜歡的地方是…",
+      "如果我有一間自己的小店，我會賣…",
+      "我最拿手的菜是…",
+      "我至今還記得的童年夢想是…",
+      "要讓我開心很簡單，只要…",
+      "我去過最令人驚嘆的地方是…",
+      "我想學…",
+      "我理想的休假日，一開始是…",
+      "如果能養任何一種動物，我會選…",
+      "家人總是說我…",
+      "我怎麼也習慣不了…",
+      "我最有用的習慣是…",
+      "我讀過最好的書是…",
+      "十年後，我想…",
+      "我夢想中的家是…",
+      "我小時候遇過最好笑的事是…",
+      "對我來說，幸福是…",
+      "我很難放棄…",
+      "如果我有超能力，那會是…",
+      "我最看重別人的是…",
+      "有空閒的晚上，我會…",
+      "我最喜歡的氣味是…",
+      "我絕對不吃的食物是…",
+      "我出門一定會帶的東西是…",
+      "我想去…，因為…",
+      "我收過最好的禮物是…",
+      "我最特別的習慣是…",
+      "如果每天多出一小時，我會…",
+      "讓我學到很多的人是…",
+      "難熬的日子裡，支撐我的是…",
+      "旅途中我吃過最好吃的是…",
+      "如果能換一天工作，我會選…",
+      "我最喜歡的季節是…",
+      "朋友們說我…",
+      "有一天，我想教別人…",
+      "我一天中的小確幸是…"
+    ],
+    "truth": {
+      "t01": [
+        "章魚有三顆心臟。",
+        true,
+        "兩顆心臟把血液送到鰓，第三顆把血液送往全身。"
+      ],
+      "t02": [
+        "從月球上用肉眼能看到萬里長城。",
+        false,
+        "看不到：長城太窄了。即使從地球軌道上也很難看見。"
+      ],
+      "t03": [
+        "蜂蜜可以保存幾千年而不變質。",
+        true,
+        "古埃及墓中曾發現數千年前的蜂蜜，依然保存良好。"
+      ],
+      "t04": [
+        "香蕉長在樹上。",
+        false,
+        "香蕉是巨大的草本植物：它的「樹幹」是由緊緊包覆的葉子構成的。"
+      ],
+      "t05": [
+        "金星是太陽系中最熱的行星。",
+        true,
+        "濃厚的大氣讓金星溫度高達約 460 °C，比水星還熱。"
+      ],
+      "t06": [
+        "蝙蝠看不見。",
+        false,
+        "蝙蝠看得見，在黑暗中還會用回聲定位辨別方向。"
+      ],
+      "t07": [
+        "鯨魚是魚。",
+        false,
+        "鯨是哺乳動物：用肺呼吸空氣，並用乳汁哺育幼崽。"
+      ],
+      "t08": [
+        "撒哈拉是世界上最大的沙漠。",
+        false,
+        "最大的沙漠是南極洲。撒哈拉是最大的熱沙漠。"
+      ],
+      "t09": [
+        "長頸鹿的頸骨數量和人類一樣。",
+        true,
+        "兩者都有七節頸椎，只是長頸鹿的特別長。"
+      ],
+      "t10": [
+        "從植物學來看，番茄是漿果。",
+        true,
+        "植物學家把番茄歸為漿果：一種內含種子的多汁果實。"
+      ],
+      "t11": [
+        "從植物學來看，草莓是漿果。",
+        false,
+        "草莓是假果：真正的果實是表面那些小小的「種子」。"
+      ],
+      "t12": [
+        "在太空中聽得到爆炸聲。",
+        false,
+        "太空幾乎沒有空氣，聲音無法傳播。"
+      ],
+      "t13": [
+        "在高山上，水的沸點比較低。",
+        true,
+        "高處氣壓較低，水不到 100 °C 就會沸騰。"
+      ],
+      "t14": [
+        "企鵝住在北極。",
+        false,
+        "野生企鵝只生活在南半球，遙遠的北方沒有企鵝。"
+      ],
+      "t15": [
+        "聖母峰是海拔最高的山。",
+        true,
+        "聖母峰海拔約 8,849 公尺。"
+      ],
+      "t16": [
+        "人只用了大腦的 10%。",
+        false,
+        "這是迷思：一天之中，大腦幾乎每個部分都會活動。"
+      ],
+      "t17": [
+        "人的心臟一天大約跳 10 萬次。",
+        true,
+        "以每分鐘約 70 下計算，一天大約跳 10 萬次。"
+      ],
+      "t18": [
+        "金魚的記憶只有三秒。",
+        false,
+        "實驗顯示，金魚能把學到的事記住好幾個月。"
+      ],
+      "t19": [
+        "澳洲既是國家也是大陸。",
+        true,
+        "澳洲是唯一佔據整塊大陸的國家。"
+      ],
+      "t20": [
+        "閃電從不會打在同一個地方兩次。",
+        false,
+        "會的：高樓每年都會被閃電擊中很多次。"
+      ],
+      "t21": [
+        "鴕鳥害怕時會把頭埋進沙裡。",
+        false,
+        "這是迷思：受驚的鴕鳥會逃跑，或平貼在地上躲藏。"
+      ],
+      "t22": [
+        "世界上最小的鳥是一種蜂鳥。",
+        true,
+        "古巴的吸蜜蜂鳥重約 2 公克，比其他鳥都輕。"
+      ],
+      "t23": [
+        "西瓜大約 90% 是水。",
+        true,
+        "西瓜約有 92% 是水，所以特別消暑。"
+      ],
+      "t24": [
+        "蜘蛛有六隻腳。",
+        false,
+        "蜘蛛有八隻腳。昆蟲才有六隻腳，而蜘蛛不是昆蟲。"
+      ],
+      "t25": [
+        "月亮自己會發光。",
+        false,
+        "月亮本身不發光，它反射的是太陽光。"
+      ],
+      "t26": [
+        "大象是最大的陸地動物。",
+        true,
+        "非洲草原象的體重可超過 6 公噸。"
+      ],
+      "t27": [
+        "藍鯨是科學已知最大的動物。",
+        true,
+        "藍鯨可長達 30 公尺以上，比任何已知的恐龍都大。"
+      ],
+      "t28": [
+        "變色龍變色只是為了偽裝。",
+        false,
+        "牠的顏色更多取決於情緒、溫度，以及向同類傳遞訊號。"
+      ],
+      "t29": [
+        "電話是愛迪生發明的。",
+        false,
+        "1876 年，亞歷山大·格拉漢姆·貝爾取得了電話專利。"
+      ],
+      "t30": [
+        "盤尼西林是亞歷山大·弗萊明發現的。",
+        true,
+        "弗萊明在 1928 年發現盤尼西林，這是第一種抗生素。"
+      ],
+      "t31": [
+        "太陽系最高的火山在火星上。",
+        true,
+        "火星上的奧林帕斯山高約 22 公里，幾乎是聖母峰的 2.5 倍。"
+      ],
+      "t32": [
+        "我們靜脈裡的血是藍色的。",
+        false,
+        "血液一直是紅色的；靜脈看起來發藍，是因為光線穿過皮膚的方式。"
+      ],
+      "t33": [
+        "大西洋是地球上最大的海洋。",
+        false,
+        "最大的是太平洋：它比地球上所有陸地加起來還大。"
+      ],
+      "t34": [
+        "以面積來說，俄羅斯是世界上最大的國家。",
+        true,
+        "俄羅斯面積超過 1,700 萬平方公里。"
+      ],
+      "t35": [
+        "加拿大擁有世界上最長的海岸線。",
+        true,
+        "加拿大的海岸線超過 20 萬公里，比任何國家都長。"
+      ],
+      "t36": [
+        "牛的胃有四個部分。",
+        true,
+        "牛的胃分成四個胃室，牠就是這樣消化青草的。"
+      ],
+      "t37": [
+        "獅子是世界上最大的貓科動物。",
+        false,
+        "最大的貓科動物是老虎，尤其是西伯利亞虎。"
+      ],
+      "t38": [
+        "地球是最靠近太陽的行星。",
+        false,
+        "最近的是水星，其次是金星；地球是第三顆行星。"
+      ],
+      "t39": [
+        "陽光大約要 8 分鐘才能到達地球。",
+        true,
+        "光從太陽出發，約 8 分 20 秒走完 1.5 億公里。"
+      ],
+      "t40": [
+        "海豚睡覺時一次只讓半邊大腦休息。",
+        true,
+        "一半大腦休息，另一半保持警覺，並記得要呼吸。"
+      ],
+      "t41": [
+        "馬鈴薯原產於愛爾蘭。",
+        false,
+        "馬鈴薯原產於南美洲：幾千年前就在安地斯山脈種植。"
+      ],
+      "t42": [
+        "巧克力是用可可樹的種子做的。",
+        true,
+        "可可果直接長在樹幹上，裡面的種子就是巧克力的原料。"
+      ],
+      "t43": [
+        "鯊魚是哺乳動物。",
+        false,
+        "鯊魚是魚，用鰓呼吸。海裡的哺乳動物是鯨和海豚。"
+      ],
+      "t44": [
+        "有些竹子一天能長將近一公尺。",
+        true,
+        "竹子是地球上生長最快的植物之一。"
+      ],
+      "t45": [
+        "貓頭鷹的頭能轉整整 360 度。",
+        false,
+        "貓頭鷹的頭大約能轉 270 度，很厲害，但不是一整圈。"
+      ],
+      "t46": [
+        "鑽石和鉛筆裡的石墨是同一種物質。",
+        true,
+        "兩者都是純碳，只是原子排列方式不同。"
+      ],
+      "t47": [
+        "駱駝把水儲存在駝峰裡。",
+        false,
+        "駝峰儲存的是脂肪而不是水，在長途旅行中提供能量。"
+      ],
+      "t48": [
+        "人體最小的骨頭在耳朵裡。",
+        true,
+        "中耳的鐙骨只有約 3 公釐長。"
+      ],
+      "t49": [
+        "大型鸚鵡可以活超過 50 年。",
+        true,
+        "照顧得好的金剛鸚鵡和鳳頭鸚鵡常能活 50 年以上。"
+      ],
+      "t50": [
+        "萊特兄弟完成了第一次動力飛機飛行。",
+        true,
+        "他們在 1903 年飛上天空，第一次飛行只持續了 12 秒。"
+      ],
+      "t51": [
+        "輪子是中世紀發明的。",
+        false,
+        "輪子已有 5,000 多年歷史：約 5,500 年前就在美索不達米亞使用。"
+      ],
+      "t52": [
+        "海馬是魚。",
+        true,
+        "海馬用鰓呼吸、靠鰭游泳，和其他魚一樣。"
+      ],
+      "t53": [
+        "蜂鳥會倒著飛。",
+        true,
+        "蜂鳥是唯一真正能倒退飛行的鳥。"
+      ],
+      "t54": [
+        "艾菲爾鐵塔夏天會變高一點。",
+        true,
+        "高溫讓金屬膨脹，鐵塔會長高約 15 公分。"
+      ],
+      "t55": [
+        "皮膚是人體最大的器官。",
+        true,
+        "成人的皮膚重達好幾公斤，保護著整個身體。"
+      ],
+      "t56": [
+        "紅色會讓公牛生氣。",
+        false,
+        "公牛幾乎分辨不出紅色：激怒牠的是動作，不是顏色。"
+      ],
+      "t57": [
+        "家蠅只能活一天。",
+        false,
+        "家蠅大約能活一個月。只活一兩天的是成年的蜉蝣。"
+      ],
+      "t58": [
+        "鳳梨長在樹上。",
+        false,
+        "鳳梨長在低矮的多葉植物上，從植株正中央長出來。"
+      ],
+      "t59": [
+        "花生是堅果。",
+        false,
+        "花生是豆科植物，和豌豆、豆子是親戚，豆莢在地下成熟。"
+      ],
+      "t60": [
+        "北極和南極一樣冷。",
+        false,
+        "南極冷得多：它位於高聳的冰封大陸上，北極則在海洋上。"
+      ]
+    }
   },
   "th": {
     "text": {
@@ -18607,7 +38803,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "ชวน",
       "invited": "ชวนแล้ว",
       "inviteNone": "เพิ่มเพื่อนในส่วน “เพื่อน” เพื่อชวนได้ในแตะเดียว",
-      "inviteSent": "ส่งคำชวนถึง {name} แล้ว"
+      "inviteSent": "ส่งคำชวนถึง {name} แล้ว",
+      "truth": "จริงหรือเท็จ",
+      "tfTitle": "จริงหรือเท็จ",
+      "tfNote": "เกมสดสำหรับสองคน: เรื่องน่าทึ่งเกี่ยวกับโลก 12 วินาที — จริงหรือเท็จ? ตอบถูกได้ข้อละ 1 คะแนน",
+      "tfShareText": "{name} ชวนคุณเล่นเกมสด «จริงหรือเท็จ»",
+      "tfJoinLead": "{name} รอคุณอยู่ จริงหรือเท็จ — ตัดสินใจให้ไว!",
+      "tfRound": "เรื่องที่ {n} จาก {total}",
+      "tfTrue": "จริง",
+      "tfFalse": "เท็จ",
+      "tfIsTrue": "เป็นเรื่องจริง!",
+      "tfIsFalse": "ไม่จริง!",
+      "tfFirstYou": "คุณตอบถูกก่อน!",
+      "tfFirstThem": "{name} ตอบถูกก่อน",
+      "tfFinalWin": "ชนะแล้ว! คุณรู้เรื่องโลกมากกว่า",
+      "tfFinalLose": "รอบนี้ {name} รู้มากกว่า — แก้มืออีกตาไหม?",
+      "tfFinalDraw": "เสมอกัน — คุณรู้มากพอ ๆ กัน!",
+      "featTruth": "เกมสด «จริงหรือเท็จ» — เรื่องน่าทึ่งเกี่ยวกับโลก"
     },
     "questions": {
       "q01": [
@@ -19029,6 +39241,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "ทำอาหาร",
         "ภาษาใหม่",
         "วาดรูป"
+      ],
+      "q61": [
+        "อาหารจานไหนที่ฉันทำได้ดีที่สุด?",
+        "ซุป",
+        "ข้าวพิลาฟ",
+        "ขนมอบ",
+        "สลัด"
+      ],
+      "q62": [
+        "ประเทศไหนที่ฉันอยากไปเป็นอันดับแรก?",
+        "ตุรกี",
+        "ญี่ปุ่น",
+        "โมร็อกโก",
+        "นอร์เวย์"
+      ],
+      "q63": [
+        "ฉันอยากเล่นกีฬาอะไรมากกว่า?",
+        "ว่ายน้ำ",
+        "วิ่ง",
+        "ปั่นจักรยาน",
+        "ฟุตบอล"
+      ],
+      "q64": [
+        "ฉันจะเลือกหนังสือแบบไหน?",
+        "เรื่องผจญภัย",
+        "หนังสือประวัติศาสตร์",
+        "นิทาน",
+        "สารานุกรม"
+      ],
+      "q65": [
+        "ไปสวนสัตว์ ฉันจะไปดูสัตว์อะไรก่อน?",
+        "ช้าง",
+        "ลิง",
+        "เพนกวิน",
+        "ยีราฟ"
+      ],
+      "q66": [
+        "ฉันกินเผ็ดได้แค่ไหน?",
+        "ยิ่งเผ็ดยิ่งดี",
+        "นิดหน่อยได้",
+        "แค่นิดเดียวจริง ๆ",
+        "ไม่กินเลย"
+      ],
+      "q67": [
+        "วิชาไหนที่ฉันชอบที่สุดตอนเรียน?",
+        "คณิตศาสตร์",
+        "วรรณคดี",
+        "ภูมิศาสตร์",
+        "พลศึกษา"
+      ],
+      "q68": [
+        "อาชีพในฝันตอนเด็กของฉัน?",
+        "หมอ",
+        "ครู",
+        "นักบินอวกาศ",
+        "เชฟ"
+      ],
+      "q69": [
+        "ฉันรู้สึกยังไงกับการเดินป่า?",
+        "ฝันอยากเดินไกล ๆ",
+        "แค่วันเดียวพอ",
+        "ต้องสะดวกสบายด้วย",
+        "อยู่บ้านดีกว่า"
+      ],
+      "q70": [
+        "อารมณ์ตอนเช้าของฉัน?",
+        "กระปรี้กระเปร่า",
+        "ยังง่วงอยู่",
+        "เงียบ ๆ",
+        "ช่างคุย"
+      ],
+      "q71": [
+        "ฉันชอบถั่วชนิดไหนที่สุด?",
+        "เฮเซลนัท",
+        "วอลนัท",
+        "เม็ดมะม่วงหิมพานต์",
+        "อัลมอนด์"
+      ],
+      "q72": [
+        "ถ้ามีเวลาว่างหนึ่งชั่วโมงโดยไม่คาดคิด ฉันจะทำอะไร?",
+        "อ่านหนังสือ",
+        "ไปเดินเล่น",
+        "โทรหาครอบครัว",
+        "ทำอาหาร"
+      ],
+      "q73": [
+        "ฉันไม่ชอบอากาศแบบไหน?",
+        "ร้อนจัด",
+        "ลมแรง",
+        "หิมะเปียกแฉะ",
+        "หนาวจัด"
+      ],
+      "q74": [
+        "ฉันจะทาห้องสีอะไร?",
+        "ขาว",
+        "เบจ",
+        "เขียว",
+        "ฟ้าอ่อน"
+      ],
+      "q75": [
+        "ฉันอยากเล่นอะไรมากกว่า?",
+        "หมากรุก",
+        "หมากฮอส",
+        "จิ๊กซอว์",
+        "เกมคำศัพท์"
+      ],
+      "q76": [
+        "ฉันจะทำอะไรเลี้ยงแขก?",
+        "ข้าวพิลาฟ",
+        "พาย",
+        "สลัด",
+        "สั่งอาหารมา"
+      ],
+      "q77": [
+        "อะไรที่ฉันจะไม่กินแน่นอน?",
+        "เห็ด",
+        "ปลา",
+        "มะกอก",
+        "หัวหอมต้ม"
+      ],
+      "q78": [
+        "ฉันชงชาแบบไหน?",
+        "เข้ม ๆ",
+        "อ่อน ๆ",
+        "หวาน ๆ",
+        "ใส่สมุนไพร"
+      ],
+      "q79": [
+        "อะไรสำคัญที่สุดสำหรับฉันในบ้าน?",
+        "ความสะอาด",
+        "ความอบอุ่นน่าอยู่",
+        "แสงสว่างเยอะ",
+        "ความเงียบ"
+      ],
+      "q80": [
+        "ฉันเรียนรู้สิ่งใหม่ยังไง?",
+        "อ่าน",
+        "ดูคลิปสอน",
+        "ลงมือทำจริง",
+        "ถามคนอื่น"
+      ],
+      "q81": [
+        "สัตว์ป่าชนิดไหนที่ทำให้ฉันทึ่งที่สุด?",
+        "เสือ",
+        "หมี",
+        "อินทรี",
+        "โลมา"
+      ],
+      "q82": [
+        "ฉันจะให้อะไรแม่?",
+        "ดอกไม้",
+        "ของทำมือ",
+        "ทริปท่องเที่ยว",
+        "ผ้าห่มอุ่น ๆ"
+      ],
+      "q83": [
+        "ระหว่างเดินทาง ฉันทำอะไร?",
+        "มองออกนอกหน้าต่าง",
+        "อ่านหนังสือ",
+        "คุยเล่น",
+        "กินขนม"
+      ],
+      "q84": [
+        "เมนูไก่ที่ฉันชอบที่สุด?",
+        "ไก่เสียบไม้ย่าง",
+        "ข้าวไก่",
+        "ไก่สับทอด",
+        "นักเก็ตไก่"
+      ],
+      "q85": [
+        "ฉันเลือกที่นั่งไหนบนรถไฟ?",
+        "ริมหน้าต่าง",
+        "ริมทางเดิน",
+        "หันหลังให้ทิศทางรถ",
+        "ที่ไหนก็ได้"
+      ],
+      "q86": [
+        "เวลามีอะไรผิดพลาด ฉันทำยังไง?",
+        "ลงมือทันที",
+        "คิดก่อน",
+        "ขอคำแนะนำ",
+        "กังวลนิดหน่อย"
+      ],
+      "q87": [
+        "ข้อดีที่สำคัญที่สุดของฉัน?",
+        "ความใจดี",
+        "ความซื่อสัตย์",
+        "ความมุ่งมั่น",
+        "ความร่าเริง"
+      ],
+      "q88": [
+        "ฉันจะได้พักผ่อนดีที่สุดที่ไหน?",
+        "บ้านญาติต่างจังหวัด",
+        "โรงแรมริมทะเล",
+        "ในเต็นท์",
+        "ที่บ้าน"
+      ],
+      "q89": [
+        "ฉันจะเลือกขนมอบชนิดไหน?",
+        "ซัมซา",
+        "คาชาปูรี",
+        "ชักชัก",
+        "เอแคลร์"
+      ],
+      "q90": [
+        "ฉันอยากเรียนภาษาไหนที่สุด?",
+        "ภาษาอาหรับ",
+        "ภาษาอังกฤษ",
+        "ภาษาตุรกี",
+        "ภาษาญี่ปุ่น"
+      ],
+      "q91": [
+        "ฉันงดของหวานได้นานแค่ไหน?",
+        "หนึ่งวัน",
+        "หนึ่งสัปดาห์",
+        "หนึ่งเดือน",
+        "นานเท่าที่จำเป็น"
+      ],
+      "q92": [
+        "ถ้าจะไปสาย ฉันทำยังไง?",
+        "วิ่งสุดแรง",
+        "โทรบอกล่วงหน้า",
+        "เรียกแท็กซี่",
+        "ฉันไม่เคยสาย"
+      ],
+      "q93": [
+        "ถ้าอุปกรณ์เสีย ฉันทำยังไง?",
+        "ซ่อมเอง",
+        "อ่านคู่มือ",
+        "เรียกคนช่วย",
+        "กดทุกปุ่ม"
+      ],
+      "q94": [
+        "ของชิ้นแรกที่ฉันใส่กระเป๋าเดินทาง?",
+        "ชุดปฐมพยาบาล",
+        "หนังสือ",
+        "ที่ชาร์จ",
+        "ขนม"
+      ],
+      "q95": [
+        "กิจกรรมไหนทำให้ฉันใจสงบ?",
+        "ทำอาหาร",
+        "จัดบ้าน",
+        "วาดรูป",
+        "เดินเล่น"
+      ],
+      "q96": [
+        "เกษียณแล้วฉันอยากทำอะไร?",
+        "ทำสวน",
+        "ท่องเที่ยว",
+        "อ่านหนังสือ",
+        "อยู่กับหลาน ๆ"
+      ],
+      "q97": [
+        "อะไรทำให้ฉันรำคาญที่สุด?",
+        "เสียงดัง",
+        "ความรก",
+        "การมาสาย",
+        "ความหยาบคาย"
+      ],
+      "q98": [
+        "ฉันชอบกลิ่นอะไรที่สุด?",
+        "ขนมปังอบใหม่",
+        "กลิ่นฝน",
+        "ดอกไม้",
+        "ทะเล"
+      ],
+      "q99": [
+        "ของหวานฉันจะเลือกอะไร?",
+        "ผลไม้",
+        "ไอศกรีม",
+        "พาย",
+        "แค่ชาก็พอ"
       ]
     },
     "yesNo": {
@@ -19231,6 +39716,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "เดี๋ยวเล่นอีกรอบไหม?",
         "อยากเล่นอีกตา",
         "อยากกอดมากกว่าเล่นเกม"
+      ],
+      "c41": [
+        "ชอบอาหารเผ็ดไหม?",
+        "ยิ่งเผ็ดยิ่งดี",
+        "ขอรสอ่อน ๆ"
+      ],
+      "c42": [
+        "ว่ายน้ำเป็นไหม?",
+        "ว่ายเก่งเหมือนปลา",
+        "ตอนนี้ขออยู่ใกล้ฝั่งก่อน"
+      ],
+      "c43": [
+        "อยากเลี้ยงแมวไหม?",
+        "กำลังคิดชื่อให้แล้ว",
+        "ชอบสุนัขมากกว่า"
+      ],
+      "c44": [
+        "อยากไปอิสตันบูลสักครั้งไหม?",
+        "ฝันถึงช่องแคบบอสพอรัสแล้ว",
+        "ขอเลือกเมืองอื่น"
+      ],
+      "c45": [
+        "ชอบทำอาหารไหม?",
+        "ทำอาหารอย่างมีความสุข",
+        "ขอล้างจานดีกว่า"
+      ],
+      "c46": [
+        "อยากหัดทำข้าวพิลาฟไหม?",
+        "กำลังหาสูตรอยู่",
+        "ขอชิมฝีมือคนอื่นดีกว่า"
+      ],
+      "c47": [
+        "ชอบอ่านหนังสือไหม?",
+        "มีหนังสืออยู่ใกล้ตัวเสมอ",
+        "ชอบฟังเรื่องเล่ามากกว่า"
+      ],
+      "c48": [
+        "ขี่จักรยานเป็นไหม?",
+        "ปั่นออกไปได้เดี๋ยวนี้เลย",
+        "สัญญาว่าจะหัด"
+      ],
+      "c49": [
+        "ชอบภูเขามากกว่าทะเลไหม?",
+        "เลือกภูเขา",
+        "เลือกทะเล"
+      ],
+      "c50": [
+        "อยากเห็นทะเลทรายไหม?",
+        "ฝันถึงเนินทราย",
+        "ขอเลือกป่าดีกว่า"
+      ],
+      "c51": [
+        "ชอบฤดูหนาวไหม?",
+        "รอหิมะแรก",
+        "รอฤดูร้อน"
+      ],
+      "c52": [
+        "ดื่มชาไม่ใส่น้ำตาลไหม?",
+        "ชอบรสชาแท้ ๆ",
+        "ขาดน้ำตาลสักช้อนไม่ได้"
+      ],
+      "c53": [
+        "กลัวแมงมุมไหม?",
+        "อยู่ห่าง ๆ ไว้ก่อน",
+        "จับไปปล่อยข้างนอกอย่างใจเย็น"
+      ],
+      "c54": [
+        "ชอบวาดรูปไหม?",
+        "หยิบพู่กันแล้ว",
+        "ขอชมภาพของคนอื่นดีกว่า"
+      ],
+      "c55": [
+        "อยากเห็นแสงเหนือไหม?",
+        "กำลังหาว่าจะไปดูที่ไหน",
+        "ขอดูดาวดีกว่า"
+      ],
+      "c56": [
+        "ชอบวันฝนตกไหม?",
+        "ชอบเสียงฝนนอกหน้าต่าง",
+        "รอแดดออก"
+      ],
+      "c57": [
+        "ขี่ม้าเป็นไหม?",
+        "นั่งบนอานได้อย่างมั่นใจ",
+        "ตอนนี้ยังแค่ฝันอยู่"
+      ],
+      "c58": [
+        "อยากเลี้ยงสุนัขไหม?",
+        "ฝันถึงเพื่อนผู้ซื่อสัตย์",
+        "ตอนนี้มีเรื่องต้องดูแลมากพอแล้ว"
+      ],
+      "c59": [
+        "ชอบของหวานมากกว่าของคาวไหม?",
+        "ขาดของหวานไม่ได้",
+        "เลือกของคาว"
+      ],
+      "c60": [
+        "ชอบเดินทางโดยรถไฟไหม?",
+        "ชอบจังหวะของล้อรถไฟ",
+        "เลือกเครื่องบิน"
+      ],
+      "c61": [
+        "ตื่นเช้าเริ่มวันใหม่ได้ง่ายไหม?",
+        "เริ่มวันอย่างกระปรี้กระเปร่า",
+        "ต้องรอถึงเที่ยงถึงจะตื่นเต็มตา"
+      ],
+      "c62": [
+        "ชอบกางเต็นท์ตั้งแคมป์ไหม?",
+        "กำลังจัดเป้แล้ว",
+        "เลือกโรงแรมสบาย ๆ"
+      ],
+      "c63": [
+        "อยากอยู่ริมทะเลไหม?",
+        "ฝันถึงเสียงคลื่น",
+        "เลือกอยู่ในเมือง"
+      ],
+      "c64": [
+        "กินไอศกรีมในฤดูหนาวไหม?",
+        "กินได้แม้อากาศเย็นจัด",
+        "กินแค่หน้าร้อน"
+      ],
+      "c65": [
+        "ชอบช็อกโกแลตไหม?",
+        "รู้จักทุกชนิด",
+        "เดินผ่านได้อย่างใจเย็น"
+      ],
+      "c66": [
+        "อบพายเป็นไหม?",
+        "อบเก่งเหมือนคุณยาย",
+        "สัญญาว่าจะหัด"
+      ],
+      "c67": [
+        "ชอบดูดาวไหม?",
+        "รู้จักกลุ่มดาวต่าง ๆ",
+        "ชอบวันแดดสดใสมากกว่า"
+      ],
+      "c68": [
+        "อยากปลูกสวนของตัวเองสักวันไหม?",
+        "กำลังเลือกต้นกล้า",
+        "ขอเริ่มจากดอกไม้ในกระถาง"
+      ],
+      "c69": [
+        "ชอบดอกไม้ป่าไหม?",
+        "ชอบดอกเดซี่และดอกคอร์นฟลาวเวอร์",
+        "ชอบดอกไม้ในสวนมากกว่า"
+      ],
+      "c70": [
+        "ดื่มกาแฟไหม?",
+        "ถ้าไม่มีกาแฟ วันก็เริ่มไม่ได้",
+        "เลือกชา"
+      ],
+      "c71": [
+        "ชอบน้ำมะนาวทำเองไหม?",
+        "กำลังหั่นมะนาวแล้ว",
+        "ขอน้ำเปล่าดีกว่า"
+      ],
+      "c72": [
+        "อยากไปญี่ปุ่นสักครั้งไหม?",
+        "ฝันอยากเห็นซากุระบาน",
+        "ขอเลือกประเทศอื่น"
+      ],
+      "c73": [
+        "ชอบฤดูใบไม้ร่วงไหม?",
+        "ชอบเดินย่ำใบไม้กรอบ ๆ",
+        "รอฤดูใบไม้ผลิ"
+      ],
+      "c74": [
+        "ชอบกลิ่นลาเวนเดอร์ไหม?",
+        "ชอบกลิ่นนี้มาก",
+        "ชอบกลิ่นอื่นมากกว่า"
+      ],
+      "c75": [
+        "ชอบบอร์ดเกมไหม?",
+        "กำลังตั้งกระดานแล้ว",
+        "ขอไปเดินเล่นดีกว่า"
+      ],
+      "c76": [
+        "ขับรถเป็นไหม?",
+        "ขับได้อย่างมั่นใจ",
+        "ตอนนี้ยังเป็นผู้โดยสาร"
+      ],
+      "c77": [
+        "อยากเห็นมหาสมุทรสักครั้งไหม?",
+        "ฝันถึงคลื่นลูกใหญ่",
+        "แค่ทะเลก็พอแล้ว"
+      ],
+      "c78": [
+        "อยากไปอยู่ฟาร์มสักพักไหม?",
+        "กำลังให้อาหารไก่แล้ว",
+        "ขออยู่ในเมือง"
+      ],
+      "c79": [
+        "ชอบเมืองใหญ่ไหม?",
+        "ชอบแสงไฟในเมือง",
+        "เลือกความสงบเงียบ"
+      ],
+      "c80": [
+        "ชอบผลไม้มากกว่าขนมหวานไหม?",
+        "เลือกผลไม้",
+        "เลือกขนมหวาน"
+      ],
+      "c81": [
+        "อยากเห็นโลมาในทะเลไหม?",
+        "อยากเห็นมาก",
+        "ขออ่านเรื่องของพวกมันดีกว่า"
+      ],
+      "c82": [
+        "ชอบฤดูร้อนไหม?",
+        "รอวันที่อากาศร้อน",
+        "ชอบอากาศเย็นสบาย"
+      ],
+      "c83": [
+        "ชอบเดินเล่นในสวนสาธารณะไหม?",
+        "เดินได้ทุกสภาพอากาศ",
+        "ชอบอยู่บ้านมากกว่า"
+      ],
+      "c84": [
+        "ชอบเขียนด้วยลายมือไหม?",
+        "ลายมือเป็นระเบียบ",
+        "พิมพ์ในโทรศัพท์"
+      ],
+      "c85": [
+        "ชอบนั่งเรือเที่ยวไหม?",
+        "คว้าไม้พายแล้ว",
+        "ขออยู่บนฝั่ง"
+      ],
+      "c86": [
+        "อยากเดินทางรอบโลกไหม?",
+        "กำลังวาดเส้นทางแล้ว",
+        "ไม่กี่ประเทศก็พอ"
+      ],
+      "c87": [
+        "ปั้นตุ๊กตาหิมะเป็นไหม?",
+        "จะปั้นตัวที่ใหญ่ที่สุด",
+        "ขอปาหิมะใส่กันดีกว่า"
+      ],
+      "c88": [
+        "ปีนี้อยากเรียนรู้อะไรใหม่ ๆ ไหม?",
+        "กำลังเลือกคอร์สอยู่",
+        "มีเรื่องต้องทำมากพอแล้ว"
+      ],
+      "c89": [
+        "ชอบความเงียบไหม?",
+        "ให้คุณค่ากับความสงบ",
+        "ชอบความคึกคัก"
+      ],
+      "c90": [
+        "ชอบให้ของขวัญครอบครัวไหม?",
+        "ทำให้ครอบครัวมีความสุขได้โดยไม่ต้องรอโอกาสพิเศษ",
+        "ชอบช่วยเหลือด้วยการลงมือทำมากกว่า"
       ]
     },
     "loves": {
@@ -19345,6 +40080,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "ป่า",
         "ทะเลทราย",
         "แสงเหนือ"
+      ],
+      "s17": [
+        "ผลไม้ที่ชอบ?",
+        "แอปเปิล",
+        "สตรอว์เบอร์รี",
+        "แตงโม",
+        "องุ่น"
+      ],
+      "s18": [
+        "วันหยุดทำอะไรดี?",
+        "เดินเขา",
+        "ทำอาหารที่บ้าน",
+        "ไปพิพิธภัณฑ์",
+        "ตกปลา"
+      ],
+      "s19": [
+        "อาหารเช้าที่ชอบ?",
+        "แพนเค้ก",
+        "ไข่เจียว",
+        "ข้าวโอ๊ตใส่เบอร์รี",
+        "ครัวซองต์"
+      ],
+      "s20": [
+        "นกที่ชอบ?",
+        "นกฮูก",
+        "นกแก้ว",
+        "หงส์",
+        "นกยูง"
+      ],
+      "s21": [
+        "อยากไปเมืองไหน?",
+        "อิสตันบูล",
+        "ปารีส",
+        "โตเกียว",
+        "ดูไบ"
+      ],
+      "s22": [
+        "กีฬาที่ชอบ?",
+        "ฟุตบอล",
+        "ว่ายน้ำ",
+        "เทนนิส",
+        "ขี่ม้า"
+      ],
+      "s23": [
+        "ปลูกอะไรในสวน?",
+        "ต้นแอปเปิล",
+        "กุหลาบ",
+        "ผัก",
+        "สตรอว์เบอร์รี"
+      ],
+      "s24": [
+        "ขนมอบที่ชอบ?",
+        "พายชิ้นเล็ก",
+        "โดนัท",
+        "บิสกิต",
+        "บักลาวา"
+      ],
+      "s25": [
+        "อยากอยู่ที่ไหน?",
+        "ริมแม่น้ำ",
+        "ในป่า",
+        "ในเมืองใหญ่",
+        "บนเกาะ"
+      ],
+      "s26": [
+        "สัตว์ทะเลที่ชอบ?",
+        "เต่าทะเล",
+        "วาฬ",
+        "ปลาหมึกยักษ์",
+        "ม้าน้ำ"
+      ],
+      "s27": [
+        "นั่งอะไรเที่ยว?",
+        "จักรยาน",
+        "สกูตเตอร์",
+        "บอลลูนลมร้อน",
+        "เรือ"
+      ],
+      "s28": [
+        "งานอดิเรกที่ชอบ?",
+        "ถักไหมพรม",
+        "ถ่ายภาพธรรมชาติ",
+        "ทำสวน",
+        "คัดลายมือศิลป์"
+      ],
+      "s29": [
+        "ซุปที่ชอบ?",
+        "ซุปบอร์ช",
+        "ซุปไก่",
+        "ซุปฟักทอง",
+        "ซุปถั่วเลนทิล"
+      ],
+      "s30": [
+        "สัตว์ในป่า?",
+        "เม่น",
+        "กระรอก",
+        "จิ้งจอก",
+        "กวาง"
+      ],
+      "s31": [
+        "ของกินเล่น?",
+        "อินทผลัม",
+        "อัลมอนด์",
+        "พิสตาชิโอ",
+        "แอปริคอตแห้ง"
+      ],
+      "s32": [
+        "เดินป่าเอาอะไรไป?",
+        "เต็นท์",
+        "กระติกน้ำ",
+        "แผนที่",
+        "ไฟฉาย"
+      ],
+      "s33": [
+        "ของหวานที่ชอบ?",
+        "พุดดิ้ง",
+        "ชีสเค้ก",
+        "แพนเค้กราดน้ำผึ้ง",
+        "สลัดผลไม้"
+      ],
+      "s34": [
+        "หน้าหนาวทำอะไร?",
+        "ปั้นตุ๊กตาหิมะ",
+        "เล่นเลื่อนหิมะ",
+        "จิบชาริมหน้าต่าง",
+        "เล่นสกี"
+      ],
+      "s35": [
+        "หน้าร้อนทำอะไร?",
+        "ว่ายน้ำ",
+        "เก็บเบอร์รี",
+        "พายเรือ",
+        "ก่อปราสาททราย"
+      ],
+      "s36": [
+        "วาดด้วยอะไร?",
+        "สีน้ำ",
+        "ดินสอ",
+        "สีเทียน",
+        "สีบนผ้าใบ"
+      ],
+      "s37": [
+        "ผักที่ชอบ?",
+        "แครอท",
+        "มะเขือเทศ",
+        "ข้าวโพด",
+        "ฟักทอง"
+      ],
+      "s38": [
+        "อะไรทำให้บ้านอบอุ่น?",
+        "เตาผิง",
+        "ผ้าห่มนุ่ม ๆ",
+        "ต้นไม้ในบ้าน",
+        "ชั้นหนังสือ"
+      ],
+      "s39": [
+        "เล่นอะไรดี?",
+        "หมากรุก",
+        "จิ๊กซอว์",
+        "บอร์ดเกม",
+        "เกมลูกบอล"
+      ],
+      "s40": [
+        "ใครอยู่ในฟาร์ม?",
+        "วัว",
+        "ลูกแกะ",
+        "แม่ไก่",
+        "ลูกแพะ"
+      ],
+      "s41": [
+        "ชาใส่อะไร?",
+        "น้ำผึ้ง",
+        "มะนาว",
+        "แยม",
+        "มินต์"
+      ],
+      "s42": [
+        "ริมทะเลมีอะไร?",
+        "ประภาคาร",
+        "เปลือกหอย",
+        "เรือใบ",
+        "นกนางนวล"
+      ],
+      "s43": [
+        "เริ่มเช้าอย่างไร?",
+        "ออกกำลังกาย",
+        "ชาสักถ้วย",
+        "เดินเล่น",
+        "หนังสือสักเล่ม"
+      ],
+      "s44": [
+        "เบอร์รีที่ชอบ?",
+        "ราสป์เบอร์รี",
+        "บลูเบอร์รี",
+        "เชอร์รี",
+        "แบล็กเบอร์รี"
       ]
     },
     "who": [
@@ -19387,7 +40318,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ในเราสองคน ใครนึกถึงเรื่องตลกบ่อยกว่า?",
       "ในเราสองคน ใครอดทนกว่า?",
       "ในเราสองคน ใครพูดว่า “ขอบคุณ” บ่อยกว่า?",
-      "ในเราสองคน ใครเสนอความช่วยเหลือก่อน?"
+      "ในเราสองคน ใครเสนอความช่วยเหลือก่อน?",
+      "ในเราสองคน ใครคิดเลขในใจเก่งกว่า?",
+      "ในเราสองคน ใครอ่านหนังสือมากกว่า?",
+      "ในเราสองคน ใครพิมพ์เร็วกว่า?",
+      "ในเราสองคน ใครโทรหาพ่อแม่บ่อยกว่า?",
+      "ในเราสองคน ใครเล่าเรื่องเก่งกว่า?",
+      "ในเราสองคน ใครลายมือเรียบร้อยกว่า?",
+      "ในเราสองคน ใครชอบอาหารเผ็ดมากกว่า?",
+      "ในเราสองคน ใครลืมของไว้ที่บ้านบ่อยกว่า?",
+      "ในเราสองคน ใครใช้อุปกรณ์ไอทีเก่งกว่า?",
+      "ในเราสองคน ใครชอบเรียนรู้สิ่งใหม่มากกว่า?",
+      "ในเราสองคน ใครวางแผนเก่งกว่า?",
+      "ในเราสองคน ใครต่อราคาที่ตลาดเก่งกว่า?",
+      "ในเราสองคน ใครรักธรรมชาติมากกว่า?",
+      "ในเราสองคน ใครกินเร็วกว่า?",
+      "ในเราสองคน ใครดื่มชามากกว่า?",
+      "ในเราสองคน ใครดูแลต้นไม้เก่งกว่า?",
+      "ในเราสองคน ใครรู้เรื่องภูมิศาสตร์มากกว่า?",
+      "ในเราสองคน ใครเล่นหมากรุกเก่งกว่า?",
+      "ในเราสองคน ใครเลือกผลไม้ที่ตลาดเก่งกว่า?",
+      "ในเราสองคน ใครดูพยากรณ์อากาศบ่อยกว่า?",
+      "ในเราสองคน ใครกลัวแมงมุมมากกว่า?",
+      "ในเราสองคน ใครกล้าหาญกว่า?",
+      "ในเราสองคน ใครช่างสงสัยมากกว่า?",
+      "ในเราสองคน ใครไขปริศนาได้เร็วกว่า?",
+      "ในเราสองคน ใครวาดรูปเก่งกว่า?",
+      "ในเราสองคน ใครช่วยเพื่อนบ้านบ่อยกว่า?",
+      "ในเราสองคน ใครเข้ากับเด็ก ๆ ได้ดีกว่า?",
+      "ในเราสองคน ใครชอบเดินเล่นมากกว่า?",
+      "ในเราสองคน ใครอ่านคู่มือการใช้งานบ่อยกว่า?",
+      "ในเราสองคน ใครจำชื่อคนได้ดีกว่า?",
+      "ในเราสองคน ใครจำคำศัพท์ภาษาต่างประเทศได้เร็วกว่า?",
+      "ในเราสองคน ใครอบขนมเก่งกว่า?",
+      "ในเราสองคน ใครให้คำแนะนำได้ดีกว่า?",
+      "ในเราสองคน ใครชอบอากาศหนาวมากกว่า?",
+      "ในเราสองคน ใครจะเดินป่าได้ดีกว่า?",
+      "ในเราสองคน ใครอ่านข่าวบ่อยกว่า?",
+      "ในเราสองคน ใครลองอาหารใหม่ ๆ บ่อยกว่า?",
+      "ในเราสองคน ใครจัดกระเป๋าเดินทางเร็วกว่า?",
+      "ในเราสองคน ใครซ่อมของเก่งกว่า?",
+      "ในเราสองคน ใครคุยกับสัตว์บ่อยกว่า?",
+      "ในเราสองคน ใครล้างจานบ่อยกว่า?",
+      "ในเราสองคน ใครรู้เรื่องประวัติศาสตร์มากกว่า?",
+      "ในเราสองคน ใครผัดวันประกันพรุ่งบ่อยกว่า?",
+      "ในเราสองคน ใครสนิทกับคนใหม่ได้เร็วกว่า?",
+      "ในเราสองคน ใครดูแลสุขภาพมากกว่า?"
     ],
     "phrases": [
       "ฉันยิ้มเมื่อเธอ…",
@@ -19419,8 +40395,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "เช้าที่มีเธอคือ…",
       "ถ้าเราเป็นคำคำเดียว คำนั้นคือ…",
       "ฉันอยากเรียนรู้จากเธอเรื่อง…",
-      "ขอบคุณที่เธอมักจะ…"
-    ]
+      "ขอบคุณที่เธอมักจะ…",
+      "อาหารที่ฉันชอบที่สุดตอนเด็กคือ…",
+      "ถ้าได้อยู่ประเทศไหนก็ได้หนึ่งวัน ฉันจะ…",
+      "คำแนะนำที่ดีที่สุดที่ฉันเคยได้รับคือ…",
+      "ฉันหัวเราะทุกครั้งเมื่อ…",
+      "ที่ที่ฉันชอบที่สุดในบ้านเกิดคือ…",
+      "ถ้าฉันมีร้านเล็ก ๆ ของตัวเอง ฉันจะขาย…",
+      "อาหารที่ฉันทำได้อร่อยที่สุดคือ…",
+      "ความฝันวัยเด็กที่ฉันยังจำได้คือ…",
+      "ทำให้ฉันมีความสุขได้ง่าย ๆ ถ้า…",
+      "ที่ที่น่าทึ่งที่สุดที่ฉันเคยไปคือ…",
+      "ฉันอยากเรียนรู้…",
+      "วันหยุดในฝันของฉันเริ่มต้นด้วย…",
+      "ถ้าเลี้ยงสัตว์อะไรก็ได้ ฉันจะเลือก…",
+      "ครอบครัวมักพูดว่าฉัน…",
+      "ฉันยังไงก็ชินไม่ได้กับ…",
+      "นิสัยที่มีประโยชน์ที่สุดของฉันคือ…",
+      "หนังสือที่ดีที่สุดที่ฉันเคยอ่านคือ…",
+      "อีกสิบปีข้างหน้า ฉันอยาก…",
+      "บ้านในฝันของฉันคือ…",
+      "เรื่องที่ตลกที่สุดที่เกิดกับฉันตอนเด็กคือ…",
+      "สำหรับฉัน ความสุขคือ…",
+      "สิ่งที่ฉันเลิกได้ยากคือ…",
+      "ถ้าฉันมีพลังพิเศษ มันจะ…",
+      "สิ่งที่ฉันให้คุณค่าที่สุดในตัวคนอื่นคือ…",
+      "เมื่อมีเย็นว่าง ๆ ฉันจะ…",
+      "กลิ่นที่ฉันชอบที่สุดคือ…",
+      "อาหารที่ฉันจะไม่กินเด็ดขาดคือ…",
+      "ของที่ฉันไม่เคยลืมพกออกจากบ้านคือ…",
+      "ฉันอยากไปเที่ยว… เพราะ…",
+      "ของขวัญที่ดีที่สุดที่ฉันเคยได้รับคือ…",
+      "นิสัยที่แปลกที่สุดของฉันคือ…",
+      "ถ้าฉันมีเวลาเพิ่มวันละหนึ่งชั่วโมง ฉันจะ…",
+      "คนที่ฉันได้เรียนรู้อะไรมากมายจากเขาคือ…",
+      "ในวันที่ยากลำบาก สิ่งที่ช่วยให้ฉันผ่านไปได้คือ…",
+      "ของที่อร่อยที่สุดที่ฉันเคยกินระหว่างเดินทางคือ…",
+      "ถ้าได้เปลี่ยนงานหนึ่งวัน ฉันจะเลือก…",
+      "ฤดูที่ใกล้ใจฉันที่สุดคือ…",
+      "เพื่อน ๆ บอกว่าฉัน…",
+      "สักวันฉันอยากสอนใครสักคนให้…",
+      "ความสุขเล็ก ๆ ในแต่ละวันของฉันคือ…"
+    ],
+    "truth": {
+      "t01": [
+        "ปลาหมึกยักษ์มีหัวใจสามดวง",
+        true,
+        "หัวใจสองดวงสูบเลือดผ่านเหงือก อีกดวงสูบเลือดไปทั่วร่างกาย"
+      ],
+      "t02": [
+        "มองเห็นกำแพงเมืองจีนจากดวงจันทร์ได้ด้วยตาเปล่า",
+        false,
+        "ไม่ได้ เพราะกำแพงแคบเกินไป แม้จากวงโคจรก็ยังมองเห็นได้ยากมาก"
+      ],
+      "t03": [
+        "น้ำผึ้งเก็บได้นานหลายพันปีโดยไม่เสีย",
+        true,
+        "เคยพบน้ำผึ้งอายุหลายพันปีที่ยังไม่เสียในสุสานอียิปต์โบราณ"
+      ],
+      "t04": [
+        "กล้วยขึ้นบนต้นไม้ยืนต้น",
+        false,
+        "ต้นกล้วยเป็นพืชล้มลุกขนาดยักษ์ «ลำต้น» ของมันคือกาบใบที่ม้วนซ้อนกันแน่น"
+      ],
+      "t05": [
+        "ดาวศุกร์เป็นดาวเคราะห์ที่ร้อนที่สุดในระบบสุริยะ",
+        true,
+        "ชั้นบรรยากาศหนาทำให้ดาวศุกร์ร้อนถึงราว 460 °C ร้อนกว่าดาวพุธ"
+      ],
+      "t06": [
+        "ค้างคาวตาบอด",
+        false,
+        "ค้างคาวมองเห็นได้ และในความมืดยังใช้เสียงสะท้อนช่วยหาทาง"
+      ],
+      "t07": [
+        "วาฬเป็นปลา",
+        false,
+        "วาฬเป็นสัตว์เลี้ยงลูกด้วยนม หายใจด้วยอากาศและเลี้ยงลูกด้วยน้ำนม"
+      ],
+      "t08": [
+        "ซาฮาราเป็นทะเลทรายที่ใหญ่ที่สุดในโลก",
+        false,
+        "ทะเลทรายที่ใหญ่ที่สุดคือแอนตาร์กติกา ซาฮาราเป็นทะเลทรายร้อนที่ใหญ่ที่สุด"
+      ],
+      "t09": [
+        "ยีราฟมีกระดูกคอจำนวนเท่ากับมนุษย์",
+        true,
+        "ทั้งคู่มีกระดูกสันหลังส่วนคอเจ็ดชิ้น แต่ของยีราฟยาวมาก"
+      ],
+      "t10": [
+        "ในทางพฤกษศาสตร์ มะเขือเทศเป็นผลแบบเบอร์รี",
+        true,
+        "นักพฤกษศาสตร์จัดมะเขือเทศเป็นเบอร์รี คือผลเนื้อนุ่มที่มีเมล็ดอยู่ข้างใน"
+      ],
+      "t11": [
+        "ในทางพฤกษศาสตร์ สตรอว์เบอร์รีเป็นผลแบบเบอร์รี",
+        false,
+        "เป็นผลเทียม ผลจริงคือ «เมล็ด» เล็ก ๆ ที่อยู่ด้านนอก"
+      ],
+      "t12": [
+        "ในอวกาศเราได้ยินเสียงระเบิด",
+        false,
+        "อวกาศแทบไม่มีอากาศ เสียงจึงไม่มีตัวกลางให้เดินทาง"
+      ],
+      "t13": [
+        "บนภูเขาสูง น้ำเดือดที่อุณหภูมิต่ำกว่า",
+        true,
+        "ที่สูงความกดอากาศต่ำ น้ำจึงเดือดก่อนถึง 100 °C"
+      ],
+      "t14": [
+        "เพนกวินอาศัยอยู่ที่ขั้วโลกเหนือ",
+        false,
+        "เพนกวินในธรรมชาติอยู่เฉพาะซีกโลกใต้ ไม่มีทางเหนือสุดของโลก"
+      ],
+      "t15": [
+        "เอเวอเรสต์เป็นภูเขาที่สูงที่สุดจากระดับน้ำทะเล",
+        true,
+        "เอเวอเรสต์สูงประมาณ 8,849 เมตรจากระดับน้ำทะเล"
+      ],
+      "t16": [
+        "คนเราใช้สมองเพียง 10%",
+        false,
+        "เป็นความเชื่อผิด ๆ ตลอดทั้งวันสมองแทบทุกส่วนได้ทำงาน"
+      ],
+      "t17": [
+        "หัวใจคนเต้นประมาณ 100,000 ครั้งต่อวัน",
+        true,
+        "ที่ราว 70 ครั้งต่อนาที รวมแล้วประมาณ 100,000 ครั้งต่อวัน"
+      ],
+      "t18": [
+        "ปลาทองมีความจำแค่สามวินาที",
+        false,
+        "การทดลองพบว่าปลาทองจำสิ่งที่เรียนรู้ได้นานหลายเดือน"
+      ],
+      "t19": [
+        "ออสเตรเลียเป็นทั้งประเทศและทวีป",
+        true,
+        "ออสเตรเลียเป็นประเทศเดียวที่ครอบคลุมทั้งทวีป"
+      ],
+      "t20": [
+        "ฟ้าไม่เคยผ่าที่เดิมซ้ำสองครั้ง",
+        false,
+        "ผ่าซ้ำได้ อาคารสูงโดนฟ้าผ่าหลายครั้งต่อปี"
+      ],
+      "t21": [
+        "นกกระจอกเทศมุดหัวลงทรายเมื่อตกใจ",
+        false,
+        "เป็นความเชื่อผิด ๆ นกกระจอกเทศที่ตกใจจะวิ่งหนีหรือหมอบราบกับพื้น"
+      ],
+      "t22": [
+        "นกที่เล็กที่สุดในโลกคือนกฮัมมิงเบิร์ดชนิดหนึ่ง",
+        true,
+        "นกฮัมมิงเบิร์ดผึ้งของคิวบาหนักราว 2 กรัม เบากว่านกชนิดอื่นทั้งหมด"
+      ],
+      "t23": [
+        "แตงโมมีน้ำประมาณ 90%",
+        true,
+        "แตงโมมีน้ำราว 92% จึงกินแล้วสดชื่นมาก"
+      ],
+      "t24": [
+        "แมงมุมมีหกขา",
+        false,
+        "แมงมุมมีแปดขา แมลงมีหกขา และแมงมุมไม่ใช่แมลง"
+      ],
+      "t25": [
+        "ดวงจันทร์เปล่งแสงเอง",
+        false,
+        "ดวงจันทร์ไม่มีแสงในตัว แต่สะท้อนแสงอาทิตย์"
+      ],
+      "t26": [
+        "ช้างเป็นสัตว์บกที่ใหญ่ที่สุด",
+        true,
+        "ช้างพุ่มแอฟริกาหนักได้มากกว่า 6 ตัน"
+      ],
+      "t27": [
+        "วาฬสีน้ำเงินเป็นสัตว์ที่ใหญ่ที่สุดเท่าที่วิทยาศาสตร์รู้จัก",
+        true,
+        "วาฬสีน้ำเงินยาวได้กว่า 30 เมตร ใหญ่กว่าไดโนเสาร์ใด ๆ ที่รู้จัก"
+      ],
+      "t28": [
+        "กิ้งก่าคามีเลียนเปลี่ยนสีเพื่อพรางตัวเท่านั้น",
+        false,
+        "สีของมันขึ้นกับอารมณ์ อุณหภูมิ และการส่งสัญญาณถึงตัวอื่นมากกว่า"
+      ],
+      "t29": [
+        "โทมัส เอดิสัน เป็นผู้ประดิษฐ์โทรศัพท์",
+        false,
+        "อเล็กซานเดอร์ เกรแฮม เบลล์ ได้รับสิทธิบัตรโทรศัพท์ในปี 1876"
+      ],
+      "t30": [
+        "อเล็กซานเดอร์ เฟลมมิง เป็นผู้ค้นพบเพนิซิลลิน",
+        true,
+        "เฟลมมิงค้นพบเพนิซิลลินในปี 1928 ซึ่งเป็นยาปฏิชีวนะตัวแรก"
+      ],
+      "t31": [
+        "ภูเขาไฟที่สูงที่สุดในระบบสุริยะอยู่บนดาวอังคาร",
+        true,
+        "โอลิมปัสมอนส์บนดาวอังคารสูงราว 22 กม. เกือบ 2.5 เท่าของเอเวอเรสต์"
+      ],
+      "t32": [
+        "เลือดในหลอดเลือดดำของเราเป็นสีน้ำเงิน",
+        false,
+        "เลือดเป็นสีแดงเสมอ หลอดเลือดดำดูเป็นสีฟ้าเพราะวิธีที่แสงผ่านผิวหนัง"
+      ],
+      "t33": [
+        "แอตแลนติกเป็นมหาสมุทรที่ใหญ่ที่สุดในโลก",
+        false,
+        "ที่ใหญ่ที่สุดคือแปซิฟิก ใหญ่กว่าแผ่นดินทั้งหมดบนโลกรวมกัน"
+      ],
+      "t34": [
+        "รัสเซียเป็นประเทศที่มีพื้นที่ใหญ่ที่สุดในโลก",
+        true,
+        "รัสเซียมีพื้นที่มากกว่า 17 ล้านตารางกิโลเมตร"
+      ],
+      "t35": [
+        "แคนาดามีแนวชายฝั่งยาวที่สุดในโลก",
+        true,
+        "ชายฝั่งของแคนาดายาวกว่า 200,000 กม. มากกว่าประเทศใดในโลก"
+      ],
+      "t36": [
+        "กระเพาะของวัวมีสี่ส่วน",
+        true,
+        "วัวมีกระเพาะเดียวที่แบ่งเป็นสี่ช่อง จึงย่อยหญ้าได้"
+      ],
+      "t37": [
+        "สิงโตเป็นสัตว์ตระกูลแมวที่ใหญ่ที่สุดในโลก",
+        false,
+        "สัตว์ตระกูลแมวที่ใหญ่ที่สุดคือเสือ โดยเฉพาะเสือไซบีเรีย"
+      ],
+      "t38": [
+        "โลกเป็นดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์ที่สุด",
+        false,
+        "ใกล้ที่สุดคือดาวพุธ ตามด้วยดาวศุกร์ โลกเป็นดวงที่สาม"
+      ],
+      "t39": [
+        "แสงอาทิตย์ใช้เวลาราว 8 นาทีมาถึงโลก",
+        true,
+        "แสงเดินทาง 150 ล้านกม. จากดวงอาทิตย์ในราว 8 นาที 20 วินาที"
+      ],
+      "t40": [
+        "โลมานอนหลับทีละครึ่งสมอง",
+        true,
+        "สมองครึ่งหนึ่งพัก อีกครึ่งเฝ้าระวังและคอยหายใจ"
+      ],
+      "t41": [
+        "มันฝรั่งมาจากไอร์แลนด์",
+        false,
+        "มันฝรั่งมาจากอเมริกาใต้ ปลูกในเทือกเขาแอนดีสมาหลายพันปีแล้ว"
+      ],
+      "t42": [
+        "ช็อกโกแลตทำจากเมล็ดของต้นโกโก้",
+        true,
+        "ฝักโกโก้ขึ้นบนลำต้นโดยตรง เมล็ดข้างในกลายเป็นช็อกโกแลต"
+      ],
+      "t43": [
+        "ฉลามเป็นสัตว์เลี้ยงลูกด้วยนม",
+        false,
+        "ฉลามเป็นปลา หายใจด้วยเหงือก วาฬและโลมาต่างหากที่เป็นสัตว์เลี้ยงลูกด้วยนมในทะเล"
+      ],
+      "t44": [
+        "ไผ่บางชนิดโตได้เกือบหนึ่งเมตรในหนึ่งวัน",
+        true,
+        "ไผ่เป็นพืชที่โตเร็วที่สุดชนิดหนึ่งบนโลก"
+      ],
+      "t45": [
+        "นกฮูกหมุนหัวได้ครบ 360 องศา",
+        false,
+        "นกฮูกหมุนหัวได้ราว 270 องศา ถือว่ามาก แต่ไม่ครบรอบ"
+      ],
+      "t46": [
+        "เพชรกับไส้ดินสอทำจากสารชนิดเดียวกัน",
+        true,
+        "ทั้งคู่เป็นคาร์บอนบริสุทธิ์ ต่างกันแค่การเรียงตัวของอะตอม"
+      ],
+      "t47": [
+        "อูฐเก็บน้ำไว้ในโหนก",
+        false,
+        "โหนกอูฐเก็บไขมัน ไม่ใช่น้ำ ไว้เป็นพลังงานระหว่างเดินทางไกล"
+      ],
+      "t48": [
+        "กระดูกที่เล็กที่สุดในร่างกายมนุษย์อยู่ในหู",
+        true,
+        "กระดูกโกลนในหูชั้นกลางยาวเพียงราว 3 มิลลิเมตร"
+      ],
+      "t49": [
+        "นกแก้วตัวใหญ่มีอายุได้เกิน 50 ปี",
+        true,
+        "นกมาคอว์และค็อกคาทูที่ได้รับการดูแลดีมักอยู่ได้ 50 ปีขึ้นไป"
+      ],
+      "t50": [
+        "พี่น้องตระกูลไรต์ทำการบินด้วยเครื่องบินติดเครื่องยนต์เป็นครั้งแรก",
+        true,
+        "พวกเขาบินในปี 1903 เที่ยวบินแรกนานเพียง 12 วินาที"
+      ],
+      "t51": [
+        "ล้อถูกประดิษฐ์ขึ้นในยุคกลาง",
+        false,
+        "ล้อมีอายุกว่า 5,000 ปี ใช้กันในเมโสโปเตเมียตั้งแต่ราว 5,500 ปีก่อน"
+      ],
+      "t52": [
+        "ม้าน้ำเป็นปลา",
+        true,
+        "ม้าน้ำหายใจด้วยเหงือกและว่ายด้วยครีบเหมือนปลาอื่น ๆ"
+      ],
+      "t53": [
+        "นกฮัมมิงเบิร์ดบินถอยหลังได้",
+        true,
+        "นกฮัมมิงเบิร์ดเป็นนกชนิดเดียวที่บินถอยหลังได้จริง"
+      ],
+      "t54": [
+        "หอไอเฟลสูงขึ้นเล็กน้อยในฤดูร้อน",
+        true,
+        "ความร้อนทำให้โลหะขยายตัว หอจึงสูงขึ้นราว 15 เซนติเมตร"
+      ],
+      "t55": [
+        "ผิวหนังเป็นอวัยวะที่ใหญ่ที่สุดของร่างกายมนุษย์",
+        true,
+        "ผิวหนังของผู้ใหญ่หนักหลายกิโลกรัมและปกป้องทั้งร่างกาย"
+      ],
+      "t56": [
+        "สีแดงทำให้วัวกระทิงโกรธ",
+        false,
+        "วัวกระทิงแทบแยกสีแดงไม่ออก สิ่งที่ยั่วมันคือการเคลื่อนไหว ไม่ใช่สี"
+      ],
+      "t57": [
+        "แมลงวันบ้านมีอายุแค่วันเดียว",
+        false,
+        "แมลงวันบ้านอยู่ได้ราวหนึ่งเดือน แมลงชีปะขาวตัวเต็มวัยต่างหากที่อยู่แค่วันสองวัน"
+      ],
+      "t58": [
+        "สับปะรดขึ้นบนต้นไม้ยืนต้น",
+        false,
+        "สับปะรดขึ้นบนพืชเตี้ย ๆ ใบเยอะ โดยงอกจากกลางต้น"
+      ],
+      "t59": [
+        "ถั่วลิสงเป็นนัต แบบเดียวกับวอลนัท",
+        false,
+        "ถั่วลิสงเป็นพืชตระกูลถั่ว ญาติของถั่วลันเตา และฝักสุกอยู่ใต้ดิน"
+      ],
+      "t60": [
+        "ขั้วโลกเหนือและขั้วโลกใต้หนาวเท่ากัน",
+        false,
+        "ขั้วโลกใต้หนาวกว่ามาก เพราะอยู่บนทวีปน้ำแข็งที่สูง ส่วนขั้วโลกเหนืออยู่บนมหาสมุทร"
+      ]
+    }
   },
   "ar": {
     "text": {
@@ -19629,7 +40947,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "دعوة",
       "invited": "تمت الدعوة",
       "inviteNone": "بعد إضافة أصدقاء في قسم «الأصدقاء» يمكن دعوتهم بلمسة واحدة.",
-      "inviteSent": "أُرسلت الدعوة إلى {name}"
+      "inviteSent": "أُرسلت الدعوة إلى {name}",
+      "truth": "صح أم خطأ",
+      "tfTitle": "صح أم خطأ",
+      "tfNote": "لعبة مباشرة لشخصين: حقائق مدهشة عن العالم. 12 ثانية — صح أم خطأ؟ نقطة لكل إجابة صحيحة.",
+      "tfShareText": "دعوة من {name} إلى اللعبة المباشرة «صح أم خطأ»",
+      "tfJoinLead": "اللعبة جاهزة مع {name}. صح أم خطأ — القرار بسرعة!",
+      "tfRound": "الحقيقة {n} من {total}",
+      "tfTrue": "صح",
+      "tfFalse": "خطأ",
+      "tfIsTrue": "هذا صحيح!",
+      "tfIsFalse": "هذا خطأ!",
+      "tfFirstYou": "إجابتك الصحيحة كانت الأولى!",
+      "tfFirstThem": "أول إجابة صحيحة من {name}",
+      "tfFinalWin": "فوز! معرفتك بالعالم أكبر.",
+      "tfFinalLose": "هذه المرة المعرفة أكبر عند {name} — جولة أخرى؟",
+      "tfFinalDraw": "تعادل — معرفتكما متساوية!",
+      "featTruth": "لعبة «صح أم خطأ» المباشرة — حقائق مدهشة عن العالم"
     },
     "questions": {
       "q01": [
@@ -20051,6 +41385,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "الطبخ",
         "لغة جديدة",
         "الرسم"
+      ],
+      "q61": [
+        "ما الطبق الذي أتقنه أكثر؟",
+        "الحساء",
+        "البيلاف",
+        "المخبوزات",
+        "السلطة"
+      ],
+      "q62": [
+        "أي بلد أريد رؤيته أولًا؟",
+        "تركيا",
+        "اليابان",
+        "المغرب",
+        "النرويج"
+      ],
+      "q63": [
+        "أي رياضة أفضّل ممارستها؟",
+        "السباحة",
+        "الجري",
+        "ركوب الدراجة",
+        "كرة القدم"
+      ],
+      "q64": [
+        "أي كتاب سأختار؟",
+        "قصة مغامرات",
+        "كتاب تاريخ",
+        "حكايات",
+        "موسوعة"
+      ],
+      "q65": [
+        "أي حيوانات سأزورها أولًا في حديقة الحيوان؟",
+        "الفيلة",
+        "القرود",
+        "البطاريق",
+        "الزرافات"
+      ],
+      "q66": [
+        "ما موقفي من الطعام الحار؟",
+        "كلما زاد كان أفضل",
+        "القليل لا بأس به",
+        "قليل جدًا فقط",
+        "لا آكله أبدًا"
+      ],
+      "q67": [
+        "أي مادة دراسية أحببتها أكثر؟",
+        "الرياضيات",
+        "الأدب",
+        "الجغرافيا",
+        "التربية البدنية"
+      ],
+      "q68": [
+        "مهنة أحلامي في الطفولة؟",
+        "الطب",
+        "التدريس",
+        "ارتياد الفضاء",
+        "الطهي"
+      ],
+      "q69": [
+        "ما رأيي في رحلات المشي الطويلة؟",
+        "أحلم برحلة طويلة",
+        "ليوم واحد فقط",
+        "مع وسائل الراحة فقط",
+        "البيت أفضل"
+      ],
+      "q70": [
+        "مزاجي في الصباح؟",
+        "نشاط كامل",
+        "نعاس",
+        "هدوء",
+        "حديث كثير"
+      ],
+      "q71": [
+        "أي نوع من المكسرات أحبه أكثر؟",
+        "البندق",
+        "الجوز",
+        "الكاجو",
+        "اللوز"
+      ],
+      "q72": [
+        "ماذا سأفعل بساعة فراغ مفاجئة؟",
+        "القراءة",
+        "نزهة",
+        "اتصال بالعائلة",
+        "طبخ شيء ما"
+      ],
+      "q73": [
+        "أي طقس لا أحبه؟",
+        "الحر الشديد",
+        "الرياح",
+        "الثلج الذائب والوحل",
+        "الصقيع الشديد"
+      ],
+      "q74": [
+        "بأي لون سأطلي غرفتي؟",
+        "الأبيض",
+        "البيج",
+        "الأخضر",
+        "الأزرق الفاتح"
+      ],
+      "q75": [
+        "ماذا أفضّل أن ألعب؟",
+        "الشطرنج",
+        "الداما",
+        "أحجية الصور المقطّعة",
+        "لعبة كلمات"
+      ],
+      "q76": [
+        "ماذا سأطبخ للضيوف؟",
+        "البيلاف",
+        "فطيرة",
+        "سلطات",
+        "طلب طعام جاهز"
+      ],
+      "q77": [
+        "ما الذي لن آكله أبدًا؟",
+        "الفطر",
+        "السمك",
+        "الزيتون",
+        "البصل المسلوق"
+      ],
+      "q78": [
+        "كيف أحضّر الشاي؟",
+        "ثقيلًا",
+        "خفيفًا",
+        "محلّى",
+        "بالأعشاب"
+      ],
+      "q79": [
+        "ما الأهم بالنسبة لي في البيت؟",
+        "النظافة",
+        "الدفء والراحة",
+        "الضوء الوفير",
+        "الهدوء"
+      ],
+      "q80": [
+        "كيف أتعلّم الأشياء الجديدة؟",
+        "بالقراءة",
+        "بمشاهدة دروس الفيديو",
+        "بالتجربة العملية",
+        "بسؤال الآخرين"
+      ],
+      "q81": [
+        "أي حيوان بري يبهرني أكثر؟",
+        "النمر",
+        "الدب",
+        "النسر",
+        "الدلفين"
+      ],
+      "q82": [
+        "ماذا سأهدي أمي؟",
+        "زهور",
+        "شيء مصنوع باليد",
+        "رحلة",
+        "بطانية دافئة"
+      ],
+      "q83": [
+        "ماذا أفعل في الطريق؟",
+        "أنظر من النافذة",
+        "أقرأ",
+        "أتحدّث",
+        "آكل وجبة خفيفة"
+      ],
+      "q84": [
+        "طبقي المفضل من الدجاج؟",
+        "أسياخ الدجاج المشوي",
+        "الدجاج مع الأرز",
+        "كفتة الدجاج",
+        "قطع الدجاج المقرمشة"
+      ],
+      "q85": [
+        "أي مقعد أختار في القطار؟",
+        "بجانب النافذة",
+        "بجانب الممر",
+        "عكس اتجاه السير",
+        "لا يهمني"
+      ],
+      "q86": [
+        "ماذا أفعل حين تسوء الأمور؟",
+        "أتصرف فورًا",
+        "أفكّر أولًا",
+        "أطلب النصيحة",
+        "أقلق قليلًا"
+      ],
+      "q87": [
+        "ما أبرز صفاتي؟",
+        "الطيبة",
+        "الصدق",
+        "المثابرة",
+        "البهجة"
+      ],
+      "q88": [
+        "أين أرتاح أكثر؟",
+        "عند الأقارب في الريف",
+        "في فندق على البحر",
+        "في خيمة",
+        "في البيت"
+      ],
+      "q89": [
+        "أي معجنات سأختار؟",
+        "السمبوسة",
+        "الخاتشابوري",
+        "التشاك تشاك",
+        "الإكلير"
+      ],
+      "q90": [
+        "أي لغة أودّ تعلّمها أكثر؟",
+        "العربية",
+        "الإنجليزية",
+        "التركية",
+        "اليابانية"
+      ],
+      "q91": [
+        "كم يمكنني البقاء دون حلويات؟",
+        "يومًا",
+        "أسبوعًا",
+        "شهرًا",
+        "ما دام الأمر ضروريًا"
+      ],
+      "q92": [
+        "ماذا أفعل حين أتأخر؟",
+        "أركض بأقصى سرعة",
+        "أتصل مسبقًا للتنبيه",
+        "آخذ سيارة أجرة",
+        "لا أتأخر أبدًا"
+      ],
+      "q93": [
+        "ماذا أفعل حين يتعطّل جهاز؟",
+        "أصلحه بنفسي",
+        "أقرأ الدليل",
+        "أطلب المساعدة",
+        "أضغط كل الأزرار"
+      ],
+      "q94": [
+        "ما أول شيء في حقيبة سفري؟",
+        "حقيبة إسعافات أولية",
+        "كتاب",
+        "شاحن",
+        "وجبة خفيفة"
+      ],
+      "q95": [
+        "أي نشاط يهدّئني؟",
+        "الطبخ",
+        "الترتيب",
+        "الرسم",
+        "النزهة"
+      ],
+      "q96": [
+        "ماذا أريد أن أفعل بعد التقاعد؟",
+        "الاعتناء بالحديقة",
+        "السفر",
+        "القراءة",
+        "قضاء الوقت مع الأحفاد"
+      ],
+      "q97": [
+        "ما أكثر ما يزعجني؟",
+        "الضجيج",
+        "الفوضى",
+        "التأخير",
+        "قلة الأدب"
+      ],
+      "q98": [
+        "أي رائحة أحبها أكثر؟",
+        "الخبز الطازج",
+        "المطر",
+        "الزهور",
+        "البحر"
+      ],
+      "q99": [
+        "ماذا أختار للتحلية؟",
+        "فاكهة",
+        "مثلجات",
+        "فطيرة",
+        "شاي فقط"
       ]
     },
     "yesNo": {
@@ -20253,6 +41860,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "هل نلعب مرة أخرى لاحقًا؟",
         "جولة أخرى من فضلك",
         "العناق أجمل من اللعب"
+      ],
+      "c41": [
+        "هل تحب الطعام الحار؟",
+        "كلما زادت الحرارة كان أفضل",
+        "اختيار لطعم أخف"
+      ],
+      "c42": [
+        "هل تجيد السباحة؟",
+        "سباحة كالسمكة",
+        "البقاء قرب الشاطئ حاليًا"
+      ],
+      "c43": [
+        "هل تودّ أن يكون لديك قط؟",
+        "التفكير في اسمه قد بدأ",
+        "تفضيل للكلاب"
+      ],
+      "c44": [
+        "هل تودّ زيارة إسطنبول يومًا ما؟",
+        "حلم بمضيق البوسفور",
+        "اختيار مدينة أخرى"
+      ],
+      "c45": [
+        "هل تحب الطبخ؟",
+        "طبخ بكل سرور",
+        "غسل الأطباق أفضل"
+      ],
+      "c46": [
+        "هل تودّ تعلّم طبخ البيلاف؟",
+        "البحث عن الوصفة قد بدأ",
+        "تذوّق طبخ الآخرين أفضل"
+      ],
+      "c47": [
+        "هل تحب قراءة الكتب؟",
+        "كتاب قريب دائمًا",
+        "الاستماع إلى القصص أحب"
+      ],
+      "c48": [
+        "هل تجيد ركوب الدراجة؟",
+        "جاهزية للانطلاق الآن",
+        "وعد بالتعلّم"
+      ],
+      "c49": [
+        "هل تفضّل الجبال على البحر؟",
+        "اختيار الجبال",
+        "اختيار البحر"
+      ],
+      "c50": [
+        "هل تودّ رؤية الصحراء؟",
+        "حلم بالكثبان الرملية",
+        "الغابة أفضل"
+      ],
+      "c51": [
+        "هل تحب الشتاء؟",
+        "انتظار أول ثلج",
+        "انتظار الصيف"
+      ],
+      "c52": [
+        "هل تشرب الشاي دون سكر؟",
+        "حب لطعم الشاي الصافي",
+        "ملعقة السكر لا غنى عنها"
+      ],
+      "c53": [
+        "هل تخاف من العناكب؟",
+        "ابتعاد عنها قدر الإمكان",
+        "إخراجها إلى الخارج بهدوء"
+      ],
+      "c54": [
+        "هل تحب الرسم؟",
+        "الفرشاة في اليد بالفعل",
+        "تأمّل لوحات الآخرين أفضل"
+      ],
+      "c55": [
+        "هل تودّ رؤية الشفق القطبي؟",
+        "بحث عن أماكن رؤيته",
+        "تأمّل النجوم أفضل"
+      ],
+      "c56": [
+        "هل تحب الطقس الممطر؟",
+        "حب لصوت المطر خلف النافذة",
+        "انتظار الشمس"
+      ],
+      "c57": [
+        "هل تجيد ركوب الخيل؟",
+        "ثبات وثقة على السرج",
+        "مجرد حلم حتى الآن"
+      ],
+      "c58": [
+        "هل تودّ أن يكون لديك كلب؟",
+        "حلم بصديق وفيّ",
+        "ما يكفي من المسؤوليات حاليًا"
+      ],
+      "c59": [
+        "هل تفضّل الحلو على المالح؟",
+        "لا حياة بلا حلويات",
+        "اختيار المالح"
+      ],
+      "c60": [
+        "هل تحب السفر بالقطار؟",
+        "حب لإيقاع العجلات",
+        "اختيار الطائرة"
+      ],
+      "c61": [
+        "هل يسهل عليك بدء اليوم باكرًا؟",
+        "بداية اليوم بنشاط كامل",
+        "الاستيقاظ الحقيقي لا يأتي قبل الظهر"
+      ],
+      "c62": [
+        "هل تحب التخييم في خيمة؟",
+        "تجهيز حقيبة الظهر قد بدأ",
+        "اختيار فندق مريح"
+      ],
+      "c63": [
+        "هل تودّ العيش قرب البحر؟",
+        "حلم بصوت الأمواج",
+        "اختيار المدينة"
+      ],
+      "c64": [
+        "هل تأكل المثلجات في الشتاء؟",
+        "حتى في البرد القارس",
+        "في الصيف فقط"
+      ],
+      "c65": [
+        "هل تحب الشوكولاتة؟",
+        "معرفة بكل أنواعها",
+        "مرور بجانبها بهدوء"
+      ],
+      "c66": [
+        "هل تجيد خَبز الفطائر؟",
+        "خَبز كخَبز الجدّات",
+        "وعد بالتعلّم"
+      ],
+      "c67": [
+        "هل تحب النظر إلى النجوم؟",
+        "معرفة بالكوكبات",
+        "تفضيل للنهار المشمس"
+      ],
+      "c68": [
+        "هل تودّ زراعة حديقتك الخاصة يومًا ما؟",
+        "اختيار الشتلات قد بدأ",
+        "البداية بزهرة في أصيص"
+      ],
+      "c69": [
+        "هل تحب الأزهار البرية؟",
+        "حب للأقحوان والقنطريون",
+        "تفضيل لأزهار الحدائق"
+      ],
+      "c70": [
+        "هل تشرب القهوة؟",
+        "لا بداية لليوم دون قهوة",
+        "اختيار الشاي"
+      ],
+      "c71": [
+        "هل تحب الليموناضة المنزلية؟",
+        "تقطيع الليمون قد بدأ",
+        "الماء أفضل"
+      ],
+      "c72": [
+        "هل تودّ زيارة اليابان يومًا ما؟",
+        "حلم برؤية أزهار الكرز",
+        "اختيار بلد آخر"
+      ],
+      "c73": [
+        "هل تحب الخريف؟",
+        "حب لحفيف الأوراق تحت الأقدام",
+        "انتظار الربيع"
+      ],
+      "c74": [
+        "هل تحب رائحة الخزامى؟",
+        "حب لهذا العطر",
+        "تفضيل لروائح أخرى"
+      ],
+      "c75": [
+        "هل تحب ألعاب الطاولة؟",
+        "تجهيز اللوح قد بدأ",
+        "تفضيل للنزهة"
+      ],
+      "c76": [
+        "هل تجيد قيادة السيارة؟",
+        "قيادة بثقة",
+        "مقعد الراكب حاليًا"
+      ],
+      "c77": [
+        "هل تودّ رؤية المحيط يومًا ما؟",
+        "حلم بموجة كبيرة",
+        "البحر يكفي"
+      ],
+      "c78": [
+        "هل تودّ العيش في مزرعة لفترة؟",
+        "إطعام الدجاج قد بدأ",
+        "البقاء في المدينة"
+      ],
+      "c79": [
+        "هل تحب المدن الكبيرة؟",
+        "حب لأضواء المدينة",
+        "اختيار الهدوء والسكينة"
+      ],
+      "c80": [
+        "هل تفضّل الفاكهة على الحلويات؟",
+        "اختيار الفاكهة",
+        "اختيار الحلويات"
+      ],
+      "c81": [
+        "هل تودّ رؤية الدلافين في البحر؟",
+        "رغبة كبيرة في رؤيتها",
+        "القراءة عنها أفضل"
+      ],
+      "c82": [
+        "هل تحب الصيف؟",
+        "انتظار الأيام الحارة",
+        "حب للجو المنعش"
+      ],
+      "c83": [
+        "هل تحب المشي في الحديقة العامة؟",
+        "مشي في كل الأجواء",
+        "البقاء في البيت أفضل"
+      ],
+      "c84": [
+        "هل تحب الكتابة باليد؟",
+        "خط مرتّب",
+        "كتابة على الهاتف"
+      ],
+      "c85": [
+        "هل تحب النزهات بالقارب؟",
+        "المجاديف في اليد بالفعل",
+        "البقاء على الشاطئ"
+      ],
+      "c86": [
+        "هل تودّ السفر حول العالم؟",
+        "رسم المسار قد بدأ",
+        "بلدان قليلة تكفي"
+      ],
+      "c87": [
+        "هل تجيد صنع رجل الثلج؟",
+        "صنع أكبر واحد",
+        "التراشق بكرات الثلج أفضل"
+      ],
+      "c88": [
+        "هل تودّ تعلّم شيء جديد هذا العام؟",
+        "اختيار دورة قد بدأ",
+        "المشاغل كثيرة بالفعل"
+      ],
+      "c89": [
+        "هل تحب الهدوء؟",
+        "تقدير للسكينة",
+        "حب للحيوية والحركة"
+      ],
+      "c90": [
+        "هل تحب تقديم الهدايا لعائلتك؟",
+        "إسعاد العائلة دون مناسبة",
+        "المساعدة العملية أفضل"
       ]
     },
     "loves": {
@@ -20367,6 +42224,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "الغابة",
         "الصحراء",
         "الشفق القطبي"
+      ],
+      "s17": [
+        "الفاكهة المفضلة؟",
+        "تفاح",
+        "فراولة",
+        "بطيخ",
+        "عنب"
+      ],
+      "s18": [
+        "ماذا نفعل في يوم العطلة؟",
+        "مسير في الجبال",
+        "طبخ في البيت",
+        "زيارة متحف",
+        "صيد السمك"
+      ],
+      "s19": [
+        "الفطور المفضل؟",
+        "فطائر البان كيك",
+        "عجة",
+        "عصيدة بالتوت",
+        "كرواسون"
+      ],
+      "s20": [
+        "الطائر المفضل؟",
+        "البومة",
+        "الببغاء",
+        "البجعة",
+        "الطاووس"
+      ],
+      "s21": [
+        "أي مدينة نزور؟",
+        "إسطنبول",
+        "باريس",
+        "طوكيو",
+        "دبي"
+      ],
+      "s22": [
+        "الرياضة المفضلة؟",
+        "كرة القدم",
+        "السباحة",
+        "التنس",
+        "ركوب الخيل"
+      ],
+      "s23": [
+        "ماذا نزرع في الحديقة؟",
+        "شجرة تفاح",
+        "ورود",
+        "خضروات",
+        "فراولة"
+      ],
+      "s24": [
+        "المخبوزات المفضلة؟",
+        "فطائر صغيرة",
+        "دونات",
+        "بسكويت",
+        "بقلاوة"
+      ],
+      "s25": [
+        "أين نعيش؟",
+        "قرب نهر",
+        "في غابة",
+        "في مدينة كبيرة",
+        "على جزيرة"
+      ],
+      "s26": [
+        "الكائن البحري المفضل؟",
+        "السلحفاة",
+        "الحوت",
+        "الأخطبوط",
+        "حصان البحر"
+      ],
+      "s27": [
+        "بماذا نتنقّل؟",
+        "دراجة",
+        "سكوتر",
+        "منطاد هوائي",
+        "قارب"
+      ],
+      "s28": [
+        "الهواية المفضلة؟",
+        "الحياكة",
+        "تصوير الطبيعة",
+        "البستنة",
+        "فن الخط"
+      ],
+      "s29": [
+        "الحساء المفضل؟",
+        "البورش",
+        "حساء الدجاج",
+        "حساء اليقطين",
+        "شوربة العدس"
+      ],
+      "s30": [
+        "حيوان الغابة؟",
+        "القنفذ",
+        "السنجاب",
+        "الثعلب",
+        "الأيل"
+      ],
+      "s31": [
+        "شيء خفيف نأكله؟",
+        "تمر",
+        "لوز",
+        "فستق",
+        "مشمش مجفف"
+      ],
+      "s32": [
+        "ماذا نأخذ في رحلة المسير؟",
+        "خيمة",
+        "ترمس",
+        "خريطة",
+        "مصباح يدوي"
+      ],
+      "s33": [
+        "الحلوى المفضلة؟",
+        "مهلبية",
+        "تشيز كيك",
+        "فطائر بالعسل",
+        "سلطة فواكه"
+      ],
+      "s34": [
+        "ماذا نفعل في الشتاء؟",
+        "صنع رجل الثلج",
+        "ركوب الزلاجة",
+        "شاي بجانب النافذة",
+        "التزلج على الثلج"
+      ],
+      "s35": [
+        "ماذا نفعل في الصيف؟",
+        "السباحة",
+        "قطف التوت",
+        "نزهة بالقارب",
+        "بناء قلعة رملية"
+      ],
+      "s36": [
+        "بماذا نرسم؟",
+        "ألوان مائية",
+        "أقلام رصاص",
+        "أقلام شمعية",
+        "ألوان على قماش"
+      ],
+      "s37": [
+        "الخضار المفضل؟",
+        "جزر",
+        "طماطم",
+        "ذرة",
+        "يقطين"
+      ],
+      "s38": [
+        "ما الذي يجعل البيت دافئًا؟",
+        "مدفأة حطب",
+        "بطانية ناعمة",
+        "نباتات منزلية",
+        "رف كتب"
+      ],
+      "s39": [
+        "ماذا نلعب؟",
+        "الشطرنج",
+        "أحجيات الصور",
+        "ألعاب الطاولة",
+        "ألعاب الكرة"
+      ],
+      "s40": [
+        "من يعيش في المزرعة؟",
+        "بقرة",
+        "حَمَل",
+        "دجاجة",
+        "جدي صغير"
+      ],
+      "s41": [
+        "الشاي مع ماذا؟",
+        "عسل",
+        "ليمون",
+        "مربى",
+        "نعناع"
+      ],
+      "s42": [
+        "ماذا يوجد عند البحر؟",
+        "منارة",
+        "أصداف",
+        "مركب شراعي",
+        "نوارس"
+      ],
+      "s43": [
+        "كيف نبدأ الصباح؟",
+        "تمارين رياضية",
+        "كوب شاي",
+        "نزهة",
+        "كتاب"
+      ],
+      "s44": [
+        "التوت المفضل؟",
+        "توت العليق",
+        "التوت الأزرق",
+        "الكرز",
+        "التوت الأسود"
       ]
     },
     "who": [
@@ -20409,7 +42462,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "مَن منّا يتذكر القصص المضحكة أكثر؟",
       "مَن منّا أكثر صبرًا؟",
       "مَن منّا يقول «شكرًا» أكثر؟",
-      "مَن منّا يعرض المساعدة أولًا؟"
+      "مَن منّا يعرض المساعدة أولًا؟",
+      "مَن منّا أبرع في الحساب الذهني؟",
+      "مَن منّا يقرأ أكثر؟",
+      "مَن منّا يكتب على لوحة المفاتيح أسرع؟",
+      "مَن منّا يتصل بوالديه أكثر؟",
+      "مَن منّا يروي القصص أفضل؟",
+      "مَن منّا خطّه أكثر ترتيبًا؟",
+      "مَن منّا يحب الطعام الحار أكثر؟",
+      "مَن منّا ينسى أغراضه في البيت أكثر؟",
+      "مَن منّا أبرع في التعامل مع الأجهزة؟",
+      "مَن منّا يحب تعلّم الأشياء الجديدة أكثر؟",
+      "مَن منّا أبرع في التخطيط؟",
+      "مَن منّا أشطر في المساومة في السوق؟",
+      "مَن منّا يحب الطبيعة أكثر؟",
+      "مَن منّا يأكل أسرع؟",
+      "مَن منّا يشرب الشاي أكثر؟",
+      "مَن منّا يعتني بالنباتات أفضل؟",
+      "مَن منّا يعرف الجغرافيا أفضل؟",
+      "مَن منّا يلعب الشطرنج أفضل؟",
+      "مَن منّا يختار الفاكهة في السوق أفضل؟",
+      "مَن منّا يتابع النشرة الجوية أكثر؟",
+      "مَن منّا يخاف من العناكب أكثر؟",
+      "مَن منّا أشجع؟",
+      "مَن منّا أكثر فضولًا؟",
+      "مَن منّا يحل الألغاز أسرع؟",
+      "مَن منّا يرسم أفضل؟",
+      "مَن منّا يساعد الجيران أكثر؟",
+      "مَن منّا يتفاهم مع الأطفال أفضل؟",
+      "مَن منّا يحب المشي أكثر؟",
+      "مَن منّا يقرأ التعليمات أكثر؟",
+      "مَن منّا يتذكّر الأسماء أفضل؟",
+      "مَن منّا يحفظ كلمات اللغات الأخرى أسرع؟",
+      "مَن منّا أمهر في الخَبز؟",
+      "مَن منّا يقدّم نصائح أفضل؟",
+      "مَن منّا يحب الطقس البارد أكثر؟",
+      "مَن منّا سيكون أفضل في رحلة سير طويلة؟",
+      "مَن منّا يقرأ الأخبار أكثر؟",
+      "مَن منّا يجرّب أطباقًا جديدة أكثر؟",
+      "مَن منّا يجهّز حقيبة السفر أسرع؟",
+      "مَن منّا أمهر في إصلاح الأشياء؟",
+      "مَن منّا يتحدّث إلى الحيوانات أكثر؟",
+      "مَن منّا يغسل الأطباق أكثر؟",
+      "مَن منّا يعرف التاريخ أفضل؟",
+      "مَن منّا يؤجّل الأمور أكثر؟",
+      "مَن منّا يتآلف مع الناس الجدد أسرع؟",
+      "مَن منّا يهتم بصحته أكثر؟"
     ],
     "phrases": [
       "أبتسم عندما…",
@@ -20441,8 +42539,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "الصباح معك هو…",
       "لو كنّا كلمة واحدة، لكانت…",
       "أريد أن أتعلم منك كيف…",
-      "شكرًا لأنك دائمًا…"
-    ]
+      "شكرًا لأنك دائمًا…",
+      "طعامي المفضل في طفولتي كان…",
+      "لو مُنحت يومًا واحدًا في أي بلد، فسوف…",
+      "أفضل نصيحة تلقيتها هي…",
+      "أضحك دائمًا عندما…",
+      "مكاني المفضل في مدينتي هو…",
+      "لو كان لي دكان صغير، لكان يبيع…",
+      "أفضل طبق أطبخه هو…",
+      "حلم طفولة ما زلت أتذكّره هو…",
+      "من السهل إسعادي إذا…",
+      "أروع مكان زرته هو…",
+      "أريد أن أتعلّم…",
+      "يوم راحتي المثالي يبدأ بـ…",
+      "لو استطعت اقتناء أي حيوان، لاخترت…",
+      "عائلتي تقول دائمًا إنني…",
+      "لا أستطيع أبدًا أن أعتاد على…",
+      "أنفع عادة لديّ هي…",
+      "أفضل كتاب قرأته هو…",
+      "بعد عشر سنوات أودّ أن…",
+      "بيت أحلامي هو…",
+      "أطرف ما حدث لي في طفولتي هو…",
+      "السعادة بالنسبة لي هي…",
+      "يصعب عليّ التخلي عن…",
+      "لو كانت لديّ قوة خارقة، لكانت…",
+      "أكثر ما أقدّره في الناس هو…",
+      "في المساء الذي أكون فيه متفرغًا، أحب أن…",
+      "رائحتي المفضلة هي…",
+      "الطعام الذي لن آكله أبدًا هو…",
+      "الشيء الوحيد الذي لا أخرج من البيت بدونه هو…",
+      "أودّ زيارة… لأن…",
+      "أجمل هدية تلقيتها هي…",
+      "أغرب عادة لديّ هي…",
+      "لو كانت لديّ ساعة إضافية كل يوم، لقضيتها في…",
+      "شخص أتعلّم منه الكثير هو…",
+      "في اليوم الصعب، ما يعينني هو…",
+      "ألذّ شيء تذوقته في سفر هو…",
+      "لو استطعت تغيير عملي ليوم واحد، لاخترت…",
+      "الفصل الأقرب إلى قلبي هو…",
+      "أصدقائي يقولون إنني…",
+      "أودّ يومًا أن أعلّم أحدًا…",
+      "فرحة صغيرة في يومي هي…"
+    ],
+    "truth": {
+      "t01": [
+        "للأخطبوط ثلاثة قلوب.",
+        true,
+        "قلبان يضخّان الدم عبر الخياشيم، والثالث يضخّه إلى سائر الجسم."
+      ],
+      "t02": [
+        "يمكن رؤية سور الصين العظيم من القمر بالعين المجردة.",
+        false,
+        "لا يمكن: السور ضيّق جدًا. حتى من المدار تصعب رؤيته كثيرًا."
+      ],
+      "t03": [
+        "يمكن أن يبقى العسل آلاف السنين دون أن يفسد.",
+        true,
+        "عُثر في مقابر مصرية قديمة على عسل عمره آلاف السنين ما زال محفوظًا."
+      ],
+      "t04": [
+        "الموز ينمو على الأشجار.",
+        false,
+        "نبتة الموز عشبة عملاقة: «جذعها» مكوّن من أوراق ملتفّة بإحكام."
+      ],
+      "t05": [
+        "الزهرة أشدّ كواكب المجموعة الشمسية حرارة.",
+        true,
+        "غلافها الجوي الكثيف يرفع حرارتها إلى نحو 460 °C — أكثر من عطارد."
+      ],
+      "t06": [
+        "الخفافيش عمياء.",
+        false,
+        "الخفافيش تبصر، وفي الظلام تهتدي أيضًا بتحديد الموقع بالصدى."
+      ],
+      "t07": [
+        "الحوت سمكة.",
+        false,
+        "الحيتان ثدييات: تتنفس الهواء وترضع صغارها الحليب."
+      ],
+      "t08": [
+        "الصحراء الكبرى أكبر صحراء في العالم.",
+        false,
+        "أكبر صحراء هي القارة القطبية الجنوبية، والصحراء الكبرى أكبر صحراء حارة."
+      ],
+      "t09": [
+        "عدد عظام رقبة الزرافة يساوي عددها عند الإنسان.",
+        true,
+        "لدى كليهما سبع فقرات عنقية، لكنها طويلة جدًا عند الزرافة."
+      ],
+      "t10": [
+        "من الناحية النباتية، الطماطم ثمرة عنبية.",
+        true,
+        "يصنّف علماء النبات الطماطم ثمرة عنبية: ثمرة لحمية بداخلها بذور."
+      ],
+      "t11": [
+        "من الناحية النباتية، الفراولة ثمرة عنبية.",
+        false,
+        "إنها ثمرة كاذبة: الثمار الحقيقية هي «البذور» الصغيرة على سطحها."
+      ],
+      "t12": [
+        "يمكن سماع صوت انفجار في الفضاء.",
+        false,
+        "لا يكاد يوجد هواء في الفضاء، فلا وسط ينتقل فيه الصوت."
+      ],
+      "t13": [
+        "في أعالي الجبال يغلي الماء عند درجة حرارة أقل.",
+        true,
+        "الضغط الجوي هناك أقل، فيغلي الماء قبل بلوغ 100 °C."
+      ],
+      "t14": [
+        "تعيش البطاريق في القطب الشمالي.",
+        false,
+        "البطاريق البرية تعيش في نصف الكرة الجنوبي فقط، لا في أقصى الشمال."
+      ],
+      "t15": [
+        "إيفرست أعلى جبل فوق مستوى سطح البحر.",
+        true,
+        "يرتفع إيفرست نحو 8849 مترًا فوق مستوى سطح البحر."
+      ],
+      "t16": [
+        "يستخدم الإنسان 10% فقط من دماغه.",
+        false,
+        "هذه خرافة: كل أجزاء الدماغ تقريبًا تنشط على مدار اليوم."
+      ],
+      "t17": [
+        "ينبض قلب الإنسان نحو 100 ألف مرة في اليوم.",
+        true,
+        "بمعدل 70 نبضة تقريبًا في الدقيقة يصل المجموع إلى نحو 100 ألف نبضة يوميًا."
+      ],
+      "t18": [
+        "ذاكرة السمكة الذهبية ثلاث ثوانٍ فقط.",
+        false,
+        "تُظهر التجارب أن السمكة الذهبية تتذكّر ما تعلّمته لأشهر."
+      ],
+      "t19": [
+        "أستراليا دولة وقارة في آن واحد.",
+        true,
+        "أستراليا هي الدولة الوحيدة التي تشغل قارة كاملة."
+      ],
+      "t20": [
+        "البرق لا يضرب المكان نفسه مرتين أبدًا.",
+        false,
+        "بل يضربه: المباني العالية يصيبها البرق مرات كثيرة كل عام."
+      ],
+      "t21": [
+        "النعامة تدفن رأسها في الرمل حين تخاف.",
+        false,
+        "خرافة: النعامة الخائفة تهرب أو تنبطح على الأرض لتختبئ."
+      ],
+      "t22": [
+        "أصغر طائر في العالم نوع من الطيور الطنانة.",
+        true,
+        "الطائر الطنان النحلي في كوبا يزن نحو غرامين — أخف من أي طائر آخر."
+      ],
+      "t23": [
+        "البطيخ يتكوّن من الماء بنسبة 90% تقريبًا.",
+        true,
+        "يحتوي البطيخ على نحو 92% من الماء — ولهذا هو منعش جدًا."
+      ],
+      "t24": [
+        "للعنكبوت ست أرجل.",
+        false,
+        "للعنكبوت ثماني أرجل. للحشرات ست، والعناكب ليست حشرات."
+      ],
+      "t25": [
+        "القمر يصدر ضوءه بنفسه.",
+        false,
+        "ليس للقمر ضوء خاص به: إنه يعكس ضوء الشمس."
+      ],
+      "t26": [
+        "الفيل أكبر حيوان بري.",
+        true,
+        "قد يزيد وزن فيل السافانا الأفريقي على 6 أطنان."
+      ],
+      "t27": [
+        "الحوت الأزرق أكبر حيوان عرفه العلم.",
+        true,
+        "قد يتجاوز طول الحوت الأزرق 30 مترًا — أكبر من أي ديناصور معروف."
+      ],
+      "t28": [
+        "الحرباء تغيّر لونها للتخفي فقط.",
+        false,
+        "لونها يتعلق أكثر بالحالة المزاجية والحرارة وإرسال الإشارات لغيرها."
+      ],
+      "t29": [
+        "توماس إديسون هو مخترع الهاتف.",
+        false,
+        "حصل ألكسندر غراهام بيل على براءة اختراع الهاتف عام 1876."
+      ],
+      "t30": [
+        "ألكسندر فليمنغ هو مكتشف البنسلين.",
+        true,
+        "اكتشف فليمنغ البنسلين عام 1928 — وهو أول مضاد حيوي."
+      ],
+      "t31": [
+        "أعلى بركان في المجموعة الشمسية يقع على المريخ.",
+        true,
+        "يبلغ ارتفاع أوليمبوس مونس على المريخ نحو 22 كم — قرابة 2.5 ضعف إيفرست."
+      ],
+      "t32": [
+        "الدم في أوردتنا أزرق.",
+        false,
+        "الدم أحمر دائمًا؛ تبدو الأوردة زرقاء بسبب طريقة مرور الضوء عبر الجلد."
+      ],
+      "t33": [
+        "المحيط الأطلسي أكبر محيطات الأرض.",
+        false,
+        "الأكبر هو المحيط الهادئ: مساحته أكبر من كل اليابسة مجتمعة."
+      ],
+      "t34": [
+        "روسيا أكبر دولة في العالم مساحةً.",
+        true,
+        "تزيد مساحة روسيا على 17 مليون كيلومتر مربع."
+      ],
+      "t35": [
+        "لكندا أطول ساحل في العالم.",
+        true,
+        "يمتد ساحل كندا أكثر من 200 ألف كم — أطول من ساحل أي دولة أخرى."
+      ],
+      "t36": [
+        "معدة البقرة مقسّمة إلى أربع حجرات.",
+        true,
+        "للبقرة معدة واحدة بأربع حجرات — وبهذا تهضم العشب."
+      ],
+      "t37": [
+        "الأسد أكبر السنوريات في العالم.",
+        false,
+        "أكبر السنوريات هو النمر، وخاصة النمر السيبيري."
+      ],
+      "t38": [
+        "الأرض أقرب الكواكب إلى الشمس.",
+        false,
+        "الأقرب عطارد ثم الزهرة، والأرض هي الكوكب الثالث."
+      ],
+      "t39": [
+        "يستغرق ضوء الشمس نحو 8 دقائق ليصل إلى الأرض.",
+        true,
+        "يقطع الضوء 150 مليون كم من الشمس في نحو 8 دقائق و20 ثانية."
+      ],
+      "t40": [
+        "تنام الدلافين بنصف دماغها في كل مرة.",
+        true,
+        "يستريح نصف الدماغ بينما يبقى النصف الآخر متيقظًا ويتذكّر التنفس."
+      ],
+      "t41": [
+        "البطاطس أصلها من أيرلندا.",
+        false,
+        "أصل البطاطس من أمريكا الجنوبية: زُرعت في جبال الأنديز منذ آلاف السنين."
+      ],
+      "t42": [
+        "تُصنع الشوكولاتة من بذور شجرة الكاكاو.",
+        true,
+        "تنمو قرون الكاكاو على الجذع مباشرة، وبذورها تصبح شوكولاتة."
+      ],
+      "t43": [
+        "القرش من الثدييات.",
+        false,
+        "القرش سمكة تتنفس بالخياشيم. أما الحيتان والدلافين فهي الثدييات البحرية."
+      ],
+      "t44": [
+        "بعض أنواع الخيزران تنمو نحو متر في اليوم.",
+        true,
+        "الخيزران من أسرع النباتات نموًا على الأرض."
+      ],
+      "t45": [
+        "تستطيع البومة إدارة رأسها 360 درجة كاملة.",
+        false,
+        "تدير البومة رأسها نحو 270 درجة — كثير، لكنه ليس دائرة كاملة."
+      ],
+      "t46": [
+        "الألماس وغرافيت أقلام الرصاص مادة واحدة.",
+        true,
+        "كلاهما كربون نقي — لكن ذراته مرتّبة بشكل مختلف."
+      ],
+      "t47": [
+        "الجمل يخزّن الماء في سنامه.",
+        false,
+        "يخزّن السنام الدهون لا الماء — وهي مصدر طاقة في الرحلات الطويلة."
+      ],
+      "t48": [
+        "أصغر عظمة في جسم الإنسان توجد في الأذن.",
+        true,
+        "عظمة الركاب في الأذن الوسطى طولها نحو 3 مليمترات فقط."
+      ],
+      "t49": [
+        "قد تعيش الببغاوات الكبيرة أكثر من 50 عامًا.",
+        true,
+        "ببغاوات المكاو والكوكاتو التي تلقى رعاية جيدة تعيش غالبًا 50 عامًا أو أكثر."
+      ],
+      "t50": [
+        "الأخوان رايت قاما بأول طيران بطائرة ذات محرك.",
+        true,
+        "طارا عام 1903، ودامت الرحلة الأولى 12 ثانية."
+      ],
+      "t51": [
+        "اختُرعت العجلة في العصور الوسطى.",
+        false,
+        "عمر العجلة يزيد على 5000 عام: استُخدمت في بلاد الرافدين منذ نحو 5500 عام."
+      ],
+      "t52": [
+        "حصان البحر سمكة.",
+        true,
+        "يتنفس حصان البحر بالخياشيم ويسبح بزعنفة مثل باقي الأسماك."
+      ],
+      "t53": [
+        "يستطيع الطائر الطنان الطيران إلى الخلف.",
+        true,
+        "الطيور الطنانة هي الطيور الوحيدة التي تطير إلى الخلف حقًا."
+      ],
+      "t54": [
+        "يزداد طول برج إيفل قليلًا في الصيف.",
+        true,
+        "الحرارة تجعل المعدن يتمدد، فيطول البرج نحو 15 سنتيمترًا."
+      ],
+      "t55": [
+        "الجلد أكبر عضو في جسم الإنسان.",
+        true,
+        "يزن جلد البالغ عدة كيلوغرامات ويحمي الجسم كله."
+      ],
+      "t56": [
+        "اللون الأحمر يُغضب الثور.",
+        false,
+        "الثور بالكاد يميّز الأحمر: الحركة هي ما يستفزه لا اللون."
+      ],
+      "t57": [
+        "الذبابة المنزلية تعيش يومًا واحدًا فقط.",
+        false,
+        "تعيش الذبابة المنزلية نحو شهر. أما ذبابة مايو البالغة فتعيش يومًا أو يومين."
+      ],
+      "t58": [
+        "الأناناس ينمو على الأشجار.",
+        false,
+        "ينمو الأناناس على نبتة قصيرة كثيفة الأوراق، من وسطها تمامًا."
+      ],
+      "t59": [
+        "الفول السوداني من المكسرات.",
+        false,
+        "الفول السوداني من البقوليات، قريب البازلاء والفاصولياء. تنضج قرونه تحت الأرض."
+      ],
+      "t60": [
+        "القطبان الشمالي والجنوبي متساويان في البرودة.",
+        false,
+        "القطب الجنوبي أبرد بكثير: يقع على قارة جليدية مرتفعة، والشمالي على محيط."
+      ]
+    }
   },
   "ind": {
     "text": {
@@ -20651,7 +43091,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Ajak",
       "invited": "Sudah diajak",
       "inviteNone": "Tambahkan teman di bagian “Teman” agar bisa mengajak mereka dengan sekali ketuk.",
-      "inviteSent": "Undangan terkirim ke {name}"
+      "inviteSent": "Undangan terkirim ke {name}",
+      "truth": "Benar atau salah",
+      "tfTitle": "Benar atau salah",
+      "tfNote": "Game langsung untuk berdua: fakta menakjubkan tentang dunia. 12 detik — benar atau salah? Satu poin untuk setiap jawaban yang tepat.",
+      "tfShareText": "{name} mengajakmu bermain game langsung «Benar atau salah»",
+      "tfJoinLead": "{name} menunggumu. Benar atau salah — putuskan dengan cepat!",
+      "tfRound": "Fakta {n} dari {total}",
+      "tfTrue": "Benar",
+      "tfFalse": "Salah",
+      "tfIsTrue": "Itu benar!",
+      "tfIsFalse": "Itu salah!",
+      "tfFirstYou": "Kamu yang lebih dulu benar!",
+      "tfFirstThem": "{name} yang lebih dulu benar",
+      "tfFinalWin": "Menang! Kamu lebih tahu tentang dunia.",
+      "tfFinalLose": "Kali ini {name} lebih tahu — main lagi?",
+      "tfFinalDraw": "Seri — pengetahuan kalian sama banyaknya!",
+      "featTruth": "Game langsung «Benar atau salah» — fakta menakjubkan tentang dunia"
     },
     "questions": {
       "q01": [
@@ -21073,6 +43529,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Memasak",
         "Bahasa baru",
         "Menggambar"
+      ],
+      "q61": [
+        "Masakan apa yang paling jago kubuat?",
+        "Sup",
+        "Nasi pilaf",
+        "Kue panggang",
+        "Salad"
+      ],
+      "q62": [
+        "Negara mana yang ingin kukunjungi lebih dulu?",
+        "Turki",
+        "Jepang",
+        "Maroko",
+        "Norwegia"
+      ],
+      "q63": [
+        "Olahraga apa yang lebih ingin kutekuni?",
+        "Renang",
+        "Lari",
+        "Bersepeda",
+        "Sepak bola"
+      ],
+      "q64": [
+        "Buku apa yang akan kupilih?",
+        "Kisah petualangan",
+        "Buku sejarah",
+        "Dongeng",
+        "Ensiklopedia"
+      ],
+      "q65": [
+        "Hewan apa yang pertama kukunjungi di kebun binatang?",
+        "Gajah",
+        "Monyet",
+        "Penguin",
+        "Jerapah"
+      ],
+      "q66": [
+        "Bagaimana aku dengan makanan pedas?",
+        "Makin pedas makin enak",
+        "Sedikit tak apa",
+        "Hanya sedikit sekali",
+        "Tidak makan sama sekali"
+      ],
+      "q67": [
+        "Pelajaran sekolah apa yang paling kusukai?",
+        "Matematika",
+        "Sastra",
+        "Geografi",
+        "Olahraga"
+      ],
+      "q68": [
+        "Cita-citaku waktu kecil?",
+        "Dokter",
+        "Guru",
+        "Astronaut",
+        "Koki"
+      ],
+      "q69": [
+        "Bagaimana aku dengan pendakian?",
+        "Memimpikan perjalanan panjang",
+        "Sehari saja cukup",
+        "Asal nyaman",
+        "Lebih baik di rumah"
+      ],
+      "q70": [
+        "Suasana hatiku di pagi hari?",
+        "Penuh semangat",
+        "Masih mengantuk",
+        "Pendiam",
+        "Banyak bicara"
+      ],
+      "q71": [
+        "Kacang apa yang paling kusukai?",
+        "Hazelnut",
+        "Kenari",
+        "Mete",
+        "Almon"
+      ],
+      "q72": [
+        "Apa yang kulakukan dengan satu jam luang tak terduga?",
+        "Membaca",
+        "Jalan-jalan",
+        "Menelepon keluarga",
+        "Memasak sesuatu"
+      ],
+      "q73": [
+        "Cuaca apa yang tidak kusukai?",
+        "Panas terik",
+        "Angin kencang",
+        "Salju becek",
+        "Dingin membeku"
+      ],
+      "q74": [
+        "Warna apa untuk kamarku?",
+        "Putih",
+        "Krem",
+        "Hijau",
+        "Biru muda"
+      ],
+      "q75": [
+        "Aku lebih suka bermain apa?",
+        "Catur",
+        "Dam",
+        "Puzzle gambar",
+        "Permainan kata"
+      ],
+      "q76": [
+        "Apa yang kumasak untuk tamu?",
+        "Nasi pilaf",
+        "Pai",
+        "Aneka salad",
+        "Pesan makanan saja"
+      ],
+      "q77": [
+        "Apa yang pasti tidak akan kumakan?",
+        "Jamur",
+        "Ikan",
+        "Zaitun",
+        "Bawang bombai rebus"
+      ],
+      "q78": [
+        "Bagaimana aku menyeduh teh?",
+        "Kental",
+        "Encer",
+        "Manis",
+        "Dengan daun herbal"
+      ],
+      "q79": [
+        "Apa yang paling penting bagiku di rumah?",
+        "Kebersihan",
+        "Kenyamanan",
+        "Banyak cahaya",
+        "Ketenangan"
+      ],
+      "q80": [
+        "Bagaimana aku mempelajari hal baru?",
+        "Membaca",
+        "Menonton video tutorial",
+        "Langsung praktik",
+        "Bertanya pada orang lain"
+      ],
+      "q81": [
+        "Hewan liar apa yang paling memikatku?",
+        "Harimau",
+        "Beruang",
+        "Elang",
+        "Lumba-lumba"
+      ],
+      "q82": [
+        "Apa yang akan kuberikan untuk ibuku?",
+        "Bunga",
+        "Kerajinan tangan",
+        "Perjalanan",
+        "Selimut hangat"
+      ],
+      "q83": [
+        "Apa yang kulakukan di perjalanan?",
+        "Melihat ke luar jendela",
+        "Membaca",
+        "Mengobrol",
+        "Ngemil"
+      ],
+      "q84": [
+        "Masakan ayam favoritku?",
+        "Sate ayam",
+        "Nasi ayam",
+        "Perkedel ayam",
+        "Nugget"
+      ],
+      "q85": [
+        "Kursi mana yang kupilih di kereta?",
+        "Dekat jendela",
+        "Dekat lorong",
+        "Membelakangi arah jalan",
+        "Terserah"
+      ],
+      "q86": [
+        "Apa yang kulakukan saat ada masalah?",
+        "Langsung bertindak",
+        "Berpikir dulu",
+        "Minta nasihat",
+        "Sedikit cemas"
+      ],
+      "q87": [
+        "Sifat utamaku?",
+        "Kebaikan hati",
+        "Kejujuran",
+        "Ketekunan",
+        "Keceriaan"
+      ],
+      "q88": [
+        "Di mana aku paling nyaman beristirahat?",
+        "Di rumah kerabat di desa",
+        "Di hotel tepi laut",
+        "Di tenda",
+        "Di rumah"
+      ],
+      "q89": [
+        "Kue apa yang akan kupilih?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "Eclair"
+      ],
+      "q90": [
+        "Bahasa apa yang paling ingin kupelajari?",
+        "Arab",
+        "Inggris",
+        "Turki",
+        "Jepang"
+      ],
+      "q91": [
+        "Berapa lama aku bisa tanpa makanan manis?",
+        "Sehari",
+        "Seminggu",
+        "Sebulan",
+        "Selama diperlukan"
+      ],
+      "q92": [
+        "Apa yang kulakukan kalau akan terlambat?",
+        "Berlari sekencang mungkin",
+        "Menelepon untuk memberi tahu",
+        "Naik taksi",
+        "Aku tak pernah terlambat"
+      ],
+      "q93": [
+        "Apa yang kulakukan kalau alat rusak?",
+        "Memperbaiki sendiri",
+        "Membaca petunjuk",
+        "Minta bantuan",
+        "Menekan semua tombol"
+      ],
+      "q94": [
+        "Apa yang pertama masuk koperku?",
+        "Kotak P3K",
+        "Buku",
+        "Pengisi daya",
+        "Camilan"
+      ],
+      "q95": [
+        "Kegiatan apa yang menenangkanku?",
+        "Memasak",
+        "Beres-beres",
+        "Menggambar",
+        "Jalan-jalan"
+      ],
+      "q96": [
+        "Apa yang ingin kulakukan saat pensiun?",
+        "Berkebun",
+        "Bepergian",
+        "Membaca",
+        "Bersama cucu"
+      ],
+      "q97": [
+        "Apa yang paling menggangguku?",
+        "Kebisingan",
+        "Berantakan",
+        "Keterlambatan",
+        "Ketidaksopanan"
+      ],
+      "q98": [
+        "Aroma apa yang paling kusukai?",
+        "Roti segar",
+        "Hujan",
+        "Bunga",
+        "Laut"
+      ],
+      "q99": [
+        "Apa yang kupilih untuk pencuci mulut?",
+        "Buah",
+        "Es krim",
+        "Pai",
+        "Teh saja"
       ]
     },
     "yesNo": {
@@ -21275,6 +44004,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Nanti main lagi?",
         "ingin satu ronde lagi",
         "lebih ingin berpelukan daripada main"
+      ],
+      "c41": [
+        "Kamu suka makanan pedas?",
+        "makin pedas makin enak",
+        "memilih yang lebih ringan"
+      ],
+      "c42": [
+        "Kamu bisa berenang?",
+        "berenang seperti ikan",
+        "untuk sekarang tetap di dekat pantai"
+      ],
+      "c43": [
+        "Kamu mau memelihara kucing?",
+        "sudah memikirkan namanya",
+        "lebih suka anjing"
+      ],
+      "c44": [
+        "Kamu ingin ke Istanbul suatu hari?",
+        "sudah memimpikan Selat Bosporus",
+        "memilih kota lain"
+      ],
+      "c45": [
+        "Kamu suka memasak?",
+        "memasak dengan senang hati",
+        "lebih memilih mencuci piring"
+      ],
+      "c46": [
+        "Kamu mau belajar memasak nasi pilaf?",
+        "sudah mencari resepnya",
+        "lebih suka mencicipi masakan orang lain"
+      ],
+      "c47": [
+        "Kamu suka membaca buku?",
+        "selalu ada buku di dekatnya",
+        "lebih suka mendengarkan cerita"
+      ],
+      "c48": [
+        "Kamu bisa naik sepeda?",
+        "bisa langsung berangkat sekarang",
+        "berjanji akan belajar"
+      ],
+      "c49": [
+        "Kamu lebih suka gunung daripada laut?",
+        "memilih gunung",
+        "memilih laut"
+      ],
+      "c50": [
+        "Kamu ingin melihat gurun?",
+        "memimpikan bukit pasir",
+        "lebih memilih hutan"
+      ],
+      "c51": [
+        "Kamu suka musim dingin?",
+        "menantikan salju pertama",
+        "menantikan musim panas"
+      ],
+      "c52": [
+        "Kamu minum teh tanpa gula?",
+        "suka rasa teh yang murni",
+        "tak bisa tanpa sesendok gula"
+      ],
+      "c53": [
+        "Kamu takut laba-laba?",
+        "menjauh sejauh mungkin",
+        "dengan tenang membawanya ke luar"
+      ],
+      "c54": [
+        "Kamu suka menggambar?",
+        "sudah mengambil kuas",
+        "lebih suka melihat lukisan orang lain"
+      ],
+      "c55": [
+        "Kamu ingin melihat aurora?",
+        "sudah mencari tempat untuk melihatnya",
+        "lebih suka memandangi bintang"
+      ],
+      "c56": [
+        "Kamu suka cuaca hujan?",
+        "suka suara hujan di luar jendela",
+        "menantikan matahari"
+      ],
+      "c57": [
+        "Kamu bisa berkuda?",
+        "duduk mantap di pelana",
+        "untuk sekarang baru memimpikannya"
+      ],
+      "c58": [
+        "Kamu ingin memelihara anjing?",
+        "memimpikan sahabat yang setia",
+        "untuk sekarang sudah cukup yang diurus"
+      ],
+      "c59": [
+        "Kamu lebih suka manis daripada asin?",
+        "tak bisa hidup tanpa yang manis",
+        "memilih yang asin"
+      ],
+      "c60": [
+        "Kamu suka bepergian naik kereta?",
+        "suka irama roda kereta",
+        "memilih pesawat"
+      ],
+      "c61": [
+        "Mudah bagimu memulai hari pagi-pagi?",
+        "memulai hari dengan penuh semangat",
+        "baru benar-benar bangun menjelang siang"
+      ],
+      "c62": [
+        "Kamu suka berkemah di tenda?",
+        "sudah mengemas ransel",
+        "memilih hotel yang nyaman"
+      ],
+      "c63": [
+        "Kamu ingin tinggal di tepi laut?",
+        "memimpikan suara ombak",
+        "memilih kota"
+      ],
+      "c64": [
+        "Kamu makan es krim di musim dingin?",
+        "tetap makan meski udara membeku",
+        "hanya di musim panas"
+      ],
+      "c65": [
+        "Kamu suka cokelat?",
+        "kenal semua jenisnya",
+        "bisa melewatinya dengan tenang"
+      ],
+      "c66": [
+        "Kamu bisa memanggang pai?",
+        "memanggang seperti nenek",
+        "berjanji akan belajar"
+      ],
+      "c67": [
+        "Kamu suka memandangi bintang?",
+        "hafal rasi-rasi bintang",
+        "lebih suka hari yang cerah"
+      ],
+      "c68": [
+        "Kamu ingin punya kebun sendiri suatu hari?",
+        "sudah memilih bibit",
+        "akan mulai dari bunga di pot"
+      ],
+      "c69": [
+        "Kamu suka bunga liar?",
+        "suka bunga aster dan cornflower",
+        "lebih suka bunga taman"
+      ],
+      "c70": [
+        "Kamu minum kopi?",
+        "hari tak bisa dimulai tanpa kopi",
+        "memilih teh"
+      ],
+      "c71": [
+        "Kamu suka limun buatan sendiri?",
+        "sudah mengiris lemon",
+        "lebih memilih air putih"
+      ],
+      "c72": [
+        "Kamu ingin ke Jepang suatu hari?",
+        "memimpikan melihat bunga sakura",
+        "memilih negara lain"
+      ],
+      "c73": [
+        "Kamu suka musim gugur?",
+        "suka gemerisik daun di bawah kaki",
+        "menantikan musim semi"
+      ],
+      "c74": [
+        "Kamu suka aroma lavender?",
+        "suka sekali aroma itu",
+        "lebih suka aroma lain"
+      ],
+      "c75": [
+        "Kamu suka permainan papan?",
+        "sudah menyiapkan papannya",
+        "lebih suka jalan-jalan"
+      ],
+      "c76": [
+        "Kamu bisa menyetir mobil?",
+        "menyetir dengan percaya diri",
+        "untuk sekarang masih jadi penumpang"
+      ],
+      "c77": [
+        "Kamu ingin melihat samudra suatu hari?",
+        "memimpikan ombak besar",
+        "laut saja sudah cukup"
+      ],
+      "c78": [
+        "Kamu ingin tinggal di peternakan untuk sementara?",
+        "sudah memberi makan ayam",
+        "tetap di kota"
+      ],
+      "c79": [
+        "Kamu suka kota besar?",
+        "suka gemerlap lampu kota",
+        "memilih ketenangan"
+      ],
+      "c80": [
+        "Kamu lebih suka buah daripada permen?",
+        "memilih buah",
+        "memilih permen"
+      ],
+      "c81": [
+        "Kamu ingin melihat lumba-lumba di laut?",
+        "ingin sekali melihatnya",
+        "lebih suka membaca tentangnya"
+      ],
+      "c82": [
+        "Kamu suka musim panas?",
+        "menantikan hari-hari panas",
+        "suka cuaca sejuk"
+      ],
+      "c83": [
+        "Kamu suka jalan-jalan di taman?",
+        "jalan-jalan dalam cuaca apa pun",
+        "lebih suka di rumah"
+      ],
+      "c84": [
+        "Kamu suka menulis tangan?",
+        "tulisannya rapi",
+        "mengetik di ponsel"
+      ],
+      "c85": [
+        "Kamu suka naik perahu?",
+        "sudah memegang dayung",
+        "tetap di tepi"
+      ],
+      "c86": [
+        "Kamu ingin keliling dunia?",
+        "sudah menggambar rutenya",
+        "beberapa negara saja cukup"
+      ],
+      "c87": [
+        "Kamu bisa membuat manusia salju?",
+        "akan membuat yang paling besar",
+        "lebih suka perang bola salju"
+      ],
+      "c88": [
+        "Kamu ingin belajar hal baru tahun ini?",
+        "sudah memilih kursus",
+        "kesibukannya sudah cukup banyak"
+      ],
+      "c89": [
+        "Kamu suka keheningan?",
+        "menghargai ketenangan",
+        "suka suasana ramai"
+      ],
+      "c90": [
+        "Kamu suka memberi hadiah untuk keluarga?",
+        "membahagiakan keluarga tanpa alasan khusus",
+        "lebih suka membantu secara nyata"
       ]
     },
     "loves": {
@@ -21389,6 +44368,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Hutan",
         "Gurun",
         "Aurora"
+      ],
+      "s17": [
+        "Buah favorit?",
+        "Apel",
+        "Stroberi",
+        "Semangka",
+        "Anggur"
+      ],
+      "s18": [
+        "Apa yang dilakukan saat libur?",
+        "Mendaki gunung",
+        "Memasak di rumah",
+        "Ke museum",
+        "Memancing"
+      ],
+      "s19": [
+        "Sarapan favorit?",
+        "Panekuk",
+        "Telur dadar",
+        "Bubur dengan beri",
+        "Croissant"
+      ],
+      "s20": [
+        "Burung favorit?",
+        "Burung hantu",
+        "Burung beo",
+        "Angsa",
+        "Merak"
+      ],
+      "s21": [
+        "Kota mana yang dikunjungi?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Olahraga favorit?",
+        "Sepak bola",
+        "Renang",
+        "Tenis",
+        "Berkuda"
+      ],
+      "s23": [
+        "Apa yang ditanam di kebun?",
+        "Pohon apel",
+        "Mawar",
+        "Sayuran",
+        "Stroberi"
+      ],
+      "s24": [
+        "Kue panggang favorit?",
+        "Pastel kecil",
+        "Donat",
+        "Biskuit",
+        "Baklava"
+      ],
+      "s25": [
+        "Tinggal di mana?",
+        "Di tepi sungai",
+        "Di hutan",
+        "Di kota besar",
+        "Di pulau"
+      ],
+      "s26": [
+        "Hewan laut favorit?",
+        "Penyu",
+        "Paus",
+        "Gurita",
+        "Kuda laut"
+      ],
+      "s27": [
+        "Naik apa?",
+        "Sepeda",
+        "Skuter",
+        "Balon udara",
+        "Perahu"
+      ],
+      "s28": [
+        "Hobi favorit?",
+        "Merajut",
+        "Memotret alam",
+        "Berkebun",
+        "Kaligrafi"
+      ],
+      "s29": [
+        "Sup favorit?",
+        "Borscht",
+        "Sup ayam",
+        "Sup labu",
+        "Sup lentil"
+      ],
+      "s30": [
+        "Hewan hutan?",
+        "Landak",
+        "Tupai",
+        "Rubah",
+        "Rusa"
+      ],
+      "s31": [
+        "Camilan?",
+        "Kurma",
+        "Almon",
+        "Pistachio",
+        "Aprikot kering"
+      ],
+      "s32": [
+        "Apa yang dibawa saat mendaki?",
+        "Tenda",
+        "Termos",
+        "Peta",
+        "Senter"
+      ],
+      "s33": [
+        "Hidangan penutup favorit?",
+        "Puding",
+        "Kue keju",
+        "Panekuk madu",
+        "Salad buah"
+      ],
+      "s34": [
+        "Apa yang dilakukan di musim dingin?",
+        "Membuat manusia salju",
+        "Main kereta luncur",
+        "Minum teh di dekat jendela",
+        "Bermain ski"
+      ],
+      "s35": [
+        "Apa yang dilakukan di musim panas?",
+        "Berenang",
+        "Memetik beri",
+        "Naik perahu",
+        "Membuat istana pasir"
+      ],
+      "s36": [
+        "Menggambar dengan apa?",
+        "Cat air",
+        "Pensil",
+        "Krayon",
+        "Cat di kanvas"
+      ],
+      "s37": [
+        "Sayuran favorit?",
+        "Wortel",
+        "Tomat",
+        "Jagung",
+        "Labu"
+      ],
+      "s38": [
+        "Apa yang membuat rumah nyaman?",
+        "Perapian",
+        "Selimut lembut",
+        "Tanaman hias",
+        "Rak buku"
+      ],
+      "s39": [
+        "Main apa?",
+        "Catur",
+        "Puzzle",
+        "Permainan papan",
+        "Permainan bola"
+      ],
+      "s40": [
+        "Siapa yang tinggal di peternakan?",
+        "Sapi",
+        "Anak domba",
+        "Ayam betina",
+        "Anak kambing"
+      ],
+      "s41": [
+        "Teh dengan apa?",
+        "Madu",
+        "Lemon",
+        "Selai",
+        "Mint"
+      ],
+      "s42": [
+        "Apa yang ada di tepi laut?",
+        "Mercusuar",
+        "Kerang",
+        "Perahu layar",
+        "Burung camar"
+      ],
+      "s43": [
+        "Bagaimana memulai pagi?",
+        "Senam",
+        "Secangkir teh",
+        "Jalan-jalan",
+        "Buku"
+      ],
+      "s44": [
+        "Beri favorit?",
+        "Raspberry",
+        "Blueberry",
+        "Ceri",
+        "Blackberry"
       ]
     },
     "who": [
@@ -21431,7 +44606,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Siapa di antara kita yang lebih sering mengingat cerita lucu?",
       "Siapa di antara kita yang lebih sabar?",
       "Siapa di antara kita yang lebih sering bilang “terima kasih”?",
-      "Siapa di antara kita yang lebih dulu menawarkan bantuan?"
+      "Siapa di antara kita yang lebih dulu menawarkan bantuan?",
+      "Siapa di antara kita yang lebih jago berhitung di luar kepala?",
+      "Siapa di antara kita yang lebih banyak membaca?",
+      "Siapa di antara kita yang mengetik lebih cepat?",
+      "Siapa di antara kita yang lebih sering menelepon orang tua?",
+      "Siapa di antara kita yang lebih pandai bercerita?",
+      "Siapa di antara kita yang tulisan tangannya lebih rapi?",
+      "Siapa di antara kita yang lebih suka makanan pedas?",
+      "Siapa di antara kita yang lebih sering lupa barang di rumah?",
+      "Siapa di antara kita yang lebih mahir dengan gawai?",
+      "Siapa di antara kita yang lebih senang mempelajari hal baru?",
+      "Siapa di antara kita yang lebih pandai membuat rencana?",
+      "Siapa di antara kita yang lebih pintar menawar di pasar?",
+      "Siapa di antara kita yang lebih mencintai alam?",
+      "Siapa di antara kita yang makan lebih cepat?",
+      "Siapa di antara kita yang lebih banyak minum teh?",
+      "Siapa di antara kita yang lebih telaten merawat tanaman?",
+      "Siapa di antara kita yang lebih paham geografi?",
+      "Siapa di antara kita yang lebih jago main catur?",
+      "Siapa di antara kita yang lebih pandai memilih buah di pasar?",
+      "Siapa di antara kita yang lebih sering mengecek prakiraan cuaca?",
+      "Siapa di antara kita yang lebih takut laba-laba?",
+      "Siapa di antara kita yang lebih berani?",
+      "Siapa di antara kita yang lebih ingin tahu?",
+      "Siapa di antara kita yang lebih cepat memecahkan teka-teki?",
+      "Siapa di antara kita yang lebih pandai menggambar?",
+      "Siapa di antara kita yang lebih sering membantu tetangga?",
+      "Siapa di antara kita yang lebih akrab dengan anak-anak?",
+      "Siapa di antara kita yang lebih suka berjalan kaki?",
+      "Siapa di antara kita yang lebih sering membaca petunjuk pemakaian?",
+      "Siapa di antara kita yang lebih ingat nama orang?",
+      "Siapa di antara kita yang lebih cepat menghafal kosakata bahasa asing?",
+      "Siapa di antara kita yang lebih pandai membuat kue?",
+      "Siapa di antara kita yang lebih pandai memberi nasihat?",
+      "Siapa di antara kita yang lebih suka cuaca dingin?",
+      "Siapa di antara kita yang lebih tangguh saat mendaki?",
+      "Siapa di antara kita yang lebih sering membaca berita?",
+      "Siapa di antara kita yang lebih sering mencoba masakan baru?",
+      "Siapa di antara kita yang lebih cepat mengemas koper?",
+      "Siapa di antara kita yang lebih pandai memperbaiki barang?",
+      "Siapa di antara kita yang lebih sering mengajak bicara hewan?",
+      "Siapa di antara kita yang lebih sering mencuci piring?",
+      "Siapa di antara kita yang lebih paham sejarah?",
+      "Siapa di antara kita yang lebih sering menunda-nunda?",
+      "Siapa di antara kita yang lebih cepat akrab dengan orang baru?",
+      "Siapa di antara kita yang lebih menjaga kesehatan?"
     ],
     "phrases": [
       "Aku tersenyum saat kamu…",
@@ -21463,8 +44683,350 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Pagi bersamamu adalah…",
       "Kalau kita satu kata, kata itu adalah…",
       "Aku ingin belajar darimu cara…",
-      "Terima kasih karena kamu selalu…"
-    ]
+      "Terima kasih karena kamu selalu…",
+      "Makanan favoritku waktu kecil adalah…",
+      "Kalau diberi satu hari di negara mana saja, aku akan…",
+      "Nasihat terbaik yang pernah kuterima adalah…",
+      "Aku selalu tertawa saat…",
+      "Tempat favoritku di kota asalku adalah…",
+      "Kalau punya toko kecil sendiri, aku akan menjual…",
+      "Masakan yang paling jago kubuat adalah…",
+      "Mimpi masa kecil yang masih kuingat adalah…",
+      "Aku mudah dibuat senang kalau…",
+      "Tempat paling menakjubkan yang pernah kukunjungi adalah…",
+      "Aku ingin belajar…",
+      "Hari libur sempurnaku dimulai dengan…",
+      "Kalau boleh memelihara hewan apa saja, aku memilih…",
+      "Keluargaku selalu bilang bahwa aku…",
+      "Aku tak pernah bisa terbiasa dengan…",
+      "Kebiasaanku yang paling berguna adalah…",
+      "Buku terbaik yang pernah kubaca adalah…",
+      "Sepuluh tahun lagi, aku ingin…",
+      "Rumah impianku adalah…",
+      "Hal paling lucu yang kualami waktu kecil adalah…",
+      "Bagiku, kebahagiaan adalah…",
+      "Sulit bagiku untuk melepaskan…",
+      "Kalau aku punya kekuatan super, kekuatan itu akan…",
+      "Yang paling kuhargai dari orang lain adalah…",
+      "Saat punya malam yang luang, aku…",
+      "Aroma favoritku adalah…",
+      "Makanan yang tak akan pernah kumakan adalah…",
+      "Satu barang yang selalu kubawa saat keluar rumah adalah…",
+      "Aku ingin berkunjung ke… karena…",
+      "Hadiah terbaik yang pernah kuterima adalah…",
+      "Kebiasaanku yang paling unik adalah…",
+      "Kalau punya satu jam ekstra setiap hari, aku akan…",
+      "Orang yang banyak mengajariku adalah…",
+      "Di hari yang berat, yang membuatku bertahan adalah…",
+      "Makanan terenak yang kucoba saat bepergian adalah…",
+      "Kalau bisa bertukar pekerjaan sehari, aku memilih…",
+      "Musim yang paling dekat di hatiku adalah…",
+      "Teman-temanku bilang bahwa aku…",
+      "Suatu hari aku ingin mengajari seseorang…",
+      "Kebahagiaan kecil dalam hariku adalah…"
+    ],
+    "truth": {
+      "t01": [
+        "Gurita punya tiga jantung.",
+        true,
+        "Dua jantung memompa darah ke insang, yang ketiga ke seluruh tubuh."
+      ],
+      "t02": [
+        "Tembok Besar Tiongkok terlihat dari Bulan dengan mata telanjang.",
+        false,
+        "Tidak: temboknya terlalu sempit. Dari orbit pun sangat sulit dilihat."
+      ],
+      "t03": [
+        "Madu bisa bertahan ribuan tahun tanpa basi.",
+        true,
+        "Madu berumur ribuan tahun yang masih awet ditemukan di makam Mesir kuno."
+      ],
+      "t04": [
+        "Pisang tumbuh di pohon berkayu.",
+        false,
+        "Tanaman pisang adalah terna raksasa: «batangnya» tersusun dari pelepah daun yang tergulung rapat."
+      ],
+      "t05": [
+        "Venus adalah planet terpanas di Tata Surya.",
+        true,
+        "Atmosfernya yang tebal memanaskan Venus hingga sekitar 460 °C — lebih panas dari Merkurius."
+      ],
+      "t06": [
+        "Kelelawar itu buta.",
+        false,
+        "Kelelawar bisa melihat, dan dalam gelap juga mencari jalan dengan ekolokasi."
+      ],
+      "t07": [
+        "Paus adalah ikan.",
+        false,
+        "Paus adalah mamalia: bernapas dengan udara dan menyusui anaknya."
+      ],
+      "t08": [
+        "Sahara adalah gurun terbesar di dunia.",
+        false,
+        "Gurun terbesar adalah Antarktika. Sahara adalah gurun panas terbesar."
+      ],
+      "t09": [
+        "Jumlah tulang leher jerapah sama dengan manusia.",
+        true,
+        "Keduanya punya tujuh ruas tulang leher — hanya saja milik jerapah sangat panjang."
+      ],
+      "t10": [
+        "Secara botani, tomat adalah buah beri.",
+        true,
+        "Ahli botani menggolongkan tomat sebagai beri: buah berdaging dengan biji di dalamnya."
+      ],
+      "t11": [
+        "Secara botani, stroberi adalah buah beri.",
+        false,
+        "Itu beri semu: buah sebenarnya adalah «biji» kecil di permukaannya."
+      ],
+      "t12": [
+        "Ledakan bisa terdengar di luar angkasa.",
+        false,
+        "Luar angkasa hampir tanpa udara, jadi suara tak punya medium untuk merambat."
+      ],
+      "t13": [
+        "Di pegunungan tinggi, air mendidih pada suhu lebih rendah.",
+        true,
+        "Tekanan udara di sana lebih rendah, jadi air mendidih sebelum 100 °C."
+      ],
+      "t14": [
+        "Penguin hidup di Kutub Utara.",
+        false,
+        "Penguin liar hanya hidup di belahan bumi selatan, bukan di ujung utara."
+      ],
+      "t15": [
+        "Everest adalah gunung tertinggi di atas permukaan laut.",
+        true,
+        "Everest menjulang sekitar 8.849 meter di atas permukaan laut."
+      ],
+      "t16": [
+        "Manusia hanya memakai 10% otaknya.",
+        false,
+        "Itu mitos: hampir semua bagian otak aktif sepanjang hari."
+      ],
+      "t17": [
+        "Jantung manusia berdetak sekitar 100.000 kali sehari.",
+        true,
+        "Dengan sekitar 70 detak per menit, totalnya kira-kira 100.000 detak sehari."
+      ],
+      "t18": [
+        "Ingatan ikan mas koki hanya tiga detik.",
+        false,
+        "Eksperimen menunjukkan ikan mas koki bisa mengingat yang dipelajarinya berbulan-bulan."
+      ],
+      "t19": [
+        "Australia adalah negara sekaligus benua.",
+        true,
+        "Australia satu-satunya negara yang menempati seluruh benua."
+      ],
+      "t20": [
+        "Petir tak pernah menyambar tempat yang sama dua kali.",
+        false,
+        "Bisa: gedung tinggi tersambar petir berkali-kali setiap tahun."
+      ],
+      "t21": [
+        "Burung unta membenamkan kepala ke pasir saat takut.",
+        false,
+        "Mitos: burung unta yang takut akan lari atau merebah rata di tanah untuk bersembunyi."
+      ],
+      "t22": [
+        "Burung terkecil di dunia adalah sejenis kolibri.",
+        true,
+        "Kolibri lebah dari Kuba beratnya sekitar 2 gram — paling ringan di antara semua burung."
+      ],
+      "t23": [
+        "Semangka sekitar 90% terdiri dari air.",
+        true,
+        "Semangka mengandung sekitar 92% air — karena itu sangat menyegarkan."
+      ],
+      "t24": [
+        "Laba-laba punya enam kaki.",
+        false,
+        "Laba-laba punya delapan kaki. Serangga berkaki enam, dan laba-laba bukan serangga."
+      ],
+      "t25": [
+        "Bulan memancarkan cahayanya sendiri.",
+        false,
+        "Bulan tak punya cahaya sendiri: ia memantulkan sinar matahari."
+      ],
+      "t26": [
+        "Gajah adalah hewan darat terbesar.",
+        true,
+        "Gajah semak Afrika bisa berbobot lebih dari 6 ton."
+      ],
+      "t27": [
+        "Paus biru adalah hewan terbesar yang dikenal ilmu pengetahuan.",
+        true,
+        "Paus biru bisa lebih dari 30 meter — lebih besar dari dinosaurus mana pun yang dikenal."
+      ],
+      "t28": [
+        "Bunglon berganti warna hanya untuk menyamar.",
+        false,
+        "Warnanya lebih bergantung pada suasana hati, suhu, dan sinyal untuk bunglon lain."
+      ],
+      "t29": [
+        "Telepon ditemukan oleh Thomas Edison.",
+        false,
+        "Alexander Graham Bell menerima paten telepon pada tahun 1876."
+      ],
+      "t30": [
+        "Penisilin ditemukan oleh Alexander Fleming.",
+        true,
+        "Fleming menemukan penisilin pada 1928 — antibiotik pertama."
+      ],
+      "t31": [
+        "Gunung berapi tertinggi di Tata Surya ada di Mars.",
+        true,
+        "Olympus Mons di Mars tingginya sekitar 22 km — hampir 2,5 kali Everest."
+      ],
+      "t32": [
+        "Darah di pembuluh vena kita berwarna biru.",
+        false,
+        "Darah selalu merah; vena hanya tampak biru karena cara cahaya menembus kulit."
+      ],
+      "t33": [
+        "Atlantik adalah samudra terbesar di Bumi.",
+        false,
+        "Yang terbesar adalah Pasifik: lebih luas dari seluruh daratan Bumi digabung."
+      ],
+      "t34": [
+        "Rusia adalah negara terluas di dunia.",
+        true,
+        "Luas Rusia lebih dari 17 juta kilometer persegi."
+      ],
+      "t35": [
+        "Kanada memiliki garis pantai terpanjang di dunia.",
+        true,
+        "Garis pantai Kanada lebih dari 200.000 km — terpanjang dibanding negara mana pun."
+      ],
+      "t36": [
+        "Lambung sapi punya empat bagian.",
+        true,
+        "Sapi punya satu lambung dengan empat ruang — begitulah ia mencerna rumput."
+      ],
+      "t37": [
+        "Singa adalah kucing terbesar di dunia.",
+        false,
+        "Kucing terbesar adalah harimau, terutama harimau Siberia."
+      ],
+      "t38": [
+        "Bumi adalah planet terdekat dengan Matahari.",
+        false,
+        "Yang terdekat Merkurius, lalu Venus; Bumi adalah planet ketiga."
+      ],
+      "t39": [
+        "Sinar matahari butuh sekitar 8 menit untuk sampai ke Bumi.",
+        true,
+        "Cahaya menempuh 150 juta km dari Matahari dalam sekitar 8 menit 20 detik."
+      ],
+      "t40": [
+        "Lumba-lumba tidur dengan separuh otak secara bergantian.",
+        true,
+        "Separuh otak beristirahat, separuh lagi tetap waspada dan ingat bernapas."
+      ],
+      "t41": [
+        "Kentang berasal dari Irlandia.",
+        false,
+        "Kentang berasal dari Amerika Selatan: ditanam di Pegunungan Andes ribuan tahun lalu."
+      ],
+      "t42": [
+        "Cokelat dibuat dari biji pohon kakao.",
+        true,
+        "Buah kakao tumbuh langsung di batang, dan bijinya diolah menjadi cokelat."
+      ],
+      "t43": [
+        "Hiu adalah mamalia.",
+        false,
+        "Hiu adalah ikan: bernapas dengan insang. Mamalia laut itu paus dan lumba-lumba."
+      ],
+      "t44": [
+        "Beberapa jenis bambu bisa tumbuh hampir satu meter sehari.",
+        true,
+        "Bambu termasuk tanaman yang tumbuh paling cepat di Bumi."
+      ],
+      "t45": [
+        "Burung hantu bisa memutar kepala penuh 360 derajat.",
+        false,
+        "Burung hantu bisa memutar kepala sekitar 270 derajat — banyak, tapi tidak satu putaran."
+      ],
+      "t46": [
+        "Berlian dan grafit pensil terbuat dari zat yang sama.",
+        true,
+        "Keduanya karbon murni — hanya susunan atomnya yang berbeda."
+      ],
+      "t47": [
+        "Unta menyimpan air di punuknya.",
+        false,
+        "Punuk unta menyimpan lemak, bukan air — sumber energi di perjalanan jauh."
+      ],
+      "t48": [
+        "Tulang terkecil di tubuh manusia ada di telinga.",
+        true,
+        "Tulang sanggurdi di telinga tengah panjangnya hanya sekitar 3 milimeter."
+      ],
+      "t49": [
+        "Burung beo besar bisa hidup lebih dari 50 tahun.",
+        true,
+        "Makau dan kakatua yang dirawat baik sering hidup 50 tahun atau lebih."
+      ],
+      "t50": [
+        "Wright bersaudara melakukan penerbangan pesawat bermesin pertama.",
+        true,
+        "Mereka terbang pada 1903; penerbangan pertama berlangsung 12 detik."
+      ],
+      "t51": [
+        "Roda ditemukan pada Abad Pertengahan.",
+        false,
+        "Roda berumur lebih dari 5.000 tahun: sudah dipakai di Mesopotamia sekitar 5.500 tahun lalu."
+      ],
+      "t52": [
+        "Kuda laut adalah ikan.",
+        true,
+        "Kuda laut bernapas dengan insang dan berenang dengan sirip, seperti ikan lain."
+      ],
+      "t53": [
+        "Kolibri bisa terbang mundur.",
+        true,
+        "Kolibri satu-satunya burung yang benar-benar bisa terbang mundur."
+      ],
+      "t54": [
+        "Menara Eiffel sedikit lebih tinggi di musim panas.",
+        true,
+        "Panas membuat logam memuai, dan menara bertambah tinggi sekitar 15 sentimeter."
+      ],
+      "t55": [
+        "Kulit adalah organ terbesar tubuh manusia.",
+        true,
+        "Kulit orang dewasa beratnya beberapa kilogram dan melindungi seluruh tubuh."
+      ],
+      "t56": [
+        "Warna merah membuat banteng marah.",
+        false,
+        "Banteng hampir tak bisa membedakan merah: gerakanlah yang memancingnya, bukan warna."
+      ],
+      "t57": [
+        "Lalat rumah hanya hidup satu hari.",
+        false,
+        "Lalat rumah hidup sekitar sebulan. Yang hidup sehari dua hari adalah lalat sehari dewasa."
+      ],
+      "t58": [
+        "Nanas tumbuh di pohon berkayu.",
+        false,
+        "Nanas tumbuh di tanaman rendah berdaun lebat, tepat dari tengahnya."
+      ],
+      "t59": [
+        "Kacang tanah termasuk buah berkulit keras, seperti kenari.",
+        false,
+        "Kacang tanah adalah polong-polongan, kerabat kacang polong dan buncis. Polongnya matang di dalam tanah."
+      ],
+      "t60": [
+        "Kutub Utara dan Kutub Selatan sama dinginnya.",
+        false,
+        "Kutub Selatan jauh lebih dingin: berada di benua es yang tinggi, Kutub Utara di atas samudra."
+      ]
+    }
   },
   "vi": {
     "text": {
@@ -21673,7 +45235,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "invite": "Mời",
       "invited": "Đã mời",
       "inviteNone": "Thêm bạn bè trong mục “Bạn bè” để mời chỉ với một chạm.",
-      "inviteSent": "Đã gửi lời mời đến {name}"
+      "inviteSent": "Đã gửi lời mời đến {name}",
+      "truth": "Đúng hay sai",
+      "tfTitle": "Đúng hay sai",
+      "tfNote": "Trò chơi trực tiếp cho hai người: những sự thật thú vị về thế giới. 12 giây — đúng hay sai? Mỗi câu đúng được một điểm.",
+      "tfShareText": "{name} mời bạn chơi trò trực tiếp «Đúng hay sai»",
+      "tfJoinLead": "{name} đang chờ bạn. Đúng hay sai — quyết định thật nhanh!",
+      "tfRound": "Sự thật {n}/{total}",
+      "tfTrue": "Đúng",
+      "tfFalse": "Sai",
+      "tfIsTrue": "Đúng vậy!",
+      "tfIsFalse": "Sai rồi!",
+      "tfFirstYou": "Bạn trả lời đúng trước!",
+      "tfFirstThem": "{name} trả lời đúng trước",
+      "tfFinalWin": "Chiến thắng! Bạn hiểu biết về thế giới nhiều hơn.",
+      "tfFinalLose": "Lần này {name} biết nhiều hơn — đấu lại nhé?",
+      "tfFinalDraw": "Hòa — hai bạn hiểu biết ngang nhau!",
+      "featTruth": "Trò chơi trực tiếp «Đúng hay sai» — những sự thật thú vị về thế giới"
     },
     "questions": {
       "q01": [
@@ -22095,6 +45673,279 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Nấu ăn",
         "Một ngôn ngữ mới",
         "Vẽ"
+      ],
+      "q61": [
+        "Món nào mình nấu ngon nhất?",
+        "Súp",
+        "Cơm pilaf",
+        "Bánh nướng",
+        "Salad"
+      ],
+      "q62": [
+        "Mình muốn đến nước nào đầu tiên?",
+        "Thổ Nhĩ Kỳ",
+        "Nhật Bản",
+        "Ma-rốc",
+        "Na Uy"
+      ],
+      "q63": [
+        "Mình muốn chơi môn thể thao nào hơn?",
+        "Bơi lội",
+        "Chạy bộ",
+        "Đạp xe",
+        "Bóng đá"
+      ],
+      "q64": [
+        "Mình sẽ chọn cuốn sách nào?",
+        "Truyện phiêu lưu",
+        "Sách lịch sử",
+        "Truyện cổ tích",
+        "Bách khoa toàn thư"
+      ],
+      "q65": [
+        "Ở sở thú, mình sẽ đến xem con gì trước?",
+        "Voi",
+        "Khỉ",
+        "Chim cánh cụt",
+        "Hươu cao cổ"
+      ],
+      "q66": [
+        "Mình ăn cay thế nào?",
+        "Càng cay càng ngon",
+        "Một chút thì được",
+        "Chỉ một xíu thôi",
+        "Không ăn cay"
+      ],
+      "q67": [
+        "Hồi đi học mình thích môn nào nhất?",
+        "Toán",
+        "Văn",
+        "Địa lý",
+        "Thể dục"
+      ],
+      "q68": [
+        "Nghề mơ ước hồi nhỏ của mình?",
+        "Bác sĩ",
+        "Giáo viên",
+        "Phi hành gia",
+        "Đầu bếp"
+      ],
+      "q69": [
+        "Mình nghĩ sao về đi bộ đường dài?",
+        "Mơ một chuyến thật dài",
+        "Chỉ một ngày thôi",
+        "Phải có tiện nghi",
+        "Ở nhà vẫn hơn"
+      ],
+      "q70": [
+        "Tâm trạng buổi sáng của mình?",
+        "Tràn đầy năng lượng",
+        "Vẫn còn buồn ngủ",
+        "Lặng lẽ",
+        "Nói nhiều"
+      ],
+      "q71": [
+        "Mình thích loại hạt nào nhất?",
+        "Hạt phỉ",
+        "Óc chó",
+        "Hạt điều",
+        "Hạnh nhân"
+      ],
+      "q72": [
+        "Có thêm một giờ rảnh bất ngờ, mình sẽ làm gì?",
+        "Đọc sách",
+        "Đi dạo",
+        "Gọi cho gia đình",
+        "Nấu món gì đó"
+      ],
+      "q73": [
+        "Mình không thích thời tiết nào?",
+        "Nắng nóng",
+        "Gió",
+        "Tuyết tan lầy lội",
+        "Rét đậm"
+      ],
+      "q74": [
+        "Mình sẽ sơn phòng màu gì?",
+        "Trắng",
+        "Be",
+        "Xanh lá",
+        "Xanh da trời nhạt"
+      ],
+      "q75": [
+        "Mình thích chơi gì hơn?",
+        "Cờ vua",
+        "Cờ đam",
+        "Xếp hình",
+        "Trò chơi chữ"
+      ],
+      "q76": [
+        "Mình sẽ nấu gì đãi khách?",
+        "Cơm pilaf",
+        "Bánh nướng nhân",
+        "Các món salad",
+        "Gọi đồ ăn"
+      ],
+      "q77": [
+        "Mình chắc chắn không ăn gì?",
+        "Nấm",
+        "Cá",
+        "Ô liu",
+        "Hành luộc"
+      ],
+      "q78": [
+        "Mình pha trà thế nào?",
+        "Đậm",
+        "Nhạt",
+        "Ngọt",
+        "Với thảo mộc"
+      ],
+      "q79": [
+        "Điều gì quan trọng nhất với mình trong một ngôi nhà?",
+        "Sạch sẽ",
+        "Ấm cúng",
+        "Nhiều ánh sáng",
+        "Yên tĩnh"
+      ],
+      "q80": [
+        "Mình học điều mới thế nào?",
+        "Đọc",
+        "Xem video hướng dẫn",
+        "Thực hành",
+        "Hỏi người khác"
+      ],
+      "q81": [
+        "Loài thú hoang nào khiến mình thích thú nhất?",
+        "Hổ",
+        "Gấu",
+        "Đại bàng",
+        "Cá heo"
+      ],
+      "q82": [
+        "Mình sẽ tặng mẹ gì?",
+        "Hoa",
+        "Đồ tự làm",
+        "Một chuyến đi",
+        "Chăn ấm"
+      ],
+      "q83": [
+        "Trên đường đi, mình làm gì?",
+        "Ngắm qua cửa sổ",
+        "Đọc sách",
+        "Trò chuyện",
+        "Ăn vặt"
+      ],
+      "q84": [
+        "Món gà mình thích nhất?",
+        "Gà xiên nướng",
+        "Cơm gà",
+        "Chả gà",
+        "Gà viên chiên"
+      ],
+      "q85": [
+        "Trên tàu, mình chọn chỗ nào?",
+        "Cạnh cửa sổ",
+        "Cạnh lối đi",
+        "Ngồi quay lưng chiều đi",
+        "Sao cũng được"
+      ],
+      "q86": [
+        "Khi có chuyện không ổn, mình làm gì?",
+        "Hành động ngay",
+        "Suy nghĩ trước",
+        "Xin lời khuyên",
+        "Hơi lo lắng"
+      ],
+      "q87": [
+        "Phẩm chất chính của mình?",
+        "Tốt bụng",
+        "Trung thực",
+        "Kiên trì",
+        "Vui vẻ"
+      ],
+      "q88": [
+        "Mình nghỉ ngơi tốt nhất ở đâu?",
+        "Nhà họ hàng ở quê",
+        "Khách sạn bên biển",
+        "Trong lều",
+        "Ở nhà"
+      ],
+      "q89": [
+        "Mình sẽ chọn loại bánh nào?",
+        "Samsa",
+        "Khachapuri",
+        "Chak-chak",
+        "Bánh éclair"
+      ],
+      "q90": [
+        "Mình muốn học ngôn ngữ nào nhất?",
+        "Tiếng Ả Rập",
+        "Tiếng Anh",
+        "Tiếng Thổ Nhĩ Kỳ",
+        "Tiếng Nhật"
+      ],
+      "q91": [
+        "Mình có thể nhịn đồ ngọt bao lâu?",
+        "Một ngày",
+        "Một tuần",
+        "Một tháng",
+        "Bao lâu cũng được"
+      ],
+      "q92": [
+        "Khi sắp trễ, mình làm gì?",
+        "Chạy hết tốc lực",
+        "Gọi báo trước",
+        "Bắt taxi",
+        "Mình không bao giờ trễ"
+      ],
+      "q93": [
+        "Khi đồ dùng bị hỏng, mình làm gì?",
+        "Tự sửa",
+        "Đọc hướng dẫn",
+        "Gọi người giúp",
+        "Bấm thử mọi nút"
+      ],
+      "q94": [
+        "Thứ đầu tiên mình cho vào vali?",
+        "Túi sơ cứu",
+        "Một cuốn sách",
+        "Sạc điện thoại",
+        "Đồ ăn vặt"
+      ],
+      "q95": [
+        "Hoạt động nào giúp mình bình tâm?",
+        "Nấu ăn",
+        "Dọn dẹp",
+        "Vẽ",
+        "Đi dạo"
+      ],
+      "q96": [
+        "Khi nghỉ hưu, mình muốn làm gì?",
+        "Làm vườn",
+        "Du lịch",
+        "Đọc sách",
+        "Quây quần bên các cháu"
+      ],
+      "q97": [
+        "Điều gì khiến mình khó chịu nhất?",
+        "Tiếng ồn",
+        "Bừa bộn",
+        "Trễ giờ",
+        "Thô lỗ"
+      ],
+      "q98": [
+        "Mình thích mùi gì nhất?",
+        "Bánh mì mới nướng",
+        "Mưa",
+        "Hoa",
+        "Biển"
+      ],
+      "q99": [
+        "Món tráng miệng mình sẽ chọn?",
+        "Trái cây",
+        "Kem",
+        "Bánh nướng",
+        "Chỉ trà thôi"
       ]
     },
     "yesNo": {
@@ -22297,6 +46148,256 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Lát nữa chơi lại nhé?",
         "muốn thêm một ván",
         "muốn ôm hơn là chơi"
+      ],
+      "c41": [
+        "Bạn có thích đồ ăn cay không?",
+        "càng cay càng ngon",
+        "chọn món nhẹ nhàng hơn"
+      ],
+      "c42": [
+        "Bạn có biết bơi không?",
+        "bơi như cá",
+        "tạm thời ở gần bờ"
+      ],
+      "c43": [
+        "Bạn có muốn nuôi mèo không?",
+        "đã nghĩ sẵn tên rồi",
+        "thích chó hơn"
+      ],
+      "c44": [
+        "Bạn có muốn một ngày đến Istanbul không?",
+        "đã mơ về eo biển Bosphorus",
+        "chọn thành phố khác"
+      ],
+      "c45": [
+        "Bạn có thích nấu ăn không?",
+        "nấu ăn đầy hứng khởi",
+        "thà rửa bát còn hơn"
+      ],
+      "c46": [
+        "Bạn có muốn học nấu cơm pilaf không?",
+        "đã đi tìm công thức",
+        "thích nếm món người khác nấu hơn"
+      ],
+      "c47": [
+        "Bạn có thích đọc sách không?",
+        "luôn có sách bên mình",
+        "thích nghe kể chuyện hơn"
+      ],
+      "c48": [
+        "Bạn có biết đi xe đạp không?",
+        "có thể đạp đi ngay bây giờ",
+        "hứa sẽ học"
+      ],
+      "c49": [
+        "Bạn thích núi hơn biển phải không?",
+        "chọn núi",
+        "chọn biển"
+      ],
+      "c50": [
+        "Bạn có muốn ngắm sa mạc không?",
+        "mơ về những đồi cát",
+        "thà chọn rừng"
+      ],
+      "c51": [
+        "Bạn có thích mùa đông không?",
+        "chờ trận tuyết đầu tiên",
+        "chờ mùa hè"
+      ],
+      "c52": [
+        "Bạn có uống trà không đường không?",
+        "thích vị trà nguyên chất",
+        "không thể thiếu một thìa đường"
+      ],
+      "c53": [
+        "Bạn có sợ nhện không?",
+        "tránh thật xa chúng",
+        "bình tĩnh mang chúng ra ngoài"
+      ],
+      "c54": [
+        "Bạn có thích vẽ không?",
+        "đã cầm cọ lên rồi",
+        "thích ngắm tranh của người khác hơn"
+      ],
+      "c55": [
+        "Bạn có muốn ngắm cực quang không?",
+        "đã tìm xem nơi nào ngắm được",
+        "thích ngắm sao hơn"
+      ],
+      "c56": [
+        "Bạn có thích trời mưa không?",
+        "thích tiếng mưa ngoài cửa sổ",
+        "chờ nắng lên"
+      ],
+      "c57": [
+        "Bạn có biết cưỡi ngựa không?",
+        "ngồi vững trên yên ngựa",
+        "giờ mới chỉ mơ thôi"
+      ],
+      "c58": [
+        "Bạn có muốn nuôi chó không?",
+        "mơ về một người bạn trung thành",
+        "hiện đã đủ việc phải chăm lo"
+      ],
+      "c59": [
+        "Bạn thích đồ ngọt hơn đồ mặn phải không?",
+        "không thể sống thiếu đồ ngọt",
+        "chọn đồ mặn"
+      ],
+      "c60": [
+        "Bạn có thích đi tàu hỏa không?",
+        "thích nhịp lăn của bánh tàu",
+        "chọn máy bay"
+      ],
+      "c61": [
+        "Bạn có dễ dàng bắt đầu ngày mới từ sớm không?",
+        "bắt đầu ngày mới tràn đầy năng lượng",
+        "phải đến trưa mới tỉnh hẳn"
+      ],
+      "c62": [
+        "Bạn có thích cắm trại trong lều không?",
+        "đã xếp ba lô rồi",
+        "chọn khách sạn ấm cúng"
+      ],
+      "c63": [
+        "Bạn có muốn sống cạnh biển không?",
+        "mơ về tiếng sóng",
+        "chọn thành phố"
+      ],
+      "c64": [
+        "Bạn có ăn kem vào mùa đông không?",
+        "ăn cả khi trời giá rét",
+        "chỉ ăn vào mùa hè"
+      ],
+      "c65": [
+        "Bạn có thích sô-cô-la không?",
+        "biết hết mọi loại",
+        "thản nhiên đi ngang qua"
+      ],
+      "c66": [
+        "Bạn có biết nướng bánh không?",
+        "nướng bánh khéo như bà",
+        "hứa sẽ học"
+      ],
+      "c67": [
+        "Bạn có thích ngắm sao không?",
+        "biết các chòm sao",
+        "thích ngày nắng hơn"
+      ],
+      "c68": [
+        "Bạn có muốn một ngày tự trồng khu vườn của mình không?",
+        "đã chọn cây giống",
+        "sẽ bắt đầu với một chậu hoa"
+      ],
+      "c69": [
+        "Bạn có thích hoa dại không?",
+        "thích hoa cúc dại và hoa xa cúc lam",
+        "thích hoa trong vườn hơn"
+      ],
+      "c70": [
+        "Bạn có uống cà phê không?",
+        "ngày mới không thể thiếu cà phê",
+        "chọn trà"
+      ],
+      "c71": [
+        "Bạn có thích nước chanh tự pha không?",
+        "đã cắt chanh rồi",
+        "thà uống nước lọc"
+      ],
+      "c72": [
+        "Bạn có muốn một ngày đến Nhật Bản không?",
+        "mơ được ngắm hoa anh đào",
+        "chọn nước khác"
+      ],
+      "c73": [
+        "Bạn có thích mùa thu không?",
+        "thích tiếng lá xào xạc dưới chân",
+        "chờ mùa xuân"
+      ],
+      "c74": [
+        "Bạn có thích mùi oải hương không?",
+        "rất thích mùi hương ấy",
+        "thích mùi khác hơn"
+      ],
+      "c75": [
+        "Bạn có thích trò chơi cờ bàn không?",
+        "đã bày bàn cờ ra rồi",
+        "thích đi dạo hơn"
+      ],
+      "c76": [
+        "Bạn có biết lái ô tô không?",
+        "lái xe tự tin",
+        "hiện vẫn là hành khách"
+      ],
+      "c77": [
+        "Bạn có muốn một ngày được ngắm đại dương không?",
+        "mơ về con sóng lớn",
+        "biển là đủ rồi"
+      ],
+      "c78": [
+        "Bạn có muốn sống ở trang trại một thời gian không?",
+        "đã cho gà ăn rồi",
+        "ở lại thành phố"
+      ],
+      "c79": [
+        "Bạn có thích thành phố lớn không?",
+        "thích ánh đèn thành phố",
+        "chọn sự yên tĩnh"
+      ],
+      "c80": [
+        "Bạn thích trái cây hơn bánh kẹo phải không?",
+        "chọn trái cây",
+        "chọn bánh kẹo"
+      ],
+      "c81": [
+        "Bạn có muốn thấy cá heo ngoài biển không?",
+        "rất muốn được thấy",
+        "thích đọc về chúng hơn"
+      ],
+      "c82": [
+        "Bạn có thích mùa hè không?",
+        "chờ những ngày nóng",
+        "thích tiết trời mát mẻ"
+      ],
+      "c83": [
+        "Bạn có thích đi dạo trong công viên không?",
+        "đi dạo trong mọi thời tiết",
+        "thích ở nhà hơn"
+      ],
+      "c84": [
+        "Bạn có thích viết tay không?",
+        "chữ viết ngay ngắn",
+        "gõ trên điện thoại"
+      ],
+      "c85": [
+        "Bạn có thích đi thuyền dạo không?",
+        "đã cầm mái chèo rồi",
+        "ở lại trên bờ"
+      ],
+      "c86": [
+        "Bạn có muốn đi vòng quanh thế giới không?",
+        "đã vạch sẵn lộ trình",
+        "vài nước là đủ"
+      ],
+      "c87": [
+        "Bạn có biết đắp người tuyết không?",
+        "sẽ đắp người tuyết to nhất",
+        "thích ném tuyết hơn"
+      ],
+      "c88": [
+        "Năm nay bạn có muốn học điều gì mới không?",
+        "đã chọn khóa học",
+        "đã đủ việc rồi"
+      ],
+      "c89": [
+        "Bạn có thích sự yên tĩnh không?",
+        "trân trọng sự tĩnh lặng",
+        "thích không khí nhộn nhịp"
+      ],
+      "c90": [
+        "Bạn có thích tặng quà cho gia đình không?",
+        "mang niềm vui cho gia đình chẳng cần dịp gì",
+        "thích giúp đỡ bằng việc làm thiết thực"
       ]
     },
     "loves": {
@@ -22411,6 +46512,202 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Rừng",
         "Sa mạc",
         "Cực quang"
+      ],
+      "s17": [
+        "Trái cây yêu thích?",
+        "Táo",
+        "Dâu tây",
+        "Dưa hấu",
+        "Nho"
+      ],
+      "s18": [
+        "Ngày nghỉ làm gì?",
+        "Leo núi",
+        "Nấu ăn ở nhà",
+        "Bảo tàng",
+        "Câu cá"
+      ],
+      "s19": [
+        "Bữa sáng yêu thích?",
+        "Bánh kếp",
+        "Trứng ốp-lết",
+        "Cháo yến mạch với quả mọng",
+        "Bánh sừng bò"
+      ],
+      "s20": [
+        "Loài chim yêu thích?",
+        "Cú",
+        "Vẹt",
+        "Thiên nga",
+        "Công"
+      ],
+      "s21": [
+        "Đến thành phố nào?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Dubai"
+      ],
+      "s22": [
+        "Môn thể thao yêu thích?",
+        "Bóng đá",
+        "Bơi lội",
+        "Quần vợt",
+        "Cưỡi ngựa"
+      ],
+      "s23": [
+        "Trồng gì trong vườn?",
+        "Cây táo",
+        "Hoa hồng",
+        "Rau",
+        "Dâu tây"
+      ],
+      "s24": [
+        "Bánh nướng yêu thích?",
+        "Bánh nướng nhân nhỏ",
+        "Bánh rán vòng",
+        "Bánh quy",
+        "Baklava"
+      ],
+      "s25": [
+        "Sống ở đâu?",
+        "Bên sông",
+        "Trong rừng",
+        "Ở thành phố lớn",
+        "Trên đảo"
+      ],
+      "s26": [
+        "Sinh vật biển yêu thích?",
+        "Rùa biển",
+        "Cá voi",
+        "Bạch tuộc",
+        "Cá ngựa"
+      ],
+      "s27": [
+        "Đi bằng gì?",
+        "Xe đạp",
+        "Xe scooter",
+        "Khinh khí cầu",
+        "Thuyền"
+      ],
+      "s28": [
+        "Thú vui yêu thích?",
+        "Đan len",
+        "Chụp ảnh thiên nhiên",
+        "Làm vườn",
+        "Thư pháp"
+      ],
+      "s29": [
+        "Món súp yêu thích?",
+        "Súp borscht",
+        "Súp gà",
+        "Súp bí đỏ",
+        "Súp đậu lăng"
+      ],
+      "s30": [
+        "Động vật trong rừng?",
+        "Nhím",
+        "Sóc",
+        "Cáo",
+        "Hươu"
+      ],
+      "s31": [
+        "Món ăn vặt?",
+        "Chà là",
+        "Hạnh nhân",
+        "Hạt dẻ cười",
+        "Mơ khô"
+      ],
+      "s32": [
+        "Mang gì khi đi bộ đường dài?",
+        "Lều",
+        "Bình giữ nhiệt",
+        "Bản đồ",
+        "Đèn pin"
+      ],
+      "s33": [
+        "Món tráng miệng yêu thích?",
+        "Bánh pudding",
+        "Bánh phô mai",
+        "Bánh kếp mật ong",
+        "Salad trái cây"
+      ],
+      "s34": [
+        "Mùa đông làm gì?",
+        "Đắp người tuyết",
+        "Đi xe trượt tuyết",
+        "Uống trà bên cửa sổ",
+        "Trượt tuyết"
+      ],
+      "s35": [
+        "Mùa hè làm gì?",
+        "Bơi",
+        "Hái quả mọng",
+        "Chèo thuyền",
+        "Xây lâu đài cát"
+      ],
+      "s36": [
+        "Vẽ bằng gì?",
+        "Màu nước",
+        "Bút chì",
+        "Bút sáp",
+        "Sơn trên toan"
+      ],
+      "s37": [
+        "Rau yêu thích?",
+        "Cà rốt",
+        "Cà chua",
+        "Ngô",
+        "Bí đỏ"
+      ],
+      "s38": [
+        "Điều gì làm nhà ấm cúng?",
+        "Lò sưởi",
+        "Chăn mềm",
+        "Cây xanh trong nhà",
+        "Kệ sách"
+      ],
+      "s39": [
+        "Chơi gì?",
+        "Cờ vua",
+        "Xếp hình",
+        "Trò chơi cờ bàn",
+        "Trò chơi bóng"
+      ],
+      "s40": [
+        "Ai sống ở trang trại?",
+        "Bò",
+        "Cừu non",
+        "Gà mái",
+        "Dê con"
+      ],
+      "s41": [
+        "Trà với gì?",
+        "Mật ong",
+        "Chanh",
+        "Mứt",
+        "Bạc hà"
+      ],
+      "s42": [
+        "Bên bờ biển có gì?",
+        "Ngọn hải đăng",
+        "Vỏ sò",
+        "Thuyền buồm",
+        "Chim hải âu"
+      ],
+      "s43": [
+        "Bắt đầu buổi sáng thế nào?",
+        "Tập thể dục",
+        "Một tách trà",
+        "Đi dạo",
+        "Một cuốn sách"
+      ],
+      "s44": [
+        "Quả mọng yêu thích?",
+        "Mâm xôi",
+        "Việt quất",
+        "Anh đào",
+        "Mâm xôi đen"
       ]
     },
     "who": [
@@ -22453,7 +46750,52 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Ai trong hai ta hay nhớ lại chuyện vui hơn?",
       "Ai trong hai ta kiên nhẫn hơn?",
       "Ai trong hai ta hay nói “cảm ơn” hơn?",
-      "Ai trong hai ta chủ động giúp đỡ trước?"
+      "Ai trong hai ta chủ động giúp đỡ trước?",
+      "Ai trong hai ta tính nhẩm giỏi hơn?",
+      "Ai trong hai ta đọc sách nhiều hơn?",
+      "Ai trong hai ta gõ phím nhanh hơn?",
+      "Ai trong hai ta hay gọi điện cho bố mẹ hơn?",
+      "Ai trong hai ta kể chuyện hay hơn?",
+      "Ai trong hai ta có chữ viết ngay ngắn hơn?",
+      "Ai trong hai ta thích ăn cay hơn?",
+      "Ai trong hai ta hay để quên đồ ở nhà hơn?",
+      "Ai trong hai ta rành đồ công nghệ hơn?",
+      "Ai trong hai ta thích học điều mới hơn?",
+      "Ai trong hai ta lên kế hoạch giỏi hơn?",
+      "Ai trong hai ta trả giá ở chợ giỏi hơn?",
+      "Ai trong hai ta yêu thiên nhiên hơn?",
+      "Ai trong hai ta ăn nhanh hơn?",
+      "Ai trong hai ta uống trà nhiều hơn?",
+      "Ai trong hai ta chăm cây giỏi hơn?",
+      "Ai trong hai ta giỏi địa lý hơn?",
+      "Ai trong hai ta chơi cờ vua giỏi hơn?",
+      "Ai trong hai ta chọn trái cây ở chợ giỏi hơn?",
+      "Ai trong hai ta hay xem dự báo thời tiết hơn?",
+      "Ai trong hai ta sợ nhện hơn?",
+      "Ai trong hai ta dũng cảm hơn?",
+      "Ai trong hai ta tò mò hơn?",
+      "Ai trong hai ta giải câu đố nhanh hơn?",
+      "Ai trong hai ta vẽ giỏi hơn?",
+      "Ai trong hai ta hay giúp hàng xóm hơn?",
+      "Ai trong hai ta hợp với trẻ con hơn?",
+      "Ai trong hai ta thích đi bộ hơn?",
+      "Ai trong hai ta hay đọc hướng dẫn sử dụng hơn?",
+      "Ai trong hai ta nhớ tên người giỏi hơn?",
+      "Ai trong hai ta học từ vựng ngoại ngữ nhanh hơn?",
+      "Ai trong hai ta làm bánh giỏi hơn?",
+      "Ai trong hai ta cho lời khuyên hay hơn?",
+      "Ai trong hai ta thích trời lạnh hơn?",
+      "Ai trong hai ta đi bộ đường dài dẻo dai hơn?",
+      "Ai trong hai ta hay đọc tin tức hơn?",
+      "Ai trong hai ta hay thử món mới hơn?",
+      "Ai trong hai ta xếp vali nhanh hơn?",
+      "Ai trong hai ta sửa đồ giỏi hơn?",
+      "Ai trong hai ta hay nói chuyện với động vật hơn?",
+      "Ai trong hai ta hay rửa bát hơn?",
+      "Ai trong hai ta giỏi lịch sử hơn?",
+      "Ai trong hai ta hay trì hoãn hơn?",
+      "Ai trong hai ta làm quen người mới nhanh hơn?",
+      "Ai trong hai ta chăm lo sức khỏe hơn?"
     ],
     "phrases": [
       "Mình mỉm cười khi bạn…",
@@ -22485,10 +46827,349 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "Buổi sáng bên bạn là…",
       "Nếu hai ta là một từ, từ đó sẽ là…",
       "Mình muốn học từ bạn cách…",
-      "Cảm ơn vì bạn luôn…"
-    ]
+      "Cảm ơn vì bạn luôn…",
+      "Món ăn mình thích nhất hồi nhỏ là…",
+      "Nếu được một ngày ở bất kỳ đất nước nào, mình sẽ…",
+      "Lời khuyên hay nhất mình từng nhận được là…",
+      "Mình luôn bật cười khi…",
+      "Nơi mình thích nhất ở quê nhà là…",
+      "Nếu có một cửa hàng nhỏ của riêng mình, mình sẽ bán…",
+      "Món mình nấu ngon nhất là…",
+      "Ước mơ thời thơ ấu mình vẫn còn nhớ là…",
+      "Mình dễ vui lắm, chỉ cần…",
+      "Nơi tuyệt vời nhất mình từng đến là…",
+      "Mình muốn học…",
+      "Ngày nghỉ hoàn hảo của mình bắt đầu bằng…",
+      "Nếu được nuôi bất kỳ con vật nào, mình sẽ chọn…",
+      "Gia đình luôn nói rằng mình…",
+      "Mình mãi không quen được với…",
+      "Thói quen hữu ích nhất của mình là…",
+      "Cuốn sách hay nhất mình từng đọc là…",
+      "Mười năm nữa, mình muốn…",
+      "Ngôi nhà mơ ước của mình là…",
+      "Chuyện buồn cười nhất xảy ra với mình hồi nhỏ là…",
+      "Với mình, hạnh phúc là…",
+      "Mình khó mà từ bỏ…",
+      "Nếu có siêu năng lực, nó sẽ…",
+      "Điều mình quý nhất ở một người là…",
+      "Khi có một buổi tối rảnh rỗi, mình…",
+      "Mùi hương mình thích nhất là…",
+      "Món mình sẽ không bao giờ ăn là…",
+      "Thứ mình không bao giờ quên mang khi ra khỏi nhà là…",
+      "Mình muốn đến… vì…",
+      "Món quà tuyệt nhất mình từng nhận là…",
+      "Thói quen kỳ lạ nhất của mình là…",
+      "Nếu mỗi ngày có thêm một giờ, mình sẽ…",
+      "Người mình học hỏi được nhiều nhất là…",
+      "Vào một ngày khó khăn, điều giúp mình vượt qua là…",
+      "Món ngon nhất mình từng ăn trong một chuyến đi là…",
+      "Nếu được đổi nghề một ngày, mình sẽ chọn…",
+      "Mùa gần gũi với mình nhất là…",
+      "Bạn bè nói rằng mình…",
+      "Một ngày nào đó, mình muốn dạy ai đó…",
+      "Niềm vui nhỏ trong ngày của mình là…"
+    ],
+    "truth": {
+      "t01": [
+        "Bạch tuộc có ba quả tim.",
+        true,
+        "Hai quả tim bơm máu qua mang, quả thứ ba bơm máu đi khắp cơ thể."
+      ],
+      "t02": [
+        "Có thể nhìn thấy Vạn Lý Trường Thành từ Mặt Trăng bằng mắt thường.",
+        false,
+        "Không thể: bức tường quá hẹp. Ngay cả từ quỹ đạo cũng rất khó nhìn thấy."
+      ],
+      "t03": [
+        "Mật ong có thể để hàng nghìn năm mà không hỏng.",
+        true,
+        "Người ta đã tìm thấy mật ong hàng nghìn năm tuổi vẫn còn nguyên trong lăng mộ Ai Cập cổ."
+      ],
+      "t04": [
+        "Chuối mọc trên cây thân gỗ.",
+        false,
+        "Cây chuối là loài thân thảo khổng lồ: «thân» của nó là các bẹ lá cuộn chặt."
+      ],
+      "t05": [
+        "Sao Kim là hành tinh nóng nhất Hệ Mặt Trời.",
+        true,
+        "Bầu khí quyển dày làm Sao Kim nóng tới khoảng 460 °C — nóng hơn cả Sao Thủy."
+      ],
+      "t06": [
+        "Dơi bị mù.",
+        false,
+        "Dơi nhìn được, và trong bóng tối chúng còn định hướng bằng tiếng vang."
+      ],
+      "t07": [
+        "Cá voi là cá.",
+        false,
+        "Cá voi là động vật có vú: thở bằng không khí và nuôi con bằng sữa."
+      ],
+      "t08": [
+        "Sahara là sa mạc lớn nhất thế giới.",
+        false,
+        "Sa mạc lớn nhất là châu Nam Cực. Sahara là sa mạc nóng lớn nhất."
+      ],
+      "t09": [
+        "Hươu cao cổ có số xương cổ bằng con người.",
+        true,
+        "Cả hai đều có bảy đốt sống cổ — chỉ là của hươu cao cổ rất dài."
+      ],
+      "t10": [
+        "Về mặt thực vật học, cà chua là quả mọng.",
+        true,
+        "Các nhà thực vật học xếp cà chua vào quả mọng: quả nhiều thịt, có hạt bên trong."
+      ],
+      "t11": [
+        "Về mặt thực vật học, dâu tây là quả mọng.",
+        false,
+        "Đó là quả giả: quả thật là những «hạt» li ti bên ngoài."
+      ],
+      "t12": [
+        "Trong không gian vũ trụ có thể nghe thấy tiếng nổ.",
+        false,
+        "Vũ trụ gần như không có không khí, nên âm thanh không thể truyền đi."
+      ],
+      "t13": [
+        "Trên núi cao, nước sôi ở nhiệt độ thấp hơn.",
+        true,
+        "Ở đó áp suất không khí thấp hơn, nên nước sôi trước khi đạt 100 °C."
+      ],
+      "t14": [
+        "Chim cánh cụt sống ở Bắc Cực.",
+        false,
+        "Chim cánh cụt hoang dã chỉ sống ở Nam Bán Cầu, không có ở vùng cực bắc."
+      ],
+      "t15": [
+        "Everest là ngọn núi cao nhất so với mực nước biển.",
+        true,
+        "Everest cao khoảng 8.849 mét so với mực nước biển."
+      ],
+      "t16": [
+        "Con người chỉ dùng 10% bộ não.",
+        false,
+        "Đó là lầm tưởng: gần như mọi vùng não đều hoạt động trong ngày."
+      ],
+      "t17": [
+        "Tim người đập khoảng 100.000 lần mỗi ngày.",
+        true,
+        "Với khoảng 70 nhịp mỗi phút, cộng lại được chừng 100.000 nhịp một ngày."
+      ],
+      "t18": [
+        "Cá vàng chỉ nhớ được ba giây.",
+        false,
+        "Thí nghiệm cho thấy cá vàng nhớ điều đã học trong nhiều tháng."
+      ],
+      "t19": [
+        "Úc vừa là một quốc gia vừa là một châu lục.",
+        true,
+        "Úc là quốc gia duy nhất chiếm trọn một châu lục."
+      ],
+      "t20": [
+        "Sét không bao giờ đánh hai lần vào cùng một chỗ.",
+        false,
+        "Có đấy: các tòa nhà cao bị sét đánh nhiều lần mỗi năm."
+      ],
+      "t21": [
+        "Đà điểu vùi đầu vào cát khi sợ hãi.",
+        false,
+        "Lầm tưởng: đà điểu sợ hãi sẽ bỏ chạy hoặc nằm rạp xuống đất để ẩn nấp."
+      ],
+      "t22": [
+        "Loài chim nhỏ nhất thế giới là một loài chim ruồi.",
+        true,
+        "Chim ruồi ong ở Cuba nặng khoảng 2 gam — nhẹ hơn mọi loài chim khác."
+      ],
+      "t23": [
+        "Dưa hấu chứa khoảng 90% nước.",
+        true,
+        "Dưa hấu có khoảng 92% là nước — vì thế ăn rất mát."
+      ],
+      "t24": [
+        "Nhện có sáu chân.",
+        false,
+        "Nhện có tám chân. Côn trùng có sáu chân, còn nhện không phải côn trùng."
+      ],
+      "t25": [
+        "Mặt Trăng tự phát sáng.",
+        false,
+        "Mặt Trăng không có ánh sáng riêng: nó phản chiếu ánh sáng Mặt Trời."
+      ],
+      "t26": [
+        "Voi là động vật trên cạn lớn nhất.",
+        true,
+        "Voi đồng cỏ châu Phi có thể nặng hơn 6 tấn."
+      ],
+      "t27": [
+        "Cá voi xanh là loài vật lớn nhất mà khoa học biết đến.",
+        true,
+        "Cá voi xanh có thể dài hơn 30 mét — lớn hơn mọi loài khủng long đã biết."
+      ],
+      "t28": [
+        "Tắc kè hoa đổi màu chỉ để ngụy trang.",
+        false,
+        "Màu của nó phụ thuộc nhiều hơn vào tâm trạng, nhiệt độ và việc ra tín hiệu cho đồng loại."
+      ],
+      "t29": [
+        "Điện thoại do Thomas Edison phát minh.",
+        false,
+        "Alexander Graham Bell được cấp bằng sáng chế điện thoại năm 1876."
+      ],
+      "t30": [
+        "Penicillin do Alexander Fleming phát hiện.",
+        true,
+        "Fleming phát hiện penicillin năm 1928 — loại kháng sinh đầu tiên."
+      ],
+      "t31": [
+        "Ngọn núi lửa cao nhất Hệ Mặt Trời nằm trên Sao Hỏa.",
+        true,
+        "Olympus Mons trên Sao Hỏa cao khoảng 22 km — gần gấp 2,5 lần Everest."
+      ],
+      "t32": [
+        "Máu trong tĩnh mạch của chúng ta có màu xanh.",
+        false,
+        "Máu luôn màu đỏ; tĩnh mạch trông xanh chỉ do cách ánh sáng đi qua da."
+      ],
+      "t33": [
+        "Đại Tây Dương là đại dương lớn nhất Trái Đất.",
+        false,
+        "Lớn nhất là Thái Bình Dương: rộng hơn toàn bộ đất liền trên Trái Đất cộng lại."
+      ],
+      "t34": [
+        "Nga là quốc gia có diện tích lớn nhất thế giới.",
+        true,
+        "Nga rộng hơn 17 triệu kilômét vuông."
+      ],
+      "t35": [
+        "Canada có đường bờ biển dài nhất thế giới.",
+        true,
+        "Bờ biển Canada dài hơn 200.000 km — dài hơn bất kỳ nước nào khác."
+      ],
+      "t36": [
+        "Dạ dày bò có bốn ngăn.",
+        true,
+        "Bò có một dạ dày chia bốn ngăn — nhờ vậy mà tiêu hóa được cỏ."
+      ],
+      "t37": [
+        "Sư tử là loài mèo lớn nhất thế giới.",
+        false,
+        "Loài mèo lớn nhất là hổ, đặc biệt là hổ Siberia."
+      ],
+      "t38": [
+        "Trái Đất là hành tinh gần Mặt Trời nhất.",
+        false,
+        "Gần nhất là Sao Thủy, rồi đến Sao Kim; Trái Đất là hành tinh thứ ba."
+      ],
+      "t39": [
+        "Ánh sáng Mặt Trời mất khoảng 8 phút để đến Trái Đất.",
+        true,
+        "Ánh sáng đi 150 triệu km từ Mặt Trời trong khoảng 8 phút 20 giây."
+      ],
+      "t40": [
+        "Cá heo ngủ bằng từng nửa bộ não một.",
+        true,
+        "Một nửa não nghỉ ngơi, nửa kia vẫn canh chừng và nhớ việc thở."
+      ],
+      "t41": [
+        "Khoai tây có nguồn gốc từ Ireland.",
+        false,
+        "Khoai tây đến từ Nam Mỹ: được trồng trên dãy Andes từ hàng nghìn năm trước."
+      ],
+      "t42": [
+        "Sô-cô-la được làm từ hạt cây ca cao.",
+        true,
+        "Quả ca cao mọc ngay trên thân cây, hạt bên trong được chế biến thành sô-cô-la."
+      ],
+      "t43": [
+        "Cá mập là động vật có vú.",
+        false,
+        "Cá mập là cá: thở bằng mang. Cá voi và cá heo mới là thú biển."
+      ],
+      "t44": [
+        "Một số loài tre có thể mọc gần một mét mỗi ngày.",
+        true,
+        "Tre là một trong những loài cây mọc nhanh nhất Trái Đất."
+      ],
+      "t45": [
+        "Cú có thể xoay đầu trọn 360 độ.",
+        false,
+        "Cú xoay đầu được khoảng 270 độ — rất nhiều, nhưng không trọn một vòng."
+      ],
+      "t46": [
+        "Kim cương và than chì trong bút chì được tạo từ cùng một chất.",
+        true,
+        "Cả hai đều là cacbon tinh khiết — chỉ khác cách sắp xếp nguyên tử."
+      ],
+      "t47": [
+        "Lạc đà trữ nước trong bướu.",
+        false,
+        "Bướu lạc đà trữ mỡ chứ không phải nước — nguồn năng lượng cho những chặng đường dài."
+      ],
+      "t48": [
+        "Xương nhỏ nhất cơ thể người nằm trong tai.",
+        true,
+        "Xương bàn đạp ở tai giữa chỉ dài khoảng 3 milimét."
+      ],
+      "t49": [
+        "Vẹt lớn có thể sống hơn 50 năm.",
+        true,
+        "Vẹt đuôi dài và vẹt mào được chăm sóc tốt thường sống từ 50 năm trở lên."
+      ],
+      "t50": [
+        "Anh em nhà Wright thực hiện chuyến bay đầu tiên bằng máy bay có động cơ.",
+        true,
+        "Họ bay năm 1903; chuyến bay đầu tiên kéo dài 12 giây."
+      ],
+      "t51": [
+        "Bánh xe được phát minh vào thời Trung Cổ.",
+        false,
+        "Bánh xe đã hơn 5.000 tuổi: được dùng ở Lưỡng Hà từ khoảng 5.500 năm trước."
+      ],
+      "t52": [
+        "Cá ngựa là cá.",
+        true,
+        "Cá ngựa thở bằng mang và bơi bằng vây, như các loài cá khác."
+      ],
+      "t53": [
+        "Chim ruồi có thể bay lùi.",
+        true,
+        "Chim ruồi là loài chim duy nhất thật sự bay lùi được."
+      ],
+      "t54": [
+        "Tháp Eiffel cao thêm một chút vào mùa hè.",
+        true,
+        "Nhiệt làm kim loại giãn nở, và tháp cao thêm khoảng 15 xăng-ti-mét."
+      ],
+      "t55": [
+        "Da là cơ quan lớn nhất của cơ thể người.",
+        true,
+        "Da của người lớn nặng vài kilôgam và bảo vệ toàn bộ cơ thể."
+      ],
+      "t56": [
+        "Màu đỏ khiến bò tót nổi giận.",
+        false,
+        "Bò hầu như không phân biệt được màu đỏ: chính chuyển động mới khiêu khích nó, không phải màu sắc."
+      ],
+      "t57": [
+        "Ruồi nhà chỉ sống một ngày.",
+        false,
+        "Ruồi nhà sống khoảng một tháng. Phù du trưởng thành mới chỉ sống một hai ngày."
+      ],
+      "t58": [
+        "Dứa mọc trên cây thân gỗ.",
+        false,
+        "Dứa mọc trên một cây thấp nhiều lá, nhô lên ngay từ giữa cây."
+      ],
+      "t59": [
+        "Đậu phộng là một loại quả hạch như óc chó.",
+        false,
+        "Đậu phộng là cây họ đậu, họ hàng với đậu Hà Lan và đậu đỗ. Quả của nó chín dưới đất."
+      ],
+      "t60": [
+        "Bắc Cực và Nam Cực lạnh như nhau.",
+        false,
+        "Nam Cực lạnh hơn nhiều: nằm trên một lục địa băng cao, còn Bắc Cực nằm trên đại dương."
+      ]
+    }
   }
 });
-
-// ВРЕМЕННО (28.10): английские надписи «Правды или лжи», пока идёт перевод.
-Object.values(window.GLOWLETTER_GAMES_I18N).forEach(pack => { pack.text = Object.assign({"truth":"True or false","tfTitle":"True or false","tfNote":"A live game for two: amazing facts about the world. 12 seconds — true or false? A point for every right answer.","tfShareText":"{name} invites you to the live game “True or false”","tfJoinLead":"{name} is waiting for you. True or false — decide fast!","tfRound":"Fact {n} of {total}","tfTrue":"True","tfFalse":"False","tfIsTrue":"It’s true!","tfIsFalse":"It’s false!","tfFirstYou":"You were right first!","tfFirstThem":"{name} was right first","tfFinalWin":"Victory! You know more about the world.","tfFinalLose":"{name} knows more this time — rematch?","tfFinalDraw":"A draw — you know just as much!","featTruth":"Live game “True or false” — amazing facts about the world"}, pack.text); });

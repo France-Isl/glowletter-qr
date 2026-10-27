@@ -20,6 +20,7 @@ const config = read("supabase/config.toml");
 
 const LANGUAGES = ["ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"];
 const QUESTION_IDS = Array.from({ length: 60 }, (_, index) => `q${String(index + 1).padStart(2, "0")}`);
+const ALL_QUESTION_IDS = Array.from({ length: 99 }, (_, index) => `q${String(index + 1).padStart(2, "0")}`);
 
 // Словари: ru/en/fr в games.js, остальные двадцать два — в games-i18n.js.
 const extra = vm.runInNewContext(`${read("games-i18n.js")}; window.GLOWLETTER_GAMES_I18N`, { window: {} });
@@ -40,8 +41,10 @@ for (const code of LANGUAGES) {
   assert.ok(text && questions, `${code} games pack`);
   assert.deepEqual(Object.keys(text).sort(), [...keys].sort(), `${code} game texts`);
   for (const key of keys) assert.equal(placeholders(text[key]), placeholders(TEXT.en[key]), `${code}.${key} placeholders`);
-  assert.deepEqual(Object.keys(questions), QUESTION_IDS, `${code} questions`);
-  for (const id of QUESTION_IDS) {
+  // ru/en/fr: q01–q60 в литерале, q61–q99 добавляются ниже в games.js; остальные языки — все 99 в паке.
+  const expectedIds = QUESTIONS[code] ? QUESTION_IDS : ALL_QUESTION_IDS;
+  assert.deepEqual(Object.keys(questions), expectedIds, `${code} questions`);
+  for (const id of expectedIds) {
     assert.equal(questions[id].length, 5, `${code}.${id}`);
     assert.ok(questions[id].every(value => typeof value === "string" && value.trim()), `${code}.${id} empty`);
   }
@@ -56,8 +59,10 @@ const CARD_IDS = Array.from({ length: 40 }, (_, index) => `c${String(index + 1).
 for (const code of LANGUAGES) {
   const cards = YES_NO[code] || extra[code]?.yesNo;
   assert.ok(cards, `${code} yes/no cards`);
-  assert.deepEqual(Object.keys(cards), CARD_IDS, `${code} cards`);
-  for (const id of CARD_IDS) assert.ok(cards[id].length === 3 && cards[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
+  // ru/en/fr: c01–c40 в литерале (c41–c90 добавляются ниже), остальные языки — все 90 в паке.
+  const cardIds = YES_NO[code] ? CARD_IDS : Array.from({ length: 90 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`);
+  assert.deepEqual(Object.keys(cards), cardIds, `${code} cards`);
+  for (const id of cardIds) assert.ok(cards[id].length === 3 && cards[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
   assert.doesNotMatch(JSON.stringify(cards), /18\s*\+|мелоди|песн|музык/iu, `${code} yes/no wording`);
 }
 assert.match(games, /channel\(`glowletter-yesno:\$\{yn\.roomId\}`/u);
@@ -73,8 +78,10 @@ const SET_IDS = Array.from({ length: 16 }, (_, index) => `s${String(index + 1).p
 for (const code of LANGUAGES) {
   const sets = LOVES[code] || extra[code]?.loves;
   assert.ok(sets, `${code} loves`);
-  assert.deepEqual(Object.keys(sets), SET_IDS, `${code} loves sets`);
-  for (const id of SET_IDS) assert.ok(sets[id].length === 5 && sets[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
+  // В паках уже лежат темы s17–s44 (картинки для них в работе).
+  const setIds = LOVES[code] ? SET_IDS : Array.from({ length: 44 }, (_, index) => `s${String(index + 1).padStart(2, "0")}`);
+  assert.deepEqual(Object.keys(sets), setIds, `${code} loves sets`);
+  for (const id of setIds) assert.ok(sets[id].length === 5 && sets[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
   assert.doesNotMatch(JSON.stringify(sets), /18\s*\+|мелоди|песн|музык/iu, `${code} loves wording`);
 }
 for (const id of SET_IDS) for (const choice of "abcd") assert.ok(fs.existsSync(path.join(root, `assets/loves/${id}${choice}.webp`)), `${id}${choice} picture`);
@@ -91,8 +98,8 @@ const PHRASES = grab(games, "const PHRASES = {", "\n  Object.entries(window.GLOW
 for (const code of LANGUAGES) {
   const who = WHO[code] || extra[code]?.who;
   const phrases = PHRASES[code] || extra[code]?.phrases;
-  assert.ok(Array.isArray(who) && who.length === 40 && who.every(value => typeof value === "string" && value.trim()), `${code} who`);
-  assert.ok(Array.isArray(phrases) && phrases.length === 30 && phrases.every(value => typeof value === "string" && /…$/u.test(value.trim())), `${code} phrases`);
+  assert.ok(Array.isArray(who) && who.length === (WHO[code] ? 40 : 85) && who.every(value => typeof value === "string" && value.trim()), `${code} who`);
+  assert.ok(Array.isArray(phrases) && phrases.length === (PHRASES[code] ? 30 : 70) && phrases.every(value => typeof value === "string" && /…$/u.test(value.trim())), `${code} phrases`);
   assert.doesNotMatch(JSON.stringify([who, phrases]), /18\s*\+|мелоди|песн|музык|поцел|kiss/iu, `${code} who/phrases wording`);
 }
 const moreGames = read("supabase/migrations/20261028150000_more_games_book_settings.sql");
@@ -115,10 +122,10 @@ for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "mo
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=77") < index.indexOf("games-i18n.js?v=77"));
-assert.ok(index.indexOf("games-i18n.js?v=77") < index.indexOf("games.js?v=77"));
-assert.match(index, /games\.css\?v=77/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=77"`, "u"));
+assert.ok(index.indexOf("experience.js?v=78") < index.indexOf("games-i18n.js?v=78"));
+assert.ok(index.indexOf("games-i18n.js?v=78") < index.indexOf("games.js?v=78"));
+assert.match(index, /games\.css\?v=78/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=78"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
@@ -150,5 +157,13 @@ assert.match(games, /QUESTION_IDS\.includes\(id\)/u);
 // Единственное поле для своего текста — ответ в «Закончи фразу», он проходит фильтр слов.
 assert.equal((games.match(/<textarea/gu) || []).length, 1);
 assert.match(games, /<form class="glg-form glg-ph-form" data-submit="ph-submit" novalidate>\s*<textarea name="answer"/u);
+
+// «Правда или ложь»: 60 фактов на каждом языке-паке, у каждого [утверждение, true/false, факт].
+for (const code of LANGUAGES.filter(code => extra[code])) {
+  const truth = extra[code].truth;
+  assert.equal(Object.keys(truth || {}).length, 60, `${code} truth`);
+  for (const [id, item] of Object.entries(truth)) assert.ok(item.length === 3 && typeof item[1] === "boolean" && item[0].trim() && item[2].trim(), `${code}.${id}`);
+}
+assert.match(games, /Object\.assign\(TRUTH\.ru, \{"t01"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, questions: QUESTION_IDS.length, texts: keys.length }));
