@@ -1588,8 +1588,8 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 body .letter.letter {
   color: var(--cream);
   border: 1px solid color-mix(in srgb, var(--gold-bright) 55%, transparent);
-  background: linear-gradient(160deg, rgba(74,30,58,.58), rgba(30,20,48,.52) 55%, rgba(18,14,32,.6));
-  box-shadow: 0 40px 110px rgba(5, 4, 10, .6), inset 0 1px 0 rgba(255,236,200,.22);
+  background: linear-gradient(160deg, color-mix(in srgb, color-mix(in srgb, var(--madder) 42%, var(--night)) 58%, transparent), color-mix(in srgb, color-mix(in srgb, var(--indigo) 30%, var(--night)) 52%, transparent) 55%, color-mix(in srgb, var(--night) 60%, transparent));
+  box-shadow: 0 40px 110px rgba(5, 4, 10, .6), inset 0 1px 0 color-mix(in srgb, var(--cream) 22%, transparent);
   -webkit-backdrop-filter: blur(10px) saturate(1.25) !important;
   backdrop-filter: blur(10px) saturate(1.25) !important;
 }
@@ -1599,7 +1599,7 @@ body .letter.letter .letter-meta, body .letter.letter .letter-meta * { color: co
 body .letter.letter .letter-meta strong { color: var(--gold-bright); }
 body .letter.letter .signature, body .letter.letter .signature span { color: color-mix(in srgb, var(--cream) 82%, transparent); }
 body .letter.letter .signature strong { color: var(--gold-bright); }
-body .letter.letter .paper-copy { color: var(--cream); border-color: color-mix(in srgb, var(--cream) 30%, transparent); background: rgba(255,255,255,.08); }
+body .letter.letter .paper-copy { color: var(--cream); border-color: color-mix(in srgb, var(--cream) 30%, transparent); background: color-mix(in srgb, var(--cream) 8%, transparent); }
 
 /* Кнопки под письмом: ряд «← | Следующее письмо →», ниже три равные кнопки. */
 .letter-actions { display: grid !important; grid-template-columns: 52px 1fr; gap: 10px; width: min(630px, 100%); margin-top: 16px; }
@@ -1615,4 +1615,4 @@ body:not(.reading-focus) .secondary-actions { display: grid !important; gap: 8px
 .secondary-actions .home-return { background: rgba(24,18,34,.55); border-color: color-mix(in srgb, var(--cream) 22%, transparent); }
 /* «Поделиться письмом» — главная кнопка второго ряда, во всю ширину. */
 body:not(.reading-focus) .secondary-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.secondary-actions .share-letter-action { grid-column: 1 / -1; color: var(--cream); background: rgba(74,30,58,.62); border-color: color-mix(in srgb, var(--gold-bright) 45%, transparent); }
+.secondary-actions .share-letter-action { grid-column: 1 / -1; color: var(--cream); background: color-mix(in srgb, color-mix(in srgb, var(--madder) 42%, var(--night)) 62%, transparent); border-color: color-mix(in srgb, var(--gold-bright) 45%, transparent); }
