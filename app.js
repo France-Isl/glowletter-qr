@@ -1803,9 +1803,41 @@
   function setAdminTab(tab) {
     const panel = $("#adminPanel");
     if (!panel) return;
-    const next = ["accounts", "catalog", "bulk"].includes(tab) ? tab : "accounts";
+    const next = ["accounts", "catalog", "bulk", "reports"].includes(tab) ? tab : "accounts";
     panel.dataset.tab = next;
     $$("#adminPanel [data-admin-tab]").forEach(button => button.setAttribute("aria-selected", String(button.dataset.adminTab === next)));
+    if (next === "reports") loadAdminReports();
+  }
+
+  // Вкладка «Жалобы»: жалобы на личные сообщения из «Друзей».
+  const ADMIN_REPORT_REASONS = Object.freeze({ abuse: "Оскорбление", adult: "18+", spam: "Спам", other: "Другое" });
+  async function loadAdminReports() {
+    const list = $("#adminReportList");
+    if (!list || !cloudClient || cloudAccount?.is_admin !== true) return;
+    list.innerHTML = `<li class="admin-card-loading">…</li>`;
+    try {
+      const { data, error } = await cloudClient.rpc("glowletter_admin_message_reports");
+      if (error) throw error;
+      const rows = Array.isArray(data) ? data : [];
+      list.innerHTML = rows.length ? rows.map(row => `<li class="admin-report">
+        <p class="admin-report-meta">${escapeHtml(adminDateLabel(row.created_at))} · ${escapeHtml(ADMIN_REPORT_REASONS[row.reason] || row.reason)}${Number(row.reports) > 1 ? ` · жалоб: ${escapeHtml(String(row.reports))}` : ""}</p>
+        <blockquote>${escapeHtml(row.body)}</blockquote>
+        <p class="admin-report-who">От: ${escapeHtml(row.sender_name || "—")} · ${escapeHtml(row.sender_email || "—")}<br>Пожаловался: ${escapeHtml(row.reporter_email || "—")}</p>
+        <div class="admin-report-actions"><button class="admin-revoke" type="button" data-report="${escapeHtml(row.id)}" data-delete="1">Удалить сообщение</button><button type="button" data-report="${escapeHtml(row.id)}" data-delete="0">Оставить</button></div>
+      </li>`).join("") : `<li class="admin-card-loading">Жалоб нет</li>`;
+    } catch (error) {
+      console.info("Admin reports failed", error);
+      list.innerHTML = `<li class="admin-card-loading">Не удалось загрузить жалобы</li>`;
+    }
+  }
+  async function resolveAdminReport(button) {
+    if (!cloudClient || !button?.dataset.report) return;
+    const remove = button.dataset.delete === "1";
+    if (remove && !window.confirm("Удалить это сообщение у обоих?")) return;
+    button.disabled = true;
+    const { error } = await cloudClient.rpc("glowletter_admin_resolve_report", { p_report: button.dataset.report, p_delete_message: remove });
+    if (error) { button.disabled = false; showToast("Не получилось", 2600); return; }
+    loadAdminReports();
   }
 
   function openAdminScreen() {
@@ -6077,7 +6109,7 @@
     $("#soundButton").addEventListener("click",()=>isMusicPlaying?pauseMusic():playMusic());$("#customTrackButton").addEventListener("click",()=>$("#customTrackInput").click());$("#customTrackInput").addEventListener("change",async event=>{const file=event.target.files?.[0];event.target.value="";const fromPublication=audioPickFromPublication;audioPickFromPublication=false;await selectCustomAudio(file,{play:!fromPublication});});$("#publicationAudioButton").addEventListener("click",()=>{audioPickFromPublication=true;$("#customTrackInput").click();});$("#setupAudioButton").addEventListener("click",()=>{audioPickFromPublication=true;$("#customTrackInput").click();});$("#setupAudioRemove").addEventListener("click",()=>removeCustomAudio());$("#publicationAudioRemove").addEventListener("click",async()=>{await removeCustomAudio();if(publicationContext.kind==="qr")detachCurrentQrAudio();});$("#publicationAudioSignIn").addEventListener("click",()=>{finishPublishConsent(false);requestSignIn("publication");});$("#removeAudioButton").addEventListener("click",removeCustomAudio);audio.addEventListener("error",async()=>{if(!(incomingSharedAudioToken||incomingQrAudio)||audioRecoveryAttempted)return;audioRecoveryAttempted=true;try{await setAudioSource({refreshRemote:true});await playMusic(true);}catch{}});
     $$(".scene-grid [data-scene]").forEach(button=>button.addEventListener("click",()=>{applyScene(button.dataset.scene,true);haptic(8);scheduleAccountSettings();}));
     $("#shareAppButton").addEventListener("click",shareApplication);$("#installButton").addEventListener("click",async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$("#installButton").hidden=true;});
-    $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>requestSignIn("home"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminOpenButton").addEventListener("click",openAdminScreen);$("#adminClose").addEventListener("click",()=>closePanel(layers.admin));$("#adminBackdrop").addEventListener("click",()=>closePanel(layers.admin));$$("#adminPanel [data-admin-tab]").forEach(button=>button.addEventListener("click",()=>setAdminTab(button.dataset.adminTab)));$("#adminAccountCard").addEventListener("click",async event=>{const button=event.target.closest("[data-copy-id]");if(!button)return;await writeClipboard(button.dataset.copyId);showToast(adminCardText("copied"));});$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
+    $("#googleSignIn").addEventListener("click",()=>signInWithGoogle());$("#homeSignIn").addEventListener("click",()=>requestSignIn("home"));$("#appleSignIn").addEventListener("click",()=>signInWithCloud("apple"));$("#facebookSignIn").addEventListener("click",()=>signInWithCloud("facebook"));$("#accountSignOut").addEventListener("click",signOutCloud);$("#accountDelete").addEventListener("click",deleteCloudAccount);$("#accountAvatarButton").addEventListener("click",()=>$("#accountAvatarInput").click());$("#accountAvatarInput").addEventListener("change",selectAccountAvatar);$("#copyAccountId").addEventListener("click",copyAccountSupportId);$("#accountPasswordToggle").addEventListener("click",()=>{const form=$("#accountPasswordForm");form.hidden=!form.hidden;if(!form.hidden)$("#accountPasswordInput").focus();});$("#accountPasswordForm").addEventListener("submit",saveAccountPassword);$("#notificationBell").addEventListener("click",()=>{openVipNotifications();ensureVipNotifications(cloudUser,{reload:true,presentUnread:false}).catch(error=>console.info("VIP notification refresh failed",error));});$("#notificationClose").addEventListener("click",closeVipNotifications);$("#notificationBackdrop").addEventListener("click",closeVipNotifications);$("#notificationAcknowledge").addEventListener("click",markActiveVipNotificationRead);$("#notificationHistoryList").addEventListener("click",selectVipNotificationFromHistory);$("#adminLookupForm").addEventListener("submit",lookupAdminAccount);$("#adminVipMessage").addEventListener("input",()=>{updateAdminVipMessageCount();if($("#adminStatus").dataset.state==="error")setAdminStatus();});$("#adminGrantVip").addEventListener("click",grantAdminVip);$("#adminGrantForever").addEventListener("click",grantAdminForever);$("#adminRevokeVip").addEventListener("click",revokeAdminVip);$("#adminGrantAll").addEventListener("click",grantAdminVipAll);$("#adminRevokeAll").addEventListener("click",revokeAdminVipAll);$("#adminRefresh").addEventListener("click",()=>loadAdminOverview());$("#adminReportsRefresh")?.addEventListener("click",()=>loadAdminReports());$("#adminReportList")?.addEventListener("click",event=>{const button=event.target.closest("[data-report]");if(button)resolveAdminReport(button);});$("#adminOpenButton").addEventListener("click",openAdminScreen);$("#adminClose").addEventListener("click",()=>closePanel(layers.admin));$("#adminBackdrop").addEventListener("click",()=>closePanel(layers.admin));$$("#adminPanel [data-admin-tab]").forEach(button=>button.addEventListener("click",()=>setAdminTab(button.dataset.adminTab)));$("#adminAccountCard").addEventListener("click",async event=>{const button=event.target.closest("[data-copy-id]");if(!button)return;await writeClipboard(button.dataset.copyId);showToast(adminCardText("copied"));});$("#adminRecentList").addEventListener("click",event=>{const button=event.target.closest("[data-admin-id]");if(!button)return;$("#adminSupportId").value=button.dataset.adminId;lookupAdminAccount();});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&readingFocus){setReadingFocus(false);return;}if(event.key==="Escape"){pendingPremiumFeature="";const open=Object.values(layers).reverse().find(layer=>layer.classList.contains("is-open"));if(open===layers.paywall)closePaywall();else if(open===layers.publication)finishPublishConsent(false);else if(open)closePanel(open);}if(storyOpened&&!Object.values(layers).some(layer=>layer.classList.contains("is-open"))){if(readingFocus){const direction=readingKeyboardDirection(event);if(direction){event.preventDefault();moveLetter(direction);}return;}if(event.key==="ArrowRight")moveLetter(1);if(event.key==="ArrowLeft")moveLetter(-1);}});
     addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event;$("#installButton").hidden=false;});
     document.addEventListener("fullscreenchange",()=>{const active=Boolean(document.fullscreenElement);updateFullscreenControl();localStorage.setItem("nurFullscreen",active?"on":"off");localStorage.setItem(AUTO_FULLSCREEN_KEY,active?"on":"off");scheduleCloudSync();});
@@ -6107,7 +6139,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=69", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=70", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
