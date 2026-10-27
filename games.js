@@ -490,8 +490,8 @@
   };
 
   // «Что мы любим»: тема и четыре варианта; картинки — assets/loves/<тема><a–d>.webp.
-  // Темы без готовых картинок пока не выпадают (s31 — перерисовать фисташки; s41–s44 — нет картинок).
-  const LOVES_PENDING = Object.freeze(["s31", "s41", "s42", "s43", "s44"]);
+  // Темы без готовых картинок пока не выпадают (сюда — id темы, пока у неё нет четырёх картинок).
+  const LOVES_PENDING = Object.freeze([]);
   const LOVES_IDS = Object.freeze(Array.from({ length: 44 }, (_, index) => `s${String(index + 1).padStart(2, "0")}`).filter(id => !LOVES_PENDING.includes(id)));
   const LOVES_ROUNDS = 40;
   const LOVES_CHOICES = Object.freeze(["a", "b", "c", "d"]);

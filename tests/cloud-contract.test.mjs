@@ -59,10 +59,10 @@ assert.doesNotMatch(index, /(?<!\d)(?:4[,.]99|5[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=80") < index.indexOf("letters.js?v=80"));
-assert.ok(index.indexOf("letters.js?v=80") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=80"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=80") < index.indexOf("qr-code.js?v=80"));
-assert.ok(index.indexOf("qr-code.js?v=80") < index.indexOf("app.js?v=80"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=81") < index.indexOf("letters.js?v=81"));
+assert.ok(index.indexOf("letters.js?v=81") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=81"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=81") < index.indexOf("qr-code.js?v=81"));
+assert.ok(index.indexOf("qr-code.js?v=81") < index.indexOf("app.js?v=81"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -221,17 +221,17 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
 
 // Service-worker v38 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v80`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v81`/);
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=80`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=81`));
 }
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=80`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=81`));
 }
-assert.match(index, /fonts\/local-fonts\.css\?v=80/);
+assert.match(index, /fonts\/local-fonts\.css\?v=81/);
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(worker, /fonts\/local-fonts\.css\?v=80/);
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=80"/);
+assert.match(worker, /fonts\/local-fonts\.css\?v=81/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=81"/);
 assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");
