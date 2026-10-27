@@ -83,10 +83,10 @@ assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind i
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=64") < index.indexOf("games-i18n.js?v=64"));
-assert.ok(index.indexOf("games-i18n.js?v=64") < index.indexOf("games.js?v=64"));
-assert.match(index, /games\.css\?v=64/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=64"`, "u"));
+assert.ok(index.indexOf("experience.js?v=65") < index.indexOf("games-i18n.js?v=65"));
+assert.ok(index.indexOf("games-i18n.js?v=65") < index.indexOf("games.js?v=65"));
+assert.match(index, /games\.css\?v=65/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=65"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
