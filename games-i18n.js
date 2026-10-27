@@ -265,6 +265,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Einen Salat",
         "Ein Dessert"
+      ],
+      "q25": [
+        "Meine Lieblingstageszeit?",
+        "Morgen",
+        "Nachmittag",
+        "Abend",
+        "Nacht"
+      ],
+      "q26": [
+        "Welche Küche wähle ich?",
+        "Italienisch",
+        "Japanisch",
+        "Hausmannskost",
+        "Mexikanisch"
+      ],
+      "q27": [
+        "Wo kann ich am besten nachdenken?",
+        "Unter der Dusche",
+        "Beim Spazierengehen",
+        "Unterwegs",
+        "Vor dem Einschlafen"
+      ],
+      "q28": [
+        "Was mache ich morgens als Erstes?",
+        "Aufs Handy schauen",
+        "Wasser trinken",
+        "Kaffee kochen",
+        "Noch etwas liegen bleiben"
+      ],
+      "q29": [
+        "Mein Lieblingsobst?",
+        "Apfel",
+        "Banane",
+        "Mango",
+        "Wassermelone"
+      ],
+      "q30": [
+        "Welches Hobby passt am besten zu mir?",
+        "Zeichnen",
+        "Kochen",
+        "Sport",
+        "Lesen"
+      ],
+      "q31": [
+        "Wie möchte ich meinen Geburtstag feiern?",
+        "Mit einer großen Party",
+        "Mit einem Abendessen zu zweit",
+        "Mit einer Reise",
+        "Mit einem ruhigen Abend zu Hause"
+      ],
+      "q32": [
+        "Wie stehe ich zu Überraschungen?",
+        "Ich liebe sie",
+        "Sie machen mich etwas nervös",
+        "Ich bereite sie gern für andere vor",
+        "Ich weiß lieber vorher Bescheid"
+      ],
+      "q33": [
+        "Welche Süßigkeit mag ich am liebsten?",
+        "Kuchen",
+        "Eis",
+        "Kekse",
+        "Bonbons"
+      ],
+      "q34": [
+        "Was nehme ich auf eine einsame Insel mit?",
+        "Ein Buch",
+        "Mein Handy",
+        "Eine Decke",
+        "Eine Kamera"
+      ],
+      "q35": [
+        "Wie entspanne ich nach einem harten Tag?",
+        "Ein warmes Bad",
+        "Eine Serie",
+        "Ein Spaziergang",
+        "Ein Gespräch mit einem lieben Menschen"
+      ],
+      "q36": [
+        "Wie reise ich am liebsten?",
+        "Mit dem Zug",
+        "Mit dem Flugzeug",
+        "Mit dem Auto",
+        "Mit dem Fahrrad"
+      ],
+      "q37": [
+        "Mein liebstes Kinderspiel?",
+        "Verstecken",
+        "Fangen",
+        "Bauklötze",
+        "Malen"
+      ],
+      "q38": [
+        "Welches Märchen steht mir am nächsten?",
+        "Aschenputtel",
+        "Der kleine Prinz",
+        "Pu der Bär",
+        "Alice im Wunderland"
+      ],
+      "q39": [
+        "Womit würde ich einem lieben Menschen eher eine Freude machen?",
+        "Mit einer Überraschung",
+        "Mit einer Karte",
+        "Mit einer Reise",
+        "Mit einem Abendessen"
+      ],
+      "q40": [
+        "Was fotografiere ich am häufigsten?",
+        "Mich selbst",
+        "Die Natur",
+        "Essen",
+        "Ich fotografiere kaum"
+      ],
+      "q41": [
+        "Mein Lieblingsplatz zu Hause?",
+        "Das Bett",
+        "Die Küche",
+        "Das Sofa",
+        "Der Balkon"
+      ],
+      "q42": [
+        "Was fällt mir an einem Menschen zuerst auf?",
+        "Das Lächeln",
+        "Die Augen",
+        "Die Stimme",
+        "Der Humor"
+      ],
+      "q43": [
+        "Was bringt mich am schnellsten zum Lachen?",
+        "Lustige Videos",
+        "Witze von lieben Menschen",
+        "Peinliche Momente",
+        "Tiere"
+      ],
+      "q44": [
+        "Was trinke ich an einem heißen Sommertag?",
+        "Limonade",
+        "Eistee",
+        "Saft",
+        "Wasser mit Eis"
+      ],
+      "q45": [
+        "Welches Element steht mir am nächsten?",
+        "Wasser",
+        "Feuer",
+        "Erde",
+        "Luft"
+      ],
+      "q46": [
+        "Welche Geschichten liebe ich?",
+        "Abenteuer",
+        "Liebesgeschichten",
+        "Science-Fiction",
+        "Wahre Geschichten"
+      ],
+      "q47": [
+        "Wie verbringe ich einen Regentag?",
+        "Mit Lesen",
+        "Mit Schlafen",
+        "Mit einem Film",
+        "Mit einem Spaziergang unterm Schirm"
+      ],
+      "q48": [
+        "Was schätze ich an einem Geschenk am meisten?",
+        "Die Aufmerksamkeit",
+        "Den Nutzen",
+        "Die Schönheit",
+        "Die Überraschung"
+      ],
+      "q49": [
+        "Welche Kartoffeln wähle ich?",
+        "Püree",
+        "Pommes",
+        "Ofenkartoffeln",
+        "Chips"
+      ],
+      "q50": [
+        "Wohin gehe ich in einer neuen Stadt zuerst?",
+        "In ein Café",
+        "In ein Museum",
+        "In einen Park",
+        "Shoppen"
+      ],
+      "q51": [
+        "Was mache ich, wenn ich nicht schlafen kann?",
+        "Lesen",
+        "Am Handy scrollen",
+        "Schäfchen zählen",
+        "Warme Milch trinken"
+      ],
+      "q52": [
+        "Wie bereite ich mich auf einen wichtigen Tag vor?",
+        "Ich plane alles im Voraus",
+        "Ich mache alles in letzter Minute",
+        "Ich bitte um Hilfe",
+        "Ich bin aufgeregt und schlafe schlecht"
+      ],
+      "q53": [
+        "Welchen Sport schaue ich am liebsten?",
+        "Fußball",
+        "Tennis",
+        "Eiskunstlauf",
+        "Ich schaue keinen Sport"
+      ],
+      "q54": [
+        "Welches Haustier passt zu mir?",
+        "Eine Katze",
+        "Ein Hund",
+        "Ein Papagei",
+        "Ein Hamster"
+      ],
+      "q55": [
+        "Was für Nachrichten schreibe ich?",
+        "Lange",
+        "Kurze",
+        "Voller Emojis",
+        "Sprachnachrichten"
+      ],
+      "q56": [
+        "Welches Geschenk bewahre ich am längsten auf?",
+        "Einen Brief",
+        "Ein Spielzeug",
+        "Ein Foto",
+        "Ein Schmuckstück"
+      ],
+      "q57": [
+        "Was würde ich eher wählen?",
+        "Tee am Kamin",
+        "Ein Picknick im Gras",
+        "Einen Spaziergang am Meer",
+        "Einen Kinobesuch"
+      ],
+      "q58": [
+        "Welches Kompliment freut mich am meisten?",
+        "Über mein Aussehen",
+        "Über meinen Verstand",
+        "Über meine Herzlichkeit",
+        "Über meinen Humor"
+      ],
+      "q59": [
+        "Mein perfekter Morgen?",
+        "Frühstück im Bett",
+        "Früh joggen gehen",
+        "Lange ausschlafen",
+        "Kaffee auf dem Balkon"
+      ],
+      "q60": [
+        "Was möchte ich lernen?",
+        "Tanzen",
+        "Kochen",
+        "Eine neue Sprache",
+        "Zeichnen"
       ]
     }
   },
@@ -530,6 +782,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Una ensalada",
         "Un postre"
+      ],
+      "q25": [
+        "¿Mi momento favorito del día?",
+        "La mañana",
+        "La tarde",
+        "El atardecer",
+        "La noche"
+      ],
+      "q26": [
+        "¿Qué cocina elegiría?",
+        "Italiana",
+        "Japonesa",
+        "Casera",
+        "Mexicana"
+      ],
+      "q27": [
+        "¿Dónde pienso mejor?",
+        "En la ducha",
+        "Paseando",
+        "De viaje",
+        "Antes de dormir"
+      ],
+      "q28": [
+        "¿Qué hago nada más levantarme?",
+        "Mirar el móvil",
+        "Beber agua",
+        "Preparar café",
+        "Quedarme un rato más en la cama"
+      ],
+      "q29": [
+        "¿Mi fruta favorita?",
+        "Manzana",
+        "Plátano",
+        "Mango",
+        "Sandía"
+      ],
+      "q30": [
+        "¿Qué afición va más conmigo?",
+        "Dibujar",
+        "Cocinar",
+        "Hacer deporte",
+        "Leer"
+      ],
+      "q31": [
+        "¿Cómo quiero celebrar mi cumpleaños?",
+        "Con una gran fiesta",
+        "Con una cena para dos",
+        "Con un viaje",
+        "Con una tarde tranquila en casa"
+      ],
+      "q32": [
+        "¿Qué me parecen las sorpresas?",
+        "Me encantan",
+        "Me ponen un poco de los nervios",
+        "Me encanta prepararlas para otros",
+        "Prefiero saberlo de antemano"
+      ],
+      "q33": [
+        "¿Qué dulce prefiero?",
+        "Tarta",
+        "Helado",
+        "Galletas",
+        "Caramelos"
+      ],
+      "q34": [
+        "¿Qué me llevaría a una isla desierta?",
+        "Un libro",
+        "Mi móvil",
+        "Una manta",
+        "Una cámara"
+      ],
+      "q35": [
+        "¿Cómo descanso después de un día duro?",
+        "Un baño caliente",
+        "Una serie",
+        "Un paseo",
+        "Una charla con alguien cercano"
+      ],
+      "q36": [
+        "¿Qué medio de transporte me gusta más?",
+        "El tren",
+        "El avión",
+        "El coche",
+        "La bicicleta"
+      ],
+      "q37": [
+        "¿Mi juego favorito de la infancia?",
+        "El escondite",
+        "El pilla-pilla",
+        "Las construcciones",
+        "Dibujar"
+      ],
+      "q38": [
+        "¿Qué cuento se parece más a mí?",
+        "Cenicienta",
+        "El Principito",
+        "Winnie the Pooh",
+        "Alicia en el país de las maravillas"
+      ],
+      "q39": [
+        "¿Cómo alegraría antes a un ser querido?",
+        "Con una sorpresa",
+        "Con una tarjeta",
+        "Con un viaje",
+        "Con una cena"
+      ],
+      "q40": [
+        "¿Qué fotografío más?",
+        "A mí",
+        "La naturaleza",
+        "La comida",
+        "Casi no hago fotos"
+      ],
+      "q41": [
+        "¿Mi rincón favorito de casa?",
+        "La cama",
+        "La cocina",
+        "El sofá",
+        "El balcón"
+      ],
+      "q42": [
+        "¿Qué es lo primero que noto en una persona?",
+        "La sonrisa",
+        "Los ojos",
+        "La voz",
+        "El sentido del humor"
+      ],
+      "q43": [
+        "¿Qué me hace reír más rápido?",
+        "Vídeos graciosos",
+        "Las bromas de mis seres queridos",
+        "Situaciones incómodas",
+        "Los animales"
+      ],
+      "q44": [
+        "¿Qué bebo en un día caluroso?",
+        "Limonada",
+        "Té helado",
+        "Zumo",
+        "Agua con hielo"
+      ],
+      "q45": [
+        "¿Qué elemento se parece más a mí?",
+        "El agua",
+        "El fuego",
+        "La tierra",
+        "El aire"
+      ],
+      "q46": [
+        "¿Qué historias me encantan?",
+        "De aventuras",
+        "De amor",
+        "De ciencia ficción",
+        "Reales"
+      ],
+      "q47": [
+        "¿Cómo paso un día de lluvia?",
+        "Leyendo",
+        "Durmiendo",
+        "Viendo una película",
+        "Paseando con paraguas"
+      ],
+      "q48": [
+        "¿Qué valoro más de un regalo?",
+        "El detalle",
+        "Que sea útil",
+        "Que sea bonito",
+        "La sorpresa"
+      ],
+      "q49": [
+        "¿Qué patatas elegiría?",
+        "Puré",
+        "Fritas",
+        "Al horno",
+        "De bolsa"
+      ],
+      "q50": [
+        "¿Adónde voy primero en una ciudad nueva?",
+        "A un café",
+        "A un museo",
+        "A un parque",
+        "De tiendas"
+      ],
+      "q51": [
+        "¿Qué hago cuando no puedo dormir?",
+        "Leo",
+        "Miro el móvil",
+        "Cuento ovejas",
+        "Tomo leche caliente"
+      ],
+      "q52": [
+        "¿Cómo me preparo para un día importante?",
+        "Lo planeo todo antes",
+        "Lo dejo para el último momento",
+        "Pido ayuda",
+        "Me entran los nervios y no duermo"
+      ],
+      "q53": [
+        "¿Qué deporte me gusta más ver?",
+        "Fútbol",
+        "Tenis",
+        "Patinaje artístico",
+        "No veo deporte"
+      ],
+      "q54": [
+        "¿Qué mascota va conmigo?",
+        "Un gato",
+        "Un perro",
+        "Un loro",
+        "Un hámster"
+      ],
+      "q55": [
+        "¿Qué tipo de mensajes escribo?",
+        "Largos",
+        "Cortos",
+        "Llenos de emojis",
+        "Notas de voz"
+      ],
+      "q56": [
+        "¿Qué regalo he guardado más tiempo?",
+        "Una carta",
+        "Un juguete",
+        "Una foto",
+        "Una joya"
+      ],
+      "q57": [
+        "¿Qué elegiría antes?",
+        "Té junto a la chimenea",
+        "Un pícnic en la hierba",
+        "Un paseo junto al mar",
+        "Ir al cine"
+      ],
+      "q58": [
+        "¿Qué cumplido me haría más ilusión?",
+        "Sobre mi aspecto",
+        "Sobre mi inteligencia",
+        "Sobre mi bondad",
+        "Sobre mi sentido del humor"
+      ],
+      "q59": [
+        "¿Mi mañana perfecta?",
+        "Desayuno en la cama",
+        "Correr temprano",
+        "Dormir hasta tarde",
+        "Café en el balcón"
+      ],
+      "q60": [
+        "¿Qué quiero aprender?",
+        "A bailar",
+        "A cocinar",
+        "Un idioma nuevo",
+        "A dibujar"
       ]
     }
   },
@@ -795,6 +1299,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Un’insalata",
         "Un dolce"
+      ],
+      "q25": [
+        "Il mio momento preferito della giornata?",
+        "La mattina",
+        "Il pomeriggio",
+        "La sera",
+        "La notte"
+      ],
+      "q26": [
+        "Quale cucina sceglierei?",
+        "Italiana",
+        "Giapponese",
+        "Casalinga",
+        "Messicana"
+      ],
+      "q27": [
+        "Dove penso meglio?",
+        "Sotto la doccia",
+        "Passeggiando",
+        "In viaggio",
+        "Prima di dormire"
+      ],
+      "q28": [
+        "Cosa faccio per prima cosa al mattino?",
+        "Guardo il telefono",
+        "Bevo acqua",
+        "Preparo il caffè",
+        "Resto ancora un po’ a letto"
+      ],
+      "q29": [
+        "Il mio frutto preferito?",
+        "Mela",
+        "Banana",
+        "Mango",
+        "Anguria"
+      ],
+      "q30": [
+        "Quale hobby mi somiglia di più?",
+        "Disegnare",
+        "Cucinare",
+        "Fare sport",
+        "Leggere"
+      ],
+      "q31": [
+        "Come voglio festeggiare il compleanno?",
+        "Con una grande festa",
+        "Con una cena a due",
+        "Con un viaggio",
+        "Con una serata tranquilla a casa"
+      ],
+      "q32": [
+        "Cosa penso delle sorprese?",
+        "Le adoro",
+        "Mi agitano un po’",
+        "Adoro farle agli altri",
+        "Preferisco saperlo prima"
+      ],
+      "q33": [
+        "Quale dolce preferisco?",
+        "La torta",
+        "Il gelato",
+        "I biscotti",
+        "Le caramelle"
+      ],
+      "q34": [
+        "Cosa porterei su un’isola deserta?",
+        "Un libro",
+        "Il telefono",
+        "Una coperta",
+        "Una macchina fotografica"
+      ],
+      "q35": [
+        "Come mi rilasso dopo una giornata pesante?",
+        "Un bagno caldo",
+        "Una serie",
+        "Una passeggiata",
+        "Una chiacchierata con una persona cara"
+      ],
+      "q36": [
+        "Quale mezzo di trasporto preferisco?",
+        "Il treno",
+        "L’aereo",
+        "L’auto",
+        "La bicicletta"
+      ],
+      "q37": [
+        "Il mio gioco preferito dell’infanzia?",
+        "Nascondino",
+        "Acchiapparella",
+        "Le costruzioni",
+        "Disegnare"
+      ],
+      "q38": [
+        "Quale fiaba mi somiglia di più?",
+        "Cenerentola",
+        "Il Piccolo Principe",
+        "Winnie the Pooh",
+        "Alice nel Paese delle Meraviglie"
+      ],
+      "q39": [
+        "Come farei felice una persona cara?",
+        "Con una sorpresa",
+        "Con un biglietto",
+        "Con un viaggio",
+        "Con una cena"
+      ],
+      "q40": [
+        "Cosa fotografo più spesso?",
+        "Me",
+        "La natura",
+        "Il cibo",
+        "Non faccio quasi foto"
+      ],
+      "q41": [
+        "Il mio angolo preferito di casa?",
+        "Il letto",
+        "La cucina",
+        "Il divano",
+        "Il balcone"
+      ],
+      "q42": [
+        "Cosa noto per primo in una persona?",
+        "Il sorriso",
+        "Gli occhi",
+        "La voce",
+        "Il senso dell’umorismo"
+      ],
+      "q43": [
+        "Cosa mi fa ridere più in fretta?",
+        "I video divertenti",
+        "Le battute delle persone care",
+        "Le situazioni imbarazzanti",
+        "Gli animali"
+      ],
+      "q44": [
+        "Cosa bevo in una giornata calda?",
+        "Limonata",
+        "Tè freddo",
+        "Succo",
+        "Acqua con ghiaccio"
+      ],
+      "q45": [
+        "Quale elemento mi somiglia di più?",
+        "L’acqua",
+        "Il fuoco",
+        "La terra",
+        "L’aria"
+      ],
+      "q46": [
+        "Quali storie amo?",
+        "Di avventura",
+        "D’amore",
+        "Di fantascienza",
+        "Vere"
+      ],
+      "q47": [
+        "Come passo una giornata di pioggia?",
+        "Leggendo",
+        "Dormendo",
+        "Guardando un film",
+        "Passeggiando con l’ombrello"
+      ],
+      "q48": [
+        "Cosa apprezzo di più in un regalo?",
+        "Il pensiero",
+        "L’utilità",
+        "La bellezza",
+        "La sorpresa"
+      ],
+      "q49": [
+        "Quali patate sceglierei?",
+        "Purè",
+        "Patatine fritte",
+        "Al forno",
+        "Patatine in busta"
+      ],
+      "q50": [
+        "Dove vado per primo in una città nuova?",
+        "In un caffè",
+        "In un museo",
+        "In un parco",
+        "Per negozi"
+      ],
+      "q51": [
+        "Cosa faccio quando non riesco a dormire?",
+        "Leggo",
+        "Scorro il telefono",
+        "Conto le pecore",
+        "Bevo latte caldo"
+      ],
+      "q52": [
+        "Come mi preparo a un giorno importante?",
+        "Pianifico tutto prima",
+        "Faccio tutto all’ultimo momento",
+        "Chiedo aiuto",
+        "Mi agito e non dormo"
+      ],
+      "q53": [
+        "Quale sport mi piace di più guardare?",
+        "Calcio",
+        "Tennis",
+        "Pattinaggio artistico",
+        "Non guardo lo sport"
+      ],
+      "q54": [
+        "Quale animale domestico fa per me?",
+        "Un gatto",
+        "Un cane",
+        "Un pappagallo",
+        "Un criceto"
+      ],
+      "q55": [
+        "Che tipo di messaggi scrivo?",
+        "Lunghi",
+        "Brevi",
+        "Pieni di emoji",
+        "Vocali"
+      ],
+      "q56": [
+        "Quale regalo conservo da più tempo?",
+        "Una lettera",
+        "Un giocattolo",
+        "Una foto",
+        "Un gioiello"
+      ],
+      "q57": [
+        "Cosa sceglierei piuttosto?",
+        "Un tè davanti al camino",
+        "Un picnic sul prato",
+        "Una passeggiata al mare",
+        "Una serata al cinema"
+      ],
+      "q58": [
+        "Quale complimento mi farebbe più piacere?",
+        "Sul mio aspetto",
+        "Sulla mia intelligenza",
+        "Sulla mia gentilezza",
+        "Sul mio umorismo"
+      ],
+      "q59": [
+        "La mia mattina perfetta?",
+        "Colazione a letto",
+        "Una corsa all’alba",
+        "Dormire a lungo",
+        "Caffè sul balcone"
+      ],
+      "q60": [
+        "Cosa voglio imparare?",
+        "A ballare",
+        "A cucinare",
+        "Una nuova lingua",
+        "A disegnare"
       ]
     }
   },
@@ -1060,6 +1816,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Sałatkę",
         "Deser"
+      ],
+      "q25": [
+        "Moja ulubiona pora dnia?",
+        "Rano",
+        "Popołudnie",
+        "Wieczór",
+        "Noc"
+      ],
+      "q26": [
+        "Jaką kuchnię wybiorę?",
+        "Włoską",
+        "Japońską",
+        "Domową",
+        "Meksykańską"
+      ],
+      "q27": [
+        "Gdzie najlepiej mi się myśli?",
+        "Pod prysznicem",
+        "Na spacerze",
+        "W podróży",
+        "Przed snem"
+      ],
+      "q28": [
+        "Co robię rano w pierwszej kolejności?",
+        "Patrzę w telefon",
+        "Piję wodę",
+        "Robię kawę",
+        "Leżę jeszcze chwilę"
+      ],
+      "q29": [
+        "Mój ulubiony owoc?",
+        "Jabłko",
+        "Banan",
+        "Mango",
+        "Arbuz"
+      ],
+      "q30": [
+        "Które hobby jest mi najbliższe?",
+        "Rysowanie",
+        "Gotowanie",
+        "Sport",
+        "Czytanie"
+      ],
+      "q31": [
+        "Jak chcę świętować urodziny?",
+        "Głośną imprezą",
+        "Kolacją we dwoje",
+        "Wyjazdem",
+        "Spokojnym wieczorem w domu"
+      ],
+      "q32": [
+        "Co sądzę o niespodziankach?",
+        "Uwielbiam je",
+        "Trochę mnie stresują",
+        "Lubię przygotowywać je innym",
+        "Wolę wiedzieć wcześniej"
+      ],
+      "q33": [
+        "Jaki słodycz lubię najbardziej?",
+        "Tort",
+        "Lody",
+        "Ciastka",
+        "Cukierki"
+      ],
+      "q34": [
+        "Co zabiorę na bezludną wyspę?",
+        "Książkę",
+        "Telefon",
+        "Koc",
+        "Aparat"
+      ],
+      "q35": [
+        "Jak odpoczywam po trudnym dniu?",
+        "Ciepła kąpiel",
+        "Serial",
+        "Spacer",
+        "Rozmowa z bliską osobą"
+      ],
+      "q36": [
+        "Jaki środek transportu lubię najbardziej?",
+        "Pociąg",
+        "Samolot",
+        "Samochód",
+        "Rower"
+      ],
+      "q37": [
+        "Moja ulubiona zabawa z dzieciństwa?",
+        "Chowanego",
+        "Berek",
+        "Klocki",
+        "Rysowanie"
+      ],
+      "q38": [
+        "Która baśń jest mi najbliższa?",
+        "Kopciuszek",
+        "Mały Książę",
+        "Kubuś Puchatek",
+        "Alicja w Krainie Czarów"
+      ],
+      "q39": [
+        "Czym chętniej ucieszę bliską osobę?",
+        "Niespodzianką",
+        "Kartką",
+        "Wyjazdem",
+        "Kolacją"
+      ],
+      "q40": [
+        "Co najczęściej fotografuję?",
+        "Siebie",
+        "Przyrodę",
+        "Jedzenie",
+        "Prawie nie robię zdjęć"
+      ],
+      "q41": [
+        "Moje ulubione miejsce w domu?",
+        "Łóżko",
+        "Kuchnia",
+        "Kanapa",
+        "Balkon"
+      ],
+      "q42": [
+        "Co zauważam w człowieku najpierw?",
+        "Uśmiech",
+        "Oczy",
+        "Głos",
+        "Poczucie humoru"
+      ],
+      "q43": [
+        "Co najszybciej mnie rozśmiesza?",
+        "Zabawne filmiki",
+        "Żarty bliskich",
+        "Niezręczne sytuacje",
+        "Zwierzęta"
+      ],
+      "q44": [
+        "Co piję w upalny dzień?",
+        "Lemoniadę",
+        "Mrożoną herbatę",
+        "Sok",
+        "Wodę z lodem"
+      ],
+      "q45": [
+        "Który żywioł jest mi najbliższy?",
+        "Woda",
+        "Ogień",
+        "Ziemia",
+        "Powietrze"
+      ],
+      "q46": [
+        "Jakie historie kocham?",
+        "Przygodowe",
+        "O miłości",
+        "Fantastykę",
+        "Prawdziwe"
+      ],
+      "q47": [
+        "Jak spędzam deszczowy dzień?",
+        "Czytam",
+        "Śpię",
+        "Oglądam film",
+        "Spaceruję pod parasolem"
+      ],
+      "q48": [
+        "Co najbardziej cenię w prezencie?",
+        "Pamięć",
+        "Przydatność",
+        "Piękno",
+        "Zaskoczenie"
+      ],
+      "q49": [
+        "Jakie ziemniaki wybiorę?",
+        "Purée",
+        "Frytki",
+        "Pieczone",
+        "Chipsy"
+      ],
+      "q50": [
+        "Dokąd idę najpierw w nowym mieście?",
+        "Do kawiarni",
+        "Do muzeum",
+        "Do parku",
+        "Na zakupy"
+      ],
+      "q51": [
+        "Co robię, gdy nie mogę zasnąć?",
+        "Czytam",
+        "Przeglądam telefon",
+        "Liczę owce",
+        "Piję ciepłe mleko"
+      ],
+      "q52": [
+        "Jak przygotowuję się do ważnego dnia?",
+        "Wszystko planuję wcześniej",
+        "Robię wszystko na ostatnią chwilę",
+        "Proszę o pomoc",
+        "Denerwuję się i nie śpię"
+      ],
+      "q53": [
+        "Jaki sport lubię oglądać najbardziej?",
+        "Piłkę nożną",
+        "Tenis",
+        "Łyżwiarstwo figurowe",
+        "Nie oglądam sportu"
+      ],
+      "q54": [
+        "Jaki zwierzak do mnie pasuje?",
+        "Kot",
+        "Pies",
+        "Papuga",
+        "Chomik"
+      ],
+      "q55": [
+        "Jakie wiadomości piszę?",
+        "Długie",
+        "Krótkie",
+        "Pełne emotek",
+        "Głosowe"
+      ],
+      "q56": [
+        "Jaki prezent przechowuję najdłużej?",
+        "List",
+        "Zabawkę",
+        "Zdjęcie",
+        "Biżuterię"
+      ],
+      "q57": [
+        "Co raczej wybiorę?",
+        "Herbatę przy kominku",
+        "Piknik na trawie",
+        "Spacer nad morzem",
+        "Wyjście do kina"
+      ],
+      "q58": [
+        "Który komplement ucieszy mnie najbardziej?",
+        "O wyglądzie",
+        "O inteligencji",
+        "O dobroci",
+        "O poczuciu humoru"
+      ],
+      "q59": [
+        "Mój idealny poranek?",
+        "Śniadanie do łóżka",
+        "Poranny bieg",
+        "Długie spanie",
+        "Kawa na balkonie"
+      ],
+      "q60": [
+        "Czego chcę się nauczyć?",
+        "Tańczyć",
+        "Gotować",
+        "Nowego języka",
+        "Rysować"
       ]
     }
   },
@@ -1325,6 +2333,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Суші",
         "Салат",
         "Десерт"
+      ],
+      "q25": [
+        "Мій улюблений час доби?",
+        "Ранок",
+        "День",
+        "Вечір",
+        "Ніч"
+      ],
+      "q26": [
+        "Яку кухню я оберу?",
+        "Італійську",
+        "Японську",
+        "Домашню",
+        "Мексиканську"
+      ],
+      "q27": [
+        "Де мені найкраще думається?",
+        "У душі",
+        "На прогулянці",
+        "У дорозі",
+        "Перед сном"
+      ],
+      "q28": [
+        "Що я роблю зранку насамперед?",
+        "Дивлюся в телефон",
+        "П’ю воду",
+        "Варю каву",
+        "Ще трохи лежу"
+      ],
+      "q29": [
+        "Мій улюблений фрукт?",
+        "Яблуко",
+        "Банан",
+        "Манго",
+        "Кавун"
+      ],
+      "q30": [
+        "Яке хобі мені найближче?",
+        "Малювання",
+        "Кулінарія",
+        "Спорт",
+        "Читання"
+      ],
+      "q31": [
+        "Як я хочу відсвяткувати день народження?",
+        "Гучною вечіркою",
+        "Вечерею удвох",
+        "Подорожжю",
+        "Тихим вечором удома"
+      ],
+      "q32": [
+        "Як я ставлюся до сюрпризів?",
+        "Обожнюю",
+        "Трохи хвилююся",
+        "Люблю влаштовувати їх іншим",
+        "Волію знати заздалегідь"
+      ],
+      "q33": [
+        "Які солодощі мені найближчі?",
+        "Торт",
+        "Морозиво",
+        "Печиво",
+        "Цукерки"
+      ],
+      "q34": [
+        "Що я візьму на безлюдний острів?",
+        "Книжку",
+        "Телефон",
+        "Плед",
+        "Фотоапарат"
+      ],
+      "q35": [
+        "Як я відпочиваю після важкого дня?",
+        "Тепла ванна",
+        "Серіал",
+        "Прогулянка",
+        "Розмова з близькою людиною"
+      ],
+      "q36": [
+        "Який транспорт мені подобається найбільше?",
+        "Потяг",
+        "Літак",
+        "Машина",
+        "Велосипед"
+      ],
+      "q37": [
+        "Моя улюблена гра в дитинстві?",
+        "Хованки",
+        "Квач",
+        "Конструктор",
+        "Малювання"
+      ],
+      "q38": [
+        "Яка казка мені найближча?",
+        "Попелюшка",
+        "Маленький принц",
+        "Вінні-Пух",
+        "Аліса в Країні чудес"
+      ],
+      "q39": [
+        "Чим я радше потішу близьку людину?",
+        "Сюрпризом",
+        "Листівкою",
+        "Подорожжю",
+        "Вечерею"
+      ],
+      "q40": [
+        "Що я фотографую найчастіше?",
+        "Себе",
+        "Природу",
+        "Їжу",
+        "Майже не фотографую"
+      ],
+      "q41": [
+        "Моє улюблене місце вдома?",
+        "Ліжко",
+        "Кухня",
+        "Диван",
+        "Балкон"
+      ],
+      "q42": [
+        "Що я помічаю в людині насамперед?",
+        "Усмішку",
+        "Очі",
+        "Голос",
+        "Почуття гумору"
+      ],
+      "q43": [
+        "Що найшвидше мене розсмішить?",
+        "Смішні відео",
+        "Жарти близьких",
+        "Незручні ситуації",
+        "Тварини"
+      ],
+      "q44": [
+        "Що я п’ю в спеку?",
+        "Лимонад",
+        "Холодний чай",
+        "Сік",
+        "Воду з льодом"
+      ],
+      "q45": [
+        "Яка стихія мені найближча?",
+        "Вода",
+        "Вогонь",
+        "Земля",
+        "Повітря"
+      ],
+      "q46": [
+        "Які історії я люблю?",
+        "Пригоди",
+        "Про кохання",
+        "Фантастику",
+        "З життя"
+      ],
+      "q47": [
+        "Як я проводжу дощовий день?",
+        "Читаю",
+        "Сплю",
+        "Дивлюся фільм",
+        "Гуляю під парасолькою"
+      ],
+      "q48": [
+        "Що я ціную в подарунку найбільше?",
+        "Увагу",
+        "Користь",
+        "Красу",
+        "Несподіванку"
+      ],
+      "q49": [
+        "Яку картоплю я оберу?",
+        "Пюре",
+        "Картоплю фрі",
+        "Запечену",
+        "Чипси"
+      ],
+      "q50": [
+        "Куди я піду насамперед у новому місті?",
+        "У кафе",
+        "У музей",
+        "У парк",
+        "По магазинах"
+      ],
+      "q51": [
+        "Що я роблю, коли не спиться?",
+        "Читаю",
+        "Гортаю телефон",
+        "Рахую овечок",
+        "П’ю тепле молоко"
+      ],
+      "q52": [
+        "Як я готуюся до важливого дня?",
+        "Усе планую заздалегідь",
+        "Роблю в останню мить",
+        "Прошу допомоги",
+        "Хвилююся і не сплю"
+      ],
+      "q53": [
+        "Який спорт мені найцікавіше дивитися?",
+        "Футбол",
+        "Теніс",
+        "Фігурне катання",
+        "Не дивлюся спорт"
+      ],
+      "q54": [
+        "Який улюбленець мені до душі?",
+        "Кішка",
+        "Собака",
+        "Папуга",
+        "Хом’ячок"
+      ],
+      "q55": [
+        "Які повідомлення я пишу?",
+        "Довгі",
+        "Короткі",
+        "З купою смайликів",
+        "Голосові"
+      ],
+      "q56": [
+        "Який подарунок я зберігаю найдовше?",
+        "Лист",
+        "Іграшку",
+        "Фотографію",
+        "Прикрасу"
+      ],
+      "q57": [
+        "Що я радше оберу?",
+        "Чай біля каміна",
+        "Пікнік на траві",
+        "Прогулянку біля моря",
+        "Похід у кіно"
+      ],
+      "q58": [
+        "Який комплімент порадує мене найбільше?",
+        "Про зовнішність",
+        "Про розум",
+        "Про доброту",
+        "Про почуття гумору"
+      ],
+      "q59": [
+        "Мій ідеальний ранок?",
+        "Сніданок у ліжко",
+        "Рання пробіжка",
+        "Довгий сон",
+        "Кава на балконі"
+      ],
+      "q60": [
+        "Чого я хочу навчитися?",
+        "Танцювати",
+        "Готувати",
+        "Нової мови",
+        "Малювати"
       ]
     }
   },
@@ -1590,6 +2850,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Uma salada",
         "Uma sobremesa"
+      ],
+      "q25": [
+        "Minha hora favorita do dia?",
+        "Manhã",
+        "Tarde",
+        "Fim de tarde",
+        "Noite"
+      ],
+      "q26": [
+        "Que cozinha eu escolheria?",
+        "Italiana",
+        "Japonesa",
+        "Caseira",
+        "Mexicana"
+      ],
+      "q27": [
+        "Onde eu penso melhor?",
+        "No banho",
+        "Caminhando",
+        "Viajando",
+        "Antes de dormir"
+      ],
+      "q28": [
+        "O que faço logo de manhã?",
+        "Olho o celular",
+        "Bebo água",
+        "Faço café",
+        "Fico mais um pouco na cama"
+      ],
+      "q29": [
+        "Minha fruta favorita?",
+        "Maçã",
+        "Banana",
+        "Manga",
+        "Melancia"
+      ],
+      "q30": [
+        "Que hobby combina mais comigo?",
+        "Desenhar",
+        "Cozinhar",
+        "Esporte",
+        "Ler"
+      ],
+      "q31": [
+        "Como quero comemorar meu aniversário?",
+        "Com uma festa animada",
+        "Com um jantar a dois",
+        "Com uma viagem",
+        "Com uma noite tranquila em casa"
+      ],
+      "q32": [
+        "O que acho de surpresas?",
+        "Adoro",
+        "Me dão um frio na barriga",
+        "Adoro fazer para os outros",
+        "Prefiro saber antes"
+      ],
+      "q33": [
+        "Que doce eu prefiro?",
+        "Bolo",
+        "Sorvete",
+        "Biscoitos",
+        "Balas"
+      ],
+      "q34": [
+        "O que levaria para uma ilha deserta?",
+        "Um livro",
+        "O celular",
+        "Uma manta",
+        "Uma câmera"
+      ],
+      "q35": [
+        "Como descanso depois de um dia difícil?",
+        "Um banho quente",
+        "Uma série",
+        "Uma caminhada",
+        "Uma conversa com alguém próximo"
+      ],
+      "q36": [
+        "Que meio de transporte eu mais gosto?",
+        "Trem",
+        "Avião",
+        "Carro",
+        "Bicicleta"
+      ],
+      "q37": [
+        "Minha brincadeira favorita na infância?",
+        "Esconde-esconde",
+        "Pega-pega",
+        "Blocos de montar",
+        "Desenhar"
+      ],
+      "q38": [
+        "Que conto de fadas mais combina comigo?",
+        "Cinderela",
+        "O Pequeno Príncipe",
+        "Ursinho Pooh",
+        "Alice no País das Maravilhas"
+      ],
+      "q39": [
+        "Como eu alegraria alguém querido?",
+        "Com uma surpresa",
+        "Com um cartão",
+        "Com uma viagem",
+        "Com um jantar"
+      ],
+      "q40": [
+        "O que eu mais fotografo?",
+        "Selfies",
+        "A natureza",
+        "Comida",
+        "Quase não tiro fotos"
+      ],
+      "q41": [
+        "Meu cantinho favorito em casa?",
+        "A cama",
+        "A cozinha",
+        "O sofá",
+        "A varanda"
+      ],
+      "q42": [
+        "O que noto primeiro numa pessoa?",
+        "O sorriso",
+        "Os olhos",
+        "A voz",
+        "O senso de humor"
+      ],
+      "q43": [
+        "O que me faz rir mais rápido?",
+        "Vídeos engraçados",
+        "Piadas de quem eu amo",
+        "Situações constrangedoras",
+        "Animais"
+      ],
+      "q44": [
+        "O que bebo num dia quente?",
+        "Limonada",
+        "Chá gelado",
+        "Suco",
+        "Água com gelo"
+      ],
+      "q45": [
+        "Que elemento mais combina comigo?",
+        "Água",
+        "Fogo",
+        "Terra",
+        "Ar"
+      ],
+      "q46": [
+        "Que histórias eu amo?",
+        "De aventura",
+        "De amor",
+        "De ficção científica",
+        "Reais"
+      ],
+      "q47": [
+        "Como passo um dia de chuva?",
+        "Lendo",
+        "Dormindo",
+        "Vendo um filme",
+        "Caminhando de guarda-chuva"
+      ],
+      "q48": [
+        "O que mais valorizo num presente?",
+        "O carinho",
+        "A utilidade",
+        "A beleza",
+        "A surpresa"
+      ],
+      "q49": [
+        "Que batata eu escolheria?",
+        "Purê",
+        "Batata frita",
+        "Assada",
+        "Batata chips"
+      ],
+      "q50": [
+        "Aonde vou primeiro numa cidade nova?",
+        "Num café",
+        "Num museu",
+        "Num parque",
+        "Às lojas"
+      ],
+      "q51": [
+        "O que faço quando não consigo dormir?",
+        "Leio",
+        "Mexo no celular",
+        "Conto carneirinhos",
+        "Tomo leite morno"
+      ],
+      "q52": [
+        "Como me preparo para um dia importante?",
+        "Planejo tudo antes",
+        "Faço tudo na última hora",
+        "Peço ajuda",
+        "Bate a ansiedade e não durmo"
+      ],
+      "q53": [
+        "Que esporte mais gosto de assistir?",
+        "Futebol",
+        "Tênis",
+        "Patinação artística",
+        "Não assisto esporte"
+      ],
+      "q54": [
+        "Que bichinho combina comigo?",
+        "Um gato",
+        "Um cachorro",
+        "Um papagaio",
+        "Um hamster"
+      ],
+      "q55": [
+        "Que tipo de mensagens escrevo?",
+        "Longas",
+        "Curtas",
+        "Cheias de emojis",
+        "Áudios"
+      ],
+      "q56": [
+        "Que presente guardo há mais tempo?",
+        "Uma carta",
+        "Um brinquedo",
+        "Uma foto",
+        "Uma joia"
+      ],
+      "q57": [
+        "O que eu escolheria?",
+        "Chá perto da lareira",
+        "Piquenique na grama",
+        "Passeio à beira-mar",
+        "Uma ida ao cinema"
+      ],
+      "q58": [
+        "Que elogio me deixaria mais feliz?",
+        "Sobre minha aparência",
+        "Sobre minha inteligência",
+        "Sobre minha bondade",
+        "Sobre meu senso de humor"
+      ],
+      "q59": [
+        "Minha manhã perfeita?",
+        "Café da manhã na cama",
+        "Corrida cedo",
+        "Dormir até tarde",
+        "Café na varanda"
+      ],
+      "q60": [
+        "O que quero aprender?",
+        "Dançar",
+        "Cozinhar",
+        "Uma nova língua",
+        "Desenhar"
       ]
     }
   },
@@ -1855,6 +3367,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Een salade",
         "Een toetje"
+      ],
+      "q25": [
+        "Mijn favoriete moment van de dag?",
+        "De ochtend",
+        "De middag",
+        "De avond",
+        "De nacht"
+      ],
+      "q26": [
+        "Welke keuken kies ik?",
+        "Italiaans",
+        "Japans",
+        "Huisgemaakt",
+        "Mexicaans"
+      ],
+      "q27": [
+        "Waar denk ik het best na?",
+        "Onder de douche",
+        "Tijdens een wandeling",
+        "Onderweg",
+        "Voor het slapengaan"
+      ],
+      "q28": [
+        "Wat doe ik ’s ochtends als eerste?",
+        "Op mijn telefoon kijken",
+        "Water drinken",
+        "Koffie zetten",
+        "Nog even blijven liggen"
+      ],
+      "q29": [
+        "Mijn favoriete fruit?",
+        "Appel",
+        "Banaan",
+        "Mango",
+        "Watermeloen"
+      ],
+      "q30": [
+        "Welke hobby past het best bij mij?",
+        "Tekenen",
+        "Koken",
+        "Sporten",
+        "Lezen"
+      ],
+      "q31": [
+        "Hoe wil ik mijn verjaardag vieren?",
+        "Met een groot feest",
+        "Met een etentje voor twee",
+        "Met een reisje",
+        "Met een rustige avond thuis"
+      ],
+      "q32": [
+        "Wat vind ik van verrassingen?",
+        "Ik ben er dol op",
+        "Ze maken me een beetje zenuwachtig",
+        "Ik bereid ze graag voor anderen voor",
+        "Ik weet het liever van tevoren"
+      ],
+      "q33": [
+        "Welke zoetigheid vind ik het lekkerst?",
+        "Taart",
+        "IJs",
+        "Koekjes",
+        "Snoep"
+      ],
+      "q34": [
+        "Wat neem ik mee naar een onbewoond eiland?",
+        "Een boek",
+        "Mijn telefoon",
+        "Een deken",
+        "Een camera"
+      ],
+      "q35": [
+        "Hoe ontspan ik na een zware dag?",
+        "Een warm bad",
+        "Een serie",
+        "Een wandeling",
+        "Een gesprek met iemand dichtbij"
+      ],
+      "q36": [
+        "Hoe reis ik het liefst?",
+        "Met de trein",
+        "Met het vliegtuig",
+        "Met de auto",
+        "Met de fiets"
+      ],
+      "q37": [
+        "Mijn favoriete spel als kind?",
+        "Verstoppertje",
+        "Tikkertje",
+        "Bouwblokken",
+        "Tekenen"
+      ],
+      "q38": [
+        "Welk sprookje past het best bij mij?",
+        "Assepoester",
+        "De Kleine Prins",
+        "Winnie de Poeh",
+        "Alice in Wonderland"
+      ],
+      "q39": [
+        "Waarmee maak ik iemand dierbaar eerder blij?",
+        "Met een verrassing",
+        "Met een kaartje",
+        "Met een reisje",
+        "Met een etentje"
+      ],
+      "q40": [
+        "Wat fotografeer ik het vaakst?",
+        "Mezelf",
+        "De natuur",
+        "Eten",
+        "Ik maak bijna geen foto’s"
+      ],
+      "q41": [
+        "Mijn favoriete plek in huis?",
+        "Het bed",
+        "De keuken",
+        "De bank",
+        "Het balkon"
+      ],
+      "q42": [
+        "Wat valt mij als eerste op aan iemand?",
+        "De glimlach",
+        "De ogen",
+        "De stem",
+        "Het gevoel voor humor"
+      ],
+      "q43": [
+        "Waar moet ik het snelst om lachen?",
+        "Grappige filmpjes",
+        "Grapjes van dierbaren",
+        "Ongemakkelijke momenten",
+        "Dieren"
+      ],
+      "q44": [
+        "Wat drink ik op een warme zomerdag?",
+        "Limonade",
+        "IJsthee",
+        "Sap",
+        "Water met ijs"
+      ],
+      "q45": [
+        "Welk element past het best bij mij?",
+        "Water",
+        "Vuur",
+        "Aarde",
+        "Lucht"
+      ],
+      "q46": [
+        "Van welke verhalen houd ik?",
+        "Avonturen",
+        "Liefdesverhalen",
+        "Sciencefiction",
+        "Echte verhalen"
+      ],
+      "q47": [
+        "Hoe breng ik een regenachtige dag door?",
+        "Lezen",
+        "Slapen",
+        "Een film kijken",
+        "Wandelen onder een paraplu"
+      ],
+      "q48": [
+        "Wat waardeer ik het meest aan een cadeau?",
+        "De aandacht",
+        "Het nut",
+        "De schoonheid",
+        "De verrassing"
+      ],
+      "q49": [
+        "Welke aardappelen kies ik?",
+        "Puree",
+        "Friet",
+        "Uit de oven",
+        "Chips"
+      ],
+      "q50": [
+        "Waar ga ik als eerste heen in een nieuwe stad?",
+        "Naar een café",
+        "Naar een museum",
+        "Naar een park",
+        "Winkelen"
+      ],
+      "q51": [
+        "Wat doe ik als ik niet kan slapen?",
+        "Lezen",
+        "Op mijn telefoon scrollen",
+        "Schaapjes tellen",
+        "Warme melk drinken"
+      ],
+      "q52": [
+        "Hoe bereid ik me voor op een belangrijke dag?",
+        "Ik plan alles vooruit",
+        "Ik doe alles op het laatste moment",
+        "Ik vraag om hulp",
+        "Ik ben zenuwachtig en slaap slecht"
+      ],
+      "q53": [
+        "Welke sport kijk ik het liefst?",
+        "Voetbal",
+        "Tennis",
+        "Kunstschaatsen",
+        "Ik kijk geen sport"
+      ],
+      "q54": [
+        "Welk huisdier past bij mij?",
+        "Een kat",
+        "Een hond",
+        "Een papegaai",
+        "Een hamster"
+      ],
+      "q55": [
+        "Wat voor berichtjes stuur ik?",
+        "Lange",
+        "Korte",
+        "Vol emoji’s",
+        "Spraakberichten"
+      ],
+      "q56": [
+        "Welk cadeau bewaar ik het langst?",
+        "Een brief",
+        "Een knuffel",
+        "Een foto",
+        "Een sieraad"
+      ],
+      "q57": [
+        "Wat kies ik eerder?",
+        "Thee bij de open haard",
+        "Een picknick in het gras",
+        "Een wandeling aan zee",
+        "Naar de bioscoop"
+      ],
+      "q58": [
+        "Welk compliment maakt mij het blijst?",
+        "Over mijn uiterlijk",
+        "Over mijn verstand",
+        "Over mijn vriendelijkheid",
+        "Over mijn humor"
+      ],
+      "q59": [
+        "Mijn perfecte ochtend?",
+        "Ontbijt op bed",
+        "Vroeg hardlopen",
+        "Lekker uitslapen",
+        "Koffie op het balkon"
+      ],
+      "q60": [
+        "Wat wil ik leren?",
+        "Dansen",
+        "Koken",
+        "Een nieuwe taal",
+        "Tekenen"
       ]
     }
   },
@@ -2120,6 +3884,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Suşi",
         "Salata",
         "Tatlı"
+      ],
+      "q25": [
+        "Günün en sevdiğim zamanı?",
+        "Sabah",
+        "Öğleden sonra",
+        "Akşam",
+        "Gece"
+      ],
+      "q26": [
+        "Hangi mutfağı seçerim?",
+        "İtalyan",
+        "Japon",
+        "Ev yemekleri",
+        "Meksika"
+      ],
+      "q27": [
+        "En iyi nerede düşünürüm?",
+        "Duşta",
+        "Yürürken",
+        "Yolculukta",
+        "Uyumadan önce"
+      ],
+      "q28": [
+        "Sabah ilk iş ne yaparım?",
+        "Telefonuma bakarım",
+        "Su içerim",
+        "Kahve yaparım",
+        "Biraz daha yatakta kalırım"
+      ],
+      "q29": [
+        "En sevdiğim meyve?",
+        "Elma",
+        "Muz",
+        "Mango",
+        "Karpuz"
+      ],
+      "q30": [
+        "Hangi hobi bana en uygun?",
+        "Resim",
+        "Yemek yapmak",
+        "Spor",
+        "Kitap okumak"
+      ],
+      "q31": [
+        "Doğum günümü nasıl kutlamak isterim?",
+        "Büyük bir partiyle",
+        "Baş başa bir akşam yemeğiyle",
+        "Bir geziyle",
+        "Evde sakin bir akşamla"
+      ],
+      "q32": [
+        "Sürprizler hakkında ne düşünürüm?",
+        "Bayılırım",
+        "Biraz heyecanlandırır",
+        "Başkalarına yapmayı severim",
+        "Önceden bilmeyi tercih ederim"
+      ],
+      "q33": [
+        "Hangi tatlıyı tercih ederim?",
+        "Pasta",
+        "Dondurma",
+        "Kurabiye",
+        "Şeker"
+      ],
+      "q34": [
+        "Issız bir adaya ne götürürüm?",
+        "Bir kitap",
+        "Telefonumu",
+        "Bir battaniye",
+        "Bir fotoğraf makinesi"
+      ],
+      "q35": [
+        "Zor bir günün ardından nasıl dinlenirim?",
+        "Sıcak bir banyo",
+        "Bir dizi",
+        "Bir yürüyüş",
+        "Yakın biriyle sohbet"
+      ],
+      "q36": [
+        "En çok hangi ulaşımı severim?",
+        "Tren",
+        "Uçak",
+        "Araba",
+        "Bisiklet"
+      ],
+      "q37": [
+        "Çocukken en sevdiğim oyun?",
+        "Saklambaç",
+        "Kovalamaca",
+        "Lego",
+        "Resim yapmak"
+      ],
+      "q38": [
+        "Hangi masal bana en yakın?",
+        "Külkedisi",
+        "Küçük Prens",
+        "Winnie the Pooh",
+        "Alice Harikalar Diyarında"
+      ],
+      "q39": [
+        "Sevdiğim birini neyle sevindiririm?",
+        "Bir sürprizle",
+        "Bir kartla",
+        "Bir geziyle",
+        "Bir akşam yemeğiyle"
+      ],
+      "q40": [
+        "En çok neyin fotoğrafını çekerim?",
+        "Kendimin",
+        "Doğanın",
+        "Yemeklerin",
+        "Neredeyse hiç çekmem"
+      ],
+      "q41": [
+        "Evde en sevdiğim yer?",
+        "Yatak",
+        "Mutfak",
+        "Kanepe",
+        "Balkon"
+      ],
+      "q42": [
+        "Bir insanda ilk neyi fark ederim?",
+        "Gülüşünü",
+        "Gözlerini",
+        "Sesini",
+        "Mizah anlayışını"
+      ],
+      "q43": [
+        "Beni en çabuk ne güldürür?",
+        "Komik videolar",
+        "Sevdiklerimin şakaları",
+        "Garip durumlar",
+        "Hayvanlar"
+      ],
+      "q44": [
+        "Sıcak bir yaz gününde ne içerim?",
+        "Limonata",
+        "Soğuk çay",
+        "Meyve suyu",
+        "Buzlu su"
+      ],
+      "q45": [
+        "Hangi element bana en yakın?",
+        "Su",
+        "Ateş",
+        "Toprak",
+        "Hava"
+      ],
+      "q46": [
+        "Hangi hikâyeleri severim?",
+        "Macera",
+        "Aşk",
+        "Bilim kurgu",
+        "Gerçek hikâyeler"
+      ],
+      "q47": [
+        "Yağmurlu bir günü nasıl geçiririm?",
+        "Kitap okuyarak",
+        "Uyuyarak",
+        "Film izleyerek",
+        "Şemsiyeyle yürüyerek"
+      ],
+      "q48": [
+        "Bir hediyede en çok neye değer veririm?",
+        "İlgiye",
+        "İşe yaramasına",
+        "Güzelliğine",
+        "Sürprize"
+      ],
+      "q49": [
+        "Hangi patatesi seçerim?",
+        "Püre",
+        "Kızartma",
+        "Fırında",
+        "Cips"
+      ],
+      "q50": [
+        "Yeni bir şehirde ilk nereye giderim?",
+        "Bir kafeye",
+        "Bir müzeye",
+        "Bir parka",
+        "Alışverişe"
+      ],
+      "q51": [
+        "Uyuyamadığımda ne yaparım?",
+        "Kitap okurum",
+        "Telefonda gezinirim",
+        "Koyun sayarım",
+        "Ilık süt içerim"
+      ],
+      "q52": [
+        "Önemli bir güne nasıl hazırlanırım?",
+        "Her şeyi önceden planlarım",
+        "Son dakikaya bırakırım",
+        "Yardım isterim",
+        "Heyecanlanır, uyuyamam"
+      ],
+      "q53": [
+        "En çok hangi sporu izlemeyi severim?",
+        "Futbol",
+        "Tenis",
+        "Artistik patinaj",
+        "Spor izlemem"
+      ],
+      "q54": [
+        "Hangi evcil hayvan bana uygun?",
+        "Kedi",
+        "Köpek",
+        "Papağan",
+        "Hamster"
+      ],
+      "q55": [
+        "Nasıl mesajlar yazarım?",
+        "Uzun",
+        "Kısa",
+        "Bol emojili",
+        "Sesli mesaj"
+      ],
+      "q56": [
+        "En uzun süre hangi hediyeyi saklarım?",
+        "Bir mektup",
+        "Bir oyuncak",
+        "Bir fotoğraf",
+        "Bir takı"
+      ],
+      "q57": [
+        "Hangisini seçerim?",
+        "Şömine başında çay",
+        "Çimlerde piknik",
+        "Deniz kenarında yürüyüş",
+        "Sinemaya gitmek"
+      ],
+      "q58": [
+        "Hangi iltifat beni en çok mutlu eder?",
+        "Görünüşüme dair",
+        "Zekâma dair",
+        "İyiliğime dair",
+        "Mizah anlayışıma dair"
+      ],
+      "q59": [
+        "Mükemmel sabahım?",
+        "Yatakta kahvaltı",
+        "Erken koşu",
+        "Uzun bir uyku",
+        "Balkonda kahve"
+      ],
+      "q60": [
+        "Ne öğrenmek istiyorum?",
+        "Dans etmeyi",
+        "Yemek yapmayı",
+        "Yeni bir dil",
+        "Resim yapmayı"
       ]
     }
   },
@@ -2385,6 +4401,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "O salată",
         "Un desert"
+      ],
+      "q25": [
+        "Momentul meu preferat al zilei?",
+        "Dimineața",
+        "După-amiaza",
+        "Seara",
+        "Noaptea"
+      ],
+      "q26": [
+        "Ce bucătărie aș alege?",
+        "Italiană",
+        "Japoneză",
+        "Gătită acasă",
+        "Mexicană"
+      ],
+      "q27": [
+        "Unde gândesc cel mai bine?",
+        "Sub duș",
+        "La plimbare",
+        "În drum",
+        "Înainte de somn"
+      ],
+      "q28": [
+        "Ce fac primul lucru dimineața?",
+        "Mă uit pe telefon",
+        "Beau apă",
+        "Fac cafea",
+        "Mai stau puțin în pat"
+      ],
+      "q29": [
+        "Fructul meu preferat?",
+        "Măr",
+        "Banană",
+        "Mango",
+        "Pepene roșu"
+      ],
+      "q30": [
+        "Ce hobby mi se potrivește cel mai bine?",
+        "Desenul",
+        "Gătitul",
+        "Sportul",
+        "Cititul"
+      ],
+      "q31": [
+        "Cum vreau să-mi sărbătoresc ziua?",
+        "Cu o petrecere mare",
+        "Cu o cină în doi",
+        "Cu o călătorie",
+        "Cu o seară liniștită acasă"
+      ],
+      "q32": [
+        "Ce cred despre surprize?",
+        "Le ador",
+        "Mă emoționează puțin",
+        "Îmi place să le fac altora",
+        "Prefer să știu dinainte"
+      ],
+      "q33": [
+        "Ce dulce prefer?",
+        "Tort",
+        "Înghețată",
+        "Biscuiți",
+        "Bomboane"
+      ],
+      "q34": [
+        "Ce aș lua pe o insulă pustie?",
+        "O carte",
+        "Telefonul",
+        "O pătură",
+        "Un aparat foto"
+      ],
+      "q35": [
+        "Cum mă relaxez după o zi grea?",
+        "O baie caldă",
+        "Un serial",
+        "O plimbare",
+        "O discuție cu cineva drag"
+      ],
+      "q36": [
+        "Ce mijloc de transport îmi place cel mai mult?",
+        "Trenul",
+        "Avionul",
+        "Mașina",
+        "Bicicleta"
+      ],
+      "q37": [
+        "Jocul meu preferat din copilărie?",
+        "De-a v-ați ascunselea",
+        "Leapșa",
+        "Construcțiile",
+        "Desenul"
+      ],
+      "q38": [
+        "Ce poveste mi se potrivește cel mai bine?",
+        "Cenușăreasa",
+        "Micul Prinț",
+        "Winnie de Pluș",
+        "Alice în Țara Minunilor"
+      ],
+      "q39": [
+        "Cu ce aș bucura mai degrabă pe cineva drag?",
+        "Cu o surpriză",
+        "Cu o felicitare",
+        "Cu o călătorie",
+        "Cu o cină"
+      ],
+      "q40": [
+        "Ce fotografiez cel mai des?",
+        "Pe mine",
+        "Natura",
+        "Mâncarea",
+        "Aproape că nu fac poze"
+      ],
+      "q41": [
+        "Locul meu preferat din casă?",
+        "Patul",
+        "Bucătăria",
+        "Canapeaua",
+        "Balconul"
+      ],
+      "q42": [
+        "Ce observ prima dată la un om?",
+        "Zâmbetul",
+        "Ochii",
+        "Vocea",
+        "Umorul"
+      ],
+      "q43": [
+        "Ce mă face să râd cel mai repede?",
+        "Videoclipuri amuzante",
+        "Glumele celor dragi",
+        "Situațiile stânjenitoare",
+        "Animalele"
+      ],
+      "q44": [
+        "Ce beau într-o zi caldă de vară?",
+        "Limonadă",
+        "Ceai rece",
+        "Suc",
+        "Apă cu gheață"
+      ],
+      "q45": [
+        "Ce element mi se potrivește cel mai bine?",
+        "Apa",
+        "Focul",
+        "Pământul",
+        "Aerul"
+      ],
+      "q46": [
+        "Ce povești iubesc?",
+        "De aventură",
+        "De dragoste",
+        "SF",
+        "Adevărate"
+      ],
+      "q47": [
+        "Cum petrec o zi ploioasă?",
+        "Citind",
+        "Dormind",
+        "Uitându-mă la un film",
+        "Plimbându-mă cu umbrela"
+      ],
+      "q48": [
+        "Ce prețuiesc cel mai mult la un cadou?",
+        "Atenția",
+        "Utilitatea",
+        "Frumusețea",
+        "Surpriza"
+      ],
+      "q49": [
+        "Ce cartofi aș alege?",
+        "Piure",
+        "Cartofi prăjiți",
+        "La cuptor",
+        "Chipsuri"
+      ],
+      "q50": [
+        "Unde merg prima dată într-un oraș nou?",
+        "Într-o cafenea",
+        "Într-un muzeu",
+        "Într-un parc",
+        "La cumpărături"
+      ],
+      "q51": [
+        "Ce fac când nu pot dormi?",
+        "Citesc",
+        "Mă uit pe telefon",
+        "Număr oi",
+        "Beau lapte cald"
+      ],
+      "q52": [
+        "Cum mă pregătesc pentru o zi importantă?",
+        "Planific totul dinainte",
+        "Fac totul în ultima clipă",
+        "Cer ajutor",
+        "Am emoții și nu dorm"
+      ],
+      "q53": [
+        "Ce sport îmi place să urmăresc?",
+        "Fotbal",
+        "Tenis",
+        "Patinaj artistic",
+        "Nu urmăresc sport"
+      ],
+      "q54": [
+        "Ce animal de companie mi se potrivește?",
+        "O pisică",
+        "Un câine",
+        "Un papagal",
+        "Un hamster"
+      ],
+      "q55": [
+        "Ce fel de mesaje scriu?",
+        "Lungi",
+        "Scurte",
+        "Pline de emoji",
+        "Mesaje vocale"
+      ],
+      "q56": [
+        "Ce cadou păstrez de cel mai mult timp?",
+        "O scrisoare",
+        "O jucărie",
+        "O fotografie",
+        "O bijuterie"
+      ],
+      "q57": [
+        "Ce aș alege mai degrabă?",
+        "Ceai lângă șemineu",
+        "Picnic pe iarbă",
+        "Plimbare pe malul mării",
+        "O seară la cinema"
+      ],
+      "q58": [
+        "Ce compliment m-ar bucura cel mai mult?",
+        "Despre înfățișare",
+        "Despre inteligență",
+        "Despre bunătate",
+        "Despre umor"
+      ],
+      "q59": [
+        "Dimineața mea perfectă?",
+        "Mic dejun la pat",
+        "Alergare devreme",
+        "Somn lung",
+        "Cafea pe balcon"
+      ],
+      "q60": [
+        "Ce vreau să învăț?",
+        "Să dansez",
+        "Să gătesc",
+        "O limbă nouă",
+        "Să desenez"
       ]
     }
   },
@@ -2650,6 +4918,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Salát",
         "Dezert"
+      ],
+      "q25": [
+        "Moje oblíbená denní doba?",
+        "Ráno",
+        "Odpoledne",
+        "Večer",
+        "Noc"
+      ],
+      "q26": [
+        "Jakou kuchyni si vyberu?",
+        "Italskou",
+        "Japonskou",
+        "Domácí",
+        "Mexickou"
+      ],
+      "q27": [
+        "Kde se mi nejlépe přemýšlí?",
+        "Ve sprše",
+        "Na procházce",
+        "Na cestě",
+        "Před spaním"
+      ],
+      "q28": [
+        "Co dělám ráno jako první?",
+        "Kouknu do telefonu",
+        "Napiju se vody",
+        "Uvařím kávu",
+        "Ještě chvíli ležím"
+      ],
+      "q29": [
+        "Moje oblíbené ovoce?",
+        "Jablko",
+        "Banán",
+        "Mango",
+        "Meloun"
+      ],
+      "q30": [
+        "Jaký koníček je mi nejbližší?",
+        "Kreslení",
+        "Vaření",
+        "Sport",
+        "Čtení"
+      ],
+      "q31": [
+        "Jak chci slavit narozeniny?",
+        "Velkou oslavou",
+        "Večeří ve dvou",
+        "Výletem",
+        "Klidným večerem doma"
+      ],
+      "q32": [
+        "Co si myslím o překvapeních?",
+        "Zbožňuji je",
+        "Trochu mě znervózňují",
+        "Rád/a je chystám pro druhé",
+        "Raději vím dopředu"
+      ],
+      "q33": [
+        "Jakou sladkost mám nejradši?",
+        "Dort",
+        "Zmrzlinu",
+        "Sušenky",
+        "Bonbony"
+      ],
+      "q34": [
+        "Co si vezmu na pustý ostrov?",
+        "Knihu",
+        "Telefon",
+        "Deku",
+        "Foťák"
+      ],
+      "q35": [
+        "Jak si odpočinu po těžkém dni?",
+        "Teplá koupel",
+        "Seriál",
+        "Procházka",
+        "Rozhovor s blízkým člověkem"
+      ],
+      "q36": [
+        "Jaký dopravní prostředek mám nejradši?",
+        "Vlak",
+        "Letadlo",
+        "Auto",
+        "Kolo"
+      ],
+      "q37": [
+        "Moje oblíbená hra z dětství?",
+        "Schovávaná",
+        "Honička",
+        "Stavebnice",
+        "Kreslení"
+      ],
+      "q38": [
+        "Která pohádka je mi nejbližší?",
+        "Popelka",
+        "Malý princ",
+        "Medvídek Pú",
+        "Alenka v říši divů"
+      ],
+      "q39": [
+        "Čím spíš potěším blízkého člověka?",
+        "Překvapením",
+        "Přáníčkem",
+        "Výletem",
+        "Večeří"
+      ],
+      "q40": [
+        "Co nejčastěji fotím?",
+        "Sebe",
+        "Přírodu",
+        "Jídlo",
+        "Skoro nefotím"
+      ],
+      "q41": [
+        "Moje oblíbené místo doma?",
+        "Postel",
+        "Kuchyň",
+        "Gauč",
+        "Balkon"
+      ],
+      "q42": [
+        "Čeho si na člověku všimnu nejdřív?",
+        "Úsměvu",
+        "Očí",
+        "Hlasu",
+        "Smyslu pro humor"
+      ],
+      "q43": [
+        "Co mě nejrychleji rozesměje?",
+        "Vtipná videa",
+        "Vtipy blízkých",
+        "Trapné situace",
+        "Zvířata"
+      ],
+      "q44": [
+        "Co piju v letním vedru?",
+        "Limonádu",
+        "Ledový čaj",
+        "Džus",
+        "Vodu s ledem"
+      ],
+      "q45": [
+        "Který živel je mi nejbližší?",
+        "Voda",
+        "Oheň",
+        "Země",
+        "Vzduch"
+      ],
+      "q46": [
+        "Jaké příběhy mám rád/a?",
+        "Dobrodružné",
+        "O lásce",
+        "Sci-fi",
+        "Skutečné"
+      ],
+      "q47": [
+        "Jak trávím deštivý den?",
+        "Čtu",
+        "Spím",
+        "Dívám se na film",
+        "Procházím se s deštníkem"
+      ],
+      "q48": [
+        "Čeho si na dárku cením nejvíc?",
+        "Pozornosti",
+        "Užitečnosti",
+        "Krásy",
+        "Překvapení"
+      ],
+      "q49": [
+        "Jaké brambory si vyberu?",
+        "Kaši",
+        "Hranolky",
+        "Pečené",
+        "Chipsy"
+      ],
+      "q50": [
+        "Kam jdu v novém městě nejdřív?",
+        "Do kavárny",
+        "Do muzea",
+        "Do parku",
+        "Nakupovat"
+      ],
+      "q51": [
+        "Co dělám, když nemůžu spát?",
+        "Čtu",
+        "Projíždím telefon",
+        "Počítám ovečky",
+        "Piju teplé mléko"
+      ],
+      "q52": [
+        "Jak se chystám na důležitý den?",
+        "Vše plánuji dopředu",
+        "Dělám vše na poslední chvíli",
+        "Požádám o pomoc",
+        "Mám trému a nespím"
+      ],
+      "q53": [
+        "Jaký sport nejraději sleduji?",
+        "Fotbal",
+        "Tenis",
+        "Krasobruslení",
+        "Sport nesleduji"
+      ],
+      "q54": [
+        "Jaký mazlíček se ke mně hodí?",
+        "Kočka",
+        "Pes",
+        "Papoušek",
+        "Křeček"
+      ],
+      "q55": [
+        "Jaké zprávy píšu?",
+        "Dlouhé",
+        "Krátké",
+        "Plné smajlíků",
+        "Hlasové"
+      ],
+      "q56": [
+        "Který dárek mám schovaný nejdéle?",
+        "Dopis",
+        "Hračku",
+        "Fotku",
+        "Šperk"
+      ],
+      "q57": [
+        "Co si spíš vyberu?",
+        "Čaj u krbu",
+        "Piknik v trávě",
+        "Procházku u moře",
+        "Kino"
+      ],
+      "q58": [
+        "Který kompliment mě potěší nejvíc?",
+        "Na vzhled",
+        "Na chytrost",
+        "Na laskavost",
+        "Na smysl pro humor"
+      ],
+      "q59": [
+        "Moje ideální ráno?",
+        "Snídaně do postele",
+        "Ranní běh",
+        "Dlouhé spaní",
+        "Káva na balkoně"
+      ],
+      "q60": [
+        "Co se chci naučit?",
+        "Tančit",
+        "Vařit",
+        "Nový jazyk",
+        "Kreslit"
       ]
     }
   },
@@ -2915,6 +5435,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "En sallad",
         "En efterrätt"
+      ],
+      "q25": [
+        "Min favorittid på dygnet?",
+        "Morgonen",
+        "Eftermiddagen",
+        "Kvällen",
+        "Natten"
+      ],
+      "q26": [
+        "Vilket kök väljer jag?",
+        "Italienskt",
+        "Japanskt",
+        "Husmanskost",
+        "Mexikanskt"
+      ],
+      "q27": [
+        "Var tänker jag bäst?",
+        "I duschen",
+        "På promenad",
+        "På resande fot",
+        "Innan jag somnar"
+      ],
+      "q28": [
+        "Vad gör jag först på morgonen?",
+        "Kollar mobilen",
+        "Dricker vatten",
+        "Gör kaffe",
+        "Ligger kvar en stund"
+      ],
+      "q29": [
+        "Min favoritfrukt?",
+        "Äpple",
+        "Banan",
+        "Mango",
+        "Vattenmelon"
+      ],
+      "q30": [
+        "Vilken hobby passar mig bäst?",
+        "Teckna",
+        "Laga mat",
+        "Träna",
+        "Läsa"
+      ],
+      "q31": [
+        "Hur vill jag fira min födelsedag?",
+        "Med en stor fest",
+        "Med en middag för två",
+        "Med en resa",
+        "Med en lugn kväll hemma"
+      ],
+      "q32": [
+        "Vad tycker jag om överraskningar?",
+        "Jag älskar dem",
+        "De gör mig lite nervös",
+        "Jag gillar att ordna dem åt andra",
+        "Jag vill helst veta i förväg"
+      ],
+      "q33": [
+        "Vilket godis gillar jag mest?",
+        "Tårta",
+        "Glass",
+        "Kakor",
+        "Godis"
+      ],
+      "q34": [
+        "Vad tar jag med till en öde ö?",
+        "En bok",
+        "Mobilen",
+        "En filt",
+        "En kamera"
+      ],
+      "q35": [
+        "Hur kopplar jag av efter en tuff dag?",
+        "Ett varmt bad",
+        "En serie",
+        "En promenad",
+        "Ett samtal med någon nära"
+      ],
+      "q36": [
+        "Hur reser jag helst?",
+        "Med tåg",
+        "Med flyg",
+        "Med bil",
+        "Med cykel"
+      ],
+      "q37": [
+        "Min favoritlek som barn?",
+        "Kurragömma",
+        "Tafatt",
+        "Byggklossar",
+        "Rita"
+      ],
+      "q38": [
+        "Vilken saga står mig närmast?",
+        "Askungen",
+        "Lille prinsen",
+        "Nalle Puh",
+        "Alice i Underlandet"
+      ],
+      "q39": [
+        "Hur skulle jag hellre glädja någon kär?",
+        "Med en överraskning",
+        "Med ett kort",
+        "Med en resa",
+        "Med en middag"
+      ],
+      "q40": [
+        "Vad fotograferar jag oftast?",
+        "Mig själv",
+        "Naturen",
+        "Mat",
+        "Jag fotar nästan aldrig"
+      ],
+      "q41": [
+        "Min favoritplats hemma?",
+        "Sängen",
+        "Köket",
+        "Soffan",
+        "Balkongen"
+      ],
+      "q42": [
+        "Vad lägger jag märke till först hos en människa?",
+        "Leendet",
+        "Ögonen",
+        "Rösten",
+        "Humorn"
+      ],
+      "q43": [
+        "Vad får mig att skratta snabbast?",
+        "Roliga klipp",
+        "Skämt från nära och kära",
+        "Pinsamma situationer",
+        "Djur"
+      ],
+      "q44": [
+        "Vad dricker jag en varm sommardag?",
+        "Lemonad",
+        "Iste",
+        "Juice",
+        "Vatten med is"
+      ],
+      "q45": [
+        "Vilket element står mig närmast?",
+        "Vatten",
+        "Eld",
+        "Jord",
+        "Luft"
+      ],
+      "q46": [
+        "Vilka berättelser älskar jag?",
+        "Äventyr",
+        "Kärlekshistorier",
+        "Science fiction",
+        "Sanna historier"
+      ],
+      "q47": [
+        "Hur tillbringar jag en regnig dag?",
+        "Läser",
+        "Sover",
+        "Ser en film",
+        "Promenerar med paraply"
+      ],
+      "q48": [
+        "Vad uppskattar jag mest i en present?",
+        "Omtanken",
+        "Nyttan",
+        "Skönheten",
+        "Överraskningen"
+      ],
+      "q49": [
+        "Vilken potatis väljer jag?",
+        "Mos",
+        "Pommes",
+        "Ugnsbakad",
+        "Chips"
+      ],
+      "q50": [
+        "Vart går jag först i en ny stad?",
+        "Till ett kafé",
+        "Till ett museum",
+        "Till en park",
+        "Och shoppar"
+      ],
+      "q51": [
+        "Vad gör jag när jag inte kan sova?",
+        "Läser",
+        "Scrollar på mobilen",
+        "Räknar får",
+        "Dricker varm mjölk"
+      ],
+      "q52": [
+        "Hur förbereder jag mig inför en viktig dag?",
+        "Planerar allt i förväg",
+        "Gör allt i sista minuten",
+        "Ber om hjälp",
+        "Blir nervös och sover dåligt"
+      ],
+      "q53": [
+        "Vilken sport tittar jag helst på?",
+        "Fotboll",
+        "Tennis",
+        "Konståkning",
+        "Jag tittar inte på sport"
+      ],
+      "q54": [
+        "Vilket husdjur passar mig?",
+        "En katt",
+        "En hund",
+        "En papegoja",
+        "En hamster"
+      ],
+      "q55": [
+        "Vilka slags meddelanden skriver jag?",
+        "Långa",
+        "Korta",
+        "Fulla av emojis",
+        "Röstmeddelanden"
+      ],
+      "q56": [
+        "Vilken present har jag sparat längst?",
+        "Ett brev",
+        "En leksak",
+        "Ett foto",
+        "Ett smycke"
+      ],
+      "q57": [
+        "Vad väljer jag hellre?",
+        "Te vid brasan",
+        "Picknick i gräset",
+        "Promenad vid havet",
+        "Bio"
+      ],
+      "q58": [
+        "Vilken komplimang gör mig gladast?",
+        "Om mitt utseende",
+        "Om mitt förstånd",
+        "Om min vänlighet",
+        "Om min humor"
+      ],
+      "q59": [
+        "Min perfekta morgon?",
+        "Frukost på sängen",
+        "Tidig löprunda",
+        "Sova länge",
+        "Kaffe på balkongen"
+      ],
+      "q60": [
+        "Vad vill jag lära mig?",
+        "Dansa",
+        "Laga mat",
+        "Ett nytt språk",
+        "Teckna"
       ]
     }
   },
@@ -3180,6 +5952,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Σούσι",
         "Μια σαλάτα",
         "Ένα γλυκό"
+      ],
+      "q25": [
+        "Η αγαπημένη μου ώρα της ημέρας;",
+        "Το πρωί",
+        "Το απόγευμα",
+        "Το βράδυ",
+        "Η νύχτα"
+      ],
+      "q26": [
+        "Ποια κουζίνα θα διάλεγα;",
+        "Ιταλική",
+        "Ιαπωνική",
+        "Σπιτική",
+        "Μεξικάνικη"
+      ],
+      "q27": [
+        "Πού σκέφτομαι καλύτερα;",
+        "Στο ντους",
+        "Περπατώντας",
+        "Στον δρόμο",
+        "Πριν κοιμηθώ"
+      ],
+      "q28": [
+        "Τι κάνω πρώτο το πρωί;",
+        "Κοιτάζω το κινητό",
+        "Πίνω νερό",
+        "Φτιάχνω καφέ",
+        "Μένω λίγο ακόμη στο κρεβάτι"
+      ],
+      "q29": [
+        "Το αγαπημένο μου φρούτο;",
+        "Μήλο",
+        "Μπανάνα",
+        "Μάνγκο",
+        "Καρπούζι"
+      ],
+      "q30": [
+        "Ποιο χόμπι μού ταιριάζει περισσότερο;",
+        "Ζωγραφική",
+        "Μαγειρική",
+        "Αθλητισμός",
+        "Διάβασμα"
+      ],
+      "q31": [
+        "Πώς θέλω να γιορτάσω τα γενέθλιά μου;",
+        "Με μεγάλο πάρτι",
+        "Με δείπνο για δύο",
+        "Με ένα ταξίδι",
+        "Με ήσυχο βράδυ στο σπίτι"
+      ],
+      "q32": [
+        "Τι πιστεύω για τις εκπλήξεις;",
+        "Τις λατρεύω",
+        "Με αγχώνουν λίγο",
+        "Μου αρέσει να τις κάνω σε άλλους",
+        "Προτιμώ να ξέρω από πριν"
+      ],
+      "q33": [
+        "Ποιο γλυκό προτιμώ;",
+        "Τούρτα",
+        "Παγωτό",
+        "Μπισκότα",
+        "Καραμέλες"
+      ],
+      "q34": [
+        "Τι θα έπαιρνα σε ένα έρημο νησί;",
+        "Ένα βιβλίο",
+        "Το κινητό μου",
+        "Μια κουβέρτα",
+        "Μια φωτογραφική μηχανή"
+      ],
+      "q35": [
+        "Πώς ξεκουράζομαι μετά από δύσκολη μέρα;",
+        "Ζεστό μπάνιο",
+        "Μια σειρά",
+        "Μια βόλτα",
+        "Κουβέντα με δικό μου άνθρωπο"
+      ],
+      "q36": [
+        "Ποιο μέσο μεταφοράς μου αρέσει πιο πολύ;",
+        "Τρένο",
+        "Αεροπλάνο",
+        "Αυτοκίνητο",
+        "Ποδήλατο"
+      ],
+      "q37": [
+        "Το αγαπημένο μου παιδικό παιχνίδι;",
+        "Κρυφτό",
+        "Κυνηγητό",
+        "Τουβλάκια",
+        "Ζωγραφική"
+      ],
+      "q38": [
+        "Ποιο παραμύθι μού μοιάζει περισσότερο;",
+        "Σταχτοπούτα",
+        "Ο Μικρός Πρίγκιπας",
+        "Γουίνι το αρκουδάκι",
+        "Η Αλίκη στη χώρα των θαυμάτων"
+      ],
+      "q39": [
+        "Πώς θα χαροποιούσα έναν δικό μου άνθρωπο;",
+        "Με μια έκπληξη",
+        "Με μια κάρτα",
+        "Με ένα ταξίδι",
+        "Με ένα δείπνο"
+      ],
+      "q40": [
+        "Τι φωτογραφίζω πιο συχνά;",
+        "Τον εαυτό μου",
+        "Τη φύση",
+        "Φαγητό",
+        "Σχεδόν δεν φωτογραφίζω"
+      ],
+      "q41": [
+        "Η αγαπημένη μου γωνιά στο σπίτι;",
+        "Το κρεβάτι",
+        "Η κουζίνα",
+        "Ο καναπές",
+        "Το μπαλκόνι"
+      ],
+      "q42": [
+        "Τι προσέχω πρώτα σε έναν άνθρωπο;",
+        "Το χαμόγελο",
+        "Τα μάτια",
+        "Τη φωνή",
+        "Το χιούμορ"
+      ],
+      "q43": [
+        "Τι με κάνει να γελάω πιο γρήγορα;",
+        "Αστεία βίντεο",
+        "Τα αστεία των δικών μου",
+        "Αμήχανες στιγμές",
+        "Τα ζώα"
+      ],
+      "q44": [
+        "Τι πίνω μια ζεστή καλοκαιρινή μέρα;",
+        "Λεμονάδα",
+        "Κρύο τσάι",
+        "Χυμό",
+        "Νερό με πάγο"
+      ],
+      "q45": [
+        "Ποιο στοιχείο μού ταιριάζει περισσότερο;",
+        "Νερό",
+        "Φωτιά",
+        "Γη",
+        "Αέρας"
+      ],
+      "q46": [
+        "Ποιες ιστορίες αγαπώ;",
+        "Περιπέτειας",
+        "Αγάπης",
+        "Επιστημονικής φαντασίας",
+        "Αληθινές"
+      ],
+      "q47": [
+        "Πώς περνάω μια βροχερή μέρα;",
+        "Διαβάζω",
+        "Κοιμάμαι",
+        "Βλέπω ταινία",
+        "Περπατάω με ομπρέλα"
+      ],
+      "q48": [
+        "Τι εκτιμώ περισσότερο σε ένα δώρο;",
+        "Τη σκέψη",
+        "Τη χρησιμότητα",
+        "Την ομορφιά",
+        "Την έκπληξη"
+      ],
+      "q49": [
+        "Ποιες πατάτες θα διάλεγα;",
+        "Πουρέ",
+        "Τηγανητές",
+        "Φούρνου",
+        "Πατατάκια"
+      ],
+      "q50": [
+        "Πού πάω πρώτα σε μια νέα πόλη;",
+        "Σε ένα καφέ",
+        "Σε ένα μουσείο",
+        "Σε ένα πάρκο",
+        "Για ψώνια"
+      ],
+      "q51": [
+        "Τι κάνω όταν δεν μπορώ να κοιμηθώ;",
+        "Διαβάζω",
+        "Χαζεύω στο κινητό",
+        "Μετράω προβατάκια",
+        "Πίνω ζεστό γάλα"
+      ],
+      "q52": [
+        "Πώς προετοιμάζομαι για μια σημαντική μέρα;",
+        "Τα σχεδιάζω όλα από πριν",
+        "Τα κάνω όλα την τελευταία στιγμή",
+        "Ζητάω βοήθεια",
+        "Αγχώνομαι και δεν κοιμάμαι"
+      ],
+      "q53": [
+        "Ποιο άθλημα μου αρέσει να βλέπω;",
+        "Ποδόσφαιρο",
+        "Τένις",
+        "Καλλιτεχνικό πατινάζ",
+        "Δεν βλέπω αθλήματα"
+      ],
+      "q54": [
+        "Ποιο κατοικίδιο μού ταιριάζει;",
+        "Μια γάτα",
+        "Ένας σκύλος",
+        "Ένας παπαγάλος",
+        "Ένα χάμστερ"
+      ],
+      "q55": [
+        "Τι μηνύματα γράφω;",
+        "Μεγάλα",
+        "Σύντομα",
+        "Γεμάτα emoji",
+        "Φωνητικά"
+      ],
+      "q56": [
+        "Ποιο δώρο κρατάω περισσότερο καιρό;",
+        "Ένα γράμμα",
+        "Ένα παιχνίδι",
+        "Μια φωτογραφία",
+        "Ένα κόσμημα"
+      ],
+      "q57": [
+        "Τι θα διάλεγα μάλλον;",
+        "Τσάι δίπλα στο τζάκι",
+        "Πικνίκ στο γρασίδι",
+        "Βόλτα δίπλα στη θάλασσα",
+        "Σινεμά"
+      ],
+      "q58": [
+        "Ποιο κομπλιμέντο θα με χαροποιούσε περισσότερο;",
+        "Για την εμφάνισή μου",
+        "Για το μυαλό μου",
+        "Για την καλοσύνη μου",
+        "Για το χιούμορ μου"
+      ],
+      "q59": [
+        "Το τέλειο πρωινό μου;",
+        "Πρωινό στο κρεβάτι",
+        "Πρωινό τρέξιμο",
+        "Πολύς ύπνος",
+        "Καφές στο μπαλκόνι"
+      ],
+      "q60": [
+        "Τι θέλω να μάθω;",
+        "Να χορεύω",
+        "Να μαγειρεύω",
+        "Μια νέα γλώσσα",
+        "Να ζωγραφίζω"
       ]
     }
   },
@@ -3445,6 +6469,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "En salat",
         "En dessert"
+      ],
+      "q25": [
+        "Mit yndlingstidspunkt på dagen?",
+        "Morgenen",
+        "Eftermiddagen",
+        "Aftenen",
+        "Natten"
+      ],
+      "q26": [
+        "Hvilket køkken vælger jeg?",
+        "Italiensk",
+        "Japansk",
+        "Hjemmelavet",
+        "Mexicansk"
+      ],
+      "q27": [
+        "Hvor tænker jeg bedst?",
+        "I bad",
+        "På gåtur",
+        "På farten",
+        "Før jeg falder i søvn"
+      ],
+      "q28": [
+        "Hvad gør jeg først om morgenen?",
+        "Tjekker telefonen",
+        "Drikker vand",
+        "Laver kaffe",
+        "Bliver liggende lidt endnu"
+      ],
+      "q29": [
+        "Min yndlingsfrugt?",
+        "Æble",
+        "Banan",
+        "Mango",
+        "Vandmelon"
+      ],
+      "q30": [
+        "Hvilken hobby passer bedst til mig?",
+        "Tegning",
+        "Madlavning",
+        "Sport",
+        "Læsning"
+      ],
+      "q31": [
+        "Hvordan vil jeg fejre min fødselsdag?",
+        "Med en stor fest",
+        "Med en middag for to",
+        "Med en rejse",
+        "Med en stille aften derhjemme"
+      ],
+      "q32": [
+        "Hvad synes jeg om overraskelser?",
+        "Jeg elsker dem",
+        "De gør mig lidt nervøs",
+        "Jeg kan godt lide at lave dem for andre",
+        "Jeg vil helst vide det på forhånd"
+      ],
+      "q33": [
+        "Hvilken sødt kan jeg bedst lide?",
+        "Kage",
+        "Is",
+        "Småkager",
+        "Slik"
+      ],
+      "q34": [
+        "Hvad tager jeg med på en øde ø?",
+        "En bog",
+        "Min telefon",
+        "Et tæppe",
+        "Et kamera"
+      ],
+      "q35": [
+        "Hvordan slapper jeg af efter en hård dag?",
+        "Et varmt bad",
+        "En serie",
+        "En gåtur",
+        "En snak med en, der står mig nær"
+      ],
+      "q36": [
+        "Hvordan rejser jeg helst?",
+        "Med tog",
+        "Med fly",
+        "Med bil",
+        "På cykel"
+      ],
+      "q37": [
+        "Min yndlingsleg som barn?",
+        "Gemmeleg",
+        "Tagfat",
+        "Byggeklodser",
+        "Tegning"
+      ],
+      "q38": [
+        "Hvilket eventyr står mig nærmest?",
+        "Askepot",
+        "Den lille prins",
+        "Peter Plys",
+        "Alice i Eventyrland"
+      ],
+      "q39": [
+        "Hvordan glæder jeg helst en, jeg holder af?",
+        "Med en overraskelse",
+        "Med et kort",
+        "Med en rejse",
+        "Med en middag"
+      ],
+      "q40": [
+        "Hvad fotograferer jeg oftest?",
+        "Mig selv",
+        "Naturen",
+        "Mad",
+        "Jeg tager næsten ikke billeder"
+      ],
+      "q41": [
+        "Mit yndlingssted derhjemme?",
+        "Sengen",
+        "Køkkenet",
+        "Sofaen",
+        "Altanen"
+      ],
+      "q42": [
+        "Hvad lægger jeg først mærke til hos et menneske?",
+        "Smilet",
+        "Øjnene",
+        "Stemmen",
+        "Humoren"
+      ],
+      "q43": [
+        "Hvad får mig hurtigst til at grine?",
+        "Sjove videoer",
+        "Mine kæres jokes",
+        "Pinlige situationer",
+        "Dyr"
+      ],
+      "q44": [
+        "Hvad drikker jeg på en varm sommerdag?",
+        "Lemonade",
+        "Iste",
+        "Juice",
+        "Vand med is"
+      ],
+      "q45": [
+        "Hvilket element står mig nærmest?",
+        "Vand",
+        "Ild",
+        "Jord",
+        "Luft"
+      ],
+      "q46": [
+        "Hvilke historier elsker jeg?",
+        "Eventyr",
+        "Kærlighedshistorier",
+        "Science fiction",
+        "Sande historier"
+      ],
+      "q47": [
+        "Hvordan bruger jeg en regnvejrsdag?",
+        "Læser",
+        "Sover",
+        "Ser en film",
+        "Går tur med paraply"
+      ],
+      "q48": [
+        "Hvad sætter jeg mest pris på ved en gave?",
+        "Omtanken",
+        "Nytten",
+        "Skønheden",
+        "Overraskelsen"
+      ],
+      "q49": [
+        "Hvilke kartofler vælger jeg?",
+        "Mos",
+        "Pommes frites",
+        "Ovnbagte",
+        "Chips"
+      ],
+      "q50": [
+        "Hvor går jeg først hen i en ny by?",
+        "På café",
+        "På museum",
+        "I en park",
+        "På shopping"
+      ],
+      "q51": [
+        "Hvad gør jeg, når jeg ikke kan sove?",
+        "Læser",
+        "Scroller på telefonen",
+        "Tæller får",
+        "Drikker varm mælk"
+      ],
+      "q52": [
+        "Hvordan forbereder jeg mig til en vigtig dag?",
+        "Planlægger alt i forvejen",
+        "Gør alt i sidste øjeblik",
+        "Beder om hjælp",
+        "Bliver nervøs og sover dårligt"
+      ],
+      "q53": [
+        "Hvilken sport ser jeg helst?",
+        "Fodbold",
+        "Tennis",
+        "Kunstskøjteløb",
+        "Jeg ser ikke sport"
+      ],
+      "q54": [
+        "Hvilket kæledyr passer til mig?",
+        "En kat",
+        "En hund",
+        "En papegøje",
+        "En hamster"
+      ],
+      "q55": [
+        "Hvilke beskeder skriver jeg?",
+        "Lange",
+        "Korte",
+        "Fulde af emojis",
+        "Talebeskeder"
+      ],
+      "q56": [
+        "Hvilken gave har jeg gemt længst?",
+        "Et brev",
+        "Et legetøj",
+        "Et foto",
+        "Et smykke"
+      ],
+      "q57": [
+        "Hvad vælger jeg hellere?",
+        "Te ved pejsen",
+        "Picnic i græsset",
+        "En gåtur ved havet",
+        "En tur i biografen"
+      ],
+      "q58": [
+        "Hvilken kompliment gør mig gladest?",
+        "Om mit udseende",
+        "Om min klogskab",
+        "Om min venlighed",
+        "Om min humor"
+      ],
+      "q59": [
+        "Min perfekte morgen?",
+        "Morgenmad på sengen",
+        "En tidlig løbetur",
+        "At sove længe",
+        "Kaffe på altanen"
+      ],
+      "q60": [
+        "Hvad vil jeg lære?",
+        "At danse",
+        "At lave mad",
+        "Et nyt sprog",
+        "At tegne"
       ]
     }
   },
@@ -3710,6 +6986,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "En salat",
         "En dessert"
+      ],
+      "q25": [
+        "Favorittiden min på døgnet?",
+        "Morgenen",
+        "Ettermiddagen",
+        "Kvelden",
+        "Natten"
+      ],
+      "q26": [
+        "Hvilket kjøkken velger jeg?",
+        "Italiensk",
+        "Japansk",
+        "Hjemmelaget",
+        "Meksikansk"
+      ],
+      "q27": [
+        "Hvor tenker jeg best?",
+        "I dusjen",
+        "På tur",
+        "På reise",
+        "Før jeg sovner"
+      ],
+      "q28": [
+        "Hva gjør jeg først om morgenen?",
+        "Sjekker mobilen",
+        "Drikker vann",
+        "Lager kaffe",
+        "Blir liggende litt til"
+      ],
+      "q29": [
+        "Favorittfrukten min?",
+        "Eple",
+        "Banan",
+        "Mango",
+        "Vannmelon"
+      ],
+      "q30": [
+        "Hvilken hobby passer meg best?",
+        "Tegning",
+        "Matlaging",
+        "Trening",
+        "Lesing"
+      ],
+      "q31": [
+        "Hvordan vil jeg feire bursdagen min?",
+        "Med en stor fest",
+        "Med middag for to",
+        "Med en reise",
+        "Med en rolig kveld hjemme"
+      ],
+      "q32": [
+        "Hva synes jeg om overraskelser?",
+        "Jeg elsker dem",
+        "De gjør meg litt nervøs",
+        "Jeg liker å lage dem for andre",
+        "Jeg vil helst vite det på forhånd"
+      ],
+      "q33": [
+        "Hvilken søtsak liker jeg best?",
+        "Kake",
+        "Is",
+        "Kjeks",
+        "Godteri"
+      ],
+      "q34": [
+        "Hva tar jeg med til en øde øy?",
+        "En bok",
+        "Mobilen",
+        "Et teppe",
+        "Et kamera"
+      ],
+      "q35": [
+        "Hvordan slapper jeg av etter en tung dag?",
+        "Et varmt bad",
+        "En serie",
+        "En tur",
+        "En prat med noen jeg er glad i"
+      ],
+      "q36": [
+        "Hvordan reiser jeg helst?",
+        "Med tog",
+        "Med fly",
+        "Med bil",
+        "På sykkel"
+      ],
+      "q37": [
+        "Favorittleken min som barn?",
+        "Gjemsel",
+        "Sisten",
+        "Byggeklosser",
+        "Tegning"
+      ],
+      "q38": [
+        "Hvilket eventyr står meg nærmest?",
+        "Askepott",
+        "Den lille prinsen",
+        "Ole Brumm",
+        "Alice i Eventyrland"
+      ],
+      "q39": [
+        "Hvordan vil jeg helst glede noen jeg er glad i?",
+        "Med en overraskelse",
+        "Med et kort",
+        "Med en reise",
+        "Med en middag"
+      ],
+      "q40": [
+        "Hva tar jeg oftest bilde av?",
+        "Meg selv",
+        "Naturen",
+        "Mat",
+        "Jeg tar nesten ikke bilder"
+      ],
+      "q41": [
+        "Favorittstedet mitt hjemme?",
+        "Sengen",
+        "Kjøkkenet",
+        "Sofaen",
+        "Balkongen"
+      ],
+      "q42": [
+        "Hva legger jeg først merke til hos et menneske?",
+        "Smilet",
+        "Øynene",
+        "Stemmen",
+        "Humoren"
+      ],
+      "q43": [
+        "Hva får meg raskest til å le?",
+        "Morsomme videoer",
+        "Vitser fra mine nærmeste",
+        "Pinlige situasjoner",
+        "Dyr"
+      ],
+      "q44": [
+        "Hva drikker jeg en varm sommerdag?",
+        "Limonade",
+        "Iste",
+        "Juice",
+        "Vann med is"
+      ],
+      "q45": [
+        "Hvilket element står meg nærmest?",
+        "Vann",
+        "Ild",
+        "Jord",
+        "Luft"
+      ],
+      "q46": [
+        "Hvilke historier elsker jeg?",
+        "Eventyr",
+        "Kjærlighetshistorier",
+        "Science fiction",
+        "Sanne historier"
+      ],
+      "q47": [
+        "Hvordan tilbringer jeg en regnværsdag?",
+        "Leser",
+        "Sover",
+        "Ser en film",
+        "Går tur med paraply"
+      ],
+      "q48": [
+        "Hva setter jeg mest pris på ved en gave?",
+        "Omtanken",
+        "Nytten",
+        "Skjønnheten",
+        "Overraskelsen"
+      ],
+      "q49": [
+        "Hvilke poteter velger jeg?",
+        "Potetmos",
+        "Pommes frites",
+        "Ovnsbakte",
+        "Potetgull"
+      ],
+      "q50": [
+        "Hvor går jeg først i en ny by?",
+        "På kafé",
+        "På museum",
+        "I en park",
+        "På shopping"
+      ],
+      "q51": [
+        "Hva gjør jeg når jeg ikke får sove?",
+        "Leser",
+        "Scroller på mobilen",
+        "Teller sauer",
+        "Drikker varm melk"
+      ],
+      "q52": [
+        "Hvordan forbereder jeg meg til en viktig dag?",
+        "Planlegger alt på forhånd",
+        "Gjør alt i siste liten",
+        "Ber om hjelp",
+        "Blir nervøs og sover dårlig"
+      ],
+      "q53": [
+        "Hvilken sport liker jeg best å se på?",
+        "Fotball",
+        "Tennis",
+        "Kunstløp",
+        "Jeg ser ikke på sport"
+      ],
+      "q54": [
+        "Hvilket kjæledyr passer meg?",
+        "En katt",
+        "En hund",
+        "En papegøye",
+        "En hamster"
+      ],
+      "q55": [
+        "Hva slags meldinger skriver jeg?",
+        "Lange",
+        "Korte",
+        "Fulle av emojier",
+        "Talemeldinger"
+      ],
+      "q56": [
+        "Hvilken gave har jeg tatt vare på lengst?",
+        "Et brev",
+        "En leke",
+        "Et bilde",
+        "Et smykke"
+      ],
+      "q57": [
+        "Hva velger jeg heller?",
+        "Te ved peisen",
+        "Piknik i gresset",
+        "En tur ved havet",
+        "En kinotur"
+      ],
+      "q58": [
+        "Hvilket kompliment gjør meg gladest?",
+        "Om utseendet mitt",
+        "Om hodet mitt",
+        "Om godheten min",
+        "Om humoren min"
+      ],
+      "q59": [
+        "Min perfekte morgen?",
+        "Frokost på senga",
+        "En tidlig løpetur",
+        "Sove lenge",
+        "Kaffe på balkongen"
+      ],
+      "q60": [
+        "Hva vil jeg lære?",
+        "Å danse",
+        "Å lage mat",
+        "Et nytt språk",
+        "Å tegne"
       ]
     }
   },
@@ -3975,6 +7503,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushia",
         "Salaatin",
         "Jälkiruoan"
+      ],
+      "q25": [
+        "Lempiaikani vuorokaudesta?",
+        "Aamu",
+        "Iltapäivä",
+        "Ilta",
+        "Yö"
+      ],
+      "q26": [
+        "Minkä keittiön valitsen?",
+        "Italialaisen",
+        "Japanilaisen",
+        "Kotiruoan",
+        "Meksikolaisen"
+      ],
+      "q27": [
+        "Missä ajattelen parhaiten?",
+        "Suihkussa",
+        "Kävelyllä",
+        "Matkalla",
+        "Ennen nukahtamista"
+      ],
+      "q28": [
+        "Mitä teen aamulla ensimmäiseksi?",
+        "Katson puhelinta",
+        "Juon vettä",
+        "Keitän kahvit",
+        "Lojun vielä hetken"
+      ],
+      "q29": [
+        "Lempihedelmäni?",
+        "Omena",
+        "Banaani",
+        "Mango",
+        "Vesimeloni"
+      ],
+      "q30": [
+        "Mikä harrastus sopii minulle parhaiten?",
+        "Piirtäminen",
+        "Ruoanlaitto",
+        "Urheilu",
+        "Lukeminen"
+      ],
+      "q31": [
+        "Miten haluan juhlia syntymäpäivääni?",
+        "Isoilla juhlilla",
+        "Illallisella kahdestaan",
+        "Matkalla",
+        "Rauhallisella illalla kotona"
+      ],
+      "q32": [
+        "Mitä ajattelen yllätyksistä?",
+        "Rakastan niitä",
+        "Ne jännittävät vähän",
+        "Järjestän niitä mielelläni muille",
+        "Haluan mieluummin tietää etukäteen"
+      ],
+      "q33": [
+        "Mistä herkusta pidän eniten?",
+        "Kakusta",
+        "Jäätelöstä",
+        "Kekseistä",
+        "Karkeista"
+      ],
+      "q34": [
+        "Mitä veisin autiolle saarelle?",
+        "Kirjan",
+        "Puhelimen",
+        "Viltin",
+        "Kameran"
+      ],
+      "q35": [
+        "Miten rentoudun rankan päivän jälkeen?",
+        "Lämmin kylpy",
+        "Sarja",
+        "Kävely",
+        "Juttelu läheisen kanssa"
+      ],
+      "q36": [
+        "Millä matkustan mieluiten?",
+        "Junalla",
+        "Lentokoneella",
+        "Autolla",
+        "Pyörällä"
+      ],
+      "q37": [
+        "Lempileikkini lapsena?",
+        "Piilosta",
+        "Hippa",
+        "Rakennuspalikat",
+        "Piirtäminen"
+      ],
+      "q38": [
+        "Mikä satu on lähimpänä minua?",
+        "Tuhkimo",
+        "Pikku prinssi",
+        "Nalle Puh",
+        "Liisa Ihmemaassa"
+      ],
+      "q39": [
+        "Miten ilahduttaisin mieluummin läheistä?",
+        "Yllätyksellä",
+        "Kortilla",
+        "Matkalla",
+        "Illallisella"
+      ],
+      "q40": [
+        "Mitä kuvaan useimmiten?",
+        "Itseäni",
+        "Luontoa",
+        "Ruokaa",
+        "En juuri kuvaa"
+      ],
+      "q41": [
+        "Lempipaikkani kotona?",
+        "Sänky",
+        "Keittiö",
+        "Sohva",
+        "Parveke"
+      ],
+      "q42": [
+        "Mitä huomaan ihmisestä ensimmäiseksi?",
+        "Hymyn",
+        "Silmät",
+        "Äänen",
+        "Huumorintajun"
+      ],
+      "q43": [
+        "Mikä naurattaa minua nopeimmin?",
+        "Hauskat videot",
+        "Läheisten vitsit",
+        "Kiusalliset tilanteet",
+        "Eläimet"
+      ],
+      "q44": [
+        "Mitä juon kuumana kesäpäivänä?",
+        "Limonadia",
+        "Jääteetä",
+        "Mehua",
+        "Jäävettä"
+      ],
+      "q45": [
+        "Mikä elementti on lähimpänä minua?",
+        "Vesi",
+        "Tuli",
+        "Maa",
+        "Ilma"
+      ],
+      "q46": [
+        "Millaisia tarinoita rakastan?",
+        "Seikkailuja",
+        "Rakkaustarinoita",
+        "Tieteisfiktiota",
+        "Tositarinoita"
+      ],
+      "q47": [
+        "Miten vietän sadepäivän?",
+        "Luen",
+        "Nukun",
+        "Katson elokuvan",
+        "Kävelen sateenvarjon alla"
+      ],
+      "q48": [
+        "Mitä arvostan lahjassa eniten?",
+        "Ajatusta",
+        "Hyödyllisyyttä",
+        "Kauneutta",
+        "Yllätystä"
+      ],
+      "q49": [
+        "Millaiset perunat valitsen?",
+        "Muussin",
+        "Ranskalaiset",
+        "Uuniperunat",
+        "Sipsit"
+      ],
+      "q50": [
+        "Minne menen ensimmäiseksi uudessa kaupungissa?",
+        "Kahvilaan",
+        "Museoon",
+        "Puistoon",
+        "Ostoksille"
+      ],
+      "q51": [
+        "Mitä teen, kun en saa unta?",
+        "Luen",
+        "Selaan puhelinta",
+        "Lasken lampaita",
+        "Juon lämmintä maitoa"
+      ],
+      "q52": [
+        "Miten valmistaudun tärkeään päivään?",
+        "Suunnittelen kaiken etukäteen",
+        "Teen kaiken viime tingassa",
+        "Pyydän apua",
+        "Jännitän enkä saa unta"
+      ],
+      "q53": [
+        "Mitä urheilua katson mieluiten?",
+        "Jalkapalloa",
+        "Tennistä",
+        "Taitoluistelua",
+        "En katso urheilua"
+      ],
+      "q54": [
+        "Mikä lemmikki sopii minulle?",
+        "Kissa",
+        "Koira",
+        "Papukaija",
+        "Hamsteri"
+      ],
+      "q55": [
+        "Millaisia viestejä kirjoitan?",
+        "Pitkiä",
+        "Lyhyitä",
+        "Täynnä emojeita",
+        "Ääniviestejä"
+      ],
+      "q56": [
+        "Minkä lahjan olen säilyttänyt pisimpään?",
+        "Kirjeen",
+        "Lelun",
+        "Valokuvan",
+        "Korun"
+      ],
+      "q57": [
+        "Minkä valitsisin mieluummin?",
+        "Teetä takan ääressä",
+        "Piknikin nurmella",
+        "Kävelyn meren rannalla",
+        "Elokuvat"
+      ],
+      "q58": [
+        "Mikä kohteliaisuus ilahduttaisi eniten?",
+        "Ulkonäöstäni",
+        "Älystäni",
+        "Ystävällisyydestäni",
+        "Huumoristani"
+      ],
+      "q59": [
+        "Täydellinen aamuni?",
+        "Aamiainen sängyssä",
+        "Aikainen lenkki",
+        "Pitkät unet",
+        "Kahvi parvekkeella"
+      ],
+      "q60": [
+        "Mitä haluan oppia?",
+        "Tanssimaan",
+        "Kokkaamaan",
+        "Uuden kielen",
+        "Piirtämään"
       ]
     }
   },
@@ -4240,6 +8020,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "お寿司",
         "サラダ",
         "デザート"
+      ],
+      "q25": [
+        "わたしの好きな時間帯は？",
+        "朝",
+        "昼",
+        "夕方",
+        "夜"
+      ],
+      "q26": [
+        "選ぶ料理のジャンルは？",
+        "イタリアン",
+        "和食",
+        "家庭料理",
+        "メキシカン"
+      ],
+      "q27": [
+        "いちばん考えごとがはかどる場所は？",
+        "シャワー中",
+        "散歩中",
+        "移動中",
+        "寝る前"
+      ],
+      "q28": [
+        "朝いちばんにすることは？",
+        "スマホを見る",
+        "水を飲む",
+        "コーヒーをいれる",
+        "もう少しごろごろする"
+      ],
+      "q29": [
+        "好きな果物は？",
+        "りんご",
+        "バナナ",
+        "マンゴー",
+        "スイカ"
+      ],
+      "q30": [
+        "わたしに合う趣味は？",
+        "絵を描く",
+        "料理",
+        "スポーツ",
+        "読書"
+      ],
+      "q31": [
+        "誕生日はどう祝いたい？",
+        "にぎやかなパーティー",
+        "ふたりでディナー",
+        "旅行",
+        "家で静かな夜"
+      ],
+      "q32": [
+        "サプライズはどう？",
+        "大好き",
+        "ちょっとドキドキする",
+        "人にするのが好き",
+        "前もって知りたい"
+      ],
+      "q33": [
+        "好きなスイーツは？",
+        "ケーキ",
+        "アイス",
+        "クッキー",
+        "キャンディ"
+      ],
+      "q34": [
+        "無人島に持っていくものは？",
+        "本",
+        "スマホ",
+        "ブランケット",
+        "カメラ"
+      ],
+      "q35": [
+        "大変な一日のあと、どう休む？",
+        "あたたかいお風呂",
+        "ドラマ",
+        "散歩",
+        "大切な人とおしゃべり"
+      ],
+      "q36": [
+        "好きな乗り物は？",
+        "電車",
+        "飛行機",
+        "車",
+        "自転車"
+      ],
+      "q37": [
+        "子どものころ好きだった遊びは？",
+        "かくれんぼ",
+        "鬼ごっこ",
+        "ブロック遊び",
+        "お絵かき"
+      ],
+      "q38": [
+        "わたしに近いおとぎ話は？",
+        "シンデレラ",
+        "星の王子さま",
+        "くまのプーさん",
+        "不思議の国のアリス"
+      ],
+      "q39": [
+        "大切な人を喜ばせるなら？",
+        "サプライズ",
+        "カード",
+        "旅行",
+        "ディナー"
+      ],
+      "q40": [
+        "いちばんよく撮る写真は？",
+        "自撮り",
+        "自然",
+        "ごはん",
+        "ほとんど撮らない"
+      ],
+      "q41": [
+        "家でいちばん好きな場所は？",
+        "ベッド",
+        "キッチン",
+        "ソファ",
+        "ベランダ"
+      ],
+      "q42": [
+        "人を見てまず気づくのは？",
+        "笑顔",
+        "目",
+        "声",
+        "ユーモア"
+      ],
+      "q43": [
+        "いちばん笑ってしまうのは？",
+        "おもしろ動画",
+        "大切な人の冗談",
+        "気まずい場面",
+        "動物"
+      ],
+      "q44": [
+        "暑い夏の日に飲むのは？",
+        "レモネード",
+        "アイスティー",
+        "ジュース",
+        "氷水"
+      ],
+      "q45": [
+        "わたしに近い元素は？",
+        "水",
+        "火",
+        "土",
+        "風"
+      ],
+      "q46": [
+        "好きな物語は？",
+        "冒険もの",
+        "恋の物語",
+        "SF",
+        "実話"
+      ],
+      "q47": [
+        "雨の日の過ごし方は？",
+        "読書",
+        "昼寝",
+        "映画",
+        "傘をさして散歩"
+      ],
+      "q48": [
+        "プレゼントでいちばんうれしいのは？",
+        "気持ち",
+        "役に立つこと",
+        "きれいなこと",
+        "サプライズ感"
+      ],
+      "q49": [
+        "じゃがいもなら？",
+        "マッシュポテト",
+        "フライドポテト",
+        "ベイクドポテト",
+        "ポテトチップス"
+      ],
+      "q50": [
+        "初めての街でまず行くのは？",
+        "カフェ",
+        "美術館・博物館",
+        "公園",
+        "お店めぐり"
+      ],
+      "q51": [
+        "眠れないときは？",
+        "本を読む",
+        "スマホを見る",
+        "羊を数える",
+        "ホットミルクを飲む"
+      ],
+      "q52": [
+        "大事な日の準備は？",
+        "前もって全部計画",
+        "ぎりぎりにやる",
+        "人に手伝ってもらう",
+        "緊張して眠れない"
+      ],
+      "q53": [
+        "観るのが好きなスポーツは？",
+        "サッカー",
+        "テニス",
+        "フィギュアスケート",
+        "スポーツは観ない"
+      ],
+      "q54": [
+        "わたしに合うペットは？",
+        "ねこ",
+        "いぬ",
+        "インコ",
+        "ハムスター"
+      ],
+      "q55": [
+        "どんなメッセージを送る？",
+        "長文",
+        "短文",
+        "絵文字たっぷり",
+        "ボイスメッセージ"
+      ],
+      "q56": [
+        "いちばん長く大切にしている贈り物は？",
+        "手紙",
+        "おもちゃ",
+        "写真",
+        "アクセサリー"
+      ],
+      "q57": [
+        "選ぶならどっち？",
+        "暖炉のそばで紅茶",
+        "芝生でピクニック",
+        "海辺の散歩",
+        "映画館"
+      ],
+      "q58": [
+        "いちばんうれしいほめ言葉は？",
+        "見た目について",
+        "頭のよさについて",
+        "やさしさについて",
+        "ユーモアについて"
+      ],
+      "q59": [
+        "理想の朝は？",
+        "ベッドで朝ごはん",
+        "早朝ランニング",
+        "ゆっくり朝寝坊",
+        "ベランダでコーヒー"
+      ],
+      "q60": [
+        "身につけたいことは？",
+        "ダンス",
+        "料理",
+        "新しい言語",
+        "絵"
       ]
     }
   },
@@ -4505,6 +8537,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "초밥",
         "샐러드",
         "디저트"
+      ],
+      "q25": [
+        "내가 좋아하는 하루 중 시간은?",
+        "아침",
+        "낮",
+        "저녁",
+        "밤"
+      ],
+      "q26": [
+        "내가 고를 요리는?",
+        "이탈리아 요리",
+        "일식",
+        "집밥",
+        "멕시코 요리"
+      ],
+      "q27": [
+        "생각이 가장 잘 되는 곳은?",
+        "샤워할 때",
+        "산책할 때",
+        "이동할 때",
+        "잠들기 전"
+      ],
+      "q28": [
+        "아침에 가장 먼저 하는 일은?",
+        "휴대폰 보기",
+        "물 마시기",
+        "커피 내리기",
+        "조금 더 뒹굴기"
+      ],
+      "q29": [
+        "좋아하는 과일은?",
+        "사과",
+        "바나나",
+        "망고",
+        "수박"
+      ],
+      "q30": [
+        "나에게 어울리는 취미는?",
+        "그림 그리기",
+        "요리",
+        "운동",
+        "독서"
+      ],
+      "q31": [
+        "생일은 어떻게 보내고 싶어?",
+        "신나는 파티",
+        "둘만의 저녁",
+        "여행",
+        "집에서 조용한 저녁"
+      ],
+      "q32": [
+        "깜짝 이벤트에 대한 생각은?",
+        "정말 좋아",
+        "조금 떨려",
+        "남에게 해 주는 게 좋아",
+        "미리 아는 게 좋아"
+      ],
+      "q33": [
+        "좋아하는 디저트는?",
+        "케이크",
+        "아이스크림",
+        "쿠키",
+        "사탕"
+      ],
+      "q34": [
+        "무인도에 가져갈 것은?",
+        "책",
+        "휴대폰",
+        "담요",
+        "카메라"
+      ],
+      "q35": [
+        "힘든 하루 뒤에 쉬는 방법은?",
+        "따뜻한 목욕",
+        "드라마",
+        "산책",
+        "가까운 사람과 대화"
+      ],
+      "q36": [
+        "좋아하는 교통수단은?",
+        "기차",
+        "비행기",
+        "자동차",
+        "자전거"
+      ],
+      "q37": [
+        "어릴 때 좋아한 놀이는?",
+        "숨바꼭질",
+        "술래잡기",
+        "블록 놀이",
+        "그림 그리기"
+      ],
+      "q38": [
+        "나와 닮은 동화는?",
+        "신데렐라",
+        "어린 왕자",
+        "곰돌이 푸",
+        "이상한 나라의 앨리스"
+      ],
+      "q39": [
+        "소중한 사람을 기쁘게 한다면?",
+        "깜짝 선물",
+        "카드",
+        "여행",
+        "저녁 식사"
+      ],
+      "q40": [
+        "가장 자주 찍는 사진은?",
+        "셀카",
+        "자연",
+        "음식",
+        "거의 안 찍어"
+      ],
+      "q41": [
+        "집에서 가장 좋아하는 곳은?",
+        "침대",
+        "부엌",
+        "소파",
+        "베란다"
+      ],
+      "q42": [
+        "사람을 보면 가장 먼저 보는 것은?",
+        "미소",
+        "눈",
+        "목소리",
+        "유머 감각"
+      ],
+      "q43": [
+        "나를 가장 빨리 웃게 하는 것은?",
+        "웃긴 영상",
+        "가까운 사람의 농담",
+        "어색한 상황",
+        "동물"
+      ],
+      "q44": [
+        "더운 여름날 마시는 것은?",
+        "레모네이드",
+        "아이스티",
+        "주스",
+        "얼음물"
+      ],
+      "q45": [
+        "나와 가장 닮은 원소는?",
+        "물",
+        "불",
+        "흙",
+        "바람"
+      ],
+      "q46": [
+        "좋아하는 이야기는?",
+        "모험",
+        "사랑 이야기",
+        "SF",
+        "실화"
+      ],
+      "q47": [
+        "비 오는 날은 어떻게 보내?",
+        "책 읽기",
+        "잠자기",
+        "영화 보기",
+        "우산 쓰고 산책"
+      ],
+      "q48": [
+        "선물에서 가장 중요한 것은?",
+        "마음",
+        "쓸모",
+        "예쁨",
+        "놀라움"
+      ],
+      "q49": [
+        "감자 요리라면?",
+        "으깬 감자",
+        "감자튀김",
+        "구운 감자",
+        "감자칩"
+      ],
+      "q50": [
+        "새로운 도시에서 먼저 가는 곳은?",
+        "카페",
+        "박물관",
+        "공원",
+        "쇼핑"
+      ],
+      "q51": [
+        "잠이 안 올 때는?",
+        "책 읽기",
+        "휴대폰 보기",
+        "양 세기",
+        "따뜻한 우유 마시기"
+      ],
+      "q52": [
+        "중요한 날을 준비하는 방법은?",
+        "미리 다 계획해",
+        "마지막 순간에 해",
+        "도움을 청해",
+        "긴장해서 잠을 못 자"
+      ],
+      "q53": [
+        "보는 걸 좋아하는 스포츠는?",
+        "축구",
+        "테니스",
+        "피겨스케이팅",
+        "스포츠는 안 봐"
+      ],
+      "q54": [
+        "나에게 어울리는 반려동물은?",
+        "고양이",
+        "강아지",
+        "앵무새",
+        "햄스터"
+      ],
+      "q55": [
+        "어떤 메시지를 보내?",
+        "긴 메시지",
+        "짧은 메시지",
+        "이모티콘 가득",
+        "음성 메시지"
+      ],
+      "q56": [
+        "가장 오래 간직한 선물은?",
+        "편지",
+        "장난감",
+        "사진",
+        "액세서리"
+      ],
+      "q57": [
+        "고른다면?",
+        "벽난로 옆 차 한 잔",
+        "잔디밭 소풍",
+        "바닷가 산책",
+        "영화관"
+      ],
+      "q58": [
+        "가장 기쁜 칭찬은?",
+        "외모 칭찬",
+        "똑똑함 칭찬",
+        "다정함 칭찬",
+        "유머 칭찬"
+      ],
+      "q59": [
+        "나의 완벽한 아침은?",
+        "침대에서 아침 식사",
+        "이른 아침 달리기",
+        "늦잠",
+        "베란다에서 커피"
+      ],
+      "q60": [
+        "배우고 싶은 것은?",
+        "춤",
+        "요리",
+        "새로운 언어",
+        "그림"
       ]
     }
   },
@@ -4770,6 +9054,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "壽司",
         "沙拉",
         "甜點"
+      ],
+      "q25": [
+        "我最喜歡一天中的哪個時段？",
+        "早上",
+        "下午",
+        "傍晚",
+        "晚上"
+      ],
+      "q26": [
+        "我會選哪種料理？",
+        "義式",
+        "日式",
+        "家常菜",
+        "墨西哥菜"
+      ],
+      "q27": [
+        "我在哪裡最能思考？",
+        "洗澡時",
+        "散步時",
+        "通勤路上",
+        "睡前"
+      ],
+      "q28": [
+        "我早上第一件事是什麼？",
+        "看手機",
+        "喝水",
+        "泡咖啡",
+        "再賴床一下"
+      ],
+      "q29": [
+        "我最喜歡的水果？",
+        "蘋果",
+        "香蕉",
+        "芒果",
+        "西瓜"
+      ],
+      "q30": [
+        "哪個興趣最適合我？",
+        "畫畫",
+        "做菜",
+        "運動",
+        "閱讀"
+      ],
+      "q31": [
+        "我想怎麼過生日？",
+        "熱鬧的派對",
+        "兩人晚餐",
+        "一趟旅行",
+        "在家安靜的夜晚"
+      ],
+      "q32": [
+        "我對驚喜的看法？",
+        "超愛",
+        "有點緊張",
+        "喜歡為別人準備",
+        "寧願先知道"
+      ],
+      "q33": [
+        "我比較喜歡哪種甜點？",
+        "蛋糕",
+        "冰淇淋",
+        "餅乾",
+        "糖果"
+      ],
+      "q34": [
+        "去無人島我會帶什麼？",
+        "一本書",
+        "手機",
+        "毯子",
+        "相機"
+      ],
+      "q35": [
+        "辛苦一天後我怎麼放鬆？",
+        "泡個熱水澡",
+        "追劇",
+        "散步",
+        "和親近的人聊天"
+      ],
+      "q36": [
+        "我最喜歡哪種交通工具？",
+        "火車",
+        "飛機",
+        "汽車",
+        "腳踏車"
+      ],
+      "q37": [
+        "我小時候最愛的遊戲？",
+        "捉迷藏",
+        "鬼抓人",
+        "積木",
+        "畫畫"
+      ],
+      "q38": [
+        "哪個童話最像我？",
+        "灰姑娘",
+        "小王子",
+        "小熊維尼",
+        "愛麗絲夢遊仙境"
+      ],
+      "q39": [
+        "我會怎麼讓親近的人開心？",
+        "準備驚喜",
+        "寫張卡片",
+        "安排旅行",
+        "請吃晚餐"
+      ],
+      "q40": [
+        "我最常拍什麼？",
+        "自拍",
+        "風景",
+        "美食",
+        "幾乎不拍照"
+      ],
+      "q41": [
+        "家裡我最喜歡的角落？",
+        "床",
+        "廚房",
+        "沙發",
+        "陽台"
+      ],
+      "q42": [
+        "我對一個人最先注意的是？",
+        "笑容",
+        "眼睛",
+        "聲音",
+        "幽默感"
+      ],
+      "q43": [
+        "什麼最快讓我笑出來？",
+        "搞笑影片",
+        "親友的玩笑",
+        "尷尬場面",
+        "動物"
+      ],
+      "q44": [
+        "炎熱夏天我會喝什麼？",
+        "檸檬水",
+        "冰茶",
+        "果汁",
+        "冰水"
+      ],
+      "q45": [
+        "哪個元素最像我？",
+        "水",
+        "火",
+        "土",
+        "風"
+      ],
+      "q46": [
+        "我喜歡哪種故事？",
+        "冒險",
+        "愛情",
+        "科幻",
+        "真實故事"
+      ],
+      "q47": [
+        "下雨天我怎麼過？",
+        "看書",
+        "睡覺",
+        "看電影",
+        "撐傘散步"
+      ],
+      "q48": [
+        "禮物中我最在意什麼？",
+        "心意",
+        "實用",
+        "好看",
+        "驚喜"
+      ],
+      "q49": [
+        "我會選哪種馬鈴薯？",
+        "薯泥",
+        "薯條",
+        "烤馬鈴薯",
+        "洋芋片"
+      ],
+      "q50": [
+        "到新城市我先去哪？",
+        "咖啡館",
+        "博物館",
+        "公園",
+        "逛街"
+      ],
+      "q51": [
+        "睡不著時我會做什麼？",
+        "看書",
+        "滑手機",
+        "數羊",
+        "喝熱牛奶"
+      ],
+      "q52": [
+        "重要的日子我怎麼準備？",
+        "提早全部計畫好",
+        "拖到最後一刻",
+        "找人幫忙",
+        "緊張到睡不著"
+      ],
+      "q53": [
+        "我最喜歡看哪種運動？",
+        "足球",
+        "網球",
+        "花式滑冰",
+        "不看運動"
+      ],
+      "q54": [
+        "哪種寵物適合我？",
+        "貓",
+        "狗",
+        "鸚鵡",
+        "倉鼠"
+      ],
+      "q55": [
+        "我傳什麼樣的訊息？",
+        "長訊息",
+        "短訊息",
+        "滿滿表情符號",
+        "語音訊息"
+      ],
+      "q56": [
+        "我保存最久的禮物？",
+        "一封信",
+        "一個玩具",
+        "一張照片",
+        "一件飾品"
+      ],
+      "q57": [
+        "我比較會選？",
+        "壁爐旁喝茶",
+        "草地野餐",
+        "海邊散步",
+        "看電影"
+      ],
+      "q58": [
+        "哪種稱讚最讓我開心？",
+        "外表",
+        "聰明",
+        "善良",
+        "幽默"
+      ],
+      "q59": [
+        "我理想的早晨？",
+        "床上早餐",
+        "清晨慢跑",
+        "睡到自然醒",
+        "陽台咖啡"
+      ],
+      "q60": [
+        "我想學什麼？",
+        "跳舞",
+        "做菜",
+        "新語言",
+        "畫畫"
       ]
     }
   },
@@ -5035,6 +9571,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "ซูชิ",
         "สลัด",
         "ของหวาน"
+      ],
+      "q25": [
+        "ช่วงเวลาที่ฉันชอบที่สุดของวัน?",
+        "เช้า",
+        "บ่าย",
+        "เย็น",
+        "กลางคืน"
+      ],
+      "q26": [
+        "ฉันจะเลือกอาหารแบบไหน?",
+        "อิตาเลียน",
+        "ญี่ปุ่น",
+        "อาหารบ้าน ๆ",
+        "เม็กซิกัน"
+      ],
+      "q27": [
+        "ฉันคิดอะไรได้ดีที่สุดตอนไหน?",
+        "ตอนอาบน้ำ",
+        "ตอนเดินเล่น",
+        "ระหว่างเดินทาง",
+        "ก่อนนอน"
+      ],
+      "q28": [
+        "ตื่นเช้ามาฉันทำอะไรก่อน?",
+        "ดูโทรศัพท์",
+        "ดื่มน้ำ",
+        "ชงกาแฟ",
+        "นอนต่ออีกนิด"
+      ],
+      "q29": [
+        "ผลไม้ที่ฉันชอบ?",
+        "แอปเปิล",
+        "กล้วย",
+        "มะม่วง",
+        "แตงโม"
+      ],
+      "q30": [
+        "งานอดิเรกแบบไหนเหมาะกับฉัน?",
+        "วาดรูป",
+        "ทำอาหาร",
+        "ออกกำลังกาย",
+        "อ่านหนังสือ"
+      ],
+      "q31": [
+        "ฉันอยากฉลองวันเกิดแบบไหน?",
+        "ปาร์ตี้สนุก ๆ",
+        "มื้อค่ำสองคน",
+        "ไปเที่ยว",
+        "อยู่บ้านเงียบ ๆ"
+      ],
+      "q32": [
+        "ฉันรู้สึกยังไงกับเซอร์ไพรส์?",
+        "ชอบมาก",
+        "ตื่นเต้นนิดหน่อย",
+        "ชอบทำให้คนอื่น",
+        "อยากรู้ล่วงหน้ามากกว่า"
+      ],
+      "q33": [
+        "ขนมหวานที่ฉันชอบ?",
+        "เค้ก",
+        "ไอศกรีม",
+        "คุกกี้",
+        "ลูกอม"
+      ],
+      "q34": [
+        "ไปเกาะร้างฉันจะเอาอะไรไป?",
+        "หนังสือ",
+        "โทรศัพท์",
+        "ผ้าห่ม",
+        "กล้องถ่ายรูป"
+      ],
+      "q35": [
+        "หลังวันที่เหนื่อยฉันพักผ่อนยังไง?",
+        "อาบน้ำอุ่น",
+        "ดูซีรีส์",
+        "เดินเล่น",
+        "คุยกับคนใกล้ชิด"
+      ],
+      "q36": [
+        "ฉันชอบเดินทางด้วยอะไรที่สุด?",
+        "รถไฟ",
+        "เครื่องบิน",
+        "รถยนต์",
+        "จักรยาน"
+      ],
+      "q37": [
+        "เกมที่ฉันชอบตอนเด็ก?",
+        "ซ่อนหา",
+        "วิ่งไล่จับ",
+        "ตัวต่อ",
+        "วาดรูป"
+      ],
+      "q38": [
+        "นิทานเรื่องไหนคล้ายฉันที่สุด?",
+        "ซินเดอเรลลา",
+        "เจ้าชายน้อย",
+        "หมีพูห์",
+        "อลิซในแดนมหัศจรรย์"
+      ],
+      "q39": [
+        "ฉันจะทำให้คนที่รักดีใจด้วยอะไร?",
+        "เซอร์ไพรส์",
+        "การ์ด",
+        "ทริปเที่ยว",
+        "มื้อค่ำ"
+      ],
+      "q40": [
+        "ฉันถ่ายรูปอะไรบ่อยที่สุด?",
+        "เซลฟี่",
+        "ธรรมชาติ",
+        "อาหาร",
+        "แทบไม่ถ่ายเลย"
+      ],
+      "q41": [
+        "มุมโปรดในบ้านของฉัน?",
+        "เตียง",
+        "ห้องครัว",
+        "โซฟา",
+        "ระเบียง"
+      ],
+      "q42": [
+        "สิ่งแรกที่ฉันสังเกตในตัวคน?",
+        "รอยยิ้ม",
+        "ดวงตา",
+        "น้ำเสียง",
+        "อารมณ์ขัน"
+      ],
+      "q43": [
+        "อะไรทำให้ฉันหัวเราะเร็วที่สุด?",
+        "คลิปตลก",
+        "มุกของคนใกล้ชิด",
+        "สถานการณ์เขิน ๆ",
+        "สัตว์"
+      ],
+      "q44": [
+        "วันร้อน ๆ ฉันดื่มอะไร?",
+        "น้ำมะนาว",
+        "ชาเย็น",
+        "น้ำผลไม้",
+        "น้ำเย็นใส่น้ำแข็ง"
+      ],
+      "q45": [
+        "ธาตุไหนใกล้เคียงฉันที่สุด?",
+        "น้ำ",
+        "ไฟ",
+        "ดิน",
+        "ลม"
+      ],
+      "q46": [
+        "ฉันชอบเรื่องแบบไหน?",
+        "ผจญภัย",
+        "ความรัก",
+        "ไซไฟ",
+        "เรื่องจริง"
+      ],
+      "q47": [
+        "วันฝนตกฉันทำอะไร?",
+        "อ่านหนังสือ",
+        "นอน",
+        "ดูหนัง",
+        "กางร่มเดินเล่น"
+      ],
+      "q48": [
+        "ฉันให้คุณค่ากับอะไรในของขวัญ?",
+        "ความใส่ใจ",
+        "ความมีประโยชน์",
+        "ความสวยงาม",
+        "ความประหลาดใจ"
+      ],
+      "q49": [
+        "ฉันจะเลือกมันฝรั่งแบบไหน?",
+        "มันบด",
+        "เฟรนช์ฟรายส์",
+        "มันอบ",
+        "มันฝรั่งทอดกรอบ"
+      ],
+      "q50": [
+        "ไปเมืองใหม่ฉันไปที่ไหนก่อน?",
+        "คาเฟ่",
+        "พิพิธภัณฑ์",
+        "สวนสาธารณะ",
+        "ช้อปปิ้ง"
+      ],
+      "q51": [
+        "นอนไม่หลับฉันทำอะไร?",
+        "อ่านหนังสือ",
+        "เล่นโทรศัพท์",
+        "นับแกะ",
+        "ดื่มนมอุ่น"
+      ],
+      "q52": [
+        "ฉันเตรียมตัวสำหรับวันสำคัญยังไง?",
+        "วางแผนทุกอย่างล่วงหน้า",
+        "ทำนาทีสุดท้าย",
+        "ขอให้คนช่วย",
+        "ตื่นเต้นจนนอนไม่หลับ"
+      ],
+      "q53": [
+        "กีฬาที่ฉันชอบดู?",
+        "ฟุตบอล",
+        "เทนนิส",
+        "สเก็ตลีลา",
+        "ไม่ดูกีฬา"
+      ],
+      "q54": [
+        "สัตว์เลี้ยงแบบไหนเหมาะกับฉัน?",
+        "แมว",
+        "สุนัข",
+        "นกแก้ว",
+        "แฮมสเตอร์"
+      ],
+      "q55": [
+        "ฉันส่งข้อความแบบไหน?",
+        "ยาว ๆ",
+        "สั้น ๆ",
+        "อีโมจิเต็มไปหมด",
+        "ข้อความเสียง"
+      ],
+      "q56": [
+        "ของขวัญที่ฉันเก็บไว้นานที่สุด?",
+        "จดหมาย",
+        "ของเล่น",
+        "รูปถ่าย",
+        "เครื่องประดับ"
+      ],
+      "q57": [
+        "ฉันจะเลือกอะไรมากกว่า?",
+        "จิบชาข้างเตาผิง",
+        "ปิกนิกบนสนามหญ้า",
+        "เดินเล่นริมทะเล",
+        "ไปดูหนัง"
+      ],
+      "q58": [
+        "คำชมแบบไหนทำให้ฉันดีใจที่สุด?",
+        "เรื่องหน้าตา",
+        "เรื่องความฉลาด",
+        "เรื่องความใจดี",
+        "เรื่องอารมณ์ขัน"
+      ],
+      "q59": [
+        "เช้าในฝันของฉัน?",
+        "อาหารเช้าบนเตียง",
+        "วิ่งตอนเช้า",
+        "นอนยาว ๆ",
+        "กาแฟที่ระเบียง"
+      ],
+      "q60": [
+        "ฉันอยากเรียนอะไร?",
+        "เต้น",
+        "ทำอาหาร",
+        "ภาษาใหม่",
+        "วาดรูป"
       ]
     }
   },
@@ -5300,6 +10088,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "سوشي",
         "سلطة",
         "حلوى"
+      ],
+      "q25": [
+        "وقتي المفضل من اليوم؟",
+        "الصباح",
+        "الظهيرة",
+        "المساء",
+        "الليل"
+      ],
+      "q26": [
+        "أي مطبخ أختار؟",
+        "الإيطالي",
+        "الياباني",
+        "الطبخ المنزلي",
+        "المكسيكي"
+      ],
+      "q27": [
+        "أين أفكر بشكل أفضل؟",
+        "تحت الدش",
+        "أثناء المشي",
+        "في الطريق",
+        "قبل النوم"
+      ],
+      "q28": [
+        "ماذا أفعل أولًا في الصباح؟",
+        "أنظر إلى الهاتف",
+        "أشرب الماء",
+        "أحضّر القهوة",
+        "أبقى في السرير قليلًا"
+      ],
+      "q29": [
+        "فاكهتي المفضلة؟",
+        "التفاح",
+        "الموز",
+        "المانجو",
+        "البطيخ"
+      ],
+      "q30": [
+        "أي هواية تناسبني أكثر؟",
+        "الرسم",
+        "الطبخ",
+        "الرياضة",
+        "القراءة"
+      ],
+      "q31": [
+        "كيف أحب أن أحتفل بعيد ميلادي؟",
+        "بحفلة كبيرة",
+        "بعشاء لشخصين",
+        "برحلة",
+        "بأمسية هادئة في البيت"
+      ],
+      "q32": [
+        "ما رأيي في المفاجآت؟",
+        "أحبها كثيرًا",
+        "تربكني قليلًا",
+        "أحب أن أعدّها للآخرين",
+        "أفضّل أن أعرف مسبقًا"
+      ],
+      "q33": [
+        "أي حلوى أفضّل؟",
+        "الكعك",
+        "الآيس كريم",
+        "البسكويت",
+        "السكاكر"
+      ],
+      "q34": [
+        "ماذا آخذ إلى جزيرة مهجورة؟",
+        "كتابًا",
+        "هاتفي",
+        "بطانية",
+        "كاميرا"
+      ],
+      "q35": [
+        "كيف أرتاح بعد يوم صعب؟",
+        "حمام دافئ",
+        "مسلسل",
+        "نزهة",
+        "حديث مع شخص قريب"
+      ],
+      "q36": [
+        "أي وسيلة تنقل أحب أكثر؟",
+        "القطار",
+        "الطائرة",
+        "السيارة",
+        "الدراجة"
+      ],
+      "q37": [
+        "لعبتي المفضلة في الطفولة؟",
+        "الغميضة",
+        "المطاردة",
+        "المكعبات",
+        "الرسم"
+      ],
+      "q38": [
+        "أي حكاية تشبهني أكثر؟",
+        "سندريلا",
+        "الأمير الصغير",
+        "ويني الدبدوب",
+        "أليس في بلاد العجائب"
+      ],
+      "q39": [
+        "كيف أُسعد شخصًا عزيزًا؟",
+        "بمفاجأة",
+        "ببطاقة",
+        "برحلة",
+        "بعشاء"
+      ],
+      "q40": [
+        "ماذا أصوّر أكثر؟",
+        "نفسي",
+        "الطبيعة",
+        "الطعام",
+        "نادرًا ما أصوّر"
+      ],
+      "q41": [
+        "مكاني المفضل في البيت؟",
+        "السرير",
+        "المطبخ",
+        "الأريكة",
+        "الشرفة"
+      ],
+      "q42": [
+        "ما أول ما ألاحظه في الشخص؟",
+        "الابتسامة",
+        "العينان",
+        "الصوت",
+        "روح الدعابة"
+      ],
+      "q43": [
+        "ما الذي يضحكني بسرعة؟",
+        "مقاطع مضحكة",
+        "نكات المقرّبين",
+        "المواقف المحرجة",
+        "الحيوانات"
+      ],
+      "q44": [
+        "ماذا أشرب في يوم صيفي حار؟",
+        "ليموناضة",
+        "شاي مثلّج",
+        "عصير",
+        "ماء بالثلج"
+      ],
+      "q45": [
+        "أي عنصر هو الأقرب إليّ؟",
+        "الماء",
+        "النار",
+        "التراب",
+        "الهواء"
+      ],
+      "q46": [
+        "أي قصص أحب؟",
+        "المغامرات",
+        "قصص الحب",
+        "الخيال العلمي",
+        "القصص الحقيقية"
+      ],
+      "q47": [
+        "كيف أقضي يومًا ممطرًا؟",
+        "أقرأ",
+        "أنام",
+        "أشاهد فيلمًا",
+        "أتمشى تحت المظلة"
+      ],
+      "q48": [
+        "ما أكثر ما أقدّره في الهدية؟",
+        "الاهتمام",
+        "الفائدة",
+        "الجمال",
+        "المفاجأة"
+      ],
+      "q49": [
+        "أي بطاطا أختار؟",
+        "مهروسة",
+        "مقلية",
+        "مشوية في الفرن",
+        "رقائق"
+      ],
+      "q50": [
+        "إلى أين أذهب أولًا في مدينة جديدة؟",
+        "إلى مقهى",
+        "إلى متحف",
+        "إلى حديقة",
+        "للتسوق"
+      ],
+      "q51": [
+        "ماذا أفعل حين لا أستطيع النوم؟",
+        "أقرأ",
+        "أتصفح الهاتف",
+        "أعدّ الخراف",
+        "أشرب حليبًا دافئًا"
+      ],
+      "q52": [
+        "كيف أستعد ليوم مهم؟",
+        "أخطط لكل شيء مسبقًا",
+        "أؤجل إلى اللحظة الأخيرة",
+        "أطلب المساعدة",
+        "أقلق ولا أنام"
+      ],
+      "q53": [
+        "أي رياضة أحب مشاهدتها؟",
+        "كرة القدم",
+        "التنس",
+        "التزلج الفني",
+        "لا أشاهد الرياضة"
+      ],
+      "q54": [
+        "أي حيوان أليف يناسبني؟",
+        "قطة",
+        "كلب",
+        "ببغاء",
+        "هامستر"
+      ],
+      "q55": [
+        "ما نوع الرسائل التي أكتبها؟",
+        "طويلة",
+        "قصيرة",
+        "مليئة بالرموز التعبيرية",
+        "رسائل صوتية"
+      ],
+      "q56": [
+        "أي هدية احتفظت بها أطول مدة؟",
+        "رسالة",
+        "لعبة",
+        "صورة",
+        "قطعة حُليّ"
+      ],
+      "q57": [
+        "ماذا أختار على الأرجح؟",
+        "شاي قرب المدفأة",
+        "نزهة على العشب",
+        "مشي على شاطئ البحر",
+        "السينما"
+      ],
+      "q58": [
+        "أي مديح يسعدني أكثر؟",
+        "عن مظهري",
+        "عن ذكائي",
+        "عن طيبتي",
+        "عن روح الدعابة"
+      ],
+      "q59": [
+        "صباحي المثالي؟",
+        "فطور في السرير",
+        "ركض مبكر",
+        "نوم طويل",
+        "قهوة في الشرفة"
+      ],
+      "q60": [
+        "ماذا أريد أن أتعلم؟",
+        "الرقص",
+        "الطبخ",
+        "لغة جديدة",
+        "الرسم"
       ]
     }
   },
@@ -5565,6 +10605,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Salad",
         "Hidangan penutup"
+      ],
+      "q25": [
+        "Waktu favoritku dalam sehari?",
+        "Pagi",
+        "Siang",
+        "Sore",
+        "Malam"
+      ],
+      "q26": [
+        "Masakan apa yang kupilih?",
+        "Italia",
+        "Jepang",
+        "Masakan rumah",
+        "Meksiko"
+      ],
+      "q27": [
+        "Di mana aku paling bisa berpikir?",
+        "Saat mandi",
+        "Saat jalan-jalan",
+        "Di perjalanan",
+        "Sebelum tidur"
+      ],
+      "q28": [
+        "Apa yang pertama kulakukan di pagi hari?",
+        "Melihat ponsel",
+        "Minum air",
+        "Membuat kopi",
+        "Rebahan sebentar lagi"
+      ],
+      "q29": [
+        "Buah favoritku?",
+        "Apel",
+        "Pisang",
+        "Mangga",
+        "Semangka"
+      ],
+      "q30": [
+        "Hobi apa yang paling cocok untukku?",
+        "Menggambar",
+        "Memasak",
+        "Olahraga",
+        "Membaca"
+      ],
+      "q31": [
+        "Bagaimana aku ingin merayakan ulang tahun?",
+        "Pesta meriah",
+        "Makan malam berdua",
+        "Jalan-jalan",
+        "Malam tenang di rumah"
+      ],
+      "q32": [
+        "Bagaimana perasaanku tentang kejutan?",
+        "Suka sekali",
+        "Agak deg-degan",
+        "Suka menyiapkannya untuk orang lain",
+        "Lebih suka tahu sebelumnya"
+      ],
+      "q33": [
+        "Makanan manis apa yang kusukai?",
+        "Kue tart",
+        "Es krim",
+        "Biskuit",
+        "Permen"
+      ],
+      "q34": [
+        "Apa yang kubawa ke pulau terpencil?",
+        "Buku",
+        "Ponsel",
+        "Selimut",
+        "Kamera"
+      ],
+      "q35": [
+        "Bagaimana aku bersantai setelah hari yang berat?",
+        "Mandi air hangat",
+        "Menonton serial",
+        "Jalan-jalan",
+        "Mengobrol dengan orang terdekat"
+      ],
+      "q36": [
+        "Transportasi apa yang paling kusukai?",
+        "Kereta",
+        "Pesawat",
+        "Mobil",
+        "Sepeda"
+      ],
+      "q37": [
+        "Permainan favoritku waktu kecil?",
+        "Petak umpet",
+        "Kejar-kejaran",
+        "Balok susun",
+        "Menggambar"
+      ],
+      "q38": [
+        "Dongeng apa yang paling mirip denganku?",
+        "Cinderella",
+        "Pangeran Kecil",
+        "Winnie the Pooh",
+        "Alice di Negeri Ajaib"
+      ],
+      "q39": [
+        "Bagaimana aku membahagiakan orang tersayang?",
+        "Dengan kejutan",
+        "Dengan kartu",
+        "Dengan perjalanan",
+        "Dengan makan malam"
+      ],
+      "q40": [
+        "Apa yang paling sering kufoto?",
+        "Diri sendiri",
+        "Alam",
+        "Makanan",
+        "Hampir tidak pernah memotret"
+      ],
+      "q41": [
+        "Tempat favoritku di rumah?",
+        "Tempat tidur",
+        "Dapur",
+        "Sofa",
+        "Balkon"
+      ],
+      "q42": [
+        "Apa yang pertama kuperhatikan dari seseorang?",
+        "Senyumnya",
+        "Matanya",
+        "Suaranya",
+        "Selera humornya"
+      ],
+      "q43": [
+        "Apa yang paling cepat membuatku tertawa?",
+        "Video lucu",
+        "Candaan orang tersayang",
+        "Situasi canggung",
+        "Hewan"
+      ],
+      "q44": [
+        "Apa yang kuminum di hari yang panas?",
+        "Limun",
+        "Es teh",
+        "Jus",
+        "Air es"
+      ],
+      "q45": [
+        "Elemen apa yang paling mirip denganku?",
+        "Air",
+        "Api",
+        "Tanah",
+        "Udara"
+      ],
+      "q46": [
+        "Cerita apa yang kusukai?",
+        "Petualangan",
+        "Kisah cinta",
+        "Fiksi ilmiah",
+        "Kisah nyata"
+      ],
+      "q47": [
+        "Bagaimana aku menghabiskan hari hujan?",
+        "Membaca",
+        "Tidur",
+        "Menonton film",
+        "Jalan-jalan berpayung"
+      ],
+      "q48": [
+        "Apa yang paling kuhargai dari hadiah?",
+        "Perhatiannya",
+        "Kegunaannya",
+        "Keindahannya",
+        "Kejutannya"
+      ],
+      "q49": [
+        "Kentang apa yang kupilih?",
+        "Kentang tumbuk",
+        "Kentang goreng",
+        "Kentang panggang",
+        "Keripik"
+      ],
+      "q50": [
+        "Ke mana aku pergi pertama kali di kota baru?",
+        "Ke kafe",
+        "Ke museum",
+        "Ke taman",
+        "Belanja"
+      ],
+      "q51": [
+        "Apa yang kulakukan saat tidak bisa tidur?",
+        "Membaca",
+        "Main ponsel",
+        "Menghitung domba",
+        "Minum susu hangat"
+      ],
+      "q52": [
+        "Bagaimana aku bersiap untuk hari penting?",
+        "Merencanakan semuanya lebih dulu",
+        "Mengerjakan di menit terakhir",
+        "Minta bantuan",
+        "Gugup sampai tidak bisa tidur"
+      ],
+      "q53": [
+        "Olahraga apa yang paling suka kutonton?",
+        "Sepak bola",
+        "Tenis",
+        "Seluncur indah",
+        "Tidak menonton olahraga"
+      ],
+      "q54": [
+        "Hewan peliharaan apa yang cocok untukku?",
+        "Kucing",
+        "Anjing",
+        "Burung beo",
+        "Hamster"
+      ],
+      "q55": [
+        "Pesan seperti apa yang kutulis?",
+        "Panjang",
+        "Pendek",
+        "Penuh emoji",
+        "Pesan suara"
+      ],
+      "q56": [
+        "Hadiah apa yang paling lama kusimpan?",
+        "Surat",
+        "Mainan",
+        "Foto",
+        "Perhiasan"
+      ],
+      "q57": [
+        "Mana yang lebih kupilih?",
+        "Teh di dekat perapian",
+        "Piknik di rumput",
+        "Jalan-jalan di tepi laut",
+        "Nonton di bioskop"
+      ],
+      "q58": [
+        "Pujian apa yang paling membuatku senang?",
+        "Tentang penampilan",
+        "Tentang kecerdasan",
+        "Tentang kebaikan",
+        "Tentang selera humor"
+      ],
+      "q59": [
+        "Pagi sempurnaku?",
+        "Sarapan di tempat tidur",
+        "Lari pagi",
+        "Tidur panjang",
+        "Kopi di balkon"
+      ],
+      "q60": [
+        "Apa yang ingin kupelajari?",
+        "Menari",
+        "Memasak",
+        "Bahasa baru",
+        "Menggambar"
       ]
     }
   },
@@ -5830,6 +11122,258 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Sushi",
         "Salad",
         "Tráng miệng"
+      ],
+      "q25": [
+        "Thời điểm mình thích nhất trong ngày?",
+        "Buổi sáng",
+        "Buổi trưa",
+        "Buổi chiều tối",
+        "Ban đêm"
+      ],
+      "q26": [
+        "Mình sẽ chọn món ăn nào?",
+        "Món Ý",
+        "Món Nhật",
+        "Cơm nhà",
+        "Món Mexico"
+      ],
+      "q27": [
+        "Mình suy nghĩ tốt nhất ở đâu?",
+        "Khi tắm",
+        "Khi đi dạo",
+        "Trên đường đi",
+        "Trước khi ngủ"
+      ],
+      "q28": [
+        "Sáng dậy mình làm gì đầu tiên?",
+        "Xem điện thoại",
+        "Uống nước",
+        "Pha cà phê",
+        "Nằm nướng thêm chút"
+      ],
+      "q29": [
+        "Loại trái cây mình thích nhất?",
+        "Táo",
+        "Chuối",
+        "Xoài",
+        "Dưa hấu"
+      ],
+      "q30": [
+        "Sở thích nào hợp với mình nhất?",
+        "Vẽ",
+        "Nấu ăn",
+        "Thể thao",
+        "Đọc sách"
+      ],
+      "q31": [
+        "Mình muốn đón sinh nhật thế nào?",
+        "Tiệc thật vui",
+        "Bữa tối hai người",
+        "Một chuyến đi",
+        "Buổi tối yên bình ở nhà"
+      ],
+      "q32": [
+        "Mình thấy bất ngờ thế nào?",
+        "Rất thích",
+        "Hơi hồi hộp",
+        "Thích tạo bất ngờ cho người khác",
+        "Muốn biết trước hơn"
+      ],
+      "q33": [
+        "Đồ ngọt mình thích nhất?",
+        "Bánh kem",
+        "Kem",
+        "Bánh quy",
+        "Kẹo"
+      ],
+      "q34": [
+        "Ra đảo hoang mình sẽ mang gì?",
+        "Một cuốn sách",
+        "Điện thoại",
+        "Chăn",
+        "Máy ảnh"
+      ],
+      "q35": [
+        "Sau một ngày mệt mình thư giãn thế nào?",
+        "Tắm nước ấm",
+        "Xem phim bộ",
+        "Đi dạo",
+        "Trò chuyện với người thân"
+      ],
+      "q36": [
+        "Mình thích đi bằng phương tiện nào nhất?",
+        "Tàu hỏa",
+        "Máy bay",
+        "Ô tô",
+        "Xe đạp"
+      ],
+      "q37": [
+        "Trò chơi mình thích hồi nhỏ?",
+        "Trốn tìm",
+        "Đuổi bắt",
+        "Xếp hình",
+        "Vẽ tranh"
+      ],
+      "q38": [
+        "Câu chuyện cổ tích nào giống mình nhất?",
+        "Lọ Lem",
+        "Hoàng tử bé",
+        "Gấu Pooh",
+        "Alice ở xứ sở thần tiên"
+      ],
+      "q39": [
+        "Mình sẽ làm người thân vui bằng cách nào?",
+        "Một bất ngờ",
+        "Một tấm thiệp",
+        "Một chuyến đi",
+        "Một bữa tối"
+      ],
+      "q40": [
+        "Mình hay chụp gì nhất?",
+        "Ảnh tự sướng",
+        "Thiên nhiên",
+        "Đồ ăn",
+        "Hầu như không chụp"
+      ],
+      "q41": [
+        "Góc yêu thích của mình trong nhà?",
+        "Giường",
+        "Bếp",
+        "Ghế sofa",
+        "Ban công"
+      ],
+      "q42": [
+        "Điều đầu tiên mình để ý ở một người?",
+        "Nụ cười",
+        "Đôi mắt",
+        "Giọng nói",
+        "Óc hài hước"
+      ],
+      "q43": [
+        "Điều gì làm mình cười nhanh nhất?",
+        "Video hài",
+        "Câu đùa của người thân",
+        "Tình huống ngượng ngùng",
+        "Động vật"
+      ],
+      "q44": [
+        "Ngày hè nóng mình uống gì?",
+        "Nước chanh",
+        "Trà đá",
+        "Nước ép",
+        "Nước đá"
+      ],
+      "q45": [
+        "Nguyên tố nào gần với mình nhất?",
+        "Nước",
+        "Lửa",
+        "Đất",
+        "Không khí"
+      ],
+      "q46": [
+        "Mình thích những câu chuyện nào?",
+        "Phiêu lưu",
+        "Tình yêu",
+        "Khoa học viễn tưởng",
+        "Chuyện có thật"
+      ],
+      "q47": [
+        "Ngày mưa mình làm gì?",
+        "Đọc sách",
+        "Ngủ",
+        "Xem phim",
+        "Che ô đi dạo"
+      ],
+      "q48": [
+        "Mình quý điều gì nhất ở món quà?",
+        "Tấm lòng",
+        "Sự hữu ích",
+        "Vẻ đẹp",
+        "Sự bất ngờ"
+      ],
+      "q49": [
+        "Mình sẽ chọn khoai tây kiểu nào?",
+        "Nghiền",
+        "Chiên",
+        "Nướng",
+        "Snack khoai"
+      ],
+      "q50": [
+        "Đến thành phố mới mình đi đâu trước?",
+        "Quán cà phê",
+        "Bảo tàng",
+        "Công viên",
+        "Mua sắm"
+      ],
+      "q51": [
+        "Khi mất ngủ mình làm gì?",
+        "Đọc sách",
+        "Lướt điện thoại",
+        "Đếm cừu",
+        "Uống sữa ấm"
+      ],
+      "q52": [
+        "Mình chuẩn bị cho ngày quan trọng thế nào?",
+        "Lên kế hoạch trước hết",
+        "Để đến phút cuối",
+        "Nhờ người giúp",
+        "Hồi hộp đến mất ngủ"
+      ],
+      "q53": [
+        "Môn thể thao mình thích xem nhất?",
+        "Bóng đá",
+        "Quần vợt",
+        "Trượt băng nghệ thuật",
+        "Không xem thể thao"
+      ],
+      "q54": [
+        "Thú cưng nào hợp với mình?",
+        "Mèo",
+        "Chó",
+        "Vẹt",
+        "Chuột hamster"
+      ],
+      "q55": [
+        "Mình hay nhắn tin kiểu gì?",
+        "Dài",
+        "Ngắn",
+        "Đầy biểu tượng cảm xúc",
+        "Tin nhắn thoại"
+      ],
+      "q56": [
+        "Món quà mình giữ lâu nhất?",
+        "Một lá thư",
+        "Một món đồ chơi",
+        "Một tấm ảnh",
+        "Một món trang sức"
+      ],
+      "q57": [
+        "Mình sẽ chọn gì hơn?",
+        "Trà bên lò sưởi",
+        "Dã ngoại trên cỏ",
+        "Dạo biển",
+        "Đi xem phim"
+      ],
+      "q58": [
+        "Lời khen nào làm mình vui nhất?",
+        "Về ngoại hình",
+        "Về sự thông minh",
+        "Về lòng tốt",
+        "Về óc hài hước"
+      ],
+      "q59": [
+        "Buổi sáng lý tưởng của mình?",
+        "Ăn sáng trên giường",
+        "Chạy bộ sớm",
+        "Ngủ thật lâu",
+        "Cà phê ở ban công"
+      ],
+      "q60": [
+        "Mình muốn học gì?",
+        "Nhảy",
+        "Nấu ăn",
+        "Một ngôn ngữ mới",
+        "Vẽ"
       ]
     }
   }

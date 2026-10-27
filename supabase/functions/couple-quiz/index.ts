@@ -83,7 +83,7 @@ Deno.serve(async (request: Request) => {
   const name = clean(body.name, 36);
   const language = clean(body.language, 3).toLowerCase();
   const answers = Array.isArray(body.answers) ? body.answers : null;
-  if (!UUID.test(publicId) || !answers || answers.length < 5 || answers.length > 12 || !answers.every((value) => Number.isInteger(value) && value >= 0 && value <= 3)) {
+  if (!UUID.test(publicId) || !answers || answers.length < 5 || answers.length > 20 || !answers.every((value) => Number.isInteger(value) && value >= 0 && value <= 3)) {
     return json(request, { state: "invalid" }, 400);
   }
   const result = await admin.rpc("glowletter_submit_quiz", {

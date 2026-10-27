@@ -19,7 +19,7 @@ const edge = read("supabase/functions/couple-quiz/index.ts");
 const config = read("supabase/config.toml");
 
 const LANGUAGES = ["ru", "en", "fr", "de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"];
-const QUESTION_IDS = Array.from({ length: 24 }, (_, index) => `q${String(index + 1).padStart(2, "0")}`);
+const QUESTION_IDS = Array.from({ length: 60 }, (_, index) => `q${String(index + 1).padStart(2, "0")}`);
 
 // Словари: ru/en/fr в games.js, остальные двадцать два — в games-i18n.js.
 const extra = vm.runInNewContext(`${read("games-i18n.js")}; window.GLOWLETTER_GAMES_I18N`, { window: {} });
@@ -53,10 +53,10 @@ for (const code of LANGUAGES) {
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=58") < index.indexOf("games-i18n.js?v=58"));
-assert.ok(index.indexOf("games-i18n.js?v=58") < index.indexOf("games.js?v=58"));
-assert.match(index, /games\.css\?v=58/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=58"`, "u"));
+assert.ok(index.indexOf("experience.js?v=59") < index.indexOf("games-i18n.js?v=59"));
+assert.ok(index.indexOf("games-i18n.js?v=59") < index.indexOf("games.js?v=59"));
+assert.match(index, /games\.css\?v=59/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=59"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
