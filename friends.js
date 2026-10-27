@@ -38,7 +38,7 @@
       report: "Пожаловаться", reportConfirm: "Пожаловаться на это сообщение?", reported: "Жалоба отправлена. Спасибо!",
       forbidden: "В сообщении есть недопустимые слова или ссылки.", rateLimited: "Слишком много сообщений. Подождите немного.", failed: "Не получилось. Проверьте связь и попробуйте ещё раз.",
       newMessage: "{name}: {text}", newRequest: "{name} хочет добавить вас в друзья", safety: "Пишите только тем, кого знаете. Если что-то не так — пожалуйтесь или заблокируйте.",
-      playTogether: "Сыграть вместе", pickGame: "Выберите игру", inviteMessage: "Давай сыграем в «{game}»!", invitePlay: "Играть", inviteYou: "Вы позвали в игру «{game}»", newInvite: "{name} зовёт вас в игру «{game}»"
+      playTogether: "Сыграть вместе", pickGame: "Выберите игру", inviteMessage: "Давай сыграем в «{game}»!", invitePlay: "Играть", inviteYou: "Вы позвали в игру «{game}»", newInvite: "{name} зовёт вас в игру «{game}»", inviteLater: "Позже", inviteHeading: "Приглашение в игру"
     },
     en: {
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
@@ -57,7 +57,7 @@
       report: "Report", reportConfirm: "Report this message?", reported: "Report sent. Thank you!",
       forbidden: "The message has words or links that aren’t allowed.", rateLimited: "Too many messages. Please wait a little.", failed: "Something went wrong. Check your connection and try again.",
       newMessage: "{name}: {text}", newRequest: "{name} wants to add you as a friend", safety: "Write only to people you know. If something feels wrong, report or block.",
-      playTogether: "Play together", pickGame: "Choose a game", inviteMessage: "Let’s play “{game}”!", invitePlay: "Play", inviteYou: "You invited to play “{game}”", newInvite: "{name} invites you to play “{game}”"
+      playTogether: "Play together", pickGame: "Choose a game", inviteMessage: "Let’s play “{game}”!", invitePlay: "Play", inviteYou: "You invited to play “{game}”", newInvite: "{name} invites you to play “{game}”", inviteLater: "Later", inviteHeading: "Game invitation"
     },
     fr: {
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
@@ -76,7 +76,7 @@
       report: "Signaler", reportConfirm: "Signaler ce message ?", reported: "Signalement envoyé. Merci !",
       forbidden: "Le message contient des mots ou des liens interdits.", rateLimited: "Trop de messages. Patientez un peu.", failed: "Un problème est survenu. Vérifiez la connexion et réessayez.",
       newMessage: "{name} : {text}", newRequest: "{name} veut vous ajouter en ami", safety: "N’écrivez qu’aux personnes que vous connaissez. En cas de souci, signalez ou bloquez.",
-      playTogether: "Jouer ensemble", pickGame: "Choisissez un jeu", inviteMessage: "On joue à « {game} » ?", invitePlay: "Jouer", inviteYou: "Vous avez invité à jouer à « {game} »", newInvite: "{name} vous invite à jouer à « {game} »"
+      playTogether: "Jouer ensemble", pickGame: "Choisissez un jeu", inviteMessage: "On joue à « {game} » ?", invitePlay: "Jouer", inviteYou: "Vous avez invité à jouer à « {game} »", newInvite: "{name} vous invite à jouer à « {game} »", inviteLater: "Plus tard", inviteHeading: "Invitation à jouer"
     }
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
@@ -470,7 +470,40 @@
     if (state.root && !state.root.hidden && state.view === "list") render();
     const sender = state.rows.find(item => item.user_id === message.sender);
     const invite = parseInvite(message.body);
-    notify(invite ? tr("newInvite", { name: nameOf(sender), game: gameTitle(invite.kind) }) : tr("newMessage", { name: nameOf(sender), text: previewText(message.body).slice(0, 80) }), 5000);
+    if (invite) showInvitePopup(sender, message.sender, invite);
+    else notify(tr("newMessage", { name: nameOf(sender), text: previewText(message.body).slice(0, 80) }), 5000);
+  }
+
+  // Большое окно «Имя зовёт вас в игру» поверх любого экрана — не нужно заходить в «Друзья».
+  function showInvitePopup(sender, senderId, invite) {
+    document.querySelector(".glf-invite-pop")?.remove();
+    const pop = document.createElement("div");
+    pop.className = "glf-invite-pop";
+    pop.innerHTML = `
+      <div class="glf-invite-pop-backdrop" data-pop="later"></div>
+      <section class="glf-invite-pop-card" role="alertdialog" aria-modal="true" aria-labelledby="glfInvitePopTitle" aria-describedby="glfInvitePopText">
+        <div class="glf-invite-pop-icon" aria-hidden="true">🎲</div>
+        <p class="glf-invite-pop-eyebrow" id="glfInvitePopTitle">${escapeHtml(tr("inviteHeading"))}</p>
+        <h2 id="glfInvitePopText">${escapeHtml(tr("newInvite", { name: nameOf(sender), game: gameTitle(invite.kind) }))}</h2>
+        <div class="glf-invite-pop-actions">
+          <button class="glg-secondary" type="button" data-pop="later">${escapeHtml(tr("inviteLater"))}</button>
+          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(tr("invitePlay"))} →</button>
+        </div>
+      </section>`;
+    const done = () => { pop.classList.remove("is-open"); setTimeout(() => pop.remove(), 220); };
+    pop.addEventListener("click", event => {
+      const action = event.target.closest("[data-pop]")?.dataset.pop;
+      if (!action) return;
+      done();
+      if (action !== "play") return;
+      if (senderId) rpc("glowletter_messages_mark_read", { p_from: senderId }).then(() => refresh(false)).catch(() => {});
+      if (state.root && !state.root.hidden) close();
+      games()?.join?.(invite.room);
+    });
+    pop.addEventListener("keydown", event => { if (event.key === "Escape") done(); });
+    document.body.append(pop);
+    requestAnimationFrame(() => { pop.classList.add("is-open"); pop.querySelector("[data-pop=play]")?.focus(); });
+    try { navigator.vibrate?.([120, 80, 120]); } catch {}
   }
 
   async function onFriendship(payload) {
@@ -507,6 +540,24 @@
     heartbeat();
     try { state.rows = (await rpc("glowletter_friends_list", {})) || []; } catch {}
     updateBadge();
+    showRecentInvite();
+  }
+
+  // Позвали, пока приложение было закрыто: при входе показываем свежее (до 20 минут) приглашение.
+  async function showRecentInvite() {
+    const db = client();
+    const me = userId();
+    if (!db?.from || !me) return;
+    try {
+      const since = new Date(Date.now() - 20 * 60 * 1000).toISOString();
+      const { data } = await db.from("glowletter_messages").select("id, sender, body, created_at")
+        .eq("recipient", me).is("read_at", null).gte("created_at", since).order("created_at", { ascending: false }).limit(10);
+      const message = (data || []).find(item => parseInvite(item.body));
+      if (!message) return;
+      const seenKey = `glowletter-invite-seen:${message.id}`;
+      try { if (sessionStorage.getItem(seenKey)) return; sessionStorage.setItem(seenKey, "1"); } catch {}
+      showInvitePopup(state.rows.find(row => row.user_id === message.sender), message.sender, parseInvite(message.body));
+    } catch {}
   }
 
   function stopSession() {
@@ -544,7 +595,9 @@
   window.GlowLetterFriends = Object.freeze({
     open: () => open(),
     friends: () => state.rows.filter(row => row.status === "friend").map(row => ({ user_id: row.user_id, name: nameOf(row), online: isOnline(row) })),
-    inviteToGame
+    inviteToGame,
+    // Окно приглашения (для проверки и будущих ссылок-приглашений).
+    showInvite: (name, kind, roomId) => { if (INVITE_PATTERN.test(`[[game:${kind}:${roomId}]]`)) showInvitePopup({ display_name: name }, "", { kind, room: roomId }); }
   });
   init();
 })();

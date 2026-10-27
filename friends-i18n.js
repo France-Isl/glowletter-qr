@@ -65,7 +65,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Lass uns „{game}“ spielen!",
     "invitePlay": "Spielen",
     "inviteYou": "Du hast zu „{game}“ eingeladen",
-    "newInvite": "{name} lädt dich zu „{game}“ ein"
+    "newInvite": "{name} lädt dich zu „{game}“ ein",
+    "inviteLater": "Später",
+    "inviteHeading": "Einladung zum Spiel"
   },
   "es": {
     "home": "Amigos",
@@ -132,7 +134,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "¡Juguemos a «{game}»!",
     "invitePlay": "Jugar",
     "inviteYou": "Has invitado a jugar a «{game}»",
-    "newInvite": "{name} te invita a jugar a «{game}»"
+    "newInvite": "{name} te invita a jugar a «{game}»",
+    "inviteLater": "Más tarde",
+    "inviteHeading": "Invitación a jugar"
   },
   "it": {
     "home": "Amici",
@@ -199,7 +203,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Giochiamo a «{game}»!",
     "invitePlay": "Gioca",
     "inviteYou": "Hai invitato a giocare a «{game}»",
-    "newInvite": "{name} ti invita a giocare a «{game}»"
+    "newInvite": "{name} ti invita a giocare a «{game}»",
+    "inviteLater": "Più tardi",
+    "inviteHeading": "Invito a giocare"
   },
   "pl": {
     "home": "Znajomi",
@@ -266,7 +272,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Zagrajmy w „{game}”!",
     "invitePlay": "Graj",
     "inviteYou": "Zaproszenie do gry „{game}” wysłane",
-    "newInvite": "{name} zaprasza cię do gry „{game}”"
+    "newInvite": "{name} zaprasza cię do gry „{game}”",
+    "inviteLater": "Później",
+    "inviteHeading": "Zaproszenie do gry"
   },
   "uk": {
     "home": "Друзі",
@@ -333,7 +341,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Зіграймо в «{game}»!",
     "invitePlay": "Грати",
     "inviteYou": "Ви покликали в гру «{game}»",
-    "newInvite": "{name} кличе вас у гру «{game}»"
+    "newInvite": "{name} кличе вас у гру «{game}»",
+    "inviteLater": "Пізніше",
+    "inviteHeading": "Запрошення до гри"
   },
   "pt": {
     "home": "Amigos",
@@ -400,7 +410,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Vamos jogar «{game}»!",
     "invitePlay": "Jogar",
     "inviteYou": "Você convidou para jogar «{game}»",
-    "newInvite": "{name} convida você para jogar «{game}»"
+    "newInvite": "{name} convida você para jogar «{game}»",
+    "inviteLater": "Mais tarde",
+    "inviteHeading": "Convite para jogar"
   },
   "nl": {
     "home": "Vrienden",
@@ -467,7 +479,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Zullen we ‘{game}’ spelen?",
     "invitePlay": "Spelen",
     "inviteYou": "Je hebt uitgenodigd voor ‘{game}’",
-    "newInvite": "{name} nodigt je uit voor ‘{game}’"
+    "newInvite": "{name} nodigt je uit voor ‘{game}’",
+    "inviteLater": "Later",
+    "inviteHeading": "Uitnodiging om te spelen"
   },
   "tr": {
     "home": "Arkadaşlar",
@@ -534,7 +548,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Hadi “{game}” oynayalım!",
     "invitePlay": "Oyna",
     "inviteYou": "“{game}” oyununa davet ettiniz",
-    "newInvite": "{name} sizi “{game}” oynamaya davet ediyor"
+    "newInvite": "{name} sizi “{game}” oynamaya davet ediyor",
+    "inviteLater": "Sonra",
+    "inviteHeading": "Oyun daveti"
   },
   "ro": {
     "home": "Prieteni",
@@ -601,7 +617,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Hai să jucăm „{game}”!",
     "invitePlay": "Joacă",
     "inviteYou": "Ați invitat la „{game}”",
-    "newInvite": "{name} vă invită să jucați „{game}”"
+    "newInvite": "{name} vă invită să jucați „{game}”",
+    "inviteLater": "Mai târziu",
+    "inviteHeading": "Invitație la joc"
   },
   "cs": {
     "home": "Přátelé",
@@ -668,7 +686,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Zahrajeme si „{game}“?",
     "invitePlay": "Hrát",
     "inviteYou": "Pozvánka do hry „{game}“ odeslána",
-    "newInvite": "{name} vás zve do hry „{game}“"
+    "newInvite": "{name} vás zve do hry „{game}“",
+    "inviteLater": "Později",
+    "inviteHeading": "Pozvánka do hry"
   },
   "sv": {
     "home": "Vänner",
@@ -735,7 +755,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Ska vi spela ”{game}”?",
     "invitePlay": "Spela",
     "inviteYou": "Du bjöd in till ”{game}”",
-    "newInvite": "{name} bjuder in dig att spela ”{game}”"
+    "newInvite": "{name} bjuder in dig att spela ”{game}”",
+    "inviteLater": "Senare",
+    "inviteHeading": "Inbjudan att spela"
   },
   "el": {
     "home": "Φίλοι",
@@ -802,7 +824,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Παίζουμε «{game}»;",
     "invitePlay": "Παίξτε",
     "inviteYou": "Στείλατε πρόσκληση για «{game}»",
-    "newInvite": "{name} σας προσκαλεί να παίξετε «{game}»"
+    "newInvite": "{name} σας προσκαλεί να παίξετε «{game}»",
+    "inviteLater": "Αργότερα",
+    "inviteHeading": "Πρόσκληση για παιχνίδι"
   },
   "da": {
     "home": "Venner",
@@ -869,7 +893,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Skal vi spille »{game}«?",
     "invitePlay": "Spil",
     "inviteYou": "Du inviterede til »{game}«",
-    "newInvite": "{name} inviterer dig til at spille »{game}«"
+    "newInvite": "{name} inviterer dig til at spille »{game}«",
+    "inviteLater": "Senere",
+    "inviteHeading": "Invitation til spil"
   },
   "no": {
     "home": "Venner",
@@ -936,7 +962,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Skal vi spille «{game}»?",
     "invitePlay": "Spill",
     "inviteYou": "Du inviterte til «{game}»",
-    "newInvite": "{name} inviterer deg til å spille «{game}»"
+    "newInvite": "{name} inviterer deg til å spille «{game}»",
+    "inviteLater": "Senere",
+    "inviteHeading": "Invitasjon til spill"
   },
   "fi": {
     "home": "Ystävät",
@@ -1003,7 +1031,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Pelataanko ”{game}”?",
     "invitePlay": "Pelaa",
     "inviteYou": "Kutsuit pelaamaan: ”{game}”",
-    "newInvite": "{name} kutsuu sinut pelaamaan: ”{game}”"
+    "newInvite": "{name} kutsuu sinut pelaamaan: ”{game}”",
+    "inviteLater": "Myöhemmin",
+    "inviteHeading": "Kutsu peliin"
   },
   "ja": {
     "home": "友だち",
@@ -1070,7 +1100,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "「{game}」で遊ぼう！",
     "invitePlay": "遊ぶ",
     "inviteYou": "「{game}」に招待しました",
-    "newInvite": "{name}さんから「{game}」への招待が届きました"
+    "newInvite": "{name}さんから「{game}」への招待が届きました",
+    "inviteLater": "あとで",
+    "inviteHeading": "ゲームへの招待"
   },
   "ko": {
     "home": "친구",
@@ -1137,7 +1169,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "“{game}” 같이 해요!",
     "invitePlay": "플레이",
     "inviteYou": "“{game}”에 초대했어요",
-    "newInvite": "{name} 님이 “{game}”에 초대했어요"
+    "newInvite": "{name} 님이 “{game}”에 초대했어요",
+    "inviteLater": "나중에",
+    "inviteHeading": "게임 초대"
   },
   "zh": {
     "home": "好友",
@@ -1204,7 +1238,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "一起玩「{game}」吧！",
     "invitePlay": "開始玩",
     "inviteYou": "你邀請對方玩「{game}」",
-    "newInvite": "{name} 邀請你玩「{game}」"
+    "newInvite": "{name} 邀請你玩「{game}」",
+    "inviteLater": "稍後",
+    "inviteHeading": "遊戲邀請"
   },
   "th": {
     "home": "เพื่อน",
@@ -1271,7 +1307,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "มาเล่น “{game}” กัน!",
     "invitePlay": "เล่น",
     "inviteYou": "คุณชวนเล่น “{game}”",
-    "newInvite": "{name} ชวนคุณเล่น “{game}”"
+    "newInvite": "{name} ชวนคุณเล่น “{game}”",
+    "inviteLater": "ภายหลัง",
+    "inviteHeading": "คำเชิญเล่นเกม"
   },
   "ar": {
     "home": "الأصدقاء",
@@ -1338,7 +1376,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "هيا نلعب «{game}»!",
     "invitePlay": "لنلعب",
     "inviteYou": "أرسلت دعوة للعب «{game}»",
-    "newInvite": "دعوة من {name} للعب «{game}»"
+    "newInvite": "دعوة من {name} للعب «{game}»",
+    "inviteLater": "لاحقًا",
+    "inviteHeading": "دعوة إلى لعبة"
   },
   "ind": {
     "home": "Teman",
@@ -1405,7 +1445,9 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Yuk main “{game}”!",
     "invitePlay": "Main",
     "inviteYou": "Kamu mengajak main “{game}”",
-    "newInvite": "{name} mengajakmu main “{game}”"
+    "newInvite": "{name} mengajakmu main “{game}”",
+    "inviteLater": "Nanti",
+    "inviteHeading": "Undangan bermain"
   },
   "vi": {
     "home": "Bạn bè",
@@ -1472,6 +1514,8 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "inviteMessage": "Mình chơi “{game}” nhé!",
     "invitePlay": "Chơi",
     "inviteYou": "Bạn đã mời chơi “{game}”",
-    "newInvite": "{name} mời bạn chơi “{game}”"
+    "newInvite": "{name} mời bạn chơi “{game}”",
+    "inviteLater": "Để sau",
+    "inviteHeading": "Lời mời chơi"
   }
 };
