@@ -168,6 +168,8 @@ def syncWebAssets = tasks.register("syncWebAssets", Sync) {
     from(webRoot) {
         exclude "mobile/**", "mobile-web/**", "backend/**", "supabase/**", "tests/**", ".git/**", ".github/**", ".claude/**"
         exclude "*.md", "*.py", ".gitignore"
+        // Исходники картинок (в том числе увеличенные по 35 МБ) в приложение не входят.
+        exclude "assets/source/**", "assets/og-next.png"
         // Local tool folders (.impeccable, .playwright-mcp, ...) never ship in the app.
         exclude ".*", ".*/**", "CNAME"
     }
