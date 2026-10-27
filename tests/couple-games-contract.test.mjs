@@ -85,13 +85,19 @@ assert.match(games, /const CARD_LEVELS = Object\.freeze\(\[\{ cards: 8,.*\{ card
 assert.match(games, /type: "mflip", index/u);
 assert.match(games, /\["featCards"\], \["featGamesSoon3", true\]/u);
 
+// Владелец: слов поклонения («обожаю», adore, adoro, обожнюю…) в приложении быть не должно.
+const WORSHIP_WORDS = /[Оо]божа|[Оо]божн|[Бб]оготвор|[Aa]dor(?:e|es|o|a|as|ar|er)|’adore/u;
+for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "moments.js", "experience.js", "i18n-extra.js"]) {
+  assert.doesNotMatch(read(file), WORSHIP_WORDS, `${file} has a worship word`);
+}
+
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=66") < index.indexOf("games-i18n.js?v=66"));
-assert.ok(index.indexOf("games-i18n.js?v=66") < index.indexOf("games.js?v=66"));
-assert.match(index, /games\.css\?v=66/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=66"`, "u"));
+assert.ok(index.indexOf("experience.js?v=67") < index.indexOf("games-i18n.js?v=67"));
+assert.ok(index.indexOf("games-i18n.js?v=67") < index.indexOf("games.js?v=67"));
+assert.match(index, /games\.css\?v=67/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=67"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,

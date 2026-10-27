@@ -1511,7 +1511,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "c09": [
         "¿Te encantan mis sorpresas?",
-        "adora tus sorpresas",
+        "le encantan tus sorpresas",
         "prefiere tenerte simplemente cerca"
       ],
       "c10": [
@@ -2157,9 +2157,9 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "q32": [
         "Cosa penso delle sorprese?",
-        "Le adoro",
+        "Mi piacciono tanto",
         "Mi agitano un po’",
-        "Adoro farle agli altri",
+        "Mi piace farle agli altri",
         "Preferisco saperlo prima"
       ],
       "q33": [
@@ -2402,7 +2402,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "c09": [
         "Ami le mie sorprese?",
-        "adora le tue sorprese",
+        "ama tanto le tue sorprese",
         "ama soprattutto averti vicino"
       ],
       "c10": [
@@ -3767,7 +3767,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Жайворонок",
         "Сова",
         "Сплю, коли виходить",
-        "Обожнюю денний сон"
+        "Люблю денний сон"
       ],
       "q08": [
         "Який фільм я оберу на вечір?",
@@ -3939,7 +3939,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "q32": [
         "Як я ставлюся до сюрпризів?",
-        "Обожнюю",
+        "Дуже люблю",
         "Трохи хвилююся",
         "Люблю влаштовувати їх іншим",
         "Волію знати заздалегідь"
@@ -4184,7 +4184,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "c09": [
         "Любиш мої сюрпризи?",
-        "обожнює твої сюрпризи",
+        "дуже любить твої сюрпризи",
         "любить, коли ти просто поруч"
       ],
       "c10": [
@@ -4830,9 +4830,9 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "q32": [
         "O que acho de surpresas?",
-        "Adoro",
+        "Gosto muito",
         "Me dão um frio na barriga",
-        "Adoro fazer para os outros",
+        "Gosto de fazer para os outros",
         "Prefiro saber antes"
       ],
       "q33": [
@@ -5075,7 +5075,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       ],
       "c09": [
         "Você ama minhas surpresas?",
-        "adora suas surpresas",
+        "gosta muito das suas surpresas",
         "gosta mesmo é de ter você por perto"
       ],
       "c10": [
@@ -5121,7 +5121,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "c18": [
         "Você gosta da minha comida?",
         "pede mais um prato",
-        "adora cozinhar junto com você"
+        "gosta de cozinhar junto com você"
       ],
       "c19": [
         "Vamos ter um bichinho juntos?",
@@ -5176,7 +5176,7 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "c29": [
         "Você gosta dos meus abraços?",
         "os mais quentinhos do mundo",
-        "adora andar de mãos dadas"
+        "gosta de andar de mãos dadas"
       ],
       "c30": [
         "Vamos ler em voz alta um para o outro?",
