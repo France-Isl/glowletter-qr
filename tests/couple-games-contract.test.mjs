@@ -90,7 +90,7 @@ assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind i
 assert.match(read("supabase/migrations/20261028130000_cards_rooms.sql"), /kind in \('yesno', 'loves', 'cards'\)/u);
 assert.match(games, /const CARD_LEVELS = Object\.freeze\(\[\{ cards: 8,.*\{ cards: 12,.*\{ cards: 16,/u);
 assert.match(games, /type: "mflip", index/u);
-assert.match(games, /\["featCards"\], \["featDuel"\]\]\) \+ group\("groupFun", \[\["featTruth"\], \["featWho"\], \["featPhrase"\]\]\)/u);
+assert.match(games, /\["featCards"\], \["featDuel"\]\]\) \+ group\("groupFun", \[\["featCountries"\], \["featTruth"\], \["featHints"\], \["featDreams"\], \["featWho"\], \["featPhrase"\]\]\)/u);
 
 // «Кто быстрее», «Кто из нас?», «Закончи фразу» (2.4.22): 40 вопросов и 30 фраз на всех языках.
 const WHO = grab(games, "const WHO = {", "\n  const PHRASES = {");
@@ -108,7 +108,7 @@ assert.match(moreGames, /function public\.glowletter_check_phrase\(p_text text\)
 assert.match(moreGames, /function public\.glowletter_book_add[\s\S]*?glowletter_phrase_is_forbidden\(clean_mine\)/u);
 assert.match(moreGames, /alter table public\.glowletter_couple_book enable row level security/u);
 assert.match(moreGames, /alter table public\.glowletter_user_settings enable row level security/u);
-assert.match(games, /const ROOM_TITLES = Object\.freeze\(\{ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle", duel: "duTitle", who: "whoTitle", phrase: "phTitle", truth: "tfTitle" \}\)/u);
+assert.match(games, /const ROOM_TITLES = Object\.freeze\(\{ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle", duel: "duTitle", who: "whoTitle", phrase: "phTitle", truth: "tfTitle", countries: "coTitle", hints: "hiTitle", dreams: "drTitle" \}\)/u);
 // Текст партнёра в «Закончи фразу» проверяется на сервере до показа и выводится только через escapeHtml.
 assert.match(games, /if \(yn\.kind === "phrase" && guest && !\(await phraseAllowed\(guest\)\)\) guest = null;/u);
 assert.match(games, /escapeHtml\(theirs \|\| tr\("phSkipped"\)\)/u);
@@ -122,10 +122,10 @@ for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "mo
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=78") < index.indexOf("games-i18n.js?v=78"));
-assert.ok(index.indexOf("games-i18n.js?v=78") < index.indexOf("games.js?v=78"));
-assert.match(index, /games\.css\?v=78/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=78"`, "u"));
+assert.ok(index.indexOf("experience.js?v=79") < index.indexOf("games-i18n.js?v=79"));
+assert.ok(index.indexOf("games-i18n.js?v=79") < index.indexOf("games.js?v=79"));
+assert.match(index, /games\.css\?v=79/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=79"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
@@ -165,5 +165,18 @@ for (const code of LANGUAGES.filter(code => extra[code])) {
   for (const [id, item] of Object.entries(truth)) assert.ok(item.length === 3 && typeof item[1] === "boolean" && item[0].trim() && item[2].trim(), `${code}.${id}`);
 }
 assert.match(games, /Object\.assign\(TRUTH\.ru, \{"t01"/u);
+
+// «Угадай по подсказкам» (60) и «Мечты и планы» (50) на всех языках-паках; «Угадай страну» — 40 картинок.
+for (const code of LANGUAGES.filter(code => extra[code])) {
+  const { hints, dreams } = extra[code];
+  assert.equal(Object.keys(hints || {}).length, 60, `${code} hints`);
+  for (const [id, item] of Object.entries(hints)) assert.ok(item.length === 7 && item.every(value => typeof value === "string" && value.trim()) && !item.slice(4).includes(item[0]), `${code}.${id}`);
+  assert.equal(Object.keys(dreams || {}).length, 50, `${code} dreams`);
+  for (const [id, item] of Object.entries(dreams)) assert.ok(item.length === 5 && item.every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
+}
+const COUNTRIES = games.match(/const COUNTRY_CODES = Object\.freeze\(\[([^\]]+)\]\)/u)[1].match(/[A-Z]{2}/gu);
+assert.equal(COUNTRIES.length, 40);
+for (const code of COUNTRIES) assert.ok(fs.existsSync(path.join(root, `assets/countries/${code.toLowerCase()}.webp`)), `${code} picture`);
+assert.match(read("supabase/migrations/20261029090000_more_room_kinds.sql"), /'truth', 'countries', 'hints', 'dreams'/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, questions: QUESTION_IDS.length, texts: keys.length }));

@@ -1,6 +1,6 @@
 // Игры для двоих на двадцати двух языках сверх ru/en/fr: тексты экрана
 // (text), вопросы теста (questions), карточки «Да или нет» (yesNo), темы «Что мы любим» (loves),
-// вопросы «Кто из нас?» (who) начала фраз «Закончи фразу» (phrases) и факты «Правды или лжи» (truth). Порядок вариантов совпадает с
+// вопросы «Кто из нас?» (who) начала фраз «Закончи фразу» (phrases) факты «Правды или лжи» (truth), загадки «Угадай по подсказкам» (hints) и вопросы «Мечты и планы» (dreams). Порядок вариантов совпадает с
 // games.js — номер верного варианта хранится на сервере, поэтому варианты
 // нельзя переставлять.
 window.GLOWLETTER_GAMES_I18N = Object.freeze({
@@ -227,7 +227,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Sieg! Du weißt mehr über die Welt.",
       "tfFinalLose": "Diesmal weiß {name} mehr — Revanche?",
       "tfFinalDraw": "Unentschieden — ihr wisst genau gleich viel!",
-      "featTruth": "Live-Spiel „Wahr oder falsch“ — erstaunliche Fakten über die Welt"
+      "featTruth": "Live-Spiel „Wahr oder falsch“ — erstaunliche Fakten über die Welt",
+      "countries": "Errate das Land",
+      "coTitle": "Errate das Land",
+      "coNote": "Ein Live-Spiel zu zweit: Der Bär reist um die Welt. 10 Sekunden — errate, in welchem Land er ist! Für jede richtige Antwort gibt es einen Punkt.",
+      "coShareText": "{name} lädt dich zum Live-Spiel „Errate das Land“ ein",
+      "coJoinLead": "{name} wartet auf dich. Errate das Land anhand des Bildes!",
+      "coRound": "Land {n} von {total}",
+      "coAsk": "Welches Land ist das?",
+      "coFinalWin": "Sieg! Du kennst dich in der Welt bestens aus.",
+      "coFinalLose": "Diesmal kennt {name} die Welt besser — Revanche?",
+      "coFinalDraw": "Unentschieden — ihr kennt beide die Welt gut!",
+      "featCountries": "Live-Spiel „Errate das Land“ — 40 Länder",
+      "hints": "Rate mit Hinweisen",
+      "dreams": "Träume und Pläne",
+      "hiTitle": "Rate mit Hinweisen",
+      "hiNote": "Ein Live-Spiel zu zweit: Drei Hinweise erscheinen nacheinander. Errätst du es beim ersten — 3 Punkte, beim zweiten — 2, beim dritten — 1.",
+      "hiShareText": "{name} lädt dich zum Live-Spiel „Rate mit Hinweisen“ ein",
+      "hiJoinLead": "{name} wartet auf dich. Rate so früh wie möglich!",
+      "hiRound": "Rätsel {n} von {total}",
+      "hiAsk": "Was ist das?",
+      "hiClue": "Hinweis {n}",
+      "hiPoints": "Punkte: +{n}",
+      "hiNoPoints": "Diesmal keine Punkte",
+      "hiFinalWin": "Gewonnen! Du rätst großartig.",
+      "hiFinalLose": "Diesmal hat {name} besser geraten — Revanche?",
+      "hiFinalDraw": "Unentschieden — ihr ratet beide großartig!",
+      "featHints": "Live-Spiel „Rate mit Hinweisen“ — 3, 2 oder 1 Punkt",
+      "drTitle": "Träume und Pläne",
+      "drNote": "Ein Live-Spiel zu zweit: Zuhause, Reisen, Lernen und Hobbys. Wähle, was du dir wünschst, und seht, ob eure Träume übereinstimmen.",
+      "drShareText": "{name} lädt dich zum Live-Spiel „Träume und Pläne“ ein",
+      "drJoinLead": "{name} wartet auf dich. Wähle, was du dir wirklich wünschst!",
+      "drRound": "Frage {n} von {total}",
+      "drPick": "Wähle, was du dir wünschst",
+      "drBoth": "Gemeinsam: {item}",
+      "drDiff": "Verschiedene Träume — erzählt einander, warum!",
+      "drFinalHigh": "Ihr habt so viele gemeinsame Träume!",
+      "drFinalMid": "Verschiedene Träume — viel Gesprächsstoff",
+      "drCommon": "Eure gemeinsamen Träume",
+      "featDreams": "Live-Spiel „Träume und Pläne“ — passen eure Träume zusammen?",
+      "modestTitle": "Zurückhaltender Modus",
+      "modestNote": "Keine Fragen zu Gefühlen, Umarmungen oder Dates – nur freundliche"
     },
     "questions": {
       "q01": [
@@ -2146,6 +2186,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Der Südpol ist viel kälter: Er liegt auf einem hohen, vereisten Kontinent, der Nordpol auf einem Ozean."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pinguin",
+        "Ich bin ein Vogel, kann aber nicht fliegen",
+        "Ich lebe dort, wo es sehr kalt ist",
+        "Ich trage immer einen Frack",
+        "Strauß",
+        "Robbe",
+        "Möwe"
+      ],
+      "h02": [
+        "Elefant",
+        "Ich fresse fast den ganzen Tag",
+        "Meine Ohren sehen aus wie große Fächer",
+        "Ich habe einen langen Rüssel",
+        "Nashorn",
+        "Nilpferd",
+        "Giraffe"
+      ],
+      "h03": [
+        "Giraffe",
+        "Ich schlafe sehr wenig, oft im Stehen",
+        "Ich fresse Blätter von den höchsten Bäumen",
+        "Ich habe den längsten Hals",
+        "Zebra",
+        "Kamel",
+        "Elch"
+      ],
+      "h04": [
+        "Kamel",
+        "Ich komme lange ohne Wasser aus",
+        "Man nennt mich das Schiff der Wüste",
+        "Ich habe einen oder zwei Höcker auf dem Rücken",
+        "Pferd",
+        "Esel",
+        "Lama"
+      ],
+      "h05": [
+        "Biene",
+        "Ich kann anderen den Weg zu den Blumen zeigen",
+        "Ich arbeite von früh bis spät auf der Wiese",
+        "Ich mache Honig",
+        "Wespe",
+        "Fliege",
+        "Schmetterling"
+      ],
+      "h06": [
+        "Schildkröte",
+        "Ich kann über hundert Jahre alt werden",
+        "Ich habe es nie eilig",
+        "Ich trage mein Haus auf dem Rücken",
+        "Schnecke",
+        "Eidechse",
+        "Igel"
+      ],
+      "h07": [
+        "Känguru",
+        "Mein Schwanz hilft mir, das Gleichgewicht zu halten",
+        "Ich lebe in Australien",
+        "Ich trage mein Junges in einem Beutel",
+        "Koala",
+        "Hase",
+        "Eichhörnchen"
+      ],
+      "h08": [
+        "Eule",
+        "Ich kann den Kopf fast ganz nach hinten drehen",
+        "Ich jage nachts",
+        "Mein Ruf klingt durch den dunklen Wald",
+        "Krähe",
+        "Adler",
+        "Taube"
+      ],
+      "h09": [
+        "Delfin",
+        "Ich atme Luft, obwohl ich im Meer lebe",
+        "Ich helfe Menschen und spreche mit Pfiffen",
+        "Ich springe gern über die Wellen",
+        "Hai",
+        "Wal",
+        "Robbe"
+      ],
+      "h10": [
+        "Eichhörnchen",
+        "Ich verstecke Futter und vergesse manchmal, wo",
+        "Ich wohne in einer Baumhöhle",
+        "Ich knabbere Nüsse und Zapfen",
+        "Igel",
+        "Hase",
+        "Maus"
+      ],
+      "h11": [
+        "Spinne",
+        "Ich bin kein Insekt, auch wenn viele das denken",
+        "Ich habe acht Beine",
+        "Ich webe ein Netz",
+        "Ameise",
+        "Käfer",
+        "Mücke"
+      ],
+      "h12": [
+        "Katze",
+        "Ich sehe im Dunkeln besser als Menschen",
+        "Ich liebe eine warme Fensterbank",
+        "Ich schnurre und fange Mäuse",
+        "Kaninchen",
+        "Hamster",
+        "Papagei"
+      ],
+      "h13": [
+        "Wassermelone",
+        "Wissenschaftler nennen mich eine Beere",
+        "Man wartet auf mich am Ende des Sommers",
+        "Außen grün, innen rot",
+        "Honigmelone",
+        "Kürbis",
+        "Ananas"
+      ],
+      "h14": [
+        "Brot",
+        "Man backt mich in fast jedem Land",
+        "Man schneidet mich in Scheiben",
+        "Ich bin hell oder aus Roggen, mit Kruste",
+        "Pfannkuchen",
+        "Kuchen",
+        "Keks"
+      ],
+      "h15": [
+        "Honig",
+        "Ich halte mich Tausende von Jahren",
+        "Bei Erkältung gibt man mich in warmen Tee",
+        "Bienen machen mich",
+        "Marmelade",
+        "Zucker",
+        "Milch"
+      ],
+      "h16": [
+        "Zitrone",
+        "Ich stecke voller Vitamin C",
+        "Man gibt mich in den Tee",
+        "Ich bin gelb und sehr sauer",
+        "Orange",
+        "Grapefruit",
+        "Limette"
+      ],
+      "h17": [
+        "Karotte",
+        "Ich wachse unter der Erde, nur mein Kraut schaut heraus",
+        "Man sagt, ich sei gut für die Augen",
+        "Ich bin orange, und Hasen mögen mich sehr",
+        "Rote Bete",
+        "Radieschen",
+        "Kartoffel"
+      ],
+      "h18": [
+        "Apfel",
+        "Es gibt mich als Sommer- und als Wintersorte",
+        "Aus mir macht man Kuchen und Saft",
+        "Ich wachse am Baum, rot oder grün",
+        "Birne",
+        "Pfirsich",
+        "Pflaume"
+      ],
+      "h19": [
+        "Banane",
+        "Ich wachse in Büscheln an einer hohen Pflanze",
+        "Affen mögen mich sehr",
+        "Ich bin gelb, und man muss mich schälen",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Tee",
+        "In China trinkt man mich seit Jahrtausenden",
+        "Ich kann schwarz, grün oder aus Kräutern sein",
+        "Man brüht mich in einer Kanne auf",
+        "Kaffee",
+        "Kakao",
+        "Saft"
+      ],
+      "h21": [
+        "Ei",
+        "Ohne mich lässt sich kaum ein Kuchen backen",
+        "Aus mir macht man ein Omelett",
+        "Ein Huhn legt mich",
+        "Käse",
+        "Nuss",
+        "Kartoffel"
+      ],
+      "h22": [
+        "Regenschirm",
+        "Meistens bin ich zusammengeklappt",
+        "Man nimmt mich mit, wenn der Himmel grau wird",
+        "Ich halte dich im Regen trocken",
+        "Regenmantel",
+        "Hut",
+        "Stiefel"
+      ],
+      "h23": [
+        "Uhr",
+        "Ich kann mit Sand oder mit Sonnenlicht funktionieren",
+        "Ich hänge an Wänden und stehe in Türmen",
+        "Ich zeige die Zeit mit meinen Zeigern",
+        "Kompass",
+        "Kalender",
+        "Thermometer"
+      ],
+      "h24": [
+        "Schlüssel",
+        "Ohne mich lässt dich die Tür nicht hinein",
+        "Man trägt mich oft an einem Ring",
+        "Ich öffne ein Schloss",
+        "Schere",
+        "Schraubenzieher",
+        "Büroklammer"
+      ],
+      "h25": [
+        "Kerze",
+        "Je länger ich arbeite, desto kleiner werde ich",
+        "Man zündet mich an, wenn der Strom ausfällt",
+        "Ich bin aus Wachs und habe einen Docht",
+        "Taschenlampe",
+        "Lampe",
+        "Streichhölzer"
+      ],
+      "h26": [
+        "Schere",
+        "Ich habe zwei Ringe und zwei scharfe Enden",
+        "Ich schneide Formen aus Papier aus",
+        "Ich schneide Stoff und Papier",
+        "Messer",
+        "Nadel",
+        "Lineal"
+      ],
+      "h27": [
+        "Zahnbürste",
+        "Ich habe viele Borsten",
+        "Man ersetzt mich alle drei Monate",
+        "Ich putze morgens und abends die Zähne",
+        "Seife",
+        "Handtuch",
+        "Schwamm"
+      ],
+      "h28": [
+        "Kühlschrank",
+        "In mir ist immer Winter",
+        "Wenn man mich öffnet, geht ein Licht an",
+        "Ich halte Essen kalt",
+        "Herd",
+        "Backofen",
+        "Schrank"
+      ],
+      "h29": [
+        "Fahrrad",
+        "Ich fahre ohne Benzin und ohne Strom",
+        "Ich habe einen Lenker, eine Klingel und eine Kette",
+        "Ich habe zwei Räder und Pedale",
+        "Roller",
+        "Motorrad",
+        "Skateboard"
+      ],
+      "h30": [
+        "Flugzeug",
+        "Ich habe Flügel, bin aber kein Vogel",
+        "Man wartet auf mich am Flughafen",
+        "Ich fliege mit Passagieren über den Wolken",
+        "Hubschrauber",
+        "Rakete",
+        "Heißluftballon"
+      ],
+      "h31": [
+        "Zug",
+        "Ich fahre nur auf meinem eigenen Weg",
+        "Ich habe viele Wagen",
+        "Ich fahre auf Schienen von Bahnhof zu Bahnhof",
+        "Straßenbahn",
+        "Bus",
+        "U-Bahn"
+      ],
+      "h32": [
+        "Brücke",
+        "Man baut mich aus Stein, Holz oder Stahl",
+        "Schiffe können unter mir hindurchfahren",
+        "Ich verbinde die zwei Ufer eines Flusses",
+        "Tunnel",
+        "Straße",
+        "Damm"
+      ],
+      "h33": [
+        "Bleistift",
+        "In mir steckt Graphit",
+        "Man spitzt mich, wenn ich stumpf werde",
+        "Ich schreibe und male; ein Radiergummi entfernt meine Spuren",
+        "Kugelschreiber",
+        "Kreide",
+        "Filzstift"
+      ],
+      "h34": [
+        "Buch",
+        "Ich schweige, lehre aber viel",
+        "Ich habe einen Einband und Seiten",
+        "Man liest mich und leiht mich in Bibliotheken aus",
+        "Zeitschrift",
+        "Zeitung",
+        "Heft"
+      ],
+      "h35": [
+        "Koffer",
+        "Ich reise viel, aber immer in jemandes Hand",
+        "Man packt mich vor einer Reise",
+        "Ich habe Griff und Rollen und trage Kleidung",
+        "Rucksack",
+        "Tasche",
+        "Kiste"
+      ],
+      "h36": [
+        "Bibliothek",
+        "Hier bittet man, leise zu sprechen",
+        "Hier bekommt man einen Leseausweis",
+        "Tausende Bücher zum Mitnehmen nach Hause",
+        "Schule",
+        "Buchhandlung",
+        "Archiv"
+      ],
+      "h37": [
+        "Flughafen",
+        "Hier gibt es eine Passkontrolle",
+        "Hier wird das Boarding für Flüge angesagt",
+        "Von hier starten Flugzeuge",
+        "Bahnhof",
+        "Hafen",
+        "Busbahnhof"
+      ],
+      "h38": [
+        "Wüste",
+        "Tagsüber heiß, nachts manchmal sehr kalt",
+        "Hier findet man Oasen",
+        "Viel Sand und sehr wenig Wasser",
+        "Steppe",
+        "Savanne",
+        "Strand"
+      ],
+      "h39": [
+        "Vulkan",
+        "Ich kann Hunderte von Jahren schlafen",
+        "Aus meiner Spitze steigt Rauch",
+        "Ich breche mit Lava aus",
+        "Berg",
+        "Geysir",
+        "Insel"
+      ],
+      "h40": [
+        "Regenbogen",
+        "Man sieht mich nur mit der Sonne im Rücken",
+        "Ich erscheine oft nach dem Regen",
+        "Sieben Farben im Bogen am Himmel",
+        "Blitz",
+        "Wolke",
+        "Polarlicht"
+      ],
+      "h41": [
+        "Mond",
+        "Ich zeige der Erde immer dieselbe Seite",
+        "Ich kann voll sein oder eine schmale Sichel",
+        "Ich leuchte am Nachthimmel",
+        "Sonne",
+        "Stern",
+        "Komet"
+      ],
+      "h42": [
+        "Schnee",
+        "Jede meiner Flocken ist einzigartig",
+        "Aus mir baut man Burgen",
+        "Weiß und kalt falle ich im Winter",
+        "Regen",
+        "Hagel",
+        "Raureif"
+      ],
+      "h43": [
+        "Fluss",
+        "Ich habe eine Quelle und eine Mündung",
+        "Boote fahren auf mir",
+        "Ich fließe von den Bergen ins Meer",
+        "See",
+        "Meer",
+        "Bach"
+      ],
+      "h44": [
+        "Kaktus",
+        "Ich kann lange ohne Wasser leben",
+        "Ich wachse in Wüsten und auf Fensterbänken",
+        "Ich bin mit Stacheln bedeckt",
+        "Aloe",
+        "Palme",
+        "Gänseblümchen"
+      ],
+      "h45": [
+        "Sonnenblume",
+        "Aus meinen Kernen macht man Öl",
+        "Ich drehe mich nach der Sonne",
+        "Eine große gelbe Blume voller Kerne",
+        "Gänseblümchen",
+        "Tulpe",
+        "Löwenzahn"
+      ],
+      "h46": [
+        "Eiche",
+        "Ich kann über tausend Jahre alt werden",
+        "Ich gelte als Symbol der Stärke",
+        "Meine Früchte tragen kleine Hütchen",
+        "Birke",
+        "Kiefer",
+        "Ahorn"
+      ],
+      "h47": [
+        "Insel",
+        "Auf mir hat ein ganzes Land Platz",
+        "Man erreicht mich per Boot oder Flugzeug",
+        "Ich bin ringsum von Wasser umgeben",
+        "Halbinsel",
+        "Riff",
+        "Kap"
+      ],
+      "h48": [
+        "Wasserfall",
+        "Man hört mich schon von Weitem",
+        "Der höchste von uns ist in Venezuela",
+        "Hier stürzt ein Fluss über eine Klippe",
+        "Springbrunnen",
+        "Geysir",
+        "Quelle"
+      ],
+      "h49": [
+        "Arzt",
+        "Ich studiere viele Jahre, bevor ich arbeite",
+        "Ich trage einen weißen Kittel",
+        "Ich behandle kranke Menschen",
+        "Krankenpfleger",
+        "Apotheker",
+        "Tierarzt"
+      ],
+      "h50": [
+        "Feuerwehrmann",
+        "Ich habe Tag und Nacht Bereitschaft",
+        "Ich arbeite mit Wasser und Leitern",
+        "Ich lösche Brände",
+        "Polizist",
+        "Sanitäter",
+        "Bauarbeiter"
+      ],
+      "h51": [
+        "Koch",
+        "Ich probiere alles, was ich zubereite",
+        "Ich arbeite an einem heißen Herd",
+        "Ich bereite im Restaurant Speisen zu",
+        "Bäcker",
+        "Kellner",
+        "Konditor"
+      ],
+      "h52": [
+        "Lehrer",
+        "Abends korrigiere ich Hefte",
+        "Ich stehe an der Tafel",
+        "Ich unterrichte Kinder in der Schule",
+        "Schulleiter",
+        "Bibliothekar",
+        "Erzieher"
+      ],
+      "h53": [
+        "Pilot",
+        "Mein Arbeitsplatz ist ein Cockpit",
+        "Ich spreche über Lautsprecher zu den Passagieren",
+        "Ich fliege ein Flugzeug",
+        "Kapitän",
+        "Fahrer",
+        "Astronaut"
+      ],
+      "h54": [
+        "Briefträger",
+        "Ich kenne jede Adresse in meinem Bezirk",
+        "Ich trage eine große Tasche",
+        "Ich bringe Briefe und Pakete",
+        "Kurier",
+        "Taxifahrer",
+        "Verkäufer"
+      ],
+      "h55": [
+        "Gärtner",
+        "Ich weiß, wann man was pflanzt",
+        "Meine Werkzeuge sind Gießkanne und Schere",
+        "Ich pflege Blumen und Bäume",
+        "Bauer",
+        "Förster",
+        "Florist"
+      ],
+      "h56": [
+        "Fotograf",
+        "Ich fange Augenblicke ein",
+        "Ich bitte alle, still zu halten",
+        "Ich arbeite mit Kamera und Bildern",
+        "Maler",
+        "Journalist",
+        "Kameramann"
+      ],
+      "h57": [
+        "Fischer",
+        "Ich stehe vor Sonnenaufgang auf und warte lange",
+        "Ich brauche eine Angel und Geduld",
+        "Ich fange Fische",
+        "Bauer",
+        "Seemann",
+        "Hirte"
+      ],
+      "h58": [
+        "Astronaut",
+        "Ich trainiere lange auf der Erde",
+        "Ich trage einen Raumanzug",
+        "Ich fliege ins All",
+        "Pilot",
+        "Astronom",
+        "Ingenieur"
+      ],
+      "h59": [
+        "Architekt",
+        "Meine Arbeit sieht man überall in der Stadt",
+        "Ich zeichne Pläne",
+        "Ich entwerfe Häuser",
+        "Bauarbeiter",
+        "Designer",
+        "Ingenieur"
+      ],
+      "h60": [
+        "Zahnarzt",
+        "Viele haben Angst vor meinem Stuhl",
+        "Ich arbeite mit einem Bohrer",
+        "Ich behandle Zähne",
+        "Chirurg",
+        "Augenarzt",
+        "Kinderarzt"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Wo möchtest du in zehn Jahren leben?",
+        "Am Meer",
+        "In den Bergen",
+        "In einer großen Stadt",
+        "In einem ruhigen Dorf"
+      ],
+      "d02": [
+        "Was für ein Zuhause möchtest du eines Tages?",
+        "Eine gemütliche Wohnung",
+        "Ein Haus mit Garten",
+        "Ein Häuschen am See",
+        "Ein altes Haus mit Geschichte"
+      ],
+      "d03": [
+        "Was möchtest du im Garten anbauen?",
+        "Apfelbäume",
+        "Rosen",
+        "Gemüse und Kräuter",
+        "Erdbeeren"
+      ],
+      "d04": [
+        "Welches Haustier möchtest du haben?",
+        "Eine Katze",
+        "Einen Papagei",
+        "Aquarienfische",
+        "Eine Schildkröte"
+      ],
+      "d05": [
+        "Wohin möchtest du zuerst reisen?",
+        "Japan",
+        "Marokko",
+        "Island",
+        "Neuseeland"
+      ],
+      "d06": [
+        "Wie möchtest du reisen?",
+        "Mit dem Zug",
+        "Mit dem Auto",
+        "Mit dem Flugzeug",
+        "Mit dem Schiff"
+      ],
+      "d07": [
+        "Welche Sprache möchtest du lernen?",
+        "Arabisch",
+        "Japanisch",
+        "Spanisch",
+        "Chinesisch"
+      ],
+      "d08": [
+        "Was möchtest du lernen?",
+        "Zeichnen",
+        "Nähen",
+        "Schwimmen",
+        "Programmieren"
+      ],
+      "d09": [
+        "Welches Gericht möchtest du meistern?",
+        "Pilaw",
+        "Selbst gebackenes Brot",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Wie möchtest du die Wochenenden verbringen?",
+        "In der Natur",
+        "Zu Hause mit einem Buch",
+        "Bei der Familie",
+        "In einer neuen Stadt"
+      ],
+      "d11": [
+        "Wie sähe ein perfekter Wochenendmorgen aus?",
+        "Ein früher Spaziergang",
+        "Ein langes Frühstück",
+        "Sport an der frischen Luft",
+        "Tee auf dem Balkon"
+      ],
+      "d12": [
+        "Wofür möchtest du sparen?",
+        "Ein eigenes Zuhause",
+        "Eine große Reise",
+        "Ein Auto",
+        "Ein Studium"
+      ],
+      "d13": [
+        "Welche Arbeit möchtest du machen?",
+        "Ein eigenes Geschäft",
+        "In einer großen Firma",
+        "Von zu Hause aus",
+        "Menschen helfen"
+      ],
+      "d14": [
+        "Wie möchtest du anderen helfen?",
+        "Ehrenamt",
+        "Tieren helfen",
+        "Kinder unterrichten",
+        "Bäume pflanzen"
+      ],
+      "d15": [
+        "Welche Familientradition hättest du gern?",
+        "Gemeinsames Sonntagsessen",
+        "Spieleabende",
+        "Wochenendspaziergänge",
+        "Ein Familienfotoalbum"
+      ],
+      "d16": [
+        "Was für eine Küche hättest du gern?",
+        "Eine große Familienküche",
+        "Hell und gemütlich",
+        "Mit Blick in den Garten",
+        "Klein, aber praktisch"
+      ],
+      "d17": [
+        "Was möchtest du mit eigenen Augen sehen?",
+        "Das Polarlicht",
+        "Die Pyramiden von Gizeh",
+        "Die Victoriafälle",
+        "Den Himalaya"
+      ],
+      "d18": [
+        "Was möchtest du abends machen?",
+        "Lesen",
+        "Etwas Neues kochen",
+        "Sprachen lernen",
+        "Im Park spazieren"
+      ],
+      "d19": [
+        "Welches Hobby möchtest du anfangen?",
+        "Fotografie",
+        "Töpfern",
+        "Sticken",
+        "Gärtnern"
+      ],
+      "d20": [
+        "Wohin möchtest du übers Wochenende?",
+        "In den Wald",
+        "An einen See",
+        "In eine Stadt in der Nähe",
+        "In die Berge"
+      ],
+      "d21": [
+        "Wie sähe dein idealer Arbeitsplatz aus?",
+        "Am Fenster",
+        "Mit Bücherregalen",
+        "Voller Grünpflanzen",
+        "Fast leer"
+      ],
+      "d22": [
+        "Was möchtest du als Nächstes studieren?",
+        "Medizin",
+        "Geschichte",
+        "Wirtschaft",
+        "Design"
+      ],
+      "d23": [
+        "Welchen Baum möchtest du pflanzen?",
+        "Eine Eiche",
+        "Einen Apfelbaum",
+        "Einen Olivenbaum",
+        "Eine Dattelpalme"
+      ],
+      "d24": [
+        "Was möchtest du für Gäste kochen?",
+        "Einen selbst gebackenen Kuchen",
+        "Einen großen Pilaw",
+        "Die Suppe nach Familienrezept",
+        "Frische Salate"
+      ],
+      "d25": [
+        "Welche Stadt möchtest du besuchen?",
+        "Istanbul",
+        "Paris",
+        "Tokio",
+        "Kairo"
+      ],
+      "d26": [
+        "Wie möchtest du den Sommer verbringen?",
+        "Am Meer",
+        "In den Bergen",
+        "Im Landhaus",
+        "Reisen im eigenen Land"
+      ],
+      "d27": [
+        "Welchen Vogel möchtest du halten?",
+        "Einen Kanarienvogel",
+        "Einen Wellensittich",
+        "Tauben",
+        "Zebrafinken"
+      ],
+      "d28": [
+        "Welchen Sport möchtest du ausprobieren?",
+        "Schwimmen",
+        "Reiten",
+        "Bogenschießen",
+        "Klettern"
+      ],
+      "d29": [
+        "Welche Bücher möchtest du sammeln?",
+        "Lexika",
+        "Klassiker",
+        "Reisebücher",
+        "Kochbücher"
+      ],
+      "d30": [
+        "Was möchtest du selbst machen?",
+        "Möbel",
+        "Eigenes Geschirr",
+        "Eine gestrickte Decke",
+        "Ein Vogelhäuschen"
+      ],
+      "d31": [
+        "Wo möchtest du ein Picknick machen?",
+        "Am Flussufer",
+        "In einem Garten",
+        "Auf einer Waldlichtung",
+        "In den Bergen"
+      ],
+      "d32": [
+        "Wie möchtest du dich eines Tages fortbewegen?",
+        "Mit einem E-Auto",
+        "Mit dem Fahrrad",
+        "Mit einem großen Familienauto",
+        "Ganz ohne Auto"
+      ],
+      "d33": [
+        "Was möchtest du im Ruhestand machen?",
+        "Gärtnern",
+        "Reisen",
+        "Zeit mit den Enkeln",
+        "Neues lernen"
+      ],
+      "d34": [
+        "Welche gute Tat möchtest du vollbringen?",
+        "Einen Brunnen bauen",
+        "Einem Katzenheim helfen",
+        "Bücher für eine Schule sammeln",
+        "Eine Baumreihe pflanzen"
+      ],
+      "d35": [
+        "Was möchtest du am Wochenende frühstücken?",
+        "Pfannkuchen",
+        "Ein Omelett",
+        "Haferbrei mit Obst",
+        "Quarkpfannkuchen"
+      ],
+      "d36": [
+        "Wo möchtest du Gäste empfangen?",
+        "In der Küche",
+        "Im Wohnzimmer",
+        "Auf der Terrasse",
+        "Im Garten"
+      ],
+      "d37": [
+        "Welches Naturwunder möchtest du sehen?",
+        "Den Grand Canyon",
+        "Die Niagarafälle",
+        "Den Baikalsee",
+        "Die Sahara"
+      ],
+      "d38": [
+        "Welche Fertigkeit fürs Zuhause möchtest du lernen?",
+        "Selbst renovieren",
+        "Nähen",
+        "Brot backen",
+        "Einen Garten pflegen"
+      ],
+      "d39": [
+        "Wie viele Sprachen möchtest du sprechen?",
+        "Zwei",
+        "Drei",
+        "Fünf",
+        "So viele wie möglich"
+      ],
+      "d40": [
+        "Welche Wandfarbe möchtest du zu Hause?",
+        "Weiß",
+        "Beige",
+        "Hellgrün",
+        "Hellblau"
+      ],
+      "d41": [
+        "Welchen Fisch möchtest du im Aquarium?",
+        "Einen Goldfisch",
+        "Guppys",
+        "Einen Wels",
+        "Einen Skalar"
+      ],
+      "d42": [
+        "Welche Reise möchtest du deinen Eltern schenken?",
+        "Urlaub am Meer",
+        "Eine Städtereise",
+        "Eine Reise in die Berge",
+        "Eine Zugreise"
+      ],
+      "d43": [
+        "Was möchtest du in deiner Freizeit machen?",
+        "Zeichnen",
+        "Lesen",
+        "Sport",
+        "Handarbeiten"
+      ],
+      "d44": [
+        "In welcher Jahreszeit möchtest du reisen?",
+        "Frühling",
+        "Sommer",
+        "Herbst",
+        "Winter"
+      ],
+      "d45": [
+        "Was möchtest du für den Winter einmachen?",
+        "Marmelade",
+        "Eingelegtes Gemüse",
+        "Trockenobst",
+        "Kompott"
+      ],
+      "d46": [
+        "Welchen anderen Beruf möchtest du ausprobieren?",
+        "Koch",
+        "Programmierer",
+        "Übersetzer",
+        "Tischler"
+      ],
+      "d47": [
+        "Welches Land möchtest du kennenlernen?",
+        "Malaysia",
+        "Italien",
+        "Kanada",
+        "Indonesien"
+      ],
+      "d48": [
+        "Was hättest du gern im Hof?",
+        "Einen kleinen Brunnen",
+        "Ein Gemüsebeet",
+        "Eine Laube",
+        "Eine Schaukel"
+      ],
+      "d49": [
+        "Wie möchtest du Erfolge feiern?",
+        "Ein Familienessen",
+        "Ein Ausflug in die Natur",
+        "Ein neues Buch",
+        "Eine gute Tat für andere"
+      ],
+      "d50": [
+        "Was möchtest du an Kinder weitergeben?",
+        "Die Liebe zu Büchern",
+        "Kochkünste",
+        "Die Muttersprache",
+        "Achtsamkeit für die Natur"
+      ]
     }
   },
   "es": {
@@ -2371,7 +3305,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "¡Victoria! Sabes más sobre el mundo.",
       "tfFinalLose": "Esta vez {name} sabe más. ¿Revancha?",
       "tfFinalDraw": "Empate: ¡sabéis exactamente lo mismo!",
-      "featTruth": "Juego en directo «Verdadero o falso»: datos asombrosos sobre el mundo"
+      "featTruth": "Juego en directo «Verdadero o falso»: datos asombrosos sobre el mundo",
+      "countries": "Adivina el país",
+      "coTitle": "Adivina el país",
+      "coNote": "Un juego en directo para dos: el oso viaja por el mundo. 10 segundos: ¡adivina en qué país está! Un punto por cada acierto.",
+      "coShareText": "{name} te invita al juego en directo «Adivina el país»",
+      "coJoinLead": "{name} te está esperando. ¡Adivina el país por la imagen!",
+      "coRound": "País {n} de {total}",
+      "coAsk": "¿Qué país es este?",
+      "coFinalWin": "¡Victoria! Conoces el mundo de verdad.",
+      "coFinalLose": "Esta vez {name} conoce mejor el mundo. ¿Revancha?",
+      "coFinalDraw": "¡Empate! Conocéis muy bien el mundo.",
+      "featCountries": "Juego en directo «Adivina el país»: 40 países",
+      "hints": "Adivina con pistas",
+      "dreams": "Sueños y planes",
+      "hiTitle": "Adivina con pistas",
+      "hiNote": "Un juego en directo para dos: tres pistas se abren una a una. Si aciertas con la primera, 3 puntos; con la segunda, 2; con la tercera, 1.",
+      "hiShareText": "{name} te invita al juego en directo «Adivina con pistas»",
+      "hiJoinLead": "{name} te espera. ¡Adivina lo antes posible!",
+      "hiRound": "Acertijo {n} de {total}",
+      "hiAsk": "¿Qué es?",
+      "hiClue": "Pista {n}",
+      "hiPoints": "Puntos: +{n}",
+      "hiNoPoints": "Esta vez, sin puntos",
+      "hiFinalWin": "¡Victoria! Se te da genial adivinar.",
+      "hiFinalLose": "Esta vez {name} adivinó mejor. ¿Revancha?",
+      "hiFinalDraw": "¡Empate! A los dos se os da genial adivinar.",
+      "featHints": "Juego en directo «Adivina con pistas»: 3, 2 o 1 punto",
+      "drTitle": "Sueños y planes",
+      "drNote": "Un juego en directo para dos: hogar, viajes, estudios y aficiones. Elige lo que te gustaría y descubrid si vuestros sueños coinciden.",
+      "drShareText": "{name} te invita al juego en directo «Sueños y planes»",
+      "drJoinLead": "{name} te espera. ¡Elige lo que de verdad te gustaría!",
+      "drRound": "Pregunta {n} de {total}",
+      "drPick": "Elige lo que te gustaría",
+      "drBoth": "Coincidís: {item}",
+      "drDiff": "Sueños distintos: ¡contaos por qué!",
+      "drFinalHigh": "¡Compartís muchísimos sueños!",
+      "drFinalMid": "Sueños distintos: mucho de qué hablar",
+      "drCommon": "Vuestros sueños en común",
+      "featDreams": "Juego en directo «Sueños y planes»: ¿coinciden vuestros sueños?",
+      "modestTitle": "Modo discreto",
+      "modestNote": "Sin preguntas sobre sentimientos, abrazos o citas: solo amistosas"
     },
     "questions": {
       "q01": [
@@ -4290,6 +5264,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "El Polo Sur es mucho más frío: está sobre un continente alto y helado; el Polo Norte, sobre un océano."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingüino",
+        "Soy un ave, pero no puedo volar",
+        "Vivo donde hace mucho frío",
+        "Siempre llevo frac",
+        "Avestruz",
+        "Foca",
+        "Gaviota"
+      ],
+      "h02": [
+        "Elefante",
+        "Como casi todo el día",
+        "Mis orejas parecen grandes abanicos",
+        "Tengo una trompa larga",
+        "Rinoceronte",
+        "Hipopótamo",
+        "Jirafa"
+      ],
+      "h03": [
+        "Jirafa",
+        "Duermo muy poco, a menudo de pie",
+        "Como hojas de los árboles más altos",
+        "Tengo el cuello más largo",
+        "Cebra",
+        "Camello",
+        "Alce"
+      ],
+      "h04": [
+        "Camello",
+        "Aguanto mucho tiempo sin agua",
+        "Me llaman el barco del desierto",
+        "Tengo una o dos jorobas en el lomo",
+        "Caballo",
+        "Burro",
+        "Llama"
+      ],
+      "h05": [
+        "Abeja",
+        "Sé enseñar a otras el camino a las flores",
+        "Trabajo en el prado de sol a sol",
+        "Hago miel",
+        "Avispa",
+        "Mosca",
+        "Mariposa"
+      ],
+      "h06": [
+        "Tortuga",
+        "Puedo vivir más de cien años",
+        "Nunca tengo prisa",
+        "Llevo mi casa a cuestas",
+        "Caracol",
+        "Lagartija",
+        "Erizo"
+      ],
+      "h07": [
+        "Canguro",
+        "Mi cola me ayuda a mantener el equilibrio",
+        "Vivo en Australia",
+        "Llevo a mi cría en una bolsa",
+        "Koala",
+        "Liebre",
+        "Ardilla"
+      ],
+      "h08": [
+        "Búho",
+        "Puedo girar la cabeza casi del todo hacia atrás",
+        "Cazo de noche",
+        "Ululo en el bosque oscuro",
+        "Cuervo",
+        "Águila",
+        "Paloma"
+      ],
+      "h09": [
+        "Delfín",
+        "Respiro aire, aunque vivo en el mar",
+        "Ayudo a la gente y hablo con silbidos",
+        "Me encanta saltar sobre las olas",
+        "Tiburón",
+        "Ballena",
+        "Foca"
+      ],
+      "h10": [
+        "Ardilla",
+        "Escondo comida y a veces olvido dónde",
+        "Vivo en el hueco de un árbol",
+        "Roo nueces y piñas",
+        "Erizo",
+        "Liebre",
+        "Ratón"
+      ],
+      "h11": [
+        "Araña",
+        "No soy un insecto, aunque muchos lo creen",
+        "Tengo ocho patas",
+        "Tejo una red",
+        "Hormiga",
+        "Escarabajo",
+        "Mosquito"
+      ],
+      "h12": [
+        "Gato",
+        "Veo en la oscuridad mejor que las personas",
+        "Me encanta un alféizar calentito",
+        "Ronroneo y cazo ratones",
+        "Conejo",
+        "Hámster",
+        "Loro"
+      ],
+      "h13": [
+        "Sandía",
+        "Los científicos me llaman baya",
+        "Me esperan a finales del verano",
+        "Verde por fuera, roja por dentro",
+        "Melón",
+        "Calabaza",
+        "Piña"
+      ],
+      "h14": [
+        "Pan",
+        "Me hornean en casi todos los países",
+        "Me cortan en rebanadas",
+        "Puedo ser blanco o de centeno, con corteza",
+        "Tortita",
+        "Empanada",
+        "Galleta"
+      ],
+      "h15": [
+        "Miel",
+        "Puedo conservarme miles de años",
+        "Me añaden al té caliente cuando hay resfriado",
+        "Me hacen las abejas",
+        "Mermelada",
+        "Azúcar",
+        "Leche"
+      ],
+      "h16": [
+        "Limón",
+        "Estoy lleno de vitamina C",
+        "Me ponen en el té",
+        "Soy amarillo y muy ácido",
+        "Naranja",
+        "Pomelo",
+        "Lima"
+      ],
+      "h17": [
+        "Zanahoria",
+        "Crezco bajo tierra, solo asoman mis hojas",
+        "Dicen que soy buena para la vista",
+        "Soy naranja y a los conejos les encanto",
+        "Remolacha",
+        "Rábano",
+        "Patata"
+      ],
+      "h18": [
+        "Manzana",
+        "Tengo variedades de verano y de invierno",
+        "Me usan para tartas y zumos",
+        "Crezco en un árbol, roja o verde",
+        "Pera",
+        "Melocotón",
+        "Ciruela"
+      ],
+      "h19": [
+        "Plátano",
+        "Crezco en racimos en una planta alta",
+        "A los monos les encanto",
+        "Soy amarillo y hay que pelarme",
+        "Mango",
+        "Kiwi",
+        "Piña"
+      ],
+      "h20": [
+        "Té",
+        "En China me beben desde hace milenios",
+        "Puedo ser negro, verde o de hierbas",
+        "Me preparan en una tetera",
+        "Café",
+        "Cacao",
+        "Zumo"
+      ],
+      "h21": [
+        "Huevo",
+        "Sin mí cuesta hacer un bizcocho",
+        "Conmigo se hace la tortilla",
+        "Me pone una gallina",
+        "Queso",
+        "Nuez",
+        "Patata"
+      ],
+      "h22": [
+        "Paraguas",
+        "Paso casi todo el tiempo plegado",
+        "Me llevas cuando el cielo se pone gris",
+        "Te mantengo seco bajo la lluvia",
+        "Impermeable",
+        "Sombrero",
+        "Botas"
+      ],
+      "h23": [
+        "Reloj",
+        "Puedo funcionar con arena o con luz del sol",
+        "Cuelgo en paredes y estoy en torres",
+        "Marco la hora con mis agujas",
+        "Brújula",
+        "Calendario",
+        "Termómetro"
+      ],
+      "h24": [
+        "Llave",
+        "Sin mí, la puerta no te deja entrar",
+        "A menudo me llevan en una anilla",
+        "Abro una cerradura",
+        "Tijeras",
+        "Destornillador",
+        "Clip"
+      ],
+      "h25": [
+        "Vela",
+        "Cuanto más trabajo, más pequeña me hago",
+        "Me encienden cuando se va la luz",
+        "Soy de cera y tengo mecha",
+        "Linterna",
+        "Lámpara",
+        "Cerillas"
+      ],
+      "h26": [
+        "Tijeras",
+        "Tengo dos anillas y dos puntas afiladas",
+        "Recorto figuras de papel",
+        "Corto tela y papel",
+        "Cuchillo",
+        "Aguja",
+        "Regla"
+      ],
+      "h27": [
+        "Cepillo de dientes",
+        "Tengo muchas cerdas",
+        "Me cambian cada tres meses",
+        "Limpio los dientes mañana y noche",
+        "Jabón",
+        "Toalla",
+        "Esponja"
+      ],
+      "h28": [
+        "Nevera",
+        "Dentro de mí siempre es invierno",
+        "Al abrirme se enciende una luz",
+        "Mantengo la comida fría",
+        "Cocina",
+        "Horno",
+        "Armario"
+      ],
+      "h29": [
+        "Bicicleta",
+        "Me muevo sin combustible ni electricidad",
+        "Tengo manillar, timbre y cadena",
+        "Tengo dos ruedas y pedales",
+        "Patinete",
+        "Moto",
+        "Monopatín"
+      ],
+      "h30": [
+        "Avión",
+        "Tengo alas, pero no soy un pájaro",
+        "Me esperan en el aeropuerto",
+        "Vuelo sobre las nubes con pasajeros",
+        "Helicóptero",
+        "Cohete",
+        "Globo aerostático"
+      ],
+      "h31": [
+        "Tren",
+        "Solo viajo por mi propio camino",
+        "Tengo muchos vagones",
+        "Voy sobre raíles de estación en estación",
+        "Tranvía",
+        "Autobús",
+        "Metro"
+      ],
+      "h32": [
+        "Puente",
+        "Me construyen de piedra, madera o acero",
+        "Los barcos pueden pasar por debajo de mí",
+        "Uno las dos orillas de un río",
+        "Túnel",
+        "Carretera",
+        "Presa"
+      ],
+      "h33": [
+        "Lápiz",
+        "Llevo grafito dentro",
+        "Me sacan punta cuando me desgasto",
+        "Escribo y dibujo; la goma borra mis trazos",
+        "Bolígrafo",
+        "Tiza",
+        "Rotulador"
+      ],
+      "h34": [
+        "Libro",
+        "Soy silencioso, pero enseño mucho",
+        "Tengo tapa y páginas",
+        "Me leen y me prestan en las bibliotecas",
+        "Revista",
+        "Periódico",
+        "Cuaderno"
+      ],
+      "h35": [
+        "Maleta",
+        "Viajo mucho, pero siempre en la mano de alguien",
+        "Me preparan antes de un viaje",
+        "Tengo asa y ruedas, y guardo ropa",
+        "Mochila",
+        "Bolso",
+        "Caja"
+      ],
+      "h36": [
+        "Biblioteca",
+        "Aquí piden hablar en voz baja",
+        "Aquí te hacen un carné de lector",
+        "Miles de libros para llevar a casa",
+        "Colegio",
+        "Librería",
+        "Archivo"
+      ],
+      "h37": [
+        "Aeropuerto",
+        "Aquí hay control de pasaportes",
+        "Aquí anuncian el embarque de los vuelos",
+        "De aquí despegan los aviones",
+        "Estación de tren",
+        "Puerto",
+        "Estación de autobuses"
+      ],
+      "h38": [
+        "Desierto",
+        "De día hace calor, pero las noches pueden ser muy frías",
+        "Aquí se encuentran oasis",
+        "Mucha arena y muy poca agua",
+        "Estepa",
+        "Sabana",
+        "Playa"
+      ],
+      "h39": [
+        "Volcán",
+        "Puedo dormir cientos de años",
+        "De mi cima sale humo",
+        "Entro en erupción con lava",
+        "Montaña",
+        "Géiser",
+        "Isla"
+      ],
+      "h40": [
+        "Arcoíris",
+        "Solo me ves con el sol a tu espalda",
+        "Aparezco a menudo después de la lluvia",
+        "Siete colores en un arco en el cielo",
+        "Rayo",
+        "Nube",
+        "Aurora boreal"
+      ],
+      "h41": [
+        "Luna",
+        "Siempre muestro a la Tierra la misma cara",
+        "Puedo estar llena o ser un fino creciente",
+        "Brillo en el cielo nocturno",
+        "Sol",
+        "Estrella",
+        "Cometa"
+      ],
+      "h42": [
+        "Nieve",
+        "Cada uno de mis copos es único",
+        "Conmigo se construyen fuertes",
+        "Blanca y fría, caigo en invierno",
+        "Lluvia",
+        "Granizo",
+        "Escarcha"
+      ],
+      "h43": [
+        "Río",
+        "Tengo nacimiento y desembocadura",
+        "Los barcos navegan por mí",
+        "Fluyo de las montañas al mar",
+        "Lago",
+        "Mar",
+        "Arroyo"
+      ],
+      "h44": [
+        "Cactus",
+        "Puedo vivir mucho tiempo sin agua",
+        "Crezco en desiertos y en alféizares",
+        "Estoy cubierto de espinas",
+        "Aloe",
+        "Palmera",
+        "Margarita"
+      ],
+      "h45": [
+        "Girasol",
+        "De mis semillas se hace aceite",
+        "Giro siguiendo al sol",
+        "Una gran flor amarilla llena de pipas",
+        "Margarita",
+        "Tulipán",
+        "Diente de león"
+      ],
+      "h46": [
+        "Roble",
+        "Puedo vivir más de mil años",
+        "Me consideran símbolo de fuerza",
+        "En mí crecen bellotas",
+        "Abedul",
+        "Pino",
+        "Arce"
+      ],
+      "h47": [
+        "Isla",
+        "En mí cabe un país entero",
+        "Llegas a mí en barco o en avión",
+        "Estoy rodeada de agua por todas partes",
+        "Península",
+        "Arrecife",
+        "Cabo"
+      ],
+      "h48": [
+        "Cascada",
+        "Se me oye desde lejos",
+        "La más alta de nosotras está en Venezuela",
+        "Aquí un río cae por un precipicio",
+        "Fuente",
+        "Géiser",
+        "Manantial"
+      ],
+      "h49": [
+        "Médico",
+        "Estudio muchos años antes de empezar a trabajar",
+        "Llevo bata blanca",
+        "Curo a las personas enfermas",
+        "Enfermero",
+        "Farmacéutico",
+        "Veterinario"
+      ],
+      "h50": [
+        "Bombero",
+        "Estoy de guardia día y noche",
+        "Trabajo con agua y escaleras",
+        "Apago incendios",
+        "Policía",
+        "Socorrista",
+        "Albañil"
+      ],
+      "h51": [
+        "Cocinero",
+        "Pruebo todo lo que preparo",
+        "Trabajo junto a un fogón caliente",
+        "Preparo comida en un restaurante",
+        "Panadero",
+        "Camarero",
+        "Pastelero"
+      ],
+      "h52": [
+        "Profesor",
+        "Por la tarde corrijo cuadernos",
+        "Me pongo junto a la pizarra",
+        "Enseño a niños en el colegio",
+        "Director de colegio",
+        "Bibliotecario",
+        "Educador infantil"
+      ],
+      "h53": [
+        "Piloto",
+        "Mi lugar de trabajo es la cabina",
+        "Hablo a los pasajeros por megafonía",
+        "Llevo un avión por el cielo",
+        "Capitán",
+        "Conductor",
+        "Astronauta"
+      ],
+      "h54": [
+        "Cartero",
+        "Conozco todas las direcciones de mi zona",
+        "Llevo una bolsa grande",
+        "Reparto cartas y paquetes",
+        "Mensajero",
+        "Taxista",
+        "Dependiente"
+      ],
+      "h55": [
+        "Jardinero",
+        "Sé cuándo plantar cada cosa",
+        "Mis herramientas son la regadera y las tijeras",
+        "Cuido flores y árboles",
+        "Agricultor",
+        "Guardabosques",
+        "Florista"
+      ],
+      "h56": [
+        "Fotógrafo",
+        "Atrapo momentos",
+        "Pido a todos que no se muevan",
+        "Trabajo con una cámara y fotos",
+        "Pintor",
+        "Periodista",
+        "Camarógrafo"
+      ],
+      "h57": [
+        "Pescador",
+        "Me levanto antes del amanecer y espero mucho",
+        "Necesito una caña y paciencia",
+        "Saco peces del agua",
+        "Agricultor",
+        "Marinero",
+        "Pastor"
+      ],
+      "h58": [
+        "Astronauta",
+        "Me entreno mucho tiempo en la Tierra",
+        "Llevo un traje espacial",
+        "Vuelo al espacio",
+        "Piloto",
+        "Astrónomo",
+        "Ingeniero"
+      ],
+      "h59": [
+        "Arquitecto",
+        "Mi trabajo se ve por toda la ciudad",
+        "Dibujo planos",
+        "Diseño casas",
+        "Albañil",
+        "Diseñador",
+        "Ingeniero"
+      ],
+      "h60": [
+        "Dentista",
+        "Mucha gente teme mi sillón",
+        "Trabajo con un torno",
+        "Trato los dientes",
+        "Cirujano",
+        "Oftalmólogo",
+        "Pediatra"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "¿Dónde te gustaría vivir dentro de diez años?",
+        "Junto al mar",
+        "En la montaña",
+        "En una gran ciudad",
+        "En un pueblo tranquilo"
+      ],
+      "d02": [
+        "¿Qué hogar te gustaría tener algún día?",
+        "Un piso acogedor",
+        "Una casa con jardín",
+        "Una casita junto a un lago",
+        "Una casa antigua con historia"
+      ],
+      "d03": [
+        "¿Qué te gustaría cultivar en tu jardín?",
+        "Manzanos",
+        "Rosas",
+        "Verduras y hierbas",
+        "Fresas"
+      ],
+      "d04": [
+        "¿Qué mascota te gustaría tener?",
+        "Un gato",
+        "Un loro",
+        "Peces de acuario",
+        "Una tortuga"
+      ],
+      "d05": [
+        "¿Adónde te gustaría ir primero?",
+        "Japón",
+        "Marruecos",
+        "Islandia",
+        "Nueva Zelanda"
+      ],
+      "d06": [
+        "¿Cómo te gustaría viajar?",
+        "En tren",
+        "En coche",
+        "En avión",
+        "En barco"
+      ],
+      "d07": [
+        "¿Qué idioma te gustaría aprender?",
+        "Árabe",
+        "Japonés",
+        "Turco",
+        "Chino"
+      ],
+      "d08": [
+        "¿Qué te gustaría aprender a hacer?",
+        "Dibujar",
+        "Coser",
+        "Nadar",
+        "Programar"
+      ],
+      "d09": [
+        "¿Qué plato te gustaría dominar?",
+        "Pilaf",
+        "Pan casero",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "¿Cómo te gustaría pasar los fines de semana?",
+        "En la naturaleza",
+        "En casa con un libro",
+        "Visitando a la familia",
+        "En una ciudad nueva"
+      ],
+      "d11": [
+        "¿Cómo sería una mañana de fin de semana perfecta?",
+        "Un paseo temprano",
+        "Un desayuno sin prisas",
+        "Ejercicio al aire libre",
+        "Té en el balcón"
+      ],
+      "d12": [
+        "¿Para qué te gustaría ahorrar?",
+        "Una casa propia",
+        "Un gran viaje",
+        "Un coche",
+        "Los estudios"
+      ],
+      "d13": [
+        "¿En qué te gustaría trabajar?",
+        "En un negocio propio",
+        "En una gran empresa",
+        "Desde casa",
+        "Ayudando a la gente"
+      ],
+      "d14": [
+        "¿Cómo te gustaría ayudar a los demás?",
+        "Voluntariado",
+        "Ayudando a animales",
+        "Enseñando a niños",
+        "Plantando árboles"
+      ],
+      "d15": [
+        "¿Qué tradición familiar te gustaría tener?",
+        "Comida del domingo juntos",
+        "Tardes de juegos de mesa",
+        "Paseos de fin de semana",
+        "Un álbum de fotos familiar"
+      ],
+      "d16": [
+        "¿Qué cocina te gustaría tener?",
+        "Una gran cocina familiar",
+        "Luminosa y acogedora",
+        "Con vistas al jardín",
+        "Pequeña pero práctica"
+      ],
+      "d17": [
+        "¿Qué te gustaría ver con tus propios ojos?",
+        "La aurora boreal",
+        "Las pirámides de Guiza",
+        "Las cataratas Victoria",
+        "El Himalaya"
+      ],
+      "d18": [
+        "¿Qué te gustaría hacer por las tardes?",
+        "Leer",
+        "Cocinar algo nuevo",
+        "Aprender idiomas",
+        "Pasear por el parque"
+      ],
+      "d19": [
+        "¿Qué afición te gustaría empezar?",
+        "Fotografía",
+        "Cerámica",
+        "Bordado",
+        "Jardinería"
+      ],
+      "d20": [
+        "¿Adónde te gustaría ir un fin de semana?",
+        "Al bosque",
+        "A un lago",
+        "A un pueblo cercano",
+        "A la montaña"
+      ],
+      "d21": [
+        "¿Cómo sería tu espacio de trabajo ideal?",
+        "Junto a una ventana",
+        "Con estanterías de libros",
+        "Lleno de plantas",
+        "Casi vacío"
+      ],
+      "d22": [
+        "¿Qué te gustaría estudiar después?",
+        "Medicina",
+        "Historia",
+        "Economía",
+        "Diseño"
+      ],
+      "d23": [
+        "¿Qué árbol te gustaría plantar?",
+        "Un roble",
+        "Un manzano",
+        "Un olivo",
+        "Una palmera datilera"
+      ],
+      "d24": [
+        "¿Qué te gustaría cocinar para los invitados?",
+        "Una tarta casera",
+        "Un gran pilaf",
+        "La sopa de la familia",
+        "Ensaladas frescas"
+      ],
+      "d25": [
+        "¿Qué ciudad te gustaría visitar?",
+        "Estambul",
+        "París",
+        "Tokio",
+        "El Cairo"
+      ],
+      "d26": [
+        "¿Cómo te gustaría pasar el verano?",
+        "Junto al mar",
+        "En la montaña",
+        "En una casa de campo",
+        "Recorriendo nuestro país"
+      ],
+      "d27": [
+        "¿Qué pájaro te gustaría tener?",
+        "Un canario",
+        "Un periquito",
+        "Palomas",
+        "Diamantes mandarín"
+      ],
+      "d28": [
+        "¿Qué deporte te gustaría probar?",
+        "Natación",
+        "Equitación",
+        "Tiro con arco",
+        "Escalada"
+      ],
+      "d29": [
+        "¿Qué libros te gustaría coleccionar?",
+        "Enciclopedias",
+        "Clásicos",
+        "Libros de viajes",
+        "Libros de cocina"
+      ],
+      "d30": [
+        "¿Qué te gustaría hacer con tus propias manos?",
+        "Muebles",
+        "Tu propia vajilla",
+        "Una manta de punto",
+        "Una casita para pájaros"
+      ],
+      "d31": [
+        "¿Dónde te gustaría hacer un pícnic?",
+        "A la orilla de un río",
+        "En un jardín",
+        "En un claro del bosque",
+        "En la montaña"
+      ],
+      "d32": [
+        "¿Cómo te gustaría desplazarte algún día?",
+        "En coche eléctrico",
+        "En bicicleta",
+        "En un gran coche familiar",
+        "Sin coche"
+      ],
+      "d33": [
+        "¿Qué te gustaría hacer al jubilarte?",
+        "Cuidar el jardín",
+        "Viajar",
+        "Estar con los nietos",
+        "Aprender cosas nuevas"
+      ],
+      "d34": [
+        "¿Qué buena obra te gustaría hacer?",
+        "Construir un pozo de agua",
+        "Ayudar a un refugio de gatos",
+        "Reunir libros para una escuela",
+        "Plantar una hilera de árboles"
+      ],
+      "d35": [
+        "¿Qué te gustaría desayunar el fin de semana?",
+        "Tortitas",
+        "Una tortilla",
+        "Gachas con fruta",
+        "Tortitas de requesón"
+      ],
+      "d36": [
+        "¿Dónde te gustaría recibir a los invitados?",
+        "En la cocina",
+        "En el salón",
+        "En la terraza",
+        "En el jardín"
+      ],
+      "d37": [
+        "¿Qué maravilla natural te gustaría ver?",
+        "El Gran Cañón",
+        "Las cataratas del Niágara",
+        "El lago Baikal",
+        "El desierto del Sáhara"
+      ],
+      "d38": [
+        "¿Qué habilidad doméstica te gustaría aprender?",
+        "Hacer reparaciones",
+        "Coser",
+        "Hacer pan",
+        "Cuidar un jardín"
+      ],
+      "d39": [
+        "¿Cuántos idiomas te gustaría hablar?",
+        "Dos",
+        "Tres",
+        "Cinco",
+        "Todos los posibles"
+      ],
+      "d40": [
+        "¿De qué color te gustarían las paredes de casa?",
+        "Blanco",
+        "Beige",
+        "Verde claro",
+        "Azul claro"
+      ],
+      "d41": [
+        "¿Qué pez te gustaría tener en un acuario?",
+        "Un pez dorado",
+        "Guppis",
+        "Un pez gato",
+        "Un pez ángel"
+      ],
+      "d42": [
+        "¿Qué viaje te gustaría regalar a tus padres?",
+        "Vacaciones en la playa",
+        "Una ruta por ciudades",
+        "Un viaje a la montaña",
+        "Un viaje en tren"
+      ],
+      "d43": [
+        "¿Qué te gustaría hacer en tu tiempo libre?",
+        "Dibujar",
+        "Leer",
+        "Deporte",
+        "Manualidades"
+      ],
+      "d44": [
+        "¿En qué estación te gustaría viajar?",
+        "Primavera",
+        "Verano",
+        "Otoño",
+        "Invierno"
+      ],
+      "d45": [
+        "¿Qué te gustaría preparar en conserva para el invierno?",
+        "Mermelada",
+        "Encurtidos",
+        "Fruta deshidratada",
+        "Compota de fruta"
+      ],
+      "d46": [
+        "¿Qué otro oficio te gustaría probar?",
+        "Cocinero",
+        "Programador",
+        "Traductor",
+        "Carpintero"
+      ],
+      "d47": [
+        "¿Qué país te gustaría conocer?",
+        "Malasia",
+        "Italia",
+        "Canadá",
+        "Indonesia"
+      ],
+      "d48": [
+        "¿Qué te gustaría tener en el patio?",
+        "Una fuentecita",
+        "Un huerto",
+        "Un cenador",
+        "Un columpio"
+      ],
+      "d49": [
+        "¿Cómo te gustaría celebrar los logros?",
+        "Una cena en familia",
+        "Una salida a la naturaleza",
+        "Un libro nuevo",
+        "Una buena obra por los demás"
+      ],
+      "d50": [
+        "¿Qué te gustaría transmitir a los hijos?",
+        "El amor por los libros",
+        "Saber cocinar",
+        "La lengua materna",
+        "El cuidado de la naturaleza"
+      ]
     }
   },
   "it": {
@@ -4515,7 +6383,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Vittoria! Sai più cose sul mondo.",
       "tfFinalLose": "Questa volta {name} ne sa di più: rivincita?",
       "tfFinalDraw": "Pareggio: ne sapete proprio lo stesso!",
-      "featTruth": "Gioco dal vivo «Vero o falso»: fatti sorprendenti sul mondo"
+      "featTruth": "Gioco dal vivo «Vero o falso»: fatti sorprendenti sul mondo",
+      "countries": "Indovina il paese",
+      "coTitle": "Indovina il paese",
+      "coNote": "Un gioco dal vivo per due: l’orso viaggia per il mondo. 10 secondi: indovina in quale paese si trova! Un punto per ogni risposta giusta.",
+      "coShareText": "{name} ti invita al gioco dal vivo «Indovina il paese»",
+      "coJoinLead": "{name} ti sta aspettando. Indovina il paese dall’immagine!",
+      "coRound": "Paese {n} di {total}",
+      "coAsk": "Che paese è questo?",
+      "coFinalWin": "Vittoria! Conosci davvero il mondo.",
+      "coFinalLose": "Questa volta {name} conosce meglio il mondo: rivincita?",
+      "coFinalDraw": "Pareggio: il mondo lo conoscete bene!",
+      "featCountries": "Gioco dal vivo «Indovina il paese»: 40 paesi",
+      "hints": "Indovina dagli indizi",
+      "dreams": "Sogni e progetti",
+      "hiTitle": "Indovina dagli indizi",
+      "hiNote": "Un gioco dal vivo in due: tre indizi si aprono uno alla volta. Indovina al primo: 3 punti; al secondo: 2; al terzo: 1.",
+      "hiShareText": "{name} ti invita al gioco dal vivo «Indovina dagli indizi»",
+      "hiJoinLead": "{name} ti aspetta. Indovina il prima possibile!",
+      "hiRound": "Indovinello {n} di {total}",
+      "hiAsk": "Che cos’è?",
+      "hiClue": "Indizio {n}",
+      "hiPoints": "Punti: +{n}",
+      "hiNoPoints": "Niente punti questa volta",
+      "hiFinalWin": "Vittoria! Hai un vero talento per indovinare.",
+      "hiFinalLose": "Questa volta {name} ha indovinato meglio: rivincita?",
+      "hiFinalDraw": "Pareggio: indovinate benissimo tutti e due!",
+      "featHints": "Gioco dal vivo «Indovina dagli indizi»: 3, 2 o 1 punto",
+      "drTitle": "Sogni e progetti",
+      "drNote": "Un gioco dal vivo in due: casa, viaggi, studio e passioni. Scegli ciò che ti piacerebbe e scoprite se i vostri sogni coincidono.",
+      "drShareText": "{name} ti invita al gioco dal vivo «Sogni e progetti»",
+      "drJoinLead": "{name} ti aspetta. Scegli ciò che ti piacerebbe davvero!",
+      "drRound": "Domanda {n} di {total}",
+      "drPick": "Scegli ciò che ti piacerebbe",
+      "drBoth": "Sogno comune: {item}",
+      "drDiff": "Sogni diversi: raccontatevi il perché!",
+      "drFinalHigh": "Avete così tanti sogni in comune!",
+      "drFinalMid": "Sogni diversi: tanto di cui parlare",
+      "drCommon": "I vostri sogni in comune",
+      "featDreams": "Gioco dal vivo «Sogni e progetti»: i vostri sogni coincidono?",
+      "modestTitle": "Modalità discreta",
+      "modestNote": "Niente domande su sentimenti, abbracci o appuntamenti: solo amichevoli"
     },
     "questions": {
       "q01": [
@@ -6434,6 +8342,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Il Polo Sud è molto più freddo: si trova su un alto continente ghiacciato, il Polo Nord su un oceano."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pinguino",
+        "Sono un uccello, ma non so volare",
+        "Vivo dove fa molto freddo",
+        "Indosso sempre il frac",
+        "Struzzo",
+        "Foca",
+        "Gabbiano"
+      ],
+      "h02": [
+        "Elefante",
+        "Mangio quasi tutto il giorno",
+        "Le mie orecchie sembrano grandi ventagli",
+        "Ho una lunga proboscide",
+        "Rinoceronte",
+        "Ippopotamo",
+        "Giraffa"
+      ],
+      "h03": [
+        "Giraffa",
+        "Dormo pochissimo, spesso in piedi",
+        "Mangio le foglie degli alberi più alti",
+        "Ho il collo più lungo di tutti",
+        "Zebra",
+        "Cammello",
+        "Alce"
+      ],
+      "h04": [
+        "Cammello",
+        "Resisto a lungo senza acqua",
+        "Mi chiamano la nave del deserto",
+        "Ho una o due gobbe sulla schiena",
+        "Cavallo",
+        "Asino",
+        "Lama"
+      ],
+      "h05": [
+        "Ape",
+        "So indicare alle altre la strada per i fiori",
+        "Lavoro nel prato dall’alba al tramonto",
+        "Produco il miele",
+        "Vespa",
+        "Mosca",
+        "Farfalla"
+      ],
+      "h06": [
+        "Tartaruga",
+        "Posso vivere più di cent’anni",
+        "Non ho mai fretta",
+        "Porto la casa sulla schiena",
+        "Lumaca",
+        "Lucertola",
+        "Riccio"
+      ],
+      "h07": [
+        "Canguro",
+        "La coda mi aiuta a stare in equilibrio",
+        "Vivo in Australia",
+        "Porto il piccolo in una tasca",
+        "Koala",
+        "Lepre",
+        "Scoiattolo"
+      ],
+      "h08": [
+        "Gufo",
+        "Posso girare la testa quasi del tutto all’indietro",
+        "Caccio di notte",
+        "Il mio verso risuona nel bosco buio",
+        "Corvo",
+        "Aquila",
+        "Piccione"
+      ],
+      "h09": [
+        "Delfino",
+        "Respiro aria, anche se vivo nel mare",
+        "Aiuto le persone e parlo con fischi",
+        "Mi piace tanto saltare tra le onde",
+        "Squalo",
+        "Balena",
+        "Foca"
+      ],
+      "h10": [
+        "Scoiattolo",
+        "Nascondo il cibo e a volte dimentico dove",
+        "Vivo nel cavo di un albero",
+        "Rosicchio noci e pigne",
+        "Riccio",
+        "Lepre",
+        "Topo"
+      ],
+      "h11": [
+        "Ragno",
+        "Non sono un insetto, anche se molti lo pensano",
+        "Ho otto zampe",
+        "Tesso una tela",
+        "Formica",
+        "Scarabeo",
+        "Zanzara"
+      ],
+      "h12": [
+        "Gatto",
+        "Vedo al buio meglio delle persone",
+        "Mi piace un davanzale caldo",
+        "Faccio le fusa e caccio i topi",
+        "Coniglio",
+        "Criceto",
+        "Pappagallo"
+      ],
+      "h13": [
+        "Anguria",
+        "Gli scienziati mi chiamano bacca",
+        "Mi aspettano a fine estate",
+        "Verde fuori, rossa dentro",
+        "Melone",
+        "Zucca",
+        "Ananas"
+      ],
+      "h14": [
+        "Pane",
+        "Mi sfornano in quasi ogni paese",
+        "Mi tagliano a fette",
+        "Posso essere bianco o di segale, con la crosta",
+        "Frittella",
+        "Torta",
+        "Biscotto"
+      ],
+      "h15": [
+        "Miele",
+        "Posso conservarmi per migliaia di anni",
+        "Mi aggiungono al tè caldo col raffreddore",
+        "Mi fanno le api",
+        "Marmellata",
+        "Zucchero",
+        "Latte"
+      ],
+      "h16": [
+        "Limone",
+        "Sono pieno di vitamina C",
+        "Mi mettono nel tè",
+        "Sono giallo e molto aspro",
+        "Arancia",
+        "Pompelmo",
+        "Lime"
+      ],
+      "h17": [
+        "Carota",
+        "Cresco sottoterra, si vede solo il ciuffo",
+        "Dicono che faccio bene alla vista",
+        "Sono arancione e piaccio tanto ai conigli",
+        "Barbabietola",
+        "Ravanello",
+        "Patata"
+      ],
+      "h18": [
+        "Mela",
+        "Ho varietà estive e invernali",
+        "Finisco in torte e succhi",
+        "Cresco su un albero, rossa o verde",
+        "Pera",
+        "Pesca",
+        "Prugna"
+      ],
+      "h19": [
+        "Banana",
+        "Cresco a caschi su una pianta alta",
+        "Piaccio tanto alle scimmie",
+        "Sono gialla e bisogna sbucciarmi",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Tè",
+        "In Cina mi bevono da millenni",
+        "Posso essere nero, verde o alle erbe",
+        "Mi preparano in una teiera",
+        "Caffè",
+        "Cacao",
+        "Succo"
+      ],
+      "h21": [
+        "Uovo",
+        "Senza di me è difficile fare una torta",
+        "Con me si fa la frittata",
+        "Mi depone una gallina",
+        "Formaggio",
+        "Noce",
+        "Patata"
+      ],
+      "h22": [
+        "Ombrello",
+        "Passo quasi tutto il tempo chiuso",
+        "Mi prendi quando il cielo si fa grigio",
+        "Ti tengo asciutto sotto la pioggia",
+        "Impermeabile",
+        "Cappello",
+        "Stivali"
+      ],
+      "h23": [
+        "Orologio",
+        "Posso funzionare con la sabbia o con il sole",
+        "Sto appeso ai muri e sulle torri",
+        "Segno l’ora con le lancette",
+        "Bussola",
+        "Calendario",
+        "Termometro"
+      ],
+      "h24": [
+        "Chiave",
+        "Senza di me la porta non ti fa entrare",
+        "Spesso mi portano su un anello",
+        "Apro una serratura",
+        "Forbici",
+        "Cacciavite",
+        "Graffetta"
+      ],
+      "h25": [
+        "Candela",
+        "Più lavoro, più divento piccola",
+        "Mi accendono quando manca la corrente",
+        "Sono di cera e ho uno stoppino",
+        "Torcia",
+        "Lampada",
+        "Fiammiferi"
+      ],
+      "h26": [
+        "Forbici",
+        "Ho due anelli e due punte affilate",
+        "Ritaglio forme di carta",
+        "Taglio stoffa e carta",
+        "Coltello",
+        "Ago",
+        "Righello"
+      ],
+      "h27": [
+        "Spazzolino",
+        "Ho tante setole",
+        "Mi cambiano ogni tre mesi",
+        "Pulisco i denti mattina e sera",
+        "Sapone",
+        "Asciugamano",
+        "Spugna"
+      ],
+      "h28": [
+        "Frigorifero",
+        "Dentro di me è sempre inverno",
+        "Quando mi apri si accende una luce",
+        "Tengo il cibo al fresco",
+        "Fornello",
+        "Forno",
+        "Credenza"
+      ],
+      "h29": [
+        "Bicicletta",
+        "Vado senza carburante né elettricità",
+        "Ho manubrio, campanello e catena",
+        "Ho due ruote e i pedali",
+        "Monopattino",
+        "Moto",
+        "Skateboard"
+      ],
+      "h30": [
+        "Aereo",
+        "Ho le ali, ma non sono un uccello",
+        "Mi aspettano all’aeroporto",
+        "Volo sopra le nuvole con i passeggeri",
+        "Elicottero",
+        "Razzo",
+        "Mongolfiera"
+      ],
+      "h31": [
+        "Treno",
+        "Viaggio solo sulla mia strada",
+        "Ho molte carrozze",
+        "Corro sui binari di stazione in stazione",
+        "Tram",
+        "Autobus",
+        "Metropolitana"
+      ],
+      "h32": [
+        "Ponte",
+        "Mi costruiscono in pietra, legno o acciaio",
+        "Le navi possono passarmi sotto",
+        "Unisco le due rive di un fiume",
+        "Galleria",
+        "Strada",
+        "Diga"
+      ],
+      "h33": [
+        "Matita",
+        "Dentro di me c’è la grafite",
+        "Mi temperano quando perdo la punta",
+        "Scrivo e disegno; la gomma cancella i miei segni",
+        "Penna",
+        "Gesso",
+        "Pennarello"
+      ],
+      "h34": [
+        "Libro",
+        "Sto in silenzio, ma insegno molto",
+        "Ho una copertina e delle pagine",
+        "Mi leggono e mi prendono in prestito in biblioteca",
+        "Rivista",
+        "Giornale",
+        "Quaderno"
+      ],
+      "h35": [
+        "Valigia",
+        "Viaggio tanto, ma sempre in mano a qualcuno",
+        "Mi preparano prima di un viaggio",
+        "Ho manico e ruote, e contengo vestiti",
+        "Zaino",
+        "Borsa",
+        "Scatola"
+      ],
+      "h36": [
+        "Biblioteca",
+        "Qui chiedono di parlare piano",
+        "Qui ti fanno la tessera da lettore",
+        "Migliaia di libri da portare a casa",
+        "Scuola",
+        "Libreria",
+        "Archivio"
+      ],
+      "h37": [
+        "Aeroporto",
+        "Qui c’è il controllo passaporti",
+        "Qui annunciano l’imbarco dei voli",
+        "Da qui decollano gli aerei",
+        "Stazione",
+        "Porto",
+        "Autostazione"
+      ],
+      "h38": [
+        "Deserto",
+        "Caldo di giorno, ma la notte può fare molto freddo",
+        "Qui si trovano le oasi",
+        "Tanta sabbia e pochissima acqua",
+        "Steppa",
+        "Savana",
+        "Spiaggia"
+      ],
+      "h39": [
+        "Vulcano",
+        "Posso dormire per centinaia di anni",
+        "Dalla mia cima sale fumo",
+        "Erutto lava",
+        "Montagna",
+        "Geyser",
+        "Isola"
+      ],
+      "h40": [
+        "Arcobaleno",
+        "Mi vedi solo con il sole alle spalle",
+        "Compaio spesso dopo la pioggia",
+        "Sette colori ad arco nel cielo",
+        "Fulmine",
+        "Nuvola",
+        "Aurora boreale"
+      ],
+      "h41": [
+        "Luna",
+        "Mostro alla Terra sempre la stessa faccia",
+        "Posso essere piena o una sottile falce",
+        "Brillo nel cielo notturno",
+        "Sole",
+        "Stella",
+        "Cometa"
+      ],
+      "h42": [
+        "Neve",
+        "Ognuno dei miei fiocchi è unico",
+        "Con me si costruiscono fortini",
+        "Bianca e fredda, cado d’inverno",
+        "Pioggia",
+        "Grandine",
+        "Brina"
+      ],
+      "h43": [
+        "Fiume",
+        "Ho una sorgente e una foce",
+        "Le barche navigano su di me",
+        "Scorro dai monti al mare",
+        "Lago",
+        "Mare",
+        "Ruscello"
+      ],
+      "h44": [
+        "Cactus",
+        "Posso vivere a lungo senz’acqua",
+        "Cresco nei deserti e sui davanzali",
+        "Sono coperto di spine",
+        "Aloe",
+        "Palma",
+        "Margherita"
+      ],
+      "h45": [
+        "Girasole",
+        "Dai miei semi si fa l’olio",
+        "Mi giro seguendo il sole",
+        "Un grande fiore giallo pieno di semi",
+        "Margherita",
+        "Tulipano",
+        "Tarassaco"
+      ],
+      "h46": [
+        "Quercia",
+        "Posso vivere più di mille anni",
+        "Sono un simbolo di forza",
+        "Su di me crescono le ghiande",
+        "Betulla",
+        "Pino",
+        "Acero"
+      ],
+      "h47": [
+        "Isola",
+        "Su di me può stare un intero paese",
+        "Mi raggiungi in barca o in aereo",
+        "Sono circondata dall’acqua da ogni lato",
+        "Penisola",
+        "Barriera corallina",
+        "Capo"
+      ],
+      "h48": [
+        "Cascata",
+        "Mi senti da lontano",
+        "La più alta di noi è in Venezuela",
+        "Qui un fiume precipita da una rupe",
+        "Fontana",
+        "Geyser",
+        "Sorgente"
+      ],
+      "h49": [
+        "Medico",
+        "Studio molti anni prima di lavorare",
+        "Indosso un camice bianco",
+        "Curo le persone malate",
+        "Infermiere",
+        "Farmacista",
+        "Veterinario"
+      ],
+      "h50": [
+        "Vigile del fuoco",
+        "Sono di turno giorno e notte",
+        "Lavoro con acqua e scale",
+        "Spengo gli incendi",
+        "Poliziotto",
+        "Soccorritore",
+        "Muratore"
+      ],
+      "h51": [
+        "Cuoco",
+        "Assaggio tutto ciò che preparo",
+        "Lavoro davanti a un fornello caldo",
+        "Preparo piatti in un ristorante",
+        "Fornaio",
+        "Cameriere",
+        "Pasticciere"
+      ],
+      "h52": [
+        "Insegnante",
+        "La sera correggo i quaderni",
+        "Sto davanti alla lavagna",
+        "Faccio lezione ai bambini a scuola",
+        "Preside",
+        "Bibliotecario",
+        "Educatore d’asilo"
+      ],
+      "h53": [
+        "Pilota",
+        "Il mio posto di lavoro è la cabina di comando",
+        "Parlo ai passeggeri dall’altoparlante",
+        "Guido un aereo",
+        "Capitano",
+        "Autista",
+        "Astronauta"
+      ],
+      "h54": [
+        "Postino",
+        "Conosco ogni indirizzo della mia zona",
+        "Porto una grande borsa",
+        "Consegno lettere e pacchi",
+        "Corriere",
+        "Tassista",
+        "Commesso"
+      ],
+      "h55": [
+        "Giardiniere",
+        "So quando piantare ogni cosa",
+        "I miei attrezzi sono annaffiatoio e cesoie",
+        "Mi prendo cura di fiori e alberi",
+        "Contadino",
+        "Guardia forestale",
+        "Fioraio"
+      ],
+      "h56": [
+        "Fotografo",
+        "Catturo gli attimi",
+        "Chiedo a tutti di stare fermi",
+        "Lavoro con macchina fotografica e immagini",
+        "Pittore",
+        "Giornalista",
+        "Cameraman"
+      ],
+      "h57": [
+        "Pescatore",
+        "Mi alzo prima dell’alba e aspetto a lungo",
+        "Mi servono una canna e pazienza",
+        "Prendo i pesci",
+        "Contadino",
+        "Marinaio",
+        "Pastore"
+      ],
+      "h58": [
+        "Astronauta",
+        "Mi alleno a lungo sulla Terra",
+        "Indosso una tuta spaziale",
+        "Volo nello spazio",
+        "Pilota",
+        "Astronomo",
+        "Ingegnere"
+      ],
+      "h59": [
+        "Architetto",
+        "Il mio lavoro si vede in tutta la città",
+        "Disegno progetti",
+        "Progetto case",
+        "Muratore",
+        "Designer",
+        "Ingegnere"
+      ],
+      "h60": [
+        "Dentista",
+        "Molti hanno paura della mia poltrona",
+        "Lavoro con il trapano",
+        "Curo i denti",
+        "Chirurgo",
+        "Oculista",
+        "Pediatra"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Dove ti piacerebbe vivere tra dieci anni?",
+        "Al mare",
+        "In montagna",
+        "In una grande città",
+        "In un paese tranquillo"
+      ],
+      "d02": [
+        "Che casa ti piacerebbe avere un giorno?",
+        "Un appartamento accogliente",
+        "Una casa con giardino",
+        "Una casetta sul lago",
+        "Una casa antica con storia"
+      ],
+      "d03": [
+        "Cosa ti piacerebbe coltivare in giardino?",
+        "Meli",
+        "Rose",
+        "Ortaggi ed erbe aromatiche",
+        "Fragole"
+      ],
+      "d04": [
+        "Quale animale ti piacerebbe avere?",
+        "Un gatto",
+        "Un pappagallo",
+        "Pesci d’acquario",
+        "Una tartaruga"
+      ],
+      "d05": [
+        "Dove ti piacerebbe andare prima di tutto?",
+        "Giappone",
+        "Marocco",
+        "Islanda",
+        "Nuova Zelanda"
+      ],
+      "d06": [
+        "Come ti piacerebbe viaggiare?",
+        "In treno",
+        "In auto",
+        "In aereo",
+        "In nave"
+      ],
+      "d07": [
+        "Quale lingua ti piacerebbe imparare?",
+        "Arabo",
+        "Giapponese",
+        "Spagnolo",
+        "Cinese"
+      ],
+      "d08": [
+        "Cosa ti piacerebbe imparare a fare?",
+        "Disegnare",
+        "Cucire",
+        "Nuotare",
+        "Programmare"
+      ],
+      "d09": [
+        "Quale piatto ti piacerebbe saper preparare?",
+        "Pilaf",
+        "Pane fatto in casa",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Come ti piacerebbe passare i fine settimana?",
+        "Nella natura",
+        "A casa con un libro",
+        "Dalla famiglia",
+        "In una città nuova"
+      ],
+      "d11": [
+        "Come sarebbe un mattino perfetto nel weekend?",
+        "Una passeggiata presto",
+        "Una colazione con calma",
+        "Ginnastica all’aria aperta",
+        "Tè sul balcone"
+      ],
+      "d12": [
+        "Per cosa ti piacerebbe risparmiare?",
+        "Una casa nostra",
+        "Un grande viaggio",
+        "Un’auto",
+        "Gli studi"
+      ],
+      "d13": [
+        "Che lavoro ti piacerebbe fare?",
+        "Un’attività tutta mia",
+        "In una grande azienda",
+        "Da casa",
+        "Aiutare le persone"
+      ],
+      "d14": [
+        "Come ti piacerebbe aiutare gli altri?",
+        "Volontariato",
+        "Aiutare gli animali",
+        "Insegnare ai bambini",
+        "Piantare alberi"
+      ],
+      "d15": [
+        "Quale tradizione di famiglia ti piacerebbe?",
+        "Il pranzo della domenica",
+        "Serate di giochi da tavolo",
+        "Passeggiate nel weekend",
+        "Un album di foto di famiglia"
+      ],
+      "d16": [
+        "Che cucina ti piacerebbe avere?",
+        "Una grande cucina di famiglia",
+        "Luminosa e accogliente",
+        "Con vista sul giardino",
+        "Piccola ma pratica"
+      ],
+      "d17": [
+        "Cosa ti piacerebbe vedere con i tuoi occhi?",
+        "L’aurora boreale",
+        "Le piramidi di Giza",
+        "Le cascate Vittoria",
+        "L’Himalaya"
+      ],
+      "d18": [
+        "Cosa ti piacerebbe fare la sera?",
+        "Leggere",
+        "Cucinare qualcosa di nuovo",
+        "Studiare le lingue",
+        "Passeggiare nel parco"
+      ],
+      "d19": [
+        "Quale passatempo ti piacerebbe iniziare?",
+        "Fotografia",
+        "Ceramica",
+        "Ricamo",
+        "Giardinaggio"
+      ],
+      "d20": [
+        "Dove ti piacerebbe andare per un weekend?",
+        "Nel bosco",
+        "Al lago",
+        "In una città vicina",
+        "In montagna"
+      ],
+      "d21": [
+        "Come sarebbe il tuo posto di lavoro ideale?",
+        "Vicino alla finestra",
+        "Con scaffali di libri",
+        "Pieno di piante verdi",
+        "Quasi vuoto"
+      ],
+      "d22": [
+        "Cosa ti piacerebbe studiare in futuro?",
+        "Medicina",
+        "Storia",
+        "Economia",
+        "Design"
+      ],
+      "d23": [
+        "Quale albero ti piacerebbe piantare?",
+        "Una quercia",
+        "Un melo",
+        "Un ulivo",
+        "Una palma da datteri"
+      ],
+      "d24": [
+        "Cosa ti piacerebbe cucinare per gli ospiti?",
+        "Una torta fatta in casa",
+        "Un grande pilaf",
+        "La zuppa di famiglia",
+        "Insalate fresche"
+      ],
+      "d25": [
+        "Quale città ti piacerebbe visitare?",
+        "Istanbul",
+        "Parigi",
+        "Tokyo",
+        "Il Cairo"
+      ],
+      "d26": [
+        "Come ti piacerebbe passare l’estate?",
+        "Al mare",
+        "In montagna",
+        "In una casa di campagna",
+        "Girando il nostro paese"
+      ],
+      "d27": [
+        "Quale uccellino ti piacerebbe tenere?",
+        "Un canarino",
+        "Un pappagallino",
+        "Dei piccioni",
+        "Dei diamanti mandarini"
+      ],
+      "d28": [
+        "Quale sport ti piacerebbe provare?",
+        "Nuoto",
+        "Equitazione",
+        "Tiro con l’arco",
+        "Arrampicata"
+      ],
+      "d29": [
+        "Quali libri ti piacerebbe collezionare?",
+        "Enciclopedie",
+        "Classici",
+        "Libri di viaggio",
+        "Libri di cucina"
+      ],
+      "d30": [
+        "Cosa ti piacerebbe fare con le tue mani?",
+        "Mobili",
+        "Le tue stoviglie",
+        "Una coperta a maglia",
+        "Una casetta per uccelli"
+      ],
+      "d31": [
+        "Dove ti piacerebbe fare un picnic?",
+        "In riva al fiume",
+        "In giardino",
+        "In una radura nel bosco",
+        "In montagna"
+      ],
+      "d32": [
+        "Come ti piacerebbe spostarti un giorno?",
+        "In auto elettrica",
+        "In bicicletta",
+        "Con una grande auto familiare",
+        "Senza auto"
+      ],
+      "d33": [
+        "Cosa ti piacerebbe fare in pensione?",
+        "Giardinaggio",
+        "Viaggiare",
+        "Stare con i nipoti",
+        "Imparare cose nuove"
+      ],
+      "d34": [
+        "Quale buona azione ti piacerebbe fare?",
+        "Costruire un pozzo d’acqua",
+        "Aiutare un rifugio per gatti",
+        "Raccogliere libri per una scuola",
+        "Piantare un filare di alberi"
+      ],
+      "d35": [
+        "Cosa ti piacerebbe a colazione nel weekend?",
+        "Pancake",
+        "Una frittata",
+        "Porridge con frutta",
+        "Frittelle di ricotta"
+      ],
+      "d36": [
+        "Dove ti piacerebbe accogliere gli ospiti?",
+        "In cucina",
+        "In soggiorno",
+        "In terrazza",
+        "In giardino"
+      ],
+      "d37": [
+        "Quale meraviglia naturale ti piacerebbe vedere?",
+        "Il Grand Canyon",
+        "Le cascate del Niagara",
+        "Il lago Bajkal",
+        "Il deserto del Sahara"
+      ],
+      "d38": [
+        "Quale abilità di casa ti piacerebbe imparare?",
+        "Fare le riparazioni",
+        "Cucire",
+        "Fare il pane",
+        "Curare un giardino"
+      ],
+      "d39": [
+        "Quante lingue ti piacerebbe parlare?",
+        "Due",
+        "Tre",
+        "Cinque",
+        "Più possibile"
+      ],
+      "d40": [
+        "Di che colore vorresti le pareti di casa?",
+        "Bianco",
+        "Beige",
+        "Verde chiaro",
+        "Azzurro"
+      ],
+      "d41": [
+        "Quale pesce ti piacerebbe nell’acquario?",
+        "Un pesce rosso",
+        "Dei guppy",
+        "Un pesce gatto",
+        "Uno scalare"
+      ],
+      "d42": [
+        "Quale viaggio ti piacerebbe regalare ai tuoi genitori?",
+        "Una vacanza al mare",
+        "Un giro in città",
+        "Un viaggio in montagna",
+        "Un viaggio in treno"
+      ],
+      "d43": [
+        "Cosa ti piacerebbe fare nel tempo libero?",
+        "Disegnare",
+        "Leggere",
+        "Sport",
+        "Lavori manuali"
+      ],
+      "d44": [
+        "In quale stagione ti piacerebbe viaggiare?",
+        "Primavera",
+        "Estate",
+        "Autunno",
+        "Inverno"
+      ],
+      "d45": [
+        "Cosa ti piacerebbe conservare per l’inverno?",
+        "Marmellata",
+        "Sottaceti",
+        "Frutta essiccata",
+        "Composta di frutta"
+      ],
+      "d46": [
+        "Quale altro mestiere ti piacerebbe provare?",
+        "Cuoco",
+        "Programmatore",
+        "Traduttore",
+        "Falegname"
+      ],
+      "d47": [
+        "Quale paese ti piacerebbe conoscere?",
+        "Malesia",
+        "Grecia",
+        "Canada",
+        "Indonesia"
+      ],
+      "d48": [
+        "Cosa ti piacerebbe avere in cortile?",
+        "Una piccola fontana",
+        "Un orto",
+        "Un gazebo",
+        "Un’altalena"
+      ],
+      "d49": [
+        "Come ti piacerebbe festeggiare i successi?",
+        "Una cena in famiglia",
+        "Una gita nella natura",
+        "Un libro nuovo",
+        "Una buona azione per altri"
+      ],
+      "d50": [
+        "Cosa ti piacerebbe trasmettere ai figli?",
+        "L’amore per i libri",
+        "Saper cucinare",
+        "La lingua madre",
+        "La cura della natura"
+      ]
     }
   },
   "pl": {
@@ -6659,7 +9461,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Wygrana! Wiesz więcej o świecie.",
       "tfFinalLose": "Tym razem {name} wie więcej — rewanż?",
       "tfFinalDraw": "Remis — wiecie dokładnie tyle samo!",
-      "featTruth": "Gra na żywo „Prawda czy fałsz” — niezwykłe fakty o świecie"
+      "featTruth": "Gra na żywo „Prawda czy fałsz” — niezwykłe fakty o świecie",
+      "countries": "Zgadnij kraj",
+      "coTitle": "Zgadnij kraj",
+      "coNote": "Gra na żywo we dwoje: miś podróżuje po świecie. 10 sekund — zgadnij, w jakim jest kraju! Punkt za każdą dobrą odpowiedź.",
+      "coShareText": "{name} zaprasza cię do gry na żywo „Zgadnij kraj”",
+      "coJoinLead": "{name} czeka na ciebie. Zgadnij kraj po obrazku!",
+      "coRound": "Kraj {n} z {total}",
+      "coAsk": "Jaki to kraj?",
+      "coFinalWin": "Wygrana! Świat nie ma przed tobą tajemnic.",
+      "coFinalLose": "Tym razem {name} lepiej zna świat — rewanż?",
+      "coFinalDraw": "Remis — świat znacie świetnie!",
+      "featCountries": "Gra na żywo „Zgadnij kraj” — 40 krajów",
+      "hints": "Zgadnij po podpowiedziach",
+      "dreams": "Marzenia i plany",
+      "hiTitle": "Zgadnij po podpowiedziach",
+      "hiNote": "Gra na żywo we dwoje: trzy podpowiedzi odsłaniają się po kolei. Zgadniesz po pierwszej — 3 punkty, po drugiej — 2, po trzeciej — 1.",
+      "hiShareText": "{name} zaprasza cię do gry na żywo „Zgadnij po podpowiedziach”",
+      "hiJoinLead": "{name} czeka na ciebie. Zgaduj jak najwcześniej!",
+      "hiRound": "Zagadka {n} z {total}",
+      "hiAsk": "Co to jest?",
+      "hiClue": "Podpowiedź {n}",
+      "hiPoints": "Punkty: +{n}",
+      "hiNoPoints": "Tym razem bez punktów",
+      "hiFinalWin": "Zwycięstwo! Świetnie zgadujesz.",
+      "hiFinalLose": "Tym razem lepiej zgaduje {name} — rewanż?",
+      "hiFinalDraw": "Remis — oboje świetnie zgadujecie!",
+      "featHints": "Gra na żywo „Zgadnij po podpowiedziach” — 3, 2 lub 1 punkt",
+      "drTitle": "Marzenia i plany",
+      "drNote": "Gra na żywo we dwoje: dom, podróże, nauka i pasje. Wybierz, czego chcesz, i sprawdźcie, czy wasze marzenia się pokrywają.",
+      "drShareText": "{name} zaprasza cię do gry na żywo „Marzenia i plany”",
+      "drJoinLead": "{name} czeka na ciebie. Wybierz to, czego naprawdę chcesz!",
+      "drRound": "Pytanie {n} z {total}",
+      "drPick": "Wybierz, czego chcesz",
+      "drBoth": "Wspólne marzenie: {item}",
+      "drDiff": "Różne marzenia — opowiedzcie sobie dlaczego!",
+      "drFinalHigh": "Macie tyle wspólnych marzeń!",
+      "drFinalMid": "Różne marzenia — jest o czym rozmawiać",
+      "drCommon": "Wasze wspólne marzenia",
+      "featDreams": "Gra na żywo „Marzenia i plany” — czy wasze marzenia się pokrywają?",
+      "modestTitle": "Tryb skromny",
+      "modestNote": "Bez pytań o uczucia, przytulanie i randki — tylko przyjacielskie"
     },
     "questions": {
       "q01": [
@@ -8578,6 +11420,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Biegun południowy jest znacznie zimniejszy: leży na wysokim, lodowym kontynencie, a północny — na oceanie."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingwin",
+        "Jestem ptakiem, ale nie umiem latać",
+        "Żyję tam, gdzie jest bardzo zimno",
+        "Zawsze noszę frak",
+        "Struś",
+        "Foka",
+        "Mewa"
+      ],
+      "h02": [
+        "Słoń",
+        "Jem prawie cały dzień",
+        "Moje uszy wyglądają jak wielkie wachlarze",
+        "Mam długą trąbę",
+        "Nosorożec",
+        "Hipopotam",
+        "Żyrafa"
+      ],
+      "h03": [
+        "Żyrafa",
+        "Śpię bardzo mało, często na stojąco",
+        "Jem liście z najwyższych drzew",
+        "Mam najdłuższą szyję",
+        "Zebra",
+        "Wielbłąd",
+        "Łoś"
+      ],
+      "h04": [
+        "Wielbłąd",
+        "Długo wytrzymuję bez wody",
+        "Nazywają mnie okrętem pustyni",
+        "Mam na grzbiecie jeden lub dwa garby",
+        "Koń",
+        "Osioł",
+        "Lama"
+      ],
+      "h05": [
+        "Pszczoła",
+        "Umiem wskazać innym drogę do kwiatów",
+        "Pracuję na łące od świtu do zmierzchu",
+        "Robię miód",
+        "Osa",
+        "Mucha",
+        "Motyl"
+      ],
+      "h06": [
+        "Żółw",
+        "Mogę żyć ponad sto lat",
+        "Nigdy się nie spieszę",
+        "Noszę dom na grzbiecie",
+        "Ślimak",
+        "Jaszczurka",
+        "Jeż"
+      ],
+      "h07": [
+        "Kangur",
+        "Ogon pomaga mi utrzymać równowagę",
+        "Mieszkam w Australii",
+        "Noszę młode w torbie",
+        "Koala",
+        "Zając",
+        "Wiewiórka"
+      ],
+      "h08": [
+        "Sowa",
+        "Potrafię obrócić głowę prawie do tyłu",
+        "Poluję nocą",
+        "Pohukuję w ciemnym lesie",
+        "Wrona",
+        "Orzeł",
+        "Gołąb"
+      ],
+      "h09": [
+        "Delfin",
+        "Oddycham powietrzem, choć żyję w morzu",
+        "Pomagam ludziom i rozmawiam gwizdami",
+        "Lubię skakać nad falami",
+        "Rekin",
+        "Wieloryb",
+        "Foka"
+      ],
+      "h10": [
+        "Wiewiórka",
+        "Chowam jedzenie i czasem zapominam gdzie",
+        "Mieszkam w dziupli",
+        "Gryzę orzechy i szyszki",
+        "Jeż",
+        "Zając",
+        "Mysz"
+      ],
+      "h11": [
+        "Pająk",
+        "Nie jestem owadem, choć wielu tak myśli",
+        "Mam osiem nóg",
+        "Tkam sieć",
+        "Mrówka",
+        "Chrząszcz",
+        "Komar"
+      ],
+      "h12": [
+        "Kot",
+        "Widzę w ciemności lepiej niż ludzie",
+        "Lubię ciepły parapet",
+        "Mruczę i łapię myszy",
+        "Królik",
+        "Chomik",
+        "Papuga"
+      ],
+      "h13": [
+        "Arbuz",
+        "Naukowcy nazywają mnie jagodą",
+        "Czekają na mnie pod koniec lata",
+        "Zielony z zewnątrz, czerwony w środku",
+        "Melon",
+        "Dynia",
+        "Ananas"
+      ],
+      "h14": [
+        "Chleb",
+        "Pieką mnie w prawie każdym kraju",
+        "Kroją mnie na kromki",
+        "Bywam pszenny albo żytni, ze skórką",
+        "Naleśnik",
+        "Placek",
+        "Ciastko"
+      ],
+      "h15": [
+        "Miód",
+        "Mogę przetrwać tysiące lat",
+        "Dodaje się mnie do ciepłej herbaty przy przeziębieniu",
+        "Robią mnie pszczoły",
+        "Dżem",
+        "Cukier",
+        "Mleko"
+      ],
+      "h16": [
+        "Cytryna",
+        "Mam mnóstwo witaminy C",
+        "Dodaje się mnie do herbaty",
+        "Jestem żółta i bardzo kwaśna",
+        "Pomarańcza",
+        "Grejpfrut",
+        "Limonka"
+      ],
+      "h17": [
+        "Marchewka",
+        "Rosnę pod ziemią, widać tylko natkę",
+        "Mówią, że jestem dobra na wzrok",
+        "Jestem pomarańczowa, a króliki bardzo mnie lubią",
+        "Burak",
+        "Rzodkiewka",
+        "Ziemniak"
+      ],
+      "h18": [
+        "Jabłko",
+        "Mam odmiany letnie i zimowe",
+        "Robi się ze mnie ciasta i sok",
+        "Rosnę na drzewie, czerwone lub zielone",
+        "Gruszka",
+        "Brzoskwinia",
+        "Śliwka"
+      ],
+      "h19": [
+        "Banan",
+        "Rosnę w kiściach na wysokiej roślinie",
+        "Małpy bardzo mnie lubią",
+        "Jestem żółty i trzeba mnie obrać",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Herbata",
+        "W Chinach piją mnie od tysiącleci",
+        "Bywam czarna, zielona albo ziołowa",
+        "Parzy się mnie w czajniczku",
+        "Kawa",
+        "Kakao",
+        "Sok"
+      ],
+      "h21": [
+        "Jajko",
+        "Bez mnie trudno upiec ciasto",
+        "Robi się ze mnie omlet",
+        "Znosi mnie kura",
+        "Ser",
+        "Orzech",
+        "Ziemniak"
+      ],
+      "h22": [
+        "Parasol",
+        "Prawie cały czas jestem złożony",
+        "Bierzesz mnie, gdy niebo szarzeje",
+        "Chronię przed deszczem",
+        "Płaszcz przeciwdeszczowy",
+        "Kapelusz",
+        "Kalosze"
+      ],
+      "h23": [
+        "Zegar",
+        "Mogę działać na piasek albo na słońce",
+        "Wiszę na ścianach i stoję na wieżach",
+        "Pokazuję czas wskazówkami",
+        "Kompas",
+        "Kalendarz",
+        "Termometr"
+      ],
+      "h24": [
+        "Klucz",
+        "Beze mnie drzwi cię nie wpuszczą",
+        "Często noszą mnie na kółku",
+        "Otwieram zamek",
+        "Nożyczki",
+        "Śrubokręt",
+        "Spinacz"
+      ],
+      "h25": [
+        "Świeca",
+        "Im dłużej pracuję, tym jestem mniejsza",
+        "Zapala się mnie, gdy brakuje prądu",
+        "Jestem z wosku i mam knot",
+        "Latarka",
+        "Lampa",
+        "Zapałki"
+      ],
+      "h26": [
+        "Nożyczki",
+        "Mam dwa uchwyty i dwa ostre końce",
+        "Wycinam kształty z papieru",
+        "Tnę materiał i papier",
+        "Nóż",
+        "Igła",
+        "Linijka"
+      ],
+      "h27": [
+        "Szczoteczka do zębów",
+        "Mam mnóstwo włosków",
+        "Wymienia się mnie co trzy miesiące",
+        "Czyszczę zęby rano i wieczorem",
+        "Mydło",
+        "Ręcznik",
+        "Gąbka"
+      ],
+      "h28": [
+        "Lodówka",
+        "We mnie zawsze jest zima",
+        "Gdy mnie otwierasz, zapala się światło",
+        "Trzymam jedzenie w chłodzie",
+        "Kuchenka",
+        "Piekarnik",
+        "Szafka"
+      ],
+      "h29": [
+        "Rower",
+        "Jeżdżę bez paliwa i prądu",
+        "Mam kierownicę, dzwonek i łańcuch",
+        "Mam dwa koła i pedały",
+        "Hulajnoga",
+        "Motocykl",
+        "Deskorolka"
+      ],
+      "h30": [
+        "Samolot",
+        "Mam skrzydła, ale nie jestem ptakiem",
+        "Czekają na mnie na lotnisku",
+        "Latam nad chmurami z pasażerami",
+        "Helikopter",
+        "Rakieta",
+        "Balon"
+      ],
+      "h31": [
+        "Pociąg",
+        "Jeżdżę tylko po własnej drodze",
+        "Mam wiele wagonów",
+        "Jeżdżę po szynach od stacji do stacji",
+        "Tramwaj",
+        "Autobus",
+        "Metro"
+      ],
+      "h32": [
+        "Most",
+        "Budują mnie z kamienia, drewna lub stali",
+        "Statki mogą pode mną przepływać",
+        "Łączę dwa brzegi rzeki",
+        "Tunel",
+        "Droga",
+        "Tama"
+      ],
+      "h33": [
+        "Ołówek",
+        "W środku mam grafit",
+        "Temperuje się mnie, gdy się stępię",
+        "Piszę i rysuję; gumka ściera moje ślady",
+        "Długopis",
+        "Kreda",
+        "Flamaster"
+      ],
+      "h34": [
+        "Książka",
+        "Milczę, ale wiele uczę",
+        "Mam okładkę i strony",
+        "Czyta się mnie i wypożycza z bibliotek",
+        "Czasopismo",
+        "Gazeta",
+        "Zeszyt"
+      ],
+      "h35": [
+        "Walizka",
+        "Dużo podróżuję, ale zawsze w czyjejś ręce",
+        "Pakuje się mnie przed podróżą",
+        "Mam rączkę i kółka, mieszczę ubrania",
+        "Plecak",
+        "Torba",
+        "Pudełko"
+      ],
+      "h36": [
+        "Biblioteka",
+        "Tu proszą, by mówić cicho",
+        "Tu dostaje się kartę czytelnika",
+        "Tysiące książek do wypożyczenia",
+        "Szkoła",
+        "Księgarnia",
+        "Archiwum"
+      ],
+      "h37": [
+        "Lotnisko",
+        "Tu jest kontrola paszportowa",
+        "Tu ogłaszają wejście na pokład",
+        "Stąd startują samoloty",
+        "Dworzec kolejowy",
+        "Port",
+        "Dworzec autobusowy"
+      ],
+      "h38": [
+        "Pustynia",
+        "W dzień gorąco, ale noce bywają bardzo zimne",
+        "Można tu znaleźć oazy",
+        "Dużo piasku i bardzo mało wody",
+        "Step",
+        "Sawanna",
+        "Plaża"
+      ],
+      "h39": [
+        "Wulkan",
+        "Mogę spać setki lat",
+        "Z mojego szczytu unosi się dym",
+        "Wybucham lawą",
+        "Góra",
+        "Gejzer",
+        "Wyspa"
+      ],
+      "h40": [
+        "Tęcza",
+        "Widzisz mnie tylko, gdy słońce masz za plecami",
+        "Często pojawiam się po deszczu",
+        "Siedem kolorów łukiem na niebie",
+        "Błyskawica",
+        "Chmura",
+        "Zorza polarna"
+      ],
+      "h41": [
+        "Księżyc",
+        "Zawsze pokazuję Ziemi tę samą stronę",
+        "Bywam w pełni albo cienkim sierpem",
+        "Świecę na nocnym niebie",
+        "Słońce",
+        "Gwiazda",
+        "Kometa"
+      ],
+      "h42": [
+        "Śnieg",
+        "Każdy mój płatek jest wyjątkowy",
+        "Buduje się ze mnie forty",
+        "Biały i zimny, padam zimą",
+        "Deszcz",
+        "Grad",
+        "Szron"
+      ],
+      "h43": [
+        "Rzeka",
+        "Mam źródło i ujście",
+        "Pływają po mnie łodzie",
+        "Płynę z gór do morza",
+        "Jezioro",
+        "Morze",
+        "Strumień"
+      ],
+      "h44": [
+        "Kaktus",
+        "Długo mogę żyć bez wody",
+        "Rosnę na pustyniach i parapetach",
+        "Jestem pokryty kolcami",
+        "Aloes",
+        "Palma",
+        "Stokrotka"
+      ],
+      "h45": [
+        "Słonecznik",
+        "Z moich nasion robi się olej",
+        "Obracam się za słońcem",
+        "Duży żółty kwiat pełen pestek",
+        "Stokrotka",
+        "Tulipan",
+        "Mniszek"
+      ],
+      "h46": [
+        "Dąb",
+        "Mogę żyć ponad tysiąc lat",
+        "Uchodzę za symbol siły",
+        "Rosną na mnie żołędzie",
+        "Brzoza",
+        "Sosna",
+        "Klon"
+      ],
+      "h47": [
+        "Wyspa",
+        "Może się na mnie zmieścić całe państwo",
+        "Dotrzesz do mnie łodzią lub samolotem",
+        "Ze wszystkich stron otacza mnie woda",
+        "Półwysep",
+        "Rafa",
+        "Przylądek"
+      ],
+      "h48": [
+        "Wodospad",
+        "Słychać mnie z daleka",
+        "Najwyższy z nas jest w Wenezueli",
+        "Tu rzeka spada z urwiska",
+        "Fontanna",
+        "Gejzer",
+        "Źródło"
+      ],
+      "h49": [
+        "Lekarz",
+        "Uczę się wiele lat, zanim zacznę pracę",
+        "Noszę biały fartuch",
+        "Leczę chorych ludzi",
+        "Pielęgniarz",
+        "Farmaceuta",
+        "Weterynarz"
+      ],
+      "h50": [
+        "Strażak",
+        "Dyżuruję dzień i noc",
+        "Pracuję z wodą i drabinami",
+        "Gaszę pożary",
+        "Policjant",
+        "Ratownik",
+        "Budowlaniec"
+      ],
+      "h51": [
+        "Kucharz",
+        "Próbuję wszystkiego, co przygotowuję",
+        "Pracuję przy gorącej kuchence",
+        "Gotuję w restauracji",
+        "Piekarz",
+        "Kelner",
+        "Cukiernik"
+      ],
+      "h52": [
+        "Nauczyciel",
+        "Wieczorami sprawdzam zeszyty",
+        "Stoję przy tablicy",
+        "Uczę dzieci w szkole",
+        "Dyrektor szkoły",
+        "Bibliotekarz",
+        "Przedszkolanka"
+      ],
+      "h53": [
+        "Pilot",
+        "Moim miejscem pracy jest kokpit",
+        "Mówię do pasażerów przez głośnik",
+        "Prowadzę samolot",
+        "Kapitan",
+        "Kierowca",
+        "Astronauta"
+      ],
+      "h54": [
+        "Listonosz",
+        "Znam każdy adres w mojej okolicy",
+        "Noszę dużą torbę",
+        "Doręczam listy i paczki",
+        "Kurier",
+        "Taksówkarz",
+        "Sprzedawca"
+      ],
+      "h55": [
+        "Ogrodnik",
+        "Wiem, kiedy co sadzić",
+        "Moje narzędzia to konewka i sekator",
+        "Dbam o kwiaty i drzewa",
+        "Rolnik",
+        "Leśnik",
+        "Florysta"
+      ],
+      "h56": [
+        "Fotograf",
+        "Łapię chwile",
+        "Proszę wszystkich, by się nie ruszali",
+        "Pracuję z aparatem i zdjęciami",
+        "Malarz",
+        "Dziennikarz",
+        "Operator kamery"
+      ],
+      "h57": [
+        "Rybak",
+        "Wstaję przed świtem i długo czekam",
+        "Potrzebuję wędki i cierpliwości",
+        "Łowię ryby",
+        "Rolnik",
+        "Marynarz",
+        "Pasterz"
+      ],
+      "h58": [
+        "Astronauta",
+        "Długo trenuję na Ziemi",
+        "Noszę skafander",
+        "Lecę w kosmos",
+        "Pilot",
+        "Astronom",
+        "Inżynier"
+      ],
+      "h59": [
+        "Architekt",
+        "Moją pracę widać w całym mieście",
+        "Rysuję plany",
+        "Projektuję domy",
+        "Budowlaniec",
+        "Projektant",
+        "Inżynier"
+      ],
+      "h60": [
+        "Dentysta",
+        "Wiele osób boi się mojego fotela",
+        "Pracuję wiertłem",
+        "Leczę zęby",
+        "Chirurg",
+        "Okulista",
+        "Pediatra"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Gdzie chcesz mieszkać za dziesięć lat?",
+        "Nad morzem",
+        "W górach",
+        "W dużym mieście",
+        "W cichej wsi"
+      ],
+      "d02": [
+        "Jaki dom chcesz kiedyś mieć?",
+        "Przytulne mieszkanie",
+        "Dom z ogrodem",
+        "Domek nad jeziorem",
+        "Stary dom z historią"
+      ],
+      "d03": [
+        "Co chcesz uprawiać w ogrodzie?",
+        "Jabłonie",
+        "Róże",
+        "Warzywa i zioła",
+        "Truskawki"
+      ],
+      "d04": [
+        "Jakie zwierzę chcesz mieć?",
+        "Kota",
+        "Papugę",
+        "Rybki w akwarium",
+        "Żółwia"
+      ],
+      "d05": [
+        "Dokąd chcesz pojechać najpierw?",
+        "Japonia",
+        "Maroko",
+        "Islandia",
+        "Nowa Zelandia"
+      ],
+      "d06": [
+        "Jak chcesz podróżować?",
+        "Pociągiem",
+        "Samochodem",
+        "Samolotem",
+        "Statkiem"
+      ],
+      "d07": [
+        "Jakiego języka chcesz się nauczyć?",
+        "Arabskiego",
+        "Japońskiego",
+        "Hiszpańskiego",
+        "Chińskiego"
+      ],
+      "d08": [
+        "Czego chcesz się nauczyć?",
+        "Rysować",
+        "Szyć",
+        "Pływać",
+        "Programować"
+      ],
+      "d09": [
+        "Jakie danie chcesz opanować?",
+        "Pilaw",
+        "Domowy chleb",
+        "Sushi",
+        "Baklawa"
+      ],
+      "d10": [
+        "Jak chcesz spędzać weekendy?",
+        "Na łonie natury",
+        "W domu z książką",
+        "U rodziny",
+        "W nowym mieście"
+      ],
+      "d11": [
+        "Jaki byłby idealny weekendowy poranek?",
+        "Wczesny spacer",
+        "Spokojne śniadanie",
+        "Ćwiczenia na świeżym powietrzu",
+        "Herbata na balkonie"
+      ],
+      "d12": [
+        "Na co chcesz oszczędzać?",
+        "Na własny dom",
+        "Na dużą podróż",
+        "Na samochód",
+        "Na studia"
+      ],
+      "d13": [
+        "Jaką pracę chcesz wykonywać?",
+        "Własna firma",
+        "Praca w dużej firmie",
+        "Praca z domu",
+        "Pomaganie ludziom"
+      ],
+      "d14": [
+        "Jak chcesz pomagać innym?",
+        "Wolontariat",
+        "Pomoc zwierzętom",
+        "Uczenie dzieci",
+        "Sadzenie drzew"
+      ],
+      "d15": [
+        "Jaką rodzinną tradycję chcesz mieć?",
+        "Wspólny niedzielny obiad",
+        "Wieczory z grami planszowymi",
+        "Weekendowe spacery",
+        "Rodzinny album zdjęć"
+      ],
+      "d16": [
+        "Jaką kuchnię chcesz mieć?",
+        "Dużą, rodzinną",
+        "Jasną i przytulną",
+        "Z widokiem na ogród",
+        "Małą, ale praktyczną"
+      ],
+      "d17": [
+        "Co chcesz zobaczyć na własne oczy?",
+        "Zorzę polarną",
+        "Piramidy w Gizie",
+        "Wodospad Wiktorii",
+        "Himalaje"
+      ],
+      "d18": [
+        "Co chcesz robić wieczorami?",
+        "Czytać",
+        "Gotować coś nowego",
+        "Uczyć się języków",
+        "Spacerować po parku"
+      ],
+      "d19": [
+        "Jakie hobby chcesz zacząć?",
+        "Fotografia",
+        "Ceramika",
+        "Haft",
+        "Ogrodnictwo"
+      ],
+      "d20": [
+        "Dokąd chcesz wyjechać na weekend?",
+        "Do lasu",
+        "Nad jezioro",
+        "Do pobliskiego miasta",
+        "W góry"
+      ],
+      "d21": [
+        "Jak wyglądałoby twoje idealne miejsce pracy?",
+        "Przy oknie",
+        "Z regałami na książki",
+        "Pełne zielonych roślin",
+        "Prawie puste"
+      ],
+      "d22": [
+        "Co chcesz studiować w przyszłości?",
+        "Medycynę",
+        "Historię",
+        "Ekonomię",
+        "Projektowanie"
+      ],
+      "d23": [
+        "Jakie drzewo chcesz posadzić?",
+        "Dąb",
+        "Jabłoń",
+        "Drzewo oliwne",
+        "Palmę daktylową"
+      ],
+      "d24": [
+        "Co chcesz ugotować dla gości?",
+        "Domowe ciasto",
+        "Duży pilaw",
+        "Rodzinną zupę",
+        "Świeże sałatki"
+      ],
+      "d25": [
+        "Jakie miasto chcesz odwiedzić?",
+        "Stambuł",
+        "Paryż",
+        "Tokio",
+        "Kair"
+      ],
+      "d26": [
+        "Jak chcesz spędzić lato?",
+        "Nad morzem",
+        "W górach",
+        "Na działce",
+        "Podróżując po kraju"
+      ],
+      "d27": [
+        "Jakiego ptaka chcesz mieć?",
+        "Kanarka",
+        "Papużkę falistą",
+        "Gołębie",
+        "Zeberki"
+      ],
+      "d28": [
+        "Jaki sport chcesz wypróbować?",
+        "Pływanie",
+        "Jazdę konną",
+        "Łucznictwo",
+        "Wspinaczkę"
+      ],
+      "d29": [
+        "Jakie książki chcesz kolekcjonować?",
+        "Encyklopedie",
+        "Klasykę",
+        "Książki podróżnicze",
+        "Książki kucharskie"
+      ],
+      "d30": [
+        "Co chcesz zrobić własnymi rękami?",
+        "Meble",
+        "Własne naczynia",
+        "Dziergany koc",
+        "Budkę dla ptaków"
+      ],
+      "d31": [
+        "Gdzie chcesz urządzić piknik?",
+        "Nad rzeką",
+        "W ogrodzie",
+        "Na leśnej polanie",
+        "W górach"
+      ],
+      "d32": [
+        "Czym chcesz kiedyś jeździć?",
+        "Autem elektrycznym",
+        "Rowerem",
+        "Dużym rodzinnym autem",
+        "Bez samochodu"
+      ],
+      "d33": [
+        "Co chcesz robić na emeryturze?",
+        "Dbać o ogród",
+        "Podróżować",
+        "Spędzać czas z wnukami",
+        "Uczyć się nowych rzeczy"
+      ],
+      "d34": [
+        "Jaki dobry uczynek chcesz zrobić?",
+        "Zbudować studnię",
+        "Pomóc schronisku dla kotów",
+        "Zebrać książki dla szkoły",
+        "Posadzić szpaler drzew"
+      ],
+      "d35": [
+        "Co chcesz zjeść na weekendowe śniadanie?",
+        "Naleśniki",
+        "Omlet",
+        "Owsiankę z owocami",
+        "Placuszki z twarogu"
+      ],
+      "d36": [
+        "Gdzie chcesz przyjmować gości?",
+        "W kuchni",
+        "W salonie",
+        "Na tarasie",
+        "W ogrodzie"
+      ],
+      "d37": [
+        "Jaki cud natury chcesz zobaczyć?",
+        "Wielki Kanion",
+        "Wodospad Niagara",
+        "Jezioro Bajkał",
+        "Saharę"
+      ],
+      "d38": [
+        "Jakiej domowej umiejętności chcesz się nauczyć?",
+        "Drobnych napraw",
+        "Szycia",
+        "Pieczenia chleba",
+        "Dbania o ogród"
+      ],
+      "d39": [
+        "Iloma językami chcesz mówić?",
+        "Dwoma",
+        "Trzema",
+        "Pięcioma",
+        "Jak najwięcej"
+      ],
+      "d40": [
+        "Jaki kolor ścian chcesz mieć w domu?",
+        "Biały",
+        "Beżowy",
+        "Jasnozielony",
+        "Jasnoniebieski"
+      ],
+      "d41": [
+        "Jaką rybkę chcesz mieć w akwarium?",
+        "Złotą rybkę",
+        "Gupiki",
+        "Sumika",
+        "Skalara"
+      ],
+      "d42": [
+        "Jaką podróż chcesz podarować rodzicom?",
+        "Wypoczynek nad morzem",
+        "Zwiedzanie miasta",
+        "Wyjazd w góry",
+        "Podróż pociągiem"
+      ],
+      "d43": [
+        "Co chcesz robić w wolnym czasie?",
+        "Rysować",
+        "Czytać",
+        "Uprawiać sport",
+        "Robić rękodzieło"
+      ],
+      "d44": [
+        "W jakiej porze roku chcesz podróżować?",
+        "Wiosną",
+        "Latem",
+        "Jesienią",
+        "Zimą"
+      ],
+      "d45": [
+        "Co chcesz przygotować na zimę?",
+        "Dżem",
+        "Ogórki kiszone",
+        "Suszone owoce",
+        "Kompot"
+      ],
+      "d46": [
+        "Jaki inny zawód chcesz wypróbować?",
+        "Kucharz",
+        "Programista",
+        "Tłumacz",
+        "Stolarz"
+      ],
+      "d47": [
+        "Jaki kraj chcesz poznać?",
+        "Malezja",
+        "Włochy",
+        "Kanada",
+        "Indonezja"
+      ],
+      "d48": [
+        "Co chcesz mieć na podwórku?",
+        "Małą fontannę",
+        "Grządki warzywne",
+        "Altanę",
+        "Huśtawkę"
+      ],
+      "d49": [
+        "Jak chcesz świętować sukcesy?",
+        "Rodzinną kolacją",
+        "Wypadem na łono natury",
+        "Nową książką",
+        "Dobrym uczynkiem dla innych"
+      ],
+      "d50": [
+        "Co chcesz przekazać dzieciom?",
+        "Miłość do książek",
+        "Umiejętność gotowania",
+        "Język ojczysty",
+        "Troskę o przyrodę"
+      ]
     }
   },
   "uk": {
@@ -8803,7 +12539,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Перемога! Ви знаєте про світ більше.",
       "tfFinalLose": "Цього разу більше знає {name} — реванш?",
       "tfFinalDraw": "Нічия — ви знаєте однаково багато!",
-      "featTruth": "Жива гра «Правда чи ні» — дивовижні факти про світ"
+      "featTruth": "Жива гра «Правда чи ні» — дивовижні факти про світ",
+      "countries": "Вгадай країну",
+      "coTitle": "Вгадай країну",
+      "coNote": "Жива гра для двох: ведмедик мандрує світом. 10 секунд — вгадай, у якій він країні! Бал за кожну правильну відповідь.",
+      "coShareText": "{name} кличе тебе в живу гру «Вгадай країну»",
+      "coJoinLead": "{name} чекає на тебе. Вгадай країну за картинкою!",
+      "coRound": "Країна {n} з {total}",
+      "coAsk": "Що це за країна?",
+      "coFinalWin": "Перемога! Ти справді знаєш світ.",
+      "coFinalLose": "Цього разу {name} краще знає світ — реванш?",
+      "coFinalDraw": "Нічия — ви чудово знаєте світ!",
+      "featCountries": "Жива гра «Вгадай країну» — 40 країн",
+      "hints": "Вгадай за підказками",
+      "dreams": "Мрії та плани",
+      "hiTitle": "Вгадай за підказками",
+      "hiNote": "Жива гра для двох: три підказки відкриваються по черзі. Вгадали з першої — 3 бали, з другої — 2, з третьої — 1.",
+      "hiShareText": "{name} кличе тебе в живу гру «Вгадай за підказками»",
+      "hiJoinLead": "{name} чекає на вас. Вгадуйте якомога раніше!",
+      "hiRound": "Загадка {n} з {total}",
+      "hiAsk": "Що це?",
+      "hiClue": "Підказка {n}",
+      "hiPoints": "Бали: +{n}",
+      "hiNoPoints": "Цього разу без балів",
+      "hiFinalWin": "Перемога! Ви чудово вгадуєте.",
+      "hiFinalLose": "Цього разу краще вгадує {name} — реванш?",
+      "hiFinalDraw": "Нічия — ви обоє чудово вгадуєте!",
+      "featHints": "Жива гра «Вгадай за підказками» — 3, 2 або 1 бал",
+      "drTitle": "Мрії та плани",
+      "drNote": "Жива гра для двох: дім, подорожі, навчання й захоплення. Обирайте, чого хотілося б, і дізнайтеся, чи збігаються ваші мрії.",
+      "drShareText": "{name} кличе тебе в живу гру «Мрії та плани»",
+      "drJoinLead": "{name} чекає на вас. Обирайте те, чого справді хочеться!",
+      "drRound": "Питання {n} з {total}",
+      "drPick": "Оберіть, чого хотілося б",
+      "drBoth": "Збіг: {item}",
+      "drDiff": "Різні мрії — розкажіть одне одному чому!",
+      "drFinalHigh": "У вас стільки спільних мрій!",
+      "drFinalMid": "Різні мрії — є про що поговорити",
+      "drCommon": "Ваші спільні мрії",
+      "featDreams": "Жива гра «Мрії та плани» — чи збігаються ваші мрії?",
+      "modestTitle": "Скромний режим",
+      "modestNote": "Без питань про почуття, обійми й побачення — лише дружні"
     },
     "questions": {
       "q01": [
@@ -10722,6 +14498,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Південний полюс значно холодніший: він на високому крижаному континенті, а Північний — посеред океану."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Пінгвін",
+        "Я птах, але не вмію літати",
+        "Живу там, де дуже холодно",
+        "Завжди ношу фрак",
+        "Страус",
+        "Тюлень",
+        "Чайка"
+      ],
+      "h02": [
+        "Слон",
+        "Я їм майже цілий день",
+        "Мої вуха схожі на великі віяла",
+        "У мене довгий хобот",
+        "Носоріг",
+        "Бегемот",
+        "Жирафа"
+      ],
+      "h03": [
+        "Жирафа",
+        "Я сплю дуже мало, часто стоячи",
+        "Їм листя з найвищих дерев",
+        "У мене найдовша шия",
+        "Зебра",
+        "Верблюд",
+        "Лось"
+      ],
+      "h04": [
+        "Верблюд",
+        "Я довго можу обходитися без води",
+        "Мене називають кораблем пустелі",
+        "У мене на спині один або два горби",
+        "Кінь",
+        "Віслюк",
+        "Лама"
+      ],
+      "h05": [
+        "Бджола",
+        "Я вмію показувати іншим дорогу до квітів",
+        "Працюю на луці від світанку до смеркання",
+        "Я роблю мед",
+        "Оса",
+        "Муха",
+        "Метелик"
+      ],
+      "h06": [
+        "Черепаха",
+        "Я можу прожити понад сто років",
+        "Я ніколи не поспішаю",
+        "Ношу свій дім на спині",
+        "Равлик",
+        "Ящірка",
+        "Їжак"
+      ],
+      "h07": [
+        "Кенгуру",
+        "Хвіст допомагає мені тримати рівновагу",
+        "Я живу в Австралії",
+        "Ношу малюка в сумці",
+        "Коала",
+        "Заєць",
+        "Білка"
+      ],
+      "h08": [
+        "Сова",
+        "Я можу повернути голову майже назад",
+        "Полюю вночі",
+        "Ухаю в темному лісі",
+        "Ворона",
+        "Орел",
+        "Голуб"
+      ],
+      "h09": [
+        "Дельфін",
+        "Дихаю повітрям, хоч живу в морі",
+        "Допомагаю людям і розмовляю свистом",
+        "Люблю стрибати над хвилями",
+        "Акула",
+        "Кит",
+        "Тюлень"
+      ],
+      "h10": [
+        "Білка",
+        "Ховаю їжу й іноді забуваю де",
+        "Живу в дуплі",
+        "Гризу горіхи й шишки",
+        "Їжак",
+        "Заєць",
+        "Миша"
+      ],
+      "h11": [
+        "Павук",
+        "Я не комаха, хоч багато хто так думає",
+        "У мене вісім ніг",
+        "Плету тонку сітку",
+        "Мураха",
+        "Жук",
+        "Комар"
+      ],
+      "h12": [
+        "Кіт",
+        "Бачу в темряві краще за людей",
+        "Люблю тепле підвіконня",
+        "Муркочу й ловлю мишей",
+        "Кролик",
+        "Хом’як",
+        "Папуга"
+      ],
+      "h13": [
+        "Кавун",
+        "Науковці називають мене ягодою",
+        "На мене чекають наприкінці літа",
+        "Зовні зелений, усередині червоний",
+        "Диня",
+        "Гарбуз",
+        "Ананас"
+      ],
+      "h14": [
+        "Хліб",
+        "Мене печуть майже в кожній країні",
+        "Мене ріжуть скибками",
+        "Буваю білим або житнім, зі скоринкою",
+        "Млинець",
+        "Пиріг",
+        "Печиво"
+      ],
+      "h15": [
+        "Мед",
+        "Я можу зберігатися тисячі років",
+        "Мене додають у теплий чай при застуді",
+        "Мене роблять бджоли",
+        "Варення",
+        "Цукор",
+        "Молоко"
+      ],
+      "h16": [
+        "Лимон",
+        "У мені багато вітаміну C",
+        "Мене кладуть у чай",
+        "Я жовтий і дуже кислий",
+        "Апельсин",
+        "Грейпфрут",
+        "Лайм"
+      ],
+      "h17": [
+        "Морква",
+        "Росту під землею, видно лише бадилля",
+        "Кажуть, я корисна для зору",
+        "Я помаранчева, і кролики мене люблять",
+        "Буряк",
+        "Редиска",
+        "Картопля"
+      ],
+      "h18": [
+        "Яблуко",
+        "Я буваю літнім і зимовим",
+        "З мене роблять пироги й сік",
+        "Росту на дереві, червоне чи зелене",
+        "Груша",
+        "Персик",
+        "Слива"
+      ],
+      "h19": [
+        "Банан",
+        "Росту гронами на високій рослині",
+        "Мавпи мене дуже люблять",
+        "Я жовтий, і мене треба чистити",
+        "Манго",
+        "Ківі",
+        "Ананас"
+      ],
+      "h20": [
+        "Чай",
+        "У Китаї мене п’ють тисячоліттями",
+        "Я буваю чорним, зеленим чи трав’яним",
+        "Мене заварюють окропом",
+        "Кава",
+        "Какао",
+        "Сік"
+      ],
+      "h21": [
+        "Яйце",
+        "Без мене важко спекти торт",
+        "З мене роблять омлет",
+        "Мене несе курка",
+        "Сир",
+        "Горіх",
+        "Картопля"
+      ],
+      "h22": [
+        "Парасолька",
+        "Більшість часу я складена",
+        "Мене беруть, коли небо сіріє",
+        "Захищаю від дощу",
+        "Дощовик",
+        "Капелюх",
+        "Чоботи"
+      ],
+      "h23": [
+        "Годинник",
+        "Я можу працювати від піску чи сонця",
+        "Вишу на стінах і стою на вежах",
+        "Показую час стрілками",
+        "Компас",
+        "Календар",
+        "Термометр"
+      ],
+      "h24": [
+        "Ключ",
+        "Без мене двері тебе не впустять",
+        "Мене часто носять на кільці",
+        "Я відмикаю замок",
+        "Ножиці",
+        "Викрутка",
+        "Скріпка"
+      ],
+      "h25": [
+        "Свічка",
+        "Що довше працюю, то меншою стаю",
+        "Мене запалюють, коли зникає світло",
+        "Я з воску і маю ґніт",
+        "Ліхтарик",
+        "Лампа",
+        "Сірники"
+      ],
+      "h26": [
+        "Ножиці",
+        "У мене два кільця й два гострі кінці",
+        "Вирізаю фігурки з паперу",
+        "Ріжу тканину й папір",
+        "Ніж",
+        "Голка",
+        "Лінійка"
+      ],
+      "h27": [
+        "Зубна щітка",
+        "У мене багато щетинок",
+        "Мене міняють кожні три місяці",
+        "Чищу зуби вранці й увечері",
+        "Мило",
+        "Рушник",
+        "Губка"
+      ],
+      "h28": [
+        "Холодильник",
+        "Усередині мене завжди зима",
+        "Коли мене відчиняють, вмикається світло",
+        "Тримаю їжу холодною",
+        "Плита",
+        "Духовка",
+        "Шафа"
+      ],
+      "h29": [
+        "Велосипед",
+        "Я їжджу без пального й електрики",
+        "У мене є кермо, дзвоник і ланцюг",
+        "У мене два колеса й педалі",
+        "Самокат",
+        "Мотоцикл",
+        "Скейтборд"
+      ],
+      "h30": [
+        "Літак",
+        "Маю крила, але я не птах",
+        "На мене чекають в аеропорту",
+        "Літаю над хмарами з пасажирами",
+        "Гелікоптер",
+        "Ракета",
+        "Повітряна куля"
+      ],
+      "h31": [
+        "Потяг",
+        "Я їжджу лише своєю дорогою",
+        "У мене багато вагонів",
+        "Їжджу рейками від станції до станції",
+        "Трамвай",
+        "Автобус",
+        "Метро"
+      ],
+      "h32": [
+        "Міст",
+        "Мене будують із каменю, дерева чи сталі",
+        "Під мною можуть пропливати кораблі",
+        "Я з’єдную два береги річки",
+        "Тунель",
+        "Дорога",
+        "Гребля"
+      ],
+      "h33": [
+        "Олівець",
+        "Усередині мене графіт",
+        "Мене стругають, коли я затуплююся",
+        "Пишу й малюю; гумка стирає мої сліди",
+        "Ручка",
+        "Крейда",
+        "Фломастер"
+      ],
+      "h34": [
+        "Книжка",
+        "Я мовчу, але багато чого навчаю",
+        "У мене є обкладинка й сторінки",
+        "Мене читають і беруть у бібліотеці",
+        "Журнал",
+        "Газета",
+        "Зошит"
+      ],
+      "h35": [
+        "Валіза",
+        "Я багато подорожую, але завжди в чиїйсь руці",
+        "Мене пакують перед поїздкою",
+        "У мене ручка й колеса, а в мені одяг",
+        "Рюкзак",
+        "Сумка",
+        "Коробка"
+      ],
+      "h36": [
+        "Бібліотека",
+        "Тут просять говорити тихо",
+        "Тут видають читацький квиток",
+        "Тисячі книжок, які можна взяти додому",
+        "Школа",
+        "Книгарня",
+        "Архів"
+      ],
+      "h37": [
+        "Аеропорт",
+        "Тут є паспортний контроль",
+        "Тут оголошують посадку на рейси",
+        "Звідси злітають літаки",
+        "Вокзал",
+        "Порт",
+        "Автовокзал"
+      ],
+      "h38": [
+        "Пустеля",
+        "Удень спекотно, а ночі бувають дуже холодні",
+        "Тут трапляються оазиси",
+        "Багато піску й дуже мало води",
+        "Степ",
+        "Савана",
+        "Пляж"
+      ],
+      "h39": [
+        "Вулкан",
+        "Я можу спати сотні років",
+        "З моєї вершини йде дим",
+        "Я вивергаю лаву",
+        "Гора",
+        "Гейзер",
+        "Острів"
+      ],
+      "h40": [
+        "Веселка",
+        "Мене видно, лише коли сонце за спиною",
+        "Я часто з’являюся після дощу",
+        "Сім кольорів дугою на небі",
+        "Блискавка",
+        "Хмара",
+        "Полярне сяйво"
+      ],
+      "h41": [
+        "Місяць",
+        "Я завжди показую Землі один бік",
+        "Буваю повним або тонким серпом",
+        "Сяю на нічному небі",
+        "Сонце",
+        "Зірка",
+        "Комета"
+      ],
+      "h42": [
+        "Сніг",
+        "Кожна моя сніжинка неповторна",
+        "З мене будують фортеці",
+        "Білий і холодний, падаю взимку",
+        "Дощ",
+        "Град",
+        "Іній"
+      ],
+      "h43": [
+        "Річка",
+        "У мене є витік і гирло",
+        "Мною пливуть човни",
+        "Течу з гір до моря",
+        "Озеро",
+        "Море",
+        "Струмок"
+      ],
+      "h44": [
+        "Кактус",
+        "Я довго можу жити без води",
+        "Росту в пустелях і на підвіконнях",
+        "Я вкритий колючками",
+        "Алое",
+        "Пальма",
+        "Ромашка"
+      ],
+      "h45": [
+        "Соняшник",
+        "З мого насіння роблять олію",
+        "Повертаюся за сонцем",
+        "Велика жовта квітка, повна насіння",
+        "Ромашка",
+        "Тюльпан",
+        "Кульбаба"
+      ],
+      "h46": [
+        "Дуб",
+        "Я можу жити понад тисячу років",
+        "Мене вважають символом сили",
+        "На мені ростуть жолуді",
+        "Береза",
+        "Сосна",
+        "Клен"
+      ],
+      "h47": [
+        "Острів",
+        "На мені може вміститися ціла країна",
+        "До мене дістаються човном або літаком",
+        "Мене з усіх боків оточує вода",
+        "Півострів",
+        "Риф",
+        "Мис"
+      ],
+      "h48": [
+        "Водоспад",
+        "Мене чути здалеку",
+        "Найвищий із нас — у Венесуелі",
+        "Тут річка падає з урвища",
+        "Фонтан",
+        "Гейзер",
+        "Джерело"
+      ],
+      "h49": [
+        "Лікар",
+        "Я довго вчуся, перш ніж почати працювати",
+        "Ношу білий халат",
+        "Лікую хворих людей",
+        "Медбрат",
+        "Фармацевт",
+        "Ветеринар"
+      ],
+      "h50": [
+        "Пожежник",
+        "Чергую вдень і вночі",
+        "Працюю з водою та драбинами",
+        "Гашу пожежі",
+        "Поліцейський",
+        "Рятувальник",
+        "Будівельник"
+      ],
+      "h51": [
+        "Кухар",
+        "Куштую все, що готую",
+        "Працюю біля гарячої плити",
+        "Готую страви в ресторані",
+        "Пекар",
+        "Офіціант",
+        "Кондитер"
+      ],
+      "h52": [
+        "Учитель",
+        "Увечері перевіряю зошити",
+        "Стою біля дошки",
+        "Навчаю дітей у школі",
+        "Директор школи",
+        "Бібліотекар",
+        "Вихователь"
+      ],
+      "h53": [
+        "Пілот",
+        "Моє робоче місце — кабіна",
+        "Звертаюся до пасажирів через гучномовець",
+        "Керую літаком",
+        "Капітан",
+        "Водій",
+        "Космонавт"
+      ],
+      "h54": [
+        "Листоноша",
+        "Я знаю кожну адресу в своєму районі",
+        "Ношу велику сумку",
+        "Доставляю листи й посилки",
+        "Кур’єр",
+        "Таксист",
+        "Продавець"
+      ],
+      "h55": [
+        "Садівник",
+        "Я знаю, коли що садити",
+        "Мої інструменти — лійка й секатор",
+        "Доглядаю квіти й дерева",
+        "Фермер",
+        "Лісник",
+        "Флорист"
+      ],
+      "h56": [
+        "Фотограф",
+        "Я ловлю миті",
+        "Прошу всіх не рухатися",
+        "Працюю з камерою та знімками",
+        "Художник",
+        "Журналіст",
+        "Оператор"
+      ],
+      "h57": [
+        "Рибалка",
+        "Встаю до світанку й довго чекаю",
+        "Мені потрібні вудка й терпіння",
+        "Ловлю рибу",
+        "Фермер",
+        "Моряк",
+        "Пастух"
+      ],
+      "h58": [
+        "Космонавт",
+        "Я довго тренуюся на Землі",
+        "Ношу скафандр",
+        "Літаю в космос",
+        "Пілот",
+        "Астроном",
+        "Інженер"
+      ],
+      "h59": [
+        "Архітектор",
+        "Мою роботу видно по всьому місту",
+        "Креслю плани",
+        "Проєктую будинки",
+        "Будівельник",
+        "Дизайнер",
+        "Інженер"
+      ],
+      "h60": [
+        "Стоматолог",
+        "Багато хто боїться мого крісла",
+        "Працюю з бормашиною",
+        "Лікую зуби",
+        "Хірург",
+        "Окуліст",
+        "Педіатр"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Де хотілося б жити через десять років?",
+        "Біля моря",
+        "У горах",
+        "У великому місті",
+        "У тихому селі"
+      ],
+      "d02": [
+        "Який дім хотілося б мати колись?",
+        "Затишна квартира",
+        "Будинок із садом",
+        "Хатинка біля озера",
+        "Старий дім з історією"
+      ],
+      "d03": [
+        "Що хотілося б вирощувати в саду?",
+        "Яблуні",
+        "Троянди",
+        "Овочі й зелень",
+        "Полуницю"
+      ],
+      "d04": [
+        "Яку тварину хотілося б мати?",
+        "Кішку",
+        "Папугу",
+        "Акваріумних рибок",
+        "Черепаху"
+      ],
+      "d05": [
+        "Куди хотілося б поїхати насамперед?",
+        "Японія",
+        "Марокко",
+        "Ісландія",
+        "Нова Зеландія"
+      ],
+      "d06": [
+        "Як хотілося б подорожувати?",
+        "Потягом",
+        "Автомобілем",
+        "Літаком",
+        "Кораблем"
+      ],
+      "d07": [
+        "Яку мову хотілося б вивчити?",
+        "Арабську",
+        "Японську",
+        "Іспанську",
+        "Китайську"
+      ],
+      "d08": [
+        "Чого хотілося б навчитися?",
+        "Малювати",
+        "Шити",
+        "Плавати",
+        "Програмувати"
+      ],
+      "d09": [
+        "Яку страву хотілося б опанувати?",
+        "Плов",
+        "Домашній хліб",
+        "Суші",
+        "Пахлаву"
+      ],
+      "d10": [
+        "Як хотілося б проводити вихідні?",
+        "На природі",
+        "Удома з книжкою",
+        "У гостях у рідних",
+        "У новому місті"
+      ],
+      "d11": [
+        "Яким був би ідеальний ранок вихідного?",
+        "Рання прогулянка",
+        "Неспішний сніданок",
+        "Зарядка на свіжому повітрі",
+        "Чай на балконі"
+      ],
+      "d12": [
+        "На що хотілося б накопичити?",
+        "На власне житло",
+        "На велику подорож",
+        "На автомобіль",
+        "На навчання"
+      ],
+      "d13": [
+        "Якою роботою хотілося б займатися?",
+        "Власна справа",
+        "Робота у великій компанії",
+        "Робота з дому",
+        "Допомога людям"
+      ],
+      "d14": [
+        "Як хотілося б допомагати іншим?",
+        "Волонтерство",
+        "Допомога тваринам",
+        "Навчання дітей",
+        "Висаджування дерев"
+      ],
+      "d15": [
+        "Яку сімейну традицію хотілося б мати?",
+        "Недільний обід разом",
+        "Вечори настільних ігор",
+        "Прогулянки у вихідні",
+        "Сімейний фотоальбом"
+      ],
+      "d16": [
+        "Яку кухню хотілося б мати?",
+        "Велику сімейну",
+        "Світлу й затишну",
+        "З видом на сад",
+        "Маленьку, але зручну"
+      ],
+      "d17": [
+        "Що хотілося б побачити на власні очі?",
+        "Полярне сяйво",
+        "Піраміди Гізи",
+        "Водоспад Вікторія",
+        "Гімалаї"
+      ],
+      "d18": [
+        "Чим хотілося б займатися вечорами?",
+        "Читанням",
+        "Готуванням чогось нового",
+        "Вивченням мов",
+        "Прогулянками в парку"
+      ],
+      "d19": [
+        "Яке хобі хотілося б почати?",
+        "Фотографія",
+        "Гончарство",
+        "Вишивка",
+        "Садівництво"
+      ],
+      "d20": [
+        "Куди хотілося б поїхати на вихідні?",
+        "До лісу",
+        "На озеро",
+        "У сусіднє місто",
+        "У гори"
+      ],
+      "d21": [
+        "Яким було б ідеальне робоче місце?",
+        "Біля вікна",
+        "З книжковими полицями",
+        "Повне зелених рослин",
+        "Майже порожнє"
+      ],
+      "d22": [
+        "Що хотілося б вивчати далі?",
+        "Медицину",
+        "Історію",
+        "Економіку",
+        "Дизайн"
+      ],
+      "d23": [
+        "Яке дерево хотілося б посадити?",
+        "Дуб",
+        "Яблуню",
+        "Оливу",
+        "Фінікову пальму"
+      ],
+      "d24": [
+        "Що хотілося б приготувати для гостей?",
+        "Домашній пиріг",
+        "Великий плов",
+        "Сімейний суп",
+        "Свіжі салати"
+      ],
+      "d25": [
+        "Яке місто хотілося б відвідати?",
+        "Стамбул",
+        "Париж",
+        "Токіо",
+        "Каїр"
+      ],
+      "d26": [
+        "Як хотілося б провести літо?",
+        "Біля моря",
+        "У горах",
+        "На дачі",
+        "Мандруючи своєю країною"
+      ],
+      "d27": [
+        "Якого птаха хотілося б тримати?",
+        "Канарку",
+        "Хвилястого папугу",
+        "Голубів",
+        "Амадин"
+      ],
+      "d28": [
+        "Який спорт хотілося б спробувати?",
+        "Плавання",
+        "Верхова їзда",
+        "Стрільба з лука",
+        "Скелелазіння"
+      ],
+      "d29": [
+        "Які книжки хотілося б збирати?",
+        "Енциклопедії",
+        "Класику",
+        "Книжки про подорожі",
+        "Кулінарні книжки"
+      ],
+      "d30": [
+        "Що хотілося б зробити власноруч?",
+        "Меблі",
+        "Власний посуд",
+        "В’язаний плед",
+        "Шпаківню"
+      ],
+      "d31": [
+        "Де хотілося б влаштувати пікнік?",
+        "На березі річки",
+        "У саду",
+        "На лісовій галявині",
+        "У горах"
+      ],
+      "d32": [
+        "На чому хотілося б колись пересуватися?",
+        "На електромобілі",
+        "На велосипеді",
+        "На великому сімейному авто",
+        "Без авто"
+      ],
+      "d33": [
+        "Чим хотілося б займатися на пенсії?",
+        "Садом",
+        "Подорожами",
+        "Онуками",
+        "Навчанням нового"
+      ],
+      "d34": [
+        "Яку добру справу хотілося б зробити?",
+        "Збудувати криницю",
+        "Допомогти притулку для котів",
+        "Зібрати книжки для школи",
+        "Посадити алею дерев"
+      ],
+      "d35": [
+        "Що хотілося б на сніданок у вихідні?",
+        "Млинці",
+        "Омлет",
+        "Кашу з фруктами",
+        "Сирники"
+      ],
+      "d36": [
+        "Де хотілося б приймати гостей?",
+        "На кухні",
+        "У вітальні",
+        "На терасі",
+        "У саду"
+      ],
+      "d37": [
+        "Яке диво природи хотілося б побачити?",
+        "Великий каньйон",
+        "Ніагарський водоспад",
+        "Озеро Титикака",
+        "Сахару"
+      ],
+      "d38": [
+        "Якої домашньої навички хотілося б навчитися?",
+        "Ремонту своїми руками",
+        "Шиття",
+        "Випікання хліба",
+        "Догляду за садом"
+      ],
+      "d39": [
+        "Скількома мовами хотілося б говорити?",
+        "Двома",
+        "Трьома",
+        "П’ятьма",
+        "Якомога більшою кількістю"
+      ],
+      "d40": [
+        "Який колір стін хотілося б удома?",
+        "Білий",
+        "Бежевий",
+        "Світло-зелений",
+        "Блакитний"
+      ],
+      "d41": [
+        "Яку рибку хотілося б в акваріумі?",
+        "Золоту рибку",
+        "Гупі",
+        "Сомика",
+        "Скалярію"
+      ],
+      "d42": [
+        "Яку подорож хотілося б подарувати батькам?",
+        "Відпочинок біля моря",
+        "Екскурсію містом",
+        "Поїздку в гори",
+        "Подорож потягом"
+      ],
+      "d43": [
+        "Чим хотілося б займатися у вільний час?",
+        "Малюванням",
+        "Читанням",
+        "Спортом",
+        "Рукоділлям"
+      ],
+      "d44": [
+        "У яку пору року хотілося б подорожувати?",
+        "Навесні",
+        "Улітку",
+        "Восени",
+        "Узимку"
+      ],
+      "d45": [
+        "Що хотілося б заготувати на зиму?",
+        "Варення",
+        "Соління",
+        "Сухофрукти",
+        "Компот"
+      ],
+      "d46": [
+        "Яку ще професію хотілося б спробувати?",
+        "Кухар",
+        "Програміст",
+        "Перекладач",
+        "Столяр"
+      ],
+      "d47": [
+        "Яку країну хотілося б пізнати?",
+        "Малайзію",
+        "Італію",
+        "Канаду",
+        "Індонезію"
+      ],
+      "d48": [
+        "Що хотілося б мати у дворі?",
+        "Невеликий фонтан",
+        "Город",
+        "Альтанку",
+        "Гойдалку"
+      ],
+      "d49": [
+        "Як хотілося б святкувати успіхи?",
+        "Сімейною вечерею",
+        "Виїздом на природу",
+        "Новою книжкою",
+        "Доброю справою для інших"
+      ],
+      "d50": [
+        "Що хотілося б передати дітям?",
+        "Любов до книжок",
+        "Уміння готувати",
+        "Рідну мову",
+        "Турботу про природу"
+      ]
     }
   },
   "pt": {
@@ -10947,7 +15617,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Vitória! Você sabe mais sobre o mundo.",
       "tfFinalLose": "Desta vez {name} sabe mais — revanche?",
       "tfFinalDraw": "Empate — vocês sabem exatamente o mesmo!",
-      "featTruth": "Jogo ao vivo «Verdadeiro ou falso» — fatos incríveis sobre o mundo"
+      "featTruth": "Jogo ao vivo «Verdadeiro ou falso» — fatos incríveis sobre o mundo",
+      "countries": "Adivinhe o país",
+      "coTitle": "Adivinhe o país",
+      "coNote": "Um jogo ao vivo para dois: o urso viaja pelo mundo. 10 segundos — adivinhe em que país ele está! Um ponto a cada acerto.",
+      "coShareText": "{name} convida você para o jogo ao vivo «Adivinhe o país»",
+      "coJoinLead": "{name} está esperando você. Adivinhe o país pela imagem!",
+      "coRound": "País {n} de {total}",
+      "coAsk": "Que país é este?",
+      "coFinalWin": "Vitória! Você conhece o mundo de verdade.",
+      "coFinalLose": "Desta vez {name} conhece melhor o mundo — revanche?",
+      "coFinalDraw": "Empate — vocês conhecem bem o mundo!",
+      "featCountries": "Jogo ao vivo «Adivinhe o país» — 40 países",
+      "hints": "Adivinhe pelas pistas",
+      "dreams": "Sonhos e planos",
+      "hiTitle": "Adivinhe pelas pistas",
+      "hiNote": "Um jogo ao vivo a dois: três pistas se abrem uma a uma. Acertou na primeira — 3 pontos, na segunda — 2, na terceira — 1.",
+      "hiShareText": "{name} convida você para o jogo ao vivo «Adivinhe pelas pistas»",
+      "hiJoinLead": "{name} está esperando por você. Adivinhe o quanto antes!",
+      "hiRound": "Enigma {n} de {total}",
+      "hiAsk": "O que é?",
+      "hiClue": "Pista {n}",
+      "hiPoints": "Pontos: +{n}",
+      "hiNoPoints": "Sem pontos desta vez",
+      "hiFinalWin": "Vitória! Você manda muito bem em adivinhar.",
+      "hiFinalLose": "Desta vez {name} adivinhou melhor — revanche?",
+      "hiFinalDraw": "Empate — vocês adivinham muito bem!",
+      "featHints": "Jogo ao vivo «Adivinhe pelas pistas» — 3, 2 ou 1 ponto",
+      "drTitle": "Sonhos e planos",
+      "drNote": "Um jogo ao vivo a dois: casa, viagens, estudos e hobbies. Escolha o que você gostaria e vejam se os sonhos combinam.",
+      "drShareText": "{name} convida você para o jogo ao vivo «Sonhos e planos»",
+      "drJoinLead": "{name} está esperando por você. Escolha o que você gostaria de verdade!",
+      "drRound": "Pergunta {n} de {total}",
+      "drPick": "Escolha o que você gostaria",
+      "drBoth": "Sonho em comum: {item}",
+      "drDiff": "Sonhos diferentes — contem um ao outro o porquê!",
+      "drFinalHigh": "Vocês têm tantos sonhos em comum!",
+      "drFinalMid": "Sonhos diferentes — muito assunto para conversar",
+      "drCommon": "Seus sonhos em comum",
+      "featDreams": "Jogo ao vivo «Sonhos e planos» — seus sonhos combinam?",
+      "modestTitle": "Modo discreto",
+      "modestNote": "Sem perguntas sobre sentimentos, abraços ou encontros — só amigáveis"
     },
     "questions": {
       "q01": [
@@ -12866,6 +17576,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "O Polo Sul é bem mais frio: fica num continente alto e gelado; o Polo Norte, sobre um oceano."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pinguim",
+        "Sou uma ave, mas não sei voar",
+        "Vivo onde faz muito frio",
+        "Estou sempre de fraque",
+        "Avestruz",
+        "Foca",
+        "Gaivota"
+      ],
+      "h02": [
+        "Elefante",
+        "Como quase o dia inteiro",
+        "Minhas orelhas parecem grandes leques",
+        "Tenho uma tromba comprida",
+        "Rinoceronte",
+        "Hipopótamo",
+        "Girafa"
+      ],
+      "h03": [
+        "Girafa",
+        "Durmo muito pouco, muitas vezes em pé",
+        "Como folhas das árvores mais altas",
+        "Tenho o pescoço mais comprido",
+        "Zebra",
+        "Camelo",
+        "Alce"
+      ],
+      "h04": [
+        "Camelo",
+        "Aguento muito tempo sem água",
+        "Me chamam de navio do deserto",
+        "Tenho uma ou duas corcovas nas costas",
+        "Cavalo",
+        "Burro",
+        "Lhama"
+      ],
+      "h05": [
+        "Abelha",
+        "Sei mostrar às outras o caminho até as flores",
+        "Trabalho no campo do amanhecer ao anoitecer",
+        "Faço mel",
+        "Vespa",
+        "Mosca",
+        "Borboleta"
+      ],
+      "h06": [
+        "Tartaruga",
+        "Posso viver mais de cem anos",
+        "Nunca tenho pressa",
+        "Carrego minha casa nas costas",
+        "Caracol",
+        "Lagartixa",
+        "Ouriço"
+      ],
+      "h07": [
+        "Canguru",
+        "Minha cauda me ajuda a manter o equilíbrio",
+        "Vivo na Austrália",
+        "Carrego meu filhote numa bolsa",
+        "Coala",
+        "Lebre",
+        "Esquilo"
+      ],
+      "h08": [
+        "Coruja",
+        "Consigo virar a cabeça quase toda para trás",
+        "Caço à noite",
+        "Pio na floresta escura",
+        "Corvo",
+        "Águia",
+        "Pombo"
+      ],
+      "h09": [
+        "Golfinho",
+        "Respiro ar, embora viva no mar",
+        "Ajudo as pessoas e falo com assobios",
+        "Gosto muito de saltar sobre as ondas",
+        "Tubarão",
+        "Baleia",
+        "Foca"
+      ],
+      "h10": [
+        "Esquilo",
+        "Escondo comida e às vezes esqueço onde",
+        "Moro no oco de uma árvore",
+        "Roo nozes e pinhas",
+        "Ouriço",
+        "Lebre",
+        "Rato"
+      ],
+      "h11": [
+        "Aranha",
+        "Não sou inseto, embora muitos pensem que sim",
+        "Tenho oito patas",
+        "Teço uma teia",
+        "Formiga",
+        "Besouro",
+        "Mosquito"
+      ],
+      "h12": [
+        "Gato",
+        "Enxergo no escuro melhor que as pessoas",
+        "Gosto de um parapeito quentinho",
+        "Ronrono e caço ratos",
+        "Coelho",
+        "Hamster",
+        "Papagaio"
+      ],
+      "h13": [
+        "Melancia",
+        "Os cientistas me chamam de baga",
+        "Esperam por mim no fim do verão",
+        "Verde por fora, vermelha por dentro",
+        "Melão",
+        "Abóbora",
+        "Abacaxi"
+      ],
+      "h14": [
+        "Pão",
+        "Sou assado em quase todos os países",
+        "Me cortam em fatias",
+        "Posso ser branco ou de centeio, com casca",
+        "Panqueca",
+        "Torta",
+        "Biscoito"
+      ],
+      "h15": [
+        "Mel",
+        "Posso durar milhares de anos",
+        "Me põem no chá quente quando há resfriado",
+        "As abelhas me fazem",
+        "Geleia",
+        "Açúcar",
+        "Leite"
+      ],
+      "h16": [
+        "Limão",
+        "Sou cheio de vitamina C",
+        "Me colocam no chá",
+        "Sou verde ou amarelo e muito azedo",
+        "Laranja",
+        "Toranja",
+        "Tangerina"
+      ],
+      "h17": [
+        "Cenoura",
+        "Cresço debaixo da terra, só a rama aparece",
+        "Dizem que faço bem para a visão",
+        "Sou laranja, e os coelhos gostam muito de mim",
+        "Beterraba",
+        "Rabanete",
+        "Batata"
+      ],
+      "h18": [
+        "Maçã",
+        "Tenho variedades de verão e de inverno",
+        "Viro torta e suco",
+        "Cresço numa árvore, vermelha ou verde",
+        "Pera",
+        "Pêssego",
+        "Ameixa"
+      ],
+      "h19": [
+        "Banana",
+        "Cresço em cachos numa planta alta",
+        "Os macacos gostam muito de mim",
+        "Sou amarela e preciso ser descascada",
+        "Manga",
+        "Kiwi",
+        "Abacaxi"
+      ],
+      "h20": [
+        "Chá",
+        "Na China me bebem há milênios",
+        "Posso ser preto, verde ou de ervas",
+        "Sou preparado num bule",
+        "Café",
+        "Cacau",
+        "Suco"
+      ],
+      "h21": [
+        "Ovo",
+        "Sem mim é difícil fazer um bolo",
+        "Comigo se faz omelete",
+        "A galinha me bota",
+        "Queijo",
+        "Noz",
+        "Batata"
+      ],
+      "h22": [
+        "Guarda-chuva",
+        "Passo quase todo o tempo fechado",
+        "Você me leva quando o céu fica cinza",
+        "Protejo você da chuva",
+        "Capa de chuva",
+        "Chapéu",
+        "Botas"
+      ],
+      "h23": [
+        "Relógio",
+        "Posso funcionar com areia ou com a luz do sol",
+        "Fico em paredes e em torres",
+        "Mostro as horas com meus ponteiros",
+        "Bússola",
+        "Calendário",
+        "Termômetro"
+      ],
+      "h24": [
+        "Chave",
+        "Sem mim, a porta não deixa você entrar",
+        "Muitas vezes me levam numa argola",
+        "Abro uma fechadura",
+        "Tesoura",
+        "Alicate",
+        "Clipe"
+      ],
+      "h25": [
+        "Vela",
+        "Quanto mais trabalho, menor fico",
+        "Me acendem quando falta luz",
+        "Sou de cera e tenho pavio",
+        "Lanterna",
+        "Luminária",
+        "Fósforos"
+      ],
+      "h26": [
+        "Tesoura",
+        "Tenho duas argolas e duas pontas afiadas",
+        "Recorto figuras de papel",
+        "Corto tecido e papel",
+        "Faca",
+        "Agulha",
+        "Régua"
+      ],
+      "h27": [
+        "Escova de dentes",
+        "Tenho muitas cerdas",
+        "Sou trocada a cada três meses",
+        "Limpo os dentes de manhã e à noite",
+        "Sabonete",
+        "Toalha",
+        "Esponja"
+      ],
+      "h28": [
+        "Geladeira",
+        "Dentro de mim é sempre inverno",
+        "Quando me abrem, uma luz acende",
+        "Mantenho a comida fria",
+        "Fogão",
+        "Forno",
+        "Armário"
+      ],
+      "h29": [
+        "Bicicleta",
+        "Ando sem combustível nem eletricidade",
+        "Tenho guidão, campainha e corrente",
+        "Tenho duas rodas e pedais",
+        "Patinete",
+        "Moto",
+        "Skate"
+      ],
+      "h30": [
+        "Avião",
+        "Tenho asas, mas não sou pássaro",
+        "Esperam por mim no aeroporto",
+        "Voo acima das nuvens com passageiros",
+        "Helicóptero",
+        "Foguete",
+        "Balão"
+      ],
+      "h31": [
+        "Trem",
+        "Só ando no meu próprio caminho",
+        "Tenho muitos vagões",
+        "Corro sobre trilhos de estação em estação",
+        "Bonde",
+        "Ônibus",
+        "Metrô"
+      ],
+      "h32": [
+        "Ponte",
+        "Sou feita de pedra, madeira ou aço",
+        "Navios podem passar debaixo de mim",
+        "Ligo as duas margens de um rio",
+        "Túnel",
+        "Estrada",
+        "Represa"
+      ],
+      "h33": [
+        "Lápis",
+        "Tenho grafite por dentro",
+        "Me apontam quando fico sem ponta",
+        "Escrevo e desenho; a borracha apaga meus traços",
+        "Caneta",
+        "Giz",
+        "Canetinha"
+      ],
+      "h34": [
+        "Livro",
+        "Sou calado, mas ensino muito",
+        "Tenho capa e páginas",
+        "Me leem e me emprestam nas bibliotecas",
+        "Revista",
+        "Jornal",
+        "Caderno"
+      ],
+      "h35": [
+        "Mala",
+        "Viajo muito, mas sempre na mão de alguém",
+        "Me arrumam antes de uma viagem",
+        "Tenho alça e rodinhas e levo roupas",
+        "Mochila",
+        "Bolsa",
+        "Caixa"
+      ],
+      "h36": [
+        "Biblioteca",
+        "Aqui pedem para falar baixo",
+        "Aqui você ganha uma carteirinha de leitor",
+        "Milhares de livros para levar para casa",
+        "Escola",
+        "Livraria",
+        "Arquivo"
+      ],
+      "h37": [
+        "Aeroporto",
+        "Aqui há controle de passaportes",
+        "Aqui anunciam o embarque dos voos",
+        "Daqui decolam os aviões",
+        "Estação de trem",
+        "Porto",
+        "Rodoviária"
+      ],
+      "h38": [
+        "Deserto",
+        "Quente de dia, mas as noites podem ser muito frias",
+        "Aqui se encontram oásis",
+        "Muita areia e pouquíssima água",
+        "Estepe",
+        "Savana",
+        "Praia"
+      ],
+      "h39": [
+        "Vulcão",
+        "Posso dormir por centenas de anos",
+        "Do meu topo sobe fumaça",
+        "Entro em erupção com lava",
+        "Montanha",
+        "Gêiser",
+        "Ilha"
+      ],
+      "h40": [
+        "Arco-íris",
+        "Você só me vê com o sol às costas",
+        "Costumo aparecer depois da chuva",
+        "Sete cores em arco no céu",
+        "Relâmpago",
+        "Nuvem",
+        "Aurora boreal"
+      ],
+      "h41": [
+        "Lua",
+        "Mostro sempre o mesmo lado à Terra",
+        "Posso estar cheia ou ser um fino crescente",
+        "Brilho no céu noturno",
+        "Sol",
+        "Estrela",
+        "Cometa"
+      ],
+      "h42": [
+        "Neve",
+        "Cada um dos meus flocos é único",
+        "Comigo se fazem fortes e bonecos",
+        "Branca e fria, caio no inverno",
+        "Chuva",
+        "Granizo",
+        "Geada"
+      ],
+      "h43": [
+        "Rio",
+        "Tenho nascente e foz",
+        "Barcos navegam em mim",
+        "Corro das montanhas até o mar",
+        "Lago",
+        "Mar",
+        "Riacho"
+      ],
+      "h44": [
+        "Cacto",
+        "Vivo muito tempo sem água",
+        "Cresço em desertos e em janelas",
+        "Sou coberto de espinhos",
+        "Babosa",
+        "Palmeira",
+        "Margarida"
+      ],
+      "h45": [
+        "Girassol",
+        "Das minhas sementes se faz óleo",
+        "Giro acompanhando o sol",
+        "Uma grande flor amarela cheia de sementes",
+        "Margarida",
+        "Tulipa",
+        "Dente-de-leão"
+      ],
+      "h46": [
+        "Carvalho",
+        "Posso viver mais de mil anos",
+        "Sou visto como símbolo de força",
+        "Em mim crescem bolotas",
+        "Bétula",
+        "Pinheiro",
+        "Bordo"
+      ],
+      "h47": [
+        "Ilha",
+        "Um país inteiro pode caber em mim",
+        "Chega-se a mim de barco ou de avião",
+        "Sou cercada de água por todos os lados",
+        "Península",
+        "Recife",
+        "Cabo"
+      ],
+      "h48": [
+        "Cachoeira",
+        "Dá para me ouvir de longe",
+        "A mais alta de nós fica na Venezuela",
+        "Aqui um rio despenca de um penhasco",
+        "Chafariz",
+        "Gêiser",
+        "Nascente"
+      ],
+      "h49": [
+        "Médico",
+        "Estudo muitos anos antes de começar a trabalhar",
+        "Uso jaleco branco",
+        "Trato pessoas doentes",
+        "Enfermeiro",
+        "Farmacêutico",
+        "Veterinário"
+      ],
+      "h50": [
+        "Bombeiro",
+        "Fico de plantão dia e noite",
+        "Trabalho com água e escadas",
+        "Apago incêndios",
+        "Policial",
+        "Socorrista",
+        "Pedreiro"
+      ],
+      "h51": [
+        "Cozinheiro",
+        "Provo tudo o que preparo",
+        "Trabalho num fogão quente",
+        "Preparo comida num restaurante",
+        "Padeiro",
+        "Garçom",
+        "Confeiteiro"
+      ],
+      "h52": [
+        "Professor",
+        "À noite corrijo cadernos",
+        "Fico diante do quadro",
+        "Ensino crianças na escola",
+        "Diretor de escola",
+        "Bibliotecário",
+        "Educador infantil"
+      ],
+      "h53": [
+        "Piloto",
+        "Meu local de trabalho é a cabine",
+        "Falo com os passageiros pelo alto-falante",
+        "Comando um avião",
+        "Capitão",
+        "Motorista",
+        "Astronauta"
+      ],
+      "h54": [
+        "Carteiro",
+        "Conheço todos os endereços do meu bairro",
+        "Carrego uma bolsa grande",
+        "Entrego cartas e encomendas",
+        "Entregador",
+        "Taxista",
+        "Vendedor"
+      ],
+      "h55": [
+        "Jardineiro",
+        "Sei quando plantar cada coisa",
+        "Minhas ferramentas: regador e tesoura de poda",
+        "Cuido de flores e árvores",
+        "Agricultor",
+        "Guarda florestal",
+        "Florista"
+      ],
+      "h56": [
+        "Fotógrafo",
+        "Capturo momentos",
+        "Peço a todos que fiquem parados",
+        "Trabalho com câmera e imagens",
+        "Pintor",
+        "Jornalista",
+        "Cinegrafista"
+      ],
+      "h57": [
+        "Pescador",
+        "Acordo antes do amanhecer e espero muito",
+        "Preciso de vara e paciência",
+        "Pego peixes",
+        "Agricultor",
+        "Marinheiro",
+        "Pastor"
+      ],
+      "h58": [
+        "Astronauta",
+        "Treino muito tempo na Terra",
+        "Uso traje espacial",
+        "Voo para o espaço",
+        "Piloto",
+        "Astrônomo",
+        "Engenheiro"
+      ],
+      "h59": [
+        "Arquiteto",
+        "Meu trabalho aparece por toda a cidade",
+        "Desenho plantas",
+        "Projeto casas",
+        "Pedreiro",
+        "Designer",
+        "Engenheiro"
+      ],
+      "h60": [
+        "Dentista",
+        "Muita gente tem medo da minha cadeira",
+        "Trabalho com uma broca",
+        "Cuido dos dentes",
+        "Cirurgião",
+        "Oftalmologista",
+        "Pediatra"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Onde você gostaria de morar daqui a dez anos?",
+        "Perto do mar",
+        "Nas montanhas",
+        "Numa cidade grande",
+        "Numa vila tranquila"
+      ],
+      "d02": [
+        "Que tipo de casa você gostaria de ter um dia?",
+        "Um apartamento aconchegante",
+        "Uma casa com jardim",
+        "Um chalé à beira do lago",
+        "Uma casa antiga com história"
+      ],
+      "d03": [
+        "O que você gostaria de plantar no jardim?",
+        "Macieiras",
+        "Rosas",
+        "Legumes e ervas",
+        "Morangos"
+      ],
+      "d04": [
+        "Que bichinho você gostaria de ter?",
+        "Um gato",
+        "Um papagaio",
+        "Peixes de aquário",
+        "Um jabuti"
+      ],
+      "d05": [
+        "Para onde você gostaria de ir primeiro?",
+        "Japão",
+        "Marrocos",
+        "Islândia",
+        "Nova Zelândia"
+      ],
+      "d06": [
+        "Como você gostaria de viajar?",
+        "De trem",
+        "De carro",
+        "De avião",
+        "De navio"
+      ],
+      "d07": [
+        "Que idioma você gostaria de aprender?",
+        "Árabe",
+        "Japonês",
+        "Espanhol",
+        "Chinês"
+      ],
+      "d08": [
+        "O que você gostaria de aprender a fazer?",
+        "Desenhar",
+        "Costurar",
+        "Nadar",
+        "Programar"
+      ],
+      "d09": [
+        "Que prato você gostaria de dominar?",
+        "Pilaf",
+        "Pão caseiro",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Como você gostaria de passar os fins de semana?",
+        "Na natureza",
+        "Em casa com um livro",
+        "Visitando a família",
+        "Numa cidade nova"
+      ],
+      "d11": [
+        "Como seria uma manhã perfeita de fim de semana?",
+        "Uma caminhada cedo",
+        "Um café da manhã sem pressa",
+        "Exercícios ao ar livre",
+        "Chá na varanda"
+      ],
+      "d12": [
+        "Para o que você gostaria de economizar?",
+        "Uma casa própria",
+        "Uma grande viagem",
+        "Um carro",
+        "Os estudos"
+      ],
+      "d13": [
+        "Com o que você gostaria de trabalhar?",
+        "Ter o próprio negócio",
+        "Numa grande empresa",
+        "De casa",
+        "Ajudando pessoas"
+      ],
+      "d14": [
+        "Como você gostaria de ajudar os outros?",
+        "Voluntariado",
+        "Ajudando animais",
+        "Ensinando crianças",
+        "Plantando árvores"
+      ],
+      "d15": [
+        "Que tradição de família você gostaria de ter?",
+        "Almoço de domingo juntos",
+        "Noites de jogos de tabuleiro",
+        "Passeios no fim de semana",
+        "Um álbum de fotos da família"
+      ],
+      "d16": [
+        "Que cozinha você gostaria de ter?",
+        "Uma grande cozinha familiar",
+        "Clara e aconchegante",
+        "Com vista para o jardim",
+        "Pequena, mas prática"
+      ],
+      "d17": [
+        "O que você gostaria de ver com os próprios olhos?",
+        "A aurora boreal",
+        "As pirâmides de Gizé",
+        "As Cataratas Vitória",
+        "O Himalaia"
+      ],
+      "d18": [
+        "O que você gostaria de fazer à noite?",
+        "Ler",
+        "Cozinhar algo novo",
+        "Estudar idiomas",
+        "Caminhar no parque"
+      ],
+      "d19": [
+        "Que hobby você gostaria de começar?",
+        "Fotografia",
+        "Cerâmica",
+        "Bordado",
+        "Jardinagem"
+      ],
+      "d20": [
+        "Para onde você gostaria de ir num fim de semana?",
+        "Para a floresta",
+        "Para um lago",
+        "Para uma cidade vizinha",
+        "Para as montanhas"
+      ],
+      "d21": [
+        "Como seria seu espaço de trabalho ideal?",
+        "Perto da janela",
+        "Com estantes de livros",
+        "Cheio de plantas",
+        "Quase vazio"
+      ],
+      "d22": [
+        "O que você gostaria de estudar em seguida?",
+        "Medicina",
+        "História",
+        "Economia",
+        "Design"
+      ],
+      "d23": [
+        "Que árvore você gostaria de plantar?",
+        "Um carvalho",
+        "Uma macieira",
+        "Uma oliveira",
+        "Uma tamareira"
+      ],
+      "d24": [
+        "O que você gostaria de cozinhar para visitas?",
+        "Uma torta caseira",
+        "Um grande pilaf",
+        "A sopa da família",
+        "Saladas frescas"
+      ],
+      "d25": [
+        "Que cidade você gostaria de visitar?",
+        "Istambul",
+        "Paris",
+        "Tóquio",
+        "Cairo"
+      ],
+      "d26": [
+        "Como você gostaria de passar o verão?",
+        "Na praia",
+        "Nas montanhas",
+        "Num sítio",
+        "Viajando pelo nosso país"
+      ],
+      "d27": [
+        "Que passarinho você gostaria de criar?",
+        "Um canário",
+        "Um periquito",
+        "Pombos",
+        "Mandarins"
+      ],
+      "d28": [
+        "Que esporte você gostaria de experimentar?",
+        "Natação",
+        "Andar a cavalo",
+        "Arco e flecha",
+        "Escalada"
+      ],
+      "d29": [
+        "Que livros você gostaria de colecionar?",
+        "Enciclopédias",
+        "Clássicos",
+        "Livros de viagem",
+        "Livros de receitas"
+      ],
+      "d30": [
+        "O que você gostaria de fazer com as próprias mãos?",
+        "Móveis",
+        "A própria louça",
+        "Uma manta de tricô",
+        "Uma casinha de passarinho"
+      ],
+      "d31": [
+        "Onde você gostaria de fazer um piquenique?",
+        "À beira de um rio",
+        "Num jardim",
+        "Numa clareira na floresta",
+        "Nas montanhas"
+      ],
+      "d32": [
+        "Como você gostaria de se locomover um dia?",
+        "De carro elétrico",
+        "De bicicleta",
+        "Num carro grande de família",
+        "Sem carro"
+      ],
+      "d33": [
+        "O que você gostaria de fazer na aposentadoria?",
+        "Cuidar do jardim",
+        "Viajar",
+        "Ficar com os netos",
+        "Aprender coisas novas"
+      ],
+      "d34": [
+        "Que boa ação você gostaria de fazer?",
+        "Construir um poço d’água",
+        "Ajudar um abrigo de gatos",
+        "Juntar livros para uma escola",
+        "Plantar uma fileira de árvores"
+      ],
+      "d35": [
+        "O que você gostaria no café da manhã do fim de semana?",
+        "Panquecas",
+        "Omelete",
+        "Mingau com frutas",
+        "Bolinhos de ricota"
+      ],
+      "d36": [
+        "Onde você gostaria de receber visitas?",
+        "Na cozinha",
+        "Na sala",
+        "No terraço",
+        "No jardim"
+      ],
+      "d37": [
+        "Que maravilha natural você gostaria de ver?",
+        "O Grand Canyon",
+        "As Cataratas do Niágara",
+        "O lago Baikal",
+        "O deserto do Saara"
+      ],
+      "d38": [
+        "Que habilidade doméstica você gostaria de aprender?",
+        "Fazer os próprios consertos",
+        "Costurar",
+        "Fazer pão",
+        "Cuidar de um jardim"
+      ],
+      "d39": [
+        "Quantos idiomas você gostaria de falar?",
+        "Dois",
+        "Três",
+        "Cinco",
+        "O máximo possível"
+      ],
+      "d40": [
+        "Que cor de parede você gostaria em casa?",
+        "Branco",
+        "Bege",
+        "Verde-claro",
+        "Azul-claro"
+      ],
+      "d41": [
+        "Que peixe você gostaria de ter no aquário?",
+        "Um peixinho-dourado",
+        "Guppys",
+        "Um cascudo",
+        "Um acará-bandeira"
+      ],
+      "d42": [
+        "Que viagem você gostaria de dar aos seus pais?",
+        "Férias na praia",
+        "Um passeio pela cidade",
+        "Uma viagem às montanhas",
+        "Uma viagem de trem"
+      ],
+      "d43": [
+        "O que você gostaria de fazer no tempo livre?",
+        "Desenhar",
+        "Ler",
+        "Esporte",
+        "Artesanato"
+      ],
+      "d44": [
+        "Em que estação você gostaria de viajar?",
+        "Primavera",
+        "Verão",
+        "Outono",
+        "Inverno"
+      ],
+      "d45": [
+        "O que você gostaria de fazer em conserva para o inverno?",
+        "Geleia",
+        "Picles",
+        "Frutas secas",
+        "Compota de frutas"
+      ],
+      "d46": [
+        "Que outra profissão você gostaria de experimentar?",
+        "Cozinheiro",
+        "Programador",
+        "Tradutor",
+        "Marceneiro"
+      ],
+      "d47": [
+        "Que país você gostaria de conhecer?",
+        "Malásia",
+        "Itália",
+        "Canadá",
+        "Indonésia"
+      ],
+      "d48": [
+        "O que você gostaria de ter no quintal?",
+        "Uma pequena fonte",
+        "Uma horta",
+        "Um caramanchão",
+        "Um balanço"
+      ],
+      "d49": [
+        "Como você gostaria de comemorar conquistas?",
+        "Um jantar em família",
+        "Um passeio na natureza",
+        "Um livro novo",
+        "Uma boa ação pelos outros"
+      ],
+      "d50": [
+        "O que você gostaria de passar para os filhos?",
+        "O gosto pela leitura",
+        "Saber cozinhar",
+        "A língua materna",
+        "O cuidado com a natureza"
+      ]
     }
   },
   "nl": {
@@ -13091,7 +18695,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Gewonnen! Jij weet meer over de wereld.",
       "tfFinalLose": "Deze keer weet {name} meer — revanche?",
       "tfFinalDraw": "Gelijkspel — jullie weten precies evenveel!",
-      "featTruth": "Live spel ‘Waar of niet waar’ — verrassende feiten over de wereld"
+      "featTruth": "Live spel ‘Waar of niet waar’ — verrassende feiten over de wereld",
+      "countries": "Raad het land",
+      "coTitle": "Raad het land",
+      "coNote": "Een live spel voor twee: de beer reist de wereld rond. 10 seconden — raad in welk land hij is! Een punt voor elk goed antwoord.",
+      "coShareText": "{name} nodigt je uit voor het live spel ‘Raad het land’",
+      "coJoinLead": "{name} wacht op je. Raad het land aan de hand van de afbeelding!",
+      "coRound": "Land {n} van {total}",
+      "coAsk": "Welk land is dit?",
+      "coFinalWin": "Gewonnen! Jij kent de wereld echt goed.",
+      "coFinalLose": "Deze keer kent {name} de wereld beter — revanche?",
+      "coFinalDraw": "Gelijkspel — jullie kennen de wereld allebei goed!",
+      "featCountries": "Live spel ‘Raad het land’ — 40 landen",
+      "hints": "Raad met aanwijzingen",
+      "dreams": "Dromen en plannen",
+      "hiTitle": "Raad met aanwijzingen",
+      "hiNote": "Een live spel voor twee: drie aanwijzingen verschijnen één voor één. Raad je het bij de eerste — 3 punten, bij de tweede — 2, bij de derde — 1.",
+      "hiShareText": "{name} nodigt je uit voor het live spel ‘Raad met aanwijzingen’",
+      "hiJoinLead": "{name} wacht op je. Raad het zo vroeg mogelijk!",
+      "hiRound": "Raadsel {n} van {total}",
+      "hiAsk": "Wat is het?",
+      "hiClue": "Aanwijzing {n}",
+      "hiPoints": "Punten: +{n}",
+      "hiNoPoints": "Deze keer geen punten",
+      "hiFinalWin": "Gewonnen! Je kunt geweldig raden.",
+      "hiFinalLose": "Deze keer raadde {name} beter — revanche?",
+      "hiFinalDraw": "Gelijkspel — jullie kunnen allebei geweldig raden!",
+      "featHints": "Live spel ‘Raad met aanwijzingen’ — 3, 2 of 1 punt",
+      "drTitle": "Dromen en plannen",
+      "drNote": "Een live spel voor twee: wonen, reizen, leren en hobby’s. Kies wat je graag zou willen en ontdek of jullie dromen overeenkomen.",
+      "drShareText": "{name} nodigt je uit voor het live spel ‘Dromen en plannen’",
+      "drJoinLead": "{name} wacht op je. Kies wat je echt graag zou willen!",
+      "drRound": "Vraag {n} van {total}",
+      "drPick": "Kies wat je graag zou willen",
+      "drBoth": "Gedeelde droom: {item}",
+      "drDiff": "Verschillende dromen — vertel elkaar waarom!",
+      "drFinalHigh": "Jullie delen zoveel dromen!",
+      "drFinalMid": "Verschillende dromen — genoeg om over te praten",
+      "drCommon": "Jullie gedeelde dromen",
+      "featDreams": "Live spel ‘Dromen en plannen’ — komen jullie dromen overeen?",
+      "modestTitle": "Bescheiden modus",
+      "modestNote": "Geen vragen over gevoelens, knuffels of dates — alleen vriendelijke"
     },
     "questions": {
       "q01": [
@@ -15010,6 +20654,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "De Zuidpool is veel kouder: die ligt op een hoog, ijzig continent, de Noordpool op een oceaan."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pinguïn",
+        "Ik ben een vogel, maar ik kan niet vliegen",
+        "Ik woon waar het heel koud is",
+        "Ik draag altijd een rokkostuum",
+        "Struisvogel",
+        "Zeehond",
+        "Meeuw"
+      ],
+      "h02": [
+        "Olifant",
+        "Ik eet bijna de hele dag",
+        "Mijn oren lijken op grote waaiers",
+        "Ik heb een lange slurf",
+        "Neushoorn",
+        "Nijlpaard",
+        "Giraf"
+      ],
+      "h03": [
+        "Giraf",
+        "Ik slaap heel weinig, vaak staand",
+        "Ik eet bladeren uit de hoogste bomen",
+        "Ik heb de langste nek",
+        "Zebra",
+        "Kameel",
+        "Eland"
+      ],
+      "h04": [
+        "Kameel",
+        "Ik kan lang zonder water",
+        "Ze noemen me het schip van de woestijn",
+        "Ik heb één of twee bulten op mijn rug",
+        "Paard",
+        "Ezel",
+        "Lama"
+      ],
+      "h05": [
+        "Bij",
+        "Ik kan anderen de weg naar bloemen wijzen",
+        "Ik werk van zonsopgang tot zonsondergang in de wei",
+        "Ik maak honing",
+        "Wesp",
+        "Vlieg",
+        "Vlinder"
+      ],
+      "h06": [
+        "Schildpad",
+        "Ik kan meer dan honderd jaar oud worden",
+        "Ik heb nooit haast",
+        "Ik draag mijn huis op mijn rug",
+        "Slak",
+        "Hagedis",
+        "Egel"
+      ],
+      "h07": [
+        "Kangoeroe",
+        "Mijn staart helpt me mijn evenwicht te bewaren",
+        "Ik woon in Australië",
+        "Ik draag mijn jong in een buidel",
+        "Koala",
+        "Haas",
+        "Eekhoorn"
+      ],
+      "h08": [
+        "Uil",
+        "Ik kan mijn hoofd bijna helemaal naar achteren draaien",
+        "Ik jaag ’s nachts",
+        "Ik roep oehoe in het donkere bos",
+        "Kraai",
+        "Arend",
+        "Duif"
+      ],
+      "h09": [
+        "Dolfijn",
+        "Ik adem lucht, al woon ik in de zee",
+        "Ik help mensen en praat met fluitjes",
+        "Ik spring graag over de golven",
+        "Haai",
+        "Walvis",
+        "Zeehond"
+      ],
+      "h10": [
+        "Eekhoorn",
+        "Ik verstop eten en vergeet soms waar",
+        "Ik woon in een holle boom",
+        "Ik knaag aan noten en dennenappels",
+        "Egel",
+        "Haas",
+        "Muis"
+      ],
+      "h11": [
+        "Spin",
+        "Ik ben geen insect, al denken velen van wel",
+        "Ik heb acht poten",
+        "Ik weef een web",
+        "Mier",
+        "Kever",
+        "Mug"
+      ],
+      "h12": [
+        "Kat",
+        "Ik zie in het donker beter dan mensen",
+        "Ik hou van een warme vensterbank",
+        "Ik spin en vang muizen",
+        "Konijn",
+        "Hamster",
+        "Papegaai"
+      ],
+      "h13": [
+        "Watermeloen",
+        "Wetenschappers noemen me een bes",
+        "Men wacht op mij aan het eind van de zomer",
+        "Groen vanbuiten, rood vanbinnen",
+        "Meloen",
+        "Pompoen",
+        "Ananas"
+      ],
+      "h14": [
+        "Brood",
+        "Ik word in bijna elk land gebakken",
+        "Ik word in sneetjes gesneden",
+        "Ik kan wit of van rogge zijn, met een korst",
+        "Pannenkoek",
+        "Taart",
+        "Koekje"
+      ],
+      "h15": [
+        "Honing",
+        "Ik kan duizenden jaren goed blijven",
+        "Bij verkoudheid doet men mij in warme thee",
+        "Bijen maken mij",
+        "Jam",
+        "Suiker",
+        "Melk"
+      ],
+      "h16": [
+        "Citroen",
+        "Ik zit vol vitamine C",
+        "Men doet mij in de thee",
+        "Ik ben geel en heel zuur",
+        "Sinaasappel",
+        "Grapefruit",
+        "Limoen"
+      ],
+      "h17": [
+        "Wortel",
+        "Ik groei onder de grond, alleen mijn loof steekt uit",
+        "Men zegt dat ik goed ben voor je ogen",
+        "Ik ben oranje en konijnen zijn dol op me",
+        "Biet",
+        "Radijs",
+        "Aardappel"
+      ],
+      "h18": [
+        "Appel",
+        "Er zijn zomer- en winterrassen van mij",
+        "Ik ga in taarten en sap",
+        "Ik groei aan een boom, rood of groen",
+        "Peer",
+        "Perzik",
+        "Pruim"
+      ],
+      "h19": [
+        "Banaan",
+        "Ik groei in trossen aan een hoge plant",
+        "Apen zijn dol op mij",
+        "Ik ben geel en je moet me pellen",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Thee",
+        "In China drinkt men mij al duizenden jaren",
+        "Ik kan zwart, groen of van kruiden zijn",
+        "Men zet mij in een pot met heet water",
+        "Koffie",
+        "Cacao",
+        "Sap"
+      ],
+      "h21": [
+        "Ei",
+        "Zonder mij is het lastig een cake te bakken",
+        "Van mij maak je een omelet",
+        "Een kip legt mij",
+        "Kaas",
+        "Noot",
+        "Aardappel"
+      ],
+      "h22": [
+        "Paraplu",
+        "Ik ben bijna altijd opgevouwen",
+        "Je neemt me mee als de lucht grijs wordt",
+        "Ik houd je droog in de regen",
+        "Regenjas",
+        "Hoed",
+        "Laarzen"
+      ],
+      "h23": [
+        "Klok",
+        "Ik kan werken met zand of zonlicht",
+        "Ik hang aan muren en sta in torens",
+        "Ik wijs de tijd aan met mijn wijzers",
+        "Kompas",
+        "Kalender",
+        "Thermometer"
+      ],
+      "h24": [
+        "Sleutel",
+        "Zonder mij laat de deur je niet binnen",
+        "Ik hang vaak aan een ring",
+        "Ik open een slot",
+        "Schaar",
+        "Schroevendraaier",
+        "Paperclip"
+      ],
+      "h25": [
+        "Kaars",
+        "Hoe langer ik werk, hoe kleiner ik word",
+        "Men steekt me aan als de stroom uitvalt",
+        "Ik ben van was en heb een lont",
+        "Zaklamp",
+        "Lamp",
+        "Lucifers"
+      ],
+      "h26": [
+        "Schaar",
+        "Ik heb twee ogen en twee scherpe punten",
+        "Ik knip figuren uit papier",
+        "Ik knip stof en papier",
+        "Mes",
+        "Naald",
+        "Liniaal"
+      ],
+      "h27": [
+        "Tandenborstel",
+        "Ik heb heel veel haartjes",
+        "Ik word elke drie maanden vervangen",
+        "Ik poets ’s ochtends en ’s avonds tanden",
+        "Zeep",
+        "Handdoek",
+        "Spons"
+      ],
+      "h28": [
+        "Koelkast",
+        "In mij is het altijd winter",
+        "Als je me opent, gaat er een lampje aan",
+        "Ik houd eten koel",
+        "Fornuis",
+        "Oven",
+        "Keukenkastje"
+      ],
+      "h29": [
+        "Fiets",
+        "Ik rijd zonder brandstof of elektriciteit",
+        "Ik heb een stuur, een bel en een ketting",
+        "Ik heb twee wielen en trappers",
+        "Step",
+        "Motor",
+        "Skateboard"
+      ],
+      "h30": [
+        "Vliegtuig",
+        "Ik heb vleugels, maar ik ben geen vogel",
+        "Men wacht op mij op het vliegveld",
+        "Ik vlieg met passagiers boven de wolken",
+        "Helikopter",
+        "Raket",
+        "Luchtballon"
+      ],
+      "h31": [
+        "Trein",
+        "Ik rijd alleen over mijn eigen weg",
+        "Ik heb veel wagons",
+        "Ik rijd over rails van station naar station",
+        "Tram",
+        "Bus",
+        "Metro"
+      ],
+      "h32": [
+        "Brug",
+        "Ik word gebouwd van steen, hout of staal",
+        "Schepen kunnen onder mij door varen",
+        "Ik verbind de twee oevers van een rivier",
+        "Tunnel",
+        "Weg",
+        "Dam"
+      ],
+      "h33": [
+        "Potlood",
+        "Binnen in mij zit grafiet",
+        "Ik word geslepen als ik bot word",
+        "Ik schrijf en teken; een gum haalt mijn sporen weg",
+        "Pen",
+        "Krijt",
+        "Stift"
+      ],
+      "h34": [
+        "Boek",
+        "Ik zwijg, maar leer je veel",
+        "Ik heb een kaft en bladzijden",
+        "Men leest mij en leent mij in de bibliotheek",
+        "Tijdschrift",
+        "Krant",
+        "Schrift"
+      ],
+      "h35": [
+        "Koffer",
+        "Ik reis veel, maar altijd in iemands hand",
+        "Ik word ingepakt voor een reis",
+        "Ik heb een handvat en wieltjes en draag kleren",
+        "Rugzak",
+        "Tas",
+        "Doos"
+      ],
+      "h36": [
+        "Bibliotheek",
+        "Hier vraagt men zacht te praten",
+        "Hier krijg je een lenerspas",
+        "Duizenden boeken om mee naar huis te nemen",
+        "School",
+        "Boekhandel",
+        "Archief"
+      ],
+      "h37": [
+        "Vliegveld",
+        "Hier is paspoortcontrole",
+        "Hier wordt het boarden voor vluchten omgeroepen",
+        "Hier stijgen vliegtuigen op",
+        "Treinstation",
+        "Haven",
+        "Busstation"
+      ],
+      "h38": [
+        "Woestijn",
+        "Overdag heet, maar ’s nachts kan het erg koud zijn",
+        "Hier vind je oases",
+        "Veel zand en heel weinig water",
+        "Steppe",
+        "Savanne",
+        "Strand"
+      ],
+      "h39": [
+        "Vulkaan",
+        "Ik kan honderden jaren slapen",
+        "Uit mijn top stijgt rook",
+        "Ik barst uit met lava",
+        "Berg",
+        "Geiser",
+        "Eiland"
+      ],
+      "h40": [
+        "Regenboog",
+        "Je ziet me alleen met de zon in je rug",
+        "Ik verschijn vaak na de regen",
+        "Zeven kleuren in een boog aan de hemel",
+        "Bliksem",
+        "Wolk",
+        "Noorderlicht"
+      ],
+      "h41": [
+        "Maan",
+        "Ik laat de aarde altijd dezelfde kant zien",
+        "Ik kan vol zijn of een dunne sikkel",
+        "Ik schijn aan de nachthemel",
+        "Zon",
+        "Ster",
+        "Komeet"
+      ],
+      "h42": [
+        "Sneeuw",
+        "Elk van mijn vlokken is uniek",
+        "Men bouwt forten van mij",
+        "Wit en koud val ik in de winter",
+        "Regen",
+        "Hagel",
+        "Rijp"
+      ],
+      "h43": [
+        "Rivier",
+        "Ik heb een bron en een monding",
+        "Boten varen over mij",
+        "Ik stroom van de bergen naar de zee",
+        "Meer",
+        "Zee",
+        "Beek"
+      ],
+      "h44": [
+        "Cactus",
+        "Ik kan lang zonder water",
+        "Ik groei in woestijnen en op vensterbanken",
+        "Ik zit vol stekels",
+        "Aloë",
+        "Palmboom",
+        "Madeliefje"
+      ],
+      "h45": [
+        "Zonnebloem",
+        "Van mijn pitten maakt men olie",
+        "Ik draai mee met de zon",
+        "Een grote gele bloem vol pitten",
+        "Madeliefje",
+        "Tulp",
+        "Paardenbloem"
+      ],
+      "h46": [
+        "Eik",
+        "Ik kan meer dan duizend jaar oud worden",
+        "Ik geld als symbool van kracht",
+        "Mijn vruchten dragen kleine hoedjes",
+        "Berk",
+        "Den",
+        "Esdoorn"
+      ],
+      "h47": [
+        "Eiland",
+        "Er past een heel land op mij",
+        "Je bereikt me per boot of vliegtuig",
+        "Ik ben aan alle kanten omringd door water",
+        "Schiereiland",
+        "Rif",
+        "Kaap"
+      ],
+      "h48": [
+        "Waterval",
+        "Je hoort me van ver",
+        "De hoogste van ons staat in Venezuela",
+        "Hier stort een rivier van een klif",
+        "Fontein",
+        "Geiser",
+        "Bron"
+      ],
+      "h49": [
+        "Dokter",
+        "Ik studeer jaren voordat ik begin te werken",
+        "Ik draag een witte jas",
+        "Ik behandel zieke mensen",
+        "Verpleegkundige",
+        "Apotheker",
+        "Dierenarts"
+      ],
+      "h50": [
+        "Brandweerman",
+        "Ik sta dag en nacht paraat",
+        "Ik werk met water en ladders",
+        "Ik blus branden",
+        "Politieagent",
+        "Reddingswerker",
+        "Bouwvakker"
+      ],
+      "h51": [
+        "Kok",
+        "Ik proef alles wat ik maak",
+        "Ik werk aan een heet fornuis",
+        "Ik maak gerechten in een restaurant",
+        "Bakker",
+        "Ober",
+        "Banketbakker"
+      ],
+      "h52": [
+        "Leraar",
+        "’s Avonds kijk ik schriften na",
+        "Ik sta bij het bord",
+        "Ik geef kinderen les op school",
+        "Schooldirecteur",
+        "Bibliothecaris",
+        "Kleuterjuf"
+      ],
+      "h53": [
+        "Piloot",
+        "Mijn werkplek is de cockpit",
+        "Ik spreek passagiers toe via de luidspreker",
+        "Ik vlieg een vliegtuig",
+        "Kapitein",
+        "Chauffeur",
+        "Astronaut"
+      ],
+      "h54": [
+        "Postbode",
+        "Ik ken elk adres in mijn wijk",
+        "Ik draag een grote tas",
+        "Ik bezorg brieven en pakjes",
+        "Koerier",
+        "Taxichauffeur",
+        "Verkoper"
+      ],
+      "h55": [
+        "Tuinman",
+        "Ik weet wanneer je wat plant",
+        "Mijn gereedschap: gieter en snoeischaar",
+        "Ik zorg voor bloemen en bomen",
+        "Boer",
+        "Boswachter",
+        "Bloemist"
+      ],
+      "h56": [
+        "Fotograaf",
+        "Ik vang momenten",
+        "Ik vraag iedereen stil te staan",
+        "Ik werk met een camera en beelden",
+        "Schilder",
+        "Journalist",
+        "Cameraman"
+      ],
+      "h57": [
+        "Visser",
+        "Ik sta voor zonsopgang op en wacht lang",
+        "Ik heb een hengel en geduld nodig",
+        "Ik vang vis",
+        "Boer",
+        "Zeeman",
+        "Herder"
+      ],
+      "h58": [
+        "Astronaut",
+        "Ik train lang op aarde",
+        "Ik draag een ruimtepak",
+        "Ik vlieg de ruimte in",
+        "Piloot",
+        "Sterrenkundige",
+        "Ingenieur"
+      ],
+      "h59": [
+        "Architect",
+        "Mijn werk zie je overal in de stad",
+        "Ik teken bouwplannen",
+        "Ik ontwerp huizen",
+        "Bouwvakker",
+        "Ontwerper",
+        "Ingenieur"
+      ],
+      "h60": [
+        "Tandarts",
+        "Veel mensen zijn bang voor mijn stoel",
+        "Ik werk met een boor",
+        "Ik behandel tanden",
+        "Chirurg",
+        "Oogarts",
+        "Kinderarts"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Waar zou je over tien jaar willen wonen?",
+        "Aan zee",
+        "In de bergen",
+        "In een grote stad",
+        "In een rustig dorp"
+      ],
+      "d02": [
+        "Wat voor huis zou je ooit willen hebben?",
+        "Een gezellig appartement",
+        "Een huis met tuin",
+        "Een huisje aan een meer",
+        "Een oud huis met geschiedenis"
+      ],
+      "d03": [
+        "Wat zou je in je tuin willen kweken?",
+        "Appelbomen",
+        "Rozen",
+        "Groenten en kruiden",
+        "Aardbeien"
+      ],
+      "d04": [
+        "Welk huisdier zou je willen hebben?",
+        "Een kat",
+        "Een papegaai",
+        "Aquariumvissen",
+        "Een schildpad"
+      ],
+      "d05": [
+        "Waar zou je als eerste heen willen?",
+        "Japan",
+        "Marokko",
+        "IJsland",
+        "Nieuw-Zeeland"
+      ],
+      "d06": [
+        "Hoe zou je willen reizen?",
+        "Met de trein",
+        "Met de auto",
+        "Met het vliegtuig",
+        "Met de boot"
+      ],
+      "d07": [
+        "Welke taal zou je willen leren?",
+        "Arabisch",
+        "Japans",
+        "Spaans",
+        "Chinees"
+      ],
+      "d08": [
+        "Wat zou je willen leren?",
+        "Tekenen",
+        "Naaien",
+        "Zwemmen",
+        "Programmeren"
+      ],
+      "d09": [
+        "Welk gerecht zou je willen beheersen?",
+        "Pilav",
+        "Zelfgebakken brood",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Hoe zou je je weekenden willen doorbrengen?",
+        "In de natuur",
+        "Thuis met een boek",
+        "Op bezoek bij familie",
+        "In een nieuwe stad"
+      ],
+      "d11": [
+        "Hoe ziet een perfecte weekendochtend eruit?",
+        "Een vroege wandeling",
+        "Rustig ontbijten",
+        "Sporten in de buitenlucht",
+        "Thee op het balkon"
+      ],
+      "d12": [
+        "Waarvoor zou je willen sparen?",
+        "Een eigen huis",
+        "Een grote reis",
+        "Een auto",
+        "Een studie"
+      ],
+      "d13": [
+        "Wat voor werk zou je willen doen?",
+        "Een eigen bedrijf",
+        "Bij een groot bedrijf",
+        "Thuiswerken",
+        "Mensen helpen"
+      ],
+      "d14": [
+        "Hoe zou je anderen willen helpen?",
+        "Vrijwilligerswerk",
+        "Dieren helpen",
+        "Kinderen lesgeven",
+        "Bomen planten"
+      ],
+      "d15": [
+        "Welke familietraditie zou je willen?",
+        "Samen zondagslunch",
+        "Spelletjesavonden",
+        "Weekendwandelingen",
+        "Een familiefotoalbum"
+      ],
+      "d16": [
+        "Wat voor keuken zou je willen?",
+        "Een grote gezinskeuken",
+        "Licht en gezellig",
+        "Met uitzicht op de tuin",
+        "Klein maar praktisch"
+      ],
+      "d17": [
+        "Wat zou je met eigen ogen willen zien?",
+        "Het noorderlicht",
+        "De piramides van Gizeh",
+        "De Victoriawatervallen",
+        "De Himalaya"
+      ],
+      "d18": [
+        "Wat zou je ’s avonds willen doen?",
+        "Lezen",
+        "Iets nieuws koken",
+        "Talen leren",
+        "Wandelen in het park"
+      ],
+      "d19": [
+        "Welke hobby zou je willen beginnen?",
+        "Fotografie",
+        "Pottenbakken",
+        "Borduren",
+        "Tuinieren"
+      ],
+      "d20": [
+        "Waar zou je een weekend heen willen?",
+        "Naar het bos",
+        "Naar een meer",
+        "Naar een stadje in de buurt",
+        "Naar de bergen"
+      ],
+      "d21": [
+        "Hoe zou je ideale werkplek eruitzien?",
+        "Bij het raam",
+        "Met boekenkasten",
+        "Vol groene planten",
+        "Bijna leeg"
+      ],
+      "d22": [
+        "Wat zou je hierna willen studeren?",
+        "Geneeskunde",
+        "Geschiedenis",
+        "Economie",
+        "Design"
+      ],
+      "d23": [
+        "Welke boom zou je willen planten?",
+        "Een eik",
+        "Een appelboom",
+        "Een olijfboom",
+        "Een dadelpalm"
+      ],
+      "d24": [
+        "Wat zou je voor gasten willen koken?",
+        "Een zelfgebakken taart",
+        "Een grote pilav",
+        "Onze familiesoep",
+        "Verse salades"
+      ],
+      "d25": [
+        "Welke stad zou je willen bezoeken?",
+        "Istanbul",
+        "Parijs",
+        "Tokio",
+        "Caïro"
+      ],
+      "d26": [
+        "Hoe zou je de zomer willen doorbrengen?",
+        "Aan zee",
+        "In de bergen",
+        "In een huisje op het platteland",
+        "Rondreizen in eigen land"
+      ],
+      "d27": [
+        "Welke vogel zou je willen houden?",
+        "Een kanarie",
+        "Een grasparkiet",
+        "Duiven",
+        "Zebravinken"
+      ],
+      "d28": [
+        "Welke sport zou je willen proberen?",
+        "Zwemmen",
+        "Paardrijden",
+        "Boogschieten",
+        "Klimmen"
+      ],
+      "d29": [
+        "Welke boeken zou je willen verzamelen?",
+        "Encyclopedieën",
+        "Klassiekers",
+        "Reisboeken",
+        "Kookboeken"
+      ],
+      "d30": [
+        "Wat zou je zelf willen maken?",
+        "Meubels",
+        "Eigen servies",
+        "Een gebreide deken",
+        "Een vogelhuisje"
+      ],
+      "d31": [
+        "Waar zou je willen picknicken?",
+        "Aan een rivier",
+        "In een tuin",
+        "Op een open plek in het bos",
+        "In de bergen"
+      ],
+      "d32": [
+        "Hoe zou je je ooit willen verplaatsen?",
+        "Met een elektrische auto",
+        "Met de fiets",
+        "Met een grote gezinsauto",
+        "Zonder auto"
+      ],
+      "d33": [
+        "Wat zou je na je pensioen willen doen?",
+        "Tuinieren",
+        "Reizen",
+        "Tijd met de kleinkinderen",
+        "Nieuwe dingen leren"
+      ],
+      "d34": [
+        "Welke goede daad zou je willen doen?",
+        "Een waterput bouwen",
+        "Een kattenasiel helpen",
+        "Boeken voor een school inzamelen",
+        "Een rij bomen planten"
+      ],
+      "d35": [
+        "Wat zou je in het weekend willen ontbijten?",
+        "Pannenkoeken",
+        "Een omelet",
+        "Pap met fruit",
+        "Kwarkpannenkoekjes"
+      ],
+      "d36": [
+        "Waar zou je gasten willen ontvangen?",
+        "In de keuken",
+        "In de woonkamer",
+        "Op het terras",
+        "In de tuin"
+      ],
+      "d37": [
+        "Welk natuurwonder zou je willen zien?",
+        "De Grand Canyon",
+        "De Niagarawatervallen",
+        "Het Baikalmeer",
+        "De Sahara"
+      ],
+      "d38": [
+        "Welke huishoudelijke vaardigheid zou je willen leren?",
+        "Zelf klussen",
+        "Naaien",
+        "Brood bakken",
+        "Een tuin verzorgen"
+      ],
+      "d39": [
+        "Hoeveel talen zou je willen spreken?",
+        "Twee",
+        "Drie",
+        "Vijf",
+        "Zoveel mogelijk"
+      ],
+      "d40": [
+        "Welke muurkleur zou je thuis willen?",
+        "Wit",
+        "Beige",
+        "Lichtgroen",
+        "Lichtblauw"
+      ],
+      "d41": [
+        "Welke vis zou je in een aquarium willen?",
+        "Een goudvis",
+        "Guppen",
+        "Een meervalletje",
+        "Een maanvis"
+      ],
+      "d42": [
+        "Welke reis zou je je ouders willen geven?",
+        "Een vakantie aan zee",
+        "Een stedentrip",
+        "Een reis naar de bergen",
+        "Een treinreis"
+      ],
+      "d43": [
+        "Wat zou je in je vrije tijd willen doen?",
+        "Tekenen",
+        "Lezen",
+        "Sporten",
+        "Handwerken"
+      ],
+      "d44": [
+        "In welk seizoen zou je willen reizen?",
+        "Lente",
+        "Zomer",
+        "Herfst",
+        "Winter"
+      ],
+      "d45": [
+        "Wat zou je voor de winter willen inmaken?",
+        "Jam",
+        "Ingelegde groenten",
+        "Gedroogd fruit",
+        "Vruchtencompote"
+      ],
+      "d46": [
+        "Welk ander beroep zou je willen proberen?",
+        "Kok",
+        "Programmeur",
+        "Vertaler",
+        "Timmerman"
+      ],
+      "d47": [
+        "Welk land zou je willen leren kennen?",
+        "Maleisië",
+        "Italië",
+        "Canada",
+        "Indonesië"
+      ],
+      "d48": [
+        "Wat zou je op je erf willen hebben?",
+        "Een kleine fontein",
+        "Een moestuin",
+        "Een prieel",
+        "Een schommel"
+      ],
+      "d49": [
+        "Hoe zou je successen willen vieren?",
+        "Een etentje met familie",
+        "Een uitje in de natuur",
+        "Een nieuw boek",
+        "Een goede daad voor anderen"
+      ],
+      "d50": [
+        "Wat zou je aan kinderen willen meegeven?",
+        "Liefde voor boeken",
+        "Kunnen koken",
+        "De moedertaal",
+        "Zorg voor de natuur"
+      ]
     }
   },
   "tr": {
@@ -15235,7 +21773,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Zafer! Dünya hakkında daha çok şey biliyorsun.",
       "tfFinalLose": "Bu sefer {name} daha çok biliyor — rövanş?",
       "tfFinalDraw": "Berabere — ikiniz de aynı derecede biliyorsunuz!",
-      "featTruth": "Canlı “Doğru mu yanlış mı” oyunu — dünya hakkında şaşırtıcı bilgiler"
+      "featTruth": "Canlı “Doğru mu yanlış mı” oyunu — dünya hakkında şaşırtıcı bilgiler",
+      "countries": "Ülkeyi tahmin et",
+      "coTitle": "Ülkeyi tahmin et",
+      "coNote": "İki kişilik canlı oyun: ayıcık dünyayı geziyor. 10 saniye — hangi ülkede olduğunu tahmin et! Her doğru cevaba bir puan.",
+      "coShareText": "{name} seni canlı “Ülkeyi tahmin et” oyununa davet ediyor",
+      "coJoinLead": "{name} seni bekliyor. Resimden ülkeyi tahmin et!",
+      "coRound": "Ülke {n}/{total}",
+      "coAsk": "Burası hangi ülke?",
+      "coFinalWin": "Zafer! Tam bir dünya gezginisin.",
+      "coFinalLose": "Bu sefer dünyayı {name} daha iyi biliyor — rövanş?",
+      "coFinalDraw": "Berabere — ikiniz de dünyayı iyi biliyorsunuz!",
+      "featCountries": "Canlı “Ülkeyi tahmin et” oyunu — 40 ülke",
+      "hints": "İpuçlarından tahmin et",
+      "dreams": "Hayaller ve planlar",
+      "hiTitle": "İpuçlarından tahmin et",
+      "hiNote": "İki kişilik canlı oyun: üç ipucu tek tek açılır. İlkinde bilirsen 3 puan, ikincide 2, üçüncüde 1.",
+      "hiShareText": "{name} seni canlı “İpuçlarından tahmin et” oyununa davet ediyor",
+      "hiJoinLead": "{name} seni bekliyor. Olabildiğince erken tahmin et!",
+      "hiRound": "Bilmece {n} / {total}",
+      "hiAsk": "Bu nedir?",
+      "hiClue": "İpucu {n}",
+      "hiPoints": "+{n} puan",
+      "hiNoPoints": "Bu sefer puan yok",
+      "hiFinalWin": "Zafer! Tahmin etmede çok iyisin.",
+      "hiFinalLose": "Bu sefer {name} daha iyi tahmin etti — rövanş?",
+      "hiFinalDraw": "Berabere — ikiniz de tahmin etmede çok iyisiniz!",
+      "featHints": "Canlı oyun “İpuçlarından tahmin et” — 3, 2 ya da 1 puan",
+      "drTitle": "Hayaller ve planlar",
+      "drNote": "İki kişilik canlı oyun: ev, seyahat, öğrenme ve hobiler. İstediğini seç, hayalleriniz örtüşüyor mu gör.",
+      "drShareText": "{name} seni canlı “Hayaller ve planlar” oyununa davet ediyor",
+      "drJoinLead": "{name} seni bekliyor. Gerçekten istediğini seç!",
+      "drRound": "Soru {n} / {total}",
+      "drPick": "İstediğini seç",
+      "drBoth": "Ortak hayal: {item}",
+      "drDiff": "Farklı hayaller — nedenini birbirinize anlatın!",
+      "drFinalHigh": "Ne çok ortak hayaliniz var!",
+      "drFinalMid": "Farklı hayaller — konuşacak çok şey var",
+      "drCommon": "Ortak hayalleriniz",
+      "featDreams": "Canlı oyun “Hayaller ve planlar” — hayalleriniz örtüşüyor mu?",
+      "modestTitle": "Ölçülü mod",
+      "modestNote": "Duygular, sarılma ya da buluşmalar hakkında soru yok — yalnızca dostça sorular"
     },
     "questions": {
       "q01": [
@@ -17154,6 +23732,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Güney Kutbu çok daha soğuktur: yüksek ve buzlu bir kıtadadır, Kuzey Kutbu ise bir okyanusun üzerindedir."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Penguen",
+        "Kuşum ama uçamam",
+        "Çok soğuk yerlerde yaşarım",
+        "Hep frak giyerim",
+        "Devekuşu",
+        "Fok",
+        "Martı"
+      ],
+      "h02": [
+        "Fil",
+        "Neredeyse bütün gün yemek yerim",
+        "Kulaklarım büyük yelpazelere benzer",
+        "Uzun bir hortumum var",
+        "Gergedan",
+        "Su aygırı",
+        "Zürafa"
+      ],
+      "h03": [
+        "Zürafa",
+        "Çok az uyurum, çoğu zaman ayakta",
+        "En yüksek ağaçların yapraklarını yerim",
+        "En uzun boyun bende",
+        "Zebra",
+        "Deve",
+        "Geyik"
+      ],
+      "h04": [
+        "Deve",
+        "Susuz uzun süre dayanabilirim",
+        "Bana çölün gemisi derler",
+        "Sırtımda bir ya da iki hörgüç var",
+        "At",
+        "Eşek",
+        "Lama"
+      ],
+      "h05": [
+        "Arı",
+        "Başkalarına çiçeklerin yolunu gösterebilirim",
+        "Çayırda sabahtan akşama çalışırım",
+        "Bal yaparım",
+        "Eşekarısı",
+        "Sinek",
+        "Kelebek"
+      ],
+      "h06": [
+        "Kaplumbağa",
+        "Yüz yıldan fazla yaşayabilirim",
+        "Hiç acele etmem",
+        "Evimi sırtımda taşırım",
+        "Salyangoz",
+        "Kertenkele",
+        "Kirpi"
+      ],
+      "h07": [
+        "Kanguru",
+        "Kuyruğum dengemi korumama yardım eder",
+        "Avustralya'da yaşarım",
+        "Yavrumu kesemde taşırım",
+        "Koala",
+        "Tavşan",
+        "Sincap"
+      ],
+      "h08": [
+        "Baykuş",
+        "Başımı neredeyse tamamen arkaya çevirebilirim",
+        "Geceleri avlanırım",
+        "Karanlık ormanda “hu hu” diye öterim",
+        "Karga",
+        "Kartal",
+        "Güvercin"
+      ],
+      "h09": [
+        "Yunus",
+        "Denizde yaşasam da hava solurum",
+        "İnsanlara yardım eder, ıslıkla konuşurum",
+        "Dalgaların üstünden atlamayı severim",
+        "Köpekbalığı",
+        "Balina",
+        "Fok"
+      ],
+      "h10": [
+        "Sincap",
+        "Yiyecek saklar, bazen yerini unuturum",
+        "Ağaç kovuğunda yaşarım",
+        "Fındık ve kozalak kemiririm",
+        "Kirpi",
+        "Tavşan",
+        "Fare"
+      ],
+      "h11": [
+        "Örümcek",
+        "Böcek değilim, çoğu kişi öyle sansa da",
+        "Sekiz bacağım var",
+        "Ağ örerim",
+        "Karınca",
+        "Mayıs böceği",
+        "Sivrisinek"
+      ],
+      "h12": [
+        "Kedi",
+        "Karanlıkta insanlardan iyi görürüm",
+        "Sıcak pencere kenarını severim",
+        "Mırlarım ve fare yakalarım",
+        "Tavşan",
+        "Hamster",
+        "Papağan"
+      ],
+      "h13": [
+        "Karpuz",
+        "Bilim insanları beni bir tür üzümsü meyve sayar",
+        "Yaz sonunda beni beklerler",
+        "Dışım yeşil, içim kırmızı",
+        "Kavun",
+        "Balkabağı",
+        "Ananas"
+      ],
+      "h14": [
+        "Ekmek",
+        "Neredeyse her ülkede pişirilirim",
+        "Öğle yemeği için dilimlenirim",
+        "Beyaz ya da çavdar olurum, kabuğum var",
+        "Krep",
+        "Börek",
+        "Kurabiye"
+      ],
+      "h15": [
+        "Bal",
+        "Binlerce yıl bozulmadan kalabilirim",
+        "Soğuk algınlığında sıcak çaya eklenirim",
+        "Beni arılar yapar",
+        "Reçel",
+        "Şeker",
+        "Süt"
+      ],
+      "h16": [
+        "Limon",
+        "C vitamini doluyum",
+        "Beni çaya koyarlar",
+        "Sarıyım ve çok ekşiyim",
+        "Portakal",
+        "Greyfurt",
+        "Misket limonu"
+      ],
+      "h17": [
+        "Havuç",
+        "Toprak altında büyürüm, sadece yapraklarım görünür",
+        "Gözlere iyi geldiğim söylenir",
+        "Turuncuyum, tavşanlar beni sever",
+        "Pancar",
+        "Turp",
+        "Patates"
+      ],
+      "h18": [
+        "Elma",
+        "Kışlık ve yazlık çeşitlerim var",
+        "Turtaya ve meyve suyuna girerim",
+        "Ağaçta yetişirim, kırmızı ya da yeşil",
+        "Armut",
+        "Şeftali",
+        "Erik"
+      ],
+      "h19": [
+        "Muz",
+        "Uzun bir bitkide salkım salkım yetişirim",
+        "Maymunlar beni çok sever",
+        "Sarıyım, kabuğumu soymak gerekir",
+        "Mango",
+        "Kivi",
+        "Ananas"
+      ],
+      "h20": [
+        "Çay",
+        "Çin'de binlerce yıldır içilirim",
+        "Siyah, yeşil ya da bitki olabilirim",
+        "Demlikte demlenirim",
+        "Kahve",
+        "Kakao",
+        "Meyve suyu"
+      ],
+      "h21": [
+        "Yumurta",
+        "Bensiz kek yapmak zordur",
+        "Benden omlet yapılır",
+        "Beni tavuk yumurtlar",
+        "Peynir",
+        "Ceviz",
+        "Patates"
+      ],
+      "h22": [
+        "Şemsiye",
+        "Zamanımın çoğunu katlanmış geçiririm",
+        "Gökyüzü griye dönünce beni alırsın",
+        "Yağmurda seni kuru tutarım",
+        "Yağmurluk",
+        "Şapka",
+        "Çizme"
+      ],
+      "h23": [
+        "Saat",
+        "Kumla ya da güneş ışığıyla çalışabilirim",
+        "Duvarlarda asılır, kulelerde dururum",
+        "Zamanı akreple yelkovanla gösteririm",
+        "Pusula",
+        "Takvim",
+        "Termometre"
+      ],
+      "h24": [
+        "Anahtar",
+        "Ben olmadan kapı seni içeri almaz",
+        "Çoğu zaman bir halkada taşınırım",
+        "Kilidi açarım",
+        "Makas",
+        "Tornavida",
+        "Ataş"
+      ],
+      "h25": [
+        "Mum",
+        "Çalıştıkça küçülürüm",
+        "Elektrik kesilince beni yakarlar",
+        "Balmumundan yapılırım, fitilim var",
+        "El feneri",
+        "Lamba",
+        "Kibrit"
+      ],
+      "h26": [
+        "Makas",
+        "İki halkam ve iki keskin ucum var",
+        "Kâğıttan şekiller keserim",
+        "Kumaş ve kâğıt keserim",
+        "Bıçak",
+        "İğne",
+        "Cetvel"
+      ],
+      "h27": [
+        "Diş fırçası",
+        "Bir sürü kılım var",
+        "Üç ayda bir değiştirilirim",
+        "Sabah akşam dişleri temizlerim",
+        "Sabun",
+        "Havlu",
+        "Sünger"
+      ],
+      "h28": [
+        "Buzdolabı",
+        "İçimde hep kış var",
+        "Beni açınca bir ışık yanar",
+        "Yiyecekleri soğuk tutarım",
+        "Ocak",
+        "Fırın",
+        "Dolap"
+      ],
+      "h29": [
+        "Bisiklet",
+        "Yakıt ya da elektrik olmadan giderim",
+        "Gidonum, zilim ve zincirim var",
+        "İki tekerleğim ve pedallarım var",
+        "Scooter",
+        "Motosiklet",
+        "Kaykay"
+      ],
+      "h30": [
+        "Uçak",
+        "Kanatlarım var ama kuş değilim",
+        "Beni havalimanında beklerler",
+        "Yolcularla bulutların üstünde uçarım",
+        "Helikopter",
+        "Roket",
+        "Sıcak hava balonu"
+      ],
+      "h31": [
+        "Tren",
+        "Sadece kendi yolumda giderim",
+        "Çok vagonum var",
+        "İstasyondan istasyona raylarda giderim",
+        "Tramvay",
+        "Otobüs",
+        "Metro"
+      ],
+      "h32": [
+        "Köprü",
+        "Taştan, ahşaptan ya da çelikten yapılırım",
+        "Altımdan gemiler geçebilir",
+        "Bir nehrin iki kıyısını birleştiririm",
+        "Tünel",
+        "Yol",
+        "Baraj"
+      ],
+      "h33": [
+        "Kurşun kalem",
+        "İçimde grafit var",
+        "Ucum körelince açılırım",
+        "Yazar, çizerim; izlerimi silgi siler",
+        "Tükenmez kalem",
+        "Tebeşir",
+        "Keçeli kalem"
+      ],
+      "h34": [
+        "Kitap",
+        "Sessizim ama çok şey öğretirim",
+        "Kapağım ve sayfalarım var",
+        "Beni okur, kütüphaneden ödünç alırlar",
+        "Dergi",
+        "Gazete",
+        "Defter"
+      ],
+      "h35": [
+        "Bavul",
+        "Çok seyahat ederim ama hep birinin elinde",
+        "Yolculuktan önce hazırlanırım",
+        "Sapım ve tekerleklerim var, içimde giysiler",
+        "Sırt çantası",
+        "Çanta",
+        "Kutu"
+      ],
+      "h36": [
+        "Kütüphane",
+        "Burada sessiz konuşmanız istenir",
+        "Burada okuyucu kartı alırsınız",
+        "Eve götürmek için binlerce kitap",
+        "Okul",
+        "Kitapçı",
+        "Arşiv"
+      ],
+      "h37": [
+        "Havalimanı",
+        "Burada pasaport kontrolü var",
+        "Burada uçuşlar için biniş anonsu yapılır",
+        "Uçaklar buradan kalkar",
+        "Tren garı",
+        "Liman",
+        "Otogar"
+      ],
+      "h38": [
+        "Çöl",
+        "Gündüz sıcak, ama geceler çok soğuk olabilir",
+        "Burada vahalar bulunur",
+        "Bol kum, çok az su",
+        "Bozkır",
+        "Savan",
+        "Plaj"
+      ],
+      "h39": [
+        "Yanardağ",
+        "Yüzlerce yıl uyuyabilirim",
+        "Tepemden duman yükselir",
+        "Lav püskürtürüm",
+        "Dağ",
+        "Gayzer",
+        "Ada"
+      ],
+      "h40": [
+        "Gökkuşağı",
+        "Beni ancak güneş arkandayken görürsün",
+        "Çoğu zaman yağmurdan sonra çıkarım",
+        "Gökyüzünde yay şeklinde yedi renk",
+        "Şimşek",
+        "Bulut",
+        "Kutup ışıkları"
+      ],
+      "h41": [
+        "Ay",
+        "Dünya'ya hep aynı yüzümü gösteririm",
+        "Dolunay ya da ince bir hilal olabilirim",
+        "Gece gökyüzünde parlarım",
+        "Güneş",
+        "Yıldız",
+        "Kuyruklu yıldız"
+      ],
+      "h42": [
+        "Kar",
+        "Her tanem birbirinden farklıdır",
+        "Benden kale yaparlar",
+        "Beyaz ve soğuğum, kışın yağarım",
+        "Yağmur",
+        "Dolu",
+        "Kırağı"
+      ],
+      "h43": [
+        "Nehir",
+        "Bir kaynağım ve bir ağzım var",
+        "Üstümde tekneler gider",
+        "Dağlardan denize akarım",
+        "Göl",
+        "Deniz",
+        "Dere"
+      ],
+      "h44": [
+        "Kaktüs",
+        "Susuz uzun süre yaşayabilirim",
+        "Çölde ve pencere kenarında yetişirim",
+        "Dikenlerle kaplıyım",
+        "Aloe vera",
+        "Palmiye",
+        "Papatya"
+      ],
+      "h45": [
+        "Ayçiçeği",
+        "Tohumlarımdan yağ yapılır",
+        "Güneşi takip ederek dönerim",
+        "Tohum dolu büyük sarı bir çiçek",
+        "Papatya",
+        "Lale",
+        "Karahindiba"
+      ],
+      "h46": [
+        "Meşe",
+        "Bin yıldan fazla yaşayabilirim",
+        "Gücün simgesi sayılırım",
+        "Üzerimde palamut yetişir",
+        "Huş",
+        "Çam",
+        "Akçaağaç"
+      ],
+      "h47": [
+        "Ada",
+        "Üzerime koca bir ülke sığabilir",
+        "Bana tekneyle ya da uçakla ulaşılır",
+        "Her yanım sularla çevrili",
+        "Yarımada",
+        "Resif",
+        "Burun"
+      ],
+      "h48": [
+        "Şelale",
+        "Sesimi uzaktan duyarsın",
+        "En yükseğimiz Venezuela'da",
+        "Burada nehir bir uçurumdan düşer",
+        "Fıskiye",
+        "Gayzer",
+        "Pınar"
+      ],
+      "h49": [
+        "Doktor",
+        "İşe başlamadan önce uzun yıllar okurum",
+        "Beyaz önlük giyerim",
+        "Hasta insanları tedavi ederim",
+        "Hemşire",
+        "Eczacı",
+        "Veteriner"
+      ],
+      "h50": [
+        "İtfaiyeci",
+        "Gece gündüz nöbetteyim, çağrıya hazırım",
+        "Su ve merdivenlerle çalışırım",
+        "Yangın söndürürüm",
+        "Polis",
+        "Kurtarma görevlisi",
+        "İnşaatçı"
+      ],
+      "h51": [
+        "Aşçı",
+        "Yaptığım her şeyin tadına bakarım",
+        "Sıcak bir ocağın başında çalışırım",
+        "Restoranda yemek pişiririm",
+        "Fırıncı",
+        "Garson",
+        "Pastacı"
+      ],
+      "h52": [
+        "Öğretmen",
+        "Akşamları defter okurum",
+        "Tahtanın önünde dururum",
+        "Okulda çocuklara ders veririm",
+        "Okul müdürü",
+        "Kütüphaneci",
+        "Anaokulu öğretmeni"
+      ],
+      "h53": [
+        "Pilot",
+        "İş yerim kokpit",
+        "Yolcularla hoparlörden konuşurum",
+        "Uçak uçururum",
+        "Kaptan",
+        "Şoför",
+        "Astronot"
+      ],
+      "h54": [
+        "Postacı",
+        "Bölgemdeki her adresi bilirim",
+        "Büyük bir çanta taşırım",
+        "Mektup ve koli dağıtırım",
+        "Kurye",
+        "Taksici",
+        "Tezgâhtar"
+      ],
+      "h55": [
+        "Bahçıvan",
+        "Neyin ne zaman ekileceğini bilirim",
+        "Aletlerim sulama kabı ve budama makası",
+        "Çiçeklere ve ağaçlara bakarım",
+        "Çiftçi",
+        "Ormancı",
+        "Çiçekçi"
+      ],
+      "h56": [
+        "Fotoğrafçı",
+        "Anları yakalarım",
+        "Herkesten kıpırdamamasını isterim",
+        "Fotoğraf makinesi ve resimlerle çalışırım",
+        "Ressam",
+        "Gazeteci",
+        "Kameraman"
+      ],
+      "h57": [
+        "Balıkçı",
+        "Şafaktan önce kalkar, uzun süre beklerim",
+        "Olta ve sabır gerekir",
+        "Balık tutarım",
+        "Çiftçi",
+        "Denizci",
+        "Çoban"
+      ],
+      "h58": [
+        "Astronot",
+        "Dünya'da uzun süre eğitim alırım",
+        "Uzay giysisi giyerim",
+        "Uzaya uçarım",
+        "Pilot",
+        "Gökbilimci",
+        "Mühendis"
+      ],
+      "h59": [
+        "Mimar",
+        "Eserlerim şehrin her yerinde görülür",
+        "Planlar çizerim",
+        "Evler tasarlarım",
+        "İnşaatçı",
+        "Tasarımcı",
+        "Mühendis"
+      ],
+      "h60": [
+        "Diş hekimi",
+        "Koltuğumdan çok kişi korkar",
+        "Matkapla çalışırım",
+        "Dişleri tedavi ederim",
+        "Cerrah",
+        "Göz doktoru",
+        "Çocuk doktoru"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "On yıl sonra nerede yaşamak isterdin?",
+        "Deniz kenarında",
+        "Dağlarda",
+        "Büyük bir şehirde",
+        "Sakin bir köyde"
+      ],
+      "d02": [
+        "Bir gün nasıl bir evin olsun isterdin?",
+        "Rahat bir daire",
+        "Bahçeli bir ev",
+        "Göl kenarında bir kulübe",
+        "Geçmişi olan eski bir ev"
+      ],
+      "d03": [
+        "Bahçende ne yetiştirmek isterdin?",
+        "Elma ağaçları",
+        "Güller",
+        "Sebze ve otlar",
+        "Çilek"
+      ],
+      "d04": [
+        "Hangi evcil hayvana sahip olmak isterdin?",
+        "Bir kedi",
+        "Bir papağan",
+        "Akvaryum balıkları",
+        "Bir kaplumbağa"
+      ],
+      "d05": [
+        "İlk önce nereye gitmek isterdin?",
+        "Japonya",
+        "Fas",
+        "İzlanda",
+        "Yeni Zelanda"
+      ],
+      "d06": [
+        "Nasıl seyahat etmek isterdin?",
+        "Trenle",
+        "Arabayla",
+        "Uçakla",
+        "Gemiyle"
+      ],
+      "d07": [
+        "Hangi dili öğrenmek isterdin?",
+        "Arapça",
+        "Japonca",
+        "İspanyolca",
+        "Çince"
+      ],
+      "d08": [
+        "Ne yapmayı öğrenmek isterdin?",
+        "Resim yapmayı",
+        "Dikiş dikmeyi",
+        "Yüzmeyi",
+        "Kod yazmayı"
+      ],
+      "d09": [
+        "Hangi yemekte usta olmak isterdin?",
+        "Pilav",
+        "Ev ekmeği",
+        "Suşi",
+        "Baklava"
+      ],
+      "d10": [
+        "Hafta sonlarını nasıl geçirmek isterdin?",
+        "Doğada",
+        "Evde bir kitapla",
+        "Aile ziyaretinde",
+        "Yeni bir şehirde"
+      ],
+      "d11": [
+        "Mükemmel bir hafta sonu sabahı nasıl olurdu?",
+        "Erken bir yürüyüş",
+        "Ağır ağır bir kahvaltı",
+        "Açık havada egzersiz",
+        "Balkonda çay"
+      ],
+      "d12": [
+        "Ne için birikim yapmak isterdin?",
+        "Kendi evimiz",
+        "Büyük bir seyahat",
+        "Bir araba",
+        "Eğitim"
+      ],
+      "d13": [
+        "Nasıl bir işte çalışmak isterdin?",
+        "Kendi işim",
+        "Büyük bir şirkette",
+        "Evden çalışmak",
+        "İnsanlara yardım etmek"
+      ],
+      "d14": [
+        "Başkalarına nasıl yardım etmek isterdin?",
+        "Gönüllülük",
+        "Hayvanlara yardım",
+        "Çocuklara ders vermek",
+        "Ağaç dikmek"
+      ],
+      "d15": [
+        "Hangi aile geleneğini isterdin?",
+        "Pazar günü birlikte yemek",
+        "Kutu oyunu akşamları",
+        "Hafta sonu yürüyüşleri",
+        "Aile fotoğraf albümü"
+      ],
+      "d16": [
+        "Nasıl bir mutfak isterdin?",
+        "Büyük bir aile mutfağı",
+        "Aydınlık ve rahat",
+        "Bahçe manzaralı",
+        "Küçük ama kullanışlı"
+      ],
+      "d17": [
+        "Kendi gözlerinle ne görmek isterdin?",
+        "Kutup ışıkları",
+        "Gize piramitleri",
+        "Victoria Şelalesi",
+        "Himalayalar"
+      ],
+      "d18": [
+        "Akşamları ne yapmak isterdin?",
+        "Kitap okumak",
+        "Yeni bir şey pişirmek",
+        "Dil öğrenmek",
+        "Parkta yürümek"
+      ],
+      "d19": [
+        "Hangi hobiye başlamak isterdin?",
+        "Fotoğrafçılık",
+        "Seramik",
+        "Nakış",
+        "Bahçecilik"
+      ],
+      "d20": [
+        "Bir hafta sonu için nereye gitmek isterdin?",
+        "Ormana",
+        "Bir göle",
+        "Yakın bir kasabaya",
+        "Dağlara"
+      ],
+      "d21": [
+        "İdeal çalışma alanın nasıl olurdu?",
+        "Pencere kenarında",
+        "Kitap raflarıyla",
+        "Yeşil bitkilerle dolu",
+        "Neredeyse boş"
+      ],
+      "d22": [
+        "Bundan sonra ne okumak isterdin?",
+        "Tıp",
+        "Tarih",
+        "Ekonomi",
+        "Tasarım"
+      ],
+      "d23": [
+        "Hangi ağacı dikmek isterdin?",
+        "Meşe",
+        "Elma ağacı",
+        "Zeytin ağacı",
+        "Hurma ağacı"
+      ],
+      "d24": [
+        "Misafirlere ne pişirmek isterdin?",
+        "Ev yapımı börek",
+        "Büyük bir pilav",
+        "Ailemizin çorba tarifi",
+        "Taze salatalar"
+      ],
+      "d25": [
+        "Hangi şehri görmek isterdin?",
+        "İstanbul",
+        "Paris",
+        "Tokyo",
+        "Kahire"
+      ],
+      "d26": [
+        "Yazı nasıl geçirmek isterdin?",
+        "Deniz kenarında",
+        "Dağlarda",
+        "Bir yazlıkta",
+        "Kendi ülkemizi gezerek"
+      ],
+      "d27": [
+        "Hangi kuşu beslemek isterdin?",
+        "Kanarya",
+        "Muhabbet kuşu",
+        "Güvercinler",
+        "Zebra ispinozları"
+      ],
+      "d28": [
+        "Hangi sporu denemek isterdin?",
+        "Yüzme",
+        "Binicilik",
+        "Okçuluk",
+        "Tırmanış"
+      ],
+      "d29": [
+        "Hangi kitapları biriktirmek isterdin?",
+        "Ansiklopediler",
+        "Klasikler",
+        "Gezi kitapları",
+        "Yemek kitapları"
+      ],
+      "d30": [
+        "Kendi ellerinle ne yapmak isterdin?",
+        "Mobilya",
+        "El yapımı tabaklar",
+        "Örgü bir battaniye",
+        "Bir kuş evi"
+      ],
+      "d31": [
+        "Nerede piknik yapmak isterdin?",
+        "Nehir kıyısında",
+        "Bir bahçede",
+        "Orman açıklığında",
+        "Dağlarda"
+      ],
+      "d32": [
+        "Bir gün neyle yolculuk etmek isterdin?",
+        "Elektrikli araba",
+        "Bisiklet",
+        "Büyük bir aile arabası",
+        "Arabasız"
+      ],
+      "d33": [
+        "Emeklilikte ne yapmak isterdin?",
+        "Bahçecilik",
+        "Seyahat",
+        "Torunlarla vakit",
+        "Yeni şeyler öğrenmek"
+      ],
+      "d34": [
+        "Hangi iyiliği yapmak isterdin?",
+        "Su kuyusu açtırmak",
+        "Kedi barınağına yardım",
+        "Okula kitap toplamak",
+        "Bir sıra ağaç dikmek"
+      ],
+      "d35": [
+        "Hafta sonu kahvaltısında ne isterdin?",
+        "Pankek",
+        "Omlet",
+        "Meyveli yulaf lapası",
+        "Peynirli gözleme"
+      ],
+      "d36": [
+        "Misafirleri nerede ağırlamak isterdin?",
+        "Mutfakta",
+        "Oturma odasında",
+        "Terasta",
+        "Bahçede"
+      ],
+      "d37": [
+        "Hangi doğa harikasını görmek isterdin?",
+        "Büyük Kanyon",
+        "Niagara Şelalesi",
+        "Baykal Gölü",
+        "Sahra Çölü"
+      ],
+      "d38": [
+        "Hangi ev becerisini öğrenmek isterdin?",
+        "Tamiratları kendimiz yapmak",
+        "Dikiş",
+        "Ekmek pişirmek",
+        "Bahçe bakımı"
+      ],
+      "d39": [
+        "Kaç dil konuşmak isterdin?",
+        "İki",
+        "Üç",
+        "Beş",
+        "Olabildiğince çok"
+      ],
+      "d40": [
+        "Evde duvarlar hangi renk olsun isterdin?",
+        "Beyaz",
+        "Bej",
+        "Açık yeşil",
+        "Açık mavi"
+      ],
+      "d41": [
+        "Akvaryumda hangi balığı isterdin?",
+        "Japon balığı",
+        "Lepistes",
+        "Kedi balığı",
+        "Melek balığı"
+      ],
+      "d42": [
+        "Anne babana hangi geziyi hediye etmek isterdin?",
+        "Deniz tatili",
+        "Şehir turu",
+        "Dağ gezisi",
+        "Tren yolculuğu"
+      ],
+      "d43": [
+        "Boş zamanında ne yapmak isterdin?",
+        "Resim",
+        "Kitap okumak",
+        "Spor",
+        "El işi"
+      ],
+      "d44": [
+        "Hangi mevsimde seyahat etmek isterdin?",
+        "İlkbahar",
+        "Yaz",
+        "Sonbahar",
+        "Kış"
+      ],
+      "d45": [
+        "Kış için ne hazırlamak isterdin?",
+        "Reçel",
+        "Turşu",
+        "Kuru meyve",
+        "Komposto"
+      ],
+      "d46": [
+        "Başka hangi mesleği denemek isterdin?",
+        "Aşçılık",
+        "Yazılımcılık",
+        "Çevirmenlik",
+        "Marangozluk"
+      ],
+      "d47": [
+        "Hangi ülkeyi tanımak isterdin?",
+        "Malezya",
+        "İtalya",
+        "Kanada",
+        "Endonezya"
+      ],
+      "d48": [
+        "Bahçede ne olsun isterdin?",
+        "Küçük bir fıskiye",
+        "Sebze bahçesi",
+        "Çardak",
+        "Salıncak"
+      ],
+      "d49": [
+        "Başarıları nasıl kutlamak isterdin?",
+        "Aile yemeği",
+        "Doğa gezisi",
+        "Yeni bir kitap",
+        "Başkalarına bir iyilik"
+      ],
+      "d50": [
+        "Çocuklara ne aktarmak isterdin?",
+        "Kitap sevgisi",
+        "Yemek becerisi",
+        "Ana dilimiz",
+        "Doğaya özen"
+      ]
     }
   },
   "ro": {
@@ -17379,7 +24851,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Victorie! Tu știi mai multe despre lume.",
       "tfFinalLose": "De data asta {name} știe mai multe — revanșă?",
       "tfFinalDraw": "Egalitate — știți la fel de multe!",
-      "featTruth": "Jocul live „Adevărat sau fals” — fapte uimitoare despre lume"
+      "featTruth": "Jocul live „Adevărat sau fals” — fapte uimitoare despre lume",
+      "countries": "Ghicește țara",
+      "coTitle": "Ghicește țara",
+      "coNote": "Un joc live în doi: ursulețul călătorește prin lume. 10 secunde — ghicește în ce țară se află! Un punct pentru fiecare răspuns corect.",
+      "coShareText": "{name} te invită la jocul live „Ghicește țara”",
+      "coJoinLead": "{name} te așteaptă. Ghicește țara după imagine!",
+      "coRound": "Țara {n} din {total}",
+      "coAsk": "Ce țară este aceasta?",
+      "coFinalWin": "Victorie! Tu chiar cunoști lumea.",
+      "coFinalLose": "De data asta {name} cunoaște lumea mai bine — revanșă?",
+      "coFinalDraw": "Egalitate — cunoașteți foarte bine lumea!",
+      "featCountries": "Jocul live „Ghicește țara” — 40 de țări",
+      "hints": "Ghicește după indicii",
+      "dreams": "Vise și planuri",
+      "hiTitle": "Ghicește după indicii",
+      "hiNote": "Un joc live în doi: trei indicii se deschid pe rând. Ghicești la primul — 3 puncte, la al doilea — 2, la al treilea — 1.",
+      "hiShareText": "{name} te invită la jocul live „Ghicește după indicii”",
+      "hiJoinLead": "{name} te așteaptă. Ghicește cât mai devreme!",
+      "hiRound": "Ghicitoarea {n} din {total}",
+      "hiAsk": "Ce este?",
+      "hiClue": "Indiciul {n}",
+      "hiPoints": "Puncte: +{n}",
+      "hiNoPoints": "De data asta fără puncte",
+      "hiFinalWin": "Victorie! Te pricepi grozav la ghicit.",
+      "hiFinalLose": "De data asta {name} a ghicit mai bine — revanșă?",
+      "hiFinalDraw": "Egalitate — vă pricepeți la fel de bine la ghicit!",
+      "featHints": "Jocul live „Ghicește după indicii” — 3, 2 sau 1 punct",
+      "drTitle": "Vise și planuri",
+      "drNote": "Un joc live în doi: casă, călătorii, învățătură și hobby-uri. Alege ce ți-ar plăcea și vezi dacă visele se potrivesc.",
+      "drShareText": "{name} te invită la jocul live „Vise și planuri”",
+      "drJoinLead": "{name} te așteaptă. Alege ce ți-ar plăcea cu adevărat!",
+      "drRound": "Întrebarea {n} din {total}",
+      "drPick": "Alege ce ți-ar plăcea",
+      "drBoth": "Vis comun: {item}",
+      "drDiff": "Vise diferite — spuneți-vă de ce!",
+      "drFinalHigh": "Aveți atât de multe vise comune!",
+      "drFinalMid": "Vise diferite — multe de discutat",
+      "drCommon": "Visele voastre comune",
+      "featDreams": "Jocul live „Vise și planuri” — se potrivesc visele voastre?",
+      "modestTitle": "Mod discret",
+      "modestNote": "Fără întrebări despre sentimente, îmbrățișări sau întâlniri — doar prietenoase"
     },
     "questions": {
       "q01": [
@@ -19298,6 +26810,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Polul Sud este mult mai rece: se află pe un continent înalt și înghețat, iar Polul Nord pe un ocean."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pinguin",
+        "Sunt pasăre, dar nu pot zbura",
+        "Trăiesc unde e foarte frig",
+        "Port mereu frac",
+        "Struț",
+        "Focă",
+        "Pescăruș"
+      ],
+      "h02": [
+        "Elefant",
+        "Mănânc aproape toată ziua",
+        "Urechile mele seamănă cu evantaie mari",
+        "Am o trompă lungă",
+        "Rinocer",
+        "Hipopotam",
+        "Girafă"
+      ],
+      "h03": [
+        "Girafă",
+        "Dorm foarte puțin, adesea în picioare",
+        "Mănânc frunze din cei mai înalți copaci",
+        "Am cel mai lung gât",
+        "Zebră",
+        "Cămilă",
+        "Elan"
+      ],
+      "h04": [
+        "Cămilă",
+        "Pot sta mult timp fără apă",
+        "Mi se spune corabia deșertului",
+        "Am una sau două cocoașe pe spate",
+        "Cal",
+        "Măgar",
+        "Lamă"
+      ],
+      "h05": [
+        "Albină",
+        "Le pot arăta altora drumul spre flori",
+        "Lucrez pe pajiște din zori până în seară",
+        "Fac miere",
+        "Viespe",
+        "Muscă",
+        "Fluture"
+      ],
+      "h06": [
+        "Broască țestoasă",
+        "Pot trăi peste o sută de ani",
+        "Nu mă grăbesc niciodată",
+        "Îmi port casa în spinare",
+        "Melc",
+        "Șopârlă",
+        "Arici"
+      ],
+      "h07": [
+        "Cangur",
+        "Coada mă ajută să-mi țin echilibrul",
+        "Trăiesc în Australia",
+        "Îmi port puiul într-un marsupiu",
+        "Koala",
+        "Iepure",
+        "Veveriță"
+      ],
+      "h08": [
+        "Bufniță",
+        "Îmi pot întoarce capul aproape complet",
+        "Vânez noaptea",
+        "Strig „hu-hu” în pădurea întunecată",
+        "Cioară",
+        "Vultur",
+        "Porumbel"
+      ],
+      "h09": [
+        "Delfin",
+        "Respir aer, deși trăiesc în mare",
+        "Ajut oamenii și vorbesc prin fluierături",
+        "Îmi place să sar peste valuri",
+        "Rechin",
+        "Balenă",
+        "Focă"
+      ],
+      "h10": [
+        "Veveriță",
+        "Ascund mâncare și uneori uit unde",
+        "Locuiesc în scorbura unui copac",
+        "Rod nuci și conuri de brad",
+        "Arici",
+        "Iepure",
+        "Șoarece"
+      ],
+      "h11": [
+        "Păianjen",
+        "Nu sunt insectă, deși mulți așa cred",
+        "Am opt picioare",
+        "Țes o pânză",
+        "Furnică",
+        "Gândac",
+        "Țânțar"
+      ],
+      "h12": [
+        "Pisică",
+        "Văd în întuneric mai bine decât oamenii",
+        "Îmi place un pervaz cald",
+        "Torc și prind șoareci",
+        "Iepure",
+        "Hamster",
+        "Papagal"
+      ],
+      "h13": [
+        "Pepene verde",
+        "Oamenii de știință mă numesc boabă",
+        "Sunt așteptat la sfârșitul verii",
+        "Verde pe dinafară, roșu înăuntru",
+        "Pepene galben",
+        "Dovleac",
+        "Ananas"
+      ],
+      "h14": [
+        "Pâine",
+        "Sunt coaptă în aproape fiecare țară",
+        "Sunt tăiată felii la prânz",
+        "Pot fi albă sau de secară, cu coajă",
+        "Clătită",
+        "Plăcintă",
+        "Biscuit"
+      ],
+      "h15": [
+        "Miere",
+        "Mă pot păstra mii de ani",
+        "Sunt pusă în ceai cald când răcești",
+        "Albinele mă fac",
+        "Gem",
+        "Zahăr",
+        "Lapte"
+      ],
+      "h16": [
+        "Lămâie",
+        "Sunt plină de vitamina C",
+        "Oamenii mă pun în ceai",
+        "Sunt galbenă și foarte acră",
+        "Portocală",
+        "Grepfrut",
+        "Lime"
+      ],
+      "h17": [
+        "Morcov",
+        "Cresc sub pământ, doar frunzele se văd",
+        "Se spune că sunt bun pentru ochi",
+        "Sunt portocaliu și iepurii mă iubesc",
+        "Sfeclă",
+        "Ridiche",
+        "Cartof"
+      ],
+      "h18": [
+        "Măr",
+        "Am soiuri de iarnă și de vară",
+        "Ajung în plăcinte și în suc",
+        "Cresc într-un copac, roșu sau verde",
+        "Pară",
+        "Piersică",
+        "Prună"
+      ],
+      "h19": [
+        "Banană",
+        "Cresc în ciorchini pe o plantă înaltă",
+        "Maimuțele mă iubesc",
+        "Sunt galbenă și trebuie să mă cojești",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Ceai",
+        "În China sunt băut de milenii",
+        "Pot fi negru, verde sau din plante",
+        "Sunt lăsat la infuzat în apă fierbinte",
+        "Cafea",
+        "Cacao",
+        "Suc"
+      ],
+      "h21": [
+        "Ou",
+        "E greu să faci o prăjitură fără mine",
+        "Din mine se face omletă",
+        "Mă face o găină",
+        "Brânză",
+        "Nucă",
+        "Cartof"
+      ],
+      "h22": [
+        "Umbrelă",
+        "Stau mai mereu strânsă",
+        "Mă iei când cerul se înnorează",
+        "Te feresc de ploaie",
+        "Pelerină",
+        "Pălărie",
+        "Cizme"
+      ],
+      "h23": [
+        "Ceas",
+        "Pot funcționa cu nisip sau cu lumina soarelui",
+        "Atârn pe pereți și stau în turnuri",
+        "Arăt ora cu acele mele",
+        "Busolă",
+        "Calendar",
+        "Termometru"
+      ],
+      "h24": [
+        "Cheie",
+        "Fără mine, ușa nu te lasă înăuntru",
+        "Sunt purtată adesea pe un inel",
+        "Deschid o încuietoare",
+        "Foarfecă",
+        "Șurubelniță",
+        "Agrafă de birou"
+      ],
+      "h25": [
+        "Lumânare",
+        "Cu cât lucrez mai mult, cu atât mă micșorez",
+        "Sunt aprinsă când se ia curentul",
+        "Sunt din ceară și am un fitil",
+        "Lanternă",
+        "Lampă",
+        "Chibrituri"
+      ],
+      "h26": [
+        "Foarfecă",
+        "Am două inele și două capete ascuțite",
+        "Decupez forme din hârtie",
+        "Tai țesături și hârtie",
+        "Cuțit",
+        "Ac",
+        "Riglă"
+      ],
+      "h27": [
+        "Periuță de dinți",
+        "Am o mulțime de peri",
+        "Sunt schimbată la fiecare trei luni",
+        "Curăț dinții dimineața și seara",
+        "Săpun",
+        "Prosop",
+        "Burete"
+      ],
+      "h28": [
+        "Frigider",
+        "Înăuntrul meu e mereu iarnă",
+        "Când mă deschizi, se aprinde o lumină",
+        "Țin mâncarea rece",
+        "Aragaz",
+        "Cuptor",
+        "Dulap"
+      ],
+      "h29": [
+        "Bicicletă",
+        "Merg fără combustibil sau curent",
+        "Am ghidon, sonerie și lanț",
+        "Am două roți și pedale",
+        "Trotinetă",
+        "Motocicletă",
+        "Skateboard"
+      ],
+      "h30": [
+        "Avion",
+        "Am aripi, dar nu sunt pasăre",
+        "Oamenii mă așteaptă la aeroport",
+        "Zbor peste nori cu pasageri",
+        "Elicopter",
+        "Rachetă",
+        "Balon cu aer cald"
+      ],
+      "h31": [
+        "Tren",
+        "Merg doar pe drumul meu",
+        "Am multe vagoane",
+        "Merg pe șine din gară în gară",
+        "Tramvai",
+        "Autobuz",
+        "Metrou"
+      ],
+      "h32": [
+        "Pod",
+        "Sunt construit din piatră, lemn sau oțel",
+        "Pe sub mine pot trece vapoare",
+        "Unesc cele două maluri ale unui râu",
+        "Tunel",
+        "Drum",
+        "Baraj"
+      ],
+      "h33": [
+        "Creion",
+        "În mine e grafit",
+        "Sunt ascuțit când mă tocesc",
+        "Scriu și desenez; guma îmi șterge urmele",
+        "Pix",
+        "Cretă",
+        "Marker"
+      ],
+      "h34": [
+        "Carte",
+        "Sunt tăcută, dar învăț multe pe alții",
+        "Am copertă și pagini",
+        "Oamenii mă citesc și mă împrumută de la bibliotecă",
+        "Revistă",
+        "Ziar",
+        "Caiet"
+      ],
+      "h35": [
+        "Valiză",
+        "Călătoresc mult, dar mereu în mâna cuiva",
+        "Sunt făcută înainte de drum",
+        "Am mâner și roți, și țin haine",
+        "Rucsac",
+        "Geantă",
+        "Cutie"
+      ],
+      "h36": [
+        "Bibliotecă",
+        "Aici ți se cere să vorbești încet",
+        "Aici primești un permis de cititor",
+        "Mii de cărți de luat acasă",
+        "Școală",
+        "Librărie",
+        "Arhivă"
+      ],
+      "h37": [
+        "Aeroport",
+        "Aici e controlul pașapoartelor",
+        "Aici se anunță îmbarcarea la zboruri",
+        "De aici decolează avioanele",
+        "Gară",
+        "Port",
+        "Autogară"
+      ],
+      "h38": [
+        "Deșert",
+        "Ziua e cald, dar nopțile pot fi foarte reci",
+        "Aici se găsesc oaze",
+        "Mult nisip și foarte puțină apă",
+        "Stepă",
+        "Savană",
+        "Plajă"
+      ],
+      "h39": [
+        "Vulcan",
+        "Pot dormi sute de ani",
+        "Din vârful meu se ridică fum",
+        "Erup cu lavă",
+        "Munte",
+        "Gheizer",
+        "Insulă"
+      ],
+      "h40": [
+        "Curcubeu",
+        "Mă vezi doar cu soarele în spate",
+        "Apar adesea după ploaie",
+        "Șapte culori în arc pe cer",
+        "Fulger",
+        "Nor",
+        "Aurora boreală"
+      ],
+      "h41": [
+        "Lună",
+        "Arăt mereu Pământului aceeași față",
+        "Pot fi plină sau o seceră subțire",
+        "Strălucesc pe cerul nopții",
+        "Soare",
+        "Stea",
+        "Cometă"
+      ],
+      "h42": [
+        "Zăpadă",
+        "Fiecare fulg al meu e unic",
+        "Din mine se fac fortărețe",
+        "Albă și rece, cad iarna",
+        "Ploaie",
+        "Grindină",
+        "Brumă"
+      ],
+      "h43": [
+        "Râu",
+        "Am un izvor și o gură de vărsare",
+        "Pe mine plutesc bărci",
+        "Curg de la munte la mare",
+        "Lac",
+        "Mare",
+        "Pârâu"
+      ],
+      "h44": [
+        "Cactus",
+        "Pot trăi mult timp fără apă",
+        "Cresc în deșerturi și pe pervazuri",
+        "Sunt acoperit de țepi",
+        "Aloe",
+        "Palmier",
+        "Margaretă"
+      ],
+      "h45": [
+        "Floarea-soarelui",
+        "Din semințele mele se face ulei",
+        "Mă întorc după soare",
+        "O floare mare și galbenă, plină de semințe",
+        "Margaretă",
+        "Lalea",
+        "Păpădie"
+      ],
+      "h46": [
+        "Stejar",
+        "Pot trăi peste o mie de ani",
+        "Sunt văzut ca simbol al puterii",
+        "Pe mine cresc ghinde",
+        "Mesteacăn",
+        "Pin",
+        "Arțar"
+      ],
+      "h47": [
+        "Insulă",
+        "Pe mine poate încăpea o țară întreagă",
+        "Ajungi la mine cu barca sau cu avionul",
+        "Sunt înconjurată de apă din toate părțile",
+        "Peninsulă",
+        "Recif",
+        "Cap"
+      ],
+      "h48": [
+        "Cascadă",
+        "Mă auzi de departe",
+        "Cea mai înaltă dintre noi e în Venezuela",
+        "Aici un râu cade de pe o stâncă",
+        "Fântână arteziană",
+        "Gheizer",
+        "Izvor"
+      ],
+      "h49": [
+        "Medic",
+        "Studiez mulți ani înainte să încep lucrul",
+        "Port halat alb",
+        "Tratez oamenii bolnavi",
+        "Asistent medical",
+        "Farmacist",
+        "Veterinar"
+      ],
+      "h50": [
+        "Pompier",
+        "Sunt de gardă zi și noapte, gata de apeluri",
+        "Lucrez cu apă și scări",
+        "Sting incendii",
+        "Polițist",
+        "Salvator",
+        "Constructor"
+      ],
+      "h51": [
+        "Bucătar",
+        "Gust tot ce gătesc",
+        "Lucrez la o plită fierbinte",
+        "Gătesc într-un restaurant",
+        "Brutar",
+        "Ospătar",
+        "Cofetar"
+      ],
+      "h52": [
+        "Profesor",
+        "Seara corectez caiete",
+        "Stau la tablă",
+        "Îi învăț pe copii la școală",
+        "Director de școală",
+        "Bibliotecar",
+        "Educator"
+      ],
+      "h53": [
+        "Pilot",
+        "Locul meu de muncă e cabina",
+        "Vorbesc cu pasagerii prin difuzor",
+        "Conduc un avion",
+        "Căpitan",
+        "Șofer",
+        "Astronaut"
+      ],
+      "h54": [
+        "Poștaș",
+        "Știu fiecare adresă din zona mea",
+        "Port o geantă mare",
+        "Duc scrisori și colete",
+        "Curier",
+        "Taximetrist",
+        "Vânzător"
+      ],
+      "h55": [
+        "Grădinar",
+        "Știu când se plantează fiecare lucru",
+        "Uneltele mele: stropitoarea și foarfeca",
+        "Îngrijesc flori și copaci",
+        "Fermier",
+        "Pădurar",
+        "Florar"
+      ],
+      "h56": [
+        "Fotograf",
+        "Prind momente",
+        "Le cer tuturor să stea nemișcați",
+        "Lucrez cu aparatul foto și cu imagini",
+        "Pictor",
+        "Jurnalist",
+        "Cameraman"
+      ],
+      "h57": [
+        "Pescar",
+        "Mă trezesc înainte de zori și aștept mult",
+        "Am nevoie de undiță și răbdare",
+        "Prind pește",
+        "Fermier",
+        "Marinar",
+        "Cioban"
+      ],
+      "h58": [
+        "Astronaut",
+        "Mă antrenez mult timp pe Pământ",
+        "Port costum spațial",
+        "Zbor în spațiu",
+        "Pilot",
+        "Astronom",
+        "Inginer"
+      ],
+      "h59": [
+        "Arhitect",
+        "Munca mea se vede în tot orașul",
+        "Desenez planuri",
+        "Proiectez case",
+        "Constructor",
+        "Designer",
+        "Inginer"
+      ],
+      "h60": [
+        "Dentist",
+        "Mulți se tem de scaunul meu",
+        "Lucrez cu o freză",
+        "Tratez dinți",
+        "Chirurg",
+        "Oftalmolog",
+        "Pediatru"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Unde ți-ar plăcea să locuiești peste zece ani?",
+        "Lângă mare",
+        "La munte",
+        "Într-un oraș mare",
+        "Într-un sat liniștit"
+      ],
+      "d02": [
+        "Ce fel de casă ți-ar plăcea cândva?",
+        "Un apartament primitor",
+        "O casă cu grădină",
+        "O căsuță lângă un lac",
+        "O casă veche, cu istorie"
+      ],
+      "d03": [
+        "Ce ți-ar plăcea să crești în grădină?",
+        "Meri",
+        "Trandafiri",
+        "Legume și verdețuri",
+        "Căpșuni"
+      ],
+      "d04": [
+        "Ce animal de companie ți-ar plăcea?",
+        "O pisică",
+        "Un papagal",
+        "Pești de acvariu",
+        "O broască țestoasă"
+      ],
+      "d05": [
+        "Unde ți-ar plăcea să mergi mai întâi?",
+        "Japonia",
+        "Maroc",
+        "Islanda",
+        "Noua Zeelandă"
+      ],
+      "d06": [
+        "Cum ți-ar plăcea să călătorești?",
+        "Cu trenul",
+        "Cu mașina",
+        "Cu avionul",
+        "Cu vaporul"
+      ],
+      "d07": [
+        "Ce limbă ți-ar plăcea să înveți?",
+        "Araba",
+        "Japoneza",
+        "Spaniola",
+        "Chineza"
+      ],
+      "d08": [
+        "Ce ți-ar plăcea să înveți să faci?",
+        "Să desenezi",
+        "Să coși",
+        "Să înoți",
+        "Să programezi"
+      ],
+      "d09": [
+        "Ce preparat ți-ar plăcea să gătești perfect?",
+        "Pilaf",
+        "Pâine de casă",
+        "Sushi",
+        "Baclava"
+      ],
+      "d10": [
+        "Cum ți-ar plăcea să petreci weekendurile?",
+        "În natură",
+        "Acasă, cu o carte",
+        "În vizită la familie",
+        "Într-un oraș nou"
+      ],
+      "d11": [
+        "Cum ar fi o dimineață perfectă de weekend?",
+        "O plimbare devreme",
+        "Un mic dejun pe îndelete",
+        "Mișcare la aer curat",
+        "Ceai pe balcon"
+      ],
+      "d12": [
+        "Pentru ce ți-ar plăcea să economisești?",
+        "O casă a noastră",
+        "O călătorie mare",
+        "O mașină",
+        "Studii"
+      ],
+      "d13": [
+        "Ce fel de muncă ți-ar plăcea?",
+        "O afacere proprie",
+        "La o firmă mare",
+        "De acasă",
+        "Să ajut oamenii"
+      ],
+      "d14": [
+        "Cum ți-ar plăcea să-i ajuți pe alții?",
+        "Voluntariat",
+        "Ajutor pentru animale",
+        "Să predau copiilor",
+        "Să plantez copaci"
+      ],
+      "d15": [
+        "Ce tradiție de familie ți-ar plăcea?",
+        "Prânzul de duminică împreună",
+        "Seri cu jocuri de societate",
+        "Plimbări de weekend",
+        "Un album foto de familie"
+      ],
+      "d16": [
+        "Ce fel de bucătărie ți-ar plăcea?",
+        "Una mare, de familie",
+        "Luminoasă și primitoare",
+        "Cu vedere spre grădină",
+        "Mică, dar practică"
+      ],
+      "d17": [
+        "Ce ți-ar plăcea să vezi cu ochii tăi?",
+        "Aurora boreală",
+        "Piramidele din Giza",
+        "Cascada Victoria",
+        "Himalaya"
+      ],
+      "d18": [
+        "Ce ți-ar plăcea să faci serile?",
+        "Să citesc",
+        "Să gătesc ceva nou",
+        "Să învăț limbi străine",
+        "Plimbări în parc"
+      ],
+      "d19": [
+        "Ce hobby ți-ar plăcea să începi?",
+        "Fotografia",
+        "Olăritul",
+        "Broderia",
+        "Grădinăritul"
+      ],
+      "d20": [
+        "Unde ți-ar plăcea să mergi un weekend?",
+        "În pădure",
+        "La un lac",
+        "Într-un oraș din apropiere",
+        "La munte"
+      ],
+      "d21": [
+        "Cum ar arăta spațiul tău de lucru ideal?",
+        "Lângă fereastră",
+        "Cu rafturi de cărți",
+        "Plin de plante verzi",
+        "Aproape gol"
+      ],
+      "d22": [
+        "Ce ți-ar plăcea să studiezi în continuare?",
+        "Medicina",
+        "Istoria",
+        "Economia",
+        "Designul"
+      ],
+      "d23": [
+        "Ce copac ți-ar plăcea să plantezi?",
+        "Un stejar",
+        "Un măr",
+        "Un măslin",
+        "Un curmal"
+      ],
+      "d24": [
+        "Ce ți-ar plăcea să gătești pentru oaspeți?",
+        "O plăcintă de casă",
+        "Un pilaf mare",
+        "Supa după rețeta familiei",
+        "Salate proaspete"
+      ],
+      "d25": [
+        "Ce oraș ți-ar plăcea să vizitezi?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Cairo"
+      ],
+      "d26": [
+        "Cum ți-ar plăcea să petreci vara?",
+        "La mare",
+        "La munte",
+        "La o casă de vacanță",
+        "Prin țara noastră"
+      ],
+      "d27": [
+        "Ce pasăre ți-ar plăcea să ai?",
+        "Un canar",
+        "Un peruș",
+        "Porumbei",
+        "Cintezi zebră"
+      ],
+      "d28": [
+        "Ce sport ți-ar plăcea să încerci?",
+        "Înotul",
+        "Călăria",
+        "Tirul cu arcul",
+        "Escalada"
+      ],
+      "d29": [
+        "Ce cărți ți-ar plăcea să colecționezi?",
+        "Enciclopedii",
+        "Clasici",
+        "Cărți de călătorie",
+        "Cărți de bucate"
+      ],
+      "d30": [
+        "Ce ți-ar plăcea să faci cu mâinile tale?",
+        "Mobilă",
+        "Vase de lut proprii",
+        "O pătură tricotată",
+        "O căsuță pentru păsări"
+      ],
+      "d31": [
+        "Unde ți-ar plăcea să faci un picnic?",
+        "Pe malul unui râu",
+        "Într-o grădină",
+        "Într-o poiană",
+        "La munte"
+      ],
+      "d32": [
+        "Cum ți-ar plăcea să te deplasezi cândva?",
+        "Cu o mașină electrică",
+        "Cu bicicleta",
+        "Cu o mașină mare de familie",
+        "Fără mașină"
+      ],
+      "d33": [
+        "Ce ți-ar plăcea să faci la pensie?",
+        "Grădinărit",
+        "Călătorii",
+        "Timp cu nepoții",
+        "Să învăț lucruri noi"
+      ],
+      "d34": [
+        "Ce faptă bună ți-ar plăcea să faci?",
+        "Să construiesc o fântână",
+        "Să ajut un adăpost de pisici",
+        "Să strâng cărți pentru o școală",
+        "Să plantez un șir de copaci"
+      ],
+      "d35": [
+        "Ce ți-ar plăcea la micul dejun de weekend?",
+        "Clătite",
+        "O omletă",
+        "Terci cu fructe",
+        "Papanași"
+      ],
+      "d36": [
+        "Unde ți-ar plăcea să primești oaspeți?",
+        "În bucătărie",
+        "În sufragerie",
+        "Pe terasă",
+        "În grădină"
+      ],
+      "d37": [
+        "Ce minune a naturii ți-ar plăcea să vezi?",
+        "Marele Canion",
+        "Cascada Niagara",
+        "Lacul Baikal",
+        "Deșertul Sahara"
+      ],
+      "d38": [
+        "Ce abilitate casnică ți-ar plăcea să înveți?",
+        "Să facem singuri reparații",
+        "Cusutul",
+        "Să coc pâine",
+        "Îngrijirea grădinii"
+      ],
+      "d39": [
+        "Câte limbi ți-ar plăcea să vorbești?",
+        "Două",
+        "Trei",
+        "Cinci",
+        "Cât mai multe"
+      ],
+      "d40": [
+        "Ce culoare a pereților ți-ar plăcea acasă?",
+        "Alb",
+        "Bej",
+        "Verde deschis",
+        "Albastru deschis"
+      ],
+      "d41": [
+        "Ce pește ți-ar plăcea în acvariu?",
+        "Un peștișor auriu",
+        "Guppy",
+        "Un somn",
+        "Un scalar"
+      ],
+      "d42": [
+        "Ce călătorie ți-ar plăcea să le dăruiești părinților?",
+        "O vacanță la mare",
+        "Un tur al unui oraș",
+        "O excursie la munte",
+        "O călătorie cu trenul"
+      ],
+      "d43": [
+        "Ce ți-ar plăcea să faci în timpul liber?",
+        "Desen",
+        "Lectură",
+        "Sport",
+        "Lucru manual"
+      ],
+      "d44": [
+        "În ce anotimp ți-ar plăcea să călătorești?",
+        "Primăvara",
+        "Vara",
+        "Toamna",
+        "Iarna"
+      ],
+      "d45": [
+        "Ce ți-ar plăcea să pui la păstrare pentru iarnă?",
+        "Dulceață",
+        "Murături",
+        "Fructe uscate",
+        "Compot"
+      ],
+      "d46": [
+        "Ce altă meserie ți-ar plăcea să încerci?",
+        "Bucătar",
+        "Programator",
+        "Traducător",
+        "Tâmplar"
+      ],
+      "d47": [
+        "Ce țară ți-ar plăcea să cunoști?",
+        "Malaezia",
+        "Italia",
+        "Canada",
+        "Indonezia"
+      ],
+      "d48": [
+        "Ce ți-ar plăcea să ai în curte?",
+        "O fântână mică",
+        "O grădină de legume",
+        "Un foișor",
+        "Un leagăn"
+      ],
+      "d49": [
+        "Cum ți-ar plăcea să sărbătorești reușitele?",
+        "O cină în familie",
+        "O ieșire în natură",
+        "O carte nouă",
+        "O faptă bună pentru alții"
+      ],
+      "d50": [
+        "Ce ți-ar plăcea să le transmiți copiilor?",
+        "Dragostea de carte",
+        "Priceperea la gătit",
+        "Limba noastră maternă",
+        "Grija pentru natură"
+      ]
     }
   },
   "cs": {
@@ -19523,7 +27929,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Vítězství! O světě víte víc.",
       "tfFinalLose": "Tentokrát ví víc {name} — odveta?",
       "tfFinalDraw": "Remíza — víte toho přesně stejně!",
-      "featTruth": "Živá hra „Pravda, nebo lež“ — úžasná fakta o světě"
+      "featTruth": "Živá hra „Pravda, nebo lež“ — úžasná fakta o světě",
+      "countries": "Hádej zemi",
+      "coTitle": "Hádej zemi",
+      "coNote": "Živá hra pro dva: medvídek cestuje po světě. 10 sekund — hádej, ve které je zemi! Bod za každou správnou odpověď.",
+      "coShareText": "{name} tě zve do živé hry „Hádej zemi“",
+      "coJoinLead": "{name} na tebe čeká. Hádej zemi podle obrázku!",
+      "coRound": "Země {n} z {total}",
+      "coAsk": "Která je to země?",
+      "coFinalWin": "Vítězství! Svět znáš opravdu dobře.",
+      "coFinalLose": "Tentokrát zná svět lépe {name} — odveta?",
+      "coFinalDraw": "Remíza — svět znáte skvěle!",
+      "featCountries": "Živá hra „Hádej zemi“ — 40 zemí",
+      "hints": "Hádej podle nápověd",
+      "dreams": "Sny a plány",
+      "hiTitle": "Hádej podle nápověd",
+      "hiNote": "Živá hra pro dva: tři nápovědy se odkrývají postupně. Uhodnete po první — 3 body, po druhé — 2, po třetí — 1.",
+      "hiShareText": "{name} tě zve do živé hry „Hádej podle nápověd“",
+      "hiJoinLead": "{name} na vás čeká. Hádejte co nejdřív!",
+      "hiRound": "Hádanka {n} z {total}",
+      "hiAsk": "Co je to?",
+      "hiClue": "Nápověda {n}",
+      "hiPoints": "Body: +{n}",
+      "hiNoPoints": "Tentokrát bez bodů",
+      "hiFinalWin": "Vítězství! Hádání vám jde skvěle.",
+      "hiFinalLose": "Tentokrát hádá líp {name} — odveta?",
+      "hiFinalDraw": "Remíza — hádání vám jde oběma skvěle!",
+      "featHints": "Živá hra „Hádej podle nápověd“ — 3, 2 nebo 1 bod",
+      "drTitle": "Sny a plány",
+      "drNote": "Živá hra pro dva: domov, cestování, učení a koníčky. Vyberte, co by se vám líbilo, a uvidíte, jestli se vaše sny shodují.",
+      "drShareText": "{name} tě zve do živé hry „Sny a plány“",
+      "drJoinLead": "{name} na vás čeká. Vyberte, co by se vám opravdu líbilo!",
+      "drRound": "Otázka {n} z {total}",
+      "drPick": "Vyberte, co by se vám líbilo",
+      "drBoth": "Shoda: {item}",
+      "drDiff": "Různé sny — řekněte si proč!",
+      "drFinalHigh": "Máte tolik společných snů!",
+      "drFinalMid": "Různé sny — je o čem mluvit",
+      "drCommon": "Vaše společné sny",
+      "featDreams": "Živá hra „Sny a plány“ — shodují se vaše sny?",
+      "modestTitle": "Zdrženlivý režim",
+      "modestNote": "Žádné otázky o citech, objetí nebo schůzkách — jen přátelské"
     },
     "questions": {
       "q01": [
@@ -21442,6 +29888,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Jižní pól je mnohem chladnější: leží na vysokém ledovém kontinentu, severní pól na oceánu."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Tučňák",
+        "Jsem pták, ale neumím létat",
+        "Žiju tam, kde je velká zima",
+        "Pořád nosím frak",
+        "Pštros",
+        "Tuleň",
+        "Racek"
+      ],
+      "h02": [
+        "Slon",
+        "Jím skoro celý den",
+        "Moje uši vypadají jako velké vějíře",
+        "Mám dlouhý chobot",
+        "Nosorožec",
+        "Hroch",
+        "Žirafa"
+      ],
+      "h03": [
+        "Žirafa",
+        "Spím velmi málo, často vestoje",
+        "Jím listí z nejvyšších stromů",
+        "Mám nejdelší krk",
+        "Zebra",
+        "Velbloud",
+        "Los"
+      ],
+      "h04": [
+        "Velbloud",
+        "Vydržím dlouho bez vody",
+        "Říkají mi loď pouště",
+        "Mám na zádech jeden nebo dva hrby",
+        "Kůň",
+        "Osel",
+        "Lama"
+      ],
+      "h05": [
+        "Včela",
+        "Umím ostatním ukázat cestu ke květům",
+        "Pracuju na louce od rána do večera",
+        "Dělám med",
+        "Vosa",
+        "Moucha",
+        "Motýl"
+      ],
+      "h06": [
+        "Želva",
+        "Dožiju se i více než sta let",
+        "Nikdy nespěchám",
+        "Nosím svůj domov na zádech",
+        "Šnek",
+        "Ještěrka",
+        "Ježek"
+      ],
+      "h07": [
+        "Klokan",
+        "Ocas mi pomáhá udržet rovnováhu",
+        "Žiju v Austrálii",
+        "Nosím mládě ve vaku",
+        "Koala",
+        "Zajíc",
+        "Veverka"
+      ],
+      "h08": [
+        "Sova",
+        "Otočím hlavu skoro úplně dozadu",
+        "Lovím v noci",
+        "V temném lese houkám",
+        "Vrána",
+        "Orel",
+        "Holub"
+      ],
+      "h09": [
+        "Delfín",
+        "Dýchám vzduch, i když žiju v moři",
+        "Pomáhám lidem a mluvím pískáním",
+        "Rád skáču přes vlny",
+        "Žralok",
+        "Velryba",
+        "Tuleň"
+      ],
+      "h10": [
+        "Veverka",
+        "Schovávám jídlo a někdy zapomenu kam",
+        "Bydlím v dutině stromu",
+        "Louskám oříšky a šišky",
+        "Ježek",
+        "Zajíc",
+        "Myš"
+      ],
+      "h11": [
+        "Pavouk",
+        "Nejsem hmyz, i když si to mnozí myslí",
+        "Mám osm nohou",
+        "Spřádám síť",
+        "Mravenec",
+        "Brouk",
+        "Komár"
+      ],
+      "h12": [
+        "Kočka",
+        "Ve tmě vidím líp než lidé",
+        "Mám ráda teplý parapet",
+        "Předu a chytám myši",
+        "Králík",
+        "Křeček",
+        "Papoušek"
+      ],
+      "h13": [
+        "Meloun",
+        "Vědci mě řadí mezi bobule",
+        "Čekají na mě na konci léta",
+        "Zvenku zelený, uvnitř červený",
+        "Dýně",
+        "Ananas",
+        "Okurka"
+      ],
+      "h14": [
+        "Chléb",
+        "Pečou mě skoro v každé zemi",
+        "Krájí mě na plátky k obědu",
+        "Můžu být bílý nebo žitný, s kůrkou",
+        "Palačinka",
+        "Koláč",
+        "Sušenka"
+      ],
+      "h15": [
+        "Med",
+        "Vydržím tisíce let",
+        "Při nachlazení mě dávají do teplého čaje",
+        "Dělají mě včely",
+        "Džem",
+        "Cukr",
+        "Mléko"
+      ],
+      "h16": [
+        "Citron",
+        "Jsem plný vitaminu C",
+        "Lidé mě dávají do čaje",
+        "Jsem žlutý a hodně kyselý",
+        "Pomeranč",
+        "Grapefruit",
+        "Limetka"
+      ],
+      "h17": [
+        "Mrkev",
+        "Rostu pod zemí, vidět je jen nať",
+        "Prý jsem dobrá pro zrak",
+        "Jsem oranžová a králíci mě mají rádi",
+        "Červená řepa",
+        "Ředkvička",
+        "Brambora"
+      ],
+      "h18": [
+        "Jablko",
+        "Mám zimní i letní odrůdy",
+        "Dávají mě do koláčů a do džusu",
+        "Rostu na stromě, červené nebo zelené",
+        "Hruška",
+        "Broskev",
+        "Švestka"
+      ],
+      "h19": [
+        "Banán",
+        "Rostu v trsech na vysoké rostlině",
+        "Opice mě mají moc rády",
+        "Jsem žlutý a musíš mě oloupat",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Čaj",
+        "V Číně mě pijí už tisíce let",
+        "Můžu být černý, zelený nebo bylinný",
+        "Spařují mě v konvičce",
+        "Káva",
+        "Kakao",
+        "Džus"
+      ],
+      "h21": [
+        "Vejce",
+        "Beze mě se dort peče těžko",
+        "Dělá se ze mě omeleta",
+        "Snáší mě slepice",
+        "Sýr",
+        "Ořech",
+        "Brambora"
+      ],
+      "h22": [
+        "Deštník",
+        "Většinu času trávím složený",
+        "Bereš si mě, když se obloha zatáhne",
+        "Chráním tě před deštěm",
+        "Pláštěnka",
+        "Klobouk",
+        "Holínky"
+      ],
+      "h23": [
+        "Hodiny",
+        "Můžu fungovat s pískem nebo slunečním světlem",
+        "Visím na zdech a stojím ve věžích",
+        "Ukazuju čas ručičkami",
+        "Kompas",
+        "Kalendář",
+        "Teploměr"
+      ],
+      "h24": [
+        "Klíč",
+        "Beze mě tě dveře dovnitř nepustí",
+        "Často mě nosí na kroužku",
+        "Odemykám zámek",
+        "Nůžky",
+        "Šroubovák",
+        "Kancelářská sponka"
+      ],
+      "h25": [
+        "Svíčka",
+        "Čím déle pracuju, tím jsem menší",
+        "Zapalují mě, když vypadne proud",
+        "Jsem z vosku a mám knot",
+        "Baterka",
+        "Lampa",
+        "Zápalky"
+      ],
+      "h26": [
+        "Nůžky",
+        "Mám dvě oka a dva ostré konce",
+        "Vystřihuju tvary z papíru",
+        "Stříhám látku a papír",
+        "Nůž",
+        "Jehla",
+        "Pravítko"
+      ],
+      "h27": [
+        "Zubní kartáček",
+        "Mám spoustu štětinek",
+        "Mění mě každé tři měsíce",
+        "Čistím zuby ráno a večer",
+        "Mýdlo",
+        "Ručník",
+        "Houbička"
+      ],
+      "h28": [
+        "Lednice",
+        "Uvnitř mě je pořád zima",
+        "Když mě otevřeš, rozsvítí se světlo",
+        "Udržuju jídlo v chladu",
+        "Sporák",
+        "Trouba",
+        "Skříň"
+      ],
+      "h29": [
+        "Jízdní kolo",
+        "Jezdím bez paliva i bez elektřiny",
+        "Mám řídítka, zvonek a řetěz",
+        "Mám dvě kola a pedály",
+        "Koloběžka",
+        "Motorka",
+        "Skateboard"
+      ],
+      "h30": [
+        "Letadlo",
+        "Mám křídla, ale nejsem pták",
+        "Lidé na mě čekají na letišti",
+        "Létám s cestujícími nad mraky",
+        "Vrtulník",
+        "Raketa",
+        "Horkovzdušný balon"
+      ],
+      "h31": [
+        "Vlak",
+        "Jezdím jen po své vlastní cestě",
+        "Mám mnoho vagonů",
+        "Jezdím po kolejích od stanice ke stanici",
+        "Tramvaj",
+        "Autobus",
+        "Metro"
+      ],
+      "h32": [
+        "Most",
+        "Stavějí mě z kamene, dřeva nebo oceli",
+        "Pode mnou můžou proplouvat lodě",
+        "Spojuju dva břehy řeky",
+        "Tunel",
+        "Silnice",
+        "Přehrada"
+      ],
+      "h33": [
+        "Tužka",
+        "Uvnitř mám tuhu",
+        "Když se otupím, ořezávají mě",
+        "Píšu a kreslím; guma mé stopy smaže",
+        "Propiska",
+        "Křída",
+        "Fixa"
+      ],
+      "h34": [
+        "Kniha",
+        "Mlčím, ale hodně naučím",
+        "Mám obálku a stránky",
+        "Lidé mě čtou a půjčují si mě v knihovně",
+        "Časopis",
+        "Noviny",
+        "Sešit"
+      ],
+      "h35": [
+        "Kufr",
+        "Hodně cestuju, ale vždy v něčí ruce",
+        "Balí mě před cestou",
+        "Mám rukojeť a kolečka a vezu oblečení",
+        "Batoh",
+        "Taška",
+        "Krabice"
+      ],
+      "h36": [
+        "Knihovna",
+        "Tady vás prosí, abyste mluvili potichu",
+        "Tady dostanete čtenářský průkaz",
+        "Tisíce knih k půjčení domů",
+        "Škola",
+        "Knihkupectví",
+        "Archiv"
+      ],
+      "h37": [
+        "Letiště",
+        "Tady je pasová kontrola",
+        "Tady hlásí nástup na lety",
+        "Odtud vzlétají letadla",
+        "Nádraží",
+        "Přístav",
+        "Autobusové nádraží"
+      ],
+      "h38": [
+        "Poušť",
+        "Ve dne horko, ale noci můžou být velmi chladné",
+        "Najdete tu oázy",
+        "Hodně písku a velmi málo vody",
+        "Step",
+        "Savana",
+        "Pláž"
+      ],
+      "h39": [
+        "Sopka",
+        "Můžu spát stovky let",
+        "Z mého vrcholu stoupá kouř",
+        "Chrlím lávu",
+        "Hora",
+        "Gejzír",
+        "Ostrov"
+      ],
+      "h40": [
+        "Duha",
+        "Uvidíš mě jen se sluncem za zády",
+        "Často se objevím po dešti",
+        "Sedm barev v oblouku na nebi",
+        "Blesk",
+        "Mrak",
+        "Polární záře"
+      ],
+      "h41": [
+        "Měsíc",
+        "K Zemi se otáčím stále stejnou stranou",
+        "Můžu být v úplňku nebo tenký srpek",
+        "Svítím na noční obloze",
+        "Slunce",
+        "Hvězda",
+        "Kometa"
+      ],
+      "h42": [
+        "Sníh",
+        "Každá moje vločka je jedinečná",
+        "Stavějí ze mě pevnosti",
+        "Bílý a studený, padám v zimě",
+        "Déšť",
+        "Kroupy",
+        "Jinovatka"
+      ],
+      "h43": [
+        "Řeka",
+        "Mám pramen a ústí",
+        "Plují po mně lodě",
+        "Teču z hor do moře",
+        "Jezero",
+        "Moře",
+        "Potok"
+      ],
+      "h44": [
+        "Kaktus",
+        "Vydržím dlouho bez vody",
+        "Rostu v pouštích i na parapetech",
+        "Jsem pokrytý ostny",
+        "Aloe",
+        "Palma",
+        "Sedmikráska"
+      ],
+      "h45": [
+        "Slunečnice",
+        "Z mých semínek se lisuje olej",
+        "Otáčím se za sluncem",
+        "Velká žlutá květina plná semínek",
+        "Sedmikráska",
+        "Tulipán",
+        "Pampeliška"
+      ],
+      "h46": [
+        "Dub",
+        "Dožiju se i přes tisíc let",
+        "Jsem symbolem síly",
+        "Rostou na mně žaludy",
+        "Bříza",
+        "Borovice",
+        "Javor"
+      ],
+      "h47": [
+        "Ostrov",
+        "Vejde se na mě i celá země",
+        "Dostaneš se ke mně lodí nebo letadlem",
+        "Ze všech stran mě obklopuje voda",
+        "Poloostrov",
+        "Korálový útes",
+        "Mys"
+      ],
+      "h48": [
+        "Vodopád",
+        "Je mě slyšet zdaleka",
+        "Nejvyšší z nás je ve Venezuele",
+        "Tady řeka padá ze skály",
+        "Fontána",
+        "Gejzír",
+        "Pramen"
+      ],
+      "h49": [
+        "Lékař",
+        "Než začnu pracovat, dlouhé roky studuju",
+        "Nosím bílý plášť",
+        "Léčím nemocné lidi",
+        "Zdravotní sestra",
+        "Lékárník",
+        "Veterinář"
+      ],
+      "h50": [
+        "Hasič",
+        "Mám službu ve dne v noci, vždy připraven vyjet",
+        "Pracuju s vodou a žebříky",
+        "Hasím požáry",
+        "Policista",
+        "Záchranář",
+        "Stavbař"
+      ],
+      "h51": [
+        "Kuchař",
+        "Ochutnávám všechno, co uvařím",
+        "Pracuju u horkého sporáku",
+        "Vařím v restauraci",
+        "Pekař",
+        "Číšník",
+        "Cukrář"
+      ],
+      "h52": [
+        "Učitel",
+        "Večer opravuju sešity",
+        "Stojím u tabule",
+        "Učím děti ve škole",
+        "Ředitel školy",
+        "Knihovník",
+        "Vychovatel"
+      ],
+      "h53": [
+        "Pilot",
+        "Mým pracovištěm je kokpit",
+        "Mluvím k cestujícím z reproduktoru",
+        "Řídím letadlo",
+        "Kapitán",
+        "Řidič",
+        "Kosmonaut"
+      ],
+      "h54": [
+        "Pošťák",
+        "Znám každou adresu ve svém okrsku",
+        "Nosím velkou brašnu",
+        "Doručuju dopisy a balíky",
+        "Kurýr",
+        "Taxikář",
+        "Prodavač"
+      ],
+      "h55": [
+        "Zahradník",
+        "Vím, kdy co sázet",
+        "Mé nářadí: konev a zahradní nůžky",
+        "Starám se o květiny a stromy",
+        "Farmář",
+        "Lesník",
+        "Květinář"
+      ],
+      "h56": [
+        "Fotograf",
+        "Zachycuju okamžiky",
+        "Prosím všechny, aby se nehýbali",
+        "Pracuju s fotoaparátem a snímky",
+        "Malíř",
+        "Novinář",
+        "Kameraman"
+      ],
+      "h57": [
+        "Rybář",
+        "Vstávám před svítáním a dlouho čekám",
+        "Potřebuju prut a trpělivost",
+        "Chytám ryby",
+        "Farmář",
+        "Námořník",
+        "Pastýř"
+      ],
+      "h58": [
+        "Kosmonaut",
+        "Dlouho trénuju na Zemi",
+        "Nosím skafandr",
+        "Létám do vesmíru",
+        "Pilot",
+        "Astronom",
+        "Inženýr"
+      ],
+      "h59": [
+        "Architekt",
+        "Moje práce je vidět po celém městě",
+        "Kreslím plány",
+        "Navrhuju domy",
+        "Stavbař",
+        "Designér",
+        "Inženýr"
+      ],
+      "h60": [
+        "Zubař",
+        "Mého křesla se bojí hodně lidí",
+        "Pracuju s vrtačkou",
+        "Léčím zuby",
+        "Chirurg",
+        "Oční lékař",
+        "Dětský lékař"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Kde bydlet za deset let?",
+        "U moře",
+        "V horách",
+        "Ve velkém městě",
+        "Na klidné vesnici"
+      ],
+      "d02": [
+        "Jaký domov mít jednou?",
+        "Útulný byt",
+        "Dům se zahradou",
+        "Chata u jezera",
+        "Starý dům s historií"
+      ],
+      "d03": [
+        "Co pěstovat na zahradě?",
+        "Jabloně",
+        "Růže",
+        "Zeleninu a bylinky",
+        "Jahody"
+      ],
+      "d04": [
+        "Jaké zvíře chovat?",
+        "Kočku",
+        "Papouška",
+        "Akvarijní rybičky",
+        "Želvu"
+      ],
+      "d05": [
+        "Kam se vydat nejdřív?",
+        "Japonsko",
+        "Maroko",
+        "Island",
+        "Nový Zéland"
+      ],
+      "d06": [
+        "Jak cestovat?",
+        "Vlakem",
+        "Autem",
+        "Letadlem",
+        "Lodí"
+      ],
+      "d07": [
+        "Jaký jazyk se naučit?",
+        "Arabštinu",
+        "Japonštinu",
+        "Španělštinu",
+        "Čínštinu"
+      ],
+      "d08": [
+        "Co se naučit dělat?",
+        "Kreslit",
+        "Šít",
+        "Plavat",
+        "Programovat"
+      ],
+      "d09": [
+        "Jaké jídlo se naučit dokonale?",
+        "Plov",
+        "Domácí chleba",
+        "Sushi",
+        "Baklavu"
+      ],
+      "d10": [
+        "Jak trávit víkendy?",
+        "V přírodě",
+        "Doma s knihou",
+        "Na návštěvě u rodiny",
+        "V novém městě"
+      ],
+      "d11": [
+        "Jak by vypadalo dokonalé víkendové ráno?",
+        "Brzká procházka",
+        "Pomalá snídaně",
+        "Cvičení na čerstvém vzduchu",
+        "Čaj na balkoně"
+      ],
+      "d12": [
+        "Na co si šetřit?",
+        "Na vlastní bydlení",
+        "Na velkou cestu",
+        "Na auto",
+        "Na studium"
+      ],
+      "d13": [
+        "Jakou práci dělat?",
+        "Vlastní podnikání",
+        "Práce ve velké firmě",
+        "Práce z domova",
+        "Pomoc lidem"
+      ],
+      "d14": [
+        "Jak pomáhat druhým?",
+        "Dobrovolnictvím",
+        "Pomocí zvířatům",
+        "Učením dětí",
+        "Sázením stromů"
+      ],
+      "d15": [
+        "Jakou rodinnou tradici mít?",
+        "Společný nedělní oběd",
+        "Večery deskových her",
+        "Víkendové procházky",
+        "Rodinné fotoalbum"
+      ],
+      "d16": [
+        "Jakou kuchyň mít?",
+        "Velkou rodinnou",
+        "Světlou a útulnou",
+        "S výhledem do zahrady",
+        "Malou, ale praktickou"
+      ],
+      "d17": [
+        "Co vidět na vlastní oči?",
+        "Polární záři",
+        "Pyramidy v Gíze",
+        "Viktoriiny vodopády",
+        "Himálaj"
+      ],
+      "d18": [
+        "Co dělat po večerech?",
+        "Číst",
+        "Vařit něco nového",
+        "Učit se jazyky",
+        "Procházet se v parku"
+      ],
+      "d19": [
+        "Jaký koníček začít?",
+        "Fotografování",
+        "Keramiku",
+        "Vyšívání",
+        "Zahradničení"
+      ],
+      "d20": [
+        "Kam vyrazit na víkend?",
+        "Do lesa",
+        "K jezeru",
+        "Do blízkého městečka",
+        "Do hor"
+      ],
+      "d21": [
+        "Jak by vypadal ideální pracovní kout?",
+        "U okna",
+        "S knihovnou",
+        "Plný zelených rostlin",
+        "Skoro prázdný"
+      ],
+      "d22": [
+        "Co studovat dál?",
+        "Medicínu",
+        "Historii",
+        "Ekonomii",
+        "Design"
+      ],
+      "d23": [
+        "Jaký strom zasadit?",
+        "Dub",
+        "Jabloň",
+        "Olivovník",
+        "Datlovou palmu"
+      ],
+      "d24": [
+        "Co uvařit pro hosty?",
+        "Domácí koláč",
+        "Velký plov",
+        "Polévku podle rodinného receptu",
+        "Čerstvé saláty"
+      ],
+      "d25": [
+        "Které město navštívit?",
+        "Istanbul",
+        "Paříž",
+        "Tokio",
+        "Káhiru"
+      ],
+      "d26": [
+        "Jak strávit léto?",
+        "U moře",
+        "V horách",
+        "Na chalupě",
+        "Cestováním po naší zemi"
+      ],
+      "d27": [
+        "Jakého ptáka chovat?",
+        "Kanárka",
+        "Andulku",
+        "Holuby",
+        "Zebřičky"
+      ],
+      "d28": [
+        "Jaký sport vyzkoušet?",
+        "Plavání",
+        "Jízdu na koni",
+        "Lukostřelbu",
+        "Lezení"
+      ],
+      "d29": [
+        "Jaké knihy sbírat?",
+        "Encyklopedie",
+        "Klasiku",
+        "Cestopisy",
+        "Kuchařky"
+      ],
+      "d30": [
+        "Co si vyrobit vlastníma rukama?",
+        "Nábytek",
+        "Vlastní nádobí",
+        "Pletenou deku",
+        "Ptačí budku"
+      ],
+      "d31": [
+        "Kde si udělat piknik?",
+        "Na břehu řeky",
+        "Na zahradě",
+        "Na lesní mýtině",
+        "V horách"
+      ],
+      "d32": [
+        "Čím se jednou přepravovat?",
+        "Elektromobilem",
+        "Na kole",
+        "Velkým rodinným autem",
+        "Bez auta"
+      ],
+      "d33": [
+        "Co dělat v důchodu?",
+        "Zahradničit",
+        "Cestovat",
+        "Trávit čas s vnoučaty",
+        "Učit se nové věci"
+      ],
+      "d34": [
+        "Jaký dobrý skutek udělat?",
+        "Postavit studnu",
+        "Pomoci kočičímu útulku",
+        "Sbírat knihy pro školu",
+        "Zasadit řadu stromů"
+      ],
+      "d35": [
+        "Co si dát k víkendové snídani?",
+        "Palačinky",
+        "Omeletu",
+        "Kaši s ovocem",
+        "Tvarohové lívance"
+      ],
+      "d36": [
+        "Kde přijímat hosty?",
+        "V kuchyni",
+        "V obýváku",
+        "Na terase",
+        "Na zahradě"
+      ],
+      "d37": [
+        "Jaký přírodní div vidět?",
+        "Grand Canyon",
+        "Niagarské vodopády",
+        "Bajkal",
+        "Saharu"
+      ],
+      "d38": [
+        "Jakou domácí dovednost se naučit?",
+        "Opravy svépomocí",
+        "Šití",
+        "Pečení chleba",
+        "Péči o zahradu"
+      ],
+      "d39": [
+        "Kolika jazyky mluvit?",
+        "Dvěma",
+        "Třemi",
+        "Pěti",
+        "Co nejvíce"
+      ],
+      "d40": [
+        "Jakou barvu stěn mít doma?",
+        "Bílou",
+        "Béžovou",
+        "Světle zelenou",
+        "Světle modrou"
+      ],
+      "d41": [
+        "Jakou rybu mít v akváriu?",
+        "Zlatou rybku",
+        "Paví očka",
+        "Sumečka",
+        "Skalára"
+      ],
+      "d42": [
+        "Jakou cestu darovat rodičům?",
+        "Dovolenou u moře",
+        "Prohlídku města",
+        "Výlet do hor",
+        "Cestu vlakem"
+      ],
+      "d43": [
+        "Co dělat ve volném čase?",
+        "Kreslení",
+        "Čtení",
+        "Sport",
+        "Ruční práce"
+      ],
+      "d44": [
+        "V jakém ročním období cestovat?",
+        "Na jaře",
+        "V létě",
+        "Na podzim",
+        "V zimě"
+      ],
+      "d45": [
+        "Co zavařit na zimu?",
+        "Džem",
+        "Okurky",
+        "Sušené ovoce",
+        "Kompot"
+      ],
+      "d46": [
+        "Jakou jinou práci vyzkoušet?",
+        "Vaření",
+        "Programování",
+        "Překládání",
+        "Truhlařinu"
+      ],
+      "d47": [
+        "Kterou zemi poznat?",
+        "Malajsii",
+        "Itálii",
+        "Kanadu",
+        "Indonésii"
+      ],
+      "d48": [
+        "Co mít na dvoře?",
+        "Malou fontánu",
+        "Zeleninový záhon",
+        "Altán",
+        "Houpačku"
+      ],
+      "d49": [
+        "Jak slavit úspěchy?",
+        "Rodinnou večeří",
+        "Výletem do přírody",
+        "Novou knihou",
+        "Dobrým skutkem pro druhé"
+      ],
+      "d50": [
+        "Co předat dětem?",
+        "Lásku ke knihám",
+        "Umění vařit",
+        "Náš rodný jazyk",
+        "Péči o přírodu"
+      ]
     }
   },
   "sv": {
@@ -21667,7 +31007,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Seger! Du vet mer om världen.",
       "tfFinalLose": "{name} vet mer den här gången — revansch?",
       "tfFinalDraw": "Oavgjort — ni vet precis lika mycket!",
-      "featTruth": "Livespelet ”Sant eller falskt” — häpnadsväckande fakta om världen"
+      "featTruth": "Livespelet ”Sant eller falskt” — häpnadsväckande fakta om världen",
+      "countries": "Gissa landet",
+      "coTitle": "Gissa landet",
+      "coNote": "Ett livespel för två: björnen reser jorden runt. 10 sekunder — gissa vilket land den är i! En poäng för varje rätt svar.",
+      "coShareText": "{name} bjuder in dig till livespelet ”Gissa landet”",
+      "coJoinLead": "{name} väntar på dig. Gissa landet utifrån bilden!",
+      "coRound": "Land {n} av {total}",
+      "coAsk": "Vilket land är det här?",
+      "coFinalWin": "Seger! Du är en riktig världsresenär.",
+      "coFinalLose": "{name} kan världen bättre den här gången — revansch?",
+      "coFinalDraw": "Oavgjort — ni kan båda världen bra!",
+      "featCountries": "Livespelet ”Gissa landet” — 40 länder",
+      "hints": "Gissa med ledtrådar",
+      "dreams": "Drömmar och planer",
+      "hiTitle": "Gissa med ledtrådar",
+      "hiNote": "Ett livespel för två: tre ledtrådar visas en i taget. Gissa rätt på första — 3 poäng, på andra — 2, på tredje — 1.",
+      "hiShareText": "{name} bjuder in dig till livespelet ”Gissa med ledtrådar”",
+      "hiJoinLead": "{name} väntar på dig. Gissa så tidigt du kan!",
+      "hiRound": "Gåta {n} av {total}",
+      "hiAsk": "Vad är det?",
+      "hiClue": "Ledtråd {n}",
+      "hiPoints": "+{n} poäng",
+      "hiNoPoints": "Inga poäng den här gången",
+      "hiFinalWin": "Seger! Du är riktigt bra på att gissa.",
+      "hiFinalLose": "{name} gissade bättre den här gången — revansch?",
+      "hiFinalDraw": "Oavgjort — ni är båda riktigt bra på att gissa!",
+      "featHints": "Livespelet ”Gissa med ledtrådar” — 3, 2 eller 1 poäng",
+      "drTitle": "Drömmar och planer",
+      "drNote": "Ett livespel för två: hem, resor, lärande och hobbyer. Välj det du skulle vilja och se om era drömmar matchar.",
+      "drShareText": "{name} bjuder in dig till livespelet ”Drömmar och planer”",
+      "drJoinLead": "{name} väntar på dig. Välj det du verkligen skulle vilja!",
+      "drRound": "Fråga {n} av {total}",
+      "drPick": "Välj det du skulle vilja",
+      "drBoth": "Samma dröm: {item}",
+      "drDiff": "Olika drömmar — berätta för varandra varför!",
+      "drFinalHigh": "Ni delar så många drömmar!",
+      "drFinalMid": "Olika drömmar — mycket att prata om",
+      "drCommon": "Era gemensamma drömmar",
+      "featDreams": "Livespelet ”Drömmar och planer” — matchar era drömmar?",
+      "modestTitle": "Återhållsamt läge",
+      "modestNote": "Inga frågor om känslor, kramar eller dejter – bara vänliga"
     },
     "questions": {
       "q01": [
@@ -23586,6 +32966,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Sydpolen är mycket kallare: den ligger på en hög, isig kontinent, Nordpolen på ett hav."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingvin",
+        "Jag är en fågel men kan inte flyga",
+        "Jag bor där det är väldigt kallt",
+        "Jag bär alltid frack",
+        "Struts",
+        "Säl",
+        "Mås"
+      ],
+      "h02": [
+        "Elefant",
+        "Jag äter nästan hela dagen",
+        "Mina öron ser ut som stora solfjädrar",
+        "Jag har en lång snabel",
+        "Noshörning",
+        "Flodhäst",
+        "Giraff"
+      ],
+      "h03": [
+        "Giraff",
+        "Jag sover väldigt lite, ofta stående",
+        "Jag äter löv från de högsta träden",
+        "Jag har den längsta halsen",
+        "Zebra",
+        "Kamel",
+        "Älg"
+      ],
+      "h04": [
+        "Kamel",
+        "Jag klarar mig länge utan vatten",
+        "Jag kallas öknens skepp",
+        "Jag har en eller två pucklar på ryggen",
+        "Häst",
+        "Åsna",
+        "Lama"
+      ],
+      "h05": [
+        "Bi",
+        "Jag kan visa andra vägen till blommorna",
+        "Jag arbetar på ängen från gryning till skymning",
+        "Jag gör honung",
+        "Geting",
+        "Fluga",
+        "Fjäril"
+      ],
+      "h06": [
+        "Sköldpadda",
+        "Jag kan leva i över hundra år",
+        "Jag har aldrig bråttom",
+        "Jag bär mitt hem på ryggen",
+        "Snigel",
+        "Ödla",
+        "Igelkott"
+      ],
+      "h07": [
+        "Känguru",
+        "Svansen hjälper mig att hålla balansen",
+        "Jag bor i Australien",
+        "Jag bär min unge i en pung",
+        "Koala",
+        "Hare",
+        "Ekorre"
+      ],
+      "h08": [
+        "Uggla",
+        "Jag kan vrida huvudet nästan helt bakåt",
+        "Jag jagar på natten",
+        "Jag hoar i den mörka skogen",
+        "Kråka",
+        "Örn",
+        "Duva"
+      ],
+      "h09": [
+        "Delfin",
+        "Jag andas luft fast jag bor i havet",
+        "Jag hjälper människor och pratar med visslingar",
+        "Jag älskar att hoppa över vågorna",
+        "Haj",
+        "Val",
+        "Säl"
+      ],
+      "h10": [
+        "Ekorre",
+        "Jag gömmer mat och glömmer ibland var",
+        "Jag bor i en ihålig trädstam",
+        "Jag gnager på nötter och kottar",
+        "Igelkott",
+        "Hare",
+        "Mus"
+      ],
+      "h11": [
+        "Spindel",
+        "Jag är ingen insekt, fast många tror det",
+        "Jag har åtta ben",
+        "Jag spinner nät",
+        "Myra",
+        "Skalbagge",
+        "Mygga"
+      ],
+      "h12": [
+        "Katt",
+        "Jag ser bättre i mörkret än människor",
+        "Jag gillar en varm fönsterbräda",
+        "Jag spinner och fångar möss",
+        "Kanin",
+        "Hamster",
+        "Papegoja"
+      ],
+      "h13": [
+        "Vattenmelon",
+        "Forskare kallar mig ett bär",
+        "Man väntar på mig i slutet av sommaren",
+        "Grön utanpå, röd inuti",
+        "Honungsmelon",
+        "Pumpa",
+        "Ananas"
+      ],
+      "h14": [
+        "Bröd",
+        "Jag bakas i nästan alla länder",
+        "Jag skivas till lunch",
+        "Jag kan vara ljust eller av råg, med skorpa",
+        "Pannkaka",
+        "Paj",
+        "Kaka"
+      ],
+      "h15": [
+        "Honung",
+        "Jag kan hålla i tusentals år",
+        "Man har mig i varmt te när man är förkyld",
+        "Bin gör mig",
+        "Sylt",
+        "Socker",
+        "Mjölk"
+      ],
+      "h16": [
+        "Citron",
+        "Jag är full av C-vitamin",
+        "Man lägger mig i te",
+        "Jag är gul och väldigt sur",
+        "Apelsin",
+        "Grapefrukt",
+        "Lime"
+      ],
+      "h17": [
+        "Morot",
+        "Jag växer under jorden, bara blasten syns",
+        "Man säger att jag är bra för synen",
+        "Jag är orange och kaniner gillar mig",
+        "Rödbeta",
+        "Rädisa",
+        "Potatis"
+      ],
+      "h18": [
+        "Äpple",
+        "Jag finns i vinter- och sommarsorter",
+        "Jag hamnar i pajer och juice",
+        "Jag växer på ett träd, rött eller grönt",
+        "Päron",
+        "Persika",
+        "Plommon"
+      ],
+      "h19": [
+        "Banan",
+        "Jag växer i klasar på en hög växt",
+        "Apor gillar mig",
+        "Jag är gul och måste skalas",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Te",
+        "I Kina har man druckit mig i årtusenden",
+        "Jag kan vara svart, grönt eller av örter",
+        "Jag får dra i en kanna med hett vatten",
+        "Kaffe",
+        "Kakao",
+        "Juice"
+      ],
+      "h21": [
+        "Ägg",
+        "Det är svårt att baka en tårta utan mig",
+        "Man gör omelett av mig",
+        "En höna värper mig",
+        "Ost",
+        "Nöt",
+        "Potatis"
+      ],
+      "h22": [
+        "Paraply",
+        "Jag är hopfälld det mesta av tiden",
+        "Du tar med mig när himlen blir grå",
+        "Jag håller dig torr i regnet",
+        "Regnrock",
+        "Hatt",
+        "Stövlar"
+      ],
+      "h23": [
+        "Klocka",
+        "Jag kan gå med sand eller solljus",
+        "Jag hänger på väggar och sitter i torn",
+        "Jag visar tiden med mina visare",
+        "Kompass",
+        "Kalender",
+        "Termometer"
+      ],
+      "h24": [
+        "Nyckel",
+        "Utan mig släpper dörren inte in dig",
+        "Jag bärs ofta på en ring",
+        "Jag öppnar ett lås",
+        "Sax",
+        "Skruvmejsel",
+        "Gem"
+      ],
+      "h25": [
+        "Stearinljus",
+        "Ju längre jag arbetar, desto mindre blir jag",
+        "Man tänder mig när strömmen går",
+        "Jag är gjord av vax och har en veke",
+        "Ficklampa",
+        "Lampa",
+        "Tändstickor"
+      ],
+      "h26": [
+        "Sax",
+        "Jag har två ringar och två vassa ändar",
+        "Jag klipper ut figurer i papper",
+        "Jag klipper tyg och papper",
+        "Kniv",
+        "Nål",
+        "Linjal"
+      ],
+      "h27": [
+        "Tandborste",
+        "Jag har massor av borst",
+        "Jag byts ut var tredje månad",
+        "Jag rengör tänder morgon och kväll",
+        "Tvål",
+        "Handduk",
+        "Svamp"
+      ],
+      "h28": [
+        "Kylskåp",
+        "Inuti mig är det alltid vinter",
+        "En lampa tänds när du öppnar mig",
+        "Jag håller maten kall",
+        "Spis",
+        "Ugn",
+        "Skåp"
+      ],
+      "h29": [
+        "Cykel",
+        "Jag går utan bränsle och el",
+        "Jag har styre, ringklocka och kedja",
+        "Jag har två hjul och pedaler",
+        "Sparkcykel",
+        "Motorcykel",
+        "Skateboard"
+      ],
+      "h30": [
+        "Flygplan",
+        "Jag har vingar men är ingen fågel",
+        "Man väntar på mig på flygplatsen",
+        "Jag flyger över molnen med passagerare",
+        "Helikopter",
+        "Raket",
+        "Luftballong"
+      ],
+      "h31": [
+        "Tåg",
+        "Jag åker bara på min egen väg",
+        "Jag har många vagnar",
+        "Jag går på räls från station till station",
+        "Spårvagn",
+        "Buss",
+        "Tunnelbana"
+      ],
+      "h32": [
+        "Bro",
+        "Jag byggs av sten, trä eller stål",
+        "Fartyg kan segla under mig",
+        "Jag förbinder en flods två stränder",
+        "Tunnel",
+        "Väg",
+        "Damm"
+      ],
+      "h33": [
+        "Blyertspenna",
+        "Inuti mig finns grafit",
+        "Jag vässas när jag blir trubbig",
+        "Jag skriver och ritar; suddgummit tar bort mina spår",
+        "Kulspetspenna",
+        "Krita",
+        "Tuschpenna"
+      ],
+      "h34": [
+        "Bok",
+        "Jag är tyst men lär ut mycket",
+        "Jag har pärm och sidor",
+        "Man läser mig och lånar mig på biblioteket",
+        "Tidskrift",
+        "Dagstidning",
+        "Anteckningsbok"
+      ],
+      "h35": [
+        "Resväska",
+        "Jag reser mycket, men alltid i någons hand",
+        "Jag packas före en resa",
+        "Jag har handtag och hjul och rymmer kläder",
+        "Ryggsäck",
+        "Handväska",
+        "Låda"
+      ],
+      "h36": [
+        "Bibliotek",
+        "Här ber man dig tala tyst",
+        "Här får du ett lånekort",
+        "Tusentals böcker att ta med hem",
+        "Skola",
+        "Bokhandel",
+        "Arkiv"
+      ],
+      "h37": [
+        "Flygplats",
+        "Här finns passkontroll",
+        "Här ropas ombordstigning ut",
+        "Flygplan lyfter härifrån",
+        "Järnvägsstation",
+        "Hamn",
+        "Busstation"
+      ],
+      "h38": [
+        "Öken",
+        "Het om dagen, men nätterna kan bli mycket kalla",
+        "Här kan man hitta oaser",
+        "Mycket sand och väldigt lite vatten",
+        "Stäpp",
+        "Savann",
+        "Strand"
+      ],
+      "h39": [
+        "Vulkan",
+        "Jag kan sova i hundratals år",
+        "Rök stiger från min topp",
+        "Jag får utbrott med lava",
+        "Berg",
+        "Gejser",
+        "Ö"
+      ],
+      "h40": [
+        "Regnbåge",
+        "Du ser mig bara med solen i ryggen",
+        "Jag syns ofta efter regn",
+        "Sju färger i en båge över himlen",
+        "Blixt",
+        "Moln",
+        "Norrsken"
+      ],
+      "h41": [
+        "Måne",
+        "Jag visar alltid samma sida mot jorden",
+        "Jag kan vara full eller en smal skära",
+        "Jag lyser på natthimlen",
+        "Sol",
+        "Stjärna",
+        "Komet"
+      ],
+      "h42": [
+        "Snö",
+        "Varje flinga av mig är unik",
+        "Man bygger snöfort av mig",
+        "Vit och kall faller jag på vintern",
+        "Regn",
+        "Hagel",
+        "Rimfrost"
+      ],
+      "h43": [
+        "Flod",
+        "Jag har en källa och ett utlopp",
+        "Båtar åker på mig",
+        "Jag rinner från bergen till havet",
+        "Sjö",
+        "Hav",
+        "Bäck"
+      ],
+      "h44": [
+        "Kaktus",
+        "Jag kan leva länge utan vatten",
+        "Jag växer i öknar och på fönsterbrädor",
+        "Jag är täckt av taggar",
+        "Aloe",
+        "Palm",
+        "Prästkrage"
+      ],
+      "h45": [
+        "Solros",
+        "Man pressar olja ur mina frön",
+        "Jag vänder mig efter solen",
+        "En stor gul blomma full av frön",
+        "Prästkrage",
+        "Tulpan",
+        "Maskros"
+      ],
+      "h46": [
+        "Ek",
+        "Jag kan leva i över tusen år",
+        "Jag ses som en symbol för styrka",
+        "Det växer ollon på mig",
+        "Björk",
+        "Tall",
+        "Lönn"
+      ],
+      "h47": [
+        "Ö",
+        "Ett helt land kan få plats på mig",
+        "Man tar sig till mig med båt eller flyg",
+        "Jag är omgiven av vatten på alla sidor",
+        "Halvö",
+        "Rev",
+        "Udde"
+      ],
+      "h48": [
+        "Vattenfall",
+        "Du hör mig på långt håll",
+        "Det högsta av oss finns i Venezuela",
+        "Här faller en flod utför en klippa",
+        "Fontän",
+        "Gejser",
+        "Källa"
+      ],
+      "h49": [
+        "Läkare",
+        "Jag studerar i många år innan jag börjar jobba",
+        "Jag bär vit rock",
+        "Jag behandlar sjuka människor",
+        "Sjuksköterska",
+        "Apotekare",
+        "Veterinär"
+      ],
+      "h50": [
+        "Brandman",
+        "Jag har jour dygnet runt, redo för larm",
+        "Jag arbetar med vatten och stegar",
+        "Jag släcker bränder",
+        "Polis",
+        "Sjöräddare",
+        "Byggarbetare"
+      ],
+      "h51": [
+        "Kock",
+        "Jag smakar på allt jag lagar",
+        "Jag arbetar vid en het spis",
+        "Jag lagar mat på restaurang",
+        "Bagare",
+        "Servitör",
+        "Konditor"
+      ],
+      "h52": [
+        "Lärare",
+        "Jag rättar skrivböcker på kvällarna",
+        "Jag står vid tavlan",
+        "Jag undervisar barn i skolan",
+        "Rektor",
+        "Bibliotekarie",
+        "Förskollärare"
+      ],
+      "h53": [
+        "Pilot",
+        "Min arbetsplats är en cockpit",
+        "Jag pratar med passagerarna i högtalaren",
+        "Jag flyger ett plan",
+        "Kapten",
+        "Chaufför",
+        "Astronaut"
+      ],
+      "h54": [
+        "Brevbärare",
+        "Jag kan varje adress i mitt område",
+        "Jag bär en stor väska",
+        "Jag delar ut brev och paket",
+        "Bud",
+        "Taxichaufför",
+        "Butiksbiträde"
+      ],
+      "h55": [
+        "Trädgårdsmästare",
+        "Jag vet när man ska plantera vad",
+        "Mina verktyg är vattenkanna och sekatör",
+        "Jag sköter blommor och träd",
+        "Bonde",
+        "Skogvaktare",
+        "Florist"
+      ],
+      "h56": [
+        "Fotograf",
+        "Jag fångar ögonblick",
+        "Jag ber alla att stå stilla",
+        "Jag arbetar med kamera och bilder",
+        "Målare",
+        "Journalist",
+        "Filmfotograf"
+      ],
+      "h57": [
+        "Fiskare",
+        "Jag går upp före gryningen och väntar länge",
+        "Jag behöver ett spö och tålamod",
+        "Jag fångar fisk",
+        "Bonde",
+        "Sjöman",
+        "Herde"
+      ],
+      "h58": [
+        "Astronaut",
+        "Jag tränar länge på jorden",
+        "Jag bär rymddräkt",
+        "Jag flyger ut i rymden",
+        "Pilot",
+        "Astronom",
+        "Ingenjör"
+      ],
+      "h59": [
+        "Arkitekt",
+        "Mitt arbete syns i hela staden",
+        "Jag gör ritningar",
+        "Jag ritar hus",
+        "Byggarbetare",
+        "Designer",
+        "Ingenjör"
+      ],
+      "h60": [
+        "Tandläkare",
+        "Många är rädda för min stol",
+        "Jag arbetar med en borr",
+        "Jag lagar tänder",
+        "Kirurg",
+        "Ögonläkare",
+        "Barnläkare"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Var skulle du vilja bo om tio år?",
+        "Vid havet",
+        "I bergen",
+        "I en storstad",
+        "I en lugn by"
+      ],
+      "d02": [
+        "Vilket hem skulle du vilja ha en dag?",
+        "En mysig lägenhet",
+        "Ett hus med trädgård",
+        "En stuga vid en sjö",
+        "Ett gammalt hus med historia"
+      ],
+      "d03": [
+        "Vad skulle du vilja odla i trädgården?",
+        "Äppelträd",
+        "Rosor",
+        "Grönsaker och örter",
+        "Jordgubbar"
+      ],
+      "d04": [
+        "Vilket husdjur skulle du vilja ha?",
+        "En katt",
+        "En papegoja",
+        "Akvariefiskar",
+        "En sköldpadda"
+      ],
+      "d05": [
+        "Vart skulle du vilja resa först?",
+        "Japan",
+        "Marocko",
+        "Island",
+        "Nya Zeeland"
+      ],
+      "d06": [
+        "Hur skulle du vilja resa?",
+        "Med tåg",
+        "Med bil",
+        "Med flyg",
+        "Med båt"
+      ],
+      "d07": [
+        "Vilket språk skulle du vilja lära dig?",
+        "Arabiska",
+        "Japanska",
+        "Spanska",
+        "Kinesiska"
+      ],
+      "d08": [
+        "Vad skulle du vilja lära dig att göra?",
+        "Rita",
+        "Sy",
+        "Simma",
+        "Programmera"
+      ],
+      "d09": [
+        "Vilken rätt skulle du vilja bemästra?",
+        "Plov",
+        "Hembakat bröd",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Hur skulle du vilja tillbringa helgerna?",
+        "Ute i naturen",
+        "Hemma med en bok",
+        "Hos släkten",
+        "I en ny stad"
+      ],
+      "d11": [
+        "Hur skulle en perfekt helgmorgon se ut?",
+        "En tidig promenad",
+        "En lugn frukost",
+        "Träning i friska luften",
+        "Te på balkongen"
+      ],
+      "d12": [
+        "Vad skulle du vilja spara till?",
+        "Ett eget hem",
+        "En stor resa",
+        "En bil",
+        "Studier"
+      ],
+      "d13": [
+        "Vilket slags arbete skulle du vilja ha?",
+        "Eget företag",
+        "Jobb på ett stort företag",
+        "Jobba hemifrån",
+        "Hjälpa människor"
+      ],
+      "d14": [
+        "Hur skulle du vilja hjälpa andra?",
+        "Volontärarbete",
+        "Hjälpa djur",
+        "Undervisa barn",
+        "Plantera träd"
+      ],
+      "d15": [
+        "Vilken familjetradition skulle du vilja ha?",
+        "Söndagslunch tillsammans",
+        "Brädspelskvällar",
+        "Helgpromenader",
+        "Ett familjefotoalbum"
+      ],
+      "d16": [
+        "Vilket kök skulle du vilja ha?",
+        "Ett stort familjekök",
+        "Ljust och mysigt",
+        "Med utsikt mot trädgården",
+        "Litet men praktiskt"
+      ],
+      "d17": [
+        "Vad skulle du vilja se med egna ögon?",
+        "Norrsken",
+        "Pyramiderna i Giza",
+        "Victoriafallen",
+        "Himalaya"
+      ],
+      "d18": [
+        "Vad skulle du vilja göra på kvällarna?",
+        "Läsa",
+        "Laga något nytt",
+        "Lära mig språk",
+        "Promenera i parken"
+      ],
+      "d19": [
+        "Vilken hobby skulle du vilja börja med?",
+        "Fotografering",
+        "Keramik",
+        "Broderi",
+        "Trädgårdsodling"
+      ],
+      "d20": [
+        "Vart skulle du vilja åka en helg?",
+        "Till skogen",
+        "Till en sjö",
+        "Till en stad i närheten",
+        "Till fjällen"
+      ],
+      "d21": [
+        "Hur skulle din drömarbetsplats se ut?",
+        "Vid ett fönster",
+        "Med bokhyllor",
+        "Full av gröna växter",
+        "Nästan tom"
+      ],
+      "d22": [
+        "Vad skulle du vilja studera härnäst?",
+        "Medicin",
+        "Historia",
+        "Ekonomi",
+        "Design"
+      ],
+      "d23": [
+        "Vilket träd skulle du vilja plantera?",
+        "En ek",
+        "Ett äppelträd",
+        "Ett olivträd",
+        "En dadelpalm"
+      ],
+      "d24": [
+        "Vad skulle du vilja laga till gäster?",
+        "En hembakad paj",
+        "En stor plov",
+        "Familjens soppa",
+        "Fräscha sallader"
+      ],
+      "d25": [
+        "Vilken stad skulle du vilja besöka?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Kairo"
+      ],
+      "d26": [
+        "Hur skulle du vilja tillbringa sommaren?",
+        "Vid havet",
+        "I bergen",
+        "I en sommarstuga",
+        "På resa i vårt eget land"
+      ],
+      "d27": [
+        "Vilken fågel skulle du vilja ha?",
+        "En kanariefågel",
+        "En undulat",
+        "Duvor",
+        "Zebrafinkar"
+      ],
+      "d28": [
+        "Vilken sport skulle du vilja prova?",
+        "Simning",
+        "Ridning",
+        "Bågskytte",
+        "Klättring"
+      ],
+      "d29": [
+        "Vilka böcker skulle du vilja samla?",
+        "Uppslagsverk",
+        "Klassiker",
+        "Reseböcker",
+        "Kokböcker"
+      ],
+      "d30": [
+        "Vad skulle du vilja göra själv?",
+        "Möbler",
+        "Egen keramik",
+        "En stickad filt",
+        "En fågelholk"
+      ],
+      "d31": [
+        "Var skulle du vilja ha picknick?",
+        "Vid en flodstrand",
+        "I en trädgård",
+        "I en skogsglänta",
+        "I bergen"
+      ],
+      "d32": [
+        "Hur skulle du vilja ta dig fram en dag?",
+        "Med elbil",
+        "Med cykel",
+        "Med en stor familjebil",
+        "Utan bil"
+      ],
+      "d33": [
+        "Vad skulle du vilja göra som pensionär?",
+        "Trädgårdsarbete",
+        "Resa",
+        "Tid med barnbarnen",
+        "Lära mig nytt"
+      ],
+      "d34": [
+        "Vilken god gärning skulle du vilja göra?",
+        "Bygga en brunn",
+        "Hjälpa ett katthem",
+        "Samla böcker till en skola",
+        "Plantera en rad träd"
+      ],
+      "d35": [
+        "Vad skulle du vilja äta till helgfrukost?",
+        "Pannkakor",
+        "Omelett",
+        "Gröt med frukt",
+        "Kvargplättar"
+      ],
+      "d36": [
+        "Var skulle du vilja ta emot gäster?",
+        "I köket",
+        "I vardagsrummet",
+        "På terrassen",
+        "I trädgården"
+      ],
+      "d37": [
+        "Vilket naturunder skulle du vilja se?",
+        "Grand Canyon",
+        "Niagarafallen",
+        "Bajkalsjön",
+        "Saharaöknen"
+      ],
+      "d38": [
+        "Vilken praktisk färdighet skulle du vilja lära dig?",
+        "Göra egna reparationer",
+        "Sy",
+        "Baka bröd",
+        "Sköta en trädgård"
+      ],
+      "d39": [
+        "Hur många språk skulle du vilja tala?",
+        "Två",
+        "Tre",
+        "Fem",
+        "Så många som möjligt"
+      ],
+      "d40": [
+        "Vilken väggfärg skulle du vilja ha hemma?",
+        "Vit",
+        "Beige",
+        "Ljusgrön",
+        "Ljusblå"
+      ],
+      "d41": [
+        "Vilken fisk skulle du vilja ha i ett akvarium?",
+        "En guldfisk",
+        "Guppy",
+        "En mal",
+        "En skalar"
+      ],
+      "d42": [
+        "Vilken resa skulle du vilja ge dina föräldrar?",
+        "En semester vid havet",
+        "En stadsrundtur",
+        "En resa till bergen",
+        "En tågresa"
+      ],
+      "d43": [
+        "Vad skulle du vilja göra på fritiden?",
+        "Teckna",
+        "Läsa",
+        "Träna",
+        "Handarbete"
+      ],
+      "d44": [
+        "Vilken årstid skulle du vilja resa?",
+        "Vår",
+        "Sommar",
+        "Höst",
+        "Vinter"
+      ],
+      "d45": [
+        "Vad skulle du vilja lägga in till vintern?",
+        "Sylt",
+        "Inlagd gurka",
+        "Torkad frukt",
+        "Fruktkompott"
+      ],
+      "d46": [
+        "Vilket annat yrke skulle du vilja prova?",
+        "Kock",
+        "Programmerare",
+        "Översättare",
+        "Snickare"
+      ],
+      "d47": [
+        "Vilket land skulle du vilja lära känna?",
+        "Malaysia",
+        "Italien",
+        "Kanada",
+        "Indonesien"
+      ],
+      "d48": [
+        "Vad skulle du vilja ha på gården?",
+        "En liten fontän",
+        "Ett grönsaksland",
+        "Ett lusthus",
+        "En gunga"
+      ],
+      "d49": [
+        "Hur skulle du vilja fira framgångar?",
+        "En familjemiddag",
+        "En utflykt i naturen",
+        "En ny bok",
+        "En god gärning för andra"
+      ],
+      "d50": [
+        "Vad skulle du vilja föra vidare till barnen?",
+        "Kärlek till böcker",
+        "Matlagning",
+        "Vårt modersmål",
+        "Omsorg om naturen"
+      ]
     }
   },
   "el": {
@@ -23811,7 +34085,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Νίκη! Ξέρεις περισσότερα για τον κόσμο.",
       "tfFinalLose": "Αυτή τη φορά ξέρει περισσότερα: {name} — ρεβάνς;",
       "tfFinalDraw": "Ισοπαλία — ξέρετε ακριβώς τα ίδια!",
-      "featTruth": "Ζωντανό παιχνίδι «Αλήθεια ή ψέμα» — εκπληκτικά γεγονότα για τον κόσμο"
+      "featTruth": "Ζωντανό παιχνίδι «Αλήθεια ή ψέμα» — εκπληκτικά γεγονότα για τον κόσμο",
+      "countries": "Μάντεψε τη χώρα",
+      "coTitle": "Μάντεψε τη χώρα",
+      "coNote": "Ένα ζωντανό παιχνίδι για δύο: το αρκουδάκι ταξιδεύει στον κόσμο. 10 δευτερόλεπτα — μάντεψε σε ποια χώρα βρίσκεται! Ένας πόντος για κάθε σωστή απάντηση.",
+      "coShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Μάντεψε τη χώρα»",
+      "coJoinLead": "Σε περιμένει: {name}. Μάντεψε τη χώρα από την εικόνα!",
+      "coRound": "Χώρα {n} από {total}",
+      "coAsk": "Ποια χώρα είναι αυτή;",
+      "coFinalWin": "Νίκη! Ξέρεις πραγματικά τον κόσμο.",
+      "coFinalLose": "Αυτή τη φορά νικά: {name} — ρεβάνς;",
+      "coFinalDraw": "Ισοπαλία — ξέρετε και οι δύο καλά τον κόσμο!",
+      "featCountries": "Ζωντανό παιχνίδι «Μάντεψε τη χώρα» — 40 χώρες",
+      "hints": "Μάντεψε από τις ενδείξεις",
+      "dreams": "Όνειρα και σχέδια",
+      "hiTitle": "Μάντεψε από τις ενδείξεις",
+      "hiNote": "Ζωντανό παιχνίδι για δύο: τρεις ενδείξεις ανοίγουν μία μία. Μαντεύεις στην πρώτη — 3 πόντοι, στη δεύτερη — 2, στην τρίτη — 1.",
+      "hiShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Μάντεψε από τις ενδείξεις»",
+      "hiJoinLead": "Σας περιμένει: {name}. Μαντέψτε όσο πιο νωρίς γίνεται!",
+      "hiRound": "Γρίφος {n} από {total}",
+      "hiAsk": "Τι είναι;",
+      "hiClue": "Ένδειξη {n}",
+      "hiPoints": "Πόντοι: +{n}",
+      "hiNoPoints": "Χωρίς πόντους αυτή τη φορά",
+      "hiFinalWin": "Νίκη! Τα πας τέλεια στο μάντεμα.",
+      "hiFinalLose": "Αυτή τη φορά μάντεψε καλύτερα: {name} — ρεβάνς;",
+      "hiFinalDraw": "Ισοπαλία — τα πάτε εξίσου τέλεια στο μάντεμα!",
+      "featHints": "Ζωντανό παιχνίδι «Μάντεψε από τις ενδείξεις» — 3, 2 ή 1 πόντος",
+      "drTitle": "Όνειρα και σχέδια",
+      "drNote": "Ζωντανό παιχνίδι για δύο: σπίτι, ταξίδια, μάθηση και χόμπι. Διάλεξε τι θα ήθελες και δες αν ταιριάζουν τα όνειρά σας.",
+      "drShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Όνειρα και σχέδια»",
+      "drJoinLead": "Σας περιμένει: {name}. Διαλέξτε αυτό που θα θέλατε πραγματικά!",
+      "drRound": "Ερώτηση {n} από {total}",
+      "drPick": "Διάλεξε τι θα ήθελες",
+      "drBoth": "Κοινό όνειρο: {item}",
+      "drDiff": "Διαφορετικά όνειρα — πείτε μεταξύ σας γιατί!",
+      "drFinalHigh": "Μοιράζεστε τόσα πολλά όνειρα!",
+      "drFinalMid": "Διαφορετικά όνειρα — πολλά για να συζητήσετε",
+      "drCommon": "Τα κοινά σας όνειρα",
+      "featDreams": "Ζωντανό παιχνίδι «Όνειρα και σχέδια» — ταιριάζουν τα όνειρά σας;",
+      "modestTitle": "Σεμνή λειτουργία",
+      "modestNote": "Χωρίς ερωτήσεις για συναισθήματα, αγκαλιές ή ραντεβού — μόνο φιλικές"
     },
     "questions": {
       "q01": [
@@ -25730,6 +36044,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Ο Νότιος Πόλος είναι πολύ πιο κρύος: βρίσκεται σε μια ψηλή παγωμένη ήπειρο, ενώ ο Βόρειος σε ωκεανό."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Πιγκουίνος",
+        "Είμαι πουλί, αλλά δεν μπορώ να πετάξω",
+        "Ζω εκεί που κάνει πολύ κρύο",
+        "Φοράω πάντα φράκο",
+        "Στρουθοκάμηλος",
+        "Φώκια",
+        "Γλάρος"
+      ],
+      "h02": [
+        "Ελέφαντας",
+        "Τρώω σχεδόν όλη μέρα",
+        "Τα αυτιά μου μοιάζουν με μεγάλες βεντάλιες",
+        "Έχω μακριά προβοσκίδα",
+        "Ρινόκερος",
+        "Ιπποπόταμος",
+        "Καμηλοπάρδαλη"
+      ],
+      "h03": [
+        "Καμηλοπάρδαλη",
+        "Κοιμάμαι πολύ λίγο, συχνά όρθια",
+        "Τρώω φύλλα από τα πιο ψηλά δέντρα",
+        "Έχω τον πιο μακρύ λαιμό",
+        "Ζέβρα",
+        "Καμήλα",
+        "Άλκη"
+      ],
+      "h04": [
+        "Καμήλα",
+        "Αντέχω πολύ καιρό χωρίς νερό",
+        "Με λένε πλοίο της ερήμου",
+        "Έχω μία ή δύο καμπούρες στην πλάτη",
+        "Άλογο",
+        "Γάιδαρος",
+        "Λάμα"
+      ],
+      "h05": [
+        "Μέλισσα",
+        "Δείχνω στις άλλες τον δρόμο για τα λουλούδια",
+        "Δουλεύω στο λιβάδι από την αυγή ως το σούρουπο",
+        "Φτιάχνω μέλι",
+        "Σφήκα",
+        "Μύγα",
+        "Πεταλούδα"
+      ],
+      "h06": [
+        "Χελώνα",
+        "Μπορώ να ζήσω πάνω από εκατό χρόνια",
+        "Δεν βιάζομαι ποτέ",
+        "Κουβαλάω το σπίτι μου στην πλάτη",
+        "Σαλιγκάρι",
+        "Σαύρα",
+        "Σκαντζόχοιρος"
+      ],
+      "h07": [
+        "Καγκουρό",
+        "Η ουρά μου με βοηθά να κρατώ ισορροπία",
+        "Ζω στην Αυστραλία",
+        "Κουβαλάω το μικρό μου σε έναν μάρσιπο",
+        "Κοάλα",
+        "Λαγός",
+        "Σκίουρος"
+      ],
+      "h08": [
+        "Κουκουβάγια",
+        "Γυρίζω το κεφάλι μου σχεδόν εντελώς πίσω",
+        "Κυνηγάω τη νύχτα",
+        "Λέω «κου-κου» στο σκοτεινό δάσος",
+        "Κοράκι",
+        "Αετός",
+        "Περιστέρι"
+      ],
+      "h09": [
+        "Δελφίνι",
+        "Αναπνέω αέρα, αν και ζω στη θάλασσα",
+        "Βοηθάω ανθρώπους και μιλάω με σφυρίγματα",
+        "Μου αρέσει να πηδάω πάνω από τα κύματα",
+        "Καρχαρίας",
+        "Φάλαινα",
+        "Φώκια"
+      ],
+      "h10": [
+        "Σκίουρος",
+        "Κρύβω τροφή και καμιά φορά ξεχνάω πού",
+        "Ζω σε μια κουφάλα δέντρου",
+        "Ροκανίζω ξηρούς καρπούς και κουκουνάρια",
+        "Σκαντζόχοιρος",
+        "Λαγός",
+        "Ποντίκι"
+      ],
+      "h11": [
+        "Αράχνη",
+        "Δεν είμαι έντομο, κι ας το νομίζουν πολλοί",
+        "Έχω οκτώ πόδια",
+        "Υφαίνω ιστό",
+        "Μυρμήγκι",
+        "Σκαθάρι",
+        "Κουνούπι"
+      ],
+      "h12": [
+        "Γάτα",
+        "Βλέπω στο σκοτάδι καλύτερα από τους ανθρώπους",
+        "Μου αρέσει ένα ζεστό περβάζι",
+        "Γουργουρίζω και πιάνω ποντίκια",
+        "Κουνέλι",
+        "Χάμστερ",
+        "Παπαγάλος"
+      ],
+      "h13": [
+        "Καρπούζι",
+        "Είμαι πάνω από 90% νερό",
+        "Με περιμένουν στο τέλος του καλοκαιριού",
+        "Πράσινο απ’ έξω, κόκκινο μέσα",
+        "Πεπόνι",
+        "Κολοκύθα",
+        "Ανανάς"
+      ],
+      "h14": [
+        "Ψωμί",
+        "Με ψήνουν σχεδόν σε κάθε χώρα",
+        "Με κόβουν σε φέτες για το μεσημεριανό",
+        "Μπορώ να είμαι λευκό ή σίκαλης, με κόρα",
+        "Τηγανίτα",
+        "Πίτα",
+        "Μπισκότο"
+      ],
+      "h15": [
+        "Μέλι",
+        "Μπορώ να διατηρηθώ χιλιάδες χρόνια",
+        "Με βάζουν σε ζεστό τσάι όταν κρυώνεις",
+        "Με φτιάχνουν έντομα μέσα στις κυψέλες",
+        "Μαρμελάδα",
+        "Ζάχαρη",
+        "Γάλα"
+      ],
+      "h16": [
+        "Λεμόνι",
+        "Είμαι γεμάτο βιταμίνη C",
+        "Με βάζουν στο τσάι",
+        "Είμαι κίτρινο και πολύ ξινό",
+        "Πορτοκάλι",
+        "Γκρέιπφρουτ",
+        "Λάιμ"
+      ],
+      "h17": [
+        "Καρότο",
+        "Μεγαλώνω κάτω από τη γη, φαίνονται μόνο τα φύλλα",
+        "Λένε ότι κάνω καλό στα μάτια",
+        "Είμαι πορτοκαλί και τα κουνέλια με αγαπούν",
+        "Παντζάρι",
+        "Ραπανάκι",
+        "Πατάτα"
+      ],
+      "h18": [
+        "Μήλο",
+        "Έχω χειμερινές και καλοκαιρινές ποικιλίες",
+        "Μπαίνω σε πίτες και χυμούς",
+        "Μεγαλώνω σε δέντρο, κόκκινο ή πράσινο",
+        "Αχλάδι",
+        "Ροδάκινο",
+        "Δαμάσκηνο"
+      ],
+      "h19": [
+        "Μπανάνα",
+        "Μεγαλώνω σε τσαμπιά σε ψηλό φυτό",
+        "Οι μαϊμούδες με αγαπούν",
+        "Είμαι κίτρινη και πρέπει να με ξεφλουδίσεις",
+        "Μάνγκο",
+        "Ακτινίδιο",
+        "Ανανάς"
+      ],
+      "h20": [
+        "Τσάι",
+        "Στην Κίνα με πίνουν εδώ και χιλιετίες",
+        "Μπορώ να είμαι μαύρο, πράσινο ή από βότανα",
+        "Με αφήνουν να πάρω χρώμα σε ζεστό νερό",
+        "Καφές",
+        "Κακάο",
+        "Χυμός"
+      ],
+      "h21": [
+        "Αυγό",
+        "Χωρίς εμένα δύσκολα γίνεται κέικ",
+        "Από εμένα φτιάχνουν ομελέτα",
+        "Με γεννάει η κότα",
+        "Τυρί",
+        "Καρύδι",
+        "Πατάτα"
+      ],
+      "h22": [
+        "Ομπρέλα",
+        "Περνάω τον περισσότερο χρόνο κλειστή",
+        "Με παίρνεις όταν ο ουρανός γκριζάρει",
+        "Σε προστατεύω από τη βροχή",
+        "Αδιάβροχο",
+        "Καπέλο",
+        "Γαλότσες"
+      ],
+      "h23": [
+        "Ρολόι",
+        "Μπορώ να λειτουργώ με άμμο ή με ηλιακό φως",
+        "Κρέμομαι σε τοίχους και στέκομαι σε πύργους",
+        "Δείχνω την ώρα με τους δείκτες μου",
+        "Πυξίδα",
+        "Ημερολόγιο",
+        "Θερμόμετρο"
+      ],
+      "h24": [
+        "Κλειδί",
+        "Χωρίς εμένα η πόρτα δεν σε αφήνει να μπεις",
+        "Συχνά με κρατούν σε κρίκο",
+        "Ανοίγω μια κλειδαριά",
+        "Ψαλίδι",
+        "Κατσαβίδι",
+        "Συνδετήρας"
+      ],
+      "h25": [
+        "Κερί",
+        "Όσο περισσότερο δουλεύω, τόσο μικραίνω",
+        "Με ανάβουν όταν κόβεται το ρεύμα",
+        "Είμαι από παραφίνη και έχω φιτίλι",
+        "Φακός",
+        "Λάμπα",
+        "Σπίρτα"
+      ],
+      "h26": [
+        "Ψαλίδι",
+        "Έχω δύο κρίκους και δύο κοφτερές άκρες",
+        "Κόβω σχήματα από χαρτί",
+        "Κόβω ύφασμα και χαρτί",
+        "Μαχαίρι",
+        "Βελόνα",
+        "Χάρακας"
+      ],
+      "h27": [
+        "Οδοντόβουρτσα",
+        "Έχω πολλές τρίχες",
+        "Με αλλάζουν κάθε τρεις μήνες",
+        "Καθαρίζω δόντια πρωί και βράδυ",
+        "Σαπούνι",
+        "Πετσέτα",
+        "Σφουγγάρι"
+      ],
+      "h28": [
+        "Ψυγείο",
+        "Μέσα μου είναι πάντα χειμώνας",
+        "Όταν με ανοίγεις, ανάβει ένα φως",
+        "Κρατάω το φαγητό κρύο",
+        "Κουζίνα",
+        "Φούρνος",
+        "Ντουλάπι"
+      ],
+      "h29": [
+        "Ποδήλατο",
+        "Κινούμαι χωρίς καύσιμα και ρεύμα",
+        "Έχω τιμόνι, κουδούνι και αλυσίδα",
+        "Έχω δύο ρόδες και πετάλια",
+        "Πατίνι",
+        "Μηχανάκι",
+        "Σκέιτμπορντ"
+      ],
+      "h30": [
+        "Αεροπλάνο",
+        "Έχω φτερά, αλλά δεν είμαι πουλί",
+        "Με περιμένουν στο αεροδρόμιο",
+        "Πετάω πάνω από τα σύννεφα με επιβάτες",
+        "Ελικόπτερο",
+        "Πύραυλος",
+        "Αερόστατο"
+      ],
+      "h31": [
+        "Τρένο",
+        "Ταξιδεύω μόνο στον δικό μου δρόμο",
+        "Έχω πολλά βαγόνια",
+        "Κινούμαι σε ράγες από σταθμό σε σταθμό",
+        "Τραμ",
+        "Λεωφορείο",
+        "Μετρό"
+      ],
+      "h32": [
+        "Γέφυρα",
+        "Με χτίζουν από πέτρα, ξύλο ή ατσάλι",
+        "Από κάτω μου περνούν πλοία",
+        "Ενώνω τις δύο όχθες ενός ποταμού",
+        "Τούνελ",
+        "Δρόμος",
+        "Φράγμα"
+      ],
+      "h33": [
+        "Μολύβι",
+        "Μέσα μου έχω γραφίτη",
+        "Με ξύνουν όταν στομώσω",
+        "Γράφω και ζωγραφίζω· η γόμα σβήνει τα ίχνη μου",
+        "Στυλό",
+        "Κιμωλία",
+        "Μαρκαδόρος"
+      ],
+      "h34": [
+        "Βιβλίο",
+        "Είμαι σιωπηλό, αλλά διδάσκω πολλά",
+        "Έχω εξώφυλλο και σελίδες",
+        "Με διαβάζουν και με δανείζονται από βιβλιοθήκες",
+        "Περιοδικό",
+        "Εφημερίδα",
+        "Τετράδιο"
+      ],
+      "h35": [
+        "Βαλίτσα",
+        "Ταξιδεύω πολύ, αλλά πάντα στο χέρι κάποιου",
+        "Με ετοιμάζουν πριν από ένα ταξίδι",
+        "Έχω χερούλι και ρόδες και χωράω ρούχα",
+        "Σακίδιο",
+        "Τσάντα",
+        "Κουτί"
+      ],
+      "h36": [
+        "Βιβλιοθήκη",
+        "Εδώ σου ζητούν να μιλάς χαμηλόφωνα",
+        "Εδώ βγάζεις κάρτα αναγνώστη",
+        "Χιλιάδες τόμοι για να πάρεις σπίτι",
+        "Σχολείο",
+        "Βιβλιοπωλείο",
+        "Αρχείο"
+      ],
+      "h37": [
+        "Αεροδρόμιο",
+        "Εδώ υπάρχει έλεγχος διαβατηρίων",
+        "Εδώ ανακοινώνουν την επιβίβαση στις πτήσεις",
+        "Από εδώ απογειώνονται αεροπλάνα",
+        "Σιδηροδρομικός σταθμός",
+        "Λιμάνι",
+        "Σταθμός λεωφορείων"
+      ],
+      "h38": [
+        "Έρημος",
+        "Ζέστη τη μέρα, αλλά οι νύχτες είναι συχνά πολύ κρύες",
+        "Εδώ θα βρεις οάσεις",
+        "Πολλή άμμος και ελάχιστο νερό",
+        "Στέπα",
+        "Σαβάνα",
+        "Παραλία"
+      ],
+      "h39": [
+        "Ηφαίστειο",
+        "Μπορώ να κοιμάμαι εκατοντάδες χρόνια",
+        "Από την κορυφή μου βγαίνει καπνός",
+        "Ξερνάω λάβα",
+        "Βουνό",
+        "Θερμοπίδακας",
+        "Νησί"
+      ],
+      "h40": [
+        "Ουράνιο τόξο",
+        "Με βλέπεις μόνο με τον ήλιο πίσω σου",
+        "Εμφανίζομαι συχνά μετά τη βροχή",
+        "Επτά χρώματα σε καμάρα στον ουρανό",
+        "Αστραπή",
+        "Σύννεφο",
+        "Βόρειο σέλας"
+      ],
+      "h41": [
+        "Φεγγάρι",
+        "Δείχνω πάντα στη Γη την ίδια πλευρά",
+        "Μπορώ να είμαι πανσέληνος ή λεπτό δρεπάνι",
+        "Λάμπω στον νυχτερινό ουρανό",
+        "Ήλιος",
+        "Αστέρι",
+        "Κομήτης"
+      ],
+      "h42": [
+        "Χιόνι",
+        "Κάθε νιφάδα μου είναι μοναδική",
+        "Χτίζουν κάστρα από εμένα",
+        "Λευκό και κρύο, πέφτω τον χειμώνα",
+        "Βροχή",
+        "Χαλάζι",
+        "Πάχνη"
+      ],
+      "h43": [
+        "Ποτάμι",
+        "Έχω πηγή και εκβολές",
+        "Πάνω μου πλέουν βάρκες",
+        "Κυλάω από τα βουνά στη θάλασσα",
+        "Λίμνη",
+        "Θάλασσα",
+        "Ρυάκι"
+      ],
+      "h44": [
+        "Κάκτος",
+        "Ζω πολύ καιρό χωρίς νερό",
+        "Μεγαλώνω σε ερήμους και σε περβάζια",
+        "Είμαι γεμάτος αγκάθια",
+        "Αλόη",
+        "Φοίνικας",
+        "Μαργαρίτα"
+      ],
+      "h45": [
+        "Ηλίανθος",
+        "Από τους σπόρους μου βγαίνει λάδι",
+        "Γυρίζω ακολουθώντας τον ήλιο",
+        "Ένα μεγάλο κίτρινο λουλούδι γεμάτο σπόρους",
+        "Μαργαρίτα",
+        "Τουλίπα",
+        "Πικραλίδα"
+      ],
+      "h46": [
+        "Βελανιδιά",
+        "Μπορώ να ζήσω πάνω από χίλια χρόνια",
+        "Με θεωρούν σύμβολο δύναμης",
+        "Πάνω μου φυτρώνουν βελανίδια",
+        "Σημύδα",
+        "Πεύκο",
+        "Σφένδαμος"
+      ],
+      "h47": [
+        "Νησί",
+        "Πάνω μου χωράει ολόκληρη χώρα",
+        "Με φτάνεις με πλοίο ή αεροπλάνο",
+        "Με περιβάλλει νερό από παντού",
+        "Χερσόνησος",
+        "Ύφαλος",
+        "Ακρωτήριο"
+      ],
+      "h48": [
+        "Καταρράκτης",
+        "Με ακούς από μακριά",
+        "Ο ψηλότερος από εμάς είναι στη Βενεζουέλα",
+        "Εδώ ένα ποτάμι πέφτει από έναν γκρεμό",
+        "Σιντριβάνι",
+        "Θερμοπίδακας",
+        "Πηγή"
+      ],
+      "h49": [
+        "Γιατρός",
+        "Σπουδάζω πολλά χρόνια πριν αρχίσω να δουλεύω",
+        "Φοράω λευκή μπλούζα",
+        "Θεραπεύω αρρώστους",
+        "Νοσηλευτής",
+        "Φαρμακοποιός",
+        "Κτηνίατρος"
+      ],
+      "h50": [
+        "Πυροσβέστης",
+        "Βρίσκομαι σε επιφυλακή μέρα και νύχτα",
+        "Δουλεύω με νερό και σκάλες",
+        "Σβήνω φωτιές",
+        "Αστυνομικός",
+        "Διασώστης",
+        "Οικοδόμος"
+      ],
+      "h51": [
+        "Μάγειρας",
+        "Δοκιμάζω ό,τι φτιάχνω",
+        "Δουλεύω δίπλα σε καυτές εστίες",
+        "Μαγειρεύω σε εστιατόριο",
+        "Φούρναρης",
+        "Σερβιτόρος",
+        "Ζαχαροπλάστης"
+      ],
+      "h52": [
+        "Δάσκαλος",
+        "Τα βράδια διορθώνω τετράδια",
+        "Στέκομαι μπροστά στον πίνακα",
+        "Μαθαίνω γράμματα στα παιδιά στο σχολείο",
+        "Διευθυντής σχολείου",
+        "Βιβλιοθηκάριος",
+        "Νηπιαγωγός"
+      ],
+      "h53": [
+        "Πιλότος",
+        "Ο χώρος δουλειάς μου είναι το πιλοτήριο",
+        "Μιλάω στους επιβάτες από το μεγάφωνο",
+        "Πετάω αεροπλάνο",
+        "Καπετάνιος",
+        "Οδηγός",
+        "Αστροναύτης"
+      ],
+      "h54": [
+        "Ταχυδρόμος",
+        "Ξέρω κάθε διεύθυνση της περιοχής μου",
+        "Κουβαλάω μια μεγάλη τσάντα",
+        "Μοιράζω γράμματα και δέματα",
+        "Κούριερ",
+        "Ταξιτζής",
+        "Πωλητής"
+      ],
+      "h55": [
+        "Κηπουρός",
+        "Ξέρω πότε φυτεύεται το καθετί",
+        "Τα εργαλεία μου: ποτιστήρι και ψαλίδα",
+        "Φροντίζω λουλούδια και δέντρα",
+        "Αγρότης",
+        "Δασοφύλακας",
+        "Ανθοπώλης"
+      ],
+      "h56": [
+        "Φωτογράφος",
+        "Πιάνω στιγμές",
+        "Ζητάω από όλους να μείνουν ακίνητοι",
+        "Δουλεύω με κάμερα και εικόνες",
+        "Ζωγράφος",
+        "Δημοσιογράφος",
+        "Εικονολήπτης"
+      ],
+      "h57": [
+        "Ψαράς",
+        "Ξυπνάω πριν χαράξει και περιμένω πολύ",
+        "Χρειάζομαι καλάμι και υπομονή",
+        "Πιάνω ψάρια",
+        "Αγρότης",
+        "Ναύτης",
+        "Βοσκός"
+      ],
+      "h58": [
+        "Αστροναύτης",
+        "Εκπαιδεύομαι πολύ καιρό στη Γη",
+        "Φοράω διαστημική στολή",
+        "Πετάω στο διάστημα",
+        "Πιλότος",
+        "Αστρονόμος",
+        "Μηχανικός"
+      ],
+      "h59": [
+        "Αρχιτέκτονας",
+        "Η δουλειά μου φαίνεται σε όλη την πόλη",
+        "Σχεδιάζω κατόψεις",
+        "Σχεδιάζω σπίτια",
+        "Οικοδόμος",
+        "Σχεδιαστής",
+        "Μηχανικός"
+      ],
+      "h60": [
+        "Οδοντίατρος",
+        "Πολλοί φοβούνται την καρέκλα μου",
+        "Δουλεύω με τροχό",
+        "Φτιάχνω δόντια",
+        "Χειρουργός",
+        "Οφθαλμίατρος",
+        "Παιδίατρος"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Πού θα ήθελες να ζεις σε δέκα χρόνια;",
+        "Δίπλα στη θάλασσα",
+        "Στα βουνά",
+        "Σε μια μεγάλη πόλη",
+        "Σε ένα ήσυχο χωριό"
+      ],
+      "d02": [
+        "Τι σπίτι θα ήθελες κάποια μέρα;",
+        "Ένα ζεστό διαμέρισμα",
+        "Σπίτι με κήπο",
+        "Εξοχικό δίπλα σε λίμνη",
+        "Παλιό σπίτι με ιστορία"
+      ],
+      "d03": [
+        "Τι θα ήθελες να καλλιεργείς στον κήπο;",
+        "Μηλιές",
+        "Τριαντάφυλλα",
+        "Λαχανικά και μυρωδικά",
+        "Φράουλες"
+      ],
+      "d04": [
+        "Ποιο κατοικίδιο θα ήθελες;",
+        "Μια γάτα",
+        "Έναν παπαγάλο",
+        "Ψάρια ενυδρείου",
+        "Μια χελώνα"
+      ],
+      "d05": [
+        "Πού θα ήθελες να πας πρώτα;",
+        "Ιαπωνία",
+        "Μαρόκο",
+        "Ισλανδία",
+        "Νέα Ζηλανδία"
+      ],
+      "d06": [
+        "Πώς θα ήθελες να ταξιδεύεις;",
+        "Με τρένο",
+        "Με αυτοκίνητο",
+        "Με αεροπλάνο",
+        "Με πλοίο"
+      ],
+      "d07": [
+        "Ποια γλώσσα θα ήθελες να μάθεις;",
+        "Αραβικά",
+        "Ιαπωνικά",
+        "Ισπανικά",
+        "Κινέζικα"
+      ],
+      "d08": [
+        "Τι θα ήθελες να μάθεις να κάνεις;",
+        "Ζωγραφική",
+        "Ράψιμο",
+        "Κολύμπι",
+        "Προγραμματισμό"
+      ],
+      "d09": [
+        "Ποιο φαγητό θα ήθελες να τελειοποιήσεις;",
+        "Πιλάφι",
+        "Σπιτικό ψωμί",
+        "Σούσι",
+        "Μπακλαβά"
+      ],
+      "d10": [
+        "Πώς θα ήθελες να περνάς τα Σαββατοκύριακα;",
+        "Στη φύση",
+        "Σπίτι με ένα βιβλίο",
+        "Επισκέψεις σε συγγενείς",
+        "Σε μια νέα πόλη"
+      ],
+      "d11": [
+        "Πώς θα ήταν ένα τέλειο πρωινό Σαββατοκύριακου;",
+        "Μια πρωινή βόλτα",
+        "Ένα χαλαρό πρωινό",
+        "Άσκηση στον καθαρό αέρα",
+        "Τσάι στο μπαλκόνι"
+      ],
+      "d12": [
+        "Για τι θα ήθελες να αποταμιεύεις;",
+        "Ένα δικό μας σπίτι",
+        "Ένα μεγάλο ταξίδι",
+        "Ένα αυτοκίνητο",
+        "Σπουδές"
+      ],
+      "d13": [
+        "Τι δουλειά θα ήθελες να κάνεις;",
+        "Δική μου επιχείρηση",
+        "Σε μεγάλη εταιρεία",
+        "Από το σπίτι",
+        "Να βοηθάω ανθρώπους"
+      ],
+      "d14": [
+        "Πώς θα ήθελες να βοηθάς τους άλλους;",
+        "Εθελοντισμός",
+        "Βοήθεια σε ζώα",
+        "Μαθήματα σε παιδιά",
+        "Φύτευση δέντρων"
+      ],
+      "d15": [
+        "Ποια οικογενειακή παράδοση θα ήθελες;",
+        "Κυριακάτικο τραπέζι μαζί",
+        "Βραδιές επιτραπέζιων",
+        "Βόλτες το Σαββατοκύριακο",
+        "Οικογενειακό άλμπουμ"
+      ],
+      "d16": [
+        "Τι κουζίνα θα ήθελες;",
+        "Μεγάλη, οικογενειακή",
+        "Φωτεινή και ζεστή",
+        "Με θέα στον κήπο",
+        "Μικρή αλλά πρακτική"
+      ],
+      "d17": [
+        "Τι θα ήθελες να δεις με τα μάτια σου;",
+        "Το βόρειο σέλας",
+        "Τις πυραμίδες της Γκίζας",
+        "Τους καταρράκτες Βικτόρια",
+        "Τα Ιμαλάια"
+      ],
+      "d18": [
+        "Τι θα ήθελες να κάνεις τα βράδια;",
+        "Διάβασμα",
+        "Νέες συνταγές",
+        "Εκμάθηση γλωσσών",
+        "Βόλτες στο πάρκο"
+      ],
+      "d19": [
+        "Ποιο χόμπι θα ήθελες να ξεκινήσεις;",
+        "Φωτογραφία",
+        "Κεραμική",
+        "Κέντημα",
+        "Κηπουρική"
+      ],
+      "d20": [
+        "Πού θα ήθελες να πας για ένα Σαββατοκύριακο;",
+        "Στο δάσος",
+        "Σε μια λίμνη",
+        "Σε μια κοντινή πόλη",
+        "Στα βουνά"
+      ],
+      "d21": [
+        "Πώς θα ήταν ο ιδανικός χώρος εργασίας σου;",
+        "Δίπλα σε παράθυρο",
+        "Με βιβλιοθήκες",
+        "Γεμάτος πράσινα φυτά",
+        "Σχεδόν άδειος"
+      ],
+      "d22": [
+        "Τι θα ήθελες να σπουδάσεις στη συνέχεια;",
+        "Ιατρική",
+        "Ιστορία",
+        "Οικονομικά",
+        "Σχεδιασμό"
+      ],
+      "d23": [
+        "Ποιο δέντρο θα ήθελες να φυτέψεις;",
+        "Μια βελανιδιά",
+        "Μια μηλιά",
+        "Μια ελιά",
+        "Έναν φοίνικα"
+      ],
+      "d24": [
+        "Τι θα ήθελες να μαγειρέψεις για καλεσμένους;",
+        "Μια σπιτική πίτα",
+        "Ένα μεγάλο πιλάφι",
+        "Τη σούπα της οικογένειας",
+        "Φρέσκιες σαλάτες"
+      ],
+      "d25": [
+        "Ποια πόλη θα ήθελες να επισκεφθείς;",
+        "Κωνσταντινούπολη",
+        "Παρίσι",
+        "Τόκιο",
+        "Κάιρο"
+      ],
+      "d26": [
+        "Πώς θα ήθελες να περάσεις το καλοκαίρι;",
+        "Στη θάλασσα",
+        "Στα βουνά",
+        "Σε εξοχικό",
+        "Γυρίζοντας τη χώρα μας"
+      ],
+      "d27": [
+        "Ποιο πουλί θα ήθελες να έχεις;",
+        "Ένα καναρίνι",
+        "Ένα παπαγαλάκι",
+        "Περιστέρια",
+        "Σπίνους ζέβρα"
+      ],
+      "d28": [
+        "Ποιο άθλημα θα ήθελες να δοκιμάσεις;",
+        "Κολύμβηση",
+        "Ιππασία",
+        "Τοξοβολία",
+        "Αναρρίχηση"
+      ],
+      "d29": [
+        "Τι βιβλία θα ήθελες να συλλέγεις;",
+        "Εγκυκλοπαίδειες",
+        "Κλασικά",
+        "Ταξιδιωτικά",
+        "Βιβλία μαγειρικής"
+      ],
+      "d30": [
+        "Τι θα ήθελες να φτιάξεις με τα χέρια σου;",
+        "Έπιπλα",
+        "Κεραμικά σκεύη",
+        "Μια πλεκτή κουβέρτα",
+        "Μια φωλιά για πουλιά"
+      ],
+      "d31": [
+        "Πού θα ήθελες να κάνεις πικνίκ;",
+        "Στην όχθη ενός ποταμού",
+        "Σε έναν κήπο",
+        "Σε ένα ξέφωτο",
+        "Στα βουνά"
+      ],
+      "d32": [
+        "Πώς θα ήθελες να μετακινείσαι κάποτε;",
+        "Με ηλεκτρικό αυτοκίνητο",
+        "Με ποδήλατο",
+        "Με μεγάλο οικογενειακό αμάξι",
+        "Χωρίς αυτοκίνητο"
+      ],
+      "d33": [
+        "Τι θα ήθελες να κάνεις στη σύνταξη;",
+        "Κηπουρική",
+        "Ταξίδια",
+        "Χρόνο με τα εγγόνια",
+        "Να μαθαίνω νέα πράγματα"
+      ],
+      "d34": [
+        "Ποια καλή πράξη θα ήθελες να κάνεις;",
+        "Ένα πηγάδι με νερό",
+        "Βοήθεια σε καταφύγιο γατών",
+        "Βιβλία για ένα σχολείο",
+        "Μια σειρά δέντρα"
+      ],
+      "d35": [
+        "Τι θα ήθελες για πρωινό το Σαββατοκύριακο;",
+        "Τηγανίτες",
+        "Ομελέτα",
+        "Χυλό με φρούτα",
+        "Τυρόπιτα"
+      ],
+      "d36": [
+        "Πού θα ήθελες να υποδέχεσαι καλεσμένους;",
+        "Στην κουζίνα",
+        "Στο σαλόνι",
+        "Στη βεράντα",
+        "Στον κήπο"
+      ],
+      "d37": [
+        "Ποιο θαύμα της φύσης θα ήθελες να δεις;",
+        "Το Γκραν Κάνιον",
+        "Τους καταρράκτες Νιαγάρα",
+        "Τη λίμνη Βαϊκάλη",
+        "Την έρημο Σαχάρα"
+      ],
+      "d38": [
+        "Ποια πρακτική δεξιότητα θα ήθελες να μάθεις;",
+        "Μικροεπισκευές",
+        "Ράψιμο",
+        "Ψήσιμο ψωμιού",
+        "Φροντίδα κήπου"
+      ],
+      "d39": [
+        "Πόσες γλώσσες θα ήθελες να μιλάς;",
+        "Δύο",
+        "Τρεις",
+        "Πέντε",
+        "Όσο περισσότερες γίνεται"
+      ],
+      "d40": [
+        "Τι χρώμα τοίχων θα ήθελες στο σπίτι;",
+        "Λευκό",
+        "Μπεζ",
+        "Ανοιχτό πράσινο",
+        "Γαλάζιο"
+      ],
+      "d41": [
+        "Ποιο ψάρι θα ήθελες σε ενυδρείο;",
+        "Ένα χρυσόψαρο",
+        "Γκάπι",
+        "Ένα γατόψαρο",
+        "Ένα σκαλάρι"
+      ],
+      "d42": [
+        "Ποιο ταξίδι θα ήθελες να χαρίσεις στους γονείς σου;",
+        "Διακοπές στη θάλασσα",
+        "Γύρο μιας πόλης",
+        "Εκδρομή στα βουνά",
+        "Ταξίδι με τρένο"
+      ],
+      "d43": [
+        "Τι θα ήθελες να κάνεις στον ελεύθερο χρόνο σου;",
+        "Ζωγραφική",
+        "Διάβασμα",
+        "Αθλητισμό",
+        "Χειροτεχνίες"
+      ],
+      "d44": [
+        "Ποια εποχή θα ήθελες να ταξιδέψεις;",
+        "Άνοιξη",
+        "Καλοκαίρι",
+        "Φθινόπωρο",
+        "Χειμώνα"
+      ],
+      "d45": [
+        "Τι θα ήθελες να φτιάξεις για τον χειμώνα;",
+        "Μαρμελάδα",
+        "Τουρσί",
+        "Αποξηραμένα φρούτα",
+        "Κομπόστα"
+      ],
+      "d46": [
+        "Ποιο άλλο επάγγελμα θα ήθελες να δοκιμάσεις;",
+        "Μαγειρική",
+        "Προγραμματισμό",
+        "Μετάφραση",
+        "Ξυλουργική"
+      ],
+      "d47": [
+        "Ποια χώρα θα ήθελες να γνωρίσεις;",
+        "Μαλαισία",
+        "Ιταλία",
+        "Καναδάς",
+        "Ινδονησία"
+      ],
+      "d48": [
+        "Τι θα ήθελες να έχεις στην αυλή;",
+        "Ένα μικρό σιντριβάνι",
+        "Ένα μποστάνι",
+        "Ένα κιόσκι",
+        "Μια κούνια"
+      ],
+      "d49": [
+        "Πώς θα ήθελες να γιορτάζεις τις επιτυχίες;",
+        "Οικογενειακό δείπνο",
+        "Εκδρομή στη φύση",
+        "Ένα νέο βιβλίο",
+        "Μια καλή πράξη για άλλους"
+      ],
+      "d50": [
+        "Τι θα ήθελες να μεταδώσεις στα παιδιά;",
+        "Αγάπη για τα βιβλία",
+        "Μαγειρικές δεξιότητες",
+        "Τη μητρική μας γλώσσα",
+        "Φροντίδα για τη φύση"
+      ]
     }
   },
   "da": {
@@ -25955,7 +37163,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Sejr! Du ved mest om verden.",
       "tfFinalLose": "{name} ved mest denne gang — revanche?",
       "tfFinalDraw": "Uafgjort — I ved lige meget!",
-      "featTruth": "Livespillet »Sandt eller falsk« — forbløffende fakta om verden"
+      "featTruth": "Livespillet »Sandt eller falsk« — forbløffende fakta om verden",
+      "countries": "Gæt landet",
+      "coTitle": "Gæt landet",
+      "coNote": "Et livespil for to: bjørnen rejser verden rundt. 10 sekunder — gæt, hvilket land den er i! Et point for hvert rigtigt svar.",
+      "coShareText": "{name} inviterer dig til livespillet »Gæt landet«",
+      "coJoinLead": "{name} venter på dig. Gæt landet ud fra billedet!",
+      "coRound": "Land {n} af {total}",
+      "coAsk": "Hvilket land er det?",
+      "coFinalWin": "Sejr! Du er en ægte globetrotter.",
+      "coFinalLose": "{name} kender verden bedre denne gang — revanche?",
+      "coFinalDraw": "Uafgjort — I kender begge verden godt!",
+      "featCountries": "Livespillet »Gæt landet« — 40 lande",
+      "hints": "Gæt ud fra ledetråde",
+      "dreams": "Drømme og planer",
+      "hiTitle": "Gæt ud fra ledetråde",
+      "hiNote": "Et livespil for to: tre ledetråde vises én ad gangen. Gæt på den første — 3 point, på den anden — 2, på den tredje — 1.",
+      "hiShareText": "{name} inviterer dig til livespillet »Gæt ud fra ledetråde«",
+      "hiJoinLead": "{name} venter på dig. Gæt så tidligt du kan!",
+      "hiRound": "Gåde {n} af {total}",
+      "hiAsk": "Hvad er det?",
+      "hiClue": "Ledetråd {n}",
+      "hiPoints": "+{n} point",
+      "hiNoPoints": "Ingen point denne gang",
+      "hiFinalWin": "Sejr! Du er rigtig god til at gætte.",
+      "hiFinalLose": "{name} gættede bedst denne gang — revanche?",
+      "hiFinalDraw": "Uafgjort — I er begge rigtig gode til at gætte!",
+      "featHints": "Livespillet »Gæt ud fra ledetråde« — 3, 2 eller 1 point",
+      "drTitle": "Drømme og planer",
+      "drNote": "Et livespil for to: hjem, rejser, læring og hobbyer. Vælg det, du kunne tænke dig, og se, om jeres drømme passer sammen.",
+      "drShareText": "{name} inviterer dig til livespillet »Drømme og planer«",
+      "drJoinLead": "{name} venter på dig. Vælg det, du virkelig kunne tænke dig!",
+      "drRound": "Spørgsmål {n} af {total}",
+      "drPick": "Vælg det, du kunne tænke dig",
+      "drBoth": "Samme drøm: {item}",
+      "drDiff": "Forskellige drømme — fortæl hinanden hvorfor!",
+      "drFinalHigh": "I deler så mange drømme!",
+      "drFinalMid": "Forskellige drømme — masser at tale om",
+      "drCommon": "Jeres fælles drømme",
+      "featDreams": "Livespillet »Drømme og planer« — passer jeres drømme sammen?",
+      "modestTitle": "Diskret tilstand",
+      "modestNote": "Ingen spørgsmål om følelser, kram eller dates – kun venlige"
     },
     "questions": {
       "q01": [
@@ -27874,6 +39122,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Sydpolen er meget koldere: den ligger på et højt, isdækket kontinent, Nordpolen på et hav."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingvin",
+        "Jeg er en fugl, men jeg kan ikke flyve",
+        "Jeg bor, hvor det er meget koldt",
+        "Jeg går altid i kjole og hvidt",
+        "Struds",
+        "Sæl",
+        "Måge"
+      ],
+      "h02": [
+        "Elefant",
+        "Jeg spiser næsten hele dagen",
+        "Mine ører ligner store vifter",
+        "Jeg har en lang snabel",
+        "Næsehorn",
+        "Flodhest",
+        "Giraf"
+      ],
+      "h03": [
+        "Giraf",
+        "Jeg sover meget lidt, ofte stående",
+        "Jeg spiser blade fra de højeste træer",
+        "Jeg har den længste hals",
+        "Zebra",
+        "Kamel",
+        "Elg"
+      ],
+      "h04": [
+        "Kamel",
+        "Jeg kan klare mig længe uden vand",
+        "Jeg kaldes ørkenens skib",
+        "Jeg har en eller to pukler på ryggen",
+        "Hest",
+        "Æsel",
+        "Lama"
+      ],
+      "h05": [
+        "Bi",
+        "Jeg kan vise andre vej til blomsterne",
+        "Jeg arbejder på engen fra daggry til skumring",
+        "Jeg laver honning",
+        "Hveps",
+        "Flue",
+        "Sommerfugl"
+      ],
+      "h06": [
+        "Skildpadde",
+        "Jeg kan blive over hundrede år",
+        "Jeg har aldrig travlt",
+        "Jeg bærer mit hjem på ryggen",
+        "Snegl",
+        "Firben",
+        "Pindsvin"
+      ],
+      "h07": [
+        "Kænguru",
+        "Min hale hjælper mig med at holde balancen",
+        "Jeg bor i Australien",
+        "Jeg bærer min unge i en pung",
+        "Koala",
+        "Hare",
+        "Egern"
+      ],
+      "h08": [
+        "Ugle",
+        "Jeg kan dreje hovedet næsten helt om bagud",
+        "Jeg jager om natten",
+        "Jeg tuder i den mørke skov",
+        "Krage",
+        "Ørn",
+        "Due"
+      ],
+      "h09": [
+        "Delfin",
+        "Jeg ånder luft, selv om jeg bor i havet",
+        "Jeg hjælper mennesker og taler med fløjt",
+        "Jeg elsker at springe over bølgerne",
+        "Haj",
+        "Hval",
+        "Sæl"
+      ],
+      "h10": [
+        "Egern",
+        "Jeg gemmer mad og glemmer nogle gange hvor",
+        "Jeg bor i et hult træ",
+        "Jeg gnaver nødder og kogler",
+        "Pindsvin",
+        "Hare",
+        "Mus"
+      ],
+      "h11": [
+        "Edderkop",
+        "Jeg er ikke et insekt, selv om mange tror det",
+        "Jeg har otte ben",
+        "Jeg spinder spind",
+        "Myre",
+        "Bille",
+        "Myg"
+      ],
+      "h12": [
+        "Kat",
+        "Jeg ser bedre i mørke end mennesker",
+        "Jeg holder af en varm vindueskarm",
+        "Jeg spinder og fanger mus",
+        "Kanin",
+        "Hamster",
+        "Papegøje"
+      ],
+      "h13": [
+        "Vandmelon",
+        "Forskere kalder mig et bær",
+        "Man venter på mig sidst på sommeren",
+        "Grøn udenpå, rød indeni",
+        "Honningmelon",
+        "Græskar",
+        "Ananas"
+      ],
+      "h14": [
+        "Brød",
+        "Jeg bages i næsten alle lande",
+        "Jeg skæres i skiver til frokost",
+        "Jeg kan være lyst eller af rug, med skorpe",
+        "Pandekage",
+        "Tærte",
+        "Småkage"
+      ],
+      "h15": [
+        "Honning",
+        "Jeg kan holde mig i tusinder af år",
+        "Man kommer mig i varm te, når man er forkølet",
+        "Bier laver mig",
+        "Marmelade",
+        "Sukker",
+        "Mælk"
+      ],
+      "h16": [
+        "Citron",
+        "Jeg er fuld af C-vitamin",
+        "Man kommer mig i te",
+        "Jeg er gul og meget sur",
+        "Appelsin",
+        "Grapefrugt",
+        "Lime"
+      ],
+      "h17": [
+        "Gulerod",
+        "Jeg vokser under jorden, kun toppen ses",
+        "Man siger, jeg er god for synet",
+        "Jeg er orange, og kaniner kan lide mig",
+        "Rødbede",
+        "Radise",
+        "Kartoffel"
+      ],
+      "h18": [
+        "Æble",
+        "Jeg findes i vinter- og sommersorter",
+        "Jeg kommer i tærter og juice",
+        "Jeg vokser på et træ, rødt eller grønt",
+        "Pære",
+        "Fersken",
+        "Blomme"
+      ],
+      "h19": [
+        "Banan",
+        "Jeg vokser i klaser på en høj plante",
+        "Aber er glade for mig",
+        "Jeg er gul, og man skal skrælle mig",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Te",
+        "I Kina har man drukket mig i årtusinder",
+        "Jeg kan være sort, grøn eller af urter",
+        "Jeg trækker i en kande med varmt vand",
+        "Kaffe",
+        "Kakao",
+        "Juice"
+      ],
+      "h21": [
+        "Æg",
+        "Det er svært at bage en kage uden mig",
+        "Man laver omelet af mig",
+        "En høne lægger mig",
+        "Ost",
+        "Nød",
+        "Kartoffel"
+      ],
+      "h22": [
+        "Paraply",
+        "Jeg er foldet sammen det meste af tiden",
+        "Du tager mig med, når himlen bliver grå",
+        "Jeg holder dig tør i regnvejr",
+        "Regnfrakke",
+        "Hat",
+        "Gummistøvler"
+      ],
+      "h23": [
+        "Ur",
+        "Jeg kan virke med sand eller sollys",
+        "Jeg hænger på vægge og sidder i tårne",
+        "Jeg viser tiden med mine visere",
+        "Kompas",
+        "Kalender",
+        "Termometer"
+      ],
+      "h24": [
+        "Nøgle",
+        "Uden mig lukker døren dig ikke ind",
+        "Jeg sidder tit på en ring",
+        "Jeg åbner en lås",
+        "Saks",
+        "Skruetrækker",
+        "Papirclips"
+      ],
+      "h25": [
+        "Stearinlys",
+        "Jo længere jeg arbejder, jo mindre bliver jeg",
+        "Man tænder mig, når strømmen går",
+        "Jeg er lavet af voks og har en væge",
+        "Lommelygte",
+        "Lampe",
+        "Tændstikker"
+      ],
+      "h26": [
+        "Saks",
+        "Jeg har to ringe og to skarpe ender",
+        "Jeg klipper figurer ud af papir",
+        "Jeg klipper stof og papir",
+        "Kniv",
+        "Nål",
+        "Lineal"
+      ],
+      "h27": [
+        "Tandbørste",
+        "Jeg har masser af børstehår",
+        "Jeg skiftes hver tredje måned",
+        "Jeg gør tænder rene morgen og aften",
+        "Sæbe",
+        "Håndklæde",
+        "Svamp"
+      ],
+      "h28": [
+        "Køleskab",
+        "Inden i mig er det altid vinter",
+        "Et lys tændes, når du åbner mig",
+        "Jeg holder maden kold",
+        "Komfur",
+        "Ovn",
+        "Skab"
+      ],
+      "h29": [
+        "Cykel",
+        "Jeg kører uden brændstof og strøm",
+        "Jeg har styr, ringeklokke og kæde",
+        "Jeg har to hjul og pedaler",
+        "Løbehjul",
+        "Motorcykel",
+        "Skateboard"
+      ],
+      "h30": [
+        "Fly",
+        "Jeg har vinger, men jeg er ikke en fugl",
+        "Man venter på mig i lufthavnen",
+        "Jeg flyver over skyerne med passagerer",
+        "Helikopter",
+        "Raket",
+        "Luftballon"
+      ],
+      "h31": [
+        "Tog",
+        "Jeg kører kun på min egen vej",
+        "Jeg har mange vogne",
+        "Jeg kører på skinner fra station til station",
+        "Sporvogn",
+        "Bus",
+        "Metro"
+      ],
+      "h32": [
+        "Bro",
+        "Jeg er bygget af sten, træ eller stål",
+        "Skibe kan sejle under mig",
+        "Jeg forbinder en flods to bredder",
+        "Tunnel",
+        "Vej",
+        "Dæmning"
+      ],
+      "h33": [
+        "Blyant",
+        "Inden i mig er der grafit",
+        "Jeg spidses, når jeg bliver sløv",
+        "Jeg skriver og tegner; viskelæderet fjerner mine spor",
+        "Kuglepen",
+        "Kridt",
+        "Tusch"
+      ],
+      "h34": [
+        "Bog",
+        "Jeg er tavs, men lærer dig meget",
+        "Jeg har omslag og sider",
+        "Man læser mig og låner mig på biblioteket",
+        "Blad",
+        "Avis",
+        "Notesbog"
+      ],
+      "h35": [
+        "Kuffert",
+        "Jeg rejser meget, men altid i nogens hånd",
+        "Jeg pakkes før en rejse",
+        "Jeg har håndtag og hjul og rummer tøj",
+        "Rygsæk",
+        "Taske",
+        "Kasse"
+      ],
+      "h36": [
+        "Bibliotek",
+        "Her beder man dig tale stille",
+        "Her får du et lånerkort",
+        "Tusinder af bøger at låne med hjem",
+        "Skole",
+        "Boghandel",
+        "Arkiv"
+      ],
+      "h37": [
+        "Lufthavn",
+        "Her er der paskontrol",
+        "Her kalder man til boarding",
+        "Fly letter herfra",
+        "Banegård",
+        "Havn",
+        "Busterminal"
+      ],
+      "h38": [
+        "Ørken",
+        "Hedt om dagen, men nætterne kan være meget kolde",
+        "Her kan man finde oaser",
+        "Masser af sand og meget lidt vand",
+        "Steppe",
+        "Savanne",
+        "Strand"
+      ],
+      "h39": [
+        "Vulkan",
+        "Jeg kan sove i hundreder af år",
+        "Røg stiger op fra min top",
+        "Jeg går i udbrud med lava",
+        "Bjerg",
+        "Gejser",
+        "Ø"
+      ],
+      "h40": [
+        "Regnbue",
+        "Du ser mig kun med solen i ryggen",
+        "Jeg viser mig tit efter regn",
+        "Syv farver i en bue over himlen",
+        "Lyn",
+        "Sky",
+        "Nordlys"
+      ],
+      "h41": [
+        "Måne",
+        "Jeg viser altid Jorden den samme side",
+        "Jeg kan være fuld eller en tynd segl",
+        "Jeg lyser på nattehimlen",
+        "Sol",
+        "Stjerne",
+        "Komet"
+      ],
+      "h42": [
+        "Sne",
+        "Hvert af mine fnug er unikt",
+        "Man bygger borge af mig",
+        "Hvid og kold falder jeg om vinteren",
+        "Regn",
+        "Hagl",
+        "Rimfrost"
+      ],
+      "h43": [
+        "Flod",
+        "Jeg har et udspring og et udløb",
+        "Både sejler på mig",
+        "Jeg løber fra bjergene til havet",
+        "Sø",
+        "Hav",
+        "Bæk"
+      ],
+      "h44": [
+        "Kaktus",
+        "Jeg kan leve længe uden vand",
+        "Jeg vokser i ørkener og i vindueskarme",
+        "Jeg er dækket af torne",
+        "Aloe",
+        "Palme",
+        "Marguerit"
+      ],
+      "h45": [
+        "Solsikke",
+        "Man presser olie af mine frø",
+        "Jeg drejer mig efter solen",
+        "En stor gul blomst fuld af frø",
+        "Marguerit",
+        "Tulipan",
+        "Mælkebøtte"
+      ],
+      "h46": [
+        "Eg",
+        "Jeg kan blive over tusind år",
+        "Jeg ses som et symbol på styrke",
+        "Der vokser agern på mig",
+        "Birk",
+        "Fyr",
+        "Ahorn"
+      ],
+      "h47": [
+        "Ø",
+        "Et helt land kan ligge på mig",
+        "Man når mig med båd eller fly",
+        "Jeg er omgivet af vand på alle sider",
+        "Halvø",
+        "Rev",
+        "Næs"
+      ],
+      "h48": [
+        "Vandfald",
+        "Man kan høre mig langt væk",
+        "Det højeste af os ligger i Venezuela",
+        "Her falder en flod ud over en klippe",
+        "Springvand",
+        "Gejser",
+        "Kilde"
+      ],
+      "h49": [
+        "Læge",
+        "Jeg studerer i mange år, før jeg begynder at arbejde",
+        "Jeg går i hvid kittel",
+        "Jeg behandler syge mennesker",
+        "Sygeplejerske",
+        "Apoteker",
+        "Dyrlæge"
+      ],
+      "h50": [
+        "Brandmand",
+        "Jeg er på vagt døgnet rundt, klar til at rykke ud",
+        "Jeg arbejder med vand og stiger",
+        "Jeg slukker brande",
+        "Politibetjent",
+        "Redder",
+        "Bygningsarbejder"
+      ],
+      "h51": [
+        "Kok",
+        "Jeg smager på alt, hvad jeg laver",
+        "Jeg arbejder ved et varmt komfur",
+        "Jeg laver mad på en restaurant",
+        "Bager",
+        "Tjener",
+        "Konditor"
+      ],
+      "h52": [
+        "Lærer",
+        "Om aftenen retter jeg hæfter",
+        "Jeg står ved tavlen",
+        "Jeg underviser børn i skolen",
+        "Skoleleder",
+        "Bibliotekar",
+        "Pædagog"
+      ],
+      "h53": [
+        "Pilot",
+        "Min arbejdsplads er et cockpit",
+        "Jeg taler til passagererne i højttaleren",
+        "Jeg flyver et fly",
+        "Kaptajn",
+        "Chauffør",
+        "Astronaut"
+      ],
+      "h54": [
+        "Postbud",
+        "Jeg kender alle adresser i mit område",
+        "Jeg bærer en stor taske",
+        "Jeg bringer breve og pakker ud",
+        "Kurer",
+        "Taxachauffør",
+        "Ekspedient"
+      ],
+      "h55": [
+        "Gartner",
+        "Jeg ved, hvornår man skal plante hvad",
+        "Mit værktøj er vandkande og beskæresaks",
+        "Jeg passer blomster og træer",
+        "Landmand",
+        "Skovfoged",
+        "Blomsterhandler"
+      ],
+      "h56": [
+        "Fotograf",
+        "Jeg fanger øjeblikke",
+        "Jeg beder alle om at stå stille",
+        "Jeg arbejder med kamera og billeder",
+        "Maler",
+        "Journalist",
+        "Kameramand"
+      ],
+      "h57": [
+        "Fisker",
+        "Jeg står op før daggry og venter længe",
+        "Jeg har brug for en stang og tålmodighed",
+        "Jeg fanger fisk",
+        "Landmand",
+        "Sømand",
+        "Hyrde"
+      ],
+      "h58": [
+        "Astronaut",
+        "Jeg træner længe på Jorden",
+        "Jeg bærer rumdragt",
+        "Jeg flyver ud i rummet",
+        "Pilot",
+        "Astronom",
+        "Ingeniør"
+      ],
+      "h59": [
+        "Arkitekt",
+        "Mit arbejde kan ses i hele byen",
+        "Jeg tegner planer",
+        "Jeg tegner huse",
+        "Bygningsarbejder",
+        "Designer",
+        "Ingeniør"
+      ],
+      "h60": [
+        "Tandlæge",
+        "Mange er bange for min stol",
+        "Jeg arbejder med et bor",
+        "Jeg behandler tænder",
+        "Kirurg",
+        "Øjenlæge",
+        "Børnelæge"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Hvor kunne du tænke dig at bo om ti år?",
+        "Ved havet",
+        "I bjergene",
+        "I en storby",
+        "I en stille landsby"
+      ],
+      "d02": [
+        "Hvilket hjem kunne du tænke dig en dag?",
+        "En hyggelig lejlighed",
+        "Et hus med have",
+        "Et sommerhus ved en sø",
+        "Et gammelt hus med historie"
+      ],
+      "d03": [
+        "Hvad kunne du tænke dig at dyrke i haven?",
+        "Æbletræer",
+        "Roser",
+        "Grøntsager og krydderurter",
+        "Jordbær"
+      ],
+      "d04": [
+        "Hvilket kæledyr kunne du tænke dig?",
+        "En kat",
+        "En papegøje",
+        "Akvariefisk",
+        "En skildpadde"
+      ],
+      "d05": [
+        "Hvor kunne du tænke dig at rejse hen først?",
+        "Japan",
+        "Marokko",
+        "Island",
+        "New Zealand"
+      ],
+      "d06": [
+        "Hvordan kunne du tænke dig at rejse?",
+        "Med tog",
+        "I bil",
+        "Med fly",
+        "Med skib"
+      ],
+      "d07": [
+        "Hvilket sprog kunne du tænke dig at lære?",
+        "Arabisk",
+        "Japansk",
+        "Spansk",
+        "Kinesisk"
+      ],
+      "d08": [
+        "Hvad kunne du tænke dig at lære?",
+        "At tegne",
+        "At sy",
+        "At svømme",
+        "At programmere"
+      ],
+      "d09": [
+        "Hvilken ret kunne du tænke dig at mestre?",
+        "Plov",
+        "Hjemmebagt brød",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Hvordan kunne du tænke dig at holde weekend?",
+        "Ude i naturen",
+        "Hjemme med en bog",
+        "På besøg hos familien",
+        "I en ny by"
+      ],
+      "d11": [
+        "Hvordan ser en perfekt weekendmorgen ud?",
+        "En tidlig gåtur",
+        "En lang morgenmad",
+        "Motion i den friske luft",
+        "Te på altanen"
+      ],
+      "d12": [
+        "Hvad kunne du tænke dig at spare op til?",
+        "Vores eget hjem",
+        "En stor rejse",
+        "En bil",
+        "Uddannelse"
+      ],
+      "d13": [
+        "Hvilket arbejde kunne du tænke dig?",
+        "Egen virksomhed",
+        "Job i en stor virksomhed",
+        "Arbejde hjemmefra",
+        "At hjælpe mennesker"
+      ],
+      "d14": [
+        "Hvordan kunne du tænke dig at hjælpe andre?",
+        "Frivilligt arbejde",
+        "Hjælpe dyr",
+        "Undervise børn",
+        "Plante træer"
+      ],
+      "d15": [
+        "Hvilken familietradition kunne du tænke dig?",
+        "Søndagsfrokost sammen",
+        "Brætspilsaftener",
+        "Weekendgåture",
+        "Et familiefotoalbum"
+      ],
+      "d16": [
+        "Hvilket køkken kunne du tænke dig?",
+        "Et stort familiekøkken",
+        "Lyst og hyggeligt",
+        "Med udsigt til haven",
+        "Lille, men praktisk"
+      ],
+      "d17": [
+        "Hvad kunne du tænke dig at se med egne øjne?",
+        "Nordlys",
+        "Pyramiderne i Giza",
+        "Victoriafaldene",
+        "Himalaya"
+      ],
+      "d18": [
+        "Hvad kunne du tænke dig at lave om aftenen?",
+        "Læse",
+        "Lave ny mad",
+        "Lære sprog",
+        "Gå tur i parken"
+      ],
+      "d19": [
+        "Hvilken hobby kunne du tænke dig at starte?",
+        "Fotografering",
+        "Keramik",
+        "Broderi",
+        "Havearbejde"
+      ],
+      "d20": [
+        "Hvor kunne du tænke dig at tage hen en weekend?",
+        "Til skoven",
+        "Til en sø",
+        "Til en by i nærheden",
+        "Til bjergene"
+      ],
+      "d21": [
+        "Hvordan ser din drømmearbejdsplads ud?",
+        "Ved et vindue",
+        "Med bogreoler",
+        "Fuld af grønne planter",
+        "Næsten tom"
+      ],
+      "d22": [
+        "Hvad kunne du tænke dig at studere næste gang?",
+        "Medicin",
+        "Historie",
+        "Økonomi",
+        "Design"
+      ],
+      "d23": [
+        "Hvilket træ kunne du tænke dig at plante?",
+        "En eg",
+        "Et æbletræ",
+        "Et oliventræ",
+        "En daddelpalme"
+      ],
+      "d24": [
+        "Hvad kunne du tænke dig at lave til gæster?",
+        "En hjemmelavet tærte",
+        "En stor plov",
+        "Familiens suppe",
+        "Friske salater"
+      ],
+      "d25": [
+        "Hvilken by kunne du tænke dig at besøge?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Kairo"
+      ],
+      "d26": [
+        "Hvordan kunne du tænke dig at holde sommer?",
+        "Ved havet",
+        "I bjergene",
+        "I et sommerhus",
+        "På tur i vores eget land"
+      ],
+      "d27": [
+        "Hvilken fugl kunne du tænke dig at have?",
+        "En kanariefugl",
+        "En undulat",
+        "Duer",
+        "Zebrafinker"
+      ],
+      "d28": [
+        "Hvilken sport kunne du tænke dig at prøve?",
+        "Svømning",
+        "Ridning",
+        "Bueskydning",
+        "Klatring"
+      ],
+      "d29": [
+        "Hvilke bøger kunne du tænke dig at samle på?",
+        "Leksika",
+        "Klassikere",
+        "Rejsebøger",
+        "Kogebøger"
+      ],
+      "d30": [
+        "Hvad kunne du tænke dig at lave selv?",
+        "Møbler",
+        "Egen keramik",
+        "Et strikket tæppe",
+        "En fuglekasse"
+      ],
+      "d31": [
+        "Hvor kunne du tænke dig at holde picnic?",
+        "Ved en flodbred",
+        "I en have",
+        "I en skovlysning",
+        "I bjergene"
+      ],
+      "d32": [
+        "Hvordan kunne du tænke dig at komme rundt en dag?",
+        "I elbil",
+        "På cykel",
+        "I en stor familiebil",
+        "Uden bil"
+      ],
+      "d33": [
+        "Hvad kunne du tænke dig at lave som pensionist?",
+        "Havearbejde",
+        "Rejse",
+        "Tid med børnebørnene",
+        "Lære nye ting"
+      ],
+      "d34": [
+        "Hvilken god gerning kunne du tænke dig at gøre?",
+        "Bygge en brønd",
+        "Hjælpe et kattehjem",
+        "Samle bøger til en skole",
+        "Plante en række træer"
+      ],
+      "d35": [
+        "Hvad kunne du tænke dig til weekendmorgenmad?",
+        "Pandekager",
+        "Omelet",
+        "Grød med frugt",
+        "Æbleskiver"
+      ],
+      "d36": [
+        "Hvor kunne du tænke dig at tage imod gæster?",
+        "I køkkenet",
+        "I stuen",
+        "På terrassen",
+        "I haven"
+      ],
+      "d37": [
+        "Hvilket naturvidunder kunne du tænke dig at se?",
+        "Grand Canyon",
+        "Niagarafaldene",
+        "Bajkalsøen",
+        "Saharaørkenen"
+      ],
+      "d38": [
+        "Hvilken praktisk færdighed kunne du tænke dig at lære?",
+        "Selv at lave reparationer",
+        "At sy",
+        "At bage brød",
+        "At passe en have"
+      ],
+      "d39": [
+        "Hvor mange sprog kunne du tænke dig at tale?",
+        "To",
+        "Tre",
+        "Fem",
+        "Så mange som muligt"
+      ],
+      "d40": [
+        "Hvilken vægfarve kunne du tænke dig derhjemme?",
+        "Hvid",
+        "Beige",
+        "Lysegrøn",
+        "Lyseblå"
+      ],
+      "d41": [
+        "Hvilken fisk kunne du tænke dig i et akvarium?",
+        "En guldfisk",
+        "Guppyer",
+        "En malle",
+        "En skalar"
+      ],
+      "d42": [
+        "Hvilken rejse kunne du tænke dig at give dine forældre?",
+        "En ferie ved havet",
+        "En byrundtur",
+        "En tur til bjergene",
+        "En togrejse"
+      ],
+      "d43": [
+        "Hvad kunne du tænke dig at lave i fritiden?",
+        "Tegne",
+        "Læse",
+        "Dyrke sport",
+        "Håndarbejde"
+      ],
+      "d44": [
+        "Hvilken årstid kunne du tænke dig at rejse i?",
+        "Forår",
+        "Sommer",
+        "Efterår",
+        "Vinter"
+      ],
+      "d45": [
+        "Hvad kunne du tænke dig at sylte til vinteren?",
+        "Marmelade",
+        "Syltede agurker",
+        "Tørret frugt",
+        "Frugtkompot"
+      ],
+      "d46": [
+        "Hvilket andet job kunne du tænke dig at prøve?",
+        "Kok",
+        "Programmør",
+        "Oversætter",
+        "Snedker"
+      ],
+      "d47": [
+        "Hvilket land kunne du tænke dig at lære at kende?",
+        "Malaysia",
+        "Italien",
+        "Canada",
+        "Indonesien"
+      ],
+      "d48": [
+        "Hvad kunne du tænke dig at have i haven?",
+        "Et lille springvand",
+        "Et køkkenbed",
+        "Et lysthus",
+        "En gynge"
+      ],
+      "d49": [
+        "Hvordan kunne du tænke dig at fejre succeser?",
+        "En familiemiddag",
+        "En tur ud i naturen",
+        "En ny bog",
+        "En god gerning for andre"
+      ],
+      "d50": [
+        "Hvad kunne du tænke dig at give videre til børnene?",
+        "Glæden ved bøger",
+        "Madlavning",
+        "Vores modersmål",
+        "Omsorg for naturen"
+      ]
     }
   },
   "no": {
@@ -28099,7 +40241,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Seier! Du vet mest om verden.",
       "tfFinalLose": "{name} vet mest denne gangen — revansj?",
       "tfFinalDraw": "Uavgjort — dere vet like mye!",
-      "featTruth": "Livespillet «Sant eller usant» — forbløffende fakta om verden"
+      "featTruth": "Livespillet «Sant eller usant» — forbløffende fakta om verden",
+      "countries": "Gjett landet",
+      "coTitle": "Gjett landet",
+      "coNote": "Et livespill for to: bjørnen reiser verden rundt. 10 sekunder — gjett hvilket land den er i! Ett poeng for hvert riktige svar.",
+      "coShareText": "{name} inviterer deg til livespillet «Gjett landet»",
+      "coJoinLead": "{name} venter på deg. Gjett landet ut fra bildet!",
+      "coRound": "Land {n} av {total}",
+      "coAsk": "Hvilket land er dette?",
+      "coFinalWin": "Seier! Du er en ekte verdensreisende.",
+      "coFinalLose": "{name} kan verden bedre denne gangen — revansj?",
+      "coFinalDraw": "Uavgjort — dere kan begge verden godt!",
+      "featCountries": "Livespillet «Gjett landet» — 40 land",
+      "hints": "Gjett fra ledetråder",
+      "dreams": "Drømmer og planer",
+      "hiTitle": "Gjett fra ledetråder",
+      "hiNote": "Et livespill for to: tre ledetråder vises én etter én. Gjett på den første — 3 poeng, på den andre — 2, på den tredje — 1.",
+      "hiShareText": "{name} inviterer deg til livespillet «Gjett fra ledetråder»",
+      "hiJoinLead": "{name} venter på deg. Gjett så tidlig du kan!",
+      "hiRound": "Gåte {n} av {total}",
+      "hiAsk": "Hva er det?",
+      "hiClue": "Ledetråd {n}",
+      "hiPoints": "+{n} poeng",
+      "hiNoPoints": "Ingen poeng denne gangen",
+      "hiFinalWin": "Seier! Du er skikkelig god til å gjette.",
+      "hiFinalLose": "{name} gjettet best denne gangen — revansj?",
+      "hiFinalDraw": "Uavgjort — dere er begge skikkelig gode til å gjette!",
+      "featHints": "Livespillet «Gjett fra ledetråder» — 3, 2 eller 1 poeng",
+      "drTitle": "Drømmer og planer",
+      "drNote": "Et livespill for to: hjem, reiser, læring og hobbyer. Velg det du kunne tenke deg, og se om drømmene deres passer sammen.",
+      "drShareText": "{name} inviterer deg til livespillet «Drømmer og planer»",
+      "drJoinLead": "{name} venter på deg. Velg det du virkelig kunne tenke deg!",
+      "drRound": "Spørsmål {n} av {total}",
+      "drPick": "Velg det du kunne tenke deg",
+      "drBoth": "Samme drøm: {item}",
+      "drDiff": "Ulike drømmer — fortell hverandre hvorfor!",
+      "drFinalHigh": "Dere deler så mange drømmer!",
+      "drFinalMid": "Ulike drømmer — mye å snakke om",
+      "drCommon": "Deres felles drømmer",
+      "featDreams": "Livespillet «Drømmer og planer» — passer drømmene deres sammen?",
+      "modestTitle": "Diskret modus",
+      "modestNote": "Ingen spørsmål om følelser, klemmer eller dater – bare vennlige"
     },
     "questions": {
       "q01": [
@@ -30018,6 +42200,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Sørpolen er mye kaldere: den ligger på et høyt, isdekket kontinent, Nordpolen på et hav."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingvin",
+        "Jeg er en fugl, men jeg kan ikke fly",
+        "Jeg bor der det er veldig kaldt",
+        "Jeg går alltid i kjole og hvitt",
+        "Struts",
+        "Sel",
+        "Måke"
+      ],
+      "h02": [
+        "Elefant",
+        "Jeg spiser nesten hele dagen",
+        "Ørene mine ligner store vifter",
+        "Jeg har en lang snabel",
+        "Neshorn",
+        "Flodhest",
+        "Sjiraff"
+      ],
+      "h03": [
+        "Sjiraff",
+        "Jeg sover veldig lite, ofte stående",
+        "Jeg spiser blader fra de høyeste trærne",
+        "Jeg har den lengste halsen",
+        "Sebra",
+        "Kamel",
+        "Elg"
+      ],
+      "h04": [
+        "Kamel",
+        "Jeg klarer meg lenge uten vann",
+        "Jeg kalles ørkenens skip",
+        "Jeg har én eller to pukler på ryggen",
+        "Hest",
+        "Esel",
+        "Lama"
+      ],
+      "h05": [
+        "Bie",
+        "Jeg kan vise andre veien til blomstene",
+        "Jeg jobber på enga fra daggry til skumring",
+        "Jeg lager honning",
+        "Veps",
+        "Flue",
+        "Sommerfugl"
+      ],
+      "h06": [
+        "Skilpadde",
+        "Jeg kan bli over hundre år",
+        "Jeg har aldri dårlig tid",
+        "Jeg bærer huset mitt på ryggen",
+        "Snegle",
+        "Øgle",
+        "Pinnsvin"
+      ],
+      "h07": [
+        "Kenguru",
+        "Halen hjelper meg å holde balansen",
+        "Jeg bor i Australia",
+        "Jeg bærer ungen min i en pung",
+        "Koala",
+        "Hare",
+        "Ekorn"
+      ],
+      "h08": [
+        "Ugle",
+        "Jeg kan snu hodet nesten helt bakover",
+        "Jeg jakter om natta",
+        "Jeg tuter i den mørke skogen",
+        "Kråke",
+        "Ørn",
+        "Due"
+      ],
+      "h09": [
+        "Delfin",
+        "Jeg puster luft, selv om jeg bor i havet",
+        "Jeg hjelper mennesker og snakker med plystring",
+        "Jeg elsker å hoppe over bølgene",
+        "Hai",
+        "Hval",
+        "Sel"
+      ],
+      "h10": [
+        "Ekorn",
+        "Jeg gjemmer mat og glemmer noen ganger hvor",
+        "Jeg bor i et hult tre",
+        "Jeg gnager på nøtter og kongler",
+        "Pinnsvin",
+        "Hare",
+        "Mus"
+      ],
+      "h11": [
+        "Edderkopp",
+        "Jeg er ikke et insekt, selv om mange tror det",
+        "Jeg har åtte bein",
+        "Jeg spinner nett",
+        "Maur",
+        "Bille",
+        "Mygg"
+      ],
+      "h12": [
+        "Katt",
+        "Jeg ser bedre i mørket enn mennesker",
+        "Jeg liker en varm vinduskarm",
+        "Jeg maler og fanger mus",
+        "Kanin",
+        "Hamster",
+        "Papegøye"
+      ],
+      "h13": [
+        "Vannmelon",
+        "Forskere kaller meg et bær",
+        "Folk venter på meg på slutten av sommeren",
+        "Grønn utenpå, rød inni",
+        "Honningmelon",
+        "Gresskar",
+        "Ananas"
+      ],
+      "h14": [
+        "Brød",
+        "Jeg bakes i nesten alle land",
+        "Jeg skjæres i skiver til lunsj",
+        "Jeg kan være lyst eller grovt, med skorpe",
+        "Pannekake",
+        "Pai",
+        "Kjeks"
+      ],
+      "h15": [
+        "Honning",
+        "Jeg kan holde meg i tusenvis av år",
+        "Folk har meg i varm te når de er forkjølet",
+        "Bier lager meg",
+        "Syltetøy",
+        "Sukker",
+        "Melk"
+      ],
+      "h16": [
+        "Sitron",
+        "Jeg er full av C-vitamin",
+        "Folk har meg i te",
+        "Jeg er gul og veldig sur",
+        "Appelsin",
+        "Grapefrukt",
+        "Lime"
+      ],
+      "h17": [
+        "Gulrot",
+        "Jeg vokser under jorda, bare toppen synes",
+        "Folk sier jeg er bra for synet",
+        "Jeg er oransje, og kaniner liker meg",
+        "Rødbete",
+        "Reddik",
+        "Potet"
+      ],
+      "h18": [
+        "Eple",
+        "Jeg finnes i vinter- og sommersorter",
+        "Jeg havner i paier og juice",
+        "Jeg vokser på et tre, rødt eller grønt",
+        "Pære",
+        "Fersken",
+        "Plomme"
+      ],
+      "h19": [
+        "Banan",
+        "Jeg vokser i klaser på en høy plante",
+        "Aper er glade i meg",
+        "Jeg er gul, og du må skrelle meg",
+        "Mango",
+        "Kiwi",
+        "Ananas"
+      ],
+      "h20": [
+        "Te",
+        "I Kina har folk drukket meg i årtusener",
+        "Jeg kan være svart, grønn eller av urter",
+        "Jeg trekker i en kanne med varmt vann",
+        "Kaffe",
+        "Kakao",
+        "Juice"
+      ],
+      "h21": [
+        "Egg",
+        "Det er vanskelig å bake kake uten meg",
+        "Man lager omelett av meg",
+        "En høne legger meg",
+        "Ost",
+        "Nøtt",
+        "Potet"
+      ],
+      "h22": [
+        "Paraply",
+        "Jeg er sammenslått mesteparten av tiden",
+        "Du tar meg med når himmelen blir grå",
+        "Jeg holder deg tørr i regnet",
+        "Regnfrakk",
+        "Hatt",
+        "Gummistøvler"
+      ],
+      "h23": [
+        "Klokke",
+        "Jeg kan gå med sand eller sollys",
+        "Jeg henger på vegger og står i tårn",
+        "Jeg viser tiden med viserne mine",
+        "Kompass",
+        "Kalender",
+        "Termometer"
+      ],
+      "h24": [
+        "Nøkkel",
+        "Uten meg slipper døra deg ikke inn",
+        "Jeg henger ofte på en ring",
+        "Jeg åpner en lås",
+        "Saks",
+        "Skrutrekker",
+        "Binders"
+      ],
+      "h25": [
+        "Stearinlys",
+        "Jo lenger jeg jobber, jo mindre blir jeg",
+        "Folk tenner meg når strømmen går",
+        "Jeg er laget av voks og har en veke",
+        "Lommelykt",
+        "Lampe",
+        "Fyrstikker"
+      ],
+      "h26": [
+        "Saks",
+        "Jeg har to ringer og to skarpe ender",
+        "Jeg klipper ut figurer av papir",
+        "Jeg klipper stoff og papir",
+        "Kniv",
+        "Nål",
+        "Linjal"
+      ],
+      "h27": [
+        "Tannbørste",
+        "Jeg har masse bust",
+        "Jeg byttes hver tredje måned",
+        "Jeg vasker tenner morgen og kveld",
+        "Såpe",
+        "Håndkle",
+        "Svamp"
+      ],
+      "h28": [
+        "Kjøleskap",
+        "Inni meg er det alltid vinter",
+        "Et lys tennes når du åpner meg",
+        "Jeg holder maten kald",
+        "Komfyr",
+        "Stekeovn",
+        "Skap"
+      ],
+      "h29": [
+        "Sykkel",
+        "Jeg går uten drivstoff og strøm",
+        "Jeg har styre, ringeklokke og kjede",
+        "Jeg har to hjul og pedaler",
+        "Sparkesykkel",
+        "Motorsykkel",
+        "Skateboard"
+      ],
+      "h30": [
+        "Fly",
+        "Jeg har vinger, men jeg er ingen fugl",
+        "Folk venter på meg på flyplassen",
+        "Jeg flyr over skyene med passasjerer",
+        "Helikopter",
+        "Rakett",
+        "Luftballong"
+      ],
+      "h31": [
+        "Tog",
+        "Jeg kjører bare på min egen vei",
+        "Jeg har mange vogner",
+        "Jeg kjører på skinner fra stasjon til stasjon",
+        "Trikk",
+        "Buss",
+        "T-bane"
+      ],
+      "h32": [
+        "Bro",
+        "Jeg er bygd av stein, tre eller stål",
+        "Skip kan seile under meg",
+        "Jeg forbinder to bredder av en elv",
+        "Tunnel",
+        "Vei",
+        "Demning"
+      ],
+      "h33": [
+        "Blyant",
+        "Inni meg er det grafitt",
+        "Jeg spisses når jeg blir sløv",
+        "Jeg skriver og tegner; viskelær fjerner sporene mine",
+        "Kulepenn",
+        "Kritt",
+        "Tusj"
+      ],
+      "h34": [
+        "Bok",
+        "Jeg er stille, men lærer bort mye",
+        "Jeg har omslag og sider",
+        "Folk leser meg og låner meg på biblioteket",
+        "Blad",
+        "Avis",
+        "Notatbok"
+      ],
+      "h35": [
+        "Koffert",
+        "Jeg reiser mye, men alltid i noens hånd",
+        "Jeg pakkes før en reise",
+        "Jeg har håndtak og hjul og rommer klær",
+        "Ryggsekk",
+        "Veske",
+        "Eske"
+      ],
+      "h36": [
+        "Bibliotek",
+        "Her ber de deg snakke lavt",
+        "Her får du lånekort",
+        "Tusenvis av bøker å låne med hjem",
+        "Skole",
+        "Bokhandel",
+        "Arkiv"
+      ],
+      "h37": [
+        "Flyplass",
+        "Her er det passkontroll",
+        "Her roper de opp ombordstigning",
+        "Fly tar av herfra",
+        "Jernbanestasjon",
+        "Havn",
+        "Busstasjon"
+      ],
+      "h38": [
+        "Ørken",
+        "Varmt om dagen, men nettene kan bli veldig kalde",
+        "Her kan man finne oaser",
+        "Mye sand og veldig lite vann",
+        "Steppe",
+        "Savanne",
+        "Strand"
+      ],
+      "h39": [
+        "Vulkan",
+        "Jeg kan sove i hundrevis av år",
+        "Røyk stiger fra toppen min",
+        "Jeg får utbrudd med lava",
+        "Fjell",
+        "Geysir",
+        "Øy"
+      ],
+      "h40": [
+        "Regnbue",
+        "Du ser meg bare med sola i ryggen",
+        "Jeg dukker ofte opp etter regn",
+        "Sju farger i en bue over himmelen",
+        "Lyn",
+        "Sky",
+        "Nordlys"
+      ],
+      "h41": [
+        "Måne",
+        "Jeg viser alltid jorda den samme siden",
+        "Jeg kan være full eller en tynn sigd",
+        "Jeg lyser på nattehimmelen",
+        "Sol",
+        "Stjerne",
+        "Komet"
+      ],
+      "h42": [
+        "Snø",
+        "Hvert fnugg av meg er unikt",
+        "Folk bygger borger av meg",
+        "Hvit og kald faller jeg om vinteren",
+        "Regn",
+        "Hagl",
+        "Rim"
+      ],
+      "h43": [
+        "Elv",
+        "Jeg har et utspring og et utløp",
+        "Båter seiler på meg",
+        "Jeg renner fra fjellene til havet",
+        "Innsjø",
+        "Hav",
+        "Bekk"
+      ],
+      "h44": [
+        "Kaktus",
+        "Jeg kan leve lenge uten vann",
+        "Jeg vokser i ørkener og i vinduskarmer",
+        "Jeg er dekket av torner",
+        "Aloe",
+        "Palme",
+        "Prestekrage"
+      ],
+      "h45": [
+        "Solsikke",
+        "Det lages olje av frøene mine",
+        "Jeg snur meg etter sola",
+        "En stor gul blomst full av frø",
+        "Prestekrage",
+        "Tulipan",
+        "Løvetann"
+      ],
+      "h46": [
+        "Eik",
+        "Jeg kan bli over tusen år",
+        "Jeg regnes som et symbol på styrke",
+        "Det vokser nøtter med hatt på meg",
+        "Bjørk",
+        "Furu",
+        "Lønn"
+      ],
+      "h47": [
+        "Øy",
+        "Et helt land kan få plass på meg",
+        "Du kommer til meg med båt eller fly",
+        "Jeg er omgitt av vann på alle kanter",
+        "Halvøy",
+        "Rev",
+        "Nes"
+      ],
+      "h48": [
+        "Foss",
+        "Du hører meg på lang avstand",
+        "Den høyeste av oss ligger i Venezuela",
+        "Her faller en elv utfor en klippe",
+        "Fontene",
+        "Geysir",
+        "Kilde"
+      ],
+      "h49": [
+        "Lege",
+        "Jeg studerer i mange år før jeg begynner å jobbe",
+        "Jeg går i hvit frakk",
+        "Jeg behandler syke mennesker",
+        "Sykepleier",
+        "Farmasøyt",
+        "Veterinær"
+      ],
+      "h50": [
+        "Brannmann",
+        "Jeg er på vakt døgnet rundt, klar for utrykning",
+        "Jeg jobber med vann og stiger",
+        "Jeg slukker branner",
+        "Politibetjent",
+        "Redningsmann",
+        "Bygningsarbeider"
+      ],
+      "h51": [
+        "Kokk",
+        "Jeg smaker på alt jeg lager",
+        "Jeg jobber ved en varm komfyr",
+        "Jeg lager mat på en restaurant",
+        "Baker",
+        "Servitør",
+        "Konditor"
+      ],
+      "h52": [
+        "Lærer",
+        "Om kvelden retter jeg skrivebøker",
+        "Jeg står ved tavla",
+        "Jeg underviser barn på skolen",
+        "Rektor",
+        "Bibliotekar",
+        "Barnehagelærer"
+      ],
+      "h53": [
+        "Pilot",
+        "Arbeidsplassen min er et cockpit",
+        "Jeg snakker til passasjerene over høyttaleren",
+        "Jeg flyr et fly",
+        "Kaptein",
+        "Sjåfør",
+        "Astronaut"
+      ],
+      "h54": [
+        "Postbud",
+        "Jeg kjenner hver adresse i området mitt",
+        "Jeg bærer en stor veske",
+        "Jeg leverer brev og pakker",
+        "Kurer",
+        "Drosjesjåfør",
+        "Butikkansatt"
+      ],
+      "h55": [
+        "Gartner",
+        "Jeg vet når man skal plante hva",
+        "Verktøyet mitt er vannkanne og hagesaks",
+        "Jeg steller blomster og trær",
+        "Bonde",
+        "Skogvokter",
+        "Blomsterhandler"
+      ],
+      "h56": [
+        "Fotograf",
+        "Jeg fanger øyeblikk",
+        "Jeg ber alle om å stå stille",
+        "Jeg jobber med kamera og bilder",
+        "Maler",
+        "Journalist",
+        "Filmfotograf"
+      ],
+      "h57": [
+        "Fisker",
+        "Jeg står opp før daggry og venter lenge",
+        "Jeg trenger en stang og tålmodighet",
+        "Jeg fanger fisk",
+        "Bonde",
+        "Sjømann",
+        "Gjeter"
+      ],
+      "h58": [
+        "Astronaut",
+        "Jeg trener lenge på jorda",
+        "Jeg har på romdrakt",
+        "Jeg flyr ut i verdensrommet",
+        "Pilot",
+        "Astronom",
+        "Ingeniør"
+      ],
+      "h59": [
+        "Arkitekt",
+        "Arbeidet mitt synes over hele byen",
+        "Jeg tegner planer",
+        "Jeg tegner hus",
+        "Bygningsarbeider",
+        "Designer",
+        "Ingeniør"
+      ],
+      "h60": [
+        "Tannlege",
+        "Mange er redde for stolen min",
+        "Jeg jobber med et bor",
+        "Jeg behandler tenner",
+        "Kirurg",
+        "Øyelege",
+        "Barnelege"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Hvor kunne du tenke deg å bo om ti år?",
+        "Ved havet",
+        "I fjellet",
+        "I en storby",
+        "I en stille landsby"
+      ],
+      "d02": [
+        "Hva slags hjem kunne du tenke deg en dag?",
+        "En koselig leilighet",
+        "Et hus med hage",
+        "En hytte ved et vann",
+        "Et gammelt hus med historie"
+      ],
+      "d03": [
+        "Hva kunne du tenke deg å dyrke i hagen?",
+        "Epletrær",
+        "Roser",
+        "Grønnsaker og urter",
+        "Jordbær"
+      ],
+      "d04": [
+        "Hvilket kjæledyr kunne du tenke deg?",
+        "En katt",
+        "En papegøye",
+        "Akvariefisk",
+        "En skilpadde"
+      ],
+      "d05": [
+        "Hvor kunne du tenke deg å reise først?",
+        "Japan",
+        "Marokko",
+        "Island",
+        "New Zealand"
+      ],
+      "d06": [
+        "Hvordan kunne du tenke deg å reise?",
+        "Med tog",
+        "Med bil",
+        "Med fly",
+        "Med skip"
+      ],
+      "d07": [
+        "Hvilket språk kunne du tenke deg å lære?",
+        "Arabisk",
+        "Japansk",
+        "Spansk",
+        "Kinesisk"
+      ],
+      "d08": [
+        "Hva kunne du tenke deg å lære deg?",
+        "Å tegne",
+        "Å sy",
+        "Å svømme",
+        "Å programmere"
+      ],
+      "d09": [
+        "Hvilken rett kunne du tenke deg å mestre?",
+        "Plov",
+        "Hjemmebakt brød",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Hvordan kunne du tenke deg å tilbringe helgene?",
+        "Ute i naturen",
+        "Hjemme med en bok",
+        "På besøk hos familien",
+        "I en ny by"
+      ],
+      "d11": [
+        "Hvordan ser en perfekt helgemorgen ut?",
+        "En tidlig tur",
+        "En rolig frokost",
+        "Trening i frisk luft",
+        "Te på balkongen"
+      ],
+      "d12": [
+        "Hva kunne du tenke deg å spare til?",
+        "Et eget hjem",
+        "En stor reise",
+        "En bil",
+        "Utdanning"
+      ],
+      "d13": [
+        "Hva slags arbeid kunne du tenke deg?",
+        "Egen bedrift",
+        "Jobb i et stort firma",
+        "Jobbe hjemmefra",
+        "Hjelpe mennesker"
+      ],
+      "d14": [
+        "Hvordan kunne du tenke deg å hjelpe andre?",
+        "Frivillig arbeid",
+        "Hjelpe dyr",
+        "Undervise barn",
+        "Plante trær"
+      ],
+      "d15": [
+        "Hvilken familietradisjon kunne du tenke deg?",
+        "Søndagsmiddag sammen",
+        "Brettspillkvelder",
+        "Helgeturer",
+        "Et familiefotoalbum"
+      ],
+      "d16": [
+        "Hva slags kjøkken kunne du tenke deg?",
+        "Et stort familiekjøkken",
+        "Lyst og koselig",
+        "Med utsikt mot hagen",
+        "Lite, men praktisk"
+      ],
+      "d17": [
+        "Hva kunne du tenke deg å se med egne øyne?",
+        "Nordlyset",
+        "Pyramidene i Giza",
+        "Victoriafallene",
+        "Himalaya"
+      ],
+      "d18": [
+        "Hva kunne du tenke deg å gjøre om kveldene?",
+        "Lese",
+        "Lage noe nytt",
+        "Lære språk",
+        "Gå tur i parken"
+      ],
+      "d19": [
+        "Hvilken hobby kunne du tenke deg å begynne med?",
+        "Fotografering",
+        "Keramikk",
+        "Brodering",
+        "Hagearbeid"
+      ],
+      "d20": [
+        "Hvor kunne du tenke deg å dra en helg?",
+        "Til skogen",
+        "Til et vann",
+        "Til en by i nærheten",
+        "Til fjells"
+      ],
+      "d21": [
+        "Hvordan ser drømmearbeidsplassen din ut?",
+        "Ved et vindu",
+        "Med bokhyller",
+        "Full av grønne planter",
+        "Nesten tom"
+      ],
+      "d22": [
+        "Hva kunne du tenke deg å studere videre?",
+        "Medisin",
+        "Historie",
+        "Økonomi",
+        "Design"
+      ],
+      "d23": [
+        "Hvilket tre kunne du tenke deg å plante?",
+        "En eik",
+        "Et epletre",
+        "Et oliventre",
+        "En daddelpalme"
+      ],
+      "d24": [
+        "Hva kunne du tenke deg å lage til gjester?",
+        "En hjemmelaget pai",
+        "En stor plov",
+        "Familiens suppe",
+        "Friske salater"
+      ],
+      "d25": [
+        "Hvilken by kunne du tenke deg å besøke?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Kairo"
+      ],
+      "d26": [
+        "Hvordan kunne du tenke deg å tilbringe sommeren?",
+        "Ved havet",
+        "I fjellet",
+        "På hytta",
+        "På tur i vårt eget land"
+      ],
+      "d27": [
+        "Hvilken fugl kunne du tenke deg å ha?",
+        "En kanarifugl",
+        "En undulat",
+        "Duer",
+        "Sebrafinker"
+      ],
+      "d28": [
+        "Hvilken sport kunne du tenke deg å prøve?",
+        "Svømming",
+        "Ridning",
+        "Bueskyting",
+        "Klatring"
+      ],
+      "d29": [
+        "Hvilke bøker kunne du tenke deg å samle på?",
+        "Leksikon",
+        "Klassikere",
+        "Reisebøker",
+        "Kokebøker"
+      ],
+      "d30": [
+        "Hva kunne du tenke deg å lage selv?",
+        "Møbler",
+        "Egen keramikk",
+        "Et strikket teppe",
+        "En fuglekasse"
+      ],
+      "d31": [
+        "Hvor kunne du tenke deg å ha piknik?",
+        "Ved en elvebredd",
+        "I en hage",
+        "I en skoglysning",
+        "I fjellet"
+      ],
+      "d32": [
+        "Hvordan kunne du tenke deg å komme deg rundt en dag?",
+        "Med elbil",
+        "Med sykkel",
+        "Med en stor familiebil",
+        "Uten bil"
+      ],
+      "d33": [
+        "Hva kunne du tenke deg å gjøre som pensjonist?",
+        "Hagearbeid",
+        "Reise",
+        "Tid med barnebarna",
+        "Lære nye ting"
+      ],
+      "d34": [
+        "Hvilken god gjerning kunne du tenke deg å gjøre?",
+        "Bygge en brønn",
+        "Hjelpe et kattehjem",
+        "Samle bøker til en skole",
+        "Plante en rad med trær"
+      ],
+      "d35": [
+        "Hva kunne du tenke deg til helgefrokost?",
+        "Pannekaker",
+        "Omelett",
+        "Grøt med frukt",
+        "Sveler"
+      ],
+      "d36": [
+        "Hvor kunne du tenke deg å ta imot gjester?",
+        "På kjøkkenet",
+        "I stua",
+        "På terrassen",
+        "I hagen"
+      ],
+      "d37": [
+        "Hvilket naturunder kunne du tenke deg å se?",
+        "Grand Canyon",
+        "Niagarafallene",
+        "Bajkalsjøen",
+        "Saharaørkenen"
+      ],
+      "d38": [
+        "Hvilken praktisk ferdighet kunne du tenke deg å lære?",
+        "Å reparere selv",
+        "Å sy",
+        "Å bake brød",
+        "Å stelle en hage"
+      ],
+      "d39": [
+        "Hvor mange språk kunne du tenke deg å snakke?",
+        "To",
+        "Tre",
+        "Fem",
+        "Så mange som mulig"
+      ],
+      "d40": [
+        "Hvilken veggfarge kunne du tenke deg hjemme?",
+        "Hvit",
+        "Beige",
+        "Lysegrønn",
+        "Lyseblå"
+      ],
+      "d41": [
+        "Hvilken fisk kunne du tenke deg i et akvarium?",
+        "En gullfisk",
+        "Guppyer",
+        "En malle",
+        "En skalar"
+      ],
+      "d42": [
+        "Hvilken reise kunne du tenke deg å gi foreldrene dine?",
+        "En ferie ved sjøen",
+        "En byrundtur",
+        "En tur til fjells",
+        "En togreise"
+      ],
+      "d43": [
+        "Hva kunne du tenke deg å gjøre på fritiden?",
+        "Tegne",
+        "Lese",
+        "Trene",
+        "Håndarbeid"
+      ],
+      "d44": [
+        "Hvilken årstid kunne du tenke deg å reise i?",
+        "Vår",
+        "Sommer",
+        "Høst",
+        "Vinter"
+      ],
+      "d45": [
+        "Hva kunne du tenke deg å sylte til vinteren?",
+        "Syltetøy",
+        "Syltede agurker",
+        "Tørket frukt",
+        "Fruktkompott"
+      ],
+      "d46": [
+        "Hvilket annet yrke kunne du tenke deg å prøve?",
+        "Kokk",
+        "Programmerer",
+        "Oversetter",
+        "Snekker"
+      ],
+      "d47": [
+        "Hvilket land kunne du tenke deg å bli kjent med?",
+        "Malaysia",
+        "Italia",
+        "Canada",
+        "Indonesia"
+      ],
+      "d48": [
+        "Hva kunne du tenke deg å ha i hagen?",
+        "En liten fontene",
+        "Et grønnsaksbed",
+        "Et lysthus",
+        "En huske"
+      ],
+      "d49": [
+        "Hvordan kunne du tenke deg å feire suksesser?",
+        "En familiemiddag",
+        "En tur ut i naturen",
+        "En ny bok",
+        "En god gjerning for andre"
+      ],
+      "d50": [
+        "Hva kunne du tenke deg å gi videre til barna?",
+        "Glede ved bøker",
+        "Matlaging",
+        "Morsmålet vårt",
+        "Omsorg for naturen"
+      ]
     }
   },
   "fi": {
@@ -30243,7 +43319,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Voitto! Tiedät maailmasta enemmän.",
       "tfFinalLose": "Tällä kertaa {name} tietää enemmän — revanssi?",
       "tfFinalDraw": "Tasapeli — tiedätte yhtä paljon!",
-      "featTruth": "Live-peli ”Totta vai tarua” — hämmästyttäviä faktoja maailmasta"
+      "featTruth": "Live-peli ”Totta vai tarua” — hämmästyttäviä faktoja maailmasta",
+      "countries": "Arvaa maa",
+      "coTitle": "Arvaa maa",
+      "coNote": "Live-peli kahdelle: karhu matkustaa ympäri maailmaa. 10 sekuntia — arvaa, missä maassa se on! Piste jokaisesta oikeasta vastauksesta.",
+      "coShareText": "{name} kutsuu sinut live-peliin ”Arvaa maa”",
+      "coJoinLead": "{name} odottaa sinua. Arvaa maa kuvan perusteella!",
+      "coRound": "Maa {n}/{total}",
+      "coAsk": "Mikä maa tämä on?",
+      "coFinalWin": "Voitto! Olet todellinen maailmanmatkaaja.",
+      "coFinalLose": "Tällä kertaa {name} tuntee maailman paremmin — revanssi?",
+      "coFinalDraw": "Tasapeli — tunnette molemmat maailman hyvin!",
+      "featCountries": "Live-peli ”Arvaa maa” — 40 maata",
+      "hints": "Arvaa vihjeistä",
+      "dreams": "Unelmat ja suunnitelmat",
+      "hiTitle": "Arvaa vihjeistä",
+      "hiNote": "Live-peli kahdelle: kolme vihjettä avautuu yksi kerrallaan. Arvaa ensimmäisestä — 3 pistettä, toisesta — 2, kolmannesta — 1.",
+      "hiShareText": "{name} kutsuu sinut live-peliin ”Arvaa vihjeistä”",
+      "hiJoinLead": "{name} odottaa sinua. Arvaa mahdollisimman aikaisin!",
+      "hiRound": "Arvoitus {n} / {total}",
+      "hiAsk": "Mikä se on?",
+      "hiClue": "Vihje {n}",
+      "hiPoints": "Pisteet: +{n}",
+      "hiNoPoints": "Ei pisteitä tällä kertaa",
+      "hiFinalWin": "Voitto! Olet tosi hyvä arvaamaan.",
+      "hiFinalLose": "Tällä kertaa {name} arvasi paremmin — revanssi?",
+      "hiFinalDraw": "Tasapeli — olette molemmat tosi hyviä arvaamaan!",
+      "featHints": "Live-peli ”Arvaa vihjeistä” — 3, 2 tai 1 piste",
+      "drTitle": "Unelmat ja suunnitelmat",
+      "drNote": "Live-peli kahdelle: koti, matkat, oppiminen ja harrastukset. Valitse, mitä haluaisit, ja katso, osuvatko unelmanne yhteen.",
+      "drShareText": "{name} kutsuu sinut live-peliin ”Unelmat ja suunnitelmat”",
+      "drJoinLead": "{name} odottaa sinua. Valitse, mitä todella haluaisit!",
+      "drRound": "Kysymys {n} / {total}",
+      "drPick": "Valitse, mitä haluaisit",
+      "drBoth": "Sama unelma: {item}",
+      "drDiff": "Eri unelmat — kertokaa toisillenne miksi!",
+      "drFinalHigh": "Teillä on niin paljon yhteisiä unelmia!",
+      "drFinalMid": "Eri unelmat — paljon puhuttavaa",
+      "drCommon": "Yhteiset unelmanne",
+      "featDreams": "Live-peli ”Unelmat ja suunnitelmat” — osuvatko unelmanne yhteen?",
+      "modestTitle": "Hillitty tila",
+      "modestNote": "Ei kysymyksiä tunteista, halauksista tai treffeistä – vain ystävällisiä"
     },
     "questions": {
       "q01": [
@@ -32162,6 +45278,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Etelänapa on paljon kylmempi: se on korkealla jäisellä mantereella, pohjoisnapa taas meren päällä."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Pingviini",
+        "Olen lintu, mutta en osaa lentää",
+        "Asun siellä, missä on hyvin kylmä",
+        "Minulla on aina frakki",
+        "Strutsi",
+        "Hylje",
+        "Lokki"
+      ],
+      "h02": [
+        "Norsu",
+        "Syön melkein koko päivän",
+        "Korvani näyttävät isoilta viuhkoilta",
+        "Minulla on pitkä kärsä",
+        "Sarvikuono",
+        "Virtahepo",
+        "Kirahvi"
+      ],
+      "h03": [
+        "Kirahvi",
+        "Nukun hyvin vähän, usein seisaaltaan",
+        "Syön lehtiä korkeimmista puista",
+        "Minulla on pisin kaula",
+        "Seepra",
+        "Kameli",
+        "Hirvi"
+      ],
+      "h04": [
+        "Kameli",
+        "Pärjään pitkään ilman vettä",
+        "Minua kutsutaan aavikon laivaksi",
+        "Selässäni on yksi tai kaksi kyttyrää",
+        "Hevonen",
+        "Aasi",
+        "Laama"
+      ],
+      "h05": [
+        "Mehiläinen",
+        "Osaan näyttää muille tien kukkien luo",
+        "Teen töitä niityllä aamusta iltaan",
+        "Teen hunajaa",
+        "Ampiainen",
+        "Kärpänen",
+        "Perhonen"
+      ],
+      "h06": [
+        "Kilpikonna",
+        "Voin elää yli sata vuotta",
+        "Minulla ei ole koskaan kiire",
+        "Kannan kotiani selässäni",
+        "Etana",
+        "Lisko",
+        "Siili"
+      ],
+      "h07": [
+        "Kenguru",
+        "Häntäni auttaa pitämään tasapainoa",
+        "Asun Australiassa",
+        "Kannan poikastani pussissa",
+        "Koala",
+        "Jänis",
+        "Orava"
+      ],
+      "h08": [
+        "Pöllö",
+        "Voin kääntää pääni melkein kokonaan taakse",
+        "Saalistan yöllä",
+        "Huhuilen pimeässä metsässä",
+        "Varis",
+        "Kotka",
+        "Kyyhky"
+      ],
+      "h09": [
+        "Delfiini",
+        "Hengitän ilmaa, vaikka asun meressä",
+        "Autan ihmisiä ja puhun vihellyksillä",
+        "Hypin mielelläni aaltojen yli",
+        "Hai",
+        "Valas",
+        "Hylje"
+      ],
+      "h10": [
+        "Orava",
+        "Piilotan ruokaa ja unohdan joskus minne",
+        "Asun puunkolossa",
+        "Nakerran pähkinöitä ja käpyjä",
+        "Siili",
+        "Jänis",
+        "Hiiri"
+      ],
+      "h11": [
+        "Hämähäkki",
+        "En ole hyönteinen, vaikka moni niin luulee",
+        "Minulla on kahdeksan jalkaa",
+        "Kudon seittiä",
+        "Muurahainen",
+        "Kovakuoriainen",
+        "Hyttynen"
+      ],
+      "h12": [
+        "Kissa",
+        "Näen pimeässä paremmin kuin ihmiset",
+        "Pidän lämpimästä ikkunalaudasta",
+        "Kehrään ja pyydystän hiiriä",
+        "Kani",
+        "Hamsteri",
+        "Papukaija"
+      ],
+      "h13": [
+        "Vesimeloni",
+        "Tutkijat sanovat minua marjaksi",
+        "Minua odotetaan loppukesästä",
+        "Vihreä ulkoa, punainen sisältä",
+        "Hunajameloni",
+        "Kurpitsa",
+        "Ananas"
+      ],
+      "h14": [
+        "Leipä",
+        "Minua leivotaan melkein joka maassa",
+        "Minut viipaloidaan lounaaksi",
+        "Voin olla vaaleaa tai ruista, kuorellista",
+        "Pannukakku",
+        "Piirakka",
+        "Keksi"
+      ],
+      "h15": [
+        "Hunaja",
+        "Säilyn tuhansia vuosia",
+        "Minua lisätään lämpimään teehen flunssassa",
+        "Mehiläiset tekevät minut",
+        "Hillo",
+        "Sokeri",
+        "Maito"
+      ],
+      "h16": [
+        "Sitruuna",
+        "Olen täynnä C-vitamiinia",
+        "Minua laitetaan teehen",
+        "Olen keltainen ja hyvin hapan",
+        "Appelsiini",
+        "Greippi",
+        "Limetti"
+      ],
+      "h17": [
+        "Porkkana",
+        "Kasvan maan alla, vain naatti näkyy",
+        "Sanotaan, että olen hyväksi silmille",
+        "Olen oranssi, ja kanit pitävät minusta",
+        "Punajuuri",
+        "Retiisi",
+        "Peruna"
+      ],
+      "h18": [
+        "Omena",
+        "Minulla on talvi- ja kesälajikkeita",
+        "Minusta tehdään piirakkaa ja mehua",
+        "Kasvan puussa, punaisena tai vihreänä",
+        "Päärynä",
+        "Persikka",
+        "Luumu"
+      ],
+      "h19": [
+        "Banaani",
+        "Kasvan terttuina korkeassa kasvissa",
+        "Apinat pitävät minusta",
+        "Olen keltainen, ja minut pitää kuoria",
+        "Mango",
+        "Kiivi",
+        "Ananas"
+      ],
+      "h20": [
+        "Tee",
+        "Kiinassa minua on juotu vuosituhansia",
+        "Voin olla mustaa, vihreää tai yrttiä",
+        "Minut haudutetaan kuumassa vedessä",
+        "Kahvi",
+        "Kaakao",
+        "Mehu"
+      ],
+      "h21": [
+        "Kananmuna",
+        "Ilman minua kakun leipominen on vaikeaa",
+        "Minusta tehdään munakasta",
+        "Kana munii minut",
+        "Juusto",
+        "Pähkinä",
+        "Peruna"
+      ],
+      "h22": [
+        "Sateenvarjo",
+        "Olen suurimman osan ajasta kokoon taitettuna",
+        "Otat minut mukaan, kun taivas harmaantuu",
+        "Pidän sinut kuivana sateessa",
+        "Sadetakki",
+        "Hattu",
+        "Kumisaappaat"
+      ],
+      "h23": [
+        "Kello",
+        "Voin toimia hiekalla tai auringonvalolla",
+        "Roikun seinillä ja seison torneissa",
+        "Näytän ajan osoittimillani",
+        "Kompassi",
+        "Kalenteri",
+        "Lämpömittari"
+      ],
+      "h24": [
+        "Avain",
+        "Ilman minua ovi ei päästä sisään",
+        "Minua kannetaan usein renkaassa",
+        "Avaan lukon",
+        "Sakset",
+        "Ruuvimeisseli",
+        "Paperiliitin"
+      ],
+      "h25": [
+        "Kynttilä",
+        "Mitä kauemmin teen työtä, sitä pienemmäksi käyn",
+        "Minut sytytetään, kun sähköt katkeavat",
+        "Olen tehty vahasta ja minulla on sydän",
+        "Taskulamppu",
+        "Lamppu",
+        "Tulitikut"
+      ],
+      "h26": [
+        "Sakset",
+        "Minulla on kaksi rengasta ja kaksi terävää päätä",
+        "Leikkaan kuvioita paperista",
+        "Leikkaan kangasta ja paperia",
+        "Veitsi",
+        "Neula",
+        "Viivoitin"
+      ],
+      "h27": [
+        "Hammasharja",
+        "Minulla on paljon harjaksia",
+        "Minut vaihdetaan kolmen kuukauden välein",
+        "Puhdistan hampaat aamuin illoin",
+        "Saippua",
+        "Pyyhe",
+        "Sieni"
+      ],
+      "h28": [
+        "Jääkaappi",
+        "Sisälläni on aina talvi",
+        "Kun avaat minut, syttyy valo",
+        "Pidän ruoan kylmänä",
+        "Liesi",
+        "Uuni",
+        "Kaappi"
+      ],
+      "h29": [
+        "Polkupyörä",
+        "Kuljen ilman polttoainetta ja sähköä",
+        "Minulla on ohjaustanko, soittokello ja ketju",
+        "Minulla on kaksi rengasta ja polkimet",
+        "Potkulauta",
+        "Moottoripyörä",
+        "Rullalauta"
+      ],
+      "h30": [
+        "Lentokone",
+        "Minulla on siivet, mutta en ole lintu",
+        "Minua odotetaan lentoasemalla",
+        "Lennän pilvien yläpuolella matkustajien kanssa",
+        "Helikopteri",
+        "Raketti",
+        "Kuumailmapallo"
+      ],
+      "h31": [
+        "Juna",
+        "Kuljen vain omaa tietäni",
+        "Minulla on monta vaunua",
+        "Kuljen kiskoilla asemalta asemalle",
+        "Raitiovaunu",
+        "Bussi",
+        "Metro"
+      ],
+      "h32": [
+        "Silta",
+        "Minut rakennetaan kivestä, puusta tai teräksestä",
+        "Laivat voivat kulkea altani",
+        "Yhdistän joen kaksi rantaa",
+        "Tunneli",
+        "Tie",
+        "Pato"
+      ],
+      "h33": [
+        "Lyijykynä",
+        "Sisälläni on grafiittia",
+        "Minut teroitetaan, kun tylsyn",
+        "Kirjoitan ja piirrän; pyyhekumi poistaa jälkeni",
+        "Kuulakärkikynä",
+        "Liitu",
+        "Tussi"
+      ],
+      "h34": [
+        "Kirja",
+        "Olen hiljaa, mutta opetan paljon",
+        "Minulla on kannet ja sivut",
+        "Minua luetaan, ja minut voi lainata",
+        "Aikakauslehti",
+        "Sanomalehti",
+        "Vihko"
+      ],
+      "h35": [
+        "Matkalaukku",
+        "Matkustan paljon, mutta aina jonkun kädessä",
+        "Minut pakataan ennen matkaa",
+        "Minulla on kahva ja pyörät, ja sisälläni on vaatteita",
+        "Reppu",
+        "Käsilaukku",
+        "Laatikko"
+      ],
+      "h36": [
+        "Kirjasto",
+        "Täällä pyydetään puhumaan hiljaa",
+        "Täältä saat lainauskortin",
+        "Tuhansia niteitä lainattavaksi kotiin",
+        "Koulu",
+        "Kirjakauppa",
+        "Arkisto"
+      ],
+      "h37": [
+        "Lentoasema",
+        "Täällä on passintarkastus",
+        "Täällä kuulutetaan koneeseen nousu",
+        "Lentokoneet nousevat täältä",
+        "Rautatieasema",
+        "Satama",
+        "Linja-autoasema"
+      ],
+      "h38": [
+        "Aavikko",
+        "Päivällä kuuma, mutta yöt voivat olla hyvin kylmiä",
+        "Täältä voi löytää keitaita",
+        "Paljon hiekkaa ja hyvin vähän vettä",
+        "Aro",
+        "Savanni",
+        "Ranta"
+      ],
+      "h39": [
+        "Tulivuori",
+        "Voin nukkua satoja vuosia",
+        "Huipultani nousee savua",
+        "Syöksen laavaa",
+        "Vuori",
+        "Geysir",
+        "Saari"
+      ],
+      "h40": [
+        "Sateenkaari",
+        "Näet minut vain, kun aurinko on selkäsi takana",
+        "Ilmestyn usein sateen jälkeen",
+        "Seitsemän väriä kaarena taivaalla",
+        "Salama",
+        "Pilvi",
+        "Revontulet"
+      ],
+      "h41": [
+        "Kuu",
+        "Näytän Maalle aina saman puolen",
+        "Voin olla täysi tai ohut sirppi",
+        "Loistan yötaivaalla",
+        "Aurinko",
+        "Tähti",
+        "Komeetta"
+      ],
+      "h42": [
+        "Lumi",
+        "Jokainen hiutaleeni on ainutlaatuinen",
+        "Minusta rakennetaan linnoja",
+        "Valkoinen ja kylmä, sadan talvella",
+        "Sade",
+        "Rae",
+        "Kuura"
+      ],
+      "h43": [
+        "Joki",
+        "Minulla on lähde ja suu",
+        "Veneet kulkevat pitkin minua",
+        "Virtaan vuorilta mereen",
+        "Järvi",
+        "Meri",
+        "Puro"
+      ],
+      "h44": [
+        "Kaktus",
+        "Voin elää pitkään ilman vettä",
+        "Kasvan aavikoilla ja ikkunalaudoilla",
+        "Olen piikkien peitossa",
+        "Aloe",
+        "Palmu",
+        "Päivänkakkara"
+      ],
+      "h45": [
+        "Auringonkukka",
+        "Siemenistäni tehdään öljyä",
+        "Käännyn auringon mukana",
+        "Iso keltainen kukka täynnä siemeniä",
+        "Päivänkakkara",
+        "Tulppaani",
+        "Voikukka"
+      ],
+      "h46": [
+        "Tammi",
+        "Voin elää yli tuhat vuotta",
+        "Minua pidetään voiman symbolina",
+        "Minussa kasvaa terhoja",
+        "Koivu",
+        "Mänty",
+        "Vaahtera"
+      ],
+      "h47": [
+        "Saari",
+        "Päälleni mahtuu kokonainen valtio",
+        "Luokseni pääsee veneellä tai lentokoneella",
+        "Vesi ympäröi minua joka puolelta",
+        "Niemimaa",
+        "Riutta",
+        "Niemi"
+      ],
+      "h48": [
+        "Vesiputous",
+        "Minut kuulee kaukaa",
+        "Korkein meistä on Venezuelassa",
+        "Täällä joki putoaa jyrkänteeltä",
+        "Suihkulähde",
+        "Geysir",
+        "Lähde"
+      ],
+      "h49": [
+        "Lääkäri",
+        "Opiskelen monta vuotta ennen kuin aloitan työt",
+        "Käytän valkoista takkia",
+        "Hoidan sairaita ihmisiä",
+        "Sairaanhoitaja",
+        "Farmaseutti",
+        "Eläinlääkäri"
+      ],
+      "h50": [
+        "Palomies",
+        "Päivystän yötä päivää valmiina hälytyksiin",
+        "Työskentelen veden ja tikkaiden kanssa",
+        "Sammutan tulipaloja",
+        "Poliisi",
+        "Pelastaja",
+        "Rakentaja"
+      ],
+      "h51": [
+        "Kokki",
+        "Maistan kaikkea, mitä teen",
+        "Työskentelen kuuman lieden ääressä",
+        "Valmistan ruokaa ravintolassa",
+        "Leipuri",
+        "Tarjoilija",
+        "Kondiittori"
+      ],
+      "h52": [
+        "Opettaja",
+        "Illalla korjaan vihkoja",
+        "Seison taulun edessä",
+        "Opetan lapsia koulussa",
+        "Rehtori",
+        "Kirjastonhoitaja",
+        "Varhaiskasvattaja"
+      ],
+      "h53": [
+        "Lentäjä",
+        "Työpaikkani on ohjaamo",
+        "Puhun matkustajille kaiuttimesta",
+        "Ohjaan lentokonetta",
+        "Kapteeni",
+        "Kuljettaja",
+        "Astronautti"
+      ],
+      "h54": [
+        "Postinkantaja",
+        "Tunnen jokaisen osoitteen alueellani",
+        "Kannan isoa laukkua",
+        "Jaan kirjeitä ja paketteja",
+        "Kuriiri",
+        "Taksinkuljettaja",
+        "Myyjä"
+      ],
+      "h55": [
+        "Puutarhuri",
+        "Tiedän, milloin mitäkin istutetaan",
+        "Työkaluni ovat kastelukannu ja oksasakset",
+        "Hoidan kukkia ja puita",
+        "Maanviljelijä",
+        "Metsänhoitaja",
+        "Floristi"
+      ],
+      "h56": [
+        "Valokuvaaja",
+        "Tallennan hetkiä",
+        "Pyydän kaikkia pysymään paikallaan",
+        "Työskentelen kameran ja kuvien parissa",
+        "Taidemaalari",
+        "Toimittaja",
+        "Videokuvaaja"
+      ],
+      "h57": [
+        "Kalastaja",
+        "Herään ennen aamunkoittoa ja odotan pitkään",
+        "Tarvitsen vavan ja kärsivällisyyttä",
+        "Pyydystän kaloja",
+        "Maanviljelijä",
+        "Merimies",
+        "Paimen"
+      ],
+      "h58": [
+        "Astronautti",
+        "Harjoittelen pitkään maan päällä",
+        "Käytän avaruuspukua",
+        "Lennän avaruuteen",
+        "Lentäjä",
+        "Tähtitieteilijä",
+        "Insinööri"
+      ],
+      "h59": [
+        "Arkkitehti",
+        "Työni näkyy kaikkialla kaupungissa",
+        "Piirrän pohjapiirustuksia",
+        "Suunnittelen taloja",
+        "Rakentaja",
+        "Suunnittelija",
+        "Insinööri"
+      ],
+      "h60": [
+        "Hammaslääkäri",
+        "Moni pelkää tuoliani",
+        "Työskentelen poran kanssa",
+        "Hoidan hampaita",
+        "Kirurgi",
+        "Silmälääkäri",
+        "Lastenlääkäri"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Missä haluaisit asua kymmenen vuoden päästä?",
+        "Meren rannalla",
+        "Vuoristossa",
+        "Suurkaupungissa",
+        "Hiljaisessa kylässä"
+      ],
+      "d02": [
+        "Millaisen kodin haluaisit joskus?",
+        "Kodikas kerrostaloasunto",
+        "Talo ja puutarha",
+        "Mökki järven rannalla",
+        "Vanha talo, jolla on historiaa"
+      ],
+      "d03": [
+        "Mitä haluaisit kasvattaa puutarhassa?",
+        "Omenapuita",
+        "Ruusuja",
+        "Vihanneksia ja yrttejä",
+        "Mansikoita"
+      ],
+      "d04": [
+        "Minkä lemmikin haluaisit?",
+        "Kissan",
+        "Papukaijan",
+        "Akvaariokaloja",
+        "Kilpikonnan"
+      ],
+      "d05": [
+        "Minne haluaisit matkustaa ensin?",
+        "Japaniin",
+        "Marokkoon",
+        "Islantiin",
+        "Uuteen-Seelantiin"
+      ],
+      "d06": [
+        "Miten haluaisit matkustaa?",
+        "Junalla",
+        "Autolla",
+        "Lentäen",
+        "Laivalla"
+      ],
+      "d07": [
+        "Minkä kielen haluaisit oppia?",
+        "Arabian",
+        "Japanin",
+        "Espanjan",
+        "Kiinan"
+      ],
+      "d08": [
+        "Mitä haluaisit oppia tekemään?",
+        "Piirtämään",
+        "Ompelemaan",
+        "Uimaan",
+        "Koodaamaan"
+      ],
+      "d09": [
+        "Minkä ruoan haluaisit oppia tekemään täydellisesti?",
+        "Pilahvin",
+        "Kotitekoisen leivän",
+        "Sushin",
+        "Baklavan"
+      ],
+      "d10": [
+        "Miten haluaisit viettää viikonloput?",
+        "Luonnossa",
+        "Kotona kirjan kanssa",
+        "Sukulaisten luona",
+        "Uudessa kaupungissa"
+      ],
+      "d11": [
+        "Millainen olisi täydellinen viikonloppuaamu?",
+        "Aikainen kävely",
+        "Kiireetön aamiainen",
+        "Liikuntaa raittiissa ilmassa",
+        "Teetä parvekkeella"
+      ],
+      "d12": [
+        "Mihin haluaisit säästää?",
+        "Omaan kotiin",
+        "Isoon matkaan",
+        "Autoon",
+        "Opintoihin"
+      ],
+      "d13": [
+        "Millaista työtä haluaisit tehdä?",
+        "Oma yritys",
+        "Työ isossa yrityksessä",
+        "Etätyö kotoa",
+        "Ihmisten auttaminen"
+      ],
+      "d14": [
+        "Miten haluaisit auttaa muita?",
+        "Vapaaehtoistyö",
+        "Eläinten auttaminen",
+        "Lasten opettaminen",
+        "Puiden istuttaminen"
+      ],
+      "d15": [
+        "Minkä perinteen haluaisit perheeseen?",
+        "Yhteinen sunnuntailounas",
+        "Lautapeli-illat",
+        "Viikonloppukävelyt",
+        "Perheen valokuva-albumi"
+      ],
+      "d16": [
+        "Millaisen keittiön haluaisit?",
+        "Ison perhekeittiön",
+        "Valoisan ja kodikkaan",
+        "Puutarhanäkymällä",
+        "Pienen mutta käytännöllisen"
+      ],
+      "d17": [
+        "Mitä haluaisit nähdä omin silmin?",
+        "Revontulet",
+        "Gizan pyramidit",
+        "Victorian putoukset",
+        "Himalajan"
+      ],
+      "d18": [
+        "Mitä haluaisit tehdä iltaisin?",
+        "Lukea",
+        "Kokata jotain uutta",
+        "Opiskella kieliä",
+        "Kävellä puistossa"
+      ],
+      "d19": [
+        "Minkä harrastuksen haluaisit aloittaa?",
+        "Valokuvauksen",
+        "Keramiikan",
+        "Kirjonnan",
+        "Puutarhanhoidon"
+      ],
+      "d20": [
+        "Minne haluaisit lähteä viikonlopuksi?",
+        "Metsään",
+        "Järvelle",
+        "Lähikaupunkiin",
+        "Vuorille"
+      ],
+      "d21": [
+        "Millainen olisi ihanteellinen työpisteesi?",
+        "Ikkunan ääressä",
+        "Kirjahyllyjen keskellä",
+        "Täynnä viherkasveja",
+        "Lähes tyhjä"
+      ],
+      "d22": [
+        "Mitä haluaisit opiskella seuraavaksi?",
+        "Lääketiedettä",
+        "Historiaa",
+        "Taloustiedettä",
+        "Muotoilua"
+      ],
+      "d23": [
+        "Minkä puun haluaisit istuttaa?",
+        "Tammen",
+        "Omenapuun",
+        "Oliivipuun",
+        "Taatelipalmun"
+      ],
+      "d24": [
+        "Mitä haluaisit kokata vieraille?",
+        "Kotitekoista piirakkaa",
+        "Ison pilahvin",
+        "Suvun keittoreseptin",
+        "Raikkaita salaatteja"
+      ],
+      "d25": [
+        "Missä kaupungissa haluaisit käydä?",
+        "Istanbulissa",
+        "Pariisissa",
+        "Tokiossa",
+        "Kairossa"
+      ],
+      "d26": [
+        "Miten haluaisit viettää kesän?",
+        "Meren rannalla",
+        "Vuoristossa",
+        "Kesämökillä",
+        "Kotimaan matkoilla"
+      ],
+      "d27": [
+        "Minkä linnun haluaisit pitää?",
+        "Kanarialinnun",
+        "Undulaatin",
+        "Kyyhkyjä",
+        "Seeprapeippoja"
+      ],
+      "d28": [
+        "Mitä urheilulajia haluaisit kokeilla?",
+        "Uintia",
+        "Ratsastusta",
+        "Jousiammuntaa",
+        "Kiipeilyä"
+      ],
+      "d29": [
+        "Millaisia kirjoja haluaisit kerätä?",
+        "Tietosanakirjoja",
+        "Klassikoita",
+        "Matkakirjoja",
+        "Keittokirjoja"
+      ],
+      "d30": [
+        "Mitä haluaisit tehdä itse?",
+        "Huonekaluja",
+        "Omia astioita",
+        "Neulotun peiton",
+        "Linnunpöntön"
+      ],
+      "d31": [
+        "Missä haluaisit pitää piknikin?",
+        "Joen rannalla",
+        "Puutarhassa",
+        "Metsäaukealla",
+        "Vuoristossa"
+      ],
+      "d32": [
+        "Millä haluaisit joskus liikkua?",
+        "Sähköautolla",
+        "Pyörällä",
+        "Isolla perheautolla",
+        "Ilman autoa"
+      ],
+      "d33": [
+        "Mitä haluaisit tehdä eläkkeellä?",
+        "Puutarhanhoitoa",
+        "Matkustaa",
+        "Aikaa lastenlasten kanssa",
+        "Oppia uutta"
+      ],
+      "d34": [
+        "Minkä hyvän teon haluaisit tehdä?",
+        "Rakentaa kaivo",
+        "Auttaa kissojen turvakotia",
+        "Kerätä kirjoja koululle",
+        "Istuttaa puurivi"
+      ],
+      "d35": [
+        "Mitä haluaisit viikonlopun aamiaiseksi?",
+        "Lettuja",
+        "Munakkaan",
+        "Puuroa ja hedelmiä",
+        "Rahkapannukakkuja"
+      ],
+      "d36": [
+        "Missä haluaisit ottaa vieraita vastaan?",
+        "Keittiössä",
+        "Olohuoneessa",
+        "Terassilla",
+        "Puutarhassa"
+      ],
+      "d37": [
+        "Minkä luonnonihmeen haluaisit nähdä?",
+        "Grand Canyonin",
+        "Niagaran putoukset",
+        "Baikaljärven",
+        "Saharan autiomaan"
+      ],
+      "d38": [
+        "Minkä kodin taidon haluaisit oppia?",
+        "Omat korjaustyöt",
+        "Ompelun",
+        "Leivän leipomisen",
+        "Puutarhan hoidon"
+      ],
+      "d39": [
+        "Montako kieltä haluaisit puhua?",
+        "Kahta",
+        "Kolmea",
+        "Viittä",
+        "Niin monta kuin mahdollista"
+      ],
+      "d40": [
+        "Minkä värisiä seiniä haluaisit kotiin?",
+        "Valkoisia",
+        "Beigejä",
+        "Vaaleanvihreitä",
+        "Vaaleansinisiä"
+      ],
+      "d41": [
+        "Minkä kalan haluaisit akvaarioon?",
+        "Kultakalan",
+        "Guppeja",
+        "Monnin",
+        "Skalaarin"
+      ],
+      "d42": [
+        "Minkä matkan haluaisit lahjoittaa vanhemmillesi?",
+        "Rantaloman",
+        "Kaupunkikierroksen",
+        "Vuoristomatkan",
+        "Junamatkan"
+      ],
+      "d43": [
+        "Mitä haluaisit tehdä vapaa-ajallasi?",
+        "Piirtää",
+        "Lukea",
+        "Urheilla",
+        "Tehdä käsitöitä"
+      ],
+      "d44": [
+        "Minä vuodenaikana haluaisit matkustaa?",
+        "Keväällä",
+        "Kesällä",
+        "Syksyllä",
+        "Talvella"
+      ],
+      "d45": [
+        "Mitä haluaisit säilöä talveksi?",
+        "Hilloa",
+        "Suolakurkkuja",
+        "Kuivattuja hedelmiä",
+        "Kompottia"
+      ],
+      "d46": [
+        "Mitä muuta ammattia haluaisit kokeilla?",
+        "Kokki",
+        "Ohjelmoija",
+        "Kääntäjä",
+        "Puuseppä"
+      ],
+      "d47": [
+        "Mihin maahan haluaisit tutustua?",
+        "Malesiaan",
+        "Italiaan",
+        "Kanadaan",
+        "Indonesiaan"
+      ],
+      "d48": [
+        "Mitä haluaisit pihallesi?",
+        "Pienen suihkulähteen",
+        "Kasvimaan",
+        "Huvimajan",
+        "Keinun"
+      ],
+      "d49": [
+        "Miten haluaisit juhlia onnistumisia?",
+        "Perheillallinen",
+        "Retki luontoon",
+        "Uusi kirja",
+        "Hyvä teko muille"
+      ],
+      "d50": [
+        "Mitä haluaisit siirtää lapsille?",
+        "Lukemisen ilon",
+        "Ruoanlaittotaidot",
+        "Äidinkielemme",
+        "Luonnosta huolehtimisen"
+      ]
     }
   },
   "ja": {
@@ -32387,7 +46397,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "勝利！世界のことをよく知っていますね。",
       "tfFinalLose": "今回は{name}さんの方が物知り — もう一回？",
       "tfFinalDraw": "引き分け — ふたりとも同じくらい物知り！",
-      "featTruth": "ライブゲーム「ほんと？うそ？」— 世界のおどろきの事実"
+      "featTruth": "ライブゲーム「ほんと？うそ？」— 世界のおどろきの事実",
+      "countries": "国をあてよう",
+      "coTitle": "国をあてよう",
+      "coNote": "ふたりで遊ぶライブゲーム：クマが世界を旅します。10秒以内に、どの国にいるかあてよう！正解ごとに1ポイント。",
+      "coShareText": "{name}さんがライブゲーム「国をあてよう」に招待しています",
+      "coJoinLead": "{name}さんが待っています。絵を見て国をあてよう！",
+      "coRound": "国 {n} / {total}",
+      "coAsk": "これはどこの国？",
+      "coFinalWin": "勝利！まさに旅の達人ですね。",
+      "coFinalLose": "今回は{name}さんのほうが世界にくわしかったみたい — もう一回？",
+      "coFinalDraw": "引き分け — ふたりとも世界にくわしいですね！",
+      "featCountries": "ライブゲーム「国をあてよう」— 40か国",
+      "hints": "ヒントで当てよう",
+      "dreams": "夢と計画",
+      "hiTitle": "ヒントで当てよう",
+      "hiNote": "ふたりで遊ぶライブゲーム：3つのヒントが1つずつ開きます。1つ目で当てたら3ポイント、2つ目なら2ポイント、3つ目なら1ポイント。",
+      "hiShareText": "{name}さんがライブゲーム「ヒントで当てよう」に招待しています",
+      "hiJoinLead": "{name}さんが待っています。できるだけ早く当てましょう！",
+      "hiRound": "なぞなぞ {n}/{total}",
+      "hiAsk": "これは何でしょう？",
+      "hiClue": "ヒント {n}",
+      "hiPoints": "+{n}ポイント",
+      "hiNoPoints": "今回はポイントなし",
+      "hiFinalWin": "勝利！当てるのが上手ですね。",
+      "hiFinalLose": "今回は{name}さんの勝ち — もう一回？",
+      "hiFinalDraw": "引き分け — ふたりとも当てるのが上手！",
+      "featHints": "ライブゲーム「ヒントで当てよう」— 3、2、1ポイント",
+      "drTitle": "夢と計画",
+      "drNote": "ふたりで遊ぶライブゲーム：住まい、旅、学び、趣味。してみたいものを選んで、夢が重なるか確かめましょう。",
+      "drShareText": "{name}さんがライブゲーム「夢と計画」に招待しています",
+      "drJoinLead": "{name}さんが待っています。本当にしてみたいものを選んでね！",
+      "drRound": "質問 {n}/{total}",
+      "drPick": "してみたいものを選んでね",
+      "drBoth": "一致：{item}",
+      "drDiff": "夢がちがいました — 理由を話してみて！",
+      "drFinalHigh": "同じ夢がたくさん！",
+      "drFinalMid": "夢はいろいろ — 話すことがたくさん",
+      "drCommon": "ふたりの共通の夢",
+      "featDreams": "ライブゲーム「夢と計画」— 夢は重なる？",
+      "modestTitle": "控えめモード",
+      "modestNote": "気持ち・ハグ・デートの質問はなし。友だちのような質問だけ"
     },
     "questions": {
       "q01": [
@@ -34306,6 +48356,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "南極のほうがずっと寒いのです。南極は高い氷の大陸の上、北極は海の上にあります。"
       ]
+    },
+    "hints": {
+      "h01": [
+        "ペンギン",
+        "鳥だけど、空は飛べない",
+        "とても寒いところに住んでいる",
+        "いつも燕尾服を着ている",
+        "ダチョウ",
+        "アザラシ",
+        "カモメ"
+      ],
+      "h02": [
+        "ゾウ",
+        "ほぼ一日中、食べている",
+        "耳は大きなうちわのよう",
+        "長い鼻がある",
+        "サイ",
+        "カバ",
+        "キリン"
+      ],
+      "h03": [
+        "キリン",
+        "あまり眠らず、立ったまま寝ることも多い",
+        "いちばん高い木の葉を食べる",
+        "首がいちばん長い",
+        "シマウマ",
+        "ラクダ",
+        "ヘラジカ"
+      ],
+      "h04": [
+        "ラクダ",
+        "水がなくても長く過ごせる",
+        "「砂漠の船」と呼ばれる",
+        "背中にこぶが1つか2つある",
+        "ウマ",
+        "ロバ",
+        "リャマ"
+      ],
+      "h05": [
+        "ミツバチ",
+        "仲間に花への道を教えられる",
+        "朝から晩まで野原で働く",
+        "はちみつを作る",
+        "スズメバチ",
+        "ハエ",
+        "チョウ"
+      ],
+      "h06": [
+        "カメ",
+        "百年以上生きることもある",
+        "決して急がない",
+        "家を背負って歩く",
+        "カタツムリ",
+        "トカゲ",
+        "ハリネズミ"
+      ],
+      "h07": [
+        "カンガルー",
+        "しっぽでバランスをとる",
+        "オーストラリアに住んでいる",
+        "赤ちゃんをおなかの袋に入れて運ぶ",
+        "コアラ",
+        "ウサギ",
+        "リス"
+      ],
+      "h08": [
+        "フクロウ",
+        "首をほぼ真後ろまで回せる",
+        "夜に狩りをする",
+        "暗い森でホーホーと鳴く",
+        "カラス",
+        "ワシ",
+        "ハト"
+      ],
+      "h09": [
+        "イルカ",
+        "海に住んでいるけれど、空気を吸う",
+        "人を助け、口笛のような音で話す",
+        "波の上を跳ねるのが大好き",
+        "サメ",
+        "クジラ",
+        "アザラシ"
+      ],
+      "h10": [
+        "リス",
+        "食べ物を隠して、場所を忘れることも",
+        "木のうろに住んでいる",
+        "木の実や松ぼっくりをかじる",
+        "ハリネズミ",
+        "ウサギ",
+        "ネズミ"
+      ],
+      "h11": [
+        "クモ",
+        "よく虫と言われるけれど、昆虫ではない",
+        "足が8本ある",
+        "巣を張る",
+        "アリ",
+        "カブトムシ",
+        "カ"
+      ],
+      "h12": [
+        "ネコ",
+        "暗いところでは人よりよく見える",
+        "暖かい窓辺が大好き",
+        "のどをゴロゴロ鳴らし、ネズミを捕る",
+        "ウサギ",
+        "ハムスター",
+        "オウム"
+      ],
+      "h13": [
+        "スイカ",
+        "野菜の仲間だと言われることもある",
+        "夏になるとみんなが待っている",
+        "外は緑、中は赤",
+        "メロン",
+        "カボチャ",
+        "パイナップル"
+      ],
+      "h14": [
+        "パン",
+        "ほとんどの国で焼かれている",
+        "薄く切ってお昼に食べられる",
+        "白いのもライ麦のもあって、皮がある",
+        "パンケーキ",
+        "パイ",
+        "クッキー"
+      ],
+      "h15": [
+        "はちみつ",
+        "何千年も保存できる",
+        "風邪のとき、温かいお茶に入れられる",
+        "ミツバチが作る",
+        "ジャム",
+        "砂糖",
+        "牛乳"
+      ],
+      "h16": [
+        "レモン",
+        "ビタミンCがたっぷり",
+        "紅茶に入れられる",
+        "黄色くて、とてもすっぱい",
+        "オレンジ",
+        "グレープフルーツ",
+        "ライム"
+      ],
+      "h17": [
+        "ニンジン",
+        "土の中で育ち、葉だけが見えている",
+        "目にいいと言われる",
+        "オレンジ色で、ウサギの大好物",
+        "ビーツ",
+        "ラディッシュ",
+        "ジャガイモ"
+      ],
+      "h18": [
+        "リンゴ",
+        "夏の品種も冬の品種もある",
+        "パイやジュースになる",
+        "木になる実で、赤や緑",
+        "ナシ",
+        "モモ",
+        "スモモ"
+      ],
+      "h19": [
+        "バナナ",
+        "背の高い植物に房になって実る",
+        "サルの大好物",
+        "黄色くて、皮をむいて食べる",
+        "マンゴー",
+        "キウイ",
+        "パイナップル"
+      ],
+      "h20": [
+        "お茶",
+        "中国では何千年も飲まれている",
+        "緑のもの、赤いもの、ハーブのものがある",
+        "ポットでいれる",
+        "コーヒー",
+        "ココア",
+        "ジュース"
+      ],
+      "h21": [
+        "卵",
+        "わたしがいないとケーキは焼きにくい",
+        "オムレツはわたしから作る",
+        "ニワトリが産む",
+        "チーズ",
+        "ナッツ",
+        "ジャガイモ"
+      ],
+      "h22": [
+        "傘",
+        "ほとんどの時間、たたまれている",
+        "空が灰色になると持っていかれる",
+        "雨の日にぬれないよう守る",
+        "レインコート",
+        "帽子",
+        "長靴"
+      ],
+      "h23": [
+        "時計",
+        "砂や日の光で動くものもある",
+        "壁にかかり、塔の上にもある",
+        "針で時刻を知らせる",
+        "方位磁針",
+        "カレンダー",
+        "温度計"
+      ],
+      "h24": [
+        "鍵",
+        "わたしがないと、ドアは入れてくれない",
+        "よくキーリングにつけられる",
+        "錠を開ける",
+        "はさみ",
+        "ドライバー",
+        "クリップ"
+      ],
+      "h25": [
+        "ろうそく",
+        "働けば働くほど小さくなる",
+        "停電のときに火をともされる",
+        "ろうでできていて、芯がある",
+        "懐中電灯",
+        "ランプ",
+        "マッチ"
+      ],
+      "h26": [
+        "はさみ",
+        "輪が2つ、とがった先が2つある",
+        "紙から形を切り抜く",
+        "布や紙を切る",
+        "ナイフ",
+        "針",
+        "定規"
+      ],
+      "h27": [
+        "歯ブラシ",
+        "毛がたくさんある",
+        "3か月ごとに取りかえられる",
+        "朝と夜、歯をきれいにする",
+        "石けん",
+        "タオル",
+        "スポンジ"
+      ],
+      "h28": [
+        "冷蔵庫",
+        "中はいつも冬",
+        "開けると明かりがつく",
+        "食べ物を冷たく保つ",
+        "コンロ",
+        "オーブン",
+        "食器棚"
+      ],
+      "h29": [
+        "自転車",
+        "燃料も電気もいらない",
+        "ハンドルとベルとチェーンがある",
+        "車輪が2つとペダルがある",
+        "キックボード",
+        "バイク",
+        "スケートボード"
+      ],
+      "h30": [
+        "飛行機",
+        "翼があるけれど、鳥ではない",
+        "空港でみんなが待っている",
+        "乗客を乗せて雲の上を飛ぶ",
+        "ヘリコプター",
+        "ロケット",
+        "気球"
+      ],
+      "h31": [
+        "列車",
+        "自分専用の道しか走らない",
+        "車両がたくさんある",
+        "駅から駅へレールの上を走る",
+        "路面電車",
+        "バス",
+        "地下鉄"
+      ],
+      "h32": [
+        "橋",
+        "石や木や鉄でできている",
+        "下を船が通れる",
+        "川の両岸をつなぐ",
+        "トンネル",
+        "道路",
+        "ダム"
+      ],
+      "h33": [
+        "鉛筆",
+        "中に黒鉛が入っている",
+        "先が丸くなると削られる",
+        "書いたり描いたりでき、消しゴムで消せる",
+        "ボールペン",
+        "チョーク",
+        "マーカー"
+      ],
+      "h34": [
+        "本",
+        "何も話さないけれど、たくさん教える",
+        "表紙とページがある",
+        "読まれたり、図書館で借りられたりする",
+        "雑誌",
+        "新聞",
+        "ノート"
+      ],
+      "h35": [
+        "スーツケース",
+        "よく旅をするけれど、いつも誰かの手の中",
+        "旅の前に荷物を詰められる",
+        "取っ手と車輪があり、服を入れる",
+        "リュック",
+        "バッグ",
+        "箱"
+      ],
+      "h36": [
+        "図書館",
+        "ここでは静かに話すようお願いされる",
+        "ここで利用カードを作る",
+        "何千冊もの本を家に借りていける",
+        "学校",
+        "書店",
+        "資料館"
+      ],
+      "h37": [
+        "空港",
+        "ここには出入国審査がある",
+        "ここで搭乗の案内が流れる",
+        "ここから飛行機が飛び立つ",
+        "駅",
+        "港",
+        "バスターミナル"
+      ],
+      "h38": [
+        "砂漠",
+        "昼は暑いけれど、夜はとても寒くなることも",
+        "オアシスがある",
+        "砂がいっぱいで、水はほとんどない",
+        "草原",
+        "サバンナ",
+        "砂浜"
+      ],
+      "h39": [
+        "火山",
+        "何百年も眠っていることがある",
+        "頂上から煙が上がる",
+        "溶岩を噴き出す",
+        "山",
+        "間欠泉",
+        "島"
+      ],
+      "h40": [
+        "虹",
+        "太陽を背にしたときだけ見える",
+        "雨のあとによく現れる",
+        "空にかかる七色のアーチ",
+        "稲妻",
+        "雲",
+        "オーロラ"
+      ],
+      "h41": [
+        "月",
+        "地球にいつも同じ面を見せている",
+        "まんまるにも、細い弓の形にもなる",
+        "夜空で光っている",
+        "太陽",
+        "星",
+        "彗星"
+      ],
+      "h42": [
+        "雪",
+        "結晶はひとつひとつ形がちがう",
+        "わたしで、かまくらや砦を作る",
+        "冬に降る、白くて冷たいもの",
+        "雨",
+        "ひょう",
+        "霜"
+      ],
+      "h43": [
+        "川",
+        "源と河口がある",
+        "わたしの上を船が進む",
+        "山から海へ流れていく",
+        "湖",
+        "海",
+        "小川"
+      ],
+      "h44": [
+        "サボテン",
+        "水がなくても長く生きられる",
+        "砂漠にも窓辺にも育つ",
+        "とげだらけ",
+        "アロエ",
+        "ヤシ",
+        "ヒナギク"
+      ],
+      "h45": [
+        "ヒマワリ",
+        "種から油がとれる",
+        "太陽のほうを向く",
+        "種がぎっしりの大きな黄色い花",
+        "ヒナギク",
+        "チューリップ",
+        "タンポポ"
+      ],
+      "h46": [
+        "オーク",
+        "千年以上生きることもある",
+        "強さの象徴とされる",
+        "どんぐりがなる",
+        "シラカバ",
+        "マツ",
+        "カエデ"
+      ],
+      "h47": [
+        "島",
+        "国がまるごと乗ることもある",
+        "船か飛行機で行く",
+        "四方を水に囲まれている",
+        "半島",
+        "サンゴ礁",
+        "岬"
+      ],
+      "h48": [
+        "滝",
+        "遠くからでも音が聞こえる",
+        "いちばん高いものはベネズエラにある",
+        "川が崖から落ちるところ",
+        "噴水",
+        "間欠泉",
+        "泉"
+      ],
+      "h49": [
+        "医師",
+        "働き始める前に何年も勉強する",
+        "白衣を着ている",
+        "病気の人を治す",
+        "看護師",
+        "薬剤師",
+        "獣医"
+      ],
+      "h50": [
+        "消防士",
+        "昼も夜も、出動に備えている",
+        "水とはしごを使って働く",
+        "火を消す",
+        "警察官",
+        "救助隊員",
+        "建設作業員"
+      ],
+      "h51": [
+        "料理人",
+        "作ったものはすべて味見する",
+        "熱いコンロの前で働く",
+        "レストランで料理を作る",
+        "パン職人",
+        "ウェイター",
+        "パティシエ"
+      ],
+      "h52": [
+        "先生",
+        "夜にノートを採点する",
+        "黒板の前に立つ",
+        "学校で子どもたちに教える",
+        "校長",
+        "司書",
+        "保育士"
+      ],
+      "h53": [
+        "パイロット",
+        "仕事場はコックピット",
+        "スピーカーで乗客に話しかける",
+        "飛行機を操縦する",
+        "船長",
+        "運転手",
+        "宇宙飛行士"
+      ],
+      "h54": [
+        "郵便配達員",
+        "担当地区の住所をすべて知っている",
+        "大きなかばんを持ち歩く",
+        "手紙や小包を届ける",
+        "宅配便の配達員",
+        "タクシー運転手",
+        "店員"
+      ],
+      "h55": [
+        "庭師",
+        "何をいつ植えればいいか知っている",
+        "道具はじょうろと剪定ばさみ",
+        "花や木の世話をする",
+        "農家",
+        "森林官",
+        "花屋"
+      ],
+      "h56": [
+        "写真家",
+        "一瞬をとらえる",
+        "みんなに「動かないで」とお願いする",
+        "カメラで写真を撮るのが仕事",
+        "画家",
+        "記者",
+        "映像カメラマン"
+      ],
+      "h57": [
+        "釣り人",
+        "夜明け前に起きて、長いあいだ待つ",
+        "さおと根気が必要",
+        "魚を釣る",
+        "農家",
+        "船乗り",
+        "羊飼い"
+      ],
+      "h58": [
+        "宇宙飛行士",
+        "地上で長いあいだ訓練する",
+        "宇宙服を着る",
+        "宇宙へ飛び立つ",
+        "パイロット",
+        "天文学者",
+        "技術者"
+      ],
+      "h59": [
+        "建築家",
+        "わたしの仕事は街じゅうで見られる",
+        "図面を描く",
+        "家を設計する",
+        "建設作業員",
+        "デザイナー",
+        "技術者"
+      ],
+      "h60": [
+        "歯医者",
+        "わたしのいすをこわがる人が多い",
+        "ドリルを使って働く",
+        "歯を治す",
+        "外科医",
+        "眼科医",
+        "小児科医"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "10年後に住みたい場所は？",
+        "海のそば",
+        "山の中",
+        "大きな街",
+        "静かな村"
+      ],
+      "d02": [
+        "いつか住みたい家は？",
+        "居心地のいいマンション",
+        "庭つきの一軒家",
+        "湖のほとりの小さな家",
+        "歴史のある古い家"
+      ],
+      "d03": [
+        "庭で育てたいものは？",
+        "リンゴの木",
+        "バラ",
+        "野菜とハーブ",
+        "イチゴ"
+      ],
+      "d04": [
+        "飼ってみたいペットは？",
+        "ネコ",
+        "オウム",
+        "水槽の魚",
+        "カメ"
+      ],
+      "d05": [
+        "まず行ってみたい国は？",
+        "ペルー",
+        "モロッコ",
+        "アイスランド",
+        "ニュージーランド"
+      ],
+      "d06": [
+        "どうやって旅をしたい？",
+        "列車で",
+        "車で",
+        "飛行機で",
+        "船で"
+      ],
+      "d07": [
+        "学んでみたい言語は？",
+        "アラビア語",
+        "フランス語",
+        "スペイン語",
+        "中国語"
+      ],
+      "d08": [
+        "できるようになりたいことは？",
+        "絵を描く",
+        "裁縫",
+        "水泳",
+        "プログラミング"
+      ],
+      "d09": [
+        "マスターしたい料理は？",
+        "中央アジアのピラフ",
+        "手作りパン",
+        "寿司",
+        "バクラヴァ"
+      ],
+      "d10": [
+        "週末の過ごし方は？",
+        "自然の中で",
+        "家で本を読む",
+        "家族を訪ねる",
+        "知らない街へ"
+      ],
+      "d11": [
+        "理想の週末の朝は？",
+        "朝早くの散歩",
+        "ゆっくり朝ごはん",
+        "外の空気の中で体操",
+        "ベランダでお茶"
+      ],
+      "d12": [
+        "貯金して手に入れたいものは？",
+        "自分の家",
+        "大きな旅",
+        "車",
+        "学び"
+      ],
+      "d13": [
+        "してみたい仕事は？",
+        "自分のビジネス",
+        "大きな会社で働く",
+        "在宅の仕事",
+        "人を助ける仕事"
+      ],
+      "d14": [
+        "人の役に立つ方法は？",
+        "ボランティア",
+        "動物を助ける",
+        "子どもに教える",
+        "木を植える"
+      ],
+      "d15": [
+        "つくりたい家族の習慣は？",
+        "日曜日にみんなでお昼",
+        "ボードゲームの夜",
+        "週末の散歩",
+        "家族のアルバム"
+      ],
+      "d16": [
+        "理想のキッチンは？",
+        "大きな家族用キッチン",
+        "明るくて居心地がいい",
+        "庭が見える",
+        "小さくても使いやすい"
+      ],
+      "d17": [
+        "自分の目で見てみたいものは？",
+        "オーロラ",
+        "ギザのピラミッド",
+        "ヴィクトリアの滝",
+        "ヒマラヤ"
+      ],
+      "d18": [
+        "夜にしたいことは？",
+        "読書",
+        "新しい料理を作る",
+        "語学の勉強",
+        "公園の散歩"
+      ],
+      "d19": [
+        "始めてみたい趣味は？",
+        "写真",
+        "陶芸",
+        "刺しゅう",
+        "ガーデニング"
+      ],
+      "d20": [
+        "週末に出かけたい場所は？",
+        "森",
+        "湖",
+        "近くの町",
+        "山"
+      ],
+      "d21": [
+        "理想の仕事スペースは？",
+        "窓のそば",
+        "本棚に囲まれて",
+        "緑の植物がいっぱい",
+        "ほとんど何もない"
+      ],
+      "d22": [
+        "次に学んでみたい分野は？",
+        "医学",
+        "歴史",
+        "経済学",
+        "デザイン"
+      ],
+      "d23": [
+        "植えてみたい木は？",
+        "オーク",
+        "リンゴの木",
+        "オリーブの木",
+        "ナツメヤシ"
+      ],
+      "d24": [
+        "お客さまに作りたい料理は？",
+        "手作りのパイ",
+        "大鍋のピラフ",
+        "家に伝わるスープ",
+        "新鮮なサラダ"
+      ],
+      "d25": [
+        "訪ねてみたい街は？",
+        "イスタンブール",
+        "パリ",
+        "ロンドン",
+        "カイロ"
+      ],
+      "d26": [
+        "夏の過ごし方は？",
+        "海辺で",
+        "山で",
+        "田舎の家で",
+        "国内を旅して"
+      ],
+      "d27": [
+        "飼ってみたい鳥は？",
+        "カナリア",
+        "セキセイインコ",
+        "ハト",
+        "キンカチョウ"
+      ],
+      "d28": [
+        "挑戦してみたいスポーツは？",
+        "水泳",
+        "乗馬",
+        "アーチェリー",
+        "クライミング"
+      ],
+      "d29": [
+        "集めてみたい本は？",
+        "百科事典",
+        "古典文学",
+        "旅の本",
+        "料理の本"
+      ],
+      "d30": [
+        "自分の手で作りたいものは？",
+        "家具",
+        "自分の器",
+        "手編みのブランケット",
+        "巣箱"
+      ],
+      "d31": [
+        "ピクニックをしたい場所は？",
+        "川岸",
+        "庭",
+        "森の空き地",
+        "山"
+      ],
+      "d32": [
+        "いつか使いたい移動手段は？",
+        "電気自動車",
+        "自転車",
+        "大きなファミリーカー",
+        "車なしの暮らし"
+      ],
+      "d33": [
+        "老後にしたいことは？",
+        "庭仕事",
+        "旅行",
+        "孫と過ごす時間",
+        "新しいことを学ぶ"
+      ],
+      "d34": [
+        "してみたい善い行いは？",
+        "井戸を作る",
+        "猫の保護施設を手伝う",
+        "学校のために本を集める",
+        "並木を植える"
+      ],
+      "d35": [
+        "週末の朝ごはんは？",
+        "パンケーキ",
+        "オムレツ",
+        "フルーツ入りのおかゆ",
+        "チーズパンケーキ"
+      ],
+      "d36": [
+        "お客さまを迎えたい場所は？",
+        "キッチン",
+        "リビング",
+        "テラス",
+        "庭"
+      ],
+      "d37": [
+        "見てみたい自然の絶景は？",
+        "グランドキャニオン",
+        "ナイアガラの滝",
+        "バイカル湖",
+        "サハラ砂漠"
+      ],
+      "d38": [
+        "身につけたい家のスキルは？",
+        "自分で修理",
+        "裁縫",
+        "パン焼き",
+        "庭の手入れ"
+      ],
+      "d39": [
+        "話せるようになりたい言語の数は？",
+        "2つ",
+        "3つ",
+        "5つ",
+        "できるだけたくさん"
+      ],
+      "d40": [
+        "家の壁の色は？",
+        "白",
+        "ベージュ",
+        "薄い緑",
+        "水色"
+      ],
+      "d41": [
+        "水槽で飼いたい魚は？",
+        "金魚",
+        "グッピー",
+        "ナマズ",
+        "エンゼルフィッシュ"
+      ],
+      "d42": [
+        "両親に贈りたい旅は？",
+        "海辺での休暇",
+        "街めぐり",
+        "山への旅",
+        "列車の旅"
+      ],
+      "d43": [
+        "自由な時間にしたいことは？",
+        "絵を描く",
+        "読書",
+        "スポーツ",
+        "手芸"
+      ],
+      "d44": [
+        "旅をしたい季節は？",
+        "春",
+        "夏",
+        "秋",
+        "冬"
+      ],
+      "d45": [
+        "冬に向けて作りおきしたいものは？",
+        "ジャム",
+        "ピクルス",
+        "ドライフルーツ",
+        "フルーツのコンポート"
+      ],
+      "d46": [
+        "やってみたい別の仕事は？",
+        "料理人",
+        "プログラマー",
+        "翻訳者",
+        "木工職人"
+      ],
+      "d47": [
+        "よく知りたい国は？",
+        "マレーシア",
+        "イタリア",
+        "カナダ",
+        "インドネシア"
+      ],
+      "d48": [
+        "庭にあったらいいものは？",
+        "小さな噴水",
+        "家庭菜園",
+        "あずまや",
+        "ブランコ"
+      ],
+      "d49": [
+        "うまくいったときのお祝いは？",
+        "家族で夕食",
+        "自然の中へお出かけ",
+        "新しい本",
+        "人のための善い行い"
+      ],
+      "d50": [
+        "子どもに伝えたいものは？",
+        "本を好きな心",
+        "料理の腕",
+        "母語",
+        "自然を大切にする心"
+      ]
     }
   },
   "ko": {
@@ -34531,7 +49475,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "승리! 세상에 대해 더 많이 알고 있네요.",
       "tfFinalLose": "이번엔 {name} 님이 더 많이 알았어요 — 한 판 더 할까요?",
       "tfFinalDraw": "무승부 — 둘 다 똑같이 잘 아네요!",
-      "featTruth": "실시간 게임 “진짜일까 가짜일까” — 세상의 놀라운 사실들"
+      "featTruth": "실시간 게임 “진짜일까 가짜일까” — 세상의 놀라운 사실들",
+      "countries": "나라 맞히기",
+      "coTitle": "나라 맞히기",
+      "coNote": "둘이 함께하는 실시간 게임: 곰이 세계를 여행해요. 10초 안에 어느 나라인지 맞혀 보세요! 정답마다 1점.",
+      "coShareText": "{name} 님이 실시간 게임 “나라 맞히기”에 초대했어요",
+      "coJoinLead": "{name} 님이 기다리고 있어요. 그림을 보고 나라를 맞혀 보세요!",
+      "coRound": "나라 {n}/{total}",
+      "coAsk": "여기는 어느 나라일까요?",
+      "coFinalWin": "승리! 진정한 여행가네요.",
+      "coFinalLose": "이번엔 {name} 님이 세계를 더 잘 아네요 — 한 판 더 할까요?",
+      "coFinalDraw": "무승부 — 두 분 모두 세계를 잘 아시네요!",
+      "featCountries": "실시간 게임 “나라 맞히기” — 40개국",
+      "hints": "힌트로 맞히기",
+      "dreams": "꿈과 계획",
+      "hiTitle": "힌트로 맞히기",
+      "hiNote": "둘이 하는 실시간 게임: 힌트 세 개가 하나씩 열려요. 첫 번째 힌트에서 맞히면 3점, 두 번째는 2점, 세 번째는 1점!",
+      "hiShareText": "{name} 님이 실시간 게임 “힌트로 맞히기”에 초대했어요",
+      "hiJoinLead": "{name} 님이 기다리고 있어요. 최대한 빨리 맞혀 봐요!",
+      "hiRound": "수수께끼 {n}/{total}",
+      "hiAsk": "무엇일까요?",
+      "hiClue": "힌트 {n}",
+      "hiPoints": "+{n}점",
+      "hiNoPoints": "이번에는 점수가 없어요",
+      "hiFinalWin": "승리! 정말 잘 맞히네요.",
+      "hiFinalLose": "이번엔 {name} 님이 더 잘 맞혔어요 — 한 판 더 할까요?",
+      "hiFinalDraw": "무승부 — 둘 다 정말 잘 맞혀요!",
+      "featHints": "실시간 게임 “힌트로 맞히기” — 3점, 2점 또는 1점",
+      "drTitle": "꿈과 계획",
+      "drNote": "둘이 하는 실시간 게임: 집, 여행, 배움, 취미. 원하는 것을 고르고 꿈이 같은지 확인해요.",
+      "drShareText": "{name} 님이 실시간 게임 “꿈과 계획”에 초대했어요",
+      "drJoinLead": "{name} 님이 기다리고 있어요. 정말 원하는 것을 골라요!",
+      "drRound": "질문 {n}/{total}",
+      "drPick": "원하는 것을 골라요",
+      "drBoth": "같은 꿈: {item}",
+      "drDiff": "꿈이 달라요 — 서로 이유를 이야기해 봐요!",
+      "drFinalHigh": "같은 꿈이 정말 많아요!",
+      "drFinalMid": "꿈은 달라도 나눌 이야기가 많아요",
+      "drCommon": "우리의 같은 꿈",
+      "featDreams": "실시간 게임 “꿈과 계획” — 꿈이 같을까요?",
+      "modestTitle": "건전 모드",
+      "modestNote": "감정, 포옹, 데이트에 관한 질문 없이 친근한 질문만"
     },
     "questions": {
       "q01": [
@@ -36450,6 +51434,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "남극이 훨씬 추워요. 남극은 높은 얼음 대륙 위에, 북극은 바다 위에 있거든요."
       ]
+    },
+    "hints": {
+      "h01": [
+        "펭귄",
+        "나는 새지만 날지 못해요",
+        "아주 추운 곳에 살아요",
+        "늘 연미복을 입고 있어요",
+        "타조",
+        "물개",
+        "갈매기"
+      ],
+      "h02": [
+        "코끼리",
+        "거의 하루 종일 먹어요",
+        "내 귀는 커다란 부채 같아요",
+        "긴 코가 있어요",
+        "코뿔소",
+        "하마",
+        "기린"
+      ],
+      "h03": [
+        "기린",
+        "잠을 아주 조금 자고, 서서 잘 때도 많아요",
+        "가장 높은 나무의 잎을 먹어요",
+        "목이 가장 길어요",
+        "얼룩말",
+        "낙타",
+        "말코손바닥사슴"
+      ],
+      "h04": [
+        "낙타",
+        "물 없이도 오래 지낼 수 있어요",
+        "사막의 배라고 불려요",
+        "등에 혹이 하나나 두 개 있어요",
+        "말",
+        "당나귀",
+        "라마"
+      ],
+      "h05": [
+        "꿀벌",
+        "친구들에게 꽃으로 가는 길을 알려 줄 수 있어요",
+        "아침부터 저녁까지 들판에서 일해요",
+        "꿀을 만들어요",
+        "말벌",
+        "파리",
+        "나비"
+      ],
+      "h06": [
+        "거북",
+        "백 년 넘게 살 수도 있어요",
+        "절대 서두르지 않아요",
+        "집을 등에 지고 다녀요",
+        "달팽이",
+        "도마뱀",
+        "고슴도치"
+      ],
+      "h07": [
+        "캥거루",
+        "꼬리로 균형을 잡아요",
+        "오스트레일리아에 살아요",
+        "새끼를 주머니에 넣고 다녀요",
+        "코알라",
+        "토끼",
+        "다람쥐"
+      ],
+      "h08": [
+        "부엉이",
+        "고개를 거의 뒤까지 돌릴 수 있어요",
+        "밤에 사냥해요",
+        "어두운 숲에서 부엉부엉 울어요",
+        "까마귀",
+        "독수리",
+        "비둘기"
+      ],
+      "h09": [
+        "돌고래",
+        "바다에 살지만 공기로 숨을 쉬어요",
+        "사람을 돕고 휘파람 소리로 이야기해요",
+        "파도 위로 뛰어오르는 걸 좋아해요",
+        "상어",
+        "고래",
+        "물개"
+      ],
+      "h10": [
+        "다람쥐",
+        "먹이를 숨기고 가끔 어디 뒀는지 잊어요",
+        "나무 구멍에 살아요",
+        "도토리와 솔방울을 갉아 먹어요",
+        "고슴도치",
+        "토끼",
+        "생쥐"
+      ],
+      "h11": [
+        "거미",
+        "곤충이라고들 하지만 곤충이 아니에요",
+        "다리가 여덟 개예요",
+        "실을 뽑아 그물을 쳐요",
+        "개미",
+        "딱정벌레",
+        "모기"
+      ],
+      "h12": [
+        "고양이",
+        "어둠 속에서 사람보다 잘 봐요",
+        "따뜻한 창가를 좋아해요",
+        "가르랑거리고 쥐를 잡아요",
+        "토끼",
+        "햄스터",
+        "앵무새"
+      ],
+      "h13": [
+        "수박",
+        "과학자들은 나를 장과라고 불러요",
+        "여름이면 모두가 나를 기다려요",
+        "겉은 초록, 속은 빨강",
+        "멜론",
+        "호박",
+        "파인애플"
+      ],
+      "h14": [
+        "빵",
+        "거의 모든 나라에서 구워요",
+        "점심에 얇게 썰어 먹어요",
+        "흰 것도 호밀로 만든 것도 있고 겉껍질이 있어요",
+        "팬케이크",
+        "파이",
+        "쿠키"
+      ],
+      "h15": [
+        "꿀",
+        "수천 년 동안 상하지 않을 수 있어요",
+        "감기에 걸리면 따뜻한 차에 넣어요",
+        "벌들이 나를 만들어요",
+        "잼",
+        "설탕",
+        "우유"
+      ],
+      "h16": [
+        "레몬",
+        "비타민 C가 가득해요",
+        "차에 넣기도 해요",
+        "노랗고 아주 셔요",
+        "오렌지",
+        "자몽",
+        "라임"
+      ],
+      "h17": [
+        "당근",
+        "땅속에서 자라고 잎만 보여요",
+        "눈 건강에 좋다고들 해요",
+        "주황색이고 토끼가 좋아해요",
+        "비트",
+        "무",
+        "감자"
+      ],
+      "h18": [
+        "사과",
+        "여름 품종도 겨울 품종도 있어요",
+        "파이와 주스가 돼요",
+        "나무에서 자라요, 빨갛거나 초록색",
+        "배",
+        "복숭아",
+        "자두"
+      ],
+      "h19": [
+        "바나나",
+        "키 큰 식물에 송이로 열려요",
+        "원숭이가 아주 좋아해요",
+        "노랗고 껍질을 벗겨 먹어요",
+        "망고",
+        "키위",
+        "파인애플"
+      ],
+      "h20": [
+        "차",
+        "중국에서는 수천 년 동안 나를 마셔요",
+        "검은 것, 초록색, 허브 등 종류가 많아요",
+        "주전자에 우려내요",
+        "커피",
+        "코코아",
+        "주스"
+      ],
+      "h21": [
+        "달걀",
+        "내가 없으면 케이크를 굽기 어려워요",
+        "오믈렛은 나로 만들어요",
+        "암탉이 나를 낳아요",
+        "치즈",
+        "견과",
+        "감자"
+      ],
+      "h22": [
+        "우산",
+        "대부분의 시간을 접힌 채로 지내요",
+        "하늘이 흐려지면 챙겨요",
+        "비 올 때 젖지 않게 지켜 줘요",
+        "우비",
+        "모자",
+        "장화"
+      ],
+      "h23": [
+        "시계",
+        "모래나 햇빛으로 움직이는 것도 있어요",
+        "벽에 걸리고 탑에도 있어요",
+        "바늘로 시간을 알려 줘요",
+        "나침반",
+        "달력",
+        "온도계"
+      ],
+      "h24": [
+        "열쇠",
+        "내가 없으면 문이 열리지 않아요",
+        "고리에 달고 다니는 경우가 많아요",
+        "자물쇠를 열어요",
+        "가위",
+        "드라이버",
+        "클립"
+      ],
+      "h25": [
+        "양초",
+        "일할수록 점점 작아져요",
+        "정전이 되면 나에게 불을 붙여요",
+        "밀랍으로 만들고 심지가 있어요",
+        "손전등",
+        "램프",
+        "성냥"
+      ],
+      "h26": [
+        "가위",
+        "고리 두 개와 뾰족한 끝 두 개가 있어요",
+        "종이에서 모양을 오려 내요",
+        "천과 종이를 잘라요",
+        "칼",
+        "바늘",
+        "자"
+      ],
+      "h27": [
+        "칫솔",
+        "털이 아주 많아요",
+        "석 달마다 바꿔요",
+        "아침저녁으로 이를 닦아요",
+        "비누",
+        "수건",
+        "스펀지"
+      ],
+      "h28": [
+        "냉장고",
+        "내 안은 늘 겨울이에요",
+        "문을 열면 불이 켜져요",
+        "음식을 차갑게 보관해요",
+        "가스레인지",
+        "오븐",
+        "찬장"
+      ],
+      "h29": [
+        "자전거",
+        "연료도 전기도 없이 달려요",
+        "핸들, 벨, 체인이 있어요",
+        "바퀴 두 개와 페달이 있어요",
+        "킥보드",
+        "오토바이",
+        "스케이트보드"
+      ],
+      "h30": [
+        "비행기",
+        "날개가 있지만 새는 아니에요",
+        "공항에서 모두가 나를 기다려요",
+        "승객을 태우고 구름 위를 날아요",
+        "헬리콥터",
+        "로켓",
+        "열기구"
+      ],
+      "h31": [
+        "기차",
+        "나만의 길로만 다녀요",
+        "객차가 많아요",
+        "역에서 역으로 레일 위를 달려요",
+        "트램",
+        "버스",
+        "지하철"
+      ],
+      "h32": [
+        "다리",
+        "돌, 나무, 강철로 지어요",
+        "내 밑으로 배가 지나갈 수 있어요",
+        "강의 양쪽을 이어 줘요",
+        "터널",
+        "도로",
+        "댐"
+      ],
+      "h33": [
+        "연필",
+        "내 안에는 흑연이 있어요",
+        "뭉툭해지면 깎아요",
+        "쓰고 그리고, 지우개로 지울 수 있어요",
+        "볼펜",
+        "분필",
+        "마커"
+      ],
+      "h34": [
+        "책",
+        "말은 없지만 많은 것을 가르쳐요",
+        "표지와 쪽이 있어요",
+        "사람들이 읽고 도서관에서 빌려 가요",
+        "잡지",
+        "신문",
+        "공책"
+      ],
+      "h35": [
+        "여행 가방",
+        "여행을 많이 하지만 늘 누군가의 손에 있어요",
+        "여행 전에 짐을 채워요",
+        "손잡이와 바퀴가 있고 옷을 담아요",
+        "배낭",
+        "가방",
+        "상자"
+      ],
+      "h36": [
+        "도서관",
+        "여기서는 조용히 말해 달라고 해요",
+        "여기서 이용 카드를 만들어요",
+        "수천 권의 책을 집으로 빌려 가요",
+        "학교",
+        "서점",
+        "기록 보관소"
+      ],
+      "h37": [
+        "공항",
+        "여기에는 출입국 심사가 있어요",
+        "여기서 탑승 안내 방송이 나와요",
+        "여기서 비행기가 이륙해요",
+        "기차역",
+        "항구",
+        "버스 터미널"
+      ],
+      "h38": [
+        "사막",
+        "낮에는 덥지만 밤에는 아주 추울 수 있어요",
+        "오아시스를 만날 수 있어요",
+        "모래는 많고 물은 아주 적어요",
+        "초원",
+        "사바나",
+        "해변"
+      ],
+      "h39": [
+        "화산",
+        "수백 년 동안 잠들어 있을 수 있어요",
+        "꼭대기에서 연기가 피어올라요",
+        "용암을 뿜어내요",
+        "산",
+        "간헐천",
+        "섬"
+      ],
+      "h40": [
+        "무지개",
+        "해를 등지고 있을 때만 보여요",
+        "비가 그친 뒤에 자주 나타나요",
+        "하늘에 걸린 일곱 빛깔 아치",
+        "번개",
+        "구름",
+        "오로라"
+      ],
+      "h41": [
+        "달",
+        "지구에 늘 같은 쪽만 보여 줘요",
+        "둥글게 차기도 하고 가는 눈썹 모양이 되기도 해요",
+        "밤하늘에서 빛나요",
+        "해",
+        "별",
+        "혜성"
+      ],
+      "h42": [
+        "눈",
+        "내 결정은 하나하나 모양이 달라요",
+        "사람들이 나로 성과 사람 모양을 만들어요",
+        "겨울에 내리는 하얗고 차가운 것",
+        "비",
+        "우박",
+        "서리"
+      ],
+      "h43": [
+        "강",
+        "발원지와 하구가 있어요",
+        "내 위로 배가 다녀요",
+        "산에서 바다로 흘러가요",
+        "호수",
+        "바다",
+        "개울"
+      ],
+      "h44": [
+        "선인장",
+        "물 없이도 오래 살 수 있어요",
+        "사막에서도 창가에서도 자라요",
+        "가시로 덮여 있어요",
+        "알로에",
+        "야자나무",
+        "데이지"
+      ],
+      "h45": [
+        "해바라기",
+        "내 씨로 기름을 만들어요",
+        "해를 따라 고개를 돌려요",
+        "씨가 가득한 크고 노란 꽃",
+        "데이지",
+        "튤립",
+        "민들레"
+      ],
+      "h46": [
+        "참나무",
+        "천 년 넘게 살 수도 있어요",
+        "힘의 상징으로 여겨져요",
+        "도토리가 열려요",
+        "자작나무",
+        "소나무",
+        "단풍나무"
+      ],
+      "h47": [
+        "섬",
+        "나라 하나가 통째로 내 위에 있을 수도 있어요",
+        "배나 비행기를 타고 와요",
+        "사방이 물로 둘러싸여 있어요",
+        "반도",
+        "산호초",
+        "곶"
+      ],
+      "h48": [
+        "폭포",
+        "멀리서도 내 소리가 들려요",
+        "가장 높은 것은 베네수엘라에 있어요",
+        "강물이 절벽 아래로 떨어지는 곳",
+        "분수",
+        "간헐천",
+        "샘"
+      ],
+      "h49": [
+        "의사",
+        "일을 시작하기 전에 오랫동안 공부해요",
+        "흰 가운을 입어요",
+        "아픈 사람을 치료해요",
+        "간호사",
+        "약사",
+        "수의사"
+      ],
+      "h50": [
+        "소방관",
+        "밤낮으로 출동 준비를 하고 있어요",
+        "물과 사다리로 일해요",
+        "불을 꺼요",
+        "경찰관",
+        "구조대원",
+        "건설 노동자"
+      ],
+      "h51": [
+        "요리사",
+        "만드는 것은 모두 맛을 봐요",
+        "뜨거운 불 앞에서 일해요",
+        "식당에서 음식을 만들어요",
+        "제빵사",
+        "웨이터",
+        "제과사"
+      ],
+      "h52": [
+        "선생님",
+        "저녁마다 공책을 검사해요",
+        "칠판 앞에 서 있어요",
+        "학교에서 아이들을 가르쳐요",
+        "교장",
+        "사서",
+        "유치원 교사"
+      ],
+      "h53": [
+        "조종사",
+        "내 일터는 조종실이에요",
+        "스피커로 승객에게 말해요",
+        "비행기를 조종해요",
+        "선장",
+        "운전기사",
+        "우주 비행사"
+      ],
+      "h54": [
+        "집배원",
+        "우리 동네 주소를 모두 알아요",
+        "큰 가방을 메고 다녀요",
+        "편지와 소포를 배달해요",
+        "택배 기사",
+        "택시 기사",
+        "점원"
+      ],
+      "h55": [
+        "정원사",
+        "무엇을 언제 심어야 하는지 알아요",
+        "내 도구는 물뿌리개와 전정 가위",
+        "꽃과 나무를 돌봐요",
+        "농부",
+        "산림 관리원",
+        "꽃집 주인"
+      ],
+      "h56": [
+        "사진작가",
+        "순간을 붙잡아요",
+        "모두에게 움직이지 말라고 부탁해요",
+        "카메라와 사진으로 일해요",
+        "화가",
+        "기자",
+        "촬영 기사"
+      ],
+      "h57": [
+        "어부",
+        "동트기 전에 일어나 오래 기다려요",
+        "낚싯대와 인내심이 필요해요",
+        "물고기를 잡아요",
+        "농부",
+        "선원",
+        "목동"
+      ],
+      "h58": [
+        "우주 비행사",
+        "지구에서 오랫동안 훈련해요",
+        "우주복을 입어요",
+        "우주로 날아가요",
+        "조종사",
+        "천문학자",
+        "엔지니어"
+      ],
+      "h59": [
+        "건축가",
+        "내 작품은 도시 곳곳에서 보여요",
+        "도면을 그려요",
+        "집을 설계해요",
+        "건설 노동자",
+        "디자이너",
+        "엔지니어"
+      ],
+      "h60": [
+        "치과 의사",
+        "많은 사람이 내 의자를 무서워해요",
+        "드릴로 일해요",
+        "이를 치료해요",
+        "외과 의사",
+        "안과 의사",
+        "소아과 의사"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "10년 뒤에 살고 싶은 곳은?",
+        "바닷가",
+        "산속",
+        "대도시",
+        "조용한 마을"
+      ],
+      "d02": [
+        "언젠가 살고 싶은 집은?",
+        "아늑한 아파트",
+        "정원이 있는 집",
+        "호숫가의 작은 집",
+        "역사가 있는 오래된 집"
+      ],
+      "d03": [
+        "정원에서 키우고 싶은 것은?",
+        "사과나무",
+        "장미",
+        "채소와 허브",
+        "딸기"
+      ],
+      "d04": [
+        "키우고 싶은 반려동물은?",
+        "고양이",
+        "앵무새",
+        "수족관 물고기",
+        "거북"
+      ],
+      "d05": [
+        "가장 먼저 가 보고 싶은 곳은?",
+        "일본",
+        "모로코",
+        "아이슬란드",
+        "뉴질랜드"
+      ],
+      "d06": [
+        "어떻게 여행하고 싶나요?",
+        "기차로",
+        "자동차로",
+        "비행기로",
+        "배로"
+      ],
+      "d07": [
+        "배우고 싶은 언어는?",
+        "아랍어",
+        "일본어",
+        "스페인어",
+        "중국어"
+      ],
+      "d08": [
+        "할 수 있게 되고 싶은 것은?",
+        "그림 그리기",
+        "바느질",
+        "수영",
+        "코딩"
+      ],
+      "d09": [
+        "제대로 배우고 싶은 요리는?",
+        "플롭(중앙아시아식 볶음밥)",
+        "집에서 굽는 빵",
+        "초밥",
+        "바클라바"
+      ],
+      "d10": [
+        "주말을 보내고 싶은 방식은?",
+        "자연 속에서",
+        "집에서 책과 함께",
+        "가족을 찾아가서",
+        "새로운 도시에서"
+      ],
+      "d11": [
+        "완벽한 주말 아침은?",
+        "이른 산책",
+        "느긋한 아침 식사",
+        "바깥 공기 속 운동",
+        "발코니에서 차 한잔"
+      ],
+      "d12": [
+        "모으고 싶은 돈의 목적은?",
+        "내 집 마련",
+        "큰 여행",
+        "자동차",
+        "공부"
+      ],
+      "d13": [
+        "하고 싶은 일은?",
+        "나만의 사업",
+        "큰 회사에서 일하기",
+        "재택근무",
+        "사람을 돕는 일"
+      ],
+      "d14": [
+        "다른 사람을 돕고 싶은 방법은?",
+        "자원봉사",
+        "동물 돕기",
+        "아이들 가르치기",
+        "나무 심기"
+      ],
+      "d15": [
+        "만들고 싶은 가족 전통은?",
+        "일요일에 함께 점심",
+        "보드게임 저녁",
+        "주말 산책",
+        "가족 사진첩"
+      ],
+      "d16": [
+        "원하는 부엌은?",
+        "넓은 가족 부엌",
+        "밝고 아늑한 부엌",
+        "정원이 보이는 부엌",
+        "작지만 실용적인 부엌"
+      ],
+      "d17": [
+        "직접 눈으로 보고 싶은 것은?",
+        "오로라",
+        "기자의 피라미드",
+        "빅토리아 폭포",
+        "히말라야"
+      ],
+      "d18": [
+        "저녁에 하고 싶은 일은?",
+        "독서",
+        "새로운 요리",
+        "외국어 공부",
+        "공원 산책"
+      ],
+      "d19": [
+        "시작하고 싶은 취미는?",
+        "사진",
+        "도자기",
+        "자수",
+        "정원 가꾸기"
+      ],
+      "d20": [
+        "주말에 가고 싶은 곳은?",
+        "숲",
+        "호수",
+        "가까운 소도시",
+        "산"
+      ],
+      "d21": [
+        "이상적인 작업 공간은?",
+        "창가",
+        "책장이 있는 곳",
+        "초록 식물이 가득한 곳",
+        "거의 텅 빈 곳"
+      ],
+      "d22": [
+        "다음에 공부하고 싶은 분야는?",
+        "의학",
+        "역사",
+        "경제학",
+        "디자인"
+      ],
+      "d23": [
+        "심고 싶은 나무는?",
+        "참나무",
+        "사과나무",
+        "올리브나무",
+        "대추야자"
+      ],
+      "d24": [
+        "손님에게 대접하고 싶은 요리는?",
+        "집에서 구운 파이",
+        "큰 냄비 플롭",
+        "집안 대대로 내려온 수프",
+        "신선한 샐러드"
+      ],
+      "d25": [
+        "가 보고 싶은 도시는?",
+        "이스탄불",
+        "파리",
+        "도쿄",
+        "카이로"
+      ],
+      "d26": [
+        "여름을 보내고 싶은 곳은?",
+        "바닷가",
+        "산",
+        "시골집",
+        "국내 여행"
+      ],
+      "d27": [
+        "키우고 싶은 새는?",
+        "카나리아",
+        "사랑앵무",
+        "비둘기",
+        "금화조"
+      ],
+      "d28": [
+        "해 보고 싶은 운동은?",
+        "수영",
+        "승마",
+        "양궁",
+        "클라이밍"
+      ],
+      "d29": [
+        "모으고 싶은 책은?",
+        "백과사전",
+        "고전",
+        "여행책",
+        "요리책"
+      ],
+      "d30": [
+        "직접 만들어 보고 싶은 것은?",
+        "가구",
+        "나만의 그릇",
+        "손뜨개 담요",
+        "새집"
+      ],
+      "d31": [
+        "소풍 가고 싶은 곳은?",
+        "강가",
+        "정원",
+        "숲속 빈터",
+        "산"
+      ],
+      "d32": [
+        "언젠가 타고 싶은 교통수단은?",
+        "전기차",
+        "자전거",
+        "큰 가족용 차",
+        "차 없는 생활"
+      ],
+      "d33": [
+        "은퇴 후에 하고 싶은 일은?",
+        "정원 가꾸기",
+        "여행",
+        "손주와 보내는 시간",
+        "새로운 배움"
+      ],
+      "d34": [
+        "하고 싶은 좋은 일은?",
+        "우물 만들기",
+        "고양이 보호소 돕기",
+        "학교에 책 모아 주기",
+        "나무 한 줄 심기"
+      ],
+      "d35": [
+        "주말 아침 식사로 원하는 것은?",
+        "팬케이크",
+        "오믈렛",
+        "과일 넣은 죽",
+        "치즈 팬케이크"
+      ],
+      "d36": [
+        "손님을 맞이하고 싶은 곳은?",
+        "부엌",
+        "거실",
+        "테라스",
+        "정원"
+      ],
+      "d37": [
+        "보고 싶은 자연의 경이는?",
+        "그랜드 캐니언",
+        "나이아가라 폭포",
+        "바이칼 호수",
+        "사하라 사막"
+      ],
+      "d38": [
+        "배우고 싶은 살림 기술은?",
+        "직접 하는 수리",
+        "바느질",
+        "빵 굽기",
+        "정원 관리"
+      ],
+      "d39": [
+        "할 줄 알고 싶은 언어는 몇 개?",
+        "두 개",
+        "세 개",
+        "다섯 개",
+        "최대한 많이"
+      ],
+      "d40": [
+        "집 벽 색깔로 원하는 것은?",
+        "흰색",
+        "베이지색",
+        "연두색",
+        "하늘색"
+      ],
+      "d41": [
+        "수족관에 두고 싶은 물고기는?",
+        "금붕어",
+        "구피",
+        "메기",
+        "엔젤피시"
+      ],
+      "d42": [
+        "부모님께 선물하고 싶은 여행은?",
+        "바닷가 휴가",
+        "도시 여행",
+        "산 여행",
+        "기차 여행"
+      ],
+      "d43": [
+        "여가 시간에 하고 싶은 것은?",
+        "그림",
+        "독서",
+        "운동",
+        "손공예"
+      ],
+      "d44": [
+        "여행하고 싶은 계절은?",
+        "봄",
+        "여름",
+        "가을",
+        "겨울"
+      ],
+      "d45": [
+        "겨울을 위해 저장하고 싶은 것은?",
+        "잼",
+        "피클",
+        "말린 과일",
+        "과일 콤포트"
+      ],
+      "d46": [
+        "해 보고 싶은 다른 직업은?",
+        "요리사",
+        "프로그래머",
+        "번역가",
+        "목공"
+      ],
+      "d47": [
+        "알아 가고 싶은 나라는?",
+        "말레이시아",
+        "이탈리아",
+        "캐나다",
+        "인도네시아"
+      ],
+      "d48": [
+        "마당에 두고 싶은 것은?",
+        "작은 분수",
+        "텃밭",
+        "정자",
+        "그네"
+      ],
+      "d49": [
+        "성공을 축하하고 싶은 방법은?",
+        "가족 저녁 식사",
+        "자연으로 나들이",
+        "새 책",
+        "다른 사람을 위한 좋은 일"
+      ],
+      "d50": [
+        "아이들에게 물려주고 싶은 것은?",
+        "책을 좋아하는 마음",
+        "요리 솜씨",
+        "우리 모국어",
+        "자연을 아끼는 마음"
+      ]
     }
   },
   "zh": {
@@ -36675,7 +52553,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "勝利！你對世界懂得更多。",
       "tfFinalLose": "這次 {name} 懂得更多 — 再來一局？",
       "tfFinalDraw": "平手 — 你們懂得一樣多！",
-      "featTruth": "即時遊戲「是真是假」— 關於世界的驚奇知識"
+      "featTruth": "即時遊戲「是真是假」— 關於世界的驚奇知識",
+      "countries": "猜猜哪個國家",
+      "coTitle": "猜猜哪個國家",
+      "coNote": "兩人即時遊戲：小熊環遊世界。10 秒內猜出牠在哪個國家！每答對一題得 1 分。",
+      "coShareText": "{name} 邀請你玩即時遊戲「猜猜哪個國家」",
+      "coJoinLead": "{name} 正在等你。看圖猜國家！",
+      "coRound": "第 {n} 個國家，共 {total} 個",
+      "coAsk": "這是哪個國家？",
+      "coFinalWin": "勝利！你是真正的旅行家。",
+      "coFinalLose": "這次 {name} 更懂世界——再來一局？",
+      "coFinalDraw": "平手——你們都很懂世界！",
+      "featCountries": "即時遊戲「猜猜哪個國家」— 40 個國家",
+      "hints": "看提示猜一猜",
+      "dreams": "夢想與計畫",
+      "hiTitle": "看提示猜一猜",
+      "hiNote": "兩人即時遊戲：三個提示會一個一個出現。看第一個就猜中得 3 分，第二個得 2 分，第三個得 1 分。",
+      "hiShareText": "{name} 邀請你玩即時遊戲「看提示猜一猜」",
+      "hiJoinLead": "{name} 在等你。越早猜中越好！",
+      "hiRound": "第 {n}/{total} 道謎題",
+      "hiAsk": "這是什麼？",
+      "hiClue": "提示 {n}",
+      "hiPoints": "+{n} 分",
+      "hiNoPoints": "這次沒有得分",
+      "hiFinalWin": "勝利！你真會猜。",
+      "hiFinalLose": "這次 {name} 猜得更準——再來一局？",
+      "hiFinalDraw": "平手——你們兩個都很會猜！",
+      "featHints": "即時遊戲「看提示猜一猜」— 3、2 或 1 分",
+      "drTitle": "夢想與計畫",
+      "drNote": "兩人即時遊戲：住家、旅行、學習與嗜好。選出想要的，看看你們的夢想是否一致。",
+      "drShareText": "{name} 邀請你玩即時遊戲「夢想與計畫」",
+      "drJoinLead": "{name} 在等你。選出你真正想要的吧！",
+      "drRound": "第 {n} 題，共 {total} 題",
+      "drPick": "選出你想要的",
+      "drBoth": "一致：{item}",
+      "drDiff": "夢想不同——跟對方說說原因吧！",
+      "drFinalHigh": "你們有好多相同的夢想！",
+      "drFinalMid": "夢想各不相同——有好多可以聊的",
+      "drCommon": "你們共同的夢想",
+      "featDreams": "即時遊戲「夢想與計畫」— 夢想一致嗎？",
+      "modestTitle": "含蓄模式",
+      "modestNote": "不問感情、擁抱或約會，只有友善的問題"
     },
     "questions": {
       "q01": [
@@ -38594,6 +54512,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "南極冷得多：它位於高聳的冰封大陸上，北極則在海洋上。"
       ]
+    },
+    "hints": {
+      "h01": [
+        "企鵝",
+        "我是鳥，卻不會飛",
+        "我住在非常寒冷的地方",
+        "我總是穿著燕尾服",
+        "鴕鳥",
+        "海豹",
+        "海鷗"
+      ],
+      "h02": [
+        "大象",
+        "我幾乎整天都在吃東西",
+        "我的耳朵像兩把大扇子",
+        "我有長長的鼻子",
+        "犀牛",
+        "河馬",
+        "長頸鹿"
+      ],
+      "h03": [
+        "長頸鹿",
+        "我睡得很少，常常站著睡",
+        "我吃最高的樹上的葉子",
+        "我的脖子最長",
+        "斑馬",
+        "駱駝",
+        "駝鹿"
+      ],
+      "h04": [
+        "駱駝",
+        "我可以很久不喝水",
+        "人們叫我沙漠之舟",
+        "我的背上有一個或兩個駝峰",
+        "馬",
+        "驢",
+        "羊駝"
+      ],
+      "h05": [
+        "蜜蜂",
+        "我能告訴同伴花在哪裡",
+        "我從早到晚在草地上工作",
+        "我會釀蜂蜜",
+        "黃蜂",
+        "蒼蠅",
+        "蝴蝶"
+      ],
+      "h06": [
+        "烏龜",
+        "我可以活一百多年",
+        "我從不著急",
+        "我把家背在背上",
+        "蝸牛",
+        "蜥蜴",
+        "刺蝟"
+      ],
+      "h07": [
+        "袋鼠",
+        "我的尾巴幫我保持平衡",
+        "我住在澳洲",
+        "我把寶寶放在育兒袋裡",
+        "無尾熊",
+        "野兔",
+        "松鼠"
+      ],
+      "h08": [
+        "貓頭鷹",
+        "我的頭幾乎能轉到背後",
+        "我在夜裡捕獵",
+        "我在黑暗的森林裡咕咕叫",
+        "烏鴉",
+        "老鷹",
+        "鴿子"
+      ],
+      "h09": [
+        "海豚",
+        "我住在海裡，卻呼吸空氣",
+        "我會幫助人，用口哨聲交談",
+        "我喜歡在浪花上跳躍",
+        "鯊魚",
+        "鯨魚",
+        "海豹"
+      ],
+      "h10": [
+        "松鼠",
+        "我把食物藏起來，有時卻忘了藏在哪",
+        "我住在樹洞裡",
+        "我啃堅果和松果",
+        "刺蝟",
+        "野兔",
+        "老鼠"
+      ],
+      "h11": [
+        "蜘蛛",
+        "很多人以為我是昆蟲，其實不是",
+        "我有八條腿",
+        "我會織網",
+        "螞蟻",
+        "甲蟲",
+        "蚊子"
+      ],
+      "h12": [
+        "貓",
+        "我在黑暗中看得比人清楚",
+        "我喜歡溫暖的窗台",
+        "我會呼嚕呼嚕叫，還會抓老鼠",
+        "兔子",
+        "倉鼠",
+        "鸚鵡"
+      ],
+      "h13": [
+        "西瓜",
+        "科學家說我是一種漿果",
+        "人們在夏天等著我",
+        "外面綠，裡面紅",
+        "哈密瓜",
+        "南瓜",
+        "鳳梨"
+      ],
+      "h14": [
+        "麵包",
+        "幾乎每個國家都會烤我",
+        "午餐時人們把我切成片",
+        "我有白的、裸麥的，外面有一層皮",
+        "鬆餅",
+        "派",
+        "餅乾"
+      ],
+      "h15": [
+        "蜂蜜",
+        "我可以保存好幾千年",
+        "感冒時人們把我加進溫茶裡",
+        "蜜蜂製造了我",
+        "果醬",
+        "糖",
+        "牛奶"
+      ],
+      "h16": [
+        "檸檬",
+        "我富含維生素 C",
+        "人們把我放進茶裡",
+        "我又黃又酸",
+        "柳橙",
+        "葡萄柚",
+        "萊姆"
+      ],
+      "h17": [
+        "紅蘿蔔",
+        "我長在土裡，只露出葉子",
+        "大家說我對眼睛好",
+        "我是橘色的，兔子最喜歡我",
+        "甜菜根",
+        "白蘿蔔",
+        "馬鈴薯"
+      ],
+      "h18": [
+        "蘋果",
+        "我有夏季品種也有冬季品種",
+        "我可以做成派和果汁",
+        "我長在樹上，紅的或綠的",
+        "梨子",
+        "桃子",
+        "李子"
+      ],
+      "h19": [
+        "香蕉",
+        "我一串串長在高大的植物上",
+        "猴子非常喜歡我",
+        "我是黃色的，要剝皮才能吃",
+        "芒果",
+        "奇異果",
+        "鳳梨"
+      ],
+      "h20": [
+        "茶",
+        "中國人喝我已經好幾千年",
+        "我有紅的、綠的，也有花草的",
+        "人們用壺沖泡我",
+        "咖啡",
+        "可可",
+        "果汁"
+      ],
+      "h21": [
+        "蛋",
+        "沒有我，很難烤出鬆軟的糕點",
+        "我可以煎、可以煮，也可以炒",
+        "母雞生下我",
+        "起司",
+        "堅果",
+        "馬鈴薯"
+      ],
+      "h22": [
+        "雨傘",
+        "我大部分時間都收合著",
+        "天空變灰時，人們會帶上我",
+        "下雨時我讓你不被淋濕",
+        "雨衣",
+        "帽子",
+        "雨靴"
+      ],
+      "h23": [
+        "時鐘",
+        "有的我靠沙子或陽光運作",
+        "我掛在牆上，也立在塔上",
+        "我用指針告訴你時間",
+        "指南針",
+        "月曆",
+        "溫度計"
+      ],
+      "h24": [
+        "鑰匙",
+        "沒有我，門不讓你進去",
+        "我常被串在一個環上",
+        "我能打開鎖",
+        "剪刀",
+        "螺絲起子",
+        "迴紋針"
+      ],
+      "h25": [
+        "蠟燭",
+        "我工作得越久，就變得越小",
+        "停電時人們會點燃我",
+        "我是蠟做的，有一根燭芯",
+        "手電筒",
+        "檯燈",
+        "火柴"
+      ],
+      "h26": [
+        "剪刀",
+        "我有兩個圈和兩個尖端",
+        "我能從紙上剪出形狀",
+        "我剪布也剪紙",
+        "刀子",
+        "針",
+        "尺"
+      ],
+      "h27": [
+        "牙刷",
+        "我有很多刷毛",
+        "每三個月就要換一次",
+        "我早晚幫你清潔牙齒",
+        "肥皂",
+        "毛巾",
+        "海綿"
+      ],
+      "h28": [
+        "冰箱",
+        "我的裡面永遠是冬天",
+        "打開我時燈會亮",
+        "我讓食物保持冰涼",
+        "爐子",
+        "烤箱",
+        "櫥櫃"
+      ],
+      "h29": [
+        "腳踏車",
+        "我不用燃料也不用電",
+        "我有把手、車鈴和鏈條",
+        "我有兩個輪子和踏板",
+        "滑板車",
+        "機車",
+        "滑板"
+      ],
+      "h30": [
+        "飛機",
+        "我有翅膀，但不是鳥",
+        "大家在機場等我",
+        "我載著乘客在雲上飛",
+        "直升機",
+        "火箭",
+        "熱氣球"
+      ],
+      "h31": [
+        "火車",
+        "我只在自己的路上行駛",
+        "我有很多節車廂",
+        "我在鐵軌上一站一站地開",
+        "路面電車",
+        "公車",
+        "捷運"
+      ],
+      "h32": [
+        "橋",
+        "我用石頭、木頭或鋼鐵建成",
+        "船可以從我下面經過",
+        "我連接河的兩岸",
+        "隧道",
+        "道路",
+        "水壩"
+      ],
+      "h33": [
+        "鉛筆",
+        "我的身體裡有石墨",
+        "我變鈍時要削一削",
+        "我能寫字畫畫，橡皮擦能擦掉我的字",
+        "原子筆",
+        "粉筆",
+        "麥克筆"
+      ],
+      "h34": [
+        "書",
+        "我不說話，卻教人很多",
+        "我有封面和很多頁",
+        "人們閱讀我，也能到館裡借我",
+        "雜誌",
+        "報紙",
+        "筆記本"
+      ],
+      "h35": [
+        "行李箱",
+        "我常常旅行，但總在別人手裡",
+        "出門前人們把東西裝進我",
+        "我有提把和輪子，裝著衣服",
+        "背包",
+        "手提袋",
+        "箱子"
+      ],
+      "h36": [
+        "圖書館",
+        "在這裡大家請你小聲說話",
+        "在這裡可以辦借書證",
+        "成千上萬本書可以借回家",
+        "學校",
+        "書店",
+        "檔案館"
+      ],
+      "h37": [
+        "機場",
+        "這裡有護照查驗",
+        "這裡會廣播登機通知",
+        "飛機從這裡起飛",
+        "火車站",
+        "港口",
+        "客運站"
+      ],
+      "h38": [
+        "沙漠",
+        "白天很熱，夜裡卻可能很冷",
+        "在這裡可以找到綠洲",
+        "沙子很多，水很少",
+        "草原",
+        "莽原",
+        "海灘"
+      ],
+      "h39": [
+        "火山",
+        "我可以沉睡好幾百年",
+        "我的頂端冒出煙",
+        "我會噴出熔岩",
+        "高山",
+        "間歇泉",
+        "島嶼"
+      ],
+      "h40": [
+        "彩虹",
+        "只有背對太陽時才看得到我",
+        "我常在雨後出現",
+        "天空中一道七種顏色的彎弧",
+        "閃電",
+        "雲",
+        "極光"
+      ],
+      "h41": [
+        "月亮",
+        "我永遠用同一面對著地球",
+        "我可以是滿月，也可以是細細的月牙",
+        "我在夜空中發光",
+        "太陽",
+        "星星",
+        "彗星"
+      ],
+      "h42": [
+        "雪",
+        "我的每一片結晶都不一樣",
+        "人們用我堆城堡",
+        "我又白又冷，在冬天落下",
+        "雨",
+        "冰雹",
+        "霜"
+      ],
+      "h43": [
+        "河流",
+        "我有源頭，也有出海口",
+        "船在我上面航行",
+        "我從山上流向大海",
+        "湖泊",
+        "大海",
+        "小溪"
+      ],
+      "h44": [
+        "仙人掌",
+        "我可以很久不喝水",
+        "我長在沙漠，也長在窗台",
+        "我全身都是刺",
+        "蘆薈",
+        "棕櫚樹",
+        "雛菊"
+      ],
+      "h45": [
+        "向日葵",
+        "我的種子可以榨油",
+        "我會跟著太陽轉",
+        "一朵長滿種子的黃色大花",
+        "雛菊",
+        "鬱金香",
+        "蒲公英"
+      ],
+      "h46": [
+        "橡樹",
+        "我可以活一千多年",
+        "人們把我看作力量的象徵",
+        "我會結橡實",
+        "白樺",
+        "松樹",
+        "楓樹"
+      ],
+      "h47": [
+        "島嶼",
+        "一整個國家都可以在我上面",
+        "要搭船或搭飛機才能到我這裡",
+        "我四面都被水包圍",
+        "半島",
+        "珊瑚礁",
+        "海角"
+      ],
+      "h48": [
+        "瀑布",
+        "很遠就能聽見我的聲音",
+        "我們之中最高的在委內瑞拉",
+        "河水在這裡從懸崖落下",
+        "噴泉",
+        "間歇泉",
+        "泉水"
+      ],
+      "h49": [
+        "醫生",
+        "開始工作前我要讀很多年書",
+        "我穿白袍",
+        "我治療生病的人",
+        "護理師",
+        "藥師",
+        "獸醫"
+      ],
+      "h50": [
+        "消防員",
+        "我日夜待命，隨時出勤",
+        "我用水和梯子工作",
+        "我負責滅火",
+        "警察",
+        "救難人員",
+        "建築工人"
+      ],
+      "h51": [
+        "廚師",
+        "我做的每道菜都要嚐一嚐",
+        "我在熱騰騰的爐火旁工作",
+        "我在餐廳煮菜",
+        "麵包師傅",
+        "服務生",
+        "甜點師"
+      ],
+      "h52": [
+        "老師",
+        "晚上我批改作業",
+        "我站在黑板前",
+        "我在學校教孩子",
+        "校長",
+        "圖書館員",
+        "幼兒園老師"
+      ],
+      "h53": [
+        "機長",
+        "我的工作地點是駕駛艙",
+        "我透過廣播跟乘客說話",
+        "我駕駛飛機",
+        "船長",
+        "司機",
+        "太空人"
+      ],
+      "h54": [
+        "郵差",
+        "我知道我負責區域的每個地址",
+        "我背著一個大郵包",
+        "我送信件和包裹",
+        "快遞員",
+        "計程車司機",
+        "店員"
+      ],
+      "h55": [
+        "園丁",
+        "我知道什麼時候該種什麼",
+        "我的工具是澆水壺和修枝剪",
+        "我照顧花和樹",
+        "農夫",
+        "林務員",
+        "花藝師"
+      ],
+      "h56": [
+        "攝影師",
+        "我捕捉每個瞬間",
+        "我請大家不要動",
+        "我用相機拍照片",
+        "畫家",
+        "記者",
+        "錄影師"
+      ],
+      "h57": [
+        "漁夫",
+        "我天亮前起床，然後耐心等待",
+        "我需要釣竿和耐心",
+        "我捕魚",
+        "農夫",
+        "水手",
+        "牧羊人"
+      ],
+      "h58": [
+        "太空人",
+        "我在地球上受訓很久",
+        "我穿著太空衣",
+        "我飛上太空",
+        "機師",
+        "天文學家",
+        "工程師"
+      ],
+      "h59": [
+        "建築師",
+        "全城到處都看得到我的作品",
+        "我畫設計圖",
+        "我設計房子",
+        "建築工人",
+        "設計師",
+        "工程師"
+      ],
+      "h60": [
+        "牙醫",
+        "很多人害怕我的椅子",
+        "我用牙鑽工作",
+        "我治療牙齒",
+        "外科醫生",
+        "眼科醫生",
+        "小兒科醫生"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "十年後想住在哪裡？",
+        "海邊",
+        "山上",
+        "大城市",
+        "安靜的鄉村"
+      ],
+      "d02": [
+        "將來想要怎樣的家？",
+        "溫馨的公寓",
+        "附花園的房子",
+        "湖邊的小屋",
+        "有歷史的老房子"
+      ],
+      "d03": [
+        "想在花園種什麼？",
+        "蘋果樹",
+        "玫瑰",
+        "蔬菜和香草",
+        "草莓"
+      ],
+      "d04": [
+        "想養哪種寵物？",
+        "貓",
+        "鸚鵡",
+        "水族箱裡的魚",
+        "陸龜"
+      ],
+      "d05": [
+        "最想先去哪裡？",
+        "日本",
+        "摩洛哥",
+        "冰島",
+        "紐西蘭"
+      ],
+      "d06": [
+        "想用什麼方式旅行？",
+        "搭火車",
+        "開車",
+        "搭飛機",
+        "搭船"
+      ],
+      "d07": [
+        "想學哪種語言？",
+        "阿拉伯語",
+        "日語",
+        "西班牙語",
+        "韓語"
+      ],
+      "d08": [
+        "想學會做什麼？",
+        "畫畫",
+        "縫紉",
+        "游泳",
+        "寫程式"
+      ],
+      "d09": [
+        "想學會哪道料理？",
+        "中亞抓飯",
+        "自製麵包",
+        "壽司",
+        "果仁蜜餅"
+      ],
+      "d10": [
+        "週末想怎麼過？",
+        "到大自然裡",
+        "在家看書",
+        "探望家人",
+        "去新的城市"
+      ],
+      "d11": [
+        "理想的週末早晨？",
+        "清晨散步",
+        "悠閒的早餐",
+        "在戶外做運動",
+        "在陽台喝茶"
+      ],
+      "d12": [
+        "想存錢做什麼？",
+        "買自己的房子",
+        "一趟大旅行",
+        "買車",
+        "進修"
+      ],
+      "d13": [
+        "想做什麼樣的工作？",
+        "自己創業",
+        "在大公司上班",
+        "在家工作",
+        "幫助別人的工作"
+      ],
+      "d14": [
+        "想用什麼方式幫助別人？",
+        "當志工",
+        "幫助動物",
+        "教孩子",
+        "種樹"
+      ],
+      "d15": [
+        "想要哪種家庭傳統？",
+        "星期日一起吃午餐",
+        "桌遊之夜",
+        "週末散步",
+        "家庭相簿"
+      ],
+      "d16": [
+        "想要怎樣的廚房？",
+        "寬敞的家庭廚房",
+        "明亮又溫馨",
+        "看得到花園",
+        "小而實用"
+      ],
+      "d17": [
+        "想親眼看見什麼？",
+        "北極光",
+        "吉薩金字塔",
+        "維多利亞瀑布",
+        "喜馬拉雅山"
+      ],
+      "d18": [
+        "晚上想做什麼？",
+        "閱讀",
+        "做新的料理",
+        "學語言",
+        "在公園散步"
+      ],
+      "d19": [
+        "想開始哪種嗜好？",
+        "攝影",
+        "陶藝",
+        "刺繡",
+        "園藝"
+      ],
+      "d20": [
+        "週末想去哪裡？",
+        "森林",
+        "湖邊",
+        "附近的小鎮",
+        "山上"
+      ],
+      "d21": [
+        "理想的工作空間？",
+        "靠窗",
+        "有書架",
+        "滿是綠色植物",
+        "幾乎空無一物"
+      ],
+      "d22": [
+        "接下來想學什麼？",
+        "醫學",
+        "歷史",
+        "經濟學",
+        "設計"
+      ],
+      "d23": [
+        "想種哪種樹？",
+        "橡樹",
+        "蘋果樹",
+        "橄欖樹",
+        "椰棗樹"
+      ],
+      "d24": [
+        "想為客人做什麼菜？",
+        "自製派",
+        "一大鍋抓飯",
+        "家傳的湯",
+        "新鮮沙拉"
+      ],
+      "d25": [
+        "想去哪座城市？",
+        "伊斯坦堡",
+        "巴黎",
+        "東京",
+        "開羅"
+      ],
+      "d26": [
+        "夏天想怎麼過？",
+        "在海邊",
+        "在山上",
+        "在鄉間小屋",
+        "在國內旅行"
+      ],
+      "d27": [
+        "想養哪種鳥？",
+        "金絲雀",
+        "虎皮鸚鵡",
+        "鴿子",
+        "斑胸草雀"
+      ],
+      "d28": [
+        "想試試哪種運動？",
+        "游泳",
+        "騎馬",
+        "射箭",
+        "攀岩"
+      ],
+      "d29": [
+        "想收藏哪種書？",
+        "百科全書",
+        "經典名著",
+        "旅遊書",
+        "食譜"
+      ],
+      "d30": [
+        "想親手做什麼？",
+        "家具",
+        "自己的陶器",
+        "手織毯子",
+        "鳥屋"
+      ],
+      "d31": [
+        "想在哪裡野餐？",
+        "河岸邊",
+        "花園裡",
+        "森林空地",
+        "山上"
+      ],
+      "d32": [
+        "將來想用什麼交通工具？",
+        "電動車",
+        "腳踏車",
+        "大型家庭車",
+        "不用開車"
+      ],
+      "d33": [
+        "退休後想做什麼？",
+        "園藝",
+        "旅行",
+        "陪伴孫子",
+        "學新東西"
+      ],
+      "d34": [
+        "想做哪件善事？",
+        "挖一口水井",
+        "幫助貓咪收容所",
+        "為學校募集書本",
+        "種一排樹"
+      ],
+      "d35": [
+        "週末早餐想吃什麼？",
+        "薄煎餅",
+        "歐姆蛋",
+        "水果燕麥粥",
+        "起司煎餅"
+      ],
+      "d36": [
+        "想在哪裡招待客人？",
+        "廚房",
+        "客廳",
+        "露台",
+        "花園"
+      ],
+      "d37": [
+        "想看哪個自然奇景？",
+        "大峽谷",
+        "尼加拉瀑布",
+        "貝加爾湖",
+        "撒哈拉沙漠"
+      ],
+      "d38": [
+        "想學會哪項居家技能？",
+        "自己修繕",
+        "縫紉",
+        "烤麵包",
+        "照顧花園"
+      ],
+      "d39": [
+        "想會說幾種語言？",
+        "兩種",
+        "三種",
+        "五種",
+        "越多越好"
+      ],
+      "d40": [
+        "家裡的牆想漆什麼顏色？",
+        "白色",
+        "米色",
+        "淺綠色",
+        "淺藍色"
+      ],
+      "d41": [
+        "水族箱裡想養哪種魚？",
+        "金魚",
+        "孔雀魚",
+        "鯰魚",
+        "神仙魚"
+      ],
+      "d42": [
+        "想送父母哪種旅行？",
+        "海邊度假",
+        "城市觀光",
+        "山區之旅",
+        "火車旅行"
+      ],
+      "d43": [
+        "空閒時想做什麼？",
+        "畫畫",
+        "閱讀",
+        "運動",
+        "手工藝"
+      ],
+      "d44": [
+        "想在哪個季節旅行？",
+        "春天",
+        "夏天",
+        "秋天",
+        "冬天"
+      ],
+      "d45": [
+        "想為冬天準備什麼？",
+        "果醬",
+        "醃菜",
+        "果乾",
+        "水果甜湯"
+      ],
+      "d46": [
+        "還想試試哪種工作？",
+        "廚師",
+        "程式設計師",
+        "翻譯",
+        "木工"
+      ],
+      "d47": [
+        "想認識哪個國家？",
+        "馬來西亞",
+        "義大利",
+        "加拿大",
+        "印尼"
+      ],
+      "d48": [
+        "院子裡想要有什麼？",
+        "小噴泉",
+        "菜園",
+        "涼亭",
+        "鞦韆"
+      ],
+      "d49": [
+        "想怎麼慶祝成功？",
+        "家庭晚餐",
+        "到大自然走走",
+        "一本新書",
+        "為別人做件好事"
+      ],
+      "d50": [
+        "想傳給孩子什麼？",
+        "喜愛閱讀",
+        "做菜的本領",
+        "我們的母語",
+        "愛護大自然"
+      ]
     }
   },
   "th": {
@@ -38819,7 +55631,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "ชนะแล้ว! คุณรู้เรื่องโลกมากกว่า",
       "tfFinalLose": "รอบนี้ {name} รู้มากกว่า — แก้มืออีกตาไหม?",
       "tfFinalDraw": "เสมอกัน — คุณรู้มากพอ ๆ กัน!",
-      "featTruth": "เกมสด «จริงหรือเท็จ» — เรื่องน่าทึ่งเกี่ยวกับโลก"
+      "featTruth": "เกมสด «จริงหรือเท็จ» — เรื่องน่าทึ่งเกี่ยวกับโลก",
+      "countries": "ทายประเทศ",
+      "coTitle": "ทายประเทศ",
+      "coNote": "เกมสดสำหรับสองคน: หมีเดินทางรอบโลก 10 วินาที — ทายว่าอยู่ประเทศไหน! ตอบถูกได้ข้อละ 1 คะแนน",
+      "coShareText": "{name} ชวนคุณเล่นเกมสด «ทายประเทศ»",
+      "coJoinLead": "{name} กำลังรอคุณอยู่ ทายประเทศจากภาพกันเลย!",
+      "coRound": "ประเทศที่ {n} จาก {total}",
+      "coAsk": "นี่คือประเทศอะไร?",
+      "coFinalWin": "ชนะแล้ว! คุณคือนักเดินทางตัวจริง",
+      "coFinalLose": "รอบนี้ {name} รู้จักโลกมากกว่า — แก้มือไหม?",
+      "coFinalDraw": "เสมอ — ทั้งคู่รู้จักโลกดีมาก!",
+      "featCountries": "เกมสด «ทายประเทศ» — 40 ประเทศ",
+      "hints": "ทายจากคำใบ้",
+      "dreams": "ความฝันและแผนการ",
+      "hiTitle": "ทายจากคำใบ้",
+      "hiNote": "เกมสดสำหรับสองคน: คำใบ้สามข้อจะเปิดทีละข้อ ทายถูกตั้งแต่ข้อแรกได้ 3 คะแนน ข้อที่สองได้ 2 คะแนน ข้อที่สามได้ 1 คะแนน",
+      "hiShareText": "{name} ชวนคุณเล่นเกมสด «ทายจากคำใบ้»",
+      "hiJoinLead": "{name} รอคุณอยู่ ทายให้ได้เร็วที่สุด!",
+      "hiRound": "ปริศนาที่ {n} จาก {total}",
+      "hiAsk": "นี่คืออะไร?",
+      "hiClue": "คำใบ้ {n}",
+      "hiPoints": "+{n} คะแนน",
+      "hiNoPoints": "รอบนี้ไม่ได้คะแนน",
+      "hiFinalWin": "ชนะแล้ว! คุณทายเก่งมาก",
+      "hiFinalLose": "รอบนี้ {name} ทายเก่งกว่า — แก้มือไหม?",
+      "hiFinalDraw": "เสมอ — ทายเก่งทั้งคู่เลย!",
+      "featHints": "เกมสด «ทายจากคำใบ้» — 3, 2 หรือ 1 คะแนน",
+      "drTitle": "ความฝันและแผนการ",
+      "drNote": "เกมสดสำหรับสองคน: บ้าน การเดินทาง การเรียนรู้ และงานอดิเรก เลือกสิ่งที่อยากได้ แล้วดูว่าความฝันตรงกันไหม",
+      "drShareText": "{name} ชวนคุณเล่นเกมสด «ความฝันและแผนการ»",
+      "drJoinLead": "{name} รอคุณอยู่ เลือกสิ่งที่คุณอยากได้จริง ๆ!",
+      "drRound": "คำถามที่ {n} จาก {total}",
+      "drPick": "เลือกสิ่งที่อยากได้",
+      "drBoth": "ตรงกัน: {item}",
+      "drDiff": "ฝันต่างกัน — เล่าเหตุผลให้กันฟังสิ!",
+      "drFinalHigh": "คุณมีความฝันเหมือนกันเยอะมาก!",
+      "drFinalMid": "ฝันต่างกัน — มีเรื่องให้คุยกันอีกเยอะ",
+      "drCommon": "ความฝันที่ตรงกัน",
+      "featDreams": "เกมสด «ความฝันและแผนการ» — ฝันตรงกันไหม?",
+      "modestTitle": "โหมดสุภาพ",
+      "modestNote": "ไม่มีคำถามเรื่องความรู้สึก การกอด หรือการเดต มีแต่คำถามแบบเพื่อน"
     },
     "questions": {
       "q01": [
@@ -40738,6 +57590,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "ขั้วโลกใต้หนาวกว่ามาก เพราะอยู่บนทวีปน้ำแข็งที่สูง ส่วนขั้วโลกเหนืออยู่บนมหาสมุทร"
       ]
+    },
+    "hints": {
+      "h01": [
+        "เพนกวิน",
+        "ฉันเป็นนก แต่บินไม่ได้",
+        "ฉันอาศัยอยู่ในที่ที่หนาวมาก",
+        "ฉันใส่ชุดทักซิโดตลอดเวลา",
+        "นกกระจอกเทศ",
+        "แมวน้ำ",
+        "นกนางนวล"
+      ],
+      "h02": [
+        "ช้าง",
+        "ฉันกินเกือบทั้งวัน",
+        "หูของฉันเหมือนพัดใบใหญ่",
+        "ฉันมีงวงยาว",
+        "แรด",
+        "ฮิปโป",
+        "ยีราฟ"
+      ],
+      "h03": [
+        "ยีราฟ",
+        "ฉันนอนน้อยมาก และมักยืนหลับ",
+        "ฉันกินใบไม้จากต้นไม้ที่สูงที่สุด",
+        "ฉันมีคอยาวที่สุด",
+        "ม้าลาย",
+        "อูฐ",
+        "กวางมูส"
+      ],
+      "h04": [
+        "อูฐ",
+        "ฉันอยู่ได้นานโดยไม่ต้องดื่มน้ำ",
+        "ฉันถูกเรียกว่าเรือแห่งทะเลทราย",
+        "ฉันมีโหนกบนหลังหนึ่งหรือสองโหนก",
+        "ม้า",
+        "ลา",
+        "ลามะ"
+      ],
+      "h05": [
+        "ผึ้ง",
+        "ฉันบอกทางไปหาดอกไม้ให้เพื่อนได้",
+        "ฉันทำงานในทุ่งตั้งแต่เช้าจรดเย็น",
+        "ฉันทำของหวานสีทองจากน้ำหวานดอกไม้",
+        "ต่อ",
+        "แมลงวัน",
+        "ผีเสื้อ"
+      ],
+      "h06": [
+        "เต่า",
+        "ฉันมีชีวิตได้นานกว่าร้อยปี",
+        "ฉันไม่เคยรีบร้อน",
+        "ฉันแบกบ้านไว้บนหลัง",
+        "หอยทาก",
+        "จิ้งจก",
+        "เม่น"
+      ],
+      "h07": [
+        "จิงโจ้",
+        "หางช่วยให้ฉันทรงตัวได้",
+        "ฉันอาศัยอยู่ในออสเตรเลีย",
+        "ฉันพาลูกไปไหนมาไหนในกระเป๋าหน้าท้อง",
+        "โคอาลา",
+        "กระต่ายป่า",
+        "กระรอก"
+      ],
+      "h08": [
+        "นกฮูก",
+        "ฉันหันหัวไปข้างหลังได้เกือบสุด",
+        "ฉันล่าเหยื่อตอนกลางคืน",
+        "ฉันร้องฮู้ฮู้ในป่ามืด",
+        "อีกา",
+        "นกอินทรี",
+        "นกพิราบ"
+      ],
+      "h09": [
+        "โลมา",
+        "ฉันหายใจด้วยอากาศ แม้จะอยู่ในทะเล",
+        "ฉันช่วยคนและคุยกันด้วยเสียงหวีด",
+        "ฉันชอบกระโดดข้ามคลื่น",
+        "ฉลาม",
+        "วาฬ",
+        "แมวน้ำ"
+      ],
+      "h10": [
+        "กระรอก",
+        "ฉันซ่อนอาหาร และบางทีก็ลืมว่าซ่อนไว้ไหน",
+        "ฉันอาศัยอยู่ในโพรงไม้",
+        "ฉันแทะถั่วและลูกสน",
+        "เม่น",
+        "กระต่ายป่า",
+        "หนู"
+      ],
+      "h11": [
+        "แมงมุม",
+        "หลายคนคิดว่าฉันเป็นแมลง แต่ไม่ใช่",
+        "ฉันมีแปดขา",
+        "ฉันชักใย",
+        "มด",
+        "ด้วง",
+        "ยุง"
+      ],
+      "h12": [
+        "แมว",
+        "ฉันมองเห็นในที่มืดได้ดีกว่าคน",
+        "ฉันชอบขอบหน้าต่างอุ่น ๆ",
+        "ฉันทำเสียงครืดคราดและจับหนู",
+        "กระต่าย",
+        "หนูแฮมสเตอร์",
+        "นกแก้ว"
+      ],
+      "h13": [
+        "แตงโม",
+        "นักวิทยาศาสตร์เรียกฉันว่าผลแบบเบอร์รี",
+        "คนรอฉันในหน้าร้อน",
+        "ข้างนอกสีเขียว ข้างในสีแดง",
+        "เมลอน",
+        "ฟักทอง",
+        "สับปะรด"
+      ],
+      "h14": [
+        "ขนมปัง",
+        "ฉันถูกอบในเกือบทุกประเทศ",
+        "คนหั่นฉันเป็นแผ่นไว้กินมื้อกลางวัน",
+        "ฉันมีทั้งแบบขาวและไรย์ มีเปลือกนอก",
+        "แพนเค้ก",
+        "พาย",
+        "คุกกี้"
+      ],
+      "h15": [
+        "น้ำผึ้ง",
+        "ฉันเก็บไว้ได้เป็นพัน ๆ ปี",
+        "เวลาเป็นหวัด คนใส่ฉันในชาอุ่น ๆ",
+        "ผึ้งเป็นผู้สร้างฉัน",
+        "แยม",
+        "น้ำตาล",
+        "นม"
+      ],
+      "h16": [
+        "มะนาวเหลือง",
+        "ฉันมีวิตามินซีเยอะมาก",
+        "คนใส่ฉันในชา",
+        "ฉันสีเหลืองและเปรี้ยวมาก",
+        "ส้ม",
+        "เกรปฟรุต",
+        "มะนาวเขียว"
+      ],
+      "h17": [
+        "แครอท",
+        "ฉันโตใต้ดิน เห็นแค่ใบด้านบน",
+        "ว่ากันว่าฉันดีต่อสายตา",
+        "ฉันสีส้ม และกระต่ายชอบฉันมาก",
+        "บีทรูท",
+        "หัวไชเท้า",
+        "มันฝรั่ง"
+      ],
+      "h18": [
+        "แอปเปิล",
+        "ฉันมีทั้งพันธุ์หน้าร้อนและหน้าหนาว",
+        "ฉันถูกนำไปทำพายและน้ำผลไม้",
+        "ฉันโตบนต้น มีทั้งสีแดงและเขียว",
+        "สาลี่",
+        "พีช",
+        "พลัม"
+      ],
+      "h19": [
+        "กล้วย",
+        "ฉันออกผลเป็นเครือบนต้นสูง",
+        "ลิงชอบฉันมาก",
+        "ฉันสีเหลือง และต้องปอกเปลือกก่อนกิน",
+        "มะม่วง",
+        "กีวี",
+        "สับปะรด"
+      ],
+      "h20": [
+        "ชา",
+        "คนจีนดื่มฉันมาหลายพันปี",
+        "ฉันมีทั้งแบบดำ เขียว และสมุนไพร",
+        "ฉันถูกชงในกาน้ำ",
+        "กาแฟ",
+        "โกโก้",
+        "น้ำผลไม้"
+      ],
+      "h21": [
+        "ไข่",
+        "ถ้าไม่มีฉัน อบเค้กได้ยาก",
+        "ออมเล็ตทำมาจากฉัน",
+        "แม่ไก่เป็นผู้ออกฉัน",
+        "ชีส",
+        "ถั่ว",
+        "มันฝรั่ง"
+      ],
+      "h22": [
+        "ร่ม",
+        "ส่วนใหญ่ฉันถูกพับเก็บไว้",
+        "คนหยิบฉันไปเมื่อฟ้าครึ้ม",
+        "ฉันกันไม่ให้คุณเปียกฝน",
+        "เสื้อกันฝน",
+        "หมวก",
+        "รองเท้าบูท"
+      ],
+      "h23": [
+        "นาฬิกา",
+        "บางแบบของฉันใช้ทรายหรือแสงแดด",
+        "ฉันแขวนบนผนังและตั้งอยู่บนหอคอย",
+        "ฉันบอกเวลาด้วยเข็ม",
+        "เข็มทิศ",
+        "ปฏิทิน",
+        "เทอร์โมมิเตอร์"
+      ],
+      "h24": [
+        "กุญแจ",
+        "ถ้าไม่มีฉัน ประตูจะไม่ให้คุณเข้า",
+        "ฉันมักถูกร้อยไว้ในห่วง",
+        "ฉันไขล็อกให้เปิดออก",
+        "กรรไกร",
+        "ไขควง",
+        "คลิปหนีบกระดาษ"
+      ],
+      "h25": [
+        "เทียน",
+        "ยิ่งทำงานนาน ฉันยิ่งเล็กลง",
+        "คนจุดฉันเวลาไฟดับ",
+        "ฉันทำจากขี้ผึ้งและมีไส้",
+        "ไฟฉาย",
+        "โคมไฟ",
+        "ไม้ขีดไฟ"
+      ],
+      "h26": [
+        "กรรไกร",
+        "ฉันมีห่วงสองห่วงและปลายแหลมสองข้าง",
+        "ฉันตัดกระดาษเป็นรูปต่าง ๆ",
+        "ฉันตัดผ้าและกระดาษ",
+        "มีด",
+        "เข็ม",
+        "ไม้บรรทัด"
+      ],
+      "h27": [
+        "แปรงสีฟัน",
+        "ฉันมีขนเยอะมาก",
+        "ฉันถูกเปลี่ยนทุกสามเดือน",
+        "ฉันทำความสะอาดฟันเช้าและเย็น",
+        "สบู่",
+        "ผ้าเช็ดตัว",
+        "ฟองน้ำ"
+      ],
+      "h28": [
+        "ตู้เย็น",
+        "ข้างในฉันเป็นฤดูหนาวตลอด",
+        "พอเปิดฉัน ไฟจะติด",
+        "ฉันเก็บอาหารให้เย็น",
+        "เตา",
+        "เตาอบ",
+        "ตู้กับข้าว"
+      ],
+      "h29": [
+        "จักรยาน",
+        "ฉันวิ่งได้โดยไม่ใช้น้ำมันหรือไฟฟ้า",
+        "ฉันมีแฮนด์ กระดิ่ง และโซ่",
+        "ฉันมีสองล้อและบันได",
+        "สกูตเตอร์",
+        "มอเตอร์ไซค์",
+        "สเกตบอร์ด"
+      ],
+      "h30": [
+        "เครื่องบิน",
+        "ฉันมีปีก แต่ไม่ใช่นก",
+        "คนรอฉันที่สนามบิน",
+        "ฉันพาผู้โดยสารบินเหนือเมฆ",
+        "เฮลิคอปเตอร์",
+        "จรวด",
+        "บอลลูน"
+      ],
+      "h31": [
+        "รถไฟ",
+        "ฉันวิ่งบนทางของฉันเองเท่านั้น",
+        "ฉันมีตู้โดยสารหลายตู้",
+        "ฉันวิ่งบนรางจากสถานีหนึ่งไปอีกสถานี",
+        "รถราง",
+        "รถบัส",
+        "รถไฟใต้ดิน"
+      ],
+      "h32": [
+        "สะพาน",
+        "ฉันสร้างจากหิน ไม้ หรือเหล็ก",
+        "เรือแล่นลอดใต้ฉันได้",
+        "ฉันเชื่อมสองฝั่งแม่น้ำ",
+        "อุโมงค์",
+        "ถนน",
+        "เขื่อน"
+      ],
+      "h33": [
+        "ดินสอ",
+        "ข้างในฉันมีไส้แกรไฟต์",
+        "พอทื่อ คนก็เหลาฉัน",
+        "ฉันเขียนและวาดได้ ยางลบลบรอยฉันได้",
+        "ปากกา",
+        "ชอล์ก",
+        "ปากกาเมจิก"
+      ],
+      "h34": [
+        "หนังสือ",
+        "ฉันเงียบ แต่สอนอะไรได้มากมาย",
+        "ฉันมีปกและหน้ากระดาษ",
+        "คนอ่านฉันและยืมฉันจากห้องสมุด",
+        "นิตยสาร",
+        "หนังสือพิมพ์",
+        "สมุดจด"
+      ],
+      "h35": [
+        "กระเป๋าเดินทาง",
+        "ฉันเดินทางบ่อย แต่อยู่ในมือใครเสมอ",
+        "คนจัดของใส่ฉันก่อนออกเดินทาง",
+        "ฉันมีที่จับและล้อ ใส่เสื้อผ้าได้",
+        "เป้",
+        "กระเป๋าถือ",
+        "กล่อง"
+      ],
+      "h36": [
+        "ห้องสมุด",
+        "ที่นี่ขอให้พูดเบา ๆ",
+        "ที่นี่ทำบัตรสมาชิกได้",
+        "หนังสือนับพันเล่มให้ยืมกลับบ้าน",
+        "โรงเรียน",
+        "ร้านหนังสือ",
+        "หอจดหมายเหตุ"
+      ],
+      "h37": [
+        "สนามบิน",
+        "ที่นี่มีด่านตรวจหนังสือเดินทาง",
+        "ที่นี่ประกาศเรียกขึ้นเครื่อง",
+        "เครื่องบินขึ้นจากที่นี่",
+        "สถานีรถไฟ",
+        "ท่าเรือ",
+        "สถานีขนส่ง"
+      ],
+      "h38": [
+        "ทะเลทราย",
+        "กลางวันร้อน แต่กลางคืนอาจหนาวมาก",
+        "ที่นี่มีโอเอซิส",
+        "มีทรายเยอะมากแต่มีน้ำน้อยมาก",
+        "ทุ่งหญ้า",
+        "ทุ่งสะวันนา",
+        "ชายหาด"
+      ],
+      "h39": [
+        "ภูเขาไฟ",
+        "ฉันหลับได้นานหลายร้อยปี",
+        "ควันลอยขึ้นจากยอดของฉัน",
+        "ฉันพ่นลาวาออกมา",
+        "ภูเขา",
+        "น้ำพุร้อน",
+        "เกาะ"
+      ],
+      "h40": [
+        "รุ้ง",
+        "คุณจะเห็นฉันเมื่อหันหลังให้ดวงอาทิตย์",
+        "ฉันมักปรากฏหลังฝนตก",
+        "เจ็ดสีเป็นโค้งบนท้องฟ้า",
+        "ฟ้าแลบ",
+        "เมฆ",
+        "แสงเหนือ"
+      ],
+      "h41": [
+        "ดวงจันทร์",
+        "ฉันหันด้านเดียวให้โลกเสมอ",
+        "ฉันเต็มดวงหรือเป็นเสี้ยวบาง ๆ ได้",
+        "ฉันส่องแสงบนฟ้ายามค่ำคืน",
+        "ดวงอาทิตย์",
+        "ดาว",
+        "ดาวหาง"
+      ],
+      "h42": [
+        "หิมะ",
+        "เกล็ดของฉันไม่มีชิ้นไหนเหมือนกัน",
+        "คนใช้ฉันสร้างป้อม",
+        "ฉันขาวและเย็น ตกลงมาในฤดูหนาว",
+        "ฝน",
+        "ลูกเห็บ",
+        "น้ำค้างแข็ง"
+      ],
+      "h43": [
+        "แม่น้ำ",
+        "ฉันมีต้นน้ำและปากน้ำ",
+        "เรือแล่นไปบนตัวฉัน",
+        "ฉันไหลจากภูเขาลงสู่ทะเล",
+        "ทะเลสาบ",
+        "ทะเล",
+        "ลำธาร"
+      ],
+      "h44": [
+        "กระบองเพชร",
+        "ฉันอยู่ได้นานโดยไม่ต้องมีน้ำ",
+        "ฉันโตในทะเลทรายและบนขอบหน้าต่าง",
+        "ตัวฉันเต็มไปด้วยหนาม",
+        "ว่านหางจระเข้",
+        "ต้นปาล์ม",
+        "ดอกเดซี่"
+      ],
+      "h45": [
+        "ทานตะวัน",
+        "เมล็ดของฉันนำไปทำน้ำมันได้",
+        "ฉันหันตามดวงอาทิตย์",
+        "ดอกไม้สีเหลืองดอกใหญ่ เต็มไปด้วยเมล็ด",
+        "ดอกเดซี่",
+        "ทิวลิป",
+        "แดนดิไลออน"
+      ],
+      "h46": [
+        "ต้นโอ๊ก",
+        "ฉันมีชีวิตได้นานกว่าพันปี",
+        "ฉันเป็นสัญลักษณ์ของความแข็งแกร่ง",
+        "ลูกโอ๊กงอกบนตัวฉัน",
+        "ต้นเบิร์ช",
+        "ต้นสน",
+        "ต้นเมเปิล"
+      ],
+      "h47": [
+        "เกาะ",
+        "ทั้งประเทศอาจอยู่บนตัวฉันได้",
+        "มาหาฉันได้ทางเรือหรือเครื่องบิน",
+        "ฉันมีน้ำล้อมรอบทุกด้าน",
+        "คาบสมุทร",
+        "แนวปะการัง",
+        "แหลม"
+      ],
+      "h48": [
+        "น้ำตก",
+        "ได้ยินเสียงฉันได้จากที่ไกล",
+        "ตัวที่สูงที่สุดของพวกเราอยู่ในเวเนซุเอลา",
+        "ที่นี่แม่น้ำไหลตกจากหน้าผา",
+        "น้ำพุ",
+        "น้ำพุร้อน",
+        "ตาน้ำ"
+      ],
+      "h49": [
+        "หมอ",
+        "ฉันเรียนหลายปีก่อนเริ่มทำงาน",
+        "ฉันใส่เสื้อกาวน์สีขาว",
+        "ฉันรักษาคนป่วย",
+        "พยาบาล",
+        "เภสัชกร",
+        "สัตวแพทย์"
+      ],
+      "h50": [
+        "นักดับเพลิง",
+        "ฉันเข้าเวรทั้งวันทั้งคืน พร้อมออกเหตุ",
+        "ฉันทำงานกับน้ำและบันได",
+        "ฉันดับไฟ",
+        "ตำรวจ",
+        "หน่วยกู้ภัย",
+        "ช่างก่อสร้าง"
+      ],
+      "h51": [
+        "พ่อครัว",
+        "ฉันชิมทุกอย่างที่ทำ",
+        "ฉันทำงานหน้าเตาร้อน ๆ",
+        "ฉันทำอาหารในร้านอาหาร",
+        "คนทำขนมปัง",
+        "พนักงานเสิร์ฟ",
+        "คนทำขนมหวาน"
+      ],
+      "h52": [
+        "ครู",
+        "ตอนเย็นฉันตรวจสมุดการบ้าน",
+        "ฉันยืนหน้ากระดาน",
+        "ฉันสอนเด็ก ๆ ที่โรงเรียน",
+        "ผู้อำนวยการ",
+        "บรรณารักษ์",
+        "ครูอนุบาล"
+      ],
+      "h53": [
+        "นักบิน",
+        "ที่ทำงานของฉันคือค็อกพิต",
+        "ฉันพูดกับผู้โดยสารผ่านลำโพง",
+        "ฉันบังคับเครื่องบิน",
+        "กัปตันเรือ",
+        "คนขับรถ",
+        "นักบินอวกาศ"
+      ],
+      "h54": [
+        "บุรุษไปรษณีย์",
+        "ฉันรู้ทุกที่อยู่ในเขตของฉัน",
+        "ฉันสะพายกระเป๋าใบใหญ่",
+        "ฉันส่งจดหมายและพัสดุ",
+        "พนักงานส่งของ",
+        "คนขับแท็กซี่",
+        "พนักงานขาย"
+      ],
+      "h55": [
+        "คนสวน",
+        "ฉันรู้ว่าควรปลูกอะไรเมื่อไร",
+        "เครื่องมือของฉันคือบัวรดน้ำและกรรไกรตัดกิ่ง",
+        "ฉันดูแลดอกไม้และต้นไม้",
+        "ชาวนา",
+        "เจ้าหน้าที่ป่าไม้",
+        "คนจัดดอกไม้"
+      ],
+      "h56": [
+        "ช่างภาพ",
+        "ฉันเก็บช่วงเวลาไว้",
+        "ฉันขอให้ทุกคนอยู่นิ่ง ๆ",
+        "ฉันทำงานกับกล้องและรูปภาพ",
+        "จิตรกร",
+        "นักข่าว",
+        "ช่างกล้องวิดีโอ"
+      ],
+      "h57": [
+        "ชาวประมง",
+        "ฉันตื่นก่อนรุ่งสางแล้วรอนาน",
+        "ฉันต้องมีคันเบ็ดและความอดทน",
+        "ฉันจับปลา",
+        "ชาวนา",
+        "กะลาสี",
+        "คนเลี้ยงแกะ"
+      ],
+      "h58": [
+        "นักบินอวกาศ",
+        "ฉันฝึกบนโลกเป็นเวลานาน",
+        "ฉันใส่ชุดอวกาศ",
+        "ฉันบินไปอวกาศ",
+        "นักบิน",
+        "นักดาราศาสตร์",
+        "วิศวกร"
+      ],
+      "h59": [
+        "สถาปนิก",
+        "ผลงานของฉันเห็นได้ทั่วเมือง",
+        "ฉันวาดแบบแปลน",
+        "ฉันออกแบบบ้าน",
+        "ช่างก่อสร้าง",
+        "นักออกแบบ",
+        "วิศวกร"
+      ],
+      "h60": [
+        "หมอฟัน",
+        "หลายคนกลัวเก้าอี้ของฉัน",
+        "ฉันทำงานกับสว่าน",
+        "ฉันรักษาฟัน",
+        "ศัลยแพทย์",
+        "จักษุแพทย์",
+        "กุมารแพทย์"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "อีกสิบปีอยากอยู่ที่ไหน?",
+        "ริมทะเล",
+        "บนภูเขา",
+        "ในเมืองใหญ่",
+        "ในหมู่บ้านเงียบ ๆ"
+      ],
+      "d02": [
+        "วันหนึ่งอยากมีบ้านแบบไหน?",
+        "อพาร์ตเมนต์อบอุ่น",
+        "บ้านมีสวน",
+        "บ้านหลังเล็กริมทะเลสาบ",
+        "บ้านเก่าที่มีประวัติ"
+      ],
+      "d03": [
+        "อยากปลูกอะไรในสวน?",
+        "ต้นแอปเปิล",
+        "กุหลาบ",
+        "ผักและสมุนไพร",
+        "สตรอว์เบอร์รี"
+      ],
+      "d04": [
+        "อยากเลี้ยงสัตว์อะไร?",
+        "แมว",
+        "นกแก้ว",
+        "ปลาตู้",
+        "เต่า"
+      ],
+      "d05": [
+        "อยากไปที่ไหนเป็นที่แรก?",
+        "ญี่ปุ่น",
+        "โมร็อกโก",
+        "ไอซ์แลนด์",
+        "นิวซีแลนด์"
+      ],
+      "d06": [
+        "อยากเดินทางแบบไหน?",
+        "รถไฟ",
+        "รถยนต์",
+        "เครื่องบิน",
+        "เรือ"
+      ],
+      "d07": [
+        "อยากเรียนภาษาอะไร?",
+        "อาหรับ",
+        "ญี่ปุ่น",
+        "สเปน",
+        "จีน"
+      ],
+      "d08": [
+        "อยากทำอะไรเป็น?",
+        "วาดรูป",
+        "เย็บผ้า",
+        "ว่ายน้ำ",
+        "เขียนโปรแกรม"
+      ],
+      "d09": [
+        "อยากทำอาหารจานไหนให้เก่ง?",
+        "ข้าวพลอฟ",
+        "ขนมปังโฮมเมด",
+        "ซูชิ",
+        "บักลาวา"
+      ],
+      "d10": [
+        "อยากใช้วันหยุดแบบไหน?",
+        "ท่ามกลางธรรมชาติ",
+        "อยู่บ้านกับหนังสือ",
+        "ไปเยี่ยมครอบครัว",
+        "ไปเมืองใหม่"
+      ],
+      "d11": [
+        "เช้าวันหยุดที่สมบูรณ์แบบ?",
+        "เดินเล่นแต่เช้า",
+        "อาหารเช้าแบบสบาย ๆ",
+        "ออกกำลังกายกลางแจ้ง",
+        "จิบชาที่ระเบียง"
+      ],
+      "d12": [
+        "อยากเก็บเงินไว้ทำอะไร?",
+        "บ้านของตัวเอง",
+        "ทริปใหญ่",
+        "รถยนต์",
+        "การเรียน"
+      ],
+      "d13": [
+        "อยากทำงานแบบไหน?",
+        "ธุรกิจของตัวเอง",
+        "งานในบริษัทใหญ่",
+        "งานจากบ้าน",
+        "งานช่วยเหลือผู้คน"
+      ],
+      "d14": [
+        "อยากช่วยคนอื่นแบบไหน?",
+        "งานอาสาสมัคร",
+        "ช่วยเหลือสัตว์",
+        "สอนเด็ก ๆ",
+        "ปลูกต้นไม้"
+      ],
+      "d15": [
+        "อยากมีธรรมเนียมครอบครัวแบบไหน?",
+        "มื้อกลางวันวันอาทิตย์",
+        "คืนเล่นบอร์ดเกม",
+        "เดินเล่นวันหยุด",
+        "อัลบั้มรูปครอบครัว"
+      ],
+      "d16": [
+        "อยากได้ห้องครัวแบบไหน?",
+        "ครัวใหญ่สำหรับครอบครัว",
+        "สว่างและอบอุ่น",
+        "มองเห็นสวน",
+        "เล็กแต่ใช้งานง่าย"
+      ],
+      "d17": [
+        "อยากเห็นอะไรด้วยตาตัวเอง?",
+        "แสงเหนือ",
+        "พีระมิดแห่งกีซา",
+        "น้ำตกวิกตอเรีย",
+        "เทือกเขาหิมาลัย"
+      ],
+      "d18": [
+        "อยากทำอะไรตอนเย็น?",
+        "อ่านหนังสือ",
+        "ทำอาหารเมนูใหม่",
+        "เรียนภาษา",
+        "เดินเล่นในสวน"
+      ],
+      "d19": [
+        "อยากเริ่มงานอดิเรกอะไร?",
+        "ถ่ายภาพ",
+        "ปั้นเซรามิก",
+        "งานปัก",
+        "จัดสวน"
+      ],
+      "d20": [
+        "อยากไปเที่ยวที่ไหนช่วงวันหยุด?",
+        "ป่า",
+        "ทะเลสาบ",
+        "เมืองเล็กใกล้ ๆ",
+        "ภูเขา"
+      ],
+      "d21": [
+        "มุมทำงานในฝันเป็นแบบไหน?",
+        "ริมหน้าต่าง",
+        "มีชั้นหนังสือ",
+        "เต็มไปด้วยต้นไม้",
+        "แทบว่างเปล่า"
+      ],
+      "d22": [
+        "อยากเรียนอะไรต่อ?",
+        "แพทยศาสตร์",
+        "ประวัติศาสตร์",
+        "เศรษฐศาสตร์",
+        "การออกแบบ"
+      ],
+      "d23": [
+        "อยากปลูกต้นไม้อะไร?",
+        "ต้นโอ๊ก",
+        "ต้นแอปเปิล",
+        "ต้นมะกอก",
+        "ต้นอินทผลัม"
+      ],
+      "d24": [
+        "อยากทำอะไรเลี้ยงแขก?",
+        "พายโฮมเมด",
+        "ข้าวพลอฟหม้อใหญ่",
+        "ซุปสูตรครอบครัว",
+        "สลัดสด ๆ"
+      ],
+      "d25": [
+        "อยากไปเมืองไหน?",
+        "อิสตันบูล",
+        "ปารีส",
+        "โตเกียว",
+        "ไคโร"
+      ],
+      "d26": [
+        "อยากใช้หน้าร้อนแบบไหน?",
+        "ริมทะเล",
+        "บนภูเขา",
+        "บ้านในชนบท",
+        "เที่ยวในประเทศ"
+      ],
+      "d27": [
+        "อยากเลี้ยงนกอะไร?",
+        "นกคีรีบูน",
+        "นกหงส์หยก",
+        "นกพิราบ",
+        "นกกระติ๊ดม้าลาย"
+      ],
+      "d28": [
+        "อยากลองกีฬาอะไร?",
+        "ว่ายน้ำ",
+        "ขี่ม้า",
+        "ยิงธนู",
+        "ปีนผา"
+      ],
+      "d29": [
+        "อยากสะสมหนังสือแบบไหน?",
+        "สารานุกรม",
+        "วรรณกรรมคลาสสิก",
+        "หนังสือท่องเที่ยว",
+        "ตำราอาหาร"
+      ],
+      "d30": [
+        "อยากลงมือทำอะไรเอง?",
+        "เฟอร์นิเจอร์",
+        "ถ้วยชามของตัวเอง",
+        "ผ้าห่มถัก",
+        "บ้านนก"
+      ],
+      "d31": [
+        "อยากไปปิกนิกที่ไหน?",
+        "ริมแม่น้ำ",
+        "ในสวน",
+        "ลานโล่งในป่า",
+        "บนภูเขา"
+      ],
+      "d32": [
+        "วันหนึ่งอยากเดินทางด้วยอะไร?",
+        "รถยนต์ไฟฟ้า",
+        "จักรยาน",
+        "รถครอบครัวคันใหญ่",
+        "ไม่ใช้รถยนต์"
+      ],
+      "d33": [
+        "หลังเกษียณอยากทำอะไร?",
+        "ทำสวน",
+        "ท่องเที่ยว",
+        "อยู่กับหลาน ๆ",
+        "เรียนรู้สิ่งใหม่"
+      ],
+      "d34": [
+        "อยากทำความดีแบบไหน?",
+        "สร้างบ่อน้ำ",
+        "ช่วยศูนย์พักพิงแมว",
+        "รวบรวมหนังสือให้โรงเรียน",
+        "ปลูกต้นไม้เป็นแถว"
+      ],
+      "d35": [
+        "อาหารเช้าวันหยุดที่อยากกิน?",
+        "แพนเค้ก",
+        "ไข่เจียว",
+        "ข้าวโอ๊ตใส่ผลไม้",
+        "แพนเค้กชีส"
+      ],
+      "d36": [
+        "อยากต้อนรับแขกที่ไหน?",
+        "ในครัว",
+        "ในห้องนั่งเล่น",
+        "บนระเบียง",
+        "ในสวน"
+      ],
+      "d37": [
+        "อยากเห็นสิ่งมหัศจรรย์ทางธรรมชาติใด?",
+        "แกรนด์แคนยอน",
+        "น้ำตกไนแอการา",
+        "ทะเลสาบไบคาล",
+        "ทะเลทรายซาฮารา"
+      ],
+      "d38": [
+        "อยากมีทักษะงานบ้านอะไร?",
+        "ซ่อมของเอง",
+        "เย็บผ้า",
+        "อบขนมปัง",
+        "ดูแลสวน"
+      ],
+      "d39": [
+        "อยากพูดได้กี่ภาษา?",
+        "สองภาษา",
+        "สามภาษา",
+        "ห้าภาษา",
+        "ให้ได้มากที่สุด"
+      ],
+      "d40": [
+        "อยากได้ผนังบ้านสีอะไร?",
+        "สีขาว",
+        "สีเบจ",
+        "สีเขียวอ่อน",
+        "สีฟ้าอ่อน"
+      ],
+      "d41": [
+        "อยากเลี้ยงปลาอะไรในตู้?",
+        "ปลาทอง",
+        "ปลาหางนกยูง",
+        "ปลาแมว",
+        "ปลาเทวดา"
+      ],
+      "d42": [
+        "อยากพาพ่อแม่ไปเที่ยวแบบไหน?",
+        "พักผ่อนริมทะเล",
+        "เที่ยวชมเมือง",
+        "เที่ยวภูเขา",
+        "นั่งรถไฟท่องเที่ยว"
+      ],
+      "d43": [
+        "เวลาว่างอยากทำอะไร?",
+        "วาดรูป",
+        "อ่านหนังสือ",
+        "เล่นกีฬา",
+        "งานฝีมือ"
+      ],
+      "d44": [
+        "อยากเดินทางฤดูไหน?",
+        "ใบไม้ผลิ",
+        "ฤดูร้อน",
+        "ใบไม้ร่วง",
+        "ฤดูหนาว"
+      ],
+      "d45": [
+        "อยากถนอมอาหารอะไรไว้ช่วงหน้าหนาว?",
+        "แยม",
+        "ผักดอง",
+        "ผลไม้อบแห้ง",
+        "ผลไม้เชื่อม"
+      ],
+      "d46": [
+        "อยากลองทำอาชีพอื่นอะไร?",
+        "พ่อครัว",
+        "โปรแกรมเมอร์",
+        "นักแปล",
+        "ช่างไม้"
+      ],
+      "d47": [
+        "อยากรู้จักประเทศไหน?",
+        "มาเลเซีย",
+        "อิตาลี",
+        "แคนาดา",
+        "อินโดนีเซีย"
+      ],
+      "d48": [
+        "อยากมีอะไรในลานบ้าน?",
+        "น้ำพุเล็ก ๆ",
+        "แปลงผัก",
+        "ศาลาเล็ก ๆ",
+        "ชิงช้า"
+      ],
+      "d49": [
+        "อยากฉลองความสำเร็จแบบไหน?",
+        "มื้อค่ำกับครอบครัว",
+        "ไปเที่ยวธรรมชาติ",
+        "หนังสือเล่มใหม่",
+        "ทำความดีให้ผู้อื่น"
+      ],
+      "d50": [
+        "อยากส่งต่ออะไรให้ลูกหลาน?",
+        "ความรักการอ่าน",
+        "ฝีมือทำอาหาร",
+        "ภาษาแม่",
+        "การดูแลธรรมชาติ"
+      ]
     }
   },
   "ar": {
@@ -40963,7 +58709,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "فوز! معرفتك بالعالم أكبر.",
       "tfFinalLose": "هذه المرة المعرفة أكبر عند {name} — جولة أخرى؟",
       "tfFinalDraw": "تعادل — معرفتكما متساوية!",
-      "featTruth": "لعبة «صح أم خطأ» المباشرة — حقائق مدهشة عن العالم"
+      "featTruth": "لعبة «صح أم خطأ» المباشرة — حقائق مدهشة عن العالم",
+      "countries": "تخمين البلد",
+      "coTitle": "تخمين البلد",
+      "coNote": "لعبة مباشرة لشخصين: الدبّ يجوب العالم. 10 ثوانٍ لتخمين البلد الذي هو فيه! نقطة لكل إجابة صحيحة.",
+      "coShareText": "دعوة من {name} إلى اللعبة المباشرة «تخمين البلد»",
+      "coJoinLead": "{name} بانتظارك. حان وقت تخمين البلد من الصورة!",
+      "coRound": "البلد {n} من {total}",
+      "coAsk": "ما هذا البلد؟",
+      "coFinalWin": "فوز! معرفتك بالعالم مدهشة.",
+      "coFinalLose": "المعرفة بالعالم هذه المرة من نصيب {name} — جولة أخرى؟",
+      "coFinalDraw": "تعادل — معرفتكما بالعالم رائعة!",
+      "featCountries": "لعبة «تخمين البلد» المباشرة — 40 بلدًا",
+      "hints": "التخمين بالتلميحات",
+      "dreams": "أحلام وخطط",
+      "hiTitle": "التخمين بالتلميحات",
+      "hiNote": "لعبة مباشرة لشخصين: ثلاثة تلميحات تظهر واحدًا تلو الآخر. التخمين من التلميح الأول — 3 نقاط، من الثاني — نقطتان، من الثالث — نقطة واحدة.",
+      "hiShareText": "دعوة من {name} إلى اللعبة المباشرة «التخمين بالتلميحات»",
+      "hiJoinLead": "اللعبة جاهزة مع {name}. التخمين المبكر يجلب نقاطًا أكثر!",
+      "hiRound": "اللغز {n} من {total}",
+      "hiAsk": "ما هو؟",
+      "hiClue": "التلميح {n}",
+      "hiPoints": "النقاط: +{n}",
+      "hiNoPoints": "لا نقاط هذه المرة",
+      "hiFinalWin": "فوز! موهبة رائعة في التخمين.",
+      "hiFinalLose": "هذه المرة التخمين أدق عند {name} — جولة أخرى؟",
+      "hiFinalDraw": "تعادل — مهارة التخمين متساوية!",
+      "featHints": "لعبة «التخمين بالتلميحات» المباشرة — 3 أو 2 أو 1 نقطة",
+      "drTitle": "أحلام وخطط",
+      "drNote": "لعبة مباشرة لشخصين: البيت والسفر والتعلّم والهوايات. اختيار الأقرب إلى القلب، ثم معرفة هل تتطابق الأحلام.",
+      "drShareText": "دعوة من {name} إلى اللعبة المباشرة «أحلام وخطط»",
+      "drJoinLead": "اللعبة جاهزة مع {name}. لنختر ما نتمناه حقًا!",
+      "drRound": "السؤال {n} من {total}",
+      "drPick": "ما الأقرب إلى القلب؟",
+      "drBoth": "تطابق: {item}",
+      "drDiff": "أحلام مختلفة — لنتحدث عن السبب!",
+      "drFinalHigh": "بينكما الكثير من الأحلام المشتركة!",
+      "drFinalMid": "أحلام مختلفة — والكثير للحديث عنه",
+      "drCommon": "أحلامكما المشتركة",
+      "featDreams": "لعبة «أحلام وخطط» المباشرة — هل تتطابق الأحلام؟",
+      "modestTitle": "الوضع المحتشم",
+      "modestNote": "بلا أسئلة عن المشاعر أو العناق أو المواعيد — أسئلة ودّية فقط"
     },
     "questions": {
       "q01": [
@@ -42882,6 +60668,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "القطب الجنوبي أبرد بكثير: يقع على قارة جليدية مرتفعة، والشمالي على محيط."
       ]
+    },
+    "hints": {
+      "h01": [
+        "البطريق",
+        "أنا طائر، لكنني لا أطير",
+        "أعيش حيث البرد شديد جدًا",
+        "أرتدي دائمًا بدلة رسمية",
+        "النعامة",
+        "الفقمة",
+        "النورس"
+      ],
+      "h02": [
+        "الفيل",
+        "آكل طوال اليوم تقريبًا",
+        "أذناي كمروحتين كبيرتين",
+        "لي خرطوم طويل",
+        "وحيد القرن",
+        "فرس النهر",
+        "الزرافة"
+      ],
+      "h03": [
+        "الزرافة",
+        "أنام قليلًا جدًا، وغالبًا وأنا واقفة",
+        "آكل أوراق أعلى الأشجار",
+        "عنقي هو الأطول",
+        "الحمار الوحشي",
+        "الجمل",
+        "الموظ"
+      ],
+      "h04": [
+        "الجمل",
+        "أستطيع البقاء طويلًا بلا ماء",
+        "يسمونني سفينة الصحراء",
+        "على ظهري سنام واحد أو اثنان",
+        "الحصان",
+        "الحمار",
+        "اللاما"
+      ],
+      "h05": [
+        "النحلة",
+        "أستطيع أن أدلّ رفيقاتي على الأزهار",
+        "أعمل في المروج من الفجر حتى المغيب",
+        "أصنع العسل",
+        "الدبور",
+        "الذبابة",
+        "الفراشة"
+      ],
+      "h06": [
+        "السلحفاة",
+        "قد أعيش أكثر من مئة عام",
+        "لا أستعجل أبدًا",
+        "أحمل بيتي على ظهري",
+        "الحلزون",
+        "السحلية",
+        "القنفذ"
+      ],
+      "h07": [
+        "الكنغر",
+        "ذيلي يساعدني على التوازن",
+        "أعيش في أستراليا",
+        "أحمل صغيري في جراب",
+        "الكوالا",
+        "الأرنب البري",
+        "السنجاب"
+      ],
+      "h08": [
+        "البومة",
+        "أستطيع أن أدير رأسي إلى الخلف تقريبًا",
+        "أصطاد في الليل",
+        "أنعب في الغابة المظلمة",
+        "الغراب",
+        "النسر",
+        "الحمامة"
+      ],
+      "h09": [
+        "الدلفين",
+        "أتنفس الهواء مع أنني أعيش في البحر",
+        "أساعد الناس وأتحدث بالصفير",
+        "أحب القفز فوق الأمواج",
+        "القرش",
+        "الحوت",
+        "الفقمة"
+      ],
+      "h10": [
+        "السنجاب",
+        "أخبّئ طعامي وأحيانًا أنسى مكانه",
+        "أعيش في جوف شجرة",
+        "أقضم المكسرات وأكواز الصنوبر",
+        "القنفذ",
+        "الأرنب البري",
+        "الفأر"
+      ],
+      "h11": [
+        "العنكبوت",
+        "لست حشرة، مع أن كثيرين يظنون ذلك",
+        "لي ثماني أرجل",
+        "أنسج شبكة",
+        "النملة",
+        "الخنفساء",
+        "البعوضة"
+      ],
+      "h12": [
+        "القطة",
+        "أرى في الظلام أفضل من البشر",
+        "أحب حافة النافذة الدافئة",
+        "أخرخر وأصطاد الفئران",
+        "الأرنب",
+        "الهامستر",
+        "الببغاء"
+      ],
+      "h13": [
+        "البطيخ",
+        "يصنّفني العلماء ثمرة لبّية",
+        "ينتظرني الناس في الصيف",
+        "أخضر من الخارج وأحمر من الداخل",
+        "الشمام",
+        "اليقطين",
+        "الأناناس"
+      ],
+      "h14": [
+        "الخبز",
+        "أُخبز في كل بلد تقريبًا",
+        "أُقطَّع شرائح للغداء",
+        "قد أكون أبيض أو أسمر، ولي قشرة",
+        "الفطيرة المقلاة",
+        "الفطيرة المحشوة",
+        "البسكويت"
+      ],
+      "h15": [
+        "العسل",
+        "أستطيع البقاء آلاف السنين دون أن أفسد",
+        "أُضاف إلى الشاي الدافئ عند الزكام",
+        "يصنعني النحل",
+        "المربى",
+        "السكر",
+        "الحليب"
+      ],
+      "h16": [
+        "الليمون",
+        "أنا غني بفيتامين C",
+        "يضعونني في الشاي",
+        "أنا أصفر وحامض جدًا",
+        "البرتقال",
+        "الجريب فروت",
+        "الليم الأخضر"
+      ],
+      "h17": [
+        "الجزر",
+        "أنمو تحت الأرض ولا يظهر إلا عرشي",
+        "يقال إنني مفيد للنظر",
+        "أنا برتقالي والأرانب تحبني",
+        "الشمندر",
+        "الفجل",
+        "البطاطس"
+      ],
+      "h18": [
+        "التفاح",
+        "لي أصناف صيفية وأخرى شتوية",
+        "أدخل في الفطائر والعصير",
+        "أنمو على شجرة، أحمر أو أخضر",
+        "الكمثرى",
+        "الخوخ",
+        "البرقوق"
+      ],
+      "h19": [
+        "الموز",
+        "أنمو في عناقيد على نبتة طويلة",
+        "القرود تحبني كثيرًا",
+        "أنا أصفر ويجب تقشيري",
+        "المانجو",
+        "الكيوي",
+        "الأناناس"
+      ],
+      "h20": [
+        "الشاي",
+        "يشربني أهل الصين منذ آلاف السنين",
+        "قد أكون أسود أو أخضر أو بالأعشاب",
+        "أُحضَّر في إبريق",
+        "القهوة",
+        "الكاكاو",
+        "العصير"
+      ],
+      "h21": [
+        "البيضة",
+        "يصعب خبز الكعكة من دوني",
+        "تُصنع العجّة مني",
+        "تضعني الدجاجة",
+        "الجبن",
+        "الجوزة",
+        "البطاطس"
+      ],
+      "h22": [
+        "المظلة",
+        "أقضي معظم وقتي مطويّة",
+        "يأخذونني حين تتلبد السماء",
+        "أحمي من البلل تحت المطر",
+        "معطف المطر",
+        "القبعة",
+        "الحذاء الطويل"
+      ],
+      "h23": [
+        "الساعة",
+        "قد أعمل بالرمل أو بضوء الشمس",
+        "أُعلَّق على الجدران وأقف في الأبراج",
+        "أُظهر الوقت بعقاربي",
+        "البوصلة",
+        "التقويم",
+        "مقياس الحرارة"
+      ],
+      "h24": [
+        "المفتاح",
+        "من دوني لا يسمح الباب بالدخول",
+        "كثيرًا ما أُحمل في حلقة",
+        "أفتح القفل",
+        "المقص",
+        "مفك البراغي",
+        "مشبك الورق"
+      ],
+      "h25": [
+        "الشمعة",
+        "كلما عملت أكثر صغرت أكثر",
+        "يشعلونني حين تنقطع الكهرباء",
+        "أنا من الشمع ولي فتيل",
+        "المصباح اليدوي",
+        "القنديل",
+        "أعواد الثقاب"
+      ],
+      "h26": [
+        "المقص",
+        "لي حلقتان وطرفان حادّان",
+        "أقص الأشكال من الورق",
+        "أقطع القماش والورق",
+        "السكين",
+        "الإبرة",
+        "المسطرة"
+      ],
+      "h27": [
+        "فرشاة الأسنان",
+        "لي شعيرات كثيرة",
+        "أُستبدل كل ثلاثة أشهر",
+        "أنظّف الأسنان صباحًا ومساءً",
+        "الصابون",
+        "المنشفة",
+        "الإسفنجة"
+      ],
+      "h28": [
+        "الثلاجة",
+        "في داخلي شتاء دائم",
+        "يضيء نور حين يفتحونني",
+        "أحفظ الطعام باردًا",
+        "الموقد",
+        "الفرن",
+        "الخزانة"
+      ],
+      "h29": [
+        "الدراجة",
+        "أسير بلا وقود ولا كهرباء",
+        "لي مقود وجرس وسلسلة",
+        "لي عجلتان ودوّاستان",
+        "السكوتر",
+        "الدراجة النارية",
+        "لوح التزلج"
+      ],
+      "h30": [
+        "الطائرة",
+        "لي جناحان، لكنني لست طائرًا",
+        "ينتظرني الناس في المطار",
+        "أحلّق فوق الغيوم مع الركاب",
+        "المروحية",
+        "الصاروخ",
+        "منطاد الهواء الساخن"
+      ],
+      "h31": [
+        "القطار",
+        "لا أسير إلا على طريقي الخاص",
+        "لي عربات كثيرة",
+        "أسير على القضبان من محطة إلى محطة",
+        "الترام",
+        "الحافلة",
+        "المترو"
+      ],
+      "h32": [
+        "الجسر",
+        "أُبنى من الحجر أو الخشب أو الفولاذ",
+        "تستطيع السفن المرور من تحتي",
+        "أصل بين ضفتي النهر",
+        "النفق",
+        "الطريق",
+        "السد"
+      ],
+      "h33": [
+        "قلم الرصاص",
+        "في داخلي غرافيت",
+        "يبرونني حين أصبح غير حاد",
+        "أكتب وأرسم، والممحاة تمحو أثري",
+        "قلم الحبر",
+        "الطباشير",
+        "قلم التحديد"
+      ],
+      "h34": [
+        "الكتاب",
+        "أنا صامت، لكنني أعلّم الكثير",
+        "لي غلاف وصفحات",
+        "يقرؤونني ويستعيرونني من المكتبات",
+        "المجلة",
+        "الجريدة",
+        "الدفتر"
+      ],
+      "h35": [
+        "حقيبة السفر",
+        "أسافر كثيرًا، لكن دائمًا في يد أحد",
+        "يملؤونني قبل الرحلة",
+        "لي مقبض وعجلات، وأحمل الملابس",
+        "حقيبة الظهر",
+        "حقيبة اليد",
+        "الصندوق"
+      ],
+      "h36": [
+        "المكتبة",
+        "هنا يُطلب الحديث بهدوء",
+        "هنا تُستخرج بطاقة القارئ",
+        "آلاف الكتب للاستعارة إلى البيت",
+        "المدرسة",
+        "متجر الكتب",
+        "الأرشيف"
+      ],
+      "h37": [
+        "المطار",
+        "هنا يوجد تفتيش الجوازات",
+        "هنا يُعلَن عن الصعود إلى الرحلات",
+        "من هنا تقلع الطائرات",
+        "محطة القطار",
+        "الميناء",
+        "محطة الحافلات"
+      ],
+      "h38": [
+        "الصحراء",
+        "حارّة نهارًا، لكن لياليها قد تكون باردة جدًا",
+        "هنا توجد الواحات",
+        "رمل كثير وماء قليل جدًا",
+        "السهوب",
+        "السافانا",
+        "الشاطئ"
+      ],
+      "h39": [
+        "البركان",
+        "قد أنام مئات السنين",
+        "يتصاعد الدخان من قمتي",
+        "أثور وأقذف الحمم",
+        "الجبل",
+        "الينبوع الحار",
+        "الجزيرة"
+      ],
+      "h40": [
+        "قوس قزح",
+        "لا أُرى إلا والشمس خلف الناظر",
+        "كثيرًا ما أظهر بعد المطر",
+        "سبعة ألوان في قوس عبر السماء",
+        "البرق",
+        "الغيمة",
+        "الشفق القطبي"
+      ],
+      "h41": [
+        "القمر",
+        "أُظهر للأرض الوجه نفسه دائمًا",
+        "قد أكون بدرًا أو هلالًا رفيعًا",
+        "أضيء في سماء الليل",
+        "الشمس",
+        "النجمة",
+        "المذنّب"
+      ],
+      "h42": [
+        "الثلج",
+        "كل ندفة مني فريدة",
+        "يبنون مني الحصون",
+        "أبيض وبارد، أتساقط في الشتاء",
+        "المطر",
+        "البَرَد",
+        "الصقيع"
+      ],
+      "h43": [
+        "النهر",
+        "لي منبع ومصب",
+        "تبحر القوارب فوقي",
+        "أجري من الجبال إلى البحر",
+        "البحيرة",
+        "البحر",
+        "الجدول"
+      ],
+      "h44": [
+        "الصبار",
+        "أعيش طويلًا بلا ماء",
+        "أنمو في الصحاري وعلى حواف النوافذ",
+        "أنا مغطى بالأشواك",
+        "الألوفيرا",
+        "النخلة",
+        "الأقحوان"
+      ],
+      "h45": [
+        "عباد الشمس",
+        "من بذوري يُستخرج الزيت",
+        "أدور لأتبع الشمس",
+        "زهرة صفراء كبيرة مليئة بالبذور",
+        "الأقحوان",
+        "التوليب",
+        "الهندباء البرية"
+      ],
+      "h46": [
+        "البلوط",
+        "قد أعيش أكثر من ألف عام",
+        "يُرى فيّ رمز للقوة",
+        "تنمو عليّ ثمار صغيرة لها قبعات",
+        "البتولا",
+        "الصنوبر",
+        "القيقب"
+      ],
+      "h47": [
+        "الجزيرة",
+        "قد تتسع لبلد كامل",
+        "يُوصَل إليّ بالقارب أو الطائرة",
+        "يحيط بي الماء من كل جانب",
+        "شبه الجزيرة",
+        "الشعاب المرجانية",
+        "الرأس"
+      ],
+      "h48": [
+        "الشلال",
+        "يُسمع صوتي من بعيد",
+        "أعلانا موجود في فنزويلا",
+        "هنا يهوي النهر من فوق جرف",
+        "النافورة",
+        "الينبوع الحار",
+        "العين"
+      ],
+      "h49": [
+        "الطبيب",
+        "أدرس سنوات طويلة قبل أن أبدأ العمل",
+        "أرتدي معطفًا أبيض",
+        "أعالج المرضى",
+        "الممرض",
+        "الصيدلي",
+        "الطبيب البيطري"
+      ],
+      "h50": [
+        "الإطفائي",
+        "أناوب ليلًا ونهارًا، جاهزًا للنداء",
+        "أعمل بالماء والسلالم",
+        "أطفئ الحرائق",
+        "الشرطي",
+        "المنقذ",
+        "عامل البناء"
+      ],
+      "h51": [
+        "الطاهي",
+        "أتذوق كل ما أصنعه",
+        "أعمل أمام موقد ساخن",
+        "أطبخ الطعام في مطعم",
+        "الخبّاز",
+        "النادل",
+        "صانع الحلويات"
+      ],
+      "h52": [
+        "المعلّم",
+        "أصحّح الدفاتر في المساء",
+        "أقف أمام السبورة",
+        "أعلّم الأطفال في المدرسة",
+        "المدير",
+        "أمين المكتبة",
+        "مربي الروضة"
+      ],
+      "h53": [
+        "الطيار",
+        "مكان عملي قمرة القيادة",
+        "أخاطب الركاب عبر مكبر الصوت",
+        "أقود الطائرة",
+        "القبطان",
+        "السائق",
+        "رائد الفضاء"
+      ],
+      "h54": [
+        "ساعي البريد",
+        "أعرف كل عنوان في منطقتي",
+        "أحمل حقيبة كبيرة",
+        "أوصل الرسائل والطرود",
+        "عامل التوصيل",
+        "سائق الأجرة",
+        "البائع"
+      ],
+      "h55": [
+        "البستاني",
+        "أعرف متى يُزرع كل شيء",
+        "أدواتي مرشّة ماء ومقص تقليم",
+        "أعتني بالأزهار والأشجار",
+        "المزارع",
+        "حارس الغابة",
+        "بائع الزهور"
+      ],
+      "h56": [
+        "المصوّر",
+        "ألتقط اللحظات",
+        "أطلب من الجميع ألّا يتحركوا",
+        "أعمل بالكاميرا والصور",
+        "الرسام",
+        "الصحفي",
+        "مصوّر الفيديو"
+      ],
+      "h57": [
+        "الصياد",
+        "أستيقظ قبل الفجر وأنتظر طويلًا",
+        "أحتاج إلى صنارة وصبر",
+        "أصطاد السمك",
+        "المزارع",
+        "البحّار",
+        "الراعي"
+      ],
+      "h58": [
+        "رائد الفضاء",
+        "أتدرب على الأرض وقتًا طويلًا",
+        "أرتدي بدلة فضاء",
+        "أطير إلى الفضاء",
+        "الطيار",
+        "عالم الفلك",
+        "المهندس"
+      ],
+      "h59": [
+        "المهندس المعماري",
+        "يُرى عملي في أنحاء المدينة",
+        "أرسم المخططات",
+        "أصمم البيوت",
+        "عامل البناء",
+        "المصمم",
+        "المهندس المدني"
+      ],
+      "h60": [
+        "طبيب الأسنان",
+        "كثيرون يخافون من كرسيّي",
+        "أعمل بالمثقاب",
+        "أعالج الأسنان",
+        "الجرّاح",
+        "طبيب العيون",
+        "طبيب الأطفال"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "مكان العيش بعد عشر سنوات؟",
+        "قرب البحر",
+        "في الجبال",
+        "في مدينة كبيرة",
+        "في قرية هادئة"
+      ],
+      "d02": [
+        "البيت المنشود يومًا ما؟",
+        "شقة دافئة",
+        "بيت بحديقة",
+        "كوخ على ضفة بحيرة",
+        "بيت قديم له تاريخ"
+      ],
+      "d03": [
+        "ما يُزرع في الحديقة؟",
+        "أشجار التفاح",
+        "الورد",
+        "خضار وأعشاب",
+        "الفراولة"
+      ],
+      "d04": [
+        "الحيوان الأليف المنشود؟",
+        "قطة",
+        "ببغاء",
+        "أسماك زينة",
+        "سلحفاة"
+      ],
+      "d05": [
+        "الوجهة الأولى للسفر؟",
+        "اليابان",
+        "المغرب",
+        "آيسلندا",
+        "نيوزيلندا"
+      ],
+      "d06": [
+        "وسيلة السفر المفضلة؟",
+        "القطار",
+        "السيارة",
+        "الطائرة",
+        "السفينة"
+      ],
+      "d07": [
+        "اللغة المرغوب تعلّمها؟",
+        "الفرنسية",
+        "اليابانية",
+        "الإسبانية",
+        "الصينية"
+      ],
+      "d08": [
+        "المهارة المرغوب تعلّمها؟",
+        "الرسم",
+        "الخياطة",
+        "السباحة",
+        "البرمجة"
+      ],
+      "d09": [
+        "الطبق المرغوب إتقانه؟",
+        "البلوف",
+        "الخبز البيتي",
+        "السوشي",
+        "البقلاوة"
+      ],
+      "d10": [
+        "قضاء عطلة نهاية الأسبوع؟",
+        "في الطبيعة",
+        "في البيت مع كتاب",
+        "في زيارة الأهل",
+        "في مدينة جديدة"
+      ],
+      "d11": [
+        "صباح العطلة المثالي؟",
+        "نزهة باكرة",
+        "فطور على مهل",
+        "رياضة في الهواء الطلق",
+        "شاي على الشرفة"
+      ],
+      "d12": [
+        "الادخار من أجل…؟",
+        "بيت خاص",
+        "رحلة كبيرة",
+        "سيارة",
+        "الدراسة"
+      ],
+      "d13": [
+        "العمل المنشود؟",
+        "مشروع خاص",
+        "عمل في شركة كبيرة",
+        "عمل من البيت",
+        "مساعدة الناس"
+      ],
+      "d14": [
+        "طريقة مساعدة الآخرين؟",
+        "التطوع",
+        "مساعدة الحيوانات",
+        "تعليم الأطفال",
+        "زراعة الأشجار"
+      ],
+      "d15": [
+        "تقليد عائلي منشود؟",
+        "غداء الأحد معًا",
+        "أمسيات الألعاب اللوحية",
+        "نزهات العطلة",
+        "ألبوم صور العائلة"
+      ],
+      "d16": [
+        "المطبخ المنشود؟",
+        "مطبخ عائلي كبير",
+        "مشرق ودافئ",
+        "يطل على الحديقة",
+        "صغير لكنه عملي"
+      ],
+      "d17": [
+        "ما يُتمنّى رؤيته بالعين؟",
+        "الشفق القطبي",
+        "أهرامات الجيزة",
+        "شلالات فيكتوريا",
+        "جبال الهيمالايا"
+      ],
+      "d18": [
+        "أنشطة المساء المرغوبة؟",
+        "القراءة",
+        "طبخ شيء جديد",
+        "تعلّم اللغات",
+        "المشي في الحديقة"
+      ],
+      "d19": [
+        "الهواية المرغوب بدؤها؟",
+        "التصوير",
+        "صناعة الفخار",
+        "التطريز",
+        "البستنة"
+      ],
+      "d20": [
+        "وجهة عطلة نهاية الأسبوع؟",
+        "الغابة",
+        "البحيرة",
+        "بلدة قريبة",
+        "الجبال"
+      ],
+      "d21": [
+        "مكان العمل المثالي؟",
+        "قرب النافذة",
+        "مع رفوف الكتب",
+        "مليء بالنباتات الخضراء",
+        "شبه فارغ"
+      ],
+      "d22": [
+        "المجال المرغوب دراسته لاحقًا؟",
+        "الطب",
+        "التاريخ",
+        "الاقتصاد",
+        "التصميم"
+      ],
+      "d23": [
+        "الشجرة المرغوب غرسها؟",
+        "البلوط",
+        "شجرة تفاح",
+        "شجرة زيتون",
+        "نخلة تمر"
+      ],
+      "d24": [
+        "ما يُطبخ للضيوف؟",
+        "فطيرة بيتية",
+        "قدر كبير من البلوف",
+        "حساء بوصفة العائلة",
+        "سلطات طازجة"
+      ],
+      "d25": [
+        "المدينة المرغوب زيارتها؟",
+        "إسطنبول",
+        "باريس",
+        "طوكيو",
+        "القاهرة"
+      ],
+      "d26": [
+        "قضاء الصيف؟",
+        "على البحر",
+        "في الجبال",
+        "في بيت ريفي",
+        "في جولة داخل البلد"
+      ],
+      "d27": [
+        "الطائر المرغوب تربيته؟",
+        "الكناري",
+        "البادجي",
+        "الحمام",
+        "عصافير الزيبرا"
+      ],
+      "d28": [
+        "الرياضة المرغوب تجربتها؟",
+        "السباحة",
+        "ركوب الخيل",
+        "الرماية بالقوس",
+        "التسلق"
+      ],
+      "d29": [
+        "الكتب المرغوب جمعها؟",
+        "الموسوعات",
+        "الكلاسيكيات",
+        "كتب الرحلات",
+        "كتب الطبخ"
+      ],
+      "d30": [
+        "ما يُصنع باليد؟",
+        "أثاث",
+        "أوانٍ خاصة",
+        "بطانية محاكة",
+        "بيت للعصافير"
+      ],
+      "d31": [
+        "مكان النزهة المفضل؟",
+        "ضفة النهر",
+        "الحديقة",
+        "فسحة في الغابة",
+        "الجبال"
+      ],
+      "d32": [
+        "وسيلة التنقل في المستقبل؟",
+        "سيارة كهربائية",
+        "دراجة",
+        "سيارة عائلية كبيرة",
+        "الاستغناء عن السيارة"
+      ],
+      "d33": [
+        "أنشطة ما بعد التقاعد؟",
+        "البستنة",
+        "السفر",
+        "الوقت مع الأحفاد",
+        "تعلّم أشياء جديدة"
+      ],
+      "d34": [
+        "العمل الخيري المنشود؟",
+        "حفر بئر ماء",
+        "مساعدة مأوى القطط",
+        "جمع الكتب لمدرسة",
+        "غرس صف من الأشجار"
+      ],
+      "d35": [
+        "فطور عطلة نهاية الأسبوع؟",
+        "فطائر رقيقة",
+        "عجّة",
+        "عصيدة بالفواكه",
+        "فطائر الجبن"
+      ],
+      "d36": [
+        "مكان استقبال الضيوف؟",
+        "المطبخ",
+        "غرفة الجلوس",
+        "الشرفة الواسعة",
+        "الحديقة"
+      ],
+      "d37": [
+        "عجيبة الطبيعة المرغوب رؤيتها؟",
+        "الأخدود العظيم",
+        "شلالات نياغارا",
+        "بحيرة بايكال",
+        "الصحراء الكبرى"
+      ],
+      "d38": [
+        "مهارة منزلية مرغوب تعلّمها؟",
+        "الإصلاحات الذاتية",
+        "الخياطة",
+        "خبز الخبز",
+        "العناية بالحديقة"
+      ],
+      "d39": [
+        "عدد اللغات المرغوب إتقانها؟",
+        "اثنتان",
+        "ثلاث",
+        "خمس",
+        "أكبر عدد ممكن"
+      ],
+      "d40": [
+        "لون جدران البيت المفضل؟",
+        "أبيض",
+        "بيج",
+        "أخضر فاتح",
+        "أزرق فاتح"
+      ],
+      "d41": [
+        "سمكة الحوض المفضلة؟",
+        "السمكة الذهبية",
+        "الجوبي",
+        "سمك القرموط",
+        "سمكة الملاك"
+      ],
+      "d42": [
+        "الرحلة المهداة إلى الوالدين؟",
+        "إجازة على البحر",
+        "جولة في مدينة",
+        "رحلة إلى الجبال",
+        "رحلة بالقطار"
+      ],
+      "d43": [
+        "أنشطة وقت الفراغ؟",
+        "الرسم",
+        "القراءة",
+        "الرياضة",
+        "الأشغال اليدوية"
+      ],
+      "d44": [
+        "الفصل المفضل للسفر؟",
+        "الربيع",
+        "الصيف",
+        "الخريف",
+        "الشتاء"
+      ],
+      "d45": [
+        "مؤونة الشتاء المرغوبة؟",
+        "المربى",
+        "المخللات",
+        "الفواكه المجففة",
+        "شراب الفواكه"
+      ],
+      "d46": [
+        "مهنة أخرى للتجربة؟",
+        "الطهي",
+        "البرمجة",
+        "الترجمة",
+        "النجارة"
+      ],
+      "d47": [
+        "البلد المرغوب التعرف إليه؟",
+        "ماليزيا",
+        "إيطاليا",
+        "كندا",
+        "إندونيسيا"
+      ],
+      "d48": [
+        "ما يُتمنّى في الفناء؟",
+        "نافورة صغيرة",
+        "حديقة خضار",
+        "عريشة",
+        "أرجوحة"
+      ],
+      "d49": [
+        "طريقة الاحتفال بالنجاح؟",
+        "عشاء عائلي",
+        "رحلة إلى الطبيعة",
+        "كتاب جديد",
+        "عمل خير للآخرين"
+      ],
+      "d50": [
+        "ما يُنقل إلى الأطفال؟",
+        "حب الكتب",
+        "مهارات الطبخ",
+        "اللغة الأم",
+        "رعاية الطبيعة"
+      ]
     }
   },
   "ind": {
@@ -43107,7 +61787,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Menang! Kamu lebih tahu tentang dunia.",
       "tfFinalLose": "Kali ini {name} lebih tahu — main lagi?",
       "tfFinalDraw": "Seri — pengetahuan kalian sama banyaknya!",
-      "featTruth": "Game langsung «Benar atau salah» — fakta menakjubkan tentang dunia"
+      "featTruth": "Game langsung «Benar atau salah» — fakta menakjubkan tentang dunia",
+      "countries": "Tebak negara",
+      "coTitle": "Tebak negara",
+      "coNote": "Game langsung untuk berdua: si beruang keliling dunia. 10 detik — tebak dia ada di negara mana! Satu poin untuk setiap jawaban benar.",
+      "coShareText": "{name} mengajakmu bermain game langsung «Tebak negara»",
+      "coJoinLead": "{name} sedang menunggumu. Tebak negaranya dari gambar!",
+      "coRound": "Negara {n} dari {total}",
+      "coAsk": "Negara apa ini?",
+      "coFinalWin": "Menang! Kamu benar-benar penjelajah dunia.",
+      "coFinalLose": "Kali ini {name} lebih kenal dunia — main lagi?",
+      "coFinalDraw": "Seri — kalian berdua sama-sama kenal dunia!",
+      "featCountries": "Game langsung «Tebak negara» — 40 negara",
+      "hints": "Tebak dari petunjuk",
+      "dreams": "Impian dan rencana",
+      "hiTitle": "Tebak dari petunjuk",
+      "hiNote": "Game langsung untuk berdua: tiga petunjuk terbuka satu per satu. Tebak di petunjuk pertama — 3 poin, kedua — 2 poin, ketiga — 1 poin.",
+      "hiShareText": "{name} mengajakmu bermain game langsung «Tebak dari petunjuk»",
+      "hiJoinLead": "{name} menunggumu. Tebak secepat mungkin!",
+      "hiRound": "Teka-teki {n} dari {total}",
+      "hiAsk": "Apakah ini?",
+      "hiClue": "Petunjuk {n}",
+      "hiPoints": "+{n} poin",
+      "hiNoPoints": "Kali ini tanpa poin",
+      "hiFinalWin": "Menang! Kamu jago menebak.",
+      "hiFinalLose": "Kali ini {name} lebih jago menebak — main lagi?",
+      "hiFinalDraw": "Seri — kalian berdua jago menebak!",
+      "featHints": "Game langsung «Tebak dari petunjuk» — 3, 2, atau 1 poin",
+      "drTitle": "Impian dan rencana",
+      "drNote": "Game langsung untuk berdua: rumah, perjalanan, belajar, dan hobi. Pilih yang diinginkan dan lihat apakah impian kalian sama.",
+      "drShareText": "{name} mengajakmu bermain game langsung «Impian dan rencana»",
+      "drJoinLead": "{name} menunggumu. Pilih yang benar-benar kamu inginkan!",
+      "drRound": "Pertanyaan {n} dari {total}",
+      "drPick": "Pilih yang kamu inginkan",
+      "drBoth": "Sama: {item}",
+      "drDiff": "Impian berbeda — ceritakan alasannya satu sama lain!",
+      "drFinalHigh": "Banyak sekali impian kalian yang sama!",
+      "drFinalMid": "Impian berbeda — banyak yang bisa dibicarakan",
+      "drCommon": "Impian bersama kalian",
+      "featDreams": "Game langsung «Impian dan rencana» — apakah impian kalian sama?",
+      "modestTitle": "Mode sopan",
+      "modestNote": "Tanpa pertanyaan soal perasaan, pelukan, atau kencan — hanya yang bersahabat"
     },
     "questions": {
       "q01": [
@@ -45026,6 +63746,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         false,
         "Kutub Selatan jauh lebih dingin: berada di benua es yang tinggi, Kutub Utara di atas samudra."
       ]
+    },
+    "hints": {
+      "h01": [
+        "Penguin",
+        "Aku burung, tapi tidak bisa terbang",
+        "Aku tinggal di tempat yang sangat dingin",
+        "Aku selalu memakai jas berekor",
+        "Burung unta",
+        "Anjing laut",
+        "Camar"
+      ],
+      "h02": [
+        "Gajah",
+        "Aku makan hampir sepanjang hari",
+        "Telingaku seperti kipas besar",
+        "Aku punya belalai panjang",
+        "Badak",
+        "Kuda nil",
+        "Jerapah"
+      ],
+      "h03": [
+        "Jerapah",
+        "Aku sedikit tidur, sering sambil berdiri",
+        "Aku makan daun dari pohon tertinggi",
+        "Leherku paling panjang",
+        "Zebra",
+        "Unta",
+        "Rusa besar"
+      ],
+      "h04": [
+        "Unta",
+        "Aku bisa lama bertahan tanpa air",
+        "Aku dijuluki kapal gurun",
+        "Di punggungku ada satu atau dua punuk",
+        "Kuda",
+        "Keledai",
+        "Llama"
+      ],
+      "h05": [
+        "Lebah",
+        "Aku bisa menunjukkan jalan ke bunga",
+        "Aku bekerja di padang dari pagi sampai senja",
+        "Aku membuat madu",
+        "Tawon",
+        "Lalat",
+        "Kupu-kupu"
+      ],
+      "h06": [
+        "Kura-kura",
+        "Aku bisa hidup lebih dari seratus tahun",
+        "Aku tidak pernah terburu-buru",
+        "Aku membawa rumahku di punggung",
+        "Siput",
+        "Kadal",
+        "Landak"
+      ],
+      "h07": [
+        "Kanguru",
+        "Ekorku membantuku menjaga keseimbangan",
+        "Aku tinggal di Australia",
+        "Aku membawa anakku di kantong",
+        "Koala",
+        "Kelinci liar",
+        "Tupai"
+      ],
+      "h08": [
+        "Burung hantu",
+        "Aku bisa memutar kepala hampir ke belakang",
+        "Aku berburu di malam hari",
+        "Aku berbunyi di hutan yang gelap",
+        "Gagak",
+        "Elang",
+        "Merpati"
+      ],
+      "h09": [
+        "Lumba-lumba",
+        "Aku bernapas dengan udara, walau tinggal di laut",
+        "Aku menolong manusia dan bicara dengan siulan",
+        "Aku suka melompati ombak",
+        "Hiu",
+        "Paus",
+        "Anjing laut"
+      ],
+      "h10": [
+        "Tupai",
+        "Aku menyembunyikan makanan, kadang lupa di mana",
+        "Aku tinggal di lubang pohon",
+        "Aku menggerogoti kacang dan buah pinus",
+        "Landak",
+        "Kelinci liar",
+        "Tikus"
+      ],
+      "h11": [
+        "Laba-laba",
+        "Aku bukan serangga, walau banyak yang mengira begitu",
+        "Kakiku delapan",
+        "Aku menenun jaring",
+        "Semut",
+        "Kumbang",
+        "Nyamuk"
+      ],
+      "h12": [
+        "Kucing",
+        "Aku melihat dalam gelap lebih baik dari manusia",
+        "Aku suka ambang jendela yang hangat",
+        "Aku mendengkur dan menangkap tikus",
+        "Kelinci",
+        "Hamster",
+        "Burung beo"
+      ],
+      "h13": [
+        "Semangka",
+        "Ilmuwan menggolongkanku sebagai buah beri",
+        "Orang menantiku di musim panas",
+        "Hijau di luar, merah di dalam",
+        "Melon",
+        "Labu",
+        "Nanas"
+      ],
+      "h14": [
+        "Roti",
+        "Aku dipanggang di hampir setiap negara",
+        "Aku diiris untuk makan siang",
+        "Aku bisa putih atau gandum hitam, berkulit",
+        "Panekuk",
+        "Pai",
+        "Kue kering"
+      ],
+      "h15": [
+        "Madu",
+        "Aku bisa awet ribuan tahun",
+        "Aku ditambahkan ke teh hangat saat flu",
+        "Lebah yang membuatku",
+        "Selai",
+        "Gula",
+        "Susu"
+      ],
+      "h16": [
+        "Lemon",
+        "Aku kaya vitamin C",
+        "Orang menaruhku di teh",
+        "Aku kuning dan sangat asam",
+        "Jeruk",
+        "Jeruk bali",
+        "Jeruk nipis"
+      ],
+      "h17": [
+        "Wortel",
+        "Aku tumbuh di dalam tanah, hanya daunku terlihat",
+        "Katanya aku baik untuk mata",
+        "Aku oranye, dan kelinci menyukaiku",
+        "Bit",
+        "Lobak",
+        "Kentang"
+      ],
+      "h18": [
+        "Apel",
+        "Aku punya varietas musim panas dan dingin",
+        "Aku dijadikan pai dan jus",
+        "Aku tumbuh di pohon, merah atau hijau",
+        "Pir",
+        "Persik",
+        "Plum"
+      ],
+      "h19": [
+        "Pisang",
+        "Aku tumbuh bertandan di tanaman yang tinggi",
+        "Monyet sangat menyukaiku",
+        "Aku kuning, dan harus dikupas",
+        "Mangga",
+        "Kiwi",
+        "Nanas"
+      ],
+      "h20": [
+        "Teh",
+        "Orang di Tiongkok meminumku ribuan tahun",
+        "Aku bisa hitam, hijau, atau herbal",
+        "Aku diseduh dalam teko",
+        "Kopi",
+        "Kakao",
+        "Jus"
+      ],
+      "h21": [
+        "Telur",
+        "Tanpa aku, sulit memanggang kue",
+        "Omelet dibuat dariku",
+        "Ayam betina yang menghasilkanku",
+        "Keju",
+        "Kacang",
+        "Kentang"
+      ],
+      "h22": [
+        "Payung",
+        "Hampir sepanjang waktu aku terlipat",
+        "Aku dibawa saat langit mendung",
+        "Aku melindungimu dari hujan",
+        "Jas hujan",
+        "Topi",
+        "Sepatu bot"
+      ],
+      "h23": [
+        "Jam",
+        "Ada yang bekerja dengan pasir atau sinar matahari",
+        "Aku tergantung di dinding dan berdiri di menara",
+        "Aku menunjukkan waktu dengan jarum",
+        "Kompas",
+        "Kalender",
+        "Termometer"
+      ],
+      "h24": [
+        "Kunci",
+        "Tanpa aku, pintu tak mau terbuka",
+        "Aku sering dibawa di gantungan",
+        "Aku membuka gembok",
+        "Gunting",
+        "Obeng",
+        "Penjepit kertas"
+      ],
+      "h25": [
+        "Lilin",
+        "Makin lama bekerja, makin kecil aku",
+        "Orang menyalakanku saat listrik padam",
+        "Aku terbuat dari parafin dan punya sumbu",
+        "Senter",
+        "Lampu",
+        "Korek api"
+      ],
+      "h26": [
+        "Gunting",
+        "Aku punya dua lingkaran dan dua ujung tajam",
+        "Aku memotong bentuk dari kertas",
+        "Aku memotong kain dan kertas",
+        "Pisau",
+        "Jarum",
+        "Penggaris"
+      ],
+      "h27": [
+        "Sikat gigi",
+        "Buluku banyak sekali",
+        "Aku diganti setiap tiga bulan",
+        "Aku membersihkan gigi pagi dan malam",
+        "Sabun",
+        "Handuk",
+        "Spons"
+      ],
+      "h28": [
+        "Kulkas",
+        "Di dalamku selalu musim dingin",
+        "Lampu menyala saat aku dibuka",
+        "Aku menjaga makanan tetap dingin",
+        "Kompor",
+        "Oven",
+        "Lemari"
+      ],
+      "h29": [
+        "Sepeda",
+        "Aku berjalan tanpa bensin dan listrik",
+        "Aku punya setang, bel, dan rantai",
+        "Aku punya dua roda dan pedal",
+        "Skuter",
+        "Sepeda motor",
+        "Papan luncur"
+      ],
+      "h30": [
+        "Pesawat",
+        "Aku bersayap, tapi bukan burung",
+        "Orang menungguku di bandara",
+        "Aku terbang di atas awan membawa penumpang",
+        "Helikopter",
+        "Roket",
+        "Balon udara"
+      ],
+      "h31": [
+        "Kereta api",
+        "Aku hanya melaju di jalanku sendiri",
+        "Gerbongku banyak",
+        "Aku melaju di rel dari stasiun ke stasiun",
+        "Trem",
+        "Bus",
+        "Kereta bawah tanah"
+      ],
+      "h32": [
+        "Jembatan",
+        "Aku dibangun dari batu, kayu, atau baja",
+        "Kapal bisa lewat di bawahku",
+        "Aku menghubungkan dua tepi sungai",
+        "Terowongan",
+        "Jalan",
+        "Bendungan"
+      ],
+      "h33": [
+        "Pensil",
+        "Di dalamku ada grafit",
+        "Aku diraut saat tumpul",
+        "Aku menulis dan menggambar, bisa dihapus",
+        "Pulpen",
+        "Kapur tulis",
+        "Spidol"
+      ],
+      "h34": [
+        "Buku",
+        "Aku diam, tapi mengajarkan banyak hal",
+        "Aku punya sampul dan halaman",
+        "Orang membacaku dan meminjamku di perpustakaan",
+        "Majalah",
+        "Koran",
+        "Buku catatan"
+      ],
+      "h35": [
+        "Koper",
+        "Aku sering bepergian, tapi selalu di tangan orang",
+        "Aku diisi sebelum perjalanan",
+        "Aku punya pegangan dan roda, berisi pakaian",
+        "Ransel",
+        "Tas",
+        "Kotak"
+      ],
+      "h36": [
+        "Perpustakaan",
+        "Di sini orang diminta bicara pelan",
+        "Di sini kamu bisa membuat kartu anggota",
+        "Ribuan buku untuk dipinjam pulang",
+        "Sekolah",
+        "Toko buku",
+        "Arsip"
+      ],
+      "h37": [
+        "Bandara",
+        "Di sini ada pemeriksaan paspor",
+        "Di sini ada pengumuman naik pesawat",
+        "Pesawat lepas landas dari sini",
+        "Stasiun kereta",
+        "Pelabuhan",
+        "Terminal bus"
+      ],
+      "h38": [
+        "Gurun",
+        "Panas di siang hari, malamnya bisa sangat dingin",
+        "Di sini ada oasis",
+        "Banyak pasir dan sangat sedikit air",
+        "Stepa",
+        "Sabana",
+        "Pantai"
+      ],
+      "h39": [
+        "Gunung berapi",
+        "Aku bisa tidur ratusan tahun",
+        "Asap naik dari puncakku",
+        "Aku meletus mengeluarkan lava",
+        "Gunung",
+        "Geiser",
+        "Pulau"
+      ],
+      "h40": [
+        "Pelangi",
+        "Aku hanya terlihat saat matahari di belakangmu",
+        "Aku sering muncul setelah hujan",
+        "Tujuh warna melengkung di langit",
+        "Petir",
+        "Awan",
+        "Aurora"
+      ],
+      "h41": [
+        "Bulan",
+        "Aku selalu menunjukkan sisi yang sama ke Bumi",
+        "Aku bisa purnama atau sabit tipis",
+        "Aku bersinar di langit malam",
+        "Matahari",
+        "Bintang",
+        "Komet"
+      ],
+      "h42": [
+        "Salju",
+        "Setiap kepingku unik",
+        "Orang membangun benteng dariku",
+        "Putih dan dingin, aku turun di musim dingin",
+        "Hujan",
+        "Hujan es",
+        "Embun beku"
+      ],
+      "h43": [
+        "Sungai",
+        "Aku punya hulu dan muara",
+        "Perahu berlayar di atasku",
+        "Aku mengalir dari gunung ke laut",
+        "Danau",
+        "Laut",
+        "Anak sungai"
+      ],
+      "h44": [
+        "Kaktus",
+        "Aku bisa lama hidup tanpa air",
+        "Aku tumbuh di gurun dan di ambang jendela",
+        "Aku penuh duri",
+        "Lidah buaya",
+        "Pohon palem",
+        "Bunga aster"
+      ],
+      "h45": [
+        "Bunga matahari",
+        "Bijiku dibuat menjadi minyak",
+        "Aku berputar mengikuti matahari",
+        "Bunga kuning besar penuh biji",
+        "Bunga aster",
+        "Tulip",
+        "Dandelion"
+      ],
+      "h46": [
+        "Pohon ek",
+        "Aku bisa hidup lebih dari seribu tahun",
+        "Aku dianggap lambang kekuatan",
+        "Buah ek tumbuh padaku",
+        "Pohon birch",
+        "Pohon pinus",
+        "Pohon maple"
+      ],
+      "h47": [
+        "Pulau",
+        "Satu negara utuh bisa muat di atasku",
+        "Aku dicapai dengan kapal atau pesawat",
+        "Aku dikelilingi air di semua sisi",
+        "Semenanjung",
+        "Terumbu karang",
+        "Tanjung"
+      ],
+      "h48": [
+        "Air terjun",
+        "Suaraku terdengar dari jauh",
+        "Yang tertinggi di antara kami ada di Venezuela",
+        "Di sini sungai jatuh dari tebing",
+        "Air mancur",
+        "Geiser",
+        "Mata air"
+      ],
+      "h49": [
+        "Dokter",
+        "Aku belajar bertahun-tahun sebelum bekerja",
+        "Aku memakai jas putih",
+        "Aku merawat orang sakit",
+        "Perawat",
+        "Apoteker",
+        "Dokter hewan"
+      ],
+      "h50": [
+        "Pemadam kebakaran",
+        "Aku siaga siang dan malam",
+        "Aku bekerja dengan air dan tangga",
+        "Aku memadamkan api",
+        "Polisi",
+        "Tim penyelamat",
+        "Tukang bangunan"
+      ],
+      "h51": [
+        "Koki",
+        "Aku mencicipi semua yang kubuat",
+        "Aku bekerja di depan kompor panas",
+        "Aku memasak di restoran",
+        "Tukang roti",
+        "Pelayan",
+        "Pembuat kue"
+      ],
+      "h52": [
+        "Guru",
+        "Malam hari aku memeriksa buku tugas",
+        "Aku berdiri di depan papan tulis",
+        "Aku mengajar anak-anak di sekolah",
+        "Kepala sekolah",
+        "Pustakawan",
+        "Guru TK"
+      ],
+      "h53": [
+        "Pilot",
+        "Tempat kerjaku kokpit",
+        "Aku berbicara pada penumpang lewat pengeras suara",
+        "Aku menerbangkan pesawat",
+        "Nakhoda",
+        "Sopir",
+        "Astronaut"
+      ],
+      "h54": [
+        "Tukang pos",
+        "Aku tahu semua alamat di wilayahku",
+        "Aku membawa tas besar",
+        "Aku mengantar surat dan paket",
+        "Kurir",
+        "Sopir taksi",
+        "Penjaga toko"
+      ],
+      "h55": [
+        "Tukang kebun",
+        "Aku tahu kapan menanam apa",
+        "Alatku penyiram dan gunting dahan",
+        "Aku merawat bunga dan pohon",
+        "Petani",
+        "Penjaga hutan",
+        "Penjual bunga"
+      ],
+      "h56": [
+        "Fotografer",
+        "Aku menangkap momen",
+        "Aku meminta semua orang diam sejenak",
+        "Aku bekerja dengan kamera dan foto",
+        "Pelukis",
+        "Wartawan",
+        "Juru kamera video"
+      ],
+      "h57": [
+        "Nelayan",
+        "Aku bangun sebelum fajar dan menunggu lama",
+        "Aku butuh joran dan kesabaran",
+        "Aku menangkap ikan",
+        "Petani",
+        "Pelaut",
+        "Penggembala"
+      ],
+      "h58": [
+        "Astronaut",
+        "Aku berlatih lama di Bumi",
+        "Aku memakai baju antariksa",
+        "Aku terbang ke luar angkasa",
+        "Pilot",
+        "Astronom",
+        "Insinyur"
+      ],
+      "h59": [
+        "Arsitek",
+        "Karyaku terlihat di seluruh kota",
+        "Aku menggambar denah",
+        "Aku merancang rumah",
+        "Tukang bangunan",
+        "Desainer",
+        "Insinyur"
+      ],
+      "h60": [
+        "Dokter gigi",
+        "Banyak orang takut pada kursiku",
+        "Aku bekerja dengan bor",
+        "Aku merawat gigi",
+        "Dokter bedah",
+        "Dokter mata",
+        "Dokter anak"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Di mana ingin tinggal sepuluh tahun lagi?",
+        "Di tepi laut",
+        "Di pegunungan",
+        "Di kota besar",
+        "Di desa yang tenang"
+      ],
+      "d02": [
+        "Rumah seperti apa yang diimpikan?",
+        "Apartemen yang nyaman",
+        "Rumah dengan taman",
+        "Pondok di tepi danau",
+        "Rumah tua bersejarah"
+      ],
+      "d03": [
+        "Apa yang ingin ditanam di kebun?",
+        "Pohon apel",
+        "Mawar",
+        "Sayur dan rempah",
+        "Stroberi"
+      ],
+      "d04": [
+        "Hewan peliharaan apa yang diinginkan?",
+        "Kucing",
+        "Burung beo",
+        "Ikan akuarium",
+        "Kura-kura darat"
+      ],
+      "d05": [
+        "Ke mana ingin pergi lebih dulu?",
+        "Jepang",
+        "Maroko",
+        "Islandia",
+        "Selandia Baru"
+      ],
+      "d06": [
+        "Bepergian dengan apa?",
+        "Kereta api",
+        "Mobil",
+        "Pesawat",
+        "Kapal laut"
+      ],
+      "d07": [
+        "Bahasa apa yang ingin dipelajari?",
+        "Arab",
+        "Jepang",
+        "Spanyol",
+        "Mandarin"
+      ],
+      "d08": [
+        "Keterampilan apa yang ingin dikuasai?",
+        "Menggambar",
+        "Menjahit",
+        "Berenang",
+        "Pemrograman"
+      ],
+      "d09": [
+        "Masakan apa yang ingin dikuasai?",
+        "Plov",
+        "Roti buatan sendiri",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Akhir pekan ingin dihabiskan bagaimana?",
+        "Di alam terbuka",
+        "Di rumah dengan buku",
+        "Mengunjungi keluarga",
+        "Di kota baru"
+      ],
+      "d11": [
+        "Pagi akhir pekan yang sempurna?",
+        "Jalan pagi",
+        "Sarapan santai",
+        "Olahraga di udara segar",
+        "Teh di balkon"
+      ],
+      "d12": [
+        "Menabung untuk apa?",
+        "Rumah sendiri",
+        "Perjalanan besar",
+        "Mobil",
+        "Pendidikan"
+      ],
+      "d13": [
+        "Pekerjaan seperti apa yang diinginkan?",
+        "Usaha sendiri",
+        "Kerja di perusahaan besar",
+        "Kerja dari rumah",
+        "Menolong orang"
+      ],
+      "d14": [
+        "Bagaimana ingin membantu sesama?",
+        "Menjadi relawan",
+        "Menolong hewan",
+        "Mengajar anak-anak",
+        "Menanam pohon"
+      ],
+      "d15": [
+        "Tradisi keluarga apa yang diinginkan?",
+        "Makan siang bersama hari Minggu",
+        "Malam permainan papan",
+        "Jalan-jalan akhir pekan",
+        "Album foto keluarga"
+      ],
+      "d16": [
+        "Dapur seperti apa yang diinginkan?",
+        "Dapur keluarga yang luas",
+        "Terang dan nyaman",
+        "Menghadap taman",
+        "Kecil tapi praktis"
+      ],
+      "d17": [
+        "Apa yang ingin dilihat langsung?",
+        "Aurora utara",
+        "Piramida Giza",
+        "Air Terjun Victoria",
+        "Himalaya"
+      ],
+      "d18": [
+        "Apa yang ingin dilakukan di malam hari?",
+        "Membaca",
+        "Memasak menu baru",
+        "Belajar bahasa",
+        "Jalan-jalan di taman"
+      ],
+      "d19": [
+        "Hobi apa yang ingin dimulai?",
+        "Fotografi",
+        "Membuat tembikar",
+        "Menyulam",
+        "Berkebun"
+      ],
+      "d20": [
+        "Ke mana ingin pergi saat akhir pekan?",
+        "Ke hutan",
+        "Ke danau",
+        "Ke kota kecil terdekat",
+        "Ke pegunungan"
+      ],
+      "d21": [
+        "Ruang kerja impian seperti apa?",
+        "Dekat jendela",
+        "Dengan rak buku",
+        "Penuh tanaman hijau",
+        "Hampir kosong"
+      ],
+      "d22": [
+        "Apa yang ingin dipelajari berikutnya?",
+        "Kedokteran",
+        "Sejarah",
+        "Ekonomi",
+        "Desain"
+      ],
+      "d23": [
+        "Pohon apa yang ingin ditanam?",
+        "Pohon ek",
+        "Pohon apel",
+        "Pohon zaitun",
+        "Pohon kurma"
+      ],
+      "d24": [
+        "Apa yang ingin dimasak untuk tamu?",
+        "Pai buatan sendiri",
+        "Plov satu panci besar",
+        "Sup resep keluarga",
+        "Salad segar"
+      ],
+      "d25": [
+        "Kota mana yang ingin dikunjungi?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Kairo"
+      ],
+      "d26": [
+        "Musim panas ingin dihabiskan di mana?",
+        "Di tepi laut",
+        "Di pegunungan",
+        "Di rumah pedesaan",
+        "Keliling negeri sendiri"
+      ],
+      "d27": [
+        "Burung apa yang ingin dipelihara?",
+        "Kenari",
+        "Parkit",
+        "Merpati",
+        "Pipit zebra"
+      ],
+      "d28": [
+        "Olahraga apa yang ingin dicoba?",
+        "Berenang",
+        "Berkuda",
+        "Memanah",
+        "Panjat tebing"
+      ],
+      "d29": [
+        "Buku apa yang ingin dikoleksi?",
+        "Ensiklopedia",
+        "Karya klasik",
+        "Buku perjalanan",
+        "Buku resep"
+      ],
+      "d30": [
+        "Apa yang ingin dibuat sendiri?",
+        "Perabot",
+        "Peralatan makan sendiri",
+        "Selimut rajutan",
+        "Rumah burung"
+      ],
+      "d31": [
+        "Di mana ingin berpiknik?",
+        "Di tepi sungai",
+        "Di taman",
+        "Di tanah lapang hutan",
+        "Di pegunungan"
+      ],
+      "d32": [
+        "Kendaraan apa untuk masa depan?",
+        "Mobil listrik",
+        "Sepeda",
+        "Mobil keluarga besar",
+        "Tanpa mobil"
+      ],
+      "d33": [
+        "Apa yang ingin dilakukan saat pensiun?",
+        "Berkebun",
+        "Bepergian",
+        "Waktu bersama cucu",
+        "Belajar hal baru"
+      ],
+      "d34": [
+        "Kebaikan apa yang ingin dilakukan?",
+        "Membangun sumur air",
+        "Membantu penampungan kucing",
+        "Mengumpulkan buku untuk sekolah",
+        "Menanam sederet pohon"
+      ],
+      "d35": [
+        "Sarapan akhir pekan apa yang diinginkan?",
+        "Panekuk",
+        "Telur dadar",
+        "Bubur dengan buah",
+        "Panekuk keju"
+      ],
+      "d36": [
+        "Di mana ingin menyambut tamu?",
+        "Di dapur",
+        "Di ruang tamu",
+        "Di teras",
+        "Di taman"
+      ],
+      "d37": [
+        "Keajaiban alam apa yang ingin dilihat?",
+        "Grand Canyon",
+        "Air Terjun Niagara",
+        "Danau Baikal",
+        "Gurun Sahara"
+      ],
+      "d38": [
+        "Keterampilan rumah apa yang ingin dikuasai?",
+        "Memperbaiki sendiri",
+        "Menjahit",
+        "Memanggang roti",
+        "Merawat kebun"
+      ],
+      "d39": [
+        "Ingin bisa berapa bahasa?",
+        "Dua",
+        "Tiga",
+        "Lima",
+        "Sebanyak mungkin"
+      ],
+      "d40": [
+        "Warna dinding rumah apa yang diinginkan?",
+        "Putih",
+        "Krem",
+        "Hijau muda",
+        "Biru muda"
+      ],
+      "d41": [
+        "Ikan apa yang ingin ada di akuarium?",
+        "Ikan mas koki",
+        "Guppy",
+        "Ikan lele",
+        "Ikan manfish"
+      ],
+      "d42": [
+        "Perjalanan apa untuk hadiah orang tua?",
+        "Liburan di tepi laut",
+        "Tur kota",
+        "Perjalanan ke gunung",
+        "Perjalanan naik kereta"
+      ],
+      "d43": [
+        "Apa yang ingin dilakukan di waktu luang?",
+        "Menggambar",
+        "Membaca",
+        "Olahraga",
+        "Kerajinan tangan"
+      ],
+      "d44": [
+        "Musim apa yang cocok untuk bepergian?",
+        "Musim semi",
+        "Musim panas",
+        "Musim gugur",
+        "Musim dingin"
+      ],
+      "d45": [
+        "Apa yang ingin diawetkan untuk musim dingin?",
+        "Selai",
+        "Acar",
+        "Buah kering",
+        "Kolak buah"
+      ],
+      "d46": [
+        "Pekerjaan lain apa yang ingin dicoba?",
+        "Koki",
+        "Pemrogram",
+        "Penerjemah",
+        "Tukang kayu"
+      ],
+      "d47": [
+        "Negara mana yang ingin dikenal?",
+        "Malaysia",
+        "Italia",
+        "Kanada",
+        "Australia"
+      ],
+      "d48": [
+        "Apa yang diinginkan di halaman?",
+        "Air mancur kecil",
+        "Kebun sayur",
+        "Gazebo",
+        "Ayunan"
+      ],
+      "d49": [
+        "Bagaimana merayakan keberhasilan?",
+        "Makan malam keluarga",
+        "Jalan-jalan ke alam",
+        "Buku baru",
+        "Berbuat baik untuk sesama"
+      ],
+      "d50": [
+        "Apa yang ingin diwariskan ke anak?",
+        "Cinta buku",
+        "Keterampilan memasak",
+        "Bahasa ibu",
+        "Kepedulian pada alam"
+      ]
     }
   },
   "vi": {
@@ -45251,7 +64865,47 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "tfFinalWin": "Chiến thắng! Bạn hiểu biết về thế giới nhiều hơn.",
       "tfFinalLose": "Lần này {name} biết nhiều hơn — đấu lại nhé?",
       "tfFinalDraw": "Hòa — hai bạn hiểu biết ngang nhau!",
-      "featTruth": "Trò chơi trực tiếp «Đúng hay sai» — những sự thật thú vị về thế giới"
+      "featTruth": "Trò chơi trực tiếp «Đúng hay sai» — những sự thật thú vị về thế giới",
+      "countries": "Đoán quốc gia",
+      "coTitle": "Đoán quốc gia",
+      "coNote": "Trò chơi trực tiếp cho hai người: chú gấu đi vòng quanh thế giới. 10 giây — đoán xem gấu đang ở nước nào! Mỗi câu đúng được một điểm.",
+      "coShareText": "{name} mời bạn chơi trò trực tiếp «Đoán quốc gia»",
+      "coJoinLead": "{name} đang chờ bạn. Hãy đoán quốc gia qua hình ảnh!",
+      "coRound": "Quốc gia {n}/{total}",
+      "coAsk": "Đây là nước nào?",
+      "coFinalWin": "Chiến thắng! Bạn đúng là nhà du lịch thực thụ.",
+      "coFinalLose": "Lần này {name} hiểu thế giới hơn — chơi lại nhé?",
+      "coFinalDraw": "Hòa — cả hai đều hiểu biết thế giới!",
+      "featCountries": "Trò chơi trực tiếp «Đoán quốc gia» — 40 quốc gia",
+      "hints": "Đoán qua gợi ý",
+      "dreams": "Ước mơ và dự định",
+      "hiTitle": "Đoán qua gợi ý",
+      "hiNote": "Trò chơi trực tiếp cho hai người: ba gợi ý lần lượt mở ra. Đoán đúng ở gợi ý đầu — 3 điểm, gợi ý thứ hai — 2 điểm, gợi ý thứ ba — 1 điểm.",
+      "hiShareText": "{name} mời bạn chơi trò trực tiếp «Đoán qua gợi ý»",
+      "hiJoinLead": "{name} đang chờ bạn. Đoán càng sớm càng tốt!",
+      "hiRound": "Câu đố {n}/{total}",
+      "hiAsk": "Đây là gì?",
+      "hiClue": "Gợi ý {n}",
+      "hiPoints": "+{n} điểm",
+      "hiNoPoints": "Lần này không có điểm",
+      "hiFinalWin": "Chiến thắng! Bạn đoán giỏi quá.",
+      "hiFinalLose": "Lần này {name} đoán giỏi hơn — chơi lại nhé?",
+      "hiFinalDraw": "Hòa — cả hai đều đoán rất giỏi!",
+      "featHints": "Trò chơi trực tiếp «Đoán qua gợi ý» — 3, 2 hoặc 1 điểm",
+      "drTitle": "Ước mơ và dự định",
+      "drNote": "Trò chơi trực tiếp cho hai người: nhà cửa, du lịch, học hành và sở thích. Chọn điều mình muốn và xem ước mơ có trùng nhau không.",
+      "drShareText": "{name} mời bạn chơi trò trực tiếp «Ước mơ và dự định»",
+      "drJoinLead": "{name} đang chờ bạn. Hãy chọn điều bạn thật sự muốn!",
+      "drRound": "Câu hỏi {n}/{total}",
+      "drPick": "Chọn điều bạn muốn",
+      "drBoth": "Trùng nhau: {item}",
+      "drDiff": "Ước mơ khác nhau — hãy kể cho nhau nghe lý do!",
+      "drFinalHigh": "Hai bạn có thật nhiều ước mơ chung!",
+      "drFinalMid": "Ước mơ khác nhau — có nhiều điều để trò chuyện",
+      "drCommon": "Ước mơ chung của hai bạn",
+      "featDreams": "Trò chơi trực tiếp «Ước mơ và dự định» — ước mơ có trùng nhau?",
+      "modestTitle": "Chế độ kín đáo",
+      "modestNote": "Không có câu hỏi về cảm xúc, ôm hay hẹn hò — chỉ câu hỏi thân thiện"
     },
     "questions": {
       "q01": [
@@ -47169,6 +66823,900 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Bắc Cực và Nam Cực lạnh như nhau.",
         false,
         "Nam Cực lạnh hơn nhiều: nằm trên một lục địa băng cao, còn Bắc Cực nằm trên đại dương."
+      ]
+    },
+    "hints": {
+      "h01": [
+        "Chim cánh cụt",
+        "Tôi là chim nhưng không biết bay",
+        "Tôi sống ở nơi rất lạnh",
+        "Tôi luôn mặc áo đuôi tôm",
+        "Đà điểu",
+        "Hải cẩu",
+        "Mòng biển"
+      ],
+      "h02": [
+        "Voi",
+        "Tôi ăn gần như cả ngày",
+        "Tai tôi như hai chiếc quạt lớn",
+        "Tôi có cái vòi dài",
+        "Tê giác",
+        "Hà mã",
+        "Hươu cao cổ"
+      ],
+      "h03": [
+        "Hươu cao cổ",
+        "Tôi ngủ rất ít, thường ngủ đứng",
+        "Tôi ăn lá trên những cây cao nhất",
+        "Cổ tôi dài nhất",
+        "Ngựa vằn",
+        "Lạc đà",
+        "Nai sừng tấm"
+      ],
+      "h04": [
+        "Lạc đà",
+        "Tôi có thể nhịn nước rất lâu",
+        "Người ta gọi tôi là con tàu sa mạc",
+        "Trên lưng tôi có một hoặc hai bướu",
+        "Ngựa",
+        "Lừa",
+        "Lạc đà không bướu"
+      ],
+      "h05": [
+        "Ong mật",
+        "Tôi có thể chỉ đường đến hoa cho bạn bè",
+        "Tôi làm việc trên đồng cỏ từ sáng đến tối",
+        "Tôi làm ra mật",
+        "Ong bắp cày",
+        "Ruồi",
+        "Bướm"
+      ],
+      "h06": [
+        "Rùa",
+        "Tôi có thể sống hơn một trăm năm",
+        "Tôi không bao giờ vội vàng",
+        "Tôi mang nhà trên lưng",
+        "Ốc sên",
+        "Thằn lằn",
+        "Nhím"
+      ],
+      "h07": [
+        "Chuột túi",
+        "Đuôi giúp tôi giữ thăng bằng",
+        "Tôi sống ở Úc",
+        "Tôi mang con trong túi",
+        "Gấu túi",
+        "Thỏ rừng",
+        "Sóc"
+      ],
+      "h08": [
+        "Cú mèo",
+        "Tôi xoay đầu được gần ra phía sau",
+        "Tôi săn mồi vào ban đêm",
+        "Tôi kêu trong khu rừng tối",
+        "Quạ",
+        "Đại bàng",
+        "Bồ câu"
+      ],
+      "h09": [
+        "Cá heo",
+        "Tôi thở bằng không khí dù sống dưới biển",
+        "Tôi giúp người và nói chuyện bằng tiếng huýt",
+        "Tôi thích nhảy qua những con sóng",
+        "Cá mập",
+        "Cá voi",
+        "Hải cẩu"
+      ],
+      "h10": [
+        "Sóc",
+        "Tôi giấu thức ăn, đôi khi quên chỗ giấu",
+        "Tôi sống trong hốc cây",
+        "Tôi gặm hạt và quả thông",
+        "Nhím",
+        "Thỏ rừng",
+        "Chuột"
+      ],
+      "h11": [
+        "Nhện",
+        "Tôi không phải côn trùng, dù nhiều người nghĩ vậy",
+        "Tôi có tám chân",
+        "Tôi giăng tơ",
+        "Kiến",
+        "Bọ cánh cứng",
+        "Muỗi"
+      ],
+      "h12": [
+        "Mèo",
+        "Tôi nhìn trong bóng tối rõ hơn người",
+        "Tôi thích bậu cửa sổ ấm áp",
+        "Tôi kêu rừ rừ và bắt chuột",
+        "Thỏ",
+        "Chuột hamster",
+        "Vẹt"
+      ],
+      "h13": [
+        "Dưa hấu",
+        "Các nhà khoa học xếp tôi vào loại quả mọng",
+        "Người ta mong tôi vào mùa hè",
+        "Ngoài xanh, trong đỏ",
+        "Dưa lưới",
+        "Bí ngô",
+        "Dứa"
+      ],
+      "h14": [
+        "Bánh mì",
+        "Tôi được nướng ở hầu hết các nước",
+        "Tôi được cắt lát cho bữa trưa",
+        "Tôi có loại trắng, loại lúa mạch đen, có vỏ",
+        "Bánh kếp",
+        "Bánh nướng nhân",
+        "Bánh quy"
+      ],
+      "h15": [
+        "Mật ong",
+        "Tôi có thể giữ được hàng nghìn năm",
+        "Người ta cho tôi vào trà ấm khi bị cảm",
+        "Loài ong làm ra tôi",
+        "Mứt",
+        "Đường",
+        "Sữa"
+      ],
+      "h16": [
+        "Chanh vàng",
+        "Tôi giàu vitamin C",
+        "Người ta cho tôi vào trà",
+        "Tôi màu vàng và rất chua",
+        "Cam",
+        "Bưởi",
+        "Chanh xanh"
+      ],
+      "h17": [
+        "Cà rốt",
+        "Tôi mọc dưới đất, chỉ lộ phần lá",
+        "Người ta nói tôi tốt cho mắt",
+        "Tôi màu cam và thỏ rất thích tôi",
+        "Củ dền",
+        "Củ cải",
+        "Khoai tây"
+      ],
+      "h18": [
+        "Táo",
+        "Tôi có giống mùa hè và giống mùa đông",
+        "Tôi được làm bánh và nước ép",
+        "Tôi mọc trên cây, màu đỏ hoặc xanh",
+        "Lê",
+        "Đào",
+        "Mận"
+      ],
+      "h19": [
+        "Chuối",
+        "Tôi mọc thành buồng trên một cây cao",
+        "Khỉ rất thích tôi",
+        "Tôi màu vàng và phải bóc vỏ",
+        "Xoài",
+        "Kiwi",
+        "Dứa"
+      ],
+      "h20": [
+        "Trà",
+        "Người Trung Quốc đã uống tôi hàng nghìn năm",
+        "Tôi có loại đen, xanh hoặc thảo mộc",
+        "Tôi được pha trong ấm",
+        "Cà phê",
+        "Ca cao",
+        "Nước ép"
+      ],
+      "h21": [
+        "Trứng",
+        "Thiếu tôi thì khó nướng bánh",
+        "Món ốp lết làm từ tôi",
+        "Gà mái đẻ ra tôi",
+        "Phô mai",
+        "Hạt",
+        "Khoai tây"
+      ],
+      "h22": [
+        "Ô",
+        "Phần lớn thời gian tôi được gấp lại",
+        "Người ta mang tôi theo khi trời âm u",
+        "Tôi che cho bạn khỏi ướt mưa",
+        "Áo mưa",
+        "Mũ",
+        "Ủng"
+      ],
+      "h23": [
+        "Đồng hồ",
+        "Có loại tôi chạy bằng cát hoặc ánh nắng",
+        "Tôi treo trên tường và đứng trên tháp",
+        "Tôi chỉ giờ bằng kim",
+        "La bàn",
+        "Lịch",
+        "Nhiệt kế"
+      ],
+      "h24": [
+        "Chìa khóa",
+        "Không có tôi, cửa không cho bạn vào",
+        "Tôi thường được móc vào một chiếc vòng",
+        "Tôi mở ổ khóa",
+        "Kéo",
+        "Tua vít",
+        "Kẹp giấy"
+      ],
+      "h25": [
+        "Nến",
+        "Càng làm việc lâu, tôi càng nhỏ đi",
+        "Người ta thắp tôi khi mất điện",
+        "Tôi làm bằng sáp và có bấc",
+        "Đèn pin",
+        "Đèn bàn",
+        "Diêm"
+      ],
+      "h26": [
+        "Kéo",
+        "Tôi có hai vòng và hai đầu nhọn",
+        "Tôi cắt hình từ giấy",
+        "Tôi cắt vải và giấy",
+        "Dao",
+        "Kim",
+        "Thước kẻ"
+      ],
+      "h27": [
+        "Bàn chải đánh răng",
+        "Tôi có rất nhiều lông",
+        "Ba tháng tôi được thay một lần",
+        "Tôi làm sạch răng sáng và tối",
+        "Xà phòng",
+        "Khăn tắm",
+        "Miếng bọt biển"
+      ],
+      "h28": [
+        "Tủ lạnh",
+        "Bên trong tôi lúc nào cũng là mùa đông",
+        "Mở tôi ra thì đèn bật sáng",
+        "Tôi giữ thức ăn lạnh",
+        "Bếp",
+        "Lò nướng",
+        "Tủ chén"
+      ],
+      "h29": [
+        "Xe đạp",
+        "Tôi chạy không cần xăng hay điện",
+        "Tôi có ghi đông, chuông và xích",
+        "Tôi có hai bánh và bàn đạp",
+        "Xe trượt scooter",
+        "Xe máy",
+        "Ván trượt"
+      ],
+      "h30": [
+        "Máy bay",
+        "Tôi có cánh nhưng không phải chim",
+        "Người ta chờ tôi ở sân bay",
+        "Tôi chở khách bay trên mây",
+        "Trực thăng",
+        "Tên lửa",
+        "Khinh khí cầu"
+      ],
+      "h31": [
+        "Tàu hỏa",
+        "Tôi chỉ chạy trên con đường riêng của mình",
+        "Tôi có nhiều toa",
+        "Tôi chạy trên ray từ ga này đến ga khác",
+        "Tàu điện",
+        "Xe buýt",
+        "Tàu điện ngầm"
+      ],
+      "h32": [
+        "Cây cầu",
+        "Tôi được xây bằng đá, gỗ hoặc thép",
+        "Tàu thuyền có thể đi qua bên dưới tôi",
+        "Tôi nối hai bờ sông",
+        "Đường hầm",
+        "Con đường",
+        "Đập nước"
+      ],
+      "h33": [
+        "Bút chì",
+        "Bên trong tôi có than chì",
+        "Khi cùn, tôi được gọt",
+        "Tôi viết và vẽ, cục tẩy xóa được nét của tôi",
+        "Bút bi",
+        "Phấn",
+        "Bút dạ"
+      ],
+      "h34": [
+        "Sách",
+        "Tôi im lặng nhưng dạy được nhiều điều",
+        "Tôi có bìa và các trang",
+        "Người ta đọc tôi và mượn tôi ở thư viện",
+        "Tạp chí",
+        "Báo",
+        "Sổ tay"
+      ],
+      "h35": [
+        "Vali",
+        "Tôi đi rất nhiều nhưng luôn trong tay ai đó",
+        "Người ta xếp đồ vào tôi trước chuyến đi",
+        "Tôi có tay cầm và bánh xe, đựng quần áo",
+        "Ba lô",
+        "Túi xách",
+        "Thùng"
+      ],
+      "h36": [
+        "Thư viện",
+        "Ở đây mọi người được nhắc nói nhỏ",
+        "Ở đây bạn làm thẻ bạn đọc",
+        "Hàng nghìn cuốn sách để mượn về nhà",
+        "Trường học",
+        "Hiệu sách",
+        "Kho lưu trữ"
+      ],
+      "h37": [
+        "Sân bay",
+        "Ở đây có kiểm tra hộ chiếu",
+        "Ở đây thông báo lên máy bay",
+        "Máy bay cất cánh từ đây",
+        "Ga tàu",
+        "Bến cảng",
+        "Bến xe buýt"
+      ],
+      "h38": [
+        "Sa mạc",
+        "Ban ngày nóng, nhưng ban đêm có thể rất lạnh",
+        "Ở đây có ốc đảo",
+        "Nhiều cát và rất ít nước",
+        "Thảo nguyên",
+        "Xavan",
+        "Bãi biển"
+      ],
+      "h39": [
+        "Núi lửa",
+        "Tôi có thể ngủ hàng trăm năm",
+        "Khói bốc lên từ đỉnh của tôi",
+        "Tôi phun ra dung nham",
+        "Núi",
+        "Mạch nước phun",
+        "Hòn đảo"
+      ],
+      "h40": [
+        "Cầu vồng",
+        "Chỉ thấy tôi khi mặt trời ở sau lưng",
+        "Tôi thường xuất hiện sau mưa",
+        "Bảy màu thành vòng cung trên trời",
+        "Tia chớp",
+        "Mây",
+        "Cực quang"
+      ],
+      "h41": [
+        "Mặt trăng",
+        "Tôi luôn quay một mặt về phía Trái Đất",
+        "Tôi có thể tròn đầy hoặc là vầng khuyết mảnh",
+        "Tôi sáng trên bầu trời đêm",
+        "Mặt trời",
+        "Ngôi sao",
+        "Sao chổi"
+      ],
+      "h42": [
+        "Tuyết",
+        "Mỗi bông của tôi đều độc nhất",
+        "Người ta đắp pháo đài bằng tôi",
+        "Trắng và lạnh, tôi rơi vào mùa đông",
+        "Mưa",
+        "Mưa đá",
+        "Sương giá"
+      ],
+      "h43": [
+        "Dòng sông",
+        "Tôi có nguồn và cửa",
+        "Thuyền đi trên mình tôi",
+        "Tôi chảy từ núi ra biển",
+        "Hồ",
+        "Biển",
+        "Con suối"
+      ],
+      "h44": [
+        "Xương rồng",
+        "Tôi sống được lâu mà không cần nước",
+        "Tôi mọc ở sa mạc và trên bậu cửa sổ",
+        "Tôi phủ đầy gai",
+        "Lô hội",
+        "Cây cọ",
+        "Hoa cúc"
+      ],
+      "h45": [
+        "Hoa hướng dương",
+        "Hạt của tôi dùng để ép dầu",
+        "Tôi xoay theo mặt trời",
+        "Bông hoa vàng to đầy hạt",
+        "Hoa cúc",
+        "Hoa tulip",
+        "Bồ công anh"
+      ],
+      "h46": [
+        "Cây sồi",
+        "Tôi có thể sống hơn một nghìn năm",
+        "Tôi được xem là biểu tượng của sức mạnh",
+        "Trên tôi mọc quả đấu",
+        "Cây bạch dương",
+        "Cây thông",
+        "Cây phong"
+      ],
+      "h47": [
+        "Hòn đảo",
+        "Cả một đất nước có thể nằm trên tôi",
+        "Đến tôi bằng thuyền hoặc máy bay",
+        "Bốn bề tôi là nước",
+        "Bán đảo",
+        "Rạn san hô",
+        "Mũi đất"
+      ],
+      "h48": [
+        "Thác nước",
+        "Từ xa đã nghe thấy tiếng tôi",
+        "Thác cao nhất trong chúng tôi ở Venezuela",
+        "Nơi dòng sông đổ xuống từ vách đá",
+        "Đài phun nước",
+        "Mạch nước phun",
+        "Suối nguồn"
+      ],
+      "h49": [
+        "Bác sĩ",
+        "Tôi học nhiều năm trước khi đi làm",
+        "Tôi mặc áo blouse trắng",
+        "Tôi chữa bệnh cho người ốm",
+        "Y tá",
+        "Dược sĩ",
+        "Bác sĩ thú y"
+      ],
+      "h50": [
+        "Lính cứu hỏa",
+        "Tôi trực ngày đêm, sẵn sàng xuất phát",
+        "Tôi làm việc với nước và thang",
+        "Tôi dập lửa",
+        "Cảnh sát",
+        "Nhân viên cứu hộ",
+        "Thợ xây"
+      ],
+      "h51": [
+        "Đầu bếp",
+        "Tôi nếm thử mọi món mình làm",
+        "Tôi làm việc bên bếp nóng",
+        "Tôi nấu ăn trong nhà hàng",
+        "Thợ làm bánh mì",
+        "Bồi bàn",
+        "Thợ làm bánh ngọt"
+      ],
+      "h52": [
+        "Giáo viên",
+        "Buổi tối tôi chấm vở",
+        "Tôi đứng trước bảng",
+        "Tôi dạy trẻ em ở trường",
+        "Hiệu trưởng",
+        "Thủ thư",
+        "Cô giáo mầm non"
+      ],
+      "h53": [
+        "Phi công",
+        "Nơi làm việc của tôi là buồng lái",
+        "Tôi nói với hành khách qua loa",
+        "Tôi lái máy bay",
+        "Thuyền trưởng",
+        "Tài xế",
+        "Phi hành gia"
+      ],
+      "h54": [
+        "Người đưa thư",
+        "Tôi biết mọi địa chỉ trong khu vực mình",
+        "Tôi mang một chiếc túi lớn",
+        "Tôi phát thư và bưu kiện",
+        "Người giao hàng",
+        "Tài xế taxi",
+        "Người bán hàng"
+      ],
+      "h55": [
+        "Người làm vườn",
+        "Tôi biết khi nào trồng cây gì",
+        "Dụng cụ của tôi là bình tưới và kéo tỉa",
+        "Tôi chăm sóc hoa và cây",
+        "Nông dân",
+        "Kiểm lâm",
+        "Người bán hoa"
+      ],
+      "h56": [
+        "Nhiếp ảnh gia",
+        "Tôi lưu giữ khoảnh khắc",
+        "Tôi nhờ mọi người đứng yên",
+        "Tôi làm việc với máy ảnh và hình ảnh",
+        "Họa sĩ",
+        "Nhà báo",
+        "Người quay phim"
+      ],
+      "h57": [
+        "Ngư dân",
+        "Tôi dậy trước bình minh và chờ rất lâu",
+        "Tôi cần cần câu và sự kiên nhẫn",
+        "Tôi bắt cá",
+        "Nông dân",
+        "Thủy thủ",
+        "Người chăn cừu"
+      ],
+      "h58": [
+        "Phi hành gia",
+        "Tôi tập luyện rất lâu trên Trái Đất",
+        "Tôi mặc bộ đồ vũ trụ",
+        "Tôi bay vào vũ trụ",
+        "Phi công",
+        "Nhà thiên văn",
+        "Kỹ sư"
+      ],
+      "h59": [
+        "Kiến trúc sư",
+        "Công trình của tôi có khắp thành phố",
+        "Tôi vẽ bản thiết kế",
+        "Tôi thiết kế nhà",
+        "Thợ xây",
+        "Nhà thiết kế",
+        "Kỹ sư"
+      ],
+      "h60": [
+        "Nha sĩ",
+        "Nhiều người sợ chiếc ghế của tôi",
+        "Tôi làm việc với mũi khoan",
+        "Tôi chữa răng",
+        "Bác sĩ phẫu thuật",
+        "Bác sĩ mắt",
+        "Bác sĩ nhi"
+      ]
+    },
+    "dreams": {
+      "d01": [
+        "Mười năm nữa muốn sống ở đâu?",
+        "Bên biển",
+        "Trên núi",
+        "Ở thành phố lớn",
+        "Ở làng quê yên bình"
+      ],
+      "d02": [
+        "Ngôi nhà mơ ước sau này?",
+        "Căn hộ ấm cúng",
+        "Nhà có vườn",
+        "Nhà nhỏ bên hồ",
+        "Ngôi nhà cổ có lịch sử"
+      ],
+      "d03": [
+        "Muốn trồng gì trong vườn?",
+        "Cây táo",
+        "Hoa hồng",
+        "Rau và thảo mộc",
+        "Dâu tây"
+      ],
+      "d04": [
+        "Muốn nuôi thú cưng nào?",
+        "Mèo",
+        "Vẹt",
+        "Cá cảnh",
+        "Rùa cạn"
+      ],
+      "d05": [
+        "Muốn đến đâu đầu tiên?",
+        "Nhật Bản",
+        "Ma-rốc",
+        "Iceland",
+        "New Zealand"
+      ],
+      "d06": [
+        "Muốn du lịch bằng gì?",
+        "Tàu hỏa",
+        "Ô tô",
+        "Máy bay",
+        "Tàu thủy"
+      ],
+      "d07": [
+        "Muốn học ngôn ngữ nào?",
+        "Tiếng Ả Rập",
+        "Tiếng Nhật",
+        "Tiếng Tây Ban Nha",
+        "Tiếng Trung"
+      ],
+      "d08": [
+        "Muốn học được điều gì?",
+        "Vẽ",
+        "May vá",
+        "Bơi",
+        "Lập trình"
+      ],
+      "d09": [
+        "Muốn nấu giỏi món nào?",
+        "Cơm plov",
+        "Bánh mì tự làm",
+        "Sushi",
+        "Baklava"
+      ],
+      "d10": [
+        "Muốn đi đâu cuối tuần?",
+        "Về với thiên nhiên",
+        "Ở nhà đọc sách",
+        "Thăm gia đình",
+        "Đến thành phố mới"
+      ],
+      "d11": [
+        "Buổi sáng cuối tuần lý tưởng?",
+        "Dạo bộ sớm",
+        "Bữa sáng thong thả",
+        "Tập thể dục ngoài trời",
+        "Uống trà ngoài ban công"
+      ],
+      "d12": [
+        "Muốn tiết kiệm để làm gì?",
+        "Nhà riêng",
+        "Một chuyến đi lớn",
+        "Ô tô",
+        "Việc học"
+      ],
+      "d13": [
+        "Muốn làm công việc gì?",
+        "Kinh doanh riêng",
+        "Làm ở công ty lớn",
+        "Làm việc tại nhà",
+        "Giúp đỡ mọi người"
+      ],
+      "d14": [
+        "Muốn giúp người khác thế nào?",
+        "Làm tình nguyện",
+        "Giúp động vật",
+        "Dạy trẻ em",
+        "Trồng cây"
+      ],
+      "d15": [
+        "Muốn có truyền thống gia đình nào?",
+        "Bữa trưa Chủ nhật cùng nhau",
+        "Tối chơi cờ bàn",
+        "Dạo bộ cuối tuần",
+        "Album ảnh gia đình"
+      ],
+      "d16": [
+        "Căn bếp mơ ước?",
+        "Bếp gia đình rộng",
+        "Sáng sủa, ấm cúng",
+        "Nhìn ra vườn",
+        "Nhỏ mà tiện"
+      ],
+      "d17": [
+        "Muốn tận mắt thấy điều gì?",
+        "Cực quang",
+        "Kim tự tháp Giza",
+        "Thác Victoria",
+        "Dãy Himalaya"
+      ],
+      "d18": [
+        "Buổi tối muốn làm gì?",
+        "Đọc sách",
+        "Nấu món mới",
+        "Học ngoại ngữ",
+        "Dạo công viên"
+      ],
+      "d19": [
+        "Muốn bắt đầu sở thích nào?",
+        "Chụp ảnh",
+        "Làm gốm",
+        "Thêu thùa",
+        "Làm vườn"
+      ],
+      "d20": [
+        "Cuối tuần muốn đi đâu?",
+        "Vào rừng",
+        "Ra hồ",
+        "Thị trấn gần đó",
+        "Lên núi"
+      ],
+      "d21": [
+        "Góc làm việc lý tưởng?",
+        "Cạnh cửa sổ",
+        "Có giá sách",
+        "Đầy cây xanh",
+        "Gần như trống trơn"
+      ],
+      "d22": [
+        "Muốn học gì tiếp theo?",
+        "Y khoa",
+        "Lịch sử",
+        "Kinh tế",
+        "Thiết kế"
+      ],
+      "d23": [
+        "Muốn trồng cây gì?",
+        "Cây sồi",
+        "Cây táo",
+        "Cây ô liu",
+        "Cây chà là"
+      ],
+      "d24": [
+        "Muốn nấu gì đãi khách?",
+        "Bánh nướng tự làm",
+        "Một nồi plov lớn",
+        "Món canh gia truyền",
+        "Salad tươi"
+      ],
+      "d25": [
+        "Muốn đến thành phố nào?",
+        "Istanbul",
+        "Paris",
+        "Tokyo",
+        "Cairo"
+      ],
+      "d26": [
+        "Muốn nghỉ hè thế nào?",
+        "Bên biển",
+        "Trên núi",
+        "Ở nhà quê",
+        "Du lịch trong nước"
+      ],
+      "d27": [
+        "Muốn nuôi chim gì?",
+        "Hoàng yến",
+        "Vẹt yến phụng",
+        "Bồ câu",
+        "Chim di vằn"
+      ],
+      "d28": [
+        "Muốn thử môn thể thao nào?",
+        "Bơi lội",
+        "Cưỡi ngựa",
+        "Bắn cung",
+        "Leo núi"
+      ],
+      "d29": [
+        "Muốn sưu tầm sách gì?",
+        "Bách khoa toàn thư",
+        "Sách kinh điển",
+        "Sách du lịch",
+        "Sách nấu ăn"
+      ],
+      "d30": [
+        "Muốn tự tay làm gì?",
+        "Đồ nội thất",
+        "Bát đĩa riêng",
+        "Chăn đan len",
+        "Tổ chim"
+      ],
+      "d31": [
+        "Muốn dã ngoại ở đâu?",
+        "Bên bờ sông",
+        "Trong vườn",
+        "Bãi trống trong rừng",
+        "Trên núi"
+      ],
+      "d32": [
+        "Phương tiện đi lại sau này?",
+        "Ô tô điện",
+        "Xe đạp",
+        "Xe gia đình cỡ lớn",
+        "Không cần ô tô"
+      ],
+      "d33": [
+        "Khi nghỉ hưu muốn làm gì?",
+        "Làm vườn",
+        "Du lịch",
+        "Ở bên các cháu",
+        "Học điều mới"
+      ],
+      "d34": [
+        "Muốn làm việc tốt nào?",
+        "Xây giếng nước",
+        "Giúp trạm cứu hộ mèo",
+        "Gom sách cho trường học",
+        "Trồng một hàng cây"
+      ],
+      "d35": [
+        "Bữa sáng cuối tuần muốn ăn gì?",
+        "Bánh kếp",
+        "Trứng tráng",
+        "Cháo yến mạch với trái cây",
+        "Bánh kếp phô mai"
+      ],
+      "d36": [
+        "Muốn đón khách ở đâu?",
+        "Trong bếp",
+        "Phòng khách",
+        "Trên hiên",
+        "Ngoài vườn"
+      ],
+      "d37": [
+        "Muốn ngắm kỳ quan thiên nhiên nào?",
+        "Hẻm núi Grand Canyon",
+        "Thác Niagara",
+        "Hồ Baikal",
+        "Sa mạc Sahara"
+      ],
+      "d38": [
+        "Muốn học kỹ năng việc nhà nào?",
+        "Tự sửa chữa",
+        "May vá",
+        "Nướng bánh mì",
+        "Chăm vườn"
+      ],
+      "d39": [
+        "Muốn nói được mấy thứ tiếng?",
+        "Hai",
+        "Ba",
+        "Năm",
+        "Càng nhiều càng tốt"
+      ],
+      "d40": [
+        "Muốn tường nhà màu gì?",
+        "Trắng",
+        "Be",
+        "Xanh lá nhạt",
+        "Xanh da trời nhạt"
+      ],
+      "d41": [
+        "Muốn nuôi cá gì trong bể?",
+        "Cá vàng",
+        "Cá bảy màu",
+        "Cá trê",
+        "Cá thần tiên"
+      ],
+      "d42": [
+        "Muốn tặng bố mẹ chuyến đi nào?",
+        "Nghỉ dưỡng bên biển",
+        "Tham quan thành phố",
+        "Chuyến đi lên núi",
+        "Hành trình bằng tàu hỏa"
+      ],
+      "d43": [
+        "Lúc rảnh muốn làm gì?",
+        "Vẽ tranh",
+        "Đọc sách",
+        "Thể thao",
+        "Đồ thủ công"
+      ],
+      "d44": [
+        "Muốn du lịch vào mùa nào?",
+        "Mùa xuân",
+        "Mùa hè",
+        "Mùa thu",
+        "Mùa đông"
+      ],
+      "d45": [
+        "Muốn làm gì để dành cho mùa đông?",
+        "Mứt",
+        "Dưa muối",
+        "Trái cây sấy",
+        "Nước trái cây nấu"
+      ],
+      "d46": [
+        "Muốn thử nghề nào khác?",
+        "Đầu bếp",
+        "Lập trình viên",
+        "Phiên dịch viên",
+        "Thợ mộc"
+      ],
+      "d47": [
+        "Muốn tìm hiểu đất nước nào?",
+        "Malaysia",
+        "Ý",
+        "Canada",
+        "Indonesia"
+      ],
+      "d48": [
+        "Muốn có gì trong sân?",
+        "Đài phun nước nhỏ",
+        "Vườn rau",
+        "Chòi nghỉ",
+        "Xích đu"
+      ],
+      "d49": [
+        "Muốn ăn mừng thành công thế nào?",
+        "Bữa tối gia đình",
+        "Chuyến đi về thiên nhiên",
+        "Một cuốn sách mới",
+        "Làm việc tốt cho người khác"
+      ],
+      "d50": [
+        "Muốn truyền lại gì cho con cháu?",
+        "Tình yêu sách",
+        "Tay nghề nấu ăn",
+        "Tiếng mẹ đẻ",
+        "Ý thức giữ gìn thiên nhiên"
       ]
     }
   }
