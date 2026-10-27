@@ -127,7 +127,9 @@ assert.match(billing, /LEGACY_FULL_ACCESS_PRODUCT_ID/u);
 assert.match(androidBuild, /"SUBSCRIPTION_YEARLY_BASE_PLAN_ID", quoteBuildConfig\("yearly"\)/u);
 assert.match(billing, /void purchaseYearlySubscription\(\)[\s\S]{0,160}SUBSCRIPTION_YEARLY_BASE_PLAN_ID[\s\S]{0,120}YEARLY_BILLING_PERIOD/u);
 assert.match(billing, /private void purchaseSubscriptionPlan\(String basePlanId, String billingPeriod\)[\s\S]{0,2800}setObfuscatedAccountId[\s\S]{0,400}launchBillingFlow/u);
-assert.doesNotMatch(billing, /void purchaseLifetime\(\)|queryLifetimeProduct/u);
+// 2.4.21: владелец вернул разовую покупку «Навсегда» (29,99 €) — тот же товар glowletter_lifetime.
+assert.match(billing, /void purchaseLifetime\(\)[\s\S]{0,3200}setObfuscatedAccountId[\s\S]{0,400}launchBillingFlow/u);
+assert.match(billing, /private void queryLifetimeProduct\([\s\S]{0,500}LEGACY_FULL_ACCESS_PRODUCT_ID[\s\S]{0,200}ProductType\.INAPP/u);
 // Цена за год приходит из Google Play (с налогом страны), а не из кода.
 assert.match(billing, /\.put\("yearlyPriceLabel", yearlyPriceLabel\)/u);
 // Цены грузятся при запуске до проверки входа: каталогу аккаунт не нужен.
@@ -137,7 +139,7 @@ assert.match(billing, /void onResume\(\)[\s\S]{0,900}!storePricesLoaded[\s\S]{0,
 assert.match(billing, /String webPriceLabel\(EntitlementState current\)[\s\S]{0,120}storePricesLoaded && current != null \? current\.priceLabel : ""/u);
 assert.match(billing, /\.put\("priceLabel", webPriceLabel\(current\)\)/u);
 assert.match(billingBridge, /@JavascriptInterface[\s\S]{0,160}void purchaseYearly\(\)/u);
-assert.doesNotMatch(billingBridge, /purchaseLifetime/u);
+assert.match(billingBridge, /@JavascriptInterface[\s\S]{0,40}public void purchaseLifetime\(\)/u);
 assert.match(billing, /BillingClient\.ProductType\.INAPP/u);
 assert.match(verifier, /verifyLegacyOneTimeProduct/u);
 

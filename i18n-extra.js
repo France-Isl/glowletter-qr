@@ -467,7 +467,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Hintergrund",
       "sceneBears": "Bären am See",
       "sceneRoses": "Bären in Rosen",
-      "sceneKitten": "Kätzchen auf dem Balkon"
+      "sceneKitten": "Kätzchen auf dem Balkon",
+      "payLifetime": "Für immer",
+      "lifetimeBadge": "Ohne Abo"
     },
     picker: {
       "note": "Wähle einen Brief · für {name}",
@@ -1157,7 +1159,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Fondo",
       "sceneBears": "Ositos en el lago",
       "sceneRoses": "Ositos entre rosas",
-      "sceneKitten": "Gatito en el balcón"
+      "sceneKitten": "Gatito en el balcón",
+      "payLifetime": "Para siempre",
+      "lifetimeBadge": "Sin suscripción"
     },
     picker: {
       "note": "Elige una carta · para {name}",
@@ -1847,7 +1851,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Sfondo",
       "sceneBears": "Orsetti al lago",
       "sceneRoses": "Orsetti tra le rose",
-      "sceneKitten": "Gattino sul balcone"
+      "sceneKitten": "Gattino sul balcone",
+      "payLifetime": "Per sempre",
+      "lifetimeBadge": "Senza abbonamento"
     },
     picker: {
       "note": "Scegli una lettera · per {name}",
@@ -2537,7 +2543,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Tło",
       "sceneBears": "Misie nad jeziorem",
       "sceneRoses": "Misie w różach",
-      "sceneKitten": "Kotek na balkonie"
+      "sceneKitten": "Kotek na balkonie",
+      "payLifetime": "Na zawsze",
+      "lifetimeBadge": "Bez subskrypcji"
     },
     picker: {
       "note": "Wybierz list · dla: {name}",
@@ -3227,7 +3235,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Фон",
       "sceneBears": "Ведмедики біля озера",
       "sceneRoses": "Ведмедики в трояндах",
-      "sceneKitten": "Кошеня на балконі"
+      "sceneKitten": "Кошеня на балконі",
+      "payLifetime": "Назавжди",
+      "lifetimeBadge": "Без підписки"
     },
     picker: {
       "note": "Виберіть лист · для {name}",
@@ -3920,7 +3930,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Fundo",
       "sceneBears": "Ursinhos no lago",
       "sceneRoses": "Ursinhos nas rosas",
-      "sceneKitten": "Gatinho na varanda"
+      "sceneKitten": "Gatinho na varanda",
+      "payLifetime": "Para sempre",
+      "lifetimeBadge": "Sem assinatura"
     },
     picker: {
       "note": "Escolha uma carta · para {name}",
@@ -4613,7 +4625,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Achtergrond",
       "sceneBears": "Beertjes bij het meer",
       "sceneRoses": "Beertjes tussen rozen",
-      "sceneKitten": "Kitten op het balkon"
+      "sceneKitten": "Kitten op het balkon",
+      "payLifetime": "Voor altijd",
+      "lifetimeBadge": "Geen abonnement"
     },
     picker: {
       "note": "Kies een brief · voor {name}",
@@ -5306,7 +5320,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Arka plan",
       "sceneBears": "Göl kıyısında ayıcıklar",
       "sceneRoses": "Güller arasında ayıcıklar",
-      "sceneKitten": "Balkondaki yavru kedi"
+      "sceneKitten": "Balkondaki yavru kedi",
+      "payLifetime": "Ömür boyu",
+      "lifetimeBadge": "Abonelik yok"
     },
     picker: {
       "note": "Bir mektup seçin · {name} için",
@@ -5999,7 +6015,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Fundal",
       "sceneBears": "Ursuleți la lac",
       "sceneRoses": "Ursuleți printre trandafiri",
-      "sceneKitten": "Pisoi pe balcon"
+      "sceneKitten": "Pisoi pe balcon",
+      "payLifetime": "Pe viață",
+      "lifetimeBadge": "Fără abonament"
     },
     picker: {
       "note": "Alege o scrisoare · pentru {name}",
@@ -6692,7 +6710,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Pozadí",
       "sceneBears": "Medvídci u jezera",
       "sceneRoses": "Medvídci v růžích",
-      "sceneKitten": "Koťátko na balkoně"
+      "sceneKitten": "Koťátko na balkoně",
+      "payLifetime": "Navždy",
+      "lifetimeBadge": "Bez předplatného"
     },
     picker: {
       "note": "Vyberte dopis · pro {name}",
@@ -7385,7 +7405,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Bakgrund",
       "sceneBears": "Björnar vid sjön",
       "sceneRoses": "Björnar bland rosor",
-      "sceneKitten": "Kattunge på balkongen"
+      "sceneKitten": "Kattunge på balkongen",
+      "payLifetime": "För alltid",
+      "lifetimeBadge": "Ingen prenumeration"
     },
     picker: {
       "note": "Välj ett brev · till {name}",
@@ -8078,7 +8100,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Φόντο",
       "sceneBears": "Αρκουδάκια στη λίμνη",
       "sceneRoses": "Αρκουδάκια στα τριαντάφυλλα",
-      "sceneKitten": "Γατάκι στο μπαλκόνι"
+      "sceneKitten": "Γατάκι στο μπαλκόνι",
+      "payLifetime": "Για πάντα",
+      "lifetimeBadge": "Χωρίς συνδρομή"
     },
     picker: {
       "note": "Επιλέξτε γράμμα · για {name}",
@@ -8771,7 +8795,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Baggrund",
       "sceneBears": "Bamser ved søen",
       "sceneRoses": "Bamser i roser",
-      "sceneKitten": "Killing på altanen"
+      "sceneKitten": "Killing på altanen",
+      "payLifetime": "For altid",
+      "lifetimeBadge": "Intet abonnement"
     },
     picker: {
       "note": "Vælg et brev · til {name}",
@@ -9464,7 +9490,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Bakgrunn",
       "sceneBears": "Bamser ved sjøen",
       "sceneRoses": "Bamser i roser",
-      "sceneKitten": "Kattunge på balkongen"
+      "sceneKitten": "Kattunge på balkongen",
+      "payLifetime": "For alltid",
+      "lifetimeBadge": "Uten abonnement"
     },
     picker: {
       "note": "Velg et brev · til {name}",
@@ -10157,7 +10185,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Tausta",
       "sceneBears": "Nallet järven rannalla",
       "sceneRoses": "Nallet ruusujen keskellä",
-      "sceneKitten": "Kissanpentu parvekkeella"
+      "sceneKitten": "Kissanpentu parvekkeella",
+      "payLifetime": "Ikuisesti",
+      "lifetimeBadge": "Ei tilausta"
     },
     picker: {
       "note": "Valitse kirje · vastaanottaja {name}",
@@ -10850,7 +10880,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "背景",
       "sceneBears": "湖辺のくまたち",
       "sceneRoses": "バラの中のくまたち",
-      "sceneKitten": "バルコニーの子猫"
+      "sceneKitten": "バルコニーの子猫",
+      "payLifetime": "買い切り",
+      "lifetimeBadge": "サブスクなし"
     },
     picker: {
       "note": "手紙を選ぶ · {name}さんへ",
@@ -11543,7 +11575,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "배경",
       "sceneBears": "호숫가의 곰 인형",
       "sceneRoses": "장미 속 곰 인형",
-      "sceneKitten": "발코니의 아기 고양이"
+      "sceneKitten": "발코니의 아기 고양이",
+      "payLifetime": "평생 이용",
+      "lifetimeBadge": "구독 없음"
     },
     picker: {
       "note": "편지 고르기 · {name}님께",
@@ -12236,7 +12270,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "背景",
       "sceneBears": "湖畔的小熊",
       "sceneRoses": "玫瑰中的小熊",
-      "sceneKitten": "陽台上的小貓"
+      "sceneKitten": "陽台上的小貓",
+      "payLifetime": "永久使用",
+      "lifetimeBadge": "免訂閱"
     },
     picker: {
       "note": "挑一封信 · 給 {name}",
@@ -12929,7 +12965,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "พื้นหลัง",
       "sceneBears": "หมีน้อยริมทะเลสาบ",
       "sceneRoses": "หมีน้อยในดงกุหลาบ",
-      "sceneKitten": "ลูกแมวบนระเบียง"
+      "sceneKitten": "ลูกแมวบนระเบียง",
+      "payLifetime": "ใช้ได้ตลอดไป",
+      "lifetimeBadge": "ไม่ต้องสมัครสมาชิก"
     },
     picker: {
       "note": "เลือกจดหมาย · สำหรับ {name}",
@@ -13622,7 +13660,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "الخلفية",
       "sceneBears": "دببة عند البحيرة",
       "sceneRoses": "دببة بين الورود",
-      "sceneKitten": "قطة صغيرة على الشرفة"
+      "sceneKitten": "قطة صغيرة على الشرفة",
+      "payLifetime": "مدى الحياة",
+      "lifetimeBadge": "بدون اشتراك"
     },
     picker: {
       "note": "اختيار رسالة · من أجل {name}",
@@ -14315,7 +14355,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Latar",
       "sceneBears": "Beruang di tepi danau",
       "sceneRoses": "Beruang di antara mawar",
-      "sceneKitten": "Anak kucing di balkon"
+      "sceneKitten": "Anak kucing di balkon",
+      "payLifetime": "Selamanya",
+      "lifetimeBadge": "Tanpa langganan"
     },
     picker: {
       "note": "Pilih surat · untuk {name}",
@@ -15008,7 +15050,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneTitle": "Hình nền",
       "sceneBears": "Gấu bông bên hồ",
       "sceneRoses": "Gấu bông giữa hoa hồng",
-      "sceneKitten": "Mèo con trên ban công"
+      "sceneKitten": "Mèo con trên ban công",
+      "payLifetime": "Trọn đời",
+      "lifetimeBadge": "Không cần đăng ký"
     },
     picker: {
       "note": "Chọn một lá thư · cho {name}",

@@ -1,10 +1,11 @@
 window.NUR_APP_CONFIG = Object.freeze({
-  appVersion: "2.4.20",
+  appVersion: "2.4.21",
   freeLetterCount: 10,
   productId: "glowletter_premium_monthly",
   subscriptionProductId: "glowletter_premium_monthly",
   subscriptionBasePlanId: "monthly",
   lifetimeProductId: "glowletter_lifetime",
+  defaultLifetimePrice: "29,99 €",
   legacyProductId: "glowletter_lifetime",
   defaultPrice: "5,99 €/месяц",
   defaultYearlyPrice: "24,99 €/год",

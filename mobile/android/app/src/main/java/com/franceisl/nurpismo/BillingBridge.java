@@ -36,6 +36,12 @@ public final class BillingBridge {
         activity.runOnUiThread(activity::purchaseYearlySubscriptionFromWeb);
     }
 
+    /** «Навсегда»: разовая покупка glowletter_lifetime, без продлений. */
+    @JavascriptInterface
+    public void purchaseLifetime() {
+        activity.runOnUiThread(activity::purchaseLifetimeFromWeb);
+    }
+
     @JavascriptInterface
     public void restorePurchases() {
         activity.runOnUiThread(activity::restorePurchasesFromWeb);

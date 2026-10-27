@@ -786,6 +786,12 @@ public final class MainActivity extends ComponentActivity {
         }
     }
 
+    void purchaseLifetimeFromWeb() {
+        if (isTrustedMainDocumentActive() && billingManager != null) {
+            billingManager.purchaseLifetime();
+        }
+    }
+
     void restorePurchasesFromWeb() {
         if (isTrustedMainDocumentActive() && billingManager != null) {
             billingManager.restorePurchases();
@@ -1004,6 +1010,8 @@ public final class MainActivity extends ComponentActivity {
                 billingManager == null ? "" : billingManager.webPriceLabel(state));
         String yearlyPrice = JSONObject.quote(
                 billingManager == null ? "" : billingManager.getYearlyPriceLabel());
+        String lifetimePrice = JSONObject.quote(
+                billingManager == null ? "" : billingManager.getLifetimePriceLabel());
         String reason = JSONObject.quote(state.reason);
         boolean purchaseConfigured = billingManager != null
                 && billingManager.isPurchaseSecurityConfigured();
@@ -1011,6 +1019,7 @@ public final class MainActivity extends ComponentActivity {
                 + "var d={entitled:" + state.entitled
                 + ",priceLabel:" + price
                 + ",yearlyPriceLabel:" + yearlyPrice
+                + ",lifetimePriceLabel:" + lifetimePrice
                 + ",reason:" + reason
                 + ",expiryTimeMillis:" + state.expiryTimeMillis
                 + ",purchaseConfigured:" + purchaseConfigured
@@ -1021,7 +1030,7 @@ public final class MainActivity extends ComponentActivity {
                 + ",legacyProductId:" + JSONObject.quote(BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
                 + ",legacyProductType:'inapp'};"
                 + "if(typeof window.onNativeEntitlement==='function'){"
-                + "window.onNativeEntitlement(d.entitled,d.priceLabel,d.reason,d.yearlyPriceLabel);"
+                + "window.onNativeEntitlement(d.entitled,d.priceLabel,d.reason,d.yearlyPriceLabel,d.lifetimePriceLabel);"
                 + "}"
                 + "window.dispatchEvent(new CustomEvent('nur-entitlement',{detail:d}));"
                 + "})();";

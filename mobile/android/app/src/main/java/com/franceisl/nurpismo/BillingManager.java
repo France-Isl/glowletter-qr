@@ -112,6 +112,7 @@ final class BillingManager implements PurchasesUpdatedListener {
     // Цена годовой подписки приходит из каталога Google Play уже с налогом страны.
     // Пустая строка — магазин ещё не ответил, веб-слой покажет запасную цену.
     private volatile String yearlyPriceLabel = "";
+    private volatile String lifetimePriceLabel = "";
     // Пока Google Play не прислал цену подписки, веб-слой получает пустую
     // строку и показывает запасную цену, а не DEFAULT_PRICE как цену магазина.
     private volatile boolean storePricesLoaded;
@@ -182,7 +183,107 @@ final class BillingManager implements PurchasesUpdatedListener {
                             emitTransient(state.priceLabel, state.reason);
                         }
                     });
+            queryLifetimeProduct((details, offerToken, priceLabel, error) -> {
+                if (details != null && rememberLifetimePrice(priceLabel)) {
+                    emitTransient(state.priceLabel, state.reason);
+                }
+            });
         });
+    }
+
+    private interface LifetimeCallback {
+        void onResult(ProductDetails details, String offerToken, String priceLabel, String error);
+    }
+
+    /** Разовая покупка «Навсегда» — товар glowletter_lifetime (INAPP). */
+    private void queryLifetimeProduct(LifetimeCallback callback) {
+        QueryProductDetailsParams.Product product = QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID)
+                .setProductType(BillingClient.ProductType.INAPP)
+                .build();
+        QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
+                .setProductList(Collections.singletonList(product))
+                .build();
+        billingClient.queryProductDetailsAsync(params,
+                (BillingResult billingResult, QueryProductDetailsResult result) -> {
+                    if (closed) {
+                        return;
+                    }
+                    if (billingResult.getResponseCode() != BillingClient.BillingResponseCode.OK) {
+                        callback.onResult(null, null, "", "product_query_" + billingResult.getResponseCode());
+                        return;
+                    }
+                    for (ProductDetails candidate : result.getProductDetailsList()) {
+                        if (!BuildConfig.LEGACY_FULL_ACCESS_PRODUCT_ID.equals(candidate.getProductId())
+                                || !BillingClient.ProductType.INAPP.equals(candidate.getProductType())) {
+                            continue;
+                        }
+                        List<ProductDetails.OneTimePurchaseOfferDetails> offers =
+                                candidate.getOneTimePurchaseOfferDetailsList();
+                        if (offers != null && !offers.isEmpty()) {
+                            ProductDetails.OneTimePurchaseOfferDetails offer = offers.get(0);
+                            callback.onResult(candidate, offer.getOfferToken(), offer.getFormattedPrice(), null);
+                            return;
+                        }
+                        ProductDetails.OneTimePurchaseOfferDetails single = candidate.getOneTimePurchaseOfferDetails();
+                        if (single != null) {
+                            callback.onResult(candidate, null, single.getFormattedPrice(), null);
+                            return;
+                        }
+                    }
+                    callback.onResult(null, null, "", "lifetime_not_configured_in_play_console");
+                });
+    }
+
+    void purchaseLifetime() {
+        if (BuildConfig.DEBUG && BuildConfig.ALLOW_DEBUG_MOCK_ENTITLEMENT) {
+            debugPreferences.edit().putBoolean(DEBUG_MOCK_KEY, true).apply();
+            emit(true, DEFAULT_PRICE, "debug_mock_only_no_payment", true);
+            return;
+        }
+        if (!isPurchaseSecurityConfigured()) {
+            emitTransient(isBillingBackendConfigured()
+                    ? "authentication_required"
+                    : "billing_security_not_configured");
+            return;
+        }
+        String obfuscatedAccountId = verifier.obfuscatedAccountId();
+        if (obfuscatedAccountId.isEmpty()) {
+            emitTransient("authentication_required");
+            return;
+        }
+        emitTransient("opening_google_play");
+        ensureReady(() -> queryLifetimeProduct((details, offerToken, priceLabel, error) -> {
+            if (!obfuscatedAccountId.equals(verifier.obfuscatedAccountId())) {
+                emitTransient("account_session_changed");
+                return;
+            }
+            if (details == null) {
+                emitTransient(error == null ? "product_unavailable" : error);
+                return;
+            }
+            BillingFlowParams.ProductDetailsParams.Builder productParams =
+                    BillingFlowParams.ProductDetailsParams.newBuilder().setProductDetails(details);
+            if (offerToken != null && !offerToken.trim().isEmpty()) {
+                productParams.setOfferToken(offerToken);
+            }
+            BillingFlowParams flowParams = BillingFlowParams.newBuilder()
+                    .setProductDetailsParamsList(Collections.singletonList(productParams.build()))
+                    .setObfuscatedAccountId(obfuscatedAccountId)
+                    .build();
+            purchaseFlowInProgress = true;
+            BillingResult result = billingClient.launchBillingFlow(activity, flowParams);
+            int responseCode = result.getResponseCode();
+            if (responseCode == BillingClient.BillingResponseCode.OK) {
+                return;
+            }
+            purchaseFlowInProgress = false;
+            if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                queryOwnedPurchases("launch_already_owned_restore");
+            } else {
+                emitTransient("billing_launch_" + responseCode);
+            }
+        }));
     }
 
     void onResume() {
@@ -512,6 +613,20 @@ final class BillingManager implements PurchasesUpdatedListener {
         }
         yearlyPriceLabel = next;
         return true;
+    }
+
+    /** Returns true when the store supplied a new one-time price. */
+    private boolean rememberLifetimePrice(String priceLabel) {
+        String next = priceLabel == null ? "" : priceLabel.trim();
+        if (next.isEmpty() || next.equals(lifetimePriceLabel)) {
+            return false;
+        }
+        lifetimePriceLabel = next;
+        return true;
+    }
+
+    String getLifetimePriceLabel() {
+        return lifetimePriceLabel;
     }
 
     String getYearlyPriceLabel() {
@@ -870,6 +985,7 @@ final class BillingManager implements PurchasesUpdatedListener {
                     .put("entitled", current.entitled)
                     .put("priceLabel", webPriceLabel(current))
                     .put("yearlyPriceLabel", yearlyPriceLabel)
+                    .put("lifetimePriceLabel", lifetimePriceLabel)
                     .put("reason", current.reason)
                     .put("expiryTimeMillis", current.expiryTimeMillis)
                     .put("productId", BuildConfig.SUBSCRIPTION_PRODUCT_ID)
