@@ -322,7 +322,20 @@
 
   // «Да или нет»: вопрос, подпись к ответу «да», подпись к ответу «нет».
   // Подписи — о партнёре в третьем лице и без рода; номера карточек не менять.
-  const YES_NO_ART = Object.freeze(["bears", "roses", "kitten"]);
+  // Картинка к каждой карточке: новые рисунки из assets/cards и три фона приложения.
+  const YES_NO_ART_FILES = Object.freeze({
+    hug: "assets/cards/hug.webp", sea: "assets/cards/sea.webp", rain: "assets/cards/rain.webp",
+    picnic: "assets/cards/picnic.webp", kitchen: "assets/cards/kitchen.webp", dance: "assets/cards/dance.webp",
+    sunrise: "assets/cards/sunrise.webp", bears: "assets/scenes/bears-thumb.webp", roses: "assets/scenes/roses-thumb.webp",
+    kitten: "assets/scenes/kitten-thumb.webp"
+  });
+  const YES_NO_ART = Object.freeze({
+    c01: "hug", c02: "roses", c03: "sunrise", c04: "hug", c05: "sea", c06: "dance", c07: "bears", c08: "bears",
+    c09: "picnic", c10: "kitchen", c11: "kitten", c12: "dance", c13: "picnic", c14: "roses", c15: "hug", c16: "rain",
+    c17: "bears", c18: "kitchen", c19: "kitten", c20: "bears", c21: "dance", c22: "hug", c23: "bears", c24: "sunrise",
+    c25: "bears", c26: "hug", c27: "sea", c28: "roses", c29: "hug", c30: "roses", c31: "picnic", c32: "hug",
+    c33: "kitchen", c34: "bears", c35: "sunrise", c36: "sunrise", c37: "kitten", c38: "roses", c39: "hug", c40: "kitten"
+  });
   const YES_NO_IDS = Object.freeze(Array.from({ length: 40 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`));
   const YES_NO_ROUNDS = 20;
   const YES_NO = {
@@ -1301,8 +1314,7 @@
     clearYesNoTimers();
     yn.deck = shuffle(YES_NO_IDS).slice(0, YES_NO_ROUNDS);
     yn.answers = { host: [], guest: [] };
-    yn.art = Math.floor(Math.random() * YES_NO_ART.length);
-    sendYesNo({ type: "start", deck: yn.deck, art: yn.art, guestName: yn.guestName });
+    sendYesNo({ type: "start", deck: yn.deck, guestName: yn.guestName });
     hostRound(0);
   }
 
@@ -1338,7 +1350,6 @@
     if (yn.role !== "guest") return;
     if (message.type === "start" && Array.isArray(message.deck)) {
       yn.deck = message.deck.filter(id => YES_NO_IDS.includes(id)).slice(0, YES_NO_ROUNDS);
-      yn.art = Number(message.art) || 0;
       yn.answers = { host: [], guest: [] };
     } else if (message.type === "round" && Number.isInteger(index)) {
       beginRound(index);
@@ -1412,7 +1423,7 @@
     const yn = state.yn;
     const id = yn.deck[yn.index];
     const [text, yesText, noText] = yesNoCard(id);
-    const art = YES_NO_ART[(yn.art + yn.index) % YES_NO_ART.length];
+    const art = YES_NO_ART_FILES[YES_NO_ART[id]] || YES_NO_ART_FILES.bears;
     const partnerRole = yn.role === "host" ? "guest" : "host";
     const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
     let reveal = "";
@@ -1435,7 +1446,7 @@
     return `
       <p class="glg-step">${escapeHtml(tr("ynRound", { n: yn.index + 1, total: yn.deck.length }))}</p>
       <article class="glg-yn-card${yn.phase === "reveal" ? " is-revealed" : ""}">
-        <div class="glg-yn-art" style="background-image:url('assets/scenes/${art}-thumb.webp')" aria-hidden="true"></div>
+        <div class="glg-yn-art" style="background-image:url('${art}')" aria-hidden="true"></div>
         <h3>${escapeHtml(text)}</h3>
         ${yn.phase === "reveal" ? reveal : `<div class="glg-yn-timer" aria-hidden="true"><i style="animation-duration:${YES_NO_SECONDS}s"></i></div>`}
       </article>
