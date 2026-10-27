@@ -13,3 +13,6 @@ service-account*.json
 google-play*.json
 .claude/
 .playwright-mcp/
+
+# Увеличенные исходники фонов (по 35 МБ) — только локально.
+assets/source/x4/
