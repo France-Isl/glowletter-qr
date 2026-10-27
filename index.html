@@ -12,18 +12,18 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=55" />
+  <meta property="og:image" content="https://bezam.org/assets/og-letter.png?v=56" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=55" />
+  <link rel="manifest" href="manifest.webmanifest?v=56" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=55" />
-  <link rel="stylesheet" href="styles.css?v=55" />
-  <link rel="stylesheet" href="experience.css?v=55" />
-  <link rel="stylesheet" href="email-auth.css?v=55" />
-  <link rel="stylesheet" href="moments.css?v=55" data-glowletter-moments-style />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=56" />
+  <link rel="stylesheet" href="styles.css?v=56" />
+  <link rel="stylesheet" href="experience.css?v=56" />
+  <link rel="stylesheet" href="email-auth.css?v=56" />
+  <link rel="stylesheet" href="moments.css?v=56" data-glowletter-moments-style />
 </head>
 <body data-ui-theme="garnet">
   <!--
@@ -76,8 +76,6 @@
   </svg>
   <div class="app" id="app">
     <div class="cinematic-bg" id="cinematicBg" aria-hidden="true"></div>
-    <div class="chair-motion chair-motion-left" aria-hidden="true"></div>
-    <div class="chair-motion chair-motion-right" aria-hidden="true"></div>
     <div class="color-wash" aria-hidden="true"></div>
     <div class="vignette" aria-hidden="true"></div>
     <div class="film-grain" aria-hidden="true"></div>
@@ -92,12 +90,10 @@
       <button class="round-control sound-button" id="soundButton" type="button" aria-label="Включить аудио" aria-pressed="false" hidden>
         <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
-      <button class="round-control nature-button" id="natureButton" type="button" aria-label="Включить звуки природы" aria-pressed="false"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></button>
       <div class="topbar-spacer"></div>
-      <button class="weather-chip" id="weatherButton" type="button" aria-label="Показать погоду"><span id="weatherIcon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-cloud"/></svg></span><span id="weatherText">Погода</span></button>
       <button class="round-control language-button" id="languageButton" type="button" aria-label="Изменить язык">RU</button>
       <button class="round-control" id="libraryButton" type="button" aria-label="Коллекция писем"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></button>
-      <button class="round-control" id="settingsButton" type="button" aria-label="Атмосфера и звук"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-dots"/></svg></button>
+      <button class="round-control" id="settingsButton" type="button" aria-label="Настройки"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-dots"/></svg></button>
     </header>
 
     <div class="app-update" id="appUpdateBanner" role="status" aria-live="polite" hidden>
@@ -207,6 +203,10 @@
             <label><span>От кого</span><input id="setupSenderName" dir="auto" maxlength="36" autocomplete="name" placeholder="Ваше имя" /></label>
             <label><span>Для кого</span><input id="setupRecipientName" dir="auto" maxlength="36" autocomplete="off" placeholder="Имя получателя" /></label>
           </div>
+          <div class="publication-audio setup-audio" id="setupAudio">
+            <button class="publication-audio-pick" id="setupAudioButton" type="button" aria-pressed="false"><i><svg class="ic" aria-hidden="true" focusable="false"><use id="setupAudioIcon" href="#ic-plus"/></svg></i><span><strong id="setupAudioTitle">Добавить своё аудио</strong><small id="setupAudioNote">Получатель услышит его, открыв письмо · MP3, M4A, AAC, OGG или WAV · до 12 МБ</small></span></button>
+            <div class="publication-audio-actions"><button id="setupAudioRemove" type="button" hidden>× Убрать аудио</button></div>
+          </div>
           <p class="setup-error" id="setupError" hidden>Введите обычные имена или семейные роли.</p>
           <button class="generate-button" type="submit"><span class="generate-spark"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-heart"/></svg></span><span id="setupSubmitLabel">Открыть письмо</span><i>→</i></button>
         </form>
@@ -287,41 +287,18 @@
           </div>
         </details>
 
-        <details class="settings-section">
-          <summary id="settingsAtmosphereTitle">Атмосфера</summary>
-          <div class="settings-section-body">
-        <div class="atmosphere-grid">
-          <button class="atmosphere-card is-active" id="rainToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-rain"/></svg></i><span><strong>Живой дождь</strong><small>крупные капли и брызги</small></span><b>ВКЛ</b></button>
-          <button class="atmosphere-card" id="natureToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg></i><span><strong>Ночной лес</strong><small>сверчки, ветер и лягушки</small></span><b>ВЫКЛ</b></button>
-          <button class="atmosphere-card" id="weatherToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-moon"/></svg></i><span><strong>Моя погода</strong><small>атмосфера по месту</small></span><b id="weatherState">ВЫКЛ</b></button>
-          <button class="atmosphere-card" id="fullscreenToggle" type="button"><i><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-expand"/></svg></i><span><strong>Полный экран</strong><small>без лишних элементов</small></span><b>ОТКРЫТЬ</b></button>
-        </div>
-          </div>
-        </details>
 
         <details class="settings-section">
           <summary id="settingsLookTitle">Оформление</summary>
           <div class="settings-section-body">
-        <fieldset class="interface-theme-picker">
-          <legend>Цвет интерфейса</legend>
-          <div class="theme-choice-grid" role="radiogroup" aria-label="Цвет интерфейса">
-            <button class="is-active" type="button" role="radio" aria-checked="true" data-ui-theme="garnet"><i></i><span>Гранат</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="indigo"><i></i><span>Индиго</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="saffron"><i></i><span>Шафран</span></button>
-            <button type="button" role="radio" aria-checked="false" data-ui-theme="emerald"><i></i><span>Изумруд</span></button>
+        <fieldset class="scene-picker">
+          <legend id="scenePickerTitle">Фон</legend>
+          <div class="scene-grid" role="radiogroup" aria-labelledby="scenePickerTitle">
+            <button type="button" role="radio" aria-checked="true" data-scene="bears"><img src="assets/scenes/bears-thumb.webp" alt="" width="360" height="540" loading="lazy" decoding="async" /><span id="sceneBearsLabel">Мишки у озера</span></button>
+            <button type="button" role="radio" aria-checked="false" data-scene="roses"><img src="assets/scenes/roses-thumb.webp" alt="" width="360" height="540" loading="lazy" decoding="async" /><span id="sceneRosesLabel">Мишки в розах</span></button>
+            <button type="button" role="radio" aria-checked="false" data-scene="kitten"><img src="assets/scenes/kitten-thumb.webp" alt="" width="360" height="540" loading="lazy" decoding="async" /><span id="sceneKittenLabel">Котёнок на балконе</span></button>
           </div>
         </fieldset>
-
-        <fieldset class="background-picker">
-          <legend>Личный фон</legend>
-          <div class="background-preview" id="backgroundPreview"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-image"/></svg></span><p><strong>Своя фотография</strong><small>Останется только на этом устройстве</small></p></div>
-          <div class="background-actions">
-            <button id="customBackgroundButton" type="button">Выбрать фото</button>
-            <button id="resetBackgroundButton" type="button">Вернуть озеро</button>
-          </div>
-          <input class="visually-hidden" id="customBackgroundInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
-        </fieldset>
-
           </div>
         </details>
 
@@ -434,83 +411,7 @@
           <p class="account-privacy" id="accountPrivacyNote">Личное аудио хранится на устройстве; при отправке персональной ссылки временная копия доступна до 12 часов.</p>
         </section>
 
-        <section class="admin-panel" id="adminPanel" aria-labelledby="adminPanelTitle" hidden>
-          <header class="admin-panel-heading">
-            <span class="admin-panel-mark" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-shield"/></svg></span>
-            <div>
-              <h3 id="adminPanelTitle">Админ-панель</h3>
-            </div>
-          </header>
-          <p class="admin-panel-description">По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.</p>
-          <form class="admin-lookup-form" id="adminLookupForm">
-            <label for="adminSupportId">ID аккаунта</label>
-            <div class="admin-lookup-row">
-              <input id="adminSupportId" name="supportId" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="96" placeholder="Например, GL-7F3A…" aria-describedby="adminStatus" required />
-              <button id="adminLookupButton" type="submit">Найти</button>
-            </div>
-            <small class="admin-lookup-hint" id="adminLookupHint">ID аккаунта (GL-…) или e-mail</small>
-            <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
-          </form>
-          <div class="admin-result" id="adminResult" hidden>
-            <div class="admin-result-summary">
-              <p><span>ID</span><strong id="adminResultId">—</strong></p>
-              <p><span>Текущий план</span><strong id="adminResultPlan">—</strong></p>
-            </div>
-            <div class="admin-access-actions">
-              <label class="admin-days-field" for="adminVipDays"><span id="adminVipDaysLabel">Срок VIP</span><span><input id="adminVipDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminVipDaysUnit">дней</b></span></label>
-              <label class="admin-notice-reason" for="adminVipReason"><span id="adminVipReasonLabel">Причина уведомления</span><select id="adminVipReason"><option value="gift">Подарок</option><option value="compensation">Компенсация</option><option value="promotion">Акция</option><option value="other">Другое</option></select></label>
-              <label class="admin-notice-message" for="adminVipMessage"><span id="adminVipMessageLabel">Личное сообщение · необязательно</span><textarea id="adminVipMessage" dir="auto" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter" aria-describedby="adminVipMessageHint adminVipMessageCount"></textarea></label>
-              <div class="admin-notice-meta"><small id="adminVipMessageHint">Получатель увидит это сообщение внутри приложения.</small><output id="adminVipMessageCount" for="adminVipMessage">0 / 240</output></div>
-              <button id="adminGrantVip" type="button">Выдать VIP</button>
-              <button id="adminGrantForever" type="button">Выдать без срока</button>
-              <button class="admin-revoke" id="adminRevokeVip" type="button">Отозвать VIP</button>
-            </div>
-          </div>
-          <div class="admin-bulk">
-            <h4 id="adminBulkTitle">Всем пользователям</h4>
-            <p class="admin-bulk-note" id="adminBulkNote">VIP получат все, кроме админов и тех, у кого доступ без срока. Дни добавляются к оставшемуся сроку.</p>
-            <div class="admin-access-actions">
-              <label class="admin-days-field" for="adminBulkDays"><span id="adminBulkDaysLabel">Срок VIP</span><span><input id="adminBulkDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminBulkDaysUnit">дней</b></span></label>
-              <label class="admin-notice-reason" for="adminBulkReason"><span id="adminBulkReasonLabel">Причина уведомления</span><select id="adminBulkReason"><option value="gift">Подарок</option><option value="compensation">Компенсация</option><option value="promotion">Акция</option><option value="other">Другое</option></select></label>
-              <label class="admin-notice-message" for="adminBulkMessage"><span id="adminBulkMessageLabel">Личное сообщение · необязательно</span><textarea id="adminBulkMessage" dir="auto" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter"></textarea></label>
-              <button id="adminGrantAll" type="button">Выдать VIP всем</button>
-              <button class="admin-revoke" id="adminRevokeAll" type="button">Отозвать VIP у всех</button>
-            </div>
-          </div>
-          <div class="admin-overview" id="adminOverview" hidden>
-            <div class="admin-overview-head"><h4 id="adminRecentTitle">Последние аккаунты</h4><button id="adminRefresh" type="button">Обновить</button></div>
-            <div class="admin-stats">
-              <p><span id="adminStatTotalLabel">Аккаунтов</span><strong id="adminStatTotal">—</strong></p>
-              <p><span id="adminStatVipLabel">VIP сейчас</span><strong id="adminStatVip">—</strong></p>
-              <p><span id="adminStatForeverLabel">Без срока</span><strong id="adminStatForever">—</strong></p>
-              <p><span id="adminStatNewLabel">Новых за 7 дней</span><strong id="adminStatNew">—</strong></p>
-            </div>
-            <ul class="admin-recent" id="adminRecentList"></ul>
-          </div>
-          <div class="admin-catalog" id="adminCatalog">
-            <div class="admin-overview-head"><h4 id="adminCatalogTitle">Стихи и письма</h4><button id="adminCatalogRefresh" type="button">Обновить</button></div>
-            <p class="admin-bulk-note" id="adminCatalogNote">Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.</p>
-            <form class="admin-catalog-form" id="adminCatalogForm">
-              <label class="admin-notice-message admin-catalog-text" for="adminCatalogText"><span id="adminCatalogTextLabel">Текст</span><textarea id="adminCatalogText" maxlength="1500" rows="7" autocomplete="off" placeholder="Вставьте стих или письмо"></textarea></label>
-              <div class="admin-notice-meta"><small id="adminCatalogHint">Несколько текстов разделяйте строкой ***. Переносы строк сохраняются.</small><output id="adminCatalogCount" for="adminCatalogText">0 / 1500</output></div>
-              <div class="admin-catalog-grid">
-                <label class="admin-notice-reason" for="adminCatalogLanguage"><span id="adminCatalogLanguageLabel">Язык текста</span><select id="adminCatalogLanguage"></select></label>
-                <label class="admin-notice-reason" for="adminCatalogCategory"><span id="adminCatalogCategoryLabel">Категория</span><select id="adminCatalogCategory"><option value="poem">Стихи</option><option value="warm">Тепло</option><option value="gratitude">Спасибо</option><option value="support">Поддержка</option><option value="family">Семья</option></select></label>
-              </div>
-              <label class="admin-notice-reason admin-catalog-author" for="adminCatalogAuthor"><span id="adminCatalogAuthorLabel">Автор · необязательно</span><input id="adminCatalogAuthor" type="text" maxlength="80" autocomplete="off"></label>
-              <label class="admin-catalog-free" for="adminCatalogFree"><input id="adminCatalogFree" type="checkbox"><span id="adminCatalogFreeLabel">Бесплатно для всех</span></label>
-              <p class="admin-status" id="adminCatalogStatus" role="status" aria-live="polite"></p>
-              <div class="admin-access-actions admin-catalog-actions">
-                <button id="adminCatalogPublish" type="submit">Опубликовать</button>
-                <button id="adminCatalogDraft" type="button">В черновики</button>
-                <button id="adminCatalogPreview" type="button">Посмотреть</button>
-                <button class="admin-revoke" id="adminCatalogCancel" type="button" hidden>Отменить правку</button>
-              </div>
-            </form>
-            <ul class="admin-catalog-list" id="adminCatalogList"></ul>
-            <p class="admin-recent-empty" id="adminCatalogEmpty" hidden>Пока ничего не добавлено</p>
-          </div>
-        </section>
+        <button class="admin-open-button" id="adminOpenButton" type="button" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-shield"/></svg><span id="adminOpenLabel">Админ-панель</span><i aria-hidden="true">→</i></button>
           </div>
         </details>
 
@@ -549,6 +450,92 @@
         <button class="save-settings" id="saveSettingsButton" type="button">Сохранить настройки</button>
         <button class="install-button qr-open-button settings-primary-qr" id="qrOpenButton" type="button"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> Создать QR-код</button>
 
+      </section>
+    </div>
+
+    <div class="panel-layer" id="adminLayer" aria-hidden="true">
+      <button class="panel-backdrop" id="adminBackdrop" type="button" aria-label="Закрыть"></button>
+      <section class="side-panel admin-screen" role="dialog" aria-modal="true" aria-labelledby="adminPanelTitle">
+        <div class="panel-header-actions admin-screen-close"><button class="panel-close" id="adminClose" type="button" aria-label="Закрыть">×</button></div>
+        <section class="admin-panel" id="adminPanel" aria-labelledby="adminPanelTitle" data-tab="accounts" hidden>
+          <header class="admin-panel-heading">
+            <span class="admin-panel-mark" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-shield"/></svg></span>
+            <div>
+              <h3 id="adminPanelTitle">Админ-панель</h3>
+            </div>
+          </header>
+          <nav class="admin-tabs" role="tablist" aria-label="Админ-панель"><button type="button" role="tab" aria-selected="true" data-admin-tab="accounts" id="adminTabAccounts">Аккаунты</button><button type="button" role="tab" aria-selected="false" data-admin-tab="catalog" id="adminTabCatalog">Стихи</button><button type="button" role="tab" aria-selected="false" data-admin-tab="bulk" id="adminTabBulk">Всем</button></nav>
+          <p class="admin-panel-description">По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.</p>
+          <form class="admin-lookup-form" id="adminLookupForm" data-admin-pane="accounts">
+            <label for="adminSupportId">ID аккаунта</label>
+            <div class="admin-lookup-row">
+              <input id="adminSupportId" name="supportId" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="96" placeholder="Например, GL-7F3A…" aria-describedby="adminStatus" required />
+              <button id="adminLookupButton" type="submit">Найти</button>
+            </div>
+            <small class="admin-lookup-hint" id="adminLookupHint">ID аккаунта (GL-…) или e-mail</small>
+            <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+          </form>
+          <article class="admin-account-card" id="adminAccountCard" data-admin-pane="accounts" hidden></article>
+          <div class="admin-result" id="adminResult" data-admin-pane="accounts" hidden>
+            <div class="admin-result-summary">
+              <p><span>ID</span><strong id="adminResultId">—</strong></p>
+              <p><span>Текущий план</span><strong id="adminResultPlan">—</strong></p>
+            </div>
+            <div class="admin-access-actions">
+              <label class="admin-days-field" for="adminVipDays"><span id="adminVipDaysLabel">Срок VIP</span><span><input id="adminVipDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminVipDaysUnit">дней</b></span></label>
+              <label class="admin-notice-reason" for="adminVipReason"><span id="adminVipReasonLabel">Причина уведомления</span><select id="adminVipReason"><option value="gift">Подарок</option><option value="compensation">Компенсация</option><option value="promotion">Акция</option><option value="other">Другое</option></select></label>
+              <label class="admin-notice-message" for="adminVipMessage"><span id="adminVipMessageLabel">Личное сообщение · необязательно</span><textarea id="adminVipMessage" dir="auto" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter" aria-describedby="adminVipMessageHint adminVipMessageCount"></textarea></label>
+              <div class="admin-notice-meta"><small id="adminVipMessageHint">Получатель увидит это сообщение внутри приложения.</small><output id="adminVipMessageCount" for="adminVipMessage">0 / 240</output></div>
+              <button id="adminGrantVip" type="button">Выдать VIP</button>
+              <button id="adminGrantForever" type="button">Выдать без срока</button>
+              <button class="admin-revoke" id="adminRevokeVip" type="button">Отозвать VIP</button>
+            </div>
+          </div>
+          <div class="admin-bulk" data-admin-pane="bulk">
+            <h4 id="adminBulkTitle">Всем пользователям</h4>
+            <p class="admin-bulk-note" id="adminBulkNote">VIP получат все, кроме админов и тех, у кого доступ без срока. Дни добавляются к оставшемуся сроку.</p>
+            <div class="admin-access-actions">
+              <label class="admin-days-field" for="adminBulkDays"><span id="adminBulkDaysLabel">Срок VIP</span><span><input id="adminBulkDays" type="number" inputmode="numeric" min="1" max="365" step="1" value="30" /> <b id="adminBulkDaysUnit">дней</b></span></label>
+              <label class="admin-notice-reason" for="adminBulkReason"><span id="adminBulkReasonLabel">Причина уведомления</span><select id="adminBulkReason"><option value="gift">Подарок</option><option value="compensation">Компенсация</option><option value="promotion">Акция</option><option value="other">Другое</option></select></label>
+              <label class="admin-notice-message" for="adminBulkMessage"><span id="adminBulkMessageLabel">Личное сообщение · необязательно</span><textarea id="adminBulkMessage" dir="auto" maxlength="240" rows="3" placeholder="Например: спасибо, что помогли нам улучшить GlowLetter"></textarea></label>
+              <button id="adminGrantAll" type="button">Выдать VIP всем</button>
+              <button class="admin-revoke" id="adminRevokeAll" type="button">Отозвать VIP у всех</button>
+            </div>
+          </div>
+          <div class="admin-overview" id="adminOverview" data-admin-pane="accounts" hidden>
+            <div class="admin-overview-head"><h4 id="adminRecentTitle">Последние аккаунты</h4><button id="adminRefresh" type="button">Обновить</button></div>
+            <div class="admin-stats">
+              <p><span id="adminStatTotalLabel">Аккаунтов</span><strong id="adminStatTotal">—</strong></p>
+              <p><span id="adminStatVipLabel">VIP сейчас</span><strong id="adminStatVip">—</strong></p>
+              <p><span id="adminStatForeverLabel">Без срока</span><strong id="adminStatForever">—</strong></p>
+              <p><span id="adminStatNewLabel">Новых за 7 дней</span><strong id="adminStatNew">—</strong></p>
+            </div>
+            <ul class="admin-recent" id="adminRecentList"></ul>
+          </div>
+          <div class="admin-catalog" id="adminCatalog" data-admin-pane="catalog">
+            <div class="admin-overview-head"><h4 id="adminCatalogTitle">Стихи и письма</h4><button id="adminCatalogRefresh" type="button">Обновить</button></div>
+            <p class="admin-bulk-note" id="adminCatalogNote">Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.</p>
+            <form class="admin-catalog-form" id="adminCatalogForm">
+              <label class="admin-notice-message admin-catalog-text" for="adminCatalogText"><span id="adminCatalogTextLabel">Текст</span><textarea id="adminCatalogText" maxlength="1500" rows="7" autocomplete="off" placeholder="Вставьте стих или письмо"></textarea></label>
+              <div class="admin-notice-meta"><small id="adminCatalogHint">Несколько текстов разделяйте строкой ***. Переносы строк сохраняются.</small><output id="adminCatalogCount" for="adminCatalogText">0 / 1500</output></div>
+              <div class="admin-catalog-grid">
+                <label class="admin-notice-reason" for="adminCatalogLanguage"><span id="adminCatalogLanguageLabel">Язык текста</span><select id="adminCatalogLanguage"></select></label>
+                <label class="admin-notice-reason" for="adminCatalogCategory"><span id="adminCatalogCategoryLabel">Категория</span><select id="adminCatalogCategory"><option value="poem">Стихи</option><option value="warm">Тепло</option><option value="gratitude">Спасибо</option><option value="support">Поддержка</option><option value="family">Семья</option></select></label>
+              </div>
+              <label class="admin-notice-reason admin-catalog-author" for="adminCatalogAuthor"><span id="adminCatalogAuthorLabel">Автор · необязательно</span><input id="adminCatalogAuthor" type="text" maxlength="80" autocomplete="off"></label>
+              <label class="admin-catalog-free" for="adminCatalogFree"><input id="adminCatalogFree" type="checkbox"><span id="adminCatalogFreeLabel">Бесплатно для всех</span></label>
+              <p class="admin-status" id="adminCatalogStatus" role="status" aria-live="polite"></p>
+              <div class="admin-access-actions admin-catalog-actions">
+                <button id="adminCatalogPublish" type="submit">Опубликовать</button>
+                <button id="adminCatalogDraft" type="button">В черновики</button>
+                <button id="adminCatalogPreview" type="button">Посмотреть</button>
+                <button class="admin-revoke" id="adminCatalogCancel" type="button" hidden>Отменить правку</button>
+              </div>
+            </form>
+            <ul class="admin-catalog-list" id="adminCatalogList"></ul>
+            <p class="admin-recent-empty" id="adminCatalogEmpty" hidden>Пока ничего не добавлено</p>
+          </div>
+        </section>
       </section>
     </div>
 
@@ -786,15 +773,15 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=55"></script>
-  <script src="vendor/supabase-2.110.9.js?v=55"></script>
-  <script src="letters.js?v=55"></script>
-  <script src="i18n-extra.js?v=55"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=55"></script>
-  <script src="qr-code.js?v=55"></script>
-  <script src="app.js?v=55"></script>
-  <script src="email-auth.js?v=55"></script>
-  <script src="moments.js?v=55"></script>
-  <script src="experience.js?v=55"></script>
+  <script src="config.js?v=56"></script>
+  <script src="vendor/supabase-2.110.9.js?v=56"></script>
+  <script src="letters.js?v=56"></script>
+  <script src="i18n-extra.js?v=56"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=56"></script>
+  <script src="qr-code.js?v=56"></script>
+  <script src="app.js?v=56"></script>
+  <script src="email-auth.js?v=56"></script>
+  <script src="moments.js?v=56"></script>
+  <script src="experience.js?v=56"></script>
 </body>
 </html>

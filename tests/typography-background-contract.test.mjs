@@ -11,19 +11,20 @@ const experience = read("experience.js");
 const styles = read("experience.css");
 const localFonts = read("fonts/local-fonts.css");
 
-assert.match(index, /fonts\/local-fonts\.css\?v=55/u);
+assert.match(index, /fonts\/local-fonts\.css\?v=56/u);
 for (const family of ["Cormorant Garamond", "Literata", "Manrope"]) {
   assert.match(localFonts, new RegExp(`font-family: "${family}"`, "u"));
 }
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/u);
-assert.match(experience, /const TYPES = \["classic", "elegant", "clear", "poetic", "literary"\]/u);
-for (const label of ["Поэтичный", "Литературный", "Poetic", "Literary", "Poétique", "Littéraire"]) {
+// Из стилей текста оставлены три самых красивых (2.4.20).
+assert.match(experience, /const TYPES = \["classic", "poetic", "clear"\]/u);
+for (const label of ["Поэтичный", "Чёткий", "Poetic", "Clear", "Poétique", "Net"]) {
   assert.match(experience, new RegExp(label, "u"));
 }
 for (const selector of ["#letterTitle", ".letter-text", ".letter-meta", ".signature"]) {
   assert.ok(styles.includes(selector), `${selector} must inherit the selected letter typography`);
 }
-assert.match(styles, /body\[data-gl-type="literary"\][^{]*\{[^}]*"Literata"/u);
+assert.match(styles, /body\[data-gl-type="classic"\][^{]*\{[^}]*"Literata"/u);
 assert.match(styles, /body\[data-gl-type="poetic"\]/u);
 assert.match(app, /function canvasLetterTypography\(/u);
 assert.match(app, /--gl-letter-font/u);
@@ -41,6 +42,6 @@ assert.doesNotMatch(experience, /SCENES|gl-video|assets\/video|mishka|kotyta/u, 
 assert.equal(fs.existsSync(path.join(root, "assets/video")), false, "the video folder must be gone");
 assert.match(experience, /--gl-paper-alpha/u, "letter paper opacity is now a fixed, readable value");
 assert.doesNotMatch(read("sw.js"), /destination === "video"/u);
-assert.match(experience, /\["glFrame", "glInk", "glType"\]\.some/u);
+assert.match(experience, /\["glFrame", "glType"\]\.some/u);
 
-  console.log(JSON.stringify({ ok: true, textStyles: 5, newStyles: ["poetic", "literary"], liveScenes: 0 }));
+  console.log(JSON.stringify({ ok: true, textStyles: 3, newStyles: ["poetic", "clear"], liveScenes: 0 }));

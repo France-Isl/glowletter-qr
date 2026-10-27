@@ -67,7 +67,7 @@ for (const id of ["publicationAudio", "publicationAudioButton", "publicationAudi
   assert.match(index, new RegExp(`id=["']${id}["']`), `${id} must exist`);
 }
 assert.match(index, /id="publicationAudioTitle">Добавить своё аудио</);
-assert.match(index, /aria-label="Атмосфера и звук"/);
+assert.match(index, /id="settingsButton"[^>]*aria-label="Настройки"/);
 assert.match(styles, /\.publication-audio \{/);
 assert.match(app, /function requestPublishConsent\(options=\{\}\)\{[\s\S]{0,200}publicationContext=\{kind:options\.kind==="qr"\?"qr":"direct",audio:options\.audio===true\};renderPublicationAudio\(\);/);
 assert.match(app, /function renderPublicationAudio\(\) \{[\s\S]{0,1200}t\(publicationContext\.kind === "qr" \? "publishAudioQr" : "publishAudioLink"\)/);

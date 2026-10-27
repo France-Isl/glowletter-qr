@@ -47,40 +47,33 @@ assert.match(app, /function qrFileName\(extension\)\{[^\n]*`GlowLetter-QR/);
 assert.match(app, /navigator\.clipboard\?\.write/);
 assert.match(styles, /@media\s+print[\s\S]*#qrLayer/);
 
-// Settings offer four restrained palettes, persist the choice, and restyle panels via variables.
+// Цвет интерфейса больше не выбирается (2.4.20): один гранатовый, без лишних настроек.
 assert.match(index, /<body[^>]*data-ui-theme=["']garnet["']/);
-for (const theme of ["garnet", "indigo", "saffron", "emerald"]) {
-  assert.match(index, new RegExp(`data-ui-theme=["']${theme}["']`), `${theme} theme control is required`);
-}
-for (const theme of ["indigo", "saffron", "emerald"]) {
-  assert.match(styles, new RegExp(`body\\[data-ui-theme=["']${theme}["']\\]`), `${theme} theme variables are required`);
-}
+assert.doesNotMatch(index, /theme-choice-grid|data-ui-theme=["'](?:indigo|saffron|emerald)["']/);
 assert.match(styles, /\.side-panel[^\n]*var\(--ui-panel\)[^\n]*var\(--ui-panel-alt\)/);
-assert.match(app, /const UI_THEMES\s*=\s*new Set\(\["garnet",\s*"indigo",\s*"saffron",\s*"emerald"\]\)/);
-assert.match(app, /document\.body\.dataset\.uiTheme\s*=\s*uiTheme/);
-assert.match(app, /localStorage\.setItem\(["']nurUiTheme["'],\s*uiTheme\)/);
-assert.match(app, /\$\$\(["']\.theme-choice-grid \[data-ui-theme\]["']\)[^\n]*addEventListener\(["']click["']/);
+// Свой фон-фото заменён выбором из трёх картинок высокого качества.
+assert.doesNotMatch(index, /customBackgroundButton|background-picker/);
+for (const scene of ["bears", "roses", "kitten"]) {
+  assert.match(index, new RegExp(`data-scene="${scene}"`));
+  assert.ok(fs.existsSync(path.join(root, `assets/scenes/${scene}.webp`)), `${scene} background is required`);
+}
+assert.match(app, /const SCENES = Object\.freeze\(\{ bears: "assets\/scenes\/bears\.webp"/);
 assert.doesNotMatch(styles, /\.settings-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "settings title must scroll away with its content");
 assert.match(index, /id="appleSignInArtwork"[^>]*assets\/auth\/apple-continue-ru\.png/);
 assert.match(styles, /\.oauth-button\.apple\s*\{[^}]*aspect-ratio\s*:\s*375\/44/i);
 
-// The weather chip must render live conditions and temperature, not only a static sun or moon.
-for (const id of ["weatherButton", "weatherIcon", "weatherText", "weatherToggle", "weatherState"]) {
-  assert.match(index, new RegExp(`id=["']${id}["']`), `${id} is required for live weather`);
+// «Атмосфера» убрана целиком (2.4.20): дождь, погода, звуки леса и кнопка полного экрана.
+for (const id of ["weatherButton", "weatherToggle", "natureButton", "natureToggle", "rainToggle", "fullscreenToggle", "settingsAtmosphereTitle"]) {
+  assert.doesNotMatch(index, new RegExp(`id=["']${id}["']`), `${id} must be gone`);
 }
-assert.match(app, /api\.open-meteo\.com\/v1\/forecast/);
-assert.match(app, /current=temperature_2m,weather_code,is_day/);
-assert.match(app, /const temperature\s*=\s*`\$\{Math\.round\(Number\(weatherSnapshot\.temperature\)\)\}°`/);
-assert.match(app, /text\.textContent\s*=\s*temperature/);
-assert.match(app, /state\.textContent\s*=\s*temperature/);
-assert.match(app, /button\?\.classList\.add\(["']has-weather["']\)/);
-assert.match(styles, /\.weather-chip\.has-weather/);
-assert.match(app, /#weatherButton[^\n]*addEventListener\(["']click["'],\s*\(\)\s*=>\s*refreshWeather\(\)\)/);
+assert.match(app, /let weatherEnabled = false;/);
+assert.match(app, /this\.enabled = false;/);
+// Полный экран включается у всех сам, без выключателя.
+assert.match(app, /async function requestAutomaticFullscreen\(\)\{if\(fullscreenActive\(\)/);
 
 // Every top-level icon/action has a real event handler.
 for (const [id, action] of [
   ["homeButton", "goHome"],
-  ["natureButton", "toggleNature"],
   ["libraryButton", "renderLibrary"],
   ["settingsButton", "openPanel"],
   ["languageButton", "applyLanguage"],
@@ -153,18 +146,15 @@ assert.doesNotMatch(experience, /pro:\s*"PRO"/);
 assert.doesNotMatch(index, /class="vip-badge"/, "the VIP badge left with the composer entries");
 // (стиль .vip-badge больше нигде не используется)
 
-// All four VIP frame choices visibly select with a checkmark and decorate generated letters.
-assert.match(experience, /const FRAMES\s*=\s*\["none",\s*"hearts",\s*"moon",\s*"forest",\s*"pearl",\s*"roses"\]/);
-for (const frame of ["hearts", "moon", "forest", "pearl", "roses"]) {
-  assert.match(experienceStyles, new RegExp(`body\\.gl-premium-active\\[data-gl-frame=["']${frame}["']\\]`), `${frame} must define VIP frame tokens`);
-  assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-layer`), `${frame} must decorate the opened letter`);
+// Новые векторные рамки (2.4.20): золото, розы, ночное небо; старые рамки удалены.
+assert.match(experience, /const FRAMES = \["gold", "roses", "night", "none"\]/);
+for (const frame of ["gold", "roses", "night"]) {
+  assert.match(experienceStyles, new RegExp(`body\\[data-gl-frame=["']${frame}["']\\] \\.gl-frame-art`), `${frame} must decorate the opened letter`);
 }
+assert.doesNotMatch(experience, /hearts|pearl|frame-roses\.webp/);
 assert.doesNotMatch(index, /id=["']generatedCard["']/, "the generated-letter card left with the composer");
 assert.doesNotMatch(index, /id=["']replyGeneratedCard["']/);
-// Отметка выбранного пресета — символ спрайта, а не текстовый глиф:
-// правило дизайн-системы запрещает глифы вместо иконок.
-assert.match(experience, /mark\.innerHTML\s*=\s*active\s*\?\s*'<svg class="ic"[^']*#ic-check/u);
-assert.match(experienceStyles, /\.gl-frame-grid button\.is-active>b[^\{]*\{[^\}]*color:\s*#fff[^\}]*background:\s*var\(--ui-accent-deep\)[^\}]*opacity:\s*1/);
+assert.match(experienceStyles, /\.gl-frame-grid button\.is-active,\.gl-type-grid button\.is-active \{/);
 assert.match(experience, /glowletter-access-change/);
 assert.match(app, /document\.body\.dataset\.access\s*=\s*isPremium\s*\?\s*["']vip["']\s*:\s*["']free["']/);
 assert.match(app, /\$\(["']\.free-note["']\)\.hidden\s*=\s*isPremium/);

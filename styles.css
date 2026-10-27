@@ -74,7 +74,7 @@ button, select { cursor: pointer; }
 .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 
 .app { position: relative; min-height: 100svh; isolation: isolate; overflow: hidden; }
-.cinematic-bg { position: fixed; z-index: -6; inset: -3%; background-image: var(--scene-image, url("assets/campfire-lake.png")); background-size: cover; background-position: 63% center; filter: saturate(.92) contrast(1.03); transform: scale(1.035); animation: scene-breathe 28s ease-in-out infinite alternate; }
+.cinematic-bg { position: fixed; z-index: -6; inset: -3%; background-image: var(--scene-image, url("assets/scenes/bears.webp")); background-size: cover; background-position: 63% center; filter: saturate(.92) contrast(1.03); transform: scale(1.035); animation: scene-breathe 28s ease-in-out infinite alternate; }
 .color-wash { position: fixed; z-index: -5; inset: 0; background: linear-gradient(90deg, rgba(18,18,27,calc(var(--gl-scene-dim) * 1.1)) 0%, rgba(33,30,47,.08) 47%, rgba(20,19,31,.09) 100%), linear-gradient(180deg, rgba(21,21,31,.08), rgba(20,13,20,calc(var(--gl-scene-dim) * 1.7))); }
 .vignette { position: fixed; z-index: -4; inset: 0; box-shadow: inset 0 0 190px 45px rgba(9,7,12,.55); pointer-events: none; }
 .film-grain { position: fixed; z-index: 10; inset: -60%; opacity: .04; pointer-events: none; background-image: repeating-radial-gradient(circle at 37% 41%, rgba(255,252,245,.45) 0 1px, transparent 1px 4px), repeating-radial-gradient(circle at 67% 63%, rgba(5,5,10,.5) 0 1px, transparent 1px 5px); background-size: 7px 9px, 11px 13px; animation: grain .22s steps(2) infinite; }
@@ -327,7 +327,7 @@ textarea { resize: vertical; min-height: 110px; padding: 13px; line-height: 1.55
 }
 
 /* GlowLetter v6 — продуктовые экраны, ИИ-письма и помощник ответов */
-.chair-motion { position: fixed; z-index: -5; inset: -3%; pointer-events: none; background-image: var(--scene-image, url("assets/campfire-lake.png")); background-size: cover; background-position: 63% center; filter: saturate(.92) contrast(1.03); will-change: transform; }
+.chair-motion { position: fixed; z-index: -5; inset: -3%; pointer-events: none; background-image: var(--scene-image, url("assets/scenes/bears.webp")); background-size: cover; background-position: 63% center; filter: saturate(.92) contrast(1.03); will-change: transform; }
 .chair-motion-left { clip-path: polygon(5% 38%, 39% 38%, 39% 96%, 4% 96%); transform-origin: 25% 91%; animation: chair-rock-left 5.8s ease-in-out infinite alternate; }
 .chair-motion-right { clip-path: polygon(59% 34%, 96% 34%, 97% 98%, 58% 98%); transform-origin: 79% 92%; animation: chair-rock-right 6.4s ease-in-out infinite alternate-reverse; }
 body.has-custom-background .chair-motion { display: none; }
@@ -618,6 +618,7 @@ html[data-gl-platform="android-play"] #weatherToggle { display:none!important; }
 .publication-consent { display:grid;grid-template-columns:20px 1fr;gap:11px;align-items:start;padding:15px;border:1px solid var(--ui-border);border-radius:16px;color:var(--ui-ink);background:var(--ui-surface);font-size:11px;line-height:1.55;cursor:pointer; }
 .publication-consent input { width:18px;height:18px;margin:1px 0 0;accent-color:var(--ui-accent-deep); }
 .publication-audio { display:grid;gap:8px;margin:0 0 12px; }
+.setup-audio { margin:14px 0 0; }
 .publication-audio-pick { display:flex;align-items:center;gap:11px;width:100%;min-height:56px;padding:9px 12px;border:1px solid var(--ui-border);border-radius:16px;color:var(--ui-ink);background:var(--ui-surface);font-family:inherit;text-align:start;transition:border-color .2s,background .2s; }
 .publication-audio-pick:focus-visible { outline:2px solid var(--ui-accent);outline-offset:2px; }
 .publication-audio-pick > i { display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;color:var(--cream);background:linear-gradient(145deg,var(--gold),var(--ui-gold));font-style:normal; }
@@ -812,7 +813,7 @@ html[data-gl-perf="mobile"] .letter-text.is-changing { animation-name:text-turn-
 
 @media (max-width: 900px) {
   .chair-motion { display:none; }
-  .cinematic-bg { background-image: var(--mobile-scene-image, var(--scene-image, url("assets/campfire-lake.png"))); background-position: center center; }
+  .cinematic-bg { background-image: var(--mobile-scene-image, var(--scene-image, url("assets/scenes/bears.webp"))); background-position: center center; }
   .brand-card { align-self:center;width:min(500px,100%);margin:0;text-align:center;background:linear-gradient(180deg,rgba(20,19,31,.27),rgba(33,30,47,.1)); }
   .brand-copy { margin-inline:auto; }
 }
@@ -1518,3 +1519,54 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .reply-status { min-height: 1.3em; margin: 0; font-size: 13px; }
 .reply-status[data-state="error"], .reply-status[data-state="success"] { color: var(--gold-bright); }
 @media (min-width: 720px) { .reply-reactions { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Выбор фона: три картинки высокого качества. */
+.scene-picker { margin:0; padding:0; border:0; }
+.scene-picker legend { margin-bottom:8px; color:var(--ui-muted); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.scene-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.scene-grid button { position:relative; display:block; min-width:0; padding:0; overflow:hidden; aspect-ratio:2/3; border:2px solid transparent; border-radius:14px; background:var(--night); box-shadow:0 4px 14px rgba(20,10,20,.18); }
+.scene-grid img { display:block; width:100%; height:100%; object-fit:cover; }
+.scene-grid span { position:absolute; inset:auto 0 0; padding:18px 6px 7px; color:var(--cream); background:linear-gradient(transparent,rgba(10,8,16,.82)); font-size:11px; font-weight:800; line-height:1.25; text-align:center; }
+.scene-grid button.is-active { border-color:var(--gold); box-shadow:0 0 0 2px var(--gold-dim),0 6px 18px rgba(20,10,20,.25); }
+.scene-grid button:focus-visible { outline:2px solid var(--ui-accent); outline-offset:2px; }
+/* Новые фоны вертикальные: на широком экране держим в кадре героев. */
+.cinematic-bg { background-position: center 62%; }
+@media (max-width: 760px) { .cinematic-bg { background-position: center center; } }
+/* Золотая кайма панели больше не прилипает к верху и не перечёркивает заголовки при прокрутке. */
+.side-panel::before { position: relative; }
+.side-panel::after { position: absolute; }
+
+/* Админ-панель — отдельный экран с вкладками. */
+.admin-open-button { display:flex; align-items:center; gap:10px; width:100%; min-height:52px; margin-top:14px; padding:0 16px; border:1px solid var(--ui-border); border-radius:16px; color:var(--ui-accent-deep); background:var(--ui-surface); font-size:13px; font-weight:800; text-align:start; }
+.admin-open-button span { flex:1; }
+.admin-open-button i { font-style:normal; }
+.admin-screen { width:min(640px,100%); }
+.admin-screen-close { position:absolute; top:max(14px, env(safe-area-inset-top)); right:16px; z-index:5; }
+.admin-screen .admin-panel { margin:0; padding:0; border:0; background:none; box-shadow:none; }
+.admin-tabs { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin:14px 0 16px; padding:6px; border:1px solid var(--ui-border); border-radius:16px; background:var(--ui-panel); }
+.admin-tabs button { min-height:40px; border:0; border-radius:12px; color:var(--ui-muted); background:none; font-size:13px; font-weight:800; }
+.admin-tabs button[aria-selected="true"] { color:var(--cream); background:var(--ui-accent-deep); }
+#adminPanel[data-tab="accounts"] [data-admin-pane]:not([data-admin-pane="accounts"]),
+#adminPanel[data-tab="catalog"] [data-admin-pane]:not([data-admin-pane="catalog"]),
+#adminPanel[data-tab="bulk"] [data-admin-pane]:not([data-admin-pane="bulk"]) { display:none !important; }
+.admin-account-card { margin:0 0 16px; padding:16px; border:1px solid var(--ui-accent); border-radius:18px; background:var(--ui-surface); scroll-margin-top:72px; }
+.admin-account-card header h4 { margin:0; color:var(--ui-ink); font-size:16px; overflow-wrap:anywhere; }
+.admin-card-id { margin-top:4px; padding:0; border:0; color:var(--ui-muted); background:none; font-size:11px; font-weight:700; text-align:start; overflow-wrap:anywhere; }
+.admin-card-access { display:grid; gap:8px; margin:14px 0; }
+.admin-card-access p { display:grid; gap:3px; margin:0; }
+.admin-card-access small { color:var(--ui-muted); font-size:13px; }
+.admin-chip { justify-self:start; padding:4px 10px; border-radius:999px; color:var(--ui-ink); background:var(--ui-soft); font-size:13px; font-weight:800; }
+.admin-chip.is-forever,.admin-chip.is-vip { color:#5a3b00; background:linear-gradient(145deg,#fff3b5,#dca93a); }
+.admin-chip.is-play { color:#0f5132; background:#d6f2e2; }
+.admin-chip.is-ended { color:#6b1a1a; background:#f6d9d9; }
+.admin-chip.is-admin { color:var(--cream); background:var(--ui-accent-deep); }
+.admin-card-facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:0; }
+.admin-card-facts div { padding:9px 11px; border-radius:12px; background:var(--ui-panel); }
+.admin-card-facts dt { color:var(--ui-muted); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+.admin-card-facts dd { margin:3px 0 0; color:var(--ui-ink); font-size:13px; font-weight:700; overflow-wrap:anywhere; }
+.admin-account-card h5 { margin:14px 0 6px; color:var(--ui-muted); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+.admin-card-history { display:grid; gap:4px; margin:0; padding:0; list-style:none; }
+.admin-card-history li { display:flex; justify-content:space-between; gap:10px; color:var(--ui-ink); font-size:13px; }
+.admin-card-history time { color:var(--ui-muted); white-space:nowrap; }
+.admin-card-loading { margin:0; color:var(--ui-muted); font-size:13px; }
+.admin-recent button { cursor:pointer; }

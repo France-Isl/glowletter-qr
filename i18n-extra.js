@@ -463,7 +463,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Der Empfänger hört es beim Öffnen des Briefs. Im Link bleibt das Audio 12 Stunden verfügbar.",
       "publishAudioSignIn": "Melde dich an, um das Audio anzuhängen. Ohne Anmeldung geht der Brief ohne Audio raus.",
       "publishAudioSignInButton": "Anmelden",
-      "publishAudioAttached": "Audio an den Brief angehängt"
+      "publishAudioAttached": "Audio an den Brief angehängt",
+      "sceneTitle": "Hintergrund",
+      "sceneBears": "Bären am See",
+      "sceneRoses": "Bären in Rosen",
+      "sceneKitten": "Kätzchen auf dem Balkon"
     },
     picker: {
       "note": "Wähle einen Brief · für {name}",
@@ -684,7 +688,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literarisch",
       "locked": "Mit Vollzugriff verfügbar",
       "saved": "Stil gespeichert",
-      "share": "Gestaltung zum Link hinzugefügt"
+      "share": "Gestaltung zum Link hinzugefügt",
+      "frameGold": "Gold",
+      "frameRoses": "Rosen",
+      "frameNight": "Nachthimmel"
     }
   }),
   es: Object.freeze({
@@ -1146,7 +1153,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "El destinatario lo escuchará al abrir la carta. En el enlace el audio está disponible 12 horas.",
       "publishAudioSignIn": "Para adjuntar el audio, inicia sesión. Sin iniciar sesión, la carta se enviará sin audio.",
       "publishAudioSignInButton": "Iniciar sesión",
-      "publishAudioAttached": "Audio adjuntado a la carta"
+      "publishAudioAttached": "Audio adjuntado a la carta",
+      "sceneTitle": "Fondo",
+      "sceneBears": "Ositos en el lago",
+      "sceneRoses": "Ositos entre rosas",
+      "sceneKitten": "Gatito en el balcón"
     },
     picker: {
       "note": "Elige una carta · para {name}",
@@ -1367,7 +1378,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literario",
       "locked": "Disponible con acceso completo",
       "saved": "Estilo guardado",
-      "share": "Estilo añadido al enlace"
+      "share": "Estilo añadido al enlace",
+      "frameGold": "Oro",
+      "frameRoses": "Rosas",
+      "frameNight": "Cielo nocturno"
     }
   }),
   it: Object.freeze({
@@ -1829,7 +1843,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Il destinatario lo ascolterà aprendo la lettera. Nel link l’audio resta disponibile 12 ore.",
       "publishAudioSignIn": "Per allegare l’audio, accedi. Senza accesso la lettera partirà senza audio.",
       "publishAudioSignInButton": "Accedi",
-      "publishAudioAttached": "Audio allegato alla lettera"
+      "publishAudioAttached": "Audio allegato alla lettera",
+      "sceneTitle": "Sfondo",
+      "sceneBears": "Orsetti al lago",
+      "sceneRoses": "Orsetti tra le rose",
+      "sceneKitten": "Gattino sul balcone"
     },
     picker: {
       "note": "Scegli una lettera · per {name}",
@@ -2050,7 +2068,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Letterario",
       "locked": "Disponibile con l’accesso completo",
       "saved": "Stile salvato",
-      "share": "Stile aggiunto al link"
+      "share": "Stile aggiunto al link",
+      "frameGold": "Oro",
+      "frameRoses": "Rose",
+      "frameNight": "Cielo notturno"
     }
   }),
   pl: Object.freeze({
@@ -2512,7 +2533,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Odbiorca usłyszy je po otwarciu listu. W linku audio jest dostępne przez 12 godzin.",
       "publishAudioSignIn": "Aby dołączyć audio, zaloguj się. Bez logowania list zostanie wysłany bez audio.",
       "publishAudioSignInButton": "Zaloguj się",
-      "publishAudioAttached": "Audio dołączono do listu"
+      "publishAudioAttached": "Audio dołączono do listu",
+      "sceneTitle": "Tło",
+      "sceneBears": "Misie nad jeziorem",
+      "sceneRoses": "Misie w różach",
+      "sceneKitten": "Kotek na balkonie"
     },
     picker: {
       "note": "Wybierz list · dla: {name}",
@@ -2733,7 +2758,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literacki",
       "locked": "Dostępne z pełnym dostępem",
       "saved": "Styl zapisany",
-      "share": "Wygląd dodano do linku"
+      "share": "Wygląd dodano do linku",
+      "frameGold": "Złoto",
+      "frameRoses": "Róże",
+      "frameNight": "Nocne niebo"
     }
   }),
   uk: Object.freeze({
@@ -3195,7 +3223,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Отримувач почує його, відкривши лист. У посиланні аудіо доступне 12 годин.",
       "publishAudioSignIn": "Щоб додати аудіо, увійдіть в акаунт. Без входу лист піде без аудіо.",
       "publishAudioSignInButton": "Увійти",
-      "publishAudioAttached": "Аудіо додано до листа"
+      "publishAudioAttached": "Аудіо додано до листа",
+      "sceneTitle": "Фон",
+      "sceneBears": "Ведмедики біля озера",
+      "sceneRoses": "Ведмедики в трояндах",
+      "sceneKitten": "Кошеня на балконі"
     },
     picker: {
       "note": "Виберіть лист · для {name}",
@@ -3419,7 +3451,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Літературний",
       "locked": "Доступно з повним доступом",
       "saved": "Стиль збережено",
-      "share": "Оформлення додано до посилання"
+      "share": "Оформлення додано до посилання",
+      "frameGold": "Золото",
+      "frameRoses": "Троянди",
+      "frameNight": "Нічне небо"
     }
   }),
   pt: Object.freeze({
@@ -3881,7 +3916,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "O destinatário vai ouvi-lo ao abrir a carta. No link o áudio fica disponível 12 horas.",
       "publishAudioSignIn": "Para anexar o áudio, entre na conta. Sem entrar, a carta segue sem áudio.",
       "publishAudioSignInButton": "Entrar",
-      "publishAudioAttached": "Áudio anexado à carta"
+      "publishAudioAttached": "Áudio anexado à carta",
+      "sceneTitle": "Fundo",
+      "sceneBears": "Ursinhos no lago",
+      "sceneRoses": "Ursinhos nas rosas",
+      "sceneKitten": "Gatinho na varanda"
     },
     picker: {
       "note": "Escolha uma carta · para {name}",
@@ -4105,7 +4144,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literário",
       "locked": "Disponível com o acesso completo",
       "saved": "Estilo guardado",
-      "share": "Estilo adicionado ao link"
+      "share": "Estilo adicionado ao link",
+      "frameGold": "Ouro",
+      "frameRoses": "Rosas",
+      "frameNight": "Céu noturno"
     }
   }),
   nl: Object.freeze({
@@ -4567,7 +4609,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "De ontvanger hoort het bij het openen van de brief. In de link blijft de audio 12 uur beschikbaar.",
       "publishAudioSignIn": "Log in om de audio toe te voegen. Zonder inloggen gaat de brief zonder audio weg.",
       "publishAudioSignInButton": "Inloggen",
-      "publishAudioAttached": "Audio aan de brief toegevoegd"
+      "publishAudioAttached": "Audio aan de brief toegevoegd",
+      "sceneTitle": "Achtergrond",
+      "sceneBears": "Beertjes bij het meer",
+      "sceneRoses": "Beertjes tussen rozen",
+      "sceneKitten": "Kitten op het balkon"
     },
     picker: {
       "note": "Kies een brief · voor {name}",
@@ -4791,7 +4837,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literair",
       "locked": "Beschikbaar met volledige toegang",
       "saved": "Stijl opgeslagen",
-      "share": "Opmaak toegevoegd aan de link"
+      "share": "Opmaak toegevoegd aan de link",
+      "frameGold": "Goud",
+      "frameRoses": "Rozen",
+      "frameNight": "Nachthemel"
     }
   }),
   tr: Object.freeze({
@@ -5253,7 +5302,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Alıcı mektubu açınca duyacak. Bağlantıda ses 12 saat erişilebilir kalır.",
       "publishAudioSignIn": "Sesi eklemek için giriş yapın. Giriş yapmadan mektup ses olmadan gider.",
       "publishAudioSignInButton": "Giriş yap",
-      "publishAudioAttached": "Ses mektuba eklendi"
+      "publishAudioAttached": "Ses mektuba eklendi",
+      "sceneTitle": "Arka plan",
+      "sceneBears": "Göl kıyısında ayıcıklar",
+      "sceneRoses": "Güller arasında ayıcıklar",
+      "sceneKitten": "Balkondaki yavru kedi"
     },
     picker: {
       "note": "Bir mektup seçin · {name} için",
@@ -5477,7 +5530,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Edebi",
       "locked": "Tam erişimle kullanılabilir",
       "saved": "Stil kaydedildi",
-      "share": "Tasarım bağlantıya eklendi"
+      "share": "Tasarım bağlantıya eklendi",
+      "frameGold": "Altın",
+      "frameRoses": "Güller",
+      "frameNight": "Gece göğü"
     }
   }),
   ro: Object.freeze({
@@ -5939,7 +5995,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Destinatarul îl va auzi când deschide scrisoarea. În link audio-ul rămâne disponibil 12 ore.",
       "publishAudioSignIn": "Ca să atașezi audio-ul, conectează-te. Fără conectare scrisoarea pleacă fără audio.",
       "publishAudioSignInButton": "Conectare",
-      "publishAudioAttached": "Audio atașat la scrisoare"
+      "publishAudioAttached": "Audio atașat la scrisoare",
+      "sceneTitle": "Fundal",
+      "sceneBears": "Ursuleți la lac",
+      "sceneRoses": "Ursuleți printre trandafiri",
+      "sceneKitten": "Pisoi pe balcon"
     },
     picker: {
       "note": "Alege o scrisoare · pentru {name}",
@@ -6163,7 +6223,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literar",
       "locked": "Disponibil cu acces complet",
       "saved": "Stil salvat",
-      "share": "Stilul a fost adăugat în link"
+      "share": "Stilul a fost adăugat în link",
+      "frameGold": "Aur",
+      "frameRoses": "Trandafiri",
+      "frameNight": "Cer de noapte"
     }
   }),
   cs: Object.freeze({
@@ -6625,7 +6688,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Příjemce ho uslyší při otevření dopisu. V odkazu zůstává zvuk dostupný 12 hodin.",
       "publishAudioSignIn": "Pro připojení zvuku se přihlaste. Bez přihlášení odejde dopis bez zvuku.",
       "publishAudioSignInButton": "Přihlásit se",
-      "publishAudioAttached": "Zvuk připojen k dopisu"
+      "publishAudioAttached": "Zvuk připojen k dopisu",
+      "sceneTitle": "Pozadí",
+      "sceneBears": "Medvídci u jezera",
+      "sceneRoses": "Medvídci v růžích",
+      "sceneKitten": "Koťátko na balkoně"
     },
     picker: {
       "note": "Vyberte dopis · pro {name}",
@@ -6849,7 +6916,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Literární",
       "locked": "Dostupné s plným přístupem",
       "saved": "Styl uložen",
-      "share": "Vzhled přidán do odkazu"
+      "share": "Vzhled přidán do odkazu",
+      "frameGold": "Zlato",
+      "frameRoses": "Růže",
+      "frameNight": "Noční nebe"
     }
   }),
   sv: Object.freeze({
@@ -7311,7 +7381,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Mottagaren hör det när brevet öppnas. I länken finns ljudet kvar i 12 timmar.",
       "publishAudioSignIn": "Logga in för att bifoga ljudet. Utan inloggning skickas brevet utan ljud.",
       "publishAudioSignInButton": "Logga in",
-      "publishAudioAttached": "Ljud bifogat till brevet"
+      "publishAudioAttached": "Ljud bifogat till brevet",
+      "sceneTitle": "Bakgrund",
+      "sceneBears": "Björnar vid sjön",
+      "sceneRoses": "Björnar bland rosor",
+      "sceneKitten": "Kattunge på balkongen"
     },
     picker: {
       "note": "Välj ett brev · till {name}",
@@ -7535,7 +7609,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Litterär",
       "locked": "Finns med full tillgång",
       "saved": "Stilen är sparad",
-      "share": "Utformningen är tillagd i länken"
+      "share": "Utformningen är tillagd i länken",
+      "frameGold": "Guld",
+      "frameRoses": "Rosor",
+      "frameNight": "Natthimmel"
     }
   }),
   el: Object.freeze({
@@ -7997,7 +8074,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Ο παραλήπτης θα τον ακούσει ανοίγοντας το γράμμα. Στον σύνδεσμο ο ήχος μένει διαθέσιμος 12 ώρες.",
       "publishAudioSignIn": "Για να επισυνάψετε τον ήχο, συνδεθείτε. Χωρίς σύνδεση το γράμμα θα φύγει χωρίς ήχο.",
       "publishAudioSignInButton": "Σύνδεση",
-      "publishAudioAttached": "Ο ήχος επισυνάφθηκε στο γράμμα"
+      "publishAudioAttached": "Ο ήχος επισυνάφθηκε στο γράμμα",
+      "sceneTitle": "Φόντο",
+      "sceneBears": "Αρκουδάκια στη λίμνη",
+      "sceneRoses": "Αρκουδάκια στα τριαντάφυλλα",
+      "sceneKitten": "Γατάκι στο μπαλκόνι"
     },
     picker: {
       "note": "Επιλέξτε γράμμα · για {name}",
@@ -8221,7 +8302,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Λογοτεχνικό",
       "locked": "Διαθέσιμο με πλήρη πρόσβαση",
       "saved": "Το στυλ αποθηκεύτηκε",
-      "share": "Το στυλ προστέθηκε στον σύνδεσμο"
+      "share": "Το στυλ προστέθηκε στον σύνδεσμο",
+      "frameGold": "Χρυσό",
+      "frameRoses": "Τριαντάφυλλα",
+      "frameNight": "Νυχτερινός ουρανός"
     }
   }),
   da: Object.freeze({
@@ -8683,7 +8767,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Modtageren hører den, når brevet åbnes. I linket er lyden tilgængelig i 12 timer.",
       "publishAudioSignIn": "Log ind for at vedhæfte lyden. Uden login sendes brevet uden lyd.",
       "publishAudioSignInButton": "Log ind",
-      "publishAudioAttached": "Lyd vedhæftet brevet"
+      "publishAudioAttached": "Lyd vedhæftet brevet",
+      "sceneTitle": "Baggrund",
+      "sceneBears": "Bamser ved søen",
+      "sceneRoses": "Bamser i roser",
+      "sceneKitten": "Killing på altanen"
     },
     picker: {
       "note": "Vælg et brev · til {name}",
@@ -8907,7 +8995,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Litterær",
       "locked": "Tilgængelig med fuld adgang",
       "saved": "Stilen er gemt",
-      "share": "Designet er føjet til linket"
+      "share": "Designet er føjet til linket",
+      "frameGold": "Guld",
+      "frameRoses": "Roser",
+      "frameNight": "Nattehimmel"
     }
   }),
   no: Object.freeze({
@@ -9369,7 +9460,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Mottakeren hører den når brevet åpnes. I lenken er lyden tilgjengelig i 12 timer.",
       "publishAudioSignIn": "Logg inn for å legge ved lyden. Uten innlogging sendes brevet uten lyd.",
       "publishAudioSignInButton": "Logg inn",
-      "publishAudioAttached": "Lyd lagt ved brevet"
+      "publishAudioAttached": "Lyd lagt ved brevet",
+      "sceneTitle": "Bakgrunn",
+      "sceneBears": "Bamser ved sjøen",
+      "sceneRoses": "Bamser i roser",
+      "sceneKitten": "Kattunge på balkongen"
     },
     picker: {
       "note": "Velg et brev · til {name}",
@@ -9593,7 +9688,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Litterær",
       "locked": "Tilgjengelig med full tilgang",
       "saved": "Stilen er lagret",
-      "share": "Stilen er lagt til i lenken"
+      "share": "Stilen er lagt til i lenken",
+      "frameGold": "Gull",
+      "frameRoses": "Roser",
+      "frameNight": "Nattehimmel"
     }
   }),
   fi: Object.freeze({
@@ -10055,7 +10153,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Vastaanottaja kuulee sen avatessaan kirjeen. Linkissä ääni on saatavilla 12 tuntia.",
       "publishAudioSignIn": "Liittääksesi äänen kirjaudu sisään. Ilman kirjautumista kirje lähtee ilman ääntä.",
       "publishAudioSignInButton": "Kirjaudu",
-      "publishAudioAttached": "Ääni liitetty kirjeeseen"
+      "publishAudioAttached": "Ääni liitetty kirjeeseen",
+      "sceneTitle": "Tausta",
+      "sceneBears": "Nallet järven rannalla",
+      "sceneRoses": "Nallet ruusujen keskellä",
+      "sceneKitten": "Kissanpentu parvekkeella"
     },
     picker: {
       "note": "Valitse kirje · vastaanottaja {name}",
@@ -10279,7 +10381,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Kirjallinen",
       "locked": "Saatavilla täydellä käyttöoikeudella",
       "saved": "Tyyli tallennettu",
-      "share": "Ulkoasu lisätty linkkiin"
+      "share": "Ulkoasu lisätty linkkiin",
+      "frameGold": "Kulta",
+      "frameRoses": "Ruusut",
+      "frameNight": "Yötaivas"
     }
   }),
   ja: Object.freeze({
@@ -10741,7 +10846,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "受け取った人が手紙を開くと再生されます。リンクでは音声を12時間聞けます。",
       "publishAudioSignIn": "音声を添付するにはログインしてください。ログインしない場合、手紙は音声なしで送られます。",
       "publishAudioSignInButton": "ログイン",
-      "publishAudioAttached": "音声を手紙に添付しました"
+      "publishAudioAttached": "音声を手紙に添付しました",
+      "sceneTitle": "背景",
+      "sceneBears": "湖辺のくまたち",
+      "sceneRoses": "バラの中のくまたち",
+      "sceneKitten": "バルコニーの子猫"
     },
     picker: {
       "note": "手紙を選ぶ · {name}さんへ",
@@ -10965,7 +11074,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "文学的",
       "locked": "フルアクセスで利用できます",
       "saved": "スタイルを保存しました",
-      "share": "スタイルをリンクに追加しました"
+      "share": "スタイルをリンクに追加しました",
+      "frameGold": "ゴールド",
+      "frameRoses": "バラ",
+      "frameNight": "夜空"
     }
   }),
   ko: Object.freeze({
@@ -11427,7 +11539,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "받는 사람이 편지를 열면 듣게 됩니다. 링크에서는 오디오를 12시간 동안 들을 수 있습니다.",
       "publishAudioSignIn": "오디오를 첨부하려면 로그인하세요. 로그인하지 않으면 편지는 오디오 없이 전송됩니다.",
       "publishAudioSignInButton": "로그인",
-      "publishAudioAttached": "오디오를 편지에 첨부했습니다"
+      "publishAudioAttached": "오디오를 편지에 첨부했습니다",
+      "sceneTitle": "배경",
+      "sceneBears": "호숫가의 곰 인형",
+      "sceneRoses": "장미 속 곰 인형",
+      "sceneKitten": "발코니의 아기 고양이"
     },
     picker: {
       "note": "편지 고르기 · {name}님께",
@@ -11651,7 +11767,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "문학적",
       "locked": "전체 이용 시 사용 가능",
       "saved": "스타일이 저장되었습니다",
-      "share": "꾸미기가 링크에 추가되었습니다"
+      "share": "꾸미기가 링크에 추가되었습니다",
+      "frameGold": "골드",
+      "frameRoses": "장미",
+      "frameNight": "밤하늘"
     }
   }),
   zh: Object.freeze({
@@ -12113,7 +12232,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "收信人打開信件時就會聽到。連結中的音訊保留 12 小時。",
       "publishAudioSignIn": "要附加音訊，請先登入。未登入時，信件會在沒有音訊的情況下送出。",
       "publishAudioSignInButton": "登入",
-      "publishAudioAttached": "音訊已附加到信件"
+      "publishAudioAttached": "音訊已附加到信件",
+      "sceneTitle": "背景",
+      "sceneBears": "湖畔的小熊",
+      "sceneRoses": "玫瑰中的小熊",
+      "sceneKitten": "陽台上的小貓"
     },
     picker: {
       "note": "挑一封信 · 給 {name}",
@@ -12337,7 +12460,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "文學",
       "locked": "完整版限定",
       "saved": "樣式已儲存",
-      "share": "樣式已加入連結"
+      "share": "樣式已加入連結",
+      "frameGold": "金色",
+      "frameRoses": "玫瑰",
+      "frameNight": "夜空"
     }
   }),
   th: Object.freeze({
@@ -12799,7 +12925,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "ผู้รับจะได้ยินเมื่อเปิดจดหมาย ในลิงก์ เสียงจะใช้ได้ 12 ชั่วโมง",
       "publishAudioSignIn": "ลงชื่อเข้าใช้เพื่อแนบเสียง หากไม่ลงชื่อเข้าใช้ จดหมายจะถูกส่งโดยไม่มีเสียง",
       "publishAudioSignInButton": "ลงชื่อเข้าใช้",
-      "publishAudioAttached": "แนบเสียงกับจดหมายแล้ว"
+      "publishAudioAttached": "แนบเสียงกับจดหมายแล้ว",
+      "sceneTitle": "พื้นหลัง",
+      "sceneBears": "หมีน้อยริมทะเลสาบ",
+      "sceneRoses": "หมีน้อยในดงกุหลาบ",
+      "sceneKitten": "ลูกแมวบนระเบียง"
     },
     picker: {
       "note": "เลือกจดหมาย · สำหรับ {name}",
@@ -13023,7 +13153,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "วรรณกรรม",
       "locked": "ใช้ได้เมื่อมีการเข้าถึงเต็มรูปแบบ",
       "saved": "บันทึกสไตล์แล้ว",
-      "share": "เพิ่มการตกแต่งลงในลิงก์แล้ว"
+      "share": "เพิ่มการตกแต่งลงในลิงก์แล้ว",
+      "frameGold": "ทอง",
+      "frameRoses": "กุหลาบ",
+      "frameNight": "ท้องฟ้ายามค่ำ"
     }
   }),
   ar: Object.freeze({
@@ -13485,7 +13618,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "سيسمعه المستلم عند فتح الرسالة. في الرابط يبقى الصوت متاحًا 12 ساعة.",
       "publishAudioSignIn": "لإرفاق الصوت، سجّل الدخول. بدون تسجيل الدخول تُرسل الرسالة بلا صوت.",
       "publishAudioSignInButton": "تسجيل الدخول",
-      "publishAudioAttached": "تم إرفاق الصوت بالرسالة"
+      "publishAudioAttached": "تم إرفاق الصوت بالرسالة",
+      "sceneTitle": "الخلفية",
+      "sceneBears": "دببة عند البحيرة",
+      "sceneRoses": "دببة بين الورود",
+      "sceneKitten": "قطة صغيرة على الشرفة"
     },
     picker: {
       "note": "اختيار رسالة · من أجل {name}",
@@ -13709,7 +13846,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "أدبي",
       "locked": "متاح مع الوصول الكامل",
       "saved": "تم حفظ النمط",
-      "share": "تمت إضافة التنسيق إلى الرابط"
+      "share": "تمت إضافة التنسيق إلى الرابط",
+      "frameGold": "ذهبي",
+      "frameRoses": "ورود",
+      "frameNight": "سماء الليل"
     }
   }),
   ind: Object.freeze({
@@ -14171,7 +14311,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Penerima akan mendengarnya saat membuka surat. Di link audio tersedia selama 12 jam.",
       "publishAudioSignIn": "Untuk melampirkan audio, masuk ke akun. Tanpa masuk, surat dikirim tanpa audio.",
       "publishAudioSignInButton": "Masuk",
-      "publishAudioAttached": "Audio dilampirkan ke surat"
+      "publishAudioAttached": "Audio dilampirkan ke surat",
+      "sceneTitle": "Latar",
+      "sceneBears": "Beruang di tepi danau",
+      "sceneRoses": "Beruang di antara mawar",
+      "sceneKitten": "Anak kucing di balkon"
     },
     picker: {
       "note": "Pilih surat · untuk {name}",
@@ -14395,7 +14539,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Sastra",
       "locked": "Tersedia dengan akses penuh",
       "saved": "Gaya tersimpan",
-      "share": "Gaya ditambahkan ke link"
+      "share": "Gaya ditambahkan ke link",
+      "frameGold": "Emas",
+      "frameRoses": "Mawar",
+      "frameNight": "Langit malam"
     }
   }),
   vi: Object.freeze({
@@ -14857,7 +15004,11 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "publishAudioLink": "Người nhận sẽ nghe khi mở thư. Trong liên kết, âm thanh được giữ 12 giờ.",
       "publishAudioSignIn": "Để đính kèm âm thanh, hãy đăng nhập. Không đăng nhập, thư sẽ được gửi mà không có âm thanh.",
       "publishAudioSignInButton": "Đăng nhập",
-      "publishAudioAttached": "Đã đính kèm âm thanh vào thư"
+      "publishAudioAttached": "Đã đính kèm âm thanh vào thư",
+      "sceneTitle": "Hình nền",
+      "sceneBears": "Gấu bông bên hồ",
+      "sceneRoses": "Gấu bông giữa hoa hồng",
+      "sceneKitten": "Mèo con trên ban công"
     },
     picker: {
       "note": "Chọn một lá thư · cho {name}",
@@ -15081,7 +15232,10 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "literary": "Văn chương",
       "locked": "Có với truy cập đầy đủ",
       "saved": "Đã lưu kiểu",
-      "share": "Đã thêm trang trí vào liên kết"
+      "share": "Đã thêm trang trí vào liên kết",
+      "frameGold": "Vàng",
+      "frameRoses": "Hoa hồng",
+      "frameNight": "Bầu trời đêm"
     }
   })
 });
