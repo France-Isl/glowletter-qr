@@ -1674,3 +1674,16 @@ body:not(.reading-focus) .secondary-actions { grid-template-columns: repeat(2, m
 .admin-report-meta,.admin-report-who { margin:0;color:var(--ui-muted);font-size:11px;line-height:1.5;overflow-wrap:anywhere; }
 .admin-report blockquote { margin:0;padding:8px 10px;border-inline-start:3px solid var(--ui-accent);border-radius:7px;background:color-mix(in srgb,var(--ui-accent) 6%,transparent);font-size:13px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere; }
 .admin-report-actions { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+
+/* Главная: «Мои моменты», «Игры для двоих» и «Друзья» — три плитки в один ряд,
+   значок сверху, подпись снизу. Остальные ссылки — широкой строкой под ними. */
+.home-smart-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(380px, 100%); margin-top: 12px; gap: 8px; }
+.home-smart-actions .smart-link { margin-top: 0; }
+.home-smart-actions :is(.moments-link, .games-link, .friends-link) {
+  position: relative; flex-direction: column; gap: 6px; min-height: 84px; padding: 12px 6px 10px;
+  border-radius: 20px; font-size: 11px; line-height: 1.25; hyphens: auto; overflow-wrap: anywhere;
+}
+.home-smart-actions :is(.moments-link, .games-link, .friends-link) .ic { width: 22px; height: 22px; }
+.home-smart-actions :is(.moments-link, .games-link, .friends-link) > span:first-child:has(.ic) { display: grid; place-items: center; }
+.home-smart-actions :is(.moments-link, .games-link, .friends-link) > b.replies-badge { position: absolute; top: 6px; inset-inline-end: 6px; min-width: 20px; padding: 2px 5px; letter-spacing: 0; }
+.home-smart-actions :is(.home-poem-link, .home-signin-link) { grid-column: 1 / -1; }
