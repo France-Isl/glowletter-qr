@@ -59,6 +59,16 @@
         "rule": "design-system-font-size",
         "value": "20px",
         "createdAt": "2026-10-27T00:49:03.068Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(36, 74, 112, .74)",
+        "createdAt": "2026-10-27T17:25:12.053Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#bcd8f2",
+        "createdAt": "2026-10-27T17:25:12.133Z"
       }
     ]
   }

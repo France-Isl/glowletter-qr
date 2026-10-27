@@ -17,7 +17,7 @@
   if (window.GlowLetterGames) return;
 
   const QUESTION_IDS = Object.freeze(Array.from({ length: 60 }, (_, index) => `q${String(index + 1).padStart(2, "0")}`));
-  const QUIZ_SIZE = 15;
+  const QUIZ_SIZE = 20;
   const QUIZZES_TABLE = "glowletter_quizzes";
   const RESULTS_TABLE = "glowletter_quiz_results";
   const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
@@ -333,14 +333,18 @@
     kitten: "assets/scenes/kitten-thumb.webp"
   });
   const YES_NO_ART = Object.freeze({
-    c01: "hug", c02: "roses", c03: "sunrise", c04: "hug", c05: "sea", c06: "dance", c07: "bears", c08: "bears",
-    c09: "picnic", c10: "kitchen", c11: "kitten", c12: "dance", c13: "picnic", c14: "letter", c15: "hug", c16: "rain",
-    c17: "bears", c18: "kitchen", c19: "kitten", c20: "bears", c21: "dance", c22: "hug", c23: "bears", c24: "sunrise",
-    c25: "letter", c26: "hug", c27: "sea", c28: "letter", c29: "hug", c30: "roses", c31: "picnic", c32: "hug",
-    c33: "kitchen", c34: "bears", c35: "skating", c36: "sunrise", c37: "kitten", c38: "roses", c39: "hug", c40: "kitten"
+    // Прежние картинки (по просьбе владельца пока скрыты, вернуть потом):
+    // c01 hug, c03 sunrise, c06 dance, c09 picnic, c12 dance, c18 kitchen, c22 hug, c26 hug, c31 picnic,
+    // c32 hug, c36 sunrise, c39 hug; скрытые карточки: c04 hug, c05 sea, c10 kitchen, c13 picnic, c15 hug,
+    // c16 rain, c21 dance, c24 sunrise, c27 sea, c29 hug, c33 kitchen, c35 skating.
+    c01: "s03d", c02: "roses", c03: "s16d", c04: "hug", c05: "sea", c06: "s02d", c07: "bears", c08: "bears",
+    c09: "s09a", c10: "kitchen", c11: "kitten", c12: "s04c", c13: "picnic", c14: "letter", c15: "hug", c16: "rain",
+    c17: "bears", c18: "s05c", c19: "kitten", c20: "bears", c21: "dance", c22: "s08c", c23: "bears", c24: "sunrise",
+    c25: "letter", c26: "s15a", c27: "sea", c28: "letter", c29: "hug", c30: "roses", c31: "s11c", c32: "s04b",
+    c33: "kitchen", c34: "bears", c35: "skating", c36: "s07a", c37: "kitten", c38: "roses", c39: "s08a", c40: "kitten"
   });
   const YES_NO_IDS = Object.freeze(Array.from({ length: 40 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`));
-  const YES_NO_ROUNDS = 20;
+  const YES_NO_ROUNDS = 40;
   const YES_NO = {
     ru: {
       c01: ["Скучаешь по мне прямо сейчас?", "очень скучает", "держится, но думает о тебе"],
@@ -472,7 +476,7 @@
 
   // «Что мы любим»: тема и четыре варианта; картинки — assets/loves/<тема><a–d>.webp.
   const LOVES_IDS = Object.freeze(Array.from({ length: 16 }, (_, index) => `s${String(index + 1).padStart(2, "0")}`));
-  const LOVES_ROUNDS = 12;
+  const LOVES_ROUNDS = 40;
   const LOVES_CHOICES = Object.freeze(["a", "b", "c", "d"]);
   const LOVES = {
     ru: {
@@ -556,6 +560,18 @@
   });
   const WHO_IDS = Object.freeze(Array.from({ length: 40 }, (_, index) => `w${String(index + 1).padStart(2, "0")}`));
   const PHRASE_IDS = Object.freeze(Array.from({ length: 30 }, (_, index) => `p${String(index + 1).padStart(2, "0")}`));
+
+  // Скромный режим (28.10, просьба владельца): карточки про объятия, танцы, свидания,
+  // завтрак в постель и «скучаю» пока не выпадают в играх. Тексты и картинки НЕ удалены —
+  // чтобы вернуть, достаточно убрать id из этого списка.
+  const HIDDEN = new Set([
+    "c04", "c05", "c10", "c11", "c13", "c15", "c16", "c19", "c21", "c24", "c25", "c27", "c28", "c29", "c33", "c35", "c40",
+    "s13", "s14",
+    "q06", "q22", "q23", "q31", "q41", "q59", "q60",
+    "w09", "w10", "w11", "w26",
+    "p11", "p17", "p27"
+  ]);
+  const shown = ids => ids.filter(id => !HIDDEN.has(id) && !HIDDEN.has(id.slice(0, 3)));
 
   const state = {
     root: null,
@@ -1005,7 +1021,7 @@
     state.draft = {
       sender: state.draft?.sender || cleanName(appState.senderName),
       recipient: state.draft?.recipient || cleanName(appState.recipientName),
-      items: shuffle(QUESTION_IDS).slice(0, QUIZ_SIZE).map(id => ({ id, answer: null }))
+      items: shuffle(shown(QUESTION_IDS)).slice(0, QUIZ_SIZE).map(id => ({ id, answer: null }))
     };
     state.view = "names";
     render();
@@ -1021,7 +1037,7 @@
 
   function swapQuestion(index) {
     const used = new Set(state.draft.items.map(item => item.id));
-    const pool = QUESTION_IDS.filter(id => !used.has(id));
+    const pool = shown(QUESTION_IDS).filter(id => !used.has(id));
     if (!pool.length) return;
     state.draft.items[index] = { id: pool[Math.floor(Math.random() * pool.length)], answer: null };
     rerenderKeepingScroll();
@@ -1239,13 +1255,13 @@
   // «Кто быстрее»: 6 секунд найти картинку; «Кто из нас?»: 10 секунд;
   // «Закончи фразу»: минута на ответ, дальше ведущий листает сам.
   const DUEL_SECONDS = 6;
-  const DUEL_ROUNDS = 10;
+  const DUEL_ROUNDS = 20;
   const DUEL_REVEAL_MS = 2800;
   const WHO_SECONDS = 10;
-  const WHO_ROUNDS = 15;
+  const WHO_ROUNDS = 40;
   const WHO_REVEAL_MS = 3400;
   const PHRASE_SECONDS = 60;
-  const PHRASE_ROUNDS = 6;
+  const PHRASE_ROUNDS = 12;
   const PHRASE_MAX = 200;
   // В этих играх раунд открывается сразу, как только ответили оба.
   const EARLY_REVEAL = Object.freeze(["duel", "who", "phrase"]);
@@ -1261,8 +1277,8 @@
   const partnerOf = role => (role === "host" ? "guest" : "host");
   const nameOf = (yn, role) => (role === "host" ? yn.hostName : yn.guestName) || tr("anonymous");
   function newDeck(kind) {
-    if (kind === "duel") return shuffle(LOVES_IDS).slice(0, DUEL_ROUNDS).map(id => `${id}${LOVES_CHOICES[Math.floor(Math.random() * LOVES_CHOICES.length)]}`);
-    return shuffle(roomDeckIds(kind)).slice(0, roomRounds(kind));
+    if (kind === "duel") return shuffle(shown(CARD_PICTURES)).slice(0, DUEL_ROUNDS);
+    return shuffle(shown(roomDeckIds(kind))).slice(0, roomRounds(kind));
   }
   const lovesImage = (id, choice) => `assets/loves/${id}${choice}.webp`;
   function lovesThumbs(id) {
@@ -1789,7 +1805,7 @@
     if (yn.kind === "phrase") return renderPhraseCard();
     const id = yn.deck[yn.index];
     const [text, yesText, noText] = yesNoCard(id);
-    const art = YES_NO_ART_FILES[YES_NO_ART[id]] || YES_NO_ART_FILES.bears;
+    const art = /^s\d\d[a-d]$/u.test(YES_NO_ART[id] || "") ? lovesImage(YES_NO_ART[id].slice(0, 3), YES_NO_ART[id].slice(3)) : YES_NO_ART_FILES[YES_NO_ART[id]] || YES_NO_ART_FILES.bears;
     const partnerRole = yn.role === "host" ? "guest" : "host";
     const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
     let reveal = "";
@@ -2062,7 +2078,7 @@
 
   function cardsBoard(levelIndex) {
     const pairs = CARD_LEVELS[levelIndex].cards / 2;
-    const pictures = shuffle(CARD_PICTURES).slice(0, pairs);
+    const pictures = shuffle(shown(CARD_PICTURES)).slice(0, pairs);
     return shuffle([...pictures, ...pictures]);
   }
 
@@ -2198,7 +2214,7 @@
     const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
     if (mc.phase === "between") {
       return `<article class="glg-score glg-mc-between">
-        <div class="glg-mc-hug" style="background-image:url('assets/cards/hug.webp')" aria-hidden="true"></div>
+        <div class="glg-mc-hug" style="background-image:url('assets/scenes/bears-thumb.webp')" aria-hidden="true"></div>
         <h3>${escapeHtml(tr(mc.note || "mcLevelDone"))}</h3>
         <p class="glg-muted">${escapeHtml(tr("mcNext", { n: mc.level + 2 }))}</p>
       </article>`;
@@ -2232,7 +2248,7 @@
     const ratio = mc.total ? mc.found / mc.total : 0;
     return `
       <article class="glg-score">
-        <div class="glg-mc-hug" style="background-image:url('assets/cards/hug.webp')" aria-hidden="true"></div>
+        <div class="glg-mc-hug" style="background-image:url('assets/scenes/bears-thumb.webp')" aria-hidden="true"></div>
         <p class="glg-score-number">${escapeHtml(tr("mcFinal", { found: mc.found, total: mc.total }))}</p>
         <h3>${escapeHtml(tr(ratio >= 0.7 ? "mcFinalHigh" : "mcFinalMid"))}</h3>
         <p class="glg-mc-scores"><span>${escapeHtml(tr("ynYou"))} <b>${HEART} ${mc.scores[yn.role]}</b></span><span>${escapeHtml(partnerName)} <b>${HEART} ${mc.scores[yn.role === "host" ? "guest" : "host"]}</b></span></p>
