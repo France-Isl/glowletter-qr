@@ -4772,11 +4772,12 @@
     // Звёзды и метеоры: небо должно жить, но не мельтешить. Мерцание у каждой
     // звезды своё, метеор проходит раз в 9–16 секунд.
     const starHolder=$("#nightStars");const meteorHolder=$("#meteors");
-    const starCount=LITE_DEVICE?0:(MOBILE_DEVICE?26:48);const meteorCount=LITE_DEVICE?0:(MOBILE_DEVICE?2:3);
+    // Звёзды, метеоры, листья и искры больше не создаются: фон — готовая картинка.
+    const starCount=0;const meteorCount=0;
     for(let i=0;i<starCount;i++){const star=document.createElement("i");star.className="night-star";star.style.setProperty("--left",`${Math.random()*100}%`);star.style.setProperty("--top",`${Math.random()*46}%`);star.style.setProperty("--size",`${1.4+Math.random()*2.2}px`);star.style.setProperty("--dim",(0.45+Math.random()*0.5).toFixed(2));star.style.setProperty("--duration",`${3+Math.random()*4.5}s`);star.style.setProperty("--delay",`-${Math.random()*7}s`);starHolder?.append(star);}
     for(let i=0;i<meteorCount;i++){const meteor=document.createElement("i");meteor.className="meteor";meteor.style.setProperty("--left",`${35+Math.random()*60}%`);meteor.style.setProperty("--top",`${4+Math.random()*26}%`);meteor.style.setProperty("--tail",`${70+Math.random()*50}px`);meteor.style.setProperty("--duration",`${9+Math.random()*7}s`);meteor.style.setProperty("--delay",`-${Math.random()*12}s`);meteorHolder?.append(meteor);}
     const colors=["#b7634b","#d48a59","#d59aa8","#8c684c","#d6a75c"];
-    const leafCount=LITE_DEVICE?6:(MOBILE_DEVICE?9:18);const emberCount=LITE_DEVICE?0:(MOBILE_DEVICE?5:15);
+    const leafCount=0;const emberCount=0;
     for(let i=0;i<leafCount;i++){const leaf=document.createElement("i");leaf.className="leaf";leaf.style.setProperty("--left",`${-5+Math.random()*106}%`);leaf.style.setProperty("--size",`${8+Math.random()*12}px`);leaf.style.setProperty("--duration",`${10+Math.random()*13}s`);leaf.style.setProperty("--delay",`${-Math.random()*20}s`);leaf.style.setProperty("--opacity",`${.2+Math.random()*.5}`);leaf.style.setProperty("--leaf-color",colors[Math.floor(Math.random()*colors.length)]);$("#leaves").append(leaf);}
     for(let i=0;i<emberCount;i++){const ember=document.createElement("i");ember.className="ember";ember.style.setProperty("--left",`${42+Math.random()*19}%`);ember.style.setProperty("--size",`${1+Math.random()*3}px`);ember.style.setProperty("--duration",`${3.2+Math.random()*3}s`);ember.style.setProperty("--delay",`${-Math.random()*5}s`);ember.style.setProperty("--drift",`${-35+Math.random()*70}px`);$("#embers").append(ember);}
   }
@@ -4996,7 +4997,9 @@
     const reusable = outgoingAudioShare
       && outgoingAudioShare.fingerprint === customAudioFingerprint
       && SHARED_AUDIO_TOKEN_PATTERN.test(outgoingAudioShare.token || "")
-      && Date.parse(outgoingAudioShare.expiresAt || "") > Date.now() + 5 * 60 * 1000;
+      // Повторно используем файл, только если у получателя останутся почти все
+      // 12 часов: иначе ссылка, отправленная через 9 часов, жила бы всего 3.
+      && Date.parse(outgoingAudioShare.expiresAt || "") > Date.now() + 11 * 60 * 60 * 1000;
     if (reusable) return outgoingAudioShare.token;
 
     showToast(t("audioPreparing"), 5000);

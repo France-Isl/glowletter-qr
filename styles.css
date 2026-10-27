@@ -1570,3 +1570,14 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .admin-card-history time { color:var(--ui-muted); white-space:nowrap; }
 .admin-card-loading { margin:0; color:var(--ui-muted); font-size:13px; }
 .admin-recent button { cursor:pointer; }
+
+/* Без лагов (2.4.20): фон — одна неподвижная картинка высокого качества.
+   Никаких бесконечных анимаций сцены, зерна плёнки и размытия под стеклом:
+   они перерисовывали экран каждый кадр и грели слабые телефоны. */
+.film-grain, .leaves, .embers, .meteors, .night-stars, .rain-canvas, .chair-motion { display: none !important; }
+.cinematic-bg, .vignette, .vignette::before, body:not(.is-reading) .vignette::before,
+.seal-heart, .seal-heart-core, .seal-heart-shine, .seal-heart-spark,
+.side-panel::after, .settings-section[open] > .settings-section-body::after,
+.vip-notice-sparkles i, .account-notification-button.has-unread svg { animation: none !important; }
+.cinematic-bg { transform: none !important; filter: none !important; inset: 0 !important; }
+*, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
