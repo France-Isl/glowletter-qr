@@ -79,14 +79,19 @@ for (const code of LANGUAGES) {
 }
 for (const id of SET_IDS) for (const choice of "abcd") assert.ok(fs.existsSync(path.join(root, `assets/loves/${id}${choice}.webp`)), `${id}${choice} picture`);
 assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind in \('yesno', 'loves'\)/u);
+// «Карточки с мишками»: та же комната, ведущий хранит поле, партнёр только просит открыть карточку.
+assert.match(read("supabase/migrations/20261028130000_cards_rooms.sql"), /kind in \('yesno', 'loves', 'cards'\)/u);
+assert.match(games, /const CARD_LEVELS = Object\.freeze\(\[\{ cards: 8,.*\{ cards: 12,.*\{ cards: 16,/u);
+assert.match(games, /type: "mflip", index/u);
+assert.match(games, /\["featCards"\], \["featGamesSoon3", true\]/u);
 
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=65") < index.indexOf("games-i18n.js?v=65"));
-assert.ok(index.indexOf("games-i18n.js?v=65") < index.indexOf("games.js?v=65"));
-assert.match(index, /games\.css\?v=65/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=65"`, "u"));
+assert.ok(index.indexOf("experience.js?v=66") < index.indexOf("games-i18n.js?v=66"));
+assert.ok(index.indexOf("games-i18n.js?v=66") < index.indexOf("games.js?v=66"));
+assert.match(index, /games\.css\?v=66/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=66"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,

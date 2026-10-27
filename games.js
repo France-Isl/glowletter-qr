@@ -57,7 +57,7 @@
       featQuiz: "«Насколько хорошо ты меня знаешь?» — результат приходит вам", featGamesSoon: "Дуэль «Кто быстрее», «Что мы любим», карточки с мишками",
       featFunSoon: "«Кто из нас?» и «Закончи фразу» с «Книгой пары»", featCollection: "Вся коллекция писем и стихов на 25 языках",
       featMoments: "Моменты, напоминания и QR-письмо, которое откроется в нужный день", featAudio: "Своё аудио в письме и ответ получателя",
-      ynTitle: "Да или нет", ynNote: "Живая игра вдвоём: на каждую карточку 5 секунд. Кто успел ответить — увидит ответ партнёра.", ynCreate: "Создать комнату", ynWaiting: "Ждём, когда {name} откроет ссылку…", ynWaitingAny: "Ждём партнёра…", ynShareText: "{name} зовёт тебя в живую игру «Да или нет»", ynPartnerHere: "{name} уже в игре!", ynStart: "Начать игру", ynWaitHost: "{name} сейчас начнёт игру", ynYes: "Да", ynNo: "Нет", ynMissed: "Не успели — карточка закрыта", ynMatch: "Совпали!", ynRound: "Карточка {n} из {total}", ynAnswered: "Ответ принят, ждём партнёра…", ynFinal: "Совпало {score} из {total}", ynFinalHigh: "Вы чувствуете друг друга с полуслова", ynFinalMid: "Вы такие разные — и такие близкие", ynAgain: "Сыграть ещё раз", ynLeft: "Партнёр отключился. Ждём возвращения…", ynYou: "Вы", ynOffline: "Не удаётся подключиться к игре. Проверьте интернет и откройте ссылку снова.", ynJoin: "Войти в игру", ynJoinLead: "{name} ждёт вас. На каждый ответ — 5 секунд!", ynStepNames: "Ваше имя и имя партнёра", ynRoomReady: "Комната готова — отправьте ссылку", ynStayHere: "Не закрывайте этот экран: игра начнётся, когда партнёр откроет ссылку.", featYesNo: "Живая игра «Да или нет» — 5 секунд на ответ", ynPartnerMissed: "Ответа нет — время вышло", lvTitle: "Что мы любим", lvNote: "Живая игра вдвоём: 4 картинки, у каждого 10 секунд выбрать, что ближе. Можно выбрать одно и то же!", lvShareText: "{name} зовёт тебя в живую игру «Что мы любим»", lvJoinLead: "{name} ждёт вас. Выбирайте картинку, которая вам ближе!", lvRound: "Тема {n} из {total}", lvPick: "Выберите, что вам ближе", lvBoth: "Вы оба выбрали: {item}", lvCommon: "Вы оба любите", lvDiff: "Разные вкусы — тем интереснее!", lvFinalHigh: "У вас так много общего!", lvFinalMid: "Вы такие разные — и этим дополняете друг друга", featLoves: "Живая игра «Что мы любим» — 4 картинки, выбирайте вместе", featGamesSoon2: "Дуэль «Кто быстрее» и карточки с мишками"
+      ynTitle: "Да или нет", ynNote: "Живая игра вдвоём: на каждую карточку 5 секунд. Кто успел ответить — увидит ответ партнёра.", ynCreate: "Создать комнату", ynWaiting: "Ждём, когда {name} откроет ссылку…", ynWaitingAny: "Ждём партнёра…", ynShareText: "{name} зовёт тебя в живую игру «Да или нет»", ynPartnerHere: "{name} уже в игре!", ynStart: "Начать игру", ynWaitHost: "{name} сейчас начнёт игру", ynYes: "Да", ynNo: "Нет", ynMissed: "Не успели — карточка закрыта", ynMatch: "Совпали!", ynRound: "Карточка {n} из {total}", ynAnswered: "Ответ принят, ждём партнёра…", ynFinal: "Совпало {score} из {total}", ynFinalHigh: "Вы чувствуете друг друга с полуслова", ynFinalMid: "Вы такие разные — и такие близкие", ynAgain: "Сыграть ещё раз", ynLeft: "Партнёр отключился. Ждём возвращения…", ynYou: "Вы", ynOffline: "Не удаётся подключиться к игре. Проверьте интернет и откройте ссылку снова.", ynJoin: "Войти в игру", ynJoinLead: "{name} ждёт вас. На каждый ответ — 5 секунд!", ynStepNames: "Ваше имя и имя партнёра", ynRoomReady: "Комната готова — отправьте ссылку", ynStayHere: "Не закрывайте этот экран: игра начнётся, когда партнёр откроет ссылку.", featYesNo: "Живая игра «Да или нет» — 5 секунд на ответ", ynPartnerMissed: "Ответа нет — время вышло", lvTitle: "Что мы любим", lvNote: "Живая игра вдвоём: 4 картинки, у каждого 10 секунд выбрать, что ближе. Можно выбрать одно и то же!", lvShareText: "{name} зовёт тебя в живую игру «Что мы любим»", lvJoinLead: "{name} ждёт вас. Выбирайте картинку, которая вам ближе!", lvRound: "Тема {n} из {total}", lvPick: "Выберите, что вам ближе", lvBoth: "Вы оба выбрали: {item}", lvCommon: "Вы оба любите", lvDiff: "Разные вкусы — тем интереснее!", mcTitle: "Карточки с мишками", mcNote: "Живая игра на память вдвоём: по очереди открывайте по две карточки и ищите пары. Три уровня — от 8 до 16 карточек.", mcShareText: "{name} зовёт тебя в живую игру «Карточки с мишками»", mcJoinLead: "{name} ждёт вас. Ищите пары по очереди!", mcLevel: "Уровень {n} из {total}", mcTurnYou: "Ваш ход — откройте две карточки", mcTurnThem: "Ходит {name}", mcPairs: "Пар найдено: {found} из {total}", mcLevelDone: "Все пары найдены!", mcTimeUp: "Время уровня вышло", mcNext: "Дальше — уровень {n}", mcFinal: "Найдено пар: {found} из {total}", mcFinalHigh: "Отличная команда!", mcFinalMid: "Хорошая игра — давайте ещё!", featCards: "Живая игра «Карточки с мишками» — ищите пары вдвоём", featGamesSoon3: "Дуэль «Кто быстрее»", lvFinalHigh: "У вас так много общего!", lvFinalMid: "Вы такие разные — и этим дополняете друг друга", featLoves: "Живая игра «Что мы любим» — 4 картинки, выбирайте вместе", featGamesSoon2: "Дуэль «Кто быстрее» и карточки с мишками"
     },
     en: {
       homeLink: "Games for two", eyebrow: "GLOWLETTER · GAMES FOR TWO", title: "Play together", close: "Close",
@@ -91,7 +91,7 @@
       featQuiz: "“How well do you know me?” — the result comes back to you", featGamesSoon: "“Who’s faster” duel, “What we love”, memory cards with bears",
       featFunSoon: "“Which of us?” and “Finish the sentence” with a couple’s book", featCollection: "The whole collection of letters and poems in 25 languages",
       featMoments: "Moments, reminders and a QR letter that opens on the right day", featAudio: "Your own audio in a letter and replies from the recipient",
-      ynTitle: "Yes or no", ynNote: "A live game for two: 5 seconds for each card. Answer in time to see your partner’s answer.", ynCreate: "Create a room", ynWaiting: "Waiting for {name}…", ynWaitingAny: "Waiting for your partner…", ynShareText: "{name} invites you to the live game “Yes or no”", ynPartnerHere: "{name} is here!", ynStart: "Start the game", ynWaitHost: "{name} is about to start the game", ynYes: "Yes", ynNo: "No", ynMissed: "Too late — this card stays closed", ynMatch: "A match!", ynRound: "Card {n} of {total}", ynAnswered: "Answer sent, waiting for your partner…", ynFinal: "{score} of {total} matched", ynFinalHigh: "You understand each other without words", ynFinalMid: "So different — and so close", ynAgain: "Play again", ynLeft: "Your partner disconnected. Waiting for them to come back…", ynYou: "You", ynOffline: "Can’t connect to the game. Check your connection and open the link again.", ynJoin: "Join the game", ynJoinLead: "{name} is waiting for you. 5 seconds for each answer!", ynStepNames: "Your name and your partner’s", ynRoomReady: "The room is ready — send the link", ynStayHere: "Keep this screen open: the game starts when your partner opens the link.", featYesNo: "Live game “Yes or no” — 5 seconds per answer", ynPartnerMissed: "No answer — time ran out", lvTitle: "What we love", lvNote: "A live game for two: 4 pictures, 10 seconds each to pick what you love most. You can pick the same one!", lvShareText: "{name} invites you to the live game “What we love”", lvJoinLead: "{name} is waiting for you. Pick the picture you love most!", lvRound: "Topic {n} of {total}", lvPick: "Pick what you love most", lvBoth: "You both picked: {item}", lvCommon: "You both love", lvDiff: "Different tastes — even more interesting!", lvFinalHigh: "You have so much in common!", lvFinalMid: "So different — and you complete each other", featLoves: "Live game “What we love” — 4 pictures, choose together", featGamesSoon2: "“Who’s faster” duel and memory cards with bears"
+      ynTitle: "Yes or no", ynNote: "A live game for two: 5 seconds for each card. Answer in time to see your partner’s answer.", ynCreate: "Create a room", ynWaiting: "Waiting for {name}…", ynWaitingAny: "Waiting for your partner…", ynShareText: "{name} invites you to the live game “Yes or no”", ynPartnerHere: "{name} is here!", ynStart: "Start the game", ynWaitHost: "{name} is about to start the game", ynYes: "Yes", ynNo: "No", ynMissed: "Too late — this card stays closed", ynMatch: "A match!", ynRound: "Card {n} of {total}", ynAnswered: "Answer sent, waiting for your partner…", ynFinal: "{score} of {total} matched", ynFinalHigh: "You understand each other without words", ynFinalMid: "So different — and so close", ynAgain: "Play again", ynLeft: "Your partner disconnected. Waiting for them to come back…", ynYou: "You", ynOffline: "Can’t connect to the game. Check your connection and open the link again.", ynJoin: "Join the game", ynJoinLead: "{name} is waiting for you. 5 seconds for each answer!", ynStepNames: "Your name and your partner’s", ynRoomReady: "The room is ready — send the link", ynStayHere: "Keep this screen open: the game starts when your partner opens the link.", featYesNo: "Live game “Yes or no” — 5 seconds per answer", ynPartnerMissed: "No answer — time ran out", lvTitle: "What we love", lvNote: "A live game for two: 4 pictures, 10 seconds each to pick what you love most. You can pick the same one!", lvShareText: "{name} invites you to the live game “What we love”", lvJoinLead: "{name} is waiting for you. Pick the picture you love most!", lvRound: "Topic {n} of {total}", lvPick: "Pick what you love most", lvBoth: "You both picked: {item}", lvCommon: "You both love", lvDiff: "Different tastes — even more interesting!", mcTitle: "Memory cards with bears", mcNote: "A live memory game for two: take turns opening two cards and find the pairs. Three levels, from 8 to 16 cards.", mcShareText: "{name} invites you to the live game “Memory cards with bears”", mcJoinLead: "{name} is waiting for you. Take turns finding pairs!", mcLevel: "Level {n} of {total}", mcTurnYou: "Your turn — open two cards", mcTurnThem: "{name}’s turn", mcPairs: "Pairs found: {found} of {total}", mcLevelDone: "All pairs found!", mcTimeUp: "Time is up for this level", mcNext: "Next: level {n}", mcFinal: "Pairs found: {found} of {total}", mcFinalHigh: "A wonderful team!", mcFinalMid: "Nice game — let’s play again!", featCards: "Live game “Memory cards with bears” — find pairs together", featGamesSoon3: "“Who’s faster” duel", lvFinalHigh: "You have so much in common!", lvFinalMid: "So different — and you complete each other", featLoves: "Live game “What we love” — 4 pictures, choose together", featGamesSoon2: "“Who’s faster” duel and memory cards with bears"
     },
     fr: {
       homeLink: "Jeux à deux", eyebrow: "GLOWLETTER · JEUX À DEUX", title: "Jouez ensemble", close: "Fermer",
@@ -125,7 +125,7 @@
       featQuiz: "« Me connais-tu vraiment ? » — le résultat vous revient", featGamesSoon: "Duel « Le plus rapide », « Ce que nous aimons », cartes avec des oursons",
       featFunSoon: "« Qui de nous deux ? » et « Termine la phrase » avec le livre du couple", featCollection: "Toute la collection de lettres et de poèmes en 25 langues",
       featMoments: "Moments, rappels et lettre QR qui s’ouvre le bon jour", featAudio: "Votre propre audio dans la lettre et la réponse du destinataire",
-      ynTitle: "Oui ou non", ynNote: "Un jeu en direct à deux : 5 secondes par carte. Répondez à temps pour voir la réponse de l’autre.", ynCreate: "Créer une salle", ynWaiting: "En attente de {name}…", ynWaitingAny: "En attente de l’autre joueur…", ynShareText: "{name} t’invite au jeu en direct « Oui ou non »", ynPartnerHere: "{name} est là !", ynStart: "Lancer la partie", ynWaitHost: "{name} va lancer la partie", ynYes: "Oui", ynNo: "Non", ynMissed: "Trop tard — cette carte reste fermée", ynMatch: "Même réponse !", ynRound: "Carte {n} sur {total}", ynAnswered: "Réponse envoyée, en attente de l’autre…", ynFinal: "{score} sur {total} en commun", ynFinalHigh: "Vous vous comprenez sans un mot", ynFinalMid: "Si différents — et si proches", ynAgain: "Rejouer", ynLeft: "L’autre joueur s’est déconnecté. On attend son retour…", ynYou: "Vous", ynOffline: "Connexion au jeu impossible. Vérifiez internet et rouvrez le lien.", ynJoin: "Rejoindre la partie", ynJoinLead: "{name} vous attend. 5 secondes pour chaque réponse !", ynStepNames: "Votre prénom et celui de l’autre", ynRoomReady: "La salle est prête — envoyez le lien", ynStayHere: "Gardez cet écran ouvert : la partie commence quand l’autre ouvre le lien.", featYesNo: "Jeu en direct « Oui ou non » — 5 secondes par réponse", ynPartnerMissed: "Pas de réponse — le temps est écoulé", lvTitle: "Ce que nous aimons", lvNote: "Un jeu en direct à deux : 4 images, 10 secondes pour choisir ce que vous préférez. Vous pouvez choisir la même !", lvShareText: "{name} t’invite au jeu en direct « Ce que nous aimons »", lvJoinLead: "{name} vous attend. Choisissez l’image que vous préférez !", lvRound: "Thème {n} sur {total}", lvPick: "Choisissez ce que vous préférez", lvBoth: "Vous avez choisi tous les deux : {item}", lvCommon: "Vous aimez tous les deux", lvDiff: "Des goûts différents — c’est encore plus intéressant !", lvFinalHigh: "Vous avez tant de choses en commun !", lvFinalMid: "Si différents — et vous vous complétez", featLoves: "Jeu en direct « Ce que nous aimons » — 4 images, choisissez ensemble", featGamesSoon2: "Duel « Le plus rapide » et cartes mémoire avec des oursons"
+      ynTitle: "Oui ou non", ynNote: "Un jeu en direct à deux : 5 secondes par carte. Répondez à temps pour voir la réponse de l’autre.", ynCreate: "Créer une salle", ynWaiting: "En attente de {name}…", ynWaitingAny: "En attente de l’autre joueur…", ynShareText: "{name} t’invite au jeu en direct « Oui ou non »", ynPartnerHere: "{name} est là !", ynStart: "Lancer la partie", ynWaitHost: "{name} va lancer la partie", ynYes: "Oui", ynNo: "Non", ynMissed: "Trop tard — cette carte reste fermée", ynMatch: "Même réponse !", ynRound: "Carte {n} sur {total}", ynAnswered: "Réponse envoyée, en attente de l’autre…", ynFinal: "{score} sur {total} en commun", ynFinalHigh: "Vous vous comprenez sans un mot", ynFinalMid: "Si différents — et si proches", ynAgain: "Rejouer", ynLeft: "L’autre joueur s’est déconnecté. On attend son retour…", ynYou: "Vous", ynOffline: "Connexion au jeu impossible. Vérifiez internet et rouvrez le lien.", ynJoin: "Rejoindre la partie", ynJoinLead: "{name} vous attend. 5 secondes pour chaque réponse !", ynStepNames: "Votre prénom et celui de l’autre", ynRoomReady: "La salle est prête — envoyez le lien", ynStayHere: "Gardez cet écran ouvert : la partie commence quand l’autre ouvre le lien.", featYesNo: "Jeu en direct « Oui ou non » — 5 secondes par réponse", ynPartnerMissed: "Pas de réponse — le temps est écoulé", lvTitle: "Ce que nous aimons", lvNote: "Un jeu en direct à deux : 4 images, 10 secondes pour choisir ce que vous préférez. Vous pouvez choisir la même !", lvShareText: "{name} t’invite au jeu en direct « Ce que nous aimons »", lvJoinLead: "{name} vous attend. Choisissez l’image que vous préférez !", lvRound: "Thème {n} sur {total}", lvPick: "Choisissez ce que vous préférez", lvBoth: "Vous avez choisi tous les deux : {item}", lvCommon: "Vous aimez tous les deux", lvDiff: "Des goûts différents — c’est encore plus intéressant !", mcTitle: "Cartes mémoire aux oursons", mcNote: "Un jeu de mémoire en direct à deux : retournez deux cartes chacun votre tour et trouvez les paires. Trois niveaux, de 8 à 16 cartes.", mcShareText: "{name} t’invite au jeu en direct « Cartes mémoire aux oursons »", mcJoinLead: "{name} vous attend. Trouvez les paires chacun votre tour !", mcLevel: "Niveau {n} sur {total}", mcTurnYou: "À vous — retournez deux cartes", mcTurnThem: "Au tour de {name}", mcPairs: "Paires trouvées : {found} sur {total}", mcLevelDone: "Toutes les paires sont trouvées !", mcTimeUp: "Le temps du niveau est écoulé", mcNext: "Ensuite : niveau {n}", mcFinal: "Paires trouvées : {found} sur {total}", mcFinalHigh: "Une équipe formidable !", mcFinalMid: "Belle partie — on rejoue ?", featCards: "Jeu en direct « Cartes mémoire aux oursons » — trouvez les paires à deux", featGamesSoon3: "Duel « Le plus rapide »", lvFinalHigh: "Vous avez tant de choses en commun !", lvFinalMid: "Si différents — et vous vous complétez", featLoves: "Jeu en direct « Ce que nous aimons » — 4 images, choisissez ensemble", featGamesSoon2: "Duel « Le plus rapide » et cartes mémoire avec des oursons"
     }
   };
 
@@ -670,7 +670,7 @@
     const isYesNo = state.view.startsWith("yn-");
     root.classList.toggle("is-play", isPlay || isYesNo);
     root.querySelector("[data-glg=eyebrow]").textContent = isPlay || isYesNo ? tr("playEyebrow") : tr("eyebrow");
-    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr(state.yn?.kind === "loves" ? "lvTitle" : "ynTitle") : tr("title");
+    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr(ROOM_TITLES[state.yn?.kind] || "ynTitle") : tr("title");
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
     const body = root.querySelector(".glg-body");
     const views = { hub: renderHub, names: renderNames, answers: renderAnswers, created: renderCreated, detail: renderDetail, "play-loading": renderPlayLoading, "play-missing": renderPlayMissing, "play-intro": renderPlayIntro, "play-question": renderPlayQuestion, "play-result": renderPlayResult, "yn-loading": renderPlayLoading, "yn-names": renderYesNoNames, "yn-lobby": renderYesNoLobby, "yn-join": renderYesNoJoin, "yn-card": renderYesNoCard, "yn-end": renderYesNoEnd, "yn-missing": renderYesNoMissing };
@@ -689,7 +689,7 @@
         ${fresh ? `<b class="glg-new">${escapeHtml(tr("newResults", { count: fresh }))}</b>` : ""}
       </button></li>`;
     }).join("");
-    const soon = ["duel", "cards", "who", "phrase"].map(key => `<li>${escapeHtml(tr(key))}</li>`).join("");
+    const soon = ["duel", "who", "phrase"].map(key => `<li>${escapeHtml(tr(key))}</li>`).join("");
     const mine = signedIn()
       ? `<section class="glg-section"><h3>${escapeHtml(tr("myQuizzes"))}</h3>${state.quizzes.length ? `<ul class="glg-quiz-list">${quizzes}</ul>` : `<p class="glg-muted">${escapeHtml(state.loading ? "…" : tr("noQuizzes"))}</p>`}</section>`
       : "";
@@ -713,6 +713,12 @@
         <h3>${escapeHtml(tr("lvTitle"))}</h3>
         <p>${escapeHtml(tr("lvNote"))}</p>
         <button class="glg-primary" type="button" data-action="lv-create">${icon("ic-plus")} ${escapeHtml(tr("ynCreate"))}</button>
+      </article>
+      <article class="glg-hero glg-yn-hero">
+        ${cardsBadge()}
+        <h3>${escapeHtml(tr("mcTitle"))}</h3>
+        <p>${escapeHtml(tr("mcNote"))}</p>
+        <button class="glg-primary" type="button" data-action="mc-create">${icon("ic-plus")} ${escapeHtml(tr("ynCreate"))}</button>
       </article>
       ${mine}
       <section class="glg-section glg-soon"><h3>${escapeHtml(tr("soonTitle"))} <span class="glg-chip">${escapeHtml(tr("soon"))}</span></h3><ul>${soon}</ul></section>`;
@@ -921,6 +927,8 @@
       case "retry": submitPlay(); return;
       case "yn-create": return startYesNoCreate("yesno");
       case "lv-create": return startYesNoCreate("loves");
+      case "mc-create": return startYesNoCreate("cards");
+      case "mc-flip": return cardsFlip(state.yn?.role, Number(target.dataset.index));
       case "yn-names-submit": return createYesNoRoom(target);
       case "yn-start": return hostStartYesNo();
       case "yn-join-submit": return guestJoinYesNo(target);
@@ -1183,7 +1191,11 @@
   function lovesThumbs(id) {
     return `<div class="glg-lv-thumbs" aria-hidden="true">${LOVES_CHOICES.map(choice => `<i style="background-image:url('${lovesImage(id, choice)}')"></i>`).join("")}</div>`;
   }
+  function cardsBadge() {
+    return `<div class="glg-mc-badge" aria-hidden="true">${["s04a", "", "", "s04a"].map(id => id ? `<i style="background-image:url('assets/loves/${id}.webp')"></i>` : `<i class="is-back">${HEART}</i>`).join("")}</div>`;
+  }
   function roomBadge(yn) {
+    if (yn?.kind === "cards") return cardsBadge();
     if (yn?.kind === "loves") return lovesThumbs("s07");
     return `<div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>`;
   }
@@ -1192,7 +1204,7 @@
     if (!premium()) { app()?.openPaywall?.(); return; }
     if (!signedIn()) { renderSignIn(); return; }
     const appState = app()?.getState?.() || {};
-    state.yn = { kind: kind === "loves" ? "loves" : "yesno", role: "host", roomId: "", hostName: cleanName(appState.senderName), guestName: cleanName(appState.recipientName), partnerOnline: false, phase: "names", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null };
+    state.yn = { kind: ROOM_TITLES[kind] ? kind : "yesno", role: "host", roomId: "", hostName: cleanName(appState.senderName), guestName: cleanName(appState.recipientName), partnerOnline: false, phase: "names", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null };
     state.view = "yn-names";
     render();
     requestAnimationFrame(() => state.root.querySelector("input[name=host]")?.focus());
@@ -1260,9 +1272,8 @@
   async function shareRoom() {
     const yn = state.yn;
     if (!yn?.roomId) return;
-    const loves = yn.kind === "loves";
-    const text = tr(loves ? "lvShareText" : "ynShareText", { name: yn.hostName || "GlowLetter" });
-    const title = tr(loves ? "lvTitle" : "ynTitle");
+    const text = tr({ loves: "lvShareText", cards: "mcShareText" }[yn.kind] || "ynShareText", { name: yn.hostName || "GlowLetter" });
+    const title = tr(ROOM_TITLES[yn.kind] || "ynTitle");
     const url = roomUrl(yn.roomId);
     const bridge = window.NurShare;
     if (bridge && typeof bridge.share === "function") {
@@ -1291,7 +1302,7 @@
     try {
       const response = await fetch(`${base}/functions/v1/couple-quiz?room=${encodeURIComponent(roomId)}`, { headers, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok || payload.state !== "ready" || !["yesno", "loves"].includes(payload.kind)) throw new Error("missing");
+      if (!response.ok || payload.state !== "ready" || !ROOM_TITLES[payload.kind]) throw new Error("missing");
       Object.assign(state.yn, { kind: payload.kind, hostName: cleanName(payload.hostName) || "GlowLetter", guestName: cleanName(payload.guestName) });
       state.view = "yn-join";
     } catch {
@@ -1316,7 +1327,7 @@
       <form class="glg-form glg-intro" data-submit="yn-join-submit" novalidate>
         ${roomBadge(yn)}
         <h3>${escapeHtml(tr("playInvite", { name: yn.hostName }))}</h3>
-        <p class="glg-muted">${escapeHtml(tr(yn.kind === "loves" ? "lvJoinLead" : "ynJoinLead", { name: yn.hostName }))}</p>
+        <p class="glg-muted">${escapeHtml(tr({ loves: "lvJoinLead", cards: "mcJoinLead" }[yn.kind] || "ynJoinLead", { name: yn.hostName }))}</p>
         <label><span>${escapeHtml(tr("playName"))}</span><input name="guest" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(yn.guestName)}" placeholder="${escapeHtml(tr("playNamePlaceholder"))}" /></label>
         <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
         <button class="glg-primary glg-wide" type="submit">${escapeHtml(tr("ynJoin"))} →</button>
@@ -1376,6 +1387,7 @@
 
   function clearYesNoTimers() {
     (state.yn?.timers || []).forEach(clearTimeout);
+    clearTimeout(state.yn?.turnTimer);
     if (state.yn) state.yn.timers = [];
   }
 
@@ -1396,6 +1408,7 @@
   function hostStartYesNo() {
     const yn = state.yn;
     if (!yn || yn.role !== "host" || !yn.partnerOnline) return;
+    if (yn.kind === "cards") { hostStartCards(); return; }
     clearYesNoTimers();
     yn.deck = yn.kind === "loves" ? shuffle(LOVES_IDS).slice(0, LOVES_ROUNDS) : shuffle(YES_NO_IDS).slice(0, YES_NO_ROUNDS);
     yn.answers = { host: [], guest: [] };
@@ -1428,6 +1441,7 @@
   function onYesNoMessage(message) {
     const yn = state.yn;
     if (!yn) return;
+    if (yn.kind === "cards") { onCardsMessage(message); return; }
     const index = Number(message.index);
     if (message.type === "answer" && yn.role === "host" && Number.isInteger(index) && roomChoices(yn).includes(message.value)) {
       if (yn.phase === "round" && yn.index === index && yn.answers.guest[index] == null) yn.answers.guest[index] = message.value;
@@ -1558,6 +1572,7 @@
 
   function renderYesNoCard() {
     const yn = state.yn;
+    if (yn.kind === "cards") return renderCardsBoard();
     if (yn.kind === "loves") return renderLovesCard();
     const id = yn.deck[yn.index];
     const [text, yesText, noText] = yesNoCard(id);
@@ -1602,6 +1617,7 @@
 
   function renderYesNoEnd() {
     const yn = state.yn;
+    if (yn.kind === "cards") return renderCardsEnd();
     const total = yn.deck.length;
     const score = yn.deck.filter((_, index) => yn.answers.host[index] && yn.answers.host[index] === yn.answers.guest[index]).length;
     const ratio = total ? score / total : 0;
@@ -1621,6 +1637,206 @@
         <button class="glg-secondary" type="button" data-action="close">${escapeHtml(tr("home"))}</button>
       </div>`;
   }
+
+  // ——— «Карточки с мишками»: игра на память вдвоём ———
+  //
+  // Ведущий хранит поле и рассылает его целиком после каждого изменения, партнёр
+  // только просит открыть карточку. Ходы по очереди: нашёл пару — ходишь ещё,
+  // не нашёл — ход переходит. На ход 12 секунд, на уровень — своё время.
+
+  const ROOM_TITLES = Object.freeze({ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle" });
+  const CARD_LEVELS = Object.freeze([{ cards: 8, seconds: 75 }, { cards: 12, seconds: 110 }, { cards: 16, seconds: 150 }]);
+  const CARD_TURN_SECONDS = 12;
+  const CARD_PICTURES = Object.freeze(LOVES_IDS.flatMap(id => LOVES_CHOICES.map(choice => `${id}${choice}`)));
+
+  function cardsBoard(levelIndex) {
+    const pairs = CARD_LEVELS[levelIndex].cards / 2;
+    const pictures = shuffle(CARD_PICTURES).slice(0, pairs);
+    return shuffle([...pictures, ...pictures]);
+  }
+
+  function hostStartCards() {
+    const yn = state.yn;
+    clearYesNoTimers();
+    yn.mc = { level: 0, board: cardsBoard(0), open: [], matched: [], turn: "host", scores: { host: 0, guest: 0 }, phase: "play", levelEnds: Date.now() + CARD_LEVELS[0].seconds * 1000, turnEnds: Date.now() + CARD_TURN_SECONDS * 1000, found: 0, total: 0, note: "" };
+    cardsLevelTimer();
+    cardsPublish();
+  }
+
+  function cardsPublish() {
+    const yn = state.yn;
+    if (!yn?.mc) return;
+    const now = Date.now();
+    sendYesNo({ type: "mstate", mc: { ...yn.mc, levelLeft: yn.mc.levelEnds - now, turnLeft: yn.mc.turnEnds - now } });
+    showCards();
+  }
+
+  function showCards() {
+    const yn = state.yn;
+    yn.phase = yn.mc.phase === "end" ? "end" : "play";
+    state.view = yn.mc.phase === "end" ? "yn-end" : "yn-card";
+    render();
+  }
+
+  function cardsLevelTimer() {
+    const yn = state.yn;
+    const level = yn.mc.level;
+    yn.timers.push(setTimeout(() => { if (state.yn === yn && yn.mc.level === level && yn.mc.phase === "play") cardsLevelDone(true); }, yn.mc.levelEnds - Date.now()));
+    cardsTurnTimer();
+  }
+
+  function cardsTurnTimer() {
+    const yn = state.yn;
+    clearTimeout(yn.turnTimer);
+    const { level, turnEnds } = yn.mc;
+    yn.turnTimer = setTimeout(() => {
+      if (state.yn !== yn || yn.mc.phase !== "play" || yn.mc.level !== level || yn.mc.turnEnds !== turnEnds) return;
+      yn.mc.open = [];
+      cardsNextTurn(true);
+    }, turnEnds - Date.now());
+  }
+
+  function cardsNextTurn(switchTurn) {
+    const yn = state.yn;
+    if (switchTurn) yn.mc.turn = yn.mc.turn === "host" ? "guest" : "host";
+    yn.mc.turnEnds = Date.now() + CARD_TURN_SECONDS * 1000;
+    cardsTurnTimer();
+    cardsPublish();
+  }
+
+  // Открыть карточку: ведущий решает сам, партнёр присылает просьбу.
+  function cardsFlip(role, index) {
+    const yn = state.yn;
+    if (!yn?.mc || !Number.isInteger(index)) return;
+    if (yn.role === "guest") {
+      if (yn.mc.turn === "guest" && yn.mc.phase === "play") sendYesNo({ type: "mflip", index });
+      return;
+    }
+    const mc = yn.mc;
+    if (mc.phase !== "play" || mc.turn !== role || mc.lock || index < 0 || index >= mc.board.length) return;
+    if (mc.matched.includes(index) || mc.open.includes(index) || mc.open.length >= 2) return;
+    mc.open.push(index);
+    if (mc.open.length < 2) { cardsPublish(); return; }
+    const [first, second] = mc.open;
+    if (mc.board[first] === mc.board[second]) {
+      mc.matched.push(first, second);
+      mc.scores[role] += 1;
+      mc.open = [];
+      if (mc.matched.length === mc.board.length) { cardsLevelDone(false); return; }
+      cardsNextTurn(false);
+      return;
+    }
+    mc.lock = true;
+    cardsPublish();
+    yn.timers.push(setTimeout(() => {
+      if (state.yn !== yn || yn.mc !== mc) return;
+      mc.lock = false;
+      mc.open = [];
+      cardsNextTurn(true);
+    }, 1100));
+  }
+
+  function cardsLevelDone(timeUp) {
+    const yn = state.yn;
+    const mc = yn.mc;
+    clearTimeout(yn.turnTimer);
+    mc.found += mc.matched.length / 2;
+    mc.total += mc.board.length / 2;
+    mc.note = timeUp ? "mcTimeUp" : "mcLevelDone";
+    mc.open = [];
+    const last = mc.level + 1 >= CARD_LEVELS.length;
+    mc.phase = last ? "end" : "between";
+    cardsPublish();
+    if (last) return;
+    yn.timers.push(setTimeout(() => {
+      if (state.yn !== yn || yn.mc !== mc) return;
+      mc.level += 1;
+      mc.board = cardsBoard(mc.level);
+      mc.matched = [];
+      mc.phase = "play";
+      mc.note = "";
+      mc.turn = mc.turn === "host" ? "guest" : "host";
+      mc.levelEnds = Date.now() + CARD_LEVELS[mc.level].seconds * 1000;
+      mc.turnEnds = Date.now() + CARD_TURN_SECONDS * 1000;
+      cardsLevelTimer();
+      cardsPublish();
+    }, 3500));
+  }
+
+  function onCardsMessage(message) {
+    const yn = state.yn;
+    if (yn.role === "host" && message.type === "mflip") { cardsFlip("guest", Number(message.index)); return; }
+    if (yn.role !== "guest" || message.type !== "mstate" || !message.mc || typeof message.mc !== "object") return;
+    const mc = message.mc;
+    const valid = Array.isArray(mc.board) && mc.board.length <= 16 && mc.board.every(id => CARD_PICTURES.includes(id));
+    if (!valid) return;
+    const now = Date.now();
+    yn.mc = { ...mc, levelEnds: now + Number(mc.levelLeft || 0), turnEnds: now + Number(mc.turnLeft || 0) };
+    showCards();
+  }
+
+  function cardsClock(ms) {
+    const seconds = Math.max(0, Math.ceil(ms / 1000));
+    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+  }
+
+  function renderCardsBoard() {
+    const yn = state.yn;
+    const mc = yn.mc;
+    if (!mc) return renderPlayLoading();
+    const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
+    if (mc.phase === "between") {
+      return `<article class="glg-score glg-mc-between">
+        <div class="glg-mc-hug" style="background-image:url('assets/cards/hug.webp')" aria-hidden="true"></div>
+        <h3>${escapeHtml(tr(mc.note || "mcLevelDone"))}</h3>
+        <p class="glg-muted">${escapeHtml(tr("mcNext", { n: mc.level + 2 }))}</p>
+      </article>`;
+    }
+    const myTurn = mc.turn === yn.role;
+    const columns = mc.board.length > 8 ? 4 : 4;
+    const tiles = mc.board.map((id, index) => {
+      const shown = mc.matched.includes(index) || mc.open.includes(index);
+      const matched = mc.matched.includes(index);
+      return `<button class="glg-mc-card${shown ? " is-open" : ""}${matched ? " is-matched" : ""}" type="button" data-action="mc-flip" data-index="${index}"${myTurn && !shown && !mc.lock ? "" : " disabled"} aria-label="${index + 1}">
+        <span class="glg-mc-back">${HEART}</span>
+        <span class="glg-mc-face" style="background-image:url('assets/loves/${id}.webp')">${matched ? `<i>${HEART}</i>` : ""}</span>
+      </button>`;
+    }).join("");
+    const turnLeft = Math.max(0, mc.turnEnds - Date.now()) / 1000;
+    return `
+      <div class="glg-mc-head">
+        <p class="glg-step">${escapeHtml(tr("mcLevel", { n: mc.level + 1, total: CARD_LEVELS.length }))}</p>
+        <b class="glg-mc-clock" data-mc-clock>${escapeHtml(cardsClock(mc.levelEnds - Date.now()))}</b>
+      </div>
+      <p class="glg-mc-turn${myTurn ? " is-mine" : ""}">${escapeHtml(myTurn ? tr("mcTurnYou") : tr("mcTurnThem", { name: partnerName }))}</p>
+      <div class="glg-yn-timer" aria-hidden="true"><i style="animation-duration:${CARD_TURN_SECONDS}s;animation-delay:-${(CARD_TURN_SECONDS - turnLeft).toFixed(2)}s"></i></div>
+      <div class="glg-mc-grid" style="--mc-columns:${columns}">${tiles}</div>
+      <p class="glg-mc-scores"><span>${escapeHtml(tr("ynYou"))} <b>${HEART} ${mc.scores[yn.role]}</b></span><span>${escapeHtml(partnerName)} <b>${HEART} ${mc.scores[yn.role === "host" ? "guest" : "host"]}</b></span></p>`;
+  }
+
+  function renderCardsEnd() {
+    const yn = state.yn;
+    const mc = yn.mc;
+    const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
+    const ratio = mc.total ? mc.found / mc.total : 0;
+    return `
+      <article class="glg-score">
+        <div class="glg-mc-hug" style="background-image:url('assets/cards/hug.webp')" aria-hidden="true"></div>
+        <p class="glg-score-number">${escapeHtml(tr("mcFinal", { found: mc.found, total: mc.total }))}</p>
+        <h3>${escapeHtml(tr(ratio >= 0.7 ? "mcFinalHigh" : "mcFinalMid"))}</h3>
+        <p class="glg-mc-scores"><span>${escapeHtml(tr("ynYou"))} <b>${HEART} ${mc.scores[yn.role]}</b></span><span>${escapeHtml(partnerName)} <b>${HEART} ${mc.scores[yn.role === "host" ? "guest" : "host"]}</b></span></p>
+      </article>
+      <div class="glg-actions glg-stack">
+        ${yn.role === "host" ? `<button class="glg-primary" type="button" data-action="yn-again"${yn.partnerOnline ? "" : " disabled"}>↻ ${escapeHtml(tr("ynAgain"))}</button>` : `<p class="glg-muted glg-center">${escapeHtml(tr("ynWaitHost", { name: yn.hostName }))}</p>`}
+        <button class="glg-secondary" type="button" data-action="close">${escapeHtml(tr("home"))}</button>
+      </div>`;
+  }
+
+  // Часы уровня тикают без перерисовки поля.
+  setInterval(() => {
+    const clock = state.root?.querySelector("[data-mc-clock]");
+    if (clock && state.yn?.mc) clock.textContent = cardsClock(state.yn.mc.levelEnds - Date.now());
+  }, 500);
 
   // ——— Вход на главной и окно покупки ———
 
@@ -1651,7 +1867,7 @@
       else card.querySelector("#paywallLead")?.after(block);
     }
     const group = (name, items) => `<section><h3>${escapeHtml(tr(name))}</h3><ul>${items.map(([key, soon]) => `<li${soon ? ' class="is-soon"' : ""}>${escapeHtml(tr(key))}${soon ? ` <span class="glg-chip">${escapeHtml(tr("soon"))}</span>` : ""}</li>`).join("")}</ul></section>`;
-    block.innerHTML = group("groupGames", [["featQuiz"], ["featYesNo"], ["featLoves"], ["featGamesSoon2", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
+    block.innerHTML = group("groupGames", [["featQuiz"], ["featYesNo"], ["featLoves"], ["featCards"], ["featGamesSoon3", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
   }
 
   function localize() {

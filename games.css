@@ -246,3 +246,28 @@ html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
 .glg-lv-common span { display: block; padding: 6px; }
 @media (prefers-reduced-motion: reduce) { .glg-layer .glg-lv-tile { animation: none; } }
 .glg-lv-grid.is-revealed .glg-lv-tile, .glg-lv-grid.is-answered .glg-lv-tile { animation: none; }
+
+/* «Карточки с мишками»: игра на память вдвоём. */
+.glg-mc-badge { display: grid; grid-template-columns: repeat(4, 44px); justify-content: center; gap: 6px; margin-bottom: 12px; }
+.glg-mc-badge i { display: grid; place-items: center; aspect-ratio: 3 / 4; border-radius: 14px; background-position: center; background-size: cover; box-shadow: 0 6px 14px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.glg-mc-badge i.is-back, .glg-mc-back { background: linear-gradient(145deg, var(--ui-accent), var(--ui-accent-deep)); }
+.glg-mc-badge svg, .glg-mc-back svg { width: 40%; fill: color-mix(in srgb, var(--cream) 75%, transparent); }
+.glg-mc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.glg-mc-clock { color: var(--ui-accent-deep); font-size: 16px; font-variant-numeric: tabular-nums; }
+.glg-mc-turn { margin: 0 0 8px; color: var(--ui-muted); font-size: 13px; font-weight: 800; text-align: center; }
+.glg-mc-turn.is-mine { color: var(--ui-accent-deep); }
+.glg-mc-grid { display: grid; grid-template-columns: repeat(var(--mc-columns, 4), 1fr); gap: 8px; margin-top: 12px; perspective: 900px; }
+.glg-layer .glg-mc-card { position: relative; aspect-ratio: 3 / 4; padding: 0; border: 0; border-radius: 14px; background: none; transform-style: preserve-3d; transition: transform .45s cubic-bezier(.16, 1, .3, 1); }
+.glg-layer .glg-mc-card:disabled { cursor: default; }
+.glg-layer .glg-mc-card:not(:disabled):active { transform: scale(.95); }
+.glg-mc-card.is-open { transform: rotateY(180deg); }
+.glg-mc-back, .glg-mc-face { position: absolute; inset: 0; display: grid; place-items: center; border-radius: inherit; backface-visibility: hidden; box-shadow: 0 8px 18px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.glg-mc-face { background-position: center; background-size: cover; transform: rotateY(180deg); }
+.glg-mc-card.is-matched .glg-mc-face { box-shadow: 0 0 0 3px var(--ui-accent), 0 8px 18px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.glg-mc-face i { position: absolute; top: 6px; inset-inline-end: 6px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--cream); }
+.glg-mc-face i svg { width: 14px; fill: var(--glg-heart); }
+.glg-mc-scores { display: flex; justify-content: center; gap: 22px; margin: 16px 0 0; font-size: 13px; font-weight: 800; }
+.glg-mc-scores b { color: var(--ui-accent-deep); }
+.glg-mc-scores svg { width: 13px; height: 13px; fill: var(--glg-heart); vertical-align: -1px; }
+.glg-mc-hug { aspect-ratio: 3 / 2; margin: 0 0 14px; border-radius: 16px; background-position: center; background-size: cover; }
+@media (prefers-reduced-motion: reduce) { .glg-layer .glg-mc-card { transition: none; } }

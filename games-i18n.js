@@ -137,7 +137,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Ihr habt so viel gemeinsam!",
       "lvFinalMid": "So verschieden — und ihr ergänzt euch",
       "featLoves": "Live-Spiel „Was wir lieben“ — 4 Bilder, gemeinsam wählen",
-      "featGamesSoon2": "Duell „Wer ist schneller“ und Memory-Karten mit Bärchen"
+      "featGamesSoon2": "Duell „Wer ist schneller“ und Memory-Karten mit Bärchen",
+      "mcTitle": "Memory-Karten mit Bärchen",
+      "mcNote": "Ein Live-Memory zu zweit: Deckt abwechselnd zwei Karten auf und findet die Paare. Drei Level, von 8 bis 16 Karten.",
+      "mcShareText": "{name} lädt dich zum Live-Spiel „Memory-Karten mit Bärchen“ ein",
+      "mcJoinLead": "{name} wartet auf dich. Findet die Paare abwechselnd!",
+      "mcLevel": "Level {n} von {total}",
+      "mcTurnYou": "Du bist dran — deck zwei Karten auf",
+      "mcTurnThem": "{name} ist dran",
+      "mcPairs": "Gefundene Paare: {found} von {total}",
+      "mcLevelDone": "Alle Paare gefunden!",
+      "mcTimeUp": "Die Zeit für dieses Level ist um",
+      "mcNext": "Weiter: Level {n}",
+      "mcFinal": "Gefundene Paare: {found} von {total}",
+      "mcFinalHigh": "Ein tolles Team!",
+      "mcFinalMid": "Schönes Spiel — noch eine Runde?",
+      "featCards": "Live-Spiel „Memory-Karten mit Bärchen“ — findet Paare zu zweit",
+      "featGamesSoon3": "Duell „Wer ist schneller“"
     },
     "questions": {
       "q01": [
@@ -1012,7 +1028,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "¡Tenéis muchísimo en común!",
       "lvFinalMid": "Tan distintos, y os complementáis",
       "featLoves": "Juego en directo «Lo que nos gusta»: 4 imágenes, elegid juntos",
-      "featGamesSoon2": "Duelo «¿Quién es más rápido?» y cartas de memoria con ositos"
+      "featGamesSoon2": "Duelo «¿Quién es más rápido?» y cartas de memoria con ositos",
+      "mcTitle": "Cartas de memoria con ositos",
+      "mcNote": "Un juego de memoria en directo para dos: por turnos, dad la vuelta a dos cartas y encontrad las parejas. Tres niveles, de 8 a 16 cartas.",
+      "mcShareText": "{name} te invita al juego en directo «Cartas de memoria con ositos»",
+      "mcJoinLead": "{name} te espera. ¡Encontrad las parejas por turnos!",
+      "mcLevel": "Nivel {n} de {total}",
+      "mcTurnYou": "Tu turno: da la vuelta a dos cartas",
+      "mcTurnThem": "Turno de {name}",
+      "mcPairs": "Parejas encontradas: {found} de {total}",
+      "mcLevelDone": "¡Todas las parejas encontradas!",
+      "mcTimeUp": "Se acabó el tiempo del nivel",
+      "mcNext": "Siguiente: nivel {n}",
+      "mcFinal": "Parejas encontradas: {found} de {total}",
+      "mcFinalHigh": "¡Un equipo estupendo!",
+      "mcFinalMid": "Buena partida: ¿otra?",
+      "featCards": "Juego en directo «Cartas de memoria con ositos»: buscad parejas juntos",
+      "featGamesSoon3": "Duelo «¿Quién es más rápido?»"
     },
     "questions": {
       "q01": [
@@ -1887,7 +1919,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Avete così tanto in comune!",
       "lvFinalMid": "Così diversi, e vi completate",
       "featLoves": "Gioco dal vivo «Ciò che amiamo»: 4 immagini, scegliete insieme",
-      "featGamesSoon2": "Sfida «Chi è più veloce» e carte memory con gli orsetti"
+      "featGamesSoon2": "Sfida «Chi è più veloce» e carte memory con gli orsetti",
+      "mcTitle": "Carte memory con gli orsetti",
+      "mcNote": "Un memory dal vivo in due: a turno girate due carte e trovate le coppie. Tre livelli, da 8 a 16 carte.",
+      "mcShareText": "{name} ti invita al gioco dal vivo «Carte memory con gli orsetti»",
+      "mcJoinLead": "{name} ti aspetta. Trovate le coppie a turno!",
+      "mcLevel": "Livello {n} di {total}",
+      "mcTurnYou": "Tocca a te: gira due carte",
+      "mcTurnThem": "Tocca a {name}",
+      "mcPairs": "Coppie trovate: {found} su {total}",
+      "mcLevelDone": "Tutte le coppie trovate!",
+      "mcTimeUp": "Il tempo del livello è finito",
+      "mcNext": "Poi: livello {n}",
+      "mcFinal": "Coppie trovate: {found} su {total}",
+      "mcFinalHigh": "Una squadra fantastica!",
+      "mcFinalMid": "Bella partita: un’altra?",
+      "featCards": "Gioco dal vivo «Carte memory con gli orsetti»: trovate le coppie insieme",
+      "featGamesSoon3": "Sfida «Chi è più veloce»"
     },
     "questions": {
       "q01": [
@@ -2762,7 +2810,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Macie tak wiele wspólnego!",
       "lvFinalMid": "Tacy różni — i świetnie się uzupełniacie",
       "featLoves": "Gra na żywo „Co kochamy” — 4 obrazki, wybierajcie razem",
-      "featGamesSoon2": "Pojedynek „Kto szybszy” i karty pamięci z misiami"
+      "featGamesSoon2": "Pojedynek „Kto szybszy” i karty pamięci z misiami",
+      "mcTitle": "Karty pamięci z misiami",
+      "mcNote": "Memory na żywo we dwoje: na zmianę odkrywajcie po dwie karty i szukajcie par. Trzy poziomy, od 8 do 16 kart.",
+      "mcShareText": "{name} zaprasza cię do gry na żywo „Karty pamięci z misiami”",
+      "mcJoinLead": "{name} czeka na ciebie. Szukajcie par na zmianę!",
+      "mcLevel": "Poziom {n} z {total}",
+      "mcTurnYou": "Twój ruch — odkryj dwie karty",
+      "mcTurnThem": "Ruch: {name}",
+      "mcPairs": "Znalezione pary: {found} z {total}",
+      "mcLevelDone": "Wszystkie pary znalezione!",
+      "mcTimeUp": "Czas poziomu minął",
+      "mcNext": "Dalej: poziom {n}",
+      "mcFinal": "Znalezione pary: {found} z {total}",
+      "mcFinalHigh": "Świetna drużyna!",
+      "mcFinalMid": "Dobra gra — jeszcze raz?",
+      "featCards": "Gra na żywo „Karty pamięci z misiami” — szukajcie par razem",
+      "featGamesSoon3": "Pojedynek „Kto szybszy”"
     },
     "questions": {
       "q01": [
@@ -3637,7 +3701,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "У вас так багато спільного!",
       "lvFinalMid": "Ви такі різні — і цим доповнюєте одне одного",
       "featLoves": "Жива гра «Що ми любимо» — 4 картинки, обирайте разом",
-      "featGamesSoon2": "Дуель «Хто швидше» і картки з ведмедиками"
+      "featGamesSoon2": "Дуель «Хто швидше» і картки з ведмедиками",
+      "mcTitle": "Картки з ведмедиками",
+      "mcNote": "Жива гра на пам’ять для двох: по черзі відкривайте по дві картки й шукайте пари. Три рівні — від 8 до 16 карток.",
+      "mcShareText": "{name} кличе тебе в живу гру «Картки з ведмедиками»",
+      "mcJoinLead": "{name} чекає на вас. Шукайте пари по черзі!",
+      "mcLevel": "Рівень {n} з {total}",
+      "mcTurnYou": "Ваш хід — відкрийте дві картки",
+      "mcTurnThem": "Ходить {name}",
+      "mcPairs": "Знайдено пар: {found} з {total}",
+      "mcLevelDone": "Усі пари знайдено!",
+      "mcTimeUp": "Час рівня вийшов",
+      "mcNext": "Далі — рівень {n}",
+      "mcFinal": "Знайдено пар: {found} з {total}",
+      "mcFinalHigh": "Чудова команда!",
+      "mcFinalMid": "Гарна гра — зіграймо ще!",
+      "featCards": "Жива гра «Картки з ведмедиками» — шукайте пари разом",
+      "featGamesSoon3": "Дуель «Хто швидше»"
     },
     "questions": {
       "q01": [
@@ -4512,7 +4592,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Vocês têm tanto em comum!",
       "lvFinalMid": "Tão diferentes — e se completam",
       "featLoves": "Jogo ao vivo «O que amamos» — 4 imagens, escolham juntos",
-      "featGamesSoon2": "Duelo «Quem é mais rápido» e cartas de memória com ursinhos"
+      "featGamesSoon2": "Duelo «Quem é mais rápido» e cartas de memória com ursinhos",
+      "mcTitle": "Cartas de memória com ursinhos",
+      "mcNote": "Um jogo da memória ao vivo a dois: revezem-se virando duas cartas e encontrem os pares. Três níveis, de 8 a 16 cartas.",
+      "mcShareText": "{name} convida você para o jogo ao vivo «Cartas de memória com ursinhos»",
+      "mcJoinLead": "{name} está esperando por você. Encontrem os pares revezando!",
+      "mcLevel": "Nível {n} de {total}",
+      "mcTurnYou": "Sua vez — vire duas cartas",
+      "mcTurnThem": "Vez de {name}",
+      "mcPairs": "Pares encontrados: {found} de {total}",
+      "mcLevelDone": "Todos os pares encontrados!",
+      "mcTimeUp": "O tempo do nível acabou",
+      "mcNext": "Próximo: nível {n}",
+      "mcFinal": "Pares encontrados: {found} de {total}",
+      "mcFinalHigh": "Que time incrível!",
+      "mcFinalMid": "Bom jogo — mais uma?",
+      "featCards": "Jogo ao vivo «Cartas de memória com ursinhos» — encontrem pares juntos",
+      "featGamesSoon3": "Duelo «Quem é mais rápido»"
     },
     "questions": {
       "q01": [
@@ -5387,7 +5483,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Jullie hebben zoveel gemeen!",
       "lvFinalMid": "Zo verschillend — en jullie vullen elkaar aan",
       "featLoves": "Live spel ‘Waar we van houden’ — 4 plaatjes, samen kiezen",
-      "featGamesSoon2": "Duel ‘Wie is sneller’ en memorykaarten met beertjes"
+      "featGamesSoon2": "Duel ‘Wie is sneller’ en memorykaarten met beertjes",
+      "mcTitle": "Memorykaarten met beertjes",
+      "mcNote": "Een live memoryspel voor twee: draai om de beurt twee kaarten om en zoek de paren. Drie levels, van 8 tot 16 kaarten.",
+      "mcShareText": "{name} nodigt je uit voor het live spel ‘Memorykaarten met beertjes’",
+      "mcJoinLead": "{name} wacht op je. Zoek om de beurt de paren!",
+      "mcLevel": "Level {n} van {total}",
+      "mcTurnYou": "Jij bent aan de beurt — draai twee kaarten om",
+      "mcTurnThem": "{name} is aan de beurt",
+      "mcPairs": "Gevonden paren: {found} van {total}",
+      "mcLevelDone": "Alle paren gevonden!",
+      "mcTimeUp": "De tijd voor dit level is om",
+      "mcNext": "Volgende: level {n}",
+      "mcFinal": "Gevonden paren: {found} van {total}",
+      "mcFinalHigh": "Wat een team!",
+      "mcFinalMid": "Leuk gespeeld — nog een keer?",
+      "featCards": "Live spel ‘Memorykaarten met beertjes’ — samen paren zoeken",
+      "featGamesSoon3": "Duel ‘Wie is sneller’"
     },
     "questions": {
       "q01": [
@@ -6262,7 +6374,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Ne çok ortak noktanız var!",
       "lvFinalMid": "Çok farklısınız — ve birbirinizi tamamlıyorsunuz",
       "featLoves": "Canlı “Neleri seviyoruz” oyunu — 4 resim, birlikte seçin",
-      "featGamesSoon2": "“Kim daha hızlı” düellosu ve ayıcıklı hafıza kartları"
+      "featGamesSoon2": "“Kim daha hızlı” düellosu ve ayıcıklı hafıza kartları",
+      "mcTitle": "Ayıcıklı hafıza kartları",
+      "mcNote": "İki kişilik canlı hafıza oyunu: sırayla ikişer kart açın ve eşleri bulun. 8’den 16 karta üç seviye.",
+      "mcShareText": "{name} seni canlı “Ayıcıklı hafıza kartları” oyununa davet ediyor",
+      "mcJoinLead": "{name} seni bekliyor. Eşleri sırayla bulun!",
+      "mcLevel": "Seviye {n}/{total}",
+      "mcTurnYou": "Sıra sende — iki kart aç",
+      "mcTurnThem": "Sıra {name} adlı kişide",
+      "mcPairs": "Bulunan eşler: {found}/{total}",
+      "mcLevelDone": "Tüm eşler bulundu!",
+      "mcTimeUp": "Bu seviyenin süresi doldu",
+      "mcNext": "Sırada: seviye {n}",
+      "mcFinal": "Bulunan eşler: {found}/{total}",
+      "mcFinalHigh": "Harika bir takım!",
+      "mcFinalMid": "Güzel oyundu — bir daha?",
+      "featCards": "Canlı “Ayıcıklı hafıza kartları” — eşleri birlikte bulun",
+      "featGamesSoon3": "“Kim daha hızlı” düellosu"
     },
     "questions": {
       "q01": [
@@ -7137,7 +7265,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Aveți atât de multe în comun!",
       "lvFinalMid": "Atât de diferiți — și vă completați",
       "featLoves": "Jocul live „Ce iubim” — 4 imagini, alegeți împreună",
-      "featGamesSoon2": "Duelul „Cine e mai rapid” și cărți de memorie cu ursuleți"
+      "featGamesSoon2": "Duelul „Cine e mai rapid” și cărți de memorie cu ursuleți",
+      "mcTitle": "Cărți de memorie cu ursuleți",
+      "mcNote": "Un joc de memorie live în doi: pe rând, întoarceți câte două cărți și găsiți perechile. Trei niveluri, de la 8 la 16 cărți.",
+      "mcShareText": "{name} te invită la jocul live „Cărți de memorie cu ursuleți”",
+      "mcJoinLead": "{name} te așteaptă. Găsiți perechile pe rând!",
+      "mcLevel": "Nivelul {n} din {total}",
+      "mcTurnYou": "E rândul tău — întoarce două cărți",
+      "mcTurnThem": "E rândul lui {name}",
+      "mcPairs": "Perechi găsite: {found} din {total}",
+      "mcLevelDone": "Toate perechile au fost găsite!",
+      "mcTimeUp": "Timpul nivelului s-a terminat",
+      "mcNext": "Urmează: nivelul {n}",
+      "mcFinal": "Perechi găsite: {found} din {total}",
+      "mcFinalHigh": "O echipă minunată!",
+      "mcFinalMid": "Joc frumos — încă unul?",
+      "featCards": "Jocul live „Cărți de memorie cu ursuleți” — găsiți perechi împreună",
+      "featGamesSoon3": "Duelul „Cine e mai rapid”"
     },
     "questions": {
       "q01": [
@@ -8012,7 +8156,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Máte toho tolik společného!",
       "lvFinalMid": "Tak rozdílní — a skvěle se doplňujete",
       "featLoves": "Živá hra „Co máme rádi“ — 4 obrázky, vybírejte spolu",
-      "featGamesSoon2": "Souboj „Kdo je rychlejší“ a pexeso s medvídky"
+      "featGamesSoon2": "Souboj „Kdo je rychlejší“ a pexeso s medvídky",
+      "mcTitle": "Pexeso s medvídky",
+      "mcNote": "Živé pexeso pro dva: střídavě otáčejte po dvou kartách a hledejte páry. Tři úrovně, od 8 do 16 karet.",
+      "mcShareText": "{name} tě zve do živé hry „Pexeso s medvídky“",
+      "mcJoinLead": "{name} na vás čeká. Hledejte páry střídavě!",
+      "mcLevel": "Úroveň {n} z {total}",
+      "mcTurnYou": "Jste na tahu — otočte dvě karty",
+      "mcTurnThem": "Na tahu: {name}",
+      "mcPairs": "Nalezené páry: {found} z {total}",
+      "mcLevelDone": "Všechny páry nalezeny!",
+      "mcTimeUp": "Čas úrovně vypršel",
+      "mcNext": "Dál: úroveň {n}",
+      "mcFinal": "Nalezené páry: {found} z {total}",
+      "mcFinalHigh": "Skvělý tým!",
+      "mcFinalMid": "Pěkná hra — ještě jednu?",
+      "featCards": "Živá hra „Pexeso s medvídky“ — hledejte páry spolu",
+      "featGamesSoon3": "Souboj „Kdo je rychlejší“"
     },
     "questions": {
       "q01": [
@@ -8887,7 +9047,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Ni har så mycket gemensamt!",
       "lvFinalMid": "Så olika — och ni kompletterar varandra",
       "featLoves": "Livespelet ”Det vi älskar” — 4 bilder, välj tillsammans",
-      "featGamesSoon2": "Duellen ”Vem är snabbast” och memorykort med björnar"
+      "featGamesSoon2": "Duellen ”Vem är snabbast” och memorykort med björnar",
+      "mcTitle": "Memorykort med björnar",
+      "mcNote": "Ett livememory för två: vänd två kort i taget, turvis, och hitta paren. Tre nivåer, från 8 till 16 kort.",
+      "mcShareText": "{name} bjuder in dig till livespelet ”Memorykort med björnar”",
+      "mcJoinLead": "{name} väntar på dig. Hitta paren turvis!",
+      "mcLevel": "Nivå {n} av {total}",
+      "mcTurnYou": "Din tur — vänd två kort",
+      "mcTurnThem": "{name}s tur",
+      "mcPairs": "Hittade par: {found} av {total}",
+      "mcLevelDone": "Alla par hittade!",
+      "mcTimeUp": "Tiden för nivån är slut",
+      "mcNext": "Nästa: nivå {n}",
+      "mcFinal": "Hittade par: {found} av {total}",
+      "mcFinalHigh": "Ett fantastiskt lag!",
+      "mcFinalMid": "Fint spelat — en gång till?",
+      "featCards": "Livespelet ”Memorykort med björnar” — hitta par tillsammans",
+      "featGamesSoon3": "Duellen ”Vem är snabbast”"
     },
     "questions": {
       "q01": [
@@ -9762,7 +9938,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Έχετε τόσα κοινά!",
       "lvFinalMid": "Τόσο διαφορετικοί — και συμπληρώνεστε",
       "featLoves": "Ζωντανό παιχνίδι «Τι αγαπάμε» — 4 εικόνες, διαλέξτε μαζί",
-      "featGamesSoon2": "Μονομαχία «Ποιος είναι πιο γρήγορος» και κάρτες μνήμης με αρκουδάκια"
+      "featGamesSoon2": "Μονομαχία «Ποιος είναι πιο γρήγορος» και κάρτες μνήμης με αρκουδάκια",
+      "mcTitle": "Κάρτες μνήμης με αρκουδάκια",
+      "mcNote": "Ζωντανό παιχνίδι μνήμης για δύο: γυρίστε με τη σειρά δύο κάρτες και βρείτε τα ζευγάρια. Τρία επίπεδα, από 8 έως 16 κάρτες.",
+      "mcShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Κάρτες μνήμης με αρκουδάκια»",
+      "mcJoinLead": "Σας περιμένει: {name}. Βρείτε τα ζευγάρια με τη σειρά!",
+      "mcLevel": "Επίπεδο {n} από {total}",
+      "mcTurnYou": "Η σειρά σας — γυρίστε δύο κάρτες",
+      "mcTurnThem": "Σειρά: {name}",
+      "mcPairs": "Ζευγάρια: {found} από {total}",
+      "mcLevelDone": "Βρέθηκαν όλα τα ζευγάρια!",
+      "mcTimeUp": "Ο χρόνος του επιπέδου τελείωσε",
+      "mcNext": "Επόμενο: επίπεδο {n}",
+      "mcFinal": "Ζευγάρια: {found} από {total}",
+      "mcFinalHigh": "Υπέροχη ομάδα!",
+      "mcFinalMid": "Ωραίο παιχνίδι — άλλο ένα;",
+      "featCards": "Ζωντανό παιχνίδι «Κάρτες μνήμης με αρκουδάκια» — βρείτε ζευγάρια μαζί",
+      "featGamesSoon3": "Μονομαχία «Ποιος είναι πιο γρήγορος»"
     },
     "questions": {
       "q01": [
@@ -10637,7 +10829,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "I har så meget til fælles!",
       "lvFinalMid": "Så forskellige — og I supplerer hinanden",
       "featLoves": "Livespillet “Det, vi elsker” — 4 billeder, vælg sammen",
-      "featGamesSoon2": "Duellen “Hvem er hurtigst” og huskekort med bamser"
+      "featGamesSoon2": "Duellen “Hvem er hurtigst” og huskekort med bamser",
+      "mcTitle": "Huskekort med bamser",
+      "mcNote": "Et live vendespil for to: vend skiftevis to kort og find parrene. Tre niveauer, fra 8 til 16 kort.",
+      "mcShareText": "{name} inviterer dig til livespillet “Huskekort med bamser”",
+      "mcJoinLead": "{name} venter på dig. Find parrene på skift!",
+      "mcLevel": "Niveau {n} af {total}",
+      "mcTurnYou": "Din tur — vend to kort",
+      "mcTurnThem": "{name}s tur",
+      "mcPairs": "Fundne par: {found} af {total}",
+      "mcLevelDone": "Alle par er fundet!",
+      "mcTimeUp": "Tiden for niveauet er gået",
+      "mcNext": "Næste: niveau {n}",
+      "mcFinal": "Fundne par: {found} af {total}",
+      "mcFinalHigh": "Sikke et hold!",
+      "mcFinalMid": "Godt spil — en gang til?",
+      "featCards": "Livespillet “Huskekort med bamser” — find par sammen",
+      "featGamesSoon3": "Duellen “Hvem er hurtigst”"
     },
     "questions": {
       "q01": [
@@ -11512,7 +11720,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Dere har så mye til felles!",
       "lvFinalMid": "Så ulike — og dere utfyller hverandre",
       "featLoves": "Livespillet «Det vi elsker» — 4 bilder, velg sammen",
-      "featGamesSoon2": "Duellen «Hvem er raskest» og huskekort med bamser"
+      "featGamesSoon2": "Duellen «Hvem er raskest» og huskekort med bamser",
+      "mcTitle": "Huskekort med bamser",
+      "mcNote": "Et live huskespill for to: snu to kort hver sin gang og finn parene. Tre nivåer, fra 8 til 16 kort.",
+      "mcShareText": "{name} inviterer deg til livespillet «Huskekort med bamser»",
+      "mcJoinLead": "{name} venter på deg. Finn parene på omgang!",
+      "mcLevel": "Nivå {n} av {total}",
+      "mcTurnYou": "Din tur — snu to kort",
+      "mcTurnThem": "{name} sin tur",
+      "mcPairs": "Funnet par: {found} av {total}",
+      "mcLevelDone": "Alle parene er funnet!",
+      "mcTimeUp": "Tiden for nivået er ute",
+      "mcNext": "Neste: nivå {n}",
+      "mcFinal": "Funnet par: {found} av {total}",
+      "mcFinalHigh": "For et lag!",
+      "mcFinalMid": "Fint spilt — en gang til?",
+      "featCards": "Livespillet «Huskekort med bamser» — finn par sammen",
+      "featGamesSoon3": "Duellen «Hvem er raskest»"
     },
     "questions": {
       "q01": [
@@ -12387,7 +12611,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Teillä on niin paljon yhteistä!",
       "lvFinalMid": "Niin erilaiset — ja täydennätte toisianne",
       "featLoves": "Live-peli ”Mitä rakastamme” — 4 kuvaa, valitkaa yhdessä",
-      "featGamesSoon2": "Kaksintaistelu ”Kuka on nopein” ja muistipeli nallekorteilla"
+      "featGamesSoon2": "Kaksintaistelu ”Kuka on nopein” ja muistipeli nallekorteilla",
+      "mcTitle": "Muistipeli nallekorteilla",
+      "mcNote": "Live-muistipeli kahdelle: kääntäkää vuorotellen kaksi korttia ja etsikää parit. Kolme tasoa, 8–16 korttia.",
+      "mcShareText": "{name} kutsuu sinut live-peliin ”Muistipeli nallekorteilla”",
+      "mcJoinLead": "{name} odottaa sinua. Etsikää parit vuorotellen!",
+      "mcLevel": "Taso {n}/{total}",
+      "mcTurnYou": "Sinun vuorosi — käännä kaksi korttia",
+      "mcTurnThem": "Vuorossa: {name}",
+      "mcPairs": "Löydetyt parit: {found}/{total}",
+      "mcLevelDone": "Kaikki parit löytyivät!",
+      "mcTimeUp": "Tason aika loppui",
+      "mcNext": "Seuraavaksi: taso {n}",
+      "mcFinal": "Löydetyt parit: {found}/{total}",
+      "mcFinalHigh": "Upea tiimi!",
+      "mcFinalMid": "Hyvä peli — uudestaan?",
+      "featCards": "Live-peli ”Muistipeli nallekorteilla” — etsikää parit yhdessä",
+      "featGamesSoon3": "Kaksintaistelu ”Kuka on nopein”"
     },
     "questions": {
       "q01": [
@@ -13262,7 +13502,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "共通点がたくさん！",
       "lvFinalMid": "ちがうからこそ、補い合えるふたり",
       "featLoves": "ライブゲーム「ふたりの好きなもの」— 4枚の絵からいっしょに選ぶ",
-      "featGamesSoon2": "早押し対決と、くまの神経衰弱"
+      "featGamesSoon2": "早押し対決と、くまの神経衰弱",
+      "mcTitle": "くまの神経衰弱",
+      "mcNote": "ふたりで遊ぶライブ神経衰弱。交代で2枚ずつめくって、ペアを探そう。8枚から16枚まで、3つのレベル。",
+      "mcShareText": "{name}からライブゲーム「くまの神経衰弱」への招待です",
+      "mcJoinLead": "{name}が待っています。交代でペアを探そう！",
+      "mcLevel": "レベル {n}/{total}",
+      "mcTurnYou": "あなたの番 — 2枚めくってね",
+      "mcTurnThem": "{name}の番",
+      "mcPairs": "見つけたペア：{found}/{total}",
+      "mcLevelDone": "全部のペアを見つけた！",
+      "mcTimeUp": "このレベルは時間切れ",
+      "mcNext": "次はレベル {n}",
+      "mcFinal": "見つけたペア：{found}/{total}",
+      "mcFinalHigh": "最高のチーム！",
+      "mcFinalMid": "いい勝負！もう一回？",
+      "featCards": "ライブゲーム「くまの神経衰弱」— ふたりでペア探し",
+      "featGamesSoon3": "早押し対決"
     },
     "questions": {
       "q01": [
@@ -14137,7 +14393,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "공통점이 정말 많아요!",
       "lvFinalMid": "다르지만 서로를 채워 주는 사이",
       "featLoves": "실시간 게임 '우리가 좋아하는 것' — 그림 4장, 함께 고르기",
-      "featGamesSoon2": "누가 더 빠를까 대결과 곰돌이 기억력 카드"
+      "featGamesSoon2": "누가 더 빠를까 대결과 곰돌이 기억력 카드",
+      "mcTitle": "곰돌이 기억력 카드",
+      "mcNote": "둘이 하는 실시간 기억력 게임: 번갈아 카드 두 장을 뒤집어 짝을 찾아요. 8장부터 16장까지 세 단계.",
+      "mcShareText": "{name} 님이 실시간 게임 '곰돌이 기억력 카드'에 초대했어요",
+      "mcJoinLead": "{name} 님이 기다리고 있어요. 번갈아 짝을 찾아요!",
+      "mcLevel": "{total}단계 중 {n}단계",
+      "mcTurnYou": "내 차례 — 카드 두 장을 뒤집어요",
+      "mcTurnThem": "{name} 님 차례",
+      "mcPairs": "찾은 짝: {found}/{total}",
+      "mcLevelDone": "모든 짝을 찾았어요!",
+      "mcTimeUp": "이번 단계 시간이 끝났어요",
+      "mcNext": "다음: {n}단계",
+      "mcFinal": "찾은 짝: {found}/{total}",
+      "mcFinalHigh": "환상의 팀!",
+      "mcFinalMid": "좋은 게임! 한 번 더?",
+      "featCards": "실시간 게임 '곰돌이 기억력 카드' — 함께 짝 찾기",
+      "featGamesSoon3": "누가 더 빠를까 대결"
     },
     "questions": {
       "q01": [
@@ -15012,7 +15284,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "你們有好多共同點！",
       "lvFinalMid": "如此不同，卻能互相補足",
       "featLoves": "即時遊戲「我們喜歡的」— 4 張圖片，一起選",
-      "featGamesSoon2": "「誰最快」對決與小熊記憶卡"
+      "featGamesSoon2": "「誰最快」對決與小熊記憶卡",
+      "mcTitle": "小熊記憶卡",
+      "mcNote": "兩人即時記憶遊戲：輪流翻開兩張卡片，找出成對的圖案。共三關，從 8 張到 16 張。",
+      "mcShareText": "{name} 邀請你玩即時遊戲「小熊記憶卡」",
+      "mcJoinLead": "{name} 在等你。輪流找出成對的卡片吧！",
+      "mcLevel": "第 {n}/{total} 關",
+      "mcTurnYou": "輪到你了 — 翻開兩張卡片",
+      "mcTurnThem": "輪到 {name}",
+      "mcPairs": "已找到：{found}/{total} 對",
+      "mcLevelDone": "全部配對完成！",
+      "mcTimeUp": "本關時間到",
+      "mcNext": "下一關：第 {n} 關",
+      "mcFinal": "找到 {found}/{total} 對",
+      "mcFinalHigh": "超棒的團隊！",
+      "mcFinalMid": "玩得好！再來一局？",
+      "featCards": "即時遊戲「小熊記憶卡」— 一起找配對",
+      "featGamesSoon3": "「誰最快」對決"
     },
     "questions": {
       "q01": [
@@ -15887,7 +16175,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "คุณมีอะไรเหมือนกันเยอะมาก!",
       "lvFinalMid": "ต่างกัน แต่เติมเต็มกันและกัน",
       "featLoves": "เกมสด «สิ่งที่เรารัก» — 4 ภาพ เลือกด้วยกัน",
-      "featGamesSoon2": "ดวล «ใครเร็วกว่า» และการ์ดจับคู่ลายหมี"
+      "featGamesSoon2": "ดวล «ใครเร็วกว่า» และการ์ดจับคู่ลายหมี",
+      "mcTitle": "การ์ดจับคู่ลายหมี",
+      "mcNote": "เกมความจำสดสำหรับสองคน: ผลัดกันเปิดการ์ดทีละสองใบแล้วหาคู่ มีสามด่าน ตั้งแต่ 8 ถึง 16 ใบ",
+      "mcShareText": "{name} ชวนคุณเล่นเกมสด «การ์ดจับคู่ลายหมี»",
+      "mcJoinLead": "{name} รอคุณอยู่ ผลัดกันหาคู่กันเลย!",
+      "mcLevel": "ด่าน {n} จาก {total}",
+      "mcTurnYou": "ตาคุณ — เปิดการ์ดสองใบ",
+      "mcTurnThem": "ตาของ {name}",
+      "mcPairs": "หาคู่ได้ {found} จาก {total}",
+      "mcLevelDone": "หาคู่ครบแล้ว!",
+      "mcTimeUp": "หมดเวลาด่านนี้",
+      "mcNext": "ต่อไป: ด่าน {n}",
+      "mcFinal": "หาคู่ได้ {found} จาก {total}",
+      "mcFinalHigh": "ทีมที่ยอดเยี่ยม!",
+      "mcFinalMid": "เล่นดีมาก — อีกรอบไหม?",
+      "featCards": "เกมสด «การ์ดจับคู่ลายหมี» — หาคู่ด้วยกัน",
+      "featGamesSoon3": "ดวล «ใครเร็วกว่า»"
     },
     "questions": {
       "q01": [
@@ -16762,7 +17066,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "بينكما الكثير من القواسم المشتركة!",
       "lvFinalMid": "مختلفان جدًا — وتكملان بعضكما",
       "featLoves": "لعبة «ما نحبه» المباشرة — 4 صور، اختارا معًا",
-      "featGamesSoon2": "تحدي «من الأسرع» وبطاقات الذاكرة مع الدببة"
+      "featGamesSoon2": "تحدي «من الأسرع» وبطاقات الذاكرة مع الدببة",
+      "mcTitle": "بطاقات الذاكرة مع الدببة",
+      "mcNote": "لعبة ذاكرة مباشرة لشخصين: اقلبا بالتناوب بطاقتين وابحثا عن الأزواج. ثلاثة مستويات، من 8 إلى 16 بطاقة.",
+      "mcShareText": "دعوة من {name} إلى اللعبة المباشرة «بطاقات الذاكرة مع الدببة»",
+      "mcJoinLead": "اللعبة جاهزة مع {name}. ابحثا عن الأزواج بالتناوب!",
+      "mcLevel": "المستوى {n} من {total}",
+      "mcTurnYou": "دورك — اقلب بطاقتين",
+      "mcTurnThem": "الدور الآن لـ {name}",
+      "mcPairs": "الأزواج المكتشفة: {found} من {total}",
+      "mcLevelDone": "تم العثور على كل الأزواج!",
+      "mcTimeUp": "انتهى وقت المستوى",
+      "mcNext": "التالي: المستوى {n}",
+      "mcFinal": "الأزواج المكتشفة: {found} من {total}",
+      "mcFinalHigh": "فريق رائع!",
+      "mcFinalMid": "لعبة جميلة — مرة أخرى؟",
+      "featCards": "لعبة «بطاقات الذاكرة مع الدببة» المباشرة — ابحثا عن الأزواج معًا",
+      "featGamesSoon3": "تحدي «من الأسرع»"
     },
     "questions": {
       "q01": [
@@ -17637,7 +17957,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Kalian punya banyak kesamaan!",
       "lvFinalMid": "Begitu berbeda — dan saling melengkapi",
       "featLoves": "Game langsung «Yang kita sukai» — 4 gambar, pilih bersama",
-      "featGamesSoon2": "Duel «Siapa paling cepat» dan kartu ingatan bergambar beruang"
+      "featGamesSoon2": "Duel «Siapa paling cepat» dan kartu ingatan bergambar beruang",
+      "mcTitle": "Kartu ingatan beruang",
+      "mcNote": "Game ingatan langsung berdua: bergantian membuka dua kartu dan temukan pasangannya. Tiga level, dari 8 sampai 16 kartu.",
+      "mcShareText": "{name} mengajakmu bermain game langsung «Kartu ingatan beruang»",
+      "mcJoinLead": "{name} menunggumu. Temukan pasangan secara bergantian!",
+      "mcLevel": "Level {n} dari {total}",
+      "mcTurnYou": "Giliranmu — buka dua kartu",
+      "mcTurnThem": "Giliran {name}",
+      "mcPairs": "Pasangan ditemukan: {found} dari {total}",
+      "mcLevelDone": "Semua pasangan ditemukan!",
+      "mcTimeUp": "Waktu level ini habis",
+      "mcNext": "Berikutnya: level {n}",
+      "mcFinal": "Pasangan ditemukan: {found} dari {total}",
+      "mcFinalHigh": "Tim yang hebat!",
+      "mcFinalMid": "Permainan seru — sekali lagi?",
+      "featCards": "Game langsung «Kartu ingatan beruang» — cari pasangan bersama",
+      "featGamesSoon3": "Duel «Siapa paling cepat»"
     },
     "questions": {
       "q01": [
@@ -18512,7 +18848,23 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "lvFinalHigh": "Hai bạn có thật nhiều điểm chung!",
       "lvFinalMid": "Khác nhau — mà bổ sung cho nhau",
       "featLoves": "Trò chơi trực tiếp «Điều chúng mình thích» — 4 bức tranh, cùng chọn",
-      "featGamesSoon2": "Đấu «Ai nhanh hơn» và thẻ ghi nhớ hình gấu"
+      "featGamesSoon2": "Đấu «Ai nhanh hơn» và thẻ ghi nhớ hình gấu",
+      "mcTitle": "Thẻ ghi nhớ hình gấu",
+      "mcNote": "Trò chơi trí nhớ trực tiếp cho hai người: lần lượt lật hai thẻ và tìm các cặp. Ba cấp độ, từ 8 đến 16 thẻ.",
+      "mcShareText": "{name} mời bạn chơi trò trực tiếp «Thẻ ghi nhớ hình gấu»",
+      "mcJoinLead": "{name} đang chờ bạn. Hãy lần lượt tìm các cặp!",
+      "mcLevel": "Cấp {n}/{total}",
+      "mcTurnYou": "Lượt của bạn — lật hai thẻ",
+      "mcTurnThem": "Lượt của {name}",
+      "mcPairs": "Đã tìm được {found}/{total} cặp",
+      "mcLevelDone": "Đã tìm đủ các cặp!",
+      "mcTimeUp": "Hết giờ cấp này",
+      "mcNext": "Tiếp theo: cấp {n}",
+      "mcFinal": "Tìm được {found}/{total} cặp",
+      "mcFinalHigh": "Một đội tuyệt vời!",
+      "mcFinalMid": "Chơi hay lắm — thêm ván nữa?",
+      "featCards": "Trò chơi trực tiếp «Thẻ ghi nhớ hình gấu» — cùng tìm cặp",
+      "featGamesSoon3": "Đấu «Ai nhanh hơn»"
     },
     "questions": {
       "q01": [
