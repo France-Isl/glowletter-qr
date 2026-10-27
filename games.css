@@ -174,3 +174,49 @@ body.glg-open { overflow: hidden; }
 }
 html[dir="rtl"] .glg-panel { right: auto; left: 0; transform: translateX(-104%); }
 html[dir="rtl"] .glg-layer.is-open .glg-panel { transform: translateX(0); }
+
+/* «Да или нет»: живая игра вдвоём. */
+.glg-yn-chips { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.glg-yn-chips b { padding: 6px 14px; border-radius: 999px; color: var(--cream); font-size: 13px; letter-spacing: .04em; }
+.glg-yn-chips b:first-child { background: var(--emerald); }
+.glg-yn-chips b:last-child { background: var(--ui-accent); }
+.glg-yn-chips i { display: grid; place-items: center; width: 34px; height: 34px; border: 2px solid var(--ui-gold); border-radius: 50%; color: var(--ui-gold); font-size: 16px; font-style: normal; font-weight: 900; }
+.glg-yn-hero { margin-top: 14px; }
+.glg-yn-wait { padding-top: 6px; }
+.glg-yn-status { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin: 0; color: var(--ui-ink); font-size: 13px; font-weight: 800; text-align: center; }
+.glg-yn-status svg { width: 18px; height: 18px; fill: var(--glg-heart); }
+.glg-yn-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ui-gold); animation: glg-beat 1.2s ease-in-out infinite; }
+
+.glg-yn-card { position: relative; overflow: hidden; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); box-shadow: 0 18px 40px color-mix(in srgb, var(--night-deep) 14%, transparent); text-align: center; animation: glg-card-in .45s cubic-bezier(.16, 1, .3, 1) both; }
+.glg-yn-art { height: clamp(150px, 34vh, 260px); background-position: center; background-size: cover; }
+.glg-yn-card h3 { margin: 0 !important; padding: 18px 18px 14px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px) !important; font-weight: 600; line-height: 1.15 !important; }
+.glg-yn-timer { height: 8px; margin: 0 18px 18px; overflow: hidden; border-radius: 999px; background: var(--glg-heart-off); }
+.glg-yn-timer i { display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--ui-gold), var(--ui-accent)); transform-origin: left center; animation-name: glg-countdown; animation-timing-function: linear; animation-fill-mode: forwards; }
+html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
+.glg-yn-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.glg-yn-actions .glg-yn-status { grid-column: 1 / -1; min-height: 64px; }
+.glg-layer .glg-yn-button { min-height: 64px; border: 0; border-radius: 18px; color: var(--cream); font-size: 16px; font-weight: 900; letter-spacing: .04em; box-shadow: 0 12px 26px color-mix(in srgb, var(--night-deep) 22%, transparent); transition: transform .15s; }
+.glg-layer .glg-yn-button:active { transform: scale(.96); }
+.glg-yn-button.is-yes { background: linear-gradient(135deg, var(--emerald), color-mix(in srgb, var(--emerald) 70%, var(--night))); }
+.glg-yn-button.is-no { background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); }
+
+.glg-yn-reveal { display: grid; gap: 6px; margin: 0 16px 18px; padding: 14px; border-radius: 16px; background: color-mix(in srgb, var(--ui-gold) 10%, transparent); animation: glg-card-in .4s cubic-bezier(.16, 1, .3, 1) both; }
+.glg-yn-reveal.is-match { background: color-mix(in srgb, var(--madder) 10%, transparent); }
+.glg-yn-reveal.is-closed { color: var(--ui-muted); font-weight: 700; }
+.glg-yn-reveal p { margin: 0; }
+.glg-yn-match { color: var(--ui-accent-deep); font-weight: 900; }
+.glg-yn-match svg { width: 16px; height: 16px; vertical-align: -3px; fill: var(--glg-heart); }
+.glg-yn-line { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; }
+.glg-yn-line.is-mine { color: var(--ui-muted); }
+.glg-yn-caption { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 600; line-height: 1.15; }
+.glg-yn-answer { padding: 2px 10px; border-radius: 999px; color: var(--cream); font-size: 11px; font-weight: 900; }
+.glg-yn-answer.is-yes { background: var(--emerald); }
+.glg-yn-answer.is-no { background: var(--ui-accent); }
+.glg-yn-answer.is-none { background: var(--ui-muted); }
+
+@keyframes glg-countdown { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes glg-card-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .glg-yn-card, .glg-yn-reveal, .glg-yn-dot { animation: none; }
+}
+.glg-yn-caption.is-missed { color: var(--ui-muted); font-size: 16px; }

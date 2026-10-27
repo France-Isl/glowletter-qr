@@ -56,7 +56,8 @@
       paywallTitle: "Игры, развлечения<br><em>и письма</em>", groupGames: "Игры", groupFun: "Развлечения", groupLetters: "Письма",
       featQuiz: "«Насколько хорошо ты меня знаешь?» — результат приходит вам", featGamesSoon: "Дуэль «Кто быстрее», «Что мы любим», карточки с мишками",
       featFunSoon: "«Кто из нас?» и «Закончи фразу» с «Книгой пары»", featCollection: "Вся коллекция писем и стихов на 25 языках",
-      featMoments: "Моменты, напоминания и QR-письмо, которое откроется в нужный день", featAudio: "Своё аудио в письме и ответ получателя"
+      featMoments: "Моменты, напоминания и QR-письмо, которое откроется в нужный день", featAudio: "Своё аудио в письме и ответ получателя",
+      ynTitle: "Да или нет", ynNote: "Живая игра вдвоём: на каждую карточку 5 секунд. Кто успел ответить — увидит ответ партнёра.", ynCreate: "Создать комнату", ynWaiting: "Ждём, когда {name} откроет ссылку…", ynWaitingAny: "Ждём партнёра…", ynShareText: "{name} зовёт тебя в живую игру «Да или нет»", ynPartnerHere: "{name} уже в игре!", ynStart: "Начать игру", ynWaitHost: "{name} сейчас начнёт игру", ynYes: "Да", ynNo: "Нет", ynMissed: "Не успели — карточка закрыта", ynMatch: "Совпали!", ynRound: "Карточка {n} из {total}", ynAnswered: "Ответ принят, ждём партнёра…", ynFinal: "Совпало {score} из {total}", ynFinalHigh: "Вы чувствуете друг друга с полуслова", ynFinalMid: "Вы такие разные — и такие близкие", ynAgain: "Сыграть ещё раз", ynLeft: "Партнёр отключился. Ждём возвращения…", ynYou: "Вы", ynOffline: "Не удаётся подключиться к игре. Проверьте интернет и откройте ссылку снова.", ynJoin: "Войти в игру", ynJoinLead: "{name} ждёт вас. На каждый ответ — 5 секунд!", ynStepNames: "Ваше имя и имя партнёра", ynRoomReady: "Комната готова — отправьте ссылку", ynStayHere: "Не закрывайте этот экран: игра начнётся, когда партнёр откроет ссылку.", featYesNo: "Живая игра «Да или нет» — 5 секунд на ответ", ynPartnerMissed: "Ответа нет — время вышло"
     },
     en: {
       homeLink: "Games for two", eyebrow: "GLOWLETTER · GAMES FOR TWO", title: "Play together", close: "Close",
@@ -89,7 +90,8 @@
       paywallTitle: "Games, fun<br><em>and letters</em>", groupGames: "Games", groupFun: "Fun", groupLetters: "Letters",
       featQuiz: "“How well do you know me?” — the result comes back to you", featGamesSoon: "“Who’s faster” duel, “What we love”, memory cards with bears",
       featFunSoon: "“Which of us?” and “Finish the sentence” with a couple’s book", featCollection: "The whole collection of letters and poems in 25 languages",
-      featMoments: "Moments, reminders and a QR letter that opens on the right day", featAudio: "Your own audio in a letter and replies from the recipient"
+      featMoments: "Moments, reminders and a QR letter that opens on the right day", featAudio: "Your own audio in a letter and replies from the recipient",
+      ynTitle: "Yes or no", ynNote: "A live game for two: 5 seconds for each card. Answer in time to see your partner’s answer.", ynCreate: "Create a room", ynWaiting: "Waiting for {name}…", ynWaitingAny: "Waiting for your partner…", ynShareText: "{name} invites you to the live game “Yes or no”", ynPartnerHere: "{name} is here!", ynStart: "Start the game", ynWaitHost: "{name} is about to start the game", ynYes: "Yes", ynNo: "No", ynMissed: "Too late — this card stays closed", ynMatch: "A match!", ynRound: "Card {n} of {total}", ynAnswered: "Answer sent, waiting for your partner…", ynFinal: "{score} of {total} matched", ynFinalHigh: "You understand each other without words", ynFinalMid: "So different — and so close", ynAgain: "Play again", ynLeft: "Your partner disconnected. Waiting for them to come back…", ynYou: "You", ynOffline: "Can’t connect to the game. Check your connection and open the link again.", ynJoin: "Join the game", ynJoinLead: "{name} is waiting for you. 5 seconds for each answer!", ynStepNames: "Your name and your partner’s", ynRoomReady: "The room is ready — send the link", ynStayHere: "Keep this screen open: the game starts when your partner opens the link.", featYesNo: "Live game “Yes or no” — 5 seconds per answer", ynPartnerMissed: "No answer — time ran out"
     },
     fr: {
       homeLink: "Jeux à deux", eyebrow: "GLOWLETTER · JEUX À DEUX", title: "Jouez ensemble", close: "Fermer",
@@ -122,7 +124,8 @@
       paywallTitle: "Jeux, détente<br><em>et lettres</em>", groupGames: "Jeux", groupFun: "Détente", groupLetters: "Lettres",
       featQuiz: "« Me connais-tu vraiment ? » — le résultat vous revient", featGamesSoon: "Duel « Le plus rapide », « Ce que nous aimons », cartes avec des oursons",
       featFunSoon: "« Qui de nous deux ? » et « Termine la phrase » avec le livre du couple", featCollection: "Toute la collection de lettres et de poèmes en 25 langues",
-      featMoments: "Moments, rappels et lettre QR qui s’ouvre le bon jour", featAudio: "Votre propre audio dans la lettre et la réponse du destinataire"
+      featMoments: "Moments, rappels et lettre QR qui s’ouvre le bon jour", featAudio: "Votre propre audio dans la lettre et la réponse du destinataire",
+      ynTitle: "Oui ou non", ynNote: "Un jeu en direct à deux : 5 secondes par carte. Répondez à temps pour voir la réponse de l’autre.", ynCreate: "Créer une salle", ynWaiting: "En attente de {name}…", ynWaitingAny: "En attente de l’autre joueur…", ynShareText: "{name} t’invite au jeu en direct « Oui ou non »", ynPartnerHere: "{name} est là !", ynStart: "Lancer la partie", ynWaitHost: "{name} va lancer la partie", ynYes: "Oui", ynNo: "Non", ynMissed: "Trop tard — cette carte reste fermée", ynMatch: "Même réponse !", ynRound: "Carte {n} sur {total}", ynAnswered: "Réponse envoyée, en attente de l’autre…", ynFinal: "{score} sur {total} en commun", ynFinalHigh: "Vous vous comprenez sans un mot", ynFinalMid: "Si différents — et si proches", ynAgain: "Rejouer", ynLeft: "L’autre joueur s’est déconnecté. On attend son retour…", ynYou: "Vous", ynOffline: "Connexion au jeu impossible. Vérifiez internet et rouvrez le lien.", ynJoin: "Rejoindre la partie", ynJoinLead: "{name} vous attend. 5 secondes pour chaque réponse !", ynStepNames: "Votre prénom et celui de l’autre", ynRoomReady: "La salle est prête — envoyez le lien", ynStayHere: "Gardez cet écran ouvert : la partie commence quand l’autre ouvre le lien.", featYesNo: "Jeu en direct « Oui ou non » — 5 secondes par réponse", ynPartnerMissed: "Pas de réponse — le temps est écoulé"
     }
   };
 
@@ -316,10 +319,145 @@
       q60: ["Qu’ai-je envie d’apprendre ?", "À danser", "À cuisiner", "Une nouvelle langue", "À dessiner"]
     }
   };
+
+  // «Да или нет»: вопрос, подпись к ответу «да», подпись к ответу «нет».
+  // Подписи — о партнёре в третьем лице и без рода; номера карточек не менять.
+  const YES_NO_ART = Object.freeze(["bears", "roses", "kitten"]);
+  const YES_NO_IDS = Object.freeze(Array.from({ length: 40 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`));
+  const YES_NO_ROUNDS = 20;
+  const YES_NO = {
+    ru: {
+      c01: ["Скучаешь по мне прямо сейчас?", "очень скучает", "держится, но думает о тебе"],
+      c02: ["Улыбаешься, когда видишь моё сообщение?", "всегда улыбается", "улыбается про себя"],
+      c03: ["Помнишь нашу первую встречу?", "помнит каждую минуту", "помнит главное — тебя"],
+      c04: ["Хочешь сегодня обняться?", "ждёт твоих объятий", "бережёт объятия на потом"],
+      c05: ["Поедем вместе к морю?", "уже собирает чемодан", "мечтает о горах"],
+      c06: ["Я тебя смешу?", "смеётся от души", "прячет улыбку"],
+      c07: ["Тебе со мной спокойно?", "рядом с тобой спокойно", "с тобой весело и интересно"],
+      c08: ["Вспоминаешь меня днём?", "вспоминает очень часто", "вспомнит прямо сейчас"],
+      c09: ["Любишь мои сюрпризы?", "обожает твои сюрпризы", "любит, когда ты просто рядом"],
+      c10: ["Испечём вместе пирог?", "уже надевает фартук", "лучше купит торт"],
+      c11: ["Посмотрим вечером фильм вдвоём?", "уже выбирает фильм", "хочет просто поговорить"],
+      c12: ["Нравится мой голос?", "может слушать бесконечно", "больше любит твой смех"],
+      c13: ["Устроим пикник на выходных?", "готовит плед", "зовёт в уютное кафе"],
+      c14: ["Хочешь получить от меня письмо?", "ждёт твоё письмо", "хочет услышать всё вживую"],
+      c15: ["Я твой лучший друг?", "ты лучший друг", "ты даже больше, чем друг"],
+      c16: ["Погуляем под дождём?", "берёт зонт на двоих", "заварит чай дома"],
+      c17: ["Мы с тобой похожи?", "вы как две половинки", "вы прекрасно дополняете друг друга"],
+      c18: ["Нравится, как я готовлю?", "просит добавки", "любит готовить вместе с тобой"],
+      c19: ["Заведём общего питомца?", "уже выбирает имя", "пока хватает плюшевого мишки"],
+      c20: ["Знаешь, что я люблю?", "знает наизусть", "хочет узнать ещё больше"],
+      c21: ["Потанцуем?", "уже протягивает руку", "будет хлопать в ладоши"],
+      c22: ["Я тебя вдохновляю?", "ты вдохновляешь каждый день", "рядом с тобой просто тепло"],
+      c23: ["Хранишь наши фото?", "бережёт каждое", "ждёт новых, ещё лучше"],
+      c24: ["Встретим рассвет вместе?", "ставит будильник", "лучше проводим закат"],
+      c25: ["Расскажешь мне секрет?", "шепнёт на ушко", "пусть останется загадка"],
+      c26: ["Гордишься мной?", "очень гордится", "верит в тебя всем сердцем"],
+      c27: ["Отправимся в путешествие вдвоём?", "мечтает об этом", "возьмёт с собой всех близких"],
+      c28: ["Ждёшь моего звонка?", "ждёт с улыбкой", "лучше приходи в гости"],
+      c29: ["Нравятся мои объятия?", "самые тёплые на свете", "любит держаться за руки"],
+      c30: ["Почитаем вслух друг другу?", "уже выбирает книгу", "лучше послушает тебя"],
+      c31: ["Сделаем общее фото сегодня?", "уже ищет красивый фон", "сначала — разговоры"],
+      c32: ["Я поднимаю тебе настроение?", "всегда поднимаешь", "с тобой даже грустить легче"],
+      c33: ["Позавтракаем завтра вместе?", "уже варит какао", "мечтает поспать подольше"],
+      c34: ["Помнишь мой день рождения?", "помнит без напоминаний", "готовит сюрприз втайне"],
+      c35: ["Пойдём на каток?", "достаёт коньки", "будет болеть за тебя у бортика"],
+      c36: ["Тебе сегодня хорошо?", "день отличный", "станет лучше, когда ты рядом"],
+      c37: ["Нарисуешь мой портрет?", "уже берёт карандаш", "нарисует сердечко"],
+      c38: ["Посадим вместе дерево?", "выбирает место", "начнёт с цветка на подоконнике"],
+      c39: ["Хочешь услышать комплимент?", "ждёт с нетерпением", "смущается, но очень хочет"],
+      c40: ["Сыграем ещё раз потом?", "хочет ещё раунд", "хочет обнять вместо игры"]
+    },
+    en: {
+      c01: ["Do you miss me right now?", "misses you a lot", "is holding on, but thinking of you"],
+      c02: ["Do you smile when you see my message?", "always smiles", "smiles quietly inside"],
+      c03: ["Do you remember the first time we met?", "remembers every minute", "remembers what matters — you"],
+      c04: ["Do you want a hug today?", "is waiting for your hug", "is saving hugs for later"],
+      c05: ["Shall we go to the sea together?", "is already packing", "dreams of the mountains"],
+      c06: ["Do I make you laugh?", "laughs from the heart", "is hiding a smile"],
+      c07: ["Do you feel calm with me?", "feels calm beside you", "has fun with you"],
+      c08: ["Do you think of me during the day?", "thinks of you very often", "is thinking of you right now"],
+      c09: ["Do you love my surprises?", "adores your surprises", "loves it when you’re simply near"],
+      c10: ["Shall we bake a pie together?", "is already putting on an apron", "would rather buy a cake"],
+      c11: ["Shall we watch a film tonight?", "is already choosing a film", "would rather just talk"],
+      c12: ["Do you like my voice?", "could listen forever", "loves your laugh even more"],
+      c13: ["Shall we have a picnic this weekend?", "is getting the blanket ready", "invites you to a cosy café"],
+      c14: ["Would you like a letter from me?", "is waiting for your letter", "wants to hear it in person"],
+      c15: ["Am I your best friend?", "you’re the best friend", "you’re even more than a friend"],
+      c16: ["Shall we walk in the rain?", "takes an umbrella for two", "will make tea at home"],
+      c17: ["Are we alike?", "you’re two halves of one whole", "you complete each other perfectly"],
+      c18: ["Do you like my cooking?", "asks for seconds", "loves cooking together with you"],
+      c19: ["Shall we get a pet together?", "is already picking a name", "a teddy bear is enough for now"],
+      c20: ["Do you know what I love?", "knows it by heart", "wants to learn even more"],
+      c21: ["Shall we dance?", "is already reaching for your hand", "will clap along"],
+      c22: ["Do I inspire you?", "you inspire every day", "it’s simply warm beside you"],
+      c23: ["Do you keep our photos?", "treasures every one", "is waiting for new, better ones"],
+      c24: ["Shall we watch the sunrise together?", "is setting an alarm", "would rather watch the sunset"],
+      c25: ["Will you tell me a secret?", "will whisper it to you", "let it stay a mystery"],
+      c26: ["Are you proud of me?", "is very proud", "believes in you with all their heart"],
+      c27: ["Shall we travel, just the two of us?", "dreams about it", "will bring all your loved ones"],
+      c28: ["Are you waiting for my call?", "is waiting with a smile", "would rather you came over"],
+      c29: ["Do you like my hugs?", "the warmest in the world", "loves holding hands"],
+      c30: ["Shall we read aloud to each other?", "is already choosing a book", "would rather listen to you"],
+      c31: ["Shall we take a photo together today?", "is looking for a pretty spot", "talking comes first"],
+      c32: ["Do I lift your mood?", "you always do", "even sadness is lighter with you"],
+      c33: ["Shall we have breakfast together tomorrow?", "is already making cocoa", "dreams of sleeping in"],
+      c34: ["Do you remember my birthday?", "remembers without reminders", "is secretly planning a surprise"],
+      c35: ["Shall we go ice skating?", "is getting the skates", "will cheer for you by the rink"],
+      c36: ["Is today a good day for you?", "a great day", "will be better when you’re near"],
+      c37: ["Will you draw my portrait?", "is already holding a pencil", "will draw a little heart"],
+      c38: ["Shall we plant a tree together?", "is choosing the spot", "will start with a flower on the windowsill"],
+      c39: ["Would you like a compliment?", "can’t wait", "is shy but really wants one"],
+      c40: ["Shall we play again later?", "wants another round", "would rather hug than play"]
+    },
+    fr: {
+      c01: ["Je te manque en ce moment ?", "tu lui manques beaucoup", "tient bon, mais pense à toi"],
+      c02: ["Tu souris quand tu vois mon message ?", "sourit toujours", "sourit intérieurement"],
+      c03: ["Tu te souviens de notre première rencontre ?", "se souvient de chaque minute", "se souvient de l’essentiel : toi"],
+      c04: ["Tu veux un câlin aujourd’hui ?", "attend ton câlin", "garde les câlins pour plus tard"],
+      c05: ["On part ensemble à la mer ?", "fait déjà sa valise", "rêve de montagne"],
+      c06: ["Je te fais rire ?", "rit de bon cœur", "cache un sourire"],
+      c07: ["Tu te sens bien avec moi ?", "se sent en paix près de toi", "s’amuse avec toi"],
+      c08: ["Tu penses à moi dans la journée ?", "pense à toi très souvent", "pense à toi en ce moment même"],
+      c09: ["Tu aimes mes surprises ?", "adore tes surprises", "aime surtout quand tu es là"],
+      c10: ["On fait une tarte ensemble ?", "met déjà son tablier", "préfère acheter un gâteau"],
+      c11: ["On regarde un film ce soir ?", "choisit déjà le film", "préfère simplement discuter"],
+      c12: ["Tu aimes ma voix ?", "pourrait l’écouter sans fin", "préfère encore ton rire"],
+      c13: ["On fait un pique-nique ce week-end ?", "prépare le plaid", "propose un café douillet"],
+      c14: ["Tu veux recevoir une lettre de moi ?", "attend ta lettre", "veut tout entendre de vive voix"],
+      c15: ["Je compte beaucoup pour toi ?", "tu comptes énormément", "tu comptes plus que tu ne crois"],
+      c16: ["On se promène sous la pluie ?", "prend un parapluie pour deux", "préparera du thé à la maison"],
+      c17: ["On se ressemble ?", "vous êtes deux moitiés", "vous vous complétez à merveille"],
+      c18: ["Tu aimes ma cuisine ?", "en redemande", "adore cuisiner avec toi"],
+      c19: ["On adopte un animal ensemble ?", "choisit déjà son nom", "un ourson en peluche suffit pour l’instant"],
+      c20: ["Tu sais ce que j’aime ?", "le sait par cœur", "veut en apprendre encore plus"],
+      c21: ["On danse ?", "te tend déjà la main", "va applaudir"],
+      c22: ["Je t’inspire ?", "tu l’inspires chaque jour", "près de toi, il fait simplement chaud"],
+      c23: ["Tu gardes nos photos ?", "les garde précieusement", "attend de nouvelles, encore plus belles"],
+      c24: ["On regarde le lever du soleil ensemble ?", "met un réveil", "préfère le coucher du soleil"],
+      c25: ["Tu me confies un secret ?", "te le chuchotera", "que cela reste un mystère"],
+      c26: ["Tu crois en moi ?", "croit en toi très fort", "t’encourage chaque jour"],
+      c27: ["On part en voyage, rien que nous deux ?", "en rêve", "emmènera tous vos proches"],
+      c28: ["Tu attends mon appel ?", "l’attend avec un sourire", "préfère que tu passes"],
+      c29: ["Tu aimes mes câlins ?", "les plus chauds du monde", "aime se tenir la main"],
+      c30: ["On se lit des histoires à voix haute ?", "choisit déjà un livre", "préfère t’écouter"],
+      c31: ["On fait une photo ensemble aujourd’hui ?", "cherche déjà un joli décor", "d’abord, on discute"],
+      c32: ["Je te remonte le moral ?", "toujours", "même la tristesse est plus légère avec toi"],
+      c33: ["On prend le petit-déjeuner ensemble demain ?", "prépare déjà le chocolat", "rêve de faire la grasse matinée"],
+      c34: ["Tu te souviens de mon anniversaire ?", "s’en souvient sans rappel", "prépare une surprise en secret"],
+      c35: ["On va à la patinoire ?", "sort les patins", "t’encouragera depuis le bord"],
+      c36: ["C’est une bonne journée pour toi ?", "une super journée", "elle sera meilleure avec toi"],
+      c37: ["Tu dessines mon portrait ?", "prend déjà un crayon", "dessinera un petit cœur"],
+      c38: ["On plante un arbre ensemble ?", "choisit l’endroit", "commencera par une fleur sur le rebord"],
+      c39: ["Tu veux un compliment ?", "l’attend avec impatience", "est timide mais en a très envie"],
+      c40: ["On rejoue plus tard ?", "veut une autre manche", "préfère un câlin à un jeu"]
+    }
+  };
   Object.entries(window.GLOWLETTER_GAMES_I18N || {}).forEach(([code, pack]) => {
     if (TEXT[code] || !pack || typeof pack !== "object") return;
     if (pack.text) TEXT[code] = pack.text;
     if (pack.questions) QUESTIONS[code] = pack.questions;
+    if (pack.yesNo) YES_NO[code] = pack.yesNo;
   });
 
   const state = {
@@ -336,6 +474,7 @@
     created: null,
     detailId: "",
     play: null,
+    yn: null,
     channel: null,
     channelUser: ""
   };
@@ -352,12 +491,21 @@
     return String(template).replace(/\{(\w+)\}/gu, (_, name) => String(values[name] ?? ""));
   };
   const question = id => (QUESTIONS[language()] || QUESTIONS.en)[id] || QUESTIONS.en[id] || ["", "", "", "", ""];
+  const yesNoCard = id => (YES_NO[language()] || YES_NO.en)[id] || YES_NO.en[id] || ["", "", ""];
   const escapeHtml = value => String(value ?? "").replace(/[&<>"']/gu, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
   const cleanName = value => String(value ?? "").normalize("NFKC").replace(/[\u0000-\u001F\u007F]/gu, " ").replace(/\s+/gu, " ").trim().slice(0, 36);
   const premium = () => Boolean(app()?.getState?.().premium);
   const signedIn = () => Boolean(cloud()?.getState?.().signedIn);
   const notify = (message, duration = 3600) => app()?.notify?.(message, duration);
   const shareBase = () => String(app()?.getState?.().publicShareUrl || appConfig().publicShareUrl || `${location.origin}${location.pathname}`);
+  const roomUrl = publicId => {
+    const url = new URL(shareBase());
+    url.search = "";
+    url.hash = "";
+    url.searchParams.set("yn", publicId);
+    url.searchParams.set("lang", language());
+    return url.toString();
+  };
   const quizUrl = publicId => {
     const url = new URL(shareBase());
     url.search = "";
@@ -435,6 +583,7 @@
       history.replaceState(history.state, "", url);
       state.play = null;
     }
+    if (state.yn) leaveYesNo();
     state.lastFocus?.focus?.({ preventScroll: true });
   }
 
@@ -442,12 +591,13 @@
     const root = state.root;
     if (!root) return;
     const isPlay = state.view.startsWith("play");
-    root.classList.toggle("is-play", isPlay);
-    root.querySelector("[data-glg=eyebrow]").textContent = isPlay ? tr("playEyebrow") : tr("eyebrow");
-    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : tr("title");
+    const isYesNo = state.view.startsWith("yn-");
+    root.classList.toggle("is-play", isPlay || isYesNo);
+    root.querySelector("[data-glg=eyebrow]").textContent = isPlay || isYesNo ? tr("playEyebrow") : tr("eyebrow");
+    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr("ynTitle") : tr("title");
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
     const body = root.querySelector(".glg-body");
-    const views = { hub: renderHub, names: renderNames, answers: renderAnswers, created: renderCreated, detail: renderDetail, "play-loading": renderPlayLoading, "play-missing": renderPlayMissing, "play-intro": renderPlayIntro, "play-question": renderPlayQuestion, "play-result": renderPlayResult };
+    const views = { hub: renderHub, names: renderNames, answers: renderAnswers, created: renderCreated, detail: renderDetail, "play-loading": renderPlayLoading, "play-missing": renderPlayMissing, "play-intro": renderPlayIntro, "play-question": renderPlayQuestion, "play-result": renderPlayResult, "yn-loading": renderPlayLoading, "yn-names": renderYesNoNames, "yn-lobby": renderYesNoLobby, "yn-join": renderYesNoJoin, "yn-card": renderYesNoCard, "yn-end": renderYesNoEnd, "yn-missing": renderYesNoMissing };
     body.innerHTML = (views[state.view] || renderHub)();
     body.scrollTop = 0;
   }
@@ -475,6 +625,12 @@
         <p>${escapeHtml(tr("quizNote"))}</p>
         <button class="glg-primary" type="button" data-action="start-create">${icon("ic-plus")} ${escapeHtml(tr("create"))}</button>
         ${premium() ? "" : `<p class="glg-note">${escapeHtml(tr("premiumNote"))}</p>`}
+      </article>
+      <article class="glg-hero glg-yn-hero">
+        <div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>
+        <h3>${escapeHtml(tr("ynTitle"))}</h3>
+        <p>${escapeHtml(tr("ynNote"))}</p>
+        <button class="glg-primary" type="button" data-action="yn-create">${icon("ic-plus")} ${escapeHtml(tr("ynCreate"))}</button>
       </article>
       ${mine}
       <section class="glg-section glg-soon"><h3>${escapeHtml(tr("soonTitle"))} <span class="glg-chip">${escapeHtml(tr("soon"))}</span></h3><ul>${soon}</ul></section>`;
@@ -681,6 +837,14 @@
         render();
         return;
       case "retry": submitPlay(); return;
+      case "yn-create": return startYesNoCreate();
+      case "yn-names-submit": return createYesNoRoom(target);
+      case "yn-start": return hostStartYesNo();
+      case "yn-join-submit": return guestJoinYesNo(target);
+      case "yn-answer": return answerYesNo(target.dataset.value);
+      case "yn-again": return hostStartYesNo();
+      case "yn-share": return shareRoom();
+      case "yn-copy": return copyRoom();
       default:
     }
   }
@@ -917,6 +1081,393 @@
     render();
   }
 
+
+  // ——— «Да или нет»: живая игра вдвоём ———
+  //
+  // Комната — запись в glowletter_game_rooms (создаёт автор с полным доступом),
+  // ход игры — Realtime Broadcast на канале glowletter-yesno:<номер комнаты>.
+  // Ведущий (автор) раздаёт карточки и после 5 секунд объявляет ответы обоих;
+  // кто не успел ответить, видит карточку закрытой.
+
+  const YES_NO_SECONDS = 5;
+  const YES_NO_REVEAL_MS = 3200;
+
+  function startYesNoCreate() {
+    if (!premium()) { app()?.openPaywall?.(); return; }
+    if (!signedIn()) { renderSignIn(); return; }
+    const appState = app()?.getState?.() || {};
+    state.yn = { role: "host", roomId: "", hostName: cleanName(appState.senderName), guestName: cleanName(appState.recipientName), partnerOnline: false, phase: "names", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null };
+    state.view = "yn-names";
+    render();
+    requestAnimationFrame(() => state.root.querySelector("input[name=host]")?.focus());
+  }
+
+  function renderYesNoNames() {
+    const yn = state.yn;
+    return `
+      <form class="glg-form" data-submit="yn-names-submit" novalidate>
+        <p class="glg-step">${escapeHtml(tr("ynStepNames"))}</p>
+        <label><span>${escapeHtml(tr("yourName"))}</span><input name="host" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(yn.hostName)}" placeholder="${escapeHtml(tr("yourNamePlaceholder"))}" required /></label>
+        <label><span>${escapeHtml(tr("recipient"))}</span><input name="guest" type="text" dir="auto" maxlength="36" autocomplete="off" value="${escapeHtml(yn.guestName)}" placeholder="${escapeHtml(tr("recipientPlaceholder"))}" /></label>
+        <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
+        <div class="glg-actions"><button class="glg-secondary" type="button" data-action="hub">${escapeHtml(tr("back"))}</button><button class="glg-primary" type="submit"${state.busy ? " disabled" : ""}>${escapeHtml(state.busy ? tr("creating") : tr("ynCreate"))}</button></div>
+      </form>`;
+  }
+
+  async function createYesNoRoom(form) {
+    const yn = state.yn;
+    if (!yn || state.busy) return;
+    yn.hostName = cleanName(form.elements.host.value);
+    yn.guestName = cleanName(form.elements.guest.value);
+    if (!yn.hostName) { state.error = tr("nameRequired"); render(); return; }
+    const client = cloud()?.getClient?.();
+    if (!client) { state.error = tr("failed"); render(); return; }
+    state.busy = true;
+    render();
+    try {
+      const { data, error } = await client.rpc("glowletter_create_game_room", { p_kind: "yesno", p_host_name: yn.hostName, p_guest_name: yn.guestName || null, p_language: language() });
+      if (error) throw error;
+      const row = Array.isArray(data) ? data[0] : data;
+      if (!row?.public_id) throw new Error("empty");
+      yn.roomId = row.public_id;
+      yn.phase = "lobby";
+      state.view = "yn-lobby";
+      connectYesNo();
+    } catch (error) {
+      const message = String(error?.message || "");
+      if (message === "premium_required") { state.busy = false; app()?.openPaywall?.(); render(); return; }
+      if (message === "authentication_required") { state.busy = false; renderSignIn(); return; }
+      state.error = message === "forbidden" ? tr("forbiddenName") : message === "rate_limited" ? tr("rateLimited") : tr("failed");
+    }
+    state.busy = false;
+    render();
+  }
+
+  function renderYesNoLobby() {
+    const yn = state.yn;
+    const partner = yn.guestName || "";
+    const status = yn.partnerOnline
+      ? `<p class="glg-yn-status is-online">${HEART} ${escapeHtml(tr("ynPartnerHere", { name: partner || tr("ynWaitingAny").replace(/…$/u, "") }))}</p>
+         <button class="glg-primary glg-wide" type="button" data-action="yn-start">${escapeHtml(tr("ynStart"))} →</button>`
+      : `<p class="glg-yn-status"><span class="glg-yn-dot" aria-hidden="true"></span>${escapeHtml(partner ? tr("ynWaiting", { name: partner }) : tr("ynWaitingAny"))}</p>
+         <p class="glg-muted">${escapeHtml(tr("ynStayHere"))}</p>`;
+    return `
+      <article class="glg-hero">
+        <div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>
+        <h3>${escapeHtml(tr("ynRoomReady"))}</h3>
+        <div class="glg-link-box"><code>${escapeHtml(roomUrl(yn.roomId))}</code></div>
+        <div class="glg-actions"><button class="glg-primary" type="button" data-action="yn-share">${icon("ic-share")} ${escapeHtml(tr("share"))}</button><button class="glg-secondary" type="button" data-action="yn-copy">${icon("ic-copy")} ${escapeHtml(tr("copyLink"))}</button></div>
+      </article>
+      <section class="glg-section glg-center glg-yn-wait">${status}</section>`;
+  }
+
+  async function shareRoom() {
+    const yn = state.yn;
+    if (!yn?.roomId) return;
+    const text = tr("ynShareText", { name: yn.hostName || "GlowLetter" });
+    const url = roomUrl(yn.roomId);
+    const bridge = window.NurShare;
+    if (bridge && typeof bridge.share === "function") {
+      try { bridge.share(tr("ynTitle"), text, url); return; } catch {}
+    }
+    if (navigator.share) {
+      try { await navigator.share({ title: tr("ynTitle"), text, url }); return; }
+      catch (error) { if (error?.name === "AbortError") return; }
+    }
+    try { await navigator.clipboard.writeText(`${text}\n${url}`); notify(tr("linkCopied"), 2600); }
+    catch { window.prompt(tr("copyLink"), url); }
+  }
+
+  async function copyRoom() {
+    const url = roomUrl(state.yn?.roomId || "");
+    try { await navigator.clipboard.writeText(url); notify(tr("linkCopied"), 2600); }
+    catch { window.prompt(tr("copyLink"), url); }
+  }
+
+  async function joinYesNoRoom(roomId) {
+    state.yn = { role: "guest", roomId, hostName: "", guestName: "", partnerOnline: false, phase: "join", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null, offline: false };
+    open("yn-loading");
+    const base = String(appConfig().supabaseUrl || "").replace(/\/+$/u, "");
+    const headers = { Accept: "application/json" };
+    if (appConfig().supabasePublishableKey) headers.apikey = appConfig().supabasePublishableKey;
+    try {
+      const response = await fetch(`${base}/functions/v1/couple-quiz?room=${encodeURIComponent(roomId)}`, { headers, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload.state !== "ready" || payload.kind !== "yesno") throw new Error("missing");
+      Object.assign(state.yn, { hostName: cleanName(payload.hostName) || "GlowLetter", guestName: cleanName(payload.guestName) });
+      state.view = "yn-join";
+    } catch {
+      state.yn.offline = !navigator.onLine;
+      state.view = "yn-missing";
+    }
+    render();
+  }
+
+  function renderYesNoMissing() {
+    return `<div class="glg-center"><p>${escapeHtml(state.yn?.offline ? tr("ynOffline") : tr("playMissing"))}</p>
+      <button class="glg-secondary" type="button" data-action="close">${escapeHtml(tr("home"))}</button></div>`;
+  }
+
+  function renderYesNoJoin() {
+    const yn = state.yn;
+    if (yn.phase === "waiting") {
+      return `<div class="glg-center glg-yn-wait"><div class="glg-hero-hearts glg-pulse" aria-hidden="true">${HEART}</div>
+        <p class="glg-yn-status">${escapeHtml(yn.partnerOnline ? tr("ynWaitHost", { name: yn.hostName }) : tr("ynLeft"))}</p></div>`;
+    }
+    return `
+      <form class="glg-form glg-intro" data-submit="yn-join-submit" novalidate>
+        <div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>
+        <h3>${escapeHtml(tr("playInvite", { name: yn.hostName }))}</h3>
+        <p class="glg-muted">${escapeHtml(tr("ynJoinLead", { name: yn.hostName }))}</p>
+        <label><span>${escapeHtml(tr("playName"))}</span><input name="guest" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(yn.guestName)}" placeholder="${escapeHtml(tr("playNamePlaceholder"))}" /></label>
+        <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
+        <button class="glg-primary glg-wide" type="submit">${escapeHtml(tr("ynJoin"))} →</button>
+      </form>`;
+  }
+
+  function guestJoinYesNo(form) {
+    const yn = state.yn;
+    yn.guestName = cleanName(form.elements.guest.value) || yn.guestName;
+    yn.phase = "waiting";
+    render();
+    connectYesNo();
+  }
+
+  function yesNoClient() {
+    const client = cloud()?.getClient?.();
+    if (client?.channel) return client;
+    const factory = window.supabase?.createClient;
+    if (!factory || !appConfig().supabaseUrl || !appConfig().supabasePublishableKey) return null;
+    state.ynClient = state.ynClient || factory(appConfig().supabaseUrl, appConfig().supabasePublishableKey, { auth: { persistSession: false, autoRefreshToken: false } });
+    return state.ynClient;
+  }
+
+  function connectYesNo() {
+    const yn = state.yn;
+    const client = yesNoClient();
+    if (!yn || !client) { if (yn) { yn.offline = true; state.view = "yn-missing"; render(); } return; }
+    const channel = client.channel(`glowletter-yesno:${yn.roomId}`, { config: { broadcast: { self: false }, presence: { key: yn.role } } });
+    yn.channel = channel;
+    channel
+      .on("presence", { event: "sync" }, () => {
+        const other = yn.role === "host" ? "guest" : "host";
+        const presence = channel.presenceState()[other] || [];
+        const online = presence.length > 0;
+        if (online && yn.role === "host") yn.guestName = cleanName(presence[0]?.name) || yn.guestName;
+        if (online !== yn.partnerOnline) {
+          yn.partnerOnline = online;
+          if (["yn-lobby", "yn-join"].includes(state.view)) render();
+          else if (!online) notify(tr("ynLeft"), 4000);
+        }
+      })
+      .on("broadcast", { event: "yn" }, ({ payload }) => onYesNoMessage(payload || {}))
+      .subscribe(async status => {
+        if (status === "SUBSCRIBED") {
+          await channel.track({ role: yn.role, name: yn.role === "host" ? yn.hostName : yn.guestName });
+        } else if (["CHANNEL_ERROR", "TIMED_OUT"].includes(status) && yn === state.yn && yn.phase !== "end") {
+          yn.offline = true;
+          state.view = "yn-missing";
+          render();
+        }
+      });
+  }
+
+  function sendYesNo(payload) {
+    state.yn?.channel?.send({ type: "broadcast", event: "yn", payload });
+  }
+
+  function clearYesNoTimers() {
+    (state.yn?.timers || []).forEach(clearTimeout);
+    if (state.yn) state.yn.timers = [];
+  }
+
+  function leaveYesNo() {
+    const yn = state.yn;
+    clearYesNoTimers();
+    if (yn?.channel) {
+      try { yn.channel.untrack?.(); } catch {}
+      (cloud()?.getClient?.() || state.ynClient)?.removeChannel?.(yn.channel);
+    }
+    const url = new URL(location.href);
+    url.searchParams.delete("yn");
+    history.replaceState(history.state, "", url);
+    state.yn = null;
+  }
+
+  // Ведущий: раздаёт колоду и ведёт раунды.
+  function hostStartYesNo() {
+    const yn = state.yn;
+    if (!yn || yn.role !== "host" || !yn.partnerOnline) return;
+    clearYesNoTimers();
+    yn.deck = shuffle(YES_NO_IDS).slice(0, YES_NO_ROUNDS);
+    yn.answers = { host: [], guest: [] };
+    yn.art = Math.floor(Math.random() * YES_NO_ART.length);
+    sendYesNo({ type: "start", deck: yn.deck, art: yn.art, guestName: yn.guestName });
+    hostRound(0);
+  }
+
+  function hostRound(index) {
+    const yn = state.yn;
+    if (!yn) return;
+    sendYesNo({ type: "round", index });
+    beginRound(index);
+    yn.timers.push(setTimeout(() => hostReveal(index), YES_NO_SECONDS * 1000 + 1200));
+  }
+
+  function hostReveal(index) {
+    const yn = state.yn;
+    if (!yn) return;
+    const host = yn.answers.host[index] ?? null;
+    const guest = yn.answers.guest[index] ?? null;
+    sendYesNo({ type: "reveal", index, host, guest });
+    showReveal(index, host, guest);
+    yn.timers.push(setTimeout(() => {
+      if (index + 1 < yn.deck.length) hostRound(index + 1);
+      else { sendYesNo({ type: "end", host: yn.answers.host, guest: yn.answers.guest }); showYesNoEnd(); }
+    }, YES_NO_REVEAL_MS));
+  }
+
+  function onYesNoMessage(message) {
+    const yn = state.yn;
+    if (!yn) return;
+    const index = Number(message.index);
+    if (message.type === "answer" && yn.role === "host" && Number.isInteger(index) && ["yes", "no"].includes(message.value)) {
+      if (yn.phase === "round" && yn.index === index && yn.answers.guest[index] == null) yn.answers.guest[index] = message.value;
+      return;
+    }
+    if (yn.role !== "guest") return;
+    if (message.type === "start" && Array.isArray(message.deck)) {
+      yn.deck = message.deck.filter(id => YES_NO_IDS.includes(id)).slice(0, YES_NO_ROUNDS);
+      yn.art = Number(message.art) || 0;
+      yn.answers = { host: [], guest: [] };
+    } else if (message.type === "round" && Number.isInteger(index)) {
+      beginRound(index);
+    } else if (message.type === "reveal" && Number.isInteger(index)) {
+      const value = answer => (["yes", "no"].includes(answer) ? answer : null);
+      yn.answers.host[index] = value(message.host);
+      yn.answers.guest[index] = value(message.guest);
+      showReveal(index, yn.answers.host[index], yn.answers.guest[index]);
+    } else if (message.type === "end") {
+      showYesNoEnd();
+    }
+  }
+
+  function beginRound(index) {
+    const yn = state.yn;
+    if (!yn || !yn.deck[index]) return;
+    yn.index = index;
+    yn.phase = "round";
+    yn.mine = null;
+    state.view = "yn-card";
+    render();
+    yn.timers.push(setTimeout(() => {
+      if (yn === state.yn && yn.phase === "round" && yn.index === index) {
+        yn.phase = "closed";
+        updateYesNoCard();
+      }
+    }, YES_NO_SECONDS * 1000));
+  }
+
+  function answerYesNo(value) {
+    const yn = state.yn;
+    if (!yn || yn.phase !== "round" || yn.mine || !["yes", "no"].includes(value)) return;
+    yn.mine = value;
+    yn.answers[yn.role][yn.index] = value;
+    if (yn.role === "guest") sendYesNo({ type: "answer", index: yn.index, value });
+    updateYesNoCard();
+  }
+
+  function showReveal(index, host, guest) {
+    const yn = state.yn;
+    if (!yn) return;
+    yn.index = index;
+    yn.phase = "reveal";
+    yn.reveal = { host, guest };
+    state.view = "yn-card";
+    render();
+  }
+
+  // Карточка перерисовывается целиком только при смене фазы, чтобы полоска
+  // таймера шла плавно.
+  function updateYesNoCard() {
+    if (state.view !== "yn-card") return;
+    const body = state.root?.querySelector(".glg-body");
+    const actions = body?.querySelector(".glg-yn-actions");
+    if (actions) actions.outerHTML = yesNoActions();
+  }
+
+  function yesNoActions() {
+    const yn = state.yn;
+    if (yn.phase === "round" && !yn.mine) {
+      return `<div class="glg-yn-actions"><button class="glg-yn-button is-yes" type="button" data-action="yn-answer" data-value="yes">${escapeHtml(tr("ynYes"))}</button><button class="glg-yn-button is-no" type="button" data-action="yn-answer" data-value="no">${escapeHtml(tr("ynNo"))}</button></div>`;
+    }
+    if (yn.phase === "round" || (yn.phase === "closed" && yn.mine)) {
+      return `<div class="glg-yn-actions"><p class="glg-yn-status">${escapeHtml(yn.mine === "yes" ? tr("ynYes") : tr("ynNo"))} · ${escapeHtml(tr("ynAnswered"))}</p></div>`;
+    }
+    if (yn.phase === "closed") return `<div class="glg-yn-actions"><p class="glg-yn-status">${escapeHtml(tr("ynMissed"))}</p></div>`;
+    return `<div class="glg-yn-actions"></div>`;
+  }
+
+  function renderYesNoCard() {
+    const yn = state.yn;
+    const id = yn.deck[yn.index];
+    const [text, yesText, noText] = yesNoCard(id);
+    const art = YES_NO_ART[(yn.art + yn.index) % YES_NO_ART.length];
+    const partnerRole = yn.role === "host" ? "guest" : "host";
+    const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
+    let reveal = "";
+    if (yn.phase === "reveal") {
+      const mine = yn.reveal[yn.role];
+      const theirs = yn.reveal[partnerRole];
+      if (!mine) {
+        reveal = `<div class="glg-yn-reveal is-closed"><p>${escapeHtml(tr("ynMissed"))}</p></div>`;
+      } else {
+        const caption = theirs === "yes" ? yesText : theirs === "no" ? noText : "";
+        const match = theirs && theirs === mine;
+        reveal = `<div class="glg-yn-reveal${match ? " is-match" : ""}">
+          ${match ? `<p class="glg-yn-match">${HEART} ${escapeHtml(tr("ynMatch"))}</p>` : ""}
+          <p class="glg-yn-line"><b>${escapeHtml(partnerName)}</b> <span class="glg-yn-answer is-${escapeHtml(theirs || "none")}">${escapeHtml(theirs === "yes" ? tr("ynYes") : theirs === "no" ? tr("ynNo") : "—")}</span></p>
+          ${caption ? `<p class="glg-yn-caption">${escapeHtml(caption)}</p>` : `<p class="glg-yn-caption is-missed">${escapeHtml(tr("ynPartnerMissed"))}</p>`}
+          <p class="glg-yn-line is-mine"><b>${escapeHtml(tr("ynYou"))}</b> <span class="glg-yn-answer is-${escapeHtml(mine)}">${escapeHtml(mine === "yes" ? tr("ynYes") : tr("ynNo"))}</span></p>
+        </div>`;
+      }
+    }
+    return `
+      <p class="glg-step">${escapeHtml(tr("ynRound", { n: yn.index + 1, total: yn.deck.length }))}</p>
+      <article class="glg-yn-card${yn.phase === "reveal" ? " is-revealed" : ""}">
+        <div class="glg-yn-art" style="background-image:url('assets/scenes/${art}-thumb.webp')" aria-hidden="true"></div>
+        <h3>${escapeHtml(text)}</h3>
+        ${yn.phase === "reveal" ? reveal : `<div class="glg-yn-timer" aria-hidden="true"><i style="animation-duration:${YES_NO_SECONDS}s"></i></div>`}
+      </article>
+      ${yn.phase === "reveal" ? "" : yesNoActions()}`;
+  }
+
+  function showYesNoEnd() {
+    const yn = state.yn;
+    if (!yn) return;
+    clearYesNoTimers();
+    yn.phase = "end";
+    state.view = "yn-end";
+    render();
+  }
+
+  function renderYesNoEnd() {
+    const yn = state.yn;
+    const total = yn.deck.length;
+    const score = yn.deck.filter((_, index) => yn.answers.host[index] && yn.answers.host[index] === yn.answers.guest[index]).length;
+    const ratio = total ? score / total : 0;
+    return `
+      <article class="glg-score">
+        ${hearts(Math.round(ratio * 10), 10)}
+        <p class="glg-score-number">${escapeHtml(tr("ynFinal", { score, total }))}</p>
+        <h3>${escapeHtml(tr(ratio >= 0.6 ? "ynFinalHigh" : "ynFinalMid"))}</h3>
+      </article>
+      <div class="glg-actions glg-stack">
+        ${yn.role === "host" ? `<button class="glg-primary" type="button" data-action="yn-again"${yn.partnerOnline ? "" : " disabled"}>↻ ${escapeHtml(tr("ynAgain"))}</button>` : `<p class="glg-muted glg-center">${escapeHtml(tr("ynWaitHost", { name: yn.hostName }))}</p>`}
+        <button class="glg-secondary" type="button" data-action="close">${escapeHtml(tr("home"))}</button>
+      </div>`;
+  }
+
   // ——— Вход на главной и окно покупки ———
 
   function updateBadge() {
@@ -946,7 +1497,7 @@
       else card.querySelector("#paywallLead")?.after(block);
     }
     const group = (name, items) => `<section><h3>${escapeHtml(tr(name))}</h3><ul>${items.map(([key, soon]) => `<li${soon ? ' class="is-soon"' : ""}>${escapeHtml(tr(key))}${soon ? ` <span class="glg-chip">${escapeHtml(tr("soon"))}</span>` : ""}</li>`).join("")}</ul></section>`;
-    block.innerHTML = group("groupGames", [["featQuiz"], ["featGamesSoon", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
+    block.innerHTML = group("groupGames", [["featQuiz"], ["featYesNo"], ["featGamesSoon", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
   }
 
   function localize() {
@@ -967,6 +1518,8 @@
     if (cloud()?.getState?.().signedIn) loadOwnData();
     const publicId = new URLSearchParams(location.search).get("quiz") || "";
     if (UUID_PATTERN.test(publicId)) startPlay(publicId.toLowerCase());
+    const roomId = new URLSearchParams(location.search).get("yn") || "";
+    if (!UUID_PATTERN.test(publicId) && UUID_PATTERN.test(roomId)) joinYesNoRoom(roomId.toLowerCase());
   }
 
   window.GlowLetterGames = Object.freeze({ open: () => open("hub"), play: publicId => UUID_PATTERN.test(publicId) && startPlay(publicId.toLowerCase()), questionIds: QUESTION_IDS });

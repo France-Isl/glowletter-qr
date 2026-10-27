@@ -31,7 +31,7 @@ const grab = (source, start, end) => {
   return vm.runInNewContext(`(${source.slice(from + start.length - 1, to).trim().replace(/;$/u, "")})`);
 };
 const TEXT = grab(games, "const TEXT = {", "\n  // Вопросы:");
-const QUESTIONS = grab(games, "const QUESTIONS = {", "\n  Object.entries(window.GLOWLETTER_GAMES_I18N");
+const QUESTIONS = grab(games, "const QUESTIONS = {", "\n\n  // «Да или нет»");
 const keys = Object.keys(TEXT.en);
 const placeholders = value => (String(value).match(/\{\w+\}/gu) || []).sort().join();
 for (const code of LANGUAGES) {
@@ -50,13 +50,30 @@ for (const code of LANGUAGES) {
   assert.doesNotMatch(all, /18\s*\+|мелоди|песн|музык/iu, `${code} wording`);
 }
 
+// «Да или нет»: 40 карточек на всех языках, у каждой вопрос и две подписи.
+const YES_NO = grab(games, "const YES_NO = {", "\n  Object.entries(window.GLOWLETTER_GAMES_I18N");
+const CARD_IDS = Array.from({ length: 40 }, (_, index) => `c${String(index + 1).padStart(2, "0")}`);
+for (const code of LANGUAGES) {
+  const cards = YES_NO[code] || extra[code]?.yesNo;
+  assert.ok(cards, `${code} yes/no cards`);
+  assert.deepEqual(Object.keys(cards), CARD_IDS, `${code} cards`);
+  for (const id of CARD_IDS) assert.ok(cards[id].length === 3 && cards[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
+  assert.doesNotMatch(JSON.stringify(cards), /18\s*\+|мелоди|песн|музык/iu, `${code} yes/no wording`);
+}
+assert.match(games, /channel\(`glowletter-yesno:\$\{yn\.roomId\}`/u);
+assert.match(games, /const YES_NO_SECONDS = 5;/u);
+const rooms = read("supabase/migrations/20261028110000_yes_no_rooms.sql");
+assert.match(rooms, /private\.glowletter_has_paid_access\(owner_id\)[\s\S]*premium_required/u);
+assert.match(rooms, /grant execute on function public\.glowletter_get_game_room\(uuid\) to service_role/u);
+assert.match(edge, /glowletter_get_game_room/u);
+
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=59") < index.indexOf("games-i18n.js?v=59"));
-assert.ok(index.indexOf("games-i18n.js?v=59") < index.indexOf("games.js?v=59"));
-assert.match(index, /games\.css\?v=59/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=59"`, "u"));
+assert.ok(index.indexOf("experience.js?v=60") < index.indexOf("games-i18n.js?v=60"));
+assert.ok(index.indexOf("games-i18n.js?v=60") < index.indexOf("games.js?v=60"));
+assert.match(index, /games\.css\?v=60/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=60"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,

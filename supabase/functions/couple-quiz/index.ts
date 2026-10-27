@@ -67,6 +67,17 @@ Deno.serve(async (request: Request) => {
   if (!supabaseUrl || !serviceKey || salt.length < 32) return json(request, { state: "unavailable" }, 503);
   const admin = createClient(supabaseUrl, serviceKey, { auth: { persistSession: false, autoRefreshToken: false }, global: { headers: { "X-Client-Info": "glowletter-couple-quiz/1" } } });
 
+  if (request.method === "GET" && new URL(request.url).searchParams.has("room")) {
+    // «Да или нет»: партнёр узнаёт, чья это комната; сама игра идёт через Realtime.
+    const roomId = clean(new URL(request.url).searchParams.get("room"), 36).toLowerCase();
+    if (!UUID.test(roomId)) return json(request, { state: "invalid" }, 400);
+    const result = await admin.rpc("glowletter_get_game_room", { p_public_id: roomId });
+    if (result.error) return json(request, { state: "unavailable" }, 503);
+    const row = Array.isArray(result.data) ? result.data[0] : result.data;
+    if (!row) return json(request, { state: "not_found" }, 404);
+    return json(request, { state: "ready", kind: row.kind, hostName: row.host_name, guestName: row.guest_name || "", language: row.language || "" });
+  }
+
   if (request.method === "GET") {
     const publicId = clean(new URL(request.url).searchParams.get("id"), 36).toLowerCase();
     if (!UUID.test(publicId)) return json(request, { state: "invalid" }, 400);

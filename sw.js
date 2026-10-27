@@ -1,9 +1,9 @@
 const CACHE_PREFIX = "glow-letter-";
-const CACHE = `${CACHE_PREFIX}v59`;
+const CACHE = `${CACHE_PREFIX}v60`;
 const CORE = [
   "./",
   "index.html",
-  "fonts/local-fonts.css?v=59",
+  "fonts/local-fonts.css?v=60",
   "fonts/cormorant-normal-cyrillic-ext.woff2",
   "fonts/cormorant-normal-cyrillic.woff2",
   "fonts/cormorant-normal-latin-ext.woff2",
@@ -24,24 +24,24 @@ const CORE = [
   "fonts/manrope-normal-cyrillic.woff2",
   "fonts/manrope-normal-latin-ext.woff2",
   "fonts/manrope-normal-latin.woff2",
-  "styles.css?v=59",
-  "experience.css?v=59",
-  "email-auth.css?v=59",
-  "moments.css?v=59",
-  "games.css?v=59",
-  "config.js?v=59",
-  "vendor/supabase-2.110.9.js?v=59",
-  "vendor/qrcode-generator-1.4.4.min.js?v=59",
-  "letters.js?v=59",
-  "i18n-extra.js?v=59",
-  "qr-code.js?v=59",
-  "app.js?v=59",
-  "email-auth.js?v=59",
-  "moments.js?v=59",
-  "experience.js?v=59",
-  "games-i18n.js?v=59",
-  "games.js?v=59",
-  "manifest.webmanifest?v=59",
+  "styles.css?v=60",
+  "experience.css?v=60",
+  "email-auth.css?v=60",
+  "moments.css?v=60",
+  "games.css?v=60",
+  "config.js?v=60",
+  "vendor/supabase-2.110.9.js?v=60",
+  "vendor/qrcode-generator-1.4.4.min.js?v=60",
+  "letters.js?v=60",
+  "i18n-extra.js?v=60",
+  "qr-code.js?v=60",
+  "app.js?v=60",
+  "email-auth.js?v=60",
+  "moments.js?v=60",
+  "experience.js?v=60",
+  "games-i18n.js?v=60",
+  "games.js?v=60",
+  "manifest.webmanifest?v=60",
   "icon-192.png",
   "icon-512.png",
   "favicon-48.png",
@@ -58,7 +58,7 @@ const CORE = [
   "assets/frame-roses-thumb.webp"
 ];
 const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "games-i18n.js", "games.js", "games.css", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
-const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "quiz", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
+const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "quiz", "yn", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));

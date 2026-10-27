@@ -1,5 +1,5 @@
 // Игры для двоих на двадцати двух языках сверх ru/en/fr: тексты экрана
-// (text) и вопросы теста (questions). Порядок вариантов совпадает с
+// (text), вопросы теста (questions) и карточки «Да или нет» (yesNo). Порядок вариантов совпадает с
 // games.js — номер верного варианта хранится на сервере, поэтому варианты
 // нельзя переставлять.
 window.GLOWLETTER_GAMES_I18N = Object.freeze({
@@ -95,7 +95,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "„Wer von uns?“ und „Beende den Satz“ mit dem Buch eures Paares",
       "featCollection": "Die ganze Sammlung an Briefen und Gedichten in 25 Sprachen",
       "featMoments": "Momente, Erinnerungen und ein QR-Brief, der sich am richtigen Tag öffnet",
-      "featAudio": "Eigenes Audio im Brief und Antworten des Empfängers"
+      "featAudio": "Eigenes Audio im Brief und Antworten des Empfängers",
+      "ynTitle": "Ja oder Nein",
+      "ynNote": "Ein Live-Spiel zu zweit: 5 Sekunden pro Karte. Wer rechtzeitig antwortet, sieht die Antwort des anderen.",
+      "ynCreate": "Raum erstellen",
+      "ynWaiting": "Wir warten, bis {name} den Link öffnet…",
+      "ynWaitingAny": "Wir warten auf deine Begleitung…",
+      "ynShareText": "{name} lädt dich zum Live-Spiel „Ja oder Nein“ ein",
+      "ynPartnerHere": "{name} ist da!",
+      "ynStart": "Spiel starten",
+      "ynWaitHost": "{name} startet gleich das Spiel",
+      "ynYes": "Ja",
+      "ynNo": "Nein",
+      "ynMissed": "Zu spät — diese Karte bleibt zu",
+      "ynMatch": "Gleiche Antwort!",
+      "ynRound": "Karte {n} von {total}",
+      "ynAnswered": "Antwort gesendet, wir warten auf die andere Antwort…",
+      "ynFinal": "{score} von {total} gleich",
+      "ynFinalHigh": "Ihr versteht euch ohne Worte",
+      "ynFinalMid": "So verschieden — und so nah",
+      "ynAgain": "Noch einmal spielen",
+      "ynLeft": "Die Verbindung zum anderen ist weg. Wir warten…",
+      "ynYou": "Du",
+      "ynOffline": "Keine Verbindung zum Spiel. Prüfe das Internet und öffne den Link erneut.",
+      "ynJoin": "Mitspielen",
+      "ynJoinLead": "{name} wartet auf dich. 5 Sekunden pro Antwort!",
+      "ynStepNames": "Dein Name und der Name deiner Begleitung",
+      "ynRoomReady": "Der Raum ist bereit — sende den Link",
+      "ynStayHere": "Lass diesen Bildschirm offen: Das Spiel beginnt, sobald der Link geöffnet wird.",
+      "featYesNo": "Live-Spiel „Ja oder Nein“ — 5 Sekunden pro Antwort",
+      "ynPartnerMissed": "Keine Antwort — die Zeit ist um"
     },
     "questions": {
       "q01": [
@@ -518,6 +547,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Eine neue Sprache",
         "Zeichnen"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Vermisst du mich gerade?",
+        "vermisst dich sehr",
+        "hält durch, denkt aber an dich"
+      ],
+      "c02": [
+        "Lächelst du, wenn du meine Nachricht siehst?",
+        "lächelt immer",
+        "lächelt still in sich hinein"
+      ],
+      "c03": [
+        "Erinnerst du dich an unser erstes Treffen?",
+        "erinnert sich an jede Minute",
+        "erinnert sich an das Wichtigste — dich"
+      ],
+      "c04": [
+        "Möchtest du heute eine Umarmung?",
+        "wartet auf deine Umarmung",
+        "spart Umarmungen für später auf"
+      ],
+      "c05": [
+        "Fahren wir zusammen ans Meer?",
+        "packt schon den Koffer",
+        "träumt von den Bergen"
+      ],
+      "c06": [
+        "Bringe ich dich zum Lachen?",
+        "lacht von Herzen",
+        "versteckt ein Lächeln"
+      ],
+      "c07": [
+        "Fühlst du dich bei mir ruhig?",
+        "fühlt sich bei dir geborgen",
+        "hat mit dir viel Spaß"
+      ],
+      "c08": [
+        "Denkst du tagsüber an mich?",
+        "denkt sehr oft an dich",
+        "denkt gerade jetzt an dich"
+      ],
+      "c09": [
+        "Liebst du meine Überraschungen?",
+        "liebt deine Überraschungen",
+        "mag es, wenn du einfach da bist"
+      ],
+      "c10": [
+        "Backen wir zusammen einen Kuchen?",
+        "bindet schon die Schürze um",
+        "kauft lieber einen Kuchen"
+      ],
+      "c11": [
+        "Schauen wir heute Abend einen Film?",
+        "sucht schon einen Film aus",
+        "möchte lieber einfach reden"
+      ],
+      "c12": [
+        "Magst du meine Stimme?",
+        "könnte ewig zuhören",
+        "mag dein Lachen noch mehr"
+      ],
+      "c13": [
+        "Machen wir am Wochenende ein Picknick?",
+        "legt die Decke bereit",
+        "lädt dich in ein gemütliches Café ein"
+      ],
+      "c14": [
+        "Möchtest du einen Brief von mir?",
+        "wartet auf deinen Brief",
+        "möchte alles persönlich hören"
+      ],
+      "c15": [
+        "Bin ich dir sehr wichtig?",
+        "du bist unglaublich wichtig",
+        "wichtiger, als du denkst"
+      ],
+      "c16": [
+        "Gehen wir im Regen spazieren?",
+        "nimmt einen Schirm für zwei",
+        "kocht lieber Tee zu Hause"
+      ],
+      "c17": [
+        "Sind wir uns ähnlich?",
+        "ihr seid wie zwei Hälften",
+        "ihr ergänzt euch perfekt"
+      ],
+      "c18": [
+        "Magst du, wie ich koche?",
+        "will noch einen Nachschlag",
+        "kocht am liebsten mit dir zusammen"
+      ],
+      "c19": [
+        "Holen wir uns zusammen ein Haustier?",
+        "sucht schon einen Namen aus",
+        "ein Teddybär reicht vorerst"
+      ],
+      "c20": [
+        "Weißt du, was ich liebe?",
+        "kennt es auswendig",
+        "möchte noch mehr erfahren"
+      ],
+      "c21": [
+        "Tanzen wir?",
+        "reicht dir schon die Hand",
+        "klatscht begeistert mit"
+      ],
+      "c22": [
+        "Inspiriere ich dich?",
+        "du inspirierst jeden Tag",
+        "bei dir ist es einfach warm"
+      ],
+      "c23": [
+        "Bewahrst du unsere Fotos auf?",
+        "hütet jedes einzelne",
+        "wartet auf neue, noch schönere"
+      ],
+      "c24": [
+        "Sehen wir uns zusammen den Sonnenaufgang an?",
+        "stellt schon den Wecker",
+        "schaut lieber den Sonnenuntergang"
+      ],
+      "c25": [
+        "Verrätst du mir ein Geheimnis?",
+        "flüstert es dir ins Ohr",
+        "es bleibt ein Rätsel"
+      ],
+      "c26": [
+        "Glaubst du an mich?",
+        "glaubt fest an dich",
+        "feuert dich jeden Tag an"
+      ],
+      "c27": [
+        "Verreisen wir nur zu zweit?",
+        "träumt davon",
+        "nimmt alle Lieben mit"
+      ],
+      "c28": [
+        "Wartest du auf meinen Anruf?",
+        "wartet mit einem Lächeln",
+        "möchte lieber, dass du vorbeikommst"
+      ],
+      "c29": [
+        "Magst du meine Umarmungen?",
+        "die wärmsten der Welt",
+        "hält am liebsten Händchen"
+      ],
+      "c30": [
+        "Lesen wir uns gegenseitig vor?",
+        "sucht schon ein Buch aus",
+        "hört dir lieber zu"
+      ],
+      "c31": [
+        "Machen wir heute ein gemeinsames Foto?",
+        "sucht schon einen schönen Hintergrund",
+        "erst wird geredet"
+      ],
+      "c32": [
+        "Hebe ich deine Laune?",
+        "das tust du immer",
+        "mit dir ist sogar Traurigkeit leichter"
+      ],
+      "c33": [
+        "Frühstücken wir morgen zusammen?",
+        "kocht schon Kakao",
+        "möchte lieber ausschlafen"
+      ],
+      "c34": [
+        "Erinnerst du dich an meinen Geburtstag?",
+        "auch ohne Erinnerung",
+        "plant heimlich eine Überraschung"
+      ],
+      "c35": [
+        "Gehen wir Schlittschuh laufen?",
+        "holt schon die Schlittschuhe",
+        "feuert dich vom Rand aus an"
+      ],
+      "c36": [
+        "Ist heute ein guter Tag für dich?",
+        "ein toller Tag",
+        "wird besser, wenn du da bist"
+      ],
+      "c37": [
+        "Zeichnest du mein Porträt?",
+        "nimmt schon den Bleistift",
+        "malt ein kleines Herz"
+      ],
+      "c38": [
+        "Pflanzen wir zusammen einen Baum?",
+        "sucht schon den Platz aus",
+        "fängt mit einer Blume am Fenster an"
+      ],
+      "c39": [
+        "Möchtest du ein Kompliment hören?",
+        "kann es kaum erwarten",
+        "ist schüchtern, möchte aber sehr"
+      ],
+      "c40": [
+        "Spielen wir später noch einmal?",
+        "will noch eine Runde",
+        "umarmt lieber, statt zu spielen"
+      ]
     }
   },
   es: {
@@ -612,7 +843,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«¿Quién de los dos?» y «Completa la frase» con el libro de la pareja",
       "featCollection": "Toda la colección de cartas y poemas en 25 idiomas",
       "featMoments": "Momentos, recordatorios y una carta QR que se abre el día indicado",
-      "featAudio": "Tu propio audio en la carta y respuestas del destinatario"
+      "featAudio": "Tu propio audio en la carta y respuestas del destinatario",
+      "ynTitle": "Sí o no",
+      "ynNote": "Un juego en directo para dos: 5 segundos por tarjeta. Si respondes a tiempo, verás la respuesta de la otra persona.",
+      "ynCreate": "Crear sala",
+      "ynWaiting": "Esperamos a que {name} abra el enlace…",
+      "ynWaitingAny": "Esperando a la otra persona…",
+      "ynShareText": "{name} te invita al juego en directo «Sí o no»",
+      "ynPartnerHere": "¡{name} ya está aquí!",
+      "ynStart": "Empezar el juego",
+      "ynWaitHost": "{name} va a empezar el juego",
+      "ynYes": "Sí",
+      "ynNo": "No",
+      "ynMissed": "Demasiado tarde: esta tarjeta queda cerrada",
+      "ynMatch": "¡Coincidís!",
+      "ynRound": "Tarjeta {n} de {total}",
+      "ynAnswered": "Respuesta enviada, esperando a la otra persona…",
+      "ynFinal": "{score} de {total} coincidencias",
+      "ynFinalHigh": "Os entendéis sin palabras",
+      "ynFinalMid": "Tan distintos y tan cerca",
+      "ynAgain": "Jugar otra vez",
+      "ynLeft": "La otra persona se ha desconectado. Esperamos su vuelta…",
+      "ynYou": "Tú",
+      "ynOffline": "No se puede conectar al juego. Revisa internet y abre el enlace de nuevo.",
+      "ynJoin": "Entrar al juego",
+      "ynJoinLead": "{name} te espera. ¡5 segundos por respuesta!",
+      "ynStepNames": "Tu nombre y el de la otra persona",
+      "ynRoomReady": "La sala está lista: envía el enlace",
+      "ynStayHere": "No cierres esta pantalla: el juego empieza cuando se abra el enlace.",
+      "featYesNo": "Juego en directo «Sí o no»: 5 segundos por respuesta",
+      "ynPartnerMissed": "Sin respuesta: se acabó el tiempo"
     },
     "questions": {
       "q01": [
@@ -1035,6 +1295,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Un idioma nuevo",
         "A dibujar"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "¿Me echas de menos ahora mismo?",
+        "te echa mucho de menos",
+        "aguanta, pero piensa en ti"
+      ],
+      "c02": [
+        "¿Sonríes cuando ves mi mensaje?",
+        "siempre sonríe",
+        "sonríe por dentro"
+      ],
+      "c03": [
+        "¿Recuerdas nuestro primer encuentro?",
+        "recuerda cada minuto",
+        "recuerda lo esencial: a ti"
+      ],
+      "c04": [
+        "¿Quieres un abrazo hoy?",
+        "espera tu abrazo",
+        "guarda los abrazos para luego"
+      ],
+      "c05": [
+        "¿Vamos juntos al mar?",
+        "ya está haciendo la maleta",
+        "sueña con la montaña"
+      ],
+      "c06": [
+        "¿Te hago reír?",
+        "se ríe de corazón",
+        "esconde una sonrisa"
+      ],
+      "c07": [
+        "¿Estás en calma conmigo?",
+        "siente paz a tu lado",
+        "se divierte contigo"
+      ],
+      "c08": [
+        "¿Piensas en mí durante el día?",
+        "piensa en ti muy a menudo",
+        "piensa en ti justo ahora"
+      ],
+      "c09": [
+        "¿Te encantan mis sorpresas?",
+        "adora tus sorpresas",
+        "prefiere tenerte simplemente cerca"
+      ],
+      "c10": [
+        "¿Hacemos juntos un pastel?",
+        "ya se está poniendo el delantal",
+        "prefiere comprar una tarta"
+      ],
+      "c11": [
+        "¿Vemos una película esta noche?",
+        "ya está eligiendo la película",
+        "prefiere simplemente charlar"
+      ],
+      "c12": [
+        "¿Te gusta mi voz?",
+        "podría escucharla sin fin",
+        "le gusta aún más tu risa"
+      ],
+      "c13": [
+        "¿Hacemos un pícnic el fin de semana?",
+        "prepara la manta",
+        "te invita a un café acogedor"
+      ],
+      "c14": [
+        "¿Quieres recibir una carta mía?",
+        "espera tu carta",
+        "quiere oírlo todo en persona"
+      ],
+      "c15": [
+        "¿Soy muy importante para ti?",
+        "importas muchísimo",
+        "más de lo que crees"
+      ],
+      "c16": [
+        "¿Paseamos bajo la lluvia?",
+        "coge un paraguas para dos",
+        "prefiere hacer té en casa"
+      ],
+      "c17": [
+        "¿Nos parecemos?",
+        "sois como dos mitades",
+        "os complementáis de maravilla"
+      ],
+      "c18": [
+        "¿Te gusta cómo cocino?",
+        "pide repetir",
+        "le encanta cocinar contigo"
+      ],
+      "c19": [
+        "¿Tenemos una mascota juntos?",
+        "ya está eligiendo el nombre",
+        "de momento basta con un osito de peluche"
+      ],
+      "c20": [
+        "¿Sabes lo que me encanta?",
+        "lo sabe de memoria",
+        "quiere saber todavía más"
+      ],
+      "c21": [
+        "¿Bailamos?",
+        "ya te tiende la mano",
+        "aplaudirá con ganas"
+      ],
+      "c22": [
+        "¿Te inspiro?",
+        "le inspiras cada día",
+        "a tu lado simplemente hay calidez"
+      ],
+      "c23": [
+        "¿Guardas nuestras fotos?",
+        "las guarda todas con cariño",
+        "espera otras nuevas, aún mejores"
+      ],
+      "c24": [
+        "¿Vemos juntos el amanecer?",
+        "ya pone el despertador",
+        "prefiere ver la puesta de sol"
+      ],
+      "c25": [
+        "¿Me cuentas un secreto?",
+        "te lo susurrará al oído",
+        "que siga siendo un misterio"
+      ],
+      "c26": [
+        "¿Crees en mí?",
+        "cree en ti muchísimo",
+        "te anima cada día"
+      ],
+      "c27": [
+        "¿Viajamos solos tú y yo?",
+        "sueña con ello",
+        "se llevará a toda la familia"
+      ],
+      "c28": [
+        "¿Esperas mi llamada?",
+        "la espera con una sonrisa",
+        "prefiere verte en persona"
+      ],
+      "c29": [
+        "¿Te gustan mis abrazos?",
+        "los más cálidos del mundo",
+        "le encanta ir de la mano"
+      ],
+      "c30": [
+        "¿Nos leemos en voz alta?",
+        "ya está eligiendo un libro",
+        "prefiere escucharte"
+      ],
+      "c31": [
+        "¿Nos hacemos una foto juntos hoy?",
+        "ya busca un fondo bonito",
+        "primero, charlar"
+      ],
+      "c32": [
+        "¿Te levanto el ánimo?",
+        "siempre",
+        "contigo hasta la tristeza pesa menos"
+      ],
+      "c33": [
+        "¿Desayunamos juntos mañana?",
+        "ya prepara el cacao",
+        "sueña con dormir hasta tarde"
+      ],
+      "c34": [
+        "¿Recuerdas mi cumpleaños?",
+        "sin necesidad de recordatorio",
+        "prepara una sorpresa en secreto"
+      ],
+      "c35": [
+        "¿Vamos a patinar sobre hielo?",
+        "saca ya los patines",
+        "te animará desde la barandilla"
+      ],
+      "c36": [
+        "¿Es un buen día para ti?",
+        "un día genial",
+        "será mejor contigo cerca"
+      ],
+      "c37": [
+        "¿Dibujas mi retrato?",
+        "ya coge el lápiz",
+        "dibujará un corazoncito"
+      ],
+      "c38": [
+        "¿Plantamos juntos un árbol?",
+        "elige el lugar",
+        "empezará con una flor en la ventana"
+      ],
+      "c39": [
+        "¿Quieres oír un cumplido?",
+        "lo espera con ilusión",
+        "le da vergüenza, pero lo desea mucho"
+      ],
+      "c40": [
+        "¿Jugamos otra vez luego?",
+        "quiere otra ronda",
+        "prefiere un abrazo a jugar"
+      ]
     }
   },
   it: {
@@ -1129,7 +1591,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Chi di noi?» e «Completa la frase» con il libro della coppia",
       "featCollection": "L’intera raccolta di lettere e poesie in 25 lingue",
       "featMoments": "Momenti, promemoria e una lettera QR che si apre nel giorno giusto",
-      "featAudio": "Il tuo audio nella lettera e le risposte del destinatario"
+      "featAudio": "Il tuo audio nella lettera e le risposte del destinatario",
+      "ynTitle": "Sì o no",
+      "ynNote": "Un gioco dal vivo in due: 5 secondi per carta. Chi risponde in tempo vede la risposta dell’altro.",
+      "ynCreate": "Crea una stanza",
+      "ynWaiting": "Aspettiamo che {name} apra il link…",
+      "ynWaitingAny": "In attesa dell’altra persona…",
+      "ynShareText": "{name} ti invita al gioco dal vivo «Sì o no»",
+      "ynPartnerHere": "{name} è qui!",
+      "ynStart": "Inizia il gioco",
+      "ynWaitHost": "{name} sta per iniziare il gioco",
+      "ynYes": "Sì",
+      "ynNo": "No",
+      "ynMissed": "Troppo tardi: questa carta resta chiusa",
+      "ynMatch": "Stessa risposta!",
+      "ynRound": "Carta {n} di {total}",
+      "ynAnswered": "Risposta inviata, in attesa dell’altra persona…",
+      "ynFinal": "{score} su {total} in comune",
+      "ynFinalHigh": "Vi capite senza parole",
+      "ynFinalMid": "Così diversi, e così vicini",
+      "ynAgain": "Gioca ancora",
+      "ynLeft": "L’altra persona si è disconnessa. Aspettiamo che torni…",
+      "ynYou": "Tu",
+      "ynOffline": "Impossibile collegarsi al gioco. Controlla internet e riapri il link.",
+      "ynJoin": "Entra nel gioco",
+      "ynJoinLead": "{name} ti aspetta. 5 secondi per ogni risposta!",
+      "ynStepNames": "Il tuo nome e quello dell’altra persona",
+      "ynRoomReady": "La stanza è pronta: invia il link",
+      "ynStayHere": "Tieni aperta questa schermata: il gioco inizia quando il link viene aperto.",
+      "featYesNo": "Gioco dal vivo «Sì o no»: 5 secondi per risposta",
+      "ynPartnerMissed": "Nessuna risposta: tempo scaduto"
     },
     "questions": {
       "q01": [
@@ -1552,6 +2043,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Una nuova lingua",
         "A disegnare"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Ti manco in questo momento?",
+        "sente tanto la tua mancanza",
+        "resiste, ma pensa a te"
+      ],
+      "c02": [
+        "Sorridi quando vedi un mio messaggio?",
+        "sorride sempre",
+        "sorride dentro di sé"
+      ],
+      "c03": [
+        "Ricordi il nostro primo incontro?",
+        "ricorda ogni minuto",
+        "ricorda l’essenziale: te"
+      ],
+      "c04": [
+        "Vuoi un abbraccio oggi?",
+        "aspetta il tuo abbraccio",
+        "tiene gli abbracci per dopo"
+      ],
+      "c05": [
+        "Andiamo insieme al mare?",
+        "sta già facendo la valigia",
+        "sogna la montagna"
+      ],
+      "c06": [
+        "Ti faccio ridere?",
+        "ride di cuore",
+        "nasconde un sorriso"
+      ],
+      "c07": [
+        "Ti senti in pace con me?",
+        "accanto a te sente pace",
+        "si diverte con te"
+      ],
+      "c08": [
+        "Pensi a me durante il giorno?",
+        "pensa a te molto spesso",
+        "pensa a te proprio ora"
+      ],
+      "c09": [
+        "Ami le mie sorprese?",
+        "adora le tue sorprese",
+        "ama soprattutto averti vicino"
+      ],
+      "c10": [
+        "Facciamo una torta insieme?",
+        "sta già mettendo il grembiule",
+        "preferisce comprarla"
+      ],
+      "c11": [
+        "Guardiamo un film stasera?",
+        "sta già scegliendo il film",
+        "preferisce chiacchierare"
+      ],
+      "c12": [
+        "Ti piace la mia voce?",
+        "potrebbe ascoltarla all’infinito",
+        "ama ancora di più la tua risata"
+      ],
+      "c13": [
+        "Facciamo un picnic nel weekend?",
+        "prepara la coperta",
+        "ti invita in un caffè accogliente"
+      ],
+      "c14": [
+        "Vuoi ricevere una mia lettera?",
+        "aspetta la tua lettera",
+        "vuole sentire tutto di persona"
+      ],
+      "c15": [
+        "Conto molto per te?",
+        "conti tantissimo",
+        "più di quanto immagini"
+      ],
+      "c16": [
+        "Passeggiamo sotto la pioggia?",
+        "prende un ombrello per due",
+        "preferisce fare un tè a casa"
+      ],
+      "c17": [
+        "Ci somigliamo?",
+        "siete come due metà",
+        "vi completate alla perfezione"
+      ],
+      "c18": [
+        "Ti piace come cucino?",
+        "chiede il bis",
+        "ama cucinare insieme a te"
+      ],
+      "c19": [
+        "Prendiamo un animale insieme?",
+        "sta già scegliendo il nome",
+        "per ora basta un orsetto di peluche"
+      ],
+      "c20": [
+        "Sai cosa amo?",
+        "lo sa a memoria",
+        "vuole scoprirne ancora di più"
+      ],
+      "c21": [
+        "Balliamo?",
+        "ti porge già la mano",
+        "applaudirà con gioia"
+      ],
+      "c22": [
+        "Ti ispiro?",
+        "sei d’ispirazione ogni giorno",
+        "accanto a te c’è semplicemente calore"
+      ],
+      "c23": [
+        "Conservi le nostre foto?",
+        "le custodisce tutte",
+        "ne aspetta di nuove, ancora più belle"
+      ],
+      "c24": [
+        "Guardiamo l’alba insieme?",
+        "sta mettendo la sveglia",
+        "preferisce il tramonto"
+      ],
+      "c25": [
+        "Mi racconti un segreto?",
+        "te lo sussurrerà all’orecchio",
+        "che resti un mistero"
+      ],
+      "c26": [
+        "Credi in me?",
+        "crede fortemente in te",
+        "ti incoraggia ogni giorno"
+      ],
+      "c27": [
+        "Partiamo in viaggio, solo noi due?",
+        "lo sogna",
+        "porterà tutte le persone care"
+      ],
+      "c28": [
+        "Aspetti una mia chiamata?",
+        "la aspetta con un sorriso",
+        "preferisce vederti di persona"
+      ],
+      "c29": [
+        "Ti piacciono i miei abbracci?",
+        "i più caldi del mondo",
+        "ama tenersi per mano"
+      ],
+      "c30": [
+        "Ci leggiamo qualcosa ad alta voce?",
+        "sta già scegliendo un libro",
+        "preferisce ascoltarti"
+      ],
+      "c31": [
+        "Facciamo una foto insieme oggi?",
+        "cerca già uno sfondo carino",
+        "prima, quattro chiacchiere"
+      ],
+      "c32": [
+        "Ti tiro su il morale?",
+        "sempre",
+        "con te anche la tristezza è più leggera"
+      ],
+      "c33": [
+        "Facciamo colazione insieme domani?",
+        "sta già preparando la cioccolata",
+        "sogna di dormire a lungo"
+      ],
+      "c34": [
+        "Ricordi il mio compleanno?",
+        "senza bisogno di promemoria",
+        "prepara una sorpresa in segreto"
+      ],
+      "c35": [
+        "Andiamo a pattinare?",
+        "tira fuori i pattini",
+        "farà il tifo per te dal bordo"
+      ],
+      "c36": [
+        "Oggi è una bella giornata per te?",
+        "una giornata splendida",
+        "sarà migliore con te vicino"
+      ],
+      "c37": [
+        "Mi fai un ritratto?",
+        "prende già la matita",
+        "disegnerà un cuoricino"
+      ],
+      "c38": [
+        "Piantiamo un albero insieme?",
+        "sceglie il posto",
+        "comincerà con un fiore sul davanzale"
+      ],
+      "c39": [
+        "Vuoi un complimento?",
+        "non vede l’ora",
+        "è timidezza, ma lo desidera tanto"
+      ],
+      "c40": [
+        "Rigiochiamo più tardi?",
+        "vuole un altro round",
+        "preferisce un abbraccio al gioco"
+      ]
     }
   },
   pl: {
@@ -1646,7 +2339,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "„Kto z nas?” i „Dokończ zdanie” z księgą pary",
       "featCollection": "Cała kolekcja listów i wierszy w 25 językach",
       "featMoments": "Chwile, przypomnienia i list QR, który otworzy się we właściwy dzień",
-      "featAudio": "Własne audio w liście i odpowiedzi odbiorcy"
+      "featAudio": "Własne audio w liście i odpowiedzi odbiorcy",
+      "ynTitle": "Tak czy nie",
+      "ynNote": "Gra na żywo we dwoje: 5 sekund na każdą kartę. Kto odpowie na czas, zobaczy odpowiedź drugiej osoby.",
+      "ynCreate": "Utwórz pokój",
+      "ynWaiting": "Czekamy, aż {name} otworzy link…",
+      "ynWaitingAny": "Czekamy na drugą osobę…",
+      "ynShareText": "{name} zaprasza cię do gry na żywo „Tak czy nie”",
+      "ynPartnerHere": "{name} już jest!",
+      "ynStart": "Zacznij grę",
+      "ynWaitHost": "{name} za chwilę zacznie grę",
+      "ynYes": "Tak",
+      "ynNo": "Nie",
+      "ynMissed": "Za późno — ta karta pozostaje zakryta",
+      "ynMatch": "Zgodność!",
+      "ynRound": "Karta {n} z {total}",
+      "ynAnswered": "Odpowiedź wysłana, czekamy na drugą osobę…",
+      "ynFinal": "Zgodnie: {score} z {total}",
+      "ynFinalHigh": "Rozumiecie się bez słów",
+      "ynFinalMid": "Tacy różni — i tacy bliscy",
+      "ynAgain": "Zagraj jeszcze raz",
+      "ynLeft": "Druga osoba się rozłączyła. Czekamy na powrót…",
+      "ynYou": "Ty",
+      "ynOffline": "Nie można połączyć się z grą. Sprawdź internet i otwórz link ponownie.",
+      "ynJoin": "Dołącz do gry",
+      "ynJoinLead": "{name} czeka na ciebie. 5 sekund na każdą odpowiedź!",
+      "ynStepNames": "Twoje imię i imię drugiej osoby",
+      "ynRoomReady": "Pokój gotowy — wyślij link",
+      "ynStayHere": "Nie zamykaj tego ekranu: gra zacznie się, gdy link zostanie otwarty.",
+      "featYesNo": "Gra na żywo „Tak czy nie” — 5 sekund na odpowiedź",
+      "ynPartnerMissed": "Brak odpowiedzi — czas minął"
     },
     "questions": {
       "q01": [
@@ -2069,6 +2791,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Nowego języka",
         "Rysować"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Tęsknisz za mną w tej chwili?",
+        "bardzo tęskni",
+        "trzyma się, ale myśli o tobie"
+      ],
+      "c02": [
+        "Uśmiechasz się, gdy widzisz moją wiadomość?",
+        "zawsze się uśmiecha",
+        "uśmiecha się w duchu"
+      ],
+      "c03": [
+        "Pamiętasz nasze pierwsze spotkanie?",
+        "pamięta każdą minutę",
+        "pamięta najważniejsze — ciebie"
+      ],
+      "c04": [
+        "Chcesz się dziś przytulić?",
+        "czeka na twoje przytulenie",
+        "zostawia przytulasy na później"
+      ],
+      "c05": [
+        "Pojedziemy razem nad morze?",
+        "już pakuje walizkę",
+        "marzy o górach"
+      ],
+      "c06": [
+        "Rozśmieszam cię?",
+        "śmieje się od serca",
+        "ukrywa uśmiech"
+      ],
+      "c07": [
+        "Czujesz się przy mnie spokojnie?",
+        "przy tobie czuje spokój",
+        "dobrze się z tobą bawi"
+      ],
+      "c08": [
+        "Myślisz o mnie w ciągu dnia?",
+        "myśli o tobie bardzo często",
+        "myśli o tobie właśnie teraz"
+      ],
+      "c09": [
+        "Lubisz moje niespodzianki?",
+        "uwielbia twoje niespodzianki",
+        "najbardziej lubi, gdy jesteś obok"
+      ],
+      "c10": [
+        "Upieczemy razem ciasto?",
+        "już zakłada fartuch",
+        "woli kupić tort"
+      ],
+      "c11": [
+        "Obejrzymy wieczorem film?",
+        "już wybiera film",
+        "woli po prostu pogadać"
+      ],
+      "c12": [
+        "Lubisz mój głos?",
+        "może słuchać bez końca",
+        "jeszcze bardziej kocha twój śmiech"
+      ],
+      "c13": [
+        "Zrobimy piknik w weekend?",
+        "szykuje koc",
+        "zaprasza do przytulnej kawiarni"
+      ],
+      "c14": [
+        "Chcesz dostać ode mnie list?",
+        "czeka na twój list",
+        "chce usłyszeć wszystko osobiście"
+      ],
+      "c15": [
+        "Jestem dla ciebie ważny/a?",
+        "jesteś bardzo ważny/a",
+        "ważniejszy/a, niż myślisz"
+      ],
+      "c16": [
+        "Pospacerujemy w deszczu?",
+        "bierze parasol dla dwojga",
+        "zaparzy herbatę w domu"
+      ],
+      "c17": [
+        "Jesteśmy do siebie podobni?",
+        "jesteście jak dwie połówki",
+        "świetnie się uzupełniacie"
+      ],
+      "c18": [
+        "Smakuje ci, jak gotuję?",
+        "prosi o dokładkę",
+        "uwielbia gotować razem z tobą"
+      ],
+      "c19": [
+        "Weźmiemy razem zwierzaka?",
+        "już wybiera imię",
+        "na razie wystarczy pluszowy miś"
+      ],
+      "c20": [
+        "Wiesz, co kocham?",
+        "zna na pamięć",
+        "chce wiedzieć jeszcze więcej"
+      ],
+      "c21": [
+        "Zatańczymy?",
+        "już podaje ci rękę",
+        "będzie klaskać"
+      ],
+      "c22": [
+        "Inspiruję cię?",
+        "inspirujesz każdego dnia",
+        "przy tobie jest po prostu ciepło"
+      ],
+      "c23": [
+        "Przechowujesz nasze zdjęcia?",
+        "strzeże każdego",
+        "czeka na nowe, jeszcze piękniejsze"
+      ],
+      "c24": [
+        "Powitamy razem wschód słońca?",
+        "nastawia budzik",
+        "woli pożegnać zachód"
+      ],
+      "c25": [
+        "Zdradzisz mi sekret?",
+        "szepnie ci do ucha",
+        "niech zostanie tajemnicą"
+      ],
+      "c26": [
+        "Wierzysz we mnie?",
+        "bardzo w ciebie wierzy",
+        "dopinguje cię każdego dnia"
+      ],
+      "c27": [
+        "Pojedziemy w podróż tylko we dwoje?",
+        "marzy o tym",
+        "zabierze wszystkich bliskich"
+      ],
+      "c28": [
+        "Czekasz na mój telefon?",
+        "czeka z uśmiechem",
+        "woli, żebyś wpadł/a w odwiedziny"
+      ],
+      "c29": [
+        "Lubisz moje przytulasy?",
+        "najcieplejsze na świecie",
+        "lubi trzymać się za ręce"
+      ],
+      "c30": [
+        "Poczytamy sobie na głos?",
+        "już wybiera książkę",
+        "woli posłuchać ciebie"
+      ],
+      "c31": [
+        "Zrobimy dziś wspólne zdjęcie?",
+        "już szuka ładnego tła",
+        "najpierw rozmowa"
+      ],
+      "c32": [
+        "Poprawiam ci humor?",
+        "zawsze",
+        "z tobą nawet smutek jest lżejszy"
+      ],
+      "c33": [
+        "Zjemy jutro razem śniadanie?",
+        "już robi kakao",
+        "marzy, by dłużej pospać"
+      ],
+      "c34": [
+        "Pamiętasz moje urodziny?",
+        "pamięta bez przypominania",
+        "w tajemnicy szykuje niespodziankę"
+      ],
+      "c35": [
+        "Pójdziemy na łyżwy?",
+        "wyciąga łyżwy",
+        "będzie kibicować przy bandzie"
+      ],
+      "c36": [
+        "Czy to dla ciebie dobry dzień?",
+        "świetny dzień",
+        "będzie lepszy, gdy będziesz obok"
+      ],
+      "c37": [
+        "Narysujesz mój portret?",
+        "już bierze ołówek",
+        "narysuje serduszko"
+      ],
+      "c38": [
+        "Posadzimy razem drzewo?",
+        "wybiera miejsce",
+        "zacznie od kwiatka na parapecie"
+      ],
+      "c39": [
+        "Chcesz usłyszeć komplement?",
+        "nie może się doczekać",
+        "wstydzi się, ale bardzo chce"
+      ],
+      "c40": [
+        "Zagramy później jeszcze raz?",
+        "chce jeszcze jedną rundę",
+        "woli się przytulić niż grać"
+      ]
     }
   },
   uk: {
@@ -2163,7 +3087,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Хто з нас?» і «Закінчи фразу» з «Книгою пари»",
       "featCollection": "Уся колекція листів і віршів 25 мовами",
       "featMoments": "Моменти, нагадування і QR-лист, що відкриється в потрібний день",
-      "featAudio": "Своє аудіо в листі та відповідь отримувача"
+      "featAudio": "Своє аудіо в листі та відповідь отримувача",
+      "ynTitle": "Так чи ні",
+      "ynNote": "Жива гра для двох: 5 секунд на кожну картку. Хто встигне відповісти — побачить відповідь партнера.",
+      "ynCreate": "Створити кімнату",
+      "ynWaiting": "Чекаємо, коли {name} відкриє посилання…",
+      "ynWaitingAny": "Чекаємо партнера…",
+      "ynShareText": "{name} кличе тебе в живу гру «Так чи ні»",
+      "ynPartnerHere": "{name} уже в грі!",
+      "ynStart": "Почати гру",
+      "ynWaitHost": "{name} зараз почне гру",
+      "ynYes": "Так",
+      "ynNo": "Ні",
+      "ynMissed": "Не встигли — картка закрита",
+      "ynMatch": "Збіглися!",
+      "ynRound": "Картка {n} з {total}",
+      "ynAnswered": "Відповідь прийнято, чекаємо партнера…",
+      "ynFinal": "Збіглося {score} з {total}",
+      "ynFinalHigh": "Ви відчуваєте одне одного з півслова",
+      "ynFinalMid": "Такі різні — і такі близькі",
+      "ynAgain": "Зіграти ще раз",
+      "ynLeft": "Партнер від’єднався. Чекаємо повернення…",
+      "ynYou": "Ви",
+      "ynOffline": "Не вдається під’єднатися до гри. Перевірте інтернет і відкрийте посилання знову.",
+      "ynJoin": "Увійти в гру",
+      "ynJoinLead": "{name} чекає на вас. На кожну відповідь — 5 секунд!",
+      "ynStepNames": "Ваше ім’я та ім’я партнера",
+      "ynRoomReady": "Кімната готова — надішліть посилання",
+      "ynStayHere": "Не закривайте цей екран: гра почнеться, коли партнер відкриє посилання.",
+      "featYesNo": "Жива гра «Так чи ні» — 5 секунд на відповідь",
+      "ynPartnerMissed": "Відповіді немає — час вийшов"
     },
     "questions": {
       "q01": [
@@ -2586,6 +3539,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Нової мови",
         "Малювати"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Сумуєш за мною просто зараз?",
+        "дуже сумує",
+        "тримається, але думає про тебе"
+      ],
+      "c02": [
+        "Усміхаєшся, коли бачиш моє повідомлення?",
+        "завжди усміхається",
+        "усміхається подумки"
+      ],
+      "c03": [
+        "Пам’ятаєш нашу першу зустріч?",
+        "пам’ятає кожну хвилину",
+        "пам’ятає головне — тебе"
+      ],
+      "c04": [
+        "Хочеш сьогодні обійматися?",
+        "чекає твоїх обіймів",
+        "береже обійми на потім"
+      ],
+      "c05": [
+        "Поїдемо разом до моря?",
+        "уже пакує валізу",
+        "мріє про гори"
+      ],
+      "c06": [
+        "Я тебе смішу?",
+        "сміється від душі",
+        "ховає усмішку"
+      ],
+      "c07": [
+        "Тобі зі мною спокійно?",
+        "поруч із тобою спокійно",
+        "з тобою весело й цікаво"
+      ],
+      "c08": [
+        "Згадуєш мене вдень?",
+        "згадує дуже часто",
+        "згадує просто зараз"
+      ],
+      "c09": [
+        "Любиш мої сюрпризи?",
+        "обожнює твої сюрпризи",
+        "любить, коли ти просто поруч"
+      ],
+      "c10": [
+        "Спечемо разом пиріг?",
+        "уже вдягає фартух",
+        "краще купить торт"
+      ],
+      "c11": [
+        "Подивимося ввечері фільм удвох?",
+        "уже обирає фільм",
+        "хоче просто поговорити"
+      ],
+      "c12": [
+        "Подобається мій голос?",
+        "може слухати безкінечно",
+        "ще більше любить твій сміх"
+      ],
+      "c13": [
+        "Влаштуємо пікнік на вихідних?",
+        "готує плед",
+        "кличе в затишне кафе"
+      ],
+      "c14": [
+        "Хочеш отримати від мене лист?",
+        "чекає на твій лист",
+        "хоче почути все наживо"
+      ],
+      "c15": [
+        "Я для тебе багато значу?",
+        "ти значиш дуже багато",
+        "більше, ніж ти думаєш"
+      ],
+      "c16": [
+        "Погуляємо під дощем?",
+        "бере парасольку на двох",
+        "заварить чай удома"
+      ],
+      "c17": [
+        "Ми з тобою схожі?",
+        "ви як дві половинки",
+        "ви чудово доповнюєте одне одного"
+      ],
+      "c18": [
+        "Подобається, як я готую?",
+        "просить добавки",
+        "любить готувати разом із тобою"
+      ],
+      "c19": [
+        "Заведемо спільного улюбленця?",
+        "уже обирає ім’я",
+        "поки вистачає плюшевого ведмедика"
+      ],
+      "c20": [
+        "Знаєш, що я люблю?",
+        "знає напам’ять",
+        "хоче дізнатися ще більше"
+      ],
+      "c21": [
+        "Потанцюємо?",
+        "уже простягає руку",
+        "плескатиме в долоні"
+      ],
+      "c22": [
+        "Я тебе надихаю?",
+        "надихаєш щодня",
+        "поруч із тобою просто тепло"
+      ],
+      "c23": [
+        "Зберігаєш наші фото?",
+        "береже кожне",
+        "чекає нових, ще кращих"
+      ],
+      "c24": [
+        "Зустрінемо світанок разом?",
+        "ставить будильник",
+        "краще проведемо захід сонця"
+      ],
+      "c25": [
+        "Розкажеш мені секрет?",
+        "прошепоче на вушко",
+        "нехай лишиться загадкою"
+      ],
+      "c26": [
+        "Віриш у мене?",
+        "дуже вірить у тебе",
+        "підтримує тебе щодня"
+      ],
+      "c27": [
+        "Вирушимо в подорож удвох?",
+        "мріє про це",
+        "візьме з собою всіх близьких"
+      ],
+      "c28": [
+        "Чекаєш на мій дзвінок?",
+        "чекає з усмішкою",
+        "краще приходь у гості"
+      ],
+      "c29": [
+        "Подобаються мої обійми?",
+        "найтепліші у світі",
+        "любить триматися за руки"
+      ],
+      "c30": [
+        "Почитаємо вголос одне одному?",
+        "уже обирає книжку",
+        "краще послухає тебе"
+      ],
+      "c31": [
+        "Зробимо спільне фото сьогодні?",
+        "уже шукає гарне тло",
+        "спершу — розмови"
+      ],
+      "c32": [
+        "Я покращую тобі настрій?",
+        "завжди покращуєш",
+        "з тобою навіть сумувати легше"
+      ],
+      "c33": [
+        "Поснідаємо завтра разом?",
+        "уже варить какао",
+        "мріє довше поспати"
+      ],
+      "c34": [
+        "Пам’ятаєш мій день народження?",
+        "пам’ятає без нагадувань",
+        "таємно готує сюрприз"
+      ],
+      "c35": [
+        "Підемо на ковзанку?",
+        "дістає ковзани",
+        "вболіватиме за тебе біля бортика"
+      ],
+      "c36": [
+        "Тобі сьогодні добре?",
+        "день чудовий",
+        "стане кращим, коли ти поруч"
+      ],
+      "c37": [
+        "Намалюєш мій портрет?",
+        "уже бере олівець",
+        "намалює сердечко"
+      ],
+      "c38": [
+        "Посадимо разом дерево?",
+        "обирає місце",
+        "почне з квітки на підвіконні"
+      ],
+      "c39": [
+        "Хочеш почути комплімент?",
+        "чекає з нетерпінням",
+        "соромиться, але дуже хоче"
+      ],
+      "c40": [
+        "Зіграємо ще раз потім?",
+        "хоче ще раунд",
+        "хоче обійняти замість гри"
+      ]
     }
   },
   pt: {
@@ -2680,7 +3835,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Quem de nós?» e «Complete a frase» com o livro do casal",
       "featCollection": "Toda a coleção de cartas e poemas em 25 idiomas",
       "featMoments": "Momentos, lembretes e uma carta QR que abre no dia certo",
-      "featAudio": "Seu próprio áudio na carta e respostas do destinatário"
+      "featAudio": "Seu próprio áudio na carta e respostas do destinatário",
+      "ynTitle": "Sim ou não",
+      "ynNote": "Um jogo ao vivo a dois: 5 segundos por cartão. Quem responder a tempo vê a resposta da outra pessoa.",
+      "ynCreate": "Criar sala",
+      "ynWaiting": "Esperando {name} abrir o link…",
+      "ynWaitingAny": "Esperando a outra pessoa…",
+      "ynShareText": "{name} convida você para o jogo ao vivo «Sim ou não»",
+      "ynPartnerHere": "{name} chegou!",
+      "ynStart": "Começar o jogo",
+      "ynWaitHost": "{name} já vai começar o jogo",
+      "ynYes": "Sim",
+      "ynNo": "Não",
+      "ynMissed": "Tarde demais — este cartão fica fechado",
+      "ynMatch": "Combinaram!",
+      "ynRound": "Cartão {n} de {total}",
+      "ynAnswered": "Resposta enviada, esperando a outra pessoa…",
+      "ynFinal": "{score} de {total} em comum",
+      "ynFinalHigh": "Vocês se entendem sem palavras",
+      "ynFinalMid": "Tão diferentes — e tão próximos",
+      "ynAgain": "Jogar de novo",
+      "ynLeft": "A outra pessoa se desconectou. Esperando a volta…",
+      "ynYou": "Você",
+      "ynOffline": "Não foi possível conectar ao jogo. Verifique a internet e abra o link de novo.",
+      "ynJoin": "Entrar no jogo",
+      "ynJoinLead": "{name} está esperando por você. 5 segundos por resposta!",
+      "ynStepNames": "Seu nome e o da outra pessoa",
+      "ynRoomReady": "A sala está pronta — envie o link",
+      "ynStayHere": "Mantenha esta tela aberta: o jogo começa quando o link for aberto.",
+      "featYesNo": "Jogo ao vivo «Sim ou não» — 5 segundos por resposta",
+      "ynPartnerMissed": "Sem resposta — o tempo acabou"
     },
     "questions": {
       "q01": [
@@ -3103,6 +4287,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Uma nova língua",
         "Desenhar"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Você está com saudade de mim agora?",
+        "sente muita saudade",
+        "aguenta firme, mas pensa em você"
+      ],
+      "c02": [
+        "Você sorri quando vê minha mensagem?",
+        "sempre sorri",
+        "sorri por dentro"
+      ],
+      "c03": [
+        "Lembra do nosso primeiro encontro?",
+        "lembra de cada minuto",
+        "lembra do essencial: você"
+      ],
+      "c04": [
+        "Quer um abraço hoje?",
+        "espera o seu abraço",
+        "guarda os abraços para depois"
+      ],
+      "c05": [
+        "Vamos juntos para a praia?",
+        "já está fazendo a mala",
+        "sonha com as montanhas"
+      ],
+      "c06": [
+        "Eu faço você rir?",
+        "ri de coração",
+        "esconde um sorriso"
+      ],
+      "c07": [
+        "Você fica em paz comigo?",
+        "sente paz ao seu lado",
+        "se diverte com você"
+      ],
+      "c08": [
+        "Você pensa em mim durante o dia?",
+        "pensa em você muitas vezes",
+        "está pensando em você agora"
+      ],
+      "c09": [
+        "Você ama minhas surpresas?",
+        "adora suas surpresas",
+        "gosta mesmo é de ter você por perto"
+      ],
+      "c10": [
+        "Vamos fazer uma torta juntos?",
+        "já está pondo o avental",
+        "prefere comprar um bolo"
+      ],
+      "c11": [
+        "Vamos ver um filme hoje à noite?",
+        "já está escolhendo o filme",
+        "prefere só conversar"
+      ],
+      "c12": [
+        "Você gosta da minha voz?",
+        "ouviria sem parar",
+        "gosta ainda mais da sua risada"
+      ],
+      "c13": [
+        "Vamos fazer um piquenique no fim de semana?",
+        "prepara a manta",
+        "chama você para um café aconchegante"
+      ],
+      "c14": [
+        "Quer receber uma carta minha?",
+        "espera a sua carta",
+        "quer ouvir tudo pessoalmente"
+      ],
+      "c15": [
+        "Sou muito importante para você?",
+        "você importa demais",
+        "mais do que você imagina"
+      ],
+      "c16": [
+        "Vamos passear na chuva?",
+        "pega um guarda-chuva para dois",
+        "vai fazer chá em casa"
+      ],
+      "c17": [
+        "A gente se parece?",
+        "vocês são duas metades",
+        "vocês se completam perfeitamente"
+      ],
+      "c18": [
+        "Você gosta da minha comida?",
+        "pede mais um prato",
+        "adora cozinhar junto com você"
+      ],
+      "c19": [
+        "Vamos ter um bichinho juntos?",
+        "já está escolhendo o nome",
+        "por enquanto basta um ursinho de pelúcia"
+      ],
+      "c20": [
+        "Você sabe do que eu gosto?",
+        "sabe de cor",
+        "quer descobrir ainda mais"
+      ],
+      "c21": [
+        "Vamos dançar?",
+        "já está estendendo a mão",
+        "vai bater palmas"
+      ],
+      "c22": [
+        "Eu te inspiro?",
+        "você inspira todos os dias",
+        "ao seu lado é simplesmente quentinho"
+      ],
+      "c23": [
+        "Você guarda nossas fotos?",
+        "guarda cada uma com carinho",
+        "espera novas, ainda mais bonitas"
+      ],
+      "c24": [
+        "Vamos ver o nascer do sol juntos?",
+        "já põe o despertador",
+        "prefere ver o pôr do sol"
+      ],
+      "c25": [
+        "Você me conta um segredo?",
+        "vai sussurrar no seu ouvido",
+        "que continue um mistério"
+      ],
+      "c26": [
+        "Você acredita em mim?",
+        "acredita muito em você",
+        "torce por você todos os dias"
+      ],
+      "c27": [
+        "Vamos viajar só nós dois?",
+        "sonha com isso",
+        "vai levar todos os queridos"
+      ],
+      "c28": [
+        "Você espera a minha ligação?",
+        "espera com um sorriso",
+        "prefere que você venha visitar"
+      ],
+      "c29": [
+        "Você gosta dos meus abraços?",
+        "os mais quentinhos do mundo",
+        "adora andar de mãos dadas"
+      ],
+      "c30": [
+        "Vamos ler em voz alta um para o outro?",
+        "já está escolhendo um livro",
+        "prefere ouvir você"
+      ],
+      "c31": [
+        "Vamos tirar uma foto juntos hoje?",
+        "já procura um fundo bonito",
+        "primeiro, uma boa conversa"
+      ],
+      "c32": [
+        "Eu melhoro o seu humor?",
+        "sempre",
+        "com você até a tristeza fica mais leve"
+      ],
+      "c33": [
+        "Vamos tomar café da manhã juntos amanhã?",
+        "já está fazendo chocolate quente",
+        "sonha em dormir até mais tarde"
+      ],
+      "c34": [
+        "Você lembra do meu aniversário?",
+        "lembra sem precisar de aviso",
+        "prepara uma surpresa em segredo"
+      ],
+      "c35": [
+        "Vamos patinar no gelo?",
+        "já pega os patins",
+        "vai torcer por você da beira da pista"
+      ],
+      "c36": [
+        "Hoje está sendo um bom dia para você?",
+        "um dia ótimo",
+        "vai ficar melhor com você por perto"
+      ],
+      "c37": [
+        "Você desenha o meu retrato?",
+        "já pega o lápis",
+        "vai desenhar um coraçãozinho"
+      ],
+      "c38": [
+        "Vamos plantar uma árvore juntos?",
+        "escolhe o lugar",
+        "vai começar com uma flor na janela"
+      ],
+      "c39": [
+        "Quer ouvir um elogio?",
+        "mal pode esperar",
+        "fica com vergonha, mas quer muito"
+      ],
+      "c40": [
+        "Vamos jogar de novo depois?",
+        "quer mais uma rodada",
+        "prefere um abraço a jogar"
+      ]
     }
   },
   nl: {
@@ -3197,7 +4583,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "‘Wie van ons?’ en ‘Maak de zin af’ met het boek van jullie twee",
       "featCollection": "De hele verzameling brieven en gedichten in 25 talen",
       "featMoments": "Momenten, herinneringen en een QR-brief die op de juiste dag opengaat",
-      "featAudio": "Eigen audio in de brief en antwoorden van de ontvanger"
+      "featAudio": "Eigen audio in de brief en antwoorden van de ontvanger",
+      "ynTitle": "Ja of nee",
+      "ynNote": "Een live spel voor twee: 5 seconden per kaart. Wie op tijd antwoordt, ziet het antwoord van de ander.",
+      "ynCreate": "Kamer maken",
+      "ynWaiting": "We wachten tot {name} de link opent…",
+      "ynWaitingAny": "We wachten op de ander…",
+      "ynShareText": "{name} nodigt je uit voor het live spel ‘Ja of nee’",
+      "ynPartnerHere": "{name} is er!",
+      "ynStart": "Spel starten",
+      "ynWaitHost": "{name} start zo het spel",
+      "ynYes": "Ja",
+      "ynNo": "Nee",
+      "ynMissed": "Te laat — deze kaart blijft dicht",
+      "ynMatch": "Hetzelfde antwoord!",
+      "ynRound": "Kaart {n} van {total}",
+      "ynAnswered": "Antwoord verstuurd, we wachten op de ander…",
+      "ynFinal": "{score} van {total} hetzelfde",
+      "ynFinalHigh": "Jullie begrijpen elkaar zonder woorden",
+      "ynFinalMid": "Zo verschillend — en zo dichtbij",
+      "ynAgain": "Nog een keer spelen",
+      "ynLeft": "De ander is weg. We wachten tot die terugkomt…",
+      "ynYou": "Jij",
+      "ynOffline": "Geen verbinding met het spel. Controleer je internet en open de link opnieuw.",
+      "ynJoin": "Meedoen",
+      "ynJoinLead": "{name} wacht op je. 5 seconden per antwoord!",
+      "ynStepNames": "Jouw naam en die van de ander",
+      "ynRoomReady": "De kamer is klaar — stuur de link",
+      "ynStayHere": "Houd dit scherm open: het spel begint zodra de link wordt geopend.",
+      "featYesNo": "Live spel ‘Ja of nee’ — 5 seconden per antwoord",
+      "ynPartnerMissed": "Geen antwoord — de tijd is om"
     },
     "questions": {
       "q01": [
@@ -3620,6 +5035,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Een nieuwe taal",
         "Tekenen"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Mis je me op dit moment?",
+        "mist je heel erg",
+        "houdt vol, maar denkt aan je"
+      ],
+      "c02": [
+        "Glimlach je als je mijn bericht ziet?",
+        "glimlacht altijd",
+        "glimlacht vanbinnen"
+      ],
+      "c03": [
+        "Weet je onze eerste ontmoeting nog?",
+        "weet elke minuut nog",
+        "weet het belangrijkste nog — jou"
+      ],
+      "c04": [
+        "Wil je vandaag een knuffel?",
+        "wacht op je knuffel",
+        "bewaart knuffels voor later"
+      ],
+      "c05": [
+        "Gaan we samen naar zee?",
+        "pakt de koffer al in",
+        "droomt van de bergen"
+      ],
+      "c06": [
+        "Maak ik je aan het lachen?",
+        "lacht van harte",
+        "verbergt een glimlach"
+      ],
+      "c07": [
+        "Voel je je rustig bij mij?",
+        "voelt rust bij jou",
+        "heeft plezier met jou"
+      ],
+      "c08": [
+        "Denk je overdag aan mij?",
+        "denkt heel vaak aan je",
+        "denkt nu meteen aan je"
+      ],
+      "c09": [
+        "Hou je van mijn verrassingen?",
+        "is dol op je verrassingen",
+        "vindt het fijnst als je er gewoon bent"
+      ],
+      "c10": [
+        "Bakken we samen een taart?",
+        "doet al een schort voor",
+        "koopt liever een taart"
+      ],
+      "c11": [
+        "Kijken we vanavond samen een film?",
+        "kiest al een film",
+        "wil liever gewoon praten"
+      ],
+      "c12": [
+        "Vind je mijn stem fijn?",
+        "kan er eindeloos naar luisteren",
+        "houdt nog meer van je lach"
+      ],
+      "c13": [
+        "Gaan we dit weekend picknicken?",
+        "legt het kleed klaar",
+        "nodigt je uit in een knus café"
+      ],
+      "c14": [
+        "Wil je een brief van mij krijgen?",
+        "wacht op je brief",
+        "wil alles liever persoonlijk horen"
+      ],
+      "c15": [
+        "Beteken ik veel voor je?",
+        "je betekent ontzettend veel",
+        "meer dan je denkt"
+      ],
+      "c16": [
+        "Wandelen we in de regen?",
+        "pakt een paraplu voor twee",
+        "zet liever thee thuis"
+      ],
+      "c17": [
+        "Lijken we op elkaar?",
+        "jullie zijn twee helften",
+        "jullie vullen elkaar perfect aan"
+      ],
+      "c18": [
+        "Vind je mijn kookkunst lekker?",
+        "vraagt om nog een bord",
+        "kookt het liefst samen met jou"
+      ],
+      "c19": [
+        "Nemen we samen een huisdier?",
+        "kiest al een naam",
+        "een knuffelbeer is voorlopig genoeg"
+      ],
+      "c20": [
+        "Weet je waar ik van hou?",
+        "kent het uit het hoofd",
+        "wil nog meer ontdekken"
+      ],
+      "c21": [
+        "Dansen we?",
+        "steekt al een hand uit",
+        "klapt enthousiast mee"
+      ],
+      "c22": [
+        "Inspireer ik je?",
+        "je inspireert elke dag",
+        "bij jou is het gewoon warm"
+      ],
+      "c23": [
+        "Bewaar je onze foto’s?",
+        "koestert ze allemaal",
+        "wacht op nieuwe, nog mooiere"
+      ],
+      "c24": [
+        "Kijken we samen naar de zonsopgang?",
+        "zet al een wekker",
+        "kijkt liever naar de zonsondergang"
+      ],
+      "c25": [
+        "Vertel je me een geheim?",
+        "fluistert het in je oor",
+        "laat het een raadsel blijven"
+      ],
+      "c26": [
+        "Geloof je in mij?",
+        "gelooft heel erg in je",
+        "moedigt je elke dag aan"
+      ],
+      "c27": [
+        "Gaan we op reis, alleen wij tweeën?",
+        "droomt ervan",
+        "neemt alle dierbaren mee"
+      ],
+      "c28": [
+        "Wacht je op mijn telefoontje?",
+        "wacht met een glimlach",
+        "ziet je liever langskomen"
+      ],
+      "c29": [
+        "Vind je mijn knuffels fijn?",
+        "de warmste van de wereld",
+        "houdt graag je hand vast"
+      ],
+      "c30": [
+        "Lezen we elkaar voor?",
+        "kiest al een boek",
+        "luistert liever naar jou"
+      ],
+      "c31": [
+        "Maken we vandaag samen een foto?",
+        "zoekt al een mooie achtergrond",
+        "eerst even praten"
+      ],
+      "c32": [
+        "Maak ik je vrolijker?",
+        "altijd",
+        "met jou is zelfs verdriet lichter"
+      ],
+      "c33": [
+        "Ontbijten we morgen samen?",
+        "maakt al warme chocomel",
+        "droomt van uitslapen"
+      ],
+      "c34": [
+        "Weet je mijn verjaardag nog?",
+        "zonder herinnering",
+        "plant stiekem een verrassing"
+      ],
+      "c35": [
+        "Gaan we schaatsen?",
+        "pakt de schaatsen al",
+        "moedigt je aan vanaf de kant"
+      ],
+      "c36": [
+        "Is het een goede dag voor je?",
+        "een geweldige dag",
+        "wordt beter als jij er bent"
+      ],
+      "c37": [
+        "Teken je mijn portret?",
+        "pakt al een potlood",
+        "tekent een hartje"
+      ],
+      "c38": [
+        "Planten we samen een boom?",
+        "kiest de plek",
+        "begint met een bloem op de vensterbank"
+      ],
+      "c39": [
+        "Wil je een compliment horen?",
+        "kan niet wachten",
+        "is verlegen, maar wil het heel graag"
+      ],
+      "c40": [
+        "Spelen we straks nog een keer?",
+        "wil nog een ronde",
+        "knuffelt liever dan te spelen"
+      ]
     }
   },
   tr: {
@@ -3714,7 +5331,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "“Hangimiz?” ve çiftin kitabıyla “Cümleyi tamamla”",
       "featCollection": "25 dilde mektup ve şiirlerin tüm koleksiyonu",
       "featMoments": "Anlar, hatırlatıcılar ve doğru günde açılan QR mektup",
-      "featAudio": "Mektupta kendi sesin ve alıcının yanıtı"
+      "featAudio": "Mektupta kendi sesin ve alıcının yanıtı",
+      "ynTitle": "Evet mi hayır mı",
+      "ynNote": "İki kişilik canlı oyun: her kart için 5 saniye. Zamanında yanıtlayan, karşısındakinin yanıtını görür.",
+      "ynCreate": "Oda oluştur",
+      "ynWaiting": "{name} bağlantıyı açana kadar bekliyoruz…",
+      "ynWaitingAny": "Diğer oyuncuyu bekliyoruz…",
+      "ynShareText": "{name} seni canlı “Evet mi hayır mı” oyununa davet ediyor",
+      "ynPartnerHere": "{name} burada!",
+      "ynStart": "Oyunu başlat",
+      "ynWaitHost": "{name} birazdan oyunu başlatacak",
+      "ynYes": "Evet",
+      "ynNo": "Hayır",
+      "ynMissed": "Geç kaldın — bu kart kapalı kalıyor",
+      "ynMatch": "Aynı yanıt!",
+      "ynRound": "Kart {n}/{total}",
+      "ynAnswered": "Yanıt gönderildi, diğer oyuncu bekleniyor…",
+      "ynFinal": "{total} kartta {score} eşleşme",
+      "ynFinalHigh": "Birbirinizi sözsüz anlıyorsunuz",
+      "ynFinalMid": "Çok farklı — ve çok yakın",
+      "ynAgain": "Tekrar oyna",
+      "ynLeft": "Diğer oyuncunun bağlantısı koptu. Dönmesini bekliyoruz…",
+      "ynYou": "Sen",
+      "ynOffline": "Oyuna bağlanılamıyor. İnterneti kontrol edip bağlantıyı yeniden aç.",
+      "ynJoin": "Oyuna katıl",
+      "ynJoinLead": "{name} seni bekliyor. Her yanıt için 5 saniye!",
+      "ynStepNames": "Senin ve diğer oyuncunun adı",
+      "ynRoomReady": "Oda hazır — bağlantıyı gönder",
+      "ynStayHere": "Bu ekranı kapatma: bağlantı açılınca oyun başlar.",
+      "featYesNo": "Canlı “Evet mi hayır mı” oyunu — yanıt başına 5 saniye",
+      "ynPartnerMissed": "Yanıt yok — süre doldu"
     },
     "questions": {
       "q01": [
@@ -4137,6 +5783,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Yeni bir dil",
         "Resim yapmayı"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Şu an beni özlüyor musun?",
+        "seni çok özlüyor",
+        "dayanıyor ama seni düşünüyor"
+      ],
+      "c02": [
+        "Mesajımı görünce gülümsüyor musun?",
+        "hep gülümsüyor",
+        "içinden gülümsüyor"
+      ],
+      "c03": [
+        "İlk buluşmamızı hatırlıyor musun?",
+        "her dakikasını hatırlıyor",
+        "en önemlisini hatırlıyor — seni"
+      ],
+      "c04": [
+        "Bugün sarılmak ister misin?",
+        "sarılmanı bekliyor",
+        "sarılmaları sonraya saklıyor"
+      ],
+      "c05": [
+        "Birlikte denize gidelim mi?",
+        "bavulu hazırlıyor bile",
+        "dağların hayalini kuruyor"
+      ],
+      "c06": [
+        "Seni güldürüyor muyum?",
+        "içten gülüyor",
+        "gülümsemesini saklıyor"
+      ],
+      "c07": [
+        "Yanımda huzurlu musun?",
+        "yanında huzur buluyor",
+        "seninle çok eğleniyor"
+      ],
+      "c08": [
+        "Gün içinde beni düşünüyor musun?",
+        "seni çok sık düşünüyor",
+        "şu an seni düşünüyor"
+      ],
+      "c09": [
+        "Sürprizlerimi seviyor musun?",
+        "sürprizlerine bayılıyor",
+        "en çok yanında olmanı seviyor"
+      ],
+      "c10": [
+        "Birlikte turta yapalım mı?",
+        "önlüğü bile taktı",
+        "pasta almayı tercih ediyor"
+      ],
+      "c11": [
+        "Akşam birlikte film izleyelim mi?",
+        "filmi seçiyor bile",
+        "sadece sohbet etmek istiyor"
+      ],
+      "c12": [
+        "Sesimi seviyor musun?",
+        "durmadan dinleyebilir",
+        "gülüşünü daha çok seviyor"
+      ],
+      "c13": [
+        "Hafta sonu piknik yapalım mı?",
+        "battaniyeyi hazırlıyor",
+        "seni şirin bir kafeye çağırıyor"
+      ],
+      "c14": [
+        "Benden mektup almak ister misin?",
+        "mektubunu bekliyor",
+        "her şeyi yüz yüze duymak istiyor"
+      ],
+      "c15": [
+        "Senin için önemli miyim?",
+        "çok önemlisin",
+        "düşündüğünden de fazla"
+      ],
+      "c16": [
+        "Yağmurda yürüyelim mi?",
+        "iki kişilik şemsiye alıyor",
+        "evde çay demleyecek"
+      ],
+      "c17": [
+        "Birbirimize benziyor muyuz?",
+        "iki yarım gibisiniz",
+        "birbirinizi harika tamamlıyorsunuz"
+      ],
+      "c18": [
+        "Yemeklerimi seviyor musun?",
+        "bir tabak daha istiyor",
+        "seninle birlikte yemek yapmayı seviyor"
+      ],
+      "c19": [
+        "Birlikte bir evcil hayvan alalım mı?",
+        "ismini seçiyor bile",
+        "şimdilik bir oyuncak ayı yeter"
+      ],
+      "c20": [
+        "Neleri sevdiğimi biliyor musun?",
+        "ezbere biliyor",
+        "daha fazlasını öğrenmek istiyor"
+      ],
+      "c21": [
+        "Dans edelim mi?",
+        "elini uzatıyor bile",
+        "alkışlayacak"
+      ],
+      "c22": [
+        "Sana ilham veriyor muyum?",
+        "her gün ilham veriyorsun",
+        "yanında sadece sıcacık hissediyor"
+      ],
+      "c23": [
+        "Fotoğraflarımızı saklıyor musun?",
+        "her birini özenle saklıyor",
+        "yenilerini, daha güzellerini bekliyor"
+      ],
+      "c24": [
+        "Gün doğumunu birlikte izleyelim mi?",
+        "alarm kuruyor",
+        "gün batımını tercih ediyor"
+      ],
+      "c25": [
+        "Bana bir sır verir misin?",
+        "kulağına fısıldayacak",
+        "sır olarak kalsın"
+      ],
+      "c26": [
+        "Bana inanıyor musun?",
+        "sana çok inanıyor",
+        "her gün seni destekliyor"
+      ],
+      "c27": [
+        "Sadece ikimiz seyahate çıkalım mı?",
+        "bunun hayalini kuruyor",
+        "tüm sevdiklerini götürecek"
+      ],
+      "c28": [
+        "Aramamı bekliyor musun?",
+        "gülümseyerek bekliyor",
+        "gelmeni tercih ediyor"
+      ],
+      "c29": [
+        "Sarılmalarımı seviyor musun?",
+        "dünyanın en sıcakları",
+        "el ele tutuşmayı seviyor"
+      ],
+      "c30": [
+        "Birbirimize sesli kitap okuyalım mı?",
+        "kitabı seçiyor bile",
+        "seni dinlemeyi tercih ediyor"
+      ],
+      "c31": [
+        "Bugün birlikte fotoğraf çekelim mi?",
+        "güzel bir arka plan arıyor",
+        "önce biraz sohbet"
+      ],
+      "c32": [
+        "Moralini yükseltiyor muyum?",
+        "her zaman",
+        "seninle hüzün bile daha hafif"
+      ],
+      "c33": [
+        "Yarın birlikte kahvaltı yapalım mı?",
+        "kakaoyu hazırlıyor bile",
+        "uzun uzun uyumayı hayal ediyor"
+      ],
+      "c34": [
+        "Doğum günümü hatırlıyor musun?",
+        "hatırlatmaya gerek yok",
+        "gizlice sürpriz hazırlıyor"
+      ],
+      "c35": [
+        "Buz pateni yapmaya gidelim mi?",
+        "patenleri çıkarıyor",
+        "kenardan seni destekleyecek"
+      ],
+      "c36": [
+        "Bugün senin için güzel bir gün mü?",
+        "harika bir gün",
+        "sen yanındayken daha güzel olacak"
+      ],
+      "c37": [
+        "Portremi çizer misin?",
+        "kalemi aldı bile",
+        "küçük bir kalp çizecek"
+      ],
+      "c38": [
+        "Birlikte ağaç dikelim mi?",
+        "yeri seçiyor",
+        "pencere önündeki bir çiçekle başlayacak"
+      ],
+      "c39": [
+        "Bir iltifat duymak ister misin?",
+        "sabırsızlıkla bekliyor",
+        "utanıyor ama çok istiyor"
+      ],
+      "c40": [
+        "Sonra bir daha oynayalım mı?",
+        "bir tur daha istiyor",
+        "oyun yerine sarılmak istiyor"
+      ]
     }
   },
   ro: {
@@ -4231,7 +6079,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "„Care dintre noi?” și „Completează fraza” cu cartea cuplului",
       "featCollection": "Întreaga colecție de scrisori și poezii în 25 de limbi",
       "featMoments": "Momente, mementouri și o scrisoare QR care se deschide în ziua potrivită",
-      "featAudio": "Propriul audio în scrisoare și răspunsurile destinatarului"
+      "featAudio": "Propriul audio în scrisoare și răspunsurile destinatarului",
+      "ynTitle": "Da sau nu",
+      "ynNote": "Un joc live în doi: 5 secunde pentru fiecare carte. Cine răspunde la timp vede răspunsul celuilalt.",
+      "ynCreate": "Creează o cameră",
+      "ynWaiting": "Așteptăm ca {name} să deschidă linkul…",
+      "ynWaitingAny": "Îl așteptăm pe celălalt jucător…",
+      "ynShareText": "{name} te invită la jocul live „Da sau nu”",
+      "ynPartnerHere": "{name} a venit!",
+      "ynStart": "Începe jocul",
+      "ynWaitHost": "{name} începe imediat jocul",
+      "ynYes": "Da",
+      "ynNo": "Nu",
+      "ynMissed": "Prea târziu — cartea rămâne închisă",
+      "ynMatch": "Același răspuns!",
+      "ynRound": "Cartea {n} din {total}",
+      "ynAnswered": "Răspuns trimis, îl așteptăm pe celălalt…",
+      "ynFinal": "{score} din {total} la fel",
+      "ynFinalHigh": "Vă înțelegeți fără cuvinte",
+      "ynFinalMid": "Atât de diferiți — și atât de apropiați",
+      "ynAgain": "Joacă din nou",
+      "ynLeft": "Celălalt jucător s-a deconectat. Așteptăm să revină…",
+      "ynYou": "Tu",
+      "ynOffline": "Nu ne putem conecta la joc. Verifică internetul și deschide linkul din nou.",
+      "ynJoin": "Intră în joc",
+      "ynJoinLead": "{name} te așteaptă. 5 secunde pentru fiecare răspuns!",
+      "ynStepNames": "Numele tău și al celuilalt",
+      "ynRoomReady": "Camera e gata — trimite linkul",
+      "ynStayHere": "Nu închide acest ecran: jocul începe când linkul este deschis.",
+      "featYesNo": "Jocul live „Da sau nu” — 5 secunde pe răspuns",
+      "ynPartnerMissed": "Niciun răspuns — timpul a expirat"
     },
     "questions": {
       "q01": [
@@ -4654,6 +6531,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "O limbă nouă",
         "Să desenez"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Îți e dor de mine chiar acum?",
+        "îi e tare dor",
+        "rezistă, dar se gândește la tine"
+      ],
+      "c02": [
+        "Zâmbești când vezi mesajul meu?",
+        "zâmbește mereu",
+        "zâmbește în sinea sa"
+      ],
+      "c03": [
+        "Îți amintești prima noastră întâlnire?",
+        "își amintește fiecare minut",
+        "își amintește esențialul — pe tine"
+      ],
+      "c04": [
+        "Vrei o îmbrățișare azi?",
+        "așteaptă îmbrățișarea ta",
+        "păstrează îmbrățișările pentru mai târziu"
+      ],
+      "c05": [
+        "Mergem împreună la mare?",
+        "își face deja bagajul",
+        "visează la munte"
+      ],
+      "c06": [
+        "Te fac să râzi?",
+        "râde din inimă",
+        "ascunde un zâmbet"
+      ],
+      "c07": [
+        "Ai liniște lângă mine?",
+        "lângă tine simte liniște",
+        "se distrează cu tine"
+      ],
+      "c08": [
+        "Te gândești la mine în timpul zilei?",
+        "se gândește foarte des la tine",
+        "se gândește la tine chiar acum"
+      ],
+      "c09": [
+        "Îți plac surprizele mele?",
+        "adoră surprizele tale",
+        "iubește să te aibă pur și simplu aproape"
+      ],
+      "c10": [
+        "Facem împreună o plăcintă?",
+        "își pune deja șorțul",
+        "preferă să cumpere un tort"
+      ],
+      "c11": [
+        "Ne uităm diseară la un film?",
+        "alege deja filmul",
+        "vrea doar să stați de vorbă"
+      ],
+      "c12": [
+        "Îți place vocea mea?",
+        "ar asculta-o la nesfârșit",
+        "îți iubește și mai mult râsul"
+      ],
+      "c13": [
+        "Facem un picnic în weekend?",
+        "pregătește pătura",
+        "te cheamă într-o cafenea primitoare"
+      ],
+      "c14": [
+        "Vrei să primești o scrisoare de la mine?",
+        "așteaptă scrisoarea ta",
+        "vrea să audă totul față în față"
+      ],
+      "c15": [
+        "Contez mult pentru tine?",
+        "contezi enorm",
+        "mai mult decât crezi"
+      ],
+      "c16": [
+        "Ne plimbăm prin ploaie?",
+        "ia o umbrelă pentru doi",
+        "face un ceai acasă"
+      ],
+      "c17": [
+        "Semănăm unul cu altul?",
+        "sunteți ca două jumătăți",
+        "vă completați perfect"
+      ],
+      "c18": [
+        "Îți place cum gătesc?",
+        "mai cere o porție",
+        "adoră să gătească împreună cu tine"
+      ],
+      "c19": [
+        "Luăm împreună un animăluț?",
+        "îi alege deja numele",
+        "deocamdată ajunge un ursuleț de pluș"
+      ],
+      "c20": [
+        "Știi ce iubesc?",
+        "știe pe de rost",
+        "vrea să afle și mai mult"
+      ],
+      "c21": [
+        "Dansăm?",
+        "îți întinde deja mâna",
+        "va bate din palme"
+      ],
+      "c22": [
+        "Te inspir?",
+        "inspiri în fiecare zi",
+        "lângă tine e pur și simplu cald"
+      ],
+      "c23": [
+        "Păstrezi pozele noastre?",
+        "le păstrează pe toate cu grijă",
+        "așteaptă altele noi, și mai frumoase"
+      ],
+      "c24": [
+        "Privim împreună răsăritul?",
+        "pune deja alarma",
+        "preferă apusul"
+      ],
+      "c25": [
+        "Îmi spui un secret?",
+        "ți-l va șopti la ureche",
+        "să rămână un mister"
+      ],
+      "c26": [
+        "Crezi în mine?",
+        "crede foarte mult în tine",
+        "te încurajează în fiecare zi"
+      ],
+      "c27": [
+        "Plecăm într-o călătorie doar noi doi?",
+        "visează la asta",
+        "îi ia pe toți cei dragi"
+      ],
+      "c28": [
+        "Aștepți să te sun?",
+        "așteaptă zâmbind",
+        "preferă să vii în vizită"
+      ],
+      "c29": [
+        "Îți plac îmbrățișările mele?",
+        "cele mai calde din lume",
+        "iubește să vă țineți de mână"
+      ],
+      "c30": [
+        "Ne citim cu voce tare unul altuia?",
+        "alege deja o carte",
+        "preferă să te asculte"
+      ],
+      "c31": [
+        "Facem azi o poză împreună?",
+        "caută deja un fundal frumos",
+        "mai întâi, povești"
+      ],
+      "c32": [
+        "Îți ridic moralul?",
+        "mereu",
+        "cu tine până și tristețea e mai ușoară"
+      ],
+      "c33": [
+        "Luăm micul dejun împreună mâine?",
+        "face deja cacao",
+        "visează să doarmă mai mult"
+      ],
+      "c34": [
+        "Îți amintești ziua mea?",
+        "fără niciun memento",
+        "pregătește în secret o surpriză"
+      ],
+      "c35": [
+        "Mergem la patinoar?",
+        "scoate patinele",
+        "te va susține de pe margine"
+      ],
+      "c36": [
+        "E o zi bună pentru tine?",
+        "o zi minunată",
+        "va fi mai bună cu tine aproape"
+      ],
+      "c37": [
+        "Îmi desenezi portretul?",
+        "ia deja creionul",
+        "va desena o inimioară"
+      ],
+      "c38": [
+        "Plantăm împreună un copac?",
+        "alege locul",
+        "va începe cu o floare la fereastră"
+      ],
+      "c39": [
+        "Vrei să auzi un compliment?",
+        "abia așteaptă",
+        "se rușinează, dar își dorește mult"
+      ],
+      "c40": [
+        "Mai jucăm o dată mai târziu?",
+        "vrea încă o rundă",
+        "preferă o îmbrățișare în loc de joc"
+      ]
     }
   },
   cs: {
@@ -4748,7 +6827,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "„Kdo z nás?“ a „Dokonči větu“ s knihou páru",
       "featCollection": "Celá sbírka dopisů a básní ve 25 jazycích",
       "featMoments": "Okamžiky, připomínky a QR dopis, který se otevře ve správný den",
-      "featAudio": "Vlastní audio v dopise a odpověď příjemce"
+      "featAudio": "Vlastní audio v dopise a odpověď příjemce",
+      "ynTitle": "Ano, nebo ne",
+      "ynNote": "Živá hra pro dva: 5 sekund na každou kartu. Kdo odpoví včas, uvidí odpověď toho druhého.",
+      "ynCreate": "Vytvořit místnost",
+      "ynWaiting": "Čekáme, až {name} otevře odkaz…",
+      "ynWaitingAny": "Čekáme na druhého hráče…",
+      "ynShareText": "{name} tě zve do živé hry „Ano, nebo ne“",
+      "ynPartnerHere": "{name} je tady!",
+      "ynStart": "Začít hru",
+      "ynWaitHost": "{name} hned spustí hru",
+      "ynYes": "Ano",
+      "ynNo": "Ne",
+      "ynMissed": "Pozdě — karta zůstává zavřená",
+      "ynMatch": "Shoda!",
+      "ynRound": "Karta {n} z {total}",
+      "ynAnswered": "Odpověď odeslána, čekáme na druhého…",
+      "ynFinal": "Shoda {score} z {total}",
+      "ynFinalHigh": "Rozumíte si beze slov",
+      "ynFinalMid": "Tak rozdílní — a tak blízcí",
+      "ynAgain": "Hrát znovu",
+      "ynLeft": "Druhý hráč se odpojil. Čekáme na návrat…",
+      "ynYou": "Vy",
+      "ynOffline": "Ke hře se nelze připojit. Zkontrolujte internet a otevřete odkaz znovu.",
+      "ynJoin": "Vstoupit do hry",
+      "ynJoinLead": "{name} na vás čeká. Na každou odpověď 5 sekund!",
+      "ynStepNames": "Vaše jméno a jméno druhého hráče",
+      "ynRoomReady": "Místnost je připravená — pošlete odkaz",
+      "ynStayHere": "Nezavírejte tuto obrazovku: hra začne, jakmile se odkaz otevře.",
+      "featYesNo": "Živá hra „Ano, nebo ne“ — 5 sekund na odpověď",
+      "ynPartnerMissed": "Bez odpovědi — čas vypršel"
     },
     "questions": {
       "q01": [
@@ -5171,6 +7279,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Nový jazyk",
         "Kreslit"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Stýská se ti po mně právě teď?",
+        "moc se stýská",
+        "drží se, ale myslí na tebe"
+      ],
+      "c02": [
+        "Usmíváš se, když vidíš moji zprávu?",
+        "vždycky se usmívá",
+        "usmívá se v duchu"
+      ],
+      "c03": [
+        "Pamatuješ si naše první setkání?",
+        "pamatuje si každou minutu",
+        "pamatuje si to hlavní — tebe"
+      ],
+      "c04": [
+        "Chceš se dnes obejmout?",
+        "čeká na tvé objetí",
+        "šetří objetí na potom"
+      ],
+      "c05": [
+        "Pojedeme spolu k moři?",
+        "už balí kufr",
+        "sní o horách"
+      ],
+      "c06": [
+        "Rozesměju tě?",
+        "směje se od srdce",
+        "schovává úsměv"
+      ],
+      "c07": [
+        "Je ti se mnou klidně?",
+        "vedle tebe cítí klid",
+        "s tebou je legrace"
+      ],
+      "c08": [
+        "Vzpomeneš si na mě přes den?",
+        "vzpomíná velmi často",
+        "vzpomíná právě teď"
+      ],
+      "c09": [
+        "Máš rád/a moje překvapení?",
+        "zbožňuje tvá překvapení",
+        "nejvíc potěší, když jsi prostě nablízku"
+      ],
+      "c10": [
+        "Upečeme spolu koláč?",
+        "už si bere zástěru",
+        "radši koupí dort"
+      ],
+      "c11": [
+        "Podíváme se večer na film?",
+        "už vybírá film",
+        "chce si jen povídat"
+      ],
+      "c12": [
+        "Líbí se ti můj hlas?",
+        "poslouchat by se dal donekonečna",
+        "ještě víc miluje tvůj smích"
+      ],
+      "c13": [
+        "Uděláme o víkendu piknik?",
+        "chystá deku",
+        "zve tě do útulné kavárny"
+      ],
+      "c14": [
+        "Chceš ode mě dostat dopis?",
+        "čeká na tvůj dopis",
+        "chce všechno slyšet osobně"
+      ],
+      "c15": [
+        "Znamenám pro tebe hodně?",
+        "znamenáš strašně moc",
+        "víc, než si myslíš"
+      ],
+      "c16": [
+        "Projdeme se v dešti?",
+        "bere deštník pro dva",
+        "uvaří čaj doma"
+      ],
+      "c17": [
+        "Jsme si podobní?",
+        "jste jako dvě poloviny",
+        "skvěle se doplňujete"
+      ],
+      "c18": [
+        "Chutná ti, jak vařím?",
+        "chce přidat",
+        "miluje vaření spolu s tebou"
+      ],
+      "c19": [
+        "Pořídíme si spolu mazlíčka?",
+        "už vybírá jméno",
+        "zatím stačí plyšový medvídek"
+      ],
+      "c20": [
+        "Víš, co miluju?",
+        "zná to nazpaměť",
+        "chce vědět ještě víc"
+      ],
+      "c21": [
+        "Zatančíme si?",
+        "už ti podává ruku",
+        "bude tleskat"
+      ],
+      "c22": [
+        "Inspiruju tě?",
+        "inspiruješ každý den",
+        "vedle tebe je prostě teplo"
+      ],
+      "c23": [
+        "Schováváš naše fotky?",
+        "opatruje každou",
+        "čeká na nové, ještě hezčí"
+      ],
+      "c24": [
+        "Přivítáme spolu východ slunce?",
+        "nastavuje budík",
+        "radši západ slunce"
+      ],
+      "c25": [
+        "Prozradíš mi tajemství?",
+        "pošeptá ti ho do ouška",
+        "ať zůstane záhadou"
+      ],
+      "c26": [
+        "Věříš ve mě?",
+        "moc v tebe věří",
+        "fandí ti každý den"
+      ],
+      "c27": [
+        "Vyrazíme na cestu jen ve dvou?",
+        "sní o tom",
+        "vezme s sebou všechny blízké"
+      ],
+      "c28": [
+        "Čekáš na můj telefonát?",
+        "čeká s úsměvem",
+        "radši přijď na návštěvu"
+      ],
+      "c29": [
+        "Líbí se ti moje objetí?",
+        "nejteplejší na světě",
+        "miluje držení za ruce"
+      ],
+      "c30": [
+        "Budeme si číst nahlas?",
+        "už vybírá knihu",
+        "radši bude poslouchat tebe"
+      ],
+      "c31": [
+        "Uděláme si dnes společnou fotku?",
+        "už hledá hezké pozadí",
+        "nejdřív si popovídat"
+      ],
+      "c32": [
+        "Zvedám ti náladu?",
+        "vždycky",
+        "s tebou je i smutek lehčí"
+      ],
+      "c33": [
+        "Nasnídáme se zítra spolu?",
+        "už vaří kakao",
+        "sní o tom, že si přispí"
+      ],
+      "c34": [
+        "Pamatuješ si moje narozeniny?",
+        "bez připomínání",
+        "tajně chystá překvapení"
+      ],
+      "c35": [
+        "Půjdeme bruslit?",
+        "vytahuje brusle",
+        "bude ti fandit od mantinelu"
+      ],
+      "c36": [
+        "Je dnes pro tebe dobrý den?",
+        "skvělý den",
+        "bude lepší, když budeš poblíž"
+      ],
+      "c37": [
+        "Nakreslíš můj portrét?",
+        "už bere tužku",
+        "nakreslí srdíčko"
+      ],
+      "c38": [
+        "Zasadíme spolu strom?",
+        "vybírá místo",
+        "začne kytkou na parapetu"
+      ],
+      "c39": [
+        "Chceš slyšet kompliment?",
+        "nemůže se dočkat",
+        "stydí se, ale moc chce"
+      ],
+      "c40": [
+        "Zahrajeme si pak znovu?",
+        "chce další kolo",
+        "radši objetí než hra"
+      ]
     }
   },
   sv: {
@@ -5265,7 +7575,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "”Vem av oss?” och ”Avsluta meningen” med parets bok",
       "featCollection": "Hela samlingen av brev och dikter på 25 språk",
       "featMoments": "Ögonblick, påminnelser och ett QR-brev som öppnas på rätt dag",
-      "featAudio": "Eget ljud i brevet och svar från mottagaren"
+      "featAudio": "Eget ljud i brevet och svar från mottagaren",
+      "ynTitle": "Ja eller nej",
+      "ynNote": "Ett livespel för två: 5 sekunder per kort. Den som svarar i tid ser den andras svar.",
+      "ynCreate": "Skapa ett rum",
+      "ynWaiting": "Vi väntar på att {name} öppnar länken…",
+      "ynWaitingAny": "Vi väntar på den andra…",
+      "ynShareText": "{name} bjuder in dig till livespelet ”Ja eller nej”",
+      "ynPartnerHere": "{name} är här!",
+      "ynStart": "Starta spelet",
+      "ynWaitHost": "{name} startar snart spelet",
+      "ynYes": "Ja",
+      "ynNo": "Nej",
+      "ynMissed": "För sent — kortet förblir stängt",
+      "ynMatch": "Samma svar!",
+      "ynRound": "Kort {n} av {total}",
+      "ynAnswered": "Svaret skickat, vi väntar på den andra…",
+      "ynFinal": "{score} av {total} lika",
+      "ynFinalHigh": "Ni förstår varandra utan ord",
+      "ynFinalMid": "Så olika — och så nära",
+      "ynAgain": "Spela igen",
+      "ynLeft": "Den andra har kopplats bort. Vi väntar på att hen kommer tillbaka…",
+      "ynYou": "Du",
+      "ynOffline": "Kan inte ansluta till spelet. Kontrollera internet och öppna länken igen.",
+      "ynJoin": "Gå med i spelet",
+      "ynJoinLead": "{name} väntar på dig. 5 sekunder per svar!",
+      "ynStepNames": "Ditt namn och den andras",
+      "ynRoomReady": "Rummet är klart — skicka länken",
+      "ynStayHere": "Håll skärmen öppen: spelet börjar när länken öppnas.",
+      "featYesNo": "Livespelet ”Ja eller nej” — 5 sekunder per svar",
+      "ynPartnerMissed": "Inget svar — tiden tog slut"
     },
     "questions": {
       "q01": [
@@ -5688,6 +8027,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Ett nytt språk",
         "Teckna"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Saknar du mig just nu?",
+        "saknar dig väldigt mycket",
+        "håller ut, men tänker på dig"
+      ],
+      "c02": [
+        "Ler du när du ser mitt meddelande?",
+        "ler alltid",
+        "ler inombords"
+      ],
+      "c03": [
+        "Minns du vårt första möte?",
+        "minns varje minut",
+        "minns det viktigaste — dig"
+      ],
+      "c04": [
+        "Vill du ha en kram i dag?",
+        "väntar på din kram",
+        "sparar kramarna till senare"
+      ],
+      "c05": [
+        "Ska vi åka till havet tillsammans?",
+        "packar redan väskan",
+        "drömmer om fjällen"
+      ],
+      "c06": [
+        "Får jag dig att skratta?",
+        "skrattar från hjärtat",
+        "döljer ett leende"
+      ],
+      "c07": [
+        "Känner du dig lugn med mig?",
+        "känner sig lugn bredvid dig",
+        "har roligt med dig"
+      ],
+      "c08": [
+        "Tänker du på mig under dagen?",
+        "tänker på dig väldigt ofta",
+        "tänker på dig just nu"
+      ],
+      "c09": [
+        "Älskar du mina överraskningar?",
+        "älskar dina överraskningar",
+        "tycker mest om när du bara är nära"
+      ],
+      "c10": [
+        "Ska vi baka en paj tillsammans?",
+        "tar redan på förklädet",
+        "köper hellre en tårta"
+      ],
+      "c11": [
+        "Ska vi se en film i kväll?",
+        "väljer redan film",
+        "vill hellre bara prata"
+      ],
+      "c12": [
+        "Tycker du om min röst?",
+        "skulle kunna lyssna i evighet",
+        "älskar ditt skratt ännu mer"
+      ],
+      "c13": [
+        "Ska vi ha picknick i helgen?",
+        "gör filten redo",
+        "bjuder in dig till ett mysigt kafé"
+      ],
+      "c14": [
+        "Vill du få ett brev från mig?",
+        "väntar på ditt brev",
+        "vill höra allt ansikte mot ansikte"
+      ],
+      "c15": [
+        "Betyder jag mycket för dig?",
+        "du betyder enormt mycket",
+        "mer än du tror"
+      ],
+      "c16": [
+        "Ska vi promenera i regnet?",
+        "tar ett paraply för två",
+        "kokar hellre te hemma"
+      ],
+      "c17": [
+        "Är vi lika varandra?",
+        "ni är som två halvor",
+        "ni kompletterar varandra perfekt"
+      ],
+      "c18": [
+        "Gillar du min matlagning?",
+        "vill ha mer",
+        "älskar att laga mat tillsammans med dig"
+      ],
+      "c19": [
+        "Ska vi skaffa ett husdjur tillsammans?",
+        "väljer redan namn",
+        "en nallebjörn räcker så länge"
+      ],
+      "c20": [
+        "Vet du vad jag älskar?",
+        "kan det utantill",
+        "vill veta ännu mer"
+      ],
+      "c21": [
+        "Ska vi dansa?",
+        "räcker redan fram handen",
+        "klappar händerna"
+      ],
+      "c22": [
+        "Inspirerar jag dig?",
+        "du inspirerar varje dag",
+        "bredvid dig är det bara varmt"
+      ],
+      "c23": [
+        "Sparar du våra foton?",
+        "värnar om varenda en",
+        "väntar på nya, ännu finare"
+      ],
+      "c24": [
+        "Ska vi se soluppgången tillsammans?",
+        "ställer redan väckarklockan",
+        "ser hellre solnedgången"
+      ],
+      "c25": [
+        "Berättar du en hemlighet för mig?",
+        "viskar den i ditt öra",
+        "låt den förbli ett mysterium"
+      ],
+      "c26": [
+        "Tror du på mig?",
+        "tror starkt på dig",
+        "hejar på dig varje dag"
+      ],
+      "c27": [
+        "Ska vi resa bort, bara vi två?",
+        "drömmer om det",
+        "tar med alla nära och kära"
+      ],
+      "c28": [
+        "Väntar du på mitt samtal?",
+        "väntar med ett leende",
+        "vill hellre att du kommer förbi"
+      ],
+      "c29": [
+        "Tycker du om mina kramar?",
+        "de varmaste i världen",
+        "håller gärna handen"
+      ],
+      "c30": [
+        "Ska vi läsa högt för varandra?",
+        "väljer redan en bok",
+        "lyssnar hellre på dig"
+      ],
+      "c31": [
+        "Ska vi ta ett foto tillsammans i dag?",
+        "letar redan efter en fin bakgrund",
+        "först lite prat"
+      ],
+      "c32": [
+        "Gör jag dig gladare?",
+        "alltid",
+        "med dig blir till och med sorg lättare"
+      ],
+      "c33": [
+        "Ska vi äta frukost tillsammans i morgon?",
+        "gör redan varm choklad",
+        "drömmer om att sova länge"
+      ],
+      "c34": [
+        "Minns du min födelsedag?",
+        "utan påminnelse",
+        "planerar en överraskning i hemlighet"
+      ],
+      "c35": [
+        "Ska vi åka skridskor?",
+        "plockar fram skridskorna",
+        "hejar på dig vid sargen"
+      ],
+      "c36": [
+        "Är i dag en bra dag för dig?",
+        "en toppendag",
+        "blir bättre när du är nära"
+      ],
+      "c37": [
+        "Ritar du mitt porträtt?",
+        "tar redan pennan",
+        "ritar ett litet hjärta"
+      ],
+      "c38": [
+        "Ska vi plantera ett träd tillsammans?",
+        "väljer platsen",
+        "börjar med en blomma i fönstret"
+      ],
+      "c39": [
+        "Vill du höra en komplimang?",
+        "kan knappt vänta",
+        "blir blyg men vill gärna"
+      ],
+      "c40": [
+        "Ska vi spela igen sen?",
+        "vill köra en runda till",
+        "kramas hellre än spelar"
+      ]
     }
   },
   el: {
@@ -5782,7 +8323,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Ποιος από τους δύο;» και «Συμπλήρωσε τη φράση» με το βιβλίο του ζευγαριού",
       "featCollection": "Όλη η συλλογή γραμμάτων και ποιημάτων σε 25 γλώσσες",
       "featMoments": "Στιγμές, υπενθυμίσεις και γράμμα QR που ανοίγει τη σωστή μέρα",
-      "featAudio": "Δικός σας ήχος στο γράμμα και απαντήσεις του παραλήπτη"
+      "featAudio": "Δικός σας ήχος στο γράμμα και απαντήσεις του παραλήπτη",
+      "ynTitle": "Ναι ή όχι",
+      "ynNote": "Ζωντανό παιχνίδι για δύο: 5 δευτερόλεπτα για κάθε κάρτα. Όποιος απαντήσει εγκαίρως βλέπει την απάντηση του άλλου.",
+      "ynCreate": "Δημιουργία δωματίου",
+      "ynWaiting": "Περιμένουμε να ανοίξει τον σύνδεσμο: {name}…",
+      "ynWaitingAny": "Περιμένουμε τον άλλο παίκτη…",
+      "ynShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Ναι ή όχι»",
+      "ynPartnerHere": "Ήρθε: {name}!",
+      "ynStart": "Έναρξη παιχνιδιού",
+      "ynWaitHost": "Το παιχνίδι ξεκινά σε λίγο ({name})",
+      "ynYes": "Ναι",
+      "ynNo": "Όχι",
+      "ynMissed": "Πολύ αργά — η κάρτα μένει κλειστή",
+      "ynMatch": "Ίδια απάντηση!",
+      "ynRound": "Κάρτα {n} από {total}",
+      "ynAnswered": "Η απάντηση στάλθηκε, περιμένουμε τον άλλο…",
+      "ynFinal": "{score} από {total} ίδιες",
+      "ynFinalHigh": "Καταλαβαίνεστε χωρίς λόγια",
+      "ynFinalMid": "Τόσο διαφορετικοί — και τόσο κοντά",
+      "ynAgain": "Παίξτε ξανά",
+      "ynLeft": "Ο άλλος παίκτης αποσυνδέθηκε. Περιμένουμε…",
+      "ynYou": "Εσείς",
+      "ynOffline": "Δεν είναι δυνατή η σύνδεση στο παιχνίδι. Ελέγξτε το διαδίκτυο και ανοίξτε ξανά τον σύνδεσμο.",
+      "ynJoin": "Μπείτε στο παιχνίδι",
+      "ynJoinLead": "Σας περιμένει: {name}. 5 δευτερόλεπτα για κάθε απάντηση!",
+      "ynStepNames": "Το όνομά σας και του άλλου παίκτη",
+      "ynRoomReady": "Το δωμάτιο είναι έτοιμο — στείλτε τον σύνδεσμο",
+      "ynStayHere": "Μην κλείσετε αυτή την οθόνη: το παιχνίδι ξεκινά μόλις ανοίξει ο σύνδεσμος.",
+      "featYesNo": "Ζωντανό παιχνίδι «Ναι ή όχι» — 5 δευτερόλεπτα ανά απάντηση",
+      "ynPartnerMissed": "Καμία απάντηση — ο χρόνος τελείωσε"
     },
     "questions": {
       "q01": [
@@ -6205,6 +8775,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Μια νέα γλώσσα",
         "Να ζωγραφίζω"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Σου λείπω αυτή τη στιγμή;",
+        "σε νοσταλγεί πολύ",
+        "κρατιέται, αλλά σε σκέφτεται"
+      ],
+      "c02": [
+        "Χαμογελάς όταν βλέπεις το μήνυμά μου;",
+        "χαμογελά πάντα",
+        "χαμογελά κρυφά"
+      ],
+      "c03": [
+        "Θυμάσαι την πρώτη μας συνάντηση;",
+        "θυμάται κάθε λεπτό",
+        "θυμάται το πιο σημαντικό — εσένα"
+      ],
+      "c04": [
+        "Θέλεις μια αγκαλιά σήμερα;",
+        "περιμένει την αγκαλιά σου",
+        "κρατά τις αγκαλιές για μετά"
+      ],
+      "c05": [
+        "Πάμε μαζί στη θάλασσα;",
+        "ετοιμάζει ήδη βαλίτσα",
+        "ονειρεύεται τα βουνά"
+      ],
+      "c06": [
+        "Σε κάνω να γελάς;",
+        "γελά από καρδιάς",
+        "κρύβει ένα χαμόγελο"
+      ],
+      "c07": [
+        "Νιώθεις ηρεμία μαζί μου;",
+        "νιώθει γαλήνη δίπλα σου",
+        "περνά τέλεια μαζί σου"
+      ],
+      "c08": [
+        "Με σκέφτεσαι μέσα στη μέρα;",
+        "σε σκέφτεται πολύ συχνά",
+        "σε σκέφτεται τώρα"
+      ],
+      "c09": [
+        "Αγαπάς τις εκπλήξεις μου;",
+        "λατρεύει τις εκπλήξεις σου",
+        "αγαπά απλώς να είσαι κοντά"
+      ],
+      "c10": [
+        "Φτιάχνουμε μαζί μια πίτα;",
+        "φορά ήδη ποδιά",
+        "προτιμά να αγοράσει τούρτα"
+      ],
+      "c11": [
+        "Βλέπουμε ταινία απόψε;",
+        "διαλέγει ήδη ταινία",
+        "θέλει απλώς να μιλήσετε"
+      ],
+      "c12": [
+        "Σου αρέσει η φωνή μου;",
+        "θα την άκουγε ατελείωτα",
+        "αγαπά ακόμη πιο πολύ το γέλιο σου"
+      ],
+      "c13": [
+        "Κάνουμε πικνίκ το Σαββατοκύριακο;",
+        "ετοιμάζει την κουβέρτα",
+        "σε καλεί σε ένα ζεστό καφέ"
+      ],
+      "c14": [
+        "Θέλεις ένα γράμμα από μένα;",
+        "περιμένει το γράμμα σου",
+        "θέλει να τα ακούσει από κοντά"
+      ],
+      "c15": [
+        "Είμαι σημαντικός άνθρωπος για σένα;",
+        "είσαι πάρα πολύ σημαντικός άνθρωπος",
+        "περισσότερο απ’ όσο νομίζεις"
+      ],
+      "c16": [
+        "Περπατάμε στη βροχή;",
+        "παίρνει ομπρέλα για δύο",
+        "θα φτιάξει τσάι στο σπίτι"
+      ],
+      "c17": [
+        "Μοιάζουμε;",
+        "είστε σαν δύο μισά",
+        "συμπληρώνετε τέλεια ο ένας τον άλλον"
+      ],
+      "c18": [
+        "Σου αρέσει πώς μαγειρεύω;",
+        "ζητά κι άλλο",
+        "λατρεύει να μαγειρεύετε μαζί"
+      ],
+      "c19": [
+        "Παίρνουμε μαζί ένα κατοικίδιο;",
+        "διαλέγει ήδη όνομα",
+        "για τώρα αρκεί ένα λούτρινο αρκουδάκι"
+      ],
+      "c20": [
+        "Ξέρεις τι αγαπώ;",
+        "το ξέρει απέξω",
+        "θέλει να μάθει ακόμη περισσότερα"
+      ],
+      "c21": [
+        "Χορεύουμε;",
+        "σου δίνει ήδη το χέρι",
+        "θα χειροκροτεί"
+      ],
+      "c22": [
+        "Σε εμπνέω;",
+        "εμπνέεις κάθε μέρα",
+        "δίπλα σου απλώς υπάρχει ζεστασιά"
+      ],
+      "c23": [
+        "Κρατάς τις φωτογραφίες μας;",
+        "τις φυλάει όλες",
+        "περιμένει καινούριες, ακόμη πιο όμορφες"
+      ],
+      "c24": [
+        "Βλέπουμε μαζί την ανατολή;",
+        "βάζει ήδη ξυπνητήρι",
+        "προτιμά το ηλιοβασίλεμα"
+      ],
+      "c25": [
+        "Μου λες ένα μυστικό;",
+        "θα σου το ψιθυρίσει",
+        "ας μείνει μυστήριο"
+      ],
+      "c26": [
+        "Πιστεύεις σε μένα;",
+        "πιστεύει πολύ σε σένα",
+        "σε ενθαρρύνει κάθε μέρα"
+      ],
+      "c27": [
+        "Πάμε ταξίδι, μόνο εμείς οι δύο;",
+        "το ονειρεύεται",
+        "θα πάρει μαζί όλους τους δικούς σας"
+      ],
+      "c28": [
+        "Περιμένεις το τηλεφώνημά μου;",
+        "περιμένει με χαμόγελο",
+        "προτιμά να έρθεις από κοντά"
+      ],
+      "c29": [
+        "Σου αρέσουν οι αγκαλιές μου;",
+        "οι πιο ζεστές στον κόσμο",
+        "αγαπά να κρατιέστε από το χέρι"
+      ],
+      "c30": [
+        "Διαβάζουμε φωναχτά ο ένας στον άλλον;",
+        "διαλέγει ήδη βιβλίο",
+        "προτιμά να σε ακούει"
+      ],
+      "c31": [
+        "Βγάζουμε σήμερα μια κοινή φωτογραφία;",
+        "ψάχνει ήδη όμορφο φόντο",
+        "πρώτα κουβέντα"
+      ],
+      "c32": [
+        "Σου φτιάχνω τη διάθεση;",
+        "πάντα",
+        "μαζί σου ακόμη και η λύπη είναι πιο ελαφριά"
+      ],
+      "c33": [
+        "Παίρνουμε πρωινό μαζί αύριο;",
+        "φτιάχνει ήδη κακάο",
+        "ονειρεύεται να κοιμηθεί περισσότερο"
+      ],
+      "c34": [
+        "Θυμάσαι τα γενέθλιά μου;",
+        "χωρίς υπενθύμιση",
+        "ετοιμάζει κρυφά μια έκπληξη"
+      ],
+      "c35": [
+        "Πάμε για πατινάζ;",
+        "βγάζει τα πατίνια",
+        "θα σε επευφημεί από την άκρη"
+      ],
+      "c36": [
+        "Είναι καλή μέρα για σένα σήμερα;",
+        "υπέροχη μέρα",
+        "θα γίνει καλύτερη όταν είσαι κοντά"
+      ],
+      "c37": [
+        "Θα ζωγραφίσεις το πορτρέτο μου;",
+        "πιάνει ήδη μολύβι",
+        "θα ζωγραφίσει μια καρδούλα"
+      ],
+      "c38": [
+        "Φυτεύουμε μαζί ένα δέντρο;",
+        "διαλέγει το σημείο",
+        "θα ξεκινήσει με ένα λουλούδι στο περβάζι"
+      ],
+      "c39": [
+        "Θέλεις να ακούσεις ένα κομπλιμέντο;",
+        "ανυπομονεί",
+        "ντρέπεται, αλλά το θέλει πολύ"
+      ],
+      "c40": [
+        "Ξαναπαίζουμε αργότερα;",
+        "θέλει άλλον έναν γύρο",
+        "προτιμά μια αγκαλιά από το παιχνίδι"
+      ]
     }
   },
   da: {
@@ -6299,7 +9071,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "“Hvem af os?” og “Gør sætningen færdig” med parrets bog",
       "featCollection": "Hele samlingen af breve og digte på 25 sprog",
       "featMoments": "Øjeblikke, påmindelser og et QR-brev, der åbner på den rigtige dag",
-      "featAudio": "Din egen lyd i brevet og svar fra modtageren"
+      "featAudio": "Din egen lyd i brevet og svar fra modtageren",
+      "ynTitle": "Ja eller nej",
+      "ynNote": "Et livespil for to: 5 sekunder per kort. Den, der svarer i tide, ser den andens svar.",
+      "ynCreate": "Opret rum",
+      "ynWaiting": "Vi venter på, at {name} åbner linket…",
+      "ynWaitingAny": "Vi venter på den anden…",
+      "ynShareText": "{name} inviterer dig til livespillet “Ja eller nej”",
+      "ynPartnerHere": "{name} er her!",
+      "ynStart": "Start spillet",
+      "ynWaitHost": "{name} starter snart spillet",
+      "ynYes": "Ja",
+      "ynNo": "Nej",
+      "ynMissed": "For sent — kortet forbliver lukket",
+      "ynMatch": "Samme svar!",
+      "ynRound": "Kort {n} af {total}",
+      "ynAnswered": "Svaret er sendt, vi venter på den anden…",
+      "ynFinal": "{score} af {total} ens",
+      "ynFinalHigh": "I forstår hinanden uden ord",
+      "ynFinalMid": "Så forskellige — og så tæt på",
+      "ynAgain": "Spil igen",
+      "ynLeft": "Den anden har mistet forbindelsen. Vi venter…",
+      "ynYou": "Dig",
+      "ynOffline": "Kan ikke forbinde til spillet. Tjek internettet og åbn linket igen.",
+      "ynJoin": "Deltag i spillet",
+      "ynJoinLead": "{name} venter på dig. 5 sekunder per svar!",
+      "ynStepNames": "Dit navn og den andens",
+      "ynRoomReady": "Rummet er klar — send linket",
+      "ynStayHere": "Hold skærmen åben: spillet starter, når linket bliver åbnet.",
+      "featYesNo": "Livespillet “Ja eller nej” — 5 sekunder per svar",
+      "ynPartnerMissed": "Intet svar — tiden løb ud"
     },
     "questions": {
       "q01": [
@@ -6722,6 +9523,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Et nyt sprog",
         "At tegne"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Savner du mig lige nu?",
+        "savner dig meget",
+        "holder ud, men tænker på dig"
+      ],
+      "c02": [
+        "Smiler du, når du ser min besked?",
+        "smiler altid",
+        "smiler indvendigt"
+      ],
+      "c03": [
+        "Kan du huske vores første møde?",
+        "husker hvert minut",
+        "husker det vigtigste — dig"
+      ],
+      "c04": [
+        "Vil du have et kram i dag?",
+        "venter på dit kram",
+        "gemmer krammene til senere"
+      ],
+      "c05": [
+        "Skal vi tage til havet sammen?",
+        "pakker allerede kufferten",
+        "drømmer om bjergene"
+      ],
+      "c06": [
+        "Får jeg dig til at grine?",
+        "griner af hjertet",
+        "skjuler et smil"
+      ],
+      "c07": [
+        "Føler du dig rolig sammen med mig?",
+        "føler ro ved siden af dig",
+        "har det sjovt med dig"
+      ],
+      "c08": [
+        "Tænker du på mig i løbet af dagen?",
+        "tænker meget ofte på dig",
+        "tænker på dig lige nu"
+      ],
+      "c09": [
+        "Elsker du mine overraskelser?",
+        "elsker dine overraskelser",
+        "holder mest af, når du bare er der"
+      ],
+      "c10": [
+        "Skal vi bage en tærte sammen?",
+        "tager allerede forklædet på",
+        "køber hellere en kage"
+      ],
+      "c11": [
+        "Skal vi se en film i aften?",
+        "vælger allerede film",
+        "vil hellere bare snakke"
+      ],
+      "c12": [
+        "Kan du lide min stemme?",
+        "kunne lytte i det uendelige",
+        "elsker din latter endnu mere"
+      ],
+      "c13": [
+        "Skal vi holde picnic i weekenden?",
+        "gør tæppet klar",
+        "inviterer dig på en hyggelig café"
+      ],
+      "c14": [
+        "Vil du have et brev fra mig?",
+        "venter på dit brev",
+        "vil høre det hele ansigt til ansigt"
+      ],
+      "c15": [
+        "Betyder jeg meget for dig?",
+        "du betyder enormt meget",
+        "mere end du tror"
+      ],
+      "c16": [
+        "Skal vi gå en tur i regnen?",
+        "tager en paraply til to",
+        "laver hellere te derhjemme"
+      ],
+      "c17": [
+        "Ligner vi hinanden?",
+        "I er som to halvdele",
+        "I supplerer hinanden perfekt"
+      ],
+      "c18": [
+        "Kan du lide min mad?",
+        "vil have mere",
+        "elsker at lave mad sammen med dig"
+      ],
+      "c19": [
+        "Skal vi få et kæledyr sammen?",
+        "vælger allerede navn",
+        "en bamse er nok indtil videre"
+      ],
+      "c20": [
+        "Ved du, hvad jeg elsker?",
+        "kan det udenad",
+        "vil gerne vide endnu mere"
+      ],
+      "c21": [
+        "Skal vi danse?",
+        "rækker allerede hånden frem",
+        "klapper med"
+      ],
+      "c22": [
+        "Inspirerer jeg dig?",
+        "du inspirerer hver dag",
+        "ved siden af dig er der bare varmt"
+      ],
+      "c23": [
+        "Gemmer du vores billeder?",
+        "passer på hvert eneste",
+        "venter på nye, endnu smukkere"
+      ],
+      "c24": [
+        "Skal vi se solopgangen sammen?",
+        "stiller allerede vækkeuret",
+        "ser hellere solnedgangen"
+      ],
+      "c25": [
+        "Vil du fortælle mig en hemmelighed?",
+        "hvisker den i dit øre",
+        "lad den forblive et mysterium"
+      ],
+      "c26": [
+        "Tror du på mig?",
+        "tror stærkt på dig",
+        "hepper på dig hver dag"
+      ],
+      "c27": [
+        "Skal vi rejse væk, kun os to?",
+        "drømmer om det",
+        "tager alle de kære med"
+      ],
+      "c28": [
+        "Venter du på mit opkald?",
+        "venter med et smil",
+        "vil hellere have, at du kommer forbi"
+      ],
+      "c29": [
+        "Kan du lide mine kram?",
+        "verdens varmeste",
+        "holder gerne i hånd"
+      ],
+      "c30": [
+        "Skal vi læse højt for hinanden?",
+        "vælger allerede en bog",
+        "lytter hellere til dig"
+      ],
+      "c31": [
+        "Skal vi tage et billede sammen i dag?",
+        "leder allerede efter en fin baggrund",
+        "først en snak"
+      ],
+      "c32": [
+        "Gør jeg dig gladere?",
+        "altid",
+        "med dig er selv sorg lettere"
+      ],
+      "c33": [
+        "Skal vi spise morgenmad sammen i morgen?",
+        "laver allerede kakao",
+        "drømmer om at sove længe"
+      ],
+      "c34": [
+        "Kan du huske min fødselsdag?",
+        "uden påmindelse",
+        "planlægger i hemmelighed en overraskelse"
+      ],
+      "c35": [
+        "Skal vi stå på skøjter?",
+        "finder skøjterne frem",
+        "hepper på dig fra kanten"
+      ],
+      "c36": [
+        "Er i dag en god dag for dig?",
+        "en fantastisk dag",
+        "bliver bedre, når du er der"
+      ],
+      "c37": [
+        "Tegner du mit portræt?",
+        "tager allerede blyanten",
+        "tegner et lille hjerte"
+      ],
+      "c38": [
+        "Skal vi plante et træ sammen?",
+        "vælger stedet",
+        "starter med en blomst i vindueskarmen"
+      ],
+      "c39": [
+        "Vil du høre et kompliment?",
+        "kan ikke vente",
+        "er genert, men vil så gerne"
+      ],
+      "c40": [
+        "Skal vi spille igen senere?",
+        "vil have en runde til",
+        "krammer hellere end at spille"
+      ]
     }
   },
   no: {
@@ -6816,7 +9819,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Hvem av oss?» og «Fullfør setningen» med parets bok",
       "featCollection": "Hele samlingen av brev og dikt på 25 språk",
       "featMoments": "Øyeblikk, påminnelser og et QR-brev som åpnes på riktig dag",
-      "featAudio": "Egen lyd i brevet og svar fra mottakeren"
+      "featAudio": "Egen lyd i brevet og svar fra mottakeren",
+      "ynTitle": "Ja eller nei",
+      "ynNote": "Et livespill for to: 5 sekunder per kort. Den som svarer i tide, ser den andres svar.",
+      "ynCreate": "Lag et rom",
+      "ynWaiting": "Vi venter på at {name} åpner lenken…",
+      "ynWaitingAny": "Vi venter på den andre…",
+      "ynShareText": "{name} inviterer deg til livespillet «Ja eller nei»",
+      "ynPartnerHere": "{name} er her!",
+      "ynStart": "Start spillet",
+      "ynWaitHost": "{name} starter snart spillet",
+      "ynYes": "Ja",
+      "ynNo": "Nei",
+      "ynMissed": "For sent — kortet forblir lukket",
+      "ynMatch": "Samme svar!",
+      "ynRound": "Kort {n} av {total}",
+      "ynAnswered": "Svaret er sendt, vi venter på den andre…",
+      "ynFinal": "{score} av {total} like",
+      "ynFinalHigh": "Dere forstår hverandre uten ord",
+      "ynFinalMid": "Så ulike — og så nære",
+      "ynAgain": "Spill igjen",
+      "ynLeft": "Den andre mistet forbindelsen. Vi venter…",
+      "ynYou": "Deg",
+      "ynOffline": "Får ikke koblet til spillet. Sjekk internett og åpne lenken på nytt.",
+      "ynJoin": "Bli med i spillet",
+      "ynJoinLead": "{name} venter på deg. 5 sekunder per svar!",
+      "ynStepNames": "Navnet ditt og den andres",
+      "ynRoomReady": "Rommet er klart — send lenken",
+      "ynStayHere": "Hold skjermen åpen: spillet starter når lenken åpnes.",
+      "featYesNo": "Livespillet «Ja eller nei» — 5 sekunder per svar",
+      "ynPartnerMissed": "Ikke noe svar — tiden er ute"
     },
     "questions": {
       "q01": [
@@ -7239,6 +10271,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Et nytt språk",
         "Å tegne"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Savner du meg akkurat nå?",
+        "savner deg veldig",
+        "holder ut, men tenker på deg"
+      ],
+      "c02": [
+        "Smiler du når du ser meldingen min?",
+        "smiler alltid",
+        "smiler innvendig"
+      ],
+      "c03": [
+        "Husker du vårt første møte?",
+        "husker hvert minutt",
+        "husker det viktigste — deg"
+      ],
+      "c04": [
+        "Vil du ha en klem i dag?",
+        "venter på klemmen din",
+        "sparer klemmene til senere"
+      ],
+      "c05": [
+        "Skal vi dra til havet sammen?",
+        "pakker allerede kofferten",
+        "drømmer om fjellet"
+      ],
+      "c06": [
+        "Får jeg deg til å le?",
+        "ler av hele hjertet",
+        "skjuler et smil"
+      ],
+      "c07": [
+        "Føler du deg rolig med meg?",
+        "føler ro ved siden av deg",
+        "har det gøy med deg"
+      ],
+      "c08": [
+        "Tenker du på meg i løpet av dagen?",
+        "tenker veldig ofte på deg",
+        "tenker på deg akkurat nå"
+      ],
+      "c09": [
+        "Elsker du overraskelsene mine?",
+        "elsker overraskelsene dine",
+        "liker best når du bare er der"
+      ],
+      "c10": [
+        "Skal vi bake en pai sammen?",
+        "tar allerede på forkleet",
+        "kjøper heller en kake"
+      ],
+      "c11": [
+        "Skal vi se en film i kveld?",
+        "velger allerede film",
+        "vil heller bare prate"
+      ],
+      "c12": [
+        "Liker du stemmen min?",
+        "kunne lyttet i en evighet",
+        "elsker latteren din enda mer"
+      ],
+      "c13": [
+        "Skal vi ha piknik i helgen?",
+        "gjør teppet klart",
+        "inviterer deg på en koselig kafé"
+      ],
+      "c14": [
+        "Vil du få et brev fra meg?",
+        "venter på brevet ditt",
+        "vil høre alt ansikt til ansikt"
+      ],
+      "c15": [
+        "Betyr jeg mye for deg?",
+        "du betyr enormt mye",
+        "mer enn du tror"
+      ],
+      "c16": [
+        "Skal vi gå tur i regnet?",
+        "tar en paraply til to",
+        "lager heller te hjemme"
+      ],
+      "c17": [
+        "Ligner vi på hverandre?",
+        "dere er som to halvdeler",
+        "dere utfyller hverandre perfekt"
+      ],
+      "c18": [
+        "Liker du maten jeg lager?",
+        "vil ha mer",
+        "elsker å lage mat sammen med deg"
+      ],
+      "c19": [
+        "Skal vi skaffe et kjæledyr sammen?",
+        "velger allerede navn",
+        "en kosebamse holder foreløpig"
+      ],
+      "c20": [
+        "Vet du hva jeg elsker?",
+        "kan det utenat",
+        "vil vite enda mer"
+      ],
+      "c21": [
+        "Skal vi danse?",
+        "rekker allerede frem hånden",
+        "klapper i hendene"
+      ],
+      "c22": [
+        "Inspirerer jeg deg?",
+        "du inspirerer hver dag",
+        "ved siden av deg er det bare varmt"
+      ],
+      "c23": [
+        "Tar du vare på bildene våre?",
+        "tar vare på hvert eneste",
+        "venter på nye, enda finere"
+      ],
+      "c24": [
+        "Skal vi se soloppgangen sammen?",
+        "stiller allerede vekkerklokka",
+        "ser heller solnedgangen"
+      ],
+      "c25": [
+        "Forteller du meg en hemmelighet?",
+        "hvisker den i øret ditt",
+        "la det forbli et mysterium"
+      ],
+      "c26": [
+        "Tror du på meg?",
+        "tror sterkt på deg",
+        "heier på deg hver dag"
+      ],
+      "c27": [
+        "Skal vi reise bort, bare vi to?",
+        "drømmer om det",
+        "tar med alle de kjære"
+      ],
+      "c28": [
+        "Venter du på at jeg ringer?",
+        "venter med et smil",
+        "vil heller at du kommer innom"
+      ],
+      "c29": [
+        "Liker du klemmene mine?",
+        "verdens varmeste",
+        "holder gjerne hender"
+      ],
+      "c30": [
+        "Skal vi lese høyt for hverandre?",
+        "velger allerede en bok",
+        "hører heller på deg"
+      ],
+      "c31": [
+        "Skal vi ta et bilde sammen i dag?",
+        "leter allerede etter en fin bakgrunn",
+        "først litt prat"
+      ],
+      "c32": [
+        "Gjør jeg deg gladere?",
+        "alltid",
+        "med deg blir selv tristhet lettere"
+      ],
+      "c33": [
+        "Skal vi spise frokost sammen i morgen?",
+        "lager allerede kakao",
+        "drømmer om å sove lenge"
+      ],
+      "c34": [
+        "Husker du bursdagen min?",
+        "uten påminnelse",
+        "planlegger en overraskelse i hemmelighet"
+      ],
+      "c35": [
+        "Skal vi gå på skøyter?",
+        "finner frem skøytene",
+        "heier på deg fra vant"
+      ],
+      "c36": [
+        "Er i dag en god dag for deg?",
+        "en strålende dag",
+        "blir bedre når du er der"
+      ],
+      "c37": [
+        "Tegner du portrettet mitt?",
+        "tar allerede blyanten",
+        "tegner et lite hjerte"
+      ],
+      "c38": [
+        "Skal vi plante et tre sammen?",
+        "velger stedet",
+        "begynner med en blomst i vinduskarmen"
+      ],
+      "c39": [
+        "Vil du høre et kompliment?",
+        "gleder seg veldig",
+        "er sjenert, men vil så gjerne"
+      ],
+      "c40": [
+        "Skal vi spille igjen senere?",
+        "vil ha en runde til",
+        "klemmer heller enn å spille"
+      ]
     }
   },
   fi: {
@@ -7333,7 +10567,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "”Kumpi meistä?” ja ”Täydennä lause” parin kirjan kanssa",
       "featCollection": "Koko kirje- ja runokokoelma 25 kielellä",
       "featMoments": "Hetket, muistutukset ja QR-kirje, joka aukeaa oikeana päivänä",
-      "featAudio": "Oma ääni kirjeessä ja vastaanottajan vastaus"
+      "featAudio": "Oma ääni kirjeessä ja vastaanottajan vastaus",
+      "ynTitle": "Kyllä vai ei",
+      "ynNote": "Live-peli kahdelle: 5 sekuntia jokaiseen korttiin. Ajoissa vastannut näkee toisen vastauksen.",
+      "ynCreate": "Luo huone",
+      "ynWaiting": "Odotetaan, että {name} avaa linkin…",
+      "ynWaitingAny": "Odotetaan toista pelaajaa…",
+      "ynShareText": "{name} kutsuu sinut live-peliin ”Kyllä vai ei”",
+      "ynPartnerHere": "{name} on paikalla!",
+      "ynStart": "Aloita peli",
+      "ynWaitHost": "{name} aloittaa pelin pian",
+      "ynYes": "Kyllä",
+      "ynNo": "Ei",
+      "ynMissed": "Liian myöhään — kortti pysyy kiinni",
+      "ynMatch": "Sama vastaus!",
+      "ynRound": "Kortti {n}/{total}",
+      "ynAnswered": "Vastaus lähetetty, odotetaan toista…",
+      "ynFinal": "{score}/{total} samoin",
+      "ynFinalHigh": "Ymmärrätte toisianne ilman sanoja",
+      "ynFinalMid": "Niin erilaiset — ja niin lähellä",
+      "ynAgain": "Pelaa uudelleen",
+      "ynLeft": "Toinen pelaaja katosi linjoilta. Odotetaan…",
+      "ynYou": "Sinä",
+      "ynOffline": "Peliin ei saada yhteyttä. Tarkista internet ja avaa linkki uudelleen.",
+      "ynJoin": "Liity peliin",
+      "ynJoinLead": "{name} odottaa sinua. 5 sekuntia per vastaus!",
+      "ynStepNames": "Sinun ja toisen pelaajan nimi",
+      "ynRoomReady": "Huone on valmis — lähetä linkki",
+      "ynStayHere": "Pidä tämä näkymä auki: peli alkaa, kun linkki avataan.",
+      "featYesNo": "Live-peli ”Kyllä vai ei” — 5 sekuntia per vastaus",
+      "ynPartnerMissed": "Ei vastausta — aika loppui"
     },
     "questions": {
       "q01": [
@@ -7756,6 +11019,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Uuden kielen",
         "Piirtämään"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Ikävöitkö minua juuri nyt?",
+        "ikävöi sinua kovasti",
+        "kestää, mutta ajattelee sinua"
+      ],
+      "c02": [
+        "Hymyiletkö, kun näet viestini?",
+        "hymyilee aina",
+        "hymyilee sisäisesti"
+      ],
+      "c03": [
+        "Muistatko ensitapaamisemme?",
+        "muistaa jokaisen minuutin",
+        "muistaa tärkeimmän — sinut"
+      ],
+      "c04": [
+        "Haluatko halauksen tänään?",
+        "odottaa halaustasi",
+        "säästää halaukset myöhemmäksi"
+      ],
+      "c05": [
+        "Lähdetäänkö yhdessä meren rannalle?",
+        "pakkaa jo laukkua",
+        "haaveilee vuorista"
+      ],
+      "c06": [
+        "Saanko sinut nauramaan?",
+        "nauraa sydämestään",
+        "piilottaa hymyn"
+      ],
+      "c07": [
+        "Onko sinulla rauhallinen olo kanssani?",
+        "tuntee rauhaa vierelläsi",
+        "pitää hauskaa kanssasi"
+      ],
+      "c08": [
+        "Ajatteletko minua päivän aikana?",
+        "ajattelee sinua hyvin usein",
+        "ajattelee sinua juuri nyt"
+      ],
+      "c09": [
+        "Rakastatko yllätyksiäni?",
+        "rakastaa yllätyksiäsi",
+        "pitää eniten siitä, että olet lähellä"
+      ],
+      "c10": [
+        "Leivotaanko yhdessä piirakka?",
+        "laittaa jo esiliinaa",
+        "ostaa mieluummin kakun"
+      ],
+      "c11": [
+        "Katsotaanko illalla elokuva?",
+        "valitsee jo elokuvaa",
+        "haluaa mieluummin jutella"
+      ],
+      "c12": [
+        "Pidätkö äänestäni?",
+        "voisi kuunnella loputtomiin",
+        "rakastaa nauruasi vielä enemmän"
+      ],
+      "c13": [
+        "Pidetäänkö viikonloppuna piknik?",
+        "laittaa viltin valmiiksi",
+        "kutsuu sinut kodikkaaseen kahvilaan"
+      ],
+      "c14": [
+        "Haluatko kirjeen minulta?",
+        "odottaa kirjettäsi",
+        "haluaa kuulla kaiken kasvotusten"
+      ],
+      "c15": [
+        "Merkitsenkö sinulle paljon?",
+        "merkitset valtavasti",
+        "enemmän kuin arvaatkaan"
+      ],
+      "c16": [
+        "Kävelläänkö sateessa?",
+        "ottaa sateenvarjon kahdelle",
+        "keittää mieluummin teetä kotona"
+      ],
+      "c17": [
+        "Olemmeko samanlaisia?",
+        "olette kuin kaksi puolikasta",
+        "täydennätte toisianne täydellisesti"
+      ],
+      "c18": [
+        "Pidätkö ruoanlaitostani?",
+        "pyytää lisää",
+        "rakastaa kokata yhdessä kanssasi"
+      ],
+      "c19": [
+        "Hankitaanko yhdessä lemmikki?",
+        "valitsee jo nimeä",
+        "nalle riittää toistaiseksi"
+      ],
+      "c20": [
+        "Tiedätkö, mitä rakastan?",
+        "osaa ulkoa",
+        "haluaa tietää vielä enemmän"
+      ],
+      "c21": [
+        "Tanssitaanko?",
+        "ojentaa jo kätensä",
+        "taputtaa käsiään"
+      ],
+      "c22": [
+        "Inspiroinko sinua?",
+        "inspiroit joka päivä",
+        "vierelläsi on vain lämmin olo"
+      ],
+      "c23": [
+        "Säilytätkö valokuviamme?",
+        "vaalii jokaista",
+        "odottaa uusia, vielä kauniimpia"
+      ],
+      "c24": [
+        "Katsotaanko auringonnousu yhdessä?",
+        "laittaa jo herätyksen",
+        "katsoo mieluummin auringonlaskua"
+      ],
+      "c25": [
+        "Kerrotko minulle salaisuuden?",
+        "kuiskaa sen korvaasi",
+        "pysyköön se arvoituksena"
+      ],
+      "c26": [
+        "Uskotko minuun?",
+        "uskoo sinuun vahvasti",
+        "kannustaa sinua joka päivä"
+      ],
+      "c27": [
+        "Lähdetäänkö matkalle, vain me kaksi?",
+        "haaveilee siitä",
+        "ottaa kaikki läheiset mukaan"
+      ],
+      "c28": [
+        "Odotatko soittoani?",
+        "odottaa hymyillen",
+        "toivoo mieluummin, että tulet käymään"
+      ],
+      "c29": [
+        "Pidätkö halauksistani?",
+        "maailman lämpimimmät",
+        "pitää mielellään kädestä"
+      ],
+      "c30": [
+        "Luetaanko toisillemme ääneen?",
+        "valitsee jo kirjaa",
+        "kuuntelee mieluummin sinua"
+      ],
+      "c31": [
+        "Otetaanko tänään yhteiskuva?",
+        "etsii jo kaunista taustaa",
+        "ensin jutellaan"
+      ],
+      "c32": [
+        "Piristänkö sinua?",
+        "aina",
+        "kanssasi suru on kevyempää"
+      ],
+      "c33": [
+        "Syödäänkö huomenna aamiainen yhdessä?",
+        "keittää jo kaakaota",
+        "haaveilee pitkistä unista"
+      ],
+      "c34": [
+        "Muistatko syntymäpäiväni?",
+        "ilman muistutusta",
+        "valmistelee salaa yllätystä"
+      ],
+      "c35": [
+        "Lähdetäänkö luistelemaan?",
+        "kaivaa luistimet esiin",
+        "kannustaa sinua laidalta"
+      ],
+      "c36": [
+        "Onko tänään hyvä päivä sinulle?",
+        "loistava päivä",
+        "paranee, kun olet lähellä"
+      ],
+      "c37": [
+        "Piirrätkö muotokuvani?",
+        "ottaa jo kynän",
+        "piirtää pienen sydämen"
+      ],
+      "c38": [
+        "Istutetaanko yhdessä puu?",
+        "valitsee paikan",
+        "aloittaa ikkunalaudan kukasta"
+      ],
+      "c39": [
+        "Haluatko kuulla kohteliaisuuden?",
+        "odottaa innolla",
+        "ujostuttaa, mutta haluaa kovasti"
+      ],
+      "c40": [
+        "Pelataanko myöhemmin uudelleen?",
+        "haluaa vielä yhden kierroksen",
+        "halaa mieluummin kuin pelaa"
+      ]
     }
   },
   ja: {
@@ -7850,7 +11315,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "「どっちがそう？」と「文の続きを書こう」、ふたりのノート付き",
       "featCollection": "25言語の手紙と詩のコレクションすべて",
       "featMoments": "記念日、リマインダー、決めた日に開くQRレター",
-      "featAudio": "手紙に自分の音声、受け取った人からの返事"
+      "featAudio": "手紙に自分の音声、受け取った人からの返事",
+      "ynTitle": "イエス・ノー",
+      "ynNote": "ふたりで遊ぶライブゲーム。1枚につき5秒。時間内に答えると、相手の答えが見られます。",
+      "ynCreate": "ルームを作る",
+      "ynWaiting": "{name}がリンクを開くのを待っています…",
+      "ynWaitingAny": "相手を待っています…",
+      "ynShareText": "{name}からライブゲーム「イエス・ノー」への招待です",
+      "ynPartnerHere": "{name}が来ました！",
+      "ynStart": "ゲームをはじめる",
+      "ynWaitHost": "{name}がまもなくゲームをはじめます",
+      "ynYes": "イエス",
+      "ynNo": "ノー",
+      "ynMissed": "時間切れ — このカードは閉じたままです",
+      "ynMatch": "同じ答え！",
+      "ynRound": "{total}枚中{n}枚目",
+      "ynAnswered": "答えを送りました。相手を待っています…",
+      "ynFinal": "{total}枚中{score}枚が一致",
+      "ynFinalHigh": "言葉がなくても通じ合っています",
+      "ynFinalMid": "ちがうからこそ、近いふたり",
+      "ynAgain": "もう一度遊ぶ",
+      "ynLeft": "相手の接続が切れました。戻るのを待っています…",
+      "ynYou": "あなた",
+      "ynOffline": "ゲームに接続できません。インターネットを確認して、リンクを開き直してください。",
+      "ynJoin": "ゲームに参加",
+      "ynJoinLead": "{name}が待っています。答えは5秒以内に！",
+      "ynStepNames": "あなたと相手の名前",
+      "ynRoomReady": "ルームの準備ができました — リンクを送りましょう",
+      "ynStayHere": "この画面は開いたままに。相手がリンクを開くとゲームが始まります。",
+      "featYesNo": "ライブゲーム「イエス・ノー」— 答えは5秒",
+      "ynPartnerMissed": "回答なし — 時間切れ"
     },
     "questions": {
       "q01": [
@@ -8273,6 +11767,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "新しい言語",
         "絵"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "いま、わたしに会いたい？",
+        "とても会いたがっています",
+        "がまんしているけど、あなたのことを考えています"
+      ],
+      "c02": [
+        "わたしのメッセージを見ると笑顔になる？",
+        "いつも笑顔になります",
+        "心の中でほほえんでいます"
+      ],
+      "c03": [
+        "初めて会った日のこと、覚えてる？",
+        "一分一秒まで覚えています",
+        "いちばん大事なこと — あなたを覚えています"
+      ],
+      "c04": [
+        "今日ハグしたい？",
+        "あなたのハグを待っています",
+        "ハグはあとのお楽しみ"
+      ],
+      "c05": [
+        "いっしょに海へ行こうか？",
+        "もう荷造りしています",
+        "山にあこがれています"
+      ],
+      "c06": [
+        "わたし、あなたを笑わせてる？",
+        "心から笑っています",
+        "笑顔をかくしています"
+      ],
+      "c07": [
+        "わたしといると落ち着く？",
+        "あなたのそばだと安心します",
+        "あなたといると楽しいです"
+      ],
+      "c08": [
+        "昼間、わたしのことを思い出す？",
+        "とてもよく思い出します",
+        "ちょうど今、思い出しています"
+      ],
+      "c09": [
+        "わたしのサプライズは好き？",
+        "あなたのサプライズが大好き",
+        "そばにいてくれるのがいちばん"
+      ],
+      "c10": [
+        "いっしょにパイを焼こうか？",
+        "もうエプロンをつけています",
+        "ケーキを買うほうがいい"
+      ],
+      "c11": [
+        "今夜いっしょに映画を観る？",
+        "もう映画を選んでいます",
+        "おしゃべりしたい気分"
+      ],
+      "c12": [
+        "わたしの声は好き？",
+        "ずっと聞いていられます",
+        "あなたの笑い声がもっと好き"
+      ],
+      "c13": [
+        "週末にピクニックしない？",
+        "ブランケットを準備中",
+        "すてきなカフェに誘っています"
+      ],
+      "c14": [
+        "わたしからの手紙、ほしい？",
+        "あなたの手紙を待っています",
+        "直接聞きたいと思っています"
+      ],
+      "c15": [
+        "わたしはあなたにとって大切？",
+        "とても大切です",
+        "思っている以上に大切です"
+      ],
+      "c16": [
+        "雨の中を散歩しようか？",
+        "ふたり用の傘を持っています",
+        "家でお茶をいれます"
+      ],
+      "c17": [
+        "わたしたち、似てる？",
+        "ふたりでひとつのよう",
+        "ぴったり補い合っています"
+      ],
+      "c18": [
+        "わたしの料理、好き？",
+        "おかわりしたいそうです",
+        "いっしょに作るのが大好き"
+      ],
+      "c19": [
+        "いっしょにペットを飼おうか？",
+        "もう名前を考えています",
+        "今はぬいぐるみのくまで十分"
+      ],
+      "c20": [
+        "わたしの好きなもの、知ってる？",
+        "ぜんぶ覚えています",
+        "もっと知りたいと思っています"
+      ],
+      "c21": [
+        "いっしょに踊る？",
+        "もう手を差し出しています",
+        "拍手で応援します"
+      ],
+      "c22": [
+        "わたし、あなたの刺激になってる？",
+        "毎日、心を動かされています",
+        "そばにいるとただ温かい"
+      ],
+      "c23": [
+        "ふたりの写真、とってある？",
+        "一枚一枚大切にしています",
+        "もっとすてきな新しい写真を待っています"
+      ],
+      "c24": [
+        "いっしょに日の出を見ようか？",
+        "目覚ましをセット中",
+        "夕日のほうがいいそうです"
+      ],
+      "c25": [
+        "ひみつを教えてくれる？",
+        "耳もとでささやきます",
+        "ひみつのままにしておきます"
+      ],
+      "c26": [
+        "わたしを信じてる？",
+        "心から信じています",
+        "毎日あなたを応援しています"
+      ],
+      "c27": [
+        "ふたりきりで旅に出ようか？",
+        "それが夢です",
+        "大切な人みんなを連れて行きます"
+      ],
+      "c28": [
+        "わたしの電話、待ってる？",
+        "笑顔で待っています",
+        "会いに来てほしいそうです"
+      ],
+      "c29": [
+        "わたしのハグ、好き？",
+        "世界でいちばん温かい",
+        "手をつなぐのが好き"
+      ],
+      "c30": [
+        "お互いに本を読み聞かせしようか？",
+        "もう本を選んでいます",
+        "あなたの声を聞いていたい"
+      ],
+      "c31": [
+        "今日いっしょに写真を撮ろうか？",
+        "すてきな背景を探しています",
+        "まずはおしゃべり"
+      ],
+      "c32": [
+        "わたし、あなたを元気にしてる？",
+        "いつも元気をもらっています",
+        "あなたといると悲しみも軽くなります"
+      ],
+      "c33": [
+        "明日いっしょに朝ごはんを食べよう？",
+        "もうココアを作っています",
+        "ゆっくり寝ていたい"
+      ],
+      "c34": [
+        "わたしの誕生日、覚えてる？",
+        "言われなくても覚えています",
+        "こっそりサプライズを準備中"
+      ],
+      "c35": [
+        "スケートに行こうか？",
+        "スケート靴を出しています",
+        "リンクのそばで応援します"
+      ],
+      "c36": [
+        "今日はいい日？",
+        "最高の一日",
+        "あなたがいればもっとよくなります"
+      ],
+      "c37": [
+        "わたしの似顔絵を描いてくれる？",
+        "もう鉛筆を持っています",
+        "小さなハートを描きます"
+      ],
+      "c38": [
+        "いっしょに木を植えようか？",
+        "場所を選んでいます",
+        "まずは窓辺の花から"
+      ],
+      "c39": [
+        "ほめ言葉を聞きたい？",
+        "楽しみにしています",
+        "照れくさいけど、聞きたい"
+      ],
+      "c40": [
+        "あとでもう一回遊ぶ？",
+        "もう一回やりたい",
+        "ゲームよりハグしたい"
+      ]
     }
   },
   ko: {
@@ -8367,7 +12063,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "'우리 중 누구?'와 커플 노트가 있는 '문장 완성하기'",
       "featCollection": "25개 언어로 된 편지와 시 전체 컬렉션",
       "featMoments": "기념일, 알림, 원하는 날에 열리는 QR 편지",
-      "featAudio": "편지 속 나의 오디오와 받는 사람의 답장"
+      "featAudio": "편지 속 나의 오디오와 받는 사람의 답장",
+      "ynTitle": "예스 노",
+      "ynNote": "둘이 하는 실시간 게임: 카드마다 5초. 제때 답하면 상대의 답을 볼 수 있어요.",
+      "ynCreate": "방 만들기",
+      "ynWaiting": "{name} 님이 링크를 열기를 기다리는 중…",
+      "ynWaitingAny": "상대를 기다리는 중…",
+      "ynShareText": "{name} 님이 실시간 게임 '예스 노'에 초대했어요",
+      "ynPartnerHere": "{name} 님이 들어왔어요!",
+      "ynStart": "게임 시작",
+      "ynWaitHost": "{name} 님이 곧 게임을 시작해요",
+      "ynYes": "예스",
+      "ynNo": "노",
+      "ynMissed": "시간 초과 — 이 카드는 닫혀 있어요",
+      "ynMatch": "같은 답!",
+      "ynRound": "{total}장 중 {n}번째 카드",
+      "ynAnswered": "답을 보냈어요. 상대를 기다리는 중…",
+      "ynFinal": "{total}장 중 {score}장 일치",
+      "ynFinalHigh": "말하지 않아도 통하는 사이",
+      "ynFinalMid": "다르지만 그래서 더 가까운 사이",
+      "ynAgain": "다시 하기",
+      "ynLeft": "상대의 연결이 끊겼어요. 돌아오기를 기다리는 중…",
+      "ynYou": "나",
+      "ynOffline": "게임에 연결할 수 없어요. 인터넷을 확인하고 링크를 다시 열어 주세요.",
+      "ynJoin": "게임 참여",
+      "ynJoinLead": "{name} 님이 기다리고 있어요. 답은 5초 안에!",
+      "ynStepNames": "내 이름과 상대 이름",
+      "ynRoomReady": "방이 준비됐어요 — 링크를 보내세요",
+      "ynStayHere": "이 화면을 닫지 마세요. 링크가 열리면 게임이 시작돼요.",
+      "featYesNo": "실시간 게임 '예스 노' — 답은 5초",
+      "ynPartnerMissed": "답 없음 — 시간 초과"
     },
     "questions": {
       "q01": [
@@ -8790,6 +12515,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "새로운 언어",
         "그림"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "지금 내가 보고 싶어?",
+        "많이 보고 싶어 해요",
+        "참고 있지만 당신을 생각해요"
+      ],
+      "c02": [
+        "내 메시지를 보면 웃어?",
+        "항상 웃어요",
+        "속으로 미소 지어요"
+      ],
+      "c03": [
+        "우리 첫 만남 기억해?",
+        "매 순간을 기억해요",
+        "가장 중요한 것, 당신을 기억해요"
+      ],
+      "c04": [
+        "오늘 안아 줄까?",
+        "당신의 포옹을 기다려요",
+        "포옹은 나중을 위해 아껴요"
+      ],
+      "c05": [
+        "같이 바다 갈까?",
+        "벌써 짐을 싸고 있어요",
+        "산을 꿈꾸고 있어요"
+      ],
+      "c06": [
+        "내가 당신을 웃게 해?",
+        "진심으로 웃어요",
+        "미소를 숨기고 있어요"
+      ],
+      "c07": [
+        "나랑 있으면 편해?",
+        "당신 곁에서 편안해요",
+        "당신과 있으면 즐거워요"
+      ],
+      "c08": [
+        "낮에 내 생각 해?",
+        "아주 자주 생각해요",
+        "지금 바로 생각하고 있어요"
+      ],
+      "c09": [
+        "내 깜짝 선물 좋아해?",
+        "당신의 깜짝 선물을 정말 좋아해요",
+        "곁에 있어 주는 게 제일 좋아요"
+      ],
+      "c10": [
+        "같이 파이 구울까?",
+        "벌써 앞치마를 둘렀어요",
+        "케이크를 사는 게 좋대요"
+      ],
+      "c11": [
+        "오늘 밤 같이 영화 볼까?",
+        "벌써 영화를 고르고 있어요",
+        "그냥 이야기하고 싶대요"
+      ],
+      "c12": [
+        "내 목소리 좋아?",
+        "끝없이 들을 수 있어요",
+        "당신의 웃음소리를 더 좋아해요"
+      ],
+      "c13": [
+        "주말에 소풍 갈까?",
+        "돗자리를 챙기고 있어요",
+        "아늑한 카페로 초대해요"
+      ],
+      "c14": [
+        "내 편지 받고 싶어?",
+        "당신의 편지를 기다려요",
+        "직접 듣고 싶어 해요"
+      ],
+      "c15": [
+        "내가 당신에게 소중해?",
+        "정말 소중해요",
+        "생각보다 훨씬 더요"
+      ],
+      "c16": [
+        "빗속을 같이 걸을까?",
+        "둘이 쓸 우산을 챙겨요",
+        "집에서 차를 끓일래요"
+      ],
+      "c17": [
+        "우리 닮았어?",
+        "둘은 한 쌍 같아요",
+        "서로를 완벽하게 채워 줘요"
+      ],
+      "c18": [
+        "내 요리 좋아해?",
+        "더 달라고 해요",
+        "같이 요리하는 걸 좋아해요"
+      ],
+      "c19": [
+        "같이 반려동물 키울까?",
+        "벌써 이름을 고르고 있어요",
+        "지금은 곰 인형으로 충분해요"
+      ],
+      "c20": [
+        "내가 뭘 좋아하는지 알아?",
+        "다 외우고 있어요",
+        "더 알고 싶어 해요"
+      ],
+      "c21": [
+        "같이 춤출까?",
+        "벌써 손을 내밀고 있어요",
+        "박수로 응원할게요"
+      ],
+      "c22": [
+        "내가 당신에게 영감을 줘?",
+        "매일 영감을 줘요",
+        "곁에 있으면 그냥 따뜻해요"
+      ],
+      "c23": [
+        "우리 사진 간직하고 있어?",
+        "한 장 한 장 소중히 간직해요",
+        "더 멋진 새 사진을 기다려요"
+      ],
+      "c24": [
+        "같이 해돋이 볼까?",
+        "알람을 맞추고 있어요",
+        "노을이 더 좋대요"
+      ],
+      "c25": [
+        "비밀 하나 말해 줄래?",
+        "귓속말로 알려 줄 거예요",
+        "비밀로 남겨 둘래요"
+      ],
+      "c26": [
+        "나를 믿어?",
+        "진심으로 믿어요",
+        "매일 응원하고 있어요"
+      ],
+      "c27": [
+        "둘이서만 여행 갈까?",
+        "그게 꿈이에요",
+        "소중한 사람들을 모두 데려가요"
+      ],
+      "c28": [
+        "내 전화 기다려?",
+        "웃으며 기다려요",
+        "직접 와 주길 바라요"
+      ],
+      "c29": [
+        "내 포옹 좋아해?",
+        "세상에서 가장 따뜻해요",
+        "손잡는 걸 좋아해요"
+      ],
+      "c30": [
+        "서로 책 읽어 줄까?",
+        "벌써 책을 고르고 있어요",
+        "당신 목소리를 듣고 싶어요"
+      ],
+      "c31": [
+        "오늘 같이 사진 찍을까?",
+        "예쁜 배경을 찾고 있어요",
+        "먼저 이야기부터"
+      ],
+      "c32": [
+        "내가 기분을 좋게 해 줘?",
+        "항상 그래요",
+        "당신과 있으면 슬픔도 가벼워져요"
+      ],
+      "c33": [
+        "내일 같이 아침 먹을까?",
+        "벌써 코코아를 만들고 있어요",
+        "늦잠을 자고 싶대요"
+      ],
+      "c34": [
+        "내 생일 기억해?",
+        "알려 주지 않아도 기억해요",
+        "몰래 깜짝 이벤트를 준비 중이에요"
+      ],
+      "c35": [
+        "스케이트 타러 갈까?",
+        "스케이트를 꺼내고 있어요",
+        "링크 옆에서 응원할게요"
+      ],
+      "c36": [
+        "오늘 좋은 하루야?",
+        "최고의 하루예요",
+        "당신이 있으면 더 좋아져요"
+      ],
+      "c37": [
+        "내 초상화 그려 줄래?",
+        "벌써 연필을 들었어요",
+        "작은 하트를 그려 줄게요"
+      ],
+      "c38": [
+        "같이 나무 심을까?",
+        "자리를 고르고 있어요",
+        "창가의 꽃부터 시작할게요"
+      ],
+      "c39": [
+        "칭찬 듣고 싶어?",
+        "정말 기대돼요",
+        "쑥스럽지만 듣고 싶어요"
+      ],
+      "c40": [
+        "나중에 또 할까?",
+        "한 판 더 하고 싶어요",
+        "게임보다 포옹이 좋아요"
+      ]
     }
   },
   zh: {
@@ -8884,7 +12811,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "「我們之中是誰？」與附情侶手帳的「完成這句話」",
       "featCollection": "25 種語言的完整信件與詩作收藏",
       "featMoments": "紀念日、提醒，以及在指定日子開啟的 QR 信件",
-      "featAudio": "在信中加入自己的音訊，以及收件人的回覆"
+      "featAudio": "在信中加入自己的音訊，以及收件人的回覆",
+      "ynTitle": "是或否",
+      "ynNote": "兩人即時遊戲：每張卡片 5 秒。準時回答，就能看到對方的答案。",
+      "ynCreate": "建立房間",
+      "ynWaiting": "等待 {name} 打開連結…",
+      "ynWaitingAny": "等待對方加入…",
+      "ynShareText": "{name} 邀請你玩即時遊戲「是或否」",
+      "ynPartnerHere": "{name} 來了！",
+      "ynStart": "開始遊戲",
+      "ynWaitHost": "{name} 即將開始遊戲",
+      "ynYes": "是",
+      "ynNo": "否",
+      "ynMissed": "太晚了 — 這張卡片維持關閉",
+      "ynMatch": "答案一樣！",
+      "ynRound": "第 {n}/{total} 張",
+      "ynAnswered": "已送出答案，等待對方…",
+      "ynFinal": "{total} 張中有 {score} 張相同",
+      "ynFinalHigh": "你們心有靈犀",
+      "ynFinalMid": "如此不同，卻又如此親近",
+      "ynAgain": "再玩一次",
+      "ynLeft": "對方已斷線，等待回來…",
+      "ynYou": "你",
+      "ynOffline": "無法連線到遊戲。請檢查網路並重新開啟連結。",
+      "ynJoin": "加入遊戲",
+      "ynJoinLead": "{name} 在等你。每題 5 秒！",
+      "ynStepNames": "你和對方的名字",
+      "ynRoomReady": "房間準備好了 — 傳送連結吧",
+      "ynStayHere": "請保持這個畫面開啟：對方打開連結後遊戲就會開始。",
+      "featYesNo": "即時遊戲「是或否」— 每題 5 秒",
+      "ynPartnerMissed": "沒有回答 — 時間到了"
     },
     "questions": {
       "q01": [
@@ -9307,6 +13263,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "新語言",
         "畫畫"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "你現在想我嗎？",
+        "非常想你",
+        "忍著，但正想著你"
+      ],
+      "c02": [
+        "看到我的訊息會微笑嗎？",
+        "總是會微笑",
+        "在心裡偷偷微笑"
+      ],
+      "c03": [
+        "你記得我們第一次見面嗎？",
+        "記得每一分鐘",
+        "記得最重要的 — 你"
+      ],
+      "c04": [
+        "今天想抱抱嗎？",
+        "等著你的擁抱",
+        "把擁抱留到之後"
+      ],
+      "c05": [
+        "一起去海邊好嗎？",
+        "已經在收行李了",
+        "嚮往山上"
+      ],
+      "c06": [
+        "我會逗你笑嗎？",
+        "發自內心地笑",
+        "偷偷藏著笑容"
+      ],
+      "c07": [
+        "跟我在一起你安心嗎？",
+        "在你身邊很安心",
+        "跟你在一起很開心"
+      ],
+      "c08": [
+        "白天會想到我嗎？",
+        "常常想到你",
+        "此刻正想著你"
+      ],
+      "c09": [
+        "你喜歡我的驚喜嗎？",
+        "超愛你的驚喜",
+        "最喜歡你就在身邊"
+      ],
+      "c10": [
+        "一起烤個派好嗎？",
+        "已經穿上圍裙了",
+        "寧願買個蛋糕"
+      ],
+      "c11": [
+        "今晚一起看電影好嗎？",
+        "已經在挑電影了",
+        "只想好好聊天"
+      ],
+      "c12": [
+        "你喜歡我的聲音嗎？",
+        "可以一直聽下去",
+        "更喜歡你的笑聲"
+      ],
+      "c13": [
+        "週末去野餐好嗎？",
+        "正在準備野餐墊",
+        "邀你去溫馨的咖啡館"
+      ],
+      "c14": [
+        "想收到我的信嗎？",
+        "等著你的信",
+        "想當面聽你說"
+      ],
+      "c15": [
+        "我對你很重要嗎？",
+        "非常重要",
+        "比你想的還重要"
+      ],
+      "c16": [
+        "一起在雨中散步好嗎？",
+        "帶著兩人用的傘",
+        "在家泡茶比較好"
+      ],
+      "c17": [
+        "我們像嗎？",
+        "你們像兩個半圓",
+        "你們完美互補"
+      ],
+      "c18": [
+        "喜歡我做的菜嗎？",
+        "還想再來一碗",
+        "最愛和你一起下廚"
+      ],
+      "c19": [
+        "一起養寵物好嗎？",
+        "已經在想名字了",
+        "現在有隻泰迪熊就夠了"
+      ],
+      "c20": [
+        "你知道我喜歡什麼嗎？",
+        "倒背如流",
+        "還想知道更多"
+      ],
+      "c21": [
+        "一起跳舞好嗎？",
+        "已經伸出手了",
+        "會在旁邊拍手"
+      ],
+      "c22": [
+        "我能給你靈感嗎？",
+        "你每天都給予靈感",
+        "在你身邊就覺得溫暖"
+      ],
+      "c23": [
+        "你會保存我們的照片嗎？",
+        "每一張都好好珍藏",
+        "期待更美的新照片"
+      ],
+      "c24": [
+        "一起看日出好嗎？",
+        "正在設鬧鐘",
+        "比較喜歡看夕陽"
+      ],
+      "c25": [
+        "告訴我一個秘密好嗎？",
+        "會在你耳邊悄悄說",
+        "就讓它保持神秘吧"
+      ],
+      "c26": [
+        "你相信我嗎？",
+        "非常相信你",
+        "每天都為你加油"
+      ],
+      "c27": [
+        "只有我們兩個人去旅行好嗎？",
+        "夢想成真",
+        "要帶上所有親愛的人"
+      ],
+      "c28": [
+        "你在等我的電話嗎？",
+        "笑著等你",
+        "更希望你來看看"
+      ],
+      "c29": [
+        "喜歡我的擁抱嗎？",
+        "全世界最溫暖",
+        "喜歡手牽手"
+      ],
+      "c30": [
+        "我們互相朗讀好嗎？",
+        "已經在挑書了",
+        "更想聽你讀"
+      ],
+      "c31": [
+        "今天一起拍張照好嗎？",
+        "正在找漂亮的背景",
+        "先聊聊天"
+      ],
+      "c32": [
+        "我能讓你心情變好嗎？",
+        "一直都是",
+        "和你在一起，連難過都變輕了"
+      ],
+      "c33": [
+        "明天一起吃早餐好嗎？",
+        "已經在泡可可了",
+        "想多睡一會兒"
+      ],
+      "c34": [
+        "你記得我的生日嗎？",
+        "不用提醒也記得",
+        "正偷偷準備驚喜"
+      ],
+      "c35": [
+        "一起去溜冰好嗎？",
+        "正在拿出溜冰鞋",
+        "會在場邊為你加油"
+      ],
+      "c36": [
+        "今天對你來說是好日子嗎？",
+        "超棒的一天",
+        "有你在會更好"
+      ],
+      "c37": [
+        "你會幫我畫像嗎？",
+        "已經拿起鉛筆了",
+        "會畫一顆小愛心"
+      ],
+      "c38": [
+        "一起種棵樹好嗎？",
+        "正在挑地點",
+        "先從窗台上的花開始"
+      ],
+      "c39": [
+        "想聽一句讚美嗎？",
+        "迫不及待",
+        "有點害羞，但很想聽"
+      ],
+      "c40": [
+        "等等再玩一次好嗎？",
+        "想再來一局",
+        "比起遊戲更想抱抱"
+      ]
     }
   },
   th: {
@@ -9401,7 +13559,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«ใครในเรา?» และ «เติมประโยคให้จบ» พร้อมสมุดของคู่รัก",
       "featCollection": "คอลเลกชันจดหมายและบทกวีทั้งหมดใน 25 ภาษา",
       "featMoments": "วันสำคัญ การแจ้งเตือน และจดหมาย QR ที่เปิดในวันที่กำหนด",
-      "featAudio": "เสียงของคุณเองในจดหมาย และคำตอบจากผู้รับ"
+      "featAudio": "เสียงของคุณเองในจดหมาย และคำตอบจากผู้รับ",
+      "ynTitle": "ใช่หรือไม่",
+      "ynNote": "เกมสดสำหรับสองคน: การ์ดละ 5 วินาที ใครตอบทันจะได้เห็นคำตอบของอีกฝ่าย",
+      "ynCreate": "สร้างห้อง",
+      "ynWaiting": "รอให้ {name} เปิดลิงก์…",
+      "ynWaitingAny": "กำลังรออีกฝ่าย…",
+      "ynShareText": "{name} ชวนคุณเล่นเกมสด «ใช่หรือไม่»",
+      "ynPartnerHere": "{name} มาแล้ว!",
+      "ynStart": "เริ่มเกม",
+      "ynWaitHost": "{name} กำลังจะเริ่มเกม",
+      "ynYes": "ใช่",
+      "ynNo": "ไม่",
+      "ynMissed": "ช้าไป — การ์ดใบนี้ปิดอยู่",
+      "ynMatch": "ตอบตรงกัน!",
+      "ynRound": "การ์ด {n} จาก {total}",
+      "ynAnswered": "ส่งคำตอบแล้ว กำลังรออีกฝ่าย…",
+      "ynFinal": "ตรงกัน {score} จาก {total}",
+      "ynFinalHigh": "คุณเข้าใจกันโดยไม่ต้องพูด",
+      "ynFinalMid": "แตกต่างกัน แต่ใกล้ชิดกันมาก",
+      "ynAgain": "เล่นอีกครั้ง",
+      "ynLeft": "อีกฝ่ายหลุดการเชื่อมต่อ กำลังรอ…",
+      "ynYou": "คุณ",
+      "ynOffline": "เชื่อมต่อเกมไม่ได้ โปรดตรวจสอบอินเทอร์เน็ตแล้วเปิดลิงก์อีกครั้ง",
+      "ynJoin": "เข้าร่วมเกม",
+      "ynJoinLead": "{name} รอคุณอยู่ ตอบข้อละ 5 วินาที!",
+      "ynStepNames": "ชื่อของคุณและอีกฝ่าย",
+      "ynRoomReady": "ห้องพร้อมแล้ว — ส่งลิงก์ได้เลย",
+      "ynStayHere": "อย่าปิดหน้านี้: เกมจะเริ่มเมื่อมีคนเปิดลิงก์",
+      "featYesNo": "เกมสด «ใช่หรือไม่» — ตอบข้อละ 5 วินาที",
+      "ynPartnerMissed": "ไม่มีคำตอบ — หมดเวลา"
     },
     "questions": {
       "q01": [
@@ -9824,6 +14011,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "ภาษาใหม่",
         "วาดรูป"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "ตอนนี้คิดถึงฉันไหม?",
+        "คิดถึงมาก",
+        "อดทนอยู่ แต่คิดถึงคุณ"
+      ],
+      "c02": [
+        "เห็นข้อความของฉันแล้วยิ้มไหม?",
+        "ยิ้มทุกครั้ง",
+        "แอบยิ้มในใจ"
+      ],
+      "c03": [
+        "จำวันแรกที่เราเจอกันได้ไหม?",
+        "จำได้ทุกนาที",
+        "จำสิ่งสำคัญที่สุดได้ — คุณ"
+      ],
+      "c04": [
+        "วันนี้อยากกอดไหม?",
+        "รออ้อมกอดของคุณ",
+        "เก็บอ้อมกอดไว้ทีหลัง"
+      ],
+      "c05": [
+        "ไปทะเลด้วยกันไหม?",
+        "กำลังจัดกระเป๋าแล้ว",
+        "ฝันถึงภูเขา"
+      ],
+      "c06": [
+        "ฉันทำให้คุณหัวเราะไหม?",
+        "หัวเราะจากใจ",
+        "แอบซ่อนรอยยิ้ม"
+      ],
+      "c07": [
+        "อยู่กับฉันแล้วสบายใจไหม?",
+        "อยู่ข้างคุณแล้วสงบ",
+        "อยู่กับคุณแล้วสนุก"
+      ],
+      "c08": [
+        "ระหว่างวันคิดถึงฉันไหม?",
+        "คิดถึงบ่อยมาก",
+        "กำลังคิดถึงอยู่ตอนนี้"
+      ],
+      "c09": [
+        "ชอบเซอร์ไพรส์ของฉันไหม?",
+        "ชอบเซอร์ไพรส์ของคุณมาก",
+        "ชอบที่สุดคือมีคุณอยู่ใกล้ ๆ"
+      ],
+      "c10": [
+        "อบพายด้วยกันไหม?",
+        "ใส่ผ้ากันเปื้อนแล้ว",
+        "ขอซื้อเค้กดีกว่า"
+      ],
+      "c11": [
+        "คืนนี้ดูหนังด้วยกันไหม?",
+        "กำลังเลือกหนัง",
+        "อยากคุยกันมากกว่า"
+      ],
+      "c12": [
+        "ชอบเสียงของฉันไหม?",
+        "ฟังได้ไม่มีเบื่อ",
+        "ชอบเสียงหัวเราะของคุณมากกว่า"
+      ],
+      "c13": [
+        "สุดสัปดาห์ไปปิกนิกกันไหม?",
+        "เตรียมผ้าปูแล้ว",
+        "ชวนไปคาเฟ่อบอุ่น"
+      ],
+      "c14": [
+        "อยากได้จดหมายจากฉันไหม?",
+        "รอจดหมายของคุณ",
+        "อยากฟังต่อหน้ามากกว่า"
+      ],
+      "c15": [
+        "ฉันสำคัญกับคุณไหม?",
+        "สำคัญมาก",
+        "มากกว่าที่คุณคิด"
+      ],
+      "c16": [
+        "เดินเล่นกลางสายฝนกันไหม?",
+        "หยิบร่มสำหรับสองคน",
+        "ขอชงชาที่บ้าน"
+      ],
+      "c17": [
+        "เราคล้ายกันไหม?",
+        "เหมือนสองครึ่งที่เติมกัน",
+        "เติมเต็มกันได้อย่างลงตัว"
+      ],
+      "c18": [
+        "ชอบอาหารที่ฉันทำไหม?",
+        "ขอเพิ่มอีกจาน",
+        "ชอบทำอาหารด้วยกันกับคุณ"
+      ],
+      "c19": [
+        "เลี้ยงสัตว์ด้วยกันไหม?",
+        "กำลังคิดชื่ออยู่",
+        "ตอนนี้มีตุ๊กตาหมีก็พอ"
+      ],
+      "c20": [
+        "รู้ไหมว่าฉันชอบอะไร?",
+        "จำได้ขึ้นใจ",
+        "อยากรู้มากกว่านี้อีก"
+      ],
+      "c21": [
+        "เต้นรำด้วยกันไหม?",
+        "ยื่นมือมาแล้ว",
+        "จะปรบมือเชียร์"
+      ],
+      "c22": [
+        "ฉันเป็นแรงบันดาลใจให้คุณไหม?",
+        "เป็นแรงบันดาลใจทุกวัน",
+        "อยู่ข้างคุณแล้วอบอุ่น"
+      ],
+      "c23": [
+        "เก็บรูปของเราไว้ไหม?",
+        "เก็บไว้อย่างดีทุกใบ",
+        "รอรูปใหม่ที่สวยกว่านี้"
+      ],
+      "c24": [
+        "ดูพระอาทิตย์ขึ้นด้วยกันไหม?",
+        "ตั้งนาฬิกาปลุกแล้ว",
+        "ขอดูพระอาทิตย์ตกดีกว่า"
+      ],
+      "c25": [
+        "บอกความลับฉันสักเรื่องไหม?",
+        "จะกระซิบข้างหู",
+        "ขอเก็บเป็นความลับ"
+      ],
+      "c26": [
+        "เชื่อในตัวฉันไหม?",
+        "เชื่อในตัวคุณมาก",
+        "เป็นกำลังใจให้ทุกวัน"
+      ],
+      "c27": [
+        "ไปเที่ยวกันแค่สองคนไหม?",
+        "ฝันถึงสิ่งนี้",
+        "จะพาคนที่รักไปด้วยทั้งหมด"
+      ],
+      "c28": [
+        "รอโทรศัพท์จากฉันไหม?",
+        "รอด้วยรอยยิ้ม",
+        "อยากให้มาหามากกว่า"
+      ],
+      "c29": [
+        "ชอบอ้อมกอดของฉันไหม?",
+        "อบอุ่นที่สุดในโลก",
+        "ชอบจับมือกัน"
+      ],
+      "c30": [
+        "อ่านหนังสือให้กันฟังไหม?",
+        "กำลังเลือกหนังสือ",
+        "อยากฟังคุณอ่านมากกว่า"
+      ],
+      "c31": [
+        "วันนี้ถ่ายรูปคู่กันไหม?",
+        "กำลังหาฉากสวย ๆ",
+        "คุยกันก่อน"
+      ],
+      "c32": [
+        "ฉันทำให้คุณอารมณ์ดีขึ้นไหม?",
+        "เสมอ",
+        "อยู่กับคุณ ความเศร้าก็เบาลง"
+      ],
+      "c33": [
+        "พรุ่งนี้กินข้าวเช้าด้วยกันไหม?",
+        "กำลังชงโกโก้",
+        "อยากนอนต่ออีกหน่อย"
+      ],
+      "c34": [
+        "จำวันเกิดฉันได้ไหม?",
+        "จำได้โดยไม่ต้องเตือน",
+        "แอบเตรียมเซอร์ไพรส์อยู่"
+      ],
+      "c35": [
+        "ไปเล่นสเก็ตน้ำแข็งกันไหม?",
+        "หยิบรองเท้าสเก็ตแล้ว",
+        "จะเชียร์อยู่ข้างลาน"
+      ],
+      "c36": [
+        "วันนี้เป็นวันดีของคุณไหม?",
+        "วันที่ยอดเยี่ยม",
+        "จะดีขึ้นเมื่อมีคุณ"
+      ],
+      "c37": [
+        "วาดรูปฉันให้หน่อยไหม?",
+        "หยิบดินสอแล้ว",
+        "จะวาดหัวใจดวงเล็ก"
+      ],
+      "c38": [
+        "ปลูกต้นไม้ด้วยกันไหม?",
+        "กำลังเลือกที่",
+        "เริ่มจากดอกไม้ริมหน้าต่างก่อน"
+      ],
+      "c39": [
+        "อยากฟังคำชมไหม?",
+        "รอไม่ไหวแล้ว",
+        "เขินแต่ก็อยากฟังมาก"
+      ],
+      "c40": [
+        "เดี๋ยวเล่นอีกรอบไหม?",
+        "อยากเล่นอีกตา",
+        "อยากกอดมากกว่าเล่นเกม"
+      ]
     }
   },
   ar: {
@@ -9918,7 +14307,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«من منا؟» و«أكمل الجملة» مع دفتر الثنائي",
       "featCollection": "مجموعة الرسائل والقصائد كاملة بخمس وعشرين لغة",
       "featMoments": "لحظات وتذكيرات ورسالة QR تُفتح في اليوم المناسب",
-      "featAudio": "صوتك الخاص في الرسالة وردود المستلم"
+      "featAudio": "صوتك الخاص في الرسالة وردود المستلم",
+      "ynTitle": "نعم أو لا",
+      "ynNote": "لعبة مباشرة لشخصين: 5 ثوانٍ لكل بطاقة. من يجيب في الوقت يرى إجابة الطرف الآخر.",
+      "ynCreate": "إنشاء غرفة",
+      "ynWaiting": "بانتظار فتح الرابط: {name}…",
+      "ynWaitingAny": "بانتظار الطرف الآخر…",
+      "ynShareText": "دعوة من {name} إلى اللعبة المباشرة «نعم أو لا»",
+      "ynPartnerHere": "وصل الآن: {name}!",
+      "ynStart": "ابدأ اللعبة",
+      "ynWaitHost": "اللعبة ستبدأ قريبًا مع {name}",
+      "ynYes": "نعم",
+      "ynNo": "لا",
+      "ynMissed": "فات الوقت — تبقى البطاقة مغلقة",
+      "ynMatch": "الإجابة نفسها!",
+      "ynRound": "البطاقة {n} من {total}",
+      "ynAnswered": "أُرسلت الإجابة، بانتظار الطرف الآخر…",
+      "ynFinal": "تطابقت {score} من {total}",
+      "ynFinalHigh": "تفهمان بعضكما دون كلمات",
+      "ynFinalMid": "مختلفان جدًا — وقريبان جدًا",
+      "ynAgain": "العب مرة أخرى",
+      "ynLeft": "انقطع اتصال الطرف الآخر. بانتظار العودة…",
+      "ynYou": "أنت",
+      "ynOffline": "تعذّر الاتصال باللعبة. تحقّق من الإنترنت وافتح الرابط مجددًا.",
+      "ynJoin": "ادخل اللعبة",
+      "ynJoinLead": "اللعبة جاهزة مع {name}. 5 ثوانٍ لكل إجابة!",
+      "ynStepNames": "اسمك واسم الطرف الآخر",
+      "ynRoomReady": "الغرفة جاهزة — أرسل الرابط",
+      "ynStayHere": "أبقِ هذه الشاشة مفتوحة: تبدأ اللعبة عند فتح الرابط.",
+      "featYesNo": "لعبة «نعم أو لا» المباشرة — 5 ثوانٍ لكل إجابة",
+      "ynPartnerMissed": "لا إجابة — انتهى الوقت"
     },
     "questions": {
       "q01": [
@@ -10341,6 +14759,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "لغة جديدة",
         "الرسم"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "هل تشتاق إليّ الآن؟",
+        "شوق كبير إليك",
+        "صبر، لكن التفكير فيك لا يتوقف"
+      ],
+      "c02": [
+        "هل تبتسم حين ترى رسالتي؟",
+        "ابتسامة في كل مرة",
+        "ابتسامة خفية في القلب"
+      ],
+      "c03": [
+        "هل تتذكر لقاءنا الأول؟",
+        "كل دقيقة محفوظة في الذاكرة",
+        "الأهم محفوظ — أنت"
+      ],
+      "c04": [
+        "هل تريد عناقًا اليوم؟",
+        "انتظار لعناقك",
+        "العناق مؤجَّل لوقت لاحق"
+      ],
+      "c05": [
+        "هل نذهب معًا إلى البحر؟",
+        "الحقيبة تُحزم الآن",
+        "حنين إلى الجبال"
+      ],
+      "c06": [
+        "هل أُضحكك؟",
+        "ضحك من القلب",
+        "ابتسامة مخبّأة"
+      ],
+      "c07": [
+        "هل تشعر بالسكينة معي؟",
+        "سكينة إلى جانبك",
+        "مرح ومتعة معك"
+      ],
+      "c08": [
+        "هل تفكر فيّ خلال النهار؟",
+        "تفكير فيك كثيرًا جدًا",
+        "تفكير فيك في هذه اللحظة"
+      ],
+      "c09": [
+        "هل تحب مفاجآتي؟",
+        "حب كبير لمفاجآتك",
+        "الأجمل أن تكون قريبًا فقط"
+      ],
+      "c10": [
+        "هل نخبز فطيرة معًا؟",
+        "المريلة جاهزة بالفعل",
+        "شراء كعكة أفضل"
+      ],
+      "c11": [
+        "هل نشاهد فيلمًا الليلة؟",
+        "اختيار الفيلم جارٍ",
+        "رغبة في الحديث فقط"
+      ],
+      "c12": [
+        "هل يعجبك صوتي؟",
+        "استماع بلا نهاية",
+        "ضحكتك أجمل"
+      ],
+      "c13": [
+        "هل نقوم بنزهة في عطلة الأسبوع؟",
+        "البساط يُجهَّز",
+        "دعوة إلى مقهى دافئ"
+      ],
+      "c14": [
+        "هل تريد رسالة مني؟",
+        "انتظار لرسالتك",
+        "الأفضل أن يُقال كل شيء وجهًا لوجه"
+      ],
+      "c15": [
+        "هل أنا مهم بالنسبة إليك؟",
+        "مهم جدًا",
+        "أكثر مما تظن"
+      ],
+      "c16": [
+        "هل نتمشى تحت المطر؟",
+        "مظلة تتسع لاثنين",
+        "شاي في البيت أفضل"
+      ],
+      "c17": [
+        "هل نحن متشابهان؟",
+        "كأنكما نصفان لواحد",
+        "تكملان بعضكما تمامًا"
+      ],
+      "c18": [
+        "هل يعجبك طبخي؟",
+        "طلب لطبق آخر",
+        "الطبخ معك هو الأجمل"
+      ],
+      "c19": [
+        "هل نقتني حيوانًا أليفًا معًا؟",
+        "اختيار الاسم جارٍ",
+        "دبدوب محشو يكفي الآن"
+      ],
+      "c20": [
+        "هل تعرف ما أحب؟",
+        "معرفة عن ظهر قلب",
+        "رغبة في معرفة المزيد"
+      ],
+      "c21": [
+        "هل نرقص؟",
+        "اليد ممدودة إليك",
+        "تصفيق وتشجيع"
+      ],
+      "c22": [
+        "هل أُلهمك؟",
+        "إلهام كل يوم",
+        "دفء بسيط إلى جانبك"
+      ],
+      "c23": [
+        "هل تحتفظ بصورنا؟",
+        "كل صورة محفوظة بعناية",
+        "انتظار لصور جديدة أجمل"
+      ],
+      "c24": [
+        "هل نشاهد شروق الشمس معًا؟",
+        "المنبّه مضبوط",
+        "الغروب أجمل"
+      ],
+      "c25": [
+        "هل تخبرني بسر؟",
+        "همسة في أذنك",
+        "ليبقَ لغزًا"
+      ],
+      "c26": [
+        "هل تؤمن بي؟",
+        "إيمان كبير بك",
+        "تشجيع لك كل يوم"
+      ],
+      "c27": [
+        "هل نسافر نحن الاثنين فقط؟",
+        "حلم جميل",
+        "الأحبة جميعًا معنا"
+      ],
+      "c28": [
+        "هل تنتظر اتصالي؟",
+        "انتظار بابتسامة",
+        "زيارتك أجمل من اتصال"
+      ],
+      "c29": [
+        "هل تعجبك أحضاني؟",
+        "الأدفأ في العالم",
+        "حب لتشابك الأيدي"
+      ],
+      "c30": [
+        "هل نقرأ لبعضنا بصوت عالٍ؟",
+        "اختيار الكتاب جارٍ",
+        "الاستماع إليك أجمل"
+      ],
+      "c31": [
+        "هل نلتقط صورة معًا اليوم؟",
+        "بحث عن خلفية جميلة",
+        "الحديث أولًا"
+      ],
+      "c32": [
+        "هل أُحسّن مزاجك؟",
+        "دائمًا",
+        "معك حتى الحزن أخف"
+      ],
+      "c33": [
+        "هل نتناول الفطور معًا غدًا؟",
+        "الكاكاو يُحضَّر الآن",
+        "حلم بنوم أطول"
+      ],
+      "c34": [
+        "هل تتذكر عيد ميلادي؟",
+        "دون أي تذكير",
+        "مفاجأة تُحضَّر سرًا"
+      ],
+      "c35": [
+        "هل نذهب للتزلج على الجليد؟",
+        "الزلاجات جاهزة",
+        "تشجيع لك من جانب الحلبة"
+      ],
+      "c36": [
+        "هل يومك جميل اليوم؟",
+        "يوم رائع",
+        "سيصبح أجمل بقربك"
+      ],
+      "c37": [
+        "هل ترسم صورتي؟",
+        "القلم في اليد",
+        "رسم قلب صغير"
+      ],
+      "c38": [
+        "هل نزرع شجرة معًا؟",
+        "اختيار المكان جارٍ",
+        "البداية بزهرة على النافذة"
+      ],
+      "c39": [
+        "هل تريد سماع إطراء؟",
+        "انتظار بشوق",
+        "خجل، لكن مع رغبة كبيرة"
+      ],
+      "c40": [
+        "هل نلعب مرة أخرى لاحقًا؟",
+        "جولة أخرى من فضلك",
+        "العناق أجمل من اللعب"
+      ]
     }
   },
   ind: {
@@ -10435,7 +15055,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Siapa di antara kita?» dan «Lengkapi kalimat» dengan buku pasangan",
       "featCollection": "Seluruh koleksi surat dan puisi dalam 25 bahasa",
       "featMoments": "Momen, pengingat, dan surat QR yang terbuka di hari yang tepat",
-      "featAudio": "Audiomu sendiri di surat dan balasan dari penerima"
+      "featAudio": "Audiomu sendiri di surat dan balasan dari penerima",
+      "ynTitle": "Ya atau tidak",
+      "ynNote": "Game langsung berdua: 5 detik untuk setiap kartu. Yang menjawab tepat waktu bisa melihat jawaban pasangannya.",
+      "ynCreate": "Buat ruang",
+      "ynWaiting": "Menunggu {name} membuka tautan…",
+      "ynWaitingAny": "Menunggu pasangan…",
+      "ynShareText": "{name} mengajakmu bermain game langsung «Ya atau tidak»",
+      "ynPartnerHere": "{name} sudah datang!",
+      "ynStart": "Mulai game",
+      "ynWaitHost": "{name} akan segera memulai game",
+      "ynYes": "Ya",
+      "ynNo": "Tidak",
+      "ynMissed": "Terlambat — kartu ini tetap tertutup",
+      "ynMatch": "Jawabannya sama!",
+      "ynRound": "Kartu {n} dari {total}",
+      "ynAnswered": "Jawaban terkirim, menunggu pasangan…",
+      "ynFinal": "{score} dari {total} sama",
+      "ynFinalHigh": "Kalian saling mengerti tanpa kata",
+      "ynFinalMid": "Begitu berbeda — dan begitu dekat",
+      "ynAgain": "Main lagi",
+      "ynLeft": "Pasangan terputus. Menunggu kembali…",
+      "ynYou": "Kamu",
+      "ynOffline": "Tidak bisa terhubung ke game. Periksa internet lalu buka tautan lagi.",
+      "ynJoin": "Masuk ke game",
+      "ynJoinLead": "{name} menunggumu. 5 detik untuk setiap jawaban!",
+      "ynStepNames": "Namamu dan nama pasangan",
+      "ynRoomReady": "Ruang sudah siap — kirim tautannya",
+      "ynStayHere": "Biarkan layar ini terbuka: game dimulai saat tautan dibuka.",
+      "featYesNo": "Game langsung «Ya atau tidak» — 5 detik per jawaban",
+      "ynPartnerMissed": "Tidak ada jawaban — waktu habis"
     },
     "questions": {
       "q01": [
@@ -10858,6 +15507,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Bahasa baru",
         "Menggambar"
       ]
+    },
+    "yesNo": {
+      "c01": [
+        "Kamu kangen aku sekarang?",
+        "kangen sekali",
+        "menahan diri, tapi memikirkanmu"
+      ],
+      "c02": [
+        "Kamu tersenyum saat melihat pesanku?",
+        "selalu tersenyum",
+        "tersenyum dalam hati"
+      ],
+      "c03": [
+        "Ingat pertemuan pertama kita?",
+        "ingat setiap menitnya",
+        "ingat yang terpenting — kamu"
+      ],
+      "c04": [
+        "Mau pelukan hari ini?",
+        "menunggu pelukanmu",
+        "menyimpan pelukan untuk nanti"
+      ],
+      "c05": [
+        "Kita ke pantai bersama?",
+        "sudah berkemas",
+        "memimpikan gunung"
+      ],
+      "c06": [
+        "Aku membuatmu tertawa?",
+        "tertawa dari hati",
+        "menyembunyikan senyum"
+      ],
+      "c07": [
+        "Kamu merasa tenang bersamaku?",
+        "merasa tenang di dekatmu",
+        "senang bersamamu"
+      ],
+      "c08": [
+        "Kamu memikirkanku di siang hari?",
+        "sangat sering memikirkanmu",
+        "sedang memikirkanmu sekarang"
+      ],
+      "c09": [
+        "Kamu suka kejutanku?",
+        "sangat suka kejutanmu",
+        "paling suka saat kamu ada di dekat"
+      ],
+      "c10": [
+        "Kita membuat pai bersama?",
+        "sudah memakai celemek",
+        "lebih suka membeli kue"
+      ],
+      "c11": [
+        "Nonton film bersama malam ini?",
+        "sudah memilih film",
+        "lebih ingin mengobrol"
+      ],
+      "c12": [
+        "Kamu suka suaraku?",
+        "bisa mendengarnya tanpa henti",
+        "lebih suka tawamu"
+      ],
+      "c13": [
+        "Piknik akhir pekan ini?",
+        "menyiapkan tikar",
+        "mengajakmu ke kafe yang nyaman"
+      ],
+      "c14": [
+        "Mau dapat surat dariku?",
+        "menunggu suratmu",
+        "ingin mendengar semuanya langsung"
+      ],
+      "c15": [
+        "Aku penting bagimu?",
+        "sangat penting",
+        "lebih dari yang kamu kira"
+      ],
+      "c16": [
+        "Jalan-jalan di bawah hujan?",
+        "membawa payung untuk berdua",
+        "lebih suka membuat teh di rumah"
+      ],
+      "c17": [
+        "Kita mirip?",
+        "kalian seperti dua belahan",
+        "kalian saling melengkapi dengan sempurna"
+      ],
+      "c18": [
+        "Kamu suka masakanku?",
+        "minta tambah",
+        "suka memasak bersamamu"
+      ],
+      "c19": [
+        "Kita pelihara hewan bersama?",
+        "sudah memilih nama",
+        "untuk sekarang boneka beruang sudah cukup"
+      ],
+      "c20": [
+        "Kamu tahu apa yang kusukai?",
+        "hafal di luar kepala",
+        "ingin tahu lebih banyak"
+      ],
+      "c21": [
+        "Kita berdansa?",
+        "sudah mengulurkan tangan",
+        "akan bertepuk tangan"
+      ],
+      "c22": [
+        "Aku menginspirasimu?",
+        "menginspirasi setiap hari",
+        "di dekatmu rasanya hangat"
+      ],
+      "c23": [
+        "Kamu menyimpan foto-foto kita?",
+        "menyimpan setiap foto dengan sayang",
+        "menunggu foto baru yang lebih indah"
+      ],
+      "c24": [
+        "Kita lihat matahari terbit bersama?",
+        "sudah memasang alarm",
+        "lebih suka matahari terbenam"
+      ],
+      "c25": [
+        "Mau cerita satu rahasia?",
+        "akan membisikkannya padamu",
+        "biar tetap jadi misteri"
+      ],
+      "c26": [
+        "Kamu percaya padaku?",
+        "sangat percaya padamu",
+        "menyemangatimu setiap hari"
+      ],
+      "c27": [
+        "Kita bepergian berdua saja?",
+        "memimpikannya",
+        "akan mengajak semua orang tersayang"
+      ],
+      "c28": [
+        "Kamu menunggu teleponku?",
+        "menunggu sambil tersenyum",
+        "lebih suka kamu datang berkunjung"
+      ],
+      "c29": [
+        "Kamu suka pelukanku?",
+        "paling hangat di dunia",
+        "suka bergandengan tangan"
+      ],
+      "c30": [
+        "Kita saling membacakan buku?",
+        "sudah memilih buku",
+        "lebih suka mendengarkanmu"
+      ],
+      "c31": [
+        "Foto bersama hari ini?",
+        "sudah mencari latar yang cantik",
+        "mengobrol dulu"
+      ],
+      "c32": [
+        "Aku membuat suasana hatimu lebih baik?",
+        "selalu",
+        "bersamamu, kesedihan pun terasa ringan"
+      ],
+      "c33": [
+        "Sarapan bersama besok?",
+        "sudah membuat cokelat panas",
+        "ingin tidur lebih lama"
+      ],
+      "c34": [
+        "Kamu ingat ulang tahunku?",
+        "ingat tanpa diingatkan",
+        "diam-diam menyiapkan kejutan"
+      ],
+      "c35": [
+        "Kita main seluncur es?",
+        "sudah mengeluarkan sepatu seluncur",
+        "akan menyemangatimu dari pinggir"
+      ],
+      "c36": [
+        "Hari ini hari yang baik untukmu?",
+        "hari yang luar biasa",
+        "akan lebih baik kalau kamu ada"
+      ],
+      "c37": [
+        "Mau menggambar potretku?",
+        "sudah memegang pensil",
+        "akan menggambar hati kecil"
+      ],
+      "c38": [
+        "Kita menanam pohon bersama?",
+        "memilih tempatnya",
+        "mulai dari bunga di jendela"
+      ],
+      "c39": [
+        "Mau dengar pujian?",
+        "tidak sabar",
+        "malu tapi sangat ingin"
+      ],
+      "c40": [
+        "Nanti main lagi?",
+        "ingin satu ronde lagi",
+        "lebih ingin berpelukan daripada main"
+      ]
     }
   },
   vi: {
@@ -10952,7 +15803,36 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "featFunSoon": "«Ai trong hai ta?» và «Hoàn thành câu» cùng cuốn sổ đôi",
       "featCollection": "Toàn bộ bộ sưu tập thư và thơ bằng 25 ngôn ngữ",
       "featMoments": "Khoảnh khắc, lời nhắc và thư QR mở đúng ngày",
-      "featAudio": "Âm thanh của riêng bạn trong thư và lời hồi âm của người nhận"
+      "featAudio": "Âm thanh của riêng bạn trong thư và lời hồi âm của người nhận",
+      "ynTitle": "Có hay không",
+      "ynNote": "Trò chơi trực tiếp cho hai người: mỗi thẻ 5 giây. Ai trả lời kịp sẽ thấy câu trả lời của người kia.",
+      "ynCreate": "Tạo phòng",
+      "ynWaiting": "Đang chờ {name} mở liên kết…",
+      "ynWaitingAny": "Đang chờ người kia…",
+      "ynShareText": "{name} mời bạn chơi trò trực tiếp «Có hay không»",
+      "ynPartnerHere": "{name} đã vào!",
+      "ynStart": "Bắt đầu trò chơi",
+      "ynWaitHost": "{name} sắp bắt đầu trò chơi",
+      "ynYes": "Có",
+      "ynNo": "Không",
+      "ynMissed": "Trễ rồi — thẻ này vẫn đóng",
+      "ynMatch": "Trùng câu trả lời!",
+      "ynRound": "Thẻ {n}/{total}",
+      "ynAnswered": "Đã gửi câu trả lời, đang chờ người kia…",
+      "ynFinal": "Trùng {score}/{total}",
+      "ynFinalHigh": "Hai bạn hiểu nhau không cần lời",
+      "ynFinalMid": "Khác nhau thật nhiều — mà gần nhau thật gần",
+      "ynAgain": "Chơi lại",
+      "ynLeft": "Người kia đã mất kết nối. Đang chờ quay lại…",
+      "ynYou": "Bạn",
+      "ynOffline": "Không kết nối được trò chơi. Hãy kiểm tra internet và mở lại liên kết.",
+      "ynJoin": "Vào trò chơi",
+      "ynJoinLead": "{name} đang chờ bạn. Mỗi câu trả lời 5 giây!",
+      "ynStepNames": "Tên bạn và tên người kia",
+      "ynRoomReady": "Phòng đã sẵn sàng — hãy gửi liên kết",
+      "ynStayHere": "Hãy giữ màn hình này: trò chơi bắt đầu khi liên kết được mở.",
+      "featYesNo": "Trò chơi trực tiếp «Có hay không» — 5 giây mỗi câu",
+      "ynPartnerMissed": "Không có câu trả lời — hết giờ"
     },
     "questions": {
       "q01": [
@@ -11374,6 +16254,208 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Nấu ăn",
         "Một ngôn ngữ mới",
         "Vẽ"
+      ]
+    },
+    "yesNo": {
+      "c01": [
+        "Lúc này có nhớ mình không?",
+        "nhớ bạn rất nhiều",
+        "cố gắng nhưng vẫn nghĩ về bạn"
+      ],
+      "c02": [
+        "Thấy tin nhắn của mình có mỉm cười không?",
+        "luôn mỉm cười",
+        "mỉm cười trong lòng"
+      ],
+      "c03": [
+        "Còn nhớ lần đầu mình gặp nhau không?",
+        "nhớ từng phút",
+        "nhớ điều quan trọng nhất — bạn"
+      ],
+      "c04": [
+        "Hôm nay muốn ôm không?",
+        "đang chờ cái ôm của bạn",
+        "để dành cái ôm cho sau"
+      ],
+      "c05": [
+        "Mình cùng đi biển nhé?",
+        "đã xếp vali rồi",
+        "mơ về núi"
+      ],
+      "c06": [
+        "Mình có làm bạn cười không?",
+        "cười từ tận đáy lòng",
+        "giấu nụ cười"
+      ],
+      "c07": [
+        "Ở bên mình có thấy bình yên không?",
+        "thấy bình yên bên bạn",
+        "thấy vui khi ở cùng bạn"
+      ],
+      "c08": [
+        "Ban ngày có nghĩ về mình không?",
+        "nghĩ về bạn rất thường xuyên",
+        "đang nghĩ về bạn ngay lúc này"
+      ],
+      "c09": [
+        "Có thích bất ngờ của mình không?",
+        "rất mê những bất ngờ của bạn",
+        "thích nhất là có bạn bên cạnh"
+      ],
+      "c10": [
+        "Mình cùng nướng bánh nhé?",
+        "đã đeo tạp dề",
+        "mua bánh kem thì hơn"
+      ],
+      "c11": [
+        "Tối nay cùng xem phim nhé?",
+        "đang chọn phim",
+        "chỉ muốn trò chuyện"
+      ],
+      "c12": [
+        "Có thích giọng của mình không?",
+        "có thể nghe mãi không chán",
+        "thích tiếng cười của bạn hơn"
+      ],
+      "c13": [
+        "Cuối tuần đi dã ngoại nhé?",
+        "đang chuẩn bị tấm thảm",
+        "rủ bạn đến quán cà phê ấm cúng"
+      ],
+      "c14": [
+        "Muốn nhận thư của mình không?",
+        "đang chờ thư của bạn",
+        "muốn nghe trực tiếp hơn"
+      ],
+      "c15": [
+        "Mình có quan trọng với bạn không?",
+        "rất quan trọng",
+        "hơn cả bạn nghĩ"
+      ],
+      "c16": [
+        "Mình đi dạo dưới mưa nhé?",
+        "mang ô cho hai người",
+        "pha trà ở nhà thì hơn"
+      ],
+      "c17": [
+        "Hai ta có giống nhau không?",
+        "như hai nửa của một",
+        "bổ sung cho nhau thật hoàn hảo"
+      ],
+      "c18": [
+        "Có thích món mình nấu không?",
+        "xin thêm phần nữa",
+        "thích nấu ăn cùng bạn"
+      ],
+      "c19": [
+        "Mình cùng nuôi thú cưng nhé?",
+        "đang chọn tên rồi",
+        "giờ có gấu bông là đủ"
+      ],
+      "c20": [
+        "Có biết mình thích gì không?",
+        "thuộc lòng",
+        "muốn biết thêm nữa"
+      ],
+      "c21": [
+        "Mình nhảy cùng nhau nhé?",
+        "đã đưa tay ra",
+        "sẽ vỗ tay cổ vũ"
+      ],
+      "c22": [
+        "Mình có truyền cảm hứng cho bạn không?",
+        "truyền cảm hứng mỗi ngày",
+        "bên bạn chỉ thấy ấm áp"
+      ],
+      "c23": [
+        "Có giữ ảnh của hai ta không?",
+        "giữ gìn từng tấm",
+        "chờ những tấm mới đẹp hơn"
+      ],
+      "c24": [
+        "Cùng ngắm bình minh nhé?",
+        "đang đặt báo thức",
+        "thích ngắm hoàng hôn hơn"
+      ],
+      "c25": [
+        "Kể mình nghe một bí mật nhé?",
+        "sẽ thì thầm vào tai bạn",
+        "cứ để là bí ẩn"
+      ],
+      "c26": [
+        "Có tin mình không?",
+        "rất tin bạn",
+        "cổ vũ bạn mỗi ngày"
+      ],
+      "c27": [
+        "Mình đi du lịch chỉ hai đứa nhé?",
+        "mơ về điều đó",
+        "sẽ rủ tất cả người thân"
+      ],
+      "c28": [
+        "Có đang chờ mình gọi không?",
+        "chờ với nụ cười",
+        "muốn bạn ghé thăm hơn"
+      ],
+      "c29": [
+        "Có thích cái ôm của mình không?",
+        "ấm áp nhất trên đời",
+        "thích nắm tay nhau"
+      ],
+      "c30": [
+        "Mình đọc sách cho nhau nghe nhé?",
+        "đang chọn sách",
+        "thích nghe bạn đọc hơn"
+      ],
+      "c31": [
+        "Hôm nay chụp ảnh chung nhé?",
+        "đang tìm phông nền đẹp",
+        "trò chuyện trước đã"
+      ],
+      "c32": [
+        "Mình có làm bạn vui hơn không?",
+        "luôn luôn",
+        "bên bạn, nỗi buồn cũng nhẹ hơn"
+      ],
+      "c33": [
+        "Mai mình ăn sáng cùng nhau nhé?",
+        "đang pha ca cao",
+        "muốn ngủ thêm chút nữa"
+      ],
+      "c34": [
+        "Có nhớ sinh nhật mình không?",
+        "nhớ mà không cần nhắc",
+        "đang bí mật chuẩn bị bất ngờ"
+      ],
+      "c35": [
+        "Mình đi trượt băng nhé?",
+        "đã lấy giày trượt",
+        "sẽ cổ vũ bạn bên rào"
+      ],
+      "c36": [
+        "Hôm nay là ngày tốt với bạn chứ?",
+        "một ngày tuyệt vời",
+        "sẽ tốt hơn khi có bạn"
+      ],
+      "c37": [
+        "Vẽ chân dung mình nhé?",
+        "đã cầm bút chì",
+        "sẽ vẽ một trái tim nhỏ"
+      ],
+      "c38": [
+        "Mình cùng trồng cây nhé?",
+        "đang chọn chỗ",
+        "bắt đầu từ chậu hoa bên cửa sổ"
+      ],
+      "c39": [
+        "Muốn nghe một lời khen không?",
+        "háo hức chờ",
+        "ngại ngùng nhưng rất muốn"
+      ],
+      "c40": [
+        "Lát nữa chơi lại nhé?",
+        "muốn thêm một ván",
+        "muốn ôm hơn là chơi"
       ]
     }
   }
