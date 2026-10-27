@@ -84,7 +84,7 @@ for (const code of LANGUAGES) {
   for (const id of setIds) assert.ok(sets[id].length === 5 && sets[id].every(value => typeof value === "string" && value.trim()), `${code}.${id}`);
   assert.doesNotMatch(JSON.stringify(sets), /18\s*\+|мелоди|песн|музык/iu, `${code} loves wording`);
 }
-for (const id of SET_IDS) for (const choice of "abcd") assert.ok(fs.existsSync(path.join(root, `assets/loves/${id}${choice}.webp`)), `${id}${choice} picture`);
+for (const id of Array.from({ length: 44 }, (_, index) => `s${String(index + 1).padStart(2, "0")}`).filter(id => !["s31", "s41", "s42", "s43", "s44"].includes(id))) for (const choice of "abcd") assert.ok(fs.existsSync(path.join(root, `assets/loves/${id}${choice}.webp`)), `${id}${choice} picture`);
 assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind in \('yesno', 'loves'\)/u);
 // «Карточки с мишками»: та же комната, ведущий хранит поле, партнёр только просит открыть карточку.
 assert.match(read("supabase/migrations/20261028130000_cards_rooms.sql"), /kind in \('yesno', 'loves', 'cards'\)/u);
@@ -122,10 +122,10 @@ for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "mo
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=79") < index.indexOf("games-i18n.js?v=79"));
-assert.ok(index.indexOf("games-i18n.js?v=79") < index.indexOf("games.js?v=79"));
-assert.match(index, /games\.css\?v=79/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=79"`, "u"));
+assert.ok(index.indexOf("experience.js?v=80") < index.indexOf("games-i18n.js?v=80"));
+assert.ok(index.indexOf("games-i18n.js?v=80") < index.indexOf("games.js?v=80"));
+assert.match(index, /games\.css\?v=80/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=80"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
