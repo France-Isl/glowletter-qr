@@ -1619,3 +1619,15 @@ body:not(.reading-focus) .secondary-actions { grid-template-columns: repeat(2, m
 /* «Навсегда»: разовая покупка — тёмное стекло с золотым краем и пометкой «Без подписки». */
 .purchase-lifetime { position: relative; margin-top: 14px; color: var(--cream) !important; background: linear-gradient(170deg, color-mix(in srgb, var(--indigo) 55%, var(--night)), var(--night)) !important; }
 .purchase-lifetime em { position: absolute; top: -10px; right: 14px; padding: 3px 10px; border-radius: 999px; color: var(--gold-ink); background: var(--gold-bright); font: 800 11px/1.25 "Manrope", system-ui, sans-serif; font-style: normal; letter-spacing: .02em; }
+
+/* Контакт для покупок, партнёрства и предложений (2.4.22). */
+.home-contact { display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 10px auto 0; padding: 6px 10px; text-align: center; letter-spacing: .04em; color: color-mix(in srgb, var(--cream) 62%, transparent); font-size: 11px; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+.home-contact:hover, .home-contact:focus-visible { color: var(--gold-bright); }
+.home-contact b { color: color-mix(in srgb, var(--gold-bright) 80%, transparent); font-size: 13px; letter-spacing: .02em; }
+.home-contact[hidden] { display: none; }
+.contact-card { display: flex; align-items: center; gap: 12px; margin: 14px 0 0; padding: 14px 16px; border: 1px solid var(--ui-border); border-radius: 16px; color: var(--ui-ink); background: var(--ui-surface); text-decoration: none; }
+.contact-card .ic { flex: 0 0 auto; width: 22px; height: 22px; fill: none; stroke: var(--ui-accent); stroke-width: 1.7; }
+.contact-card span { display: grid; gap: 2px; min-width: 0; }
+.contact-card strong { font-size: 13px; }
+.contact-card small { color: var(--ui-muted); font-size: 11px; line-height: 1.4; }
+.contact-card b { color: var(--ui-accent-deep); font-size: 13px; overflow-wrap: anywhere; }

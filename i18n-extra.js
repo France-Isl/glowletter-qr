@@ -469,7 +469,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Bären in Rosen",
       "sceneKitten": "Kätzchen auf dem Balkon",
       "payLifetime": "Für immer",
-      "lifetimeBadge": "Ohne Abo"
+      "lifetimeBadge": "Ohne Abo",
+      "contactTitle": "Kooperationen und Angebote",
+      "contactNote": "Kauf, Partnerschaft oder eine Idee – schreiben Sie uns"
     },
     picker: {
       "note": "Wähle einen Brief · für {name}",
@@ -1161,7 +1163,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Ositos entre rosas",
       "sceneKitten": "Gatito en el balcón",
       "payLifetime": "Para siempre",
-      "lifetimeBadge": "Sin suscripción"
+      "lifetimeBadge": "Sin suscripción",
+      "contactTitle": "Colaboraciones y propuestas",
+      "contactNote": "Compra, colaboración o una idea: escríbenos"
     },
     picker: {
       "note": "Elige una carta · para {name}",
@@ -1853,7 +1857,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Orsetti tra le rose",
       "sceneKitten": "Gattino sul balcone",
       "payLifetime": "Per sempre",
-      "lifetimeBadge": "Senza abbonamento"
+      "lifetimeBadge": "Senza abbonamento",
+      "contactTitle": "Collaborazioni e proposte",
+      "contactNote": "Acquisto, collaborazione o un’idea: scrivici"
     },
     picker: {
       "note": "Scegli una lettera · per {name}",
@@ -2545,7 +2551,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Misie w różach",
       "sceneKitten": "Kotek na balkonie",
       "payLifetime": "Na zawsze",
-      "lifetimeBadge": "Bez subskrypcji"
+      "lifetimeBadge": "Bez subskrypcji",
+      "contactTitle": "Współpraca i propozycje",
+      "contactNote": "Zakup, partnerstwo lub pomysł — napisz do nas"
     },
     picker: {
       "note": "Wybierz list · dla: {name}",
@@ -3237,7 +3245,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Ведмедики в трояндах",
       "sceneKitten": "Кошеня на балконі",
       "payLifetime": "Назавжди",
-      "lifetimeBadge": "Без підписки"
+      "lifetimeBadge": "Без підписки",
+      "contactTitle": "Співпраця і пропозиції",
+      "contactNote": "Купівля, партнерство чи ідея — напишіть нам"
     },
     picker: {
       "note": "Виберіть лист · для {name}",
@@ -3932,7 +3942,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Ursinhos nas rosas",
       "sceneKitten": "Gatinho na varanda",
       "payLifetime": "Para sempre",
-      "lifetimeBadge": "Sem assinatura"
+      "lifetimeBadge": "Sem assinatura",
+      "contactTitle": "Parcerias e propostas",
+      "contactNote": "Compra, parceria ou uma ideia — escreva para nós"
     },
     picker: {
       "note": "Escolha uma carta · para {name}",
@@ -4627,7 +4639,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Beertjes tussen rozen",
       "sceneKitten": "Kitten op het balkon",
       "payLifetime": "Voor altijd",
-      "lifetimeBadge": "Geen abonnement"
+      "lifetimeBadge": "Geen abonnement",
+      "contactTitle": "Samenwerking en voorstellen",
+      "contactNote": "Kopen, samenwerken of een idee — schrijf ons"
     },
     picker: {
       "note": "Kies een brief · voor {name}",
@@ -5322,7 +5336,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Güller arasında ayıcıklar",
       "sceneKitten": "Balkondaki yavru kedi",
       "payLifetime": "Ömür boyu",
-      "lifetimeBadge": "Abonelik yok"
+      "lifetimeBadge": "Abonelik yok",
+      "contactTitle": "İş birliği ve teklifler",
+      "contactNote": "Satın alma, ortaklık ya da bir fikir — bize yazın"
     },
     picker: {
       "note": "Bir mektup seçin · {name} için",
@@ -6017,7 +6033,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Ursuleți printre trandafiri",
       "sceneKitten": "Pisoi pe balcon",
       "payLifetime": "Pe viață",
-      "lifetimeBadge": "Fără abonament"
+      "lifetimeBadge": "Fără abonament",
+      "contactTitle": "Colaborări și propuneri",
+      "contactNote": "Cumpărare, parteneriat sau o idee — scrie-ne"
     },
     picker: {
       "note": "Alege o scrisoare · pentru {name}",
@@ -6712,7 +6730,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Medvídci v růžích",
       "sceneKitten": "Koťátko na balkoně",
       "payLifetime": "Navždy",
-      "lifetimeBadge": "Bez předplatného"
+      "lifetimeBadge": "Bez předplatného",
+      "contactTitle": "Spolupráce a nabídky",
+      "contactNote": "Nákup, partnerství nebo nápad — napište nám"
     },
     picker: {
       "note": "Vyberte dopis · pro {name}",
@@ -7407,7 +7427,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Björnar bland rosor",
       "sceneKitten": "Kattunge på balkongen",
       "payLifetime": "För alltid",
-      "lifetimeBadge": "Ingen prenumeration"
+      "lifetimeBadge": "Ingen prenumeration",
+      "contactTitle": "Samarbeten och erbjudanden",
+      "contactNote": "Köp, samarbete eller en idé – skriv till oss"
     },
     picker: {
       "note": "Välj ett brev · till {name}",
@@ -8102,7 +8124,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Αρκουδάκια στα τριαντάφυλλα",
       "sceneKitten": "Γατάκι στο μπαλκόνι",
       "payLifetime": "Για πάντα",
-      "lifetimeBadge": "Χωρίς συνδρομή"
+      "lifetimeBadge": "Χωρίς συνδρομή",
+      "contactTitle": "Συνεργασίες και προτάσεις",
+      "contactNote": "Αγορά, συνεργασία ή μια ιδέα — γράψτε μας"
     },
     picker: {
       "note": "Επιλέξτε γράμμα · για {name}",
@@ -8797,7 +8821,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Bamser i roser",
       "sceneKitten": "Killing på altanen",
       "payLifetime": "For altid",
-      "lifetimeBadge": "Intet abonnement"
+      "lifetimeBadge": "Intet abonnement",
+      "contactTitle": "Samarbejde og tilbud",
+      "contactNote": "Køb, samarbejde eller en idé – skriv til os"
     },
     picker: {
       "note": "Vælg et brev · til {name}",
@@ -9492,7 +9518,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Bamser i roser",
       "sceneKitten": "Kattunge på balkongen",
       "payLifetime": "For alltid",
-      "lifetimeBadge": "Uten abonnement"
+      "lifetimeBadge": "Uten abonnement",
+      "contactTitle": "Samarbeid og tilbud",
+      "contactNote": "Kjøp, samarbeid eller en idé – skriv til oss"
     },
     picker: {
       "note": "Velg et brev · til {name}",
@@ -10187,7 +10215,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Nallet ruusujen keskellä",
       "sceneKitten": "Kissanpentu parvekkeella",
       "payLifetime": "Ikuisesti",
-      "lifetimeBadge": "Ei tilausta"
+      "lifetimeBadge": "Ei tilausta",
+      "contactTitle": "Yhteistyö ja ehdotukset",
+      "contactNote": "Osto, yhteistyö tai idea – kirjoita meille"
     },
     picker: {
       "note": "Valitse kirje · vastaanottaja {name}",
@@ -10882,7 +10912,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "バラの中のくまたち",
       "sceneKitten": "バルコニーの子猫",
       "payLifetime": "買い切り",
-      "lifetimeBadge": "サブスクなし"
+      "lifetimeBadge": "サブスクなし",
+      "contactTitle": "提携・ご提案",
+      "contactNote": "ご購入、提携、アイデアなど、お気軽にご連絡ください"
     },
     picker: {
       "note": "手紙を選ぶ · {name}さんへ",
@@ -11577,7 +11609,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "장미 속 곰 인형",
       "sceneKitten": "발코니의 아기 고양이",
       "payLifetime": "평생 이용",
-      "lifetimeBadge": "구독 없음"
+      "lifetimeBadge": "구독 없음",
+      "contactTitle": "제휴 및 제안",
+      "contactNote": "구매, 제휴 또는 아이디어가 있다면 연락 주세요"
     },
     picker: {
       "note": "편지 고르기 · {name}님께",
@@ -12272,7 +12306,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "玫瑰中的小熊",
       "sceneKitten": "陽台上的小貓",
       "payLifetime": "永久使用",
-      "lifetimeBadge": "免訂閱"
+      "lifetimeBadge": "免訂閱",
+      "contactTitle": "合作與提案",
+      "contactNote": "購買、合作或任何想法，歡迎來信"
     },
     picker: {
       "note": "挑一封信 · 給 {name}",
@@ -12967,7 +13003,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "หมีน้อยในดงกุหลาบ",
       "sceneKitten": "ลูกแมวบนระเบียง",
       "payLifetime": "ใช้ได้ตลอดไป",
-      "lifetimeBadge": "ไม่ต้องสมัครสมาชิก"
+      "lifetimeBadge": "ไม่ต้องสมัครสมาชิก",
+      "contactTitle": "ความร่วมมือและข้อเสนอ",
+      "contactNote": "สนใจซื้อ ร่วมมือ หรือมีไอเดีย เขียนถึงเราได้เลย"
     },
     picker: {
       "note": "เลือกจดหมาย · สำหรับ {name}",
@@ -13662,7 +13700,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "دببة بين الورود",
       "sceneKitten": "قطة صغيرة على الشرفة",
       "payLifetime": "مدى الحياة",
-      "lifetimeBadge": "بدون اشتراك"
+      "lifetimeBadge": "بدون اشتراك",
+      "contactTitle": "الشراكات والعروض",
+      "contactNote": "للشراء أو الشراكة أو لديك فكرة — راسلنا"
     },
     picker: {
       "note": "اختيار رسالة · من أجل {name}",
@@ -14357,7 +14397,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Beruang di antara mawar",
       "sceneKitten": "Anak kucing di balkon",
       "payLifetime": "Selamanya",
-      "lifetimeBadge": "Tanpa langganan"
+      "lifetimeBadge": "Tanpa langganan",
+      "contactTitle": "Kerja sama dan penawaran",
+      "contactNote": "Pembelian, kemitraan, atau ide — tulis kepada kami"
     },
     picker: {
       "note": "Pilih surat · untuk {name}",
@@ -15052,7 +15094,9 @@ window.NUR_I18N_EXTRA = Object.freeze({
       "sceneRoses": "Gấu bông giữa hoa hồng",
       "sceneKitten": "Mèo con trên ban công",
       "payLifetime": "Trọn đời",
-      "lifetimeBadge": "Không cần đăng ký"
+      "lifetimeBadge": "Không cần đăng ký",
+      "contactTitle": "Hợp tác và đề xuất",
+      "contactNote": "Mua hàng, hợp tác hay ý tưởng — hãy viết cho chúng tôi"
     },
     picker: {
       "note": "Chọn một lá thư · cho {name}",
