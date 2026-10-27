@@ -43,7 +43,7 @@ body.gl-premium-active .gl-pro { display:none; }
 .gl-type-grid button:focus-visible { outline:2px solid var(--ui-accent); outline-offset:2px; }
 .gl-type-sample { font-style:normal; font-size:22px; line-height:1; color:var(--ui-accent-deep); }
 [data-gl-type="classic"] .gl-type-sample { font-family:"Literata",Georgia,serif; font-weight:600; }
-[data-gl-type="poetic"] .gl-type-sample { font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-weight:600; font-size:25px; }
+[data-gl-type="poetic"] .gl-type-sample { font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-weight:600; }
 [data-gl-type="clear"] .gl-type-sample { font-family:"Manrope",system-ui,sans-serif; font-weight:700; }
 .gl-premium-block.is-locked [aria-disabled="true"] { opacity:.6; }
 .gl-locked-note { margin:10px 0 0; color:var(--ui-muted); font-size:11px; line-height:1.5; }
