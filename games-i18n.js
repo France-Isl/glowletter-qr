@@ -22489,3 +22489,6 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
     ]
   }
 });
+
+// ВРЕМЕННО (28.10): английские надписи «Правды или лжи», пока идёт перевод.
+Object.values(window.GLOWLETTER_GAMES_I18N).forEach(pack => { pack.text = Object.assign({"truth":"True or false","tfTitle":"True or false","tfNote":"A live game for two: amazing facts about the world. 12 seconds — true or false? A point for every right answer.","tfShareText":"{name} invites you to the live game “True or false”","tfJoinLead":"{name} is waiting for you. True or false — decide fast!","tfRound":"Fact {n} of {total}","tfTrue":"True","tfFalse":"False","tfIsTrue":"It’s true!","tfIsFalse":"It’s false!","tfFirstYou":"You were right first!","tfFirstThem":"{name} was right first","tfFinalWin":"Victory! You know more about the world.","tfFinalLose":"{name} knows more this time — rematch?","tfFinalDraw":"A draw — you know just as much!","featTruth":"Live game “True or false” — amazing facts about the world"}, pack.text); });

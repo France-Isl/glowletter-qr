@@ -83,7 +83,7 @@ assert.match(read("supabase/migrations/20261028120000_loves_rooms.sql"), /kind i
 assert.match(read("supabase/migrations/20261028130000_cards_rooms.sql"), /kind in \('yesno', 'loves', 'cards'\)/u);
 assert.match(games, /const CARD_LEVELS = Object\.freeze\(\[\{ cards: 8,.*\{ cards: 12,.*\{ cards: 16,/u);
 assert.match(games, /type: "mflip", index/u);
-assert.match(games, /\["featCards"\], \["featDuel"\]\]\) \+ group\("groupFun", \[\["featWho"\], \["featPhrase"\]\]\)/u);
+assert.match(games, /\["featCards"\], \["featDuel"\]\]\) \+ group\("groupFun", \[\["featTruth"\], \["featWho"\], \["featPhrase"\]\]\)/u);
 
 // «Кто быстрее», «Кто из нас?», «Закончи фразу» (2.4.22): 40 вопросов и 30 фраз на всех языках.
 const WHO = grab(games, "const WHO = {", "\n  const PHRASES = {");
@@ -101,7 +101,7 @@ assert.match(moreGames, /function public\.glowletter_check_phrase\(p_text text\)
 assert.match(moreGames, /function public\.glowletter_book_add[\s\S]*?glowletter_phrase_is_forbidden\(clean_mine\)/u);
 assert.match(moreGames, /alter table public\.glowletter_couple_book enable row level security/u);
 assert.match(moreGames, /alter table public\.glowletter_user_settings enable row level security/u);
-assert.match(games, /const ROOM_TITLES = Object\.freeze\(\{ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle", duel: "duTitle", who: "whoTitle", phrase: "phTitle" \}\)/u);
+assert.match(games, /const ROOM_TITLES = Object\.freeze\(\{ yesno: "ynTitle", loves: "lvTitle", cards: "mcTitle", duel: "duTitle", who: "whoTitle", phrase: "phTitle", truth: "tfTitle" \}\)/u);
 // Текст партнёра в «Закончи фразу» проверяется на сервере до показа и выводится только через escapeHtml.
 assert.match(games, /if \(yn\.kind === "phrase" && guest && !\(await phraseAllowed\(guest\)\)\) guest = null;/u);
 assert.match(games, /escapeHtml\(theirs \|\| tr\("phSkipped"\)\)/u);
@@ -115,10 +115,10 @@ for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "mo
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=75") < index.indexOf("games-i18n.js?v=75"));
-assert.ok(index.indexOf("games-i18n.js?v=75") < index.indexOf("games.js?v=75"));
-assert.match(index, /games\.css\?v=75/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=75"`, "u"));
+assert.ok(index.indexOf("experience.js?v=76") < index.indexOf("games-i18n.js?v=76"));
+assert.ok(index.indexOf("games-i18n.js?v=76") < index.indexOf("games.js?v=76"));
+assert.match(index, /games\.css\?v=76/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=76"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,

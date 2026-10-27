@@ -16,7 +16,7 @@
   const ONLINE_MS = 150000;
   const HEARTBEAT_MS = 60000;
   // Приглашение в живую игру — обычное сообщение особого вида, без ссылки.
-  const INVITE_PATTERN = /^\[\[game:(yesno|loves|cards|duel|who|phrase):([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\]\]$/u;
+  const INVITE_PATTERN = /^\[\[game:(yesno|loves|cards|duel|who|phrase|truth|countries|hints|dreams):([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\]\]$/u;
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z"/></svg>';
   const icon = id => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#${id}"/></svg>`;
 

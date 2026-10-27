@@ -313,3 +313,15 @@ html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
 @media (prefers-reduced-motion: reduce) { .glg-ph-answer { animation: none; } }
 .glg-layer .glg-primary > svg:not(.ic), .glg-layer .glg-secondary > svg:not(.ic) { flex: none; width: 16px; height: 16px; fill: var(--glg-heart); }
 .glg-layer .glg-primary > svg:not(.ic) { fill: currentColor; }
+
+/* «Правда или ложь». */
+.glg-tf-card { padding-top: 22px; }
+.glg-tf-card h3 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; }
+.glg-tf-chips b:first-child { color: #2f6b45; }
+.glg-tf-verdict { margin: 0 0 6px; font-size: 22px; font-weight: 900; }
+.glg-tf-verdict.is-true { color: #2f7d4f; }
+.glg-tf-verdict.is-false { color: var(--ui-accent-deep); }
+.glg-tf-fact { margin: 0 0 12px; color: var(--ui-ink); font-size: 14px; line-height: 1.5; }
+.glg-tf-answer { font-weight: 800; }
+.glg-tf-answer.is-right { color: #2f7d4f; }
+.glg-tf-answer.is-wrong { color: var(--ui-accent-deep); opacity: .85; }
