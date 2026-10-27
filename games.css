@@ -220,3 +220,29 @@ html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
   .glg-yn-card, .glg-yn-reveal, .glg-yn-dot { animation: none; }
 }
 .glg-yn-caption.is-missed { color: var(--ui-muted); font-size: 16px; }
+
+/* «Что мы любим»: четыре картинки, выбор вдвоём. */
+.glg-lv-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 auto 14px; max-width: 320px; }
+.glg-lv-thumbs i { aspect-ratio: 3 / 2; border-radius: 14px; background-position: center; background-size: cover; box-shadow: 0 6px 14px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.glg-lv-topic { margin: 0 0 10px !important; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px) !important; font-weight: 600; line-height: 1.15 !important; text-align: center; }
+.glg-lv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.glg-layer .glg-lv-tile { position: relative; display: grid; gap: 0; padding: 0; overflow: hidden; border: 2px solid transparent; border-radius: 18px; background: var(--ui-surface); box-shadow: 0 10px 22px color-mix(in srgb, var(--night-deep) 14%, transparent); text-align: center; transition: transform .18s, border-color .18s, opacity .18s; animation: glg-card-in .4s cubic-bezier(.16, 1, .3, 1) both; }
+.glg-layer .glg-lv-tile:not(:disabled):active { transform: scale(.97); }
+.glg-layer .glg-lv-tile:disabled { cursor: default; }
+.glg-lv-img { display: block; aspect-ratio: 3 / 2; background-position: center; background-size: cover; }
+.glg-lv-label { display: block; padding: 8px 6px 10px; font-size: 13px; font-weight: 800; line-height: 1.2; }
+.glg-layer .glg-lv-tile.is-mine { border-color: var(--ui-gold); }
+.glg-layer .glg-lv-tile.is-partner { border-color: var(--emerald); }
+.glg-layer .glg-lv-tile.is-match { border-color: var(--ui-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-accent) 22%, transparent), 0 10px 22px color-mix(in srgb, var(--night-deep) 14%, transparent); }
+.glg-lv-grid.is-revealed .glg-lv-tile:not(.is-mine):not(.is-partner) { opacity: .45; }
+.glg-lv-badge { position: absolute; top: 8px; max-width: 46%; overflow: hidden; padding: 3px 8px; border-radius: 999px; color: var(--cream); font-size: 11px; font-weight: 900; text-overflow: ellipsis; white-space: nowrap; }
+.glg-lv-badge.is-you { inset-inline-start: 8px; background: var(--ui-gold); }
+.glg-lv-badge.is-them { inset-inline-end: 8px; background: var(--emerald); }
+.glg-lv-status { display: block; min-height: 22px; margin-top: 14px; }
+.glg-lv-status.is-match { color: var(--ui-accent-deep); }
+.glg-lv-common { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.glg-lv-common li { overflow: hidden; border-radius: 14px; background: var(--ui-surface); font-size: 12px; font-weight: 800; text-align: center; }
+.glg-lv-common i { display: block; aspect-ratio: 3 / 2; background-position: center; background-size: cover; }
+.glg-lv-common span { display: block; padding: 6px; }
+@media (prefers-reduced-motion: reduce) { .glg-layer .glg-lv-tile { animation: none; } }
+.glg-lv-grid.is-revealed .glg-lv-tile, .glg-lv-grid.is-answered .glg-lv-tile { animation: none; }

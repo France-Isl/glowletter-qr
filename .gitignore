@@ -17,3 +17,4 @@ google-play*.json
 # Увеличенные исходники фонов (по 35 МБ) — только локально.
 assets/source/x4/
 assets/source/cards/
+assets/source/loves/

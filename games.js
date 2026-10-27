@@ -57,7 +57,7 @@
       featQuiz: "«Насколько хорошо ты меня знаешь?» — результат приходит вам", featGamesSoon: "Дуэль «Кто быстрее», «Что мы любим», карточки с мишками",
       featFunSoon: "«Кто из нас?» и «Закончи фразу» с «Книгой пары»", featCollection: "Вся коллекция писем и стихов на 25 языках",
       featMoments: "Моменты, напоминания и QR-письмо, которое откроется в нужный день", featAudio: "Своё аудио в письме и ответ получателя",
-      ynTitle: "Да или нет", ynNote: "Живая игра вдвоём: на каждую карточку 5 секунд. Кто успел ответить — увидит ответ партнёра.", ynCreate: "Создать комнату", ynWaiting: "Ждём, когда {name} откроет ссылку…", ynWaitingAny: "Ждём партнёра…", ynShareText: "{name} зовёт тебя в живую игру «Да или нет»", ynPartnerHere: "{name} уже в игре!", ynStart: "Начать игру", ynWaitHost: "{name} сейчас начнёт игру", ynYes: "Да", ynNo: "Нет", ynMissed: "Не успели — карточка закрыта", ynMatch: "Совпали!", ynRound: "Карточка {n} из {total}", ynAnswered: "Ответ принят, ждём партнёра…", ynFinal: "Совпало {score} из {total}", ynFinalHigh: "Вы чувствуете друг друга с полуслова", ynFinalMid: "Вы такие разные — и такие близкие", ynAgain: "Сыграть ещё раз", ynLeft: "Партнёр отключился. Ждём возвращения…", ynYou: "Вы", ynOffline: "Не удаётся подключиться к игре. Проверьте интернет и откройте ссылку снова.", ynJoin: "Войти в игру", ynJoinLead: "{name} ждёт вас. На каждый ответ — 5 секунд!", ynStepNames: "Ваше имя и имя партнёра", ynRoomReady: "Комната готова — отправьте ссылку", ynStayHere: "Не закрывайте этот экран: игра начнётся, когда партнёр откроет ссылку.", featYesNo: "Живая игра «Да или нет» — 5 секунд на ответ", ynPartnerMissed: "Ответа нет — время вышло"
+      ynTitle: "Да или нет", ynNote: "Живая игра вдвоём: на каждую карточку 5 секунд. Кто успел ответить — увидит ответ партнёра.", ynCreate: "Создать комнату", ynWaiting: "Ждём, когда {name} откроет ссылку…", ynWaitingAny: "Ждём партнёра…", ynShareText: "{name} зовёт тебя в живую игру «Да или нет»", ynPartnerHere: "{name} уже в игре!", ynStart: "Начать игру", ynWaitHost: "{name} сейчас начнёт игру", ynYes: "Да", ynNo: "Нет", ynMissed: "Не успели — карточка закрыта", ynMatch: "Совпали!", ynRound: "Карточка {n} из {total}", ynAnswered: "Ответ принят, ждём партнёра…", ynFinal: "Совпало {score} из {total}", ynFinalHigh: "Вы чувствуете друг друга с полуслова", ynFinalMid: "Вы такие разные — и такие близкие", ynAgain: "Сыграть ещё раз", ynLeft: "Партнёр отключился. Ждём возвращения…", ynYou: "Вы", ynOffline: "Не удаётся подключиться к игре. Проверьте интернет и откройте ссылку снова.", ynJoin: "Войти в игру", ynJoinLead: "{name} ждёт вас. На каждый ответ — 5 секунд!", ynStepNames: "Ваше имя и имя партнёра", ynRoomReady: "Комната готова — отправьте ссылку", ynStayHere: "Не закрывайте этот экран: игра начнётся, когда партнёр откроет ссылку.", featYesNo: "Живая игра «Да или нет» — 5 секунд на ответ", ynPartnerMissed: "Ответа нет — время вышло", lvTitle: "Что мы любим", lvNote: "Живая игра вдвоём: 4 картинки, у каждого 10 секунд выбрать, что ближе. Можно выбрать одно и то же!", lvShareText: "{name} зовёт тебя в живую игру «Что мы любим»", lvJoinLead: "{name} ждёт вас. Выбирайте картинку, которая вам ближе!", lvRound: "Тема {n} из {total}", lvPick: "Выберите, что вам ближе", lvBoth: "Вы оба выбрали: {item}", lvCommon: "Вы оба любите", lvFinalHigh: "У вас так много общего!", lvFinalMid: "Вы такие разные — и этим дополняете друг друга", featLoves: "Живая игра «Что мы любим» — 4 картинки, выбирайте вместе", featGamesSoon2: "Дуэль «Кто быстрее» и карточки с мишками"
     },
     en: {
       homeLink: "Games for two", eyebrow: "GLOWLETTER · GAMES FOR TWO", title: "Play together", close: "Close",
@@ -91,7 +91,7 @@
       featQuiz: "“How well do you know me?” — the result comes back to you", featGamesSoon: "“Who’s faster” duel, “What we love”, memory cards with bears",
       featFunSoon: "“Which of us?” and “Finish the sentence” with a couple’s book", featCollection: "The whole collection of letters and poems in 25 languages",
       featMoments: "Moments, reminders and a QR letter that opens on the right day", featAudio: "Your own audio in a letter and replies from the recipient",
-      ynTitle: "Yes or no", ynNote: "A live game for two: 5 seconds for each card. Answer in time to see your partner’s answer.", ynCreate: "Create a room", ynWaiting: "Waiting for {name}…", ynWaitingAny: "Waiting for your partner…", ynShareText: "{name} invites you to the live game “Yes or no”", ynPartnerHere: "{name} is here!", ynStart: "Start the game", ynWaitHost: "{name} is about to start the game", ynYes: "Yes", ynNo: "No", ynMissed: "Too late — this card stays closed", ynMatch: "A match!", ynRound: "Card {n} of {total}", ynAnswered: "Answer sent, waiting for your partner…", ynFinal: "{score} of {total} matched", ynFinalHigh: "You understand each other without words", ynFinalMid: "So different — and so close", ynAgain: "Play again", ynLeft: "Your partner disconnected. Waiting for them to come back…", ynYou: "You", ynOffline: "Can’t connect to the game. Check your connection and open the link again.", ynJoin: "Join the game", ynJoinLead: "{name} is waiting for you. 5 seconds for each answer!", ynStepNames: "Your name and your partner’s", ynRoomReady: "The room is ready — send the link", ynStayHere: "Keep this screen open: the game starts when your partner opens the link.", featYesNo: "Live game “Yes or no” — 5 seconds per answer", ynPartnerMissed: "No answer — time ran out"
+      ynTitle: "Yes or no", ynNote: "A live game for two: 5 seconds for each card. Answer in time to see your partner’s answer.", ynCreate: "Create a room", ynWaiting: "Waiting for {name}…", ynWaitingAny: "Waiting for your partner…", ynShareText: "{name} invites you to the live game “Yes or no”", ynPartnerHere: "{name} is here!", ynStart: "Start the game", ynWaitHost: "{name} is about to start the game", ynYes: "Yes", ynNo: "No", ynMissed: "Too late — this card stays closed", ynMatch: "A match!", ynRound: "Card {n} of {total}", ynAnswered: "Answer sent, waiting for your partner…", ynFinal: "{score} of {total} matched", ynFinalHigh: "You understand each other without words", ynFinalMid: "So different — and so close", ynAgain: "Play again", ynLeft: "Your partner disconnected. Waiting for them to come back…", ynYou: "You", ynOffline: "Can’t connect to the game. Check your connection and open the link again.", ynJoin: "Join the game", ynJoinLead: "{name} is waiting for you. 5 seconds for each answer!", ynStepNames: "Your name and your partner’s", ynRoomReady: "The room is ready — send the link", ynStayHere: "Keep this screen open: the game starts when your partner opens the link.", featYesNo: "Live game “Yes or no” — 5 seconds per answer", ynPartnerMissed: "No answer — time ran out", lvTitle: "What we love", lvNote: "A live game for two: 4 pictures, 10 seconds each to pick what you love most. You can pick the same one!", lvShareText: "{name} invites you to the live game “What we love”", lvJoinLead: "{name} is waiting for you. Pick the picture you love most!", lvRound: "Topic {n} of {total}", lvPick: "Pick what you love most", lvBoth: "You both picked: {item}", lvCommon: "You both love", lvFinalHigh: "You have so much in common!", lvFinalMid: "So different — and you complete each other", featLoves: "Live game “What we love” — 4 pictures, choose together", featGamesSoon2: "“Who’s faster” duel and memory cards with bears"
     },
     fr: {
       homeLink: "Jeux à deux", eyebrow: "GLOWLETTER · JEUX À DEUX", title: "Jouez ensemble", close: "Fermer",
@@ -125,7 +125,7 @@
       featQuiz: "« Me connais-tu vraiment ? » — le résultat vous revient", featGamesSoon: "Duel « Le plus rapide », « Ce que nous aimons », cartes avec des oursons",
       featFunSoon: "« Qui de nous deux ? » et « Termine la phrase » avec le livre du couple", featCollection: "Toute la collection de lettres et de poèmes en 25 langues",
       featMoments: "Moments, rappels et lettre QR qui s’ouvre le bon jour", featAudio: "Votre propre audio dans la lettre et la réponse du destinataire",
-      ynTitle: "Oui ou non", ynNote: "Un jeu en direct à deux : 5 secondes par carte. Répondez à temps pour voir la réponse de l’autre.", ynCreate: "Créer une salle", ynWaiting: "En attente de {name}…", ynWaitingAny: "En attente de l’autre joueur…", ynShareText: "{name} t’invite au jeu en direct « Oui ou non »", ynPartnerHere: "{name} est là !", ynStart: "Lancer la partie", ynWaitHost: "{name} va lancer la partie", ynYes: "Oui", ynNo: "Non", ynMissed: "Trop tard — cette carte reste fermée", ynMatch: "Même réponse !", ynRound: "Carte {n} sur {total}", ynAnswered: "Réponse envoyée, en attente de l’autre…", ynFinal: "{score} sur {total} en commun", ynFinalHigh: "Vous vous comprenez sans un mot", ynFinalMid: "Si différents — et si proches", ynAgain: "Rejouer", ynLeft: "L’autre joueur s’est déconnecté. On attend son retour…", ynYou: "Vous", ynOffline: "Connexion au jeu impossible. Vérifiez internet et rouvrez le lien.", ynJoin: "Rejoindre la partie", ynJoinLead: "{name} vous attend. 5 secondes pour chaque réponse !", ynStepNames: "Votre prénom et celui de l’autre", ynRoomReady: "La salle est prête — envoyez le lien", ynStayHere: "Gardez cet écran ouvert : la partie commence quand l’autre ouvre le lien.", featYesNo: "Jeu en direct « Oui ou non » — 5 secondes par réponse", ynPartnerMissed: "Pas de réponse — le temps est écoulé"
+      ynTitle: "Oui ou non", ynNote: "Un jeu en direct à deux : 5 secondes par carte. Répondez à temps pour voir la réponse de l’autre.", ynCreate: "Créer une salle", ynWaiting: "En attente de {name}…", ynWaitingAny: "En attente de l’autre joueur…", ynShareText: "{name} t’invite au jeu en direct « Oui ou non »", ynPartnerHere: "{name} est là !", ynStart: "Lancer la partie", ynWaitHost: "{name} va lancer la partie", ynYes: "Oui", ynNo: "Non", ynMissed: "Trop tard — cette carte reste fermée", ynMatch: "Même réponse !", ynRound: "Carte {n} sur {total}", ynAnswered: "Réponse envoyée, en attente de l’autre…", ynFinal: "{score} sur {total} en commun", ynFinalHigh: "Vous vous comprenez sans un mot", ynFinalMid: "Si différents — et si proches", ynAgain: "Rejouer", ynLeft: "L’autre joueur s’est déconnecté. On attend son retour…", ynYou: "Vous", ynOffline: "Connexion au jeu impossible. Vérifiez internet et rouvrez le lien.", ynJoin: "Rejoindre la partie", ynJoinLead: "{name} vous attend. 5 secondes pour chaque réponse !", ynStepNames: "Votre prénom et celui de l’autre", ynRoomReady: "La salle est prête — envoyez le lien", ynStayHere: "Gardez cet écran ouvert : la partie commence quand l’autre ouvre le lien.", featYesNo: "Jeu en direct « Oui ou non » — 5 secondes par réponse", ynPartnerMissed: "Pas de réponse — le temps est écoulé", lvTitle: "Ce que nous aimons", lvNote: "Un jeu en direct à deux : 4 images, 10 secondes pour choisir ce que vous préférez. Vous pouvez choisir la même !", lvShareText: "{name} t’invite au jeu en direct « Ce que nous aimons »", lvJoinLead: "{name} vous attend. Choisissez l’image que vous préférez !", lvRound: "Thème {n} sur {total}", lvPick: "Choisissez ce que vous préférez", lvBoth: "Vous avez choisi tous les deux : {item}", lvCommon: "Vous aimez tous les deux", lvFinalHigh: "Vous avez tant de choses en commun !", lvFinalMid: "Si différents — et vous vous complétez", featLoves: "Jeu en direct « Ce que nous aimons » — 4 images, choisissez ensemble", featGamesSoon2: "Duel « Le plus rapide » et cartes mémoire avec des oursons"
     }
   };
 
@@ -466,11 +466,73 @@
       c40: ["On rejoue plus tard ?", "veut une autre manche", "préfère un câlin à un jeu"]
     }
   };
+
+  // «Что мы любим»: тема и четыре варианта; картинки — assets/loves/<тема><a–d>.webp.
+  const LOVES_IDS = Object.freeze(Array.from({ length: 16 }, (_, index) => `s${String(index + 1).padStart(2, "0")}`));
+  const LOVES_ROUNDS = 12;
+  const LOVES_CHOICES = Object.freeze(["a", "b", "c", "d"]);
+  const LOVES = {
+    ru: {
+      s01: ["Где провести отпуск?", "Пляж", "Горы", "Путешествие", "Уединение"],
+      s02: ["Идеальный вечер?", "Кино дома", "Прогулка", "Ресторан", "Настольные игры"],
+      s03: ["Любимая погода?", "Солнце", "Дождь", "Снег", "Звёздная ночь"],
+      s04: ["Любимое животное?", "Котёнок", "Щенок", "Лошадь", "Дельфин"],
+      s05: ["Что на ужин?", "Пицца", "Суши", "Пирожные", "Барбекю"],
+      s06: ["Любимый напиток?", "Кофе", "Чай", "Какао", "Лимонад"],
+      s07: ["Любимое время года?", "Весна", "Лето", "Осень", "Зима"],
+      s08: ["Любимые цветы?", "Розы", "Тюльпаны", "Подсолнухи", "Лаванда"],
+      s09: ["Как отдыхать?", "С книгой", "Рисовать", "На велосипеде", "Спать в гамаке"],
+      s10: ["Как путешествовать?", "Поездом", "Самолётом", "На машине", "На корабле"],
+      s11: ["Дом мечты?", "Квартира в городе", "Дом у моря", "Домик в горах", "Ферма"],
+      s12: ["Что из сладкого?", "Мороженое", "Шоколад", "Торт", "Фрукты"],
+      s13: ["Идеальное утро?", "Завтрак в постель", "Пробежка", "Долгий сон", "Кофе на балконе"],
+      s14: ["Свидание мечты?", "Пикник", "Каток", "Парк аттракционов", "Звёзды на крыше"],
+      s15: ["Лучший подарок?", "Букет цветов", "Письмо", "Путешествие", "Подарок в коробке"],
+      s16: ["Любимая природа?", "Море", "Лес", "Пустыня", "Северное сияние"]
+    },
+    en: {
+      s01: ["Where to spend a holiday?", "Beach", "Mountains", "Travelling", "Quiet time alone"],
+      s02: ["Perfect evening?", "Movie at home", "A walk", "Restaurant", "Board games"],
+      s03: ["Favourite weather?", "Sunshine", "Rain", "Snow", "Starry night"],
+      s04: ["Favourite animal?", "Kitten", "Puppy", "Horse", "Dolphin"],
+      s05: ["What’s for dinner?", "Pizza", "Sushi", "Pastries", "Barbecue"],
+      s06: ["Favourite drink?", "Coffee", "Tea", "Hot chocolate", "Lemonade"],
+      s07: ["Favourite season?", "Spring", "Summer", "Autumn", "Winter"],
+      s08: ["Favourite flowers?", "Roses", "Tulips", "Sunflowers", "Lavender"],
+      s09: ["How to relax?", "With a book", "Drawing", "Cycling", "Napping in a hammock"],
+      s10: ["How to travel?", "By train", "By plane", "By car", "By ship"],
+      s11: ["Dream home?", "City apartment", "House by the sea", "Mountain cabin", "Farm"],
+      s12: ["Something sweet?", "Ice cream", "Chocolate", "Cake", "Fruit"],
+      s13: ["Perfect morning?", "Breakfast in bed", "A morning run", "Sleeping in", "Coffee on the balcony"],
+      s14: ["Dream date?", "Picnic", "Ice rink", "Amusement park", "Stars on the roof"],
+      s15: ["Best present?", "A bouquet", "A letter", "A trip", "A gift box"],
+      s16: ["Favourite nature?", "Sea", "Forest", "Desert", "Northern lights"]
+    },
+    fr: {
+      s01: ["Où passer les vacances ?", "La plage", "La montagne", "Le voyage", "Un moment au calme"],
+      s02: ["La soirée idéale ?", "Film à la maison", "Une balade", "Le restaurant", "Jeux de société"],
+      s03: ["Le temps préféré ?", "Le soleil", "La pluie", "La neige", "Une nuit étoilée"],
+      s04: ["L’animal préféré ?", "Un chaton", "Un chiot", "Un cheval", "Un dauphin"],
+      s05: ["Qu’est-ce qu’on mange ?", "Une pizza", "Des sushis", "Des pâtisseries", "Un barbecue"],
+      s06: ["La boisson préférée ?", "Café", "Thé", "Chocolat chaud", "Limonade"],
+      s07: ["La saison préférée ?", "Le printemps", "L’été", "L’automne", "L’hiver"],
+      s08: ["Les fleurs préférées ?", "Les roses", "Les tulipes", "Les tournesols", "La lavande"],
+      s09: ["Comment se détendre ?", "Avec un livre", "En dessinant", "À vélo", "Sieste dans un hamac"],
+      s10: ["Comment voyager ?", "En train", "En avion", "En voiture", "En bateau"],
+      s11: ["La maison de rêve ?", "Appartement en ville", "Maison au bord de la mer", "Chalet à la montagne", "Une ferme"],
+      s12: ["Quelque chose de sucré ?", "Une glace", "Du chocolat", "Un gâteau", "Des fruits"],
+      s13: ["Le matin idéal ?", "Petit-déjeuner au lit", "Un footing", "Faire la grasse matinée", "Café sur le balcon"],
+      s14: ["Le rendez-vous de rêve ?", "Un pique-nique", "La patinoire", "Un parc d’attractions", "Les étoiles sur le toit"],
+      s15: ["Le plus beau cadeau ?", "Un bouquet", "Une lettre", "Un voyage", "Une boîte cadeau"],
+      s16: ["La nature préférée ?", "La mer", "La forêt", "Le désert", "Les aurores boréales"]
+    }
+  };
   Object.entries(window.GLOWLETTER_GAMES_I18N || {}).forEach(([code, pack]) => {
     if (TEXT[code] || !pack || typeof pack !== "object") return;
     if (pack.text) TEXT[code] = pack.text;
     if (pack.questions) QUESTIONS[code] = pack.questions;
     if (pack.yesNo) YES_NO[code] = pack.yesNo;
+    if (pack.loves) LOVES[code] = pack.loves;
   });
 
   const state = {
@@ -505,6 +567,7 @@
   };
   const question = id => (QUESTIONS[language()] || QUESTIONS.en)[id] || QUESTIONS.en[id] || ["", "", "", "", ""];
   const yesNoCard = id => (YES_NO[language()] || YES_NO.en)[id] || YES_NO.en[id] || ["", "", ""];
+  const lovesSet = id => (LOVES[language()] || LOVES.en)[id] || LOVES.en[id] || ["", "", "", "", ""];
   const escapeHtml = value => String(value ?? "").replace(/[&<>"']/gu, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
   const cleanName = value => String(value ?? "").normalize("NFKC").replace(/[\u0000-\u001F\u007F]/gu, " ").replace(/\s+/gu, " ").trim().slice(0, 36);
   const premium = () => Boolean(app()?.getState?.().premium);
@@ -607,7 +670,7 @@
     const isYesNo = state.view.startsWith("yn-");
     root.classList.toggle("is-play", isPlay || isYesNo);
     root.querySelector("[data-glg=eyebrow]").textContent = isPlay || isYesNo ? tr("playEyebrow") : tr("eyebrow");
-    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr("ynTitle") : tr("title");
+    root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr(state.yn?.kind === "loves" ? "lvTitle" : "ynTitle") : tr("title");
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
     const body = root.querySelector(".glg-body");
     const views = { hub: renderHub, names: renderNames, answers: renderAnswers, created: renderCreated, detail: renderDetail, "play-loading": renderPlayLoading, "play-missing": renderPlayMissing, "play-intro": renderPlayIntro, "play-question": renderPlayQuestion, "play-result": renderPlayResult, "yn-loading": renderPlayLoading, "yn-names": renderYesNoNames, "yn-lobby": renderYesNoLobby, "yn-join": renderYesNoJoin, "yn-card": renderYesNoCard, "yn-end": renderYesNoEnd, "yn-missing": renderYesNoMissing };
@@ -626,7 +689,7 @@
         ${fresh ? `<b class="glg-new">${escapeHtml(tr("newResults", { count: fresh }))}</b>` : ""}
       </button></li>`;
     }).join("");
-    const soon = ["duel", "loves", "cards", "who", "phrase"].map(key => `<li>${escapeHtml(tr(key))}</li>`).join("");
+    const soon = ["duel", "cards", "who", "phrase"].map(key => `<li>${escapeHtml(tr(key))}</li>`).join("");
     const mine = signedIn()
       ? `<section class="glg-section"><h3>${escapeHtml(tr("myQuizzes"))}</h3>${state.quizzes.length ? `<ul class="glg-quiz-list">${quizzes}</ul>` : `<p class="glg-muted">${escapeHtml(state.loading ? "…" : tr("noQuizzes"))}</p>`}</section>`
       : "";
@@ -644,6 +707,12 @@
         <h3>${escapeHtml(tr("ynTitle"))}</h3>
         <p>${escapeHtml(tr("ynNote"))}</p>
         <button class="glg-primary" type="button" data-action="yn-create">${icon("ic-plus")} ${escapeHtml(tr("ynCreate"))}</button>
+      </article>
+      <article class="glg-hero glg-yn-hero">
+        ${lovesThumbs("s01")}
+        <h3>${escapeHtml(tr("lvTitle"))}</h3>
+        <p>${escapeHtml(tr("lvNote"))}</p>
+        <button class="glg-primary" type="button" data-action="lv-create">${icon("ic-plus")} ${escapeHtml(tr("ynCreate"))}</button>
       </article>
       ${mine}
       <section class="glg-section glg-soon"><h3>${escapeHtml(tr("soonTitle"))} <span class="glg-chip">${escapeHtml(tr("soon"))}</span></h3><ul>${soon}</ul></section>`;
@@ -850,7 +919,8 @@
         render();
         return;
       case "retry": submitPlay(); return;
-      case "yn-create": return startYesNoCreate();
+      case "yn-create": return startYesNoCreate("yesno");
+      case "lv-create": return startYesNoCreate("loves");
       case "yn-names-submit": return createYesNoRoom(target);
       case "yn-start": return hostStartYesNo();
       case "yn-join-submit": return guestJoinYesNo(target);
@@ -1104,12 +1174,25 @@
 
   const YES_NO_SECONDS = 5;
   const YES_NO_REVEAL_MS = 3200;
+  const LOVES_SECONDS = 10;
+  const LOVES_REVEAL_MS = 3600;
 
-  function startYesNoCreate() {
+  const roomSeconds = yn => (yn?.kind === "loves" ? LOVES_SECONDS : YES_NO_SECONDS);
+  const roomChoices = yn => (yn?.kind === "loves" ? LOVES_CHOICES : ["yes", "no"]);
+  const lovesImage = (id, choice) => `assets/loves/${id}${choice}.webp`;
+  function lovesThumbs(id) {
+    return `<div class="glg-lv-thumbs" aria-hidden="true">${LOVES_CHOICES.map(choice => `<i style="background-image:url('${lovesImage(id, choice)}')"></i>`).join("")}</div>`;
+  }
+  function roomBadge(yn) {
+    if (yn?.kind === "loves") return lovesThumbs("s07");
+    return `<div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>`;
+  }
+
+  function startYesNoCreate(kind = "yesno") {
     if (!premium()) { app()?.openPaywall?.(); return; }
     if (!signedIn()) { renderSignIn(); return; }
     const appState = app()?.getState?.() || {};
-    state.yn = { role: "host", roomId: "", hostName: cleanName(appState.senderName), guestName: cleanName(appState.recipientName), partnerOnline: false, phase: "names", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null };
+    state.yn = { kind: kind === "loves" ? "loves" : "yesno", role: "host", roomId: "", hostName: cleanName(appState.senderName), guestName: cleanName(appState.recipientName), partnerOnline: false, phase: "names", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null };
     state.view = "yn-names";
     render();
     requestAnimationFrame(() => state.root.querySelector("input[name=host]")?.focus());
@@ -1138,7 +1221,7 @@
     state.busy = true;
     render();
     try {
-      const { data, error } = await client.rpc("glowletter_create_game_room", { p_kind: "yesno", p_host_name: yn.hostName, p_guest_name: yn.guestName || null, p_language: language() });
+      const { data, error } = await client.rpc("glowletter_create_game_room", { p_kind: yn.kind, p_host_name: yn.hostName, p_guest_name: yn.guestName || null, p_language: language() });
       if (error) throw error;
       const row = Array.isArray(data) ? data[0] : data;
       if (!row?.public_id) throw new Error("empty");
@@ -1166,7 +1249,7 @@
          <p class="glg-muted">${escapeHtml(tr("ynStayHere"))}</p>`;
     return `
       <article class="glg-hero">
-        <div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>
+        ${roomBadge(yn)}
         <h3>${escapeHtml(tr("ynRoomReady"))}</h3>
         <div class="glg-link-box"><code>${escapeHtml(roomUrl(yn.roomId))}</code></div>
         <div class="glg-actions"><button class="glg-primary" type="button" data-action="yn-share">${icon("ic-share")} ${escapeHtml(tr("share"))}</button><button class="glg-secondary" type="button" data-action="yn-copy">${icon("ic-copy")} ${escapeHtml(tr("copyLink"))}</button></div>
@@ -1177,14 +1260,16 @@
   async function shareRoom() {
     const yn = state.yn;
     if (!yn?.roomId) return;
-    const text = tr("ynShareText", { name: yn.hostName || "GlowLetter" });
+    const loves = yn.kind === "loves";
+    const text = tr(loves ? "lvShareText" : "ynShareText", { name: yn.hostName || "GlowLetter" });
+    const title = tr(loves ? "lvTitle" : "ynTitle");
     const url = roomUrl(yn.roomId);
     const bridge = window.NurShare;
     if (bridge && typeof bridge.share === "function") {
-      try { bridge.share(tr("ynTitle"), text, url); return; } catch {}
+      try { bridge.share(title, text, url); return; } catch {}
     }
     if (navigator.share) {
-      try { await navigator.share({ title: tr("ynTitle"), text, url }); return; }
+      try { await navigator.share({ title, text, url }); return; }
       catch (error) { if (error?.name === "AbortError") return; }
     }
     try { await navigator.clipboard.writeText(`${text}\n${url}`); notify(tr("linkCopied"), 2600); }
@@ -1198,7 +1283,7 @@
   }
 
   async function joinYesNoRoom(roomId) {
-    state.yn = { role: "guest", roomId, hostName: "", guestName: "", partnerOnline: false, phase: "join", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null, offline: false };
+    state.yn = { kind: "yesno", role: "guest", roomId, hostName: "", guestName: "", partnerOnline: false, phase: "join", deck: [], index: 0, answers: { host: [], guest: [] }, mine: null, timers: [], channel: null, offline: false };
     open("yn-loading");
     const base = String(appConfig().supabaseUrl || "").replace(/\/+$/u, "");
     const headers = { Accept: "application/json" };
@@ -1206,8 +1291,8 @@
     try {
       const response = await fetch(`${base}/functions/v1/couple-quiz?room=${encodeURIComponent(roomId)}`, { headers, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok || payload.state !== "ready" || payload.kind !== "yesno") throw new Error("missing");
-      Object.assign(state.yn, { hostName: cleanName(payload.hostName) || "GlowLetter", guestName: cleanName(payload.guestName) });
+      if (!response.ok || payload.state !== "ready" || !["yesno", "loves"].includes(payload.kind)) throw new Error("missing");
+      Object.assign(state.yn, { kind: payload.kind, hostName: cleanName(payload.hostName) || "GlowLetter", guestName: cleanName(payload.guestName) });
       state.view = "yn-join";
     } catch {
       state.yn.offline = !navigator.onLine;
@@ -1229,9 +1314,9 @@
     }
     return `
       <form class="glg-form glg-intro" data-submit="yn-join-submit" novalidate>
-        <div class="glg-yn-chips" aria-hidden="true"><b>${escapeHtml(tr("ynYes"))}</b><i>5</i><b>${escapeHtml(tr("ynNo"))}</b></div>
+        ${roomBadge(yn)}
         <h3>${escapeHtml(tr("playInvite", { name: yn.hostName }))}</h3>
-        <p class="glg-muted">${escapeHtml(tr("ynJoinLead", { name: yn.hostName }))}</p>
+        <p class="glg-muted">${escapeHtml(tr(yn.kind === "loves" ? "lvJoinLead" : "ynJoinLead", { name: yn.hostName }))}</p>
         <label><span>${escapeHtml(tr("playName"))}</span><input name="guest" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(yn.guestName)}" placeholder="${escapeHtml(tr("playNamePlaceholder"))}" /></label>
         <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
         <button class="glg-primary glg-wide" type="submit">${escapeHtml(tr("ynJoin"))} →</button>
@@ -1312,7 +1397,7 @@
     const yn = state.yn;
     if (!yn || yn.role !== "host" || !yn.partnerOnline) return;
     clearYesNoTimers();
-    yn.deck = shuffle(YES_NO_IDS).slice(0, YES_NO_ROUNDS);
+    yn.deck = yn.kind === "loves" ? shuffle(LOVES_IDS).slice(0, LOVES_ROUNDS) : shuffle(YES_NO_IDS).slice(0, YES_NO_ROUNDS);
     yn.answers = { host: [], guest: [] };
     sendYesNo({ type: "start", deck: yn.deck, guestName: yn.guestName });
     hostRound(0);
@@ -1321,9 +1406,10 @@
   function hostRound(index) {
     const yn = state.yn;
     if (!yn) return;
-    sendYesNo({ type: "round", index });
+    // Колода едет с каждым раундом: партнёр, пропустивший «start», догонит игру.
+    sendYesNo({ type: "round", index, deck: yn.deck });
     beginRound(index);
-    yn.timers.push(setTimeout(() => hostReveal(index), YES_NO_SECONDS * 1000 + 1200));
+    yn.timers.push(setTimeout(() => hostReveal(index), roomSeconds(yn) * 1000 + 1200));
   }
 
   function hostReveal(index) {
@@ -1336,25 +1422,30 @@
     yn.timers.push(setTimeout(() => {
       if (index + 1 < yn.deck.length) hostRound(index + 1);
       else { sendYesNo({ type: "end", host: yn.answers.host, guest: yn.answers.guest }); showYesNoEnd(); }
-    }, YES_NO_REVEAL_MS));
+    }, yn.kind === "loves" ? LOVES_REVEAL_MS : YES_NO_REVEAL_MS));
   }
 
   function onYesNoMessage(message) {
     const yn = state.yn;
     if (!yn) return;
     const index = Number(message.index);
-    if (message.type === "answer" && yn.role === "host" && Number.isInteger(index) && ["yes", "no"].includes(message.value)) {
+    if (message.type === "answer" && yn.role === "host" && Number.isInteger(index) && roomChoices(yn).includes(message.value)) {
       if (yn.phase === "round" && yn.index === index && yn.answers.guest[index] == null) yn.answers.guest[index] = message.value;
       return;
     }
     if (yn.role !== "guest") return;
     if (message.type === "start" && Array.isArray(message.deck)) {
-      yn.deck = message.deck.filter(id => YES_NO_IDS.includes(id)).slice(0, YES_NO_ROUNDS);
+      const ids = yn.kind === "loves" ? LOVES_IDS : YES_NO_IDS;
+      yn.deck = message.deck.filter(id => ids.includes(id)).slice(0, yn.kind === "loves" ? LOVES_ROUNDS : YES_NO_ROUNDS);
       yn.answers = { host: [], guest: [] };
     } else if (message.type === "round" && Number.isInteger(index)) {
+      if (Array.isArray(message.deck) && message.deck.join() !== yn.deck.join()) {
+        const ids = yn.kind === "loves" ? LOVES_IDS : YES_NO_IDS;
+        yn.deck = message.deck.filter(id => ids.includes(id)).slice(0, yn.kind === "loves" ? LOVES_ROUNDS : YES_NO_ROUNDS);
+      }
       beginRound(index);
     } else if (message.type === "reveal" && Number.isInteger(index)) {
-      const value = answer => (["yes", "no"].includes(answer) ? answer : null);
+      const value = answer => (roomChoices(yn).includes(answer) ? answer : null);
       yn.answers.host[index] = value(message.host);
       yn.answers.guest[index] = value(message.guest);
       showReveal(index, yn.answers.host[index], yn.answers.guest[index]);
@@ -1369,6 +1460,7 @@
     yn.index = index;
     yn.phase = "round";
     yn.mine = null;
+    yn.roundStart = Date.now();
     state.view = "yn-card";
     render();
     yn.timers.push(setTimeout(() => {
@@ -1376,12 +1468,12 @@
         yn.phase = "closed";
         updateYesNoCard();
       }
-    }, YES_NO_SECONDS * 1000));
+    }, roomSeconds(yn) * 1000));
   }
 
   function answerYesNo(value) {
     const yn = state.yn;
-    if (!yn || yn.phase !== "round" || yn.mine || !["yes", "no"].includes(value)) return;
+    if (!yn || yn.phase !== "round" || yn.mine || !roomChoices(yn).includes(value)) return;
     yn.mine = value;
     yn.answers[yn.role][yn.index] = value;
     if (yn.role === "guest") sendYesNo({ type: "answer", index: yn.index, value });
@@ -1402,6 +1494,7 @@
   // таймера шла плавно.
   function updateYesNoCard() {
     if (state.view !== "yn-card") return;
+    if (state.yn?.kind === "loves") { render(); return; }
     const body = state.root?.querySelector(".glg-body");
     const actions = body?.querySelector(".glg-yn-actions");
     if (actions) actions.outerHTML = yesNoActions();
@@ -1419,8 +1512,52 @@
     return `<div class="glg-yn-actions"></div>`;
   }
 
+  // Полоска таймера продолжает с того места, где была, даже после перерисовки.
+  function timerBar(yn) {
+    const elapsed = Math.max(0, (Date.now() - (yn.roundStart || Date.now())) / 1000);
+    return `<div class="glg-yn-timer" aria-hidden="true"><i style="animation-duration:${roomSeconds(yn)}s;animation-delay:-${elapsed.toFixed(2)}s"></i></div>`;
+  }
+
+  function renderLovesCard() {
+    const yn = state.yn;
+    const id = yn.deck[yn.index];
+    const [topic, ...labels] = lovesSet(id);
+    const partnerRole = yn.role === "host" ? "guest" : "host";
+    const partnerName = (yn.role === "host" ? yn.guestName : yn.hostName) || tr("anonymous");
+    const reveal = yn.phase === "reveal";
+    const mine = reveal ? yn.reveal[yn.role] : yn.mine;
+    const theirs = reveal && mine ? yn.reveal[partnerRole] : null;
+    const tiles = LOVES_CHOICES.map((choice, index) => {
+      const classes = ["glg-lv-tile"];
+      if (mine === choice) classes.push("is-mine");
+      if (theirs === choice) classes.push("is-partner");
+      if (reveal && mine === choice && theirs === choice) classes.push("is-match");
+      const badges = `${mine === choice ? `<b class="glg-lv-badge is-you">${escapeHtml(tr("ynYou"))}</b>` : ""}${theirs === choice ? `<b class="glg-lv-badge is-them">${escapeHtml(partnerName)}</b>` : ""}`;
+      const open = yn.phase === "round" && !yn.mine;
+      return `<button class="${classes.join(" ")}" type="button" data-action="yn-answer" data-value="${choice}"${open ? "" : " disabled"}>
+        <span class="glg-lv-img" style="background-image:url('${lovesImage(id, choice)}')"></span>
+        <span class="glg-lv-label">${escapeHtml(labels[index])}</span>${badges}
+      </button>`;
+    }).join("");
+    let status = "";
+    if (reveal) {
+      if (!mine) status = tr("ynMissed");
+      else if (!theirs) status = tr("ynPartnerMissed");
+      else if (theirs === mine) status = `♥ ${tr("lvBoth", { item: labels[LOVES_CHOICES.indexOf(mine)] })}`;
+    } else if (yn.mine) status = tr("ynAnswered");
+    else if (yn.phase === "closed") status = tr("ynMissed");
+    else status = tr("lvPick");
+    return `
+      <p class="glg-step">${escapeHtml(tr("lvRound", { n: yn.index + 1, total: yn.deck.length }))}</p>
+      <h3 class="glg-lv-topic">${escapeHtml(topic)}</h3>
+      ${reveal ? "" : timerBar(yn)}
+      <div class="glg-lv-grid${reveal ? " is-revealed" : yn.mine ? " is-answered" : ""}">${tiles}</div>
+      <p class="glg-yn-status glg-lv-status${reveal && theirs && theirs === mine ? " is-match" : ""}">${escapeHtml(status)}</p>`;
+  }
+
   function renderYesNoCard() {
     const yn = state.yn;
+    if (yn.kind === "loves") return renderLovesCard();
     const id = yn.deck[yn.index];
     const [text, yesText, noText] = yesNoCard(id);
     const art = YES_NO_ART_FILES[YES_NO_ART[id]] || YES_NO_ART_FILES.bears;
@@ -1448,7 +1585,7 @@
       <article class="glg-yn-card${yn.phase === "reveal" ? " is-revealed" : ""}">
         <div class="glg-yn-art" style="background-image:url('${art}')" aria-hidden="true"></div>
         <h3>${escapeHtml(text)}</h3>
-        ${yn.phase === "reveal" ? reveal : `<div class="glg-yn-timer" aria-hidden="true"><i style="animation-duration:${YES_NO_SECONDS}s"></i></div>`}
+        ${yn.phase === "reveal" ? reveal : timerBar(yn)}
       </article>
       ${yn.phase === "reveal" ? "" : yesNoActions()}`;
   }
@@ -1471,8 +1608,13 @@
       <article class="glg-score">
         ${hearts(Math.round(ratio * 10), 10)}
         <p class="glg-score-number">${escapeHtml(tr("ynFinal", { score, total }))}</p>
-        <h3>${escapeHtml(tr(ratio >= 0.6 ? "ynFinalHigh" : "ynFinalMid"))}</h3>
+        <h3>${escapeHtml(tr(yn.kind === "loves" ? (ratio >= 0.5 ? "lvFinalHigh" : "lvFinalMid") : (ratio >= 0.6 ? "ynFinalHigh" : "ynFinalMid")))}</h3>
       </article>
+      ${yn.kind === "loves" && score ? `<section class="glg-section"><h3>${escapeHtml(tr("lvCommon"))}</h3><ul class="glg-lv-common">${yn.deck.map((id, index) => {
+        const pick = yn.answers.host[index];
+        if (!pick || pick !== yn.answers.guest[index]) return "";
+        return `<li><i style="background-image:url('${lovesImage(id, pick)}')"></i><span>${escapeHtml(lovesSet(id)[LOVES_CHOICES.indexOf(pick) + 1])}</span></li>`;
+      }).join("")}</ul></section>` : ""}
       <div class="glg-actions glg-stack">
         ${yn.role === "host" ? `<button class="glg-primary" type="button" data-action="yn-again"${yn.partnerOnline ? "" : " disabled"}>↻ ${escapeHtml(tr("ynAgain"))}</button>` : `<p class="glg-muted glg-center">${escapeHtml(tr("ynWaitHost", { name: yn.hostName }))}</p>`}
         <button class="glg-secondary" type="button" data-action="close">${escapeHtml(tr("home"))}</button>
@@ -1508,7 +1650,7 @@
       else card.querySelector("#paywallLead")?.after(block);
     }
     const group = (name, items) => `<section><h3>${escapeHtml(tr(name))}</h3><ul>${items.map(([key, soon]) => `<li${soon ? ' class="is-soon"' : ""}>${escapeHtml(tr(key))}${soon ? ` <span class="glg-chip">${escapeHtml(tr("soon"))}</span>` : ""}</li>`).join("")}</ul></section>`;
-    block.innerHTML = group("groupGames", [["featQuiz"], ["featYesNo"], ["featGamesSoon", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
+    block.innerHTML = group("groupGames", [["featQuiz"], ["featYesNo"], ["featLoves"], ["featGamesSoon2", true]]) + group("groupFun", [["featFunSoon", true]]) + group("groupLetters", [["featCollection"], ["featMoments"], ["featAudio"]]);
   }
 
   function localize() {

@@ -1,5 +1,5 @@
 // Игры для двоих на двадцати двух языках сверх ru/en/fr: тексты экрана
-// (text), вопросы теста (questions) и карточки «Да или нет» (yesNo). Порядок вариантов совпадает с
+// (text), вопросы теста (questions) карточки «Да или нет» (yesNo) и темы «Что мы любим» (loves). Порядок вариантов совпадает с
 // games.js — номер верного варианта хранится на сервере, поэтому варианты
 // нельзя переставлять.
 window.GLOWLETTER_GAMES_I18N = Object.freeze({
@@ -124,7 +124,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Der Raum ist bereit — sende den Link",
       "ynStayHere": "Lass diesen Bildschirm offen: Das Spiel beginnt, sobald der Link geöffnet wird.",
       "featYesNo": "Live-Spiel „Ja oder Nein“ — 5 Sekunden pro Antwort",
-      "ynPartnerMissed": "Keine Antwort — die Zeit ist um"
+      "ynPartnerMissed": "Keine Antwort — die Zeit ist um",
+      "lvTitle": "Was wir lieben",
+      "lvNote": "Ein Live-Spiel zu zweit: 4 Bilder, je 10 Sekunden, um zu wählen, was ihr am liebsten mögt. Ihr dürft auch dasselbe wählen!",
+      "lvShareText": "{name} lädt dich zum Live-Spiel „Was wir lieben“ ein",
+      "lvJoinLead": "{name} wartet auf dich. Wähle das Bild, das du am liebsten magst!",
+      "lvRound": "Thema {n} von {total}",
+      "lvPick": "Wähle, was du am liebsten magst",
+      "lvBoth": "Ihr habt beide gewählt: {item}",
+      "lvCommon": "Ihr liebt beide",
+      "lvFinalHigh": "Ihr habt so viel gemeinsam!",
+      "lvFinalMid": "So verschieden — und ihr ergänzt euch",
+      "featLoves": "Live-Spiel „Was wir lieben“ — 4 Bilder, gemeinsam wählen",
+      "featGamesSoon2": "Duell „Wer ist schneller“ und Memory-Karten mit Bärchen"
     },
     "questions": {
       "q01": [
@@ -749,6 +761,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "will noch eine Runde",
         "umarmt lieber, statt zu spielen"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Wo Urlaub machen?",
+        "Strand",
+        "Berge",
+        "Reisen",
+        "Ruhe für mich"
+      ],
+      "s02": [
+        "Der perfekte Abend?",
+        "Film zu Hause",
+        "Spaziergang",
+        "Restaurant",
+        "Brettspiele"
+      ],
+      "s03": [
+        "Lieblingswetter?",
+        "Sonne",
+        "Regen",
+        "Schnee",
+        "Sternennacht"
+      ],
+      "s04": [
+        "Lieblingstier?",
+        "Kätzchen",
+        "Welpe",
+        "Pferd",
+        "Delfin"
+      ],
+      "s05": [
+        "Was gibt’s zum Abendessen?",
+        "Pizza",
+        "Sushi",
+        "Gebäck",
+        "Grillen"
+      ],
+      "s06": [
+        "Lieblingsgetränk?",
+        "Kaffee",
+        "Tee",
+        "Kakao",
+        "Limonade"
+      ],
+      "s07": [
+        "Lieblingsjahreszeit?",
+        "Frühling",
+        "Sommer",
+        "Herbst",
+        "Winter"
+      ],
+      "s08": [
+        "Lieblingsblumen?",
+        "Rosen",
+        "Tulpen",
+        "Sonnenblumen",
+        "Lavendel"
+      ],
+      "s09": [
+        "Wie entspannen?",
+        "Mit einem Buch",
+        "Malen",
+        "Radfahren",
+        "Schlafen in der Hängematte"
+      ],
+      "s10": [
+        "Wie reisen?",
+        "Mit dem Zug",
+        "Mit dem Flugzeug",
+        "Mit dem Auto",
+        "Mit dem Schiff"
+      ],
+      "s11": [
+        "Traumhaus?",
+        "Stadtwohnung",
+        "Haus am Meer",
+        "Hütte in den Bergen",
+        "Bauernhof"
+      ],
+      "s12": [
+        "Etwas Süßes?",
+        "Eis",
+        "Schokolade",
+        "Torte",
+        "Obst"
+      ],
+      "s13": [
+        "Der perfekte Morgen?",
+        "Frühstück im Bett",
+        "Joggen",
+        "Ausschlafen",
+        "Kaffee auf dem Balkon"
+      ],
+      "s14": [
+        "Traum-Date?",
+        "Picknick",
+        "Eisbahn",
+        "Freizeitpark",
+        "Sterne auf dem Dach"
+      ],
+      "s15": [
+        "Das schönste Geschenk?",
+        "Ein Blumenstrauß",
+        "Ein Brief",
+        "Eine Reise",
+        "Eine Geschenkbox"
+      ],
+      "s16": [
+        "Lieblingsnatur?",
+        "Meer",
+        "Wald",
+        "Wüste",
+        "Nordlicht"
+      ]
     }
   },
   es: {
@@ -872,7 +998,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "La sala está lista: envía el enlace",
       "ynStayHere": "No cierres esta pantalla: el juego empieza cuando se abra el enlace.",
       "featYesNo": "Juego en directo «Sí o no»: 5 segundos por respuesta",
-      "ynPartnerMissed": "Sin respuesta: se acabó el tiempo"
+      "ynPartnerMissed": "Sin respuesta: se acabó el tiempo",
+      "lvTitle": "Lo que nos gusta",
+      "lvNote": "Un juego en directo para dos: 4 imágenes, 10 segundos para elegir lo que más te gusta. ¡Podéis elegir lo mismo!",
+      "lvShareText": "{name} te invita al juego en directo «Lo que nos gusta»",
+      "lvJoinLead": "{name} te espera. ¡Elige la imagen que más te guste!",
+      "lvRound": "Tema {n} de {total}",
+      "lvPick": "Elige lo que más te gusta",
+      "lvBoth": "Los dos habéis elegido: {item}",
+      "lvCommon": "A los dos os encanta",
+      "lvFinalHigh": "¡Tenéis muchísimo en común!",
+      "lvFinalMid": "Tan distintos, y os complementáis",
+      "featLoves": "Juego en directo «Lo que nos gusta»: 4 imágenes, elegid juntos",
+      "featGamesSoon2": "Duelo «¿Quién es más rápido?» y cartas de memoria con ositos"
     },
     "questions": {
       "q01": [
@@ -1497,6 +1635,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "quiere otra ronda",
         "prefiere un abrazo a jugar"
       ]
+    },
+    "loves": {
+      "s01": [
+        "¿Dónde pasar las vacaciones?",
+        "Playa",
+        "Montaña",
+        "Viajar",
+        "Tiempo a solas"
+      ],
+      "s02": [
+        "¿La tarde perfecta?",
+        "Cine en casa",
+        "Un paseo",
+        "Restaurante",
+        "Juegos de mesa"
+      ],
+      "s03": [
+        "¿Tiempo favorito?",
+        "Sol",
+        "Lluvia",
+        "Nieve",
+        "Noche estrellada"
+      ],
+      "s04": [
+        "¿Animal favorito?",
+        "Gatito",
+        "Cachorro",
+        "Caballo",
+        "Delfín"
+      ],
+      "s05": [
+        "¿Qué cenamos?",
+        "Pizza",
+        "Sushi",
+        "Pasteles",
+        "Barbacoa"
+      ],
+      "s06": [
+        "¿Bebida favorita?",
+        "Café",
+        "Té",
+        "Chocolate caliente",
+        "Limonada"
+      ],
+      "s07": [
+        "¿Estación favorita?",
+        "Primavera",
+        "Verano",
+        "Otoño",
+        "Invierno"
+      ],
+      "s08": [
+        "¿Flores favoritas?",
+        "Rosas",
+        "Tulipanes",
+        "Girasoles",
+        "Lavanda"
+      ],
+      "s09": [
+        "¿Cómo descansar?",
+        "Con un libro",
+        "Dibujando",
+        "En bici",
+        "Siesta en la hamaca"
+      ],
+      "s10": [
+        "¿Cómo viajar?",
+        "En tren",
+        "En avión",
+        "En coche",
+        "En barco"
+      ],
+      "s11": [
+        "¿Casa de ensueño?",
+        "Piso en la ciudad",
+        "Casa junto al mar",
+        "Cabaña en la montaña",
+        "Granja"
+      ],
+      "s12": [
+        "¿Algo dulce?",
+        "Helado",
+        "Chocolate",
+        "Tarta",
+        "Fruta"
+      ],
+      "s13": [
+        "¿La mañana perfecta?",
+        "Desayuno en la cama",
+        "Correr",
+        "Dormir hasta tarde",
+        "Café en el balcón"
+      ],
+      "s14": [
+        "¿Cita de ensueño?",
+        "Pícnic",
+        "Pista de hielo",
+        "Parque de atracciones",
+        "Estrellas en la azotea"
+      ],
+      "s15": [
+        "¿El mejor regalo?",
+        "Un ramo de flores",
+        "Una carta",
+        "Un viaje",
+        "Una caja regalo"
+      ],
+      "s16": [
+        "¿Naturaleza favorita?",
+        "Mar",
+        "Bosque",
+        "Desierto",
+        "Aurora boreal"
+      ]
     }
   },
   it: {
@@ -1620,7 +1872,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "La stanza è pronta: invia il link",
       "ynStayHere": "Tieni aperta questa schermata: il gioco inizia quando il link viene aperto.",
       "featYesNo": "Gioco dal vivo «Sì o no»: 5 secondi per risposta",
-      "ynPartnerMissed": "Nessuna risposta: tempo scaduto"
+      "ynPartnerMissed": "Nessuna risposta: tempo scaduto",
+      "lvTitle": "Ciò che amiamo",
+      "lvNote": "Un gioco dal vivo in due: 4 immagini, 10 secondi per scegliere ciò che preferisci. Potete scegliere la stessa!",
+      "lvShareText": "{name} ti invita al gioco dal vivo «Ciò che amiamo»",
+      "lvJoinLead": "{name} ti aspetta. Scegli l’immagine che preferisci!",
+      "lvRound": "Tema {n} di {total}",
+      "lvPick": "Scegli ciò che preferisci",
+      "lvBoth": "Avete scelto entrambi: {item}",
+      "lvCommon": "Amate entrambi",
+      "lvFinalHigh": "Avete così tanto in comune!",
+      "lvFinalMid": "Così diversi, e vi completate",
+      "featLoves": "Gioco dal vivo «Ciò che amiamo»: 4 immagini, scegliete insieme",
+      "featGamesSoon2": "Sfida «Chi è più veloce» e carte memory con gli orsetti"
     },
     "questions": {
       "q01": [
@@ -2245,6 +2509,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "vuole un altro round",
         "preferisce un abbraccio al gioco"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Dove andare in vacanza?",
+        "Spiaggia",
+        "Montagna",
+        "Viaggiare",
+        "Un po’ di solitudine"
+      ],
+      "s02": [
+        "La serata perfetta?",
+        "Film a casa",
+        "Una passeggiata",
+        "Ristorante",
+        "Giochi da tavolo"
+      ],
+      "s03": [
+        "Il tempo preferito?",
+        "Sole",
+        "Pioggia",
+        "Neve",
+        "Notte stellata"
+      ],
+      "s04": [
+        "L’animale preferito?",
+        "Gattino",
+        "Cucciolo",
+        "Cavallo",
+        "Delfino"
+      ],
+      "s05": [
+        "Cosa si mangia stasera?",
+        "Pizza",
+        "Sushi",
+        "Pasticcini",
+        "Grigliata"
+      ],
+      "s06": [
+        "La bevanda preferita?",
+        "Caffè",
+        "Tè",
+        "Cioccolata calda",
+        "Limonata"
+      ],
+      "s07": [
+        "La stagione preferita?",
+        "Primavera",
+        "Estate",
+        "Autunno",
+        "Inverno"
+      ],
+      "s08": [
+        "I fiori preferiti?",
+        "Rose",
+        "Tulipani",
+        "Girasoli",
+        "Lavanda"
+      ],
+      "s09": [
+        "Come rilassarsi?",
+        "Con un libro",
+        "Disegnando",
+        "In bicicletta",
+        "Pisolino in amaca"
+      ],
+      "s10": [
+        "Come viaggiare?",
+        "In treno",
+        "In aereo",
+        "In auto",
+        "In nave"
+      ],
+      "s11": [
+        "La casa dei sogni?",
+        "Appartamento in città",
+        "Casa al mare",
+        "Baita in montagna",
+        "Fattoria"
+      ],
+      "s12": [
+        "Qualcosa di dolce?",
+        "Gelato",
+        "Cioccolato",
+        "Torta",
+        "Frutta"
+      ],
+      "s13": [
+        "La mattina perfetta?",
+        "Colazione a letto",
+        "Corsa",
+        "Dormire a lungo",
+        "Caffè sul balcone"
+      ],
+      "s14": [
+        "L’appuntamento dei sogni?",
+        "Picnic",
+        "Pista di pattinaggio",
+        "Luna park",
+        "Stelle sul tetto"
+      ],
+      "s15": [
+        "Il regalo più bello?",
+        "Un mazzo di fiori",
+        "Una lettera",
+        "Un viaggio",
+        "Una scatola regalo"
+      ],
+      "s16": [
+        "La natura preferita?",
+        "Mare",
+        "Bosco",
+        "Deserto",
+        "Aurora boreale"
+      ]
     }
   },
   pl: {
@@ -2368,7 +2746,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Pokój gotowy — wyślij link",
       "ynStayHere": "Nie zamykaj tego ekranu: gra zacznie się, gdy link zostanie otwarty.",
       "featYesNo": "Gra na żywo „Tak czy nie” — 5 sekund na odpowiedź",
-      "ynPartnerMissed": "Brak odpowiedzi — czas minął"
+      "ynPartnerMissed": "Brak odpowiedzi — czas minął",
+      "lvTitle": "Co kochamy",
+      "lvNote": "Gra na żywo we dwoje: 4 obrazki i 10 sekund, by wybrać, co lubisz najbardziej. Możecie wybrać to samo!",
+      "lvShareText": "{name} zaprasza cię do gry na żywo „Co kochamy”",
+      "lvJoinLead": "{name} czeka na ciebie. Wybierz obrazek, który lubisz najbardziej!",
+      "lvRound": "Temat {n} z {total}",
+      "lvPick": "Wybierz, co lubisz najbardziej",
+      "lvBoth": "Oboje wybraliście: {item}",
+      "lvCommon": "Oboje kochacie",
+      "lvFinalHigh": "Macie tak wiele wspólnego!",
+      "lvFinalMid": "Tacy różni — i świetnie się uzupełniacie",
+      "featLoves": "Gra na żywo „Co kochamy” — 4 obrazki, wybierajcie razem",
+      "featGamesSoon2": "Pojedynek „Kto szybszy” i karty pamięci z misiami"
     },
     "questions": {
       "q01": [
@@ -2993,6 +3383,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "chce jeszcze jedną rundę",
         "woli się przytulić niż grać"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Gdzie spędzić urlop?",
+        "Plaża",
+        "Góry",
+        "Podróże",
+        "Chwila samotności"
+      ],
+      "s02": [
+        "Idealny wieczór?",
+        "Kino w domu",
+        "Spacer",
+        "Restauracja",
+        "Gry planszowe"
+      ],
+      "s03": [
+        "Ulubiona pogoda?",
+        "Słońce",
+        "Deszcz",
+        "Śnieg",
+        "Gwiaździsta noc"
+      ],
+      "s04": [
+        "Ulubione zwierzę?",
+        "Kotek",
+        "Szczeniak",
+        "Koń",
+        "Delfin"
+      ],
+      "s05": [
+        "Co na kolację?",
+        "Pizza",
+        "Sushi",
+        "Ciastka",
+        "Grill"
+      ],
+      "s06": [
+        "Ulubiony napój?",
+        "Kawa",
+        "Herbata",
+        "Kakao",
+        "Lemoniada"
+      ],
+      "s07": [
+        "Ulubiona pora roku?",
+        "Wiosna",
+        "Lato",
+        "Jesień",
+        "Zima"
+      ],
+      "s08": [
+        "Ulubione kwiaty?",
+        "Róże",
+        "Tulipany",
+        "Słoneczniki",
+        "Lawenda"
+      ],
+      "s09": [
+        "Jak odpocząć?",
+        "Z książką",
+        "Rysując",
+        "Na rowerze",
+        "Drzemka w hamaku"
+      ],
+      "s10": [
+        "Jak podróżować?",
+        "Pociągiem",
+        "Samolotem",
+        "Samochodem",
+        "Statkiem"
+      ],
+      "s11": [
+        "Wymarzony dom?",
+        "Mieszkanie w mieście",
+        "Dom nad morzem",
+        "Domek w górach",
+        "Farma"
+      ],
+      "s12": [
+        "Coś słodkiego?",
+        "Lody",
+        "Czekolada",
+        "Tort",
+        "Owoce"
+      ],
+      "s13": [
+        "Idealny poranek?",
+        "Śniadanie do łóżka",
+        "Bieganie",
+        "Długi sen",
+        "Kawa na balkonie"
+      ],
+      "s14": [
+        "Wymarzona randka?",
+        "Piknik",
+        "Lodowisko",
+        "Wesołe miasteczko",
+        "Gwiazdy na dachu"
+      ],
+      "s15": [
+        "Najlepszy prezent?",
+        "Bukiet kwiatów",
+        "List",
+        "Podróż",
+        "Pudełko z prezentem"
+      ],
+      "s16": [
+        "Ulubiona przyroda?",
+        "Morze",
+        "Las",
+        "Pustynia",
+        "Zorza polarna"
+      ]
     }
   },
   uk: {
@@ -3116,7 +3620,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Кімната готова — надішліть посилання",
       "ynStayHere": "Не закривайте цей екран: гра почнеться, коли партнер відкриє посилання.",
       "featYesNo": "Жива гра «Так чи ні» — 5 секунд на відповідь",
-      "ynPartnerMissed": "Відповіді немає — час вийшов"
+      "ynPartnerMissed": "Відповіді немає — час вийшов",
+      "lvTitle": "Що ми любимо",
+      "lvNote": "Жива гра для двох: 4 картинки, 10 секунд, щоб обрати, що ближче. Можна обрати те саме!",
+      "lvShareText": "{name} кличе тебе в живу гру «Що ми любимо»",
+      "lvJoinLead": "{name} чекає на вас. Обирайте картинку, яка вам ближча!",
+      "lvRound": "Тема {n} з {total}",
+      "lvPick": "Оберіть, що вам ближче",
+      "lvBoth": "Ви обоє обрали: {item}",
+      "lvCommon": "Ви обоє любите",
+      "lvFinalHigh": "У вас так багато спільного!",
+      "lvFinalMid": "Ви такі різні — і цим доповнюєте одне одного",
+      "featLoves": "Жива гра «Що ми любимо» — 4 картинки, обирайте разом",
+      "featGamesSoon2": "Дуель «Хто швидше» і картки з ведмедиками"
     },
     "questions": {
       "q01": [
@@ -3741,6 +4257,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "хоче ще раунд",
         "хоче обійняти замість гри"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Де провести відпустку?",
+        "Пляж",
+        "Гори",
+        "Подорож",
+        "Усамітнення"
+      ],
+      "s02": [
+        "Ідеальний вечір?",
+        "Кіно вдома",
+        "Прогулянка",
+        "Ресторан",
+        "Настільні ігри"
+      ],
+      "s03": [
+        "Улюблена погода?",
+        "Сонце",
+        "Дощ",
+        "Сніг",
+        "Зоряна ніч"
+      ],
+      "s04": [
+        "Улюблена тварина?",
+        "Кошеня",
+        "Цуценя",
+        "Кінь",
+        "Дельфін"
+      ],
+      "s05": [
+        "Що на вечерю?",
+        "Піца",
+        "Суші",
+        "Тістечка",
+        "Барбекю"
+      ],
+      "s06": [
+        "Улюблений напій?",
+        "Кава",
+        "Чай",
+        "Какао",
+        "Лимонад"
+      ],
+      "s07": [
+        "Улюблена пора року?",
+        "Весна",
+        "Літо",
+        "Осінь",
+        "Зима"
+      ],
+      "s08": [
+        "Улюблені квіти?",
+        "Троянди",
+        "Тюльпани",
+        "Соняшники",
+        "Лаванда"
+      ],
+      "s09": [
+        "Як відпочивати?",
+        "З книжкою",
+        "Малювати",
+        "На велосипеді",
+        "Спати в гамаку"
+      ],
+      "s10": [
+        "Як подорожувати?",
+        "Потягом",
+        "Літаком",
+        "Машиною",
+        "Кораблем"
+      ],
+      "s11": [
+        "Дім мрії?",
+        "Квартира в місті",
+        "Будинок біля моря",
+        "Будиночок у горах",
+        "Ферма"
+      ],
+      "s12": [
+        "Щось солодке?",
+        "Морозиво",
+        "Шоколад",
+        "Торт",
+        "Фрукти"
+      ],
+      "s13": [
+        "Ідеальний ранок?",
+        "Сніданок у ліжко",
+        "Пробіжка",
+        "Довгий сон",
+        "Кава на балконі"
+      ],
+      "s14": [
+        "Побачення мрії?",
+        "Пікнік",
+        "Ковзанка",
+        "Парк атракціонів",
+        "Зорі на даху"
+      ],
+      "s15": [
+        "Найкращий подарунок?",
+        "Букет квітів",
+        "Лист",
+        "Подорож",
+        "Подарунок у коробці"
+      ],
+      "s16": [
+        "Улюблена природа?",
+        "Море",
+        "Ліс",
+        "Пустеля",
+        "Північне сяйво"
+      ]
     }
   },
   pt: {
@@ -3864,7 +4494,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "A sala está pronta — envie o link",
       "ynStayHere": "Mantenha esta tela aberta: o jogo começa quando o link for aberto.",
       "featYesNo": "Jogo ao vivo «Sim ou não» — 5 segundos por resposta",
-      "ynPartnerMissed": "Sem resposta — o tempo acabou"
+      "ynPartnerMissed": "Sem resposta — o tempo acabou",
+      "lvTitle": "O que amamos",
+      "lvNote": "Um jogo ao vivo a dois: 4 imagens, 10 segundos para escolher o que você mais gosta. Vocês podem escolher a mesma!",
+      "lvShareText": "{name} convida você para o jogo ao vivo «O que amamos»",
+      "lvJoinLead": "{name} está esperando por você. Escolha a imagem de que mais gosta!",
+      "lvRound": "Tema {n} de {total}",
+      "lvPick": "Escolha o que você mais gosta",
+      "lvBoth": "Vocês dois escolheram: {item}",
+      "lvCommon": "Vocês dois amam",
+      "lvFinalHigh": "Vocês têm tanto em comum!",
+      "lvFinalMid": "Tão diferentes — e se completam",
+      "featLoves": "Jogo ao vivo «O que amamos» — 4 imagens, escolham juntos",
+      "featGamesSoon2": "Duelo «Quem é mais rápido» e cartas de memória com ursinhos"
     },
     "questions": {
       "q01": [
@@ -4489,6 +5131,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "quer mais uma rodada",
         "prefere um abraço a jogar"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Onde passar as férias?",
+        "Praia",
+        "Montanhas",
+        "Viajar",
+        "Um tempo só para mim"
+      ],
+      "s02": [
+        "A noite perfeita?",
+        "Filme em casa",
+        "Um passeio",
+        "Restaurante",
+        "Jogos de tabuleiro"
+      ],
+      "s03": [
+        "Tempo favorito?",
+        "Sol",
+        "Chuva",
+        "Neve",
+        "Noite estrelada"
+      ],
+      "s04": [
+        "Animal favorito?",
+        "Gatinho",
+        "Filhote de cachorro",
+        "Cavalo",
+        "Golfinho"
+      ],
+      "s05": [
+        "O que tem pro jantar?",
+        "Pizza",
+        "Sushi",
+        "Doces",
+        "Churrasco"
+      ],
+      "s06": [
+        "Bebida favorita?",
+        "Café",
+        "Chá",
+        "Chocolate quente",
+        "Limonada"
+      ],
+      "s07": [
+        "Estação favorita?",
+        "Primavera",
+        "Verão",
+        "Outono",
+        "Inverno"
+      ],
+      "s08": [
+        "Flores favoritas?",
+        "Rosas",
+        "Tulipas",
+        "Girassóis",
+        "Lavanda"
+      ],
+      "s09": [
+        "Como descansar?",
+        "Com um livro",
+        "Desenhando",
+        "De bicicleta",
+        "Soneca na rede"
+      ],
+      "s10": [
+        "Como viajar?",
+        "De trem",
+        "De avião",
+        "De carro",
+        "De navio"
+      ],
+      "s11": [
+        "Casa dos sonhos?",
+        "Apartamento na cidade",
+        "Casa na praia",
+        "Chalé na montanha",
+        "Fazenda"
+      ],
+      "s12": [
+        "Algo doce?",
+        "Sorvete",
+        "Chocolate",
+        "Bolo",
+        "Frutas"
+      ],
+      "s13": [
+        "A manhã perfeita?",
+        "Café da manhã na cama",
+        "Corrida",
+        "Dormir até tarde",
+        "Café na varanda"
+      ],
+      "s14": [
+        "Encontro dos sonhos?",
+        "Piquenique",
+        "Pista de gelo",
+        "Parque de diversões",
+        "Estrelas no terraço"
+      ],
+      "s15": [
+        "O melhor presente?",
+        "Um buquê",
+        "Uma carta",
+        "Uma viagem",
+        "Uma caixa de presente"
+      ],
+      "s16": [
+        "Natureza favorita?",
+        "Mar",
+        "Floresta",
+        "Deserto",
+        "Aurora boreal"
+      ]
     }
   },
   nl: {
@@ -4612,7 +5368,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "De kamer is klaar — stuur de link",
       "ynStayHere": "Houd dit scherm open: het spel begint zodra de link wordt geopend.",
       "featYesNo": "Live spel ‘Ja of nee’ — 5 seconden per antwoord",
-      "ynPartnerMissed": "Geen antwoord — de tijd is om"
+      "ynPartnerMissed": "Geen antwoord — de tijd is om",
+      "lvTitle": "Waar we van houden",
+      "lvNote": "Een live spel voor twee: 4 plaatjes, 10 seconden om te kiezen waar je het meest van houdt. Jullie mogen hetzelfde kiezen!",
+      "lvShareText": "{name} nodigt je uit voor het live spel ‘Waar we van houden’",
+      "lvJoinLead": "{name} wacht op je. Kies het plaatje waar je het meest van houdt!",
+      "lvRound": "Thema {n} van {total}",
+      "lvPick": "Kies waar je het meest van houdt",
+      "lvBoth": "Jullie kozen allebei: {item}",
+      "lvCommon": "Jullie houden allebei van",
+      "lvFinalHigh": "Jullie hebben zoveel gemeen!",
+      "lvFinalMid": "Zo verschillend — en jullie vullen elkaar aan",
+      "featLoves": "Live spel ‘Waar we van houden’ — 4 plaatjes, samen kiezen",
+      "featGamesSoon2": "Duel ‘Wie is sneller’ en memorykaarten met beertjes"
     },
     "questions": {
       "q01": [
@@ -5237,6 +6005,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "wil nog een ronde",
         "knuffelt liever dan te spelen"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Waar op vakantie?",
+        "Strand",
+        "Bergen",
+        "Reizen",
+        "Even alleen"
+      ],
+      "s02": [
+        "De perfecte avond?",
+        "Film thuis",
+        "Wandeling",
+        "Restaurant",
+        "Bordspellen"
+      ],
+      "s03": [
+        "Favoriete weer?",
+        "Zon",
+        "Regen",
+        "Sneeuw",
+        "Sterrennacht"
+      ],
+      "s04": [
+        "Favoriete dier?",
+        "Kitten",
+        "Puppy",
+        "Paard",
+        "Dolfijn"
+      ],
+      "s05": [
+        "Wat eten we?",
+        "Pizza",
+        "Sushi",
+        "Gebak",
+        "Barbecue"
+      ],
+      "s06": [
+        "Favoriete drankje?",
+        "Koffie",
+        "Thee",
+        "Warme chocomel",
+        "Limonade"
+      ],
+      "s07": [
+        "Favoriete seizoen?",
+        "Lente",
+        "Zomer",
+        "Herfst",
+        "Winter"
+      ],
+      "s08": [
+        "Favoriete bloemen?",
+        "Rozen",
+        "Tulpen",
+        "Zonnebloemen",
+        "Lavendel"
+      ],
+      "s09": [
+        "Hoe ontspannen?",
+        "Met een boek",
+        "Tekenen",
+        "Fietsen",
+        "Dutje in de hangmat"
+      ],
+      "s10": [
+        "Hoe reizen?",
+        "Met de trein",
+        "Met het vliegtuig",
+        "Met de auto",
+        "Met de boot"
+      ],
+      "s11": [
+        "Droomhuis?",
+        "Stadsappartement",
+        "Huis aan zee",
+        "Berghut",
+        "Boerderij"
+      ],
+      "s12": [
+        "Iets zoets?",
+        "IJs",
+        "Chocolade",
+        "Taart",
+        "Fruit"
+      ],
+      "s13": [
+        "De perfecte ochtend?",
+        "Ontbijt op bed",
+        "Hardlopen",
+        "Uitslapen",
+        "Koffie op het balkon"
+      ],
+      "s14": [
+        "Droomdate?",
+        "Picknick",
+        "IJsbaan",
+        "Pretpark",
+        "Sterren op het dak"
+      ],
+      "s15": [
+        "Mooiste cadeau?",
+        "Een boeket",
+        "Een brief",
+        "Een reis",
+        "Een cadeaudoos"
+      ],
+      "s16": [
+        "Favoriete natuur?",
+        "Zee",
+        "Bos",
+        "Woestijn",
+        "Noorderlicht"
+      ]
     }
   },
   tr: {
@@ -5360,7 +6242,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Oda hazır — bağlantıyı gönder",
       "ynStayHere": "Bu ekranı kapatma: bağlantı açılınca oyun başlar.",
       "featYesNo": "Canlı “Evet mi hayır mı” oyunu — yanıt başına 5 saniye",
-      "ynPartnerMissed": "Yanıt yok — süre doldu"
+      "ynPartnerMissed": "Yanıt yok — süre doldu",
+      "lvTitle": "Neleri seviyoruz",
+      "lvNote": "İki kişilik canlı oyun: 4 resim, en sevdiğini seçmek için 10 saniye. Aynısını da seçebilirsiniz!",
+      "lvShareText": "{name} seni canlı “Neleri seviyoruz” oyununa davet ediyor",
+      "lvJoinLead": "{name} seni bekliyor. En sevdiğin resmi seç!",
+      "lvRound": "Konu {n}/{total}",
+      "lvPick": "En sevdiğini seç",
+      "lvBoth": "İkiniz de seçtiniz: {item}",
+      "lvCommon": "İkinizin de sevdikleri",
+      "lvFinalHigh": "Ne çok ortak noktanız var!",
+      "lvFinalMid": "Çok farklısınız — ve birbirinizi tamamlıyorsunuz",
+      "featLoves": "Canlı “Neleri seviyoruz” oyunu — 4 resim, birlikte seçin",
+      "featGamesSoon2": "“Kim daha hızlı” düellosu ve ayıcıklı hafıza kartları"
     },
     "questions": {
       "q01": [
@@ -5985,6 +6879,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "bir tur daha istiyor",
         "oyun yerine sarılmak istiyor"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Tatil nerede?",
+        "Plaj",
+        "Dağlar",
+        "Seyahat",
+        "Yalnız kalmak"
+      ],
+      "s02": [
+        "Mükemmel akşam?",
+        "Evde film",
+        "Yürüyüş",
+        "Restoran",
+        "Kutu oyunları"
+      ],
+      "s03": [
+        "En sevdiğin hava?",
+        "Güneş",
+        "Yağmur",
+        "Kar",
+        "Yıldızlı gece"
+      ],
+      "s04": [
+        "En sevdiğin hayvan?",
+        "Kedi yavrusu",
+        "Köpek yavrusu",
+        "At",
+        "Yunus"
+      ],
+      "s05": [
+        "Akşam yemeği?",
+        "Pizza",
+        "Suşi",
+        "Pastalar",
+        "Mangal"
+      ],
+      "s06": [
+        "En sevdiğin içecek?",
+        "Kahve",
+        "Çay",
+        "Sıcak çikolata",
+        "Limonata"
+      ],
+      "s07": [
+        "En sevdiğin mevsim?",
+        "İlkbahar",
+        "Yaz",
+        "Sonbahar",
+        "Kış"
+      ],
+      "s08": [
+        "En sevdiğin çiçekler?",
+        "Güller",
+        "Laleler",
+        "Ayçiçekleri",
+        "Lavanta"
+      ],
+      "s09": [
+        "Nasıl dinlenirsin?",
+        "Kitapla",
+        "Resim yaparak",
+        "Bisikletle",
+        "Hamakta uyuyarak"
+      ],
+      "s10": [
+        "Nasıl seyahat edersin?",
+        "Trenle",
+        "Uçakla",
+        "Arabayla",
+        "Gemiyle"
+      ],
+      "s11": [
+        "Hayalindeki ev?",
+        "Şehirde daire",
+        "Deniz kenarında ev",
+        "Dağda kulübe",
+        "Çiftlik"
+      ],
+      "s12": [
+        "Tatlı bir şey?",
+        "Dondurma",
+        "Çikolata",
+        "Pasta",
+        "Meyve"
+      ],
+      "s13": [
+        "Mükemmel sabah?",
+        "Yatakta kahvaltı",
+        "Koşu",
+        "Uzun uyku",
+        "Balkonda kahve"
+      ],
+      "s14": [
+        "Hayalindeki buluşma?",
+        "Piknik",
+        "Buz pisti",
+        "Lunapark",
+        "Çatıda yıldızlar"
+      ],
+      "s15": [
+        "En güzel hediye?",
+        "Çiçek buketi",
+        "Mektup",
+        "Seyahat",
+        "Hediye kutusu"
+      ],
+      "s16": [
+        "En sevdiğin doğa?",
+        "Deniz",
+        "Orman",
+        "Çöl",
+        "Kuzey ışıkları"
+      ]
     }
   },
   ro: {
@@ -6108,7 +7116,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Camera e gata — trimite linkul",
       "ynStayHere": "Nu închide acest ecran: jocul începe când linkul este deschis.",
       "featYesNo": "Jocul live „Da sau nu” — 5 secunde pe răspuns",
-      "ynPartnerMissed": "Niciun răspuns — timpul a expirat"
+      "ynPartnerMissed": "Niciun răspuns — timpul a expirat",
+      "lvTitle": "Ce iubim",
+      "lvNote": "Un joc live în doi: 4 imagini, 10 secunde ca să alegi ce îți place cel mai mult. Puteți alege același lucru!",
+      "lvShareText": "{name} te invită la jocul live „Ce iubim”",
+      "lvJoinLead": "{name} te așteaptă. Alege imaginea care îți place cel mai mult!",
+      "lvRound": "Tema {n} din {total}",
+      "lvPick": "Alege ce îți place cel mai mult",
+      "lvBoth": "Ați ales amândoi: {item}",
+      "lvCommon": "Amândoi iubiți",
+      "lvFinalHigh": "Aveți atât de multe în comun!",
+      "lvFinalMid": "Atât de diferiți — și vă completați",
+      "featLoves": "Jocul live „Ce iubim” — 4 imagini, alegeți împreună",
+      "featGamesSoon2": "Duelul „Cine e mai rapid” și cărți de memorie cu ursuleți"
     },
     "questions": {
       "q01": [
@@ -6733,6 +7753,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "vrea încă o rundă",
         "preferă o îmbrățișare în loc de joc"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Unde în vacanță?",
+        "Plajă",
+        "Munte",
+        "Călătorie",
+        "Puțină singurătate"
+      ],
+      "s02": [
+        "Seara perfectă?",
+        "Film acasă",
+        "Plimbare",
+        "Restaurant",
+        "Jocuri de societate"
+      ],
+      "s03": [
+        "Vremea preferată?",
+        "Soare",
+        "Ploaie",
+        "Zăpadă",
+        "Noapte înstelată"
+      ],
+      "s04": [
+        "Animalul preferat?",
+        "Pisoi",
+        "Cățeluș",
+        "Cal",
+        "Delfin"
+      ],
+      "s05": [
+        "Ce mâncăm la cină?",
+        "Pizza",
+        "Sushi",
+        "Prăjituri",
+        "Grătar"
+      ],
+      "s06": [
+        "Băutura preferată?",
+        "Cafea",
+        "Ceai",
+        "Ciocolată caldă",
+        "Limonadă"
+      ],
+      "s07": [
+        "Anotimpul preferat?",
+        "Primăvara",
+        "Vara",
+        "Toamna",
+        "Iarna"
+      ],
+      "s08": [
+        "Florile preferate?",
+        "Trandafiri",
+        "Lalele",
+        "Floarea-soarelui",
+        "Lavandă"
+      ],
+      "s09": [
+        "Cum te relaxezi?",
+        "Cu o carte",
+        "Desenând",
+        "Pe bicicletă",
+        "Somn în hamac"
+      ],
+      "s10": [
+        "Cum călătorim?",
+        "Cu trenul",
+        "Cu avionul",
+        "Cu mașina",
+        "Cu vaporul"
+      ],
+      "s11": [
+        "Casa visurilor?",
+        "Apartament în oraș",
+        "Casă la mare",
+        "Cabană la munte",
+        "Fermă"
+      ],
+      "s12": [
+        "Ceva dulce?",
+        "Înghețată",
+        "Ciocolată",
+        "Tort",
+        "Fructe"
+      ],
+      "s13": [
+        "Dimineața perfectă?",
+        "Mic dejun la pat",
+        "Alergare",
+        "Somn lung",
+        "Cafea pe balcon"
+      ],
+      "s14": [
+        "Întâlnirea visurilor?",
+        "Picnic",
+        "Patinoar",
+        "Parc de distracții",
+        "Stele pe acoperiș"
+      ],
+      "s15": [
+        "Cel mai frumos cadou?",
+        "Un buchet",
+        "O scrisoare",
+        "O călătorie",
+        "O cutie cu cadou"
+      ],
+      "s16": [
+        "Natura preferată?",
+        "Marea",
+        "Pădurea",
+        "Deșertul",
+        "Aurora boreală"
+      ]
     }
   },
   cs: {
@@ -6856,7 +7990,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Místnost je připravená — pošlete odkaz",
       "ynStayHere": "Nezavírejte tuto obrazovku: hra začne, jakmile se odkaz otevře.",
       "featYesNo": "Živá hra „Ano, nebo ne“ — 5 sekund na odpověď",
-      "ynPartnerMissed": "Bez odpovědi — čas vypršel"
+      "ynPartnerMissed": "Bez odpovědi — čas vypršel",
+      "lvTitle": "Co máme rádi",
+      "lvNote": "Živá hra pro dva: 4 obrázky a 10 sekund na výběr toho, co je vám nejbližší. Můžete vybrat totéž!",
+      "lvShareText": "{name} tě zve do živé hry „Co máme rádi“",
+      "lvJoinLead": "{name} na vás čeká. Vyberte obrázek, který je vám nejbližší!",
+      "lvRound": "Téma {n} z {total}",
+      "lvPick": "Vyberte, co je vám nejbližší",
+      "lvBoth": "Oba jste vybrali: {item}",
+      "lvCommon": "Oba milujete",
+      "lvFinalHigh": "Máte toho tolik společného!",
+      "lvFinalMid": "Tak rozdílní — a skvěle se doplňujete",
+      "featLoves": "Živá hra „Co máme rádi“ — 4 obrázky, vybírejte spolu",
+      "featGamesSoon2": "Souboj „Kdo je rychlejší“ a pexeso s medvídky"
     },
     "questions": {
       "q01": [
@@ -7481,6 +8627,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "chce další kolo",
         "radši objetí než hra"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Kam na dovolenou?",
+        "Pláž",
+        "Hory",
+        "Cestování",
+        "Chvíle o samotě"
+      ],
+      "s02": [
+        "Dokonalý večer?",
+        "Film doma",
+        "Procházka",
+        "Restaurace",
+        "Deskové hry"
+      ],
+      "s03": [
+        "Oblíbené počasí?",
+        "Slunce",
+        "Déšť",
+        "Sníh",
+        "Hvězdná noc"
+      ],
+      "s04": [
+        "Oblíbené zvíře?",
+        "Kotě",
+        "Štěně",
+        "Kůň",
+        "Delfín"
+      ],
+      "s05": [
+        "Co k večeři?",
+        "Pizza",
+        "Sushi",
+        "Zákusky",
+        "Grilování"
+      ],
+      "s06": [
+        "Oblíbený nápoj?",
+        "Káva",
+        "Čaj",
+        "Kakao",
+        "Limonáda"
+      ],
+      "s07": [
+        "Oblíbené roční období?",
+        "Jaro",
+        "Léto",
+        "Podzim",
+        "Zima"
+      ],
+      "s08": [
+        "Oblíbené květiny?",
+        "Růže",
+        "Tulipány",
+        "Slunečnice",
+        "Levandule"
+      ],
+      "s09": [
+        "Jak odpočívat?",
+        "S knihou",
+        "Kreslením",
+        "Na kole",
+        "Spánek v houpací síti"
+      ],
+      "s10": [
+        "Jak cestovat?",
+        "Vlakem",
+        "Letadlem",
+        "Autem",
+        "Lodí"
+      ],
+      "s11": [
+        "Dům snů?",
+        "Byt ve městě",
+        "Dům u moře",
+        "Chata na horách",
+        "Farma"
+      ],
+      "s12": [
+        "Něco sladkého?",
+        "Zmrzlina",
+        "Čokoláda",
+        "Dort",
+        "Ovoce"
+      ],
+      "s13": [
+        "Dokonalé ráno?",
+        "Snídaně do postele",
+        "Běh",
+        "Dlouhé spaní",
+        "Káva na balkoně"
+      ],
+      "s14": [
+        "Rande snů?",
+        "Piknik",
+        "Kluziště",
+        "Zábavní park",
+        "Hvězdy na střeše"
+      ],
+      "s15": [
+        "Nejlepší dárek?",
+        "Kytice",
+        "Dopis",
+        "Výlet",
+        "Dárková krabice"
+      ],
+      "s16": [
+        "Oblíbená příroda?",
+        "Moře",
+        "Les",
+        "Poušť",
+        "Polární záře"
+      ]
     }
   },
   sv: {
@@ -7604,7 +8864,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Rummet är klart — skicka länken",
       "ynStayHere": "Håll skärmen öppen: spelet börjar när länken öppnas.",
       "featYesNo": "Livespelet ”Ja eller nej” — 5 sekunder per svar",
-      "ynPartnerMissed": "Inget svar — tiden tog slut"
+      "ynPartnerMissed": "Inget svar — tiden tog slut",
+      "lvTitle": "Det vi älskar",
+      "lvNote": "Ett livespel för två: 4 bilder och 10 sekunder att välja det du gillar mest. Ni får välja samma!",
+      "lvShareText": "{name} bjuder in dig till livespelet ”Det vi älskar”",
+      "lvJoinLead": "{name} väntar på dig. Välj bilden du gillar mest!",
+      "lvRound": "Tema {n} av {total}",
+      "lvPick": "Välj det du gillar mest",
+      "lvBoth": "Ni valde båda: {item}",
+      "lvCommon": "Ni älskar båda",
+      "lvFinalHigh": "Ni har så mycket gemensamt!",
+      "lvFinalMid": "Så olika — och ni kompletterar varandra",
+      "featLoves": "Livespelet ”Det vi älskar” — 4 bilder, välj tillsammans",
+      "featGamesSoon2": "Duellen ”Vem är snabbast” och memorykort med björnar"
     },
     "questions": {
       "q01": [
@@ -8229,6 +9501,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "vill köra en runda till",
         "kramas hellre än spelar"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Var på semester?",
+        "Strand",
+        "Berg",
+        "Resor",
+        "Egentid"
+      ],
+      "s02": [
+        "Den perfekta kvällen?",
+        "Film hemma",
+        "Promenad",
+        "Restaurang",
+        "Brädspel"
+      ],
+      "s03": [
+        "Favoritväder?",
+        "Sol",
+        "Regn",
+        "Snö",
+        "Stjärnklar natt"
+      ],
+      "s04": [
+        "Favoritdjur?",
+        "Kattunge",
+        "Valp",
+        "Häst",
+        "Delfin"
+      ],
+      "s05": [
+        "Vad blir det till middag?",
+        "Pizza",
+        "Sushi",
+        "Bakelser",
+        "Grillat"
+      ],
+      "s06": [
+        "Favoritdryck?",
+        "Kaffe",
+        "Te",
+        "Varm choklad",
+        "Lemonad"
+      ],
+      "s07": [
+        "Favoritårstid?",
+        "Vår",
+        "Sommar",
+        "Höst",
+        "Vinter"
+      ],
+      "s08": [
+        "Favoritblommor?",
+        "Rosor",
+        "Tulpaner",
+        "Solrosor",
+        "Lavendel"
+      ],
+      "s09": [
+        "Hur kopplar du av?",
+        "Med en bok",
+        "Ritar",
+        "Cyklar",
+        "Sover i hängmattan"
+      ],
+      "s10": [
+        "Hur reser vi?",
+        "Med tåg",
+        "Med flyg",
+        "Med bil",
+        "Med båt"
+      ],
+      "s11": [
+        "Drömhem?",
+        "Lägenhet i stan",
+        "Hus vid havet",
+        "Stuga i fjällen",
+        "Gård"
+      ],
+      "s12": [
+        "Något sött?",
+        "Glass",
+        "Choklad",
+        "Tårta",
+        "Frukt"
+      ],
+      "s13": [
+        "Den perfekta morgonen?",
+        "Frukost på sängen",
+        "Löprunda",
+        "Sovmorgon",
+        "Kaffe på balkongen"
+      ],
+      "s14": [
+        "Drömdejt?",
+        "Picknick",
+        "Skridskobana",
+        "Nöjespark",
+        "Stjärnor på taket"
+      ],
+      "s15": [
+        "Bästa presenten?",
+        "En bukett",
+        "Ett brev",
+        "En resa",
+        "En presentask"
+      ],
+      "s16": [
+        "Favoritnatur?",
+        "Hav",
+        "Skog",
+        "Öken",
+        "Norrsken"
+      ]
     }
   },
   el: {
@@ -8352,7 +9738,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Το δωμάτιο είναι έτοιμο — στείλτε τον σύνδεσμο",
       "ynStayHere": "Μην κλείσετε αυτή την οθόνη: το παιχνίδι ξεκινά μόλις ανοίξει ο σύνδεσμος.",
       "featYesNo": "Ζωντανό παιχνίδι «Ναι ή όχι» — 5 δευτερόλεπτα ανά απάντηση",
-      "ynPartnerMissed": "Καμία απάντηση — ο χρόνος τελείωσε"
+      "ynPartnerMissed": "Καμία απάντηση — ο χρόνος τελείωσε",
+      "lvTitle": "Τι αγαπάμε",
+      "lvNote": "Ζωντανό παιχνίδι για δύο: 4 εικόνες και 10 δευτερόλεπτα για να διαλέξετε τι σας αρέσει περισσότερο. Μπορείτε να διαλέξετε το ίδιο!",
+      "lvShareText": "Πρόσκληση από {name} στο ζωντανό παιχνίδι «Τι αγαπάμε»",
+      "lvJoinLead": "Σας περιμένει: {name}. Διαλέξτε την εικόνα που σας αρέσει περισσότερο!",
+      "lvRound": "Θέμα {n} από {total}",
+      "lvPick": "Διαλέξτε τι σας αρέσει περισσότερο",
+      "lvBoth": "Διαλέξατε και οι δύο: {item}",
+      "lvCommon": "Αγαπάτε και οι δύο",
+      "lvFinalHigh": "Έχετε τόσα κοινά!",
+      "lvFinalMid": "Τόσο διαφορετικοί — και συμπληρώνεστε",
+      "featLoves": "Ζωντανό παιχνίδι «Τι αγαπάμε» — 4 εικόνες, διαλέξτε μαζί",
+      "featGamesSoon2": "Μονομαχία «Ποιος είναι πιο γρήγορος» και κάρτες μνήμης με αρκουδάκια"
     },
     "questions": {
       "q01": [
@@ -8977,6 +10375,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "θέλει άλλον έναν γύρο",
         "προτιμά μια αγκαλιά από το παιχνίδι"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Πού για διακοπές;",
+        "Παραλία",
+        "Βουνά",
+        "Ταξίδι",
+        "Λίγη μοναξιά"
+      ],
+      "s02": [
+        "Το τέλειο βράδυ;",
+        "Ταινία στο σπίτι",
+        "Βόλτα",
+        "Εστιατόριο",
+        "Επιτραπέζια"
+      ],
+      "s03": [
+        "Αγαπημένος καιρός;",
+        "Ήλιος",
+        "Βροχή",
+        "Χιόνι",
+        "Έναστρη νύχτα"
+      ],
+      "s04": [
+        "Αγαπημένο ζώο;",
+        "Γατάκι",
+        "Κουτάβι",
+        "Άλογο",
+        "Δελφίνι"
+      ],
+      "s05": [
+        "Τι τρώμε για βραδινό;",
+        "Πίτσα",
+        "Σούσι",
+        "Γλυκά",
+        "Μπάρμπεκιου"
+      ],
+      "s06": [
+        "Αγαπημένο ρόφημα;",
+        "Καφές",
+        "Τσάι",
+        "Ζεστή σοκολάτα",
+        "Λεμονάδα"
+      ],
+      "s07": [
+        "Αγαπημένη εποχή;",
+        "Άνοιξη",
+        "Καλοκαίρι",
+        "Φθινόπωρο",
+        "Χειμώνας"
+      ],
+      "s08": [
+        "Αγαπημένα λουλούδια;",
+        "Τριαντάφυλλα",
+        "Τουλίπες",
+        "Ηλιοτρόπια",
+        "Λεβάντα"
+      ],
+      "s09": [
+        "Πώς ξεκουράζεστε;",
+        "Με ένα βιβλίο",
+        "Ζωγραφίζοντας",
+        "Με ποδήλατο",
+        "Ύπνος στην αιώρα"
+      ],
+      "s10": [
+        "Πώς ταξιδεύουμε;",
+        "Με τρένο",
+        "Με αεροπλάνο",
+        "Με αυτοκίνητο",
+        "Με πλοίο"
+      ],
+      "s11": [
+        "Σπίτι των ονείρων;",
+        "Διαμέρισμα στην πόλη",
+        "Σπίτι δίπλα στη θάλασσα",
+        "Καλύβα στα βουνά",
+        "Φάρμα"
+      ],
+      "s12": [
+        "Κάτι γλυκό;",
+        "Παγωτό",
+        "Σοκολάτα",
+        "Τούρτα",
+        "Φρούτα"
+      ],
+      "s13": [
+        "Το τέλειο πρωινό;",
+        "Πρωινό στο κρεβάτι",
+        "Τρέξιμο",
+        "Πολύς ύπνος",
+        "Καφές στο μπαλκόνι"
+      ],
+      "s14": [
+        "Ραντεβού των ονείρων;",
+        "Πικνίκ",
+        "Παγοδρόμιο",
+        "Λούνα παρκ",
+        "Αστέρια στην ταράτσα"
+      ],
+      "s15": [
+        "Το καλύτερο δώρο;",
+        "Μπουκέτο",
+        "Γράμμα",
+        "Ταξίδι",
+        "Κουτί δώρου"
+      ],
+      "s16": [
+        "Αγαπημένη φύση;",
+        "Θάλασσα",
+        "Δάσος",
+        "Έρημος",
+        "Βόρειο σέλας"
+      ]
     }
   },
   da: {
@@ -9100,7 +10612,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Rummet er klar — send linket",
       "ynStayHere": "Hold skærmen åben: spillet starter, når linket bliver åbnet.",
       "featYesNo": "Livespillet “Ja eller nej” — 5 sekunder per svar",
-      "ynPartnerMissed": "Intet svar — tiden løb ud"
+      "ynPartnerMissed": "Intet svar — tiden løb ud",
+      "lvTitle": "Det, vi elsker",
+      "lvNote": "Et livespil for to: 4 billeder og 10 sekunder til at vælge det, du holder mest af. I må gerne vælge det samme!",
+      "lvShareText": "{name} inviterer dig til livespillet “Det, vi elsker”",
+      "lvJoinLead": "{name} venter på dig. Vælg det billede, du holder mest af!",
+      "lvRound": "Emne {n} af {total}",
+      "lvPick": "Vælg det, du holder mest af",
+      "lvBoth": "I valgte begge: {item}",
+      "lvCommon": "I elsker begge",
+      "lvFinalHigh": "I har så meget til fælles!",
+      "lvFinalMid": "Så forskellige — og I supplerer hinanden",
+      "featLoves": "Livespillet “Det, vi elsker” — 4 billeder, vælg sammen",
+      "featGamesSoon2": "Duellen “Hvem er hurtigst” og huskekort med bamser"
     },
     "questions": {
       "q01": [
@@ -9725,6 +11249,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "vil have en runde til",
         "krammer hellere end at spille"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Hvor på ferie?",
+        "Strand",
+        "Bjerge",
+        "Rejser",
+        "Alenetid"
+      ],
+      "s02": [
+        "Den perfekte aften?",
+        "Film derhjemme",
+        "Gåtur",
+        "Restaurant",
+        "Brætspil"
+      ],
+      "s03": [
+        "Yndlingsvejr?",
+        "Sol",
+        "Regn",
+        "Sne",
+        "Stjerneklar nat"
+      ],
+      "s04": [
+        "Yndlingsdyr?",
+        "Killing",
+        "Hvalp",
+        "Hest",
+        "Delfin"
+      ],
+      "s05": [
+        "Hvad skal vi have til aftensmad?",
+        "Pizza",
+        "Sushi",
+        "Kager",
+        "Grill"
+      ],
+      "s06": [
+        "Yndlingsdrik?",
+        "Kaffe",
+        "Te",
+        "Varm kakao",
+        "Lemonade"
+      ],
+      "s07": [
+        "Yndlingsårstid?",
+        "Forår",
+        "Sommer",
+        "Efterår",
+        "Vinter"
+      ],
+      "s08": [
+        "Yndlingsblomster?",
+        "Roser",
+        "Tulipaner",
+        "Solsikker",
+        "Lavendel"
+      ],
+      "s09": [
+        "Hvordan slapper du af?",
+        "Med en bog",
+        "Tegner",
+        "På cykel",
+        "Lur i hængekøjen"
+      ],
+      "s10": [
+        "Hvordan rejser vi?",
+        "Med tog",
+        "Med fly",
+        "Med bil",
+        "Med skib"
+      ],
+      "s11": [
+        "Drømmehjem?",
+        "Lejlighed i byen",
+        "Hus ved havet",
+        "Hytte i bjergene",
+        "Gård"
+      ],
+      "s12": [
+        "Noget sødt?",
+        "Is",
+        "Chokolade",
+        "Kage",
+        "Frugt"
+      ],
+      "s13": [
+        "Den perfekte morgen?",
+        "Morgenmad på sengen",
+        "Løbetur",
+        "Sove længe",
+        "Kaffe på altanen"
+      ],
+      "s14": [
+        "Drømmedate?",
+        "Picnic",
+        "Skøjtebane",
+        "Forlystelsespark",
+        "Stjerner på taget"
+      ],
+      "s15": [
+        "Den bedste gave?",
+        "En buket",
+        "Et brev",
+        "En rejse",
+        "En gaveæske"
+      ],
+      "s16": [
+        "Yndlingsnatur?",
+        "Hav",
+        "Skov",
+        "Ørken",
+        "Nordlys"
+      ]
     }
   },
   no: {
@@ -9848,7 +11486,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Rommet er klart — send lenken",
       "ynStayHere": "Hold skjermen åpen: spillet starter når lenken åpnes.",
       "featYesNo": "Livespillet «Ja eller nei» — 5 sekunder per svar",
-      "ynPartnerMissed": "Ikke noe svar — tiden er ute"
+      "ynPartnerMissed": "Ikke noe svar — tiden er ute",
+      "lvTitle": "Det vi elsker",
+      "lvNote": "Et livespill for to: 4 bilder og 10 sekunder til å velge det du liker best. Dere kan gjerne velge det samme!",
+      "lvShareText": "{name} inviterer deg til livespillet «Det vi elsker»",
+      "lvJoinLead": "{name} venter på deg. Velg bildet du liker best!",
+      "lvRound": "Tema {n} av {total}",
+      "lvPick": "Velg det du liker best",
+      "lvBoth": "Dere valgte begge: {item}",
+      "lvCommon": "Dere elsker begge",
+      "lvFinalHigh": "Dere har så mye til felles!",
+      "lvFinalMid": "Så ulike — og dere utfyller hverandre",
+      "featLoves": "Livespillet «Det vi elsker» — 4 bilder, velg sammen",
+      "featGamesSoon2": "Duellen «Hvem er raskest» og huskekort med bamser"
     },
     "questions": {
       "q01": [
@@ -10473,6 +12123,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "vil ha en runde til",
         "klemmer heller enn å spille"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Hvor på ferie?",
+        "Strand",
+        "Fjell",
+        "Reiser",
+        "Alenetid"
+      ],
+      "s02": [
+        "Den perfekte kvelden?",
+        "Film hjemme",
+        "Tur",
+        "Restaurant",
+        "Brettspill"
+      ],
+      "s03": [
+        "Favorittvær?",
+        "Sol",
+        "Regn",
+        "Snø",
+        "Stjerneklar natt"
+      ],
+      "s04": [
+        "Favorittdyr?",
+        "Kattunge",
+        "Valp",
+        "Hest",
+        "Delfin"
+      ],
+      "s05": [
+        "Hva blir det til middag?",
+        "Pizza",
+        "Sushi",
+        "Kaker",
+        "Grilling"
+      ],
+      "s06": [
+        "Favorittdrikk?",
+        "Kaffe",
+        "Te",
+        "Varm sjokolade",
+        "Limonade"
+      ],
+      "s07": [
+        "Favorittårstid?",
+        "Vår",
+        "Sommer",
+        "Høst",
+        "Vinter"
+      ],
+      "s08": [
+        "Favorittblomster?",
+        "Roser",
+        "Tulipaner",
+        "Solsikker",
+        "Lavendel"
+      ],
+      "s09": [
+        "Hvordan slapper du av?",
+        "Med en bok",
+        "Tegner",
+        "På sykkel",
+        "Lur i hengekøya"
+      ],
+      "s10": [
+        "Hvordan reiser vi?",
+        "Med tog",
+        "Med fly",
+        "Med bil",
+        "Med båt"
+      ],
+      "s11": [
+        "Drømmehjem?",
+        "Leilighet i byen",
+        "Hus ved havet",
+        "Hytte på fjellet",
+        "Gård"
+      ],
+      "s12": [
+        "Noe søtt?",
+        "Is",
+        "Sjokolade",
+        "Kake",
+        "Frukt"
+      ],
+      "s13": [
+        "Den perfekte morgenen?",
+        "Frokost på senga",
+        "Løpetur",
+        "Sove lenge",
+        "Kaffe på balkongen"
+      ],
+      "s14": [
+        "Drømmedate?",
+        "Piknik",
+        "Skøytebane",
+        "Fornøyelsespark",
+        "Stjerner på taket"
+      ],
+      "s15": [
+        "Den beste gaven?",
+        "En bukett",
+        "Et brev",
+        "En reise",
+        "En gaveeske"
+      ],
+      "s16": [
+        "Favorittnatur?",
+        "Hav",
+        "Skog",
+        "Ørken",
+        "Nordlys"
+      ]
     }
   },
   fi: {
@@ -10596,7 +12360,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Huone on valmis — lähetä linkki",
       "ynStayHere": "Pidä tämä näkymä auki: peli alkaa, kun linkki avataan.",
       "featYesNo": "Live-peli ”Kyllä vai ei” — 5 sekuntia per vastaus",
-      "ynPartnerMissed": "Ei vastausta — aika loppui"
+      "ynPartnerMissed": "Ei vastausta — aika loppui",
+      "lvTitle": "Mitä rakastamme",
+      "lvNote": "Live-peli kahdelle: 4 kuvaa ja 10 sekuntia aikaa valita, mistä pidät eniten. Saatte valita saman!",
+      "lvShareText": "{name} kutsuu sinut live-peliin ”Mitä rakastamme”",
+      "lvJoinLead": "{name} odottaa sinua. Valitse kuva, josta pidät eniten!",
+      "lvRound": "Aihe {n}/{total}",
+      "lvPick": "Valitse, mistä pidät eniten",
+      "lvBoth": "Valitsitte molemmat: {item}",
+      "lvCommon": "Rakastatte molemmat",
+      "lvFinalHigh": "Teillä on niin paljon yhteistä!",
+      "lvFinalMid": "Niin erilaiset — ja täydennätte toisianne",
+      "featLoves": "Live-peli ”Mitä rakastamme” — 4 kuvaa, valitkaa yhdessä",
+      "featGamesSoon2": "Kaksintaistelu ”Kuka on nopein” ja muistipeli nallekorteilla"
     },
     "questions": {
       "q01": [
@@ -11221,6 +12997,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "haluaa vielä yhden kierroksen",
         "halaa mieluummin kuin pelaa"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Minne lomalle?",
+        "Ranta",
+        "Vuoret",
+        "Matkailu",
+        "Omaa aikaa"
+      ],
+      "s02": [
+        "Täydellinen ilta?",
+        "Elokuva kotona",
+        "Kävely",
+        "Ravintola",
+        "Lautapelit"
+      ],
+      "s03": [
+        "Lempisää?",
+        "Aurinko",
+        "Sade",
+        "Lumi",
+        "Tähtiyö"
+      ],
+      "s04": [
+        "Lempieläin?",
+        "Kissanpentu",
+        "Koiranpentu",
+        "Hevonen",
+        "Delfiini"
+      ],
+      "s05": [
+        "Mitä illalliseksi?",
+        "Pizza",
+        "Sushi",
+        "Leivokset",
+        "Grilli"
+      ],
+      "s06": [
+        "Lempijuoma?",
+        "Kahvi",
+        "Tee",
+        "Kaakao",
+        "Limonadi"
+      ],
+      "s07": [
+        "Lempivuodenaika?",
+        "Kevät",
+        "Kesä",
+        "Syksy",
+        "Talvi"
+      ],
+      "s08": [
+        "Lempikukat?",
+        "Ruusut",
+        "Tulppaanit",
+        "Auringonkukat",
+        "Laventeli"
+      ],
+      "s09": [
+        "Miten rentoutua?",
+        "Kirjan kanssa",
+        "Piirtäen",
+        "Pyöräillen",
+        "Päiväunet riippumatossa"
+      ],
+      "s10": [
+        "Miten matkustetaan?",
+        "Junalla",
+        "Lentokoneella",
+        "Autolla",
+        "Laivalla"
+      ],
+      "s11": [
+        "Unelmakoti?",
+        "Kaupunkiasunto",
+        "Talo meren rannalla",
+        "Mökki vuorilla",
+        "Maatila"
+      ],
+      "s12": [
+        "Jotain makeaa?",
+        "Jäätelö",
+        "Suklaa",
+        "Kakku",
+        "Hedelmät"
+      ],
+      "s13": [
+        "Täydellinen aamu?",
+        "Aamiainen sängyssä",
+        "Lenkki",
+        "Pitkät unet",
+        "Kahvi parvekkeella"
+      ],
+      "s14": [
+        "Unelmatreffit?",
+        "Piknik",
+        "Luistinrata",
+        "Huvipuisto",
+        "Tähdet katolla"
+      ],
+      "s15": [
+        "Paras lahja?",
+        "Kukkakimppu",
+        "Kirje",
+        "Matka",
+        "Lahjarasia"
+      ],
+      "s16": [
+        "Lempiluonto?",
+        "Meri",
+        "Metsä",
+        "Aavikko",
+        "Revontulet"
+      ]
     }
   },
   ja: {
@@ -11344,7 +13234,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "ルームの準備ができました — リンクを送りましょう",
       "ynStayHere": "この画面は開いたままに。相手がリンクを開くとゲームが始まります。",
       "featYesNo": "ライブゲーム「イエス・ノー」— 答えは5秒",
-      "ynPartnerMissed": "回答なし — 時間切れ"
+      "ynPartnerMissed": "回答なし — 時間切れ",
+      "lvTitle": "ふたりの好きなもの",
+      "lvNote": "ふたりで遊ぶライブゲーム。4枚の絵から、いちばん好きなものを10秒で選びます。同じものを選んでもOK！",
+      "lvShareText": "{name}からライブゲーム「ふたりの好きなもの」への招待です",
+      "lvJoinLead": "{name}が待っています。いちばん好きな絵を選んでね！",
+      "lvRound": "{total}テーマ中{n}番目",
+      "lvPick": "いちばん好きなものを選んでね",
+      "lvBoth": "ふたりとも選んだのは：{item}",
+      "lvCommon": "ふたりとも好きなもの",
+      "lvFinalHigh": "共通点がたくさん！",
+      "lvFinalMid": "ちがうからこそ、補い合えるふたり",
+      "featLoves": "ライブゲーム「ふたりの好きなもの」— 4枚の絵からいっしょに選ぶ",
+      "featGamesSoon2": "早押し対決と、くまの神経衰弱"
     },
     "questions": {
       "q01": [
@@ -11969,6 +13871,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "もう一回やりたい",
         "ゲームよりハグしたい"
       ]
+    },
+    "loves": {
+      "s01": [
+        "休みはどこで過ごす？",
+        "ビーチ",
+        "山",
+        "旅",
+        "ひとりの時間"
+      ],
+      "s02": [
+        "理想の夜は？",
+        "おうち映画",
+        "お散歩",
+        "レストラン",
+        "ボードゲーム"
+      ],
+      "s03": [
+        "好きな天気は？",
+        "晴れ",
+        "雨",
+        "雪",
+        "星空の夜"
+      ],
+      "s04": [
+        "好きな動物は？",
+        "子ねこ",
+        "子いぬ",
+        "馬",
+        "イルカ"
+      ],
+      "s05": [
+        "夕ごはんは？",
+        "ピザ",
+        "お寿司",
+        "スイーツ",
+        "バーベキュー"
+      ],
+      "s06": [
+        "好きな飲み物は？",
+        "コーヒー",
+        "紅茶",
+        "ココア",
+        "レモネード"
+      ],
+      "s07": [
+        "好きな季節は？",
+        "春",
+        "夏",
+        "秋",
+        "冬"
+      ],
+      "s08": [
+        "好きな花は？",
+        "バラ",
+        "チューリップ",
+        "ひまわり",
+        "ラベンダー"
+      ],
+      "s09": [
+        "どうやってくつろぐ？",
+        "読書",
+        "お絵かき",
+        "サイクリング",
+        "ハンモックでお昼寝"
+      ],
+      "s10": [
+        "どうやって旅する？",
+        "電車",
+        "飛行機",
+        "車",
+        "船"
+      ],
+      "s11": [
+        "夢の家は？",
+        "街のマンション",
+        "海辺の家",
+        "山の小屋",
+        "牧場"
+      ],
+      "s12": [
+        "甘いものなら？",
+        "アイス",
+        "チョコレート",
+        "ケーキ",
+        "フルーツ"
+      ],
+      "s13": [
+        "理想の朝は？",
+        "ベッドで朝ごはん",
+        "ジョギング",
+        "朝寝坊",
+        "ベランダでコーヒー"
+      ],
+      "s14": [
+        "夢のデートは？",
+        "ピクニック",
+        "スケートリンク",
+        "遊園地",
+        "屋上で星空"
+      ],
+      "s15": [
+        "いちばんうれしい贈り物は？",
+        "花束",
+        "手紙",
+        "旅行",
+        "プレゼントの箱"
+      ],
+      "s16": [
+        "好きな自然は？",
+        "海",
+        "森",
+        "砂漠",
+        "オーロラ"
+      ]
     }
   },
   ko: {
@@ -12092,7 +14108,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "방이 준비됐어요 — 링크를 보내세요",
       "ynStayHere": "이 화면을 닫지 마세요. 링크가 열리면 게임이 시작돼요.",
       "featYesNo": "실시간 게임 '예스 노' — 답은 5초",
-      "ynPartnerMissed": "답 없음 — 시간 초과"
+      "ynPartnerMissed": "답 없음 — 시간 초과",
+      "lvTitle": "우리가 좋아하는 것",
+      "lvNote": "둘이 하는 실시간 게임: 그림 4장 중 가장 좋아하는 것을 10초 안에 골라요. 같은 걸 골라도 돼요!",
+      "lvShareText": "{name} 님이 실시간 게임 '우리가 좋아하는 것'에 초대했어요",
+      "lvJoinLead": "{name} 님이 기다리고 있어요. 가장 좋아하는 그림을 골라요!",
+      "lvRound": "{total}개 주제 중 {n}번째",
+      "lvPick": "가장 좋아하는 것을 골라요",
+      "lvBoth": "둘 다 고른 것: {item}",
+      "lvCommon": "둘 다 좋아하는 것",
+      "lvFinalHigh": "공통점이 정말 많아요!",
+      "lvFinalMid": "다르지만 서로를 채워 주는 사이",
+      "featLoves": "실시간 게임 '우리가 좋아하는 것' — 그림 4장, 함께 고르기",
+      "featGamesSoon2": "누가 더 빠를까 대결과 곰돌이 기억력 카드"
     },
     "questions": {
       "q01": [
@@ -12717,6 +14745,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "한 판 더 하고 싶어요",
         "게임보다 포옹이 좋아요"
       ]
+    },
+    "loves": {
+      "s01": [
+        "휴가는 어디서?",
+        "해변",
+        "산",
+        "여행",
+        "혼자만의 시간"
+      ],
+      "s02": [
+        "완벽한 저녁은?",
+        "집에서 영화",
+        "산책",
+        "레스토랑",
+        "보드게임"
+      ],
+      "s03": [
+        "좋아하는 날씨는?",
+        "맑음",
+        "비",
+        "눈",
+        "별이 빛나는 밤"
+      ],
+      "s04": [
+        "좋아하는 동물은?",
+        "아기 고양이",
+        "강아지",
+        "말",
+        "돌고래"
+      ],
+      "s05": [
+        "저녁 메뉴는?",
+        "피자",
+        "초밥",
+        "디저트",
+        "바비큐"
+      ],
+      "s06": [
+        "좋아하는 음료는?",
+        "커피",
+        "차",
+        "코코아",
+        "레모네이드"
+      ],
+      "s07": [
+        "좋아하는 계절은?",
+        "봄",
+        "여름",
+        "가을",
+        "겨울"
+      ],
+      "s08": [
+        "좋아하는 꽃은?",
+        "장미",
+        "튤립",
+        "해바라기",
+        "라벤더"
+      ],
+      "s09": [
+        "어떻게 쉬어?",
+        "책 읽기",
+        "그림 그리기",
+        "자전거",
+        "해먹에서 낮잠"
+      ],
+      "s10": [
+        "어떻게 여행해?",
+        "기차",
+        "비행기",
+        "자동차",
+        "배"
+      ],
+      "s11": [
+        "꿈의 집은?",
+        "도시 아파트",
+        "바닷가 집",
+        "산속 오두막",
+        "농장"
+      ],
+      "s12": [
+        "달콤한 건?",
+        "아이스크림",
+        "초콜릿",
+        "케이크",
+        "과일"
+      ],
+      "s13": [
+        "완벽한 아침은?",
+        "침대에서 아침",
+        "달리기",
+        "늦잠",
+        "베란다에서 커피"
+      ],
+      "s14": [
+        "꿈의 데이트는?",
+        "소풍",
+        "스케이트장",
+        "놀이공원",
+        "옥상에서 별 보기"
+      ],
+      "s15": [
+        "최고의 선물은?",
+        "꽃다발",
+        "편지",
+        "여행",
+        "선물 상자"
+      ],
+      "s16": [
+        "좋아하는 자연은?",
+        "바다",
+        "숲",
+        "사막",
+        "오로라"
+      ]
     }
   },
   zh: {
@@ -12840,7 +14982,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "房間準備好了 — 傳送連結吧",
       "ynStayHere": "請保持這個畫面開啟：對方打開連結後遊戲就會開始。",
       "featYesNo": "即時遊戲「是或否」— 每題 5 秒",
-      "ynPartnerMissed": "沒有回答 — 時間到了"
+      "ynPartnerMissed": "沒有回答 — 時間到了",
+      "lvTitle": "我們喜歡的",
+      "lvNote": "兩人即時遊戲：4 張圖片，10 秒內選出最喜歡的。可以選一樣的喔！",
+      "lvShareText": "{name} 邀請你玩即時遊戲「我們喜歡的」",
+      "lvJoinLead": "{name} 在等你。選出你最喜歡的圖片吧！",
+      "lvRound": "第 {n}/{total} 個主題",
+      "lvPick": "選出你最喜歡的",
+      "lvBoth": "你們都選了：{item}",
+      "lvCommon": "你們都喜歡",
+      "lvFinalHigh": "你們有好多共同點！",
+      "lvFinalMid": "如此不同，卻能互相補足",
+      "featLoves": "即時遊戲「我們喜歡的」— 4 張圖片，一起選",
+      "featGamesSoon2": "「誰最快」對決與小熊記憶卡"
     },
     "questions": {
       "q01": [
@@ -13465,6 +15619,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "想再來一局",
         "比起遊戲更想抱抱"
       ]
+    },
+    "loves": {
+      "s01": [
+        "假期去哪裡？",
+        "海灘",
+        "山上",
+        "旅行",
+        "獨處時光"
+      ],
+      "s02": [
+        "完美的夜晚？",
+        "在家看電影",
+        "散步",
+        "餐廳",
+        "桌遊"
+      ],
+      "s03": [
+        "最喜歡的天氣？",
+        "晴天",
+        "下雨",
+        "下雪",
+        "星空"
+      ],
+      "s04": [
+        "最喜歡的動物？",
+        "小貓",
+        "小狗",
+        "馬",
+        "海豚"
+      ],
+      "s05": [
+        "晚餐吃什麼？",
+        "披薩",
+        "壽司",
+        "甜點",
+        "烤肉"
+      ],
+      "s06": [
+        "最喜歡的飲料？",
+        "咖啡",
+        "茶",
+        "熱可可",
+        "檸檬水"
+      ],
+      "s07": [
+        "最喜歡的季節？",
+        "春天",
+        "夏天",
+        "秋天",
+        "冬天"
+      ],
+      "s08": [
+        "最喜歡的花？",
+        "玫瑰",
+        "鬱金香",
+        "向日葵",
+        "薰衣草"
+      ],
+      "s09": [
+        "怎麼放鬆？",
+        "看書",
+        "畫畫",
+        "騎腳踏車",
+        "在吊床午睡"
+      ],
+      "s10": [
+        "怎麼旅行？",
+        "火車",
+        "飛機",
+        "開車",
+        "搭船"
+      ],
+      "s11": [
+        "夢想的家？",
+        "城市公寓",
+        "海邊小屋",
+        "山中木屋",
+        "農場"
+      ],
+      "s12": [
+        "來點甜的？",
+        "冰淇淋",
+        "巧克力",
+        "蛋糕",
+        "水果"
+      ],
+      "s13": [
+        "完美的早晨？",
+        "床上早餐",
+        "晨跑",
+        "睡到自然醒",
+        "陽台咖啡"
+      ],
+      "s14": [
+        "夢想的約會？",
+        "野餐",
+        "溜冰場",
+        "遊樂園",
+        "屋頂看星星"
+      ],
+      "s15": [
+        "最棒的禮物？",
+        "一束花",
+        "一封信",
+        "一趟旅行",
+        "禮物盒"
+      ],
+      "s16": [
+        "最喜歡的大自然？",
+        "大海",
+        "森林",
+        "沙漠",
+        "極光"
+      ]
     }
   },
   th: {
@@ -13588,7 +15856,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "ห้องพร้อมแล้ว — ส่งลิงก์ได้เลย",
       "ynStayHere": "อย่าปิดหน้านี้: เกมจะเริ่มเมื่อมีคนเปิดลิงก์",
       "featYesNo": "เกมสด «ใช่หรือไม่» — ตอบข้อละ 5 วินาที",
-      "ynPartnerMissed": "ไม่มีคำตอบ — หมดเวลา"
+      "ynPartnerMissed": "ไม่มีคำตอบ — หมดเวลา",
+      "lvTitle": "สิ่งที่เรารัก",
+      "lvNote": "เกมสดสำหรับสองคน: รูป 4 ภาพ มีเวลา 10 วินาทีเลือกสิ่งที่ชอบที่สุด เลือกเหมือนกันก็ได้!",
+      "lvShareText": "{name} ชวนคุณเล่นเกมสด «สิ่งที่เรารัก»",
+      "lvJoinLead": "{name} รอคุณอยู่ เลือกภาพที่คุณชอบที่สุดเลย!",
+      "lvRound": "หัวข้อ {n} จาก {total}",
+      "lvPick": "เลือกสิ่งที่คุณชอบที่สุด",
+      "lvBoth": "คุณทั้งคู่เลือก: {item}",
+      "lvCommon": "สิ่งที่คุณทั้งคู่รัก",
+      "lvFinalHigh": "คุณมีอะไรเหมือนกันเยอะมาก!",
+      "lvFinalMid": "ต่างกัน แต่เติมเต็มกันและกัน",
+      "featLoves": "เกมสด «สิ่งที่เรารัก» — 4 ภาพ เลือกด้วยกัน",
+      "featGamesSoon2": "ดวล «ใครเร็วกว่า» และการ์ดจับคู่ลายหมี"
     },
     "questions": {
       "q01": [
@@ -14213,6 +16493,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "อยากเล่นอีกตา",
         "อยากกอดมากกว่าเล่นเกม"
       ]
+    },
+    "loves": {
+      "s01": [
+        "ไปเที่ยวที่ไหนดี?",
+        "ชายหาด",
+        "ภูเขา",
+        "เดินทาง",
+        "อยู่คนเดียวเงียบ ๆ"
+      ],
+      "s02": [
+        "ค่ำคืนที่สมบูรณ์แบบ?",
+        "ดูหนังที่บ้าน",
+        "เดินเล่น",
+        "ร้านอาหาร",
+        "บอร์ดเกม"
+      ],
+      "s03": [
+        "อากาศที่ชอบ?",
+        "แดดสดใส",
+        "ฝน",
+        "หิมะ",
+        "คืนดาวพราว"
+      ],
+      "s04": [
+        "สัตว์ที่ชอบ?",
+        "ลูกแมว",
+        "ลูกสุนัข",
+        "ม้า",
+        "โลมา"
+      ],
+      "s05": [
+        "มื้อเย็นกินอะไร?",
+        "พิซซ่า",
+        "ซูชิ",
+        "ขนมหวาน",
+        "บาร์บีคิว"
+      ],
+      "s06": [
+        "เครื่องดื่มที่ชอบ?",
+        "กาแฟ",
+        "ชา",
+        "โกโก้ร้อน",
+        "น้ำมะนาว"
+      ],
+      "s07": [
+        "ฤดูที่ชอบ?",
+        "ใบไม้ผลิ",
+        "ฤดูร้อน",
+        "ใบไม้ร่วง",
+        "ฤดูหนาว"
+      ],
+      "s08": [
+        "ดอกไม้ที่ชอบ?",
+        "กุหลาบ",
+        "ทิวลิป",
+        "ทานตะวัน",
+        "ลาเวนเดอร์"
+      ],
+      "s09": [
+        "พักผ่อนแบบไหน?",
+        "อ่านหนังสือ",
+        "วาดรูป",
+        "ปั่นจักรยาน",
+        "นอนเปล"
+      ],
+      "s10": [
+        "เดินทางด้วยอะไร?",
+        "รถไฟ",
+        "เครื่องบิน",
+        "รถยนต์",
+        "เรือ"
+      ],
+      "s11": [
+        "บ้านในฝัน?",
+        "คอนโดในเมือง",
+        "บ้านริมทะเล",
+        "กระท่อมบนเขา",
+        "ฟาร์ม"
+      ],
+      "s12": [
+        "ของหวานอะไรดี?",
+        "ไอศกรีม",
+        "ช็อกโกแลต",
+        "เค้ก",
+        "ผลไม้"
+      ],
+      "s13": [
+        "เช้าที่สมบูรณ์แบบ?",
+        "อาหารเช้าบนเตียง",
+        "วิ่งตอนเช้า",
+        "นอนยาว ๆ",
+        "กาแฟที่ระเบียง"
+      ],
+      "s14": [
+        "เดตในฝัน?",
+        "ปิกนิก",
+        "ลานสเก็ต",
+        "สวนสนุก",
+        "ดูดาวบนดาดฟ้า"
+      ],
+      "s15": [
+        "ของขวัญที่ดีที่สุด?",
+        "ช่อดอกไม้",
+        "จดหมาย",
+        "ทริปเที่ยว",
+        "กล่องของขวัญ"
+      ],
+      "s16": [
+        "ธรรมชาติที่ชอบ?",
+        "ทะเล",
+        "ป่า",
+        "ทะเลทราย",
+        "แสงเหนือ"
+      ]
     }
   },
   ar: {
@@ -14336,7 +16730,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "الغرفة جاهزة — أرسل الرابط",
       "ynStayHere": "أبقِ هذه الشاشة مفتوحة: تبدأ اللعبة عند فتح الرابط.",
       "featYesNo": "لعبة «نعم أو لا» المباشرة — 5 ثوانٍ لكل إجابة",
-      "ynPartnerMissed": "لا إجابة — انتهى الوقت"
+      "ynPartnerMissed": "لا إجابة — انتهى الوقت",
+      "lvTitle": "ما نحبه",
+      "lvNote": "لعبة مباشرة لشخصين: 4 صور و10 ثوانٍ لاختيار الأحب إليك. يمكنكما اختيار الشيء نفسه!",
+      "lvShareText": "دعوة من {name} إلى اللعبة المباشرة «ما نحبه»",
+      "lvJoinLead": "اللعبة جاهزة مع {name}. اختر الصورة الأحب إليك!",
+      "lvRound": "الموضوع {n} من {total}",
+      "lvPick": "اختر الأحب إليك",
+      "lvBoth": "اخترتما معًا: {item}",
+      "lvCommon": "ما تحبانه معًا",
+      "lvFinalHigh": "بينكما الكثير من القواسم المشتركة!",
+      "lvFinalMid": "مختلفان جدًا — وتكملان بعضكما",
+      "featLoves": "لعبة «ما نحبه» المباشرة — 4 صور، اختارا معًا",
+      "featGamesSoon2": "تحدي «من الأسرع» وبطاقات الذاكرة مع الدببة"
     },
     "questions": {
       "q01": [
@@ -14961,6 +17367,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "جولة أخرى من فضلك",
         "العناق أجمل من اللعب"
       ]
+    },
+    "loves": {
+      "s01": [
+        "أين نقضي العطلة؟",
+        "الشاطئ",
+        "الجبال",
+        "السفر",
+        "وقت هادئ وحدي"
+      ],
+      "s02": [
+        "الأمسية المثالية؟",
+        "فيلم في البيت",
+        "نزهة",
+        "مطعم",
+        "ألعاب لوحية"
+      ],
+      "s03": [
+        "الطقس المفضل؟",
+        "الشمس",
+        "المطر",
+        "الثلج",
+        "ليلة مليئة بالنجوم"
+      ],
+      "s04": [
+        "الحيوان المفضل؟",
+        "قطة صغيرة",
+        "جرو",
+        "حصان",
+        "دلفين"
+      ],
+      "s05": [
+        "ماذا نأكل على العشاء؟",
+        "بيتزا",
+        "سوشي",
+        "حلويات",
+        "شواء"
+      ],
+      "s06": [
+        "المشروب المفضل؟",
+        "قهوة",
+        "شاي",
+        "كاكاو ساخن",
+        "ليموناضة"
+      ],
+      "s07": [
+        "الفصل المفضل؟",
+        "الربيع",
+        "الصيف",
+        "الخريف",
+        "الشتاء"
+      ],
+      "s08": [
+        "الزهور المفضلة؟",
+        "الورد",
+        "التوليب",
+        "عباد الشمس",
+        "اللافندر"
+      ],
+      "s09": [
+        "كيف نسترخي؟",
+        "مع كتاب",
+        "بالرسم",
+        "على الدراجة",
+        "قيلولة في الأرجوحة"
+      ],
+      "s10": [
+        "كيف نسافر؟",
+        "بالقطار",
+        "بالطائرة",
+        "بالسيارة",
+        "بالسفينة"
+      ],
+      "s11": [
+        "بيت الأحلام؟",
+        "شقة في المدينة",
+        "بيت على البحر",
+        "كوخ في الجبال",
+        "مزرعة"
+      ],
+      "s12": [
+        "شيء حلو؟",
+        "آيس كريم",
+        "شوكولاتة",
+        "كعكة",
+        "فاكهة"
+      ],
+      "s13": [
+        "الصباح المثالي؟",
+        "فطور في السرير",
+        "ركض",
+        "نوم طويل",
+        "قهوة في الشرفة"
+      ],
+      "s14": [
+        "موعد الأحلام؟",
+        "نزهة",
+        "حلبة تزلج",
+        "مدينة ملاهٍ",
+        "نجوم على السطح"
+      ],
+      "s15": [
+        "أجمل هدية؟",
+        "باقة زهور",
+        "رسالة",
+        "رحلة",
+        "صندوق هدية"
+      ],
+      "s16": [
+        "الطبيعة المفضلة؟",
+        "البحر",
+        "الغابة",
+        "الصحراء",
+        "الشفق القطبي"
+      ]
     }
   },
   ind: {
@@ -15084,7 +17604,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Ruang sudah siap — kirim tautannya",
       "ynStayHere": "Biarkan layar ini terbuka: game dimulai saat tautan dibuka.",
       "featYesNo": "Game langsung «Ya atau tidak» — 5 detik per jawaban",
-      "ynPartnerMissed": "Tidak ada jawaban — waktu habis"
+      "ynPartnerMissed": "Tidak ada jawaban — waktu habis",
+      "lvTitle": "Yang kita sukai",
+      "lvNote": "Game langsung berdua: 4 gambar, 10 detik untuk memilih yang paling kamu sukai. Boleh memilih yang sama!",
+      "lvShareText": "{name} mengajakmu bermain game langsung «Yang kita sukai»",
+      "lvJoinLead": "{name} menunggumu. Pilih gambar yang paling kamu sukai!",
+      "lvRound": "Tema {n} dari {total}",
+      "lvPick": "Pilih yang paling kamu sukai",
+      "lvBoth": "Kalian berdua memilih: {item}",
+      "lvCommon": "Yang kalian berdua sukai",
+      "lvFinalHigh": "Kalian punya banyak kesamaan!",
+      "lvFinalMid": "Begitu berbeda — dan saling melengkapi",
+      "featLoves": "Game langsung «Yang kita sukai» — 4 gambar, pilih bersama",
+      "featGamesSoon2": "Duel «Siapa paling cepat» dan kartu ingatan bergambar beruang"
     },
     "questions": {
       "q01": [
@@ -15709,6 +18241,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "ingin satu ronde lagi",
         "lebih ingin berpelukan daripada main"
       ]
+    },
+    "loves": {
+      "s01": [
+        "Liburan ke mana?",
+        "Pantai",
+        "Gunung",
+        "Jalan-jalan",
+        "Waktu menyendiri"
+      ],
+      "s02": [
+        "Malam yang sempurna?",
+        "Nonton di rumah",
+        "Jalan-jalan",
+        "Restoran",
+        "Permainan papan"
+      ],
+      "s03": [
+        "Cuaca favorit?",
+        "Cerah",
+        "Hujan",
+        "Salju",
+        "Malam berbintang"
+      ],
+      "s04": [
+        "Hewan favorit?",
+        "Anak kucing",
+        "Anak anjing",
+        "Kuda",
+        "Lumba-lumba"
+      ],
+      "s05": [
+        "Makan malam apa?",
+        "Pizza",
+        "Sushi",
+        "Kue manis",
+        "Barbekyu"
+      ],
+      "s06": [
+        "Minuman favorit?",
+        "Kopi",
+        "Teh",
+        "Cokelat panas",
+        "Limun"
+      ],
+      "s07": [
+        "Musim favorit?",
+        "Musim semi",
+        "Musim panas",
+        "Musim gugur",
+        "Musim dingin"
+      ],
+      "s08": [
+        "Bunga favorit?",
+        "Mawar",
+        "Tulip",
+        "Bunga matahari",
+        "Lavender"
+      ],
+      "s09": [
+        "Cara bersantai?",
+        "Membaca buku",
+        "Menggambar",
+        "Bersepeda",
+        "Tidur di hammock"
+      ],
+      "s10": [
+        "Bepergian naik apa?",
+        "Kereta",
+        "Pesawat",
+        "Mobil",
+        "Kapal"
+      ],
+      "s11": [
+        "Rumah impian?",
+        "Apartemen di kota",
+        "Rumah tepi laut",
+        "Pondok di gunung",
+        "Peternakan"
+      ],
+      "s12": [
+        "Yang manis-manis?",
+        "Es krim",
+        "Cokelat",
+        "Kue tart",
+        "Buah"
+      ],
+      "s13": [
+        "Pagi yang sempurna?",
+        "Sarapan di tempat tidur",
+        "Lari pagi",
+        "Tidur panjang",
+        "Kopi di balkon"
+      ],
+      "s14": [
+        "Kencan impian?",
+        "Piknik",
+        "Arena seluncur es",
+        "Taman hiburan",
+        "Bintang di atap"
+      ],
+      "s15": [
+        "Hadiah terbaik?",
+        "Buket bunga",
+        "Surat",
+        "Perjalanan",
+        "Kotak hadiah"
+      ],
+      "s16": [
+        "Alam favorit?",
+        "Laut",
+        "Hutan",
+        "Gurun",
+        "Aurora"
+      ]
     }
   },
   vi: {
@@ -15832,7 +18478,19 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
       "ynRoomReady": "Phòng đã sẵn sàng — hãy gửi liên kết",
       "ynStayHere": "Hãy giữ màn hình này: trò chơi bắt đầu khi liên kết được mở.",
       "featYesNo": "Trò chơi trực tiếp «Có hay không» — 5 giây mỗi câu",
-      "ynPartnerMissed": "Không có câu trả lời — hết giờ"
+      "ynPartnerMissed": "Không có câu trả lời — hết giờ",
+      "lvTitle": "Điều chúng mình thích",
+      "lvNote": "Trò chơi trực tiếp cho hai người: 4 bức tranh, 10 giây để chọn điều bạn thích nhất. Có thể chọn giống nhau!",
+      "lvShareText": "{name} mời bạn chơi trò trực tiếp «Điều chúng mình thích»",
+      "lvJoinLead": "{name} đang chờ bạn. Hãy chọn bức tranh bạn thích nhất!",
+      "lvRound": "Chủ đề {n}/{total}",
+      "lvPick": "Chọn điều bạn thích nhất",
+      "lvBoth": "Cả hai đều chọn: {item}",
+      "lvCommon": "Cả hai cùng thích",
+      "lvFinalHigh": "Hai bạn có thật nhiều điểm chung!",
+      "lvFinalMid": "Khác nhau — mà bổ sung cho nhau",
+      "featLoves": "Trò chơi trực tiếp «Điều chúng mình thích» — 4 bức tranh, cùng chọn",
+      "featGamesSoon2": "Đấu «Ai nhanh hơn» và thẻ ghi nhớ hình gấu"
     },
     "questions": {
       "q01": [
@@ -16456,6 +19114,120 @@ window.GLOWLETTER_GAMES_I18N = Object.freeze({
         "Lát nữa chơi lại nhé?",
         "muốn thêm một ván",
         "muốn ôm hơn là chơi"
+      ]
+    },
+    "loves": {
+      "s01": [
+        "Đi nghỉ ở đâu?",
+        "Biển",
+        "Núi",
+        "Du lịch",
+        "Thời gian một mình"
+      ],
+      "s02": [
+        "Buổi tối hoàn hảo?",
+        "Xem phim ở nhà",
+        "Đi dạo",
+        "Nhà hàng",
+        "Trò chơi cờ bàn"
+      ],
+      "s03": [
+        "Thời tiết yêu thích?",
+        "Nắng",
+        "Mưa",
+        "Tuyết",
+        "Đêm đầy sao"
+      ],
+      "s04": [
+        "Con vật yêu thích?",
+        "Mèo con",
+        "Cún con",
+        "Ngựa",
+        "Cá heo"
+      ],
+      "s05": [
+        "Tối nay ăn gì?",
+        "Pizza",
+        "Sushi",
+        "Bánh ngọt",
+        "Đồ nướng"
+      ],
+      "s06": [
+        "Đồ uống yêu thích?",
+        "Cà phê",
+        "Trà",
+        "Ca cao nóng",
+        "Nước chanh"
+      ],
+      "s07": [
+        "Mùa yêu thích?",
+        "Xuân",
+        "Hè",
+        "Thu",
+        "Đông"
+      ],
+      "s08": [
+        "Hoa yêu thích?",
+        "Hoa hồng",
+        "Tulip",
+        "Hướng dương",
+        "Oải hương"
+      ],
+      "s09": [
+        "Thư giãn thế nào?",
+        "Đọc sách",
+        "Vẽ tranh",
+        "Đạp xe",
+        "Ngủ trên võng"
+      ],
+      "s10": [
+        "Đi du lịch bằng gì?",
+        "Tàu hỏa",
+        "Máy bay",
+        "Ô tô",
+        "Tàu thủy"
+      ],
+      "s11": [
+        "Ngôi nhà mơ ước?",
+        "Căn hộ thành phố",
+        "Nhà bên biển",
+        "Nhà gỗ trên núi",
+        "Nông trại"
+      ],
+      "s12": [
+        "Món ngọt nào?",
+        "Kem",
+        "Sô-cô-la",
+        "Bánh kem",
+        "Trái cây"
+      ],
+      "s13": [
+        "Buổi sáng hoàn hảo?",
+        "Ăn sáng trên giường",
+        "Chạy bộ",
+        "Ngủ nướng",
+        "Cà phê ban công"
+      ],
+      "s14": [
+        "Buổi hẹn mơ ước?",
+        "Dã ngoại",
+        "Sân trượt băng",
+        "Công viên giải trí",
+        "Ngắm sao trên sân thượng"
+      ],
+      "s15": [
+        "Món quà tuyệt nhất?",
+        "Bó hoa",
+        "Lá thư",
+        "Chuyến đi",
+        "Hộp quà"
+      ],
+      "s16": [
+        "Thiên nhiên yêu thích?",
+        "Biển",
+        "Rừng",
+        "Sa mạc",
+        "Cực quang"
       ]
     }
   }
