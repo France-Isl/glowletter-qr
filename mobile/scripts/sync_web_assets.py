@@ -50,7 +50,9 @@ def copy_web_app(source: Path, destination: Path) -> None:
             continue
         target = destination / child.name
         if child.is_dir():
-            shutil.copytree(child, target)
+            # Исходники картинок (увеличенные по 35 МБ) в приложение не входят.
+            ignore = shutil.ignore_patterns("source", "og-next.png") if child.name == "assets" else None
+            shutil.copytree(child, target, ignore=ignore)
         elif child.is_file():
             shutil.copy2(child, target)
 
