@@ -1687,3 +1687,10 @@ body:not(.reading-focus) .secondary-actions { grid-template-columns: repeat(2, m
 .home-smart-actions :is(.moments-link, .games-link, .friends-link) > span:first-child:has(.ic) { display: grid; place-items: center; }
 .home-smart-actions :is(.moments-link, .games-link, .friends-link) > b.replies-badge { position: absolute; top: 6px; inset-inline-end: 6px; min-width: 20px; padding: 2px 5px; letter-spacing: 0; }
 .home-smart-actions :is(.home-poem-link, .home-signin-link) { grid-column: 1 / -1; }
+/* Плитки стоят ниже кнопки «Открыть письмо», как раньше стояли строки,
+   чтобы картина с мишками и заголовок не сползали вниз. */
+body:not(.is-reading) .home-smart-actions { margin-top: clamp(26px, 8vh, 84px); }
+/* «Друзья» — ночное озеро: глубокий синий рядом с красными «Играми» и золотыми «Моментами». */
+.home-smart-actions .friends-link { border-color: color-mix(in srgb, var(--gold-bright) 45%, transparent); color: var(--cream); background: linear-gradient(135deg, rgba(36, 74, 112, .74), color-mix(in srgb, var(--night) 62%, transparent)); }
+.home-smart-actions .friends-link > #friendsOpenHomeLabel { color: inherit; }
+.home-smart-actions .friends-link .ic { color: #bcd8f2; }
