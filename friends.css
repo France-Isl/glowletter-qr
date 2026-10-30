@@ -165,3 +165,7 @@
 .glo-size.is-active { border-color: var(--ui-accent); box-shadow: 0 0 0 1px var(--ui-accent); }
 .glo-draw-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 10px; }
 .glf-voice-note { margin: 6px 0 0; color: var(--ui-muted); font-size: 11px; text-align: center; }
+.glf-push p { margin: 0 0 10px; font-size: 11px; line-height: 1.5; }
+.glf-push-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-surface); }
+.glf-push-row small { color: var(--ui-muted); font-size: 11px; font-weight: 800; }
+.glf-push-row small.is-online { color: var(--ui-accent-deep); }

@@ -58,9 +58,27 @@ assert.match(online, /MAX_STROKES = 1500/u);
 assert.doesNotMatch(online, /\.from\(|\.rpc\(/u);
 assert.match(read("privacy.html"), /30 дней[\s\S]*30 days/u);
 
+// Уведомления на телефон: ключ устройства хранится только хэшем, опрос — не чаще раза в 3 минуты,
+// сердечки не уведомляют; Android опрашивает через WorkManager и просит разрешение только по кнопке.
+const push = read("supabase/migrations/20261030180000_push_devices.sql");
+assert.match(push, /token_hash text primary key check \(token_hash ~ '\^\[0-9a-f\]\{64\}\$'\)/u);
+assert.match(push, /extensions\.digest\(token, 'sha256'\)/u);
+assert.match(push, /interval '3 minutes'/u);
+assert.match(push, /m\.body not like '\[\[react:%'/u);
+assert.match(push, /revoke all on function public\.glowletter_push_register\(\) from public, anon;/u);
+const poller = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/PushPoller.java");
+assert.match(poller, /PeriodicWorkRequest\.Builder\(PushPoller\.class, 15, TimeUnit\.MINUTES\)/u);
+assert.match(poller, /BuildConfig\.PUSH_POLL_URL/u);
+assert.match(read("mobile/android/app/build.gradle"), /androidx\.work:work-runtime/u);
+assert.match(read("mobile/android/app/src/main/java/com/franceisl/nurpismo/MainActivity.java"), /new NotifyBridge\(this\), "NurNotify"/u);
+assert.match(friends, /"glowletter_push_register"/u);
+assert.match(friends, /"glowletter_push_unregister"/u);
+assert.match(friends, /if \(state\.channelUser && pushOn\(\)\) disablePush\(\);/u);
+assert.match(read("privacy.html"), /Уведомления на телефон[\s\S]*Phone notifications/u);
+
 // Подключение и кеш.
-assert.ok(index.indexOf("friends.js?v=84") < index.indexOf("online.js?v=84"));
-assert.match(worker, /"online\.js\?v=84"/u);
+assert.ok(index.indexOf("friends.js?v=85") < index.indexOf("online.js?v=85"));
+assert.match(worker, /"online\.js\?v=85"/u);
 assert.match(worker, /"online\.js", "voice\.js"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, keys: ONLINE_KEYS.length }));

@@ -23,8 +23,10 @@ assert.doesNotMatch(manifest, /ACCESS_(?:COARSE|FINE|BACKGROUND)_LOCATION|hardwa
 assert.match(android, /setGeolocationEnabled\(false\)/);
 assert.match(android, /onGeolocationPermissionsShowPrompt[\s\S]{0,300}callback\.invoke\(origin, false, false\)/);
 assert.doesNotMatch(android, /Manifest\.permission\.(?:ACCESS_COARSE_LOCATION|ACCESS_FINE_LOCATION)/);
-// «Голосовое письмо» (2.4.22): единственный запрос разрешения — микрофон, и только для своей страницы.
-assert.deepEqual([...android.matchAll(/requestPermissions\s*\(([^;]*)\)/gu)].map(match => match[1].includes("Manifest.permission.RECORD_AUDIO")), [true]);
+// Разрешения: микрофон («Голосовое письмо», 2.4.22, только для своей страницы) и уведомления
+// («Уведомления на телефон», 2.4.25, только по нажатию «Включить»). Больше ничего.
+assert.deepEqual([...android.matchAll(/requestPermissions\s*\(([^;]*)\)/gu)].map(match => /Manifest\.permission\.(RECORD_AUDIO|POST_NOTIFICATIONS)/u.exec(match[1])?.[1]), ["RECORD_AUDIO", "POST_NOTIFICATIONS"]);
+assert.match(manifest, /android\.permission\.POST_NOTIFICATIONS/);
 assert.match(android, /RESOURCE_AUDIO_CAPTURE\.equals\(resources\[0\]\)[\s\S]{0,200}APP_ORIGIN_HOST\.equals\(origin\.getHost\(\)\)/);
 assert.match(manifest, /android\.permission\.RECORD_AUDIO/);
 assert.doesNotMatch(manifest, /android\.permission\.CAMERA/);

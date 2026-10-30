@@ -49,6 +49,7 @@ public final class MainActivity extends ComponentActivity {
     private static final String APP_URL = "https://" + APP_ORIGIN_HOST + "/assets/web/index.html";
     private static final int FILE_CHOOSER_REQUEST = 4101;
     private static final int MICROPHONE_REQUEST = 4102;
+    private static final int NOTIFY_REQUEST = 4103;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
     private static final String NATIVE_WEB_LOAD_QUERY = "_glowletter_native_load";
@@ -325,6 +326,7 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new ShareBridge(this), "NurShare");
         webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
         webView.addJavascriptInterface(new AppUpdateBridge(this), "NurAppUpdate");
+        webView.addJavascriptInterface(new NotifyBridge(this), "NurNotify");
         // «Голосовое письмо»: страница узнаёт, что эта сборка умеет давать микрофон.
         webView.addJavascriptInterface(new Object() {
             @android.webkit.JavascriptInterface
@@ -332,6 +334,14 @@ public final class MainActivity extends ComponentActivity {
                 return true;
             }
         }, "NurMicrophone");
+    }
+
+    /** «Уведомления на телефон»: на Android 13+ нужно разрешение пользователя. */
+    void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= 33
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] { Manifest.permission.POST_NOTIFICATIONS }, NOTIFY_REQUEST);
+        }
     }
 
     @Override
@@ -1143,6 +1153,7 @@ public final class MainActivity extends ComponentActivity {
 
     @Override
     protected void onPause() {
+        PushPoller.appInFront = false;
         activeSpeechUtteranceId = null;
         if (textToSpeech != null) {
             textToSpeech.stop();
@@ -1163,6 +1174,7 @@ public final class MainActivity extends ComponentActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        PushPoller.appInFront = true;
         if (webView != null) {
             webView.onResume();
             webView.resumeTimers();

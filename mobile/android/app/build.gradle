@@ -65,8 +65,8 @@ android {
         applicationId = "com.franceisl.glowletternext"
         minSdk = 24
         targetSdk = 36
-        versionCode = 39
-        versionName = "2.4.24"
+        versionCode = 40
+        versionName = "2.4.25"
 
         buildConfigField "String", "PURCHASE_VERIFICATION_URL", quoteBuildConfig(verificationUrl)
         buildConfigField "String", "SUBSCRIPTION_PRODUCT_ID", quoteBuildConfig("glowletter_premium_monthly")
@@ -80,6 +80,8 @@ android {
         buildConfigField "String", "GOOGLE_WEB_CLIENT_ID", quoteBuildConfig("96836561934-sofaqgj9bmntr1jvc5aa1690ud1vkuet.apps.googleusercontent.com")
         buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "31"
         buildConfigField "int", "NATIVE_BRIDGE_API", "1"
+        buildConfigField "String", "PUSH_POLL_URL", quoteBuildConfig("https://xzzngrquomyiglktroqi.supabase.co/rest/v1/rpc/glowletter_push_poll")
+        buildConfigField "String", "SUPABASE_PUBLISHABLE_KEY", quoteBuildConfig("sb_publishable_g05_hxsxw6uNNOp9A7PxFw_dfGqvUuI")
         buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("stable")
         buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(stableWebBundleManifestUrl)
     }
@@ -207,6 +209,7 @@ tasks.named("preBuild").configure { dependsOn(syncWebAssets) }
 dependencies {
     implementation "androidx.activity:activity:1.9.0"
     implementation "androidx.core:core:1.13.1"
+    implementation "androidx.work:work-runtime:2.9.1"
     implementation "androidx.webkit:webkit:1.16.0"
     implementation "com.android.billingclient:billing:9.1.0"
     implementation "com.google.android.play:integrity:1.6.0"

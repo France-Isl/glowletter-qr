@@ -54,7 +54,8 @@
       gift_flower: "цветок", gift_tea: "чай", gift_cake: "пирожное", gift_star: "звёздочку", gift_balloon: "шарик", gift_book: "книжку", gift_heart: "сердечко", gift_sun: "солнышко",
       drawTogether: "Рисовать вместе", drawEyebrow: "GLOWLETTER · РИСУЕМ ВМЕСТЕ", drawTitle: "Общая открытка", drawWaiting: "{name} вот-вот присоединится…", drawWith: "{name} рисует с вами", drawInvite: "{name} зовёт рисовать вместе", drawYou: "Вы позвали рисовать вместе", drawJoin: "Рисовать", drawHeading: "Приглашение рисовать",
       drawUndo: "Отменить", drawClear: "Очистить", drawClearConfirm: "Очистить открытку для вас обоих?", drawEraser: "Ластик", drawSave: "Сохранить открытку", drawColor: "Цвет", drawSize: "Толщина", drawFile: "glowletter-card", drawSaved: "Открытка сохранена", drawOffline: "Нет связи — рисунок видите только вы.",
-      voiceRecord: "Записать голосовое", voiceRecording: "Запись {time}", voiceCancel: "Отмена", voiceMessage: "Голосовое · {time}", voiceGone: "Голосовое больше недоступно", voiceDenied: "Нет доступа к микрофону. Разрешите его в настройках.", voiceUnsupported: "На этом устройстве запись голоса недоступна. Обновите приложение.", voiceShort: "Слишком коротко — запишите хотя бы секунду.", voiceNew: "{name}: голосовое сообщение", voiceNote: "Голосовые сообщения хранятся 30 дней.", voicePlay: "Слушать", voiceStop: "Стоп"
+      voiceRecord: "Записать голосовое", voiceRecording: "Запись {time}", voiceCancel: "Отмена", voiceMessage: "Голосовое · {time}", voiceGone: "Голосовое больше недоступно", voiceDenied: "Нет доступа к микрофону. Разрешите его в настройках.", voiceUnsupported: "На этом устройстве запись голоса недоступна. Обновите приложение.", voiceShort: "Слишком коротко — запишите хотя бы секунду.", voiceNew: "{name}: голосовое сообщение", voiceNote: "Голосовые сообщения хранятся 30 дней.", voicePlay: "Слушать", voiceStop: "Стоп",
+      pushTitle: "Уведомления на телефон", pushNote: "Сообщим, когда друг написал вам, прочитал ваше письмо или ответил на него. Приложение проверяет новости примерно раз в 15 минут.", pushOn: "Включить", pushOff: "Выключить", pushEnabled: "Уведомления включены", pushDisabled: "Уведомления выключены", pushBlocked: "Разрешите уведомления для GlowLetter в настройках телефона.", pushChannel: "Друзья и письма", pushGame: "{name} зовёт вас играть", pushMany: "Новых сообщений: {n}", pushOpened: "Ваше письмо прочитали ✨", pushOpenedMany: "Прочитано ваших писем: {n}", pushReply: "Ответ на ваше письмо"
     },
     en: {
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
@@ -79,7 +80,8 @@
       gift_flower: "a flower", gift_tea: "some tea", gift_cake: "a cake", gift_star: "a little star", gift_balloon: "a balloon", gift_book: "a book", gift_heart: "a little heart", gift_sun: "some sunshine",
       drawTogether: "Draw together", drawEyebrow: "GLOWLETTER · DRAWING TOGETHER", drawTitle: "Our card", drawWaiting: "Waiting for {name}…", drawWith: "{name} is drawing with you", drawInvite: "{name} invites you to draw together", drawYou: "You invited to draw together", drawJoin: "Draw", drawHeading: "Drawing invitation",
       drawUndo: "Undo", drawClear: "Clear", drawClearConfirm: "Clear the card for both of you?", drawEraser: "Eraser", drawSave: "Save the card", drawColor: "Colour", drawSize: "Brush size", drawFile: "glowletter-card", drawSaved: "Card saved", drawOffline: "No connection — only you can see the drawing.",
-      voiceRecord: "Record a voice message", voiceRecording: "Recording {time}", voiceCancel: "Cancel", voiceMessage: "Voice message · {time}", voiceGone: "This voice message is no longer available", voiceDenied: "No access to the microphone. Allow it in settings.", voiceUnsupported: "Voice recording isn’t available on this device. Update the app.", voiceShort: "Too short — record at least one second.", voiceNew: "{name}: voice message", voiceNote: "Voice messages are kept for 30 days.", voicePlay: "Play", voiceStop: "Stop"
+      voiceRecord: "Record a voice message", voiceRecording: "Recording {time}", voiceCancel: "Cancel", voiceMessage: "Voice message · {time}", voiceGone: "This voice message is no longer available", voiceDenied: "No access to the microphone. Allow it in settings.", voiceUnsupported: "Voice recording isn’t available on this device. Update the app.", voiceShort: "Too short — record at least one second.", voiceNew: "{name}: voice message", voiceNote: "Voice messages are kept for 30 days.", voicePlay: "Play", voiceStop: "Stop",
+      pushTitle: "Phone notifications", pushNote: "We’ll let you know when a friend writes to you, reads your letter or replies to it. The app checks for news about every 15 minutes.", pushOn: "Turn on", pushOff: "Turn off", pushEnabled: "Notifications are on", pushDisabled: "Notifications are off", pushBlocked: "Allow notifications for GlowLetter in your phone settings.", pushChannel: "Friends and letters", pushGame: "{name} invites you to play", pushMany: "New messages: {n}", pushOpened: "Your letter has been read ✨", pushOpenedMany: "Letters read: {n}", pushReply: "A reply to your letter"
     },
     fr: {
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
@@ -104,7 +106,8 @@
       gift_flower: "une fleur", gift_tea: "du thé", gift_cake: "un gâteau", gift_star: "une petite étoile", gift_balloon: "un ballon", gift_book: "un livre", gift_heart: "un petit cœur", gift_sun: "un rayon de soleil",
       drawTogether: "Dessiner ensemble", drawEyebrow: "GLOWLETTER · DESSIN À DEUX", drawTitle: "Notre carte", drawWaiting: "On attend {name}…", drawWith: "{name} dessine avec vous", drawInvite: "{name} vous invite à dessiner ensemble", drawYou: "Vous avez invité à dessiner ensemble", drawJoin: "Dessiner", drawHeading: "Invitation à dessiner",
       drawUndo: "Annuler", drawClear: "Effacer", drawClearConfirm: "Effacer la carte pour vous deux ?", drawEraser: "Gomme", drawSave: "Enregistrer la carte", drawColor: "Couleur", drawSize: "Épaisseur", drawFile: "glowletter-carte", drawSaved: "Carte enregistrée", drawOffline: "Pas de connexion : vous seul voyez le dessin.",
-      voiceRecord: "Enregistrer un message vocal", voiceRecording: "Enregistrement {time}", voiceCancel: "Annuler", voiceMessage: "Message vocal · {time}", voiceGone: "Ce message vocal n’est plus disponible", voiceDenied: "Pas d’accès au micro. Autorisez-le dans les réglages.", voiceUnsupported: "L’enregistrement vocal n’est pas disponible sur cet appareil. Mettez l’application à jour.", voiceShort: "Trop court : enregistrez au moins une seconde.", voiceNew: "{name} : message vocal", voiceNote: "Les messages vocaux sont conservés 30 jours.", voicePlay: "Écouter", voiceStop: "Stop"
+      voiceRecord: "Enregistrer un message vocal", voiceRecording: "Enregistrement {time}", voiceCancel: "Annuler", voiceMessage: "Message vocal · {time}", voiceGone: "Ce message vocal n’est plus disponible", voiceDenied: "Pas d’accès au micro. Autorisez-le dans les réglages.", voiceUnsupported: "L’enregistrement vocal n’est pas disponible sur cet appareil. Mettez l’application à jour.", voiceShort: "Trop court : enregistrez au moins une seconde.", voiceNew: "{name} : message vocal", voiceNote: "Les messages vocaux sont conservés 30 jours.", voicePlay: "Écouter", voiceStop: "Stop",
+      pushTitle: "Notifications sur le téléphone", pushNote: "Nous vous prévenons quand un ami vous écrit, lit votre lettre ou y répond. L’application vérifie les nouveautés environ toutes les 15 minutes.", pushOn: "Activer", pushOff: "Désactiver", pushEnabled: "Notifications activées", pushDisabled: "Notifications désactivées", pushBlocked: "Autorisez les notifications de GlowLetter dans les réglages du téléphone.", pushChannel: "Amis et lettres", pushGame: "{name} vous invite à jouer", pushMany: "Nouveaux messages : {n}", pushOpened: "Votre lettre a été lue ✨", pushOpenedMany: "Lettres lues : {n}", pushReply: "Une réponse à votre lettre"
     }
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
@@ -270,6 +273,7 @@
       <section class="glg-section"><h3>${escapeHtml(tr("friends"))}</h3>
         ${friends.length ? `<ul class="glf-list">${friends.map(row => `<li><button class="glf-row glf-friend" type="button" data-action="chat" data-id="${escapeHtml(row.user_id)}">${avatar(row)}<span class="glf-who"><span class="glf-name">${escapeHtml(nameOf(row))}</span><small class="${isOnline(row) ? "is-online" : ""}">${escapeHtml(statusText(row))}</small></span>${row.unread ? `<b class="glg-new">${row.unread}</b>` : ""}</button></li>`).join("")}</ul>` : `<p class="glg-muted">${escapeHtml(tr("none"))}</p>`}
       </section>
+      ${renderPush()}
       ${outgoing.length ? `<section class="glg-section"><h3>${escapeHtml(tr("outgoing"))}</h3><ul class="glf-list">${outgoing.map(row => `<li class="glf-row is-muted">${avatar(row)}<span class="glf-name">${escapeHtml(nameOf(row))}</span></li>`).join("")}</ul></section>` : ""}
       <p class="glf-safety">${escapeHtml(tr("safety"))}</p>`;
   }
@@ -417,6 +421,8 @@
         }
         case "draw": return startDraw(state.chatWith);
         case "join-draw": { const friend = state.chatWith; close(); online()?.draw?.(target.dataset.room, { id: friend?.user_id, name: nameOf(friend) }); return; }
+        case "push-on": return enablePush();
+        case "push-off": notify(tr("pushDisabled"), 2400); return disablePush();
         case "voice-start": return startVoice();
         case "voice-cancel": stopVoice(false); return;
         case "voice-send": stopVoice(true); return;
@@ -531,6 +537,47 @@
       const again = state.root?.querySelector(".glf-compose textarea");
       if (again) again.value = body;
     }
+  }
+
+  // ——— Уведомления на телефон (Android, мост NurNotify) ———
+
+  const PUSH_USER_KEY = "glowletter-push-user";
+  const readPushUser = () => { try { return localStorage.getItem(PUSH_USER_KEY) || ""; } catch { return ""; } };
+  const notifier = () => (typeof window.NurNotify?.available === "function" ? window.NurNotify : null);
+  const pushOn = () => { try { return Boolean(notifier()?.enabled()); } catch { return false; } };
+  // Тексты уведомлений — на языке приложения; телефон подставляет имя и текст сам.
+  const pushTexts = () => JSON.stringify({
+    channel: tr("pushChannel"), noName: tr("noName"), text: tr("newMessage"), voice: tr("voiceNew"), bear: tr("bearVisit"),
+    draw: tr("drawInvite"), game: tr("pushGame"), many: tr("pushMany"), opened: tr("pushOpened"), openedMany: tr("pushOpenedMany"), reply: tr("pushReply")
+  });
+
+  function renderPush() {
+    if (!notifier()) return "";
+    const enabled = pushOn();
+    return `<section class="glg-section glf-push"><h3>🔔 ${escapeHtml(tr("pushTitle"))}</h3><p class="glg-muted">${escapeHtml(tr("pushNote"))}</p>
+      <div class="glf-push-row"><small class="${enabled ? "is-online" : ""}">${escapeHtml(tr(enabled ? "pushEnabled" : "pushDisabled"))}</small><button class="${enabled ? "glg-secondary" : "glg-primary"} glf-small" type="button" data-action="${enabled ? "push-off" : "push-on"}">${escapeHtml(tr(enabled ? "pushOff" : "pushOn"))}</button></div></section>`;
+  }
+
+  async function enablePush() {
+    const bridge = notifier();
+    if (!bridge) return;
+    const token = await rpc("glowletter_push_register", {});
+    bridge.enable(String(token || ""), pushTexts());
+    try { localStorage.setItem(PUSH_USER_KEY, userId()); } catch {}
+    notify(tr("pushEnabled"), 2600);
+    render();
+    // Разрешение спрашивает система; если его не дали, подсказываем, где включить.
+    setTimeout(() => { try { if (pushOn() && !bridge.permitted()) notify(tr("pushBlocked"), 5200); } catch {} }, 6000);
+  }
+
+  async function disablePush() {
+    const bridge = notifier();
+    if (!bridge) return;
+    let token = "";
+    try { token = String(bridge.disable() || ""); } catch {}
+    try { localStorage.removeItem(PUSH_USER_KEY); } catch {}
+    if (/^[0-9a-f]{64}$/u.test(token)) await rpc("glowletter_push_unregister", { p_token: token }).catch(() => {});
+    render();
   }
 
   // ——— Онлайн: сердечки, Тёпа, «Рисуем вместе», голосовые ———
@@ -832,6 +879,11 @@
 
   async function startSession() {
     if (!signedIn()) return;
+    if (pushOn()) {
+      // Ключ принадлежит другому аккаунту — выключаем, новый человек включит сам.
+      if (readPushUser() && readPushUser() !== userId()) disablePush();
+      else { try { notifier().setTexts(pushTexts()); } catch {} }
+    }
     subscribe();
     heartbeat();
     try { state.rows = (await rpc("glowletter_friends_list", {})) || []; } catch {}
@@ -862,6 +914,8 @@
 
   function stopSession() {
     clearInterval(state.heartbeat);
+    // Вышли из аккаунта (а не просто ещё не вошли при запуске) — уведомления этого аккаунта больше не нужны.
+    if (state.channelUser && pushOn()) disablePush();
     if (state.channel) client()?.removeChannel?.(state.channel);
     state.channel = null; state.channelUser = ""; state.rows = []; state.me = null;
     updateBadge();
@@ -877,7 +931,7 @@
     document.querySelector("#friendsOpenHome")?.addEventListener("click", () => open());
     document.querySelector("#onlineStrip")?.addEventListener("click", onStrip);
     localizeHome();
-    addEventListener("glowletter-language-changed", () => setTimeout(() => { localizeHome(); render(); renderStrip(); }, 0));
+    addEventListener("glowletter-language-changed", () => setTimeout(() => { localizeHome(); render(); renderStrip(); if (pushOn()) { try { notifier().setTexts(pushTexts()); } catch {} } }, 0));
     addEventListener("glowletter-cloud-session", event => { if (event.detail?.signedIn) startSession(); else stopSession(); });
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && signedIn()) rpc("glowletter_friends_touch", {}).catch(() => {}); });
     if (signedIn()) startSession();
