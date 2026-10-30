@@ -634,7 +634,12 @@
     if (signedIn()) setTimeout(loadWaiting, 1500);
   }
 
-  window.GlowLetterCouple = Object.freeze({ open: () => open(), outfits: OUTFITS, text: (key, values) => tr(key, values), language: () => language() });
+  // Наряд Тёпы для этого друга — чтобы в гости он пришёл таким же (friends.js).
+  const bearFor = partnerId => {
+    if (partnerId && state.partner?.user_id === partnerId && state.today) return currentOutfit().id;
+    return OUTFITS.find(outfit => outfit.id === read(storageKey(`${OUTFIT_KEY}:${partnerId}`)))?.id || OUTFITS[0].id;
+  };
+  window.GlowLetterCouple = Object.freeze({ open: () => open(), outfits: OUTFITS, bearFor, text: (key, values) => tr(key, values), language: () => language() });
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
