@@ -1144,3 +1144,13 @@ QR с новыми кнопками, окно «Отправить» со ссы
     задача. «Prevent use of leaked passwords» (HaveIBeenPwned) включена в
     Supabase 24 сентября с разрешения владельца (Sign In / Providers → Email);
     советник безопасности Supabase теперь без замечаний.
+
+## 2.4.26 (41) — исправление: 2.4.25 вылетала сразу при запуске
+
+*2026-10-31. Владелец: «выкидывает с приложения после обновы, даже удалил и заново скачал».*
+
+- Причина: R8 в релизной сборке вырезал `androidx.work.impl.WorkDatabase_Impl` (база WorkManager, которую Room ищет по имени класса). WorkManager запускается вместе с процессом (`androidx.startup.InitializationProvider`), поэтому 2.4.25 падала ещё до первого экрана: `Failed to create an instance of class androidx.work.impl.WorkDatabase`.
+- Исправление: правила `-keep` для наследников `RoomDatabase`, `WorkDatabase_Impl` и конструкторов `ListenableWorker` в `proguard-rules.pro`; тест в `tests/online-contract.test.mjs`.
+- Проверено на эмуляторе: подписанная 2.4.25 из сборки владельца падает так же; минифицированная релизная сборка с правилами запускается и показывает главный экран.
+- Play: заменяет 40 в закрытом тестировании. Data safety без изменений.
+- После одобрения Google: `update public.glowletter_app_release set version_name = '2.4.26', version_code = 41, updated_at = now() where platform = 'android';` (40 в таблицу не ставить никогда).

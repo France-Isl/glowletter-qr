@@ -82,3 +82,9 @@ assert.match(worker, /"online\.js\?v=86"/u);
 assert.match(worker, /"online\.js", "voice\.js"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, keys: ONLINE_KEYS.length }));
+
+// 2.4.26: без этих правил R8 вырезал базу WorkManager, и 2.4.25 падала на запуске.
+const proguard = read("mobile/android/app/proguard-rules.pro");
+assert.match(proguard, /-keep class \* extends androidx\.room\.RoomDatabase \{ <init>\(\); \}/u);
+assert.match(proguard, /-keep class androidx\.work\.impl\.WorkDatabase_Impl/u);
+assert.match(proguard, /-keep class \* extends androidx\.work\.ListenableWorker/u);

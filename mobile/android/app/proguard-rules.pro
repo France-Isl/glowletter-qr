@@ -16,3 +16,12 @@
 # from over-aggressive future R8 changes in this small wrapper application.
 -keep class com.android.billingclient.api.** { *; }
 -dontwarn org.conscrypt.**
+
+# «Уведомления на телефон» (2.4.25): WorkManager находит свою базу Room и наш
+# PushPoller по имени класса. Без этих правил R8 вырезал WorkDatabase_Impl, и
+# приложение падало на запуске (InitializationProvider → WorkDatabase).
+-keep class * extends androidx.room.RoomDatabase { <init>(); }
+-keep class androidx.work.impl.WorkDatabase_Impl { *; }
+-keep class * extends androidx.work.ListenableWorker {
+    public <init>(android.content.Context, androidx.work.WorkerParameters);
+}
