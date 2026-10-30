@@ -59,6 +59,16 @@
         "rule": "design-system-font-size",
         "value": "20px",
         "createdAt": "2026-10-27T00:49:03.068Z"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "34px",
+        "createdAt": "2026-10-30T22:09:36.915Z"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "64px",
+        "createdAt": "2026-10-30T22:09:36.992Z"
       }
     ]
   }
