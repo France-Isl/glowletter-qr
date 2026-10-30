@@ -15,7 +15,13 @@ public final class ShareBridge {
         activity.runOnUiThread(() -> activity.openShareSheetFromWeb(title, text, url));
     }
 
-    /** Shares a PNG or PDF card rendered by the page (base64 bytes). */
+    /** Tells the page that this build can share the bear-reader video (2.4.24). */
+    @JavascriptInterface
+    public boolean supportsVideo() {
+        return true;
+    }
+
+    /** Shares a PNG, PDF or MP4/WebM file rendered by the page (base64 bytes). */
     @JavascriptInterface
     public void shareFile(String base64, String mimeType, String fileName) {
         activity.runOnUiThread(() -> activity.openFileShareSheetFromWeb(base64, mimeType, fileName));

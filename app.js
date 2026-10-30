@@ -219,6 +219,11 @@
   Object.assign(UI.en, {"settingsCloudSaved": "Settings saved in your account", "settingsCloudNote": "Theme, background and letter style are saved in your account and follow you to other devices.", "voiceRecord": "Record your voice", "voiceTitle": "Voice letter", "voiceLead": "Say a few warm words — the recording is attached to the letter. Up to 2 minutes.", "voiceStart": "Start recording", "voiceStop": "Stop", "voiceAgain": "Record again", "voiceUse": "Attach to the letter", "voiceRecording": "Recording… {time}", "voiceDenied": "Allow microphone access to record your voice.", "voiceUnsupported": "Voice recording isn’t available here. You can attach an audio file instead.", "voiceAttached": "Your voice is attached to the letter", "voiceName": "Voice letter", "scheduleTitle": "When should the letter open?", "scheduleNow": "Right away", "scheduleLater": "On a chosen day", "scheduleNote": "Before this time the recipient sees only the date when the letter opens.", "scheduleSignIn": "Sign in to send a letter on a chosen day.", "schedulePast": "Choose a time in the future, up to one year ahead.", "scheduleReady": "The letter will open on {date}"});
   Object.assign(UI.fr, {"settingsCloudSaved": "Réglages enregistrés dans votre compte", "settingsCloudNote": "Le thème, le fond et le style de la lettre sont gardés dans votre compte et vous suivent sur vos autres appareils.", "voiceRecord": "Enregistrer ma voix", "voiceTitle": "Lettre vocale", "voiceLead": "Dites quelques mots tendres — l’enregistrement sera joint à la lettre. Jusqu’à 2 minutes.", "voiceStart": "Commencer l’enregistrement", "voiceStop": "Arrêter", "voiceAgain": "Recommencer", "voiceUse": "Joindre à la lettre", "voiceRecording": "Enregistrement… {time}", "voiceDenied": "Autorisez l’accès au micro pour enregistrer votre voix.", "voiceUnsupported": "L’enregistrement de la voix n’est pas disponible ici. Vous pouvez joindre un fichier audio.", "voiceAttached": "Votre voix est jointe à la lettre", "voiceName": "Lettre vocale", "scheduleTitle": "Quand la lettre doit-elle s’ouvrir ?", "scheduleNow": "Tout de suite", "scheduleLater": "Un jour choisi", "scheduleNote": "Avant cette date, le destinataire ne voit que le jour d’ouverture de la lettre.", "scheduleSignIn": "Connectez-vous pour envoyer une lettre à une date choisie.", "schedulePast": "Choisissez un moment futur, au plus dans un an.", "scheduleReady": "La lettre s’ouvrira le {date}"});
 
+  // 2.4.24: «Капсула времени» — быстрые сроки и письма до 25 лет вперёд.
+  Object.assign(UI.ru, {"capsuleMonth": "Через месяц", "capsuleHalf": "Через полгода", "capsuleYear": "Через год", "capsuleYears": "Через {n} лет", "capsuleHint": "Капсула времени: письмо может ждать до 25 лет — например, до 18-летия. Дольше года — с полным доступом.", "capsuleLong": "Письмо, которое ждёт дольше года, — с полным доступом.", "schedulePast": "Выберите время в будущем, не дальше чем через 25 лет."});
+  Object.assign(UI.en, {"capsuleMonth": "In a month", "capsuleHalf": "In six months", "capsuleYear": "In a year", "capsuleYears": "In {n} years", "capsuleHint": "Time capsule: a letter can wait up to 25 years — for example, until an 18th birthday. Longer than a year comes with full access.", "capsuleLong": "A letter that waits longer than a year comes with full access.", "schedulePast": "Choose a time in the future, up to 25 years ahead."});
+  Object.assign(UI.fr, {"capsuleMonth": "Dans un mois", "capsuleHalf": "Dans six mois", "capsuleYear": "Dans un an", "capsuleYears": "Dans {n} ans", "capsuleHint": "Capsule temporelle : une lettre peut attendre jusqu’à 25 ans, par exemple jusqu’aux 18 ans. Au-delà d’un an, avec l’accès complet.", "capsuleLong": "Une lettre qui attend plus d’un an est incluse dans l’accès complet.", "schedulePast": "Choisissez un moment futur, au plus dans 25 ans."});
+
   // German, Spanish, Italian and Polish come from i18n-extra.js. A phrase that
   // is missing there shows in English rather than in Russian.
   const SUPPORTED_LANGUAGES = Object.freeze(Array.isArray(window.NUR_LANGUAGES) ? window.NUR_LANGUAGES.slice() : ["ru", "en", "fr"]);
@@ -3662,7 +3667,7 @@
     setText("#privacyLink",t("privacy"));setText("#termsLink",t("terms"));setText("#deleteAccountLink",t("deletePage"));setText("#supportOpenButton",t("supportLink"));setText("#contactTitle",t("contactTitle"));setText("#contactNote",t("contactNote"));setText("#homeContactLabel",t("contactTitle"));$("#homeContact").hidden=IS_ANDROID_PLAY_APP;
     setText("#restoreButton", t("restore")); $("#manageSubscriptionButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg> ${escapeHtml(t("manageSubscription"))}`; setText("#paywallManageSubscription", t("manageSubscription")); $("#settingsRestoreButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-download"/></svg> ${escapeHtml(t("subscriptionRestore"))}`; renderSubscriptionCard(); renderAppUpdate(); $$(".password-toggle").forEach(toggle => { const input = document.getElementById(toggle.getAttribute("aria-controls") || ""); if (input) renderPasswordToggle(toggle, input); }); $("#shareAppButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-share"/></svg> ${escapeHtml(t("shareApp"))}`; $("#qrOpenButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-qr"/></svg> ${escapeHtml(t("qrOpen"))}`; $("#installButton").innerHTML = `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-plus"/></svg> ${escapeHtml(t("install"))}`; setText("#installHint", t("installIosHint")); $("#installHint").hidden = !(/iPad|iPhone|iPod/u.test(navigator.userAgent) && !navigator.standalone); $$(".price-label").forEach(label => label.textContent = premiumPrice); $$(".yearly-price-label").forEach(label => label.textContent = yearlyPrice);
     setText("#shareAppLayer .panel-eyebrow", t("shareChooserEyebrow")); setText("#shareAppTitle", t("shareChooserTitle")); setText("#shareAppLead", t("shareChooserLead")); setText("#shareTelegram span", t("shareTelegram")); setText("#shareWhatsapp span", t("shareWhatsapp")); setText("#shareEmail span", t("shareEmail")); setText("#shareCopyLink span", t("shareCopy"));
-    setText("#scheduleTitle",t("scheduleTitle"));setText("#scheduleNowLabel",t("scheduleNow"));setText("#scheduleLaterLabel",t("scheduleLater"));setText("#scheduleNote",t("scheduleNote"));
+    setText("#scheduleTitle",t("scheduleTitle"));setText("#scheduleNowLabel",t("scheduleNow"));setText("#scheduleLaterLabel",t("scheduleLater"));setText("#scheduleNote",t("scheduleNote"));setText("#capsuleHint",t("capsuleHint"));$$("#publicationCapsule [data-capsule]").forEach(button=>{const code=button.dataset.capsule;button.textContent=code==="1m"?t("capsuleMonth"):code==="6m"?t("capsuleHalf"):code==="1y"?t("capsuleYear"):capsuleYearsLabel(parseInt(code,10));});
     setText("#publicationTitle",t("publishTitle"));setText("#publicationLead",t("publishLead"));setText("#publicationConsentText",t("publishConsent"));setText("#publicationAgreement",t("publishAgreement"));setText("#publicationTerms",t("publishTerms"));setText("#publicationAnd",t("publishAnd"));setText("#publicationPrivacy",t("publishPrivacy"));setText("#publicationError",t("publishRequired"));setText("#publicationCancel",t("publishCancel"));setText("#publicationConfirmLabel",t("publishConfirm"));renderPublicationAudio();renderSetupAudio();
     setText("#reportLetterButton",t("reportLink"));setText("#reportTitle",t("reportTitle"));setText("#reportLead",t("reportLead"));setText("#reportCategoryLabel",t("reportCategory"));setText("#reportDetailsLabel",t("reportDetails"));$("#reportDetails").placeholder=t("reportPlaceholder");setText("#reportSubmitLabel",reportSubmitting?t("reportSending"):t("reportSubmit"));setSelectOptions("#reportCategory",CONTENT_REPORT_OPTIONS[lang]||CONTENT_REPORT_OPTIONS.en);
     $("#supportTitle").innerHTML=t("supportFormTitle");setText("#supportLead",t("supportFormLead"));setText("#supportGuestTitle",t("supportGuestTitle"));setText("#supportGuestNote",t("supportGuestNote"));setText("#supportCopyContact",t("supportCopyContact"));setText("#supportEmailLabel",t("supportEmailLabel"));setText("#supportIdLabel",t("supportIdLabel"));setText("#supportCategoryLabel",t("supportCategoryLabel"));setText("#supportMessageLabel",t("supportMessageLabel"));$("#supportMessage").placeholder=t("supportMessagePlaceholder");setText("#supportPrivacyNote",t("supportPrivacyNote"));setText("#supportSubmitLabel",supportSubmitting?t("supportSending"):t("supportSubmit"));setSelectOptions("#supportCategory",SELECT_OPTIONS.supportCategory[lang]);renderSupportFormState();updateSupportMessageCount();
@@ -5466,6 +5471,8 @@
     if (!button) return;
     button.innerHTML = letterSpeechActive ? `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-book"/></svg> ${escapeHtml(t("stop"))}` : `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-note"/></svg> ${escapeHtml(t("read"))}`;
     button.setAttribute("aria-pressed", String(letterSpeechActive));
+    // «Тёпа читает письмо» (bear-reader.js) показывает мишку, пока звучит голос.
+    dispatchEvent(new CustomEvent("glowletter-letter-speech", { detail: { active: letterSpeechActive, text: letterSpeechText } }));
   }
 
   function clearSpeechState() {
@@ -5503,6 +5510,9 @@
     };
     utterance.onend = () => {
       if (request === letterSpeechRequest && letterSpeechSource === "browser") clearSpeechState();
+    };
+    utterance.onboundary = event => {
+      if (request === letterSpeechRequest) dispatchEvent(new CustomEvent("glowletter-letter-speech", { detail: { active: true, text, charIndex: Number(event?.charIndex) || 0 } }));
     };
     utterance.onerror = event => {
       if (request !== letterSpeechRequest || letterSpeechSource !== "browser") return;
@@ -5605,13 +5615,13 @@
     const box=$("#publicationSchedule");if(!box)return;
     box.hidden=!publicationContext.schedule;
     const now=box.querySelector('input[value="now"]');if(now)now.checked=true;
-    const field=$("#publicationUnlockAt");field.hidden=true;field.value="";$("#scheduleNote").hidden=true;
+    const field=$("#publicationUnlockAt");field.hidden=true;field.value="";$("#scheduleNote").hidden=true;$("#publicationCapsule").hidden=true;$("#capsuleHint").hidden=true;$$("#publicationCapsule [data-capsule]").forEach(button=>button.setAttribute("aria-pressed","false"));
     const pad=value=>String(value).padStart(2,"0");const local=date=>`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
-    field.min=local(new Date(Date.now()+5*60000));field.max=local(new Date(Date.now()+364*86400000));
+    field.min=local(new Date(Date.now()+5*60000));field.max=local(isPremium?capsuleDate("25y",false):new Date(Date.now()+364*86400000));
   }
   function updatePublicationSchedule(){
     const later=$('#publicationSchedule input[value="later"]')?.checked===true;
-    $("#publicationUnlockAt").hidden=!later;$("#scheduleNote").hidden=!later;$("#publicationError").hidden=true;
+    $("#publicationUnlockAt").hidden=!later;$("#scheduleNote").hidden=!later;$("#publicationCapsule").hidden=!later;$("#capsuleHint").hidden=!later;$("#publicationError").hidden=true;
     if(later&&!$("#publicationUnlockAt").value){const date=new Date(Date.now()+86400000);date.setHours(9,0,0,0);const pad=value=>String(value).padStart(2,"0");$("#publicationUnlockAt").value=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T09:00`;}
   }
   // Возвращает false и показывает подсказку, если день выбран неверно или нет входа.
@@ -5621,9 +5631,32 @@
     const error=$("#publicationError");
     if(!cloudUser?.id){error.textContent=t("scheduleSignIn");error.hidden=false;return false;}
     const time=new Date($("#publicationUnlockAt").value).getTime();
-    if(!Number.isFinite(time)||time<Date.now()+60000||time>Date.now()+365*86400000){error.textContent=t("schedulePast");error.hidden=false;return false;}
+    if(Number.isFinite(time)&&!isPremium&&time>Date.now()+365*86400000&&time<=capsuleDate("25y",false).getTime()){error.textContent=t("capsuleLong");error.hidden=false;return false;}
+    if(!Number.isFinite(time)||time<Date.now()+60000||time>capsuleDate("25y",false).getTime()){error.textContent=t("schedulePast");error.hidden=false;return false;}
     publicationUnlockAt=new Date(time).toISOString();
     return true;
+  }
+  // «Капсула времени»: быстрые сроки — от месяца до 18 лет; дольше года — с полным доступом.
+  function capsuleDate(code,morning=true){
+    const date=new Date();const amount=parseInt(code,10);
+    if(code.endsWith("m"))date.setMonth(date.getMonth()+amount);else date.setFullYear(date.getFullYear()+amount);
+    if(morning)date.setHours(9,0,0,0);
+    return date;
+  }
+  // В арабском 11 и больше лет требуют другой формы слова — отдельная строка capsuleYearsMany.
+  function capsuleYearsLabel(years){
+    const many=t("capsuleYearsMany");
+    return (years>10&&many&&many!=="capsuleYearsMany"?many:t("capsuleYears")).replace("{n}",years);
+  }
+  function pickCapsule(button){
+    const code=String(button?.dataset.capsule||"");if(!code)return;
+    const error=$("#publicationError");
+    if(code.endsWith("y")&&parseInt(code,10)>1&&!isPremium){error.textContent=t("capsuleLong");error.hidden=false;return;}
+    const later=$('#publicationSchedule input[value="later"]');if(later)later.checked=true;
+    updatePublicationSchedule();
+    const date=capsuleDate(code);const pad=value=>String(value).padStart(2,"0");
+    $("#publicationUnlockAt").value=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T09:00`;
+    $$("#publicationCapsule [data-capsule]").forEach(item=>item.setAttribute("aria-pressed",String(item===button)));
   }
   async function shareLetterOnDay(entry,unlockAt){
     const ready=await initializeMomentsIntegration();const moments=window.GlowLetterMoments;
@@ -5633,7 +5666,7 @@
       if(!letter)throw new Error("not_saved");
       const link=await moments.createQrForLetter(letter,{unlockAt,consented:true});
       if(link)showToast(t("scheduleReady").replace("{date}",new Date(unlockAt).toLocaleString(lang==="ind"?"id":lang,{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})),5200);
-    }catch(error){console.info("Scheduled letter failed",error);showToast(t("replyFailed"),3200);}
+    }catch(error){console.info("Scheduled letter failed",error);if(String(error?.message||error).includes("premium_required")){openPaywall();return;}showToast(t("replyFailed"),3200);}
   }
 
   function updateReportButton(){
@@ -5839,6 +5872,13 @@
     // «Голосовое письмо»: запись с микрофона становится аудио письма.
     useAudioFile:file=>selectCustomAudio(file,{play:false}),
     openPaywall:()=>openPaywall(),
+    // «Книга ответов» в «Мы вдвоём»: страницы-JPEG → PDF → «Поделиться» или скачать.
+    makePdf:(pages,pageWidth,pageHeight)=>jpegPagesToPdf(pages,pageWidth,pageHeight),
+    deliverFile:(blob,filename)=>deliverFile(blob,String(filename||"glowletter.pdf")),
+    // «Тёпа читает письмо»: текст и своё аудио письма для видео; старые сборки Android не умеют делиться видео.
+    readingLetter:()=>({text:entryText(currentEntry()).trim(),sender:fromName,recipient:toName,audio:customAudioBlob||null}),
+    stopReading:()=>stopLetterSpeech(),
+    canShareVideo:()=>{const bridge=nativeFileShareBridge();return typeof window.MediaRecorder==="function"&&typeof HTMLCanvasElement.prototype.captureStream==="function"&&(!bridge||typeof bridge.supportsVideo==="function");},
     requestSignIn:origin=>requestSignIn(String(origin||"home")),
     goHome:()=>goHome()
   });
@@ -6010,22 +6050,28 @@
     const personal=currentQrMode==="personal";
     const accepted=await requestPublishConsent({kind:personal?"qr":"direct",audio:personal});if(accepted){qrConsentKey=qrConsentSignature();await syncQrAudio();}return accepted;
   }
-  // PDF из одной страницы A6 с JPEG-картинкой карточки; без библиотек.
-  async function jpegToPdf(jpegBlob,pixelWidth,pixelHeight,pageWidth,pageHeight){
-    const image=new Uint8Array(await jpegBlob.arrayBuffer());const encoder=new TextEncoder();const parts=[];const offsets=[];let length=0;
+  // PDF из JPEG-картинок, по одной на страницу; без библиотек. Текст рисуется
+  // на холсте заранее, поэтому любой язык и любой шрифт выходят как на экране.
+  async function jpegPagesToPdf(pages,pageWidth,pageHeight){
+    const encoder=new TextEncoder();const parts=[];const offsets=[];let length=0;
     const push=chunk=>{const bytes=typeof chunk==="string"?encoder.encode(chunk):chunk;parts.push(bytes);length+=bytes.length;};
     const object=(number,body)=>{offsets[number]=length;push(`${number} 0 obj\n`);if(typeof body==="string")push(body);else{push(body.head);push(body.stream);push("\nendstream");}push("\nendobj\n");};
     push("%PDF-1.4\n");
     object(1,"<< /Type /Catalog /Pages 2 0 R >>");
-    object(2,"<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
-    object(3,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`);
-    object(4,{head:`<< /Type /XObject /Subtype /Image /Width ${pixelWidth} /Height ${pixelHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.length} >>\nstream\n`,stream:image});
-    const content=encoder.encode(`q ${pageWidth} 0 0 ${pageHeight} 0 0 cm /Im0 Do Q`);
-    object(5,{head:`<< /Length ${content.length} >>\nstream\n`,stream:content});
-    const xref=length;
-    push(`xref\n0 6\n0000000000 65535 f \n${[1,2,3,4,5].map(number=>`${String(offsets[number]).padStart(10,"0")} 00000 n \n`).join("")}trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+    object(2,`<< /Type /Pages /Kids [${pages.map((_,index)=>`${3+3*index} 0 R`).join(" ")}] /Count ${pages.length} >>`);
+    for(const [index,page] of pages.entries()){
+      const image=new Uint8Array(await page.blob.arrayBuffer());const number=3+3*index;
+      object(number,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im${index} ${number+1} 0 R >> >> /Contents ${number+2} 0 R >>`);
+      object(number+1,{head:`<< /Type /XObject /Subtype /Image /Width ${page.width} /Height ${page.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.length} >>\nstream\n`,stream:image});
+      const content=encoder.encode(`q ${pageWidth} 0 0 ${pageHeight} 0 0 cm /Im${index} Do Q`);
+      object(number+2,{head:`<< /Length ${content.length} >>\nstream\n`,stream:content});
+    }
+    const size=3+3*pages.length;const xref=length;
+    push(`xref\n0 ${size}\n0000000000 65535 f \n${Array.from({length:size-1},(_,index)=>`${String(offsets[index+1]).padStart(10,"0")} 00000 n \n`).join("")}trailer\n<< /Size ${size} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
     return new Blob(parts,{type:"application/pdf"});
   }
+  // PDF из одной страницы A6 с JPEG-картинкой карточки.
+  function jpegToPdf(jpegBlob,pixelWidth,pixelHeight,pageWidth,pageHeight){return jpegPagesToPdf([{blob:jpegBlob,width:pixelWidth,height:pixelHeight}],pageWidth,pageHeight);}
   async function downloadQrPdf(){
     if(!(currentQrMode==="personal"?renderCurrentQr(false):renderQrCode(false)))return;if(!await qrConsent())return;const canvas=await createQrCardCanvas();if(!canvas)return;
     const jpeg=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.92));if(!jpeg)return;
@@ -6097,6 +6143,8 @@
     $("#qrPdfButton").addEventListener("click",downloadQrPdf);$("#qrSendButton").addEventListener("click",openQrSend);$("#qrSendClose").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendBackdrop").addEventListener("click",()=>closePanel(layers.qrSend));$("#qrSendCopy").addEventListener("click",copyQrLink);$("#qrSendOther").addEventListener("click",shareQrLinkNative);$("#qrSendFile").addEventListener("click",shareQrCardFile);
     $("#composerClose").addEventListener("click",closeOwnTextComposer);$("#composerBackdrop").addEventListener("click",closeOwnTextComposer);$("#composerDone").addEventListener("click",submitOwnText);$("#composerCollection").addEventListener("click",composerToCollection);$("#composerText").addEventListener("input",()=>{updateComposerCounter();$("#composerError").hidden=true;});
     $$('#publicationSchedule input[name="publicationWhen"]').forEach(input=>input.addEventListener("change",updatePublicationSchedule));
+    $$("#publicationCapsule [data-capsule]").forEach(button=>button.addEventListener("click",()=>pickCapsule(button)));
+    $("#publicationUnlockAt")?.addEventListener("input",()=>$$("#publicationCapsule [data-capsule]").forEach(item=>item.setAttribute("aria-pressed","false")));
     $("#publicationConsent").addEventListener("change",event=>{$("#publicationConfirm").disabled=!event.target.checked;$("#publicationError").hidden=true;});$("#publicationConfirm").addEventListener("click",()=>finishPublishConsent(true));$("#publicationCancel").addEventListener("click",()=>finishPublishConsent(false));$("#publicationClose").addEventListener("click",()=>finishPublishConsent(false));$("#publicationBackdrop").addEventListener("click",()=>finishPublishConsent(false));
     $("#reportLetterButton").addEventListener("click",()=>activeReportContext&&openContentReport(activeReportContext));$("#reportClose").addEventListener("click",()=>closePanel(layers.report));$("#reportBackdrop").addEventListener("click",()=>closePanel(layers.report));$("#reportForm").addEventListener("submit",submitContentReport);
     $("#shareAppClose").addEventListener("click",()=>closePanel(layers.share));$("#shareAppBackdrop").addEventListener("click",()=>closePanel(layers.share));$("#shareCopyLink").addEventListener("click",copyFallbackShareLink);
@@ -6139,7 +6187,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=82", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=83", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

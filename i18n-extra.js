@@ -15840,3 +15840,209 @@ Object.entries({
   const pack = window.NUR_I18N_EXTRA?.[code];
   if (pack?.app) Object.assign(pack.app, texts);
 });
+
+// 2.4.24: «Капсула времени» — быстрые сроки и письма до 25 лет вперёд.
+Object.entries({
+  "de": {
+    "capsuleMonth": "In einem Monat",
+    "capsuleHalf": "In einem halben Jahr",
+    "capsuleYear": "In einem Jahr",
+    "capsuleYears": "In {n} Jahren",
+    "capsuleHint": "Zeitkapsel: Ein Brief kann bis zu 25 Jahre warten – zum Beispiel bis zum 18. Geburtstag. Länger als ein Jahr gibt es mit Vollzugriff.",
+    "capsuleLong": "Ein Brief, der länger als ein Jahr wartet, ist mit Vollzugriff verfügbar.",
+    "schedulePast": "Wähle einen Zeitpunkt in der Zukunft, höchstens 25 Jahre im Voraus."
+  },
+  "es": {
+    "capsuleMonth": "Dentro de un mes",
+    "capsuleHalf": "Dentro de seis meses",
+    "capsuleYear": "Dentro de un año",
+    "capsuleYears": "Dentro de {n} años",
+    "capsuleHint": "Cápsula del tiempo: una carta puede esperar hasta 25 años, por ejemplo, hasta que alguien cumpla 18. Más de un año, con acceso completo.",
+    "capsuleLong": "Una carta que espera más de un año está disponible con acceso completo.",
+    "schedulePast": "Elige un momento futuro, como máximo dentro de 25 años."
+  },
+  "it": {
+    "capsuleMonth": "Tra un mese",
+    "capsuleHalf": "Tra sei mesi",
+    "capsuleYear": "Tra un anno",
+    "capsuleYears": "Tra {n} anni",
+    "capsuleHint": "Capsula del tempo: una lettera può aspettare fino a 25 anni, per esempio fino ai 18 anni. Oltre un anno, con l’accesso completo.",
+    "capsuleLong": "Una lettera che aspetta più di un anno è disponibile con l’accesso completo.",
+    "schedulePast": "Scegli un momento futuro, al massimo tra 25 anni."
+  },
+  "pl": {
+    "capsuleMonth": "Za miesiąc",
+    "capsuleHalf": "Za pół roku",
+    "capsuleYear": "Za rok",
+    "capsuleYears": "Za {n} lat",
+    "capsuleHint": "Kapsuła czasu: list może czekać do 25 lat — na przykład do 18. urodzin. Dłużej niż rok — z pełnym dostępem.",
+    "capsuleLong": "List, który czeka dłużej niż rok, jest dostępny z pełnym dostępem.",
+    "schedulePast": "Wybierz termin w przyszłości, najdalej za 25 lat."
+  },
+  "uk": {
+    "capsuleMonth": "Через місяць",
+    "capsuleHalf": "Через пів року",
+    "capsuleYear": "Через рік",
+    "capsuleYears": "Через {n} років",
+    "capsuleHint": "Капсула часу: лист може чекати до 25 років — наприклад, до 18-річчя. Довше за рік — з повним доступом.",
+    "capsuleLong": "Лист, який чекає довше за рік, доступний з повним доступом.",
+    "schedulePast": "Виберіть час у майбутньому, не далі ніж за 25 років."
+  },
+  "pt": {
+    "capsuleMonth": "Daqui a um mês",
+    "capsuleHalf": "Daqui a seis meses",
+    "capsuleYear": "Daqui a um ano",
+    "capsuleYears": "Daqui a {n} anos",
+    "capsuleHint": "Cápsula do tempo: uma carta pode esperar até 25 anos — por exemplo, até alguém fazer 18 anos. Mais de um ano, com o acesso completo.",
+    "capsuleLong": "Uma carta que espera mais de um ano está disponível com o acesso completo.",
+    "schedulePast": "Escolha um momento no futuro, no máximo daqui a 25 anos."
+  },
+  "nl": {
+    "capsuleMonth": "Over een maand",
+    "capsuleHalf": "Over een half jaar",
+    "capsuleYear": "Over een jaar",
+    "capsuleYears": "Over {n} jaar",
+    "capsuleHint": "Tijdcapsule: een brief kan tot 25 jaar wachten — bijvoorbeeld tot iemands 18e verjaardag. Langer dan een jaar kan met volledige toegang.",
+    "capsuleLong": "Een brief die langer dan een jaar wacht, is beschikbaar met volledige toegang.",
+    "schedulePast": "Kies een moment in de toekomst, uiterlijk over 25 jaar."
+  },
+  "tr": {
+    "capsuleMonth": "Bir ay sonra",
+    "capsuleHalf": "Altı ay sonra",
+    "capsuleYear": "Bir yıl sonra",
+    "capsuleYears": "{n} yıl sonra",
+    "capsuleHint": "Zaman kapsülü: bir mektup 25 yıla kadar bekleyebilir — örneğin 18. yaş gününe kadar. Bir yıldan uzun süre tam erişimle.",
+    "capsuleLong": "Bir yıldan uzun bekleyen mektup tam erişimle kullanılabilir.",
+    "schedulePast": "Gelecekte, en fazla 25 yıl sonrası için bir zaman seçin."
+  },
+  "ro": {
+    "capsuleMonth": "Peste o lună",
+    "capsuleHalf": "Peste șase luni",
+    "capsuleYear": "Peste un an",
+    "capsuleYears": "Peste {n} ani",
+    "capsuleHint": "Capsula timpului: o scrisoare poate aștepta până la 25 de ani — de exemplu, până la împlinirea a 18 ani. Peste un an, cu acces complet.",
+    "capsuleLong": "O scrisoare care așteaptă mai mult de un an este disponibilă cu acces complet.",
+    "schedulePast": "Alegeți un moment din viitor, cel mult peste 25 de ani."
+  },
+  "cs": {
+    "capsuleMonth": "Za měsíc",
+    "capsuleHalf": "Za půl roku",
+    "capsuleYear": "Za rok",
+    "capsuleYears": "Za {n} let",
+    "capsuleHint": "Časová schránka: dopis může čekat až 25 let — třeba do 18. narozenin. Déle než rok — s plným přístupem.",
+    "capsuleLong": "Dopis, který čeká déle než rok, je dostupný s plným přístupem.",
+    "schedulePast": "Vyberte čas v budoucnu, nejvýše 25 let dopředu."
+  },
+  "sv": {
+    "capsuleMonth": "Om en månad",
+    "capsuleHalf": "Om ett halvår",
+    "capsuleYear": "Om ett år",
+    "capsuleYears": "Om {n} år",
+    "capsuleHint": "Tidskapsel: ett brev kan vänta i upp till 25 år – till exempel till en 18-årsdag. Längre än ett år ingår i full tillgång.",
+    "capsuleLong": "Ett brev som väntar längre än ett år finns med full tillgång.",
+    "schedulePast": "Välj en tidpunkt i framtiden, högst 25 år fram."
+  },
+  "el": {
+    "capsuleMonth": "Σε έναν μήνα",
+    "capsuleHalf": "Σε έξι μήνες",
+    "capsuleYear": "Σε έναν χρόνο",
+    "capsuleYears": "Σε {n} χρόνια",
+    "capsuleHint": "Χρονοκάψουλα: ένα γράμμα μπορεί να περιμένει έως 25 χρόνια — για παράδειγμα, μέχρι τα 18α γενέθλια. Πάνω από έναν χρόνο, με πλήρη πρόσβαση.",
+    "capsuleLong": "Ένα γράμμα που περιμένει πάνω από έναν χρόνο είναι διαθέσιμο με πλήρη πρόσβαση.",
+    "schedulePast": "Διάλεξε μια ώρα στο μέλλον, το πολύ σε 25 χρόνια."
+  },
+  "da": {
+    "capsuleMonth": "Om en måned",
+    "capsuleHalf": "Om et halvt år",
+    "capsuleYear": "Om et år",
+    "capsuleYears": "Om {n} år",
+    "capsuleHint": "Tidskapsel: et brev kan vente op til 25 år – for eksempel til en 18-års fødselsdag. Mere end et år er tilgængeligt med fuld adgang.",
+    "capsuleLong": "Et brev, der venter mere end et år, er tilgængeligt med fuld adgang.",
+    "schedulePast": "Vælg et tidspunkt i fremtiden, højst 25 år frem."
+  },
+  "no": {
+    "capsuleMonth": "Om en måned",
+    "capsuleHalf": "Om et halvt år",
+    "capsuleYear": "Om et år",
+    "capsuleYears": "Om {n} år",
+    "capsuleHint": "Tidskapsel: et brev kan vente i opptil 25 år – for eksempel til 18-årsdagen. Mer enn ett år er tilgjengelig med full tilgang.",
+    "capsuleLong": "Et brev som venter mer enn ett år, er tilgjengelig med full tilgang.",
+    "schedulePast": "Velg et tidspunkt i fremtiden, høyst 25 år frem."
+  },
+  "fi": {
+    "capsuleMonth": "Kuukauden päästä",
+    "capsuleHalf": "Puolen vuoden päästä",
+    "capsuleYear": "Vuoden päästä",
+    "capsuleYears": "{n} vuoden päästä",
+    "capsuleHint": "Aikakapseli: kirje voi odottaa jopa 25 vuotta – esimerkiksi 18-vuotissyntymäpäivään asti. Yli vuoden odotus kuuluu täyteen käyttöön.",
+    "capsuleLong": "Yli vuoden odottava kirje kuuluu täyteen käyttöön.",
+    "schedulePast": "Valitse tuleva ajankohta, enintään 25 vuoden päähän."
+  },
+  "ja": {
+    "capsuleMonth": "1か月後",
+    "capsuleHalf": "半年後",
+    "capsuleYear": "1年後",
+    "capsuleYears": "{n}年後",
+    "capsuleHint": "タイムカプセル：手紙は最大25年待てます。たとえば18歳の誕生日まで。1年を超える場合はフルアクセスで使えます。",
+    "capsuleLong": "1年より先に届く手紙は、フルアクセスで使えます。",
+    "schedulePast": "未来の日時を選んでください（25年後まで）。"
+  },
+  "ko": {
+    "capsuleMonth": "한 달 후",
+    "capsuleHalf": "6개월 후",
+    "capsuleYear": "1년 후",
+    "capsuleYears": "{n}년 후",
+    "capsuleHint": "타임캡슐: 편지는 최대 25년까지 기다릴 수 있어요. 예를 들어 18번째 생일까지요. 1년이 넘는 기간은 전체 이용으로 열려요.",
+    "capsuleLong": "1년 넘게 기다리는 편지는 전체 이용으로 열려요.",
+    "schedulePast": "25년 이내의 미래 시간을 골라 주세요."
+  },
+  "zh": {
+    "capsuleMonth": "一個月後",
+    "capsuleHalf": "半年後",
+    "capsuleYear": "一年後",
+    "capsuleYears": "{n} 年後",
+    "capsuleHint": "時光膠囊：信件最多可以等待 25 年，例如等到 18 歲生日。超過一年的等待包含在完整功能裡。",
+    "capsuleLong": "等待超過一年的信件，包含在完整功能裡。",
+    "schedulePast": "請選擇未來的時間，最遠 25 年後。"
+  },
+  "th": {
+    "capsuleMonth": "อีก 1 เดือน",
+    "capsuleHalf": "อีก 6 เดือน",
+    "capsuleYear": "อีก 1 ปี",
+    "capsuleYears": "อีก {n} ปี",
+    "capsuleHint": "แคปซูลเวลา: จดหมายรอได้นานสุด 25 ปี เช่น จนถึงวันเกิดอายุ 18 ปี หากนานกว่า 1 ปี ใช้ได้เมื่อใช้งานเต็มรูปแบบ",
+    "capsuleLong": "จดหมายที่รอนานกว่า 1 ปี ใช้ได้เมื่อใช้งานเต็มรูปแบบ",
+    "schedulePast": "เลือกเวลาในอนาคต ไม่เกิน 25 ปีข้างหน้า"
+  },
+  "ar": {
+    "capsuleMonth": "بعد شهر",
+    "capsuleHalf": "بعد ستة أشهر",
+    "capsuleYear": "بعد سنة",
+    "capsuleYears": "بعد {n} سنوات",
+    "capsuleHint": "كبسولة زمنية: يمكن للرسالة أن تنتظر حتى 25 عامًا — مثلًا حتى عيد الميلاد الثامن عشر. ما يزيد على سنة متاح مع الوصول الكامل.",
+    "capsuleLong": "الرسالة التي تنتظر أكثر من سنة متاحة مع الوصول الكامل.",
+    "schedulePast": "يلزم اختيار وقت في المستقبل، لا يتجاوز 25 عامًا من الآن.",
+    "capsuleYearsMany": "بعد {n} عامًا"
+  },
+  "ind": {
+    "capsuleMonth": "Sebulan lagi",
+    "capsuleHalf": "Enam bulan lagi",
+    "capsuleYear": "Setahun lagi",
+    "capsuleYears": "{n} tahun lagi",
+    "capsuleHint": "Kapsul waktu: surat bisa menunggu hingga 25 tahun — misalnya sampai ulang tahun ke-18. Lebih dari setahun tersedia dengan akses penuh.",
+    "capsuleLong": "Surat yang menunggu lebih dari setahun tersedia dengan akses penuh.",
+    "schedulePast": "Pilih waktu di masa depan, paling lama 25 tahun lagi."
+  },
+  "vi": {
+    "capsuleMonth": "Sau một tháng",
+    "capsuleHalf": "Sau sáu tháng",
+    "capsuleYear": "Sau một năm",
+    "capsuleYears": "Sau {n} năm",
+    "capsuleHint": "Viên nang thời gian: lá thư có thể chờ đến 25 năm — ví dụ, đến sinh nhật 18 tuổi. Lâu hơn một năm có trong gói truy cập đầy đủ.",
+    "capsuleLong": "Lá thư chờ lâu hơn một năm có trong gói truy cập đầy đủ.",
+    "schedulePast": "Hãy chọn thời điểm trong tương lai, không quá 25 năm tới."
+  }
+}).forEach(([code, texts]) => {
+  const pack = window.NUR_I18N_EXTRA?.[code];
+  if (pack?.app) Object.assign(pack.app, texts);
+});

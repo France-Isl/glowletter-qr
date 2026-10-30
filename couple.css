@@ -1,0 +1,72 @@
+/* «Мы вдвоём» (couple.js): вопрос дня и мишка Тёпа. Каркас окна — из games.css. */
+.glc-partner { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; font-size: 13px; font-weight: 800; }
+.glc-partner span { color: var(--ui-accent-deep); }
+.glc-partner .glg-link { margin: 0; }
+
+.glc-pet { padding-top: 14px; }
+.glc-bear { display: block; width: 100%; aspect-ratio: 3 / 2; margin: 0 0 14px; border-radius: 14px; object-fit: cover; }
+.glc-bear-small { width: 160px; aspect-ratio: 3 / 2; border-radius: 14px; object-fit: cover; }
+.glc-pet p { margin-bottom: 12px; }
+.glc-bears { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
+.glc-bears figure { margin: 0; }
+.glc-bears .glc-bear { margin: 0 0 6px; }
+.glc-bears figcaption { overflow: hidden; color: var(--ui-muted); font-size: 11px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.glc-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.glc-stats span { padding: 6px 12px; border: 1px solid color-mix(in srgb, var(--ui-gold) 45%, transparent); border-radius: 999px; color: var(--ui-ink); background: var(--ui-panel); font-size: 11px; font-weight: 800; }
+
+.glc-layer .glc-question-text { margin: 0 0 14px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 600; line-height: 1.15; }
+.glc-hint { margin: 0 0 10px; padding: 10px 14px; border-radius: 14px; color: var(--ui-ink); background: color-mix(in srgb, var(--ui-gold) 14%, transparent); font-size: 13px; font-weight: 700; line-height: 1.45; }
+.glc-compose textarea { width: 100%; min-height: 96px; padding: 12px 14px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-ink); background: var(--ui-panel); font: inherit; font-size: 16px; line-height: 1.45; resize: vertical; }
+.glc-compose textarea:focus-visible { outline: 3px solid color-mix(in srgb, var(--ui-accent) 30%, transparent); outline-offset: 2px; }
+.glc-answer { margin: 0 0 10px; padding: 12px 14px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-surface); }
+.glc-answer.is-mine { border-color: color-mix(in srgb, var(--ui-accent) 30%, var(--ui-border)); background: color-mix(in srgb, var(--ui-accent) 6%, var(--ui-surface)); }
+.glc-answer small { color: var(--ui-muted); font-size: 11px; font-weight: 800; }
+.glc-answer p { margin: 4px 0 0; font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; white-space: pre-line; }
+
+.glc-wardrobe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.glc-outfit { display: grid; width: 100%; gap: 3px; padding: 6px 6px 8px; border: 1px solid var(--ui-border); border-radius: 14px; background: var(--ui-surface); text-align: center; }
+.glc-outfit img { width: 100%; aspect-ratio: 3 / 2; border-radius: 14px; object-fit: cover; }
+.glc-outfit-name { font-size: 11px; font-weight: 800; line-height: 1.2; }
+.glc-outfit small { color: var(--ui-muted); font-size: 11px; }
+.glc-outfit.is-current { border-color: var(--ui-accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-accent) 25%, transparent); }
+.glc-outfit.is-locked img { filter: grayscale(1) brightness(.75); }
+.glc-outfit:disabled { cursor: default; }
+
+.glc-history { display: grid; gap: 14px; margin: 14px 0 0; padding: 0; list-style: none; }
+.glc-day { padding: 14px; border: 1px solid var(--ui-border); border-radius: 18px; background: var(--ui-panel); }
+.glc-day h3 { margin: 0 0 10px; font-size: 16px; }
+
+/* «Наша история»: лента с точками по левому краю (в RTL — по правому). */
+.glc-story { position: relative; display: grid; gap: 12px; margin: 14px 0 0; padding: 0 0 0 22px; list-style: none; }
+.glc-story::before { position: absolute; inset: 8px auto 8px 6px; width: 2px; background: color-mix(in srgb, var(--ui-gold) 55%, transparent); content: ""; }
+.glc-event { position: relative; padding: 12px 14px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-panel); }
+.glc-event::before { position: absolute; top: 16px; left: -21px; width: 12px; height: 12px; border: 2px solid var(--ui-surface); border-radius: 50%; background: var(--ui-accent); content: ""; }
+.glc-event h3 { margin: 2px 0 4px; font-size: 16px; }
+.glc-event p { margin: 0; }
+.glc-event img { width: 120px; margin-top: 8px; aspect-ratio: 3 / 2; border-radius: 14px; object-fit: cover; }
+.glc-event.is-now { border-color: color-mix(in srgb, var(--ui-accent) 35%, var(--ui-border)); }
+.glc-event.is-now .glc-stats { justify-content: flex-start; margin-top: 6px; }
+[dir="rtl"] .glc-story { padding: 0 22px 0 0; }
+[dir="rtl"] .glc-story::before { inset: 8px 6px 8px auto; }
+[dir="rtl"] .glc-event::before { right: -21px; left: auto; }
+
+.smart-link.couple-link { border-color: color-mix(in srgb, var(--ui-gold) 55%, transparent); }
+
+@media (max-width: 380px) {
+  .glc-wardrobe { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* «Тёпа читает письмо» (bear-reader.js): карточка внизу, пока звучит голос. */
+.bear-reader { position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); left: 12px; z-index: 60; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; max-width: 520px; margin: 0 auto; padding: 12px; border: 1px solid color-mix(in srgb, var(--ui-gold) 45%, var(--ui-border)); border-radius: 18px; color: var(--ui-ink); background: var(--ui-panel); box-shadow: 0 18px 40px color-mix(in srgb, var(--night-deep) 28%, transparent); opacity: 0; transform: translateY(16px); transition: opacity .3s ease, transform .3s ease; }
+.bear-reader.is-open { opacity: 1; transform: none; }
+.bear-reader-picture { width: 96px; aspect-ratio: 1; border-radius: 14px; object-fit: cover; animation: bear-reader-bob 2.4s ease-in-out infinite; }
+.bear-reader-body { display: grid; gap: 6px; min-width: 0; }
+.bear-reader-title { margin: 0; color: var(--ui-accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.bear-reader-line { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 600; line-height: 1.15; overflow-wrap: anywhere; }
+.bear-reader-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.bear-reader-actions button { min-height: 40px; padding: 0 12px; border: 1px solid var(--ui-border); border-radius: 999px; color: var(--ui-ink); background: var(--ui-surface); font: inherit; font-size: 11px; font-weight: 800; cursor: pointer; }
+.bear-reader-actions button:disabled { opacity: .7; cursor: default; }
+.bear-reader-note { color: var(--ui-muted); font-size: 11px; line-height: 1.4; }
+.bear-reader-note:empty { display: none; }
+@keyframes bear-reader-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-4px) rotate(-1.5deg); } }
+@media (prefers-reduced-motion: reduce) { .bear-reader, .bear-reader-picture { animation: none; transition: none; } }

@@ -920,7 +920,7 @@ public final class MainActivity extends ComponentActivity {
     }
 
     /**
-     * Shares a card rendered by the page (PNG or PDF) through the system share
+     * Shares a card rendered by the page (PNG, PDF or a short MP4/WebM video) through the system share
      * sheet. The bytes land in the private cache and are exposed only through
      * the FileProvider grant attached to this one intent.
      */
@@ -939,6 +939,12 @@ public final class MainActivity extends ComponentActivity {
         } else if ("image/jpeg".equals(mimeType)) {
             safeMime = "image/jpeg";
             extension = ".jpg";
+        } else if (mimeType != null && mimeType.startsWith("video/mp4")) {
+            safeMime = "video/mp4";
+            extension = ".mp4";
+        } else if (mimeType != null && mimeType.startsWith("video/webm")) {
+            safeMime = "video/webm";
+            extension = ".webm";
         } else {
             return;
         }
