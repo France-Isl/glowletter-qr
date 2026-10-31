@@ -55,7 +55,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Kamera aus",
       "flip": "Kamera wechseln",
       "cameraFailed": "Kamera nicht verfügbar – der Anruf läuft mit Ton weiter.",
-      "flipFailed": "Kamera konnte nicht gewechselt werden."
+      "flipFailed": "Kamera konnte nicht gewechselt werden.",
+      "speaker": "Lautsprecher",
+      "earpiece": "Telefon",
+      "headset": "Kopfhörer",
+      "reactions": "Reaktionen"
     },
     "world": {
       "eyebrow": "Nur ihr zwei",
@@ -261,7 +265,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Desactivar cámara",
       "flip": "Cambiar cámara",
       "cameraFailed": "Cámara no disponible: la llamada sigue con audio.",
-      "flipFailed": "No se pudo cambiar la cámara."
+      "flipFailed": "No se pudo cambiar la cámara.",
+      "speaker": "Altavoz",
+      "earpiece": "Teléfono",
+      "headset": "Auriculares",
+      "reactions": "Reacciones"
     },
     "world": {
       "eyebrow": "Solo vosotros dos",
@@ -467,7 +475,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Spegni la fotocamera",
       "flip": "Cambia fotocamera",
       "cameraFailed": "Fotocamera non disponibile: la chiamata continua con l’audio.",
-      "flipFailed": "Impossibile cambiare fotocamera."
+      "flipFailed": "Impossibile cambiare fotocamera.",
+      "speaker": "Altoparlante",
+      "earpiece": "Telefono",
+      "headset": "Cuffie",
+      "reactions": "Reazioni"
     },
     "world": {
       "eyebrow": "Solo voi due",
@@ -673,7 +685,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Wyłącz kamerę",
       "flip": "Zmień kamerę",
       "cameraFailed": "Kamera niedostępna — rozmowa trwa z dźwiękiem.",
-      "flipFailed": "Nie udało się zmienić kamery."
+      "flipFailed": "Nie udało się zmienić kamery.",
+      "speaker": "Głośnik",
+      "earpiece": "Telefon",
+      "headset": "Słuchawki",
+      "reactions": "Reakcje"
     },
     "world": {
       "eyebrow": "Tylko wy dwoje",
@@ -879,7 +895,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Вимкнути камеру",
       "flip": "Змінити камеру",
       "cameraFailed": "Камера недоступна — дзвінок триває зі звуком.",
-      "flipFailed": "Не вдалося змінити камеру."
+      "flipFailed": "Не вдалося змінити камеру.",
+      "speaker": "Динамік",
+      "earpiece": "Телефон",
+      "headset": "Навушники",
+      "reactions": "Реакції"
     },
     "world": {
       "eyebrow": "Тільки ви двоє",
@@ -1085,7 +1105,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Desligar câmera",
       "flip": "Trocar câmera",
       "cameraFailed": "Câmera indisponível — a chamada continua com áudio.",
-      "flipFailed": "Não foi possível trocar a câmera."
+      "flipFailed": "Não foi possível trocar a câmera.",
+      "speaker": "Alto-falante",
+      "earpiece": "Telefone",
+      "headset": "Fones",
+      "reactions": "Reações"
     },
     "world": {
       "eyebrow": "Só vocês dois",
@@ -1291,7 +1315,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Camera uit",
       "flip": "Camera wisselen",
       "cameraFailed": "Camera niet beschikbaar – het gesprek gaat verder met geluid.",
-      "flipFailed": "Camera wisselen lukte niet."
+      "flipFailed": "Camera wisselen lukte niet.",
+      "speaker": "Luidspreker",
+      "earpiece": "Telefoon",
+      "headset": "Koptelefoon",
+      "reactions": "Reacties"
     },
     "world": {
       "eyebrow": "Alleen jullie twee",
@@ -1497,7 +1525,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Kamerayı kapat",
       "flip": "Kamerayı değiştir",
       "cameraFailed": "Kamera kullanılamıyor — arama sesle devam ediyor.",
-      "flipFailed": "Kamera değiştirilemedi."
+      "flipFailed": "Kamera değiştirilemedi.",
+      "speaker": "Hoparlör",
+      "earpiece": "Telefon",
+      "headset": "Kulaklık",
+      "reactions": "Tepkiler"
     },
     "world": {
       "eyebrow": "Sadece siz ikiniz",
@@ -1703,7 +1735,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Oprește camera",
       "flip": "Schimbă camera",
       "cameraFailed": "Camera nu e disponibilă — apelul continuă cu sunet.",
-      "flipFailed": "Nu s-a putut schimba camera."
+      "flipFailed": "Nu s-a putut schimba camera.",
+      "speaker": "Difuzor",
+      "earpiece": "Telefon",
+      "headset": "Căști",
+      "reactions": "Reacții"
     },
     "world": {
       "eyebrow": "Doar voi doi",
@@ -1909,7 +1945,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Vypnout kameru",
       "flip": "Přepnout kameru",
       "cameraFailed": "Kamera není dostupná — hovor pokračuje se zvukem.",
-      "flipFailed": "Kameru se nepodařilo přepnout."
+      "flipFailed": "Kameru se nepodařilo přepnout.",
+      "speaker": "Reproduktor",
+      "earpiece": "Telefon",
+      "headset": "Sluchátka",
+      "reactions": "Reakce"
     },
     "world": {
       "eyebrow": "Jen vy dva",
@@ -2115,7 +2155,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Stäng av kameran",
       "flip": "Byt kamera",
       "cameraFailed": "Kameran är inte tillgänglig – samtalet fortsätter med ljud.",
-      "flipFailed": "Det gick inte att byta kamera."
+      "flipFailed": "Det gick inte att byta kamera.",
+      "speaker": "Högtalare",
+      "earpiece": "Telefon",
+      "headset": "Hörlurar",
+      "reactions": "Reaktioner"
     },
     "world": {
       "eyebrow": "Bara ni två",
@@ -2321,7 +2365,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Απενεργοποίηση κάμερας",
       "flip": "Αλλαγή κάμερας",
       "cameraFailed": "Η κάμερα δεν είναι διαθέσιμη — η κλήση συνεχίζεται με ήχο.",
-      "flipFailed": "Δεν ήταν δυνατή η αλλαγή κάμερας."
+      "flipFailed": "Δεν ήταν δυνατή η αλλαγή κάμερας.",
+      "speaker": "Ηχείο",
+      "earpiece": "Τηλέφωνο",
+      "headset": "Ακουστικά",
+      "reactions": "Αντιδράσεις"
     },
     "world": {
       "eyebrow": "Μόνο εσείς οι δύο",
@@ -2527,7 +2575,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Sluk kameraet",
       "flip": "Skift kamera",
       "cameraFailed": "Kameraet er ikke tilgængeligt – opkaldet fortsætter med lyd.",
-      "flipFailed": "Kunne ikke skifte kamera."
+      "flipFailed": "Kunne ikke skifte kamera.",
+      "speaker": "Højttaler",
+      "earpiece": "Telefon",
+      "headset": "Hovedtelefoner",
+      "reactions": "Reaktioner"
     },
     "world": {
       "eyebrow": "Kun jer to",
@@ -2733,7 +2785,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Slå av kameraet",
       "flip": "Bytt kamera",
       "cameraFailed": "Kameraet er ikke tilgjengelig – samtalen fortsetter med lyd.",
-      "flipFailed": "Kunne ikke bytte kamera."
+      "flipFailed": "Kunne ikke bytte kamera.",
+      "speaker": "Høyttaler",
+      "earpiece": "Telefon",
+      "headset": "Hodetelefoner",
+      "reactions": "Reaksjoner"
     },
     "world": {
       "eyebrow": "Bare dere to",
@@ -2939,7 +2995,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Kamera pois",
       "flip": "Vaihda kameraa",
       "cameraFailed": "Kamera ei ole käytettävissä – puhelu jatkuu äänellä.",
-      "flipFailed": "Kameran vaihto ei onnistunut."
+      "flipFailed": "Kameran vaihto ei onnistunut.",
+      "speaker": "Kaiutin",
+      "earpiece": "Puhelin",
+      "headset": "Kuulokkeet",
+      "reactions": "Reaktiot"
     },
     "world": {
       "eyebrow": "Vain te kaksi",
@@ -3145,7 +3205,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "カメラをオフ",
       "flip": "カメラを切り替え",
       "cameraFailed": "カメラを使えません。通話は音声で続きます。",
-      "flipFailed": "カメラを切り替えられませんでした。"
+      "flipFailed": "カメラを切り替えられませんでした。",
+      "speaker": "スピーカー",
+      "earpiece": "受話口",
+      "headset": "イヤホン",
+      "reactions": "リアクション"
     },
     "world": {
       "eyebrow": "ふたりだけの場所",
@@ -3351,7 +3415,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "카메라 끄기",
       "flip": "카메라 전환",
       "cameraFailed": "카메라를 쓸 수 없어요. 통화는 음성으로 계속돼요.",
-      "flipFailed": "카메라를 전환하지 못했어요."
+      "flipFailed": "카메라를 전환하지 못했어요.",
+      "speaker": "스피커",
+      "earpiece": "수화기",
+      "headset": "이어폰",
+      "reactions": "반응"
     },
     "world": {
       "eyebrow": "우리 둘만",
@@ -3557,7 +3625,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "关闭摄像头",
       "flip": "切换摄像头",
       "cameraFailed": "摄像头不可用，通话将以语音继续。",
-      "flipFailed": "无法切换摄像头。"
+      "flipFailed": "无法切换摄像头。",
+      "speaker": "扬声器",
+      "earpiece": "听筒",
+      "headset": "耳机",
+      "reactions": "表情"
     },
     "world": {
       "eyebrow": "只屬於你們兩個",
@@ -3763,7 +3835,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "ปิดกล้อง",
       "flip": "สลับกล้อง",
       "cameraFailed": "ใช้กล้องไม่ได้ สายจะคุยต่อด้วยเสียง",
-      "flipFailed": "สลับกล้องไม่สำเร็จ"
+      "flipFailed": "สลับกล้องไม่สำเร็จ",
+      "speaker": "ลำโพง",
+      "earpiece": "หูฟังโทรศัพท์",
+      "headset": "หูฟัง",
+      "reactions": "รีแอคชัน"
     },
     "world": {
       "eyebrow": "แค่เราสองคน",
@@ -3969,7 +4045,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "إيقاف الكاميرا",
       "flip": "تبديل الكاميرا",
       "cameraFailed": "الكاميرا غير متاحة — تستمر المكالمة بالصوت.",
-      "flipFailed": "تعذّر تبديل الكاميرا."
+      "flipFailed": "تعذّر تبديل الكاميرا.",
+      "speaker": "مكبر الصوت",
+      "earpiece": "سماعة الهاتف",
+      "headset": "سماعات الأذن",
+      "reactions": "تفاعلات"
     },
     "world": {
       "eyebrow": "أنتما الاثنان فقط",
@@ -4175,7 +4255,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Matikan kamera",
       "flip": "Ganti kamera",
       "cameraFailed": "Kamera tidak tersedia — panggilan berlanjut dengan suara.",
-      "flipFailed": "Gagal mengganti kamera."
+      "flipFailed": "Gagal mengganti kamera.",
+      "speaker": "Speaker",
+      "earpiece": "Telepon",
+      "headset": "Earphone",
+      "reactions": "Reaksi"
     },
     "world": {
       "eyebrow": "Hanya kalian berdua",
@@ -4381,7 +4465,11 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "cameraOff": "Tắt camera",
       "flip": "Đổi camera",
       "cameraFailed": "Không dùng được camera — cuộc gọi tiếp tục bằng âm thanh.",
-      "flipFailed": "Không đổi được camera."
+      "flipFailed": "Không đổi được camera.",
+      "speaker": "Loa ngoài",
+      "earpiece": "Loa trong",
+      "headset": "Tai nghe",
+      "reactions": "Biểu cảm"
     },
     "world": {
       "eyebrow": "Chỉ hai bạn",

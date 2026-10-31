@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- Звонок в приложении: режим разговора и громкая связь (обычное разрешение, без диалога). -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- Звонок у уха: датчик приближения гасит экран (обычное разрешение, без диалога). -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <queries>
         <intent>

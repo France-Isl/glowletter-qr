@@ -1046,6 +1046,16 @@ public final class MainActivity extends ComponentActivity {
         target.evaluateJavascript(script, null);
     }
 
+    // Звонок: куда сейчас идёт звук (speaker / earpiece / headset / bluetooth) — для кнопки «Динамик» в call.js.
+    void callAudioRoute(String route) {
+        WebView target = webView;
+        if (target == null || !trustedMainDocumentReady || !isTrustedAppMainDocumentUrl(target.getUrl())) return;
+        String script = "(function(){var r=" + JSONObject.quote(route) + ";"
+                + "if(window.GlowLetterCall&&typeof window.GlowLetterCall.onAudioRoute==='function'){window.GlowLetterCall.onAudioRoute(r);}"
+                + "})();";
+        target.evaluateJavascript(script, null);
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

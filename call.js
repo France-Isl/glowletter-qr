@@ -48,7 +48,8 @@
       groupRinging: "{name} зовёт в общий звонок", you: "Вы", close: "Закрыть",
       videoCall: "Видеозвонок", incomingVideo: "Входящий видеозвонок", acceptVideo: "С видео", acceptAudio: "Ответить только со звуком",
       cameraOn: "Включить камеру", cameraOff: "Выключить камеру", flip: "Сменить камеру",
-      cameraFailed: "Камера недоступна — звонок идёт со звуком.", flipFailed: "Не удалось сменить камеру."
+      cameraFailed: "Камера недоступна — звонок идёт со звуком.", flipFailed: "Не удалось сменить камеру.",
+      speaker: "Динамик", earpiece: "Телефон", headset: "Наушники", reactions: "Реакции"
     },
     en: {
       calling: "Calling…", ringing: "{name} is calling", incoming: "Incoming call", accept: "Answer", decline: "Decline",
@@ -67,7 +68,8 @@
       groupRinging: "{name} invites you to a group call", you: "You", close: "Close",
       videoCall: "Video call", incomingVideo: "Incoming video call", acceptVideo: "With video", acceptAudio: "Answer with audio only",
       cameraOn: "Turn camera on", cameraOff: "Turn camera off", flip: "Switch camera",
-      cameraFailed: "Camera unavailable — the call continues with audio.", flipFailed: "Couldn’t switch the camera."
+      cameraFailed: "Camera unavailable — the call continues with audio.", flipFailed: "Couldn’t switch the camera.",
+      speaker: "Speaker", earpiece: "Phone", headset: "Headphones", reactions: "Reactions"
     },
     fr: {
       calling: "Appel en cours…", ringing: "{name} vous appelle", incoming: "Appel entrant", accept: "Répondre", decline: "Refuser",
@@ -86,7 +88,8 @@
       groupRinging: "{name} vous invite à un appel de groupe", you: "Vous", close: "Fermer",
       videoCall: "Appel vidéo", incomingVideo: "Appel vidéo entrant", acceptVideo: "Avec vidéo", acceptAudio: "Répondre en audio seulement",
       cameraOn: "Activer la caméra", cameraOff: "Couper la caméra", flip: "Changer de caméra",
-      cameraFailed: "Caméra indisponible — l’appel continue en audio.", flipFailed: "Impossible de changer de caméra."
+      cameraFailed: "Caméra indisponible — l’appel continue en audio.", flipFailed: "Impossible de changer de caméra.",
+      speaker: "Haut-parleur", earpiece: "Téléphone", headset: "Écouteurs", reactions: "Réactions"
     }
   };
 
@@ -132,7 +135,7 @@
   const call = {
     phase: "idle", room: "", friend: null, caller: false, channel: null, stream: null, subscribed: false, tracked: false,
     muted: false, startedAt: 0, joinedAt: 0, ringTimer: 0, tickTimer: 0, connectTimer: 0, ring: null,
-    root: null, expanded: true, seen: new Set(), note: "", sawOthers: false, picking: false, pickFocus: false,
+    root: null, expanded: true, seen: new Set(), note: "", sawOthers: false, picking: false, pickFocus: false, reacting: false, route: "speaker",
     members: new Map(), // кто в звонке по присутствию: id → { name, muted, at }
     peers: new Map(), // соединение с каждым: id → { pc, pendingIce, audio, connected, dropTimer, helloTimer, checked }
     names: new Map(), invited: new Map(), muteOf: new Map(), known: new Set(),
@@ -510,6 +513,7 @@
         clearInterval(call.tickTimer);
         call.tickTimer = setInterval(renderTimer, 1000);
         native()?.setActive?.(true);
+        audioStart();
       }
       call.note = [...call.peers.values()].some(other => other.pc.connectionState === "disconnected") ? tr("reconnecting") : "";
       render();
@@ -757,7 +761,7 @@
     on("ice", onIce);
     on("mute", payload => { call.muteOf.set(payload.from, payload.on === true); render(); });
     on("camera", payload => { call.camOf.set(payload.from, payload.on === true); render(); });
-    on("react", payload => { if (payload.kind === "heart") heartRain(); });
+    on("react", payload => { if (payload.kind === "heart") heartRain(); else playReaction(payload.kind); });
     on("bear", () => bearHere(false));
     // Кто-то сел за стол во время звонка — открываем стол и здесь.
     on("table", () => { const table = window.GlowLetterTable; if (call.phase === "connected" && !(table?.isOpen?.() && table.room?.() === call.room)) openTable(false); });
@@ -793,10 +797,11 @@
       setTimeout(() => { try { client()?.removeChannel?.(channel); } catch {} }, 800);
     }
     native()?.setActive?.(false);
+    closeReactions(false);
     Object.assign(call, {
       phase: "idle", stream: null, channel: null, subscribed: false, tracked: false, muted: false, startedAt: 0, joinedAt: 0,
       sawOthers: false, picking: false, note: "", members: new Map(), names: new Map(), invited: new Map(), muteOf: new Map(), known: new Set(),
-      video: false, camera: false, facing: "user", cameraTrack: null, camOf: new Map()
+      video: false, camera: false, facing: "user", cameraTrack: null, camOf: new Map(), route: "speaker"
     });
     // «Игровой стол» не закрываем: партию можно доиграть и без звонка.
     render();
@@ -842,6 +847,328 @@
     }
     if (!mine) window.GlowLetterOnline?.burst?.("🧸", { small: true });
   }
+
+  // ——— Куда идёт звук (владелец 01.11: «не хватает динамика») ———
+  // Кнопка есть только в приложении: Android сам переключает громкую связь, динамик у уха и наушники.
+  // Наушники подключили — звук сам уходит в них. Выбор «громко / у уха» запоминается.
+  const SPEAKER_KEY = "glowletterCallSpeaker";
+  const ROUTES = new Set(["speaker", "earpiece", "headset", "bluetooth"]);
+  const canRoute = () => typeof native()?.setSpeaker === "function";
+
+  function speakerPref() {
+    try { return localStorage.getItem(SPEAKER_KEY) !== "0"; } catch { return true; }
+  }
+
+  function audioStart() {
+    if (!canRoute()) return;
+    const bridge = native();
+    bridge.preferSpeaker?.(speakerPref());
+    onAudioRoute(bridge.audioRoute?.());
+  }
+
+  function toggleSpeaker() {
+    if (!canRoute()) return;
+    const loud = call.route !== "speaker";
+    if (call.route === "speaker" || call.route === "earpiece") {
+      try { localStorage.setItem(SPEAKER_KEY, loud ? "1" : "0"); } catch {}
+    }
+    native().setSpeaker(loud);
+    // Пока телефон не ответил, показываем ожидаемое; onAudioRoute поправит, если вышло иначе.
+    call.route = loud ? "speaker" : call.route === "speaker" ? "earpiece" : call.route;
+    render();
+  }
+
+  function onAudioRoute(route) {
+    const next = String(route || "");
+    if (!ROUTES.has(next) || next === call.route) return;
+    call.route = next;
+    if (call.phase !== "idle") render();
+  }
+
+  // ——— Реакции (владелец 01.11): живые анимированные цветы и смайлики летят по экрану у всех в звонке.
+  // Большой букет — один на весь экран, с золотым светом и дождём из лепестков.
+  // Картинки — Noto Animated Emoji (Google, CC BY 4.0) в assets/reactions; грузятся только когда нужны. ———
+  const REACTIONS = Object.freeze([
+    { kind: "bouquet", code: "1f490", fx: "big", label: "💐" },
+    { kind: "bear", fx: "bear", label: "🧸" },
+    { kind: "rose", code: "1f339", fx: "fall", label: "🌹" },
+    { kind: "tulip", code: "1f337", fx: "fall", label: "🌷" },
+    { kind: "blossom", code: "1f338", fx: "fall", label: "🌸" },
+    { kind: "butterfly", code: "1f98b", fx: "fly", label: "🦋" },
+    { kind: "hearts", code: "2764", fx: "rise", label: "❤️" },
+    { kind: "sparkles", code: "2728", fx: "twinkle", label: "✨" },
+    { kind: "star", code: "1f31f", fx: "twinkle", label: "🌟" },
+    { kind: "balloon", code: "1f388", fx: "rise", label: "🎈" },
+    { kind: "gift", code: "1f381", fx: "gift", label: "🎁" },
+    { kind: "party", code: "1f389", fx: "pop", label: "🎉" },
+    { kind: "smile", code: "1f60a", fx: "rise", label: "😊" },
+    { kind: "laugh", code: "1f602", fx: "rise", label: "😂" },
+    { kind: "clap", code: "1f44f", fx: "pop", label: "👏" }
+  ]);
+  const REACTION = new Map(REACTIONS.map(item => [item.kind, item]));
+  const BIG_MS = 5200;
+  const react = { last: 0, bigUntil: 0, active: 0 };
+  const reactionSrc = code => `assets/reactions/${code}.webp`;
+  const motionOk = () => !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const lightDevice = () => (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 3;
+  const amount = n => Math.max(3, Math.round(n * (lightDevice() ? 0.55 : 1)));
+  const rand = (min, max) => min + Math.random() * (max - min);
+
+  function openReactions() {
+    const node = call.reactNode;
+    if (!node || !live()) return;
+    call.reacting = true;
+    const tile = item => {
+      const src = item.code ? reactionSrc(item.code) : bearPicture(userId());
+      return `<button class="glk-react-tile${item.fx === "big" ? " is-big" : ""}${item.code ? "" : " is-bear"}" type="button" data-call="react" data-kind="${item.kind}" aria-label="${item.label}"><img src="${escapeHtml(src)}" alt="" decoding="async" draggable="false"></button>`;
+    };
+    node.innerHTML = `
+      <div class="glk-react-shade" data-call="react-close"></div>
+      <div class="glk-react-sheet" role="dialog" aria-modal="true" aria-label="${escapeHtml(tr("reactions"))}">
+        <div class="glk-sheet-head">
+          <h3>${escapeHtml(tr("reactions"))}</h3>
+          <button class="glk-sheet-close" type="button" data-call="react-close" aria-label="${escapeHtml(tr("close"))}">${ICON.close}</button>
+        </div>
+        <div class="glk-react-grid">${REACTIONS.map(tile).join("")}</div>
+      </div>`;
+    node.hidden = false;
+    node.querySelector(".glk-react-tile")?.focus({ preventScroll: true });
+  }
+
+  function closeReactions(focusBack) {
+    if (!call.reacting) return;
+    call.reacting = false;
+    if (call.reactNode) { call.reactNode.hidden = true; call.reactNode.innerHTML = ""; }
+    if (focusBack) call.root?.querySelector(".glk-reacts")?.focus({ preventScroll: true });
+  }
+
+  function sendReaction(kind) {
+    const item = REACTION.get(kind);
+    if (!item || !live()) return;
+    const now = Date.now();
+    if (now - react.last < 900 || (item.fx === "big" && now < react.bigUntil)) return;
+    react.last = now;
+    closeReactions(true);
+    if (item.fx === "bear") { sendBear(); return; }
+    playReaction(kind);
+    signal("react", { kind });
+  }
+
+  // Картинку сначала докачиваем (не дольше 1,5 с), чтобы анимация не началась с пустых квадратиков.
+  function preload(src) {
+    const image = new Image();
+    image.src = src;
+    const decoded = image.decode ? image.decode().catch(() => {}) : Promise.resolve();
+    return Promise.race([decoded, new Promise(done => setTimeout(done, 1500))]);
+  }
+
+  async function playReaction(kind) {
+    const item = REACTION.get(String(kind || ""));
+    if (!item?.code || react.active >= 3) return;
+    if (item.fx === "big") {
+      if (Date.now() < react.bigUntil) return;
+      react.bigUntil = Date.now() + BIG_MS;
+    }
+    react.active += 1;
+    const src = reactionSrc(item.code);
+    await preload(src);
+    const layer = document.createElement("div");
+    layer.className = `glk-fx is-${item.fx}`;
+    layer.setAttribute("aria-hidden", "true");
+    document.body.append(layer);
+    let time = 1800;
+    try { time = motionOk() ? FX[item.fx](layer, src) : still(layer, src); } catch {}
+    setTimeout(() => { layer.remove(); react.active = Math.max(0, react.active - 1); }, time + 250);
+  }
+
+  function piece(layer, src, size) {
+    const node = document.createElement("img");
+    node.src = src;
+    node.alt = "";
+    node.decoding = "async";
+    node.draggable = false;
+    node.style.width = node.style.height = `${Math.round(size)}px`;
+    layer.append(node);
+    return node;
+  }
+
+  const at = (x, y, scale = 1, turn = 0) => `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(${scale.toFixed(3)}) rotate(${turn.toFixed(1)}deg)`;
+
+  // Сверху вниз, покачиваясь, как лепестки.
+  function fall(layer, sources, count, from = 0) {
+    const width = innerWidth, height = innerHeight;
+    let longest = 0;
+    for (let index = 0; index < count; index += 1) {
+      const size = rand(40, 76);
+      const node = piece(layer, sources[index % sources.length], size);
+      const x = rand(-8, width - size + 8), sway = rand(18, 46), turn = rand(-160, 160), phase = rand(0, Math.PI * 2);
+      const duration = rand(3200, 4800), delay = from + rand(0, 1400);
+      longest = Math.max(longest, duration + delay);
+      const frames = [];
+      for (let step = 0; step <= 6; step += 1) {
+        const t = step / 6;
+        frames.push({ offset: t, opacity: t === 0 ? 0 : t === 1 ? 0.7 : 1, transform: at(x + Math.sin(phase + t * 5) * sway, -size - 20 + t * (height + size + 50), 1, turn * t) });
+      }
+      node.animate(frames, { duration, delay, easing: "linear", fill: "both" });
+    }
+    return longest;
+  }
+
+  // Снизу вверх, как сердечки.
+  function rise(layer, src, count = amount(12)) {
+    const width = innerWidth, height = innerHeight;
+    let longest = 0;
+    for (let index = 0; index < count; index += 1) {
+      const size = rand(44, 84);
+      const node = piece(layer, src, size);
+      const x = rand(0, width - size), sway = rand(14, 36), phase = rand(0, Math.PI * 2), turn = rand(-18, 18);
+      const duration = rand(2600, 3800), delay = rand(0, 900);
+      longest = Math.max(longest, duration + delay);
+      const frames = [];
+      for (let step = 0; step <= 5; step += 1) {
+        const t = step / 5;
+        frames.push({ offset: t, opacity: t === 0 || t === 1 ? 0 : 1, transform: at(x + Math.sin(phase + t * 4) * sway, height + 20 - t * (height * 0.95 + size), 0.6 + t * 0.5, turn * t) });
+      }
+      node.animate(frames, { duration, delay, easing: "cubic-bezier(.3,.6,.4,1)", fill: "both" });
+    }
+    return longest;
+  }
+
+  // Бабочки летят через экран волной, кто слева, кто справа.
+  function fly(layer, src) {
+    const width = innerWidth, height = innerHeight;
+    const count = amount(7);
+    let longest = 0;
+    for (let index = 0; index < count; index += 1) {
+      const size = rand(52, 88);
+      const node = piece(layer, src, size);
+      const fromLeft = index % 2 === 0;
+      const y = rand(height * 0.08, height * 0.8), wave = rand(30, 70), phase = rand(0, Math.PI * 2);
+      const duration = rand(3400, 4600), delay = rand(0, 1200);
+      longest = Math.max(longest, duration + delay);
+      const frames = [];
+      for (let step = 0; step <= 8; step += 1) {
+        const t = step / 8;
+        const x = fromLeft ? -size + t * (width + size * 2) : width + size - t * (width + size * 2);
+        frames.push({ offset: t, opacity: t === 0 || t === 1 ? 0 : 1, transform: `${at(x, y + Math.sin(phase + t * 7) * wave, 1, Math.cos(phase + t * 7) * 12)}${fromLeft ? "" : " scaleX(-1)"}` });
+      }
+      node.animate(frames, { duration, delay, easing: "linear", fill: "both" });
+    }
+    return longest;
+  }
+
+  // Звёздочки вспыхивают по всему экрану.
+  function twinkle(layer, src, count = amount(14)) {
+    const width = innerWidth, height = innerHeight;
+    let longest = 0;
+    for (let index = 0; index < count; index += 1) {
+      const size = rand(36, 80);
+      const node = piece(layer, src, size);
+      const x = rand(0, width - size), y = rand(height * 0.04, height * 0.82), turn = rand(-30, 30);
+      const duration = rand(1500, 2200), delay = rand(0, 1700);
+      longest = Math.max(longest, duration + delay);
+      node.animate([
+        { offset: 0, opacity: 0, transform: at(x, y, 0.2, -turn) },
+        { offset: 0.3, opacity: 1, transform: at(x, y, 1.15, 0) },
+        { offset: 0.65, opacity: 1, transform: at(x, y, 1, turn / 2) },
+        { offset: 1, opacity: 0, transform: at(x, y - 20, 0.5, turn) }
+      ], { duration, delay, easing: "ease-out", fill: "both" });
+    }
+    return longest;
+  }
+
+  // Хлопушка: всё вылетает из середины в стороны и чуть опускается.
+  function pop(layer, src) {
+    const width = innerWidth, height = innerHeight;
+    const count = amount(12);
+    const cx = width / 2, cy = height * 0.46;
+    let longest = 0;
+    for (let index = 0; index < count; index += 1) {
+      const size = rand(56, 96);
+      const node = piece(layer, src, size);
+      const angle = (index / count) * Math.PI * 2 + rand(-0.25, 0.25), radius = rand(0.28, 0.46) * Math.min(width, height * 0.8);
+      const ox = cx + Math.cos(angle) * radius - size / 2, oy = cy + Math.sin(angle) * radius - size / 2, turn = rand(-90, 90);
+      const duration = rand(1900, 2500), delay = rand(0, 260);
+      longest = Math.max(longest, duration + delay);
+      node.animate([
+        { offset: 0, opacity: 0, transform: at(cx - size / 2, cy - size / 2, 0.3, 0) },
+        { offset: 0.1, opacity: 1, transform: at(cx - size / 2, cy - size / 2, 0.5, 0) },
+        { offset: 0.5, opacity: 1, transform: at(ox, oy, 1.05, turn / 2) },
+        { offset: 1, opacity: 0, transform: at(ox, oy + height * 0.12, 0.9, turn) }
+      ], { duration, delay, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" });
+    }
+    return longest;
+  }
+
+  // Подарок: большой посередине подпрыгивает, вокруг поднимаются маленькие.
+  function gift(layer, src) {
+    const size = Math.min(innerWidth * 0.5, 220);
+    const x = (innerWidth - size) / 2, y = innerHeight * 0.42 - size / 2;
+    const node = piece(layer, src, size);
+    node.className = "is-hero";
+    node.animate([
+      { offset: 0, opacity: 0, transform: at(x, y + 50, 0.2, -10) },
+      { offset: 0.2, opacity: 1, transform: at(x, y, 1.12, 6) },
+      { offset: 0.32, opacity: 1, transform: at(x, y, 0.96, -5) },
+      { offset: 0.44, opacity: 1, transform: at(x, y, 1.03, 3) },
+      { offset: 0.8, opacity: 1, transform: at(x, y, 1, 0) },
+      { offset: 1, opacity: 0, transform: at(x, y - 40, 1.1, 0) }
+    ], { duration: 3000, easing: "ease-out", fill: "both" });
+    return Math.max(3000, rise(layer, src, amount(7)));
+  }
+
+  // Большой букет на весь экран — один раз, с золотым светом, букетами по углам и дождём из лепестков.
+  function bigBouquet(layer, src) {
+    const width = innerWidth, height = innerHeight;
+    const glow = document.createElement("i");
+    glow.className = "glk-fx-glow";
+    layer.append(glow);
+    glow.animate([{ opacity: 0 }, { opacity: 1, offset: 0.14 }, { opacity: 1, offset: 0.76 }, { opacity: 0 }], { duration: BIG_MS, fill: "both" });
+    const size = Math.min(width * 0.8, height * 0.48, 340);
+    const x = (width - size) / 2, y = height * 0.44 - size / 2;
+    const hero = piece(layer, src, size);
+    hero.className = "is-hero";
+    hero.animate([
+      { offset: 0, opacity: 0, transform: at(x, y + 70, 0.22, -14) },
+      { offset: 0.15, opacity: 1, transform: at(x, y, 1.08, 5) },
+      { offset: 0.25, opacity: 1, transform: at(x, y, 0.98, -3) },
+      { offset: 0.45, opacity: 1, transform: at(x, y - 8, 1.02, 2) },
+      { offset: 0.65, opacity: 1, transform: at(x, y, 1, -2) },
+      { offset: 0.82, opacity: 1, transform: at(x, y - 4, 1.01, 1) },
+      { offset: 1, opacity: 0, transform: at(x, y - height * 0.1, 1.14, 0) }
+    ], { duration: BIG_MS, easing: "cubic-bezier(.22,.8,.36,1)", fill: "both" });
+    const small = Math.min(width * 0.27, 124);
+    [[0.03, 0.09, -16], [0.97, 0.12, 14], [0.05, 0.74, 12], [0.95, 0.77, -12]].forEach(([fx, fy, turn], index) => {
+      const node = piece(layer, src, small);
+      const sx = Math.min(Math.max(fx * width - small / 2, 4), width - small - 4), sy = fy * height;
+      node.animate([
+        { offset: 0, opacity: 0, transform: at(sx, sy + 24, 0.2, -turn) },
+        { offset: 0.16, opacity: 1, transform: at(sx, sy, 1.08, turn) },
+        { offset: 0.26, opacity: 1, transform: at(sx, sy, 1, turn * 0.6) },
+        { offset: 0.84, opacity: 1, transform: at(sx, sy - 6, 1, turn) },
+        { offset: 1, opacity: 0, transform: at(sx, sy - 30, 0.9, turn) }
+      ], { duration: BIG_MS - 700, delay: 450 + index * 170, easing: "ease-out", fill: "both" });
+    });
+    const petals = ["1f339", "1f337", "1f338"].map(reactionSrc);
+    return Math.max(BIG_MS, fall(layer, petals, amount(18), 350));
+  }
+
+  // Без анимаций (в телефоне включено «уменьшить движение»): одна картинка посередине.
+  function still(layer, src) {
+    const size = Math.min(innerWidth * 0.4, 180);
+    const node = piece(layer, src, size);
+    node.className = "is-hero";
+    node.style.transform = at((innerWidth - size) / 2, innerHeight * 0.42 - size / 2);
+    node.animate([{ opacity: 0 }, { opacity: 1, offset: 0.2 }, { opacity: 1, offset: 0.8 }, { opacity: 0 }], { duration: 1800, fill: "both" });
+    return 1800;
+  }
+
+  const FX = Object.freeze({
+    big: bigBouquet,
+    fall: (layer, src) => fall(layer, [src], amount(14)),
+    rise: (layer, src) => rise(layer, src),
+    fly, twinkle, pop, gift
+  });
 
   // Все участники звонка по времени входа (у всех одинаковый порядок) — для «Игрового стола».
   function participants() {
@@ -973,10 +1300,11 @@
     root.setAttribute("aria-live", "polite");
     // Видео живёт в отдельном слое, который не перерисовывается вместе с кнопками.
     // Фон — настоящая фотография (домик, Тёпа, фонарики, луна); тоже не перерисовывается.
-    root.innerHTML = '<div class="glk-bg" aria-hidden="true"><img src="assets/scenes/call-cabin-moon.webp" alt="" decoding="async"><i class="glk-glow is-a"></i><i class="glk-glow is-b"></i><i class="glk-glow is-c"></i><i class="glk-glow is-d"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i></div><div class="glk-stage" hidden><div class="glk-tiles"></div><div class="glk-self" hidden><video autoplay playsinline muted></video></div></div><div class="glk-ui"></div>';
+    root.innerHTML = '<div class="glk-bg" aria-hidden="true"><img src="assets/scenes/call-cabin-moon.webp" alt="" decoding="async"><i class="glk-glow is-a"></i><i class="glk-glow is-b"></i><i class="glk-glow is-c"></i><i class="glk-glow is-d"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i></div><div class="glk-stage" hidden><div class="glk-tiles"></div><div class="glk-self" hidden><video autoplay playsinline muted></video></div></div><div class="glk-ui"></div><div class="glk-react" hidden></div>';
     call.stage = root.querySelector(".glk-stage");
     call.self = root.querySelector(".glk-self");
     call.ui = root.querySelector(".glk-ui");
+    call.reactNode = root.querySelector(".glk-react");
     root.addEventListener("click", event => {
       const button = event.target.closest("[data-call]");
       if (!button || button.disabled) return;
@@ -991,6 +1319,10 @@
       else if (action === "heart") sendHeart();
       else if (action === "bear") sendBear();
       else if (action === "play") openTable();
+      else if (action === "speaker") toggleSpeaker();
+      else if (action === "react-open") openReactions();
+      else if (action === "react-close") closeReactions(true);
+      else if (action === "react") sendReaction(button.dataset.kind);
       else if (action === "add") openPicker();
       else if (action === "invite") invite(button.dataset.id);
       else if (action === "pick-close") { call.picking = false; render(); }
@@ -998,7 +1330,8 @@
       else if (action === "expand") setExpanded(true);
     });
     root.addEventListener("keydown", event => {
-      if (event.key === "Escape" && call.picking) { call.picking = false; render(); }
+      if (event.key === "Escape" && call.reacting) closeReactions(true);
+      else if (event.key === "Escape" && call.picking) { call.picking = false; render(); }
     });
     document.body.append(root);
     call.root = root;
@@ -1007,7 +1340,7 @@
 
   function setExpanded(value) {
     call.expanded = value;
-    if (!value) call.picking = false;
+    if (!value) { call.picking = false; closeReactions(false); }
     render();
   }
 
@@ -1038,6 +1371,10 @@
     camera: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.4" y="6.2" width="13.4" height="11.6" rx="3" fill="currentColor"/><path d="M16.9 10.3 21.6 7.5v9l-4.7-2.8Z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>',
     cameraOff: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.4" y="6.2" width="13.4" height="11.6" rx="3" fill="currentColor"/><path d="M16.9 10.3 21.6 7.5v9l-4.7-2.8Z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 3.5 20 20.5" stroke="var(--glk-cut, #1b1726)" stroke-width="4.4" stroke-linecap="round"/><path d="M4 3.5 20 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     flip: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.3 5.4 9.6 3.8h4.8l1.3 1.6H19a2.2 2.2 0 0 1 2.2 2.2v9.6A2.2 2.2 0 0 1 19 19.4H5a2.2 2.2 0 0 1-2.2-2.2V7.6A2.2 2.2 0 0 1 5 5.4Z" fill="currentColor"/><path d="M8.3 12.2a3.7 3.7 0 0 1 6.5-2.4M15.7 12.6a3.7 3.7 0 0 1-6.5 2.4" fill="none" stroke="var(--glk-cut, #1b1726)" stroke-width="1.7" stroke-linecap="round"/><path d="M15.3 7.6v2.5h-2.5M8.7 17.2v-2.5h2.5" fill="none" stroke="var(--glk-cut, #1b1726)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    speaker: '<svg class="glk-ic glk-speaker-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.6 9.1h3.5L12 5v14l-4.9-4.1H3.6a1.1 1.1 0 0 1-1.1-1.1v-3.6a1.1 1.1 0 0 1 1.1-1.1Z" fill="currentColor"/><path class="glk-wave-a" d="M15.2 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="glk-wave-b" d="M17.9 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    earpiece: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.7" fill="currentColor"/><path d="M10.2 5.3h3.6" stroke="var(--glk-cut, #1b1726)" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.3" r="1.1" fill="var(--glk-cut, #1b1726)"/></svg>',
+    headset: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.2 15.2V12a7.8 7.8 0 0 1 15.6 0v3.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="3" y="13.2" width="5" height="7.6" rx="2.2" fill="currentColor"/><rect x="16" y="13.2" width="5" height="7.6" rx="2.2" fill="currentColor"/></svg>',
+    reactions: '<svg class="glk-ic glk-react-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><radialGradient id="glkSmile" cx=".38" cy=".32" r=".78"><stop offset="0" stop-color="#ffec8a"/><stop offset=".65" stop-color="#ffc533"/><stop offset="1" stop-color="#f0951c"/></radialGradient></defs><circle cx="10.8" cy="13.2" r="8.4" fill="url(#glkSmile)"/><ellipse cx="8.2" cy="11.6" rx="1.1" ry="1.45" fill="#5a3410"/><ellipse cx="13.4" cy="11.6" rx="1.1" ry="1.45" fill="#5a3410"/><path d="M7.1 15a4.3 4.3 0 0 0 7.4 0" fill="none" stroke="#5a3410" stroke-width="1.6" stroke-linecap="round"/><circle cx="6.3" cy="15.1" r="1.3" fill="#ff6f86" opacity=".5"/><circle cx="15.3" cy="15.1" r="1.3" fill="#ff6f86" opacity=".5"/><g class="glk-react-flower"><circle cx="18.6" cy="3.5" r="1.9" fill="#ff5c8d"/><circle cx="20.4" cy="4.8" r="1.9" fill="#ff5c8d"/><circle cx="19.7" cy="6.9" r="1.9" fill="#ff5c8d"/><circle cx="17.5" cy="6.9" r="1.9" fill="#ff5c8d"/><circle cx="16.8" cy="4.8" r="1.9" fill="#ff5c8d"/><circle cx="18.6" cy="5.3" r="1.35" fill="#ffe27a"/></g></svg>',
     close: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
   });
 
@@ -1080,6 +1417,7 @@
     document.body.classList.toggle("glk-active", call.phase !== "idle");
     if (call.phase === "idle") { root.hidden = true; call.ui.innerHTML = ""; renderStage(); return; }
     root.hidden = false;
+    if (call.reacting && (call.phase === "incoming" || !call.expanded || !live())) closeReactions(false);
     const group = isGroup();
     const who = partner() || { user_id: "", name: "" };
     const status = call.note || {
@@ -1088,6 +1426,8 @@
       connecting: tr("connecting"), connected: tr("connected")
     }[call.phase] || "";
     const canTalk = live();
+    const routing = canRoute();
+    const loud = call.route === "speaker";
     const title = group ? tr("groupCall", { n: count() }) : tr("inCall", { name: who.name || "" });
     if (!call.expanded && call.phase !== "incoming") {
       root.className = "glk is-mini";
@@ -1136,9 +1476,10 @@
             <button class="glk-tool glk-mic${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}"><span class="glk-disc">${call.muted ? ICON.micOff : ICON.mic}</span><span>${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}</span></button>
             ${call.video ? `<button class="glk-tool glk-cam${call.camera ? "" : " is-off"}" type="button" data-call="camera" aria-pressed="${!call.camera}"><span class="glk-disc">${call.camera ? ICON.camera : ICON.cameraOff}</span><span>${escapeHtml(call.camera ? tr("cameraOff") : tr("cameraOn"))}</span></button>
             <button class="glk-tool glk-flip" type="button" data-call="flip" ${call.camera ? "" : "disabled"}><span class="glk-disc">${ICON.flip}</span><span>${escapeHtml(tr("flip"))}</span></button>` : ""}
+            ${routing ? `<button class="glk-tool glk-speaker${loud ? " is-on" : ""}" type="button" data-call="speaker" aria-pressed="${loud}" aria-label="${escapeHtml(tr("speaker"))}"><span class="glk-disc">${loud ? ICON.speaker : call.route === "earpiece" ? ICON.earpiece : ICON.headset}</span><span>${escapeHtml(tr(loud ? "speaker" : call.route === "earpiece" ? "earpiece" : "headset"))}</span></button>` : ""}
             <button class="glk-tool glk-heart" type="button" data-call="heart" ${canTalk ? "" : "disabled"}><span class="glk-disc">${ICON.heart}</span><span>${escapeHtml(tr("hearts"))}</span></button>
-            <button class="glk-tool glk-teddy" type="button" data-call="bear" ${canTalk ? "" : "disabled"}><span class="glk-disc"><span class="glk-emoji">🧸</span></span><span>${escapeHtml(tr("bear"))}</span></button>
-            <button class="glk-tool glk-play" type="button" data-call="play" ${canTalk ? "" : "disabled"}><span class="glk-disc"><span class="glk-emoji">🎲</span></span><span>${escapeHtml(tr("play"))}</span></button>
+            ${routing ? "" : `<button class="glk-tool glk-teddy" type="button" data-call="bear" ${canTalk ? "" : "disabled"}><span class="glk-disc"><span class="glk-emoji">🧸</span></span><span>${escapeHtml(tr("bear"))}</span></button>`}
+            <button class="glk-tool glk-reacts" type="button" data-call="react-open" aria-haspopup="dialog" ${canTalk ? "" : "disabled"}><span class="glk-disc">${ICON.reactions}</span><span>${escapeHtml(tr("reactions"))}</span></button>
           </div>
           <button class="glk-hang" type="button" data-call="hangup"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("hangup"))}</span></button>`}
         ${call.picking && call.phase !== "incoming" ? renderPicker() : ""}
@@ -1224,6 +1565,8 @@
     participants: () => (call.phase === "idle" ? [] : participants()),
     maxPeople: MAX_PEOPLE,
     supported,
+    // Android (CallBridge): куда сейчас идёт звук — speaker, earpiece, headset или bluetooth.
+    onAudioRoute: route => onAudioRoute(route),
     text: (key, values) => tr(key, values)
   });
 })();
