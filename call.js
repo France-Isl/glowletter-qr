@@ -197,6 +197,7 @@
     render();
     if (!(await openMedia(call.video))) { end(tr("micDenied")); return false; }
     if (call.phase !== "outgoing" || call.room !== room) return false;
+    keepAlive();
     call.tracked = true;
     if (!(await joinChannel())) return false;
     try {
@@ -299,6 +300,7 @@
     render();
     if (!(await openMedia(withVideo && call.video))) { signal("decline", {}, call.friend.user_id); end(tr("micDenied")); return; }
     if (call.phase !== "connecting") return;
+    keepAlive();
     call.tracked = true;
     armConnectTimer();
     signal("accept", { name: myName() });
@@ -516,6 +518,7 @@
         clearInterval(call.tickTimer);
         call.tickTimer = setInterval(renderTimer, 1000);
         native()?.setActive?.(true);
+        keepAlive();
         audioStart();
       }
       call.note = [...call.peers.values()].some(other => other.pc.connectionState === "disconnected") ? tr("reconnecting") : "";
@@ -1379,6 +1382,7 @@
     call.ui = root.querySelector(".glk-ui");
     call.reactNode = root.querySelector(".glk-react");
     root.addEventListener("click", event => {
+      if (Date.now() < miniDrag.until) { event.preventDefault(); event.stopPropagation(); return; }
       const button = event.target.closest("[data-call]");
       if (!button || button.disabled) return;
       const action = button.dataset.call;
@@ -1406,9 +1410,76 @@
       if (event.key === "Escape" && call.reacting) closeReactions(true);
       else if (event.key === "Escape" && call.picking) { call.picking = false; render(); }
     });
+    miniBind(root);
     document.body.append(root);
     call.root = root;
     return root;
+  }
+
+  // Android 2.4.30+ (владелец 31.10: «при сворачивании приложения разговор должен продолжиться, как в
+  // WhatsApp»): служба с микрофоном и уведомление «Звонок с …» — нажал и вернулся, «Завершить» — конец.
+  // Убирает их setActive(false) в end().
+  function keepAlive() {
+    const bridge = native();
+    if (typeof bridge?.ongoing !== "function" || call.phase === "idle") return;
+    const who = partner() || call.friend || { name: "" };
+    const title = isGroup() ? tr("groupCall", { n: count() }) : tr("inCall", { name: who.name || "" });
+    const text = tr(call.phase === "connected" ? "connected" : call.phase === "outgoing" ? "calling" : "connecting");
+    try { bridge.ongoing(JSON.stringify({ title, text, hangup: tr("hangup"), channel: tr("callBubble") })); } catch {}
+  }
+
+  // Свёрнутый звонок можно перетащить пальцем куда удобно (владелец 31.10: «иначе даже в настройки
+  // не зайти»). Место запоминается; короткое касание по-прежнему разворачивает звонок.
+  const MINI_KEY = "glowletterCallMiniPlace";
+  const miniDrag = { id: null, x0: 0, y0: 0, left: 0, top: 0, moved: false, until: 0 };
+
+  function miniPlace(left, top) {
+    const root = call.root;
+    if (!root) return;
+    const rect = root.getBoundingClientRect();
+    const x = Math.max(6, Math.min(innerWidth - rect.width - 6, left));
+    const y = Math.max(6, Math.min(innerHeight - rect.height - 6, top));
+    root.style.left = `${Math.round(x)}px`;
+    root.style.top = `${Math.round(y)}px`;
+    root.style.transform = "none";
+  }
+
+  function miniRestore() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(MINI_KEY) || "null"); } catch {}
+    if (saved && Number.isFinite(saved.x) && Number.isFinite(saved.y)) miniPlace(saved.x * innerWidth, saved.y * innerHeight);
+  }
+
+  function miniBind(root) {
+    root.addEventListener("pointerdown", event => {
+      if (!root.classList.contains("is-mini") || event.button > 0 || miniDrag.id !== null) return;
+      const rect = root.getBoundingClientRect();
+      Object.assign(miniDrag, { id: event.pointerId, x0: event.clientX, y0: event.clientY, left: rect.left, top: rect.top, moved: false });
+    });
+    root.addEventListener("pointermove", event => {
+      if (miniDrag.id !== event.pointerId) return;
+      const dx = event.clientX - miniDrag.x0, dy = event.clientY - miniDrag.y0;
+      if (!miniDrag.moved) {
+        if (Math.hypot(dx, dy) < 8) return;
+        miniDrag.moved = true;
+        root.classList.add("is-dragging");
+        try { root.setPointerCapture(event.pointerId); } catch {}
+      }
+      event.preventDefault();
+      miniPlace(miniDrag.left + dx, miniDrag.top + dy);
+    });
+    const finish = event => {
+      if (miniDrag.id !== event.pointerId) return;
+      miniDrag.id = null;
+      root.classList.remove("is-dragging");
+      if (!miniDrag.moved) return;
+      miniDrag.until = Date.now() + 400;
+      const rect = root.getBoundingClientRect();
+      try { localStorage.setItem(MINI_KEY, JSON.stringify({ x: rect.left / innerWidth, y: rect.top / innerHeight })); } catch {}
+    };
+    root.addEventListener("pointerup", finish);
+    root.addEventListener("pointercancel", finish);
+    addEventListener("resize", () => { if (root.classList.contains("is-mini") && root.style.left) miniRestore(); });
   }
 
   function setExpanded(value) {
@@ -1511,8 +1582,10 @@
         </button>
         <button class="glk-round glk-mute${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}" aria-label="${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}">${call.muted ? ICON.micOff : ICON.mic}</button>
         <button class="glk-round glk-end" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}"><span class="glk-phone">${ICON.phone}</span></button>`;
+      if (miniDrag.id === null) miniRestore();
       return;
     }
+    root.style.left = root.style.top = root.style.transform = "";
     const active = document.activeElement && root.contains(document.activeElement) ? document.activeElement : null;
     const focused = active?.dataset?.call ? `[data-call="${active.dataset.call}"]${active.dataset.id ? `[data-id="${CSS.escape(active.dataset.id)}"]` : ""}` : "";
     const videoOn = videoStageOn() && othersIds().length > 0;

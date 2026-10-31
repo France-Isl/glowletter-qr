@@ -1088,6 +1088,13 @@ public final class MainActivity extends ComponentActivity {
         target.evaluateJavascript(script, null);
     }
 
+    // «Завершить» в уведомлении разговора (CallService): страница вешает трубку.
+    void callHangup() {
+        WebView target = webView;
+        if (target == null || !trustedMainDocumentReady || !isTrustedAppMainDocumentUrl(target.getUrl())) return;
+        target.evaluateJavascript("(function(){if(window.GlowLetterCall&&typeof window.GlowLetterCall.hangup==='function'){window.GlowLetterCall.hangup();}})();", null);
+    }
+
     void callShowWhenLocked(boolean on) {
         if (Build.VERSION.SDK_INT >= 27) {
             setShowWhenLocked(on);

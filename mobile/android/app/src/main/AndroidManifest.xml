@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <!-- Звонок у уха: датчик приближения гасит экран (обычное разрешение, без диалога). -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Разговор продолжается, когда приложение свёрнуто (CallService, тип «микрофон»). -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <queries>
         <intent>
@@ -54,6 +57,14 @@
         </service>
         <receiver
             android:name=".CallPush$Decline"
+            android:exported="false" />
+        <!-- Разговор продолжается, когда приложение свёрнуто: уведомление «Звонок с …» и «Завершить». -->
+        <service
+            android:name=".CallService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+        <receiver
+            android:name=".CallService$Hangup"
             android:exported="false" />
         <!-- «Фото на экран друга»: виджет с последним фото от друга. -->
         <receiver

@@ -54,6 +54,31 @@ public final class CallBridge {
         activity.runOnUiThread(() -> apply(active));
     }
 
+    /**
+     * Разговор не обрывается, когда приложение свёрнуто: уведомление «Звонок с …» и служба
+     * с микрофоном (CallService). Тексты — {title, text, hangup, channel} на языке приложения.
+     */
+    @JavascriptInterface
+    public void ongoing(String json) {
+        String title = "", text = "", hangup = "", channel = "";
+        try {
+            org.json.JSONObject data = new org.json.JSONObject(json == null ? "{}" : json);
+            title = clip(data.optString("title"), 80);
+            text = clip(data.optString("text"), 120);
+            hangup = clip(data.optString("hangup"), 40);
+            channel = clip(data.optString("channel"), 40);
+        } catch (Exception ignored) {
+            // Без текстов покажем название приложения.
+        }
+        final String t = title, x = text, h = hangup, c = channel;
+        activity.runOnUiThread(() -> CallService.start(activity, t, x, h, c));
+    }
+
+    private static String clip(String value, int max) {
+        String text = value == null ? "" : value.replaceAll("\\p{Cntrl}", "").trim();
+        return text.length() <= max ? text : text.substring(0, max);
+    }
+
     /** Громкая связь (true) или динамик у уха / наушники (false). */
     @JavascriptInterface
     public void setSpeaker(boolean on) {
@@ -119,6 +144,7 @@ public final class CallBridge {
                 route();
             } else {
                 listen(audio, false);
+                CallService.stop(activity);
                 activity.callShowWhenLocked(false);
                 if (Build.VERSION.SDK_INT >= 31) audio.clearCommunicationDevice();
                 audio.stopBluetoothSco();

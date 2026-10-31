@@ -47,6 +47,8 @@
 .glk-decline { background: var(--madder); }
 .glk-accept { background: var(--emerald); animation: glk-pulse 1.4s ease-in-out infinite; }
 .glk.is-mini { top: max(10px, env(safe-area-inset-top)); left: 50%; display: flex; align-items: center; gap: 6px; padding: 6px; border: 1px solid color-mix(in srgb, var(--gold-bright) 45%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--night-deep) 92%, transparent); box-shadow: 0 14px 34px color-mix(in srgb, var(--night-deep) 40%, transparent); transform: translateX(-50%); }
+.glk.is-mini { touch-action: none; user-select: none; -webkit-user-select: none; }
+.glk.is-mini.is-dragging { cursor: grabbing; box-shadow: 0 20px 44px rgba(0, 0, 0, .55); }
 .glk-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; max-width: 58vw; padding: 0 12px; border: 0; background: none; font-size: 13px; font-weight: 800; }
 .glk-pill b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .glk-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 4px color-mix(in srgb, var(--emerald) 25%, transparent); }
