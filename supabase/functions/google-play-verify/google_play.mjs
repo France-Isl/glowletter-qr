@@ -687,6 +687,15 @@ async function oneTimeEvidence(purchase, context) {
   ) {
     throw new ApiError("google_play_response_invalid", 502);
   }
+  // Покупка «Навсегда» привязана к аккаунту так же, как подписка.
+  if (
+    !constantTimeEqual(
+      String(purchase.obfuscatedExternalAccountId || ""),
+      context.accountBinding,
+    )
+  ) {
+    throw new ApiError("purchase_account_mismatch", 403);
+  }
   const orderIdHash = typeof purchase.orderId === "string" && purchase.orderId
     ? await keyedHash(context.config, ORDER_ID_HASH_DOMAIN, purchase.orderId)
     : null;

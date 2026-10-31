@@ -445,6 +445,7 @@ test("the current Android legacy full_access restore path remains supported", as
     acknowledgementState: 1,
     purchaseTimeMillis: String(NOW - 10_000),
     orderId: "GPA.9876-5432-1098-76543",
+    obfuscatedExternalAccountId: ACCOUNT_BINDING,
   };
   const request = await legacyRequest();
   const requestHash = JSON.parse(await request.clone().text()).requestHash;
@@ -462,6 +463,26 @@ test("the current Android legacy full_access restore path remains supported", as
     "active",
     "active",
   ]);
+});
+
+test("a lifetime purchase bound to another account is rejected", async () => {
+  const request = await legacyRequest();
+  const requestHash = JSON.parse(await request.clone().text()).requestHash;
+  const setup = fixture({
+    purchase: {
+      productId: LEGACY_PRODUCT_ID,
+      purchaseState: 0,
+      consumptionState: 0,
+      acknowledgementState: 1,
+      purchaseTimeMillis: String(NOW - 10_000),
+      obfuscatedExternalAccountId: "B".repeat(43),
+    },
+    integrity: integrityPayload(requestHash),
+  });
+  const response = await setup.handler(request);
+  assert.equal(response.status, 403);
+  assert.deepEqual(await response.json(), { error: "purchase_account_mismatch" });
+  assert.equal(setup.records.length, 0);
 });
 
 test("null Google product state fields cannot be coerced into a purchase", async () => {
