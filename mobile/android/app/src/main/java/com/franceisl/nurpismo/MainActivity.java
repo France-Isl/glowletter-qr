@@ -1095,6 +1095,15 @@ public final class MainActivity extends ComponentActivity {
         target.evaluateJavascript("(function(){if(window.GlowLetterCall&&typeof window.GlowLetterCall.hangup==='function'){window.GlowLetterCall.hangup();}})();", null);
     }
 
+    // Разговор (микрофон, звук, связь) живёт в отдельном процессе WebView. По умолчанию, когда
+    // приложение свёрнуто, Android снижает его важность и через несколько секунд замораживает —
+    // звук пропадал у обоих (владелец 31.10). Пока идёт звонок, процесс страницы остаётся важным.
+    void callKeepRenderer(boolean on) {
+        WebView target = webView;
+        if (target == null || Build.VERSION.SDK_INT < 26) return;
+        target.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, !on);
+    }
+
     void callShowWhenLocked(boolean on) {
         if (Build.VERSION.SDK_INT >= 27) {
             setShowWhenLocked(on);

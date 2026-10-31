@@ -34,6 +34,7 @@ public final class CallBridge {
     private volatile String route = "speaker";
     private AudioDeviceCallback devices;
     private PowerManager.WakeLock proximity;
+    private PowerManager.WakeLock cpu;
 
     CallBridge(MainActivity activity) {
         this.activity = activity;
@@ -133,6 +134,8 @@ public final class CallBridge {
         activity.callActive = on;
         if (on) activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         else activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        activity.callKeepRenderer(on);
+        holdCpu(on);
         AudioManager audio = audio();
         if (audio == null) return;
         try {
@@ -258,6 +261,25 @@ public final class CallBridge {
         route = now;
         holdProximity("earpiece".equals(now));
         activity.callAudioRoute(now);
+    }
+
+    // Свёрнутое приложение с погасшим экраном: процессор не засыпает, пока идёт разговор.
+    private void holdCpu(boolean on) {
+        try {
+            if (on) {
+                if (cpu == null) {
+                    PowerManager power = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+                    if (power == null) return;
+                    cpu = power.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "GlowLetter:call-cpu");
+                    cpu.setReferenceCounted(false);
+                }
+                if (!cpu.isHeld()) cpu.acquire(4 * 60 * 60 * 1000L);
+            } else if (cpu != null && cpu.isHeld()) {
+                cpu.release();
+            }
+        } catch (RuntimeException ignored) {
+            // Без блокировки разговор идёт, пока экран включён.
+        }
     }
 
     // У уха экран гаснет по датчику приближения.
