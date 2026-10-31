@@ -1,0 +1,52 @@
+/* Большая админ-панель: вкладки «Защита», «Подозрительные», «Журнал», «Статистика» и жалобы на игроков */
+#adminPanel .admin-tabs { flex-wrap: wrap; }
+.gla-pane, .gla-user-reports { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; color: var(--ui-ink); }
+.gla-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.gla-head h4 { margin: 0; font-size: 16px; }
+.gla-head button, .gla-row-actions button, .gla-seg button {
+  min-height: 36px; padding: 0 12px; border: 1px solid var(--ui-border); border-radius: 999px;
+  color: var(--ui-accent-deep); background: var(--ui-surface); font: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
+}
+.gla-row-actions button.is-danger { color: #fff; background: #9e2b32; border-color: #9e2b32; }
+.gla-seg { display: inline-flex; gap: 6px; }
+.gla-seg button[aria-pressed="true"] { color: #fff; background: var(--ui-accent-deep); border-color: var(--ui-accent-deep); }
+.gla-note { margin: 0; color: var(--ui-muted); font-size: 12px; line-height: 1.5; }
+.gla-search { display: flex; gap: 8px; }
+.gla-search input { flex: 1; min-width: 0; min-height: 44px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--ui-border); background: var(--ui-surface); color: var(--ui-ink); font: inherit; }
+.gla-search button { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 0; background: var(--ui-accent-deep); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.gla-card { display: flex; flex-direction: column; gap: 12px; padding: 14px; border-radius: 16px; border: 1px solid var(--ui-border); background: var(--ui-surface); }
+.gla-card.is-blocked { border-color: #c2424d; }
+.gla-card header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 17px; }
+.gla-card dl { margin: 0; display: grid; gap: 6px; }
+.gla-card dl div { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; border-bottom: 1px dashed var(--ui-border); padding-bottom: 4px; }
+.gla-card dt { color: var(--ui-muted); }
+.gla-card dd { margin: 0; text-align: end; font-weight: 700; overflow-wrap: anywhere; }
+.gla-tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; background: var(--ui-soft); color: var(--ui-accent-deep); }
+.gla-tag.is-blocked { background: #9e2b32; color: #fff; }
+.gla-tag.is-admin { background: #c48a12; color: #fff; }
+.gla-alert { margin: 0; padding: 10px 12px; border-radius: 12px; background: rgba(158, 43, 50, .12); color: #9e2b32; font-weight: 700; font-size: 13px; }
+.gla-section { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid var(--ui-border); }
+.gla-section h5 { margin: 0; font-size: 14px; }
+.gla-section input[type="text"], .gla-section textarea, .gla-section select { width: 100%; box-sizing: border-box; min-height: 42px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--ui-border); background: var(--ui-panel, var(--ui-surface)); color: var(--ui-ink); font: inherit; font-size: 14px; }
+.gla-inline { display: grid; grid-template-columns: 120px 1fr; gap: 8px; }
+.gla-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gla-check { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.gla-btn { min-height: 42px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--ui-accent-deep); background: var(--ui-accent-deep); color: #fff; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; }
+.gla-btn.is-danger { background: #9e2b32; border-color: #9e2b32; }
+.gla-btn.is-soft { background: var(--ui-surface); color: var(--ui-ink); border-color: var(--ui-border); }
+.gla-mini { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--ui-muted); }
+.gla-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.gla-list li { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--ui-border); background: var(--ui-surface); font-size: 14px; }
+.gla-list li > span:first-child { display: flex; flex-direction: column; gap: 3px; overflow-wrap: anywhere; }
+.gla-list small { color: var(--ui-muted); font-size: 12px; }
+.gla-list .gla-quote { font-style: italic; }
+.gla-row-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.gla-totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; }
+.gla-totals p { margin: 0; padding: 10px; border-radius: 12px; border: 1px solid var(--ui-border); background: var(--ui-surface); display: flex; flex-direction: column; align-items: center; }
+.gla-totals b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.gla-totals small { color: var(--ui-muted); font-size: 11px; }
+.gla-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--ui-border); }
+.gla-table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+.gla-table th, .gla-table td { padding: 7px 8px; text-align: end; border-bottom: 1px solid var(--ui-border); white-space: nowrap; }
+.gla-table th:first-child, .gla-table td:first-child { text-align: start; }
+.gla-table th { color: var(--ui-muted); font-weight: 700; background: var(--ui-soft); }

@@ -12,28 +12,30 @@
   <meta property="og:title" content="GlowLetter · Тёплые слова" />
   <meta property="og:description" content="Иногда одно письмо говорит больше, чем сотня сообщений." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bezam.org/assets/og-glowletter.jpg?v=99" />
+  <meta property="og:image" content="https://bezam.org/assets/og-glowletter.jpg?v=100" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="628" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>GlowLetter · Тёплые слова</title>
-  <link rel="manifest" href="manifest.webmanifest?v=99" />
+  <link rel="manifest" href="manifest.webmanifest?v=100" />
   <link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="fonts/local-fonts.css?v=99" />
-  <link rel="stylesheet" href="styles.css?v=99" />
-  <link rel="stylesheet" href="experience.css?v=99" />
-  <link rel="stylesheet" href="email-auth.css?v=99" />
-  <link rel="stylesheet" href="moments.css?v=99" data-glowletter-moments-style />
-  <link rel="stylesheet" href="games.css?v=99" />
-  <link rel="stylesheet" href="friends.css?v=99" />
-  <link rel="stylesheet" href="couple.css?v=99" />
-  <link rel="stylesheet" href="ultra.css?v=99" />
-  <link rel="stylesheet" href="table-board.css?v=99" />
-  <link rel="stylesheet" href="table-party.css?v=99" />
-  <link rel="stylesheet" href="table-group.css?v=99" />
-  <link rel="stylesheet" href="word.css?v=99" />
-  <link rel="stylesheet" href="ranking.css?v=99" />
+  <link rel="stylesheet" href="fonts/local-fonts.css?v=100" />
+  <link rel="stylesheet" href="styles.css?v=100" />
+  <link rel="stylesheet" href="experience.css?v=100" />
+  <link rel="stylesheet" href="email-auth.css?v=100" />
+  <link rel="stylesheet" href="moments.css?v=100" data-glowletter-moments-style />
+  <link rel="stylesheet" href="games.css?v=100" />
+  <link rel="stylesheet" href="friends.css?v=100" />
+  <link rel="stylesheet" href="couple.css?v=100" />
+  <link rel="stylesheet" href="ultra.css?v=100" />
+  <link rel="stylesheet" href="table-board.css?v=100" />
+  <link rel="stylesheet" href="table-party.css?v=100" />
+  <link rel="stylesheet" href="table-group.css?v=100" />
+  <link rel="stylesheet" href="word.css?v=100" />
+  <link rel="stylesheet" href="ranking.css?v=100" />
+  <link rel="stylesheet" href="guard.css?v=100" />
+  <link rel="stylesheet" href="admin.css?v=100" />
 </head>
 <body data-ui-theme="garnet">
   <!--
@@ -497,7 +499,7 @@
               <h3 id="adminPanelTitle">Админ-панель</h3>
             </div>
           </header>
-          <nav class="admin-tabs" role="tablist" aria-label="Админ-панель"><button type="button" role="tab" aria-selected="true" data-admin-tab="accounts" id="adminTabAccounts">Аккаунты</button><button type="button" role="tab" aria-selected="false" data-admin-tab="catalog" id="adminTabCatalog">Стихи</button><button type="button" role="tab" aria-selected="false" data-admin-tab="bulk" id="adminTabBulk">Всем</button><button type="button" role="tab" aria-selected="false" data-admin-tab="reports" id="adminTabReports">Жалобы</button><button type="button" role="tab" aria-selected="false" data-admin-tab="games" id="adminTabGames">Игры</button></nav>
+          <nav class="admin-tabs" role="tablist" aria-label="Админ-панель"><button type="button" role="tab" aria-selected="true" data-admin-tab="accounts" id="adminTabAccounts">Аккаунты</button><button type="button" role="tab" aria-selected="false" data-admin-tab="catalog" id="adminTabCatalog">Стихи</button><button type="button" role="tab" aria-selected="false" data-admin-tab="bulk" id="adminTabBulk">Всем</button><button type="button" role="tab" aria-selected="false" data-admin-tab="reports" id="adminTabReports">Жалобы</button><button type="button" role="tab" aria-selected="false" data-admin-tab="games" id="adminTabGames">Игры</button><button type="button" role="tab" aria-selected="false" data-admin-tab="guard" id="adminTabGuard">Защита</button><button type="button" role="tab" aria-selected="false" data-admin-tab="suspects" id="adminTabSuspects">Подозрительные</button><button type="button" role="tab" aria-selected="false" data-admin-tab="log" id="adminTabLog">Журнал</button><button type="button" role="tab" aria-selected="false" data-admin-tab="stats" id="adminTabStats">Статистика</button></nav>
           <p class="admin-panel-description">По ID видны только срок и статус доступа. Выдача и отзыв VIP записываются в защищённый журнал.</p>
           <form class="admin-lookup-form" id="adminLookupForm" data-admin-pane="accounts">
             <label for="adminSupportId">ID аккаунта</label>
@@ -549,8 +551,13 @@
             <div class="admin-overview-head"><h4>Жалобы на личные сообщения</h4><button id="adminReportsRefresh" type="button">Обновить</button></div>
             <p class="admin-bulk-note">Сообщения, на которые пожаловались получатели. «Удалить сообщение» стирает его у обоих, «Оставить» просто закрывает жалобу.</p>
             <ul class="admin-report-list" id="adminReportList"></ul>
+            <div class="gla-user-reports" id="adminUserReports"></div>
           </div>
           <div class="admin-games" id="adminGames" data-admin-pane="games"></div>
+          <div class="gla-pane" id="adminGuard" data-admin-pane="guard"></div>
+          <div class="gla-pane" id="adminSuspects" data-admin-pane="suspects"></div>
+          <div class="gla-pane" id="adminLog" data-admin-pane="log"></div>
+          <div class="gla-pane" id="adminStats" data-admin-pane="stats"></div>
           <div class="admin-catalog" id="adminCatalog" data-admin-pane="catalog">
             <div class="admin-overview-head"><h4 id="adminCatalogTitle">Стихи и письма</h4><button id="adminCatalogRefresh" type="button">Обновить</button></div>
             <p class="admin-bulk-note" id="adminCatalogNote">Публикуйте только свои тексты или стихи авторов, умерших больше 70 лет назад. Опубликованный текст появляется у всех сразу, без обновления приложения.</p>
@@ -831,41 +838,43 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <audio id="nasheed" loop preload="none"></audio>
   </div>
-  <script src="config.js?v=99"></script>
-  <script src="vendor/supabase-2.110.9.js?v=99"></script>
-  <script src="letters.js?v=99"></script>
-  <script src="i18n-extra.js?v=99"></script>
-  <script src="vendor/qrcode-generator-1.4.4.min.js?v=99"></script>
-  <script src="qr-code.js?v=99"></script>
-  <script src="app.js?v=99"></script>
-  <script src="email-auth.js?v=99"></script>
-  <script src="moments.js?v=99"></script>
-  <script src="experience.js?v=99"></script>
-  <script src="games-i18n.js?v=99"></script>
-  <script src="games.js?v=99"></script>
-  <script src="friends-i18n.js?v=99"></script>
-  <script src="friends.js?v=99"></script>
-  <script src="couple-i18n.js?v=99"></script>
-  <script src="couple.js?v=99"></script>
-  <script src="bear-reader.js?v=99"></script>
-  <script src="online.js?v=99"></script>
-  <script src="voice.js?v=99"></script>
-  <script src="ultra-i18n.js?v=99"></script>
-  <script src="call.js?v=99"></script>
-  <script src="table-i18n.js?v=99"></script>
-  <script src="table.js?v=99"></script>
-  <script src="table-content.js?v=99"></script>
-  <script src="table-content-i18n.js?v=99"></script>
-  <script src="table-board.js?v=99"></script>
-  <script src="table-party.js?v=99"></script>
-  <script src="table-group-content.js?v=99"></script>
-  <script src="table-group-content-i18n.js?v=99"></script>
-  <script src="table-group.js?v=99"></script>
-  <script src="word-lists.js?v=99"></script>
-  <script src="word-i18n.js?v=99"></script>
-  <script src="word.js?v=99"></script>
-  <script src="together.js?v=99"></script>
-  <script src="ranking-i18n.js?v=99"></script>
-  <script src="ranking.js?v=99"></script>
+  <script src="config.js?v=100"></script>
+  <script src="vendor/supabase-2.110.9.js?v=100"></script>
+  <script src="letters.js?v=100"></script>
+  <script src="i18n-extra.js?v=100"></script>
+  <script src="vendor/qrcode-generator-1.4.4.min.js?v=100"></script>
+  <script src="qr-code.js?v=100"></script>
+  <script src="app.js?v=100"></script>
+  <script src="email-auth.js?v=100"></script>
+  <script src="moments.js?v=100"></script>
+  <script src="experience.js?v=100"></script>
+  <script src="games-i18n.js?v=100"></script>
+  <script src="games.js?v=100"></script>
+  <script src="friends-i18n.js?v=100"></script>
+  <script src="friends.js?v=100"></script>
+  <script src="couple-i18n.js?v=100"></script>
+  <script src="couple.js?v=100"></script>
+  <script src="bear-reader.js?v=100"></script>
+  <script src="online.js?v=100"></script>
+  <script src="voice.js?v=100"></script>
+  <script src="ultra-i18n.js?v=100"></script>
+  <script src="call.js?v=100"></script>
+  <script src="table-i18n.js?v=100"></script>
+  <script src="table.js?v=100"></script>
+  <script src="table-content.js?v=100"></script>
+  <script src="table-content-i18n.js?v=100"></script>
+  <script src="table-board.js?v=100"></script>
+  <script src="table-party.js?v=100"></script>
+  <script src="table-group-content.js?v=100"></script>
+  <script src="table-group-content-i18n.js?v=100"></script>
+  <script src="table-group.js?v=100"></script>
+  <script src="word-lists.js?v=100"></script>
+  <script src="word-i18n.js?v=100"></script>
+  <script src="word.js?v=100"></script>
+  <script src="together.js?v=100"></script>
+  <script src="ranking-i18n.js?v=100"></script>
+  <script src="ranking.js?v=100"></script>
+  <script src="guard.js?v=100"></script>
+  <script src="admin.js?v=100"></script>
 </body>
 </html>

@@ -1808,11 +1808,12 @@
   function setAdminTab(tab) {
     const panel = $("#adminPanel");
     if (!panel) return;
-    const next = ["accounts", "catalog", "bulk", "reports", "games"].includes(tab) ? tab : "accounts";
+    const next = ["accounts", "catalog", "bulk", "reports", "games", "guard", "suspects", "log", "stats"].includes(tab) ? tab : "accounts";
     panel.dataset.tab = next;
     $$("#adminPanel [data-admin-tab]").forEach(button => button.setAttribute("aria-selected", String(button.dataset.adminTab === next)));
     if (next === "reports") loadAdminReports();
     if (next === "games") window.GlowLetterRanking?.renderAdmin?.($("#adminGames"));
+    if (["guard", "suspects", "log", "stats", "reports"].includes(next)) window.GlowLetterAdmin?.show?.(next);
   }
 
   // Вкладка «Жалобы»: жалобы на личные сообщения из «Друзей».
@@ -6188,7 +6189,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=99", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=100", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

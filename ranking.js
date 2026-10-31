@@ -159,6 +159,7 @@
     gear: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.3 2.6h3.4l.5 2.6 1.8.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.8 2.6.5v3.4l-2.6.5-.8 1.8 1.5 2.2-2.4 2.4-2.2-1.5-1.8.8-.5 2.6h-3.4l-.5-2.6-1.8-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.8-2.6-.5v-3.4l2.6-.5.8-1.8-1.5-2.2 2.4-2.4 2.2 1.5 1.8-.8Z" fill="currentColor"/><circle cx="12" cy="12" r="3.4" fill="#1d1430"/></svg>',
     pencil: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 20 1-4.6L15.6 4.8a2 2 0 0 1 2.8 0l.8.8a2 2 0 0 1 0 2.8L8.6 19ZM14 6.4l3.6 3.6M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     tick: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    flag: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 21V4m0 0h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     calendar: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
   });
   // Градиенты металла — один раз на страницу.
@@ -374,7 +375,7 @@
     const counts = data.counts || {};
     const tab = state.profileTab;
     const edit = data.me && state.editName;
-    return `${header(data.me ? tr("profile") : tr("profileOf"), false, data.me ? `<button class="glr-icon is-gear" type="button" data-glr-action="info" aria-label="${escapeHtml(tr("info"))}">${ICON.gear}</button>` : "")}
+    return `${header(data.me ? tr("profile") : tr("profileOf"), false, data.me ? `<button class="glr-icon is-gear" type="button" data-glr-action="info" aria-label="${escapeHtml(tr("info"))}">${ICON.gear}</button>` : window.GlowLetterGuard ? `<button class="glr-icon is-report" type="button" data-glr-action="report" aria-label="${escapeHtml(window.GlowLetterGuard.label("report"))}">${ICON.flag}</button>` : "")}
       <section class="glr-card glr-hero">
         <span class="glr-hero-moon" aria-hidden="true"></span>
         ${avatar({ user_id: data.user_id, name: data.name }, "hero")}
@@ -428,6 +429,7 @@
     else if (action === "info") { state.info = true; render(); }
     else if (action === "scope") { if (state.scope !== target.dataset.scope) { state.scope = target.dataset.scope; state.data = null; await load(); } }
     else if (action === "profile") openProfile(target.dataset.user);
+    else if (action === "report") window.GlowLetterGuard?.report?.(state.profile?.userId);
     else if (action === "ptab") { state.profileTab = target.dataset.tab; render(); }
     else if (action === "invite") { close(); window.GlowLetterFriends?.open?.(); }
     else if (action === "edit-name") { state.editName = true; render(); state.root.querySelector(".glr-name-form input")?.focus(); }

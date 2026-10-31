@@ -448,3 +448,4 @@ body.glr-open { overflow: hidden; }
   .glr, .glr *, .glr-ceremony, .glr-ceremony *, .glr-admin { animation: none !important; transition: none !important; }
   .glr-admin { opacity: 1; transform: translate(-50%, 0); }
 }
+.glr .glr-icon.is-report svg { width: 24px; height: 24px; color: #ffb4c4; }

@@ -1,0 +1,42 @@
+/* Защита: нет интернета, блокировка, предупреждение, жалоба — фото мишек и тёмное стекло с золотом, как на главной */
+.glx-layer {
+  position: fixed; inset: 0; z-index: 2147483000;
+  display: grid; place-items: center; padding: 24px 16px;
+  background: #120a16 url("assets/scenes/bears.webp") center top / cover no-repeat;
+}
+.glx-layer[hidden] { display: none; }
+#glxReport, #glxWarning { background: rgba(10, 6, 14, .62); }
+body.glx-locked { overflow: hidden; }
+.glx-card {
+  width: min(100%, 380px);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 28px 22px 22px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(255, 200, 90, .75);
+  background: rgba(22, 12, 20, .86);
+  box-shadow: 0 0 24px rgba(255, 180, 60, .35), 0 18px 40px rgba(0, 0, 0, .55);
+  color: #fff; text-align: center;
+  font-family: inherit;
+}
+.glx-card h2 { margin: 0; font-size: 22px; font-weight: 700; color: #ffe2a0; }
+.glx-card p { margin: 0; font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, .88); }
+.glx-card .glx-reason, .glx-card .glx-message { padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .14); white-space: pre-wrap; overflow-wrap: anywhere; }
+.glx-icon { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; color: #ffd36b; background: rgba(255, 200, 90, .12); border: 1.5px solid rgba(255, 200, 90, .6); font-size: 40px; font-weight: 800; }
+.glx-icon svg { width: 44px; height: 44px; }
+.glx-icon.is-blocked { color: #ff8da0; border-color: rgba(255, 120, 140, .7); background: rgba(255, 90, 120, .12); }
+.glx-btn {
+  min-height: 48px; min-width: 160px; padding: 0 22px; margin-top: 6px;
+  border-radius: 999px; border: 1.5px solid #ffc35a;
+  background: linear-gradient(180deg, #a52a46, #6e1430); color: #fff;
+  font: inherit; font-size: 17px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 0 14px rgba(255, 170, 60, .35);
+}
+.glx-btn.is-soft { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .3); box-shadow: none; }
+.glx-btn:disabled { opacity: .6; cursor: default; }
+.glx-reasons { width: 100%; display: flex; flex-direction: column; gap: 8px; text-align: start; }
+.glx-reasons label { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 14px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); cursor: pointer; font-size: 16px; }
+.glx-reasons label:has(input:checked) { border-color: #ffc35a; background: rgba(255, 195, 90, .14); }
+.glx-reasons input { accent-color: #ffc35a; width: 18px; height: 18px; }
+.glx-note { width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .2); background: rgba(0, 0, 0, .3); color: #fff; font: inherit; font-size: 15px; resize: vertical; }
+.glx-actions { width: 100%; display: flex; gap: 10px; }
+.glx-actions .glx-btn { flex: 1; min-width: 0; }
