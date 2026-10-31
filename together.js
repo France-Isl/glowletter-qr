@@ -716,7 +716,7 @@
     stickers: STICKERS,
     frames: FRAMES,
     owned: () => (state.chest?.owned || []).slice(),
-    loadOwned: async () => { if (!state.chest && signedIn()) { try { state.chest = await rpc("glowletter_chest_state"); } catch {} } return (state.chest?.owned || []).slice(); },
+    loadOwned: async force => { if ((force || !state.chest) && signedIn()) { try { state.chest = await rpc("glowletter_chest_state"); } catch {} } return (state.chest?.owned || []).slice(); },
     text: (key, values) => tr(key, values)
   });
   init();

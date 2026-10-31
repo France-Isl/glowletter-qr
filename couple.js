@@ -126,7 +126,9 @@
     catch { return String(value).slice(0, 10); }
   };
   const friends = () => state.friends;
-  const unlocked = outfit => (state.today?.together || 0) >= outfit.days && (premium() || OUTFITS.indexOf(outfit) < FREE_OUTFITS);
+  // Админ мог открыть все наряды («outfit:all» в сундуке «Нашего мира»).
+  const allOutfits = () => (window.GlowLetterWorld?.owned?.() || []).includes("outfit:all");
+  const unlocked = outfit => allOutfits() || ((state.today?.together || 0) >= outfit.days && (premium() || OUTFITS.indexOf(outfit) < FREE_OUTFITS));
   // «Мишка как ты»: свой наряд хранится на сервере, друг видит его рядом со своим.
   const currentOutfit = () => {
     const saved = OUTFITS.find(outfit => outfit.id === (state.today?.my_bear || read(storageKey(`${OUTFIT_KEY}:${state.partner?.user_id}`))));

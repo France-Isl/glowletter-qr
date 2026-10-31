@@ -32,7 +32,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Anruf",
       "callBack": "Zurückrufen",
       "missedBubble": "Verpasster Anruf",
-      "inCall": "Anruf mit {name}",
+      "inCall": "Anruf mit {name}"
+,
       "add": "Hinzufügen",
       "addTitle": "Zum Anruf einladen",
       "addNone": "Gerade niemand zum Einladen: Deine Freunde sind schon hier oder du hast noch keine.",
@@ -237,7 +238,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Llamada",
       "callBack": "Devolver llamada",
       "missedBubble": "Llamada perdida",
-      "inCall": "Llamada con {name}",
+      "inCall": "Llamada con {name}"
+,
       "add": "Añadir",
       "addTitle": "Invitar a la llamada",
       "addNone": "Aún no hay a quién invitar: tus amigos ya están aquí o todavía no tienes ninguno.",
@@ -442,7 +444,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Chiamata",
       "callBack": "Richiama",
       "missedBubble": "Chiamata persa",
-      "inCall": "Chiamata con {name}",
+      "inCall": "Chiamata con {name}"
+,
       "add": "Aggiungi",
       "addTitle": "Invita nella chiamata",
       "addNone": "Per ora nessuno da invitare: i tuoi amici sono già qui o non ne hai ancora.",
@@ -647,7 +650,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Połączenie",
       "callBack": "Oddzwoń",
       "missedBubble": "Nieodebrane połączenie",
-      "inCall": "Rozmowa: {name}",
+      "inCall": "Rozmowa: {name}"
+,
       "add": "Dodaj",
       "addTitle": "Zaproś do rozmowy",
       "addNone": "Na razie nie ma kogo zaprosić: znajomi już tu są albo jeszcze ich nie masz.",
@@ -852,7 +856,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Дзвінок",
       "callBack": "Передзвонити",
       "missedBubble": "Пропущений дзвінок",
-      "inCall": "Дзвінок: {name}",
+      "inCall": "Дзвінок: {name}"
+,
       "add": "Додати",
       "addTitle": "Покликати в дзвінок",
       "addNone": "Поки нікого покликати: усі друзі вже тут або їх ще немає.",
@@ -1057,7 +1062,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Chamada",
       "callBack": "Retornar ligação",
       "missedBubble": "Chamada perdida",
-      "inCall": "Chamada com {name}",
+      "inCall": "Chamada com {name}"
+,
       "add": "Adicionar",
       "addTitle": "Convidar para a chamada",
       "addNone": "Ainda não há quem convidar: seus amigos já estão aqui ou você ainda não tem nenhum.",
@@ -1262,7 +1268,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Gesprek",
       "callBack": "Terugbellen",
       "missedBubble": "Gemist gesprek",
-      "inCall": "Gesprek met {name}",
+      "inCall": "Gesprek met {name}"
+,
       "add": "Toevoegen",
       "addTitle": "Uitnodigen voor het gesprek",
       "addNone": "Nog niemand om uit te nodigen: je vrienden zijn er al of je hebt er nog geen.",
@@ -1467,7 +1474,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Arama",
       "callBack": "Geri ara",
       "missedBubble": "Cevapsız arama",
-      "inCall": "{name} ile görüşme",
+      "inCall": "{name} ile görüşme"
+,
       "add": "Ekle",
       "addTitle": "Aramaya davet et",
       "addNone": "Şimdilik davet edilecek kimse yok: arkadaşların zaten burada ya da henüz arkadaşın yok.",
@@ -1672,7 +1680,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Apel",
       "callBack": "Sună înapoi",
       "missedBubble": "Apel pierdut",
-      "inCall": "Apel cu {name}",
+      "inCall": "Apel cu {name}"
+,
       "add": "Adaugă",
       "addTitle": "Invită în apel",
       "addNone": "Deocamdată nu ai pe cine invita: prietenii tăi sunt deja aici sau încă nu ai niciunul.",
@@ -1877,7 +1886,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Hovor",
       "callBack": "Zavolat zpět",
       "missedBubble": "Zmeškaný hovor",
-      "inCall": "Hovor: {name}",
+      "inCall": "Hovor: {name}"
+,
       "add": "Přidat",
       "addTitle": "Pozvat do hovoru",
       "addNone": "Zatím není koho pozvat: přátelé už jsou tady, nebo je ještě nemáte.",
@@ -2082,7 +2092,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Samtal",
       "callBack": "Ring tillbaka",
       "missedBubble": "Missat samtal",
-      "inCall": "Samtal med {name}",
+      "inCall": "Samtal med {name}"
+,
       "add": "Lägg till",
       "addTitle": "Bjud in till samtalet",
       "addNone": "Ingen att bjuda in just nu: dina vänner är redan här eller så har du inga än.",
@@ -2287,7 +2298,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Κλήση",
       "callBack": "Επανάκληση",
       "missedBubble": "Αναπάντητη κλήση",
-      "inCall": "Κλήση με: {name}",
+      "inCall": "Κλήση με: {name}"
+,
       "add": "Προσθήκη",
       "addTitle": "Πρόσκληση στην κλήση",
       "addNone": "Δεν υπάρχει ακόμη κάποιος για πρόσκληση: οι φίλοι σας είναι ήδη εδώ ή δεν έχετε ακόμη φίλους.",
@@ -2492,7 +2504,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Opkald",
       "callBack": "Ring tilbage",
       "missedBubble": "Ubesvaret opkald",
-      "inCall": "Opkald med {name}",
+      "inCall": "Opkald med {name}"
+,
       "add": "Tilføj",
       "addTitle": "Inviter til opkaldet",
       "addNone": "Ingen at invitere lige nu: dine venner er her allerede, eller du har ingen endnu.",
@@ -2697,7 +2710,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Anrop",
       "callBack": "Ring tilbake",
       "missedBubble": "Tapt anrop",
-      "inCall": "Samtale med {name}",
+      "inCall": "Samtale med {name}"
+,
       "add": "Legg til",
       "addTitle": "Inviter til samtalen",
       "addNone": "Ingen å invitere ennå: vennene dine er allerede her, eller du har ingen ennå.",
@@ -2902,7 +2916,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Puhelu",
       "callBack": "Soita takaisin",
       "missedBubble": "Vastaamaton puhelu",
-      "inCall": "Puhelu: {name}",
+      "inCall": "Puhelu: {name}"
+,
       "add": "Lisää",
       "addTitle": "Kutsu puheluun",
       "addNone": "Ketään ei voi vielä kutsua: ystäväsi ovat jo täällä tai sinulla ei ole vielä ystäviä.",
@@ -3107,7 +3122,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "通話",
       "callBack": "かけ直す",
       "missedBubble": "不在着信",
-      "inCall": "{name}さんと通話中",
+      "inCall": "{name}さんと通話中"
+,
       "add": "追加",
       "addTitle": "通話に招待",
       "addNone": "招待できる人がまだいません。友だちはすでに参加中か、まだ友だちがいません。",
@@ -3312,7 +3328,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "통화",
       "callBack": "다시 걸기",
       "missedBubble": "부재중 전화",
-      "inCall": "{name} 님과 통화 중",
+      "inCall": "{name} 님과 통화 중"
+,
       "add": "추가",
       "addTitle": "통화에 초대",
       "addNone": "아직 초대할 사람이 없어요. 친구가 이미 참여 중이거나 아직 친구가 없어요.",
@@ -3517,7 +3534,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "通話",
       "callBack": "回撥",
       "missedBubble": "未接來電",
-      "inCall": "與 {name} 通話中",
+      "inCall": "與 {name} 通話中"
+,
       "add": "添加",
       "addTitle": "邀请加入通话",
       "addNone": "暂时没有可邀请的人：好友已经在通话中，或者你还没有好友。",
@@ -3722,7 +3740,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "การโทร",
       "callBack": "โทรกลับ",
       "missedBubble": "สายที่ไม่ได้รับ",
-      "inCall": "คุยสายกับ {name}",
+      "inCall": "คุยสายกับ {name}"
+,
       "add": "เพิ่ม",
       "addTitle": "ชวนเข้าสาย",
       "addNone": "ยังไม่มีใครให้ชวน: เพื่อนของคุณอยู่ในสายแล้ว หรือคุณยังไม่มีเพื่อน",
@@ -3927,7 +3946,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "مكالمة",
       "callBack": "معاودة الاتصال",
       "missedBubble": "مكالمة فائتة",
-      "inCall": "مكالمة مع {name}",
+      "inCall": "مكالمة مع {name}"
+,
       "add": "إضافة",
       "addTitle": "دعوة إلى المكالمة",
       "addNone": "لا يوجد من تدعوه الآن: أصدقاؤك هنا بالفعل أو لم تُضف أصدقاء بعد.",
@@ -4132,7 +4152,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Panggilan",
       "callBack": "Telepon balik",
       "missedBubble": "Panggilan tak terjawab",
-      "inCall": "Panggilan dengan {name}",
+      "inCall": "Panggilan dengan {name}"
+,
       "add": "Tambah",
       "addTitle": "Undang ke panggilan",
       "addNone": "Belum ada yang bisa diundang: temanmu sudah di sini atau kamu belum punya teman.",
@@ -4337,7 +4358,8 @@ window.GLOWLETTER_ULTRA_I18N = window.GLOWLETTER_ULTRA_I18N || {};
       "callBubble": "Cuộc gọi",
       "callBack": "Gọi lại",
       "missedBubble": "Cuộc gọi nhỡ",
-      "inCall": "Cuộc gọi với {name}",
+      "inCall": "Cuộc gọi với {name}"
+,
       "add": "Thêm",
       "addTitle": "Mời vào cuộc gọi",
       "addNone": "Chưa có ai để mời: bạn bè của bạn đã ở đây hoặc bạn chưa có bạn bè.",
