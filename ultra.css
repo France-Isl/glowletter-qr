@@ -412,3 +412,92 @@ body.glk-active .glt-layer .glg-panel { padding-top: 56px; }
   .glk-glow, .glk-spark, .glk-wave i, .glk.is-full .glk-avatar::before, .glk.is-full .glk-avatar::after, .glk-avatar-heart svg { animation: none !important; }
   .glk.is-full .glk-avatar, .glk.is-full .glk-name, .glk.is-full .glk-status, .glk.is-full .glk-tools, .glk.is-full .glk-hang { animation: none !important; }
 }
+
+/* ——— Звонок точно по картинке владельца (31.10, образец 941×1672 — та же фотография, что фон).
+   --s: масштаб фото «на весь экран»; по вертикали всё стоит на тех же местах фото, что на образце
+   (y образца × --s); размеры — в долях ширины образца (--u), поэтому карточки всегда влезают по ширине. ——— */
+.glk.is-full {
+  --s: max(100vw / 941, 100dvh / 1672);
+  --ox: calc((100vw - 941 * var(--s)) / 2);
+  --oy: calc((100dvh - 1672 * var(--s)) / 2);
+  --u: calc(min(100vw, 470px) / 941);
+  background: #120b0a;
+}
+.glk.is-full .glk-bg { top: var(--oy); left: var(--ox); width: calc(941 * var(--s)); height: calc(1672 * var(--s)); transform: none; }
+.glk.is-full .glk-bg img { object-fit: fill; }
+.glk.is-full::after { display: none; }
+
+.glk.is-full .glk-brand { gap: 0; top: max(calc(36 * var(--u)), calc(env(safe-area-inset-top, 0px) + 8px)); left: calc(62 * var(--u)); text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
+.glk.is-full .glk-brand b { gap: calc(13 * var(--u)); font-size: calc(55 * var(--u)); font-weight: 700; color: #fff6ea; }
+.glk.is-full .glk-brand svg { width: calc(40 * var(--u)); height: calc(40 * var(--u)); fill: #e0213e; filter: drop-shadow(0 0 calc(8 * var(--u)) rgba(255, 70, 90, .75)); }
+.glk.is-full .glk-brand small { margin-top: calc(4 * var(--u)); font-family: Manrope, -apple-system, "Segoe UI", sans-serif; font-size: calc(25 * var(--u)); font-weight: 500; color: #f3e3cc; letter-spacing: 0; }
+
+.glk.is-full .glk-min { top: calc(var(--oy) + 453 * var(--s) - 52 * var(--u)); right: calc(47 * var(--u)); width: calc(104 * var(--u)); height: calc(104 * var(--u)); border: 2px solid rgba(240, 195, 120, .6); background: rgba(22, 14, 18, .48); color: #fff; box-shadow: 0 0 calc(18 * var(--u)) rgba(240, 180, 100, .25), 0 6px 16px rgba(0, 0, 0, .35); }
+.glk.is-full .glk-min svg { width: calc(44 * var(--u)); height: calc(44 * var(--u)); }
+.glk.is-full .glk-add { top: calc(var(--oy) + 453 * var(--s) + 66 * var(--u)); right: calc(47 * var(--u)); }
+
+.glk.is-full .glk-card { width: 100%; max-width: none; padding: calc(var(--oy) + 565 * var(--s) - 198 * var(--u)) 0 max(calc(20 * var(--u)), env(safe-area-inset-bottom, 0px)); }
+.glk.is-full .glk-avatar { box-sizing: border-box; flex: none; width: calc(396 * var(--u)); height: calc(396 * var(--u)); border: calc(9 * var(--u)) solid #f6c76a; box-shadow: 0 0 0 calc(24 * var(--u)) rgba(255, 205, 130, .1), 0 0 calc(46 * var(--u)) rgba(255, 185, 80, .85), inset 0 0 calc(16 * var(--u)) rgba(255, 190, 90, .4); }
+.glk.is-full .glk-avatar.is-speaking { box-shadow: 0 0 0 calc(24 * var(--u)) rgba(255, 205, 130, .16), 0 0 calc(64 * var(--u)) rgba(255, 195, 90, .95), inset 0 0 calc(16 * var(--u)) rgba(255, 190, 90, .45); }
+.glk.is-full .glk-avatar-heart { right: auto; bottom: auto; left: 74.7%; top: 71.2%; width: calc(82 * var(--u)); border: calc(4 * var(--u)) solid #f2c873; background: radial-gradient(circle at 40% 32%, #e8344e, #b0122c 70%, #8a0c22); box-shadow: 0 0 calc(18 * var(--u)) rgba(255, 80, 100, .7); }
+.glk.is-full .glk-avatar-heart svg { width: 56%; height: 56%; fill: #ff8a9c; filter: drop-shadow(0 0 calc(5 * var(--u)) rgba(255, 140, 160, .9)); }
+
+.glk.is-full .glk-name { margin: calc(250 * var(--s) - 244 * var(--u)) 0 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: calc(58 * var(--u)); font-weight: 600; line-height: 1.1; color: #fff6ea; }
+.glk.is-full .glk-status { margin: calc(43 * var(--s) - 34 * var(--u)) 0 0; font-family: Manrope, -apple-system, "Segoe UI", sans-serif; font-size: calc(30 * var(--u)); font-weight: 400; line-height: 1.2; color: rgba(255, 238, 220, .82); letter-spacing: .02em; }
+.glk.is-full .glk-wave { gap: calc(6 * var(--u)); height: calc(50 * var(--u)); margin-top: calc(54 * var(--s) - 43 * var(--u)); padding: 0 calc(78 * var(--u)); }
+.glk.is-full .glk-wave::before, .glk.is-full .glk-wave::after { width: calc(70 * var(--u)); height: 2px; background: radial-gradient(circle, #f2c873 1px, transparent 1.6px) 0 50% / calc(11 * var(--u)) 2px repeat-x; }
+.glk.is-full .glk-wave i { width: calc(5 * var(--u)); height: calc(50 * var(--u)); }
+
+.glk.is-full .glk-tools { gap: calc(21 * var(--u)); width: calc(842 * var(--u)); margin-top: calc(58 * var(--s) - 25 * var(--u)); }
+.glk.is-full .glk-tool { gap: calc(16 * var(--u)); min-height: calc(218 * var(--u)); padding: calc(26 * var(--u)) calc(8 * var(--u)) calc(14 * var(--u)); border: 1.5px solid rgba(245, 190, 120, .58); border-radius: calc(28 * var(--u)); background: linear-gradient(180deg, rgba(62, 38, 26, .52), rgba(30, 18, 14, .6)); box-shadow: 0 0 calc(16 * var(--u)) rgba(255, 170, 90, .22), inset 0 0 calc(18 * var(--u)) rgba(255, 180, 100, .1), inset 0 1px 0 rgba(255, 230, 190, .16); color: #fff; font-family: Manrope, -apple-system, "Segoe UI", sans-serif; font-size: calc(25 * var(--u)); font-weight: 500; line-height: calc(32 * var(--u)); }
+.glk.is-full .glk-tool .glk-disc { width: calc(88 * var(--u)); height: calc(88 * var(--u)); }
+.glk.is-full .glk-mic .glk-disc { border: 2px solid rgba(240, 190, 120, .55); background: radial-gradient(circle at 50% 35%, rgba(52, 36, 34, .9), rgba(22, 14, 16, .92)); color: #66c6f6; box-shadow: 0 0 calc(10 * var(--u)) rgba(255, 180, 100, .2); --glk-cut: #1c1214; }
+.glk.is-full .glk-mic .glk-ic { width: calc(48 * var(--u)); height: calc(48 * var(--u)); filter: drop-shadow(0 0 calc(5 * var(--u)) rgba(100, 200, 255, .55)); }
+.glk.is-full .glk-mic.is-on .glk-disc { background: #66c6f6; color: #1c1214; --glk-cut: #66c6f6; }
+.glk.is-full .glk-heart .glk-ic { width: calc(76 * var(--u)); height: calc(76 * var(--u)); filter: drop-shadow(0 0 calc(12 * var(--u)) rgba(255, 60, 90, .8)); }
+.glk.is-full .glk-emoji { font-size: calc(70 * var(--u)); }
+
+.glk.is-full .glk-hang { gap: calc(28 * var(--u)); width: calc(442 * var(--u)); min-height: calc(133 * var(--u)); margin-top: calc(280 * var(--s) - 218 * var(--u)); padding: 0 calc(40 * var(--u)); border: calc(3 * var(--u)) solid rgba(255, 196, 170, .85); background: linear-gradient(180deg, #ea4250 0%, #c91f35 52%, #a0112a 100%); font-family: Manrope, -apple-system, "Segoe UI", sans-serif; font-size: calc(33 * var(--u)); font-weight: 500; box-shadow: 0 0 calc(34 * var(--u)) rgba(255, 90, 90, .55), 0 0 calc(10 * var(--u)) rgba(255, 200, 150, .5), inset 0 2px 0 rgba(255, 210, 200, .45); }
+.glk.is-full .glk-hang .glk-ic { width: calc(64 * var(--u)); height: calc(64 * var(--u)); color: #ffd3d8; }
+.glk.is-full .glk-answer { margin-top: auto; }
+@media (max-height: 700px) {
+  .glk.is-full .glk-card { padding-top: calc(var(--oy) + 565 * var(--s) - 198 * var(--u)); }
+  .glk.is-full .glk-avatar { width: calc(396 * var(--u)); height: calc(396 * var(--u)); }
+  .glk.is-full .glk-name { margin-top: calc(250 * var(--s) - 244 * var(--u)); font-size: calc(58 * var(--u)); }
+  .glk.is-full .glk-tool { min-height: calc(218 * var(--u)); padding-top: calc(26 * var(--u)); }
+  .glk.is-full .glk-hang { min-height: calc(133 * var(--u)); margin-top: calc(280 * var(--s) - 218 * var(--u)); }
+}
+@media (max-width: 360px) {
+  .glk.is-full .glk-tools { gap: calc(21 * var(--u)); }
+  .glk.is-full .glk-tool { font-size: calc(25 * var(--u)); }
+  .glk.is-full .glk-emoji { font-size: calc(70 * var(--u)); }
+}
+
+/* Обычный звонок вдвоём (не входящий, без видео): фон — сама картинка владельца без надписей и значков;
+   настоящие кнопки и тексты стоят ровно на нарисованных местах (координаты образца × --u). */
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) {
+  --t: env(safe-area-inset-top, 0px);
+  --l: calc((100vw - 941 * var(--u)) / 2);
+  background: #08090e;
+}
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-bg { top: var(--t); left: var(--l); width: calc(941 * var(--u)); height: calc(2092 * var(--u)); background: url("assets/scenes/call-ref.webp") 0 0 / 100% 100% no-repeat; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) :is(.glk-bg img, .glk-glow) { display: none; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-brand { top: calc(var(--t) + 34 * var(--u)); left: calc(var(--l) + 62 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-card { position: absolute; inset: 0; display: block; padding: 0; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-card > * { position: absolute; margin: 0; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-min { top: calc(var(--t) + 400 * var(--u)); left: calc(var(--l) + 788 * var(--u)); right: auto; width: calc(106 * var(--u)); height: calc(106 * var(--u)); border-color: transparent; background: none; box-shadow: none; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-add { top: calc(var(--t) + 524 * var(--u)); left: auto; right: calc(var(--l) + 47 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-avatar { top: calc(var(--t) + 370 * var(--u)); left: calc(var(--l) + 268 * var(--u)); width: calc(396 * var(--u)); height: calc(396 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) :is(.glk-name, .glk-status, .glk-wave) { left: 0; right: 0; text-align: center; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-name { top: calc(var(--t) + 765 * var(--u)); line-height: calc(66 * var(--u)); text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-status { top: calc(var(--t) + 840 * var(--u)); line-height: calc(36 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-wave { top: calc(var(--t) + 887 * var(--u)); margin: 0 auto; width: max-content; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-muted-note { top: calc(var(--t) + 150 * var(--u)); left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-tools { top: calc(var(--t) + 970 * var(--u)); left: calc(var(--l) + 50 * var(--u)); width: calc(842 * var(--u)); animation: none; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-tool { height: calc(218 * var(--u)); min-height: 0; padding-top: calc(28 * var(--u)); border-color: transparent; background: rgba(36, 22, 16, .28); box-shadow: none; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-tool:not(:disabled):hover { box-shadow: none; background: rgba(255, 220, 170, .08); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-tool > span:last-child { display: flex; align-items: center; justify-content: center; min-height: calc(64 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-hang { top: calc(var(--t) + 1249 * var(--u)); left: calc(var(--l) + 246 * var(--u)); width: calc(448 * var(--u)); min-height: 0; height: calc(138 * var(--u)); animation: none; }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-avatar-heart { box-sizing: border-box; left: 75.9%; top: 70.9%; width: calc(86 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-add { top: calc(var(--t) + 262 * var(--u)); }
+.glk.is-full:not(.is-group):not(.is-video):not(.is-incoming):not(:has(.glk-tools.is-six)) .glk-tool { padding-inline: calc(24 * var(--u)); }
