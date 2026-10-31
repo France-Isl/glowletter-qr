@@ -1,96 +1,471 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T00:00:00Z",
+  "generatedAt": "2026-10-31T05:11:45.268Z",
   "title": "Design System: GlowLetter",
   "extensions": {
     "colorMeta": {
-      "madder": { "role": "primary", "displayName": "Марена", "canonical": "#9e2b32", "tonalRamp": ["#2a0b0d", "#4a1418", "#6d1a20", "#8a2429", "#9e2b32", "#c05a60", "#dd9a9e", "#f5e0e1"] },
-      "indigo": { "role": "primary", "displayName": "Индиго", "canonical": "#2f3a74", "tonalRamp": ["#0d1024", "#151b3c", "#1b2350", "#262f61", "#2f3a74", "#5c68a3", "#9aa2cb", "#e2e4f0"] },
-      "saffron": { "role": "primary", "displayName": "Шафран", "canonical": "#b5721c", "tonalRamp": ["#2d1a03", "#4d2f07", "#7d4c0f", "#9a5f15", "#b5721c", "#d69a4c", "#ecc48c", "#faecd6"] },
-      "emerald": { "role": "primary", "displayName": "Изумруд", "canonical": "#1f5c48", "tonalRamp": ["#07170f", "#0c2519", "#123a2d", "#184b3a", "#1f5c48", "#468a72", "#8cbdab", "#dfeee7"] },
-      "gold": { "role": "secondary", "displayName": "Золотное шитьё", "canonical": "#d9a441", "tonalRamp": ["#2b1d05", "#4a340c", "#6b4c14", "#a8791f", "#d9a441", "#f2cc74", "#f8e4ae", "#fdf6e4"] },
-      "gold-bright": { "role": "secondary", "displayName": "Светлое золото", "canonical": "#f2cc74" },
-      "night-deep": { "role": "neutral", "displayName": "Глубокая ночь", "canonical": "#0c0b14", "tonalRamp": ["#05050a", "#0c0b14", "#14131f", "#211e2f", "#3a3550", "#6e678a", "#a9a3bd", "#e6e3ee"] },
-      "cream": { "role": "neutral", "displayName": "Слоновая кость", "canonical": "#f6efe0", "tonalRamp": ["#2a2118", "#453724", "#6f5f4a", "#a2917c", "#d3c6ae", "#ece0c9", "#f6efe0", "#fdfaf2"] },
-      "ink": { "role": "neutral", "displayName": "Чернила", "canonical": "#2a2118" }
+      "burgundy": {
+        "role": "primary",
+        "displayName": "Бордо",
+        "canonical": "#a52a3a",
+        "tonalRamp": [
+          "#500818",
+          "#5c1022",
+          "#6e1430",
+          "#74172b",
+          "#861b30",
+          "#a52a3a",
+          "#b52640",
+          "#c0394c"
+        ]
+      },
+      "gold-accent": {
+        "role": "secondary",
+        "displayName": "Золото свечи",
+        "canonical": "#f2c96f",
+        "tonalRamp": [
+          "#2a1a06",
+          "#e8c07a",
+          "#f0b464",
+          "#f0c16e",
+          "#f2c96f",
+          "#f4ca7e",
+          "#f8dfa6",
+          "#fff4e5"
+        ]
+      },
+      "gold-edge": {
+        "role": "secondary",
+        "displayName": "Золотой кант",
+        "canonical": "rgba(244, 202, 126, .62)"
+      },
+      "ink-light": {
+        "role": "neutral",
+        "displayName": "Светлые чернила",
+        "canonical": "#fff4e5"
+      },
+      "ink-cream": {
+        "role": "neutral",
+        "displayName": "Сливочные чернила",
+        "canonical": "rgba(255, 238, 214, .8)"
+      },
+      "glass-ember": {
+        "role": "neutral",
+        "displayName": "Тёплое стекло",
+        "canonical": "rgba(28, 11, 18, .66)"
+      },
+      "glass-night": {
+        "role": "neutral",
+        "displayName": "Ночное стекло",
+        "canonical": "rgba(10, 18, 36, .64)"
+      },
+      "season-gold": {
+        "role": "tertiary",
+        "displayName": "Золото пьедестала",
+        "canonical": "#ffc542",
+        "tonalRamp": [
+          "#7a4806",
+          "#9c6008",
+          "#b97a10",
+          "#c98a12",
+          "#e39b17",
+          "#ffc542",
+          "#ffd257",
+          "#fff1a8"
+        ]
+      },
+      "season-pink": {
+        "role": "tertiary",
+        "displayName": "Неоновый розовый",
+        "canonical": "#ff5fae",
+        "tonalRamp": [
+          "#3a0a20",
+          "#4c163f",
+          "#8c1e6e",
+          "#d44a84",
+          "#ff5fae",
+          "#ff7fb2",
+          "#ff9fcb",
+          "#ffd0e2"
+        ]
+      },
+      "season-silver": {
+        "role": "tertiary",
+        "displayName": "Серебро пьедестала",
+        "canonical": "#d9def0",
+        "tonalRamp": [
+          "#0a080f",
+          "#1c1626",
+          "#8d95b6",
+          "#d9def0",
+          "#e3e9f8",
+          "#ffffff"
+        ]
+      },
+      "season-rose-gold": {
+        "role": "tertiary",
+        "displayName": "Розовое золото пьедестала",
+        "canonical": "#f4a48a",
+        "tonalRamp": [
+          "#a9524a",
+          "#f4a48a",
+          "#ffe4d8"
+        ]
+      },
+      "season-violet": {
+        "role": "tertiary",
+        "displayName": "Фиолетовая ночь сезона",
+        "canonical": "#1a0f2b",
+        "tonalRamp": [
+          "#0a0414",
+          "#14081e",
+          "#2a1424",
+          "#462450",
+          "#7c3cc4",
+          "#b06ef0",
+          "#e6c6ff"
+        ]
+      },
+      "madder": {
+        "role": "primary",
+        "displayName": "Марена",
+        "canonical": "#9e2b32",
+        "tonalRamp": [
+          "#2a0b0d",
+          "#4a1418",
+          "#6d1a20",
+          "#8a2429",
+          "#9e2b32",
+          "#c05a60",
+          "#dd9a9e",
+          "#f5e0e1"
+        ]
+      },
+      "indigo": {
+        "role": "primary",
+        "displayName": "Индиго",
+        "canonical": "#2f3a74",
+        "tonalRamp": [
+          "#0d1024",
+          "#151b3c",
+          "#1b2350",
+          "#262f61",
+          "#2f3a74",
+          "#5c68a3",
+          "#9aa2cb",
+          "#e2e4f0"
+        ]
+      },
+      "saffron": {
+        "role": "primary",
+        "displayName": "Шафран",
+        "canonical": "#b5721c",
+        "tonalRamp": [
+          "#2d1a03",
+          "#4d2f07",
+          "#7d4c0f",
+          "#9a5f15",
+          "#b5721c",
+          "#d69a4c",
+          "#ecc48c",
+          "#faecd6"
+        ]
+      },
+      "emerald": {
+        "role": "primary",
+        "displayName": "Изумруд",
+        "canonical": "#1f5c48",
+        "tonalRamp": [
+          "#07170f",
+          "#0c2519",
+          "#123a2d",
+          "#184b3a",
+          "#1f5c48",
+          "#468a72",
+          "#8cbdab",
+          "#dfeee7"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Золотное шитьё",
+        "canonical": "#d9a441",
+        "tonalRamp": [
+          "#2b1d05",
+          "#4a340c",
+          "#6b4c14",
+          "#a8791f",
+          "#d9a441",
+          "#f2cc74",
+          "#f8e4ae",
+          "#fdf6e4"
+        ]
+      },
+      "gold-bright": {
+        "role": "secondary",
+        "displayName": "Светлое золото",
+        "canonical": "#f2cc74"
+      },
+      "night-deep": {
+        "role": "neutral",
+        "displayName": "Глубокая ночь",
+        "canonical": "#0c0b14",
+        "tonalRamp": [
+          "#05050a",
+          "#0c0b14",
+          "#14131f",
+          "#211e2f",
+          "#3a3550",
+          "#6e678a",
+          "#a9a3bd",
+          "#e6e3ee"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Слоновая кость",
+        "canonical": "#f6efe0",
+        "tonalRamp": [
+          "#2a2118",
+          "#453724",
+          "#6f5f4a",
+          "#a2917c",
+          "#d3c6ae",
+          "#ece0c9",
+          "#f6efe0",
+          "#fdfaf2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Чернила",
+        "canonical": "#2a2118"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Название на стене", "purpose": "Заголовок главного экрана; вторая строка весом 300 светлым золотом." },
-      "headline": { "displayName": "Заголовок панели", "purpose": "Шапки боковой панели, настроек, оплаты." },
-      "title": { "displayName": "Раздел настроек", "purpose": "Заголовки шести свёрнутых details." },
-      "letter": { "displayName": "Голос письма", "purpose": "Тело письма на слоновой кости; Literata, пресеты меняют семейство и вес." },
-      "body": { "displayName": "Подводка", "purpose": "Описания и подводки, ширина до 44ch." },
-      "label": { "displayName": "Мета", "purpose": "Подписи и счётчики; 11px — типографический пол." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Заголовок рамки-героя на главной; на главной кегль в долях образца (--u)."
+      },
+      "wordmark": {
+        "displayName": "Словесный знак",
+        "purpose": "«GlowLetter» с сердцем в шапке главной."
+      },
+      "layer-heading": {
+        "displayName": "Заголовок слоя",
+        "purpose": "h2 в шапке Настроек, Игр, Друзей; Playfair Display 600, #fff4df с тенью."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Заголовки бумажных карточек: пейволл, QR, поддержка."
+      },
+      "paper-display": {
+        "displayName": "Крупный заголовок бумаги",
+        "purpose": "Заголовок письма, шапка бумажной панели, VIP-уведомление."
+      },
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "Заголовок главной на широком экране в режиме чтения, шрифт письма."
+      },
+      "lead": {
+        "displayName": "Подводка",
+        "purpose": "Подводка под заголовком главной, Georgia."
+      },
+      "alert-title": {
+        "displayName": "Заголовок защиты",
+        "purpose": "Экраны «нет интернета», блокировка, предупреждение, жалоба."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Заголовки разделов и карточек."
+      },
+      "letter": {
+        "displayName": "Письмо",
+        "purpose": "Тело письма на бумаге."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Подводки и описания на стекле и бумаге."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Мета, подписи, eyebrow (трекинг .22em в фото-мире)."
+      }
     },
     "shadows": [
-      { "name": "panel", "value": "0 34px 96px rgba(6, 5, 12, .5)", "purpose": "Боковая панель, карточки настройки и оплаты над сценой." },
-      { "name": "letter", "value": "0 40px 110px rgba(5, 4, 10, .6)", "purpose": "Лист письма." },
-      { "name": "medallion", "value": "0 40px 110px rgba(4, 3, 9, .66), inset 0 0 0 7px rgba(14,13,22,.55), inset 0 0 0 8px rgba(217,164,65,.32)", "purpose": "Рамка медальона на главном экране." },
-      { "name": "button-primary", "value": "0 16px 38px rgba(9, 7, 14, .34), inset 0 1px rgba(255, 244, 214, .3)", "purpose": "Главная кнопка и её родня." },
-      { "name": "seal", "value": "0 5px 13px rgba(58, 39, 8, .34), inset 0 0 0 2px rgba(255, 244, 214, .3)", "purpose": "Золотая печать на кнопке «Открыть письмо»." }
+      {
+        "name": "glass",
+        "value": "0 16px 36px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .1)",
+        "purpose": "Стеклянные карточки Настроек; в Играх и Друзьях 0 18px 40px."
+      },
+      {
+        "name": "button-primary",
+        "value": "0 10px 26px rgba(80, 8, 24, .45), 0 0 16px rgba(240, 198, 111, .25)",
+        "purpose": "Бордовая кнопка: винная тень и золотой ореол."
+      },
+      {
+        "name": "chrome-halo",
+        "value": "0 0 calc(var(--u) * 26) rgba(240, 190, 110, .32), inset 0 1px 0 rgba(255, 235, 200, .15)",
+        "purpose": "Круглые кнопки шапки главной."
+      },
+      {
+        "name": "selected",
+        "value": "0 0 12px rgba(242, 201, 111, .35)",
+        "purpose": "Выбранная плитка выбора."
+      },
+      {
+        "name": "alert",
+        "value": "0 0 24px rgba(255, 180, 60, .35), 0 18px 40px rgba(0, 0, 0, .55)",
+        "purpose": "Карточка экрана защиты."
+      },
+      {
+        "name": "text-over-photo",
+        "value": "0 2px 16px rgba(0, 0, 0, .7)",
+        "purpose": "Текст прямо над фотографией."
+      },
+      {
+        "name": "letter",
+        "value": "0 40px 110px rgba(5, 4, 10, .6)",
+        "purpose": "Лист письма."
+      }
     ],
     "motion": [
-      { "name": "ease-settle", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Шеврон раздела настроек и появление рамки письма." },
-      { "name": "fade-standard", "value": "0.28s ease", "purpose": "Подложки слоёв и появление рамок." },
-      { "name": "seal-heart-beat", "value": "2.8s ease-in-out infinite", "purpose": "Биение сердца в печати; снимается при prefers-reduced-motion." }
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Шеврон раздела настроек и появление рамки письма."
+      },
+      {
+        "name": "fade-standard",
+        "value": "0.28s ease",
+        "purpose": "Подложки слоёв и появление рамок."
+      },
+      {
+        "name": "seal-heart-beat",
+        "value": "2.8s ease-in-out infinite",
+        "purpose": "Биение сердца в печати; снимается при prefers-reduced-motion."
+      },
+      {
+        "name": "layer-open",
+        "value": "opacity .26s ease, transform .26s cubic-bezier(.2, .8, .2, 1)",
+        "purpose": "Появление полноэкранного слоя (рейтинг)."
+      }
     ],
     "breakpoints": [
-      { "name": "narrow", "value": "340px" },
-      { "name": "wide", "value": "700px" }
+      {
+        "name": "tiny",
+        "value": "340px"
+      },
+      {
+        "name": "narrow",
+        "value": "370px"
+      },
+      {
+        "name": "compact",
+        "value": "380px"
+      },
+      {
+        "name": "home-sample-cap",
+        "value": "470px"
+      },
+      {
+        "name": "scene-cover",
+        "value": "600px"
+      },
+      {
+        "name": "short",
+        "value": "max-height: 700px"
+      }
     ],
     "patterns": [
-      { "name": "carpet-band", "value": "linear-gradient(var(--ui-gold), var(--ui-gold)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--ui-accent) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--ui-gold), var(--ui-gold)) 0 100% / 100% 1px no-repeat", "purpose": "Кайма на светлых поверхностях, высота 7px." },
-      { "name": "carpet-band-dark", "value": "linear-gradient(var(--gold-dim), var(--gold-dim)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--gold-dim) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--gold-dim), var(--gold-dim)) 0 100% / 100% 1px no-repeat", "purpose": "Кайма на тёмной стене — нижний край медальона." }
+      {
+        "name": "glass-ember",
+        "value": "linear-gradient(180deg, rgba(28, 11, 18, .66), rgba(16, 7, 11, .6))",
+        "purpose": "Тёплое стекло над розами и костром."
+      },
+      {
+        "name": "glass-night",
+        "value": "linear-gradient(180deg, rgba(10, 18, 36, .64), rgba(7, 12, 26, .58))",
+        "purpose": "Ночное стекло над озером (Друзья)."
+      },
+      {
+        "name": "burgundy-button",
+        "value": "linear-gradient(110deg, #a52a3a, #861b30 55%, #74172b)",
+        "purpose": "Заливка главной кнопки."
+      },
+      {
+        "name": "scene",
+        "value": "background: <fallback> url(\"assets/scenes/<scene>.webp\") 50% 50% / cover no-repeat",
+        "purpose": "Фотография сцены слоя: bears, roses, chat-campfire, call-cabin-moon."
+      },
+      {
+        "name": "carpet-band",
+        "value": "linear-gradient(var(--ui-gold), var(--ui-gold)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--ui-accent) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--ui-gold), var(--ui-gold)) 0 100% / 100% 1px no-repeat",
+        "purpose": "Кайма на светлых поверхностях, высота 7px."
+      },
+      {
+        "name": "carpet-band-dark",
+        "value": "linear-gradient(var(--gold-dim), var(--gold-dim)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--gold-dim) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--gold-dim), var(--gold-dim)) 0 100% / 100% 1px no-repeat",
+        "purpose": "Кайма на тёмной стене — нижний край медальона."
+      }
     ]
   },
   "components": [
     {
-      "name": "Главная кнопка",
+      "name": "Бордовая кнопка",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Единственное действие главного экрана: краска держит площадь, золото держит край.",
-      "html": "<button class=\"ds-btn-primary\" type=\"button\"><span class=\"ds-seal\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z\"/></svg></span><span>Открыть письмо</span></button>",
-      "css": ".ds-btn-primary { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; min-height:64px; padding:0 24px; border:1px solid var(--ui-gold,#a8791f); border-radius:16px; color:var(--cream,#f6efe0); background:linear-gradient(170deg,var(--ui-accent,#9e2b32),var(--ui-accent-deep,#6d1a20)); box-shadow:0 16px 38px rgba(9,7,14,.34), inset 0 1px rgba(255,244,214,.3); font-family:Manrope,system-ui,sans-serif; font-size:15px; font-weight:800; letter-spacing:-.01em; cursor:pointer; transition:filter .2s ease; } .ds-btn-primary:hover { filter:brightness(1.07); } .ds-btn-primary:focus-visible { outline:2px solid var(--gold,#d9a441); outline-offset:2px; } .ds-btn-primary:active { filter:brightness(.95); } .ds-seal { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; color:#3a2708; background:radial-gradient(circle at 34% 28%, #f2cc74, #d9a441 55%, #a8791f); box-shadow:0 5px 13px rgba(58,39,8,.34), inset 0 0 0 2px rgba(255,244,214,.3); } .ds-seal svg { width:21px; height:21px; fill:#fff6dd; }"
+      "description": "Главное действие любого слоя фото-мира: бордо держит действие, золото держит край.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Сохранить</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 20px;border:1px solid #f0c66f;border-radius:18px;color:#fff4e5;background:linear-gradient(110deg,#a52a3a,#861b30 55%,#74172b);box-shadow:0 10px 26px rgba(80,8,24,.45),0 0 16px rgba(240,198,111,.25);font:800 15px/1.2 Manrope,system-ui,sans-serif;cursor:pointer;transition:filter .2s,transform .2s}.ds-btn-primary:hover{filter:brightness(1.08)}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #f2c96f;outline-offset:3px}"
     },
     {
-      "name": "Кнопка пожизненного доступа",
+      "name": "Стеклянная вторичная кнопка",
       "kind": "button",
-      "refersTo": "button-lifetime",
-      "description": "Единственная золотая заливка в мире; используется только для разовой покупки.",
-      "html": "<button class=\"ds-btn-lifetime\" type=\"button\">Пожизненный доступ · 21,99 €</button>",
-      "css": ".ds-btn-lifetime { min-height:56px; padding:0 24px; border:1px solid var(--ui-gold,#a8791f); border-radius:16px; color:#3a2708; background:linear-gradient(170deg,#f2cc74,#d9a441); box-shadow:0 16px 38px rgba(9,7,14,.34), inset 0 1px rgba(255,244,214,.3); font-family:Manrope,system-ui,sans-serif; font-size:15px; font-weight:800; cursor:pointer; } .ds-btn-lifetime:hover { filter:brightness(1.05); } .ds-btn-lifetime:focus-visible { outline:2px solid var(--gold,#d9a441); outline-offset:2px; }"
+      "refersTo": "button-secondary",
+      "description": "Второе действие рядом с бордовой кнопкой.",
+      "html": "<button class=\"ds-btn-glass\" type=\"button\">Позже</button>",
+      "css": ".ds-btn-glass{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border:1px solid rgba(244,202,126,.62);border-radius:18px;color:#fff4e5;background:rgba(20,10,14,.62);font:800 15px/1.2 Manrope,system-ui,sans-serif;cursor:pointer;transition:border-color .2s,background .2s}.ds-btn-glass:hover{border-color:#f2c96f;background:rgba(28,11,18,.72)}.ds-btn-glass:focus-visible{outline:2px solid #f2c96f;outline-offset:3px}"
     },
     {
-      "name": "Круглая кнопка хрома",
-      "kind": "nav",
+      "name": "Круглая кнопка",
+      "kind": "button",
       "refersTo": "button-round",
-      "description": "Верхняя панель поверх сцены: стеклянная подложка ночного, граница приглушённым золотом.",
-      "html": "<button class=\"ds-round\" type=\"button\" aria-label=\"Коллекция писем\"><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 20 4.9 12.9a4.3 4.3 0 0 1 6.1-6.1l1 1 1-1a4.3 4.3 0 0 1 6.1 6.1Z\"/></svg></button>",
-      "css": ".ds-round { display:grid; place-items:center; width:43px; height:43px; padding:0; border:1px solid rgba(217,164,65,.32); border-radius:50%; color:var(--cream,#f6efe0); background:rgba(14,13,22,.52); backdrop-filter:blur(10px); box-shadow:0 10px 30px rgba(12,9,14,.16), inset 0 1px rgba(255,255,255,.1); cursor:pointer; transition:border-color .2s ease; } .ds-round:hover { border-color:#d9a441; } .ds-round:focus-visible { outline:2px solid #d9a441; outline-offset:2px; } .ds-ic { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }"
+      "description": "Закрыть, домой, язык, рейтинг: круг на ночном стекле с мягким кантом и ореолом.",
+      "html": "<button class=\"ds-round\" type=\"button\" aria-label=\"Закрыть\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M6 6l12 12M18 6 6 18\"/></svg></button>",
+      "css": ".ds-round{display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(242,205,145,.55);border-radius:50%;color:#fff4e2;background:rgba(8,14,28,.56);box-shadow:0 0 14px rgba(240,190,110,.32),inset 0 1px rgba(255,235,200,.15);cursor:pointer;transition:border-color .2s}.ds-round:hover{border-color:#f2c96f}.ds-round:focus-visible{outline:2px solid #f2c96f;outline-offset:3px}"
     },
     {
-      "name": "Раздел настроек",
+      "name": "Стеклянная карточка",
+      "kind": "card",
+      "refersTo": "glass-card",
+      "description": "Раздел настроек, карточка игры, строка друга: тёмное стекло над фотографией.",
+      "html": "<section class=\"ds-glass\"><p class=\"ds-eyebrow\">ИГРЫ</p><h3>Правда или мечта</h3><p>Отвечайте по очереди и открывайте друг друга.</p></section>",
+      "css": ".ds-glass{max-width:340px;padding:18px;border:1px solid rgba(244,202,126,.55);border-radius:22px;color:#fff4e5;background:linear-gradient(180deg,rgba(28,11,18,.66),rgba(16,7,11,.6)),#24120a;box-shadow:0 16px 36px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.1);font:500 13px/1.5 Manrope,system-ui,sans-serif}.ds-glass h3{margin:4px 0 6px;font:800 16px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em}.ds-glass p{margin:0;color:rgba(255,238,214,.86)}.ds-glass .ds-eyebrow{color:#f2c96f;font:600 11px/1.3 Manrope,system-ui,sans-serif;letter-spacing:.22em}"
+    },
+    {
+      "name": "Поле на стекле",
+      "kind": "input",
+      "refersTo": "glass-field",
+      "description": "Поле ввода в Настройках, Играх, Друзьях.",
+      "html": "<input class=\"ds-field\" type=\"text\" placeholder=\"Имя получателя\">",
+      "css": ".ds-field{width:260px;min-height:48px;padding:0 14px;border:1px solid rgba(244,202,126,.55);border-radius:14px;color:#fff4e5;background:rgba(24,10,16,.66);font:600 14px Manrope,system-ui,sans-serif;outline:none;transition:border-color .2s}.ds-field::placeholder{color:rgba(255,238,214,.6)}.ds-field:focus-visible{border-color:#f2c96f}"
+    },
+    {
+      "name": "Плитка выбора",
+      "kind": "chip",
+      "refersTo": "glass-card",
+      "description": "Язык, сцена, шрифт письма, звук: выбранное — бордо с золотой границей и свечением.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip is-active\" type=\"button\">Русский</button><button class=\"ds-chip\" type=\"button\">Français</button></div>",
+      "css": ".ds-chips{display:flex;gap:8px}.ds-chip{min-height:44px;padding:0 14px;border:1px solid rgba(244,202,126,.4);border-radius:14px;color:#fff4e5;background:rgba(24,10,16,.6);font:600 14px Manrope,system-ui,sans-serif;cursor:pointer;transition:border-color .2s,background .2s}.ds-chip:hover{border-color:rgba(244,202,126,.62)}.ds-chip.is-active{border-color:#f2c96f;background:rgba(165,42,58,.55);box-shadow:0 0 12px rgba(242,201,111,.35)}.ds-chip:focus-visible{outline:2px solid #f2c96f;outline-offset:2px}"
+    },
+    {
+      "name": "Карточка защиты",
       "kind": "custom",
-      "refersTo": "settings-section",
-      "description": "Один из шести свёрнутых details; открытый подпоясан каймой ковра.",
-      "html": "<details class=\"ds-section\" open><summary>Оформление</summary><div class=\"ds-section-body\"><p>Тема интерфейса, чернила и шрифт письма.</p></div></details>",
-      "css": ".ds-section { margin:13px 0 0; border:1px solid var(--ui-border,rgba(158,43,50,.22)); border-radius:16px; background:var(--ui-surface,rgba(255,252,245,.72)); overflow:hidden; font-family:Manrope,system-ui,sans-serif; color:var(--ui-ink,#2a2118); } .ds-section > summary { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 18px; color:var(--ui-accent-deep,#6d1a20); font-size:16px; font-weight:800; letter-spacing:-.02em; cursor:pointer; list-style:none; } .ds-section > summary::-webkit-details-marker { display:none; } .ds-section > summary::after { content:\"\"; flex:0 0 auto; width:9px; height:9px; border-right:2px solid var(--ui-accent,#9e2b32); border-bottom:2px solid var(--ui-accent,#9e2b32); transform:rotate(45deg) translate(-2px,-2px); transition:transform .28s cubic-bezier(.16,1,.3,1); } .ds-section > summary:hover { background:rgba(158,43,50,.06); } .ds-section > summary:focus-visible { outline:2px solid #d9a441; outline-offset:-2px; } .ds-section[open] > summary { background:var(--ui-soft,rgba(158,43,50,.1)); } .ds-section[open] > summary::after { transform:rotate(225deg) translate(-2px,-2px); } .ds-section[open] > summary + .ds-section-body { border-top:1px solid var(--ui-border,rgba(158,43,50,.22)); } .ds-section-body { position:relative; padding:6px 16px 18px; font-size:13px; line-height:1.5; } .ds-section[open] > .ds-section-body::before { content:\"\"; position:absolute; inset:0 0 auto 0; height:7px; opacity:.65; background:linear-gradient(var(--ui-gold,#a8791f),var(--ui-gold,#a8791f)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--ui-accent,#9e2b32) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--ui-gold,#a8791f),var(--ui-gold,#a8791f)) 0 100% / 100% 1px no-repeat; }"
-    },
-    {
-      "name": "Карточка письма",
-      "kind": "card",
-      "refersTo": "quote-card",
-      "description": "Элемент коллекции; доступное письмо помечено зубчатой полосой краской темы.",
-      "html": "<article class=\"ds-quote\"><header class=\"ds-quote-head\"><span>Маме</span><b>07</b></header><p>Спасибо за то, что ты всегда рядом — даже когда молчишь.</p></article>",
-      "css": ".ds-quote { position:relative; overflow:hidden; padding:14px; border:1px solid var(--ui-border,rgba(158,43,50,.22)); border-radius:14px; background:var(--ui-surface,rgba(255,252,245,.72)); color:var(--ui-ink,#2a2118); font-family:Manrope,system-ui,sans-serif; cursor:pointer; } .ds-quote::before { content:\"\"; position:absolute; inset:0 0 auto 0; height:4px; opacity:.8; background:repeating-linear-gradient(135deg, var(--ui-accent,#9e2b32) 0 3px, transparent 3px 7px); } .ds-quote-head { display:flex; justify-content:space-between; align-items:center; margin:6px 0 8px; font-size:11px; font-weight:700; } .ds-quote-head b { color:var(--ui-accent,#9e2b32); font-variant-numeric:tabular-nums; } .ds-quote p { margin:0; font-size:13px; line-height:1.5; } .ds-quote:hover { border-color:var(--ui-accent,#9e2b32); } .ds-quote:focus-visible { outline:2px solid #d9a441; outline-offset:2px; }"
-    },
-    {
-      "name": "Панель с каймой",
-      "kind": "card",
-      "refersTo": "panel-surface",
-      "description": "Поле ковра: слоновая кость, золотая граница, липкая кайма сверху.",
-      "html": "<section class=\"ds-panel\"><div class=\"ds-panel-band\" aria-hidden=\"true\"></div><header class=\"ds-panel-head\"><h2>Атмосфера</h2></header><p>Сцена, звук и погода — всё в одном месте.</p></section>",
-      "css": ".ds-panel { position:relative; border:1px solid var(--ui-gold,#a8791f); border-radius:18px; overflow:hidden; background:var(--ui-panel,#f7f1e3); color:var(--ui-ink,#2a2118); box-shadow:0 34px 96px rgba(6,5,12,.5); font-family:Manrope,system-ui,sans-serif; } .ds-panel-band { height:7px; background:linear-gradient(var(--ui-gold,#a8791f),var(--ui-gold,#a8791f)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, var(--ui-accent,#9e2b32) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(var(--ui-gold,#a8791f),var(--ui-gold,#a8791f)) 0 100% / 100% 1px no-repeat; } .ds-panel-head { padding:18px 18px 12px; border-bottom:1px solid var(--ui-border,rgba(158,43,50,.22)); } .ds-panel-head h2 { margin:0; color:var(--ui-accent-deep,#6d1a20); font-size:clamp(30px,7.4vw,40px); font-weight:800; line-height:.96; letter-spacing:-.035em; } .ds-panel p { margin:0; padding:14px 18px 22px; font-size:13px; line-height:1.5; color:var(--ui-muted,#6f5f4a); }"
+      "refersTo": "alert-card",
+      "description": "Нет интернета, блокировка, предупреждение, жалоба — одна карточка по центру сцены. Золото здесь пока своё (#ffc35a), см. Don'ts.",
+      "html": "<div class=\"ds-alert\"><h2>Нет интернета</h2><p>Проверьте соединение и попробуйте ещё раз.</p><button class=\"ds-alert-btn\" type=\"button\">Повторить</button></div>",
+      "css": ".ds-alert{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(100%,380px);padding:28px 22px 22px;border:1.5px solid rgba(255,200,90,.75);border-radius:24px;color:#fff;background:rgba(22,12,20,.86);box-shadow:0 0 24px rgba(255,180,60,.35),0 18px 40px rgba(0,0,0,.55);text-align:center;font-family:Manrope,system-ui,sans-serif}.ds-alert h2{margin:0;font-size:22px;font-weight:700;color:#ffe2a0}.ds-alert p{margin:0;font-size:16px;line-height:1.5;color:rgba(255,255,255,.88)}.ds-alert-btn{min-height:48px;min-width:160px;padding:0 22px;border:1.5px solid #ffc35a;border-radius:999px;color:#fff;background:linear-gradient(180deg,#a52a46,#6e1430);font:700 15px Manrope,system-ui,sans-serif;cursor:pointer}.ds-alert-btn:focus-visible{outline:2px solid #ffe2a0;outline-offset:3px}"
     },
     {
       "name": "Лист письма",
@@ -99,56 +474,78 @@
       "description": "Слоновая кость в двойной золотой рамке; Literata, чернила управляются пресетом.",
       "html": "<article class=\"ds-letter\"><h3>Дорогая мама</h3><p class=\"ds-letter-text\">Иногда одно письмо говорит больше, чем сотня сообщений.</p><p class=\"ds-signature\"><span>с теплом,</span> <strong>Амина</strong></p></article>",
       "css": ".ds-letter { position:relative; padding:34px 28px; border:1px solid var(--ui-gold,#a8791f); border-radius:16px; background:#f8f2e4; color:#2a2118; box-shadow:0 40px 110px rgba(5,4,10,.6); font-family:Literata,Georgia,serif; } .ds-letter::after { content:\"\"; position:absolute; inset:9px; border:1px solid rgba(217,164,65,.32); border-radius:10px; pointer-events:none; } .ds-letter h3 { margin:0 0 14px; color:#6d1a20; font-size:clamp(22px,4vw,30px); font-weight:600; } .ds-letter-text { margin:0; font-size:clamp(19px,3.5vw,26px); line-height:1.56; letter-spacing:.003em; font-weight:500; text-shadow:0 1px 2px rgba(255,255,255,.72); } .ds-signature { margin:22px 0 0; font-style:italic; color:#7a6a52; } .ds-signature strong { color:#6d1a20; }"
-    },
-    {
-      "name": "Медальон главного экрана",
-      "kind": "custom",
-      "description": "Иллюстрация как обрамлённая вещь на стене: двойная обводка и кайма по нижнему краю.",
-      "html": "<div class=\"ds-medallion\"><div class=\"ds-medallion-scene\"></div><div class=\"ds-medallion-frame\"></div></div>",
-      "css": ".ds-medallion { position:relative; height:260px; border-radius:20px; overflow:hidden; background:#0c0b14; } .ds-medallion-scene { position:absolute; inset:0; background:radial-gradient(120% 80% at 18% -10%, rgba(158,43,50,.28), transparent 62%), radial-gradient(100% 70% at 92% 8%, rgba(217,164,65,.16), transparent 58%), #14131f; } .ds-medallion-frame { position:absolute; inset:0; border:1px solid #d9a441; border-radius:20px; box-shadow:0 40px 110px rgba(4,3,9,.66), inset 0 0 0 7px rgba(14,13,22,.55), inset 0 0 0 8px rgba(217,164,65,.32); background:radial-gradient(120% 90% at 50% 18%, transparent 38%, rgba(8,7,14,.62) 100%); pointer-events:none; } .ds-medallion-frame::after { content:\"\"; position:absolute; inset:auto 0 0 0; height:7px; background:linear-gradient(rgba(217,164,65,.32),rgba(217,164,65,.32)) 0 0 / 100% 1px no-repeat, repeating-linear-gradient(135deg, rgba(217,164,65,.32) 0 3px, transparent 3px 7px) 0 3px / 100% 5px no-repeat, linear-gradient(rgba(217,164,65,.32),rgba(217,164,65,.32)) 0 100% / 100% 1px no-repeat; }"
     }
   ],
   "narrative": {
-    "northStar": "Ковёр и золотное шитьё",
-    "overview": "Мир собран из материала, а не из настроения. Тёмная индиговая стена, на ней — обрамлённая вещь: медальон с иллюстрацией, кайма из повторяющихся полос, поле слоновой кости, на котором лежит письмо. Четыре краски взяты у красилен — марена, индиго, шафран, изумруд — и работают как заливка площади; золото работает только по краю. Весь орнамент строится градиентами, без единой картинки: APK возят на слабых телефонах, и повторяющийся фон там дешевле изображения. Иерархия держится контрастом кегля и сеткой. Manrope 800 с отрицательным трекингом — голос интерфейса; Literata — голос письма. Плотность высокая на панелях и предельно низкая на главном экране: медальон, одна кнопка, одна ссылка, одна строка о цене.",
+    "northStar": "Тёплая ночь за стеклом",
+    "overview": "С v96 (31.10.2026) GlowLetter живёт внутри фотографии. Каждый крупный слой стоит на своей сцене во весь экран: мишки у озера и костра на главной, в «Друзьях» и на экранах защиты (`assets/scenes/bears.webp`), мишки в розах в «Настройках» (`roses.webp`), избушка у костра в «Играх» (`chat-campfire.webp`), домик под луной в звонке (`call-cabin-moon.webp`). Фото не размывается и не затемняется целиком: интерфейс лежит поверх него островами тёмного стекла с золотым кантом, а главное действие — бордовая кнопка с золотой кромкой.\n\nГлавная собрана по картинке владельца: все размеры сняты с образца шириной 841px и заданы в его долях (`--u = min(100vw, 470px) / 841`), поэтому на любом телефоне пропорции те же, что на образце. Остальные слои (Настройки, Игры, Друзья, Защита, онлайн-функции) повторяют рецепт главной обычными пикселями.\n\nВторой мир — бумага. Письмо читается на слоновой кости (`body.is-reading`), а «Моменты», QR-карточки, пейволл и админка пока остаются в прежней палитре «ковра»: марена, индиго, шафран или изумруд на светлом поле, золото на краю. Это действующая система, а не мусор: её токены записаны ниже под «Neutral / Paper». Третий, отдельный мир — ночной экран рейтинга сезона: фиолетовое небо, неоновое золото и розовый, металлический пьедестал.",
     "keyCharacteristics": [
-      "Тёмная стена (#0c0b14) с двумя тёплыми пятнами света — марена слева, золото справа.",
-      "Кайма --carpet-band (волос золота, зубчатая полоса, волос золота) высотой 7px обрамляет каждую крупную поверхность.",
-      "Четыре краски темы переключаются атрибутом data-ui-theme на <body>; золото не переключается никогда.",
-      "Manrope 800 / Literata — два голоса; Cormorant остался единственным пресетом письма «поэтичный».",
-      "Весь орнамент — CSS-градиенты, ноль декоративных изображений."
+      "Фотография сцены во весь экран, без размытия; глубина — только стеклом и тенью.",
+      "Тёмное стекло: `linear-gradient(180deg, rgba(28,11,18,.66), rgba(16,7,11,.6))` поверх тёплых сцен, `rgba(10,18,36,.64) → rgba(7,12,26,.58)` поверх озера.",
+      "Золотой кант 1–1.5px `rgba(244,202,126,.55–.62)`; активное — сплошное `#f2c96f`.",
+      "Бордовая кнопка `linear-gradient(110deg, #a52a3a, #861b30 55%, #74172b)` с кромкой `#f0c66f` и тёплым ореолом.",
+      "Светлые чернила `#fff4e5`, приглушённые — `rgba(255,238,214,.8–.86)`, всегда с тенью текста над фото.",
+      "Заголовки слоёв — Playfair Display 600; интерфейс — Manrope; письмо — Literata или выбранный пресет."
     ],
     "rules": [
-      { "name": "Правило «краска держит площадь, золото держит край»", "body": "Любая заливка берётся из --ui-accent/--ui-accent-deep. Золото допускается как граница 1px, кольцо фокуса, печать или ::selection. Единственное исключение, уже принятое в сборке, — кнопка пожизненного доступа .purchase-lifetime.", "section": "colors" },
-      { "name": "Правило одной краски", "body": "На экране живёт ровно одна краска темы. Смешивать марену с индиго, шафраном или изумрудом нельзя даже ради подсветки состояния — состояние показывается той же краской через --ui-soft (10–11% заливки).", "section": "colors" },
-      { "name": "Правило теневой глубины", "body": "Глубина делается тёмной ночью, а не чёрным: все тени берут rgba(6,5,12,…) — окрашенный ночной, не нейтральный серый.", "section": "colors" },
-      { "name": "Правило типографического пола", "body": "11px — низ шкалы. Ниже 11px в интерфейсе не ставится ничего: текст мельче не несёт смысла и не читается на телефоне.", "section": "typography" },
-      { "name": "Правило двух голосов", "body": "Manrope — интерфейс, Literata — письмо. Третье семейство появляется только как выбранный пользователем пресет письма и никогда не попадает в хром приложения.", "section": "typography" },
-      { "name": "Правило разрядов", "body": "Числа в счётчиках, процентах и номерах писем идут с font-variant-numeric: tabular-nums, чтобы столбцы не прыгали при обновлении.", "section": "typography" },
-      { "name": "Правило «состояние краской, не тенью»", "body": "Активная карточка атмосферы, трека, категории, языка и темы меняет border-color, color и заливку --ui-soft. Поднимать активный элемент тенью запрещено.", "section": "elevation" }
+      {
+        "name": "Правило «бордо держит действие, золото держит край»",
+        "body": "Заливка кнопки — только бордовый градиент. Золото — кромка, граница выбора, заголовок раздела, свечение. Сплошная золотая площадь допускается только в маленьком бейдже («Новое»).",
+        "section": "colors"
+      },
+      {
+        "name": "Правило окрашенной тени",
+        "body": "Тени стекла — `rgba(0,0,0,.3–.55)`, тень кнопки — винная `rgba(80,8,24,.45)`, свечение — золото. Серых теней нет.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило одной сцены",
+        "body": "Один слой — одна фотография. Поверх неё нет второго фона, видео или узора; стекло полупрозрачное, чтобы сцена читалась сквозь него.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило типографического пола",
+        "body": "11px — низ шкалы текста. Ниже ставятся только значки (эмодзи, медали), не слова.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило трёх голосов",
+        "body": "Manrope — интерфейс, Playfair — заголовок слоя, шрифт письма — письмо. Cormorant и Georgia живут только на главной.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило тени над фото",
+        "body": "Любой текст прямо над фотографией (без стекла) несёт `text-shadow` 8–16px чёрного .6–.8.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило света вместо высоты",
+        "body": "Важное поднимается свечением золота, а не более тёмной тенью. Тень только отделяет стекло от фото.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do обрамлять новую крупную поверхность каймой --carpet-band (7px, position: sticky у верхнего края) и границей 1px --ui-gold.",
-      "Do брать акцент только из --ui-accent / --ui-accent-deep / --ui-soft, чтобы поверхность автоматически переключалась вместе с четырьмя красками.",
-      "Do строить орнамент градиентами: repeating-linear-gradient(135deg, …) — штатный материал мира, изображений для декора нет.",
-      "Do ставить новые иконки в спрайт как штриховые SVG и подключать через .ic; штрих 1.7 задаётся CSS, а не в файле символа.",
-      "Do держать типографический пол на 11px и строить иерархию контрастом кегля.",
-      "Do оставлять фокус единым золотым кольцом 2px с отступом 2px."
+      "**Do** ставить каждый новый слой на свою фотографию сцены и класть контент на стекло `linear-gradient(180deg, rgba(28,11,18,.66), rgba(16,7,11,.6))` с кантом `rgba(244,202,126,.55–.62)`.",
+      "**Do** делать главное действие бордовой кнопкой `linear-gradient(110deg,#a52a3a,#861b30 55%,#74172b)` с кромкой `#f0c66f`.",
+      "**Do** брать светлые чернила `#fff4e5` и сливочные `rgba(255,238,214,.8)`; для заголовка слоя — Playfair Display 600.",
+      "**Do** подменять `--ui-*` на уровне слоя (как `#settingsLayer`, `#gamesLayer`, `.glf-layer`), а не переписывать цвета у каждого элемента.",
+      "**Do** брать размеры из шкалы 11–26px и радиусы из `rounded`."
     ],
     "donts": [
-      "Don't смешивать две краски темы на одном экране.",
-      "Don't заливать площадь золотом — исключение только .purchase-lifetime, уже существующее.",
-      "Don't показывать активное состояние тенью или подъёмом: только цвет края, текста и --ui-soft.",
-      "Don't вводить третье шрифтовое семейство в интерфейс; Cormorant живёт только как пресет письма «поэтичный».",
-      "Don't ставить текстовые глифы вместо иконок — набор штриховых SVG покрывает интерфейс.",
-      "Don't использовать нейтрально-серые тени: глубина окрашивается в ночной (rgba(6,5,12,…)).",
-      "Don't возвращать кремово-курсивную «открыточную» подачу письма: бумага живёт только внутри каймы на тёмной стене."
+      "**Don't** размывать или затемнять фотографию целиком и не класть поверх неё второй фон.",
+      "**Don't** вводить новое золото рядом с `#f2c96f` / `#f4ca7e` (например `#ffc35a`, `#ffbe5a` в экранах защиты и онлайн-функциях) — это расхождение, его надо свести к токену.",
+      "**Don't** использовать розово-сливовую палитру старого входа (`#b84d7d`, `#7b4d79`, `#975a79`) в новых экранах.",
+      "**Don't** ставить текст мельче 11px и заводить соседние шаги 21/23/25/27px рядом с 22/26px.",
+      "**Don't** заливать текст градиентом (`background-clip: text`) — заголовок держится цветом и тенью."
     ],
     "knownDebt": [
-      "Около 40 розово-сливовых хексов остались в середине styles.css и в experience.css и не переведены в токены.",
-      "У каймы нет вертикальных краёв — только горизонтальные полосы сверху и снизу.",
-      "Авторского момента движения у нового мира нет; движение унаследовано от прежней сцены.",
-      "Два декоративных глифа (◎ в карточке аккаунта, ◇ в админ-панели и в замке карточки письма) не заменены на SVG — это дефект, а не приём."
+      "email-auth.css и часть moments.css держат розово-сливовую палитру старого входа (#975a79, #3f3340, #352832, #b84d7d, #7b4d79); в Настройках она перекрыта, но вне #settingsLayer остаётся.",
+      "guard.css и ultra.css берут своё золото (#ffc35a, #ffc85a, #ffbe5a, #ffd282, #f0c378) рядом с системным #f2c96f / #f4ca7e.",
+      "Чат друзей (friends.css, .glf-chat-mode) держит собственное бордо (#9e1b31, #a81a32, #8e1428, #7f1024, #6d0e1f, #5c0918) вместо #a52a3a → #74172b.",
+      "Рейтинг: неоновые вариации (#ff50b4, #ff5fb8, #ffaa32, #ffbe3c, #ffb43c) вне рамп сайдкара; шрифт system-ui/Roboto вместо Manrope; текст 7–8px в XP-бейджах; градиентный текст в .glr-brand и .glr-admin b; пружинящее появление медали.",
+      "Соседние шаги шрифта 21/23/25/27/29/35px рядом с 22/26px; текст 10px (eyebrow Друзей, подпись дока, шаги Моментов).",
+      "Радиус стекла 23px (Игры, Друзья) против 22px в Настройках; одиночные радиусы 13/15/19/27/30px.",
+      "Пружинящие easing у появления карточек (table-group.css, cubic-bezier(.2,.9,.3,1.2)) и быстрых кнопок чата (friends.css:377); цветная боковая полоса 5px в таблице счёта (table-group.css:99)."
     ]
   }
 }

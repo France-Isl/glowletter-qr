@@ -111,6 +111,78 @@
         "value": "clamp(44px, 13vw, 60px)",
         "createdAt": "2026-10-31T03:02:09.349Z",
         "reason": "Claude: emoji pictogram glyph sizes in table-group.css (picture cards, trophy, medals), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "72px",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T05:10:48.675Z",
+        "reason": "Claude: emoji/pictogram glyph size, not text (heart pop, chat reaction, sticker, card decor)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "42px",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T05:10:48.759Z",
+        "reason": "Claude: emoji/pictogram glyph size, not text (heart pop, chat reaction, sticker, card decor)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "54px",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T05:10:48.844Z",
+        "reason": "Claude: emoji/pictogram glyph size, not text (heart pop, chat reaction, sticker, card decor)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "38px",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-10-31T05:10:48.932Z",
+        "reason": "Claude: .home-quick-ic emoji glyph of the home quick actions, not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "60px",
+        "files": [
+          "table-group.css"
+        ],
+        "createdAt": "2026-10-31T05:10:49.012Z",
+        "reason": "Claude: .gltg-pic emoji pictogram card, clamp(44px,13vw,60px) endpoint; same value was already waived as a whole clamp"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "glf-live-bounce",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T05:11:27.931Z",
+        "reason": "Claude: literal motion - the user-chosen 'bounce' live sticker (.glf-live.is-bounce) is a bouncing emoji; bounce is the sticker's content"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "gltb-bounce",
+        "files": [
+          "table-board.css"
+        ],
+        "createdAt": "2026-10-31T05:11:28.013Z",
+        "reason": "Claude: literal motion - the Four-in-a-row disc lands in the grid and bounces once (9%) after gltb-drop"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "ranking.css"
+        ],
+        "createdAt": "2026-10-31T05:11:28.091Z",
+        "reason": "Claude: only hit is .glr-ped-block with border-left AND border-right - the metallic sides of the cylinder pedestal from the owner's podium picture (6e45a57), not a side stripe"
       }
     ]
   }
