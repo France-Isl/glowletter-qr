@@ -20,7 +20,7 @@
       statSeason: "Опыт сезона", statPlace: "Место в мире", statTotal: "Весь опыт", statGames: "Сыграно игр", statWins: "Победы", statFriends: "Друзья",
       ceremonyTitle: "Сезон #{n} завершён!", place1: "1 место — Золотая медаль", place2: "2 место — Серебряная медаль", place3: "3 место — Бронзовая медаль", ceremonyTake: "Забрать награду",
       rankDown: "Вы опустились на {place}-е место. {name} теперь выше вас!", rankUp: "Вы поднялись на {place}-е место!", back: "Назад", close: "Закрыть", info: "Как это работает",
-      open: "Рейтинг", adminJoined: "В комнату зашёл", private: "Профиль закрыт", xp: "XP", now: "сейчас"
+      open: "Рейтинг", adminJoined: "В комнату зашёл", private: "Профиль закрыт", xp: "XP", now: "сейчас", editName: "Изменить имя", save: "Сохранить"
     },
     en: {
       brand: "GlowLetter", world: "Whole world", friends: "Friends", worldNote: "Top players of the 15-day season", friendsNote: "Top among friends in 15 days",
@@ -37,7 +37,7 @@
       statSeason: "Season XP", statPlace: "World place", statTotal: "All XP", statGames: "Games played", statWins: "Wins", statFriends: "Friends",
       ceremonyTitle: "Season #{n} is over!", place1: "1st place — Gold medal", place2: "2nd place — Silver medal", place3: "3rd place — Bronze medal", ceremonyTake: "Collect the award",
       rankDown: "You dropped to place {place}. {name} is above you now!", rankUp: "You climbed to place {place}!", back: "Back", close: "Close", info: "How it works",
-      open: "Ranking", adminJoined: "Entered the room:", private: "This profile is private", xp: "XP", now: "now"
+      open: "Ranking", adminJoined: "Entered the room:", private: "This profile is private", xp: "XP", now: "now", editName: "Change name", save: "Save"
     },
     fr: {
       brand: "GlowLetter", world: "Monde entier", friends: "Amis", worldNote: "Meilleurs joueurs de la saison de 15 jours", friendsNote: "Meilleurs amis sur 15 jours",
@@ -54,14 +54,14 @@
       statSeason: "XP de la saison", statPlace: "Place mondiale", statTotal: "XP total", statGames: "Parties jouées", statWins: "Victoires", statFriends: "Amis",
       ceremonyTitle: "La saison n° {n} est terminée !", place1: "1re place — Médaille d’or", place2: "2e place — Médaille d’argent", place3: "3e place — Médaille de bronze", ceremonyTake: "Récupérer la récompense",
       rankDown: "Vous êtes descendu à la place {place}. {name} est devant vous !", rankUp: "Vous êtes monté à la place {place} !", back: "Retour", close: "Fermer", info: "Comment ça marche",
-      open: "Classement", adminJoined: "Entre dans la salle :", private: "Ce profil est privé", xp: "XP", now: "maintenant"
+      open: "Classement", adminJoined: "Entre dans la salle :", private: "Ce profil est privé", xp: "XP", now: "maintenant", editName: "Modifier le nom", save: "Enregistrer"
     }
   };
   Object.assign(TEXT, window.GLOWLETTER_RANKING_I18N || {});
 
   const LEAGUES = Object.freeze([["diamond", 1000], ["platinum", 600], ["gold", 300], ["silver", 100], ["bronze", 0]]);
   const RANK_KEY = "glowletter-rank-friends";
-  const state = { root: null, scope: "world", data: null, loading: false, error: "", timer: 0, profile: null, profileTab: "medals", info: false, admin: null, seenAdmin: new Set() };
+  const state = { root: null, scope: "world", data: null, loading: false, error: "", timer: 0, profile: null, profileTab: "medals", info: false, editName: false, admin: null, seenAdmin: new Set() };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -92,11 +92,18 @@
   // ——— Картинки (свои SVG, без внешних файлов) ———
 
   const hue = seed => { let h = 0; for (const ch of String(seed || "?")) h = (h * 31 + ch.codePointAt(0)) % 360; return h; };
+  // Аватар — маленькая картина (закат, луна, сакура, кошки, море, город); выбирается по игроку.
+  const SCENES = [
+    '<rect width="100" height="100" fill="url(#glrSky0)"/><circle cx="50" cy="66" r="18" fill="#ffd27a" opacity=".85"/><path d="M0 74 18 60l14 9 16-15 18 13 14-8 20 12v29H0Z" fill="#4b2245"/><circle cx="50" cy="44" r="12" fill="#1b0f1e"/><path d="M38 41c0-10 5-17 12-17s12 7 12 17l1 9H37Z" fill="#1b0f1e"/><path d="M20 100c2-22 14-36 30-36s28 14 30 36Z" fill="#1b0f1e"/>',
+    '<rect width="100" height="100" fill="url(#glrSky1)"/><circle cx="70" cy="27" r="11" fill="#fff3c4"/><circle cx="75" cy="23" r="10" fill="#2a2a7a"/><circle cx="22" cy="20" r="1.4" fill="#fff"/><circle cx="36" cy="12" r="1" fill="#fff"/><circle cx="84" cy="48" r="1.2" fill="#fff"/><path d="M34 52c0-14 7-24 16-24s16 10 16 24v8H34Z" fill="#120c26"/><path d="M18 100c2-24 15-38 32-38s30 14 32 38Z" fill="#120c26"/><path d="M42 50c1-7 4-11 8-11s7 4 8 11l-1 6H43Z" fill="#2b1f4a"/>',
+    '<rect width="100" height="100" fill="url(#glrSky2)"/><path d="M47 100 49 62h4l2 38Z" fill="#5b2a3a"/><circle cx="38" cy="52" r="15" fill="#ff8fc2"/><circle cx="60" cy="48" r="17" fill="#ffa8d2"/><circle cx="50" cy="36" r="15" fill="#ffc2df"/><circle cx="30" cy="40" r="10" fill="#ff9fcb"/><circle cx="70" cy="34" r="10" fill="#ffb5d8"/><path d="M0 88c20-6 40-6 60 0s30 4 40 0v12H0Z" fill="#7a2f5f"/>',
+    '<rect width="100" height="100" fill="url(#glrSky3)"/><circle cx="50" cy="40" r="22" fill="#ffd9a8" opacity=".9"/><path d="M28 100V70c0-8 3-14 8-17l-2-10 7 6h6l7-6-2 10c5 3 8 9 8 17v30Z" fill="#1d1028"/><path d="M60 100V78c0-6 2-10 6-12l-1-8 5 5h4l5-5-1 8c4 2 6 6 6 12v22Z" fill="#2a1638"/>',
+    '<rect width="100" height="100" fill="url(#glrSky4)"/><circle cx="56" cy="58" r="14" fill="#ffe08a"/><rect y="64" width="100" height="36" fill="#3b2a6a"/><path d="M0 70h100M10 78h80M20 86h60" stroke="#ffb46a" stroke-width="1.6" opacity=".55"/><path d="M24 100c2-20 3-34 8-46" stroke="#1a0f20" stroke-width="3.4" fill="none"/><path d="M32 54c-10-4-18-2-22 4 8-3 14-2 22-4Zm0 0c4-10 12-14 20-12-8 1-14 6-20 12Zm0 0c-4-9-12-12-20-10 8 2 14 5 20 10Zm0 0c10-2 17 2 20 8-7-4-13-6-20-8Z" fill="#1a0f20"/>',
+    '<rect width="100" height="100" fill="url(#glrSky5)"/><circle cx="72" cy="30" r="8" fill="#fff0c2"/><path d="M0 100V74h10V62l5-6 5 6v12h8V56c0-8 6-14 12-16 6 2 12 8 12 16v18h8V60l5-7 5 7v14h10V66l5-5 5 5v34Z" fill="#24122e"/><circle cx="40" cy="38" r="2.4" fill="#24122e"/>'
+  ];
   function avatar(row, size = "") {
-    const name = String(row?.name || "").trim();
-    const letter = row?.name == null ? "?" : (Array.from(name)[0] || "♥").toUpperCase();
-    const h = hue(row?.user_id || name || row?.place);
-    return `<span class="glr-ava${size ? ` is-${size}` : ""}" style="--h:${h}" aria-hidden="true"><span>${escapeHtml(letter)}</span></span>`;
+    const scene = hue(row?.user_id || row?.name || row?.place) % SCENES.length;
+    return `<span class="glr-ava${size ? ` is-${size}` : ""}" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false">${SCENES[scene]}</svg></span>`;
   }
   const CROWN = tone => `<svg class="glr-crown is-${tone}" viewBox="0 0 64 44" aria-hidden="true" focusable="false"><path d="M6 36 3 10l15 12L32 2l14 20 15-12-3 26Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.25)" stroke-width="1"/><rect x="5" y="35" width="54" height="7" rx="3" fill="url(#glrMetal-${tone})"/><circle cx="32" cy="22" r="3.6" fill="#ff4d8d"/><circle cx="17" cy="27" r="2.6" fill="#7cc4ff"/><circle cx="47" cy="27" r="2.6" fill="#7cc4ff"/><circle cx="3" cy="10" r="2.6" fill="url(#glrMetal-${tone})"/><circle cx="32" cy="2.6" r="2.6" fill="url(#glrMetal-${tone})"/><circle cx="61" cy="10" r="2.6" fill="url(#glrMetal-${tone})"/></svg>`;
   function laurel(tone) {
@@ -113,6 +120,7 @@
     return `<svg class="glr-laurel" viewBox="0 0 120 120" aria-hidden="true" focusable="false">${leaves.join("")}</svg>`;
   }
   const BADGE = (place, tone) => `<span class="glr-badge is-${tone}" aria-hidden="true"><svg viewBox="0 0 40 44" focusable="false"><path d="M20 2 37 11v20L20 42 3 31V11Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.3)" stroke-width="1.2"/><path d="M20 7 33 14v15L20 37 7 29V14Z" fill="rgba(0,0,0,.18)"/></svg><b>${place}</b></span>`;
+  const ROSETTE = (place, tone) => `<span class="glr-rosette is-${tone}" aria-hidden="true"><svg viewBox="-28 -28 56 56" focusable="false"><path d="M0-26 6-21 14-22 16-14 23-9 20-1 23 7 16 12 14 20 6 19 0 25-6 19-14 20-16 12-23 7-20-1-23-9-16-14-14-22-6-21Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.3)"/><circle r="16" fill="url(#glrMetal-${tone})" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/><circle r="12.5" fill="url(#glrDeep-${tone})"/></svg><b>${place}</b></span>`;
   const MEDAL = (place, tone, big = false) => `<span class="glr-medal is-${tone}${big ? " is-big" : ""}" aria-hidden="true"><svg viewBox="0 0 64 74" focusable="false"><path d="M18 0h12l6 22H24Z" fill="#c2185b"/><path d="M34 0h12l-6 22H28Z" fill="#7b1fa2"/><g transform="translate(32 46)"><path d="M0-26 6-21 14-22 16-14 23-9 20-1 23 7 16 12 14 20 6 19 0 25-6 19-14 20-16 12-23 7-20-1-23-9-16-14-14-22-6-21Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.25)"/><circle r="15" fill="url(#glrMetal-${tone})" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/></g></svg><b>${place}</b></span>`;
   const XP = `<span class="glr-xp" aria-hidden="true">XP</span>`;
   const LEAGUE_ICON = id => id === "diamond"
@@ -129,6 +137,9 @@
     chart: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 20V11M12 20V5M19 20v-7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>',
     cup: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4h10v5a5 5 0 0 1-10 0Z" fill="currentColor"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v3M8 20h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     star: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8Z" fill="currentColor"/></svg>',
+    gear: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.3 2.6h3.4l.5 2.6 1.8.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.8 2.6.5v3.4l-2.6.5-.8 1.8 1.5 2.2-2.4 2.4-2.2-1.5-1.8.8-.5 2.6h-3.4l-.5-2.6-1.8-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.8-2.6-.5v-3.4l2.6-.5.8-1.8-1.5-2.2 2.4-2.4 2.2 1.5 1.8-.8Z" fill="currentColor"/><circle cx="12" cy="12" r="3.4" fill="#1d1430"/></svg>',
+    pencil: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 20 1-4.6L15.6 4.8a2 2 0 0 1 2.8 0l.8.8a2 2 0 0 1 0 2.8L8.6 19ZM14 6.4l3.6 3.6M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    tick: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     calendar: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
   });
   // Градиенты металла — один раз на страницу.
@@ -136,7 +147,27 @@
     <linearGradient id="glrMetal-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".45" stop-color="#ffc83d"/><stop offset="1" stop-color="#c98a12"/></linearGradient>
     <linearGradient id="glrMetal-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c9d3e6"/><stop offset="1" stop-color="#7f8aa6"/></linearGradient>
     <linearGradient id="glrMetal-bronze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd2b8"/><stop offset=".5" stop-color="#f08a5d"/><stop offset="1" stop-color="#a5482a"/></linearGradient>
+    <linearGradient id="glrDeep-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd257"/><stop offset="1" stop-color="#d08a12"/></linearGradient>
+    <linearGradient id="glrDeep-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c8ea"/><stop offset="1" stop-color="#5d6f9c"/></linearGradient>
+    <linearGradient id="glrDeep-bronze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9a76"/><stop offset="1" stop-color="#b8432c"/></linearGradient>
+    <linearGradient id="glrSky0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a2a7a"/><stop offset=".55" stop-color="#e2667a"/><stop offset="1" stop-color="#ffb35c"/></linearGradient>
+    <linearGradient id="glrSky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151c5a"/><stop offset="1" stop-color="#5b3aa0"/></linearGradient>
+    <linearGradient id="glrSky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7d6ea"/><stop offset="1" stop-color="#c25b9c"/></linearGradient>
+    <linearGradient id="glrSky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43207a"/><stop offset="1" stop-color="#e2649c"/></linearGradient>
+    <linearGradient id="glrSky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3a8a"/><stop offset=".6" stop-color="#ff8a6a"/><stop offset="1" stop-color="#ffc06a"/></linearGradient>
+    <linearGradient id="glrSky5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a8a"/><stop offset=".6" stop-color="#c25c9a"/><stop offset="1" stop-color="#ff9a6a"/></linearGradient>
+    <radialGradient id="glrSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd59a"/><stop offset=".35" stop-color="#ff8a5c" stop-opacity=".8"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glrCloud" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffa0c0" stop-opacity=".9"/><stop offset="1" stop-color="#ff9ac8" stop-opacity="0"/></radialGradient>
+    <linearGradient id="glrDusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0f2c" stop-opacity="0"/><stop offset=".3" stop-color="#55205e"/><stop offset=".55" stop-color="#d0507a"/><stop offset=".7" stop-color="#ff9a5c"/><stop offset=".82" stop-color="#c2466e"/><stop offset="1" stop-color="#2a1236"/></linearGradient>
   </defs></svg>`;
+  // Закат за пьедесталом: облака, горы, сердечки и искры.
+  const SCENE = `<div class="glr-scene" aria-hidden="true"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <rect width="400" height="300" fill="url(#glrDusk)"/>
+    <ellipse cx="200" cy="195" rx="210" ry="80" fill="url(#glrSun)"/><ellipse cx="200" cy="200" rx="90" ry="34" fill="url(#glrSun)"/>
+    <ellipse cx="80" cy="120" rx="120" ry="34" fill="url(#glrCloud)"/><ellipse cx="320" cy="110" rx="130" ry="36" fill="url(#glrCloud)"/><ellipse cx="200" cy="160" rx="160" ry="30" fill="url(#glrCloud)" opacity=".6"/>
+    <path d="M0 210 50 160l40 30 50-55 60 60 50-45 50 35 50-40 50 45v110H0Z" fill="#3a1748" opacity=".85"/>
+    <path d="M0 240 70 200l50 25 60-35 70 40 60-30 90 35v65H0Z" fill="#24102f"/>
+  </svg><i class="is-heart"></i><i class="is-heart"></i><i class="is-heart"></i><i></i><i></i><i></i><i></i><i></i></div>`;
   const TONE = { 1: "gold", 2: "silver", 3: "bronze" };
 
   // ——— Окно ———
@@ -151,6 +182,7 @@
     root.setAttribute("aria-modal", "true");
     root.addEventListener("click", onClick);
     root.addEventListener("change", onChange);
+    root.addEventListener("submit", onSubmit);
     root.addEventListener("keydown", event => { if (event.key === "Escape") { event.stopPropagation(); back(); } });
     document.body.append(root);
     state.root = root;
@@ -234,14 +266,16 @@
     const rest = top.slice(3);
     const mine = data?.mine;
     return `${header(tr("brand"), true, `<button class="glr-icon is-crown" type="button" data-glr-action="info" aria-label="${escapeHtml(tr("info"))}">${CROWN("gold")}</button>`)}
+      <div class="glr-tabs-wrap">
       <div class="glr-tabs" role="tablist">
         <button type="button" role="tab" class="is-world" aria-selected="${!friends}" data-glr-action="scope" data-scope="world">${ICON.globe}<span>${escapeHtml(tr("world"))}</span></button>
         <button type="button" role="tab" class="is-friends" aria-selected="${friends}" data-glr-action="scope" data-scope="friends">${ICON.people}<span>${escapeHtml(tr("friends"))}</span></button>
-      </div>
+      </div></div>
+      <section class="glr-stage">${SCENE}
       <p class="glr-note">${escapeHtml(tr(friends ? "friendsNote" : "worldNote"))}</p>
       <p class="glr-left">${ICON.clock}<span data-glr="left">${escapeHtml(tr("left", { time: data ? left() : "…" }))}</span></p>
-      ${state.loading && !data ? `<div class="glr-loading" aria-busy="true"><span></span><span></span><span></span></div>` : state.error ? `<p class="glr-empty">${escapeHtml(state.error)}</p>` : `
-      <div class="glr-podium">${podium.map((row, index) => pedestal(row, [2, 1, 3][index])).join("")}</div>
+      ${state.loading && !data ? `<div class="glr-loading" aria-busy="true"><span></span><span></span><span></span></div></section>` : state.error ? `<p class="glr-empty">${escapeHtml(state.error)}</p></section>` : `
+      <div class="glr-podium">${podium.map((row, index) => pedestal(row, [2, 1, 3][index])).join("")}</div></section>
       ${top.length ? "" : `<p class="glr-empty">${escapeHtml(tr("empty"))}</p>`}
       ${rest.length ? `<div class="glr-table" role="table">
         <div class="glr-row is-head" role="row"><span>#</span><span>${escapeHtml(tr(friends ? "colFriend" : "colPlayer"))}</span><span>${escapeHtml(tr("colRank"))}</span><span>${escapeHtml(tr("colXp"))}</span></div>
@@ -267,7 +301,7 @@
         <b class="glr-ped-name">${escapeHtml(name)}</b>
         <small class="glr-title is-${escapeHtml(item?.title || "newbie")}">${item ? escapeHtml(tr(`title_${item.title || "newbie"}`)) : "&nbsp;"}</small>
         <b class="glr-ped-xp">${item ? `${number(item.points)} ${XP}` : "&nbsp;"}</b>
-      </span>
+      </span>${place === 1 ? `<span class="glr-ped-base"></span>` : ""}
     </button>`;
   }
 
@@ -296,6 +330,7 @@
   async function openProfile(userId) {
     state.profile = { userId, loading: true };
     state.profileTab = "medals";
+    state.editName = false;
     render();
     try { state.profile = { userId, data: await rpc("glowletter_medal_wall", { p_user: userId }) }; }
     catch (error) { state.profile = { userId, error: String(error?.message) === "private" ? tr("private") : tr("failed") }; }
@@ -310,12 +345,15 @@
     const id = league(data.season_points);
     const counts = data.counts || {};
     const tab = state.profileTab;
-    return `${header(data.me ? tr("profile") : tr("profileOf"))}
+    const edit = data.me && state.editName;
+    return `${header(data.me ? tr("profile") : tr("profileOf"), false, data.me ? `<button class="glr-icon is-gear" type="button" data-glr-action="info" aria-label="${escapeHtml(tr("info"))}">${ICON.gear}</button>` : "")}
       <section class="glr-card glr-hero">
+        <span class="glr-hero-moon" aria-hidden="true"></span>
         ${avatar({ user_id: data.user_id, name: data.name }, "hero")}
         <div>
-          <h3>${escapeHtml(data.name || tr("you"))}</h3>
-          <p class="glr-hero-league is-${id}">${LEAGUE_ICON(id)}${escapeHtml(tr(`league_${id}`))} · <span class="glr-title is-${escapeHtml(data.title)}">${escapeHtml(tr(`title_${data.title}`))}</span></p>
+          ${edit ? `<form class="glr-name-form" data-glr-form="name"><input name="name" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(data.name || "")}" aria-label="${escapeHtml(tr("editName"))}" required><button class="glr-icon is-save" type="submit" aria-label="${escapeHtml(tr("save"))}">${ICON.tick}</button></form>`
+            : `<h3><span>${escapeHtml(data.name || tr("you"))}</span>${data.me ? `<button class="glr-edit" type="button" data-glr-action="edit-name" aria-label="${escapeHtml(tr("editName"))}">${ICON.pencil}</button>` : ""}</h3>`}
+          <p class="glr-hero-league is-${id}">${LEAGUE_ICON(id)}${escapeHtml(tr(`league_${id}`))}</p>
           <p class="glr-level"><span>${escapeHtml(tr("level", { n: lvl.level }))}</span><span>${number(lvl.have)} / ${number(lvl.need)} XP</span></p>
           <span class="glr-bar"><i style="width:${Math.round(lvl.have / lvl.need * 100)}%"></i></span>
         </div>
@@ -334,11 +372,11 @@
       : `<section class="glr-card glr-medals">
           <h4>${CROWN("gold")}${escapeHtml(tr(data.me ? "myMedals" : "medals"))}</h4>
           <div class="glr-medal-row">
-            ${[["gold", 1], ["silver", 2], ["bronze", 3]].map(([tone, place]) => `<p>${MEDAL(counts[tone] || 0, tone)}<b class="is-${tone}">${number(counts[tone])}</b><small>${escapeHtml(tr(tone))}</small></p>`).join("")}
+            ${[["gold", 1], ["silver", 2], ["bronze", 3]].map(([tone, place]) => `<p>${ROSETTE(counts[tone] || 0, tone)}<b class="is-${tone}">${number(counts[tone])}</b><small>${escapeHtml(tr(tone))}</small></p>`).join("")}
           </div>
         </section>
         <h4 class="glr-history-title">${CROWN("gold")}${escapeHtml(tr("history"))}</h4>
-        ${(data.medals || []).length ? `<ol class="glr-history">${data.medals.map(medal => `<li class="is-${TONE[medal.place]}">${MEDAL(medal.place, TONE[medal.place])}<span><b>${escapeHtml(tr("season", { n: medal.season }))}</b><small>${escapeHtml(range(medal.starts_at, medal.ends_at))}</small></span><span class="glr-history-xp"><b>${number(medal.points)} XP</b><small>${ICON.calendar}${escapeHtml(day(medal.ends_at, -1))}</small></span></li>`).join("")}</ol>`
+        ${(data.medals || []).length ? `<ol class="glr-history">${data.medals.map(medal => `<li class="is-${TONE[medal.place]}">${ROSETTE(medal.place, TONE[medal.place])}<span><b>${CROWN(TONE[medal.place])}${escapeHtml(tr("season", { n: medal.season }))}</b><small>${escapeHtml(range(medal.starts_at, medal.ends_at))}</small></span><span class="glr-history-xp"><b>${number(medal.points)} XP</b><small>${ICON.calendar}${escapeHtml(day(medal.ends_at, -1))}</small></span>${ICON.chevron}</li>`).join("")}</ol>`
           : `<p class="glr-empty">${escapeHtml(tr("noMedals"))}</p>`}`}`;
   }
 
@@ -364,6 +402,20 @@
     else if (action === "profile") openProfile(target.dataset.user);
     else if (action === "ptab") { state.profileTab = target.dataset.tab; render(); }
     else if (action === "invite") { close(); window.GlowLetterFriends?.open?.(); }
+    else if (action === "edit-name") { state.editName = true; render(); state.root.querySelector(".glr-name-form input")?.focus(); }
+  }
+
+  async function onSubmit(event) {
+    if (event.target.dataset.glrForm !== "name") return;
+    event.preventDefault();
+    const name = event.target.elements.name.value.replace(/\s+/g, " ").trim().slice(0, 36);
+    if (!name) return;
+    try { await rpc("glowletter_friends_set_name", { p_name: name }); }
+    catch { notify(tr("failed")); return; }
+    state.editName = false;
+    if (state.profile?.data) state.profile.data.name = name;
+    if (state.data?.mine) state.data.mine.name = name;
+    render();
   }
 
   async function onChange(event) {

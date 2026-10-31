@@ -68,7 +68,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Hat den Raum betreten:",
     "private": "Dieses Profil ist privat",
     "xp": "XP",
-    "now": "jetzt"
+    "now": "jetzt",
+    "editName": "Namen ändern",
+    "save": "Speichern"
   },
   "es": {
     "brand": "GlowLetter",
@@ -138,7 +140,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Ha entrado en la sala:",
     "private": "Este perfil es privado",
     "xp": "XP",
-    "now": "ahora"
+    "now": "ahora",
+    "editName": "Cambiar nombre",
+    "save": "Guardar"
   },
   "it": {
     "brand": "GlowLetter",
@@ -208,7 +212,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "È entrato nella stanza:",
     "private": "Questo profilo è privato",
     "xp": "XP",
-    "now": "ora"
+    "now": "ora",
+    "editName": "Cambia nome",
+    "save": "Salva"
   },
   "pl": {
     "brand": "GlowLetter",
@@ -278,7 +284,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Do pokoju wchodzi:",
     "private": "Ten profil jest prywatny",
     "xp": "XP",
-    "now": "teraz"
+    "now": "teraz",
+    "editName": "Zmień imię",
+    "save": "Zapisz"
   },
   "uk": {
     "brand": "GlowLetter",
@@ -348,7 +356,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "У кімнату зайшов",
     "private": "Профіль закритий",
     "xp": "XP",
-    "now": "зараз"
+    "now": "зараз",
+    "editName": "Змінити ім’я",
+    "save": "Зберегти"
   },
   "pt": {
     "brand": "GlowLetter",
@@ -418,7 +428,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Entrou na sala:",
     "private": "Este perfil é privado",
     "xp": "XP",
-    "now": "agora"
+    "now": "agora",
+    "editName": "Alterar nome",
+    "save": "Guardar"
   },
   "nl": {
     "brand": "GlowLetter",
@@ -488,7 +500,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Kwam de kamer binnen:",
     "private": "Dit profiel is privé",
     "xp": "XP",
-    "now": "nu"
+    "now": "nu",
+    "editName": "Naam wijzigen",
+    "save": "Opslaan"
   },
   "tr": {
     "brand": "GlowLetter",
@@ -558,7 +572,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Odaya girdi:",
     "private": "Bu profil gizli",
     "xp": "XP",
-    "now": "şimdi"
+    "now": "şimdi",
+    "editName": "Adı değiştir",
+    "save": "Kaydet"
   },
   "ro": {
     "brand": "GlowLetter",
@@ -628,7 +644,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "A intrat în cameră:",
     "private": "Acest profil este privat",
     "xp": "XP",
-    "now": "acum"
+    "now": "acum",
+    "editName": "Schimbă numele",
+    "save": "Salvează"
   },
   "cs": {
     "brand": "GlowLetter",
@@ -698,7 +716,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Do místnosti vstoupil:",
     "private": "Tento profil je soukromý",
     "xp": "XP",
-    "now": "teď"
+    "now": "teď",
+    "editName": "Změnit jméno",
+    "save": "Uložit"
   },
   "sv": {
     "brand": "GlowLetter",
@@ -768,7 +788,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Kom in i rummet:",
     "private": "Den här profilen är privat",
     "xp": "XP",
-    "now": "nu"
+    "now": "nu",
+    "editName": "Ändra namn",
+    "save": "Spara"
   },
   "el": {
     "brand": "GlowLetter",
@@ -838,7 +860,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Μπήκε στο δωμάτιο:",
     "private": "Αυτό το προφίλ είναι ιδιωτικό",
     "xp": "XP",
-    "now": "τώρα"
+    "now": "τώρα",
+    "editName": "Αλλαγή ονόματος",
+    "save": "Αποθήκευση"
   },
   "da": {
     "brand": "GlowLetter",
@@ -908,7 +932,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Kom ind i rummet:",
     "private": "Denne profil er privat",
     "xp": "XP",
-    "now": "nu"
+    "now": "nu",
+    "editName": "Skift navn",
+    "save": "Gem"
   },
   "no": {
     "brand": "GlowLetter",
@@ -978,7 +1004,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Kom inn i rommet:",
     "private": "Denne profilen er privat",
     "xp": "XP",
-    "now": "nå"
+    "now": "nå",
+    "editName": "Endre navn",
+    "save": "Lagre"
   },
   "fi": {
     "brand": "GlowLetter",
@@ -1048,7 +1076,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Tuli huoneeseen:",
     "private": "Tämä profiili on yksityinen",
     "xp": "XP",
-    "now": "nyt"
+    "now": "nyt",
+    "editName": "Vaihda nimi",
+    "save": "Tallenna"
   },
   "ja": {
     "brand": "GlowLetter",
@@ -1118,7 +1148,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "入室しました：",
     "private": "このプロフィールは非公開です",
     "xp": "XP",
-    "now": "今"
+    "now": "今",
+    "editName": "名前を変更",
+    "save": "保存"
   },
   "ko": {
     "brand": "GlowLetter",
@@ -1188,7 +1220,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "방에 들어왔어요:",
     "private": "비공개 프로필이에요",
     "xp": "XP",
-    "now": "지금"
+    "now": "지금",
+    "editName": "이름 변경",
+    "save": "저장"
   },
   "zh": {
     "brand": "GlowLetter",
@@ -1258,7 +1292,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "進入房間：",
     "private": "此資料未公開",
     "xp": "XP",
-    "now": "現在"
+    "now": "現在",
+    "editName": "更改名稱",
+    "save": "儲存"
   },
   "th": {
     "brand": "GlowLetter",
@@ -1328,7 +1364,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "เข้าห้องมาแล้ว:",
     "private": "โปรไฟล์นี้เป็นส่วนตัว",
     "xp": "XP",
-    "now": "ตอนนี้"
+    "now": "ตอนนี้",
+    "editName": "เปลี่ยนชื่อ",
+    "save": "บันทึก"
   },
   "ar": {
     "brand": "GlowLetter",
@@ -1398,7 +1436,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "دخل الغرفة:",
     "private": "هذا الملف الشخصي خاص",
     "xp": "XP",
-    "now": "الآن"
+    "now": "الآن",
+    "editName": "تغيير الاسم",
+    "save": "حفظ"
   },
   "ind": {
     "brand": "GlowLetter",
@@ -1468,7 +1508,9 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Masuk ke ruangan:",
     "private": "Profil ini privat",
     "xp": "XP",
-    "now": "sekarang"
+    "now": "sekarang",
+    "editName": "Ubah nama",
+    "save": "Simpan"
   },
   "vi": {
     "brand": "GlowLetter",
@@ -1538,6 +1580,8 @@ window.GLOWLETTER_RANKING_I18N = {
     "adminJoined": "Đã vào phòng:",
     "private": "Hồ sơ này ở chế độ riêng tư",
     "xp": "XP",
-    "now": "bây giờ"
+    "now": "bây giờ",
+    "editName": "Đổi tên",
+    "save": "Lưu"
   }
 };

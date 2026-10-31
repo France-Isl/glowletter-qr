@@ -32,7 +32,7 @@
   const TEXT = {
     ru: {
       calling: "Звоним…", ringing: "{name} звонит", incoming: "Входящий звонок", accept: "Ответить", decline: "Отклонить",
-      hangup: "Завершить", mute: "Выключить микрофон", unmute: "Включить микрофон", play: "Играть", hearts: "Сердечко",
+      hangup: "Завершить", mute: "Выключить микрофон", unmute: "Включить микрофон", play: "Играть вместе", hearts: "Сердечко",
       bear: "Тёпа", connecting: "Соединяем…", connected: "Разговор идёт", reconnecting: "Связь прерывается, восстанавливаем…",
       ended: "Звонок завершён", declined: "{name} сейчас не может ответить", missed: "{name} не ответил на звонок",
       busy: "{name} сейчас разговаривает", failed: "Не удалось соединиться. Попробуйте ещё раз или через Wi-Fi.",
@@ -51,7 +51,7 @@
     },
     en: {
       calling: "Calling…", ringing: "{name} is calling", incoming: "Incoming call", accept: "Answer", decline: "Decline",
-      hangup: "End call", mute: "Mute microphone", unmute: "Unmute microphone", play: "Play", hearts: "Heart",
+      hangup: "End call", mute: "Mute microphone", unmute: "Unmute microphone", play: "Play together", hearts: "Heart",
       bear: "Teddy", connecting: "Connecting…", connected: "On the call", reconnecting: "Connection dropped, reconnecting…",
       ended: "Call ended", declined: "{name} can’t answer right now", missed: "{name} didn’t answer",
       busy: "{name} is on another call", failed: "Couldn’t connect. Try again or switch to Wi-Fi.",
@@ -70,7 +70,7 @@
     },
     fr: {
       calling: "Appel en cours…", ringing: "{name} vous appelle", incoming: "Appel entrant", accept: "Répondre", decline: "Refuser",
-      hangup: "Raccrocher", mute: "Couper le micro", unmute: "Activer le micro", play: "Jouer", hearts: "Cœur",
+      hangup: "Raccrocher", mute: "Couper le micro", unmute: "Activer le micro", play: "Jouer ensemble", hearts: "Cœur",
       bear: "Nounours", connecting: "Connexion…", connected: "Appel en cours", reconnecting: "La connexion a sauté, on rétablit…",
       ended: "Appel terminé", declined: "{name} ne peut pas répondre pour l’instant", missed: "{name} n’a pas répondu",
       busy: "{name} est déjà en appel", failed: "Connexion impossible. Réessayez ou passez en Wi-Fi.",
@@ -782,6 +782,12 @@
     signal("react", { kind: "heart" });
   }
 
+  function sendBear() {
+    bearHere(true);
+    window.GlowLetterOnline?.burst?.("🧸", { small: true });
+    signal("bear", {});
+  }
+
   function bearHere(mine) {
     const node = call.root?.querySelector(".glk-bear");
     if (node) {
@@ -846,15 +852,20 @@
     if (call.phase === "idle" || !meter.nodes.size) return;
     if (now - meter.last >= METER_MS) {
       meter.last = now;
+      let loudest = 0;
       for (const [id, node] of meter.nodes) {
         node.analyser.getByteTimeDomainData(node.data);
         let sum = 0;
         for (let index = 0; index < node.data.length; index += 1) { const value = (node.data[index] - 128) / 128; sum += value * value; }
         const quiet = id === userId() ? call.muted : mutedOf(id);
-        if (!quiet && Math.sqrt(sum / node.data.length) > SPEAK_LEVEL) node.until = now + 350;
+        const level = Math.sqrt(sum / node.data.length);
+        if (!quiet) loudest = Math.max(loudest, level);
+        if (!quiet && level > SPEAK_LEVEL) node.until = now + 350;
         const speaking = node.until > now;
         if (speaking !== node.speaking) { node.speaking = speaking; markSpeaking(id, speaking); }
       }
+      // Звуковая волна под именем — от громкости голоса (тишина — ровная линия).
+      call.root?.querySelector(".glk-wave")?.style.setProperty("--lvl", Math.min(1, loudest * 9).toFixed(2));
     }
     meter.raf = requestAnimationFrame(meterTick);
   }
@@ -932,6 +943,7 @@
       else if (action === "hangup") hangup();
       else if (action === "mute") toggleMute();
       else if (action === "heart") sendHeart();
+      else if (action === "bear") sendBear();
       else if (action === "play") openTable();
       else if (action === "add") openPicker();
       else if (action === "invite") invite(button.dataset.id);
@@ -1048,17 +1060,24 @@
     root.className = `glk is-full is-${call.phase}${group ? " is-group" : ""}${videoOn ? " is-video" : ""}`;
     const full = count() >= MAX_PEOPLE;
     const incomingTitle = call.video ? tr("incomingVideo") : tr("incoming");
+    const tagline = String(window.GlowLetterApp?.text?.("brand") || "").replace(/<[^>]+>/gu, " ").replace(/\s+/gu, " ").trim();
+    const wave = `<span class="glk-wave" aria-hidden="true">${"<i></i>".repeat(17)}</span>`;
+    const line = call.phase === "connected" && !call.note ? `<span class="glk-time">${elapsed()}</span>` : `${escapeHtml(status)} <span class="glk-time">${call.phase === "connected" ? elapsed() : ""}</span>`;
     call.ui.innerHTML = `
+      <div class="glk-bg" aria-hidden="true"><img src="assets/scenes/call-cabin-moon.webp" alt="" decoding="async"><i class="glk-glow is-a"></i><i class="glk-glow is-b"></i><i class="glk-glow is-c"></i><i class="glk-glow is-d"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i></div>
+      <div class="glk-brand" aria-hidden="true"><b>GlowLetter<svg viewBox="0 0 24 24"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 6.5-6.5l1.2 1.2 1.2-1.2A4.6 4.6 0 0 1 19.7 13Z"/></svg></b>${tagline ? `<small>${escapeHtml(tagline)}</small>` : ""}</div>
       <div class="glk-card" role="dialog" aria-modal="false" aria-label="${escapeHtml(call.phase === "incoming" ? tr("ringing", { name: call.friend?.name || "" }) : title)}">
         ${call.phase !== "connected" ? "" : `<button class="glk-add" type="button" data-call="add" ${full ? "disabled" : ""} aria-label="${escapeHtml(full ? tr("full") : tr("addTitle"))}"><span class="glk-add-ic">${ICON.add}</span><span>${escapeHtml(tr("add"))}</span></button>`}
         ${call.phase === "incoming" ? "" : `<button class="glk-min" type="button" data-call="min" aria-label="${escapeHtml(tr("minimize"))}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`}
         ${group ? `
           <h2 class="glk-name glk-group-title">${escapeHtml(tr("groupTitle"))}</h2>
-          <p class="glk-status">${escapeHtml(status)} <span class="glk-time">${call.phase === "connected" ? elapsed() : ""}</span></p>
+          <p class="glk-status">${line}</p>
+          ${wave}
           ${renderPeople()}` : `
-          <div class="glk-avatar${call.phase === "incoming" || call.phase === "outgoing" ? " is-ringing" : ""}${speaking(who.user_id) ? " is-speaking" : ""}" data-member="${escapeHtml(who.user_id || "")}"><img src="${escapeHtml(bearPicture(who.user_id))}" alt="" loading="lazy"><span class="glk-bear" aria-hidden="true">🧸</span></div>
+          <div class="glk-avatar${call.phase === "incoming" || call.phase === "outgoing" ? " is-ringing" : ""}${speaking(who.user_id) ? " is-speaking" : ""}" data-member="${escapeHtml(who.user_id || "")}"><img src="${escapeHtml(bearPicture(who.user_id))}" alt="" loading="lazy"><span class="glk-bear" aria-hidden="true">🧸</span><span class="glk-avatar-heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 6.5-6.5l1.2 1.2 1.2-1.2A4.6 4.6 0 0 1 19.7 13Z"/></svg></span></div>
           <h2 class="glk-name">${escapeHtml(who.name || "")}</h2>
-          <p class="glk-status">${escapeHtml(status)} <span class="glk-time">${call.phase === "connected" ? elapsed() : ""}</span></p>
+          <p class="glk-status">${line}</p>
+          ${wave}
           ${call.phase !== "incoming" && who.user_id && mutedOf(who.user_id) ? `<p class="glk-muted-note">${escapeHtml(tr("friendMuted", { name: who.name || "" }))}</p>` : ""}`}
         ${call.phase === "incoming" ? `
           <div class="glk-answer" aria-label="${escapeHtml(incomingTitle)}">
@@ -1068,14 +1087,15 @@
               : `<button class="glk-big glk-accept" type="button" data-call="accept"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("accept"))}</span></button>`}
           </div>
           ${call.video ? `<button class="glk-answer-audio" type="button" data-call="accept-audio"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("acceptAudio"))}</span></button>` : ""}` : `
-          <div class="glk-tools${call.video ? " is-five" : ""}">
+          <div class="glk-tools${call.video ? " is-six" : ""}">
             <button class="glk-tool glk-mic${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}"><span class="glk-disc">${call.muted ? ICON.micOff : ICON.mic}</span><span>${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}</span></button>
             ${call.video ? `<button class="glk-tool glk-cam${call.camera ? "" : " is-off"}" type="button" data-call="camera" aria-pressed="${!call.camera}"><span class="glk-disc">${call.camera ? ICON.camera : ICON.cameraOff}</span><span>${escapeHtml(call.camera ? tr("cameraOff") : tr("cameraOn"))}</span></button>
             <button class="glk-tool glk-flip" type="button" data-call="flip" ${call.camera ? "" : "disabled"}><span class="glk-disc">${ICON.flip}</span><span>${escapeHtml(tr("flip"))}</span></button>` : ""}
             <button class="glk-tool glk-heart" type="button" data-call="heart" ${canTalk ? "" : "disabled"}><span class="glk-disc">${ICON.heart}</span><span>${escapeHtml(tr("hearts"))}</span></button>
-            <button class="glk-tool glk-play" type="button" data-call="play" ${canTalk ? "" : "disabled"}><span class="glk-disc">${ICON.play}</span><span>${escapeHtml(tr("play"))}</span></button>
+            <button class="glk-tool glk-teddy" type="button" data-call="bear" ${canTalk ? "" : "disabled"}><span class="glk-disc"><span class="glk-emoji">🧸</span></span><span>${escapeHtml(tr("bear"))}</span></button>
+            <button class="glk-tool glk-play" type="button" data-call="play" ${canTalk ? "" : "disabled"}><span class="glk-disc"><span class="glk-emoji">🎲</span></span><span>${escapeHtml(tr("play"))}</span></button>
           </div>
-          <button class="glk-hang" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}"><span class="glk-disc"><span class="glk-phone">${ICON.phone}</span></span><span>${escapeHtml(tr("hangup"))}</span></button>`}
+          <button class="glk-hang" type="button" data-call="hangup"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("hangup"))}</span></button>`}
         ${call.picking && call.phase !== "incoming" ? renderPicker() : ""}
       </div>`;
     renderStage();

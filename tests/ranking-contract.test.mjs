@@ -43,7 +43,7 @@ for (const file of ["ranking.css", "ranking-i18n.js", "ranking.js"]) {
   assert.ok(index.includes(`${file}?v=`), `${file} in page`);
   assert.ok(worker.includes(`"${file}?v=`), `${file} cached`);
 }
-assert.match(worker, /"chat-scene\.svg"/u);
+assert.ok(read("friends.css").includes("assets/scenes/chat-campfire.webp"), "chat photo background");
 assert.match(index, /data-admin-tab="games"/u);
 assert.match(index, /id="adminGames" data-admin-pane="games"/u);
 assert.ok(index.indexOf("ranking-i18n.js") < index.indexOf("ranking.js?"));
