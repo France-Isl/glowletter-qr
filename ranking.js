@@ -105,21 +105,40 @@
     const scene = hue(row?.user_id || row?.name || row?.place) % SCENES.length;
     return `<span class="glr-ava${size ? ` is-${size}` : ""}" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false">${SCENES[scene]}</svg></span>`;
   }
-  const CROWN = tone => `<svg class="glr-crown is-${tone}" viewBox="0 0 64 44" aria-hidden="true" focusable="false"><path d="M6 36 3 10l15 12L32 2l14 20 15-12-3 26Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.25)" stroke-width="1"/><rect x="5" y="35" width="54" height="7" rx="3" fill="url(#glrMetal-${tone})"/><circle cx="32" cy="22" r="3.6" fill="#ff4d8d"/><circle cx="17" cy="27" r="2.6" fill="#7cc4ff"/><circle cx="47" cy="27" r="2.6" fill="#7cc4ff"/><circle cx="3" cy="10" r="2.6" fill="url(#glrMetal-${tone})"/><circle cx="32" cy="2.6" r="2.6" fill="url(#glrMetal-${tone})"/><circle cx="61" cy="10" r="2.6" fill="url(#glrMetal-${tone})"/></svg>`;
+  // Корона, лавры, кольцо и восьмиугольный значок — как на фото владельца.
+  const GEM = { gold: "#e3263f", silver: "#2f6dff", bronze: "#d8243a" };
+  const CROWN = tone => `<svg class="glr-crown is-${tone}" viewBox="0 0 80 56" aria-hidden="true" focusable="false"><path d="M9 46 5 17l12 13 6-19 10 15 7-22 7 22 10-15 6 19 12-13-4 29Z" fill="url(#glrShine-${tone})" stroke="rgba(40,20,0,.35)" stroke-width="1" stroke-linejoin="round"/><path d="M13 41 11 26l7 7 5-12 9 13 8-17 8 17 9-13 5 12 7-7-2 15Z" fill="rgba(255,255,255,.22)"/><path d="M8 43q32-7 64 0v8q-32-6-64 0Z" fill="url(#glrShine-${tone})" stroke="rgba(40,20,0,.35)" stroke-width="1"/><path d="M10 45q30-6 60 0" stroke="rgba(255,255,255,.75)" stroke-width="1.2" fill="none"/><path d="M40 27l4 6-4 6-4-6Z" fill="${GEM[tone]}" stroke="rgba(255,255,255,.7)" stroke-width=".8"/><circle cx="5" cy="16" r="3.6" fill="url(#glrShine-${tone})"/><circle cx="23" cy="10" r="3.4" fill="url(#glrShine-${tone})"/><circle cx="40" cy="4" r="4" fill="url(#glrShine-${tone})"/><circle cx="57" cy="10" r="3.4" fill="url(#glrShine-${tone})"/><circle cx="75" cy="16" r="3.6" fill="url(#glrShine-${tone})"/><circle cx="39" cy="2.8" r="1.4" fill="#fff"/></svg>`;
+  const LEAF = "M0 0C4.2-5 4.6-13 0-20C-4.6-13-4.2-5 0 0Z";
   function laurel(tone) {
     const leaves = [];
-    for (const side of [-1, 1]) {
-      for (let i = 0; i < 8; i += 1) {
-        const angle = (100 + i * 19) * Math.PI / 180;
-        const x = 60 + side * Math.cos(angle) * -52;
-        const y = 58 + Math.sin(angle) * 50;
-        const rotate = side * (i * 19 - 10);
-        leaves.push(`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="6" ry="13" transform="rotate(${rotate.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="url(#glrMetal-${tone})"/>`);
+    const top = tone === "gold" ? 318 : 302;
+    const count = tone === "gold" ? 9 : 8;
+    for (let i = 0; i < count; i += 1) {
+      const k = i / (count - 1);
+      const theta = 204 + k * (top - 204);
+      const size = .9 + k * .45;
+      for (const [r, tilt, scale] of [[58, -36, 1], [54, 24, .8]]) {
+        const a = theta * Math.PI / 180;
+        const x = 60 + r * Math.sin(a);
+        const y = 60 - r * Math.cos(a);
+        const phi = theta + 90 + tilt;
+        for (const side of [1, -1]) {
+          const sx = side === 1 ? x : 120 - x;
+          const rot = side === 1 ? phi : -phi;
+          leaves.push(`<path d="${LEAF}" transform="translate(${sx.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${(size * scale).toFixed(2)})" fill="url(#glrLeaf-${tone})" stroke="rgba(30,15,0,.28)" stroke-width=".7"/>`);
+        }
       }
     }
-    return `<svg class="glr-laurel" viewBox="0 0 120 120" aria-hidden="true" focusable="false">${leaves.join("")}</svg>`;
+    const stem = (a, side) => `${(60 + side * 53 * Math.sin(a * Math.PI / 180)).toFixed(1)} ${(60 - 53 * Math.cos(a * Math.PI / 180)).toFixed(1)}`;
+    const stems = `M${stem(198, 1)}A53 53 0 0 1 ${stem(top - 8, 1)}M${stem(198, -1)}A53 53 0 0 0 ${stem(top - 8, -1)}`;
+    return `<svg class="glr-laurel" viewBox="-22 -22 164 164" aria-hidden="true" focusable="false"><path d="${stems}" fill="none" stroke="url(#glrLeaf-${tone})" stroke-width="2.2" stroke-linecap="round"/>${leaves.join("")}</svg>`;
   }
-  const BADGE = (place, tone) => `<span class="glr-badge is-${tone}" aria-hidden="true"><svg viewBox="0 0 40 44" focusable="false"><path d="M20 2 37 11v20L20 42 3 31V11Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.3)" stroke-width="1.2"/><path d="M20 7 33 14v15L20 37 7 29V14Z" fill="rgba(0,0,0,.18)"/></svg><b>${place}</b></span>`;
+  const RING = tone => `<svg class="glr-ring" viewBox="-22 -22 164 164" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="47.6" fill="none" stroke="rgba(20,10,0,.55)" stroke-width="9.2"/><circle cx="60" cy="60" r="47.6" fill="none" stroke="url(#glrShine-${tone})" stroke-width="7.4"/><circle cx="60" cy="60" r="50.6" fill="none" stroke="rgba(255,255,255,.55)" stroke-width=".8"/><circle cx="60" cy="60" r="44.4" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="1"/></svg>`;
+  const OCT = r => Array.from({ length: 8 }, (_, i) => {
+    const a = (22.5 + i * 45) * Math.PI / 180;
+    return `${(24 + r * Math.sin(a)).toFixed(2)} ${(24 - r * Math.cos(a)).toFixed(2)}`;
+  }).join(" ");
+  const BADGE = (place, tone) => `<span class="glr-badge is-${tone}" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><polygon points="${OCT(23.5)}" fill="rgba(25,12,0,.55)"/><polygon points="${OCT(22.4)}" fill="url(#glrShine-${tone})"/><polygon points="${OCT(17.6)}" fill="rgba(30,15,0,.4)"/><polygon points="${OCT(16.8)}" fill="url(#glrFace-${tone})"/><polygon points="${OCT(16.8)}" fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".7"/></svg><b>${place}</b></span>`;
   const ROSETTE = (place, tone) => `<span class="glr-rosette is-${tone}" aria-hidden="true"><svg viewBox="-28 -28 56 56" focusable="false"><path d="M0-26 6-21 14-22 16-14 23-9 20-1 23 7 16 12 14 20 6 19 0 25-6 19-14 20-16 12-23 7-20-1-23-9-16-14-14-22-6-21Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.3)"/><circle r="16" fill="url(#glrMetal-${tone})" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/><circle r="12.5" fill="url(#glrDeep-${tone})"/></svg><b>${place}</b></span>`;
   const MEDAL = (place, tone, big = false) => `<span class="glr-medal is-${tone}${big ? " is-big" : ""}" aria-hidden="true"><svg viewBox="0 0 64 74" focusable="false"><path d="M18 0h12l6 22H24Z" fill="#c2185b"/><path d="M34 0h12l-6 22H28Z" fill="#7b1fa2"/><g transform="translate(32 46)"><path d="M0-26 6-21 14-22 16-14 23-9 20-1 23 7 16 12 14 20 6 19 0 25-6 19-14 20-16 12-23 7-20-1-23-9-16-14-14-22-6-21Z" fill="url(#glrMetal-${tone})" stroke="rgba(0,0,0,.25)"/><circle r="15" fill="url(#glrMetal-${tone})" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/></g></svg><b>${place}</b></span>`;
   const XP = `<span class="glr-xp" aria-hidden="true">XP</span>`;
@@ -150,6 +169,15 @@
     <linearGradient id="glrDeep-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd257"/><stop offset="1" stop-color="#d08a12"/></linearGradient>
     <linearGradient id="glrDeep-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c8ea"/><stop offset="1" stop-color="#5d6f9c"/></linearGradient>
     <linearGradient id="glrDeep-bronze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9a76"/><stop offset="1" stop-color="#b8432c"/></linearGradient>
+    <linearGradient id="glrShine-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff7c4"/><stop offset=".22" stop-color="#ffd24d"/><stop offset=".48" stop-color="#b97a10"/><stop offset=".7" stop-color="#ffe68c"/><stop offset="1" stop-color="#a8680a"/></linearGradient>
+    <linearGradient id="glrShine-silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".22" stop-color="#dfe4f4"/><stop offset=".48" stop-color="#8b93b2"/><stop offset=".7" stop-color="#f6f8ff"/><stop offset="1" stop-color="#77809f"/></linearGradient>
+    <linearGradient id="glrShine-bronze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6d8"/><stop offset=".22" stop-color="#f4a88c"/><stop offset=".48" stop-color="#ad5847"/><stop offset=".7" stop-color="#ffcdb6"/><stop offset="1" stop-color="#9c4a3c"/></linearGradient>
+    <linearGradient id="glrFace-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe680"/><stop offset=".55" stop-color="#ffbf2e"/><stop offset="1" stop-color="#e09412"/></linearGradient>
+    <linearGradient id="glrFace-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#e3e7f3"/><stop offset="1" stop-color="#b9c0d6"/></linearGradient>
+    <linearGradient id="glrFace-bronze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9c6"/><stop offset=".55" stop-color="#f2a486"/><stop offset="1" stop-color="#d0785e"/></linearGradient>
+    <linearGradient id="glrLeaf-gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff2a8"/><stop offset=".5" stop-color="#ffc93a"/><stop offset="1" stop-color="#b4740c"/></linearGradient>
+    <linearGradient id="glrLeaf-silver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#cfd5ea"/><stop offset="1" stop-color="#7d86a6"/></linearGradient>
+    <linearGradient id="glrLeaf-bronze" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffe0d2"/><stop offset=".5" stop-color="#f29a7c"/><stop offset="1" stop-color="#a24f3e"/></linearGradient>
     <linearGradient id="glrSky0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a2a7a"/><stop offset=".55" stop-color="#e2667a"/><stop offset="1" stop-color="#ffb35c"/></linearGradient>
     <linearGradient id="glrSky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151c5a"/><stop offset="1" stop-color="#5b3aa0"/></linearGradient>
     <linearGradient id="glrSky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7d6ea"/><stop offset="1" stop-color="#c25b9c"/></linearGradient>
@@ -296,7 +324,7 @@
     const action = item?.user_id ? ` data-glr-action="profile" data-user="${escapeHtml(item.user_id)}"` : "";
     return `<button class="glr-ped is-${place}${item ? "" : " is-empty"}" type="button"${action}${item ? "" : " disabled"}>
       <span class="glr-ped-crown">${CROWN(tone)}</span>
-      <span class="glr-ped-ring">${laurel(tone)}${avatar(item || { place }, place === 1 ? "xl" : "lg")}${BADGE(place, tone)}</span>
+      <span class="glr-ped-ring">${laurel(tone)}${avatar(item || { place }, place === 1 ? "xl" : "lg")}${RING(tone)}${BADGE(place, tone)}</span>
       <span class="glr-ped-block">
         <b class="glr-ped-name">${escapeHtml(name)}</b>
         <small class="glr-title is-${escapeHtml(item?.title || "newbie")}">${item ? escapeHtml(tr(`title_${item.title || "newbie"}`)) : "&nbsp;"}</small>
