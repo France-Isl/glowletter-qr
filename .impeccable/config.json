@@ -555,6 +555,11 @@
         "value": "rgba(170, 130, 230, .25)",
         "createdAt": "2026-10-31T17:57:08.909Z",
         "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "30px",
+        "createdAt": "2026-10-31T18:11:32.552Z"
       }
     ]
   }
