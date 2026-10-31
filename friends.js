@@ -366,15 +366,14 @@
       <div class="glf-react-row" role="group" aria-label="${escapeHtml(tr("reactions"))}">${Object.entries(REACTIONS).map(([kind, emoji]) => `<button type="button" data-action="react" data-kind="${kind}" aria-label="${escapeHtml(emoji)}">${emoji}</button>`).join("")}</div>
       ${renderCompose()}
       <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
-      <div class="glf-online-tools glf-call-tools">
-        <button class="glg-primary" type="button" data-action="call">📞 ${escapeHtml(tr("callButton"))}</button>
-        <button class="glg-secondary" type="button" data-action="table">🎲 ${escapeHtml(tr("tableButton"))}</button>
-        <button class="glg-secondary" type="button" data-action="world">🌍 ${escapeHtml(tr("worldOpen"))}</button>
-      </div>
-      <div class="glf-online-tools">
-        <button class="glg-secondary" type="button" data-action="bear-pick" aria-expanded="${state.bearPicking}">🧸 ${escapeHtml(tr("bearSend"))}</button>
-        <button class="glg-secondary" type="button" data-action="sticker-pick" aria-expanded="${Boolean(state.stickerPicking)}">🏷️ ${escapeHtml(tr("stickerPick"))}</button>
-        <button class="glg-secondary" type="button" data-action="draw">✏️ ${escapeHtml(tr("drawTogether"))}</button>
+      <button class="glg-primary glf-call-main" type="button" data-action="call">📞 ${escapeHtml(tr("callButton"))}</button>
+      <div class="glf-tiles">
+        ${tile("table", "🎲", tr("tableButton"))}
+        ${tile("world", "🌍", tr("worldOpen"))}
+        ${(games()?.roomKinds || []).length ? tile("pick-game", "🧩", tr("playTogether"), state.picking) : ""}
+        ${tile("bear-pick", "🧸", tr("bearSend"), state.bearPicking)}
+        ${tile("sticker-pick", "🏷️", tr("stickerPick"), Boolean(state.stickerPicking))}
+        ${tile("draw", "✏️", tr("drawTogether"))}
       </div>
       ${state.bearPicking ? `<section class="glf-games glf-gifts"><h3>${escapeHtml(tr("bearPick"))}</h3><div class="glf-gift-grid">${Object.entries(GIFTS).map(([gift, emoji]) => `<button class="glg-secondary" type="button" data-action="send-bear" data-gift="${gift}" aria-label="${escapeHtml(tr(`gift_${gift}`))}" title="${escapeHtml(tr(`gift_${gift}`))}">${emoji}</button>`).join("")}</div></section>` : ""}
       ${state.stickerPicking ? renderStickers() : ""}
@@ -394,11 +393,16 @@
       </form>`;
   }
 
-  // «Сыграть вместе»: выбор живой игры прямо из переписки.
+  // Плитка под перепиской: значок сверху, подпись снизу; expanded — для кнопок, открывающих выбор.
+  function tile(action, icon, label, expanded) {
+    const aria = expanded === undefined ? "" : ` aria-expanded="${Boolean(expanded)}"`;
+    return `<button class="glf-tile" type="button" data-action="${action}"${aria}><span aria-hidden="true">${icon}</span><b>${escapeHtml(label)}</b></button>`;
+  }
+
+  // «Сыграть вместе»: выбор живой игры прямо из переписки (открывается плиткой).
   function renderGamePicker() {
     const kinds = games()?.roomKinds || [];
-    if (!kinds.length) return "";
-    if (!state.picking) return `<button class="glg-secondary glg-wide glf-play" type="button" data-action="pick-game">🎲 ${escapeHtml(tr("playTogether"))}</button>`;
+    if (!kinds.length || !state.picking) return "";
     return `<section class="glf-games"><h3>${escapeHtml(tr("pickGame"))}</h3><div class="glf-games-grid">${kinds.map(kind => `<button class="glg-secondary" type="button" data-action="start-game" data-kind="${escapeHtml(kind)}">${escapeHtml(gameTitle(kind))}</button>`).join("")}</div></section>`;
   }
 

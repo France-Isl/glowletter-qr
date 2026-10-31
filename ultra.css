@@ -163,7 +163,6 @@ body.glk-active .glt-layer .glg-panel { padding-top: 56px; }
 }
 
 /* ——— Переписка: звонок, фото, наклейки ——— */
-.glf-call-tools .glg-primary { flex: 1 1 100%; }
 .glf-photo-bubble { padding: 6px !important; }
 .glf-photo { display: block; width: min(240px, 62vw); max-height: 320px; border-radius: 14px; object-fit: cover; }
 .glf-photo.is-loading { display: grid; place-items: center; height: 160px; font-size: 32px; background: color-mix(in srgb, var(--ui-ink) 6%, transparent); }
