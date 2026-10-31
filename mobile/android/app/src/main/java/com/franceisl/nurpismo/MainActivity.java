@@ -142,7 +142,8 @@ public final class MainActivity extends ComponentActivity {
         // access disabled, but permit WebView to consume the URI explicitly
         // selected by the user.
         settings.setAllowContentAccess(true);
-        settings.setMediaPlaybackRequiresUserGesture(true);
+        // The home background video is muted and loops; it must start without a tap.
+        settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         // Every verified release intentionally reuses the same appassets origin and paths.
         // Bypass WebView's HTTP cache so a newly selected or fallback release is always read

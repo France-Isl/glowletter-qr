@@ -2024,3 +2024,16 @@ body:not(.is-reading) #homeScreen .seal-sparks i:nth-child(12) { --x: 64%; --y: 
   body:not(.is-reading) #homeScreen .seal-sparks i { opacity: .8; }
 }
 html[data-gl-perf="lite"] body:not(.is-reading) #homeScreen .seal-sparks i:nth-child(n+7) { display: none; }
+
+/* Живой фон «Домик у костра»: видео лежит над первым кадром и проявляется, только когда уже играет.
+   Ширина по экрану, как у фото, чтобы мишка и костёр стояли в рамке. */
+.home-video { display: none; }
+body[data-scene="cabin"]:not(.is-reading) .home-video {
+  display: block; position: fixed; z-index: -6; top: calc(var(--u) * -42); left: 0; width: 100%; height: auto;
+  pointer-events: none; opacity: 0; transition: opacity .6s ease; background: transparent;
+}
+body[data-scene="cabin"]:not(.is-reading) .home-video.is-on { opacity: 1; }
+body[data-scene="cabin"]:not(.is-reading) .cinematic-bg { background-color: #2a140c; }
+@media (min-width: 600px) {
+  body[data-scene="cabin"]:not(.is-reading) .home-video { top: 0; height: 100%; object-fit: cover; }
+}

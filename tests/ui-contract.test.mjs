@@ -53,11 +53,16 @@ assert.doesNotMatch(index, /theme-choice-grid|data-ui-theme=["'](?:indigo|saffro
 assert.match(styles, /\.side-panel[^\n]*var\(--ui-panel\)[^\n]*var\(--ui-panel-alt\)/);
 // Свой фон-фото заменён выбором из трёх картинок высокого качества.
 assert.doesNotMatch(index, /customBackgroundButton|background-picker/);
-for (const scene of ["bears", "roses", "kitten"]) {
+for (const scene of ["cabin", "bears", "roses", "kitten"]) {
   assert.match(index, new RegExp(`data-scene="${scene}"`));
   assert.ok(fs.existsSync(path.join(root, `assets/scenes/${scene}.webp`)), `${scene} background is required`);
 }
-assert.match(app, /const SCENES = Object\.freeze\(\{ bears: "assets\/scenes\/bears\.webp"/);
+assert.match(app, /const SCENES = Object\.freeze\(\{ cabin: "assets\/scenes\/cabin\.webp", bears: "assets\/scenes\/bears\.webp"/);
+// Живой фон: видео без звука, играет в петле только на главной, есть первый кадр.
+assert.ok(fs.existsSync(path.join(root, "assets/scenes/cabin.mp4")));
+assert.ok(fs.statSync(path.join(root, "assets/scenes/cabin.mp4")).size < 2_000_000, "home video must stay small");
+assert.match(index, /<video class="home-video" id="homeVideo" muted loop playsinline preload="none"/u);
+assert.match(app, /const covered = document\.hidden \|\| /u);
 assert.doesNotMatch(styles, /\.settings-panel\s*>\s*\.panel-header[^\{]*\{[^\}]*position\s*:\s*sticky/i, "settings title must scroll away with its content");
 assert.match(index, /id="appleSignInArtwork"[^>]*assets\/auth\/apple-continue-ru\.png/);
 assert.match(styles, /\.oauth-button\.apple\s*\{[^}]*aspect-ratio\s*:\s*375\/44/i);
