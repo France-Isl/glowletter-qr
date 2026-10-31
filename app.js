@@ -3373,6 +3373,17 @@
     scheduleGoogleSignInPrompt();
   }
 
+  // Комната звонка, стола или рисунка: сервер проверяет доступ (начать звонок или стол — только с полным
+  // доступом, войти — только приглашённым) и говорит, закрытый ли канал.
+  async function openRoomChannel(topic, room, kind, config = {}) {
+    if (!cloudClient) throw new Error("not_configured");
+    const { data, error } = await cloudClient.rpc("glowletter_room_open", { p_room: room, p_kind: kind });
+    if (error) throw error;
+    const closed = data?.private === true;
+    if (closed && cloudSession?.access_token) await cloudClient.realtime?.setAuth?.(cloudSession.access_token);
+    return cloudClient.channel(topic, { config: { ...config, private: closed } });
+  }
+
   window.GlowLetterCloud = Object.freeze({
     signIn: provider => signInWithCloud(provider),
     signInWithPassword: (email, password) => signInWithPassword(email, password),
@@ -3388,6 +3399,7 @@
     deleteAccount: () => deleteCloudAccount(),
     syncNow: () => flushCloudSync(true),
     getClient: () => cloudClient,
+    openRoom: (topic, room, kind, config) => openRoomChannel(topic, room, kind, config),
     getUser: () => cloudUser,
     getSession: () => cloudSession,
     getState: () => ({
@@ -6191,7 +6203,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=103", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=104", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

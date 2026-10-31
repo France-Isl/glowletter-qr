@@ -31,7 +31,7 @@ assert.ok(index.indexOf("word.js?v=") < index.indexOf("together.js?v="));
 assert.match(index, /id="worldOpenHome"[\s\S]*?id="worldBadge" hidden/u);
 
 // Звонок: только служебные сигналы через Realtime, звук — WebRTC напрямую; начать — с полным доступом.
-assert.match(call, /glowletter-call:\$\{call\.room\}/u);
+assert.match(call, /openRoom\(`glowletter-call:\$\{room\}`, room, "call"/u);
 assert.match(call, /new RTCPeerConnection\(\{ iceServers: iceServers\(\) \}\)/u);
 assert.match(call, /if \(!premium\(\)\) \{ app\(\)\?\.openPaywall\?\.\(\); return false; \}/u);
 assert.match(call, /echoCancellation: true/u);
@@ -42,7 +42,17 @@ assert.match(friends, /window\.GlowLetterCall\?\.incoming\?\./u);
 assert.match(friends, /sendCallInvite: \(friendId, room\) => sendSpecial\(friendId, `\[\[call:\$\{room\}\]\]`\)/u);
 
 // «Игровой стол»: общий канал, итог партии — один раз через glowletter_play_record.
-assert.match(table, /glowletter-table:\$\{state\.room\}/u);
+assert.match(table, /openRoom\(`glowletter-table:\$\{room\}`, room, "play"/u);
+
+// Комнаты проверяет сервер: начать — только с полным доступом, войти — только приглашённым.
+const appSource = read("app.js");
+const rooms = read("supabase/migrations/20261031230000_rooms_private.sql");
+assert.match(appSource, /rpc\("glowletter_room_open", \{ p_room: room, p_kind: kind \}\)/u);
+assert.match(appSource, /private: closed/u);
+assert.match(rooms, /p_kind <> 'draw' and not private\.glowletter_has_paid_access\(p_me\)/u);
+assert.match(rooms, /message = 'not_member'/u);
+assert.match(rooms, /on realtime\.messages for select to authenticated/u);
+assert.match(rooms, /perform private\.glowletter_room_admit\(me, invite\[2\]::uuid, invite\[1\], p_to\)/u);
 assert.match(table, /"glowletter_play_record"/u);
 assert.match(table, /state\.recorded = true;/u);
 assert.match(friends, /const PLAY_PATTERN = /u);

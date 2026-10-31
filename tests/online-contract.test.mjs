@@ -52,7 +52,7 @@ assert.match(sql, /alter table public\.glowletter_voice_notes enable row level s
 assert.match(sql, /revoke all on table public\.glowletter_voice_notes from public, anon, authenticated/u);
 
 // Рисунок: только broadcast, чужие штрихи проверяются, на сервере ничего не хранится.
-assert.match(online, /glowletter-draw:\$\{board\.room\}/u);
+assert.match(online, /openRoom\(`glowletter-draw:\$\{room\}`, room, "draw"/u);
 assert.match(online, /const validStroke = /u);
 assert.match(online, /MAX_STROKES = 1500/u);
 assert.doesNotMatch(online, /\.from\(|\.rpc\(/u);
@@ -77,8 +77,8 @@ assert.match(friends, /if \(state\.channelUser && pushOn\(\)\) disablePush\(\);/
 assert.match(read("privacy.html"), /Уведомления на телефон[\s\S]*Phone notifications/u);
 
 // Подключение и кеш.
-assert.ok(index.indexOf("friends.js?v=103") < index.indexOf("online.js?v=103"));
-assert.match(worker, /"online\.js\?v=103"/u);
+assert.ok(index.indexOf("friends.js?v=104") < index.indexOf("online.js?v=104"));
+assert.match(worker, /"online\.js\?v=104"/u);
 assert.match(worker, /"online\.js", "voice\.js"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, keys: ONLINE_KEYS.length }));

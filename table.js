@@ -124,7 +124,7 @@
   const state = {
     root: null, room: "", friend: null, channel: null, partner: false, online: true,
     match: null, instance: null, startedAt: 0, recorded: false, lastFocus: null, toastTimer: 0,
-    names: new Map(), seated: [], full: false, joinedAt: 0, inviting: false, quit: new Set()
+    names: new Map(), seated: [], full: false, joinedAt: 0, inviting: false, quit: new Set(), joinSeq: 0
   };
 
   // ——— Кто за столом ———
@@ -450,10 +450,23 @@
 
   // ——— Канал ———
 
-  function join() {
+  // Сервер пускает за стол только тех, кого позвали (или кто начал игру с полным доступом).
+  async function join() {
     const db = client();
-    if (!db?.channel) { state.online = false; return; }
-    const channel = db.channel(`glowletter-table:${state.room}`, { config: { broadcast: { self: false }, presence: { key: userId() || crypto.randomUUID() } } });
+    const room = state.room;
+    const seq = ++state.joinSeq;
+    if (!db?.channel || !cloud()?.openRoom) { state.online = false; return; }
+    let channel;
+    try {
+      channel = await cloud().openRoom(`glowletter-table:${room}`, room, "play", { broadcast: { self: false }, presence: { key: userId() || crypto.randomUUID() } });
+    } catch (error) {
+      if (state.room !== room || seq !== state.joinSeq) return;
+      state.online = false;
+      renderStatus();
+      if (/premium_required/u.test(String(error?.message || ""))) app()?.openPaywall?.();
+      return;
+    }
+    if (state.room !== room || seq !== state.joinSeq) { try { db.removeChannel?.(channel); } catch {} return; }
     if (!state.joinedAt) state.joinedAt = Date.now();
     channel
       .on("presence", { event: "sync" }, () => onPresence(channel))
@@ -559,6 +572,7 @@
   }
 
   function leave() {
+    state.joinSeq++;
     if (state.channel) { try { client()?.removeChannel?.(state.channel); } catch {} }
     state.channel = null;
     state.partner = false;

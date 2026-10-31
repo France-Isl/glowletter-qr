@@ -93,7 +93,7 @@
 
   // ——— Рисуем вместе ———
 
-  const board = { root: null, canvas: null, context: null, room: "", friend: null, channel: null, strokes: [], current: null, pending: [], color: COLORS[0], width: WIDTHS[1], eraser: false, partner: false, flush: 0, cursor: null, cursorTimer: 0, lastFocus: null };
+  const board = { root: null, canvas: null, context: null, room: "", friend: null, channel: null, strokes: [], current: null, pending: [], color: COLORS[0], width: WIDTHS[1], eraser: false, partner: false, flush: 0, cursor: null, cursorTimer: 0, lastFocus: null, joinSeq: 0 };
 
   function mountBoard() {
     if (board.root) return board.root;
@@ -193,10 +193,20 @@
     board.lastFocus?.focus?.({ preventScroll: true });
   }
 
-  function joinChannel() {
+  // В рисунок пускают только двоих из приглашения — это проверяет сервер.
+  async function joinChannel() {
     const db = client();
-    if (!db?.channel) { board.channel = null; return; }
-    const channel = db.channel(`glowletter-draw:${board.room}`, { config: { broadcast: { self: false }, presence: { key: userId() || crypto.randomUUID() } } });
+    const room = board.room;
+    const seq = ++board.joinSeq;
+    if (!db?.channel || !cloud()?.openRoom) { board.channel = null; return; }
+    let channel;
+    try {
+      channel = await cloud().openRoom(`glowletter-draw:${room}`, room, "draw", { broadcast: { self: false }, presence: { key: userId() || crypto.randomUUID() } });
+    } catch {
+      if (board.room === room && seq === board.joinSeq) { board.partner = false; renderStatus(); }
+      return;
+    }
+    if (board.room !== room || seq !== board.joinSeq) { try { db.removeChannel?.(channel); } catch {} return; }
     channel
       .on("presence", { event: "sync" }, () => {
         const people = Object.keys(channel.presenceState() || {}).length;
@@ -218,6 +228,7 @@
   }
 
   function leaveChannel() {
+    board.joinSeq++;
     clearInterval(board.flush);
     board.flush = 0;
     if (board.channel) { try { client()?.removeChannel?.(board.channel); } catch {} }

@@ -167,7 +167,7 @@
     if (!(await openMedia(call.video))) { end(tr("micDenied")); return false; }
     if (call.phase !== "outgoing" || call.room !== room) return false;
     call.tracked = true;
-    if (!joinChannel()) return false;
+    if (!(await joinChannel())) return false;
     try {
       await window.GlowLetterFriends?.sendCallInvite?.(friend.user_id, room);
     } catch (error) {
@@ -237,17 +237,18 @@
     if (age > INVITE_FRESH_MS) return false;
     if (call.phase !== "idle") {
       // Уже разговариваем — позвавший услышит «занято».
-      const busy = client()?.channel?.(`glowletter-call:${room}`, { config: { broadcast: { self: false } } });
-      busy?.subscribe(status => {
-        if (status !== "SUBSCRIBED") return;
-        busy.send({ type: "broadcast", event: "busy", payload: { from: userId(), to: friend.user_id } });
-        setTimeout(() => { try { client()?.removeChannel?.(busy); } catch {} }, 1500);
-      });
+      cloud()?.openRoom?.(`glowletter-call:${room}`, room, "call", { broadcast: { self: false } }).then(busy => {
+        busy.subscribe(status => {
+          if (status !== "SUBSCRIBED") return;
+          busy.send({ type: "broadcast", event: "busy", payload: { from: userId(), to: friend.user_id } });
+          setTimeout(() => { try { client()?.removeChannel?.(busy); } catch {} }, 1500);
+        });
+      }).catch(() => {});
       return false;
     }
     Object.assign(call, { phase: "incoming", room, friend: { user_id: friend.user_id, name: friend.name || "" }, caller: false, expanded: true, note: "" });
     call.names.set(friend.user_id, friend.name || "");
-    if (!joinChannel()) return false;
+    joinChannel();
     startRingtone();
     call.ringTimer = setTimeout(() => { if (call.phase === "incoming") end(""); }, Math.max(5000, RING_MS - age));
     render();
@@ -679,10 +680,22 @@
 
   // ——— Сигналы ———
 
-  function joinChannel() {
+  // Сервер пускает в комнату только позвавшего (с полным доступом) и приглашённых.
+  async function joinChannel() {
     const db = client();
-    if (!db?.channel) { end(tr("failed")); return false; }
-    const channel = db.channel(`glowletter-call:${call.room}`, { config: { broadcast: { self: false }, presence: { key: userId() } } });
+    const room = call.room;
+    if (!db?.channel || !cloud()?.openRoom) { end(tr("failed")); return false; }
+    let channel;
+    try {
+      channel = await cloud().openRoom(`glowletter-call:${room}`, room, "call", { broadcast: { self: false }, presence: { key: userId() } });
+    } catch (error) {
+      if (call.room !== room || call.phase === "idle") return false;
+      const paywall = call.caller && /premium_required/u.test(String(error?.message || ""));
+      end(call.caller && !paywall ? tr("failed") : "");
+      if (paywall) app()?.openPaywall?.();
+      return false;
+    }
+    if (call.room !== room || call.phase === "idle") { try { db.removeChannel?.(channel); } catch {} return false; }
     const on = (event, handler) => channel.on("broadcast", { event }, message => {
       const payload = message?.payload;
       if (call.channel !== channel || !forMe(payload)) return;
