@@ -68,7 +68,7 @@
   };
   Object.entries(window.GLOWLETTER_SHOP_I18N || {}).forEach(([lang, values]) => { TEXT[lang] = { ...(TEXT[lang] || {}), ...values }; });
 
-  const state = { root: null, tab: "gifts", wallet: null, items: [], busy: false, giving: null, wall: null, admin: null };
+  const state = { root: null, tab: "gifts", wallet: null, items: [], busy: false, giving: null, wall: null, admin: null, pending: new Set(), pendingStale: false, shownTab: "" };
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
   const client = () => cloud()?.getClient?.() || null;
@@ -96,9 +96,47 @@
       state.wallet = wallet;
       state.items = items || [];
       dispatchEvent(new CustomEvent("glowletter-wallet-change", { detail: { coins: wallet.coins, dollars: wallet.dollars } }));
-    } catch {}
-    render();
+    } catch { render(); }
     renderSettings();
+  }
+
+  // Покупка видна сразу (владелец 31.10: «чуть лагает, когда покупаешь»): кошелёк меняется на экране
+  // в момент нажатия, сервер подтверждает своими числами; ошибка — свежий кошелёк с сервера.
+  // Хранится всё только на сервере: светлячки, доллары, вещи, выбранные колода и сукно.
+  function patchWallet(patch) {
+    if (!state.wallet) return;
+    state.wallet = { ...state.wallet, ...patch };
+    dispatchEvent(new CustomEvent("glowletter-wallet-change", { detail: { coins: state.wallet.coins, dollars: state.wallet.dollars } }));
+  }
+
+  async function buy(id) {
+    const item = state.items.find(entry => entry.id === id);
+    const wallet = state.wallet;
+    if (!item || !wallet || state.pending.has(id)) return;
+    if (Number(wallet.coins) < Number(item.price)) { notify(tr("not_enough_coins")); return; }
+    state.pending.add(id);
+    patchWallet({ coins: wallet.coins - item.price, inventory: { ...wallet.inventory, [id]: owned(id) + 1 } });
+    try { navigator.vibrate?.(20); } catch {}
+    let got = null;
+    try {
+      got = await rpc("glowletter_shop_buy", { p_item: id, p_qty: 1 });
+      notify(tr("bought", { name: tr(id) }));
+    } catch (error) {
+      notify(errorText(error));
+    }
+    state.pending.delete(id);
+    // Пока идут другие покупки, их ответы ещё не пришли — тогда числа сервера возьмём после последней.
+    if (state.pending.size) { if (got) state.pendingStale = true; else refresh(); render(); }
+    else if (!got || state.pendingStale) { state.pendingStale = false; refresh(); }
+    else patchWallet({ coins: got.coins, inventory: { ...state.wallet.inventory, [id]: got.qty } });
+  }
+
+  async function equip(id) {
+    const field = id.startsWith("back_") ? "card_back" : "cloth";
+    const before = state.wallet?.[field];
+    patchWallet({ [field]: id });
+    try { await rpc("glowletter_shop_equip", { p_item: id }); }
+    catch (error) { notify(errorText(error)); patchWallet({ [field]: before }); }
   }
 
   const coinSvg = `<svg class="gs-coin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" fill="#f2c96f" stroke="#a8741f" stroke-width="1.2"/><circle cx="12" cy="12" r="7.4" fill="none" stroke="#fff3c4" stroke-width=".9" opacity=".8"/><path d="M12 17.2s-4.3-2.6-5.5-5.2c-.8-1.9.4-4.1 2.5-4.1 1.2 0 2.1.7 3 1.8.9-1.1 1.8-1.8 3-1.8 2.1 0 3.3 2.2 2.5 4.1-1.2 2.6-5.5 5.2-5.5 5.2Z" fill="#a3213a"/></svg>`;
@@ -122,6 +160,7 @@
     ensureRoot();
     state.tab = ["gifts", "style", "boost", "dollars", "coins", "pin"].includes(tab) ? tab : "gifts";
     state.root.hidden = false;
+    state.shownTab = "";
     document.body.classList.add("gs-open");
     render();
     requestAnimationFrame(() => state.root.classList.add("is-open"));
@@ -143,7 +182,7 @@
 
   function itemCard(item) {
     const n = owned(item.id);
-    const priceBtn = `<button class="gs-buy" type="button" data-act="buy" data-id="${item.id}"${state.busy ? " disabled" : ""}>${coinSvg}${esc(num(item.price))}</button>`;
+    const priceBtn = `<button class="gs-buy" type="button" data-act="buy" data-id="${item.id}"${state.busy || state.pending.has(item.id) ? " disabled" : ""}>${coinSvg}${esc(num(item.price))}</button>`;
     if (item.kind === "gift") {
       return `<article class="gs-item">${giftArt(item.id)}<h4>${esc(tr(item.id))}</h4>${n ? `<small>${esc(tr("owned", { n }))}</small>` : "<small>&nbsp;</small>"}<div class="gs-row">${priceBtn}${n ? `<button class="gs-give" type="button" data-act="give" data-id="${item.id}">${esc(tr("give"))}</button>` : ""}</div></article>`;
     }
@@ -206,6 +245,8 @@
   function render() {
     if (!state.root || state.root.hidden) return;
     const w = state.wallet;
+    const keep = state.root.querySelector(".gs-scroll")?.scrollTop || 0;
+    const sameTab = state.shownTab === state.tab;
     const tabs = [["gifts", "tabGifts"], ["style", "tabStyle"], ["boost", "tabBoost"], ["dollars", "tabDollars"], ["coins", "tabCoins"], ["pin", "tabPin"]];
     state.root.innerHTML = `
       <header class="gs-top">
@@ -219,7 +260,9 @@
       <nav class="gs-tabs" role="tablist">${tabs.map(([id, key]) => `<button type="button" role="tab" aria-selected="${state.tab === id}" class="${state.tab === id ? "is-on" : ""}" data-tab="${id}">${esc(tr(key))}</button>`).join("")}</nav>
       <div class="gs-scroll">${signedIn() ? tabBody() : `<p class="gs-note">${esc(tr("signIn"))}</p>`}</div>
       ${state.giving ? givePicker() : ""}`;
-    state.root.querySelector(".gs-tabs .is-on")?.scrollIntoView({ block: "nearest", inline: "center" });
+    if (sameTab) { const scroller = state.root.querySelector(".gs-scroll"); if (scroller) scroller.scrollTop = keep; }
+    else state.root.querySelector(".gs-tabs .is-on")?.scrollIntoView({ block: "nearest", inline: "center" });
+    state.shownTab = state.tab;
   }
 
   function givePicker() {
@@ -250,8 +293,8 @@
     const id = button.dataset.id;
     switch (button.dataset.act) {
       case "close": close(); return;
-      case "buy": return guarded(async () => { await rpc("glowletter_shop_buy", { p_item: id, p_qty: 1 }); notify(tr("bought", { name: tr(id) })); try { navigator.vibrate?.(20); } catch {} });
-      case "equip": return guarded(() => rpc("glowletter_shop_equip", { p_item: id }));
+      case "buy": return buy(id);
+      case "equip": return equip(id);
       case "use": return guarded(() => rpc("glowletter_boost_use", { p_item: id }));
       case "exchange": return guarded(async () => { const got = await rpc("glowletter_exchange", { p_coins: Number(button.dataset.coins) }); notify(`+${num(got.dollars_added)} $`); });
       case "give": state.giving = id; render(); return;

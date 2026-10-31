@@ -1060,7 +1060,8 @@
     if (checkers) { event.preventDefault(); openCheckers(); }
   });
   document.addEventListener("visibilitychange", () => { if (!document.hidden && state.view === "table") refreshView(); });
-  addEventListener("glowletter-wallet-change", () => refreshWallet());
+  // Покупка в магазине: закрытый «Дурак» не ходит к серверу (кошелёк он берёт свежим при открытии).
+  addEventListener("glowletter-wallet-change", () => { if (state.root && !state.root.hidden) refreshWallet(); });
 
   function openCheckers() {
     state.setup = { ...state.setup, kind: "checkers" };
