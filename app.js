@@ -3637,7 +3637,7 @@
       senderLine.append(`${t("from")} `);
       const senderStrong = document.createElement("strong"); senderStrong.id = "homeFrom"; senderStrong.textContent = displayName(fromName); senderLine.append(senderStrong);
     }
-    setText("#openStoryButton > span:last-child", t("open"));
+    setText("#openStoryButton > span:not([class])", t("open"));
     $("#momentsOpenHome").innerHTML = `<span><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-clock"/></svg></span> ${escapeHtml(t("momentsHome"))} <b class="replies-badge" id="momentsRepliesBadge" hidden>0</b>`;
     updateRepliesBadge(window.GlowLetterMoments?.unseenReplies?.() || 0);
     const freeNote = $(".free-note");
@@ -6191,7 +6191,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=102", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=103", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
