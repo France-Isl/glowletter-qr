@@ -598,7 +598,7 @@
     const storedWeather = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY) || "null");
     if (storedWeather && Number.isFinite(Number(storedWeather.temperature)) && Number.isFinite(Number(storedWeather.code))) weatherSnapshot = storedWeather;
   } catch { localStorage.removeItem(WEATHER_STORAGE_KEY); }
-  let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiTheme")) ? localStorage.getItem("nurUiTheme") : "garnet";
+  let uiTheme = UI_THEMES.has(localStorage.getItem("nurUiThemeV2")) ? localStorage.getItem("nurUiThemeV2") : "garnet";
   let currentQrUrl = "";
   let currentQrMode = "catalog";
   let currentQrCaption = "";
@@ -3623,7 +3623,7 @@
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-checked", String(active));
     });
-    if (persist) localStorage.setItem("nurUiTheme", uiTheme);
+    if (persist) localStorage.setItem("nurUiThemeV2", uiTheme);
   }
 
   function renderWeather() {
@@ -5327,7 +5327,8 @@
   // «Домик у костра» (31.10) — живое видео на главной; новый выбор по умолчанию для всех (ключ V2).
   const SCENES = Object.freeze({ cabin: "assets/scenes/cabin.webp", bears: "assets/scenes/bears.webp", roses: "assets/scenes/roses.webp", kitten: "assets/scenes/kitten.webp" });
   const SCENE_VIDEOS = Object.freeze({ cabin: "assets/scenes/cabin.mp4" });
-  const SCENE_KEY = "glowletterSceneV2";
+  // V3 (01.11, владелец: «по умолчанию у всех как у меня»): старый выбор сброшен — у всех «Домик у костра».
+  const SCENE_KEY = "glowletterSceneV3";
   function currentSceneId(){ try { const value = localStorage.getItem(SCENE_KEY); return SCENES[value] ? value : "cabin"; } catch { return "cabin"; } }
   // Видео 1,4 МБ без звука, петля 5 с. Играет на главной и за письмом (владелец 01.11);
   // под окнами и в свёрнутом приложении стоит на паузе. Без видео (экономия трафика, «меньше движения»,
@@ -6248,7 +6249,7 @@
     $("#settingsNamesError").hidden = !namesInvalid;
     if (namesInvalid) return false;
     setNames(sender, recipient, { explicit: true });
-    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiTheme",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled&&!IS_ANDROID_PLAY_APP?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});if(cloudUser?.id&&!openQr)saveAccountSettings({toast:true}).then(ok=>{if(!ok)showToast(t("settingsSaved"));});else showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
+    localStorage.setItem("nurLanguage",lang);localStorage.setItem("nurUiThemeV2",uiTheme);localStorage.setItem("nurRain",rainScene.enabled?"on":"off");localStorage.setItem("nurWeather",weatherEnabled&&!IS_ANDROID_PLAY_APP?"on":"off");localStorage.setItem("nurTrack",String(selectedTrack));localStorage.setItem("nurNature",isNaturePlaying?"on":"off");localStorage.setItem("nurFullscreen",fullscreenActive()||localStorage.getItem(AUTO_FULLSCREEN_KEY)!=="off"?"on":"off");localStorage.setItem("nurVolume",String(audio.volume));scheduleCloudSync({includeNames:true,immediate:true});if(cloudUser?.id&&!openQr)saveAccountSettings({toast:true}).then(ok=>{if(!ok)showToast(t("settingsSaved"));});else showToast(t(openQr?"qrNamesSaved":"settingsSaved"));closePanel(layers.settings);if(openQr)requestAnimationFrame(openQrBuilder);return true;
   }
 
   function bindEvents(){
@@ -6308,7 +6309,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=114", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=115", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
