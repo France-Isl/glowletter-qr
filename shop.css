@@ -1,0 +1,137 @@
+/* Магазин и кошелёк (01.11): тёмное стекло с золотом, как стол «Дурака»; подарки «парят» над тёплым светом. */
+.gs-root {
+  --gs-gold: #f2c96f;
+  --gs-gold-line: rgba(244, 202, 126, .5);
+  --gs-ink: #fff4e5;
+  --gs-muted: rgba(255, 238, 214, .76);
+  --gs-glass: rgba(24, 10, 16, .66);
+  position: fixed; inset: 0; z-index: 85;
+  display: flex; flex-direction: column;
+  color: var(--gs-ink);
+  background: #160a0e url("assets/scenes/chat-campfire.webp") 50% 0 / cover no-repeat;
+  font-family: "Manrope", system-ui, sans-serif;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .26s ease, transform .3s cubic-bezier(.16, 1, .3, 1);
+  overflow: hidden;
+}
+.gs-root::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14, 6, 9, .35) 0%, rgba(14, 6, 9, .82) 34%, #10070a 100%); pointer-events: none; }
+.gs-root.is-open { opacity: 1; transform: none; }
+.gs-root[hidden] { display: none; }
+body.gs-open { overflow: hidden; }
+
+.gs-top { display: flex; align-items: center; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 12px) 14px 6px; }
+.gs-top h2 { flex: 1; margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: 26px; font-weight: 700; color: #fff6e6; text-shadow: 0 2px 14px rgba(0, 0, 0, .8); }
+.gs-round { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid var(--gs-gold-line); border-radius: 50%; color: var(--gs-ink); background: var(--gs-glass); cursor: pointer; }
+.gs-round svg { width: 22px; height: 22px; }
+
+.gs-balance { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 6px 16px 10px; }
+.gs-bal { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 10px 12px; border: 1px solid var(--gs-gold-line); border-radius: 18px; background: linear-gradient(160deg, rgba(70, 36, 20, .78), rgba(26, 10, 14, .8)); box-shadow: inset 0 1px rgba(255, 240, 210, .14), 0 10px 24px rgba(0, 0, 0, .3); }
+.gs-bal span { display: grid; min-width: 0; }
+.gs-bal small { color: var(--gs-muted); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.gs-bal b { overflow: hidden; color: #fff3cf; font-size: 20px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.gs-bal.is-dollars i { display: grid; place-items: center; flex: 0 0 32px; height: 32px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #c8f5c9, #3f9a58 70%); color: #0f3a1b; font-style: normal; font-weight: 900; font-size: 18px; box-shadow: 0 0 12px rgba(120, 220, 140, .45); }
+.gs-bal.is-dollars b { color: #a9f0b4; }
+.gs-coin { flex: 0 0 auto; width: 18px; height: 18px; vertical-align: -3px; filter: drop-shadow(0 0 5px rgba(242, 201, 111, .6)); }
+.gs-coin.is-big { width: 32px; height: 32px; }
+
+.gs-tabs { display: flex; gap: 6px; padding: 2px 16px 10px; overflow-x: auto; scrollbar-width: none; }
+.gs-tabs::-webkit-scrollbar { display: none; }
+.gs-tabs button { flex: 0 0 auto; min-height: 38px; padding: 0 14px; border: 1px solid rgba(244, 202, 126, .3); border-radius: 999px; background: rgba(24, 10, 16, .55); color: var(--gs-muted); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.gs-tabs button.is-on { border-color: var(--gs-gold); background: linear-gradient(180deg, #f6d78c, #c9953f); color: #3a1d0a; box-shadow: 0 6px 16px rgba(242, 201, 111, .3); }
+
+.gs-scroll { flex: 1; overflow-y: auto; padding: 4px 16px calc(env(safe-area-inset-bottom, 0px) + 28px); overscroll-behavior: contain; }
+.gs-note { margin: 6px 2px 12px; color: var(--gs-muted); font-size: 13px; line-height: 1.5; text-align: center; }
+.gs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+@media (min-width: 560px) { .gs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.gs-list { display: grid; gap: 10px; margin-bottom: 14px; }
+
+.gs-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; padding: 12px 10px 12px; border: 1px solid rgba(244, 202, 126, .32); border-radius: 22px; background: linear-gradient(180deg, rgba(48, 20, 26, .82), rgba(20, 8, 12, .84)); box-shadow: inset 0 1px rgba(255, 240, 210, .1), 0 12px 26px rgba(0, 0, 0, .3); text-align: center; }
+.gs-item h4 { margin: 0; font-size: 14px; font-weight: 800; line-height: 1.25; color: #fff4e1; }
+.gs-item small { color: var(--gs-muted); font-size: 12px; }
+.gs-item p { margin: 2px 0 0; color: var(--gs-muted); font-size: 12.5px; line-height: 1.4; }
+.gs-item.is-wide { flex-direction: row; align-items: center; gap: 12px; text-align: left; }
+.gs-item.is-wide .gs-art { flex: 0 0 64px; width: 64px; height: 64px; }
+.gs-item.is-wide .gs-art b { font-size: 36px; }
+.gs-text { flex: 1; display: grid; gap: 2px; min-width: 0; }
+.gs-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: auto; }
+.gs-col { display: grid; gap: 6px; justify-items: end; }
+.gs-on { color: #a9f0b4 !important; font-weight: 800; }
+
+/* «3D» подарок: объёмный эмодзи над светящимся постаментом, медленно покачивается. */
+.gs-art { position: relative; display: grid; place-items: center; width: 92px; height: 92px; perspective: 400px; }
+.gs-art-glow { position: absolute; left: 12%; right: 12%; bottom: 6%; height: 22%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255, 196, 110, .55), rgba(255, 140, 80, 0) 70%); }
+.gs-art b { position: relative; font-size: 54px; line-height: 1; filter: drop-shadow(0 10px 8px rgba(0, 0, 0, .5)) drop-shadow(0 0 14px rgba(255, 190, 120, .3)); animation: gs-bob 4.2s ease-in-out infinite; transform-style: preserve-3d; }
+.gs-art i { position: absolute; right: 8%; bottom: 14%; font-size: 26px; font-style: normal; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .5)); animation: gs-bob 4.2s .6s ease-in-out infinite; }
+.gs-grid .gs-item:nth-child(2n) .gs-art b { animation-delay: -1.4s; }
+.gs-grid .gs-item:nth-child(3n) .gs-art b { animation-delay: -2.6s; }
+@keyframes gs-bob { 0%, 100% { transform: translateY(0) rotateY(-14deg) rotateZ(-2deg); } 50% { transform: translateY(-6px) rotateY(14deg) rotateZ(2deg); } }
+
+.gs-back { display: block; width: 62px; aspect-ratio: 5 / 7; margin: 4px 0; border-radius: 8px; transform: rotate(-6deg); box-shadow: 0 12px 20px rgba(0, 0, 0, .5); }
+.gs-back img { display: block; width: 100%; height: 100%; border-radius: 8px; }
+.gs-cloth { display: block; width: 92px; height: 62px; margin: 8px 0 4px; border: 3px solid #6b3e1c; border-radius: 40%; --felt: #1f6a3c; --felt2: #0b3019; background: radial-gradient(ellipse at 50% 40%, var(--felt), var(--felt2)); box-shadow: inset 0 0 14px rgba(0, 0, 0, .55), 0 10px 18px rgba(0, 0, 0, .45); }
+.gs-cloth[data-cloth="cloth_burgundy"] { --felt: #7c1a2c; --felt2: #3a0812; }
+.gs-cloth[data-cloth="cloth_night"] { --felt: #2a2f6b; --felt2: #0d0f2e; }
+.gs-cloth[data-cloth="cloth_wood"] { --felt: #8a5a32; --felt2: #3f2410; border-color: #3a210c; }
+
+.gs-buy, .gs-give, .gs-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 38px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: transform .12s ease, filter .2s ease; }
+.gs-buy { border: 1px solid rgba(255, 226, 160, .7); background: linear-gradient(180deg, #f8dc92, #c48d38); color: #3a1d0a; box-shadow: 0 6px 14px rgba(196, 141, 56, .35), inset 0 1px rgba(255, 255, 255, .5); font-variant-numeric: tabular-nums; }
+.gs-buy .gs-coin { width: 16px; height: 16px; }
+.gs-buy.is-money { min-width: 92px; background: linear-gradient(180deg, #b8f0c0, #4fa865); border-color: rgba(200, 255, 210, .7); color: #0d3418; }
+.gs-give { border: 1px solid var(--gs-gold-line); background: rgba(255, 236, 214, .08); color: var(--gs-ink); }
+.gs-primary { border: 1px solid rgba(255, 226, 160, .7); background: linear-gradient(180deg, #f8dc92, #c48d38); color: #3a1d0a; }
+.gs-buy:active, .gs-give:active, .gs-primary:active { transform: scale(.95); }
+.gs-buy:disabled, .gs-primary:disabled { filter: grayscale(.6) brightness(.75); cursor: default; }
+.gs-root button:focus-visible, .gs-form input:focus-visible, .gs-form select:focus-visible { outline: 2px solid var(--gs-gold); outline-offset: 2px; }
+.gs-equipped { color: #a9f0b4; font-size: 13px; font-weight: 800; line-height: 38px; }
+
+.gs-pack.is-best { border-color: var(--gs-gold); box-shadow: 0 0 0 1px rgba(242, 201, 111, .4), 0 14px 30px rgba(242, 201, 111, .18); }
+.gs-pack .gs-art .gs-coin { position: relative; width: 44px; height: 44px; animation: gs-bob 4.2s ease-in-out infinite; }
+.gs-rate h4 { color: #a9f0b4; font-size: 18px; font-variant-numeric: tabular-nums; }
+.gs-pack h4 { color: #ffe2a0; font-size: 22px; font-variant-numeric: tabular-nums; }
+
+.gs-panel { margin: 0 0 14px; padding: 14px; border: 1px solid var(--gs-gold-line); border-radius: 22px; background: linear-gradient(180deg, rgba(36, 13, 21, .8), rgba(18, 8, 12, .78)); box-shadow: inset 0 1px rgba(255, 240, 210, .1); }
+.gs-panel h3 { margin: 0 0 6px; color: var(--gs-gold); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-align: center; text-transform: uppercase; }
+.gs-wall { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.gs-wall span { position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: rgba(255, 236, 214, .07); font-size: 30px; }
+.gs-wall b { position: absolute; right: -4px; bottom: -4px; padding: 1px 6px; border-radius: 999px; background: var(--gs-gold); color: #3a1d0a; font-size: 11px; }
+
+.gs-form { display: grid; gap: 10px; }
+.gs-form label { display: grid; gap: 4px; color: var(--gs-muted); font-size: 12px; font-weight: 700; }
+.gs-form input, .gs-form select { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid rgba(244, 202, 126, .4); border-radius: 14px; background: rgba(10, 4, 6, .5); color: var(--gs-ink); font: inherit; font-size: 15px; }
+.gs-form.is-inline { grid-template-columns: minmax(0, 1fr) auto; }
+.gs-form.is-inline input { text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+.gs-form.is-inline input::placeholder { text-transform: none; letter-spacing: 0; font-weight: 500; }
+
+.gs-sheet { position: absolute; inset: 0; z-index: 2; display: grid; place-items: end center; padding: 16px; background: rgba(8, 3, 5, .6); }
+.gs-sheet-card { display: grid; justify-items: center; gap: 8px; width: min(100%, 420px); max-height: 80vh; overflow-y: auto; padding: 16px 16px calc(env(safe-area-inset-bottom, 0px) + 16px); border: 1px solid var(--gs-gold-line); border-radius: 26px; background: linear-gradient(180deg, #2c1018, #150a0d); box-shadow: 0 -10px 40px rgba(0, 0, 0, .5); animation: gs-up .28s cubic-bezier(.16, 1, .3, 1); }
+.gs-sheet-card h3 { margin: 0 0 4px; font-family: "Playfair Display", Georgia, serif; font-size: 20px; }
+.gs-friend { width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid rgba(244, 202, 126, .3); border-radius: 14px; background: rgba(255, 236, 214, .06); color: var(--gs-ink); font: inherit; font-size: 15px; font-weight: 700; text-align: left; cursor: pointer; }
+.gs-link { min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--gs-muted); font-size: 26px; cursor: pointer; }
+@keyframes gs-up { from { transform: translateY(30px); opacity: 0; } }
+
+/* «Настройки» → «Светлячки и пин-код» */
+[data-shop-settings] { display: grid; gap: 10px; }
+[data-shop-settings] .gs-note { margin: 0; text-align: left; color: inherit; opacity: .75; }
+.gs-set-balance { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.gs-set-balance b { flex: 1; min-width: 0; font-size: 15px; font-variant-numeric: tabular-nums; }
+.gs-set-open { min-height: 38px; padding: 0 14px; border: 1px solid rgba(244, 202, 126, .55); border-radius: 999px; background: linear-gradient(180deg, #f8dc92, #c48d38); color: #3a1d0a; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
+[data-shop-settings] .gs-form input { background: rgba(255, 255, 255, .08); color: inherit; }
+.gs-admin { display: grid; gap: 10px; margin-top: 6px; padding: 12px; border: 1px dashed rgba(244, 202, 126, .5); border-radius: 18px; }
+.gs-admin h4 { margin: 0; font-size: 14px; }
+.gs-admin .gs-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gs-admin .gs-form .gs-primary { grid-column: 1 / -1; }
+.gs-codes { display: grid; gap: 6px; }
+.gs-code { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, .06); font-size: 12px; }
+.gs-code b { grid-column: 1; font-size: 14px; letter-spacing: .1em; }
+.gs-code span { grid-column: 1; grid-row: 2; opacity: .75; }
+.gs-code button { grid-row: 1 / span 2; min-height: 34px; padding: 0 10px; border: 1px solid rgba(244, 202, 126, .45); border-radius: 10px; background: none; color: inherit; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.gs-code.is-off { opacity: .5; }
+
+/* Главная: плитки «Дурак» и «Магазин» */
+.home-quick-grid .home-quick-durak .home-quick-ic, .home-quick-grid .home-quick-shop .home-quick-ic { animation: gs-bob 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-root, .gs-sheet-card { transition: none; animation: none; }
+  .gs-art b, .gs-art i, .gs-pack .gs-art .gs-coin, .home-quick-grid .home-quick-ic { animation: none !important; }
+}
+html.lite .gs-art b, html.lite .gs-art i, html.lite .home-quick-grid .home-quick-ic { animation: none !important; }

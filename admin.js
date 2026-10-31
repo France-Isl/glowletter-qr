@@ -20,7 +20,7 @@
     if (error) throw error;
     return data;
   }
-  const ERRORS = { admin_required: "Нужны права администратора", not_found: "Пользователь не найден", cannot_block_admin: "Администратора заблокировать нельзя", empty_message: "Напишите текст предупреждения", offline: "Нет связи с сервером" };
+  const ERRORS = { admin_required: "Нужны права администратора", admin_target: "Аккаунт владельца защищён: его нельзя менять через админ-панель", not_found: "Пользователь не найден", cannot_block_admin: "Администратора заблокировать нельзя", empty_message: "Напишите текст предупреждения", offline: "Нет связи с сервером" };
   const fail = error => notify(ERRORS[String(error?.message || "")] || `Ошибка: ${String(error?.message || error || "")}`);
   const loading = node => { node.innerHTML = '<p class="gla-note">Загрузка…</p>'; };
 

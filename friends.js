@@ -40,6 +40,13 @@
   const PLAY_PATTERN = new RegExp(`^\\[\\[play:(${UUID})\\]\\]$`, "u");
   const PHOTO_PATTERN = new RegExp(`^\\[\\[photo:(${UUID})\\]\\]$`, "u");
   const STICKER_PATTERN = /^\[\[sticker:(s(?:0[1-9]|1\d|20))\]\]$/u;
+  // 01.11: стол «Дурака», подарок из магазина и светлячки другу — подарок и светлячки пишет только сервер.
+  const DURAK_PATTERN = new RegExp(`^\\[\\[durak:(${UUID})\\]\\]$`, "u");
+  const SHOP_GIFT_PATTERN = /^\[\[gift:([a-z_]{2,24})\]\]$/u;
+  const COINS_PATTERN = /^\[\[coins:([1-9]\d{0,3})\]\]$/u;
+  const shopText = (key, values) => window.GlowLetterShop?.text?.(key, values) || "";
+  const shopArt = id => window.GlowLetterShop?.art?.(id) || "🎁";
+  const shopNum = n => window.GlowLetterShop?.number?.(n) || String(n);
   const MIC = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="3.5" width="6" height="11" rx="3"/><path d="M5.8 11.5a6.2 6.2 0 0 0 12.4 0M12 17.7v3"/></svg>';
   const PHONE = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.6h2.6l1.5 4.1-1.9 1.4a11 11 0 0 0 5.9 5.9l1.4-1.9 4.1 1.5v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.8a2 2 0 0 1 2-2.2Z"/></svg>';
   const GAME = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 7h9.6a4.6 4.6 0 0 1 4.5 3.7l.9 4.6a2.9 2.9 0 0 1-5 2.5L15.6 16H8.4l-1.6 1.8a2.9 2.9 0 0 1-5-2.5l.9-4.6A4.6 4.6 0 0 1 7.2 7Z" fill="currentColor"/><path d="M7.6 10v3.4M5.9 11.7h3.4" stroke="var(--gold-bright)" stroke-width="1.7" stroke-linecap="round"/><circle cx="15.6" cy="10.6" r="1.05" fill="var(--gold-bright)"/><circle cx="17.6" cy="12.8" r="1.05" fill="var(--gold-bright)"/></svg>';
@@ -48,7 +55,7 @@
 
   const TEXT = {
     ru: {
-      ranking: "Рейтинг", videoCall: "Видеозвонок", attach: "Отправить фото", emojiAll: "Все смайлики", effects: "Эффекты", callSub: "Аудио / Видео", tableSub: "Играть вместе", worldSub: "Открыть", bearSub: "Отправить", drawSub: "Совместный холст", stickerSub: "Магазин", playSub: "Пригласить в игру", callAudio: "Аудиозвонок", callVideo: "Видеозвонок", photoSending: "Отправляю фото…", photoTooBig: "Фото слишком большое", msgSent: "Отправлено", msgRead: "Прочитано",
+      ranking: "Рейтинг", videoCall: "Видеозвонок", attach: "Отправить фото", emojiAll: "Все смайлики", effects: "Эффекты", callSub: "Аудио / Видео", tableSub: "Играть вместе", worldSub: "Открыть", bearSub: "Отправить", drawSub: "Совместный холст", stickerSub: "Магазин", playSub: "Пригласить в игру", callAudio: "Аудиозвонок", callVideo: "Видеозвонок", photoSending: "Отправляю фото…", photoTooBig: "Фото слишком большое", msgSent: "Отправлено", msgRead: "Прочитано", together: "Вместе", friendGroup: "Друг", clearChat: "Очистить чат", clearAsk: "Очистить чат?", clearNote: "Переписка исчезнет только у вас", chatCleared: "Чат очищен", holdHint: "Удерживайте смайлик — он полетит по экрану",
       home: "Друзья", eyebrow: "GLOWLETTER · ДРУЗЬЯ", title: "Друзья", close: "Закрыть", back: "Назад",
       signIn: "Войдите, чтобы добавлять друзей и переписываться.", signInButton: "Войти",
       nameTitle: "Как вас зовут?", nameNote: "Это имя увидят ваши друзья.", namePlaceholder: "Ваше имя", nameSave: "Сохранить", nameInvalid: "Введите обычное имя.",
@@ -79,7 +86,7 @@
       stickersNone: "Наклейки появляются в «Сундуке Тёпы» в «Нашем мире».", worldOpen: "Наш мир", pushCall: "📞 Пропущенный звонок: {name}", pushPhoto: "📸 {name}: новое фото", pushSticker: "🧸 {name}: наклейка"
     },
     en: {
-      ranking: "Ranking", videoCall: "Video call", attach: "Send a photo", emojiAll: "All emoji", effects: "Effects", callSub: "Audio / Video", tableSub: "Play together", worldSub: "Open", bearSub: "Send", drawSub: "Shared canvas", stickerSub: "Shop", playSub: "Invite to a game", callAudio: "Audio call", callVideo: "Video call", photoSending: "Sending the photo…", photoTooBig: "The photo is too large", msgSent: "Sent", msgRead: "Read",
+      ranking: "Ranking", videoCall: "Video call", attach: "Send a photo", emojiAll: "All emoji", effects: "Effects", callSub: "Audio / Video", tableSub: "Play together", worldSub: "Open", bearSub: "Send", drawSub: "Shared canvas", stickerSub: "Shop", playSub: "Invite to a game", callAudio: "Audio call", callVideo: "Video call", photoSending: "Sending the photo…", photoTooBig: "The photo is too large", msgSent: "Sent", msgRead: "Read", together: "Together", friendGroup: "Friend", clearChat: "Clear chat", clearAsk: "Clear the chat?", clearNote: "The conversation disappears only for you", chatCleared: "Chat cleared", holdHint: "Hold an emoji — it will fly across the screen",
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
       signIn: "Sign in to add friends and send messages.", signInButton: "Sign in",
       nameTitle: "What’s your name?", nameNote: "Your friends will see this name.", namePlaceholder: "Your name", nameSave: "Save", nameInvalid: "Enter an ordinary name.",
@@ -110,7 +117,7 @@
       stickersNone: "Stickers come from Teddy’s chest in Our world.", worldOpen: "Our world", pushCall: "📞 Missed call: {name}", pushPhoto: "📸 {name}: new photo", pushSticker: "🧸 {name}: sticker"
     },
     fr: {
-      ranking: "Classement", videoCall: "Appel vidéo", attach: "Envoyer une photo", emojiAll: "Tous les émojis", effects: "Effets", callSub: "Audio / Vidéo", tableSub: "Jouer ensemble", worldSub: "Ouvrir", bearSub: "Envoyer", drawSub: "Toile commune", stickerSub: "Boutique", playSub: "Inviter à jouer", callAudio: "Appel audio", callVideo: "Appel vidéo", photoSending: "Envoi de la photo…", photoTooBig: "La photo est trop lourde", msgSent: "Envoyé", msgRead: "Lu",
+      ranking: "Classement", videoCall: "Appel vidéo", attach: "Envoyer une photo", emojiAll: "Tous les émojis", effects: "Effets", callSub: "Audio / Vidéo", tableSub: "Jouer ensemble", worldSub: "Ouvrir", bearSub: "Envoyer", drawSub: "Toile commune", stickerSub: "Boutique", playSub: "Inviter à jouer", callAudio: "Appel audio", callVideo: "Appel vidéo", photoSending: "Envoi de la photo…", photoTooBig: "La photo est trop lourde", msgSent: "Envoyé", msgRead: "Lu", together: "Ensemble", friendGroup: "Ami", clearChat: "Effacer la discussion", clearAsk: "Effacer la discussion ?", clearNote: "La conversation disparaît seulement pour vous", chatCleared: "Discussion effacée", holdHint: "Maintenez un émoji : il s’envolera sur l’écran",
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
       signIn: "Connectez-vous pour ajouter des amis et écrire des messages.", signInButton: "Se connecter",
       nameTitle: "Comment vous appelez-vous ?", nameNote: "Vos amis verront ce prénom.", namePlaceholder: "Votre prénom", nameSave: "Enregistrer", nameInvalid: "Saisissez un prénom ordinaire.",
@@ -143,7 +150,7 @@
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
 
-  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null, stickerPicking: false, photos: new Map(), menuOpen: false, rainPicking: false, emojiOpen: false, callPick: false, typing: false, newestShown: "", photoBusy: false, fxOpen: false, lastTap: null, holdTimer: 0, holdFired: false };
+  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null, stickerPicking: false, photos: new Map(), menuOpen: false, emojiOpen: false, typing: false, newestShown: "", photoBusy: false, fxOpen: false, lastTap: null, holdTimer: 0, holdFired: false, confirm: null, press: null, emojiHold: null, emojiHoldFired: false, reactBar: null };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -195,6 +202,12 @@
   const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
   const inviteText = (invite, name) => invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? tr("playInvite", { name }) : tr("newInvite", { name, game: gameTitle(invite.kind) });
   const previewText = (body, name = "") => {
+    const durak = String(body || "").match(DURAK_PATTERN);
+    if (durak) return `🃏 ${shopText("chatDurakFrom", { name })}`;
+    const shopGift = String(body || "").match(SHOP_GIFT_PATTERN);
+    if (shopGift) return `${shopArt(shopGift[1])} ${shopText("chatGiftFrom", { name, item: shopText(shopGift[1]) })}`;
+    const coins = String(body || "").match(COINS_PATTERN);
+    if (coins) return `✨ ${shopText("chatCoinsFrom", { name, n: shopNum(Number(coins[1])) })}`;
     const invite = parseInvite(body);
     if (invite) return invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? `🎲 ${tr("tableHeading")}` : tr("inviteMessage", { game: gameTitle(invite.kind) });
     if (parseCall(body)) return `📞 ${tr("callChat")}`;
@@ -240,7 +253,7 @@
     });
     root.addEventListener("submit", event => { event.preventDefault(); onAction(event.target.dataset.submit, event.target); });
     root.addEventListener("input", event => { if (event.target.matches(".glf-compose textarea")) sizeField(event.target); });
-    // Пока пишут (открыта клавиатура) — плитки под полем прячутся, переписке остаётся место.
+    // Пока пишут (открыта клавиатура) — помечаем низ чата (выбор смайликов и подарков остаётся на месте).
     root.addEventListener("focusin", event => { if (event.target.matches(".glf-compose textarea") && !state.typing) { state.typing = true; event.target.closest(".glf-chat-foot")?.classList.add("is-typing"); } });
     root.addEventListener("focusout", event => {
       if (!event.target.matches(".glf-compose textarea")) return;
@@ -257,22 +270,96 @@
     ["pointerup", "pointercancel", "pointerleave"].forEach(type => root.addEventListener(type, () => clearTimeout(state.holdTimer)));
     root.addEventListener("contextmenu", event => { if (event.target.closest(".glf-send")) { event.preventDefault(); clearTimeout(state.holdTimer); state.holdFired = true; openFx(); } });
     root.addEventListener("click", event => { if (state.holdFired && event.target.closest(".glf-send")) { event.preventDefault(); event.stopPropagation(); state.holdFired = false; } }, true);
+    // Удержать смайлик в коллекции ~1,5 с — по кругу бежит золотая полоска, потом смайлик летит по экрану у друга.
+    root.addEventListener("pointerdown", event => {
+      const button = event.target.closest("[data-hold]");
+      if (!button || event.button > 0) return;
+      emojiHoldStart(button, event.clientX, event.clientY);
+    });
+    root.addEventListener("pointermove", event => {
+      const hold = state.emojiHold;
+      if (hold && Math.hypot(event.clientX - hold.x, event.clientY - hold.y) > 12) emojiHoldCancel();
+    });
+    ["pointerup", "pointercancel"].forEach(type => root.addEventListener(type, () => emojiHoldCancel()));
+    root.addEventListener("click", event => {
+      if (state.emojiHoldFired && event.target.closest("[data-hold]")) { event.preventDefault(); event.stopPropagation(); }
+      state.emojiHoldFired = false;
+    }, true);
+    // Долгое нажатие (или правая кнопка мыши) на сообщение — полоска реакций над ним.
+    root.addEventListener("pointerdown", event => {
+      const bubble = event.target.closest(".glf-messages [data-mid]");
+      if (state.reactBar && !event.target.closest(".glf-reactbar")) closeReactBar(false);
+      if (!bubble || event.button > 0 || event.target.closest("button, a, audio")) return;
+      clearTimeout(state.press?.timer);
+      state.press = { x: event.clientX, y: event.clientY, fired: false, timer: setTimeout(() => { if (state.press) state.press.fired = true; openReactBar(bubble); }, 500) };
+    });
+    root.addEventListener("pointermove", event => {
+      const press = state.press;
+      if (press && !press.fired && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 10) { clearTimeout(press.timer); state.press = null; }
+    });
+    root.addEventListener("pointercancel", () => { clearTimeout(state.press?.timer); state.press = null; });
+    root.addEventListener("contextmenu", event => {
+      if (event.target.closest("[data-hold]")) { event.preventDefault(); return; }
+      const bubble = event.target.closest(".glf-messages [data-mid]");
+      if (!bubble || event.target.closest("button, a, audio")) return;
+      event.preventDefault();
+      if (state.press) { clearTimeout(state.press.timer); state.press.fired = true; }
+      openReactBar(bubble);
+    });
     // Двойное касание по сообщению — сердечко на нём (как в Instagram).
     root.addEventListener("pointerup", event => {
+      const press = state.press;
+      clearTimeout(press?.timer);
+      state.press = null;
       const bubble = event.target.closest("[data-mid]");
-      if (!bubble || event.target.closest("button, a, audio")) return;
+      if (press?.fired || !bubble || event.target.closest("button, a, audio")) return;
       const now = Date.now();
       if (state.lastTap?.id === bubble.dataset.mid && now - state.lastTap.at < 320) { state.lastTap = null; toggleLike(bubble); }
       else state.lastTap = { id: bubble.dataset.mid, at: now };
     });
+    root.querySelector(".glf-body").addEventListener("scroll", () => { if (state.reactBar) closeReactBar(false); }, true);
     root.addEventListener("keydown", event => {
-      if (event.key === "Escape") { event.stopPropagation(); close(); return; }
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        // По очереди: реакции → подтверждение → меню «⋯» → выбор под полем → весь экран.
+        if (state.reactBar) { closeReactBar(true); return; }
+        if (state.confirm) { state.confirm = null; render(); return; }
+        if (state.menuOpen) { state.menuOpen = false; render(); state.root?.querySelector(".glf-head-button.is-menu")?.focus({ preventScroll: true }); return; }
+        if (state.view === "chat" && (pickerOpen() || state.fxOpen)) { closePickers(); render(); state.root?.querySelector(".glf-compose textarea")?.focus({ preventScroll: true }); return; }
+        close();
+        return;
+      }
+      // Tab не уходит из открытого меню, подтверждения или полоски реакций.
+      if (event.key === "Tab") {
+        const box = state.root?.querySelector(state.reactBar ? ".glf-reactbar" : state.confirm ? ".glf-confirm" : state.menuOpen ? ".glf-sheet" : "#none");
+        const items = box ? [...box.querySelectorAll("button:not([disabled])")] : [];
+        if (items.length) {
+          const index = items.indexOf(document.activeElement);
+          const next = event.shiftKey ? (index <= 0 ? items.length - 1 : index - 1) : (index === items.length - 1 ? 0 : index + 1);
+          event.preventDefault();
+          items[next].focus();
+          return;
+        }
+      }
+      // Стрелки ходят по полоске реакций.
+      if (state.reactBar && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+        const items = [...state.reactBar.querySelectorAll("button")];
+        const step = (event.key === "ArrowRight") === (document.documentElement.dir !== "rtl") ? 1 : -1;
+        items[(items.indexOf(document.activeElement) + step + items.length) % items.length]?.focus();
+        event.preventDefault();
+        return;
+      }
+      // Пробел, удержанный на смайлике, работает как долгое нажатие.
+      if (event.key === " " && !event.repeat && event.target.matches?.("[data-hold]")) { const rect = event.target.getBoundingClientRect(); emojiHoldStart(event.target, rect.left, rect.top); return; }
+      // Enter или клавиша меню на сообщении — реакции.
+      if ((event.key === "Enter" || event.key === "ContextMenu" || (event.key === "F10" && event.shiftKey)) && event.target.matches?.(".glf-messages [data-mid]")) { event.preventDefault(); openReactBar(event.target); return; }
       // Enter отправляет, Shift+Enter — новая строка.
       if (event.key === "Enter" && !event.shiftKey && !event.isComposing && event.target.matches(".glf-compose textarea")) {
         event.preventDefault();
         event.target.form.requestSubmit();
       }
     });
+    root.addEventListener("keyup", event => { if (event.key === " ") emojiHoldCancel(); });
     document.body.append(root);
     state.root = root;
     return root;
@@ -293,6 +380,10 @@
     const root = state.root;
     state.quick = "";
     if (!root || root.hidden) return;
+    closeReactBar(false);
+    emojiHoldCancel();
+    state.menuOpen = false;
+    state.confirm = null;
     root.classList.remove("is-open");
     document.body.classList.remove("glg-open");
     setTimeout(() => { if (!root.classList.contains("is-open")) root.hidden = true; }, 320);
@@ -308,6 +399,8 @@
     root.querySelector("[data-glf=eyebrow]").textContent = tr("eyebrow");
     root.querySelector("[data-glf=title]").textContent = state.view === "chat" ? nameOf(state.chatWith) : tr("title");
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
+    closeReactBar(false);
+    emojiHoldCancel();
     const body = root.querySelector(".glf-body");
     const views = { signin: renderSignIn, loading: () => `<p class="glg-center glg-muted">…</p>`, name: renderName, list: renderList, chat: renderChat };
     const draft = body.querySelector(".glf-compose textarea")?.value || "";
@@ -374,26 +467,37 @@
     smile: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8.2 14.2a4.6 4.6 0 0 0 7.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
     clip: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 11.5-7.6 7.6a5 5 0 0 1-7.1-7.1l8-8a3.4 3.4 0 0 1 4.8 4.8l-8 8a1.7 1.7 0 0 1-2.4-2.4l7.3-7.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     send: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.4 20.2 21 12 3.4 3.8l2.2 6.8L14 12l-8.4 1.4Z" fill="currentColor"/></svg>',
-    plus: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-    chevron: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     removeFriend: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="3.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 20c.6-3.8 3.1-5.8 6.5-5.8 1.2 0 2.3.2 3.2.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.9 17.5h3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     block: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m6 6 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     close: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    clear: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 6.5h15M9.5 6.5V4.8c0-.7.6-1.3 1.3-1.3h2.4c.7 0 1.3.6 1.3 1.3v1.7M6.4 6.5l.9 12.4c.1 1 .9 1.6 1.8 1.6h5.8c.9 0 1.7-.7 1.8-1.6l.9-12.4M10 10.5v6M14 10.5v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     tick: '<svg class="glf-tick" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="m1.5 6.5 3.4 3.4L11.5 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     ticks: '<svg class="glf-tick is-read" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="m1 6.5 3.4 3.4L11 2M7.6 9.6l.3.3L14.5 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   });
   // Полная коллекция смайликов (вставляются в текст).
   const EMOJIS = Object.freeze(["😊", "😂", "🥰", "😍", "😘", "🤗", "😉", "😄", "😁", "🙂", "😇", "🥳", "😎", "🤩", "😌", "🤭", "😴", "🥺", "😢", "😭", "😮", "😅", "🙈", "🤔", "👍", "👏", "🙌", "🤝", "👋", "💪", "🙏", "✌️", "❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "💖", "💕", "💐", "🌸", "🌹", "🌷", "🌻", "☀️", "🌙", "⭐", "✨", "🔥", "🎉", "🎁", "🎂", "🍰", "☕", "🍓", "🍫", "🧸", "🐱", "🐶", "🦋", "🌈", "🎲"]);
-  // Плитки под полем ввода (как на образце): значок, название, подпись; тон карточки.
-  const TILES = Object.freeze([
-    ["call-pick", "📞", "callButton", "callSub", "is-rose"],
-    ["table", "🎲", "tableButton", "tableSub", ""],
-    ["world", "🌍", "worldOpen", "worldSub", "is-lilac"],
-    ["bear-pick", "🧸", "bearSend", "bearSub", ""],
-    ["draw", "✏️", "drawTogether", "drawSub", ""],
-    ["sticker-pick", "🏷️", "stickerPick", "stickerSub", ""]
+  // Меню «⋯» (владелец 31.10: «слишком много на экране»): всё, что раньше лежало плитками под полем, — здесь.
+  const TOGETHER = Object.freeze([
+    ["draw", "✏️", "drawTogether", "drawSub"],
+    ["world", "🌍", "worldOpen", "worldSub"],
+    ["bear-pick", "🧸", "bearSend", "bearSub"],
+    ["sticker-pick", "🏷️", "stickerPick", "stickerSub"]
   ]);
+  // Удержать смайлик в коллекции ~1,5 с — он летит по экрану у друга. Только существующие форматы:
+  // дождь [[rain:вид]] (сердечки, лепестки, букеты, звёзды, конфетти, бабочки) и реакция [[react:вид]].
+  const HOLD_MS = 1500;
+  const RAIN_ROW = Object.freeze([["❤️", "hearts"], ["🌸", "petals"], ["💐", "bouquets"], ["⭐", "stars"], ["🎉", "confetti"], ["🦋", "butterflies"]]);
+  const HOLD = Object.freeze({
+    ...Object.fromEntries(["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "💖", "💕", "🥰", "😍", "😘", "🤗"].map(emoji => [emoji, "rain:hearts"])),
+    ...Object.fromEntries(["🌸", "🌹"].map(emoji => [emoji, "rain:petals"])),
+    ...Object.fromEntries(["💐", "🌷", "🌻"].map(emoji => [emoji, "rain:bouquets"])),
+    ...Object.fromEntries(["⭐", "✨", "🌙", "🤩", "🌈"].map(emoji => [emoji, "rain:stars"])),
+    ...Object.fromEntries(["🎉", "🥳", "🎁", "🎂", "👏", "🙌"].map(emoji => [emoji, "rain:confetti"])),
+    "🦋": "rain:butterflies", "😂": "react:laugh", "😊": "react:smile", "☀️": "react:sun", "👍": "react:thumbs"
+  });
+  // Долгое нажатие на сообщение: ❤️ — сердечко на нём (как двойное касание), остальное — обычные реакции.
+  const REACT_BAR = Object.freeze(["heart", "laugh", "smile", "thumbs", "sparkle", "flower"]);
 
   function renderChat() {
     const friend = state.chatWith;
@@ -412,6 +516,13 @@
       const card = (icon, text, button = "", decor = "", kind = "") => `<li class="glf-bubble glf-invite glf-card${kind}${mine ? " is-mine" : ""}${decor ? " has-decor" : ""}"><span class="glf-card-ic" aria-hidden="true">${icon}</span><span class="glf-card-text">${escapeHtml(text)}</span>${button}${decor ? `<span class="glf-card-decor" aria-hidden="true">${decor}</span>` : ""}${meta()}</li>`;
       const pill = (action, label, room = "", arrow = true) => `<button class="glf-pill" type="button" data-action="${action}"${room ? ` data-room="${escapeHtml(room)}"` : ""}>${escapeHtml(label)}${arrow ? ICONS.arrow : ""}</button>`;
       const invite = parseInvite(message.body);
+      const body = String(message.body || "");
+      const durak = body.match(DURAK_PATTERN);
+      if (durak) return card("🃏", mine ? shopText("chatDurakYou") : shopText("chatDurakFrom", { name: nameOf(friend) }), pill("join-durak", shopText("chatDurakJoin"), durak[1]), "🂡");
+      const shopGift = body.match(SHOP_GIFT_PATTERN);
+      if (shopGift) return card("🎁", mine ? shopText("chatGiftYou", { item: shopText(shopGift[1]) }) : shopText("chatGiftFrom", { name: nameOf(friend), item: shopText(shopGift[1]) }), "", shopArt(shopGift[1]), " glf-shop-gift");
+      const coins = body.match(COINS_PATTERN);
+      if (coins) return card("✨", mine ? shopText("chatCoinsYou", { n: shopNum(Number(coins[1])) }) : shopText("chatCoinsFrom", { name: nameOf(friend), n: shopNum(Number(coins[1])) }), mine ? "" : pill("open-shop", shopText("homeShop")), "🪙", " glf-coins-gift");
       const rain = parseRain(message.body);
       if (rain) {
         const text = mine ? tr("rainYou", { rain: tr(`rain_${rain}`) }) : tr("rainFrom", { name: nameOf(friend), rain: tr(`rain_${rain}`) });
@@ -460,65 +571,112 @@
           ${window.GlowLetterRanking ? head("ranking", ICONS.trophy, tr("ranking")) : ""}
           ${head("call", ICONS.phone, tr("callButton"))}
           ${head("video-call", ICONS.video, tr("videoCall"))}
-          ${head("menu", ICONS.more, tr("menu"), ` aria-expanded="${state.menuOpen}"`)}
+          ${head("menu", ICONS.more, tr("menu"), ` aria-haspopup="dialog" aria-expanded="${state.menuOpen}"`)}
         </span>
-        ${state.menuOpen ? `<div class="glf-menu" role="menu">
-          <button type="button" role="menuitem" data-action="world">🌍 ${escapeHtml(tr("worldOpen"))}</button>
-          ${window.GlowLetterRanking ? `<button type="button" role="menuitem" data-action="ranking">🏆 ${escapeHtml(tr("ranking"))}</button>` : ""}
-          <button type="button" role="menuitem" data-action="remove">${escapeHtml(tr("remove"))}</button>
-          <button class="glg-danger" type="button" role="menuitem" data-action="block">${escapeHtml(tr("block"))}</button>
-        </div>` : ""}
       </div>
       <div class="glf-feed">
         <span class="glf-feed-glow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         <ul class="glf-messages">${bubbles || `<li class="glf-empty">${HEART}<span>${escapeHtml(tr("emptyChat"))}</span><button class="glf-pill" type="button" data-action="table">🎲 ${escapeHtml(tr("tableButton"))}</button></li>`}</ul>
       </div>
       <div class="glf-chat-foot${state.typing ? " is-typing" : ""}">
-        ${state.recording ? "" : `<div class="glf-quick" role="group" aria-label="${escapeHtml(tr("reactions"))}">${Object.entries(REACTIONS).map(([kind, emoji]) => `<button type="button" data-action="react" data-kind="${kind}" aria-label="${escapeHtml(emoji)}">${emoji}</button>`).join("")}<button class="glf-quick-more${state.rainPicking ? " is-open" : ""}" type="button" data-action="effects" aria-expanded="${Boolean(state.rainPicking)}" aria-label="${escapeHtml(tr("effects"))}" title="${escapeHtml(tr("effects"))}">${ICONS.plus}</button></div>`}
         ${state.fxOpen ? `<div class="glf-fx-menu" role="menu" aria-label="${escapeHtml(tr("fxTitle"))}"><b>${escapeHtml(tr("fxTitle"))}</b>${Object.entries(FX).map(([kind, emoji]) => `<button type="button" role="menuitem" data-action="send-fx" data-fx="${kind}"><span aria-hidden="true">${emoji}</span>${escapeHtml(tr(`fx_${kind}`))}</button>`).join("")}</div>` : ""}
-        ${renderCompose()}
-        ${state.error ? `<p class="glg-error" role="alert">${escapeHtml(state.error)}</p>` : ""}
         ${renderTools()}
-      </div>`;
+        ${state.error ? `<p class="glg-error" role="alert">${escapeHtml(state.error)}</p>` : ""}
+        ${renderCompose()}
+      </div>
+      ${state.menuOpen ? renderSheet() : ""}
+      ${state.confirm ? renderConfirm() : ""}`;
   }
 
-  const pickerOpen = () => Boolean(state.picking || state.bearPicking || state.rainPicking || state.stickerPicking || state.emojiOpen || state.callPick);
-  function closePickers() { state.picking = false; state.bearPicking = false; state.rainPicking = false; state.stickerPicking = false; state.emojiOpen = false; state.callPick = false; state.fxOpen = false; }
+  const pickerOpen = () => Boolean(state.picking || state.bearPicking || state.stickerPicking || state.emojiOpen);
+  function closePickers() { state.picking = false; state.bearPicking = false; state.stickerPicking = false; state.emojiOpen = false; state.fxOpen = false; }
 
-  // Под полем ввода: плитки 3 × 2, большая «Сыграть вместе» и управление дружбой; выбор (подарок, наклейка, игра) — на их месте.
+  // Над полем ввода — только выбранное: смайлики, подарок Тёпы, наклейка или игра. Без выбора низ чата — одна строка.
   function renderTools() {
-    if (pickerOpen()) {
-      const title = state.emojiOpen ? tr("emojiAll") : state.rainPicking ? tr("effects") : state.callPick ? tr("callButton") : state.bearPicking ? tr("bearPick") : state.stickerPicking ? tr("stickerPick") : tr("pickGame");
-      return `<section class="glf-dock glf-picker" id="glf-tools">
+    if (!pickerOpen()) return "";
+    const title = state.emojiOpen ? tr("emojiAll") : state.bearPicking ? tr("bearPick") : state.stickerPicking ? tr("stickerPick") : tr("pickGame");
+    const holdable = emoji => HOLD[emoji] ? ` data-hold="${HOLD[emoji]}" aria-describedby="glfHoldHint"` : "";
+    return `<section class="glf-dock glf-picker${state.emojiOpen ? " glf-emoji-picker" : ""}" id="glf-tools" aria-label="${escapeHtml(title)}">
         <header class="glf-picker-head"><b>${escapeHtml(title)}</b><button class="glf-picker-close" type="button" data-action="close-picker" aria-label="${escapeHtml(tr("close"))}">${ICONS.close}</button></header>
-        ${state.emojiOpen ? `<div class="glf-emoji-grid">${EMOJIS.map(emoji => `<button type="button" data-action="emoji-insert" data-emoji="${emoji}">${emoji}</button>`).join("")}</div>` : ""}
-        ${state.callPick ? `<div class="glf-call-pick"><button class="glf-tile is-rose" type="button" data-action="call"><span class="glf-tile-ic" aria-hidden="true">📞</span><span><b>${escapeHtml(tr("callAudio"))}</b></span></button><button class="glf-tile is-lilac" type="button" data-action="video-call"><span class="glf-tile-ic" aria-hidden="true">🎥</span><span><b>${escapeHtml(tr("callVideo"))}</b></span></button></div>` : ""}
-        ${state.rainPicking ? `<div class="glf-rain-grid">${Object.entries(RAINS).map(([kind, [emoji]]) => `<button type="button" data-action="send-rain" data-kind="${kind}"><span aria-hidden="true">${emoji}</span>${escapeHtml(tr(`rain_${kind}`))}</button>`).join("")}</div><p class="glf-picker-note">${escapeHtml(tr("fxHint"))}</p>` : ""}
+        ${state.emojiOpen ? `<p class="glf-hold-hint" id="glfHoldHint"><span class="glf-hold-dot" aria-hidden="true"></span>${escapeHtml(tr("holdHint"))}</p>
+        <div class="glf-rain-row" role="group" aria-label="${escapeHtml(tr("rainButton"))}">${RAIN_ROW.map(([emoji, kind]) => `<button type="button" data-action="emoji-insert" data-emoji="${emoji}" data-hold="rain:${kind}" aria-describedby="glfHoldHint" aria-label="${escapeHtml(`${emoji} ${tr(`rain_${kind}`)}`)}" title="${escapeHtml(tr(`rain_${kind}`))}">${emoji}</button>`).join("")}</div>
+        <div class="glf-emoji-grid">${EMOJIS.map(emoji => `<button type="button" data-action="emoji-insert" data-emoji="${emoji}"${holdable(emoji)}>${emoji}</button>`).join("")}</div>` : ""}
         ${state.bearPicking ? `<div class="glf-gift-grid">${Object.entries(GIFTS).map(([gift, emoji]) => `<button type="button" data-action="send-bear" data-gift="${gift}" aria-label="${escapeHtml(tr(`gift_${gift}`))}" title="${escapeHtml(tr(`gift_${gift}`))}">${emoji}</button>`).join("")}</div>` : ""}
         ${state.stickerPicking ? renderStickers() : ""}
         ${renderGamePicker()}
       </section>`;
-    }
-    const canPlay = (games()?.roomKinds || []).length > 0;
-    return `<section class="glf-dock" id="glf-tools">
-      <div class="glf-tiles">${TILES.map(([action, icon, title, sub, tone]) => `<button class="glf-tile ${tone}" type="button" data-action="${action}"><span class="glf-tile-ic" aria-hidden="true">${icon}</span><span><b>${escapeHtml(tr(title))}</b><small>${escapeHtml(tr(sub))}</small></span></button>`).join("")}</div>
-      <button class="glf-play-big" type="button" data-action="${canPlay ? "pick-game" : "table"}"><i class="glf-spark" aria-hidden="true"></i><i class="glf-spark" aria-hidden="true"></i><span class="glf-play-dice" aria-hidden="true">🎲</span><span><b>${escapeHtml(tr("playTogether"))}</b><small>${escapeHtml(tr("playSub"))}</small></span>${ICONS.chevron}</button>
-      <div class="glf-friend-actions"><button class="is-remove" type="button" data-action="remove">${ICONS.removeFriend}<span>${escapeHtml(tr("remove"))}</span></button><i aria-hidden="true"></i><button class="is-block" type="button" data-action="block">${ICONS.block}<span>${escapeHtml(tr("block"))}</span></button></div>
-    </section>`;
   }
 
-  // Поле сообщения: микрофон, поле со смайликом, скрепка (фото) и бордовая «Отправить»; во время записи — таймер.
+  // Меню «⋯»: снизу выезжает тёмная карточка с золотым кантом. «Вместе» — игры, рисунок, «Наш мир», Тёпа, наклейки;
+  // «Друг» — очистить чат, удалить из друзей, заблокировать. Фон за карточкой не затемняется (фото остаётся чистым).
+  function renderSheet() {
+    const friend = state.chatWith;
+    const online = isOnline(friend);
+    const canPlay = (games()?.roomKinds || []).length > 0;
+    const tile = (action, emoji, title, sub, extra = "") => `<button class="glf-sheet-tile${extra}" type="button" data-action="${action}"><span class="glf-sheet-ic" aria-hidden="true">${emoji}</span><span class="glf-sheet-text"><b>${escapeHtml(tr(title))}</b><small>${escapeHtml(tr(sub))}</small></span></button>`;
+    const row = (action, icon, label, extra = "") => `<button class="glf-sheet-row${extra}" type="button" data-action="${action}"><span class="glf-sheet-row-ic" aria-hidden="true">${icon}</span><span>${escapeHtml(label)}</span></button>`;
+    return `<div class="glf-sheet-wrap">
+        <button class="glf-sheet-catch" type="button" data-action="menu-close" tabindex="-1" aria-hidden="true"></button>
+        <section class="glf-sheet" role="dialog" aria-modal="true" aria-labelledby="glfSheetTitle">
+          <span class="glf-sheet-grip" aria-hidden="true"></span>
+          <header class="glf-sheet-head">
+            <span class="glf-avatar glf-head-ava${online ? " is-online" : ""}" aria-hidden="true"><span>${initial(nameOf(friend))}</span></span>
+            <span class="glf-sheet-who"><b id="glfSheetTitle">${escapeHtml(nameOf(friend))}</b><small class="${online ? "is-online" : ""}">${escapeHtml(statusText(friend))}</small></span>
+            <button class="glf-sheet-close" type="button" data-action="menu-close" aria-label="${escapeHtml(tr("close"))}" title="${escapeHtml(tr("close"))}">${ICONS.close}</button>
+          </header>
+          <h3 class="glf-sheet-label">${escapeHtml(tr("together"))}</h3>
+          <div class="glf-sheet-grid">
+            ${canPlay ? tile("pick-game", "🎮", "playTogether", "playSub", " is-feature") : ""}
+            ${tile("table", "🎲", "tableButton", "tableSub", canPlay ? " is-feature" : " is-feature is-wide")}
+            ${TOGETHER.map(([action, emoji, title, sub]) => tile(action, emoji, title, sub)).join("")}
+          </div>
+          <h3 class="glf-sheet-label">${escapeHtml(tr("friendGroup"))}</h3>
+          <div class="glf-sheet-list">
+            ${row("clear-chat", ICONS.clear, tr("clearChat"))}
+            ${row("remove", ICONS.removeFriend, tr("remove"))}
+            ${row("block", ICONS.block, tr("block"), " is-danger")}
+          </div>
+        </section>
+      </div>`;
+  }
+
+  // Своё окно подтверждения в стиле приложения (вместо системного window.confirm).
+  function renderConfirm() {
+    const job = state.confirm;
+    return `<div class="glf-confirm-wrap">
+        <button class="glf-sheet-catch" type="button" data-action="confirm-cancel" tabindex="-1" aria-hidden="true"></button>
+        <section class="glf-confirm" role="alertdialog" aria-modal="true" aria-labelledby="glfConfirmTitle"${job.note ? ' aria-describedby="glfConfirmNote"' : ""}>
+          <h3 id="glfConfirmTitle">${escapeHtml(job.title)}</h3>
+          ${job.note ? `<p id="glfConfirmNote">${escapeHtml(job.note)}</p>` : ""}
+          <div class="glf-confirm-actions">
+            <button class="glf-confirm-cancel" type="button" data-action="confirm-cancel">${escapeHtml(tr("voiceCancel"))}</button>
+            <button class="glf-confirm-ok${job.danger ? " is-danger" : ""}" type="button" data-action="confirm-ok">${escapeHtml(job.ok)}</button>
+          </div>
+        </section>
+      </div>`;
+  }
+
+  function ask(options, run) {
+    state.menuOpen = false;
+    state.confirm = { ...options, run };
+    render();
+    state.root?.querySelector(".glf-confirm-ok")?.focus({ preventScroll: true });
+  }
+
+  // Низ чата — одна строка: стеклянная капсула (микрофон, поле со смайликом, скрепка) и бордовая «Отправить»; во время записи — таймер.
   function renderCompose() {
     if (state.recording) {
       return `<div class="glf-compose glf-recording" role="status"><span class="glf-rec-dot" aria-hidden="true"></span><b class="glf-rec-time">${escapeHtml(tr("voiceRecording", { time: clock(state.recording.seconds || 0) }))}</b><button class="glf-pill is-light" type="button" data-action="voice-cancel">${escapeHtml(tr("voiceCancel"))}</button><button class="glf-round glf-send" type="button" data-action="voice-send" aria-label="${escapeHtml(tr("send"))}">${ICONS.send}</button></div><p class="glf-voice-note">${escapeHtml(tr("voiceNote"))}</p>`;
     }
     return `<form class="glf-compose glf-bar" data-submit="send" novalidate>
-        <button class="glf-round glf-mic" type="button" data-action="voice-start" aria-label="${escapeHtml(tr("voiceRecord"))}" title="${escapeHtml(tr("voiceRecord"))}">${ICONS.mic}</button>
-        <span class="glf-field">
-          <textarea name="body" rows="1" maxlength="1000" dir="auto" placeholder="${escapeHtml(tr("placeholder"))}"></textarea>
-          <button class="glf-emoji" type="button" data-action="react-pick" aria-expanded="${Boolean(state.emojiOpen)}" aria-label="${escapeHtml(tr("emojiAll"))}" title="${escapeHtml(tr("emojiAll"))}">${ICONS.smile}</button>
+        <span class="glf-capsule">
+          <button class="glf-round glf-mic" type="button" data-action="voice-start" aria-label="${escapeHtml(tr("voiceRecord"))}" title="${escapeHtml(tr("voiceRecord"))}">${ICONS.mic}</button>
+          <span class="glf-field">
+            <textarea aria-label="${escapeHtml(tr("placeholder"))}" name="body" rows="1" maxlength="1000" dir="auto" placeholder="${escapeHtml(tr("placeholder"))}"></textarea>
+            <button class="glf-emoji" type="button" data-action="react-pick" aria-expanded="${Boolean(state.emojiOpen)}" aria-label="${escapeHtml(tr("emojiAll"))}" title="${escapeHtml(tr("emojiAll"))}">${ICONS.smile}</button>
+          </span>
+          <button class="glf-round glf-attach" type="button" data-action="attach" aria-label="${escapeHtml(tr("attach"))}" title="${escapeHtml(tr("attach"))}"${state.photoBusy ? " disabled" : ""}>${ICONS.clip}</button>
         </span>
-        <button class="glf-round glf-attach" type="button" data-action="attach" aria-label="${escapeHtml(tr("attach"))}" title="${escapeHtml(tr("attach"))}"${state.photoBusy ? " disabled" : ""}>${ICONS.clip}</button>
         <input class="glf-photo-input" type="file" accept="image/*" hidden tabindex="-1">
         <button class="glf-round glf-send" type="submit" aria-label="${escapeHtml(tr("send"))}" title="${escapeHtml(tr("fxHint"))}"${state.busy ? " disabled" : ""}>${ICONS.send}</button>
       </form>`;
@@ -604,7 +762,7 @@
       switch (action) {
         case "close": close(); return;
         case "signin": close(); app()?.requestSignIn?.("friends"); return;
-        case "list": state.quick = ""; stopVoice(false); stopPlayback(); state.chatWith = null; state.view = "list"; render(); refresh(false); return;
+        case "list": state.quick = ""; state.confirm = null; closePickers(); stopVoice(false); stopPlayback(); state.chatWith = null; state.view = "list"; render(); refresh(false); return;
         case "save-name": {
           const name = cleanName(target.elements.name.value);
           if (!name) { state.error = tr("nameInvalid"); render(); return; }
@@ -642,16 +800,43 @@
           await refresh(false);
           return;
         case "chat": return openChat(target.dataset.id);
-        case "menu": state.menuOpen = !state.menuOpen; render(); return;
+        case "menu": {
+          state.menuOpen = !state.menuOpen;
+          if (state.menuOpen) { closePickers(); state.confirm = null; }
+          render();
+          state.root?.querySelector(state.menuOpen ? ".glf-sheet-tile" : ".glf-head-button.is-menu")?.focus({ preventScroll: true });
+          return;
+        }
+        case "menu-close": render(); state.root?.querySelector(".glf-head-button.is-menu")?.focus({ preventScroll: true }); return;
+        case "confirm-cancel": state.confirm = null; render(); return;
+        case "confirm-ok": { const job = state.confirm; state.confirm = null; render(); if (job?.run) await job.run(); return; }
+        case "react-on": {
+          const bubble = state.root?.querySelector(`.glf-messages [data-mid="${CSS.escape(target.dataset.mid || "")}"]`);
+          const kind = target.dataset.kind;
+          closeReactBar(false);
+          if (kind === "heart") { if (bubble) await toggleLike(bubble); }
+          else await sendReaction(state.chatWith?.user_id, kind);
+          return;
+        }
+        case "clear-chat": {
+          const friend = state.chatWith;
+          if (!friend) return;
+          ask({ title: tr("clearAsk"), note: tr("clearNote"), ok: tr("clearChat"), danger: true }, async () => {
+            await rpc("glowletter_chat_clear", { p_friend: friend.user_id });
+            if (state.chatWith?.user_id === friend.user_id) { state.messages = []; state.newestShown = ""; }
+            friend.unread = 0;
+            updateBadge();
+            render();
+            notify(tr("chatCleared"), 2600);
+          });
+          return;
+        }
         case "react-pick": { const open = !state.emojiOpen; closePickers(); state.emojiOpen = open; render(); return; }
         case "emoji-insert": insertEmoji(target.dataset.emoji); return;
         case "close-picker": closePickers(); render(); return;
-        case "call-pick": { const open = !state.callPick; closePickers(); state.callPick = open; render(); return; }
         case "attach": state.root?.querySelector(".glf-photo-input")?.click(); return;
         case "video-call": { const friend = state.chatWith; if (friend) window.GlowLetterCall?.start?.({ user_id: friend.user_id, name: nameOf(friend) }, { video: true }); return; }
         case "ranking": close(); window.GlowLetterRanking?.open?.({ scope: "friends" }); return;
-        case "rain-pick": case "effects": { const open = !state.rainPicking; closePickers(); state.rainPicking = open; render(); return; }
-        case "send-rain": return sendRain(state.chatWith?.user_id, target.dataset.kind);
         case "replay-rain": playRain(target.dataset.kind); return;
         case "send-fx": { const form = state.root?.querySelector("form.glf-compose"); state.fxOpen = false; if (form) return sendMessage(form, target.dataset.fx); return; }
         case "pick-game": { const open = !state.picking; closePickers(); state.picking = open; render(); return; }
@@ -664,7 +849,6 @@
           return;
         }
         case "join-game": close(); games()?.join?.(target.dataset.room); return;
-        case "react": return sendReaction(state.chatWith?.user_id, target.dataset.kind);
         case "bear-pick": { const open = !state.bearPicking; closePickers(); state.bearPicking = open; render(); return; }
         case "send-bear": return sendBear(state.chatWith?.user_id, target.dataset.gift);
         case "see-bear": {
@@ -675,6 +859,8 @@
         case "draw": return startDraw(state.chatWith);
         case "call": { const friend = state.chatWith; if (friend) window.GlowLetterCall?.start?.({ user_id: friend.user_id, name: nameOf(friend) }); return; }
         case "table": return startTable(state.chatWith);
+        case "join-durak": close(); window.GlowLetterDurak?.join?.(target.dataset.room); return;
+        case "open-shop": close(); window.GlowLetterShop?.open?.("gifts"); return;
         case "join-table": { const friend = state.chatWith; if (!friend) return; close(); window.GlowLetterTable?.open?.({ room: target.dataset.room, friend: { user_id: friend.user_id, name: nameOf(friend) } }); return; }
         case "world": { const friend = state.chatWith; close(); world()?.open?.(friend?.user_id); return; }
         case "sticker-pick": { const open = !state.stickerPicking; closePickers(); state.stickerPicking = open; if (open) await world()?.loadOwned?.(); render(); return; }
@@ -688,27 +874,33 @@
         case "play-voice": return playVoice(target.dataset.id);
         case "send": return sendMessage(target);
         case "report": {
-          if (!window.confirm(tr("reportConfirm"))) return;
-          await rpc("glowletter_messages_report", { p_message: target.dataset.id, p_reason: "abuse" });
-          notify(tr("reported"), 3000);
+          const id = target.dataset.id;
+          ask({ title: tr("reportConfirm"), ok: tr("report") }, async () => {
+            await rpc("glowletter_messages_report", { p_message: id, p_reason: "abuse" });
+            notify(tr("reported"), 3000);
+          });
           return;
         }
         case "block": {
           const friend = state.chatWith;
-          if (!friend || !window.confirm(tr("blockConfirm", { name: nameOf(friend) }))) return;
-          await rpc("glowletter_friends_block", { p_user: friend.user_id });
-          notify(tr("blocked"), 3000);
-          state.chatWith = null; state.view = "list";
-          await refresh(false);
+          if (!friend) return;
+          ask({ title: tr("blockConfirm", { name: nameOf(friend) }), ok: tr("block"), danger: true }, async () => {
+            await rpc("glowletter_friends_block", { p_user: friend.user_id });
+            notify(tr("blocked"), 3000);
+            state.chatWith = null; state.view = "list";
+            await refresh(false);
+          });
           return;
         }
         case "remove": {
           const friend = state.chatWith;
-          if (!friend || !window.confirm(tr("removeConfirm", { name: nameOf(friend) }))) return;
-          await rpc("glowletter_friends_remove", { p_user: friend.user_id });
-          notify(tr("removed"), 3000);
-          state.chatWith = null; state.view = "list";
-          await refresh(false);
+          if (!friend) return;
+          ask({ title: tr("removeConfirm", { name: nameOf(friend) }), ok: tr("remove"), danger: true }, async () => {
+            await rpc("glowletter_friends_remove", { p_user: friend.user_id });
+            notify(tr("removed"), 3000);
+            state.chatWith = null; state.view = "list";
+            await refresh(false);
+          });
           return;
         }
         default:
@@ -759,6 +951,7 @@
     closePickers();
     state.picking = Boolean(options.pick);
     state.menuOpen = false;
+    state.confirm = null;
     state.typing = false;
     state.view = "chat";
     state.messages = [];
@@ -878,7 +1071,6 @@
 
   async function sendRain(friendId, kind) {
     if (!friendId || !RAINS[kind]) return;
-    state.rainPicking = false;
     playRain(kind);
     try { await sendSpecial(friendId, `[[rain:${kind}]]`); }
     catch (error) { state.error = String(error?.message) === "rate_limited" ? tr("rateLimited") : tr("failed"); }
@@ -918,7 +1110,7 @@
     if (parseInvite(body) || parseCall(body) || parseReaction(body) || parseBear(body) || parseRain(body)) return html;
     const count = likes.get(message.id)?.size || 0;
     const badge = count ? `<span class="glf-liked" role="img" aria-label="${escapeHtml(tr("liked"))}">❤️${count > 1 ? "<b>2</b>" : ""}</span>` : "";
-    return html.replace(/^<li class="([^"]*)"/u, (all, classes) => `<li class="${classes}${count ? " is-liked" : ""}" data-mid="${escapeHtml(message.id)}"`).replace(/<\/li>$/u, `${badge}</li>`);
+    return html.replace(/^<li class="([^"]*)"/u, (all, classes) => `<li class="${classes}${count ? " is-liked" : ""}" data-mid="${escapeHtml(message.id)}" tabindex="0"`).replace(/<\/li>$/u, `${badge}</li>`);
   }
 
   async function toggleLike(bubble) {
@@ -940,6 +1132,82 @@
     }
     try { await sendSpecial(friend.user_id, `[[${mine ? "unlike" : "like"}:${id}]]`); }
     catch (error) { notify(String(error?.message) === "rate_limited" ? tr("rateLimited") : tr("failed"), 3200); }
+  }
+
+  // ——— Удержание смайлика: дождь или реакция по экрану ———
+
+  function emojiHoldStart(button, x, y) {
+    emojiHoldCancel();
+    const payload = String(button?.dataset.hold || "");
+    state.emojiHoldFired = false;
+    if (!/^(rain|react):[a-z]+$/u.test(payload) || !state.chatWith) return;
+    button.style.setProperty("--hold", `${HOLD_MS}ms`);
+    if (!button.querySelector(".glf-hold-ring")) button.insertAdjacentHTML("beforeend", '<span class="glf-hold-ring" aria-hidden="true"><svg viewBox="0 0 44 44" focusable="false"><circle cx="22" cy="22" r="20" pathLength="100"/></svg></span>');
+    button.classList.add("is-holding");
+    state.emojiHold = { button, x, y, timer: setTimeout(() => emojiHoldFire(button, payload), HOLD_MS) };
+  }
+
+  function emojiHoldCancel() {
+    const hold = state.emojiHold;
+    if (!hold) return;
+    clearTimeout(hold.timer);
+    state.emojiHold = null;
+    hold.button.classList.remove("is-holding");
+    hold.button.querySelector(".glf-hold-ring")?.remove();
+  }
+
+  function emojiHoldFire(button, payload) {
+    state.emojiHold = null;
+    state.emojiHoldFired = true;
+    button.classList.remove("is-holding");
+    button.querySelector(".glf-hold-ring")?.remove();
+    button.classList.add("is-fired");
+    setTimeout(() => button.classList.remove("is-fired"), 650);
+    try { navigator.vibrate?.(30); } catch {}
+    const [type, kind] = payload.split(":");
+    const friendId = state.chatWith?.user_id;
+    if (type === "rain") sendRain(friendId, kind);
+    else sendReaction(friendId, kind);
+  }
+
+  // ——— Полоска реакций над сообщением (долгое нажатие) ———
+
+  function openReactBar(bubble) {
+    const id = bubble?.dataset.mid || "";
+    if (!id || !state.root || !state.chatWith) return;
+    if (state.reactBar?.dataset.mid === id) return;
+    closeReactBar(false);
+    const liked = Boolean(likeMap().get(id)?.has(userId()));
+    const bar = document.createElement("div");
+    bar.className = "glf-reactbar";
+    bar.dataset.mid = id;
+    bar.setAttribute("role", "toolbar");
+    bar.setAttribute("aria-label", tr("reactions"));
+    bar.innerHTML = REACT_BAR.map((kind, index) => `<button type="button" data-action="react-on" data-kind="${kind}" data-mid="${escapeHtml(id)}" style="--i:${index}" aria-label="${escapeHtml(kind === "heart" ? tr("liked") : REACTIONS[kind])}"${kind === "heart" ? ` aria-pressed="${liked}"` : ""}>${REACTIONS[kind]}</button>`).join("");
+    state.root.append(bar);
+    const rect = bubble.getBoundingClientRect();
+    const width = bar.offsetWidth;
+    const height = bar.offsetHeight;
+    const below = rect.top - height - 10 < 80;
+    const top = below ? Math.min(rect.bottom + 10, innerHeight - height - 12) : rect.top - height - 10;
+    const start = bubble.classList.contains("is-mine") ? rect.right - width : rect.left;
+    bar.style.left = `${Math.max(12, Math.min(innerWidth - width - 12, start))}px`;
+    bar.style.top = `${Math.max(12, top)}px`;
+    bar.classList.toggle("is-below", below);
+    bubble.classList.add("is-reacting");
+    state.reactBar = bar;
+    try { navigator.vibrate?.(12); } catch {}
+    bar.querySelector("button")?.focus({ preventScroll: true });
+  }
+
+  function closeReactBar(refocus) {
+    const bar = state.reactBar;
+    if (!bar) return;
+    state.reactBar = null;
+    const bubble = state.root?.querySelector(`.glf-messages [data-mid="${CSS.escape(bar.dataset.mid || "")}"]`);
+    bubble?.classList.remove("is-reacting");
+    bar.remove();
+    if (refocus) bubble?.focus({ preventScroll: true });
   }
 
   // Не чаще раза в секунду: иначе легко упереться в лимит сообщений.

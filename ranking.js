@@ -536,7 +536,7 @@
     season: "Сезон #{n}", seasonPoints: "Опыт сезона", place: "Место", total: "Весь опыт", today: "За 24 часа", games: "Игры", friends: "Друзья",
     sources: "Откуда опыт", game: "игры", streak: "огонёк", pet: "Тёпа", word: "слово дня", resets: "Сбросы", medals: "Медали", unlocked: "Открыто админом",
     reset: "Сбросить опыт сезона", resetReason: "Причина (видна только админам)", resetConfirm: "Сбросить опыт сезона у {name}? Медали прошлых сезонов останутся.", resetDone: "Опыт сезона сброшен",
-    unlock: "Открыть всё (наклейки, рамки, наряды Тёпы)", unlockMe: "Открыть всё себе", unlockDone: "Открыто: {n}", suspicious: "Подозрительно много опыта за сутки"
+    unlock: "Открыть всё (наклейки, рамки, наряды Тёпы)", unlockDone: "Открыто: {n}", owner: "Аккаунт владельца: сбросы и выдачи к нему не применяются", suspicious: "Подозрительно много опыта за сутки"
   };
   const at = (key, values = {}) => ADMIN_TEXT[key].replace(/\{(\w+)\}/g, (all, name) => values[name] ?? "");
 
@@ -553,7 +553,6 @@
         const kind = button.dataset.glrAdmin;
         if (kind === "reset") adminReset();
         else if (kind === "unlock") adminUnlock(state.admin.player?.user_id);
-        else if (kind === "unlock-me") adminUnlock(me());
         else if (kind === "profile") { open({ profile: state.admin.player?.user_id }); }
       });
     }
@@ -566,7 +565,6 @@
     const sources = p?.by_source || {};
     admin.container.innerHTML = `<form class="glr-admin-find admin-lookup-form"><label><span>${at("find")}</span><span class="admin-lookup-row"><input name="q" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="96" placeholder="${at("placeholder")}" required><button type="submit"${admin.busy ? " disabled" : ""}>${at("search")}</button></span></label></form>
       <p class="admin-status" role="status">${escapeHtml(admin.status)}</p>
-      <button class="glr-admin-btn is-soft" type="button" data-glr-admin="unlock-me">✨ ${at("unlockMe")}</button>
       ${p ? `<article class="glr-admin-card">
         <header>${avatar({ user_id: p.user_id, name: p.name }, "md")}<div><b>${escapeHtml(p.name || "—")}</b><small>${escapeHtml(p.friend_code || "")} · ${escapeHtml(p.support_id || "")}</small><small>${escapeHtml(p.email || "")}</small></div><button type="button" class="glr-admin-link" data-glr-admin="profile">🏅</button></header>
         ${p.today_points >= 400 ? `<p class="glr-admin-warn">⚠️ ${at("suspicious")}: ${number(p.today_points)} XP</p>` : ""}
@@ -582,11 +580,11 @@
           <div><dt>${at("unlocked")}</dt><dd>${number(p.unlocked)}</dd></div>
         </dl>
         ${(p.resets || []).length ? `<p class="glr-admin-resets"><b>${at("resets")}:</b> ${p.resets.map(item => `${at("season", { n: item.season })} — ${number(item.points_before)} XP${item.reason ? ` (${escapeHtml(item.reason)})` : ""}`).join("; ")}</p>` : ""}
-        <label class="glr-admin-reason"><span>${at("resetReason")}</span><input type="text" maxlength="200" data-glr-reason></label>
+        ${p.is_admin ? `<p class="glr-admin-owner">👑 ${at("owner")}</p>` : `<label class="glr-admin-reason"><span>${at("resetReason")}</span><input type="text" maxlength="200" data-glr-reason></label>
         <div class="glr-admin-actions">
           <button class="glr-admin-btn is-danger" type="button" data-glr-admin="reset"${admin.busy ? " disabled" : ""}>↺ ${at("reset")}</button>
           <button class="glr-admin-btn" type="button" data-glr-admin="unlock"${admin.busy ? " disabled" : ""}>🔓 ${at("unlock")}</button>
-        </div>
+        </div>`}
       </article>` : ""}`;
   }
 

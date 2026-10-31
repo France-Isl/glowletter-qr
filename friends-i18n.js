@@ -195,7 +195,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Foto wird gesendet…",
     "photoTooBig": "Das Foto ist zu groß",
     "msgSent": "Gesendet",
-    "msgRead": "Gelesen"
+    "msgRead": "Gelesen",
+    "together": "Gemeinsam",
+    "friendGroup": "Freund",
+    "clearChat": "Chat leeren",
+    "clearAsk": "Chat leeren?",
+    "clearNote": "Der Verlauf verschwindet nur bei dir",
+    "chatCleared": "Chat geleert",
+    "holdHint": "Halte ein Emoji gedrückt – es fliegt über den Bildschirm"
   },
   "es": {
     "home": "Amigos",
@@ -392,7 +399,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Enviando la foto…",
     "photoTooBig": "La foto es demasiado grande",
     "msgSent": "Enviado",
-    "msgRead": "Leído"
+    "msgRead": "Leído",
+    "together": "Juntos",
+    "friendGroup": "Amigo",
+    "clearChat": "Vaciar chat",
+    "clearAsk": "¿Vaciar el chat?",
+    "clearNote": "La conversación desaparecerá solo para ti",
+    "chatCleared": "Chat vaciado",
+    "holdHint": "Mantén pulsado un emoji: volará por la pantalla"
   },
   "it": {
     "home": "Amici",
@@ -589,7 +603,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Invio della foto…",
     "photoTooBig": "La foto è troppo grande",
     "msgSent": "Inviato",
-    "msgRead": "Letto"
+    "msgRead": "Letto",
+    "together": "Insieme",
+    "friendGroup": "Amico",
+    "clearChat": "Svuota chat",
+    "clearAsk": "Svuotare la chat?",
+    "clearNote": "La conversazione sparirà solo per te",
+    "chatCleared": "Chat svuotata",
+    "holdHint": "Tieni premuta un’emoji: volerà sullo schermo"
   },
   "pl": {
     "home": "Znajomi",
@@ -786,7 +807,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Wysyłam zdjęcie…",
     "photoTooBig": "Zdjęcie jest za duże",
     "msgSent": "Wysłano",
-    "msgRead": "Przeczytano"
+    "msgRead": "Przeczytano",
+    "together": "Razem",
+    "friendGroup": "Znajomy",
+    "clearChat": "Wyczyść czat",
+    "clearAsk": "Wyczyścić czat?",
+    "clearNote": "Rozmowa zniknie tylko u Ciebie",
+    "chatCleared": "Czat wyczyszczony",
+    "holdHint": "Przytrzymaj emoji — przeleci po ekranie"
   },
   "uk": {
     "home": "Друзі",
@@ -983,7 +1011,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Надсилаю фото…",
     "photoTooBig": "Фото завелике",
     "msgSent": "Надіслано",
-    "msgRead": "Прочитано"
+    "msgRead": "Прочитано",
+    "together": "Разом",
+    "friendGroup": "Друг",
+    "clearChat": "Очистити чат",
+    "clearAsk": "Очистити чат?",
+    "clearNote": "Листування зникне лише у вас",
+    "chatCleared": "Чат очищено",
+    "holdHint": "Утримуйте смайлик — він полетить екраном"
   },
   "pt": {
     "home": "Amigos",
@@ -1180,7 +1215,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Enviando a foto…",
     "photoTooBig": "A foto é grande demais",
     "msgSent": "Enviada",
-    "msgRead": "Lida"
+    "msgRead": "Lida",
+    "together": "Juntos",
+    "friendGroup": "Amigo",
+    "clearChat": "Limpar conversa",
+    "clearAsk": "Limpar a conversa?",
+    "clearNote": "A conversa some só para você",
+    "chatCleared": "Conversa limpa",
+    "holdHint": "Segure um emoji: ele voa pela tela"
   },
   "nl": {
     "home": "Vrienden",
@@ -1377,7 +1419,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Foto wordt verstuurd…",
     "photoTooBig": "De foto is te groot",
     "msgSent": "Verzonden",
-    "msgRead": "Gelezen"
+    "msgRead": "Gelezen",
+    "together": "Samen",
+    "friendGroup": "Vriend",
+    "clearChat": "Chat wissen",
+    "clearAsk": "Chat wissen?",
+    "clearNote": "Het gesprek verdwijnt alleen bij jou",
+    "chatCleared": "Chat gewist",
+    "holdHint": "Houd een emoji ingedrukt – hij vliegt over het scherm"
   },
   "tr": {
     "home": "Arkadaşlar",
@@ -1574,7 +1623,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Fotoğraf gönderiliyor…",
     "photoTooBig": "Fotoğraf çok büyük",
     "msgSent": "Gönderildi",
-    "msgRead": "Okundu"
+    "msgRead": "Okundu",
+    "together": "Birlikte",
+    "friendGroup": "Arkadaş",
+    "clearChat": "Sohbeti temizle",
+    "clearAsk": "Sohbet temizlensin mi?",
+    "clearNote": "Yazışmalar yalnızca sizde silinir",
+    "chatCleared": "Sohbet temizlendi",
+    "holdHint": "Bir emojiye basılı tutun — ekranda uçar"
   },
   "ro": {
     "home": "Prieteni",
@@ -1771,7 +1827,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Se trimite fotografia…",
     "photoTooBig": "Fotografia e prea mare",
     "msgSent": "Trimis",
-    "msgRead": "Citit"
+    "msgRead": "Citit",
+    "together": "Împreună",
+    "friendGroup": "Prieten",
+    "clearChat": "Golește chatul",
+    "clearAsk": "Golești chatul?",
+    "clearNote": "Conversația dispare doar la tine",
+    "chatCleared": "Chat golit",
+    "holdHint": "Ține apăsat un emoji — va zbura pe ecran"
   },
   "cs": {
     "home": "Přátelé",
@@ -1968,7 +2031,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Posílám fotku…",
     "photoTooBig": "Fotka je moc velká",
     "msgSent": "Odesláno",
-    "msgRead": "Přečteno"
+    "msgRead": "Přečteno",
+    "together": "Spolu",
+    "friendGroup": "Přítel",
+    "clearChat": "Vymazat chat",
+    "clearAsk": "Vymazat chat?",
+    "clearNote": "Konverzace zmizí jen u vás",
+    "chatCleared": "Chat vymazán",
+    "holdHint": "Podržte smajlík — proletí přes obrazovku"
   },
   "sv": {
     "home": "Vänner",
@@ -2165,7 +2235,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Skickar fotot…",
     "photoTooBig": "Fotot är för stort",
     "msgSent": "Skickat",
-    "msgRead": "Läst"
+    "msgRead": "Läst",
+    "together": "Tillsammans",
+    "friendGroup": "Vän",
+    "clearChat": "Rensa chatten",
+    "clearAsk": "Rensa chatten?",
+    "clearNote": "Konversationen försvinner bara för dig",
+    "chatCleared": "Chatten rensad",
+    "holdHint": "Håll in en emoji – den flyger över skärmen"
   },
   "el": {
     "home": "Φίλοι",
@@ -2362,7 +2439,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Αποστολή φωτογραφίας…",
     "photoTooBig": "Η φωτογραφία είναι πολύ μεγάλη",
     "msgSent": "Εστάλη",
-    "msgRead": "Διαβάστηκε"
+    "msgRead": "Διαβάστηκε",
+    "together": "Μαζί",
+    "friendGroup": "Φίλος",
+    "clearChat": "Εκκαθάριση συνομιλίας",
+    "clearAsk": "Εκκαθάριση συνομιλίας;",
+    "clearNote": "Η συνομιλία θα χαθεί μόνο για εσάς",
+    "chatCleared": "Η συνομιλία εκκαθαρίστηκε",
+    "holdHint": "Κρατήστε πατημένο ένα emoji — θα πετάξει στην οθόνη"
   },
   "da": {
     "home": "Venner",
@@ -2559,7 +2643,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Sender fotoet…",
     "photoTooBig": "Fotoet er for stort",
     "msgSent": "Sendt",
-    "msgRead": "Læst"
+    "msgRead": "Læst",
+    "together": "Sammen",
+    "friendGroup": "Ven",
+    "clearChat": "Ryd chat",
+    "clearAsk": "Ryd chatten?",
+    "clearNote": "Samtalen forsvinder kun hos dig",
+    "chatCleared": "Chatten er ryddet",
+    "holdHint": "Hold en emoji nede – den flyver hen over skærmen"
   },
   "no": {
     "home": "Venner",
@@ -2756,7 +2847,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Sender bildet…",
     "photoTooBig": "Bildet er for stort",
     "msgSent": "Sendt",
-    "msgRead": "Lest"
+    "msgRead": "Lest",
+    "together": "Sammen",
+    "friendGroup": "Venn",
+    "clearChat": "Tøm chat",
+    "clearAsk": "Tømme chatten?",
+    "clearNote": "Samtalen forsvinner bare hos deg",
+    "chatCleared": "Chatten er tømt",
+    "holdHint": "Hold inne en emoji – den flyr over skjermen"
   },
   "fi": {
     "home": "Ystävät",
@@ -2953,7 +3051,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Lähetetään kuvaa…",
     "photoTooBig": "Kuva on liian suuri",
     "msgSent": "Lähetetty",
-    "msgRead": "Luettu"
+    "msgRead": "Luettu",
+    "together": "Yhdessä",
+    "friendGroup": "Ystävä",
+    "clearChat": "Tyhjennä keskustelu",
+    "clearAsk": "Tyhjennetäänkö keskustelu?",
+    "clearNote": "Viestit katoavat vain sinulta",
+    "chatCleared": "Keskustelu tyhjennetty",
+    "holdHint": "Pidä hymiötä painettuna – se lentää ruudun poikki"
   },
   "ja": {
     "home": "友だち",
@@ -3150,7 +3255,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "写真を送信中…",
     "photoTooBig": "写真が大きすぎます",
     "msgSent": "送信済み",
-    "msgRead": "既読"
+    "msgRead": "既読",
+    "together": "一緒に",
+    "friendGroup": "友だち",
+    "clearChat": "チャットを消去",
+    "clearAsk": "チャットを消去しますか？",
+    "clearNote": "メッセージはあなたの画面からだけ消えます",
+    "chatCleared": "チャットを消去しました",
+    "holdHint": "絵文字を長押しすると画面いっぱいに舞います"
   },
   "ko": {
     "home": "친구",
@@ -3347,7 +3459,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "사진 보내는 중…",
     "photoTooBig": "사진이 너무 커요",
     "msgSent": "전송됨",
-    "msgRead": "읽음"
+    "msgRead": "읽음",
+    "together": "함께",
+    "friendGroup": "친구",
+    "clearChat": "채팅 지우기",
+    "clearAsk": "채팅을 지울까요?",
+    "clearNote": "대화는 내 화면에서만 사라집니다",
+    "chatCleared": "채팅을 지웠습니다",
+    "holdHint": "이모티콘을 길게 누르면 화면 위로 날아가요"
   },
   "zh": {
     "home": "好友",
@@ -3544,7 +3663,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "正在傳送照片…",
     "photoTooBig": "照片太大了",
     "msgSent": "已傳送",
-    "msgRead": "已讀"
+    "msgRead": "已讀",
+    "together": "一起",
+    "friendGroup": "好友",
+    "clearChat": "清除聊天",
+    "clearAsk": "清除聊天？",
+    "clearNote": "聊天紀錄只會在你這邊消失",
+    "chatCleared": "聊天已清除",
+    "holdHint": "長按表情，它就會飛滿螢幕"
   },
   "th": {
     "home": "เพื่อน",
@@ -3741,7 +3867,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "กำลังส่งรูป…",
     "photoTooBig": "รูปใหญ่เกินไป",
     "msgSent": "ส่งแล้ว",
-    "msgRead": "อ่านแล้ว"
+    "msgRead": "อ่านแล้ว",
+    "together": "ด้วยกัน",
+    "friendGroup": "เพื่อน",
+    "clearChat": "ล้างแชท",
+    "clearAsk": "ล้างแชทไหม",
+    "clearNote": "ข้อความจะหายไปเฉพาะฝั่งคุณ",
+    "chatCleared": "ล้างแชทแล้ว",
+    "holdHint": "กดค้างที่อีโมจิ แล้วมันจะลอยไปทั่วหน้าจอ"
   },
   "ar": {
     "home": "الأصدقاء",
@@ -3938,7 +4071,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "جارٍ إرسال الصورة…",
     "photoTooBig": "الصورة كبيرة جدًا",
     "msgSent": "أُرسلت",
-    "msgRead": "قُرئت"
+    "msgRead": "قُرئت",
+    "together": "معًا",
+    "friendGroup": "صديق",
+    "clearChat": "مسح المحادثة",
+    "clearAsk": "مسح المحادثة؟",
+    "clearNote": "ستختفي المحادثة لديك فقط",
+    "chatCleared": "تم مسح المحادثة",
+    "holdHint": "اضغط مطولًا على الرمز التعبيري فيطير عبر الشاشة"
   },
   "ind": {
     "home": "Teman",
@@ -4135,7 +4275,14 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Mengirim foto…",
     "photoTooBig": "Fotonya terlalu besar",
     "msgSent": "Terkirim",
-    "msgRead": "Dibaca"
+    "msgRead": "Dibaca",
+    "together": "Bersama",
+    "friendGroup": "Teman",
+    "clearChat": "Hapus obrolan",
+    "clearAsk": "Hapus obrolan?",
+    "clearNote": "Percakapan hanya hilang di perangkatmu",
+    "chatCleared": "Obrolan dihapus",
+    "holdHint": "Tahan emoji — ia akan terbang di layar"
   },
   "vi": {
     "home": "Bạn bè",
@@ -4332,6 +4479,13 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "photoSending": "Đang gửi ảnh…",
     "photoTooBig": "Ảnh quá lớn",
     "msgSent": "Đã gửi",
-    "msgRead": "Đã xem"
+    "msgRead": "Đã xem",
+    "together": "Cùng nhau",
+    "friendGroup": "Bạn bè",
+    "clearChat": "Xóa trò chuyện",
+    "clearAsk": "Xóa cuộc trò chuyện?",
+    "clearNote": "Cuộc trò chuyện chỉ biến mất ở phía bạn",
+    "chatCleared": "Đã xóa trò chuyện",
+    "holdHint": "Nhấn giữ biểu tượng cảm xúc — nó sẽ bay khắp màn hình"
   }
 };

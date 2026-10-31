@@ -1543,7 +1543,7 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 .admin-screen { width:min(640px,100%); }
 .admin-screen-close { position:absolute; top:max(14px, env(safe-area-inset-top)); right:16px; z-index:5; }
 .admin-screen .admin-panel { margin:0; padding:0; border:0; background:none; box-shadow:none; }
-.admin-tabs { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin:14px 0 16px; padding:6px; border:1px solid var(--ui-border); border-radius:16px; background:var(--ui-panel); }
+.admin-tabs { position:relative; z-index:auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin:14px 0 16px; padding:6px; border:1px solid var(--ui-border); border-radius:16px; background:var(--ui-panel); }
 .admin-tabs button { min-height:40px; border:0; border-radius:14px; color:var(--ui-muted); background:none; font-size:13px; font-weight:800; }
 .admin-tabs button[aria-selected="true"] { color:var(--cream); background:var(--ui-accent-deep); }
 #adminPanel[data-tab="accounts"] [data-admin-pane]:not([data-admin-pane="accounts"]),
@@ -1555,6 +1555,15 @@ html[dir="rtl"] #previousLetter { scale: -1 1; }
 #adminPanel[data-tab="suspects"] [data-admin-pane]:not([data-admin-pane="suspects"]),
 #adminPanel[data-tab="log"] [data-admin-pane]:not([data-admin-pane="log"]),
 #adminPanel[data-tab="stats"] [data-admin-pane]:not([data-admin-pane="stats"]) { display:none !important; }
+/* «Владелец · админ»: золотая карточка вместо обычной строки и без кнопок VIP / блока / сброса */
+.admin-owner-card, .admin-account-card.is-owner { display:flex; align-items:flex-start; gap:14px; margin:0 0 16px; padding:16px; border:1px solid #d7aa3e; border-radius:18px; color:#4a3000; background:linear-gradient(145deg,#fff6cc,#f3d27a 55%,#dca93a); box-shadow:0 10px 26px rgba(160,110,20,.22), inset 0 1px 0 rgba(255,255,255,.6); }
+.admin-owner-crest { display:grid; place-items:center; flex:0 0 42px; width:42px; height:42px; border-radius:14px; color:#fff7dc; background:linear-gradient(145deg,#b8832a,#7a4f0c); box-shadow:0 6px 16px rgba(122,79,12,.35); }
+.admin-owner-copy { display:grid; gap:4px; min-width:0; }
+.admin-owner-role { margin:0; color:#7a4f0c; font-size:11px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+.admin-owner-role span { letter-spacing:.04em; text-transform:none; }
+.admin-owner-copy h4 { margin:0; color:#3a2600; font-size:16px; overflow-wrap:anywhere; }
+.admin-owner-access { color:#4a3000; font-size:14px; font-weight:800; }
+.admin-owner-copy small { color:#6b4a10; font-size:12px; line-height:1.45; }
 .admin-account-card { margin:0 0 16px; padding:16px; border:1px solid var(--ui-accent); border-radius:18px; background:var(--ui-surface); scroll-margin-top:72px; }
 .admin-account-card header h4 { margin:0; color:var(--ui-ink); font-size:16px; overflow-wrap:anywhere; }
 .admin-card-id { margin-top:4px; padding:0; border:0; color:var(--ui-muted); background:none; font-size:11px; font-weight:700; text-align:start; overflow-wrap:anywhere; }

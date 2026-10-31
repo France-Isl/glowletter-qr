@@ -422,6 +422,7 @@ body.glr-open { overflow: hidden; }
 .glr-admin-card dt { color: var(--ui-muted, #666); }
 .glr-admin-card dd { margin: 0; font-weight: 700; text-align: right; }
 .glr-admin-warn { margin: 10px 0 0; padding: 8px 10px; border-radius: 10px; background: #fff1d6; color: #7a4a00; font-weight: 700; }
+.glr-admin-owner { margin: 12px 0 0; padding: 10px 12px; border-radius: 12px; border: 1px solid #d7aa3e; background: linear-gradient(145deg, #fff3b5, #f0cf73); color: #5a3b00; font-size: 13px; font-weight: 800; }
 .glr-admin-resets { font-size: 13px; color: var(--ui-muted, #666); }
 .glr-admin-reason { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
 .glr-admin-reason input { min-height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--ui-border, #ccc); font: inherit; }

@@ -1303,6 +1303,8 @@
   }
 
   function presentNextUnreadVipNotification() {
+    // The owner/admin always has full access: no «gift / access opened» popup.
+    if (cloudAccount?.is_admin === true) return;
     const next = unreadVipNotifications().find(notification => !presentedVipNotificationIds.has(notification.id));
     if (!next) return;
     activeVipNotificationId = next.id;
@@ -1495,8 +1497,9 @@
   function renderAdminResult() {
     const result = $("#adminResult");
     if (!result) return;
-    result.hidden = !adminAccountResult;
-    if (!adminAccountResult) return;
+    // The owner/admin account never gets VIP / revoke controls.
+    result.hidden = !adminAccountResult || adminAccountResult.is_admin === true;
+    if (result.hidden) return;
     setText("#adminResultId", adminAccountResult.support_id);
     setText("#adminResultPlan", accountPlanText(adminAccountResult));
   }
@@ -1608,6 +1611,13 @@
         return;
       }
       $("#adminSupportId").value = adminAccountResult.support_id;
+      if (adminAccountResult.is_admin) {
+        adminDetailsRequest += 1;
+        renderAdminAccountCard({ is_admin: true, support_id: adminAccountResult.support_id, email: email || "" });
+        setAdminStatus(adminCardText("ownerFound"));
+        renderAdminResult();
+        return;
+      }
       loadAdminAccountDetails(adminAccountResult.support_id, { reveal: true });
       setAdminStatus();
       renderAdminResult();
@@ -1620,7 +1630,7 @@
   }
 
   async function grantAdminVip() {
-    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult) return;
+    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult || adminAccountResult.is_admin) return;
     const days = Number($("#adminVipDays").value);
     if (!Number.isInteger(days) || days < 1 || days > 365) {
       setAdminStatus(t("adminError"), "error");
@@ -1655,14 +1665,14 @@
       if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
     } catch (error) {
       console.info("Admin VIP grant failed", error);
-      setAdminStatus(t("adminError"), "error");
+      setAdminStatus(adminActionErrorText(error), "error");
     } finally {
       setAdminBusy(false);
     }
   }
 
   async function grantAdminForever() {
-    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult) return;
+    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult || adminAccountResult.is_admin) return;
     const reason = VIP_NOTICE_REASONS.has($("#adminVipReason").value) ? $("#adminVipReason").value : "gift";
     const message = normalizeAdminVipMessage($("#adminVipMessage").value);
     if (message.length > VIP_NOTICE_MESSAGE_MAX || containsForbidden(message) || containsReligiousAuthorityClaim(message)) {
@@ -1690,14 +1700,14 @@
       if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
     } catch (error) {
       console.info("Admin forever grant failed", error);
-      setAdminStatus(t("adminError"), "error");
+      setAdminStatus(adminActionErrorText(error), "error");
     } finally {
       setAdminBusy(false);
     }
   }
 
   async function revokeAdminVip() {
-    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult) return;
+    if (!cloudClient || cloudAccount?.is_admin !== true || !adminAccountResult || adminAccountResult.is_admin) return;
     setAdminBusy(true);
     setAdminStatus(t("adminSearching"));
     try {
@@ -1714,7 +1724,7 @@
       if (updated.support_id === cloudAccount?.support_id) await loadCloudAccount(cloudUser);
     } catch (error) {
       console.info("Admin VIP revoke failed", error);
-      setAdminStatus(t("adminError"), "error");
+      setAdminStatus(adminActionErrorText(error), "error");
     } finally {
       setAdminBusy(false);
     }
@@ -1723,8 +1733,8 @@
   // Карточка аккаунта: доступ и сколько осталось, подписка Google Play, даты,
   // язык и активность. Тексты только ru/en — экран видит один владелец.
   const ADMIN_CARD_TEXT = {
-    ru: { forever: "Без срока", vip: "VIP до {date}", left: "осталось {time}", free: "Бесплатный доступ · 10 писем", play: "Подписка Google Play", monthly: "на месяц", yearly: "на год", until: "до {date}", renew: "продлевается автоматически", noRenew: "автопродление выключено", test: "тестовая покупка", expired: "закончилась {date}", admin: "Администратор", created: "Создан", lastSignIn: "Последний вход", never: "не входил", via: "Вход через", language: "Язык", letters: "Писем", links: "QR-ссылок", replies: "Ответов", reading: "Сейчас на письме", history: "История доступа", grant: "выдан VIP на {days} дн.", foreverGrant: "выдан доступ без срока", revoke: "VIP отозван", loading: "Загружаю карточку…", failed: "Не удалось загрузить карточку", copy: "скопировать ID", copied: "ID скопирован", days: "дн.", hours: "ч", minutes: "мин" },
-    en: { forever: "No end date", vip: "VIP until {date}", left: "{time} left", free: "Free access · 10 letters", play: "Google Play subscription", monthly: "monthly", yearly: "yearly", until: "until {date}", renew: "renews automatically", noRenew: "auto-renew off", test: "test purchase", expired: "ended {date}", admin: "Administrator", created: "Created", lastSignIn: "Last sign-in", never: "never", via: "Signed in with", language: "Language", letters: "Letters", links: "QR links", replies: "Replies", reading: "Reading letter", history: "Access history", grant: "VIP granted for {days} d", foreverGrant: "access with no end date granted", revoke: "VIP revoked", loading: "Loading the card…", failed: "The card could not be loaded", copy: "copy ID", copied: "ID copied", days: "d", hours: "h", minutes: "min" }
+    ru: { forever: "Без срока", vip: "VIP до {date}", left: "осталось {time}", free: "Бесплатный доступ · 10 писем", play: "Подписка Google Play", monthly: "на месяц", yearly: "на год", until: "до {date}", renew: "продлевается автоматически", noRenew: "автопродление выключено", test: "тестовая покупка", expired: "закончилась {date}", admin: "Администратор", created: "Создан", lastSignIn: "Последний вход", never: "не входил", via: "Вход через", language: "Язык", letters: "Писем", links: "QR-ссылок", replies: "Ответов", reading: "Сейчас на письме", history: "История доступа", grant: "выдан VIP на {days} дн.", foreverGrant: "выдан доступ без срока", revoke: "VIP отозван", loading: "Загружаю карточку…", failed: "Не удалось загрузить карточку", copy: "скопировать ID", copied: "ID скопирован", days: "дн.", hours: "ч", minutes: "мин", ownerTitle: "Владелец · админ", ownerAccess: "Полный доступ всегда — как у владельца", ownerNote: "VIP, срок, блокировка и сбросы к этому аккаунту не применяются — продлевать ничего не нужно.", ownerYou: "Это вы", ownerFound: "Это аккаунт владельца — управлять им не нужно.", ownerProtected: "Аккаунт владельца защищён: его нельзя менять через админ-панель." },
+    en: { forever: "No end date", vip: "VIP until {date}", left: "{time} left", free: "Free access · 10 letters", play: "Google Play subscription", monthly: "monthly", yearly: "yearly", until: "until {date}", renew: "renews automatically", noRenew: "auto-renew off", test: "test purchase", expired: "ended {date}", admin: "Administrator", created: "Created", lastSignIn: "Last sign-in", never: "never", via: "Signed in with", language: "Language", letters: "Letters", links: "QR links", replies: "Replies", reading: "Reading letter", history: "Access history", grant: "VIP granted for {days} d", foreverGrant: "access with no end date granted", revoke: "VIP revoked", loading: "Loading the card…", failed: "The card could not be loaded", copy: "copy ID", copied: "ID copied", days: "d", hours: "h", minutes: "min", ownerTitle: "Owner · admin", ownerAccess: "Full access always — as the owner", ownerNote: "VIP, end dates, blocking and resets do not apply to this account — nothing to renew.", ownerYou: "This is you", ownerFound: "This is the owner account — there is nothing to manage.", ownerProtected: "The owner account is protected and cannot be changed from the admin panel." }
   };
   const adminCardText = key => (ADMIN_CARD_TEXT[lang] || ADMIN_CARD_TEXT.en)[key] || ADMIN_CARD_TEXT.en[key] || key;
   let adminDetailsRequest = 0;
@@ -1744,10 +1754,43 @@
     return adminCardText("left").replace("{time}", parts.join(" "));
   }
 
+  function adminActionErrorText(error) {
+    return /admin_target/u.test(String(error?.message || "")) ? adminCardText("ownerProtected") : t("adminError");
+  }
+
+  // Gold «Владелец · админ» card: the owner has full access by the admin rule,
+  // so there are no grant / revoke / block / reset controls for it.
+  function adminOwnerCardHtml({ support_id: supportId = "", email = "" } = {}) {
+    const own = Boolean(supportId) && supportId === cloudAccount?.support_id;
+    const title = own ? (cloudUser?.email || email || supportId) : (email || supportId);
+    return `<span class="admin-owner-crest" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#ic-shield"/></svg></span>
+      <div class="admin-owner-copy">
+        <p class="admin-owner-role">${escapeHtml(adminCardText("ownerTitle"))}${own ? ` · <span>${escapeHtml(adminCardText("ownerYou"))}</span>` : ""}</p>
+        <h4>${escapeHtml(title)}</h4>
+        <strong class="admin-owner-access">${escapeHtml(adminCardText("ownerAccess"))}</strong>
+        <small>${escapeHtml(adminCardText("ownerNote"))}</small>
+      </div>`;
+  }
+
+  function renderAdminOwnerCard() {
+    const card = $("#adminOwnerCard");
+    if (!card) return;
+    const show = cloudAccount?.is_admin === true && Boolean(cloudAccount.support_id);
+    card.hidden = !show;
+    card.innerHTML = show ? adminOwnerCardHtml({ support_id: cloudAccount.support_id }) : "";
+  }
+
   function renderAdminAccountCard(details) {
     const card = $("#adminAccountCard");
     if (!card) return;
+    card.classList.remove("is-owner");
     if (!details) { card.hidden = true; card.innerHTML = ""; return; }
+    if (details.is_admin) {
+      card.classList.add("is-owner");
+      card.innerHTML = adminOwnerCardHtml(details);
+      card.hidden = false;
+      return;
+    }
     const access = [];
     if (details.is_admin) access.push(`<span class="admin-chip is-admin">${escapeHtml(adminCardText("admin"))}</span>`);
     if (details.premium_forever) access.push(`<span class="admin-chip is-forever">${escapeHtml(adminCardText("forever"))}</span>`);
@@ -1851,6 +1894,7 @@
     if (cloudAccount?.is_admin !== true) return;
     closePanel(layers.settings);
     openPanel(layers.admin);
+    renderAdminOwnerCard();
     if (!adminOverviewLoaded) loadAdminOverview();
   }
 
@@ -1865,6 +1909,7 @@
   }
 
   function renderAdminOverview(overview = adminOverviewData) {
+    renderAdminOwnerCard();
     const box = $("#adminOverview");
     if (!box) return;
     box.hidden = !overview;
@@ -1873,7 +1918,8 @@
     setText("#adminStatVip", String(overview.vip_active ?? 0));
     setText("#adminStatForever", String(overview.forever ?? 0));
     setText("#adminStatNew", String(overview.new_week ?? 0));
-    const rows = Array.isArray(overview.recent) ? overview.recent : [];
+    // Admin accounts are shown in the gold owner card, not among ordinary people.
+    const rows = (Array.isArray(overview.recent) ? overview.recent : []).filter(row => row?.is_admin !== true);
     const items = rows.map(row => {
       const account = normalizeCloudAccount(row);
       if (!account) return "";
@@ -2089,6 +2135,7 @@
     if (adminPanel.hidden) {
       adminAccountResult = null;
       renderAdminAccountCard(null);
+      renderAdminOwnerCard();
       adminCatalogLoaded = false;
       adminCatalogRows = [];
       renderAdminCatalogList();
@@ -6261,7 +6308,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=108", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=109", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {
