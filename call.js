@@ -1332,22 +1332,33 @@
     Object.assign(meter, { context: null, raf: 0, last: 0 });
   }
 
-  // ——— Звуки (тихие короткие сигналы) ———
+  // ——— Звуки звонка ———
+  // Владелец 31.10: «рингтон очень слабый». Гудки — как у телефона (425 Гц), входящий звонок —
+  // три звонкие ноты; компрессор держит громкость высокой без хрипа на динамике телефона.
 
   function tone(pattern) {
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       const context = call.ring?.context || new AudioContext();
-      const beep = () => {
+      context.resume?.().catch?.(() => {});
+      const out = context.createDynamicsCompressor();
+      out.connect(context.destination);
+      const note = (frequency, at, length) => {
         const oscillator = context.createOscillator();
         const gain = context.createGain();
-        oscillator.frequency.value = pattern.frequency;
-        gain.gain.setValueAtTime(0.0001, context.currentTime);
-        gain.gain.exponentialRampToValueAtTime(pattern.volume, context.currentTime + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + pattern.length);
-        oscillator.connect(gain).connect(context.destination);
-        oscillator.start();
-        oscillator.stop(context.currentTime + pattern.length + 0.05);
+        oscillator.type = pattern.wave || "sine";
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(0.0001, at);
+        gain.gain.exponentialRampToValueAtTime(pattern.volume, at + 0.03);
+        gain.gain.setValueAtTime(pattern.volume, at + Math.max(0.04, length - 0.08));
+        gain.gain.exponentialRampToValueAtTime(0.0001, at + length);
+        oscillator.connect(gain).connect(out);
+        oscillator.start(at);
+        oscillator.stop(at + length + 0.05);
+      };
+      const beep = () => {
+        const now = context.currentTime + 0.02;
+        for (const [frequency, offset, length] of pattern.notes) note(frequency, now + offset, length);
         if (pattern.vibrate) navigator.vibrate?.(pattern.vibrate);
       };
       beep();
@@ -1355,8 +1366,8 @@
     } catch {}
   }
 
-  const startRingback = () => tone({ frequency: 440, volume: 0.06, length: 1.1, every: 3000 });
-  const startRingtone = () => tone({ frequency: 660, volume: 0.12, length: 0.7, every: 1600, vibrate: [300, 200, 300] });
+  const startRingback = () => tone({ notes: [[425, 0, 1.1]], volume: 0.4, every: 3500 });
+  const startRingtone = () => tone({ notes: [[784, 0, 0.2], [988, 0.24, 0.2], [1319, 0.48, 0.42], [784, 1.1, 0.2], [988, 1.34, 0.2], [1319, 1.58, 0.42]], wave: "triangle", volume: 0.7, every: 3200, vibrate: [400, 250, 400, 250, 400] });
 
   function stopRing() {
     if (!call.ring) return;
