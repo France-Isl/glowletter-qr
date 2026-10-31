@@ -928,7 +928,8 @@
     root.hidden = true;
     root.setAttribute("aria-live", "polite");
     // Видео живёт в отдельном слое, который не перерисовывается вместе с кнопками.
-    root.innerHTML = '<div class="glk-stage" hidden><div class="glk-tiles"></div><div class="glk-self" hidden><video autoplay playsinline muted></video></div></div><div class="glk-ui"></div>';
+    // Фон — настоящая фотография (домик, Тёпа, фонарики, луна); тоже не перерисовывается.
+    root.innerHTML = '<div class="glk-bg" aria-hidden="true"><img src="assets/scenes/call-cabin-moon.webp" alt="" decoding="async"><i class="glk-glow is-a"></i><i class="glk-glow is-b"></i><i class="glk-glow is-c"></i><i class="glk-glow is-d"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i></div><div class="glk-stage" hidden><div class="glk-tiles"></div><div class="glk-self" hidden><video autoplay playsinline muted></video></div></div><div class="glk-ui"></div>';
     call.stage = root.querySelector(".glk-stage");
     call.self = root.querySelector(".glk-self");
     call.ui = root.querySelector(".glk-ui");
@@ -1065,7 +1066,6 @@
     const wave = `<span class="glk-wave" aria-hidden="true">${"<i></i>".repeat(17)}</span>`;
     const line = call.phase === "connected" && !call.note ? `<span class="glk-time">${elapsed()}</span>` : `${escapeHtml(status)} <span class="glk-time">${call.phase === "connected" ? elapsed() : ""}</span>`;
     call.ui.innerHTML = `
-      <div class="glk-bg" aria-hidden="true"><img src="assets/scenes/call-cabin-moon.webp" alt="" decoding="async"><i class="glk-glow is-a"></i><i class="glk-glow is-b"></i><i class="glk-glow is-c"></i><i class="glk-glow is-d"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i><i class="glk-spark"></i></div>
       <div class="glk-brand" aria-hidden="true"><b>GlowLetter<svg viewBox="0 0 24 24"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 6.5-6.5l1.2 1.2 1.2-1.2A4.6 4.6 0 0 1 19.7 13Z"/></svg></b>${tagline ? `<small>${escapeHtml(tagline)}</small>` : ""}</div>
       <div class="glk-card" role="dialog" aria-modal="false" aria-label="${escapeHtml(call.phase === "incoming" ? tr("ringing", { name: call.friend?.name || "" }) : title)}">
         ${call.phase !== "connected" ? "" : `<button class="glk-add" type="button" data-call="add" ${full ? "disabled" : ""} aria-label="${escapeHtml(full ? tr("full") : tr("addTitle"))}"><span class="glk-add-ic">${ICON.add}</span><span>${escapeHtml(tr("add"))}</span></button>`}
