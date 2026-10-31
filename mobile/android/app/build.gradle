@@ -122,6 +122,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        resValues = true
     }
 
     compileOptions {
@@ -207,7 +208,24 @@ def syncWebAssets = tasks.register("syncWebAssets", Sync) {
 android.sourceSets.main.assets.srcDir(generatedWebAssets.get().asFile)
 tasks.named("preBuild").configure { dependsOn(syncWebAssets) }
 
+// Firebase (звонок при закрытом приложении) без плагина google-services: те же строки ресурсов,
+// что создал бы он, читаем из google-services.json. Файл лежит только на компьютере владельца
+// (в git его нет — сайт публичный); без него приложение собирается, но звонок будит только открытое.
+def googleServicesFile = file("google-services.json")
+if (googleServicesFile.exists()) {
+    def googleServices = new groovy.json.JsonSlurper().parse(googleServicesFile)
+    def firebaseClient = googleServices.client.find { it.client_info.android_client_info.package_name == "com.franceisl.glowletternext" }
+    if (firebaseClient != null) {
+        android.defaultConfig.resValue "string", "google_app_id", firebaseClient.client_info.mobilesdk_app_id
+        android.defaultConfig.resValue "string", "gcm_defaultSenderId", googleServices.project_info.project_number
+        android.defaultConfig.resValue "string", "google_api_key", firebaseClient.api_key[0].current_key
+        android.defaultConfig.resValue "string", "project_id", googleServices.project_info.project_id
+    }
+}
+
 dependencies {
+    implementation platform("com.google.firebase:firebase-bom:35.1.0")
+    implementation "com.google.firebase:firebase-messaging"
     implementation "androidx.activity:activity:1.9.0"
     implementation "androidx.core:core:1.13.1"
     implementation "androidx.work:work-runtime:2.9.1"

@@ -111,6 +111,7 @@ public final class MainActivity extends ComponentActivity {
         initializeSpeechEngine();
         billingManager.start();
         captureAuthCallback(getIntent());
+        captureCallIntent(getIntent());
         loadSelectedWebBundle();
     }
 
@@ -1025,6 +1026,7 @@ public final class MainActivity extends ComponentActivity {
     }
 
     private void dispatchPendingAuthCallback() {
+        dispatchPendingCall();
         WebView target = webView;
         String callbackUrl = pendingAuthCallbackUrl;
         if (target == null
@@ -1046,6 +1048,63 @@ public final class MainActivity extends ComponentActivity {
         target.evaluateJavascript(script, null);
     }
 
+    // Звонок из уведомления (приложение было закрыто): «Ответить» или нажатие на само уведомление.
+    // Страница получает его, когда загрузится: window.__nurPendingCall и событие nur-call-push.
+    private String pendingCallJson;
+
+    private void captureCallIntent(Intent intent) {
+        if (intent == null) return;
+        String action = intent.getAction();
+        boolean answer = CallPush.ACTION_ANSWER.equals(action);
+        if (!answer && !CallPush.ACTION_OPEN.equals(action)) return;
+        String room = intent.getStringExtra("room");
+        CallPush.stop(this, room);
+        try {
+            JSONObject detail = new JSONObject();
+            detail.put("action", answer ? "answer" : "open");
+            detail.put("room", room == null ? "" : room);
+            detail.put("from", String.valueOf(intent.getStringExtra("from")));
+            detail.put("name", String.valueOf(intent.getStringExtra("name")));
+            detail.put("at", intent.getLongExtra("at", System.currentTimeMillis()));
+            pendingCallJson = detail.toString();
+        } catch (Exception ignored) {
+            return;
+        }
+        // Звонок с заблокированного экрана: показываемся поверх блокировки, пока идёт разговор.
+        if (Build.VERSION.SDK_INT >= 27) {
+            setShowWhenLocked(true);
+            setTurnScreenOn(true);
+        }
+        intent.setAction(Intent.ACTION_MAIN);
+        dispatchPendingCall();
+    }
+
+    private void dispatchPendingCall() {
+        WebView target = webView;
+        if (pendingCallJson == null || target == null || !trustedMainDocumentReady || !isTrustedAppMainDocumentUrl(target.getUrl())) return;
+        String script = "(function(){var d=" + pendingCallJson + ";window.__nurPendingCall=d;"
+                + "window.dispatchEvent(new CustomEvent('nur-call-push',{detail:d}));})();";
+        pendingCallJson = null;
+        target.evaluateJavascript(script, null);
+    }
+
+    void callShowWhenLocked(boolean on) {
+        if (Build.VERSION.SDK_INT >= 27) {
+            setShowWhenLocked(on);
+            setTurnScreenOn(on);
+        }
+    }
+
+    // Новый адрес Firebase — страница записывает его на сервер (glowletter_call_device_set).
+    void callPushToken(String token) {
+        WebView target = webView;
+        if (target == null || !trustedMainDocumentReady || !isTrustedAppMainDocumentUrl(target.getUrl())) return;
+        String script = "(function(){var t=" + JSONObject.quote(token) + ";"
+                + "if(window.GlowLetterCall&&typeof window.GlowLetterCall.onPushToken==='function'){window.GlowLetterCall.onPushToken(t);}"
+                + "})();";
+        target.evaluateJavascript(script, null);
+    }
+
     // Звонок: куда сейчас идёт звук (speaker / earpiece / headset / bluetooth) — для кнопки «Динамик» в call.js.
     void callAudioRoute(String route) {
         WebView target = webView;
@@ -1061,6 +1120,7 @@ public final class MainActivity extends ComponentActivity {
         super.onNewIntent(intent);
         setIntent(intent);
         captureAuthCallback(intent);
+        captureCallIntent(intent);
     }
 
     @Override

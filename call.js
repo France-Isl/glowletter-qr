@@ -201,6 +201,7 @@
     if (!(await joinChannel())) return false;
     try {
       await window.GlowLetterFriends?.sendCallInvite?.(friend.user_id, room);
+      wakePhone(friend.user_id, room);
     } catch (error) {
       console.warn("call invite failed", error);
       end(tr("failed"));
@@ -209,7 +210,7 @@
     markInvited(friend.user_id);
     startRingback();
     call.ringTimer = setTimeout(() => {
-      if (call.phase === "outgoing" && !othersIds().length) { signal("cancel", {}); end(tr("missed", { name: call.friend.name })); }
+      if (call.phase === "outgoing" && !othersIds().length) { signal("cancel", {}); silencePhones(); end(tr("missed", { name: call.friend.name })); }
     }, RING_MS);
     return true;
   }
@@ -248,6 +249,7 @@
     render();
     try {
       await window.GlowLetterFriends?.sendCallInvite?.(id, call.room);
+      wakePhone(id, call.room);
       toast(tr("inviteSent", { name: friend.name || "" }));
     } catch (error) {
       console.warn("call invite failed", error);
@@ -312,7 +314,7 @@
 
   function hangup(message = tr("ended")) {
     if (call.phase === "idle") return;
-    if (call.phase === "outgoing" && !othersIds().length) signal("cancel", {});
+    if (call.phase === "outgoing" && !othersIds().length) { signal("cancel", {}); silencePhones(); }
     else if (call.phase === "incoming") signal("decline", {}, call.friend.user_id);
     else signal("hangup", {});
     end(message);
@@ -321,6 +323,7 @@
   // Первый ответивший — звонящий перестаёт гудеть и начинает соединяться.
   function beginTalking() {
     if (call.phase !== "outgoing") return;
+    silencePhones();
     stopRing();
     clearTimeout(call.ringTimer);
     call.phase = "connecting";
@@ -847,6 +850,68 @@
     }
     if (!mine) window.GlowLetterOnline?.burst?.("🧸", { small: true });
   }
+
+  // ——— Звонок, когда приложение закрыто (владелец 01.11: «как в WhatsApp») ———
+  // Android 2.4.29+ даёт адрес Firebase (NurCall.pushToken), страница записывает его на сервер.
+  // Позвали друга — функция call-push будит его телефон; передумали или он ответил — замолкает.
+  const PUSH_URL = `${(window.NUR_APP_CONFIG || {}).supabaseUrl || ""}/functions/v1/call-push`;
+  const PUSH_SAVED = "glowletterCallPushSaved";
+  const PUSH_ASKED = "glowletterCallPushAsked";
+  const push = { token: "", saving: false };
+
+  async function savePushToken(fresh) {
+    const bridge = native();
+    if (typeof bridge?.pushToken !== "function" || push.saving) return;
+    const token = String(fresh || bridge.pushToken() || "");
+    if (!/^[A-Za-z0-9_:.-]{20,4096}$/u.test(token) || !userId() || !client()?.rpc) return;
+    push.token = token;
+    try { bridge.pushTexts?.(JSON.stringify({ incoming: tr("incoming"), answer: tr("accept"), decline: tr("decline"), channel: tr("callBubble") })); } catch {}
+    try {
+      if (!localStorage.getItem(PUSH_ASKED)) { localStorage.setItem(PUSH_ASKED, "1"); bridge.askNotify?.(); }
+    } catch {}
+    const mark = `${userId()}|${token}|${new Date().toISOString().slice(0, 10)}`;
+    try { if (localStorage.getItem(PUSH_SAVED) === mark) return; } catch {}
+    push.saving = true;
+    try {
+      const { error } = await client().rpc("glowletter_call_device_set", { p_token: token });
+      if (!error) { try { localStorage.setItem(PUSH_SAVED, mark); } catch {} }
+    } catch {} finally { push.saving = false; }
+  }
+
+  function wakePhone(to, room, end = false) {
+    const token = cloud()?.getSession?.()?.access_token;
+    if (!token || !to || !PUSH_URL.startsWith("https://")) return;
+    fetch(PUSH_URL, {
+      method: "POST", cache: "no-store", credentials: "omit", keepalive: true,
+      headers: { "Content-Type": "application/json", apikey: window.NUR_APP_CONFIG?.supabasePublishableKey || "", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ room, to, end })
+    }).catch(() => {});
+  }
+
+  // Звонящий передумал или разговор начался — телефоны позванных больше не звенят.
+  function silencePhones() {
+    if (!call.caller || !call.room) return;
+    for (const id of new Set([call.friend?.user_id, ...call.invited.keys()])) if (id) wakePhone(id, call.room, true);
+  }
+
+  // Нажали «Ответить» (или на уведомление): ждём вход в аккаунт, показываем звонок и, если надо, отвечаем.
+  async function onPushCall(detail) {
+    window.__nurPendingCall = null;
+    const room = String(detail?.room || "");
+    const from = String(detail?.from || "");
+    if (!ROOM.test(room) || !ROOM.test(from)) return;
+    for (let step = 0; step < 40 && !(userId() && client()); step += 1) await new Promise(done => setTimeout(done, 500));
+    if (!userId() || !client()) return;
+    const at = new Date(Number(detail.at) || Date.now()).toISOString();
+    incoming({ user_id: from, name: String(detail.name || "").slice(0, 36) }, room, at);
+    if (detail.action === "answer" && call.phase === "incoming" && call.room === room) accept(false);
+  }
+
+  addEventListener("nur-call-push", event => onPushCall(event.detail));
+  if (window.__nurPendingCall) onPushCall(window.__nurPendingCall);
+  // Адрес записываем, когда человек вошёл; раз в день повторяем (вдруг вошёл другой аккаунт).
+  for (const delay of [4000, 20000, 90000]) setTimeout(() => savePushToken(), delay);
+  setInterval(() => savePushToken(), 10 * 60 * 1000);
 
   // ——— Куда идёт звук (владелец 01.11: «не хватает динамика») ———
   // Кнопка есть только в приложении: Android сам переключает громкую связь, динамик у уха и наушники.
@@ -1567,6 +1632,8 @@
     supported,
     // Android (CallBridge): куда сейчас идёт звук — speaker, earpiece, headset или bluetooth.
     onAudioRoute: route => onAudioRoute(route),
+    // Android: новый адрес Firebase для звонков при закрытом приложении.
+    onPushToken: token => savePushToken(token),
     text: (key, values) => tr(key, values)
   });
 })();

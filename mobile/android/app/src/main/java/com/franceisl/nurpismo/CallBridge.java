@@ -79,6 +79,25 @@ public final class CallBridge {
         return route;
     }
 
+    /** Адрес Firebase для звонков при закрытом приложении ("" — Firebase в этой сборке нет). */
+    @JavascriptInterface
+    public String pushToken() {
+        return CallPush.token(activity.getApplicationContext(),
+                token -> activity.runOnUiThread(() -> activity.callPushToken(token)));
+    }
+
+    /** Тексты входящего звонка на языке приложения: incoming, answer, decline, channel. */
+    @JavascriptInterface
+    public void pushTexts(String texts) {
+        CallPush.saveTexts(activity.getApplicationContext(), texts);
+    }
+
+    /** Без разрешения на уведомления (Android 13+) телефон не зазвонит, когда приложение закрыто. */
+    @JavascriptInterface
+    public void askNotify() {
+        activity.runOnUiThread(activity::requestNotificationPermission);
+    }
+
     private AudioManager audio() {
         return (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
     }
@@ -100,6 +119,7 @@ public final class CallBridge {
                 route();
             } else {
                 listen(audio, false);
+                activity.callShowWhenLocked(false);
                 if (Build.VERSION.SDK_INT >= 31) audio.clearCommunicationDevice();
                 audio.stopBluetoothSco();
                 audio.setBluetoothScoOn(false);

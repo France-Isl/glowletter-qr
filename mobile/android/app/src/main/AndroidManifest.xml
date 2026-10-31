@@ -44,6 +44,17 @@
                     android:scheme="${applicationId}" />
             </intent-filter>
         </activity>
+        <!-- Звонок, когда приложение закрыто: Firebase будит телефон, «Отклонить» в уведомлении. -->
+        <service
+            android:name=".CallPush"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <receiver
+            android:name=".CallPush$Decline"
+            android:exported="false" />
         <!-- «Фото на экран друга»: виджет с последним фото от друга. -->
         <receiver
             android:name=".PhotoWidget"

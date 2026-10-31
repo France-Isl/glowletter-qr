@@ -1799,7 +1799,7 @@ body:not(.is-reading) #homeScreen .home-smart-actions :is(.home-poem-link, .home
 
 /* «Быстрые действия» */
 .home-quick { display: none; }
-body:not(.is-reading) #homeScreen .home-quick { display: block; padding: 14px 12px 12px; border: 1px solid rgba(240, 200, 130, .45); border-radius: 24px; background: linear-gradient(180deg, rgba(74, 42, 26, .62), rgba(36, 20, 14, .78)); box-shadow: 0 10px 26px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 230, 190, .12); animation: home-rise .7s .2s cubic-bezier(.16, 1, .3, 1) both; }
+body:not(.is-reading) #homeScreen .home-quick { display: none; padding: 14px 12px 12px; border: 1px solid rgba(240, 200, 130, .45); border-radius: 24px; background: linear-gradient(180deg, rgba(74, 42, 26, .62), rgba(36, 20, 14, .78)); box-shadow: 0 10px 26px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 230, 190, .12); animation: home-rise .7s .2s cubic-bezier(.16, 1, .3, 1) both; }
 .home-quick h2 { display: flex; align-items: center; gap: 8px; margin: 0 4px 12px; font-family: Manrope, -apple-system, "Segoe UI", sans-serif; font-size: 17px; font-weight: 600; color: #fff; }
 .home-quick h2 svg { width: 20px; height: 20px; fill: #ff5f86; filter: drop-shadow(0 0 6px rgba(255, 95, 134, .8)); }
 .home-quick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }

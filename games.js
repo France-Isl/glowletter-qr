@@ -824,8 +824,20 @@
     root.querySelector("[data-glg=title]").textContent = isPlay ? tr("quizTitle") : isYesNo ? tr(ROOM_TITLES[state.yn?.kind] || "ynTitle") : tr("title");
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
     const body = root.querySelector(".glg-body");
+    // Владелец 01.11: «Быстрые действия» убраны с главного экрана — они живут вверху «Игр для двоих».
+    // Узел один и тот же (обработчики друзей, «Дурака» и магазина остаются), перед перерисовкой вынимаем его.
+    const quick = document.getElementById("homeQuick");
+    if (quick && body.contains(quick)) quick.remove();
     const views = { hub: renderHub, names: renderNames, answers: renderAnswers, created: renderCreated, detail: renderDetail, "play-loading": renderPlayLoading, "play-missing": renderPlayMissing, "play-intro": renderPlayIntro, "play-question": renderPlayQuestion, "play-result": renderPlayResult, "yn-loading": renderPlayLoading, "yn-names": renderYesNoNames, "yn-lobby": renderYesNoLobby, "yn-join": renderYesNoJoin, "yn-card": renderYesNoCard, "yn-end": renderYesNoEnd, "yn-missing": renderYesNoMissing, book: renderBook };
     body.innerHTML = (views[state.view] || renderHub)();
+    if (quick && state.view === "hub") {
+      body.prepend(quick);
+      if (!quick.dataset.glgBound) {
+        quick.dataset.glgBound = "1";
+        // Выбрали действие — «Игры» закрываются, чтобы окно друга, «Дурак» или магазин были сверху.
+        quick.addEventListener("click", event => { if (event.target.closest("button") && body.contains(quick)) close(); }, true);
+      }
+    }
     body.scrollTop = 0;
   }
 
