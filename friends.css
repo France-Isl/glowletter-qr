@@ -28,7 +28,19 @@
 
 .glf-safety { margin: 26px 0 0; color: var(--ui-muted); font-size: 11px; line-height: 1.5; text-align: center; }
 
-.glf-chat-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.glf-chat-head { position: relative; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.glf-chat-head > small { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.glf-head-actions { display: flex; flex: none; gap: 6px; }
+.glg-layer .glf-head-button { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--ui-border); border-radius: 50%; color: var(--ui-ink); background: var(--ui-surface); font-size: 19px; font-weight: 800; line-height: 1; cursor: pointer; transition: transform .15s ease, border-color .15s ease; }
+.glg-layer .glf-head-button:hover { border-color: var(--ui-accent); }
+.glg-layer .glf-head-button:active { transform: scale(.92); }
+.glg-layer .glf-head-button[aria-expanded="true"] { border-color: var(--ui-accent); background: color-mix(in srgb, var(--ui-accent) 10%, var(--ui-surface)); }
+.glg-layer .glf-head-button.is-call { border-color: transparent; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); box-shadow: 0 6px 16px color-mix(in srgb, var(--ui-accent-deep) 30%, transparent); }
+.glf-head-button .ic { width: 20px; height: 20px; fill: currentColor; }
+.glf-menu { position: absolute; z-index: 3; top: calc(100% + 6px); inset-inline-end: 0; display: grid; min-width: 210px; padding: 6px; border: 1px solid var(--ui-border); border-radius: 18px; background: var(--ui-panel); box-shadow: 0 16px 40px color-mix(in srgb, var(--night-deep) 18%, transparent); }
+.glg-layer .glf-menu button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 12px; color: var(--ui-ink); background: none; font-size: 14px; font-weight: 700; text-align: start; cursor: pointer; }
+.glg-layer .glf-menu button:hover { background: color-mix(in srgb, var(--ui-accent) 8%, transparent); }
+.glg-layer .glf-menu .glg-danger { margin-top: 0; color: var(--ui-accent-deep); text-decoration: none; }
 .glf-messages { display: flex; flex-direction: column; gap: 8px; min-height: 260px; max-height: calc(100dvh - 300px); margin: 0; padding: 12px; overflow: auto; border: 1px solid var(--ui-border); border-radius: 18px; background: var(--ui-panel); list-style: none; overscroll-behavior: contain; }
 .glf-bubble { align-self: flex-start; display: grid; gap: 4px; max-width: 82%; padding: 10px 13px; border-radius: 16px 16px 16px 7px; color: var(--ui-ink); background: var(--ui-surface); box-shadow: 0 4px 12px color-mix(in srgb, var(--night-deep) 6%, transparent); font-size: 13px; line-height: 1.45; overflow-wrap: anywhere; white-space: pre-wrap; }
 .glf-bubble.is-mine { align-self: flex-end; border-radius: 16px 16px 7px 16px; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); }
@@ -40,8 +52,6 @@
 .glf-compose { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 12px; }
 .glf-compose textarea { min-height: 50px; max-height: 140px; padding: 14px; border: 1px solid var(--ui-border); border-radius: 16px; color: var(--ui-ink); background: var(--ui-panel); font: inherit; font-size: 16px; resize: vertical; }
 .glf-compose .glg-primary { width: 54px; padding: 0; font-size: 16px; }
-.glf-chat-tools { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
-.glf-chat-tools .glg-danger { margin-top: 8px; }
 
 [dir="rtl"] .glf-bubble { border-radius: 16px 16px 7px 16px; }
 [dir="rtl"] .glf-bubble.is-mine { border-radius: 16px 16px 16px 7px; }
@@ -96,8 +106,19 @@
 .glf-voice.is-mine .glf-voice-play { color: var(--ui-accent-deep); background: var(--cream); }
 .glf-voice-play:disabled { opacity: .4; cursor: default; }
 /* Под перепиской: большая «Позвонить» и ровная сетка плиток 3 × 2. */
-.glg-layer .glf-call-main { width: 100%; min-height: 56px; margin-top: 12px; border-radius: 18px; font-size: 16px; font-weight: 800; }
-.glf-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.glf-tools { margin-top: 10px; padding: 10px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-panel); animation: glf-tools-in .2s ease-out; }
+@keyframes glf-tools-in { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) { .glf-tools { animation: none; } }
+.glf-tools > .glf-games { margin-top: 10px; }
+.glf-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.glf-compose.has-plus { grid-template-columns: auto 1fr auto auto; gap: 8px; }
+.glg-layer .glf-plus { width: 46px; min-height: 50px; padding: 0; border-radius: 16px; font-size: 26px; font-weight: 500; line-height: 1; }
+.glf-plus span { display: block; transition: transform .2s ease; }
+.glg-layer .glf-plus.is-open { border-color: var(--ui-accent); color: var(--ui-accent-deep); }
+.glf-plus.is-open span { transform: rotate(45deg); }
+.glf-compose.has-plus .glf-mic { width: 46px; }
+.glf-compose.has-plus .glg-primary { width: 50px; }
+.glf-empty .glf-small { margin-top: 4px; }
 .glg-layer .glf-tile { display: grid; justify-items: center; align-content: center; gap: 6px; min-height: 80px; padding: 10px 6px; border: 1px solid var(--ui-border); border-radius: 18px; color: var(--ui-ink); background: var(--ui-surface); font-size: 11px; font-weight: 800; line-height: 1.2; text-align: center; transition: transform .15s ease, border-color .15s ease; }
 .glf-tile span { font-size: 24px; line-height: 1; }
 .glf-tile b { font-weight: 800; overflow-wrap: anywhere; }

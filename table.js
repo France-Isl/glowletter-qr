@@ -359,6 +359,21 @@
     state.partner = false;
   }
 
+  // Вернулись в приложение (делились ссылкой, отвечали в WhatsApp): если связь со столом
+  // оборвалась, садимся за него заново — партия вернётся снимком от друга.
+  function checkConnection() {
+    if (document.visibilityState !== "visible" || !state.room || !state.root || state.root.hidden) return;
+    const room = state.room;
+    setTimeout(() => {
+      if (state.room !== room || !state.root || state.root.hidden || state.channel?.state === "joined") return;
+      leave();
+      join();
+      renderStatus();
+    }, 2500);
+  }
+  document.addEventListener("visibilitychange", checkConnection);
+  addEventListener("online", checkConnection);
+
   window.GlowLetterTable = Object.freeze({
     register,
     open,

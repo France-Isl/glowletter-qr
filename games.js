@@ -1498,6 +1498,7 @@
       yn.roomId = row.public_id;
       yn.phase = "lobby";
       state.view = "yn-lobby";
+      saveHostRoom(yn);
       connectYesNo();
       if (yn.pendingInvite) inviteFriend(yn.pendingInvite);
     } catch (error) {
@@ -1663,14 +1664,61 @@
       })
       .on("broadcast", { event: "yn" }, ({ payload }) => onYesNoMessage(payload || {}))
       .subscribe(async status => {
+        if (yn !== state.yn || yn.channel !== channel) return;
         if (status === "SUBSCRIBED") {
+          yn.reconnecting = false;
           await channel.track({ role: yn.role, name: yn.role === "host" ? yn.hostName : yn.guestName });
-        } else if (["CHANNEL_ERROR", "TIMED_OUT"].includes(status) && yn === state.yn && yn.phase !== "end") {
-          yn.offline = true;
-          state.view = "yn-missing";
-          render();
+        } else if (["CHANNEL_ERROR", "TIMED_OUT", "CLOSED"].includes(status) && yn.phase !== "end") {
+          // Приложение свернули (поделиться в WhatsApp, скопировать ссылку): телефон усыпил
+          // страницу и связь оборвалась, но комната на сервере жива — переподключаемся.
+          yn.reconnecting = true;
+          reconnectYesNo(1500);
         }
       });
+  }
+
+  function reconnectYesNo(delay) {
+    const yn = state.yn;
+    if (!yn?.roomId || yn.phase === "end" || yn.reconnectTimer) return;
+    yn.reconnectTimer = setTimeout(() => {
+      yn.reconnectTimer = 0;
+      // Пока приложение свёрнуто, не стучимся: переподключит возврат (visibilitychange).
+      if (state.yn !== yn || document.hidden) return;
+      const old = yn.channel;
+      yn.channel = null;
+      if (old) { try { (cloud()?.getClient?.() || state.ynClient)?.removeChannel?.(old); } catch {} }
+      connectYesNo();
+    }, delay);
+  }
+
+  // Вернулись в приложение или появилась сеть — проверяем, что комната на связи.
+  function checkYesNoConnection() {
+    const yn = state.yn;
+    if (document.visibilityState !== "visible" || !yn?.roomId || yn.phase === "end") return;
+    setTimeout(() => { if (state.yn === yn && yn.channel?.state !== "joined") reconnectYesNo(0); }, 2500);
+  }
+
+  // Комната ведущего переживает перезапуск страницы (телефон выгрузил приложение, пока
+  // ведущий отправлял ссылку): сохраняем лобби на 3 часа и открываем его снова.
+  const HOST_ROOM_KEY = "glowletter-yn-host-room";
+  const HOST_ROOM_MS = 3 * 60 * 60 * 1000;
+
+  function saveHostRoom(yn) {
+    try {
+      if (yn?.role === "host" && yn.roomId && yn.phase === "lobby") {
+        localStorage.setItem(HOST_ROOM_KEY, JSON.stringify({ kind: yn.kind, roomId: yn.roomId, hostName: yn.hostName, guestName: yn.guestName, at: Date.now() }));
+      } else localStorage.removeItem(HOST_ROOM_KEY);
+    } catch {}
+  }
+
+  function restoreHostRoom() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(HOST_ROOM_KEY) || "null"); } catch {}
+    if (!saved || !UUID_PATTERN.test(String(saved.roomId || "")) || !ROOM_TITLES[saved.kind] || !(Date.now() - Number(saved.at) < HOST_ROOM_MS)) { saveHostRoom(null); return false; }
+    state.yn = { kind: saved.kind, role: "host", roomId: saved.roomId, hostName: cleanName(saved.hostName), guestName: cleanName(saved.guestName), partnerOnline: false, phase: "lobby", deck: [], index: 0, answers: { host: [], guest: [] }, times: { host: [], guest: [] }, wins: { host: 0, guest: 0 }, revealed: [], saved: [], invited: [], pendingInvite: "", mine: null, timers: [], channel: null };
+    open("yn-lobby");
+    connectYesNo();
+    return true;
   }
 
   function sendYesNo(payload) {
@@ -1686,6 +1734,8 @@
   function leaveYesNo() {
     const yn = state.yn;
     clearYesNoTimers();
+    clearTimeout(yn?.reconnectTimer);
+    saveHostRoom(null);
     if (yn?.channel) {
       try { yn.channel.untrack?.(); } catch {}
       (cloud()?.getClient?.() || state.ynClient)?.removeChannel?.(yn.channel);
@@ -1700,6 +1750,7 @@
   function hostStartYesNo() {
     const yn = state.yn;
     if (!yn || yn.role !== "host" || !yn.partnerOnline) return;
+    saveHostRoom(null);
     if (yn.kind === "cards") { hostStartCards(); return; }
     clearYesNoTimers();
     yn.deck = newDeck(yn.kind);
@@ -2680,6 +2731,9 @@
     if (UUID_PATTERN.test(publicId)) startPlay(publicId.toLowerCase());
     const roomId = new URLSearchParams(location.search).get("yn") || "";
     if (!UUID_PATTERN.test(publicId) && UUID_PATTERN.test(roomId)) joinYesNoRoom(roomId.toLowerCase());
+    else if (!UUID_PATTERN.test(publicId)) restoreHostRoom();
+    document.addEventListener("visibilitychange", checkYesNoConnection);
+    addEventListener("online", checkYesNoConnection);
   }
 
   window.GlowLetterGames = Object.freeze({
