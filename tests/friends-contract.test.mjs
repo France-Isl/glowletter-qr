@@ -55,10 +55,10 @@ assert.match(friends, /escapeHtml\(message\.body\)/u);
 // Главная, подключение и кеш.
 assert.match(index, /id="friendsOpenHome"[\s\S]*?id="friendsOpenHomeLabel"[\s\S]*?id="friendsBadge"/u);
 assert.match(index, /<symbol id="ic-friends"/u);
-assert.ok(index.indexOf("games.js?v=90") < index.indexOf("friends-i18n.js?v=90"));
-assert.ok(index.indexOf("friends-i18n.js?v=90") < index.indexOf("friends.js?v=90"));
-assert.match(index, /friends\.css\?v=90/u);
-for (const file of ["friends.css", "friends-i18n.js", "friends.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=90"`, "u"));
+assert.ok(index.indexOf("games.js?v=91") < index.indexOf("friends-i18n.js?v=91"));
+assert.ok(index.indexOf("friends-i18n.js?v=91") < index.indexOf("friends.js?v=91"));
+assert.match(index, /friends\.css\?v=91/u);
+for (const file of ["friends.css", "friends-i18n.js", "friends.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=91"`, "u"));
 assert.match(read("privacy.html"), /glowletter_messages|личные сообщения|private messages/iu);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, texts: keys.length }));

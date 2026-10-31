@@ -122,10 +122,10 @@ for (const file of ["games.js", "games-i18n.js", "letters.js", "index.html", "mo
 // Вход на главной, подключение и кеш.
 assert.match(index, /id="gamesOpenHome"[\s\S]*?id="gamesOpenHomeLabel"[\s\S]*?id="gamesResultsBadge"/u);
 assert.match(index, /<symbol id="ic-dice"/u);
-assert.ok(index.indexOf("experience.js?v=90") < index.indexOf("games-i18n.js?v=90"));
-assert.ok(index.indexOf("games-i18n.js?v=90") < index.indexOf("games.js?v=90"));
-assert.match(index, /games\.css\?v=90/u);
-for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=90"`, "u"));
+assert.ok(index.indexOf("experience.js?v=91") < index.indexOf("games-i18n.js?v=91"));
+assert.ok(index.indexOf("games-i18n.js?v=91") < index.indexOf("games.js?v=91"));
+assert.match(index, /games\.css\?v=91/u);
+for (const file of ["games.css", "games-i18n.js", "games.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=91"`, "u"));
 assert.match(worker, /SENSITIVE_NAVIGATION_PARAMS = \[[^\]]*"quiz"/u);
 
 // Окно покупки: «игры · развлечения · письма»; заголовок и список рисует games.js,
