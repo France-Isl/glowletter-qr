@@ -355,3 +355,42 @@ html[dir="rtl"] .glg-yn-timer i { transform-origin: right center; }
 .glg-modest span { display: grid; gap: 2px; }
 .glg-modest b { font-size: 13px; font-weight: 800; }
 .glg-modest small { color: var(--ui-muted); font-size: 11px; line-height: 1.4; }
+
+/* «Игры» в стиле главной (31.10): фото костра у озера, тёмное стекло, золотые края, бордовые кнопки */
+#gamesLayer {
+  --ui-panel: rgba(18, 9, 12, .64);
+  --ui-panel-alt: rgba(18, 9, 12, .64);
+  --ui-ink: #fff4e5;
+  --ui-muted: rgba(255, 238, 214, .8);
+  --ui-accent: #a52a3a;
+  --ui-accent-deep: #74172b;
+  --ui-soft: rgba(244, 202, 126, .14);
+  --ui-surface: rgba(20, 10, 14, .6);
+  --ui-border: rgba(244, 202, 126, .62);
+  --ui-gold: #f2c96f;
+  color: var(--ui-ink);
+}
+#gamesLayer .glg-panel { background: #170b0c url("assets/scenes/chat-campfire.webp") 50% 50% / cover no-repeat; color: var(--ui-ink); }
+#gamesLayer .glg-header { text-shadow: 0 2px 16px rgba(0, 0, 0, .7); }
+#gamesLayer .glg-eyebrow { color: #f1c76e; letter-spacing: .22em; }
+#gamesLayer .glg-header h2 { color: #fff4df; font-family: "Playfair Display", Georgia, serif; font-weight: 600; }
+#gamesLayer .glg-close { width: 48px; height: 48px; border: 1px solid rgba(242, 205, 145, .55); color: #fff4e2; background: rgba(20, 10, 14, .62); box-shadow: 0 5px 18px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .12); }
+#gamesLayer .glg-lead, #gamesLayer .glg-note, #gamesLayer .glg-muted { color: rgba(255, 238, 214, .86); text-shadow: 0 1px 8px rgba(0, 0, 0, .8); }
+#gamesLayer .glg-hero,
+#gamesLayer .glg-modest,
+#gamesLayer .glg-center,
+#gamesLayer .glg-card {
+  border: 1px solid rgba(244, 202, 126, .62);
+  border-radius: 23px;
+  background: linear-gradient(180deg, rgba(26, 12, 16, .58), rgba(14, 7, 10, .5));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .1);
+  color: var(--ui-ink);
+}
+#gamesLayer .glg-modest { border-radius: 18px; }
+#gamesLayer .glg-modest input { accent-color: #f2c96f; }
+#gamesLayer .glg-hero h3, #gamesLayer .glg-body h3 { color: #fff4e5; }
+#gamesLayer .glg-hero p { color: rgba(255, 238, 214, .86); }
+#gamesLayer .glg-primary { border: 1px solid #f0c66f; border-radius: 18px; color: #fff4e5; background: linear-gradient(110deg, #a52a3a, #861b30 55%, #74172b); box-shadow: 0 10px 26px rgba(80, 8, 24, .45), 0 0 16px rgba(240, 198, 111, .25); }
+#gamesLayer .glg-secondary { border: 1px solid rgba(244, 202, 126, .62); border-radius: 18px; color: #fff4e5; background: rgba(20, 10, 14, .62); }
+#gamesLayer input:not([type="checkbox"]):not([type="radio"]), #gamesLayer textarea, #gamesLayer select { border-color: rgba(244, 202, 126, .62); color: #fff4e5; background: rgba(20, 10, 14, .66); }
+#gamesLayer input::placeholder, #gamesLayer textarea::placeholder { color: rgba(255, 238, 214, .6); }

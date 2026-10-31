@@ -96,10 +96,10 @@ assert.match(app, /makePdf:\(pages,pageWidth,pageHeight\)=>jpegPagesToPdf/u);
 
 // Главная, подключение и кеш.
 assert.match(index, /id="coupleOpenHome"[\s\S]*?id="coupleOpenHomeLabel"[\s\S]*?id="coupleBadge"/u);
-assert.ok(index.indexOf("friends.js?v=101") < index.indexOf("couple-i18n.js?v=101"));
-assert.ok(index.indexOf("couple-i18n.js?v=101") < index.indexOf("couple.js?v=101"));
-assert.ok(index.indexOf("couple.js?v=101") < index.indexOf("bear-reader.js?v=101"));
-assert.match(index, /couple\.css\?v=101/u);
-for (const file of ["couple.css", "couple-i18n.js", "couple.js", "bear-reader.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=101"`, "u"));
+assert.ok(index.indexOf("friends.js?v=102") < index.indexOf("couple-i18n.js?v=102"));
+assert.ok(index.indexOf("couple-i18n.js?v=102") < index.indexOf("couple.js?v=102"));
+assert.ok(index.indexOf("couple.js?v=102") < index.indexOf("bear-reader.js?v=102"));
+assert.match(index, /couple\.css\?v=102/u);
+for (const file of ["couple.css", "couple-i18n.js", "couple.js", "bear-reader.js"]) assert.match(worker, new RegExp(`"${file.replaceAll(".", "\\.")}\\?v=102"`, "u"));
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, questions: 120, texts: keys.length }));

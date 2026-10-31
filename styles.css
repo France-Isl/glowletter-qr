@@ -1891,3 +1891,69 @@ body:not(.is-reading) #homeScreen .brand-card .brand-copy { display: block; }
 .round-control .top-trophy { width: 22px; height: 22px; filter: drop-shadow(0 0 6px rgba(242, 180, 58, .55)); }
 body:not(.is-reading) .topbar .round-control .top-trophy { width: calc(var(--u) * 46); height: calc(var(--u) * 46); }
 body.is-reading #rankingButton { display: none; }
+
+/* «Настройки» в стиле главной (31.10): фото мишек в розах, тёмное стекло, золотые края, бордовые кнопки */
+#settingsLayer .settings-panel {
+  --ui-panel: rgba(22, 9, 14, .62);
+  --ui-panel-alt: rgba(22, 9, 14, .62);
+  --ui-surface: rgba(24, 10, 16, .6);
+  --ui-ink: #fff4e5;
+  --ui-muted: rgba(255, 238, 214, .8);
+  --ui-accent: #c0394c;
+  --ui-accent-deep: #8a1d33;
+  --ui-soft: rgba(244, 202, 126, .14);
+  --ui-border: rgba(244, 202, 126, .55);
+  --ui-gold: #f2c96f;
+  color: var(--ui-ink);
+  background: #1a0b10 url("assets/scenes/roses.webp") 50% 50% / cover no-repeat;
+  border-left: 1px solid rgba(244, 202, 126, .55);
+}
+#settingsLayer .settings-panel .panel-header h2 { color: #fff4df; font-family: "Playfair Display", Georgia, serif; text-shadow: 0 2px 16px rgba(0, 0, 0, .75); }
+#settingsLayer .settings-panel .panel-home,
+#settingsLayer .settings-panel .panel-close { color: #fff4e2; background: rgba(24, 10, 16, .62); border: 1px solid rgba(242, 205, 145, .55); }
+#settingsLayer .settings-section,
+#settingsLayer .account-card,
+#settingsLayer .subscription-card,
+#settingsLayer .premium-settings-card,
+#settingsLayer .contact-card,
+#settingsLayer .gl-visual-studio {
+  border: 1px solid rgba(244, 202, 126, .55);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(28, 11, 18, .66), rgba(16, 7, 11, .6));
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .1);
+  color: var(--ui-ink);
+}
+#settingsLayer .settings-section > summary { color: #f2c96f; background: transparent; }
+#settingsLayer .settings-section > summary::after, #settingsLayer .settings-section > summary::before { border-color: rgba(244, 202, 126, .4); }
+#settingsLayer label > span, #settingsLayer .settings-section-body h3, #settingsLayer .settings-section-body p,
+#settingsLayer .account-support-note, #settingsLayer .subscription-note, #settingsLayer .install-hint, #settingsLayer .audio-share-note { color: rgba(255, 238, 214, .86); }
+#settingsLayer input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+#settingsLayer textarea, #settingsLayer select { color: #fff4e5; background: rgba(24, 10, 16, .66); border-color: rgba(244, 202, 126, .55); }
+#settingsLayer input::placeholder, #settingsLayer textarea::placeholder { color: rgba(255, 238, 214, .6); }
+#settingsLayer .language-picker button,
+#settingsLayer .track-option,
+#settingsLayer .scene-grid button,
+#settingsLayer .gl-type-grid button,
+#settingsLayer .profile-picker button { color: #fff4e5; background: rgba(24, 10, 16, .6); border-color: rgba(244, 202, 126, .4); }
+#settingsLayer .language-picker button small, #settingsLayer .language-picker button span { color: rgba(255, 238, 214, .75); }
+#settingsLayer .language-picker button.is-active,
+#settingsLayer .track-option.is-active,
+#settingsLayer .scene-grid button.is-active,
+#settingsLayer .gl-type-grid button.is-active,
+#settingsLayer .profile-picker button.is-active { border-color: #f2c96f; background: rgba(165, 42, 58, .55); box-shadow: 0 0 12px rgba(242, 201, 111, .35); }
+#settingsLayer .save-settings, #settingsLayer .settings-primary-qr, #settingsLayer .email-auth-primary {
+  border: 1px solid #f0c66f; color: #fff4e5; background: linear-gradient(110deg, #a52a3a, #861b30 55%, #74172b);
+  box-shadow: 0 10px 26px rgba(80, 8, 24, .45), 0 0 16px rgba(240, 198, 111, .25);
+}
+#settingsLayer .settings-section-body::before { background: linear-gradient(90deg, transparent, rgba(244, 202, 126, .7), transparent); height: 1px; }
+#settingsLayer .settings-section-body { border-top-color: transparent; }
+#settingsLayer legend, #settingsLayer .settings-section-body h4 { color: #f2c96f; }
+#settingsLayer .language-picker button.is-active, #settingsLayer .language-picker button.is-active span { color: #fff4e5; }
+#settingsLayer strong, #settingsLayer b, #settingsLayer h3, #settingsLayer .email-auth-divider { color: #fff4e5; }
+#settingsLayer .oauth-button { color: #fff4e5; background: rgba(24, 10, 16, .66); border: 1px solid rgba(244, 202, 126, .55); }
+#settingsLayer .oauth-button span { color: #fff4e5; }
+#settingsLayer .email-auth-tabs { background: rgba(24, 10, 16, .6); border: 1px solid rgba(244, 202, 126, .4); }
+#settingsLayer .email-auth-tabs button { color: rgba(255, 238, 214, .8); }
+#settingsLayer .email-auth-tabs button.is-active { color: #fff4e5; background: rgba(165, 42, 58, .7); box-shadow: inset 0 0 0 1px #f2c96f; }
+#settingsLayer .email-auth-secondary { color: #f2c96f; background: rgba(24, 10, 16, .45); }
+#settingsLayer .legal-links a, #settingsLayer .legal-links button { color: rgba(255, 238, 214, .82); }
