@@ -33,6 +33,7 @@
   const STICKER_PATTERN = /^\[\[sticker:(s(?:0[1-9]|1\d|20))\]\]$/u;
   const MIC = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="3.5" width="6" height="11" rx="3"/><path d="M5.8 11.5a6.2 6.2 0 0 0 12.4 0M12 17.7v3"/></svg>';
   const PHONE = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.6h2.6l1.5 4.1-1.9 1.4a11 11 0 0 0 5.9 5.9l1.4-1.9 4.1 1.5v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.8a2 2 0 0 1 2-2.2Z"/></svg>';
+  const GAME = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 7h9.6a4.6 4.6 0 0 1 4.5 3.7l.9 4.6a2.9 2.9 0 0 1-5 2.5L15.6 16H8.4l-1.6 1.8a2.9 2.9 0 0 1-5-2.5l.9-4.6A4.6 4.6 0 0 1 7.2 7Z" fill="currentColor"/><path d="M7.6 10v3.4M5.9 11.7h3.4" stroke="var(--gold-bright)" stroke-width="1.7" stroke-linecap="round"/><circle cx="15.6" cy="10.6" r="1.05" fill="var(--gold-bright)"/><circle cx="17.6" cy="12.8" r="1.05" fill="var(--gold-bright)"/></svg>';
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z"/></svg>';
   const icon = id => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#${id}"/></svg>`;
 
@@ -130,7 +131,7 @@
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
 
-  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null, stickerPicking: false, photos: new Map(), toolsOpen: false, menuOpen: false };
+  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null, stickerPicking: false, photos: new Map(), toolsOpen: false, menuOpen: false, reactOpen: false };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -217,6 +218,7 @@
       if (target && root.contains(target)) onAction(target.dataset.action, target);
     });
     root.addEventListener("submit", event => { event.preventDefault(); onAction(event.target.dataset.submit, event.target); });
+    root.addEventListener("input", event => { if (event.target.matches(".glf-compose textarea")) sizeField(event.target); });
     root.addEventListener("keydown", event => {
       if (event.key === "Escape") { event.stopPropagation(); close(); return; }
       // Enter отправляет, Shift+Enter — новая строка.
@@ -261,8 +263,12 @@
     root.querySelector(".glg-close").setAttribute("aria-label", tr("close"));
     const body = root.querySelector(".glf-body");
     const views = { signin: renderSignIn, loading: () => `<p class="glg-center glg-muted">…</p>`, name: renderName, list: renderList, chat: renderChat };
+    const draft = body.querySelector(".glf-compose textarea")?.value || "";
+    root.classList.toggle("glf-chat-mode", state.view === "chat");
     body.innerHTML = (views[state.view] || renderList)();
     if (state.view === "chat") {
+      const field = body.querySelector(".glf-compose textarea");
+      if (field && draft) { field.value = draft; sizeField(field); }
       const scroller = body.querySelector(".glf-messages");
       if (scroller) scroller.scrollTop = scroller.scrollHeight;
     } else body.scrollTop = 0;
@@ -360,10 +366,11 @@
     }).join("");
     return `
       <div class="glf-chat-head">
-        <button class="glg-link glg-back" type="button" data-action="list">← ${escapeHtml(tr("back"))}</button>
-        <small class="${isOnline(friend) ? "is-online" : ""}">${escapeHtml(statusText(friend))}</small>
+        <button class="glf-head-back" type="button" data-action="list" aria-label="${escapeHtml(tr("back"))}" title="${escapeHtml(tr("back"))}"><span aria-hidden="true">‹</span></button>
+        <span class="glf-avatar${isOnline(friend) ? " is-online" : ""}">${initial(nameOf(friend))}</span>
+        <span class="glf-who"><b class="glf-name">${escapeHtml(nameOf(friend))}</b><small class="${isOnline(friend) ? "is-online" : ""}">${escapeHtml(statusText(friend))}</small></span>
         <span class="glf-head-actions">
-          <button class="glf-head-button" type="button" data-action="table" aria-label="${escapeHtml(tr("tableButton"))}" title="${escapeHtml(tr("tableButton"))}"><span aria-hidden="true">🎲</span></button>
+          <button class="glf-head-button is-game" type="button" data-action="table" aria-label="${escapeHtml(tr("tableButton"))}" title="${escapeHtml(tr("tableButton"))}">${GAME}</button>
           <button class="glf-head-button is-call" type="button" data-action="call" aria-label="${escapeHtml(tr("callButton"))}" title="${escapeHtml(tr("callButton"))}">${PHONE}</button>
           <button class="glf-head-button" type="button" data-action="menu" aria-expanded="${state.menuOpen}" aria-label="${escapeHtml(tr("menu"))}" title="${escapeHtml(tr("menu"))}"><span aria-hidden="true">⋮</span></button>
         </span>
@@ -374,10 +381,12 @@
         </div>` : ""}
       </div>
       <ul class="glf-messages">${bubbles || `<li class="glf-empty">${HEART}<span>${escapeHtml(tr("emptyChat"))}</span><button class="glg-secondary glf-small" type="button" data-action="table">🎲 ${escapeHtml(tr("tableButton"))}</button></li>`}</ul>
-      <div class="glf-react-row" role="group" aria-label="${escapeHtml(tr("reactions"))}">${Object.entries(REACTIONS).map(([kind, emoji]) => `<button type="button" data-action="react" data-kind="${kind}" aria-label="${escapeHtml(emoji)}">${emoji}</button>`).join("")}</div>
-      ${renderTools()}
-      ${renderCompose()}
-      <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>`;
+      <div class="glf-chat-foot">
+        ${state.reactOpen ? `<div class="glf-react-row" role="group" aria-label="${escapeHtml(tr("reactions"))}">${Object.entries(REACTIONS).map(([kind, emoji]) => `<button type="button" data-action="react" data-kind="${kind}" aria-label="${escapeHtml(emoji)}">${emoji}</button>`).join("")}</div>` : ""}
+        ${renderTools()}
+        ${renderCompose()}
+        ${state.error ? `<p class="glg-error" role="alert">${escapeHtml(state.error)}</p>` : ""}
+      </div>`;
   }
 
   const toolsShown = () => state.toolsOpen || state.picking || state.bearPicking || Boolean(state.stickerPicking);
@@ -406,12 +415,22 @@
       return `<div class="glf-compose glf-recording" role="status"><span class="glf-rec-dot" aria-hidden="true"></span><b class="glf-rec-time">${escapeHtml(tr("voiceRecording", { time: clock(state.recording.seconds || 0) }))}</b><button class="glg-secondary glf-small" type="button" data-action="voice-cancel">${escapeHtml(tr("voiceCancel"))}</button><button class="glg-primary" type="button" data-action="voice-send" aria-label="${escapeHtml(tr("send"))}">➤</button></div><p class="glf-voice-note">${escapeHtml(tr("voiceNote"))}</p>`;
     }
     const open = toolsShown();
-    return `<form class="glf-compose has-mic has-plus" data-submit="send" novalidate>
-        <button class="glg-secondary glf-plus${open ? " is-open" : ""}" type="button" data-action="tools" aria-expanded="${open}" aria-controls="glf-tools" aria-label="${escapeHtml(tr("toolsMore"))}" title="${escapeHtml(tr("toolsMore"))}"><span aria-hidden="true">+</span></button>
-        <textarea name="body" rows="1" maxlength="1000" dir="auto" placeholder="${escapeHtml(tr("placeholder"))}"></textarea>
-        <button class="glg-secondary glf-mic" type="button" data-action="voice-start" aria-label="${escapeHtml(tr("voiceRecord"))}" title="${escapeHtml(tr("voiceRecord"))}">${MIC}</button>
-        <button class="glg-primary" type="submit" aria-label="${escapeHtml(tr("send"))}"${state.busy ? " disabled" : ""}>➤</button>
+    return `<form class="glf-compose glf-bar" data-submit="send" novalidate>
+        <button class="glf-round glf-plus${open ? " is-open" : ""}" type="button" data-action="tools" aria-expanded="${open}" aria-controls="glf-tools" aria-label="${escapeHtml(tr("toolsMore"))}" title="${escapeHtml(tr("toolsMore"))}"><span aria-hidden="true">+</span></button>
+        <span class="glf-field">
+          <textarea name="body" rows="1" maxlength="1000" dir="auto" placeholder="${escapeHtml(tr("placeholder"))}"></textarea>
+          <button class="glf-emoji" type="button" data-action="react-pick" aria-expanded="${state.reactOpen}" aria-label="${escapeHtml(tr("reactions"))}" title="${escapeHtml(tr("reactions"))}"><span aria-hidden="true">😊</span></button>
+        </span>
+        <button class="glf-round glf-mic" type="button" data-action="voice-start" aria-label="${escapeHtml(tr("voiceRecord"))}" title="${escapeHtml(tr("voiceRecord"))}">${MIC}</button>
+        <button class="glf-round glf-send" type="submit" aria-label="${escapeHtml(tr("send"))}"${state.busy ? " disabled" : ""}>➤</button>
       </form>`;
+  }
+
+  // Поле растёт вместе с текстом (до пяти строк); с текстом вместо микрофона — «Отправить».
+  function sizeField(field) {
+    field.style.height = "auto";
+    field.style.height = `${Math.min(field.scrollHeight, 120)}px`;
+    field.form?.classList.toggle("has-text", field.value.trim() !== "");
   }
 
   // Плитка листа «+»: значок сверху, подпись снизу; expanded — для кнопок, открывающих выбор.
@@ -483,9 +502,10 @@
           return;
         case "chat": return openChat(target.dataset.id);
         case "menu": state.menuOpen = !state.menuOpen; render(); return;
+        case "react-pick": state.reactOpen = !state.reactOpen; state.toolsOpen = false; state.picking = false; state.bearPicking = false; state.stickerPicking = false; render(); return;
         case "tools": {
           const open = !toolsShown();
-          state.toolsOpen = open; state.picking = false; state.bearPicking = false; state.stickerPicking = false;
+          state.toolsOpen = open; state.reactOpen = false; state.picking = false; state.bearPicking = false; state.stickerPicking = false;
           render();
           if (open) state.root?.querySelector(".glf-tools")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
           return;
@@ -500,7 +520,7 @@
           return;
         }
         case "join-game": close(); games()?.join?.(target.dataset.room); return;
-        case "react": return sendReaction(state.chatWith?.user_id, target.dataset.kind);
+        case "react": state.reactOpen = false; return sendReaction(state.chatWith?.user_id, target.dataset.kind);
         case "bear-pick": state.bearPicking = !state.bearPicking; state.picking = false; render(); return;
         case "send-bear": return sendBear(state.chatWith?.user_id, target.dataset.gift);
         case "see-bear": {
@@ -596,6 +616,7 @@
     state.bearPicking = false;
     state.toolsOpen = false;
     state.menuOpen = false;
+    state.reactOpen = false;
     state.view = "chat";
     state.messages = [];
     render();

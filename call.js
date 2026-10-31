@@ -304,7 +304,7 @@
       .on("broadcast", { event: "answer" }, ({ payload }) => onAnswer(payload))
       .on("broadcast", { event: "ice" }, ({ payload }) => onIce(payload))
       .on("broadcast", { event: "mute" }, ({ payload }) => { call.friendMuted = payload?.on === true; render(); })
-      .on("broadcast", { event: "react" }, ({ payload }) => { if (payload?.kind === "heart") window.GlowLetterOnline?.burst?.("❤️", { small: true }); })
+      .on("broadcast", { event: "react" }, ({ payload }) => { if (payload?.kind === "heart") heartRain(); })
       .on("broadcast", { event: "bear" }, () => bearHere(false))
       // Друг сел за стол во время звонка — открываем стол и здесь.
       .on("broadcast", { event: "table" }, () => { const table = window.GlowLetterTable; if (call.phase === "connected" && !(table?.isOpen?.() && table.room?.() === call.room)) openTable(false); })
@@ -346,14 +346,18 @@
     render();
   }
 
-  function sendHeart() {
-    window.GlowLetterOnline?.burst?.("❤️", { small: true });
-    signal("react", { kind: "heart" });
+  // Сердечки разлетаются по всему экрану — у обоих.
+  function heartRain() {
+    const online = window.GlowLetterOnline;
+    online?.burst?.("❤️");
+    setTimeout(() => online?.burst?.("💗", { small: true }), 180);
   }
 
-  function sendBear() {
-    bearHere(true);
-    signal("bear", {});
+  function sendHeart() {
+    heartRain();
+    const disc = call.root?.querySelector(".glk-heart .glk-disc");
+    if (disc) { disc.classList.remove("is-pop"); void disc.offsetWidth; disc.classList.add("is-pop"); }
+    signal("react", { kind: "heart" });
   }
 
   function bearHere(mine) {
@@ -423,7 +427,6 @@
       else if (action === "hangup") hangup();
       else if (action === "mute") toggleMute();
       else if (action === "heart") sendHeart();
-      else if (action === "bear") sendBear();
       else if (action === "play") openTable();
       else if (action === "min") setExpanded(false);
       else if (action === "expand") setExpanded(true);
@@ -454,6 +457,15 @@
     return `assets/loves/${picture}.webp`;
   }
 
+  // Значки звонка: свои рисунки вместо смайликов, чтобы экран выглядел цельно.
+  const ICON = Object.freeze({
+    mic: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8.6" y="2.8" width="6.8" height="11.6" rx="3.4" fill="currentColor"/><path d="M5.4 11.2a6.6 6.6 0 0 0 13.2 0M12 17.8v3.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    micOff: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8.6" y="2.8" width="6.8" height="11.6" rx="3.4" fill="currentColor"/><path d="M5.4 11.2a6.6 6.6 0 0 0 13.2 0M12 17.8v3.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 3.5 20 20.5" stroke="var(--glk-cut, #1b1726)" stroke-width="4.4" stroke-linecap="round"/><path d="M4 3.5 20 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    heart: '<svg class="glk-ic glk-heart-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><linearGradient id="glkHeart" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7aa2"/><stop offset="1" stop-color="#e0294f"/></linearGradient></defs><path d="M12 20.6 4.5 13.2a4.7 4.7 0 0 1 6.6-6.7l.9.9.9-.9a4.7 4.7 0 0 1 6.6 6.7Z" fill="url(#glkHeart)"/><path d="M7.4 8.6a2.2 2.2 0 0 1 2.4-.9" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></svg>',
+    play: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 7h9.6a4.6 4.6 0 0 1 4.5 3.7l.9 4.6a2.9 2.9 0 0 1-5 2.5L15.6 16H8.4l-1.6 1.8a2.9 2.9 0 0 1-5-2.5l.9-4.6A4.6 4.6 0 0 1 7.2 7Z" fill="currentColor"/><path d="M7.6 10v3.4M5.9 11.7h3.4" stroke="var(--glk-cut, #1b1726)" stroke-width="1.7" stroke-linecap="round"/><circle cx="15.6" cy="10.6" r="1.05" fill="var(--glk-cut, #1b1726)"/><circle cx="17.6" cy="12.8" r="1.05" fill="var(--glk-cut, #1b1726)"/></svg>',
+    phone: '<svg class="glk-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.6h2.6l1.5 4.1-1.9 1.4a11 11 0 0 0 5.9 5.9l1.4-1.9 4.1 1.5v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.8a2 2 0 0 1 2-2.2Z" fill="currentColor"/></svg>'
+  });
+
   function render() {
     const root = mount();
     document.body.classList.toggle("glk-active", call.phase !== "idle");
@@ -470,8 +482,8 @@
         <button class="glk-pill" type="button" data-call="expand" aria-label="${escapeHtml(tr("expand"))}">
           <span class="glk-dot" aria-hidden="true"></span><b>${escapeHtml(tr("inCall", { name: call.friend?.name || "" }))}</b><span class="glk-time">${elapsed()}</span>
         </button>
-        <button class="glk-round glk-mute${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}" aria-label="${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}">${`<span class="glk-emoji" aria-hidden="true">${call.muted ? "🔇" : "🎙️"}</span>`}</button>
-        <button class="glk-round glk-end" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}">${`<span class="glk-emoji glk-phone" aria-hidden="true">📞</span>`}</button>`;
+        <button class="glk-round glk-mute${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}" aria-label="${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}">${call.muted ? ICON.micOff : ICON.mic}</button>
+        <button class="glk-round glk-end" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}"><span class="glk-phone">${ICON.phone}</span></button>`;
       return;
     }
     root.className = `glk is-full is-${call.phase}`;
@@ -484,16 +496,15 @@
         ${call.friendMuted ? `<p class="glk-muted-note">${escapeHtml(tr("friendMuted", { name: call.friend?.name || "" }))}</p>` : ""}
         ${call.phase === "incoming" ? `
           <div class="glk-answer">
-            <button class="glk-big glk-decline" type="button" data-call="decline">${`<span class="glk-emoji glk-phone" aria-hidden="true">📞</span>`}<span>${escapeHtml(tr("decline"))}</span></button>
-            <button class="glk-big glk-accept" type="button" data-call="accept">${`<span class="glk-emoji glk-phone" aria-hidden="true">📞</span>`}<span>${escapeHtml(tr("accept"))}</span></button>
+            <button class="glk-big glk-decline" type="button" data-call="decline"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("decline"))}</span></button>
+            <button class="glk-big glk-accept" type="button" data-call="accept"><span class="glk-phone">${ICON.phone}</span><span>${escapeHtml(tr("accept"))}</span></button>
           </div>` : `
           <div class="glk-tools">
-            <button class="glk-tool${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}">${`<span class="glk-emoji" aria-hidden="true">${call.muted ? "🔇" : "🎙️"}</span>`}<span>${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}</span></button>
-            <button class="glk-tool" type="button" data-call="heart" ${live ? "" : "disabled"}><span class="glk-emoji" aria-hidden="true">❤️</span><span>${escapeHtml(tr("hearts"))}</span></button>
-            <button class="glk-tool" type="button" data-call="bear" ${live ? "" : "disabled"}><span class="glk-emoji" aria-hidden="true">🧸</span><span>${escapeHtml(tr("bear"))}</span></button>
-            <button class="glk-tool glk-play" type="button" data-call="play" ${live ? "" : "disabled"}><span class="glk-emoji" aria-hidden="true">🎲</span><span>${escapeHtml(tr("play"))}</span></button>
+            <button class="glk-tool glk-mic${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}"><span class="glk-disc">${call.muted ? ICON.micOff : ICON.mic}</span><span>${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}</span></button>
+            <button class="glk-tool glk-heart" type="button" data-call="heart" ${live ? "" : "disabled"}><span class="glk-disc">${ICON.heart}</span><span>${escapeHtml(tr("hearts"))}</span></button>
+            <button class="glk-tool glk-play" type="button" data-call="play" ${live ? "" : "disabled"}><span class="glk-disc">${ICON.play}</span><span>${escapeHtml(tr("play"))}</span></button>
           </div>
-          <button class="glk-big glk-end" type="button" data-call="hangup">${`<span class="glk-emoji glk-phone" aria-hidden="true">📞</span>`}<span>${escapeHtml(tr("hangup"))}</span></button>`}
+          <button class="glk-hang" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}"><span class="glk-disc"><span class="glk-phone">${ICON.phone}</span></span><span>${escapeHtml(tr("hangup"))}</span></button>`}
       </div>`;
     if (call.phase === "incoming") root.querySelector("[data-call=accept]")?.focus({ preventScroll: true });
   }
