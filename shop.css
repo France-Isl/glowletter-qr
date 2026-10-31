@@ -128,7 +128,7 @@ body.gs-open { overflow: hidden; }
 .gs-code.is-off { opacity: .5; }
 
 /* Главная: плитки «Дурак» и «Магазин» */
-.home-quick-grid .home-quick-durak .home-quick-ic, .home-quick-grid .home-quick-shop .home-quick-ic { animation: gs-bob 5s ease-in-out infinite; }
+.home-quick-grid .home-quick-durak .home-quick-ic, .home-quick-grid .home-quick-checkers .home-quick-ic, .home-quick-grid .home-quick-shop .home-quick-ic { animation: gs-bob 5s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .gs-root, .gs-sheet-card { transition: none; animation: none; }

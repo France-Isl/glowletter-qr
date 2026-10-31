@@ -129,6 +129,8 @@ public final class MainActivity extends ComponentActivity {
     private void configureWebView() {
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
         webView.setBackgroundColor(Color.TRANSPARENT);
+        // No rubber-band stretch: the home screen must not bounce up and down under the finger.
+        webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);

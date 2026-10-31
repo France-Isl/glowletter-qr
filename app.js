@@ -5329,8 +5329,8 @@
   const SCENE_VIDEOS = Object.freeze({ cabin: "assets/scenes/cabin.mp4" });
   const SCENE_KEY = "glowletterSceneV2";
   function currentSceneId(){ try { const value = localStorage.getItem(SCENE_KEY); return SCENES[value] ? value : "cabin"; } catch { return "cabin"; } }
-  // Видео 1,4 МБ без звука, петля 5 с. Играет только пока видна главная: под окнами, при чтении
-  // письма и в свёрнутом приложении стоит на паузе. Без видео (экономия трафика, «меньше движения»,
+  // Видео 1,4 МБ без звука, петля 5 с. Играет на главной и за письмом (владелец 01.11);
+  // под окнами и в свёрнутом приложении стоит на паузе. Без видео (экономия трафика, «меньше движения»,
   // совсем слабый телефон) остаётся его первый кадр.
   const SCENE_VIDEO_OK = !REDUCED_MOTION.matches && !SAVE_DATA && Number(navigator.deviceMemory || 8) > 2;
   function syncSceneVideo(){
@@ -5343,7 +5343,7 @@
       return;
     }
     if (video.getAttribute("src") !== src) { video.classList.remove("is-on"); video.muted = true; video.src = src; }
-    const covered = document.hidden || /(^|\s)(is-reading|glx-locked|[a-z]+-open)(\s|$)/u.test(document.body.className);
+    const covered = document.hidden || /(^|\s)(glx-locked|[a-z]+-open)(\s|$)/u.test(document.body.className);
     if (covered) { video.pause(); return; }
     video.play().catch(() => {
       // В приложении без разрешения на автозапуск — начнём с первого касания.
@@ -6308,7 +6308,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=110", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=111", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

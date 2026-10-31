@@ -21,7 +21,7 @@
       title: "Дурак", lead: "Карты в русском стиле, до четырёх игроков, ставки в долларах",
       classic: "Подкидной", transfer: "Переводной", mode: "Игра", deck: "Колода", cards: "{n} карт", players: "Игроки", stake: "Ставка", noStake: "Без ставки",
       playBots: "Играть с ботами", playFriends: "Стол для друзей", resume: "Вернуться к столу", myTables: "Мои столы",
-      signIn: "Войдите в аккаунт, чтобы играть", balance: "Баланс", dollars: "{n} $", daily: "Награда дня", claim: "Забрать", dailyGot: "+{n} $ — награда дня {d} из 7",
+      signIn: "Войдите в аккаунт, чтобы играть", balance: "Баланс", dollars: "{n} $", daily: "Награда дня", claim: "Забрать", dailyGot: "+{n} $ — награда дня {d} из 7", gameDurak: "Дурак", gameCheckers: "Шашки", ckLead: "Русские шашки на двоих на доллары: бить обязательно, дамка ходит далеко", ckRulesText: "Шашки ходят вперёд по диагонали, бьют вперёд и назад, бить обязательно и до конца. Дошедшая до края шашка становится дамкой и ходит на любое расстояние. Нет ходов — поражение. Ничья, если 15 ходов подряд у каждого ходили только дамки без взятий.", ckYourTurn: "Ваш ход", ckWait: "Ход соперника", ckCapture: "Бить обязательно", ckResign: "Сдаться", ckResignSure: "Нажмите ещё раз, чтобы сдаться", ckWin: "Победа!", ckLoss: "Поражение", ckDrawRule: "Ничья: долго ходили только дамки", ckByResign: "Партия окончена сдачей", ckWhite: "белые", ckBlack: "чёрные", ckYou: "Вы играете: {side}", aidGot: "🎁 +{n} $ — помощь дня: на счёте было меньше 2 000 $",
       lobby: "Стол для друзей", waiting: "Ждём игроков…", invite: "Позвать", invited: "Позвали", start: "Начать игру", fillBots: "Пустые места займут боты", noFriends: "Добавьте друзей в «Друзьях», чтобы позвать их за стол",
       hostStarts: "Игру начнёт хозяин стола", seatFree: "Свободно", bot: "Бот", you: "Вы", leave: "Выйти", startedAlready: "Игра уже началась",
       yourTurn: "Ваш ход", defend: "Отбивайтесь", attackOrPass: "Подкиньте или «Бито»", takingAdd: "Соперник берёт — подкиньте или «Пас»", waitTurn: "Ход соперника",
@@ -43,7 +43,7 @@
       title: "Durak", lead: "Russian-style cards, up to four players, dollar stakes",
       classic: "Classic", transfer: "Transfer", mode: "Game", deck: "Deck", cards: "{n} cards", players: "Players", stake: "Stake", noStake: "No stake",
       playBots: "Play with bots", playFriends: "Table for friends", resume: "Back to the table", myTables: "My tables",
-      signIn: "Sign in to play", balance: "Balance", dollars: "${n}", daily: "Daily reward", claim: "Claim", dailyGot: "+${n} — daily reward {d} of 7",
+      signIn: "Sign in to play", balance: "Balance", dollars: "${n}", daily: "Daily reward", claim: "Claim", dailyGot: "+${n} — daily reward {d} of 7", gameDurak: "Durak", gameCheckers: "Checkers", ckLead: "Russian checkers for two, played for dollars: capturing is required, kings move far", ckRulesText: "Pieces move forward diagonally and capture both forward and backward; capturing is required and must be finished. A piece that reaches the far edge becomes a king and moves any distance. No moves left means a loss. It is a draw if only kings moved without captures for 15 moves each.", ckYourTurn: "Your move", ckWait: "Opponent's move", ckCapture: "Capturing is required", ckResign: "Resign", ckResignSure: "Tap again to resign", ckWin: "Victory!", ckLoss: "Defeat", ckDrawRule: "Draw: only kings moved for a long time", ckByResign: "The game ended by resignation", ckWhite: "white", ckBlack: "black", ckYou: "You play {side}", aidGot: "🎁 +${n} — daily help: you had less than $2,000",
       lobby: "Table for friends", waiting: "Waiting for players…", invite: "Invite", invited: "Invited", start: "Start the game", fillBots: "Bots will take empty seats", noFriends: "Add friends in Friends to invite them",
       hostStarts: "The host starts the game", seatFree: "Free", bot: "Bot", you: "You", leave: "Leave", startedAlready: "The game has already started",
       yourTurn: "Your move", defend: "Defend", attackOrPass: "Throw in or Done", takingAdd: "Opponent takes — throw in or Pass", waitTurn: "Opponent's move",
@@ -67,7 +67,8 @@
   const state = {
     root: null, view: "home", busy: false, game: null, wallet: null, mine: [], ranking: null,
     setup: loadSetup(), selected: null, channel: null, channelId: "", poll: 0, tickTimer: 0, clock: 0, botTimer: 0,
-    shownSeq: -1, shownTable: [], invited: new Set(), chatOpen: false, hint: null, bubbles: {}, lastChat: 0, rulesOpen: false
+    shownSeq: -1, shownTable: [], invited: new Set(), chatOpen: false, hint: null, bubbles: {}, lastChat: 0, rulesOpen: false,
+    ckFrom: null, ckResignAt: 0
   };
 
   const app = () => window.GlowLetterApp || null;
@@ -84,8 +85,8 @@
   const haptic = pattern => { try { navigator.vibrate?.(pattern); } catch {} };
 
   function loadSetup() {
-    try { const saved = JSON.parse(localStorage.getItem(SETUP_KEY) || "{}"); return { mode: saved.mode === "transfer" ? "transfer" : "classic", deck: saved.deck === 24 ? 24 : 36, seats: [2, 3, 4].includes(saved.seats) ? saved.seats : 2, stake: STAKES.includes(saved.stake) ? saved.stake : 0 }; }
-    catch { return { mode: "classic", deck: 36, seats: 2, stake: 0 }; }
+    try { const saved = JSON.parse(localStorage.getItem(SETUP_KEY) || "{}"); return { kind: saved.kind === "checkers" ? "checkers" : "durak", mode: saved.mode === "transfer" ? "transfer" : "classic", deck: saved.deck === 24 ? 24 : 36, seats: [2, 3, 4].includes(saved.seats) ? saved.seats : 2, stake: STAKES.includes(saved.stake) ? saved.stake : 0 }; }
+    catch { return { kind: "durak", mode: "classic", deck: 36, seats: 2, stake: 0 }; }
   }
   function saveSetup() { try { localStorage.setItem(SETUP_KEY, JSON.stringify(state.setup)); } catch {} }
 
@@ -161,9 +162,23 @@
     setTimeout(() => { if (state.root && !state.root.classList.contains("is-open")) state.root.hidden = true; }, 260);
   }
 
+  // Помощь дня: раз в сутки 2 000 $, если на счёте меньше 2 000 $. Решает сервер, клиент только спрашивает.
   async function refreshWallet() {
-    try { state.wallet = await rpc("glowletter_wallet"); render(true); } catch {}
+    try { state.wallet = await rpc("glowletter_wallet"); render(true); } catch { return; }
+    if (state.wallet.dollars >= 2000 || state.aidAsked === state.wallet.dollars) return;
+    state.aidAsked = state.wallet.dollars;
+    try {
+      const aid = await rpc("glowletter_dollars_aid");
+      if (!aid?.dollars_added) return;
+      state.wallet = { ...state.wallet, dollars: aid.dollars };
+      notify(tr("aidGot", { n: num(aid.dollars_added) }), 5200);
+      dispatchEvent(new CustomEvent("glowletter-wallet-change", { detail: { coins: state.wallet.coins, dollars: aid.dollars } }));
+      render(true);
+    } catch {}
   }
+
+  const isCheckers = () => state.game?.game?.kind === "checkers" || state.game?.settings?.kind === "checkers";
+  const kindLabel = settings => settings?.kind === "checkers" ? tr("gameCheckers") : `${tr(settings.mode)} · ${tr("cards", { n: settings.deck })}`;
 
   function render(soft = false) {
     if (!state.root || state.root.hidden) return;
@@ -171,7 +186,7 @@
     const cloth = state.wallet?.cloth || "cloth_green";
     state.root.dataset.cloth = cloth;
     state.root.dataset.view = state.view;
-    const views = { home: renderHome, lobby: renderLobby, table: renderTableShell, ranking: renderRanking };
+    const views = { home: renderHome, lobby: renderLobby, table: () => isCheckers() ? renderCheckersShell() : renderTableShell(), ranking: renderRanking };
     state.root.innerHTML = (views[state.view] || renderHome)();
     if (state.view === "table") renderTable();
   }
@@ -185,6 +200,13 @@
       <span class="dk-money is-dollars"><b>$</b>${esc(num(w.dollars))}</span>
       <span class="dk-money is-coins">${coinIcon}${esc(num(w.coins))}</span>
     </button>`;
+  }
+
+  // Баланс за столом меняется после ставки и выплаты, а шапка стола не перерисовывается целиком.
+  function walletNode() {
+    const box = document.createElement("div");
+    box.innerHTML = walletBar();
+    return box.firstElementChild;
   }
 
   function topbar(title, back = "close") {
@@ -250,21 +272,23 @@
     const s = state.setup;
     const w = state.wallet;
     const daily = w && !w.claimed_today ? `<button class="dk-daily" type="button" data-act="daily"><span class="dk-daily-gift" aria-hidden="true">🎁</span><span><b>${esc(tr("daily"))}</b><small>+${esc(num(w.daily_next))} $${w.daily_coins ? ` · +${w.daily_coins}` : ""}</small></span><i>${esc(tr("claim"))}</i></button>` : "";
-    const mine = state.mine.filter(game => game.status !== "closed").slice(0, 3).map(game => `<button class="dk-resume" type="button" data-act="resume" data-id="${esc(game.id)}"><span>${esc(tr(game.settings.mode))} · ${esc(tr("cards", { n: game.settings.deck }))}${game.settings.stake ? ` · ${esc(num(game.settings.stake))} $` : ""}</span><b>${esc(tr("resume"))} →</b></button>`).join("");
+    const checkers = s.kind === "checkers";
+    const mine = state.mine.filter(game => game.status !== "closed").slice(0, 3).map(game => `<button class="dk-resume" type="button" data-act="resume" data-id="${esc(game.id)}"><span>${esc(kindLabel(game.settings))}${game.settings.stake ? ` · ${esc(num(game.settings.stake))} $` : ""}</span><b>${esc(tr("resume"))} →</b></button>`).join("");
     const stats = w?.stats || {};
-    return `${topbar(tr("title"))}
+    return `${topbar(checkers ? tr("gameCheckers") : tr("title"))}
     <div class="dk-scroll">
-      <div class="dk-hero" aria-hidden="true">
-        <div class="dk-fan">${["14h", "13s", "12d", "11c", "14s"].map((card, i) => `<span class="dk-card dk-fan-card" style="--i:${i - 2}">${cardImg(card)}</span>`).join("")}</div>
+      <div class="dk-games">${seg("kind", [["durak", `🃏 ${tr("gameDurak")}`], ["checkers", `⚪ ${tr("gameCheckers")}`]], s.kind)}</div>
+      <div class="dk-hero${checkers ? " is-checkers" : ""}" aria-hidden="true">
+        ${checkers ? ckHero() : `<div class="dk-fan">${["14h", "13s", "12d", "11c", "14s"].map((card, i) => `<span class="dk-card dk-fan-card" style="--i:${i - 2}">${cardImg(card)}</span>`).join("")}</div>`}
       </div>
-      <p class="dk-lead">${esc(tr("lead"))}</p>
+      <p class="dk-lead">${esc(checkers ? tr("ckLead") : tr("lead"))}</p>
       ${signedIn() ? "" : `<p class="dk-note">${esc(tr("signIn"))}</p>`}
       ${daily}
       ${mine ? `<section class="dk-panel"><h3>${esc(tr("myTables"))}</h3>${mine}</section>` : ""}
       <section class="dk-panel dk-setup">
-        <label>${esc(tr("mode"))}</label>${seg("mode", [["classic", tr("classic")], ["transfer", tr("transfer")]], s.mode)}
+        ${checkers ? "" : `<label>${esc(tr("mode"))}</label>${seg("mode", [["classic", tr("classic")], ["transfer", tr("transfer")]], s.mode)}
         <label>${esc(tr("deck"))}</label>${seg("deck", [[24, tr("cards", { n: 24 })], [36, tr("cards", { n: 36 })]], s.deck)}
-        <label>${esc(tr("players"))}</label>${seg("seats", [[2, "2"], [3, "3"], [4, "4"]], s.seats)}
+        <label>${esc(tr("players"))}</label>${seg("seats", [[2, "2"], [3, "3"], [4, "4"]], s.seats)}`}
         <label>${esc(tr("stake"))}</label>
         <div class="dk-stakes">${STAKES.map(value => `<button type="button" class="${value === s.stake ? "is-on" : ""}" data-set="stake" data-value="${value}" ${w && value > w.dollars ? "data-poor" : ""}>${value ? `${esc(num(value))} $` : esc(tr("noStake"))}</button>`).join("")}</div>
       </section>
@@ -277,7 +301,7 @@
         <button type="button" data-act="rules">📜 ${esc(tr("rules"))}</button>
       </div>
       ${stats.games ? `<p class="dk-stats"><b>${esc(rankTitle(stats))}</b> · ${esc(tr("stats", { g: num(stats.games), w: num(stats.wins), f: num(stats.fools) }))}</p>` : ""}
-      ${state.rulesOpen ? `<section class="dk-panel dk-rules"><h3>${esc(tr("rules"))}</h3><p>${esc(tr("rulesText"))}</p></section>` : ""}
+      ${state.rulesOpen ? `<section class="dk-panel dk-rules"><h3>${esc(tr("rules"))}</h3><p>${esc(checkers ? tr("ckRulesText") : tr("rulesText"))}</p></section>` : ""}
       ${signedIn() && w ? medalsPanel(stats) : ""}
     </div>`;
   }
@@ -302,7 +326,7 @@
     const friends = (window.GlowLetterFriends?.friends?.() || []).filter(f => !g.seats.some(s => s.id === f.user_id));
     return `${topbar(tr("lobby"), "leave")}
     <div class="dk-scroll">
-      <p class="dk-lead">${esc(tr(g.settings.mode))} · ${esc(tr("cards", { n: g.settings.deck }))}${g.settings.stake ? ` · ${esc(tr("stake"))} ${esc(num(g.settings.stake))} $` : ""}</p>
+      <p class="dk-lead">${esc(kindLabel(g.settings))}${g.settings.stake ? ` · ${esc(tr("stake"))} ${esc(num(g.settings.stake))} $` : ""}</p>
       <section class="dk-panel dk-seats">${seats.map((seat, i) => `<div class="dk-seat${seat ? "" : " is-free"}">${avatar(seat, i)}<span>${esc(seatName(seat))}${seat?.me ? ` · ${esc(tr("you"))}` : ""}</span></div>`).join("")}</section>
       <p class="dk-note">${esc(g.seats.length < g.settings.seats ? tr("waiting") : "")} ${g.settings.bots ? esc(tr("fillBots")) : ""}</p>
       ${g.host ? `<section class="dk-panel"><h3>${esc(tr("invite"))}</h3>${friends.length ? friends.map(f => `<div class="dk-friend"><span>${f.online ? "🟢" : "⚪"} ${esc(f.name)}</span><button type="button" data-act="invite" data-id="${esc(f.user_id)}" data-name="${esc(f.name)}"${state.invited.has(f.user_id) ? " disabled" : ""}>${esc(state.invited.has(f.user_id) ? tr("invited") : tr("invite"))}</button></div>`).join("") : `<p class="dk-note">${esc(tr("noFriends"))}</p>`}</section>` : ""}
@@ -363,10 +387,125 @@
     return "";
   }
 
+  // ——— Шашки: доска, свои шашки снизу ———
+  function ckHero() {
+    const rows = ["0b0b0b0b", "b0b0b0b0", "00000000", "0w0w0w0w"];
+    return `<div class="dk-ck-mini">${rows.join("").split("").map((c, i) => `<span class="${(Math.floor(i / 8) + i % 8) % 2 ? "is-dark" : ""}">${c === "0" ? "" : `<i class="dk-ck-piece is-${c}"></i>`}</span>`).join("")}</div>`;
+  }
+
+  function renderCheckersShell() {
+    return `<div class="dk-table is-checkers" data-table data-checkers>
+      <header class="dk-top is-table">
+        <button class="dk-round" type="button" data-act="leave" aria-label="${esc(tr("leave"))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dk-top-info" data-info></div>
+        ${walletBar()}
+      </header>
+      <div class="dk-ck-player is-them" data-them></div>
+      <div class="dk-ck-board" data-board role="grid" aria-label="${esc(tr("gameCheckers"))}"></div>
+      <div class="dk-ck-player is-me" data-mine></div>
+      <div class="dk-status" data-status aria-live="polite"></div>
+      <div class="dk-buttons" data-buttons></div>
+      <div class="dk-overlay" data-overlay></div>
+    </div>`;
+  }
+
+  function ckPlayer(view, i, mine) {
+    const g = view.game;
+    const p = g.players[i];
+    const seat = view.seats[i];
+    const active = g.phase === "play" && g.turn === i;
+    const bubble = state.bubbles[i];
+    return `<div class="dk-ck-id${active ? " is-active" : ""}">${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline, mine) : ""}
+      <b>${esc(seatName(seat))}</b><small><i class="dk-ck-piece is-${p.side > 0 ? "w" : "b"} is-mini"></i>× ${p.pieces}</small></div>
+      ${bubble && bubble.until > Date.now() ? `<div class="dk-bubble">${esc(bubble.text)}</div>` : ""}`;
+  }
+
+  function renderCheckers() {
+    const root = state.root;
+    const view = state.game;
+    const g = view.game;
+    const q = selector => root.querySelector(selector);
+    if (!q("[data-checkers]")) root.innerHTML = renderCheckersShell();
+    const me = g.me >= 0 ? g.me : 0;
+    const them = 1 - me;
+    const flip = g.side === -1;
+    const myTurn = g.phase === "play" && g.turn === g.me;
+    const legal = myTurn ? g.legal || [] : [];
+    const froms = new Set(legal.map(path => path[0]));
+    if (state.ckFrom != null && !froms.has(state.ckFrom)) state.ckFrom = null;
+    if (state.ckFrom == null && froms.size === 1) state.ckFrom = [...froms][0];
+    const targets = new Set(legal.filter(path => path[0] === state.ckFrom).map(path => path[path.length - 1]));
+    const last = new Set(g.last?.path || []);
+    const hint = state.hint?.path || [];
+
+    q(".dk-top .dk-wallet")?.replaceWith(walletNode());
+    q("[data-info]").innerHTML = `<span>${esc(tr("gameCheckers"))}${view.settings.stake ? ` · ${esc(num(view.settings.stake))} $` : ""}</span>`;
+    q("[data-them]").innerHTML = ckPlayer(view, them, false);
+    q("[data-mine]").innerHTML = ckPlayer(view, me, true);
+    q("[data-board]").innerHTML = Array.from({ length: 64 }, (_, d) => {
+      const sq = flip ? 63 - d : d;
+      const dark = (Math.floor(sq / 8) + (sq % 8)) % 2 === 1;
+      if (!dark) return '<span class="dk-ck-cell"></span>';
+      const v = g.board[sq];
+      const cls = ["dk-ck-cell", "is-dark"];
+      if (froms.has(sq)) cls.push("can-move");
+      if (state.ckFrom === sq) cls.push("is-selected");
+      if (targets.has(sq)) cls.push("is-target");
+      if (last.has(sq)) cls.push("is-last");
+      if (hint[0] === sq || hint[hint.length - 1] === sq) cls.push("is-hint");
+      const piece = v ? `<i class="dk-ck-piece is-${v > 0 ? "w" : "b"}${Math.abs(v) === 2 ? " is-king" : ""}${g.last && g.last.path[g.last.path.length - 1] === sq ? " is-new" : ""}"></i>` : "";
+      return `<button type="button" class="${cls.join(" ")}" data-sq="${sq}">${piece}</button>`;
+    }).join("");
+
+    const sideName = tr(g.side > 0 ? "ckWhite" : "ckBlack");
+    const status = g.phase !== "play" ? "" : myTurn ? (g.capture ? tr("ckCapture") : tr("ckYourTurn")) : tr("ckWait");
+    q("[data-status]").innerHTML = `<span>${esc(status)}</span>${g.me >= 0 ? `<small>${esc(tr("ckYou", { side: sideName }))}</small>` : ""}`;
+    q("[data-status]").classList.toggle("is-mine", myTurn);
+    const hints = state.wallet?.inventory?.hint || 0;
+    const withBots = view.seats.some(s => s.bot);
+    const sure = Date.now() - state.ckResignAt < 3000;
+    q("[data-buttons]").innerHTML = g.phase === "play" && g.me >= 0 ? `
+      <button class="dk-btn is-take${sure ? " is-sure" : ""}" type="button" data-act="resign">${esc(sure ? tr("ckResignSure") : tr("ckResign"))}</button>
+      <span class="dk-btn-gap"></span>
+      ${withBots && myTurn ? `<button class="dk-chip-btn" type="button" data-act="hint" title="${esc(tr("hints", { n: hints }))}">💡 ${hints}</button>` : ""}
+      <button class="dk-chip-btn" type="button" data-act="chat" aria-label="${esc(tr("emotes"))}">💬</button>` : "";
+    q("[data-overlay]").innerHTML = g.phase === "over" ? ckResult(view) : state.chatOpen ? chatPanel(view) : "";
+    state.shownSeq = g.seq;
+  }
+
+  function ckResult(view) {
+    const g = view.game;
+    const mine = view.rewards?.[view.seats[g.me]?.id] || null;
+    const won = g.durak >= 0 && g.durak !== g.me;
+    const title = g.durak < 0 ? tr("draw") : won ? tr("ckWin") : tr("ckLoss");
+    const note = g.reason === "resign" ? tr("ckByResign") : g.reason === "draw" ? tr("ckDrawRule") : "";
+    const net = mine?.net ?? 0;
+    return `<div class="dk-result${g.durak < 0 ? " is-draw" : won ? " is-win" : " is-fool"}" role="dialog" aria-modal="true">
+      <div class="dk-result-crest" aria-hidden="true">${g.durak < 0 ? "🤝" : won ? "🏆" : "⚪"}</div>
+      <h3>${esc(title)}</h3>
+      ${note ? `<p>${esc(note)}</p>` : ""}
+      ${view.settings.stake ? `<p class="dk-net ${net >= 0 ? "is-plus" : "is-minus"}">${esc(tr("net", { sign: net > 0 ? "+" : net < 0 ? "−" : "", n: num(Math.abs(net)) }))}</p>` : ""}
+      ${mine?.insured ? `<p class="dk-note">${esc(tr("insured"))}</p>` : ""}${mine?.boosted && net > 0 ? `<p class="dk-note">${esc(tr("boosted"))}</p>` : ""}
+      <div class="dk-actions"><button class="dk-primary" type="button" data-act="rematch">${esc(tr("again"))}</button><button class="dk-secondary" type="button" data-act="menu">${esc(tr("toMenu"))}</button></div>
+    </div>`;
+  }
+
+  function onSquare(sq) {
+    const g = state.game?.game;
+    if (!g || g.phase !== "play" || g.turn !== g.me) return;
+    const legal = g.legal || [];
+    if (legal.some(path => path[0] === sq)) { state.ckFrom = state.ckFrom === sq && new Set(legal.map(p => p[0])).size > 1 ? null : sq; renderCheckers(); return; }
+    const path = legal.find(p => p[0] === state.ckFrom && p[p.length - 1] === sq);
+    if (path) { state.ckFrom = null; act({ type: "move", path }); return; }
+    const cell = state.root.querySelector(`[data-sq="${sq}"]`);
+    cell?.classList.remove("is-shake"); void cell?.offsetWidth; cell?.classList.add("is-shake");
+  }
+
   function renderTable() {
     const root = state.root;
     const view = state.game;
     if (!root || !view?.game) return;
+    if (view.game.kind === "checkers") { renderCheckers(); return; }
     const g = view.game;
     const q = selector => root.querySelector(selector);
     if (!q("[data-table]")) { root.innerHTML = renderTableShell(); }
@@ -374,6 +513,7 @@
     const myTurn = g.must.includes(g.me);
     const seats = view.seats;
 
+    q(".dk-top .dk-wallet")?.replaceWith(walletNode());
     q("[data-info]").innerHTML = `<span class="dk-trump-chip">${esc(tr("trump"))} ${suitIcon(g.trump)}</span><span>${esc(tr(g.mode))}${view.settings.stake ? ` · ${esc(num(view.settings.stake))} $` : ""}</span>`;
 
     const opponents = relativeSeats(g);
@@ -566,12 +706,19 @@
       fresh.forEach(line => { state.bubbles[line.seat] = { text: line.emote ? `${EMOTES[line.emote] || ""} ${tr(`emo_${line.emote}`)}` : line.text, until: Date.now() + 4200 }; });
       state.lastChat = Math.max(state.lastChat, ...chat.map(line => line.at));
     }
-    const sweep = before?.game && view.game && view.game.seq > before.game.seq && before.game.table.length && view.game.log?.some(entry => entry.n > before.game.seq && (entry.t === "beat" || entry.t === "take"));
+    const sweep = before?.game?.table && view.game?.table && view.game.seq > before.game.seq && before.game.table.length && view.game.log?.some(entry => entry.n > before.game.seq && (entry.t === "beat" || entry.t === "take"));
     state.game = view;
     if (view.status === "lobby") { state.view = "lobby"; render(); return; }
     if (view.status === "closed") { toHome(); return; }
     if (!view.game) return;
-    if (state.view !== "table") { state.view = "table"; state.shownTable = []; render(); watch(view.id); return; }
+    if (state.view !== "table") { state.view = "table"; state.shownTable = []; render(); watch(view.id); if (view.settings?.stake && signedIn()) refreshWallet(); return; }
+    if (view.game.kind === "checkers") {
+      if (view.game.turn === view.game.me && before?.game?.turn !== before?.game?.me) haptic(25);
+      if (before?.game?.seq !== view.game.seq) state.hint = null;
+      renderTable();
+      if (view.game.phase === "over" && before?.game?.phase === "play") { haptic([40, 60, 40]); refreshWallet(); }
+      return;
+    }
     if (state.selected && !view.game.hand.includes(state.selected)) state.selected = null;
     if (view.game.must.includes(view.game.me) && !before?.game?.must?.includes(before.game.me)) haptic(25);
     if (sweep) {
@@ -650,6 +797,8 @@
   }
 
   async function onClick(event) {
+    const square = event.target.closest("[data-sq]");
+    if (square && state.root.contains(square)) { onSquare(Number(square.dataset.sq)); return; }
     const card = event.target.closest("[data-card]");
     if (card && state.root.contains(card)) { onHandCard(card.dataset.card); return; }
     const pair = event.target.closest("[data-slot]");
@@ -662,7 +811,7 @@
     const set = event.target.closest("[data-set]");
     if (set) {
       const key = set.dataset.set;
-      const value = key === "mode" ? set.dataset.value : Number(set.dataset.value);
+      const value = key === "mode" || key === "kind" ? set.dataset.value : Number(set.dataset.value);
       state.setup = { ...state.setup, [key]: value };
       saveSetup();
       render();
@@ -713,6 +862,12 @@
         try { apply(await call("rematch", { game: view.id })); refreshWallet(); }
         catch (error) { if (error.code === "not_finished") refreshView(); else notify(errorText(error)); }
         return;
+      case "resign":
+        if (Date.now() - state.ckResignAt < 3000) { state.ckResignAt = 0; act({ type: "resign" }); return; }
+        state.ckResignAt = Date.now();
+        renderTable();
+        setTimeout(() => { if (state.view === "table") renderTable(); }, 3100);
+        return;
       case "take": act({ type: "take" }); return;
       case "pass": act({ type: "pass" }); return;
       case "transfer": { const move = (view.game.legal || []).find(a => a.type === "transfer" && a.card === state.selected); if (move) act(move); return; }
@@ -746,10 +901,18 @@
   // Вход: кнопка на главной и в «Играх».
   document.addEventListener("click", event => {
     const entry = event.target.closest("[data-open-durak]");
-    if (entry) { event.preventDefault(); open("home"); }
+    if (entry) { event.preventDefault(); open("home"); return; }
+    const checkers = event.target.closest("[data-open-checkers]");
+    if (checkers) { event.preventDefault(); openCheckers(); }
   });
   document.addEventListener("visibilitychange", () => { if (!document.hidden && state.view === "table") refreshView(); });
   addEventListener("glowletter-wallet-change", () => refreshWallet());
 
-  window.GlowLetterDurak = Object.freeze({ open: () => open("home"), join, text: tr });
+  function openCheckers() {
+    state.setup = { ...state.setup, kind: "checkers" };
+    saveSetup();
+    open("home");
+  }
+
+  window.GlowLetterDurak = Object.freeze({ open: () => open("home"), openCheckers, join, text: tr });
 })();

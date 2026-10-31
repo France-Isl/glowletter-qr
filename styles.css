@@ -2123,3 +2123,14 @@ body[data-scene="cabin"]:not(.is-reading) .cinematic-bg { background-color: #2a1
 }
 html[data-gl-perf="lite"] .paywall-crest, html[data-gl-perf="lite"] .paywall-crest::before, html[data-gl-perf="lite"] #paywallLayer .purchase-button::after { animation: none !important; }
 html[data-gl-perf="lite"] .paywall-crest i { display: none; }
+
+/* Главная не «пружинит» под пальцем (владелец 01.11): без отскока у края, а кнопки наверху
+   (кубок, язык, сердце, меню) едут вместе со страницей и стоят чуть выше строки с названием. */
+html, body { overscroll-behavior-y: none; }
+body:not(.is-reading) .topbar { position: absolute; padding-top: calc(var(--u) * 52 + env(safe-area-inset-top, 0px)); }
+/* Костёр горит и за письмом (владелец 01.11): то же видео на весь экран, как фото при чтении. */
+body[data-scene="cabin"].is-reading .home-video {
+  display: block; position: fixed; z-index: -6; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;
+  pointer-events: none; opacity: 0; transition: opacity .6s ease; background: transparent;
+}
+body[data-scene="cabin"].is-reading .home-video.is-on { opacity: 1; }

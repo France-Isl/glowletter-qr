@@ -348,6 +348,8 @@
     const shop = document.getElementById("homeQuickShop");
     if (durak) durak.textContent = tr("homeDurak");
     if (shop) shop.textContent = tr("homeShop");
+    const checkers = document.getElementById("homeQuickCheckers");
+    if (checkers && window.GlowLetterDurak?.text) checkers.textContent = window.GlowLetterDurak.text("gameCheckers");
     renderSettings();
   }
   addEventListener("glowletter-language-changed", () => setTimeout(() => { localizeHome(); render(); }, 0));

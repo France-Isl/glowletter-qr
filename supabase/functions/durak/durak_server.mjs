@@ -1,8 +1,12 @@
-// Стол «Дурака» на сервере: лобби, ходы, боты, таймер, награды.
+// Стол «Дурака» и шашек на сервере: лобби, ходы, боты, таймер, ставки в долларах.
 // Хранилище подаётся снаружи (db), поэтому этот файл проверяется тестами без базы.
 import "./engine.js";
+import "./checkers.js";
 
 const D = globalThis.GlowDurak;
+const C = globalThis.GlowCheckers;
+// У обеих игр один интерфейс движка; какая идёт за столом — в settings.kind.
+const engineOf = game => (game.settings?.kind === "checkers" ? C : D);
 export const TURN_MS = 30000;
 // Боты ходят по одному с паузой, чтобы за столом было видно каждый их ход.
 export const BOT_MS = 900;
@@ -42,37 +46,39 @@ export function viewFor(game, userId, extra = {}) {
   const base = lobbyView(game, userId);
   if (!game.state) return { ...base, game: null, chat: game.chat || [], ...extra };
   const seat = seatOf(game, userId);
-  const view = D.viewFor(game.state, seat >= 0 ? seat : -1);
+  const view = engineOf(game).viewFor(game.state, seat >= 0 ? seat : -1);
   if (seat < 0) { view.hand = []; view.legal = []; }
   const botIn = game.botAt ? Math.max(0, game.botAt - Date.now()) : null;
   return { ...base, game: view, deadline: game.deadline || null, botIn, rewards: game.rewards || null, chat: game.chat || [], ...extra };
 }
 
 function cleanSettings(input = {}) {
+  const kind = input.kind === "checkers" ? "checkers" : "durak";
   const mode = input.mode === "transfer" ? "transfer" : "classic";
   const deck = Number(input.deck) === 24 ? 24 : 36;
-  const seats = Math.min(4, Math.max(2, Math.round(Number(input.seats) || 2)));
+  const seats = kind === "checkers" ? 2 : Math.min(4, Math.max(2, Math.round(Number(input.seats) || 2)));
   const bots = input.bots !== false;
   const rawStake = Math.round(Number(input.stake) || 0);
   const stake = rawStake <= 0 ? 0 : Math.min(MAX_STAKE, Math.max(MIN_STAKE, rawStake));
-  return { mode, deck, seats, bots, stake };
+  return { kind, mode, deck, seats, bots, stake };
 }
 
 function setDeadline(game, now) {
-  const must = game.state && game.state.phase === "play" ? D.mustAct(game.state) : [];
+  const must = game.state && game.state.phase === "play" ? engineOf(game).mustAct(game.state) : [];
   const humanTurn = must.some(i => !controlledByBot(game, i));
   game.deadline = humanTurn ? now + TURN_MS : null;
   game.botAt = must.some(i => controlledByBot(game, i)) ? now + BOT_MS : null;
 }
 
 function runBots(game, limit = 400) {
+  const E = engineOf(game);
   for (let step = 0; step < limit && game.state.phase === "play"; step += 1) {
-    const must = D.mustAct(game.state).filter(i => controlledByBot(game, i));
+    const must = E.mustAct(game.state).filter(i => controlledByBot(game, i));
     if (!must.length) return;
     const who = must[0];
-    const action = D.botAction(game.state, who);
+    const action = E.botAction(game.state, who);
     if (!action) return;
-    game.state = D.apply(game.state, who, action);
+    game.state = E.apply(game.state, who, action);
   }
 }
 
@@ -82,7 +88,7 @@ export function payouts(state, stake) {
   if (state.durak < 0) return result;
   const shares = SHARES[n] || [];
   state.players.forEach((_, i) => {
-    if (i === state.durak) { result[i] = { result: "fool", payout: 0 }; return; }
+    if (i === state.durak) { result[i] = { result: state.kind === "checkers" ? "loss" : "fool", payout: 0 }; return; }
     const place = state.order.indexOf(i);
     const share = shares[place] ?? 0;
     result[i] = { result: place === 0 ? "win" : "escape", payout: stake + Math.floor(stake * share) };
@@ -122,7 +128,7 @@ async function startRound(game, db, now, firstAttacker = null) {
   game.rewards = null;
   game.status = "playing";
   game.seats.forEach(seat => { seat.afk = 0; seat.auto = false; });
-  game.state = D.newGame({
+  game.state = engineOf(game).newGame({
     players: game.seats.map(seat => ({ id: seat.bot ? `bot:${seat.botKey}` : seat.id, name: seat.name, bot: Boolean(seat.bot) })),
     mode: game.settings.mode, deckSize: game.settings.deck, rng: secureRandom, firstAttacker
   });
@@ -232,7 +238,8 @@ async function step(db, game, userId, name, who, action, body, now) {
   if (action === "rematch") {
     if (game.status !== "finished") throw new GameError("not_finished", 409);
     const fool = game.state?.durak;
-    const first = Number.isInteger(fool) && fool >= 0 ? (fool + 1) % game.seats.length : null;
+    const E = engineOf(game);
+    const first = E.nextFirst && game.state ? E.nextFirst(game.state) : Number.isInteger(fool) && fool >= 0 ? (fool + 1) % game.seats.length : null;
     game.seats.forEach(s => { if (s.left) { s.bot = true; s.botKey = s.botKey || BOT_KEYS[0]; } });
     await startRound(game, db, now, first);
     if (game.state.phase === "over") await finishRound(game, db);
@@ -241,11 +248,15 @@ async function step(db, game, userId, name, who, action, body, now) {
   }
 
   if (game.status !== "playing" || !game.state) throw new GameError("not_playing", 409);
+  const E = engineOf(game);
 
   if (action === "act") {
     const move = body.move || {};
     if (Number.isInteger(body.seq) && body.seq !== game.state.seq) throw new GameError("stale", 409);
-    try { game.state = D.apply(game.state, seat, { type: String(move.type || ""), card: String(move.card || ""), slot: Number(move.slot) }); }
+    const parsed = E === C
+      ? { type: move.type === "resign" ? "resign" : "move", path: Array.isArray(move.path) ? move.path.slice(0, 14).map(Number) : [] }
+      : { type: String(move.type || ""), card: String(move.card || ""), slot: Number(move.slot) };
+    try { game.state = E.apply(game.state, seat, parsed); }
     catch { throw new GameError("illegal", 409); }
     game.seats[seat].afk = 0;
     game.seats[seat].auto = false;
@@ -259,13 +270,13 @@ async function step(db, game, userId, name, who, action, body, now) {
     const botDue = Boolean(game.botAt) && now >= game.botAt - 150;
     const humanDue = Boolean(game.deadline) && now >= game.deadline;
     if (!botDue && !humanDue) return viewFor(game, userId);
-    const late = humanDue ? D.mustAct(game.state).filter(i => !controlledByBot(game, i)) : [];
+    const late = humanDue ? E.mustAct(game.state).filter(i => !controlledByBot(game, i)) : [];
     for (const i of late) {
       if (game.state.phase !== "play") break;
-      if (!D.mustAct(game.state).includes(i)) continue;
-      const auto = D.botAction(game.state, i);
+      if (!E.mustAct(game.state).includes(i)) continue;
+      const auto = E.botAction(game.state, i);
       if (!auto) continue;
-      game.state = D.apply(game.state, i, auto);
+      game.state = E.apply(game.state, i, auto);
       game.seats[i].afk = (game.seats[i].afk || 0) + 1;
       if (game.seats[i].afk >= 3) game.seats[i].auto = true;
     }
@@ -288,7 +299,7 @@ async function step(db, game, userId, name, who, action, body, now) {
 
   if (action === "hint") {
     if (!game.seats.some(s => s.bot)) throw new GameError("bots_only", 409);
-    const suggestion = D.botAction(game.state, seat);
+    const suggestion = E.botAction(game.state, seat);
     if (!suggestion) return viewFor(game, userId, { hint: null });
     const paid = await db.useHint(userId);
     if (!paid) throw new GameError("no_hints", 402);
