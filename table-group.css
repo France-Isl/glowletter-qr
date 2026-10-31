@@ -1,0 +1,133 @@
+/* «Игровой стол» на четверых: места за столом, «Стол заполнен», зрители (table.js)
+   и игры на компанию (table-group.js). Цвет игрока — по номеру в партии (--gltg-c: 0…3). */
+
+/* ——— Стол: кто сидит, позвать ещё, заполнен ——— */
+.glt-sr, .gltg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.glt-seats { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 14px; }
+.glt-seat-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.glt-seat { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; min-height: 32px; padding: 3px 12px 3px 3px; border: 1px solid var(--ui-border); border-radius: 999px; background: var(--ui-surface); font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.glt-seat small { color: var(--ui-muted); font-weight: 600; }
+.glt-seat-dot { display: grid; place-items: center; flex: none; width: 26px; height: 26px; border-radius: 50%; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); font-size: 11px; font-weight: 800; }
+.glt-seat.is-me .glt-seat-dot { background: var(--emerald); }
+.glg-layer .glt-invite-more { min-height: 36px; padding: 6px 14px; font-size: 13px; }
+.glt-invite-list { display: flex; flex-wrap: wrap; gap: 8px; margin: -4px 0 16px; padding: 12px; border: 1px dashed var(--ui-border); border-radius: 16px; }
+.glt-invite-title { flex-basis: 100%; margin: 0; color: var(--ui-muted); font-size: 11px; font-weight: 800; }
+.glg-layer .glt-invite-friend { min-height: 40px; padding: 8px 14px; border: 1px solid var(--ui-border); border-radius: 999px; color: var(--ui-ink); background: var(--ui-surface); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.glt-invite-friend.is-online::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--emerald); vertical-align: 1px; }
+.glt-game-seats { color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .02em; }
+.glt-game.is-tight .glt-game-seats { color: var(--ui-accent); }
+.glt-full, .glt-watch { display: grid; justify-items: center; gap: 8px; padding: 28px 18px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); text-align: center; }
+.glt-full h3, .glt-watch h3 { margin: 0; }
+.glt-full p, .glt-watch p { margin: 0; color: var(--ui-muted); line-height: 1.5; }
+.glt-full-icon { font-size: 44px; line-height: 1; }
+
+/* ——— Игры на компанию ——— */
+.gltg {
+  --gltg-ok: var(--emerald);
+  display: grid;
+  gap: 12px;
+  color: var(--ui-ink);
+  font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.gltg *, .gltg *::before, .gltg *::after { box-sizing: border-box; }
+.gltg p { margin: 0; }
+.gltg button { font: inherit; color: inherit; cursor: pointer; }
+.gltg button:focus-visible { outline: 3px solid color-mix(in srgb, var(--ui-accent) 32%, transparent); outline-offset: 2px; }
+.gltg [style*="--gltg-c"] { --gltg-hue: hsl(calc(var(--gltg-c) * 90 + 20) 58% 46%); }
+
+.gltg-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.gltg-round { color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.gltg-ring { position: relative; display: grid; place-items: center; flex: none; width: 52px; height: 52px; }
+.gltg-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.gltg-ring circle { fill: none; stroke-width: 4; }
+.gltg-ring-track { stroke: color-mix(in srgb, var(--ui-ink) 10%, transparent); }
+.gltg-ring-left { stroke: var(--ui-accent); stroke-linecap: round; transition: stroke-dashoffset .25s linear, stroke .3s ease; }
+.gltg-ring b { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.gltg-ring.is-low .gltg-ring-left { stroke: var(--madder, #9b2f3b); }
+.gltg-ring.is-low b { color: var(--madder, #9b2f3b); }
+
+.gltg-lead { padding: 8px 12px; border-radius: 14px; color: var(--ui-muted); background: color-mix(in srgb, var(--ui-accent) 8%, transparent); font-size: 13px; font-weight: 700; text-align: center; }
+.gltg-lead.is-me { color: var(--ui-accent-deep); background: color-mix(in srgb, var(--ui-accent) 15%, transparent); }
+.gltg-q { padding: 18px 16px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); box-shadow: 0 14px 32px color-mix(in srgb, var(--night-deep) 7%, transparent); text-align: center; }
+.gltg-q p { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.gltg-q.is-new { animation: gltg-pop .45s cubic-bezier(.2, .9, .3, 1.2) both; }
+
+/* Варианты ответа */
+.gltg-options, .gltg-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.gltg-options.is-three, .gltg-cards.is-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gltg .gltg-opt { position: relative; display: grid; justify-items: center; align-content: center; gap: 6px; min-height: 92px; padding: 12px 10px; border: 2px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); text-align: center; transition: transform .15s ease, border-color .2s ease, opacity .2s ease, box-shadow .2s ease; }
+.gltg .gltg-opt:not(:disabled):hover { border-color: var(--gltg-hue, var(--ui-accent)); }
+.gltg .gltg-opt:not(:disabled):active { transform: scale(.96); }
+.gltg .gltg-opt:disabled { cursor: default; }
+.gltg .gltg-opt.is-picked { border-color: var(--gltg-hue, var(--ui-accent)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--gltg-hue, var(--ui-accent)) 22%, transparent); }
+.gltg .gltg-opt.is-picked::after { content: "✓"; position: absolute; top: 6px; right: 10px; color: var(--gltg-hue, var(--ui-accent)); font-weight: 900; }
+.gltg .gltg-opt.is-dim { opacity: .45; }
+.gltg-pic { font-size: clamp(44px, 13vw, 60px); line-height: 1.1; }
+.gltg-pic-small { font-size: 34px; }
+.gltg-opt-text { font-size: 13px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.gltg-opt-text small { color: var(--ui-muted); font-weight: 600; }
+.gltg-face { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; color: #fff; background: var(--gltg-hue, var(--ui-accent)); font-size: 16px; font-weight: 800; }
+
+/* Кто уже ответил */
+.gltg-dots { display: grid; justify-items: center; gap: 8px; }
+.gltg-dots-text { color: var(--ui-muted); font-size: 11px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.gltg-dots ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gltg-dot { display: inline-flex; align-items: center; gap: 6px; max-width: 46%; padding: 4px 10px 4px 6px; border: 1px solid var(--ui-border); border-radius: 999px; color: var(--ui-muted); font-size: 11px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gltg-dot i { flex: none; width: 12px; height: 12px; border: 2px solid var(--gltg-hue); border-radius: 50%; transition: background .25s ease, transform .25s ease; }
+.gltg-dot.is-in { color: var(--ui-ink); }
+.gltg-dot.is-in i { background: var(--gltg-hue); transform: scale(1.1); }
+.gltg-dot.is-away { opacity: .45; }
+.gltg-note { min-height: 1.4em; color: var(--ui-muted); font-size: 13px; text-align: center; }
+
+/* Раскрытие: карточки переворачиваются, имена выезжают */
+.gltg-card { position: relative; display: grid; align-content: start; justify-items: center; gap: 8px; min-height: 120px; padding: 14px 8px 10px; border: 2px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); text-align: center; transform-origin: 50% 50%; }
+.gltg-card.is-top { border-color: var(--ui-gold, var(--gold)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-gold, var(--gold)) 22%, transparent); }
+.gltg-card.is-anim { animation: gltg-flip .55s cubic-bezier(.2, .8, .3, 1) both; animation-delay: calc(var(--gltg-i, 0) * 120ms); }
+.gltg-card-face { display: grid; justify-items: center; gap: 4px; }
+.gltg-badge { position: absolute; top: -11px; left: 50%; max-width: 92%; padding: 2px 10px; border-radius: 999px; color: var(--night-deep, #1d1726); background: var(--ui-gold, var(--gold)); font-size: 11px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transform: translateX(-50%); }
+.gltg-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.gltg-chip { max-width: 100%; padding: 3px 9px; border-radius: 999px; color: #fff; background: var(--gltg-hue, var(--ui-accent)); font-size: 11px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gltg-chip.is-me { outline: 2px solid var(--ui-ink); outline-offset: 1px; }
+.gltg-chip.is-right::before { content: "✓ "; }
+.gltg-card.is-anim .gltg-chip { animation: gltg-slide .4s cubic-bezier(.2, .9, .3, 1.2) both; animation-delay: calc(450ms + var(--gltg-d, 0) * 110ms); }
+.gltg-none { color: var(--ui-muted); font-size: 11px; }
+.gltg-summary { color: var(--ui-accent-deep); font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 700; line-height: 1.2; text-align: center; }
+.gltg-summary.is-anim { animation: gltg-pop .5s .7s cubic-bezier(.2, .9, .3, 1.2) both; }
+.gltg-missing { color: var(--ui-muted); font-size: 11px; text-align: center; }
+
+.gltg-score, .gltg-rank { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gltg-score li, .gltg-rank li { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--ui-border); border-left: 5px solid var(--gltg-hue); border-radius: 14px; background: var(--ui-surface); }
+.gltg-score li.is-me, .gltg-rank li.is-me { background: color-mix(in srgb, var(--gltg-hue) 9%, var(--ui-surface)); }
+.gltg-score-name, .gltg-rank-name { flex: 1; min-width: 0; font-weight: 700; overflow-wrap: anywhere; }
+.gltg-score b, .gltg-rank b { font-size: 13px; font-variant-numeric: tabular-nums; }
+.gltg-plus { padding: 1px 8px; border-radius: 999px; color: #fff; background: var(--gltg-ok); font-size: 11px; font-weight: 900; animation: gltg-pop .4s 1s both; }
+.gltg-next { display: grid; justify-items: center; gap: 6px; }
+.gltg-auto { color: var(--ui-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+
+/* Итоги */
+.gltg-end { display: grid; justify-items: center; gap: 10px; text-align: center; }
+.gltg-end h3 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 7.4vw, 40px); font-weight: 700; }
+.gltg-trophy { font-size: 48px; line-height: 1; }
+.gltg-muted { color: var(--ui-muted); font-size: 13px; }
+.gltg-rank { width: 100%; text-align: left; }
+.gltg-rank li.is-first { border-color: var(--ui-gold, var(--gold)); }
+.gltg-medal { flex: none; min-width: 30px; font-size: 24px; text-align: center; }
+.gltg-medal.is-num { color: var(--ui-muted); font-size: 16px; font-weight: 800; }
+.gltg-end.is-anim .gltg-rank li { animation: gltg-slide .45s cubic-bezier(.2, .9, .3, 1.2) both; animation-delay: calc(200ms + var(--gltg-d, 0) * 140ms); }
+.gltg-recap { width: 100%; text-align: left; }
+.gltg-recap summary { padding: 8px 0; color: var(--ui-accent-deep); font-weight: 800; cursor: pointer; }
+.gltg-recap ol { display: grid; gap: 6px; margin: 0; padding: 0 0 0 20px; }
+.gltg-recap li { display: grid; gap: 2px; font-size: 13px; line-height: 1.35; }
+.gltg-recap li span { color: var(--ui-muted); }
+
+@keyframes gltg-flip { from { opacity: 0; transform: perspective(600px) rotateY(90deg); } to { opacity: 1; transform: perspective(600px) rotateY(0); } }
+@keyframes gltg-slide { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@keyframes gltg-pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 380px) {
+  .gltg-options.is-three, .gltg-cards.is-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gltg .gltg-opt { min-height: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gltg *, .gltg *::before, .gltg *::after { animation: none !important; transition: none !important; }
+}

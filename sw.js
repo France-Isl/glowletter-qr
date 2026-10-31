@@ -52,6 +52,7 @@ const CORE = [
   "ultra.css?v=92",
   "table-board.css?v=92",
   "table-party.css?v=92",
+  "table-group.css?v=92",
   "word.css?v=92",
   "ultra-i18n.js?v=92",
   "call.js?v=92",
@@ -60,6 +61,8 @@ const CORE = [
   "table-content.js?v=92", "table-content-i18n.js?v=92",
   "table-board.js?v=92",
   "table-party.js?v=92",
+  "table-group-content.js?v=92", "table-group-content-i18n.js?v=92",
+  "table-group.js?v=92",
   "word-lists.js?v=92",
   "word-i18n.js?v=92",
   "word.js?v=92",
@@ -81,7 +84,7 @@ const CORE = [
   "assets/frame-roses.webp",
   "assets/frame-roses-thumb.webp"
 ];
-const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "games-i18n.js", "games.js", "games.css", "friends-i18n.js", "friends.js", "friends.css", "couple.css", "couple-i18n.js", "couple.js", "bear-reader.js", "online.js", "voice.js", "ultra.css", "table-board.css", "table-party.css", "word.css", "ultra-i18n.js", "call.js", "table-i18n.js", "table.js", "table-content.js", "table-content-i18n.js", "table-board.js", "table-party.js", "word-lists.js", "word-i18n.js", "word.js", "together.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
+const CORE_FILES = new Set(["", "index.html", "local-fonts.css", "styles.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "i18n-extra.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "games-i18n.js", "games.js", "games.css", "friends-i18n.js", "friends.js", "friends.css", "couple.css", "couple-i18n.js", "couple.js", "bear-reader.js", "online.js", "voice.js", "ultra.css", "table-board.css", "table-party.css", "word.css", "ultra-i18n.js", "call.js", "table-i18n.js", "table.js", "table-content.js", "table-content-i18n.js", "table-board.js", "table-party.js", "table-group-content.js", "table-group-content-i18n.js", "table-group.js", "table-group.css", "word-lists.js", "word-i18n.js", "word.js", "together.js", "experience.css", "email-auth.css", "moments.css", "manifest.webmanifest"]);
 const SENSITIVE_NAVIGATION_PARAMS = ["beta", "access", "audio", "from", "to", "msg", "moment", "quiz", "yn", "code", "state", "error", "error_code", "error_description", "error_reason", "error_uri", "access_token", "refresh_token", "expires_in", "expires_at", "token_type", "provider_token", "provider_refresh_token"];
 
 self.addEventListener("install", event => {

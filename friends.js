@@ -1294,6 +1294,8 @@
     open: () => open(),
     text: (key, values) => tr(key, values),
     friends: () => state.rows.filter(row => row.status === "friend").map(row => ({ user_id: row.user_id, name: nameOf(row), online: isOnline(row) })),
+    // Своё имя (как его видят друзья) — для «Игрового стола» на нескольких человек.
+    myName: () => state.me?.display_name || "",
     inviteToGame,
     sendCallInvite: (friendId, room) => sendSpecial(friendId, `[[call:${room}]]`),
     sendPlayInvite: (friendId, room) => sendSpecial(friendId, `[[play:${room}]]`),
