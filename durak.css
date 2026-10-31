@@ -5,7 +5,7 @@
   --dk-ink: #fff4e5;
   --dk-muted: rgba(255, 238, 214, .78);
   --dk-glass: rgba(24, 10, 16, .66);
-  --dk-card-w: clamp(58px, 15.5vw, 86px);
+  --dk-card-w: clamp(78px, 23vw, 112px);
   position: fixed; inset: 0; z-index: 80;
   display: flex; flex-direction: column;
   color: var(--dk-ink);
@@ -295,3 +295,25 @@ html.lite .dk-medal.is-done .dk-medal-svg { animation: none; }
 html[data-gl-perf="lite"] .dk-ck-mini { animation: none; }
 .dk-table.is-checkers .dk-ck-player.is-them { margin-top: auto; }
 .dk-table.is-checkers .dk-buttons { margin-bottom: auto; }
+
+/* Крупные карты (владелец 01.11: «даже козырь не видно»): рука во всю ширину, стол и колода крупнее,
+   козырь — большой картой под колодой и крупным значком сверху. Карту можно тащить пальцем. */
+.dk-center { grid-template-columns: 82px 1fr 46px; gap: 4px; padding: 0 6px; }
+.dk-deck { height: 150px; }
+.dk-deck .dk-card { width: 70px; }
+.dk-trump-card { transform: rotate(90deg) translate(-4px, -22px); }
+.dk-discard .dk-card { width: 42px; }
+.dk-battle { gap: 12px 6px; transform: rotateX(8deg); }
+.dk-pair { width: calc(var(--dk-card-w) * .86); }
+.dk-trump-chip { font-size: 17px; padding: 6px 14px 6px 16px; }
+.dk-trump-chip .dk-suit { width: 26px; height: 26px; }
+.dk-hand { height: calc(var(--dk-card-w) * 1.62); }
+.dk-hand-card { touch-action: none; -webkit-user-select: none; user-select: none; }
+.dk-hand-card.is-dragging { opacity: .25; }
+.dk-drag-ghost { position: fixed; z-index: 120; top: 0; left: 0; aspect-ratio: 5 / 7; pointer-events: none; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); will-change: transform; }
+.dk-drag-ghost .dk-face { box-shadow: 0 0 0 3px #f2c96f, 0 0 26px rgba(242, 201, 111, .7); }
+.dk-pair.is-drop .dk-attack .dk-face, .dk-battle.is-drop { box-shadow: 0 0 0 3px #8fe0a0, 0 0 26px rgba(143, 224, 160, .9); }
+.dk-battle.is-drop { border-radius: 18px; background: rgba(143, 224, 160, .08); }
+.dk-transfer-zone { display: grid; place-items: center; width: calc(var(--dk-card-w) * .86); aspect-ratio: 5 / 7.6; border: 2px dashed rgba(242, 201, 111, .85); border-radius: 12px; background: rgba(40, 20, 60, .45); color: #fff2c8; font-size: 14px; font-weight: 900; text-align: center; animation: dk-pop .25s ease; }
+.dk-transfer-zone.is-drop { border-style: solid; border-color: #8fe0a0; background: rgba(143, 224, 160, .18); box-shadow: 0 0 24px rgba(143, 224, 160, .7); }
+@media (min-width: 700px) { .dk-root { --dk-card-w: 104px; } }

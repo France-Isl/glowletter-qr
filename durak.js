@@ -134,6 +134,10 @@
     root.setAttribute("aria-modal", "true");
     root.setAttribute("aria-label", tr("title"));
     root.addEventListener("click", onClick);
+    root.addEventListener("pointerdown", onPointerDown);
+    root.addEventListener("pointermove", onPointerMove, { passive: false });
+    root.addEventListener("pointerup", onPointerUp);
+    root.addEventListener("pointercancel", onPointerUp);
     root.addEventListener("submit", onSubmit);
     root.addEventListener("keydown", event => { if (event.key === "Escape") { if (state.chatOpen || state.rulesOpen) { state.chatOpen = false; state.rulesOpen = false; render(); } else close(); } });
     document.body.append(root);
@@ -546,7 +550,7 @@
         <span class="dk-card dk-attack${newA ? " is-new" : ""}" style="--r:${((slot * 37) % 9) - 4}deg">${cardImg(pair.a)}</span>
         ${pair.d ? `<span class="dk-card dk-defense${newD ? " is-new" : ""}" style="--r:${((slot * 53) % 11) + 4}deg">${cardImg(pair.d)}</span>` : ""}
       </div>`;
-    }).join("");
+    }).join("") + (drag.on && drag.options.some(a => a.type === "transfer") ? `<div class="dk-transfer-zone"><span>${esc(tr("transferTo"))} →</span></div>` : "");
     state.shownTable = g.table.map(pair => ({ ...pair }));
 
     let status = "";
@@ -579,7 +583,7 @@
     q("[data-hand]").innerHTML = hand.map((card, k) => {
       const offset = k - (count - 1) / 2;
       const isHint = state.hint?.card === card;
-      return `<button type="button" class="dk-card dk-hand-card${playable.has(card) && myTurn ? " is-playable" : ""}${state.selected === card ? " is-selected" : ""}${isHint ? " is-hint" : ""}" style="--o:${offset};--a:${(offset * spread).toFixed(2)}deg;--z:${k}" data-card="${esc(card)}" aria-label="${esc(cardLabel(card))}">${cardImg(card)}</button>`;
+      return `<button type="button" class="dk-card dk-hand-card${playable.has(card) && myTurn ? " is-playable" : ""}${state.selected === card ? " is-selected" : ""}${isHint ? " is-hint" : ""}${drag.on && drag.card === card ? " is-dragging" : ""}" style="--o:${offset};--a:${(offset * spread).toFixed(2)}deg;--z:${k}" data-card="${esc(card)}" aria-label="${esc(cardLabel(card))}">${cardImg(card)}</button>`;
     }).join("");
     q("[data-hand]").style.setProperty("--n", String(count));
 
@@ -751,6 +755,98 @@
     finally { state.busy = false; }
   }
 
+  // ——— Карту можно взять пальцем и бросить: на стол — ход или подкинуть, на карту — отбиться,
+  // в рамку «Перевести» — перевод. Простое касание работает, как раньше.
+  const drag = { id: null, card: "", el: null, ghost: null, x0: 0, y0: 0, w: 0, h: 0, on: false, options: [], over: null, until: 0 };
+
+  function dragOptions(card) {
+    const g = state.game?.game;
+    if (!g?.must?.includes(g.me) || g.phase !== "play") return [];
+    return (g.legal || []).filter(a => a.card === card);
+  }
+
+  // Куда упадёт карта под пальцем: ход и элемент, который подсветить.
+  function dropAt(x, y, options) {
+    const under = document.elementFromPoint(x, y);
+    if (!under || !state.root.contains(under)) return null;
+    const pair = under.closest(".dk-pair");
+    const transfer = options.find(a => a.type === "transfer");
+    const defends = options.filter(a => a.type === "defend");
+    if (pair) {
+      const move = defends.find(a => a.slot === Number(pair.dataset.slot));
+      if (move) return { move, el: pair };
+      if (!transfer) return null;
+    }
+    const zone = under.closest(".dk-transfer-zone");
+    if (zone && transfer) return { move: transfer, el: zone };
+    if (!under.closest(".dk-center")) return null;
+    const battle = state.root.querySelector("[data-battle]");
+    const attack = options.find(a => a.type === "attack");
+    if (attack) return { move: attack, el: battle };
+    if (transfer && !defends.length) return { move: transfer, el: state.root.querySelector(".dk-transfer-zone") || battle };
+    if (defends.length === 1 && !transfer) return { move: defends[0], el: state.root.querySelector(`[data-slot="${defends[0].slot}"]`) };
+    return null;
+  }
+
+  function markDrop(el) {
+    if (drag.over === el) return;
+    drag.over?.classList.remove("is-drop");
+    drag.over = el || null;
+    drag.over?.classList.add("is-drop");
+  }
+
+  function onPointerDown(event) {
+    const el = event.target.closest(".dk-hand-card");
+    if (!el || event.button > 0 || drag.id !== null) return;
+    const options = dragOptions(el.dataset.card);
+    if (!options.length) return;
+    Object.assign(drag, { id: event.pointerId, card: el.dataset.card, el, x0: event.clientX, y0: event.clientY, on: false, options, over: null });
+    try { el.setPointerCapture(event.pointerId); } catch {}
+  }
+
+  function startDrag() {
+    const rect = drag.el.getBoundingClientRect();
+    drag.w = Math.max(rect.width, 90) * 1.12;
+    drag.h = drag.w * 1.4;
+    drag.on = true;
+    drag.ghost = document.createElement("div");
+    drag.ghost.className = "dk-drag-ghost";
+    drag.ghost.style.width = `${drag.w}px`;
+    drag.ghost.innerHTML = cardImg(drag.card);
+    state.root.append(drag.ghost);
+    drag.el.classList.add("is-dragging");
+    state.selected = null;
+    haptic(10);
+    const battle = state.root.querySelector("[data-battle]");
+    if (battle && drag.options.some(a => a.type === "transfer")) battle.insertAdjacentHTML("beforeend", `<div class="dk-transfer-zone"><span>${esc(tr("transferTo"))} →</span></div>`);
+  }
+
+  function onPointerMove(event) {
+    if (drag.id !== event.pointerId) return;
+    const dx = event.clientX - drag.x0;
+    const dy = event.clientY - drag.y0;
+    if (!drag.on) { if (Math.hypot(dx, dy) < 10) return; startDrag(); }
+    event.preventDefault();
+    const tilt = Math.max(-14, Math.min(14, dx / 18));
+    drag.ghost.style.transform = `translate3d(${event.clientX - drag.w / 2}px, ${event.clientY - drag.h * .62}px, 0) rotate(${tilt}deg)`;
+    const hit = dropAt(event.clientX, event.clientY, dragOptions(drag.card));
+    markDrop(hit?.el);
+  }
+
+  function onPointerUp(event) {
+    if (drag.id !== event.pointerId) return;
+    const wasOn = drag.on;
+    const hit = wasOn && event.type === "pointerup" ? dropAt(event.clientX, event.clientY, dragOptions(drag.card)) : null;
+    markDrop(null);
+    drag.ghost?.remove();
+    drag.el?.classList.remove("is-dragging");
+    Object.assign(drag, { id: null, el: null, ghost: null, on: false, options: [] });
+    if (!wasOn) return;
+    drag.until = Date.now() + 450;
+    if (hit) act(hit.move);
+    else renderTable();
+  }
+
   function onHandCard(card) {
     const g = state.game?.game;
     if (!g || !g.must.includes(g.me)) return;
@@ -797,6 +893,7 @@
   }
 
   async function onClick(event) {
+    if (Date.now() < drag.until) return;
     const square = event.target.closest("[data-sq]");
     if (square && state.root.contains(square)) { onSquare(Number(square.dataset.sq)); return; }
     const card = event.target.closest("[data-card]");
