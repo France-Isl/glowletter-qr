@@ -970,7 +970,15 @@
     { kind: "laugh", code: "1f602", fx: "rise", label: "😂" },
     { kind: "clap", code: "1f44f", fx: "pop", label: "👏" }
   ]);
-  const REACTION = new Map(REACTIONS.map(item => [item.kind, item]));
+  // Ещё пять живых картинок для реакций за карточным столом (durak.js); в листе звонка их нет.
+  const MORE_REACTIONS = Object.freeze([
+    { kind: "like", code: "1f44d", fx: "pop", label: "👍" },
+    { kind: "wink", code: "1f609", fx: "rise", label: "😉" },
+    { kind: "shy", code: "1f648", fx: "rise", label: "🙈" },
+    { kind: "cool", code: "1f60e", fx: "rise", label: "😎" },
+    { kind: "wow", code: "1f62e", fx: "rise", label: "😮" }
+  ]);
+  const REACTION = new Map([...REACTIONS, ...MORE_REACTIONS].map(item => [item.kind, item]));
   const BIG_MS = 5200;
   const react = { last: 0, bigUntil: 0, active: 0 };
   const reactionSrc = code => `assets/reactions/${code}.webp`;
@@ -1620,6 +1628,9 @@
   addEventListener("pagehide", () => { if (call.phase !== "idle" && call.phase !== "incoming") signal("hangup", {}); });
 
   window.GlowLetterCall = Object.freeze({
+    // Живая реакция на весь экран (тот же эффект, что в звонке) — для карточного стола.
+    playReaction: kind => playReaction(kind),
+    preloadReaction: kind => { const item = REACTION.get(String(kind || "")); if (item?.code) preload(reactionSrc(item.code)); },
     // start(friend) — звонок со звуком; start(friend, { video: true }) — видеозвонок.
     start: (friend, options) => start(friend, options),
     incoming,

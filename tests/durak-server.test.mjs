@@ -37,7 +37,8 @@ assert.deepEqual(payouts({ players: [{}, {}], durak: -1, order: [0, 1] }, 500).m
 let db = fakeDb();
 let view = await handle(db, "a", { action: "create", solo: true, settings: { mode: "transfer", deck: 36, seats: 3, stake: 1000 } });
 assert.equal(view.status, "playing");
-assert.equal(db.dollars.a, 4000);
+assert.equal(db.dollars.a, 5000); // с ботами ставки нет (владелец 31.10)
+assert.equal(view.settings.stake, 0);
 assert.equal(view.seats.length, 3);
 assert.equal(view.game.hand.length > 0, true);
 let guard = 0;

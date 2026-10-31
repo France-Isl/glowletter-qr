@@ -205,6 +205,10 @@ body.dk-open { overflow: hidden; }
 .dk-emotes button { display: grid; justify-items: center; gap: 2px; padding: 8px 2px; border: 1px solid rgba(244, 202, 126, .3); border-radius: 14px; color: var(--dk-ink); background: rgba(255, 255, 255, .04); font: inherit; }
 .dk-emotes span { font-size: 24px; }
 .dk-emotes small { font-size: 11px; color: var(--dk-muted); }
+.dk-emotes.is-live { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.dk-emotes.is-live button { aspect-ratio: 1; place-items: center; padding: 6px; border-radius: 16px; touch-action: manipulation; transition: transform .12s ease-out; }
+.dk-emotes.is-live button:active { transform: scale(.88); }
+.dk-emotes.is-live img { width: min(48px, 100%); height: auto; pointer-events: none; }
 .dk-chat-log { max-height: 120px; margin: 10px 0; padding: 0; overflow-y: auto; list-style: none; font-size: 13px; color: var(--dk-muted); }
 .dk-chat-log b { color: var(--dk-gold); }
 .dk-chat-form { display: flex; gap: 8px; }

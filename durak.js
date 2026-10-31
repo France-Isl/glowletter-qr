@@ -12,6 +12,12 @@
   const CONFIG = window.NUR_APP_CONFIG || {};
   const FUNCTION_URL = `${CONFIG.supabaseUrl}/functions/v1/durak`;
   const STAKES = [0, 100, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
+  // Живые реакции (владелец 31.10: «как в разговоре… один раз нажал — и хватает, чтобы не лагало»).
+  // Нажал — картинки летят по экрану сразу у тебя и через канал стола у остальных, без сервера.
+  const REACTS = Object.freeze({
+    like: ["1f44d", "👍"], shy: ["1f648", "🙈"], bouquet: ["1f490", "💐"], wink: ["1f609", "😉"], laugh: ["1f602", "😂"],
+    hearts: ["2764", "❤️"], clap: ["1f44f", "👏"], cool: ["1f60e", "😎"], wow: ["1f62e", "😮"], party: ["1f389", "🎉"]
+  });
   const EMOTES = { hi: "👋", gg: "🤝", wow: "😮", think: "🤔", lucky: "🍀", oops: "🙈", laugh: "😄", clap: "👏" };
   const SETUP_KEY = "glowletterDurakSetup";
   const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
@@ -473,7 +479,7 @@
       <span class="dk-btn-gap"></span>
       ${withBots && myTurn ? `<button class="dk-chip-btn" type="button" data-act="hint" title="${esc(tr("hints", { n: hints }))}">💡 ${hints}</button>` : ""}
       <button class="dk-chip-btn" type="button" data-act="chat" aria-label="${esc(tr("emotes"))}">💬</button>` : "";
-    q("[data-overlay]").innerHTML = g.phase === "over" ? ckResult(view) : state.chatOpen ? chatPanel(view) : "";
+    setOverlay(q("[data-overlay]"), g.phase === "over" ? ckResult(view) : state.chatOpen ? chatPanel(view) : "");
     state.shownSeq = g.seq;
   }
 
@@ -587,8 +593,16 @@
     }).join("");
     q("[data-hand]").style.setProperty("--n", String(count));
 
-    q("[data-overlay]").innerHTML = g.phase === "over" ? resultOverlay(view) : state.chatOpen ? chatPanel(view) : "";
+    setOverlay(q("[data-overlay]"), g.phase === "over" ? resultOverlay(view) : state.chatOpen ? chatPanel(view) : "");
     state.shownSeq = g.seq;
+  }
+
+  // Окно поверх стола меняем, только когда в нём что-то изменилось: ходы ботов и таймер
+  // перерисовывают стол каждую секунду, и окно эмоций мигало бы и сбрасывало поле ввода.
+  function setOverlay(node, html) {
+    if (!node || node.dataset.html === html) return;
+    node.innerHTML = html;
+    node.dataset.html = html;
   }
 
   function cardLabel(card) {
@@ -625,7 +639,7 @@
   function chatPanel(view) {
     const lines = (view.chat || []).slice(-12).map(line => `<li><b>${esc(seatName(view.seats[line.seat]))}:</b> ${line.emote ? `${EMOTES[line.emote] || ""} ${esc(tr(`emo_${line.emote}`))}` : esc(line.text)}</li>`).join("");
     return `<div class="dk-chat" role="dialog" aria-label="${esc(tr("emotes"))}">
-      <div class="dk-emotes">${Object.entries(EMOTES).map(([key, icon]) => `<button type="button" data-act="emote" data-emote="${key}"><span>${icon}</span><small>${esc(tr(`emo_${key}`))}</small></button>`).join("")}</div>
+      <div class="dk-emotes is-live">${Object.entries(REACTS).map(([kind, [code, icon]]) => `<button type="button" data-act="react" data-kind="${kind}" aria-label="${icon}"><img src="assets/reactions/${code}.webp" alt="" decoding="async" draggable="false"></button>`).join("")}</div>
       <ul class="dk-chat-log">${lines}</ul>
       <form class="dk-chat-form" data-form="chat"><input name="text" maxlength="120" autocomplete="off" placeholder="${esc(tr("chat"))}"><button class="dk-primary" type="submit">${esc(tr("send"))}</button></form>
       <button class="dk-chat-close" type="button" data-act="chat" aria-label="×">×</button>
@@ -642,6 +656,7 @@
       try {
         state.channel = db.channel(`glowletter-durak:${id}`, { config: { broadcast: { self: false } } })
           .on("broadcast", { event: "v" }, payload => { if ((payload?.payload?.v || 0) > (state.game?.version || 0)) refreshView(); })
+          .on("broadcast", { event: "fx" }, payload => { const kind = String(payload?.payload?.kind || ""); if (REACTS[kind]) window.GlowLetterCall?.playReaction?.(kind); })
           .subscribe();
       } catch { state.channel = null; }
     }
@@ -736,6 +751,16 @@
     if (view.game.phase === "over" && before?.game?.phase === "play") { haptic([40, 60, 40]); refreshWallet(); }
   }
 
+  function sendReact(kind) {
+    if (!REACTS[kind] || Date.now() < (state.reactUntil || 0)) return;
+    state.reactUntil = Date.now() + 700;
+    state.chatOpen = false;
+    renderTable();
+    haptic(10);
+    window.GlowLetterCall?.playReaction?.(kind);
+    try { state.channel?.send({ type: "broadcast", event: "fx", payload: { kind } }); } catch {}
+  }
+
   function toHome() {
     stopTable();
     state.game = null;
@@ -744,14 +769,32 @@
     if (signedIn()) call("mine").then(data => { state.mine = data.games || []; if (state.view === "home") render(); }).catch(() => {});
   }
 
+  // Карта ложится на стол сразу, не дожидаясь сервера (владелец 31.10: «не моментально бросается»);
+  // ответ сервера потом заменяет эту картину, при ошибке стол возвращается как был.
+  function guessMove(view, move) {
+    const g = view.game;
+    if (!move.card || !["attack", "defend", "transfer"].includes(move.type) || !g.hand.includes(move.card)) return null;
+    const table = g.table.map(pair => ({ ...pair }));
+    if (move.type === "defend") {
+      if (!table[move.slot] || table[move.slot].d) return null;
+      table[move.slot].d = move.card;
+    } else table.push({ a: move.card });
+    return { ...view, game: { ...g, hand: g.hand.filter(card => card !== move.card), table, legal: [], must: [] } };
+  }
+
   async function act(move) {
     const view = state.game;
     if (!view?.game || state.busy) return;
     state.busy = true;
     state.selected = null;
     state.hint = null;
-    try { apply(await call("act", { game: view.id, move, seq: view.game.seq })); haptic(12); }
-    catch (error) { if (error.code === "stale" || error.code === "illegal") await refreshView(); else notify(errorText(error)); }
+    const guess = view.game.kind === "checkers" ? null : guessMove(view, move);
+    if (guess) { state.game = guess; renderTable(); haptic(12); }
+    try { apply(await call("act", { game: view.id, move, seq: view.game.seq })); if (!guess) haptic(12); }
+    catch (error) {
+      if (guess && state.game === guess) { state.game = view; renderTable(); }
+      if (error.code === "stale" || error.code === "illegal") await refreshView(); else notify(errorText(error));
+    }
     finally { state.busy = false; }
   }
 
@@ -766,25 +809,38 @@
   }
 
   // Куда упадёт карта под пальцем: ход и элемент, который подсветить.
+  // Владелец 31.10: «взял карту, немножко вверх и бросил» — весь экран выше своих карт считается
+  // столом, хватит поднять карту примерно на сантиметр. Отпустил рядом с картами — карта вернулась.
   function dropAt(x, y, options) {
     const under = document.elementFromPoint(x, y);
     if (!under || !state.root.contains(under)) return null;
-    const pair = under.closest(".dk-pair");
     const transfer = options.find(a => a.type === "transfer");
     const defends = options.filter(a => a.type === "defend");
+    const pair = under.closest(".dk-pair");
     if (pair) {
       const move = defends.find(a => a.slot === Number(pair.dataset.slot));
       if (move) return { move, el: pair };
-      if (!transfer) return null;
     }
     const zone = under.closest(".dk-transfer-zone");
     if (zone && transfer) return { move: transfer, el: zone };
-    if (!under.closest(".dk-center")) return null;
+    const tops = [...state.root.querySelectorAll(".dk-hand-card:not(.is-dragging)")].map(card => card.getBoundingClientRect().top);
+    const handTop = tops.length ? Math.min(...tops) : innerHeight * .8;
+    if (y > handTop && drag.y0 - y < 36) return null;
     const battle = state.root.querySelector("[data-battle]");
     const attack = options.find(a => a.type === "attack");
     if (attack) return { move: attack, el: battle };
-    if (transfer && !defends.length) return { move: transfer, el: state.root.querySelector(".dk-transfer-zone") || battle };
-    if (defends.length === 1 && !transfer) return { move: defends[0], el: state.root.querySelector(`[data-slot="${defends[0].slot}"]`) };
+    if (defends.length) {
+      // Отбиться: на ту карту, что ближе к пальцу.
+      let best = null;
+      for (const move of defends) {
+        const el = state.root.querySelector(`.dk-pair[data-slot="${move.slot}"]`);
+        const rect = el?.getBoundingClientRect();
+        const far = rect ? Math.hypot(x - (rect.left + rect.width / 2), y - (rect.top + rect.height / 2)) : Infinity;
+        if (!best || far < best.far) best = { move, el: el || battle, far };
+      }
+      return { move: best.move, el: best.el };
+    }
+    if (transfer) return { move: transfer, el: state.root.querySelector(".dk-transfer-zone") || battle };
     return null;
   }
 
@@ -977,7 +1033,8 @@
           renderTable();
         } catch (error) { notify(errorText(error)); }
         return;
-      case "chat": state.chatOpen = !state.chatOpen; renderTable(); if (state.chatOpen) state.root.querySelector(".dk-chat input")?.focus(); return;
+      case "chat": state.chatOpen = !state.chatOpen; renderTable(); if (state.chatOpen) Object.keys(REACTS).forEach(kind => window.GlowLetterCall?.preloadReaction?.(kind)); return;
+      case "react": sendReact(button.dataset.kind); return;
       case "emote":
         state.chatOpen = false;
         try { apply(await call("say", { game: view.id, emote: button.dataset.emote })); } catch (error) { notify(errorText(error)); }

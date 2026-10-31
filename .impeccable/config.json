@@ -193,6 +193,58 @@
         "rule": "design-system-color",
         "value": "rgba(255, 230, 190, .12)",
         "createdAt": "2026-10-31T14:12:26.120Z"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "23px",
+        "createdAt": "2026-10-31T14:21:31.824Z"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.3, 1.6, .5, 1)",
+        "createdAt": "2026-10-31T14:21:31.910Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#26101a",
+        "createdAt": "2026-10-31T14:21:31.998Z"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "21px",
+        "createdAt": "2026-10-31T14:21:32.084Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T14:22:33.322Z"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T14:22:33.412Z"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T14:22:33.500Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "friends.css"
+        ],
+        "createdAt": "2026-10-31T14:22:33.571Z"
       }
     ]
   }

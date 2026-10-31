@@ -115,6 +115,8 @@ async function finishRound(game, db) {
 }
 
 async function startRound(game, db, now, firstAttacker = null) {
+  // С ботами ставок нет (владелец 31.10: «нельзя зарабатывать на ботах»), и рейтинг не считается.
+  if (game.seats.some(seat => seat.bot)) game.settings.stake = 0;
   const stake = game.settings.stake || 0;
   if (stake > 0) {
     const humans = game.seats.filter(seat => !seat.bot).map(seat => seat.id);
@@ -158,6 +160,7 @@ export async function handle(db, userId, body, now = Date.now()) {
 
   if (action === "create") {
     const settings = cleanSettings(body.settings);
+    if (body.solo) settings.stake = 0;
     if (settings.stake > Number(who.dollars || 0)) throw new GameError("not_enough_dollars", 409);
     const game = { id: crypto.randomUUID(), host: userId, settings, seats: [{ id: userId, name, back: who.back }], state: null, status: "lobby", round: 0, version: 0, deadline: null, rewards: null, chat: [] };
     if (body.solo) {

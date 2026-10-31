@@ -62,7 +62,7 @@ let view = await handle(db, "a", { action: "create", solo: true, settings: { kin
 assert.equal(view.settings.kind, "checkers");
 assert.equal(view.seats.length, 2);
 assert.equal(view.game.kind, "checkers");
-assert.equal(db.dollars.a, 4000);
+assert.equal(db.dollars.a, 5000); // с ботами ставки нет (владелец 31.10)
 let guard = 0;
 let fake = Date.now();
 while (view.status === "playing" && guard++ < 1500) {
