@@ -1817,3 +1817,69 @@ body:not(.is-reading) .vignette { border: 0; background: none; }
 body:not(.is-reading) .vignette::before, body:not(.is-reading) .vignette::after { display: none; }
 /* Фото на главной чуть крупнее и выше: мишки у костра видны в нижней части рамки-героя, как на образце. */
 body:not(.is-reading) .cinematic-bg { background-size: auto 108%; background-position: 46% 72%; }
+
+/* ——— Главная точно по картинке владельца (31.10). Все размеры сняты с образца шириной 841 px
+   и заданы в его долях (--u = 1 px образца), поэтому на любом телефоне пропорции те же, что на картинке:
+   шапка, рамка-герой с мишками внутри, четыре плитки, «Наш мир», «Быстрые действия» — на одном экране. ——— */
+:root { --u: calc(min(100vw, 470px) / 841); }
+body:not(.is-reading) .cinematic-bg { inset: 0 !important; background-color: #24120a; background-image: var(--scene-image, url("assets/scenes/bears.webp")); background-size: 100% auto; background-position: 50% calc(var(--u) * -42); background-repeat: no-repeat; }
+@media (min-width: 600px) { body:not(.is-reading) .cinematic-bg { background-size: cover; background-position: center; } }
+body:not(.is-reading) .topbar { gap: calc(var(--u) * 16); padding: calc(var(--u) * 69 + env(safe-area-inset-top, 0px)) max(calc(var(--u) * 33), calc((100vw - 470px) / 2 + 33 * 470px / 841)) 0; }
+body:not(.is-reading) .topbar .round-control { width: calc(var(--u) * 80); height: calc(var(--u) * 80); min-height: 0; border: 1.5px solid rgba(240, 200, 125, .72); background: rgba(12, 12, 26, .5); box-shadow: 0 0 calc(var(--u) * 26) rgba(240, 190, 110, .32), inset 0 1px 0 rgba(255, 235, 200, .15); }
+body:not(.is-reading) .topbar .round-control .ic { width: calc(var(--u) * 40); height: calc(var(--u) * 40); }
+body:not(.is-reading) .topbar .language-button { font-size: calc(var(--u) * 25); font-weight: 700; letter-spacing: .04em; }
+
+body:not(.is-reading) #homeScreen { gap: 0; padding: calc(var(--u) * 78 + env(safe-area-inset-top, 0px)) calc(var(--u) * 33) calc(var(--u) * 60 + env(safe-area-inset-bottom, 0px)); }
+body:not(.is-reading) #homeScreen .home-brand { gap: 0; min-height: 0; padding: 0 0 0 calc(var(--u) * 15); }
+body:not(.is-reading) #homeScreen .home-brand b { gap: calc(var(--u) * 13); font-size: calc(var(--u) * 57); line-height: 1; }
+body:not(.is-reading) #homeScreen .home-brand svg { width: calc(var(--u) * 36); height: calc(var(--u) * 36); fill: #ff4f78; }
+body:not(.is-reading) #homeScreen .home-brand small { margin-top: calc(var(--u) * -3); font-size: calc(var(--u) * 24.5); line-height: 1.2; }
+
+body:not(.is-reading) #homeScreen .home-hero { min-height: calc(var(--u) * 950); margin-top: calc(var(--u) * 15); padding: calc(var(--u) * 103) calc(var(--u) * 44) calc(var(--u) * 40); border-width: 2px; border-radius: calc(var(--u) * 34); background: linear-gradient(180deg, rgba(8, 12, 36, .3), rgba(8, 12, 36, .06) 45%, rgba(8, 12, 36, 0) 62%); }
+body:not(.is-reading) #homeScreen .brand-card h1 { font-size: calc(var(--u) * 57); line-height: calc(var(--u) * 60); }
+body:not(.is-reading) #homeScreen .brand-card h1 em { padding-right: calc(var(--u) * 70); }
+body:not(.is-reading) #homeScreen .brand-card h1 em::after { top: calc(var(--u) * -26); right: calc(var(--u) * -14); width: calc(var(--u) * 84); height: calc(var(--u) * 72); }
+body:not(.is-reading) #homeScreen .brand-copy { max-width: calc(var(--u) * 400); margin-top: calc(var(--u) * 23); font-size: calc(var(--u) * 26); line-height: calc(var(--u) * 32); }
+body:not(.is-reading) #homeScreen .sender-line { margin-top: calc(var(--u) * 14); }
+body:not(.is-reading) #homeScreen .seal-button { gap: calc(var(--u) * 25); width: calc(var(--u) * 448); max-width: 100%; min-height: calc(var(--u) * 105); margin-top: calc(var(--u) * 30); padding: 0 calc(var(--u) * 22) 0 calc(var(--u) * 18); border-radius: calc(var(--u) * 26); font-size: calc(var(--u) * 30); }
+body:not(.is-reading) #homeScreen .seal-button .seal-mark { width: calc(var(--u) * 76); height: calc(var(--u) * 76); }
+body:not(.is-reading) #homeScreen .seal-arrow { width: calc(var(--u) * 34); height: calc(var(--u) * 34); margin-inline-start: calc(var(--u) * -2); }
+
+/* Плитки, «Наш мир», «Быстрые действия»; вход и «Новое в коллекции» — под ними, чтобы не разрывать образец */
+body:not(.is-reading) #homeScreen .home-bottom { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 calc(var(--u) * 20); margin-top: calc(var(--u) * 20); }
+body:not(.is-reading) #homeScreen .home-bottom > * { grid-column: 1 / -1; }
+body:not(.is-reading) #homeScreen .home-smart-actions { display: contents; }
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.moments-link, .games-link, .couple-link, .friends-link) { grid-column: auto; order: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: calc(var(--u) * 14); min-width: 0; min-height: calc(var(--u) * 183); padding: calc(var(--u) * 34) calc(var(--u) * 6) calc(var(--u) * 10); border-width: 2px; border-radius: calc(var(--u) * 30); font-size: calc(var(--u) * 23); line-height: calc(var(--u) * 30); }
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.moments-link, .games-link, .couple-link, .friends-link) .ic { flex: none; width: calc(var(--u) * 54); height: calc(var(--u) * 54); }
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.games-link) > span:first-child { display: block; line-height: 0; }
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.games-link, .couple-link, .friends-link) > span[id] { display: flex; align-items: center; justify-content: center; min-height: calc(var(--u) * 60); }
+body:not(.is-reading) #homeScreen .world-link { order: 2; gap: calc(var(--u) * 36); min-height: calc(var(--u) * 138); margin-top: calc(var(--u) * 24); padding: 0 calc(var(--u) * 54); border-width: 2px; border-radius: calc(var(--u) * 34); font-size: calc(var(--u) * 29); }
+body:not(.is-reading) #homeScreen .world-link .world-globe { font-size: calc(var(--u) * 72); }
+body:not(.is-reading) #homeScreen .world-link .world-arrow { width: calc(var(--u) * 34); height: calc(var(--u) * 34); margin-inline-start: calc(var(--u) * -14); }
+body:not(.is-reading) #homeScreen .home-quick { order: 3; margin-top: calc(var(--u) * 25); padding: calc(var(--u) * 30) calc(var(--u) * 22) calc(var(--u) * 28) calc(var(--u) * 24); border-radius: calc(var(--u) * 34); }
+body:not(.is-reading) #homeScreen .home-quick h2 { gap: calc(var(--u) * 14); margin: 0 0 calc(var(--u) * 24) calc(var(--u) * 14); font-size: calc(var(--u) * 26); line-height: calc(var(--u) * 34); }
+body:not(.is-reading) #homeScreen .home-quick h2 svg { width: calc(var(--u) * 32); height: calc(var(--u) * 32); }
+body:not(.is-reading) #homeScreen .home-quick-grid { gap: calc(var(--u) * 23); }
+body:not(.is-reading) #homeScreen .home-quick-grid button { gap: calc(var(--u) * 14); min-height: calc(var(--u) * 182); padding: calc(var(--u) * 22) calc(var(--u) * 4) calc(var(--u) * 12); border-radius: calc(var(--u) * 26); font-size: calc(var(--u) * 22); line-height: calc(var(--u) * 28); }
+body:not(.is-reading) #homeScreen .home-quick-ic { font-size: calc(var(--u) * 66); }
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.home-poem-link, .home-signin-link) { order: 4; grid-column: 1 / -1; min-height: calc(var(--u) * 92); margin-top: calc(var(--u) * 24); font-size: calc(var(--u) * 25); }
+body:not(.is-reading) #homeScreen :is(.free-note, .home-contact) { order: 5; justify-self: center; margin-top: calc(var(--u) * 28); }
+body:not(.is-reading) #homeScreen .online-strip { order: 0; margin-bottom: calc(var(--u) * 20); }
+@media (max-width: 370px) {
+  body:not(.is-reading) #homeScreen .home-brand { padding-right: 0; }
+  body:not(.is-reading) #homeScreen .home-brand b { font-size: calc(var(--u) * 57); }
+  body:not(.is-reading) #homeScreen .home-smart-actions :is(.moments-link, .games-link, .couple-link, .friends-link) { font-size: calc(var(--u) * 23); }
+  body:not(.is-reading) #homeScreen .home-quick-grid button { font-size: calc(var(--u) * 22); }
+  body:not(.is-reading) #homeScreen .home-quick-ic { font-size: calc(var(--u) * 66); }
+}
+body:not(.is-reading) #homeScreen .home-smart-actions :is(.moments-link, .games-link, .couple-link, .friends-link) { border-width: 1.5px; padding-inline: calc(var(--u) * 16); }
+body:not(.is-reading) #homeScreen .home-smart-actions .smart-link.moments-link { border-color: rgba(240, 196, 110, .9); box-shadow: 0 0 calc(var(--u) * 26) rgba(240, 190, 100, .4), 0 8px 20px rgba(0, 0, 0, .4); }
+body:not(.is-reading) #homeScreen .home-smart-actions .smart-link:is(.games-link, .couple-link) { border-color: rgba(255, 170, 180, .55); box-shadow: 0 0 calc(var(--u) * 20) rgba(255, 110, 140, .22), 0 8px 20px rgba(0, 0, 0, .4); }
+body:not(.is-reading) #homeScreen .home-smart-actions .smart-link.friends-link { border-color: rgba(205, 185, 255, .55); box-shadow: 0 0 calc(var(--u) * 20) rgba(170, 150, 255, .22), 0 8px 20px rgba(0, 0, 0, .4); }
+body:not(.is-reading) #homeScreen .home-quick-grid button { padding-inline: calc(var(--u) * 20); }
+body:not(.is-reading) #homeScreen .games-link .home-die { filter: drop-shadow(0 0 calc(var(--u) * 10) rgba(255, 120, 150, .65)); }
+/* Конец фотографии мягко уходит в тёплую темноту под «Быстрыми действиями» (сама фотография не размыта и не затемнена). */
+body:not(.is-reading) .cinematic-bg::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100vw * 1672 / 941 - var(--u) * 42 - 90px); height: 92px; background: linear-gradient(180deg, rgba(36, 18, 10, 0), #24120a); pointer-events: none; }
+body:not(.is-reading) .cinematic-bg::before { content: ""; position: absolute; left: 0; right: 0; top: calc(100vw * 1672 / 941 - var(--u) * 42); bottom: 0; background: radial-gradient(60% 40% at 20% 30%, rgba(190, 80, 24, .28), transparent 70%), radial-gradient(55% 45% at 85% 70%, rgba(200, 95, 30, .24), transparent 70%); pointer-events: none; }
+@media (min-width: 600px) { body:not(.is-reading) .cinematic-bg::before, body:not(.is-reading) .cinematic-bg::after { display: none; } }
+body:not(.is-reading) #homeScreen .brand-card .brand-copy { display: block; }
