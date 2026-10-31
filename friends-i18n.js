@@ -202,6 +202,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Chat leeren?",
     "clearNote": "Der Verlauf verschwindet nur bei dir",
     "chatCleared": "Chat geleert",
+    "clearChoice": "Nur bei mir – dein Freund behält den Verlauf. Bei uns beiden – er wird bei euch beiden gelöscht und lässt sich nicht wiederherstellen.",
+    "clearMine": "Nur bei mir",
+    "clearBoth": "Bei uns beiden",
+    "chatClearedBoth": "Chat bei euch beiden geleert",
     "holdHint": "Halte ein Emoji gedrückt – es fliegt über den Bildschirm"
   },
   "es": {
@@ -406,6 +410,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "¿Vaciar el chat?",
     "clearNote": "La conversación desaparecerá solo para ti",
     "chatCleared": "Chat vaciado",
+    "clearChoice": "Solo para mí: tu amigo conserva la conversación. Para los dos: se borra para ambos y no se puede recuperar.",
+    "clearMine": "Solo para mí",
+    "clearBoth": "Para los dos",
+    "chatClearedBoth": "Chat vaciado para los dos",
     "holdHint": "Mantén pulsado un emoji: volará por la pantalla"
   },
   "it": {
@@ -610,6 +618,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Svuotare la chat?",
     "clearNote": "La conversazione sparirà solo per te",
     "chatCleared": "Chat svuotata",
+    "clearChoice": "Solo per me: il tuo amico conserva la conversazione. Per entrambi: viene cancellata per tutti e due e non si può recuperare.",
+    "clearMine": "Solo per me",
+    "clearBoth": "Per entrambi",
+    "chatClearedBoth": "Chat svuotata per entrambi",
     "holdHint": "Tieni premuta un’emoji: volerà sullo schermo"
   },
   "pl": {
@@ -814,6 +826,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Wyczyścić czat?",
     "clearNote": "Rozmowa zniknie tylko u Ciebie",
     "chatCleared": "Czat wyczyszczony",
+    "clearChoice": "Tylko u mnie — znajomy zachowa rozmowę. U nas obojga — zostanie usunięta u was obojga bez możliwości przywrócenia.",
+    "clearMine": "Tylko u mnie",
+    "clearBoth": "U nas obojga",
+    "chatClearedBoth": "Czat wyczyszczony u was obojga",
     "holdHint": "Przytrzymaj emoji — przeleci po ekranie"
   },
   "uk": {
@@ -1018,6 +1034,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Очистити чат?",
     "clearNote": "Листування зникне лише у вас",
     "chatCleared": "Чат очищено",
+    "clearChoice": "Лише в мене — у друга листування залишиться. В обох — воно видалиться у вас обох, повернути його буде не можна.",
+    "clearMine": "Лише в мене",
+    "clearBoth": "У нас обох",
+    "chatClearedBoth": "Чат очищено у вас обох",
     "holdHint": "Утримуйте смайлик — він полетить екраном"
   },
   "pt": {
@@ -1222,6 +1242,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Limpar a conversa?",
     "clearNote": "A conversa some só para você",
     "chatCleared": "Conversa limpa",
+    "clearChoice": "Só para mim — o seu amigo mantém a conversa. Para os dois — é apagada para ambos e não pode ser recuperada.",
+    "clearMine": "Só para mim",
+    "clearBoth": "Para os dois",
+    "chatClearedBoth": "Conversa limpa para os dois",
     "holdHint": "Segure um emoji: ele voa pela tela"
   },
   "nl": {
@@ -1426,6 +1450,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Chat wissen?",
     "clearNote": "Het gesprek verdwijnt alleen bij jou",
     "chatCleared": "Chat gewist",
+    "clearChoice": "Alleen bij mij – je vriend houdt het gesprek. Bij ons allebei – het wordt bij jullie allebei verwijderd en is niet terug te halen.",
+    "clearMine": "Alleen bij mij",
+    "clearBoth": "Bij ons allebei",
+    "chatClearedBoth": "Chat bij jullie allebei gewist",
     "holdHint": "Houd een emoji ingedrukt – hij vliegt over het scherm"
   },
   "tr": {
@@ -1630,6 +1658,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Sohbet temizlensin mi?",
     "clearNote": "Yazışmalar yalnızca sizde silinir",
     "chatCleared": "Sohbet temizlendi",
+    "clearChoice": "Yalnızca bende — arkadaşında sohbet kalır. İkimizde de — ikinizde de silinir ve geri getirilemez.",
+    "clearMine": "Yalnızca bende",
+    "clearBoth": "İkimizde de",
+    "chatClearedBoth": "Sohbet ikinizde de temizlendi",
     "holdHint": "Bir emojiye basılı tutun — ekranda uçar"
   },
   "ro": {
@@ -1834,6 +1866,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Golești chatul?",
     "clearNote": "Conversația dispare doar la tine",
     "chatCleared": "Chat golit",
+    "clearChoice": "Doar la mine — prietenul păstrează conversația. La amândoi — se șterge la amândoi și nu mai poate fi recuperată.",
+    "clearMine": "Doar la mine",
+    "clearBoth": "La amândoi",
+    "chatClearedBoth": "Conversație ștearsă la amândoi",
     "holdHint": "Ține apăsat un emoji — va zbura pe ecran"
   },
   "cs": {
@@ -2038,6 +2074,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Vymazat chat?",
     "clearNote": "Konverzace zmizí jen u vás",
     "chatCleared": "Chat vymazán",
+    "clearChoice": "Jen u mě – přítel si konverzaci ponechá. U nás obou – smaže se u vás obou a nepůjde obnovit.",
+    "clearMine": "Jen u mě",
+    "clearBoth": "U nás obou",
+    "chatClearedBoth": "Chat vymazán u vás obou",
     "holdHint": "Podržte smajlík — proletí přes obrazovku"
   },
   "sv": {
@@ -2242,6 +2282,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Rensa chatten?",
     "clearNote": "Konversationen försvinner bara för dig",
     "chatCleared": "Chatten rensad",
+    "clearChoice": "Bara för mig – din vän behåller samtalet. För oss båda – det raderas för er båda och kan inte återställas.",
+    "clearMine": "Bara för mig",
+    "clearBoth": "För oss båda",
+    "chatClearedBoth": "Chatten rensad för er båda",
     "holdHint": "Håll in en emoji – den flyger över skärmen"
   },
   "el": {
@@ -2446,6 +2490,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Εκκαθάριση συνομιλίας;",
     "clearNote": "Η συνομιλία θα χαθεί μόνο για εσάς",
     "chatCleared": "Η συνομιλία εκκαθαρίστηκε",
+    "clearChoice": "Μόνο για μένα — ο φίλος σας κρατά τη συνομιλία. Και για τους δύο — διαγράφεται και για τους δύο χωρίς δυνατότητα επαναφοράς.",
+    "clearMine": "Μόνο για μένα",
+    "clearBoth": "Και για τους δύο",
+    "chatClearedBoth": "Η συνομιλία διαγράφηκε και για τους δύο",
     "holdHint": "Κρατήστε πατημένο ένα emoji — θα πετάξει στην οθόνη"
   },
   "da": {
@@ -2650,6 +2698,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Ryd chatten?",
     "clearNote": "Samtalen forsvinder kun hos dig",
     "chatCleared": "Chatten er ryddet",
+    "clearChoice": "Kun for mig – din ven beholder samtalen. For os begge – den slettes for jer begge og kan ikke gendannes.",
+    "clearMine": "Kun for mig",
+    "clearBoth": "For os begge",
+    "chatClearedBoth": "Chatten er ryddet for jer begge",
     "holdHint": "Hold en emoji nede – den flyver hen over skærmen"
   },
   "no": {
@@ -2854,6 +2906,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Tømme chatten?",
     "clearNote": "Samtalen forsvinner bare hos deg",
     "chatCleared": "Chatten er tømt",
+    "clearChoice": "Bare for meg – vennen din beholder samtalen. For oss begge – den slettes for dere begge og kan ikke gjenopprettes.",
+    "clearMine": "Bare for meg",
+    "clearBoth": "For oss begge",
+    "chatClearedBoth": "Chatten er tømt for dere begge",
     "holdHint": "Hold inne en emoji – den flyr over skjermen"
   },
   "fi": {
@@ -3058,6 +3114,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Tyhjennetäänkö keskustelu?",
     "clearNote": "Viestit katoavat vain sinulta",
     "chatCleared": "Keskustelu tyhjennetty",
+    "clearChoice": "Vain minulta – ystäväsi säilyttää keskustelun. Meiltä molemmilta – se poistetaan teiltä molemmilta, eikä sitä voi palauttaa.",
+    "clearMine": "Vain minulta",
+    "clearBoth": "Meiltä molemmilta",
+    "chatClearedBoth": "Keskustelu tyhjennetty teiltä molemmilta",
     "holdHint": "Pidä hymiötä painettuna – se lentää ruudun poikki"
   },
   "ja": {
@@ -3262,6 +3322,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "チャットを消去しますか？",
     "clearNote": "メッセージはあなたの画面からだけ消えます",
     "chatCleared": "チャットを消去しました",
+    "clearChoice": "自分だけ — 相手には会話が残ります。二人とも — 二人の会話が削除され、元に戻せません。",
+    "clearMine": "自分だけ",
+    "clearBoth": "二人とも",
+    "chatClearedBoth": "二人のチャットを消去しました",
     "holdHint": "絵文字を長押しすると画面いっぱいに舞います"
   },
   "ko": {
@@ -3466,6 +3530,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "채팅을 지울까요?",
     "clearNote": "대화는 내 화면에서만 사라집니다",
     "chatCleared": "채팅을 지웠습니다",
+    "clearChoice": "나만 — 친구에게는 대화가 남습니다. 둘 다 — 두 사람 모두에게서 삭제되며 되돌릴 수 없습니다.",
+    "clearMine": "나만",
+    "clearBoth": "둘 다",
+    "chatClearedBoth": "두 사람 모두의 채팅을 지웠습니다",
     "holdHint": "이모티콘을 길게 누르면 화면 위로 날아가요"
   },
   "zh": {
@@ -3670,6 +3738,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "清除聊天？",
     "clearNote": "聊天紀錄只會在你這邊消失",
     "chatCleared": "聊天已清除",
+    "clearChoice": "仅我自己——好友仍保留聊天记录。我们双方——双方的聊天记录都会删除，无法恢复。",
+    "clearMine": "仅我自己",
+    "clearBoth": "我们双方",
+    "chatClearedBoth": "已为双方清空聊天",
     "holdHint": "長按表情，它就會飛滿螢幕"
   },
   "th": {
@@ -3874,6 +3946,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "ล้างแชทไหม",
     "clearNote": "ข้อความจะหายไปเฉพาะฝั่งคุณ",
     "chatCleared": "ล้างแชทแล้ว",
+    "clearChoice": "เฉพาะฉัน — เพื่อนยังเห็นแชทอยู่ ทั้งสองฝ่าย — แชทจะถูกลบสำหรับทั้งคู่และกู้คืนไม่ได้",
+    "clearMine": "เฉพาะฉัน",
+    "clearBoth": "ทั้งสองฝ่าย",
+    "chatClearedBoth": "ล้างแชทของทั้งคู่แล้ว",
     "holdHint": "กดค้างที่อีโมจิ แล้วมันจะลอยไปทั่วหน้าจอ"
   },
   "ar": {
@@ -4078,6 +4154,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "مسح المحادثة؟",
     "clearNote": "ستختفي المحادثة لديك فقط",
     "chatCleared": "تم مسح المحادثة",
+    "clearChoice": "عندي فقط — تبقى المحادثة عند صديقك. عندنا نحن الاثنين — تُحذف عندكما معًا ولا يمكن استعادتها.",
+    "clearMine": "عندي فقط",
+    "clearBoth": "عندنا نحن الاثنين",
+    "chatClearedBoth": "تم مسح المحادثة عندكما معًا",
     "holdHint": "اضغط مطولًا على الرمز التعبيري فيطير عبر الشاشة"
   },
   "ind": {
@@ -4282,6 +4362,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Hapus obrolan?",
     "clearNote": "Percakapan hanya hilang di perangkatmu",
     "chatCleared": "Obrolan dihapus",
+    "clearChoice": "Hanya untukku — temanmu tetap menyimpan percakapan. Untuk kita berdua — dihapus untuk kalian berdua dan tidak bisa dikembalikan.",
+    "clearMine": "Hanya untukku",
+    "clearBoth": "Untuk kita berdua",
+    "chatClearedBoth": "Chat dihapus untuk kalian berdua",
     "holdHint": "Tahan emoji — ia akan terbang di layar"
   },
   "vi": {
@@ -4486,6 +4570,10 @@ window.GLOWLETTER_FRIENDS_I18N = {
     "clearAsk": "Xóa cuộc trò chuyện?",
     "clearNote": "Cuộc trò chuyện chỉ biến mất ở phía bạn",
     "chatCleared": "Đã xóa trò chuyện",
+    "clearChoice": "Chỉ mình tôi — bạn của bạn vẫn giữ cuộc trò chuyện. Cả hai — sẽ bị xóa ở cả hai người và không thể khôi phục.",
+    "clearMine": "Chỉ mình tôi",
+    "clearBoth": "Cả hai chúng ta",
+    "chatClearedBoth": "Đã xóa trò chuyện ở cả hai người",
     "holdHint": "Nhấn giữ biểu tượng cảm xúc — nó sẽ bay khắp màn hình"
   }
 };

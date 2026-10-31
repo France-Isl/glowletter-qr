@@ -4,6 +4,8 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.9";
 // [[call:комната]] звонящий просит эту функцию разбудить телефоны друга через Firebase Cloud
 // Messaging; Android 2.4.29+ показывает входящий звонок с «Ответить» и «Отклонить».
 // end: true — звонящий передумал, телефон друга перестаёт звонить.
+// decline: true — друг нажал «Отклонить» в уведомлении: телефон присылает подпись звонка (sig),
+// звонящему сразу уходит «не может ответить», остальные телефоны друга замолкают.
 // Будим только по настоящему приглашению: сообщение от звонящего этому другу с той же комнатой,
 // не старше минуты (отмена — пяти минут). Ключ Google — тот же служебный аккаунт, что проверяет
 // покупки (GOOGLE_SERVICE_ACCOUNT_JSON, роль Firebase Cloud Messaging API Admin).
@@ -50,6 +52,20 @@ function pemToBytes(pem: string): Uint8Array {
   return Uint8Array.from(atob(body), (char) => char.charCodeAt(0));
 }
 
+// Подпись звонка: ею телефон с закрытым приложением (без входа) доказывает, что звонок настоящий.
+async function callSignature(room: string, from: string, to: string): Promise<string> {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(`call-push:${secretKey}`), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const bytes = new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`${room}|${from}|${to}`)));
+  return base64Url(bytes);
+}
+
+function sameText(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let index = 0; index < a.length; index += 1) diff |= a.charCodeAt(index) ^ b.charCodeAt(index);
+  return diff === 0;
+}
+
 let cachedToken: { token: string; expiresAt: number } | null = null;
 
 // OAuth-токен Google для FCM из служебного аккаунта (JWT RS256), живёт около часа.
@@ -86,14 +102,15 @@ Deno.serve(async (request: Request) => {
   }
   if (request.method !== "POST") return json(request, { error: "method" }, 405);
   if (!admin) return json(request, { error: "server" }, 500);
+  let input: { room?: unknown; to?: unknown; end?: unknown; decline?: unknown; from?: unknown; sig?: unknown };
+  try { input = await request.json(); } catch { return json(request, { error: "invalid" }, 400); }
+  if (input.decline === true) return await declined(request, input);
   const match = (request.headers.get("authorization") || "").match(/^Bearer ([A-Za-z0-9._~-]{40,8192})$/u);
   if (!match) return json(request, { error: "authentication_required" }, 401);
   const { data: auth, error: authError } = await admin.auth.getUser(match[1]);
   const me = auth?.user?.id;
   if (authError || !me) return json(request, { error: "authentication_required" }, 401);
 
-  let input: { room?: unknown; to?: unknown; end?: unknown };
-  try { input = await request.json(); } catch { return json(request, { error: "invalid" }, 400); }
   const room = String(input.room || "");
   const to = String(input.to || "");
   const end = input.end === true;
@@ -111,27 +128,49 @@ Deno.serve(async (request: Request) => {
   const { data: profile } = await admin.from("glowletter_profiles").select("display_name").eq("user_id", me).maybeSingle();
   const name = String(profile?.display_name || "").slice(0, 36);
 
+  const data: Record<string, string> = end
+    ? { type: "call_end", room }
+    : { type: "call", room, from: me, to, name, at: String(new Date(invite.created_at).getTime()), sig: await callSignature(room, me, to) };
+  const sent = await sendAll(devices.map(({ token: address }) => address), data, end ? "300s" : "45s");
+  if (sent < 0) return json(request, { error: "push_unavailable" }, 503);
+  return json(request, { sent });
+});
+
+// «Отклонить» в уведомлении: звонящий сразу видит «не может ответить», другие телефоны замолкают.
+async function declined(request: Request, input: { room?: unknown; from?: unknown; to?: unknown; sig?: unknown }): Promise<Response> {
+  const room = String(input.room || "");
+  const from = String(input.from || "");
+  const to = String(input.to || "");
+  const sig = String(input.sig || "");
+  if (!admin || !ROOM.test(room) || !ROOM.test(from) || !ROOM.test(to) || from === to || !sig) return json(request, { error: "invalid" }, 400);
+  if (!sameText(sig, await callSignature(room, from, to))) return json(request, { error: "invalid" }, 403);
+  const { data: ok } = await admin.rpc("glowletter_call_declined", { p_room: room, p_caller: from, p_callee: to });
+  if (ok !== true) return json(request, { error: "no_invite" }, 404);
+  const { data: devices } = await admin.from("glowletter_call_devices").select("token").eq("user_id", to).limit(5);
+  if (devices?.length) await sendAll(devices.map(({ token }) => token), { type: "call_end", room }, "300s");
+  return json(request, { declined: true });
+}
+
+// Рассылка data-сообщения на телефоны; -1 — нет ключа Google.
+async function sendAll(addresses: string[], data: Record<string, string>, ttl: string): Promise<number> {
   let token: string;
   try { token = await googleToken(); } catch (error) {
     console.error("call-push", error instanceof Error ? error.message : "auth");
-    return json(request, { error: "push_unavailable" }, 503);
+    return -1;
   }
-  const data = end
-    ? { type: "call_end", room }
-    : { type: "call", room, from: me, name, at: String(new Date(invite.created_at).getTime()) };
   let sent = 0;
-  await Promise.all(devices.map(async ({ token: address }) => {
+  await Promise.all(addresses.map(async (address) => {
     try {
       const response = await fetch(`https://fcm.googleapis.com/v1/projects/${FIREBASE_PROJECT}/messages:send`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ message: { token: address, data, android: { priority: "HIGH", ttl: end ? "300s" : "45s" } } })
+        body: JSON.stringify({ message: { token: address, data, android: { priority: "HIGH", ttl } } })
       });
       if (response.ok) { sent += 1; return; }
       const text = await response.text();
       // Приложение удалили или адрес устарел — больше не будим.
       if (response.status === 404 || /UNREGISTERED|INVALID_ARGUMENT/u.test(text)) {
-        await admin.from("glowletter_call_devices").delete().eq("token", address);
+        await admin?.from("glowletter_call_devices").delete().eq("token", address);
       } else {
         console.error("call-push fcm", response.status, text.slice(0, 200));
       }
@@ -139,5 +178,5 @@ Deno.serve(async (request: Request) => {
       console.error("call-push fcm", error instanceof Error ? error.message : "error");
     }
   }));
-  return json(request, { sent });
-});
+  return sent;
+}

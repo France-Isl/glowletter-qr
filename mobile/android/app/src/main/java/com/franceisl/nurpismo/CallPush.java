@@ -26,6 +26,8 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONObject;
 
+import java.net.HttpURLConnection;
+
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -123,7 +125,8 @@ public final class CallPush extends FirebaseMessagingService {
         PendingIntent open = PendingIntent.getActivity(context, 2, callIntent(context, ACTION_OPEN, room, from, name, at),
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent decline = PendingIntent.getBroadcast(context, 3,
-                new Intent(context, Decline.class).setAction(ACTION_DECLINE).putExtra("room", room),
+                new Intent(context, Decline.class).setAction(ACTION_DECLINE).putExtra("room", room)
+                        .putExtra("from", from).putExtra("to", clean(data.get("to"), 36)).putExtra("sig", clean(data.get("sig"), 100)),
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL)
@@ -187,11 +190,36 @@ public final class CallPush extends FirebaseMessagingService {
         manager.createNotificationChannel(channel);
     }
 
-    /** «Отклонить» в уведомлении: замолкаем; у звонящего звонок закончится сам. */
+    /**
+     * «Отклонить» в уведомлении: замолкаем и говорим серверу — у звонящего звонок сразу
+     * заканчивается («не может ответить»), как в WhatsApp (владелец 01.11). Подпись звонка
+     * пришла от сервера вместе со звонком, входить в аккаунт для этого не нужно.
+     */
     public static final class Decline extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            stop(context, intent.getStringExtra("room"));
+            String room = intent.getStringExtra("room");
+            stop(context, room);
+            String from = intent.getStringExtra("from");
+            String to = intent.getStringExtra("to");
+            String sig = intent.getStringExtra("sig");
+            if (room == null || from == null || to == null || sig == null || sig.isEmpty()
+                    || !ID.matcher(room).matches() || !ID.matcher(from).matches() || !ID.matcher(to).matches()) {
+                return;
+            }
+            PendingResult pending = goAsync();
+            new Thread(() -> {
+                try {
+                    JSONObject body = new JSONObject().put("decline", true).put("room", room).put("from", from).put("to", to).put("sig", sig);
+                    HttpURLConnection connection = PushPoller.post(BuildConfig.CALL_PUSH_URL, body);
+                    connection.getResponseCode();
+                    connection.disconnect();
+                } catch (Exception ignored) {
+                    // Нет интернета — у звонящего звонок закончится сам через 45 секунд.
+                } finally {
+                    pending.finish();
+                }
+            }, "call-decline").start();
         }
     }
 }

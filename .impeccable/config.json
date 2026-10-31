@@ -183,6 +183,16 @@
         ],
         "createdAt": "2026-10-31T05:11:28.091Z",
         "reason": "Claude: only hit is .glr-ped-block with border-left AND border-right - the metallic sides of the cylinder pedestal from the owner's podium picture (6e45a57), not a side stripe"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(74, 42, 26, .7)",
+        "createdAt": "2026-10-31T14:12:26.031Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 230, 190, .12)",
+        "createdAt": "2026-10-31T14:12:26.120Z"
       }
     ]
   }

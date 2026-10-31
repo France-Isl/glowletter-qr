@@ -55,7 +55,7 @@
 
   const TEXT = {
     ru: {
-      ranking: "Рейтинг", videoCall: "Видеозвонок", attach: "Отправить фото", emojiAll: "Все смайлики", effects: "Эффекты", callSub: "Аудио / Видео", tableSub: "Играть вместе", worldSub: "Открыть", bearSub: "Отправить", drawSub: "Совместный холст", stickerSub: "Магазин", playSub: "Пригласить в игру", callAudio: "Аудиозвонок", callVideo: "Видеозвонок", photoSending: "Отправляю фото…", photoTooBig: "Фото слишком большое", msgSent: "Отправлено", msgRead: "Прочитано", together: "Вместе", friendGroup: "Друг", clearChat: "Очистить чат", clearAsk: "Очистить чат?", clearNote: "Переписка исчезнет только у вас", chatCleared: "Чат очищен", holdHint: "Удерживайте смайлик — он полетит по экрану",
+      ranking: "Рейтинг", videoCall: "Видеозвонок", attach: "Отправить фото", emojiAll: "Все смайлики", effects: "Эффекты", callSub: "Аудио / Видео", tableSub: "Играть вместе", worldSub: "Открыть", bearSub: "Отправить", drawSub: "Совместный холст", stickerSub: "Магазин", playSub: "Пригласить в игру", callAudio: "Аудиозвонок", callVideo: "Видеозвонок", photoSending: "Отправляю фото…", photoTooBig: "Фото слишком большое", msgSent: "Отправлено", msgRead: "Прочитано", together: "Вместе", friendGroup: "Друг", clearChat: "Очистить чат", clearAsk: "Очистить чат?", clearNote: "Переписка исчезнет только у вас", chatCleared: "Чат очищен", clearChoice: "Только у меня — у друга переписка останется. У обоих — она удалится у вас обоих, вернуть её будет нельзя.", clearMine: "Только у меня", clearBoth: "У нас обоих", chatClearedBoth: "Чат очищен у вас обоих", holdHint: "Удерживайте смайлик — он полетит по экрану",
       home: "Друзья", eyebrow: "GLOWLETTER · ДРУЗЬЯ", title: "Друзья", close: "Закрыть", back: "Назад",
       signIn: "Войдите, чтобы добавлять друзей и переписываться.", signInButton: "Войти",
       nameTitle: "Как вас зовут?", nameNote: "Это имя увидят ваши друзья.", namePlaceholder: "Ваше имя", nameSave: "Сохранить", nameInvalid: "Введите обычное имя.",
@@ -86,7 +86,7 @@
       stickersNone: "Наклейки появляются в «Сундуке Тёпы» в «Нашем мире».", worldOpen: "Наш мир", pushCall: "📞 Пропущенный звонок: {name}", pushPhoto: "📸 {name}: новое фото", pushSticker: "🧸 {name}: наклейка"
     },
     en: {
-      ranking: "Ranking", videoCall: "Video call", attach: "Send a photo", emojiAll: "All emoji", effects: "Effects", callSub: "Audio / Video", tableSub: "Play together", worldSub: "Open", bearSub: "Send", drawSub: "Shared canvas", stickerSub: "Shop", playSub: "Invite to a game", callAudio: "Audio call", callVideo: "Video call", photoSending: "Sending the photo…", photoTooBig: "The photo is too large", msgSent: "Sent", msgRead: "Read", together: "Together", friendGroup: "Friend", clearChat: "Clear chat", clearAsk: "Clear the chat?", clearNote: "The conversation disappears only for you", chatCleared: "Chat cleared", holdHint: "Hold an emoji — it will fly across the screen",
+      ranking: "Ranking", videoCall: "Video call", attach: "Send a photo", emojiAll: "All emoji", effects: "Effects", callSub: "Audio / Video", tableSub: "Play together", worldSub: "Open", bearSub: "Send", drawSub: "Shared canvas", stickerSub: "Shop", playSub: "Invite to a game", callAudio: "Audio call", callVideo: "Video call", photoSending: "Sending the photo…", photoTooBig: "The photo is too large", msgSent: "Sent", msgRead: "Read", together: "Together", friendGroup: "Friend", clearChat: "Clear chat", clearAsk: "Clear the chat?", clearNote: "The conversation disappears only for you", chatCleared: "Chat cleared", clearChoice: "Only for me — your friend keeps the conversation. For both — it is deleted for both of you and can’t be restored.", clearMine: "Only for me", clearBoth: "For both of us", chatClearedBoth: "Chat cleared for both of you", holdHint: "Hold an emoji — it will fly across the screen",
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
       signIn: "Sign in to add friends and send messages.", signInButton: "Sign in",
       nameTitle: "What’s your name?", nameNote: "Your friends will see this name.", namePlaceholder: "Your name", nameSave: "Save", nameInvalid: "Enter an ordinary name.",
@@ -117,7 +117,7 @@
       stickersNone: "Stickers come from Teddy’s chest in Our world.", worldOpen: "Our world", pushCall: "📞 Missed call: {name}", pushPhoto: "📸 {name}: new photo", pushSticker: "🧸 {name}: sticker"
     },
     fr: {
-      ranking: "Classement", videoCall: "Appel vidéo", attach: "Envoyer une photo", emojiAll: "Tous les émojis", effects: "Effets", callSub: "Audio / Vidéo", tableSub: "Jouer ensemble", worldSub: "Ouvrir", bearSub: "Envoyer", drawSub: "Toile commune", stickerSub: "Boutique", playSub: "Inviter à jouer", callAudio: "Appel audio", callVideo: "Appel vidéo", photoSending: "Envoi de la photo…", photoTooBig: "La photo est trop lourde", msgSent: "Envoyé", msgRead: "Lu", together: "Ensemble", friendGroup: "Ami", clearChat: "Effacer la discussion", clearAsk: "Effacer la discussion ?", clearNote: "La conversation disparaît seulement pour vous", chatCleared: "Discussion effacée", holdHint: "Maintenez un émoji : il s’envolera sur l’écran",
+      ranking: "Classement", videoCall: "Appel vidéo", attach: "Envoyer une photo", emojiAll: "Tous les émojis", effects: "Effets", callSub: "Audio / Vidéo", tableSub: "Jouer ensemble", worldSub: "Ouvrir", bearSub: "Envoyer", drawSub: "Toile commune", stickerSub: "Boutique", playSub: "Inviter à jouer", callAudio: "Appel audio", callVideo: "Appel vidéo", photoSending: "Envoi de la photo…", photoTooBig: "La photo est trop lourde", msgSent: "Envoyé", msgRead: "Lu", together: "Ensemble", friendGroup: "Ami", clearChat: "Effacer la discussion", clearAsk: "Effacer la discussion ?", clearNote: "La conversation disparaît seulement pour vous", chatCleared: "Discussion effacée", clearChoice: "Seulement pour moi — votre ami garde la discussion. Pour nous deux — elle est supprimée pour vous deux, sans retour possible.", clearMine: "Seulement pour moi", clearBoth: "Pour nous deux", chatClearedBoth: "Discussion effacée pour vous deux", holdHint: "Maintenez un émoji : il s’envolera sur l’écran",
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
       signIn: "Connectez-vous pour ajouter des amis et écrire des messages.", signInButton: "Se connecter",
       nameTitle: "Comment vous appelez-vous ?", nameNote: "Vos amis verront ce prénom.", namePlaceholder: "Votre prénom", nameSave: "Enregistrer", nameInvalid: "Saisissez un prénom ordinaire.",
@@ -647,9 +647,11 @@
         <section class="glf-confirm" role="alertdialog" aria-modal="true" aria-labelledby="glfConfirmTitle"${job.note ? ' aria-describedby="glfConfirmNote"' : ""}>
           <h3 id="glfConfirmTitle">${escapeHtml(job.title)}</h3>
           ${job.note ? `<p id="glfConfirmNote">${escapeHtml(job.note)}</p>` : ""}
-          <div class="glf-confirm-actions">
+          <div class="glf-confirm-actions${job.alt ? " is-stack" : ""}">
+            ${job.alt ? `<button class="glf-confirm-ok${job.danger ? " is-danger" : ""}" type="button" data-action="confirm-ok">${escapeHtml(job.ok)}</button>
+            <button class="glf-confirm-alt" type="button" data-action="confirm-alt">${escapeHtml(job.alt)}</button>` : ""}
             <button class="glf-confirm-cancel" type="button" data-action="confirm-cancel">${escapeHtml(tr("voiceCancel"))}</button>
-            <button class="glf-confirm-ok${job.danger ? " is-danger" : ""}" type="button" data-action="confirm-ok">${escapeHtml(job.ok)}</button>
+            ${job.alt ? "" : `<button class="glf-confirm-ok${job.danger ? " is-danger" : ""}" type="button" data-action="confirm-ok">${escapeHtml(job.ok)}</button>`}
           </div>
         </section>
       </div>`;
@@ -809,6 +811,7 @@
         case "menu-close": render(); state.root?.querySelector(".glf-head-button.is-menu")?.focus({ preventScroll: true }); return;
         case "confirm-cancel": state.confirm = null; render(); return;
         case "confirm-ok": { const job = state.confirm; state.confirm = null; render(); if (job?.run) await job.run(); return; }
+        case "confirm-alt": { const job = state.confirm; state.confirm = null; render(); if (job?.altRun) await job.altRun(); return; }
         case "react-on": {
           const bubble = state.root?.querySelector(`.glf-messages [data-mid="${CSS.escape(target.dataset.mid || "")}"]`);
           const kind = target.dataset.kind;
@@ -820,13 +823,21 @@
         case "clear-chat": {
           const friend = state.chatWith;
           if (!friend) return;
-          ask({ title: tr("clearAsk"), note: tr("clearNote"), ok: tr("clearChat"), danger: true }, async () => {
-            await rpc("glowletter_chat_clear", { p_friend: friend.user_id });
+          // Владелец 01.11: очистить можно только у себя или у обоих — тогда переписка, фото и голосовые
+          // удаляются с сервера совсем, а у друга чат пустеет сразу (сигнал chat-cleared).
+          const cleared = text => {
             if (state.chatWith?.user_id === friend.user_id) { state.messages = []; state.newestShown = ""; }
             friend.unread = 0;
             updateBadge();
             render();
-            notify(tr("chatCleared"), 2600);
+            notify(text, 2600);
+          };
+          ask({
+            title: tr("clearAsk"), note: tr("clearChoice"), ok: tr("clearBoth"), danger: true, alt: tr("clearMine"),
+            altRun: async () => { await rpc("glowletter_chat_clear", { p_friend: friend.user_id }); cleared(tr("chatCleared")); }
+          }, async () => {
+            await rpc("glowletter_chat_clear_both", { p_friend: friend.user_id });
+            cleared(tr("chatClearedBoth"));
           });
           return;
         }
@@ -1445,6 +1456,23 @@
       .on("postgres_changes", { event: "*", schema: "public", table: "glowletter_friendships", filter: `addressee=eq.${me}` }, payload => onFriendship(payload))
       .on("postgres_changes", { event: "*", schema: "public", table: "glowletter_friendships", filter: `requester=eq.${me}` }, () => refresh(false))
       .subscribe();
+    // Друг очистил чат у обоих — у меня он пустеет сразу.
+    if (state.clearChannel) db.removeChannel?.(state.clearChannel);
+    state.clearChannel = db.channel(`glowletter-chat:${me}`)
+      .on("broadcast", { event: "chat-cleared" }, message => onChatCleared(message?.payload?.from))
+      .subscribe();
+  }
+
+  function onChatCleared(from) {
+    if (!new RegExp(`^${UUID}$`, "u").test(String(from || ""))) return;
+    const row = state.rows.find(item => item.user_id === from);
+    if (row) row.unread = 0;
+    updateBadge();
+    if (state.chatWith?.user_id !== from) return;
+    state.messages = [];
+    state.newestShown = "";
+    render();
+    notify(tr("chatClearedBoth"), 2600);
   }
 
   async function onIncoming(message) {
