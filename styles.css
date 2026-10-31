@@ -2078,7 +2078,7 @@ body[data-scene="cabin"]:not(.is-reading) .cinematic-bg { background-color: #2a1
 @keyframes paywall-spark { 0% { transform: translate(-50%, -50%) scale(.4); opacity: 0; } 20% { opacity: 1; } 100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1); opacity: 0; } }
 
 #paywallLayer .paywall-card h2 { margin: 4px 0 12px; color: #fff6e6; font-family: "Playfair Display", Georgia, serif; font-size: clamp(30px, 8vw, 38px); line-height: 1.06; text-shadow: 0 2px 18px rgba(0, 0, 0, .85), 0 0 2px rgba(0, 0, 0, .6); }
-#paywallLayer .paywall-card h2 em { font-style: italic; font-weight: 600; color: #f6d27c; background: linear-gradient(180deg, #fff0bf, #e8b54e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; filter: drop-shadow(0 2px 10px rgba(0, 0, 0, .7)); }
+#paywallLayer .paywall-card h2 em { font-style: italic; font-weight: 600; color: #f6d27c; text-shadow: 0 2px 14px rgba(0, 0, 0, .85); }
 #paywallLayer #paywallLead { max-width: 36ch; margin: 0 auto; color: rgba(255, 238, 214, .88); font-size: 13px; line-height: 1.55; text-shadow: 0 1px 8px rgba(0, 0, 0, .8); }
 
 #paywallLayer .paywall-features { gap: 10px; margin: 20px 0 22px; }
