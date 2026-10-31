@@ -15,6 +15,7 @@ const table = read("table.js");
 const world = read("together.js");
 const friends = read("friends.js").replaceAll("\r\n", "\n");
 const sql = read("supabase/migrations/20261031100000_play_together.sql") + read("supabase/migrations/20261031100500_play_together_fix.sql");
+const photos6h = read("supabase/migrations/20261031120000_photos_6_hours.sql");
 
 // Подключение: все новые файлы есть на странице и в кеше приложения.
 const FILES = ["ultra.css", "table-board.css", "table-party.css", "word.css", "ultra-i18n.js", "call.js", "table-i18n.js", "table.js",
@@ -55,10 +56,13 @@ assert.match(friends, /"glowletter_photo_get"/u);
 assert.match(friends, /window\.NurWidget\?\.installed\?\.\(\)/u);
 assert.doesNotMatch(world + call + table, /мелоди|песн|музык|обожа|\bmusic\b|\bsong\b|adore/iu);
 
-// Сервер: очки с дневными потолками, имена в общем рейтинге — только с согласия обоих, фото 30 дней.
+// Сервер: очки с дневными потолками, имена в общем рейтинге — только с согласия обоих, фото — не больше 6 часов.
 assert.match(sql, /when 'game' then 120 when 'streak' then 10 when 'pet' then 30 when 'word' then 12/u);
 assert.match(sql, /pa\.ranking_public and pb\.ranking_public/u);
-assert.match(sql, /interval '30 days'/u);
+assert.match(photos6h, /cron\.schedule\(\s*'glowletter-purge-photos'/u);
+assert.equal((photos6h.match(/interval '6 hours'/gu) || []).length, 5);
+assert.doesNotMatch(photos6h, /30 days/u);
+assert.match(read("privacy.html"), /не больше 6 часов/u);
 assert.match(sql, /interval '3 hours'/u);
 assert.match(sql, /private\.glowletter_pair_paid\(me, p_friend\)/u);
 for (const tableName of ["glowletter_points", "glowletter_play_results", "glowletter_pair_days", "glowletter_pets", "glowletter_pet_care", "glowletter_word_results", "glowletter_chests", "glowletter_photos"]) {
