@@ -59,10 +59,10 @@ assert.doesNotMatch(index, /(?<!\d)(?:4[,.]99|5[,.]99)\s*€/u);
 const csp = index.match(/Content-Security-Policy" content="([^"]+)"/)?.[1] || "";
 assert.match(csp, /connect-src[^;]*https:\/\/xzzngrquomyiglktroqi\.supabase\.co/);
 assert.doesNotMatch(csp, /https:\/\/\*\.supabase\.co/);
-assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=105") < index.indexOf("letters.js?v=105"));
-assert.ok(index.indexOf("letters.js?v=105") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=105"));
-assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=105") < index.indexOf("qr-code.js?v=105"));
-assert.ok(index.indexOf("qr-code.js?v=105") < index.indexOf("app.js?v=105"));
+assert.ok(index.indexOf("vendor/supabase-2.110.9.js?v=106") < index.indexOf("letters.js?v=106"));
+assert.ok(index.indexOf("letters.js?v=106") < index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=106"));
+assert.ok(index.indexOf("vendor/qrcode-generator-1.4.4.min.js?v=106") < index.indexOf("qr-code.js?v=106"));
+assert.ok(index.indexOf("qr-code.js?v=106") < index.indexOf("app.js?v=106"));
 for (const provider of ["google", "apple", "facebook"]) {
   assert.match(index, new RegExp(`id=["']${provider}SignIn["'][^>]*hidden[^>]*disabled`));
 }
@@ -80,7 +80,11 @@ const letters = letterContext.window.NUR_LETTERS;
 assert.ok(Array.isArray(letters), "letters.js must expose window.NUR_LETTERS");
 assert.equal(letters.length, 50, "the reviewed built-in collection must contain 50 letters");
 const hardCodedRecipient = /Айша|Аиша|Aisha|Aïcha|Aicha/iu;
-for (const letter of letters) {
+// Тексты платных писем 11–50 только на сервере: в приложении у них номер и категория.
+for (const letter of letters.filter(item => item.id > 10)) {
+  assert.deepEqual(Object.keys(letter).sort(), ["category", "id"], `paid letter ${letter.id} must not ship its text`);
+}
+for (const letter of letters.filter(item => item.id <= 10)) {
   for (const language of ["ru", "en", "fr"]) {
     assert.equal(typeof letter[language], "string", `letter ${letter.id} must have ${language} text`);
     assert.doesNotMatch(letter[language], hardCodedRecipient, `letter ${letter.id}/${language} must not contain a fixed recipient`);
@@ -88,7 +92,7 @@ for (const letter of letters) {
 }
 assert.doesNotMatch(lettersSource, hardCodedRecipient);
 assert.doesNotMatch(app, /\.replaceAll\(\s*["'](?:Айша|Аиша|Aisha|Aïcha|Aicha)["']/iu);
-assert.match(lettersSource, /\{to\}/);
+assert.match(app, /\.replaceAll\("\{to\}", recipient\)/);
 
 // The small "for" label on the letter is localized together with the selected language.
 assert.match(index, /id="letterForLabel"/);
@@ -221,17 +225,17 @@ for (const forbidden of ["betaAccess", "backgroundUrl", "customAudioBlob", "gene
 
 // Service-worker v38 must update its own cache only and never cache personalized links.
 assert.match(worker, /const CACHE_PREFIX = "glow-letter-"/);
-assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v105`/);
+assert.match(worker, /const CACHE = `\$\{CACHE_PREFIX\}v106`/);
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=105`));
+  assert.match(worker, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=106`));
 }
 for (const resource of ["styles.css", "experience.css", "email-auth.css", "moments.css", "config.js", "supabase-2.110.9.js", "qrcode-generator-1.4.4.min.js", "letters.js", "qr-code.js", "app.js", "email-auth.js", "moments.js", "experience.js", "manifest.webmanifest"]) {
-  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=105`));
+  assert.match(index, new RegExp(`${resource.replaceAll(".", "\\.")}\\?v=106`));
 }
-assert.match(index, /fonts\/local-fonts\.css\?v=105/);
+assert.match(index, /fonts\/local-fonts\.css\?v=106/);
 assert.doesNotMatch(index, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(worker, /fonts\/local-fonts\.css\?v=105/);
-assert.match(app, /serviceWorker\.register\("sw\.js\?v=105"/);
+assert.match(worker, /fonts\/local-fonts\.css\?v=106/);
+assert.match(app, /serviceWorker\.register\("sw\.js\?v=106"/);
 assert.doesNotMatch(worker, /reply-engine\.js|generate-reply/);
 assert.match(app, /\.update\(\)/, "an installed app must actively check for a new service worker");
 assert.match(app, /serviceWorker\.addEventListener\(\s*["']controllerchange["']/, "the installed app must adopt an activated update");

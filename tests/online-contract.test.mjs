@@ -77,8 +77,8 @@ assert.match(friends, /if \(state\.channelUser && pushOn\(\)\) disablePush\(\);/
 assert.match(read("privacy.html"), /Уведомления на телефон[\s\S]*Phone notifications/u);
 
 // Подключение и кеш.
-assert.ok(index.indexOf("friends.js?v=105") < index.indexOf("online.js?v=105"));
-assert.match(worker, /"online\.js\?v=105"/u);
+assert.ok(index.indexOf("friends.js?v=106") < index.indexOf("online.js?v=106"));
+assert.match(worker, /"online\.js\?v=106"/u);
 assert.match(worker, /"online\.js", "voice\.js"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, keys: ONLINE_KEYS.length }));

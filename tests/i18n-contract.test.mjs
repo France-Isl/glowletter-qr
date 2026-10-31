@@ -33,9 +33,9 @@ assert.deepEqual([...extra.NUR_LANGUAGES], LANGUAGES);
 assert.deepEqual(Object.keys(extra.NUR_LANGUAGE_NAMES), LANGUAGES);
 assert.deepEqual(Object.keys(extra.NUR_I18N_EXTRA), NEW_LANGUAGES);
 
-// Все 50 писем написаны на всех двадцати пяти языках.
+// 50 писем; бесплатные 10 написаны на всех двадцати пяти языках (платные приходят с сервера).
 assert.equal(letters.length, 50);
-for (const letter of letters) {
+for (const letter of letters.filter(item => item.id <= 10)) {
   for (const code of LANGUAGES) {
     assert.equal(typeof letter[code], "string", `letter ${letter.id} has no ${code}`);
     assert.ok(letter[code].length > 40, `letter ${letter.id} ${code} is too short`);
@@ -191,7 +191,7 @@ const filter = run([
   grabSource(/function containsForbidden\(value\)/u, /\n\s*function containsReligiousAuthorityClaim/u),
   "this.containsForbidden = containsForbidden;"
 ].join("\n")).containsForbidden;
-for (const letter of letters) {
+for (const letter of letters.filter(item => item.id <= 10)) {
   for (const code of LANGUAGES) assert.equal(filter(letter[code].replaceAll("{to}", "Anna")), false, `letter ${letter.id} ${code} is blocked`);
 }
 for (const phrase of ["Droga Mamo", "po drugiej stronie", "por nosotros", "por no decir nada", "до сих пор не могу забыть", "un nudo en la garganta", "mi amigo íntimo", "Matteo", "Małgorzata", "Jürgen", "Дорога мамо", "Querida mãe", "Lieve mama", "obrigado pelo apoio", "dank je voor je steun", "Sevgili annem", "Dragă mamă", "Milá maminko", "Kära mamma", "Αγαπημένη μου μαμά", "Kære mor", "Kjære mamma", "Rakas äiti", "お母さんへ", "사랑하는 엄마에게", "親愛的媽媽", "แม่ที่รัก", "أمي الحبيبة", "Ibu tersayang", "Mẹ yêu quý"]) {

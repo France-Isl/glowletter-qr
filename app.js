@@ -3452,6 +3452,8 @@
     const recipient = previewRecipient();
     // Тексты из базы видны только на своём языке: чужой язык не подставляется.
     const source = entry?.catalog ? entry[lang] || "" : (entry?.[lang] || entry?.en || entry?.ru || "");
+    // Платное письмо, текст которого ещё не пришёл с сервера.
+    if (!source && !entry?.catalog && !entry?.shared && basePosition(entry) > FREE_COUNT) return t("checkingPurchase");
     return String(source).replaceAll("{to}", recipient);
   }
 
@@ -4030,8 +4032,32 @@
     catalogSignature = JSON.stringify(catalogRows);
     rebuildCatalog();
   }
+  // Тексты платных встроенных писем 11–50 живут на сервере и приходят только при полном доступе.
+  let paidLettersLoadedFor = "";
+  async function refreshPaidLetters() {
+    const userId = cloudUser?.id || "";
+    if (!cloudClient || !userId || !isPremium || paidLettersLoadedFor === userId) return false;
+    const { data, error } = await cloudClient.rpc("glowletter_builtin_letters");
+    if (error) throw error;
+    const rows = Array.isArray(data) ? data : [];
+    if (cloudUser?.id !== userId || !rows.length) return false;
+    paidLettersLoadedFor = userId;
+    for (const row of rows) {
+      const index = LETTERS.findIndex(entry => !entry.catalog && !entry.shared && Number(entry.id) === Number(row?.id));
+      if (index < 0 || !row.texts || typeof row.texts !== "object") continue;
+      const texts = {};
+      for (const [key, value] of Object.entries(row.texts)) if (typeof value === "string" && value.length <= 4000) texts[key] = value;
+      LETTERS[index] = { ...LETTERS[index], ...texts };
+    }
+    rebuildCatalog();
+    renderLibrary();
+    if (storyOpened) renderLetter();
+    return true;
+  }
+
   async function refreshCatalog() {
     if (!cloudClient) return false;
+    refreshPaidLetters().catch(error => console.info("Paid letters refresh failed", error));
     const { data, error } = await cloudClient.rpc("glowletter_catalog_letters");
     if (error) throw error;
     const rows = (Array.isArray(data) ? data : []).map(normalizeCatalogRow).filter(Boolean);
@@ -6235,7 +6261,7 @@
 
   async function setupServiceWorker() {
     const hadController = Boolean(navigator.serviceWorker.controller);
-    const registration = await navigator.serviceWorker.register("sw.js?v=105", { updateViaCache: "none" });
+    const registration = await navigator.serviceWorker.register("sw.js?v=106", { updateViaCache: "none" });
     let reloading = false;
     if (hadController) {
       navigator.serviceWorker.addEventListener("controllerchange", () => {

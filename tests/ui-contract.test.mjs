@@ -121,7 +121,7 @@ assert.match(styles, /body\.reading-focus[\s\S]{0,500}#focusReadingButton/);
 // Letters that used to start with a fixed recipient now start directly with their message.
 const letterContext = { window: {} };
 vm.runInNewContext(lettersSource, letterContext, { filename: "letters.js" });
-for (const id of [5, 12]) {
+for (const id of [5]) {
   const letter = letterContext.window.NUR_LETTERS.find(item => Number(item.id) === id);
   assert.ok(letter, `letter ${id} must exist`);
   for (const language of ["ru", "en", "fr"]) {
