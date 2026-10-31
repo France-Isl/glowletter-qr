@@ -1655,6 +1655,7 @@
         const other = yn.role === "host" ? "guest" : "host";
         const presence = channel.presenceState()[other] || [];
         const online = presence.length > 0;
+        for (const meta of presence) if (meta?.user_id) window.GlowLetterRanking?.announceAdmin?.(meta.user_id, cleanName(meta.name), yn.roomId);
         if (online && yn.role === "host") yn.guestName = cleanName(presence[0]?.name) || yn.guestName;
         if (online !== yn.partnerOnline) {
           yn.partnerOnline = online;
@@ -1667,7 +1668,7 @@
         if (yn !== state.yn || yn.channel !== channel) return;
         if (status === "SUBSCRIBED") {
           yn.reconnecting = false;
-          await channel.track({ role: yn.role, name: yn.role === "host" ? yn.hostName : yn.guestName });
+          await channel.track({ role: yn.role, user_id: window.GlowLetterCloud?.getState?.().userId || "", name: yn.role === "host" ? yn.hostName : yn.guestName });
         } else if (["CHANNEL_ERROR", "TIMED_OUT", "CLOSED"].includes(status) && yn.phase !== "end") {
           // Приложение свернули (поделиться в WhatsApp, скопировать ссылку): телефон усыпил
           // страницу и связь оборвалась, но комната на сервере жива — переподключаемся.

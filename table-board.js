@@ -290,10 +290,14 @@
 
   const nameOf = api => api.friend?.name || api.t("someone");
 
-  function turnLine(api, mine) {
+  function turnLine(api, mine, mover) {
     if (!api.partnerHere()) return api.tt("away", { name: nameOf(api) });
-    return mine ? api.tt("yourTurn") : api.tt("friendTurn", { name: nameOf(api) });
+    return mine ? api.tt("yourTurn") : api.tt("friendTurn", { name: mover || nameOf(api) });
   }
+
+  // Зритель (за столом больше двух): видит доску и ходы обоих, сам не ходит.
+  // Игрок с индексом 0 в api.players ходит первым.
+  const playerName = (api, index) => api.players?.[index]?.name || api.t("someone");
 
   // Друг ушёл или вернулся: у стола нет события, поэтому смотрим раз в секунду.
   function watchPartner(api, onChange) {
@@ -648,7 +652,8 @@
 
   function mountFour(el, api) {
     const { t, escapeHtml: esc } = api;
-    const mine = api.iStart ? 0 : 1;
+    const watch = Boolean(api.spectator);
+    const mine = watch ? -1 : api.iStart ? 0 : 1;
     const colour = player => (player === 0 ? "gold" : "wine");
     const stops = [];
     let moves = [];
@@ -659,7 +664,7 @@
     el.innerHTML = `
       <div class="gltb gltb-four">
         <p class="gltb-turn" aria-live="polite"></p>
-        <p class="gltb-legend"><span class="gltb-disc gltb-disc-${colour(mine)}" aria-hidden="true"></span>${esc(t(mine === 0 ? "youGold" : "youWine"))}</p>
+        <p class="gltb-legend">${watch ? esc(api.tt("watching")) : `<span class="gltb-disc gltb-disc-${colour(mine)}" aria-hidden="true"></span>${esc(t(mine === 0 ? "youGold" : "youWine"))}`}</p>
         <div class="gltb-four-board" role="group" aria-label="${esc(t("board"))}">
           ${Array.from({ length: FOUR_W }, (_, column) => `
             <button class="gltb-four-col" type="button" data-pos="${column}">
@@ -681,8 +686,8 @@
     const canPlay = () => !finished && !state.over && state.next === mine && api.partnerHere();
 
     function render() {
-      if (state.over) turnNode.textContent = state.draw ? api.tt("draw") : state.winner === mine ? api.tt("win") : api.tt("loss", { name: nameOf(api) });
-      else turnNode.textContent = turnLine(api, state.next === mine);
+      if (state.over) turnNode.textContent = state.draw ? api.tt("draw") : state.winner === mine ? api.tt("win") : api.tt("loss", { name: watch ? playerName(api, state.winner) : nameOf(api) });
+      else turnNode.textContent = turnLine(api, state.next === mine, watch ? playerName(api, state.next) : "");
       turnNode.classList.toggle("is-mine", canPlay());
       const win = new Set(state.line.map(([c, r]) => `${c}:${r}`));
       const open = canPlay();
@@ -716,7 +721,8 @@
     }
 
     function checkEnd() {
-      if (state.winner >= 0) finishOnce(state.winner === mine ? "win" : "loss");
+      if (watch && (state.winner >= 0 || state.draw)) finishOnce("done");
+      else if (state.winner >= 0) finishOnce(state.winner === mine ? "win" : "loss");
       else if (state.draw) finishOnce("draw");
     }
 
@@ -787,7 +793,8 @@
 
   function mountCheckers(el, api) {
     const { t, escapeHtml: esc } = api;
-    const me = api.iStart ? 1 : -1;
+    const watch = Boolean(api.spectator);
+    const me = watch ? 0 : api.iStart ? 1 : -1;
     const flip = me === -1;
     const toAbs = pos => (flip ? 63 - pos : pos);
     const stops = [];
@@ -801,7 +808,7 @@
     el.innerHTML = `
       <div class="gltb gltb-checkers">
         <p class="gltb-turn" aria-live="polite"></p>
-        <p class="gltb-legend"><span class="gltb-piece gltb-piece-${me > 0 ? "w" : "b"} is-mini" aria-hidden="true"></span>${esc(t(me > 0 ? "youWhite" : "youBlack"))}</p>
+        <p class="gltb-legend">${watch ? esc(api.tt("watching")) : `<span class="gltb-piece gltb-piece-${me > 0 ? "w" : "b"} is-mini" aria-hidden="true"></span>${esc(t(me > 0 ? "youWhite" : "youBlack"))}`}</p>
         <div class="gltb-ck-board" role="group" aria-label="${esc(t("board"))}">
           ${Array.from({ length: 64 }, (_, pos) => {
             const dark = (Math.floor(pos / 8) + (pos % 8)) % 2 === 1;
@@ -847,8 +854,10 @@
     function render() {
       if (over()) {
         const result = game.loser ? (game.loser === me ? "loss" : "win") : "draw";
-        turnNode.textContent = result === "draw" ? api.tt("draw") : result === "win" ? api.tt("win") : api.tt("loss", { name: nameOf(api) });
-      } else turnNode.textContent = turnLine(api, myMove());
+        turnNode.textContent = result === "draw" ? api.tt("draw")
+          : watch ? api.tt("loss", { name: playerName(api, game.loser === 1 ? 1 : 0) })
+          : result === "win" ? api.tt("win") : api.tt("loss", { name: nameOf(api) });
+      } else turnNode.textContent = turnLine(api, myMove(), watch ? playerName(api, game.color === 1 ? 0 : 1) : "");
       turnNode.classList.toggle("is-mine", canPlay());
 
       const open = canPlay();
@@ -892,7 +901,7 @@
       const key = over() ? "over" : `${draw}:${here}`;
       if (key === drawKey) return;
       drawKey = key;
-      if (over()) { drawNode.innerHTML = ""; return; }
+      if (over() || watch) { drawNode.innerHTML = ""; return; }
       if (draw === "got") {
         drawNode.innerHTML = `
           <p class="gltb-ck-ask">${esc(t("drawAsk", { name: nameOf(api) }))}</p>
@@ -918,7 +927,7 @@
     }
 
     function checkEnd() {
-      if (game.loser) finishOnce(game.loser === me ? "loss" : "win");
+      if (game.loser) finishOnce(watch ? "done" : game.loser === me ? "loss" : "win");
     }
 
     function tap(square) {
@@ -1025,16 +1034,18 @@
           if (!validList(data.list) || data.list.length <= paths.length || !samePrefix(data.list, paths)) return;
           if (adopt(data.list)) { render(); checkEnd(); }
         } else if (type === "draw") {
-          if (data.n !== paths.length || over()) return;
+          if (data.n !== paths.length || over() || watch) return;
           if (draw === "sent") { api.send("drawYes", { n: paths.length }); finishOnce("draw"); }
           else draw = "got";
           render();
         } else if (type === "drawYes") {
+          // Зритель узнаёт о ничьей по согласию игрока.
+          if (watch && data.n === paths.length && !over()) { finishOnce("done"); render(); return; }
           if (draw !== "sent" || data.n !== paths.length) return;
           finishOnce("draw");
           render();
         } else if (type === "drawNo") {
-          if (draw !== "sent") return;
+          if (draw !== "sent" || watch) return;
           draw = "none";
           api.toast(t("drawDeclined", { name: nameOf(api) }));
           render();
@@ -1142,7 +1153,8 @@
     }
   };
 
-  window.GlowLetterTable.register({ id: "sea", icon: "🧸", order: 60, text: SEA_TEXT, mount: mountSea });
-  window.GlowLetterTable.register({ id: "four", icon: "🟡", order: 61, text: FOUR_TEXT, mount: mountFour });
-  window.GlowLetterTable.register({ id: "checkers", icon: "⚪", order: 62, text: CHECKERS_TEXT, mount: mountCheckers });
+  // Все три — вдвоём; остальные за столом смотрят (в «Морском бое» флот секретный — смотреть нечего).
+  window.GlowLetterTable.register({ id: "sea", icon: "🧸", order: 60, players: 2, watch: false, text: SEA_TEXT, mount: mountSea });
+  window.GlowLetterTable.register({ id: "four", icon: "🟡", order: 61, players: 2, text: FOUR_TEXT, mount: mountFour });
+  window.GlowLetterTable.register({ id: "checkers", icon: "⚪", order: 62, players: 2, text: CHECKERS_TEXT, mount: mountCheckers });
 })();

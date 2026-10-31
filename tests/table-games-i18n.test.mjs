@@ -9,7 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = relative => fs.readFileSync(path.join(root, relative), "utf8").replaceAll("\r\n", "\n");
 
 const LANGUAGES = ["de", "es", "it", "pl", "uk", "pt", "nl", "tr", "ro", "cs", "sv", "el", "da", "no", "fi", "ja", "ko", "zh", "th", "ar", "ind", "vi"];
-const GAMES = ["sea", "four", "checkers", "lost", "explain", "sketch", "talk"];
+// who, pics, guess — игры на компанию до четырёх человек (table-group.js).
+const GAMES = ["sea", "four", "checkers", "lost", "explain", "sketch", "talk", "who", "pics", "guess"];
 const BANNED = /мелоди|песн|музык|обожа|обожню|adore|adoro|\bmusic|\bsong|melod/iu;
 
 // Игры регистрируются через GlowLetterTable.register — забираем их тексты.
@@ -21,7 +22,8 @@ const gameWindow = {
 const gameContext = vm.createContext({ window: gameWindow, matchMedia: () => ({ matches: false }) });
 vm.runInContext(read("table-board.js"), gameContext);
 vm.runInContext(read("table-party.js"), gameContext);
-assert.deepEqual(Object.keys(registered).sort(), [...GAMES].sort(), "all seven games registered");
+vm.runInContext(read("table-group.js"), gameContext);
+assert.deepEqual(Object.keys(registered).sort(), [...GAMES].sort(), "all ten games registered");
 
 const window = {};
 const context = vm.createContext({ window });

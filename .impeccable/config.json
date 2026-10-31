@@ -99,6 +99,18 @@
         "value": "48px",
         "createdAt": "2026-10-30T23:34:26.512Z",
         "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "44px",
+        "createdAt": "2026-10-31T03:02:09.348Z",
+        "reason": "Claude: emoji pictogram glyph sizes in table-group.css (picture cards, trophy, medals), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "clamp(44px, 13vw, 60px)",
+        "createdAt": "2026-10-31T03:02:09.349Z",
+        "reason": "Claude: emoji pictogram glyph sizes in table-group.css (picture cards, trophy, medals), not text"
       }
     ]
   }

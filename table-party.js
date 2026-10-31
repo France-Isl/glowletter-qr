@@ -1,7 +1,9 @@
 /*
   «Игровой стол» · игры для разговора вдвоём (2.4.26).
 
-  Четыре игры для table.js (GlowLetterTable.register):
+  Четыре игры для table.js (GlowLetterTable.register). Играть можно и втроём-вчетвером:
+  объясняет, рисует, ведёт мишку и начинает разговор каждый по очереди (api.players),
+  остальные угадывают или подсказывают.
     • lost    — «Тёпа заблудился»: штурман видит весь лабиринт, второй ведёт мишку в тумане.
     • explain — «Объясни слово»: раунды по 60 секунд, счёт общий.
     • sketch  — «Угадай рисунок»: один рисует на общем холсте, другой угадывает.
@@ -198,7 +200,15 @@
   const int = (value, min, max) => Number.isInteger(value) && value >= min && value <= max;
   const text = (value, max) => typeof value === "string" && value.length <= max;
   const otherOf = api => (api.first === api.me ? api.friend.id : api.me);
-  const ownerOf = (api, index) => (index % 2 === 0 ? api.first : otherOf(api));
+  // Участники партии по порядку (первый ходит первым). Вдвоём это [first, второй], как раньше;
+  // втроём-вчетвером ход по кругу. Зритель (не в списке) просто угадывает или подсказывает.
+  const rosterIds = api => (Array.isArray(api.players) && api.players.length >= 2 ? api.players.map(item => item.id) : [api.first, otherOf(api)]);
+  const ownerOf = (api, index) => { const ids = rosterIds(api); return ids[index % ids.length]; };
+  const nameFor = (api, id) => api.players?.find(item => item.id === id)?.name || api.name?.(id) || (id === api.friend.id ? api.friend.name : "") || "";
+  const othersName = api => rosterIds(api).filter(id => id !== api.me).map(id => nameFor(api, id)).filter(Boolean).join(", ");
+  // Вдвоём — 4 раунда (по два на каждого), втроём — 6, вчетвером — 8.
+  const roundsFor = api => Math.max(ROUNDS, rosterIds(api).length * 2);
+  const guessChip = (api, from, value) => (rosterIds(api).length > 2 && from ? `${nameFor(api, from)}: ${value}` : value);
   const buzz = pattern => { try { if (navigator.userActivation?.hasBeenActive !== false) navigator.vibrate?.(pattern); } catch {} };
   // Сравнение ключей состояния [раунд, фаза, версия] слева направо.
   const compare = (left, right) => { for (let index = 0; index < left.length; index += 1) { if (left[index] !== right[index]) return left[index] - right[index]; } return 0; };
@@ -259,7 +269,7 @@
 
   function showAway(node, api, here) {
     node.hidden = here;
-    node.textContent = here ? "" : api.tt("away", { name: api.friend.name || "" });
+    node.textContent = here ? "" : api.tt("away", { name: othersName(api) || api.friend.name || "" });
   }
 
   // Перерисовка без потери набранного ответа и фокуса.
@@ -307,7 +317,8 @@
     const s = { level: 0, phase: "play", x: mazes[0].start.x, y: mazes[0].start.y, k: 0, times: [] };
     const watch = stopwatch();
     const { ref } = frame(el, "lost");
-    const name = () => api.friend.name || "";
+    // Идущему — имена штурманов, штурману — имя идущего.
+    const name = () => (iWalk() ? othersName(api) : nameFor(api, ownerOf(api, s.level)));
     let hintTimer = 0;
     let bumpTimer = 0;
     let finished = false;
@@ -583,7 +594,9 @@
     const s = { v: 0, r: 0, phase: "ready", pos: 0, n: 0, word: "", score: 0, list: [] };
     const timer = countdown();
     const { ref } = frame(el, "explain");
-    const name = () => api.friend.name || "";
+    const rounds = roundsFor(api);
+    // Имя того, кто объясняет в этом раунде.
+    const name = () => nameFor(api, ownerOf(api, s.r));
     let mine = [];
     let theirs = [];
     let finished = false;
@@ -598,7 +611,7 @@
         const me = iExplain();
         ref("role").textContent = me ? api.t("explainerMe") : api.t("explainerFriend", { name: name() });
         ref("role").classList.toggle("is-me", me);
-        ref("meta").textContent = `${api.t("round", { n: s.r + 1, total: ROUNDS })} · ${api.t("score", { n: s.score })}`;
+        ref("meta").textContent = `${api.t("round", { n: s.r + 1, total: rounds })} · ${api.t("score", { n: s.score })}`;
         ref("main").innerHTML = s.phase === "ready" ? ready(me) : s.phase === "play" ? play(me) : after();
       });
     }
@@ -625,7 +638,7 @@
         <button class="glg-secondary" type="button" data-act="skip"${loop.here() ? "" : " disabled"}>${escapeHtml(api.t("skip"))}</button>
         <button class="glg-primary" type="button" data-act="got"${loop.here() ? "" : " disabled"}>✓ ${escapeHtml(api.t("got"))}</button>
       </div>
-      ${theirs.length ? `<p class="gltp-label">${escapeHtml(api.t("theirGuesses", { name: name() }))}</p>${chips(theirs, api.t("theirGuesses", { name: name() }))}` : ""}` : `
+      ${theirs.length ? `<p class="gltp-label">${escapeHtml(api.t("theirGuesses", { name: othersName(api) }))}</p>${chips(theirs, api.t("theirGuesses", { name: othersName(api) }))}` : ""}` : `
       ${timerHtml(api, timer.left(), EXPLAIN_MS)}
       <div class="gltp-card gltp-center">
         <p class="gltp-big" aria-hidden="true">👂</p>
@@ -636,7 +649,7 @@
       ${chips(mine, api.t("guessLabel"))}`;
 
     function after() {
-      const last = s.r >= ROUNDS - 1;
+      const last = s.r >= rounds - 1;
       const words = s.list.length ? `<ul class="gltp-words">${s.list.map(item => `<li class="${item.ok ? "is-ok" : "is-skip"}"><span aria-hidden="true">${item.ok ? "✓" : "–"}</span> ${escapeHtml(item.w)}<span class="gltp-sr"> · ${escapeHtml(api.t(item.ok ? "gotMark" : "skipMark"))}</span></li>`).join("")}</ul>` : `<p class="gltp-muted">${escapeHtml(api.t("noWords"))}</p>`;
       return `
         <div class="gltp-card gltp-center">
@@ -677,11 +690,11 @@
       timer.stop();
       broadcast();
       render();
-      if (s.r >= ROUNDS - 1) complete();
+      if (s.r >= rounds - 1) complete();
     }
 
     function goRound(round) {
-      if (round >= ROUNDS) return;
+      if (round >= rounds) return;
       Object.assign(s, { v: 0, r: round, phase: "ready", word: "", list: [] });
       timer.stop();
       mine = [];
@@ -706,7 +719,7 @@
     }
 
     function validState(data) {
-      return data && int(data.r, 0, ROUNDS - 1) && data.phase in PHASE && int(data.v, 0, 100000) && int(data.pos, 0, 100000) && int(data.n, 0, 100000)
+      return data && int(data.r, 0, rounds - 1) && data.phase in PHASE && int(data.v, 0, 100000) && int(data.pos, 0, 100000) && int(data.n, 0, 100000)
         && text(data.word, 80) && int(data.score, 0, 10000) && Array.isArray(data.list) && data.list.length <= 40
         && data.list.every(item => item && text(item.w, 80) && typeof item.ok === "boolean")
         && Number.isFinite(data.left) && data.left >= 0 && data.left <= EXPLAIN_MS;
@@ -718,7 +731,7 @@
       if (s.phase === "play") timer.set(data.left, !loop.here()); else timer.stop();
       if (wordChanged) mine = [];
       render();
-      if (s.phase === "after" && s.r >= ROUNDS - 1) complete();
+      if (s.phase === "after" && s.r >= rounds - 1) complete();
     }
 
     function onClick(event) {
@@ -728,7 +741,7 @@
       if (action === "start") startRound();
       else if (action === "got") mark(true);
       else if (action === "skip") mark(false);
-      else if (action === "next" && s.phase === "after" && s.r + 1 < ROUNDS) { api.send("next", { r: s.r + 1 }); goRound(s.r + 1); }
+      else if (action === "next" && s.phase === "after" && s.r + 1 < rounds) { api.send("next", { r: s.r + 1 }); goRound(s.r + 1); }
     }
 
     function onSubmit(event) {
@@ -758,16 +771,16 @@
     render();
 
     return {
-      onMessage(type, data) {
+      onMessage(type, data, from) {
         if (type === "st" && validState(data)) {
           if (compare([data.r, PHASE[data.phase], data.v], [s.r, PHASE[s.phase], s.v]) >= 0) apply(data);
         } else if (type === "hit" && data && data.n === s.n && iExplain() && s.phase === "play") {
           mark(true);
         } else if (type === "guess" && data && data.n === s.n && text(data.t, 40) && data.t.trim() && iExplain() && s.phase === "play") {
-          theirs.unshift({ t: data.t.trim(), ok: false });
+          theirs.unshift({ t: guessChip(api, from, data.t.trim()), ok: false });
           theirs = theirs.slice(0, 6);
           render();
-        } else if (type === "next" && data && int(data.r, 1, ROUNDS - 1) && s.phase === "after" && data.r === s.r + 1) {
+        } else if (type === "next" && data && int(data.r, 1, rounds - 1) && s.phase === "after" && data.r === s.r + 1) {
           goRound(data.r);
         }
       },
@@ -790,7 +803,9 @@
     const s = { v: 0, r: 0, phase: "choose", pos: 0, word: "", score: 0, gain: 0 };
     const timer = countdown();
     const { ref } = frame(el, "sketch");
-    const name = () => api.friend.name || "";
+    const rounds = roundsFor(api);
+    // Имя того, кто рисует в этом раунде.
+    const name = () => nameFor(api, ownerOf(api, s.r));
     const board = { strokes: [], current: null, pending: [], color: COLORS[0], width: WIDTHS[0], eraser: false, flush: 0 };
     let mine = [];
     let theirs = [];
@@ -818,7 +833,7 @@
         const me = iDraw();
         ref("role").textContent = me ? api.t("drawerMe") : api.t("drawerFriend", { name: name() });
         ref("role").classList.toggle("is-me", me);
-        ref("meta").textContent = `${api.t("round", { n: s.r + 1, total: ROUNDS })} · ${api.t("score", { n: s.score })}`;
+        ref("meta").textContent = `${api.t("round", { n: s.r + 1, total: rounds })} · ${api.t("score", { n: s.score })}`;
         ref("paper").hidden = s.phase === "choose";
         ref("paper").classList.toggle("is-live", canDraw());
         canvas.setAttribute("aria-label", api.t("canvasLabel"));
@@ -861,7 +876,7 @@
           </div>`;
       }
       if (s.phase === "after") {
-        const last = s.r >= ROUNDS - 1;
+        const last = s.r >= rounds - 1;
         return last ? `
           <div class="gltp-card gltp-center">
             <h3>${escapeHtml(api.t("doneTitle"))}</h3>
@@ -880,7 +895,7 @@
             <button type="button" class="gltp-tool" data-act="clear">${escapeHtml(api.t("clear"))}</button>
           </div>
           <button class="glg-primary gltp-wide" type="button" data-act="got"${loop.here() ? "" : " disabled"}>✓ ${escapeHtml(api.t("got"))}</button>
-          ${theirs.length ? `<p class="gltp-label">${escapeHtml(api.t("theirGuesses", { name: name() }))}</p>${chips(theirs, api.t("theirGuesses", { name: name() }))}` : ""}`;
+          ${theirs.length ? `<p class="gltp-label">${escapeHtml(api.t("theirGuesses", { name: othersName(api) }))}</p>${chips(theirs, api.t("theirGuesses", { name: othersName(api) }))}` : ""}`;
       }
       return `
         <p class="gltp-muted">${escapeHtml(api.t("guessTip"))}</p>
@@ -961,7 +976,7 @@
       board.pending = board.pending.length >= 2 ? [] : board.pending;
     }
 
-    const validStroke = data => data && int(data.r, 0, ROUNDS - 1) && text(data.id, 40) && (data.c === PAPER || COLORS.includes(data.c))
+    const validStroke = data => data && int(data.r, 0, rounds - 1) && text(data.id, 40) && (data.c === PAPER || COLORS.includes(data.c))
       && (WIDTHS.includes(data.w) || data.w === ERASER) && Array.isArray(data.p) && data.p.length <= MAX_POINTS * 2;
     const cleanPoints = points => points.filter(Number.isFinite).map(value => Math.max(0, Math.min(SIZE, Math.round(value))));
 
@@ -1024,11 +1039,11 @@
       timer.stop();
       broadcast();
       render();
-      if (s.r >= ROUNDS - 1) complete();
+      if (s.r >= rounds - 1) complete();
     }
 
     function goRound(round) {
-      if (round >= ROUNDS) return;
+      if (round >= rounds) return;
       Object.assign(s, { v: 0, r: round, phase: "choose", word: "", gain: 0 });
       timer.stop();
       clearBoard();
@@ -1054,7 +1069,7 @@
     }
 
     function validState(data) {
-      return data && int(data.r, 0, ROUNDS - 1) && data.phase in PHASE && int(data.v, 0, 100000) && int(data.pos, 0, 100000)
+      return data && int(data.r, 0, rounds - 1) && data.phase in PHASE && int(data.v, 0, 100000) && int(data.pos, 0, 100000)
         && text(data.word, 80) && int(data.score, 0, 10000) && int(data.gain, 0, 20)
         && Number.isFinite(data.left) && data.left >= 0 && data.left <= SKETCH_MS;
     }
@@ -1065,7 +1080,7 @@
       if (fresh) { clearBoard(); mine = []; theirs = []; }
       if (s.phase === "draw") timer.set(data.left, !loop.here()); else timer.stop();
       render();
-      if (s.phase === "after" && s.r >= ROUNDS - 1) complete();
+      if (s.phase === "after" && s.r >= rounds - 1) complete();
     }
 
     function onClick(event) {
@@ -1074,7 +1089,7 @@
       switch (button.dataset.act) {
         case "choose": choose(Number(button.dataset.index)); return;
         case "got": guessed(); return;
-        case "next": if (s.phase === "after" && s.r + 1 < ROUNDS) { api.send("next", { r: s.r + 1 }); goRound(s.r + 1); } return;
+        case "next": if (s.phase === "after" && s.r + 1 < rounds) { api.send("next", { r: s.r + 1 }); goRound(s.r + 1); } return;
         case "color": if (COLORS.includes(button.dataset.color)) { board.color = button.dataset.color; board.eraser = false; render(); } return;
         case "width": board.width = WIDTHS.includes(Number(button.dataset.width)) ? Number(button.dataset.width) : WIDTHS[0]; board.eraser = false; render(); return;
         case "eraser": board.eraser = !board.eraser; render(); return;
@@ -1127,20 +1142,20 @@
     render();
 
     return {
-      onMessage(type, data) {
+      onMessage(type, data, from) {
         if (type === "st" && validState(data)) {
           if (compare([data.r, PHASE[data.phase], data.v], [s.r, PHASE[s.phase], s.v]) >= 0) apply(data);
         } else if (type === "s") onSegment(data, false);
         else if (type === "full") onSegment(data, data?.k === 0);
         else if (type === "u" && data && data.r === s.r && text(data.id, 40)) { board.strokes = board.strokes.filter(stroke => stroke.id !== data.id); paint(); }
         else if (type === "x" && data && data.r === s.r) { board.strokes = []; paint(); }
-        else if (type === "need" && data && data.r === s.r && s.phase !== "choose") shareAll();
+        else if (type === "need" && data && data.r === s.r && s.phase !== "choose" && iDraw()) shareAll();
         else if (type === "hit" && data && data.r === s.r && iDraw() && s.phase === "draw") guessed();
         else if (type === "guess" && data && data.r === s.r && text(data.t, 40) && data.t.trim() && iDraw() && s.phase === "draw") {
-          theirs.unshift({ t: data.t.trim(), ok: false });
+          theirs.unshift({ t: guessChip(api, from, data.t.trim()), ok: false });
           theirs = theirs.slice(0, 6);
           render();
-        } else if (type === "next" && data && int(data.r, 1, ROUNDS - 1) && s.phase === "after" && data.r === s.r + 1) goRound(data.r);
+        } else if (type === "next" && data && int(data.r, 1, rounds - 1) && s.phase === "after" && data.r === s.r + 1) goRound(data.r);
       },
       snapshot: () => ({ ...s, left: timer.left() }),
       restore(data) {
@@ -1170,7 +1185,7 @@
     const order = shuffled(base.length, seeded(Math.floor(api.rng() * 4294967296)));
     const s = { pos: 0, card: order[0] ?? 0 };
     const { ref } = frame(el, "talk");
-    const name = () => api.friend.name || "";
+    const name = () => nameFor(api, ownerOf(api, s.pos));
     let finished = false;
 
     const cardOf = index => {
@@ -1247,7 +1262,7 @@
   const TABLE = window.GlowLetterTable;
 
   TABLE.register({
-    id: "lost", icon: "🧸", order: 20,
+    id: "lost", icon: "🧸", order: 20, players: 3,
     text: {
       ru: {
         title: "Тёпа заблудился", short: "Выведите мишку домой вдвоём",
@@ -1296,7 +1311,7 @@
   };
 
   TABLE.register({
-    id: "explain", icon: "🗣️", order: 30,
+    id: "explain", icon: "🗣️", order: 30, players: 4,
     text: {
       ru: {
         ...GUESS_TEXT.ru, title: "Объясни слово", short: "Объясняйте, не называя слово",
@@ -1330,7 +1345,7 @@
   });
 
   TABLE.register({
-    id: "sketch", icon: "🎨", order: 40,
+    id: "sketch", icon: "🎨", order: 40, players: 4,
     text: {
       ru: {
         ...GUESS_TEXT.ru, title: "Угадай рисунок", short: "Один рисует, другой угадывает",
@@ -1341,7 +1356,7 @@
         colors: "Цвет", colorNames: "Чёрный, Красный, Розовый, Оранжевый, Жёлтый, Зелёный, Синий, Фиолетовый",
         thin: "Тонкая линия", thick: "Толстая линия", eraser: "Ластик", undo: "Отменить", clear: "Очистить",
         canvasLabel: "Холст для рисунка", afterGuessed: "Угадано! +{n}", afterMissed: "Время вышло — не угадано", wordWas: "Слово: {word}",
-        score: "Очки вдвоём: {n}", doneTitle: "Игра окончена!", doneScore: "Вместе вы набрали очков: {n}"
+        score: "Общие очки: {n}", doneTitle: "Игра окончена!", doneScore: "Вместе вы набрали очков: {n}"
       },
       en: {
         ...GUESS_TEXT.en, title: "Guess the drawing", short: "One draws, the other guesses",
@@ -1370,7 +1385,7 @@
   });
 
   TABLE.register({
-    id: "talk", icon: "💬", order: 60,
+    id: "talk", icon: "💬", order: 60, players: 4,
     text: {
       ru: {
         title: "О чём поговорить", short: "Карточки, когда разговор затих",

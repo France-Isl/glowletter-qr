@@ -19,7 +19,7 @@ const photos6h = read("supabase/migrations/20261031120000_photos_6_hours.sql");
 
 // Подключение: все новые файлы есть на странице и в кеше приложения.
 const FILES = ["ultra.css", "table-board.css", "table-party.css", "word.css", "ultra-i18n.js", "call.js", "table-i18n.js", "table.js",
-  "table-content.js", "table-content-i18n.js", "table-board.js", "table-party.js", "word-lists.js", "word-i18n.js", "word.js", "together.js"];
+  "table-content.js", "table-content-i18n.js", "table-board.js", "table-party.js", "table-group.css", "table-group-content.js", "table-group-content-i18n.js", "table-group.js", "word-lists.js", "word-i18n.js", "word.js", "together.js"];
 const version = /friends\.js\?v=(\d+)/u.exec(index)[1];
 for (const file of FILES) {
   assert.ok(fs.existsSync(path.join(root, file)), `${file} exists`);

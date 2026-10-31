@@ -607,6 +607,7 @@
   function onPresence() {
     if (call.phase === "idle" || !call.channel) return;
     const next = readPresence();
+    for (const [id, person] of next) window.GlowLetterRanking?.announceAdmin?.(id, person.name, call.room);
     const left = [...call.members.keys()].filter(id => !next.has(id));
     call.members = next;
     for (const [id, member] of next) {
