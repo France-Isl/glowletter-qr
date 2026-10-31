@@ -56,25 +56,10 @@ function fakeDb() {
   };
 }
 
-// С ботом: всегда двое, сервер ведёт партию до конца, бот ходит по тику.
+// Игр с ботами нет (владелец 31.10).
 let db = fakeDb();
-let view = await handle(db, "a", { action: "create", solo: true, settings: { kind: "checkers", seats: 4, stake: 1000 } });
-assert.equal(view.settings.kind, "checkers");
-assert.equal(view.seats.length, 2);
-assert.equal(view.game.kind, "checkers");
-assert.equal(db.dollars.a, 5000); // с ботами ставки нет (владелец 31.10)
-let guard = 0;
-let fake = Date.now();
-while (view.status === "playing" && guard++ < 1500) {
-  const g = view.game;
-  fake += 1000;
-  if (g.turn !== g.me) { view = await handle(db, "a", { action: "tick", game: view.id }, fake); continue; }
-  const raw = structuredClone([...db.games.values()][0].state);
-  view = await handle(db, "a", { action: "act", game: view.id, move: C.botAction(raw, g.me), seq: g.seq }, fake);
-}
-assert.equal(view.status, "finished");
-assert.equal(db.settled.length, 1);
-assert.ok(["win", "loss", "draw"].includes(db.settled[0].result));
+await assert.rejects(() => handle(db, "a", { action: "create", solo: true, settings: { kind: "checkers" } }), error => error instanceof GameError && error.code === "no_bots");
+let view;
 
 // Вдвоём со ставкой: чужой ход и чужой номер отклоняются, сдача платит сопернику.
 db = fakeDb();

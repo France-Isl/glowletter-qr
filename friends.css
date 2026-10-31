@@ -620,3 +620,9 @@ html[dir="rtl"] .glf-sheet-label::after { background: linear-gradient(270deg, rg
   .glg-layer.glf-chat-mode .glf-rain-row button.is-holding, .glg-layer.glf-chat-mode .glf-emoji-grid button.is-holding, .glf-chat-mode .glf-messages .is-reacting { transform: none; transition: none; }
   .glg-layer .glf-reactbar button:hover, .glg-layer .glf-reactbar button:focus-visible { transform: none; }
 }
+
+/* Имя и аватар в шапке чата — кнопка «профиль друга» (владелец 31.10). */
+.glg-layer .glf-chat-head .glf-head-profile { display: flex; flex: 1 1 auto; align-items: center; gap: 8px; min-width: 0; margin: 0; padding: 0; border: 0; border-radius: 22px; color: inherit; background: none; box-shadow: none; font: inherit; text-align: start; cursor: pointer; }
+.glg-layer .glf-chat-head .glf-head-profile:disabled { cursor: default; }
+.glg-layer .glf-chat-head .glf-head-profile:active:not(:disabled) .glf-head-ava { transform: scale(.94); }
+.glf-head-ava { transition: transform .15s ease; }

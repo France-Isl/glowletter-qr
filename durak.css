@@ -321,3 +321,7 @@ html[data-gl-perf="lite"] .dk-ck-mini { animation: none; }
 .dk-transfer-zone { display: grid; place-items: center; width: calc(var(--dk-card-w) * .86); aspect-ratio: 5 / 7.6; border: 2px dashed rgba(242, 201, 111, .85); border-radius: 12px; background: rgba(40, 20, 60, .45); color: #fff2c8; font-size: 14px; font-weight: 900; text-align: center; animation: dk-pop .25s ease; }
 .dk-transfer-zone.is-drop { border-style: solid; border-color: #8fe0a0; background: rgba(143, 224, 160, .18); box-shadow: 0 0 24px rgba(143, 224, 160, .7); }
 @media (min-width: 700px) { .dk-root { --dk-card-w: 104px; } }
+
+/* Нажатие на игрока — его профиль (владелец 31.10). */
+.dk-root [data-profile] { cursor: pointer; }
+.dk-root [data-profile]:active { transform: scale(.97); }

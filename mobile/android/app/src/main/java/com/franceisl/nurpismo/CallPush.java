@@ -60,6 +60,12 @@ public final class CallPush extends FirebaseMessagingService {
         String type = data.get("type");
         if ("call".equals(type)) ring(this, data);
         else if ("call_end".equals(type)) stop(this, data.get("room"));
+        else if ("invite".equals(type)) PushPoller.showInvite(this, clean(data.get("name"), 36), data.get("kind"), callTexts(this));
+    }
+
+    /** Тексты со страницы (NurCall.pushTexts): звонок и — с 2.4.31 — «Имя зовёт вас играть». */
+    static JSONObject callTexts(Context context) {
+        try { return new JSONObject(prefs(context).getString("texts", "{}")); } catch (Exception error) { return new JSONObject(); }
     }
 
     private static SharedPreferences prefs(Context context) {

@@ -17,7 +17,7 @@
       info4: "Титул — за все сезоны: Новичок → Профи (300 опыта) → Мастер (любая медаль) → Чемпион (золото) → Легенда (3 золота).",
       showName: "Показывать моё имя во «Всём мире»", profile: "Мой профиль", profileOf: "Профиль", level: "Уровень {n}", tabStats: "Статистика", tabMedals: "Награды", tabTitles: "Достижения",
       myMedals: "Мои медали", medals: "Медали", gold: "Золотые", silver: "Серебряные", bronze: "Бронзовые", history: "История побед", season: "Сезон #{n}", noMedals: "Медалей пока нет — всё впереди!",
-      statSeason: "Опыт сезона", statPlace: "Место в мире", statTotal: "Весь опыт", statGames: "Сыграно игр", statWins: "Победы", statFriends: "Друзья",
+      statSeason: "Опыт сезона", statPlace: "Место в мире", statTotal: "Весь опыт", statGames: "Сыграно игр", statWins: "Победы", statFriends: "Друзья", pOnline: "В сети", pSeen: "Последний раз в сети: {time}", pSince: "В GlowLetter с {date}", statCards: "Партий в Дурака и Шашки", statCardWins: "Побед за столом", statStreak: "Лучшая серия побед", statGifts: "Подарков получено", gifts: "Подарки", noGifts: "Подарков пока нет", write: "Написать", call: "Позвонить", tabAdmin: "Админ",
       ceremonyTitle: "Сезон #{n} завершён!", place1: "1 место — Золотая медаль", place2: "2 место — Серебряная медаль", place3: "3 место — Бронзовая медаль", ceremonyTake: "Забрать награду",
       rankDown: "Вы опустились на {place}-е место. {name} теперь выше вас!", rankUp: "Вы поднялись на {place}-е место!", back: "Назад", close: "Закрыть", info: "Как это работает",
       open: "Рейтинг", adminJoined: "В комнату зашёл", private: "Профиль закрыт", xp: "XP", now: "сейчас", editName: "Изменить имя", save: "Сохранить"
@@ -34,7 +34,7 @@
       info4: "Your title counts all seasons: Newbie → Pro (300 XP) → Master (any medal) → Champion (gold) → Legend (3 golds).",
       showName: "Show my name in the whole world", profile: "My profile", profileOf: "Profile", level: "Level {n}", tabStats: "Stats", tabMedals: "Awards", tabTitles: "Achievements",
       myMedals: "My medals", medals: "Medals", gold: "Gold", silver: "Silver", bronze: "Bronze", history: "Win history", season: "Season #{n}", noMedals: "No medals yet — it’s all ahead!",
-      statSeason: "Season XP", statPlace: "World place", statTotal: "All XP", statGames: "Games played", statWins: "Wins", statFriends: "Friends",
+      statSeason: "Season XP", statPlace: "World place", statTotal: "All XP", statGames: "Games played", statWins: "Wins", statFriends: "Friends", pOnline: "Online", pSeen: "Last online: {time}", pSince: "On GlowLetter since {date}", statCards: "Durak and Checkers games", statCardWins: "Table wins", statStreak: "Best win streak", statGifts: "Gifts received", gifts: "Gifts", noGifts: "No gifts yet", write: "Message", call: "Call", tabAdmin: "Admin",
       ceremonyTitle: "Season #{n} is over!", place1: "1st place — Gold medal", place2: "2nd place — Silver medal", place3: "3rd place — Bronze medal", ceremonyTake: "Collect the award",
       rankDown: "You dropped to place {place}. {name} is above you now!", rankUp: "You climbed to place {place}!", back: "Back", close: "Close", info: "How it works",
       open: "Ranking", adminJoined: "Entered the room:", private: "This profile is private", xp: "XP", now: "now", editName: "Change name", save: "Save"
@@ -51,7 +51,7 @@
       info4: "Le titre compte toutes les saisons : Débutant → Pro (300 XP) → Maître (une médaille) → Champion (or) → Légende (3 ors).",
       showName: "Afficher mon nom dans le monde entier", profile: "Mon profil", profileOf: "Profil", level: "Niveau {n}", tabStats: "Statistiques", tabMedals: "Récompenses", tabTitles: "Succès",
       myMedals: "Mes médailles", medals: "Médailles", gold: "Or", silver: "Argent", bronze: "Bronze", history: "Historique des victoires", season: "Saison n° {n}", noMedals: "Pas encore de médaille — tout est devant vous !",
-      statSeason: "XP de la saison", statPlace: "Place mondiale", statTotal: "XP total", statGames: "Parties jouées", statWins: "Victoires", statFriends: "Amis",
+      statSeason: "XP de la saison", statPlace: "Place mondiale", statTotal: "XP total", statGames: "Parties jouées", statWins: "Victoires", statFriends: "Amis", pOnline: "En ligne", pSeen: "Dernière connexion : {time}", pSince: "Sur GlowLetter depuis {date}", statCards: "Parties de Durak et de dames", statCardWins: "Victoires à la table", statStreak: "Meilleure série de victoires", statGifts: "Cadeaux reçus", gifts: "Cadeaux", noGifts: "Pas encore de cadeaux", write: "Écrire", call: "Appeler", tabAdmin: "Admin",
       ceremonyTitle: "La saison n° {n} est terminée !", place1: "1re place — Médaille d’or", place2: "2e place — Médaille d’argent", place3: "3e place — Médaille de bronze", ceremonyTake: "Récupérer la récompense",
       rankDown: "Vous êtes descendu à la place {place}. {name} est devant vous !", rankUp: "Vous êtes monté à la place {place} !", back: "Retour", close: "Fermer", info: "Comment ça marche",
       open: "Classement", adminJoined: "Entre dans la salle :", private: "Ce profil est privé", xp: "XP", now: "maintenant", editName: "Modifier le nom", save: "Enregistrer"
@@ -61,7 +61,7 @@
 
   const LEAGUES = Object.freeze([["diamond", 1000], ["platinum", 600], ["gold", 300], ["silver", 100], ["bronze", 0]]);
   const RANK_KEY = "glowletter-rank-friends";
-  const state = { root: null, scope: "world", data: null, loading: false, error: "", timer: 0, profile: null, profileTab: "medals", info: false, editName: false, admin: null, seenAdmin: new Set() };
+  const state = { root: null, scope: "world", data: null, loading: false, error: "", timer: 0, profile: null, profileTab: "medals", profileOnly: false, adminCard: null, info: false, editName: false, admin: null, seenAdmin: new Set() };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -160,6 +160,7 @@
     pencil: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 20 1-4.6L15.6 4.8a2 2 0 0 1 2.8 0l.8.8a2 2 0 0 1 0 2.8L8.6 19ZM14 6.4l3.6 3.6M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     tick: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     flag: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 21V4m0 0h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
     calendar: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
   });
   // Градиенты металла — один раз на страницу.
@@ -224,13 +225,15 @@
     state.scope = options.scope === "friends" ? "friends" : state.scope;
     state.profile = null;
     state.info = false;
+    // Профиль по нажатию на имя (чат, стол «Дурака»): «Назад» возвращает туда, откуда открыли.
+    state.profileOnly = Boolean(options.only && options.profile);
     root.hidden = false;
     document.body.classList.add("glr-open");
     requestAnimationFrame(() => root.classList.add("is-open"));
     clearInterval(state.timer);
     state.timer = setInterval(tick, 1000);
     render();
-    await load();
+    if (!state.profileOnly) await load();
     if (options.profile) openProfile(options.profile === true ? me() : options.profile);
   }
 
@@ -245,7 +248,7 @@
 
   function back() {
     if (state.info) { state.info = false; render(); return; }
-    if (state.profile) { state.profile = null; render(); return; }
+    if (state.profile && !state.profileOnly) { state.profile = null; render(); return; }
     close();
   }
 
@@ -358,12 +361,43 @@
 
   async function openProfile(userId) {
     state.profile = { userId, loading: true };
-    state.profileTab = "medals";
+    state.profileTab = "stats";
     state.editName = false;
+    state.adminCard = null;
     render();
     try { state.profile = { userId, data: await rpc("glowletter_medal_wall", { p_user: userId }) }; }
     catch (error) { state.profile = { userId, error: String(error?.message) === "private" ? tr("private") : tr("failed") }; }
     render();
+  }
+
+  const isAdmin = () => Boolean(cloud()?.getState?.().isAdmin);
+  const ONLINE_MS = 3 * 60 * 1000;
+  function presence(data) {
+    if (data.me || !data.last_seen) return "";
+    const seen = new Date(data.last_seen).getTime();
+    if (Date.now() - seen < ONLINE_MS) return `<p class="glr-presence is-online"><i aria-hidden="true"></i>${escapeHtml(tr("pOnline"))}</p>`;
+    let time = "";
+    try { time = new Intl.DateTimeFormat(locale(), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(seen)); } catch {}
+    return `<p class="glr-presence"><i aria-hidden="true"></i>${escapeHtml(tr("pSeen", { time }))}</p>`;
+  }
+  function sinceText(data) {
+    if (!data.since) return "";
+    try { return tr("pSince", { date: new Intl.DateTimeFormat(locale(), { dateStyle: "long" }).format(new Date(data.since)) }); } catch { return ""; }
+  }
+  // Подарки, которые человеку дарили друзья: картинка из магазина и сколько раз.
+  function giftsWall(data) {
+    const items = data.gifts?.items || [];
+    const shop = window.GlowLetterShop;
+    return `<section class="glr-card glr-gifts"><h4>${escapeHtml(tr("gifts"))}<b>${number(data.gifts?.total)}</b></h4>
+      ${items.length ? `<ul>${items.map(gift => `<li><span class="glr-gift-art" aria-hidden="true">${shop?.art?.(gift.item) || ""}</span><small>${escapeHtml(shop?.text?.(gift.item) || "")}</small>${gift.n > 1 ? `<b>×${number(gift.n)}</b>` : ""}</li>`).join("")}</ul>` : `<p class="glr-empty">${escapeHtml(tr("noGifts"))}</p>`}
+    </section>`;
+  }
+  function personActions(data) {
+    if (data.me || data.relation !== "friend") return "";
+    return `<div class="glr-person-actions">
+      <button class="glr-person-btn" type="button" data-glr-action="write">${ICON.pencil}<span>${escapeHtml(tr("write"))}</span></button>
+      <button class="glr-person-btn" type="button" data-glr-action="call">${ICON.phone}<span>${escapeHtml(tr("call"))}</span></button>
+    </div>`;
   }
 
   function renderProfile() {
@@ -381,19 +415,25 @@
         ${avatar({ user_id: data.user_id, name: data.name }, "hero")}
         <div>
           ${edit ? `<form class="glr-name-form" data-glr-form="name"><input name="name" type="text" dir="auto" maxlength="36" autocomplete="name" value="${escapeHtml(data.name || "")}" aria-label="${escapeHtml(tr("editName"))}" required><button class="glr-icon is-save" type="submit" aria-label="${escapeHtml(tr("save"))}">${ICON.tick}</button></form>`
-            : `<h3><span>${escapeHtml(data.name || tr("you"))}</span>${data.me ? `<button class="glr-edit" type="button" data-glr-action="edit-name" aria-label="${escapeHtml(tr("editName"))}">${ICON.pencil}</button>` : ""}</h3>`}
+            : `<h3><span>${escapeHtml(data.name || tr("you"))}</span>${data.vip ? `<em class="glr-vip">VIP</em>` : ""}${data.me ? `<button class="glr-edit" type="button" data-glr-action="edit-name" aria-label="${escapeHtml(tr("editName"))}">${ICON.pencil}</button>` : ""}</h3>`}
+          ${presence(data)}
           <p class="glr-hero-league is-${id}">${LEAGUE_ICON(id)}${escapeHtml(tr(`league_${id}`))}</p>
           <p class="glr-level"><span>${escapeHtml(tr("level", { n: lvl.level }))}</span><span>${number(lvl.have)} / ${number(lvl.need)} XP</span></p>
           <span class="glr-bar"><i style="width:${Math.round(lvl.have / lvl.need * 100)}%"></i></span>
+          ${sinceText(data) ? `<p class="glr-since">${escapeHtml(sinceText(data))}</p>` : ""}
         </div>
       </section>
-      <div class="glr-subtabs" role="tablist">
-        ${[["stats", ICON.chart, "tabStats"], ["medals", ICON.cup, "tabMedals"], ["titles", ICON.star, "tabTitles"]].map(([key, icon, label]) => `<button type="button" role="tab" aria-selected="${tab === key}" data-glr-action="ptab" data-tab="${key}">${icon}<span>${escapeHtml(tr(label))}</span></button>`).join("")}
+      ${personActions(data)}
+      <div class="glr-subtabs${isAdmin() ? " has-admin" : ""}" role="tablist">
+        ${[["stats", ICON.chart, "tabStats"], ["medals", ICON.cup, "tabMedals"], ["titles", ICON.star, "tabTitles"], ...(isAdmin() ? [["admin", ICON.gear, "tabAdmin"]] : [])].map(([key, icon, label]) => `<button type="button" role="tab" aria-selected="${tab === key}" data-glr-action="ptab" data-tab="${key}">${icon}<span>${escapeHtml(tr(label))}</span></button>`).join("")}
       </div>
-      ${tab === "stats" ? `<section class="glr-card glr-stats">
-          ${[["statSeason", `${number(data.season_points)} XP`], ["statPlace", data.season_place ? `#${data.season_place}` : "—"], ["statTotal", `${number(data.total_points)} XP`], ["statGames", number(data.games?.played)], ["statWins", number(data.games?.win)], ["statFriends", number(data.friends)]]
+      ${tab === "admin" && isAdmin() ? renderAdminTab(data)
+      : tab === "stats" ? `<section class="glr-card glr-stats">
+          ${[["statSeason", `${number(data.season_points)} XP`], ["statPlace", data.season_place ? `#${data.season_place}` : "—"], ["statTotal", `${number(data.total_points)} XP`], ["statGames", number(data.games?.played)], ["statWins", number(data.games?.win)], ["statFriends", number(data.friends)],
+             ["statCards", number(data.cards?.games)], ["statCardWins", number(data.cards?.wins)], ["statStreak", number(data.cards?.best_streak)], ["statGifts", number(data.gifts?.total)]]
             .map(([key, value]) => `<p><small>${escapeHtml(tr(key))}</small><b>${escapeHtml(value)}</b></p>`).join("")}
-        </section>`
+        </section>
+        ${giftsWall(data)}`
       : tab === "titles" ? `<section class="glr-card glr-titles">
           ${["newbie", "player", "master", "champion", "legend"].map((key, index, list) => { const on = index <= list.indexOf(data.title); return `<p class="${on ? "is-on" : ""}"><span class="glr-title is-${key}">${escapeHtml(tr(`title_${key}`))}</span><small>${on ? "✓" : "🔒"}</small></p>`; }).join("")}
           <p class="glr-titles-note">${escapeHtml(tr("info4"))}</p>
@@ -430,7 +470,10 @@
     else if (action === "scope") { if (state.scope !== target.dataset.scope) { state.scope = target.dataset.scope; state.data = null; await load(); } }
     else if (action === "profile") openProfile(target.dataset.user);
     else if (action === "report") window.GlowLetterGuard?.report?.(state.profile?.userId);
-    else if (action === "ptab") { state.profileTab = target.dataset.tab; render(); }
+    else if (action === "ptab") { state.profileTab = target.dataset.tab; render(); if (state.profileTab === "admin") loadAdminCard(); }
+    else if (action === "write") { const id = state.profile?.userId; close(); window.GlowLetterFriends?.chat?.(id); }
+    else if (action === "call") { const data = state.profile?.data; close(); if (data) window.GlowLetterCall?.start?.({ user_id: data.user_id, name: data.name }); }
+    else if (action === "padmin") adminAct(target);
     else if (action === "invite") { close(); window.GlowLetterFriends?.open?.(); }
     else if (action === "edit-name") { state.editName = true; render(); state.root.querySelector(".glr-name-form input")?.focus(); }
   }
@@ -622,6 +665,98 @@
     admin.busy = false; paintAdmin();
   }
 
+  // ——— Профиль глазами админа: светлячки, доллары, VIP, вещи (владелец 31.10: «давать им монеты, вип, всё что хочу») ———
+  // Тексты только по-русски: вкладку видит один владелец. Права проверяет сервер (glowletter_require_admin).
+
+  const PA = {
+    wallet: "Кошелёк", coins: "Светлячки", dollars: "Игровые доллары", access: "Доступ", free: "Бесплатный", forever: "Навсегда", vipTill: "VIP до {d}", paid: "Подписка Google Play",
+    give: "Дать", take: "Забрать", amount: "Сколько", vip: "VIP-доступ", days: "{n} дн.", year: "1 год", foreverBtn: "Навсегда", revoke: "Забрать VIP",
+    items: "Вещи из магазина", item: "Вещь", qty: "Шт.", has: "Есть: {list}", none: "Ничего нет", unlock: "Открыть всё (наклейки, рамки, наряды Тёпы)",
+    ids: "ID: {id} · код друга: {code}", banned: "Заблокирован", done: "Готово", fail: "Не получилось: {e}", sure: "{what} — {name}?", ownerNote: "Это аккаунт администратора: VIP ему выдавать не нужно",
+    loading: "Загрузка…", guard: "Блок, предупреждение, модерация — в админ-панели"
+  };
+  const pa = (key, values = {}) => PA[key].replace(/\{(\w+)\}/g, (all, name) => values[name] ?? "");
+  const SHOP_ITEMS = ["rose", "tulips", "sunflower", "lily", "bouquet", "bear", "big_bear", "bear_rose", "heart_box", "candy", "cake", "cupcake", "back_khokhloma", "back_gzhel", "back_gold", "cloth_burgundy", "cloth_wood", "cloth_night", "boost_x2", "shield", "insurance"];
+
+  async function loadAdminCard() {
+    const userId = state.profile?.userId;
+    if (!userId || !isAdmin()) return;
+    try { state.adminCard = await rpc("glowletter_admin_profile", { p_user: userId }); }
+    catch (error) { state.adminCard = { error: String(error?.message || error) }; }
+    if (state.profile?.userId === userId) render();
+  }
+
+  function renderAdminTab(data) {
+    const c = state.adminCard;
+    if (!c) return `<section class="glr-card glr-padmin"><p class="glr-empty">${pa("loading")}</p></section>`;
+    if (c.error) return `<section class="glr-card glr-padmin"><p class="glr-empty">${escapeHtml(pa("fail", { e: c.error }))}</p></section>`;
+    const access = c.premium_forever ? pa("forever") : c.vip_until && new Date(c.vip_until) > new Date() ? pa("vipTill", { d: day(c.vip_until) }) : c.paid ? pa("paid") : pa("free");
+    const shop = window.GlowLetterShop;
+    const owned = Object.entries(c.inventory || {}).map(([id, qty]) => `${shop?.text?.(id) || id} ×${number(qty)}`).join(", ");
+    const money = (kind, label, value) => `<div class="glr-pa-row"><p><small>${label}</small><b>${number(value)}</b></p>
+        <input type="number" inputmode="numeric" min="1" step="1" value="${kind === "coins" ? 100 : 1000}" data-pa="${kind}" aria-label="${pa("amount")}">
+        <button type="button" class="glr-pa-btn" data-glr-action="padmin" data-do="${kind}" data-sign="1">${pa("give")}</button>
+        <button type="button" class="glr-pa-btn is-soft" data-glr-action="padmin" data-do="${kind}" data-sign="-1">${pa("take")}</button></div>`;
+    return `<section class="glr-card glr-padmin">
+        <p class="glr-pa-ids">${escapeHtml(pa("ids", { id: c.support_id || "—", code: c.friend_code || "—" }))}${c.email ? `<br>${escapeHtml(c.email)}` : ""}${c.banned ? ` · <b class="is-bad">${pa("banned")}</b>` : ""}</p>
+        <h4>${pa("wallet")}</h4>
+        ${money("coins", pa("coins"), c.coins)}
+        ${money("dollars", pa("dollars"), c.dollars)}
+        <h4>${pa("vip")} · <span class="glr-pa-access">${escapeHtml(access)}</span></h4>
+        ${c.is_admin ? `<p class="glr-empty">${pa("ownerNote")}</p>` : `<div class="glr-pa-grid">
+          ${[7, 30, 90, 365].map(n => `<button type="button" class="glr-pa-btn" data-glr-action="padmin" data-do="vip" data-days="${n}">${n === 365 ? pa("year") : pa("days", { n })}</button>`).join("")}
+          <button type="button" class="glr-pa-btn is-gold" data-glr-action="padmin" data-do="forever">${pa("foreverBtn")}</button>
+          <button type="button" class="glr-pa-btn is-soft" data-glr-action="padmin" data-do="revoke">${pa("revoke")}</button>
+        </div>`}
+        <h4>${pa("items")}</h4>
+        <div class="glr-pa-row is-items">
+          <select data-pa="item" aria-label="${pa("item")}">${SHOP_ITEMS.map(id => `<option value="${id}">${escapeHtml(shop?.text?.(id) || id)}</option>`).join("")}</select>
+          <input type="number" inputmode="numeric" min="1" max="100" step="1" value="1" data-pa="qty" aria-label="${pa("qty")}">
+          <button type="button" class="glr-pa-btn" data-glr-action="padmin" data-do="item" data-sign="1">${pa("give")}</button>
+          <button type="button" class="glr-pa-btn is-soft" data-glr-action="padmin" data-do="item" data-sign="-1">${pa("take")}</button>
+        </div>
+        <p class="glr-pa-note">${escapeHtml(owned ? pa("has", { list: owned }) : pa("none"))}</p>
+        <button type="button" class="glr-pa-btn is-wide" data-glr-action="padmin" data-do="unlock">${pa("unlock")}</button>
+        <p class="glr-pa-note">${pa("guard")}</p>
+      </section>`;
+  }
+
+  async function adminAct(button) {
+    const c = state.adminCard;
+    const data = state.profile?.data;
+    if (!c || !data || state.adminBusy) return;
+    const what = button.dataset.do;
+    const field = name => state.root.querySelector(`[data-pa="${name}"]`);
+    const sign = Number(button.dataset.sign) || 1;
+    const amount = Math.round(Math.abs(Number(field(what)?.value) || 0)) * sign;
+    const name = data.name || c.friend_code || "";
+    let call = null, label = button.textContent.trim();
+    if (what === "coins" || what === "dollars") {
+      if (!amount) return;
+      label = `${sign > 0 ? pa("give") : pa("take")} ${number(Math.abs(amount))} — ${what === "coins" ? pa("coins") : pa("dollars")}`;
+      call = () => rpc(what === "coins" ? "glowletter_admin_coins" : "glowletter_admin_dollars", { p_user: c.user_id, p_delta: amount, p_reason: "profile" });
+    } else if (what === "item") {
+      const qty = Math.min(100, Math.round(Math.abs(Number(field("qty")?.value) || 0))) * sign;
+      const item = field("item")?.value;
+      if (!qty || !item) return;
+      label = `${sign > 0 ? pa("give") : pa("take")}: ${window.GlowLetterShop?.text?.(item) || item} ×${Math.abs(qty)}`;
+      call = () => rpc("glowletter_admin_give_item", { p_user: c.user_id, p_item: item, p_qty: qty });
+    } else if (what === "vip") call = () => rpc("glowletter_admin_grant_vip", { p_support_id: c.support_id, p_days: Number(button.dataset.days) });
+    else if (what === "forever") call = () => rpc("glowletter_admin_grant_forever", { p_support_id: c.support_id, p_reason: "gift", p_message: null });
+    else if (what === "revoke") call = () => rpc("glowletter_admin_revoke_vip", { p_support_id: c.support_id });
+    else if (what === "unlock") call = () => rpc("glowletter_admin_unlock_all", { p_user: c.user_id });
+    if (!call || !window.confirm(pa("sure", { what: label, name }))) return;
+    state.adminBusy = true;
+    try {
+      await call();
+      notify(`${pa("done")}: ${label}`);
+      if (c.user_id === me()) { window.GlowLetterShop?.refresh?.(); window.GlowLetterWorld?.loadOwned?.(true); }
+    } catch (error) { notify(pa("fail", { e: String(error?.message || error) })); }
+    state.adminBusy = false;
+    await loadAdminCard();
+    try { state.profile = { userId: data.user_id, data: await rpc("glowletter_medal_wall", { p_user: data.user_id }) }; render(); } catch {}
+  }
+
   // ——— Запуск ———
 
   function start() {
@@ -637,7 +772,7 @@
     open: options => open(options || {}),
     close,
     isOpen: () => Boolean(state.root && !state.root.hidden),
-    profile: userId => open({ profile: userId || true }),
+    profile: (userId, options) => open({ profile: userId || true, only: Boolean(options?.only) }),
     checkMedals,
     announceAdmin,
     renderAdmin,

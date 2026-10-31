@@ -57,7 +57,8 @@ function cleanSettings(input = {}) {
   const mode = input.mode === "transfer" ? "transfer" : "classic";
   const deck = Number(input.deck) === 24 ? 24 : 36;
   const seats = kind === "checkers" ? 2 : Math.min(4, Math.max(2, Math.round(Number(input.seats) || 2)));
-  const bots = input.bots !== false;
+  // Игры с ботами убраны совсем (владелец 31.10): за столом только живые люди.
+  const bots = false;
   const rawStake = Math.round(Number(input.stake) || 0);
   const stake = rawStake <= 0 ? 0 : Math.min(MAX_STAKE, Math.max(MIN_STAKE, rawStake));
   return { kind, mode, deck, seats, bots, stake };
@@ -159,14 +160,10 @@ export async function handle(db, userId, body, now = Date.now()) {
   const name = String(who.name || "").slice(0, 36);
 
   if (action === "create") {
+    if (body.solo) throw new GameError("no_bots", 410);
     const settings = cleanSettings(body.settings);
-    if (body.solo) settings.stake = 0;
     if (settings.stake > Number(who.dollars || 0)) throw new GameError("not_enough_dollars", 409);
     const game = { id: crypto.randomUUID(), host: userId, settings, seats: [{ id: userId, name, back: who.back }], state: null, status: "lobby", round: 0, version: 0, deadline: null, rewards: null, chat: [] };
-    if (body.solo) {
-      while (game.seats.length < settings.seats) game.seats.push({ bot: true, botKey: BOT_KEYS[game.seats.length - 1], name: "" });
-      await startRound(game, db, now);
-    }
     await db.insert(game, now - LOBBY_TTL_MS);
     return viewFor(game, userId);
   }
@@ -227,10 +224,6 @@ async function step(db, game, userId, name, who, action, body, now) {
   if (action === "start") {
     if (game.status !== "lobby") throw new GameError("started", 409);
     if (game.host !== userId) throw new GameError("host_only", 403);
-    if (game.settings.bots) {
-      let k = 0;
-      while (game.seats.length < game.settings.seats) game.seats.push({ bot: true, botKey: BOT_KEYS[k++], name: "" });
-    }
     if (game.seats.length < 2) throw new GameError("need_players", 409);
     await startRound(game, db, now);
     if (game.state.phase === "over") await finishRound(game, db);
@@ -242,8 +235,13 @@ async function step(db, game, userId, name, who, action, body, now) {
     if (game.status !== "finished") throw new GameError("not_finished", 409);
     const fool = game.state?.durak;
     const E = engineOf(game);
-    const first = E.nextFirst && game.state ? E.nextFirst(game.state) : Number.isInteger(fool) && fool >= 0 ? (fool + 1) % game.seats.length : null;
-    game.seats.forEach(s => { if (s.left) { s.bot = true; s.botKey = s.botKey || BOT_KEYS[0]; } });
+    let first = E.nextFirst && game.state ? E.nextFirst(game.state) : Number.isInteger(fool) && fool >= 0 ? (fool + 1) % game.seats.length : null;
+    // Ушедших ботами не заменяем (владелец 31.10: игр с ботами нет) — реванш только среди оставшихся людей.
+    if (game.seats.some(s => s.left || s.bot)) {
+      game.seats = game.seats.filter(s => !s.left && !s.bot).map(s => ({ ...s, auto: false, afk: 0 }));
+      first = null;
+    }
+    if (game.seats.length < 2) throw new GameError("need_players", 409);
     await startRound(game, db, now, first);
     if (game.state.phase === "over") await finishRound(game, db);
     await commit(db, game, now);
@@ -301,7 +299,7 @@ async function step(db, game, userId, name, who, action, body, now) {
   }
 
   if (action === "hint") {
-    if (!game.seats.some(s => s.bot)) throw new GameError("bots_only", 409);
+    throw new GameError("bots_only", 409);
     const suggestion = E.botAction(game.state, seat);
     if (!suggestion) return viewFor(game, userId, { hint: null });
     const paid = await db.useHint(userId);

@@ -303,8 +303,7 @@
         <div class="dk-stakes">${STAKES.map(value => `<button type="button" class="${value === s.stake ? "is-on" : ""}" data-set="stake" data-value="${value}" ${w && value > w.dollars ? "data-poor" : ""}>${value ? `${esc(num(value))} $` : esc(tr("noStake"))}</button>`).join("")}</div>
       </section>
       <div class="dk-actions">
-        <button class="dk-primary" type="button" data-act="solo"${state.busy ? " disabled" : ""}>${esc(tr("playBots"))}</button>
-        <button class="dk-secondary" type="button" data-act="lobby"${state.busy ? " disabled" : ""}>${esc(tr("playFriends"))}</button>
+        <button class="dk-primary" type="button" data-act="lobby"${state.busy ? " disabled" : ""}>${esc(tr("playFriends"))}</button>
       </div>
       <div class="dk-links">
         <button type="button" data-act="ranking">🏆 ${esc(tr("ranking"))}</button>
@@ -315,6 +314,9 @@
       ${signedIn() && w ? medalsPanel(stats) : ""}
     </div>`;
   }
+
+  // Нажатие на игрока открывает его профиль (владелец 31.10).
+  const profileAttr = seat => seat && !seat.bot && !seat.me && seat.id ? ` data-profile="${esc(seat.id)}" role="button" tabindex="0"` : "";
 
   function seatName(seat) {
     if (!seat) return tr("seatFree");
@@ -337,10 +339,10 @@
     return `${topbar(tr("lobby"), "leave")}
     <div class="dk-scroll">
       <p class="dk-lead">${esc(kindLabel(g.settings))}${g.settings.stake ? ` · ${esc(tr("stake"))} ${esc(num(g.settings.stake))} $` : ""}</p>
-      <section class="dk-panel dk-seats">${seats.map((seat, i) => `<div class="dk-seat${seat ? "" : " is-free"}">${avatar(seat, i)}<span>${esc(seatName(seat))}${seat?.me ? ` · ${esc(tr("you"))}` : ""}</span></div>`).join("")}</section>
-      <p class="dk-note">${esc(g.seats.length < g.settings.seats ? tr("waiting") : "")} ${g.settings.bots ? esc(tr("fillBots")) : ""}</p>
+      <section class="dk-panel dk-seats">${seats.map((seat, i) => `<div class="dk-seat${seat ? "" : " is-free"}"${profileAttr(seat)}>${avatar(seat, i)}<span>${esc(seatName(seat))}${seat?.me ? ` · ${esc(tr("you"))}` : ""}</span></div>`).join("")}</section>
+      <p class="dk-note">${esc(g.seats.length < g.settings.seats ? tr("waiting") : "")}</p>
       ${g.host ? `<section class="dk-panel"><h3>${esc(tr("invite"))}</h3>${friends.length ? friends.map(f => `<div class="dk-friend"><span>${f.online ? "🟢" : "⚪"} ${esc(f.name)}</span><button type="button" data-act="invite" data-id="${esc(f.user_id)}" data-name="${esc(f.name)}"${state.invited.has(f.user_id) ? " disabled" : ""}>${esc(state.invited.has(f.user_id) ? tr("invited") : tr("invite"))}</button></div>`).join("") : `<p class="dk-note">${esc(tr("noFriends"))}</p>`}</section>` : ""}
-      <div class="dk-actions">${g.host ? `<button class="dk-primary" type="button" data-act="start"${state.busy || (!g.settings.bots && g.seats.length < 2) ? " disabled" : ""}>${esc(tr("start"))}</button>` : `<p class="dk-note">${esc(tr("hostStarts"))}</p>`}</div>
+      <div class="dk-actions">${g.host ? `<button class="dk-primary" type="button" data-act="start"${state.busy || g.seats.length < 2 ? " disabled" : ""}>${esc(tr("start"))}</button>` : `<p class="dk-note">${esc(tr("hostStarts"))}</p>`}</div>
     </div>`;
   }
 
@@ -425,7 +427,7 @@
     const seat = view.seats[i];
     const active = g.phase === "play" && g.turn === i;
     const bubble = state.bubbles[i];
-    return `<div class="dk-ck-id${active ? " is-active" : ""}">${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline, mine) : ""}
+    return `<div class="dk-ck-id${active ? " is-active" : ""}"${profileAttr(seat)}>${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline, mine) : ""}
       <b>${esc(seatName(seat))}</b><small><i class="dk-ck-piece is-${p.side > 0 ? "w" : "b"} is-mini"></i>× ${p.pieces}</small></div>
       ${bubble && bubble.until > Date.now() ? `<div class="dk-bubble">${esc(bubble.text)}</div>` : ""}`;
   }
@@ -535,7 +537,7 @@
       const bubble = state.bubbles[i];
       return `<div class="dk-opp${active ? " is-active" : ""}${p.out ? " is-out" : ""}${g.durak === i && g.phase === "over" ? " is-fool" : ""}" data-seat="${i}">
         <div class="dk-opp-cards">${Array.from({ length: shown }, (_, k) => `<span class="dk-mini" style="--k:${k - (shown - 1) / 2}">${backImg(seat?.back)}</span>`).join("")}</div>
-        <div class="dk-opp-id">${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline) : ""}<b>${esc(seatName(seat))}</b><small>${p.count} · ${esc(seatStatus(g, i))}</small></div>
+        <div class="dk-opp-id"${profileAttr(seat)}>${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline) : ""}<b>${esc(seatName(seat))}</b><small>${p.count} · ${esc(seatStatus(g, i))}</small></div>
         ${bubble && bubble.until > Date.now() ? `<div class="dk-bubble">${esc(bubble.text)}</div>` : ""}
       </div>`;
     }).join("");
@@ -918,16 +920,17 @@
     renderTable();
   }
 
-  async function startGame(solo) {
+  // Только стол для друзей: игр с ботами нет (владелец 31.10).
+  async function startGame() {
     if (!signedIn()) { notify(tr("signIn")); return; }
     if (state.busy) return;
     state.busy = true;
     render();
     try {
-      const view = await call("create", { solo, settings: { ...state.setup, bots: true } });
+      const view = await call("create", { settings: { ...state.setup, bots: false } });
       state.invited = new Set();
       apply(view);
-      if (!solo) watch(view.id);
+      watch(view.id);
     } catch (error) {
       notify(errorText(error));
       if (error.code === "not_enough_dollars") window.GlowLetterShop?.open?.("dollars");
@@ -952,6 +955,8 @@
     if (Date.now() < drag.until) return;
     const square = event.target.closest("[data-sq]");
     if (square && state.root.contains(square)) { onSquare(Number(square.dataset.sq)); return; }
+    const person = event.target.closest("[data-profile]");
+    if (person && state.root.contains(person)) { window.GlowLetterRanking?.profile?.(person.dataset.profile, { only: true }); return; }
     const card = event.target.closest("[data-card]");
     if (card && state.root.contains(card)) { onHandCard(card.dataset.card); return; }
     const pair = event.target.closest("[data-slot]");
@@ -978,8 +983,7 @@
       case "close": close(); return;
       case "home": state.view = "home"; render(); return;
       case "shop": window.GlowLetterShop?.open?.(); return;
-      case "solo": startGame(true); return;
-      case "lobby": startGame(false); return;
+      case "lobby": startGame(); return;
       case "ranking": state.view = "ranking"; state.ranking = null; render(); renderRankingData(); return;
       case "rules": state.rulesOpen = !state.rulesOpen; render(); return;
       case "resume": join(button.dataset.id); return;
@@ -995,6 +999,7 @@
         const id = button.dataset.id;
         try {
           await rpc("glowletter_messages_send", { p_to: id, p_body: `[[durak:${view.id}]]` });
+          window.GlowLetterCall?.wakeInvite?.(id, view.id);
           state.invited.add(id);
           notify(tr("inviteSent", { name: button.dataset.name || "" }));
           render();

@@ -184,7 +184,10 @@
     const draw = DRAW_PATTERN.exec(String(body || ""));
     if (draw) return { kind: "draw", room: draw[1] };
     const play = PLAY_PATTERN.exec(String(body || ""));
-    return play ? { kind: "play", room: play[1] } : null;
+    if (play) return { kind: "play", room: play[1] };
+    // Дурак и Шашки: большое окно приглашения, как у остальных игр (владелец 31.10).
+    const durak = DURAK_PATTERN.exec(String(body || ""));
+    return durak ? { kind: "durak", room: durak[1] } : null;
   };
   const parseCall = body => CALL_PATTERN.exec(String(body || ""))?.[1] || "";
   const parsePhoto = body => PHOTO_PATTERN.exec(String(body || ""))?.[1] || "";
@@ -200,7 +203,7 @@
   const stickerParts = id => { const view = stickerView(id); return view.startsWith("🧸") ? ["🧸", view.slice(2)] : ["", view]; };
   const parseVoice = body => { const match = VOICE_PATTERN.exec(String(body || "")); return match ? { id: match[1], seconds: Number(match[2]) } : null; };
   const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
-  const inviteText = (invite, name) => invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? tr("playInvite", { name }) : tr("newInvite", { name, game: gameTitle(invite.kind) });
+  const inviteText = (invite, name) => invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? tr("playInvite", { name }) : invite.kind === "durak" ? shopText("chatDurakFrom", { name }) : tr("newInvite", { name, game: gameTitle(invite.kind) });
   const previewText = (body, name = "") => {
     const durak = String(body || "").match(DURAK_PATTERN);
     if (durak) return `🃏 ${shopText("chatDurakFrom", { name })}`;
@@ -565,8 +568,10 @@
     return `
       <div class="glf-chat-head">
         <button class="glf-head-back" type="button" data-action="list" aria-label="${escapeHtml(tr("back"))}" title="${escapeHtml(tr("back"))}">${ICONS.back}</button>
+        <button class="glf-head-profile" type="button" data-action="profile"${window.GlowLetterRanking ? "" : " disabled"}>
         <span class="glf-avatar glf-head-ava${online ? " is-online" : ""}" aria-hidden="true"><span>${initial(nameOf(friend))}</span></span>
         <span class="glf-who"><b class="glf-name"><span>${escapeHtml(nameOf(friend))}</span><i class="glf-name-heart">${ICONS.heart}</i></b><small class="${online ? "is-online" : ""}">${escapeHtml(statusText(friend))}</small></span>
+        </button>
         <span class="glf-head-actions">
           ${window.GlowLetterRanking ? head("ranking", ICONS.trophy, tr("ranking")) : ""}
           ${head("call", ICONS.phone, tr("callButton"))}
@@ -846,6 +851,8 @@
         case "close-picker": closePickers(); render(); return;
         case "attach": state.root?.querySelector(".glf-photo-input")?.click(); return;
         case "ranking": close(); window.GlowLetterRanking?.open?.({ scope: "friends" }); return;
+        // Нажали на имя друга — его профиль поверх чата (владелец 31.10).
+        case "profile": if (state.chatWith) window.GlowLetterRanking?.profile?.(state.chatWith.user_id, { only: true }); return;
         case "replay-rain": playRain(target.dataset.kind); return;
         case "send-fx": { const form = state.root?.querySelector("form.glf-compose"); state.fxOpen = false; if (form) return sendMessage(form, target.dataset.fx); return; }
         case "pick-game": { const open = !state.picking; closePickers(); state.picking = open; render(); return; }
@@ -1064,6 +1071,8 @@
 
   async function sendSpecial(friendId, body) {
     const id = await rpc("glowletter_messages_send", { p_to: friendId, p_body: body });
+    const invite = parseInvite(body);
+    if (invite) window.GlowLetterCall?.wakeInvite?.(friendId, invite.room);
     if (state.chatWith?.user_id === friendId) {
       state.messages.push({ id, sender: userId(), recipient: friendId, body, created_at: new Date().toISOString() });
       if (state.root && !state.root.hidden && state.view === "chat") render();
@@ -1540,17 +1549,18 @@
     document.querySelector(".glf-invite-pop")?.remove();
     const drawing = invite.kind === "draw";
     const table = invite.kind === "play";
+    const durak = invite.kind === "durak";
     const pop = document.createElement("div");
     pop.className = "glf-invite-pop";
     pop.innerHTML = `
       <div class="glf-invite-pop-backdrop" data-pop="later"></div>
       <section class="glf-invite-pop-card" role="alertdialog" aria-modal="true" aria-labelledby="glfInvitePopTitle" aria-describedby="glfInvitePopText">
-        <div class="glf-invite-pop-icon" aria-hidden="true">${drawing ? "✏️" : "🎲"}</div>
+        <div class="glf-invite-pop-icon" aria-hidden="true">${drawing ? "✏️" : durak ? "🃏" : "🎲"}</div>
         <p class="glf-invite-pop-eyebrow" id="glfInvitePopTitle">${escapeHtml(tr(drawing ? "drawHeading" : table ? "tableHeading" : "inviteHeading"))}</p>
         <h2 id="glfInvitePopText">${escapeHtml(inviteText(invite, nameOf(sender)))}</h2>
         <div class="glf-invite-pop-actions">
           <button class="glg-secondary" type="button" data-pop="later">${escapeHtml(tr("inviteLater"))}</button>
-          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(tr(drawing ? "drawJoin" : table ? "tableJoin" : "invitePlay"))} →</button>
+          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(durak ? shopText("chatDurakJoin") : tr(drawing ? "drawJoin" : table ? "tableJoin" : "invitePlay"))} →</button>
         </div>
       </section>`;
     const done = () => { pop.classList.remove("is-open"); setTimeout(() => pop.remove(), 220); };
@@ -1563,6 +1573,7 @@
       if (state.root && !state.root.hidden) close();
       if (drawing) online()?.draw?.(invite.room, { id: senderId, name: nameOf(sender) });
       else if (table) window.GlowLetterTable?.open?.({ room: invite.room, friend: { user_id: senderId, name: nameOf(sender) } });
+      else if (durak) window.GlowLetterDurak?.join?.(invite.room);
       else games()?.join?.(invite.room);
     });
     pop.addEventListener("keydown", event => { if (event.key === "Escape") done(); });
@@ -1697,6 +1708,7 @@
     if (!friend || !INVITE_PATTERN.test(`[[game:${kind}:${roomId}]]`)) throw new Error("invalid");
     const body = `[[game:${kind}:${roomId}]]`;
     const id = await rpc("glowletter_messages_send", { p_to: friendId, p_body: body });
+    window.GlowLetterCall?.wakeInvite?.(friendId, roomId);
     if (state.chatWith?.user_id === friendId) state.messages.push({ id, sender: userId(), recipient: friendId, body, created_at: new Date().toISOString() });
     return nameOf(friend);
   }
@@ -1707,6 +1719,8 @@
     myName: () => state.me?.display_name || "",
     friends: () => state.rows.filter(row => row.status === "friend").map(row => ({ user_id: row.user_id, name: nameOf(row), online: isOnline(row) })),
     inviteToGame,
+    // «Написать» из профиля: открыть переписку с другом.
+    chat: async friendId => { if (!friendId) return; await open(); openChat(friendId); },
     sendCallInvite: (friendId, room) => sendSpecial(friendId, `[[call:${room}]]`),
     sendPlayInvite: (friendId, room) => sendSpecial(friendId, `[[play:${room}]]`),
     sendPhoto,

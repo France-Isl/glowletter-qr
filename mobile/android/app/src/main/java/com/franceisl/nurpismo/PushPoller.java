@@ -230,6 +230,32 @@ public final class PushPoller extends Worker {
         }
     }
 
+    /**
+     * Приглашение в игру сразу, а не при следующем опросе через 15 минут (владелец 31.10:
+     * «друг не получает уведомление, когда я его приглашаю» — Дурак, Шашки, игры, рисование).
+     * Будит Firebase (функция call-push), показываем на месте уведомления о сообщениях —
+     * опрос потом заменит его той же строкой, а не добавит второе.
+     */
+    @SuppressLint("MissingPermission")
+    static void showInvite(Context context, String name, String kind, JSONObject callTexts) {
+        if (appInFront) return;
+        if (Build.VERSION.SDK_INT >= 33
+                && context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        try {
+            JSONObject texts = new JSONObject(prefs(context).getString("texts", "{}"));
+            String key = "draw".equals(kind) ? "draw" : "game";
+            String template = texts.optString(key, callTexts.optString(key, "{name} 🎲"));
+            String who = name == null || name.isEmpty() ? texts.optString("noName", callTexts.optString("noName", "GlowLetter")) : name;
+            ensureChannel(context, texts.optString("channel", callTexts.optString("friends", "GlowLetter")));
+            NotificationManagerCompat.from(context).notify(ID_MESSAGES,
+                    builder(context, "GlowLetter", fill(template, who, "", "")).setPriority(NotificationCompat.PRIORITY_HIGH).build());
+        } catch (Exception ignored) {
+            // Нет текстов или уведомления запрещены — приглашение увидят в приложении.
+        }
+    }
+
     private static NotificationCompat.Builder builder(Context context, String title, String text) {
         Intent intent = new Intent(context, MainActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);

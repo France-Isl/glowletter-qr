@@ -33,27 +33,13 @@ const over = { players: [{}, {}, {}], durak: 2, order: [1, 0] };
 assert.deepEqual(payouts(over, 1000).map(p => p.payout), [1400, 1600, 0]);
 assert.deepEqual(payouts({ players: [{}, {}], durak: -1, order: [0, 1] }, 500).map(p => p.payout), [500, 500]);
 
-// Соло с ботами: партия доигрывается ходами человека.
+// Игр с ботами нет (владелец 31.10): соло отклоняется, «боты» в настройках игнорируются.
 let db = fakeDb();
-let view = await handle(db, "a", { action: "create", solo: true, settings: { mode: "transfer", deck: 36, seats: 3, stake: 1000 } });
-assert.equal(view.status, "playing");
-assert.equal(db.dollars.a, 5000); // с ботами ставки нет (владелец 31.10)
-assert.equal(view.settings.stake, 0);
-assert.equal(view.seats.length, 3);
-assert.equal(view.game.hand.length > 0, true);
+await assert.rejects(() => handle(db, "a", { action: "create", solo: true, settings: { seats: 3 } }), error => error instanceof GameError && error.code === "no_bots");
+let view = await handle(db, "a", { action: "create", settings: { seats: 3, bots: true } });
+assert.equal(view.settings.bots, false);
+await assert.rejects(() => handle(db, "a", { action: "start", game: view.id }), error => error.code === "need_players");
 let guard = 0;
-let fake = Date.now();
-while (view.status === "playing" && guard++ < 3000) {
-  const g = view.game;
-  if (!g.must.includes(g.me)) { fake += 31000; view = await handle(db, "a", { action: "tick", game: view.id }, fake); continue; }
-  const raw = structuredClone([...db.games.values()][0].state);
-  const move = D.botAction(raw, g.me);
-  view = await handle(db, "a", { action: "act", game: view.id, move, seq: g.seq });
-}
-assert.equal(view.status, "finished");
-assert.equal(db.settled.length, 1);
-assert.ok(db.settled[0].withBots);
-assert.ok(view.rewards.a);
 
 // Лобби на двоих со ставкой: бедный не сядет, второй садится, хозяин начинает.
 db = fakeDb();

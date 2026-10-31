@@ -226,7 +226,8 @@
   // ——— Журнал ———
   const ACTION = { ban: "Блокировка", unban: "Разблокировка", warn: "Предупреждение", moderate: "Модерация", reset_stats: "Сброс статистики", reset_season: "Сброс сезона", unlock_all: "Открыта вся коллекция",
     report_dismissed: "Жалобы закрыты", report_banned: "Блок по жалобам", report_warned: "Предупреждение по жалобам", report_reset: "Сброс по жалобам",
-    vip_grant: "Выдан VIP", vip_grant_forever: "Выдано «Навсегда»", vip_revoke: "Доступ забран", vip_grant_all: "VIP всем", vip_revoke_all: "Забран VIP у всех" };
+    vip_grant: "Выдан VIP", vip_grant_forever: "Выдано «Навсегда»", vip_revoke: "Доступ забран", vip_grant_all: "VIP всем", vip_revoke_all: "Забран VIP у всех",
+    coins: "Светлячки", dollars: "Игровые доллары", item: "Вещь из магазина" };
   const MOD = { name: "имя", photos: "фото", voice: "голосовые", messages: "сообщения" };
   function detail(row) {
     const d = row.details || {};
@@ -235,6 +236,8 @@
     if (row.action === "moderate") return `${MOD[d.what] || d.what}: ${d.rows}`;
     if (row.action === "reset_stats") return `${d.points} опыта, ${d.games} игр, ${d.medals} медалей${d.reason ? `, ${d.reason}` : ""}`;
     if (row.action.startsWith("vip_")) return d.days ? `${d.days} дн.` : "";
+    if (row.action === "coins" || row.action === "dollars") return `${d.delta > 0 ? "+" : ""}${d.delta}`;
+    if (row.action === "item") return `${window.GlowLetterShop?.text?.(d.item) || d.item} ${d.qty > 0 ? "+" : ""}${d.qty}`;
     return "";
   }
   async function renderLog() {

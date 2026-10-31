@@ -868,7 +868,8 @@
     const token = String(fresh || bridge.pushToken() || "");
     if (!/^[A-Za-z0-9_:.-]{20,4096}$/u.test(token) || !userId() || !client()?.rpc) return;
     push.token = token;
-    try { bridge.pushTexts?.(JSON.stringify({ incoming: tr("incoming"), answer: tr("accept"), decline: tr("decline"), channel: tr("callBubble") })); } catch {}
+    const friendsText = key => window.GlowLetterFriends?.text?.(key) || "";
+    try { bridge.pushTexts?.(JSON.stringify({ incoming: tr("incoming"), answer: tr("accept"), decline: tr("decline"), channel: tr("callBubble"), game: friendsText("pushGame"), draw: friendsText("drawInvite"), noName: friendsText("noName"), friends: friendsText("pushChannel") })); } catch {}
     try {
       if (!localStorage.getItem(PUSH_ASKED)) { localStorage.setItem(PUSH_ASKED, "1"); bridge.askNotify?.(); }
     } catch {}
@@ -888,6 +889,18 @@
       method: "POST", cache: "no-store", credentials: "omit", keepalive: true,
       headers: { "Content-Type": "application/json", apikey: window.NUR_APP_CONFIG?.supabasePublishableKey || "", Authorization: `Bearer ${token}` },
       body: JSON.stringify({ room, to, end })
+    }).catch(() => {});
+  }
+
+  // Позвали в игру (Дурак, Шашки, стол, игры, рисование) — телефон друга сразу показывает
+  // «Имя зовёт вас играть», даже если приложение закрыто (владелец 31.10).
+  function wakeInvite(to, room) {
+    const token = cloud()?.getSession?.()?.access_token;
+    if (!token || !ROOM.test(String(to || "")) || !ROOM.test(String(room || "")) || !PUSH_URL.startsWith("https://")) return;
+    fetch(PUSH_URL, {
+      method: "POST", cache: "no-store", credentials: "omit", keepalive: true,
+      headers: { "Content-Type": "application/json", apikey: window.NUR_APP_CONFIG?.supabasePublishableKey || "", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ invite: true, room, to })
     }).catch(() => {});
   }
 
@@ -1718,6 +1731,7 @@
     // start(friend) — звонок со звуком; start(friend, { video: true }) — видеозвонок.
     start: (friend, options) => start(friend, options),
     incoming,
+    wakeInvite,
     hangup: () => hangup(),
     active: () => call.phase !== "idle",
     room: () => call.room,

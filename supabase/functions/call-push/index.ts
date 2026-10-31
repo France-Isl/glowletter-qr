@@ -9,8 +9,12 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.9";
 // Будим только по настоящему приглашению: сообщение от звонящего этому другу с той же комнатой,
 // не старше минуты (отмена — пяти минут). Ключ Google — тот же служебный аккаунт, что проверяет
 // покупки (GOOGLE_SERVICE_ACCOUNT_JSON, роль Firebase Cloud Messaging API Admin).
+// invite: true — приглашение в игру (Дурак, Шашки, стол, игры, рисование; владелец 31.10): телефон
+// друга сразу показывает «Имя зовёт вас играть», а не через 15 минут при опросе. Будим только по
+// настоящему приглашению с этой комнатой от меня этому другу, не старше двух минут.
 const FIREBASE_PROJECT = "bezam-502320";
 const ROOM = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
+const INVITE = /^\[\[(?:durak|play|draw|game:[a-z]+):([0-9a-f-]{36})\]\]$/u;
 const ORIGINS = new Set(["https://france-isl.github.io", "https://bezam.org", "https://www.bezam.org", "https://appassets.androidplatform.net", "capacitor://localhost", "null"]);
 
 function secretKeyFromEnvironment(): string {
@@ -102,7 +106,7 @@ Deno.serve(async (request: Request) => {
   }
   if (request.method !== "POST") return json(request, { error: "method" }, 405);
   if (!admin) return json(request, { error: "server" }, 500);
-  let input: { room?: unknown; to?: unknown; end?: unknown; decline?: unknown; from?: unknown; sig?: unknown };
+  let input: { room?: unknown; to?: unknown; end?: unknown; decline?: unknown; invite?: unknown; from?: unknown; sig?: unknown };
   try { input = await request.json(); } catch { return json(request, { error: "invalid" }, 400); }
   if (input.decline === true) return await declined(request, input);
   const match = (request.headers.get("authorization") || "").match(/^Bearer ([A-Za-z0-9._~-]{40,8192})$/u);
@@ -115,6 +119,7 @@ Deno.serve(async (request: Request) => {
   const to = String(input.to || "");
   const end = input.end === true;
   if (!ROOM.test(room) || !ROOM.test(to) || to === me) return json(request, { error: "invalid" }, 400);
+  if (input.invite === true) return await invited(request, me, to, room);
 
   // Будим только по настоящему приглашению.
   const since = new Date(Date.now() - (end ? 5 * 60_000 : 60_000)).toISOString();
@@ -149,6 +154,25 @@ async function declined(request: Request, input: { room?: unknown; from?: unknow
   const { data: devices } = await admin.from("glowletter_call_devices").select("token").eq("user_id", to).limit(5);
   if (devices?.length) await sendAll(devices.map(({ token }) => token), { type: "call_end", room }, "300s");
   return json(request, { declined: true });
+}
+
+// Приглашение в игру: «Имя зовёт вас играть» (или «…рисовать вместе») на телефонах друга.
+async function invited(request: Request, me: string, to: string, room: string): Promise<Response> {
+  if (!admin) return json(request, { error: "server" }, 500);
+  const since = new Date(Date.now() - 2 * 60_000).toISOString();
+  const { data: rows } = await admin.from("glowletter_messages").select("body")
+    .eq("sender", me).eq("recipient", to).like("body", `%${room}]]`).gte("created_at", since)
+    .order("created_at", { ascending: false }).limit(3);
+  const body = (rows || []).map((row) => String(row.body || "")).find((text) => INVITE.exec(text)?.[1] === room);
+  if (!body) return json(request, { error: "no_invite" }, 404);
+  const { data: devices } = await admin.from("glowletter_call_devices").select("token").eq("user_id", to).order("updated_at", { ascending: false }).limit(5);
+  if (!devices?.length) return json(request, { sent: 0 });
+  const { data: profile } = await admin.from("glowletter_profiles").select("display_name").eq("user_id", me).maybeSingle();
+  const name = String(profile?.display_name || "").slice(0, 36);
+  const kind = body.startsWith("[[draw:") ? "draw" : "game";
+  const sent = await sendAll(devices.map(({ token }) => token), { type: "invite", kind, name, room }, "600s");
+  if (sent < 0) return json(request, { error: "push_unavailable" }, 503);
+  return json(request, { sent });
 }
 
 // Рассылка data-сообщения на телефоны; -1 — нет ключа Google.
