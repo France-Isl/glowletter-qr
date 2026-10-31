@@ -224,3 +224,18 @@ body.dk-open { overflow: hidden; }
   .dk-hand-card, .dk-battle .dk-card { transition: none !important; }
 }
 html[data-gl-perf="lite"] .dk-fan, html[data-gl-perf="lite"] .dk-daily-gift { animation: none; }
+
+/* Медали за суммы и серии: металл с лентой, полученные — сияют, следующая — с полоской прогресса. */
+.dk-medals ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.dk-medal { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 0; padding: 8px 4px 10px; border: 1px solid rgba(244, 202, 126, .22); border-radius: 18px; background: rgba(255, 236, 214, .04); text-align: center; }
+.dk-medal-svg { width: 52px; height: 65px; filter: grayscale(.85) brightness(.7); }
+.dk-medal.is-done { border-color: rgba(244, 202, 126, .55); background: radial-gradient(circle at 50% 30%, rgba(242, 201, 111, .2), rgba(255, 236, 214, .03) 70%); }
+.dk-medal.is-done .dk-medal-svg { filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .45)) drop-shadow(0 0 10px rgba(242, 201, 111, .35)); animation: dk-medal-shine 5s ease-in-out infinite; }
+.dk-medal b { color: #fff3cf; font-size: 15px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.dk-medal small { color: var(--dk-muted); font-size: 11px; line-height: 1.25; }
+.dk-medal i { color: #a9f0b4; font-size: 11px; font-style: normal; font-weight: 800; }
+.dk-medal-bar { display: block; width: 80%; height: 5px; margin-top: 2px; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, .12); }
+.dk-medal-bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #c48d38, #f8dc92); }
+@keyframes dk-medal-shine { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-4deg) translateY(-2px); } }
+@media (prefers-reduced-motion: reduce) { .dk-medal.is-done .dk-medal-svg { animation: none; } }
+html.lite .dk-medal.is-done .dk-medal-svg { animation: none; }

@@ -4,6 +4,8 @@ import "./engine.js";
 
 const D = globalThis.GlowDurak;
 export const TURN_MS = 30000;
+// Боты ходят по одному с паузой, чтобы за столом было видно каждый их ход.
+export const BOT_MS = 900;
 const LOBBY_TTL_MS = 24 * 60 * 60 * 1000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
 const BOT_KEYS = ["b1", "b2", "b3"];
@@ -42,7 +44,8 @@ export function viewFor(game, userId, extra = {}) {
   const seat = seatOf(game, userId);
   const view = D.viewFor(game.state, seat >= 0 ? seat : -1);
   if (seat < 0) { view.hand = []; view.legal = []; }
-  return { ...base, game: view, deadline: game.deadline || null, rewards: game.rewards || null, chat: game.chat || [], ...extra };
+  const botIn = game.botAt ? Math.max(0, game.botAt - Date.now()) : null;
+  return { ...base, game: view, deadline: game.deadline || null, botIn, rewards: game.rewards || null, chat: game.chat || [], ...extra };
 }
 
 function cleanSettings(input = {}) {
@@ -59,10 +62,11 @@ function setDeadline(game, now) {
   const must = game.state && game.state.phase === "play" ? D.mustAct(game.state) : [];
   const humanTurn = must.some(i => !controlledByBot(game, i));
   game.deadline = humanTurn ? now + TURN_MS : null;
+  game.botAt = must.some(i => controlledByBot(game, i)) ? now + BOT_MS : null;
 }
 
-function runBots(game) {
-  for (let step = 0; step < 400 && game.state.phase === "play"; step += 1) {
+function runBots(game, limit = 400) {
+  for (let step = 0; step < limit && game.state.phase === "play"; step += 1) {
     const must = D.mustAct(game.state).filter(i => controlledByBot(game, i));
     if (!must.length) return;
     const who = must[0];
@@ -122,7 +126,6 @@ async function startRound(game, db, now, firstAttacker = null) {
     players: game.seats.map(seat => ({ id: seat.bot ? `bot:${seat.botKey}` : seat.id, name: seat.name, bot: Boolean(seat.bot) })),
     mode: game.settings.mode, deckSize: game.settings.deck, rng: secureRandom, firstAttacker
   });
-  runBots(game);
   setDeadline(game, now);
 }
 
@@ -246,7 +249,6 @@ async function step(db, game, userId, name, who, action, body, now) {
     catch { throw new GameError("illegal", 409); }
     game.seats[seat].afk = 0;
     game.seats[seat].auto = false;
-    runBots(game);
     if (game.state.phase === "over") await finishRound(game, db);
     setDeadline(game, now);
     await commit(db, game, now);
@@ -254,8 +256,10 @@ async function step(db, game, userId, name, who, action, body, now) {
   }
 
   if (action === "tick") {
-    if (!game.deadline || now < game.deadline) return viewFor(game, userId);
-    const late = D.mustAct(game.state).filter(i => !controlledByBot(game, i));
+    const botDue = Boolean(game.botAt) && now >= game.botAt - 150;
+    const humanDue = Boolean(game.deadline) && now >= game.deadline;
+    if (!botDue && !humanDue) return viewFor(game, userId);
+    const late = humanDue ? D.mustAct(game.state).filter(i => !controlledByBot(game, i)) : [];
     for (const i of late) {
       if (game.state.phase !== "play") break;
       if (!D.mustAct(game.state).includes(i)) continue;
@@ -265,7 +269,7 @@ async function step(db, game, userId, name, who, action, body, now) {
       game.seats[i].afk = (game.seats[i].afk || 0) + 1;
       if (game.seats[i].afk >= 3) game.seats[i].auto = true;
     }
-    runBots(game);
+    if (botDue) runBots(game, 1);
     if (game.state.phase === "over") await finishRound(game, db);
     setDeadline(game, now);
     await commit(db, game, now);

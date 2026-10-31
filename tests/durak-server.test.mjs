@@ -41,9 +41,10 @@ assert.equal(db.dollars.a, 4000);
 assert.equal(view.seats.length, 3);
 assert.equal(view.game.hand.length > 0, true);
 let guard = 0;
-while (view.status === "playing" && guard++ < 500) {
+let fake = Date.now();
+while (view.status === "playing" && guard++ < 3000) {
   const g = view.game;
-  if (!g.must.includes(g.me)) { view = await handle(db, "a", { action: "tick", game: view.id }, Date.now() + 31000); continue; }
+  if (!g.must.includes(g.me)) { fake += 31000; view = await handle(db, "a", { action: "tick", game: view.id }, fake); continue; }
   const raw = structuredClone([...db.games.values()][0].state);
   const move = D.botAction(raw, g.me);
   view = await handle(db, "a", { action: "act", game: view.id, move, seq: g.seq });

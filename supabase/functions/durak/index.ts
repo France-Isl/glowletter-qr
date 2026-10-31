@@ -45,7 +45,7 @@ function fromRow(row: Row) {
   const extra = (row.state && typeof row.state === "object" ? row.state : {}) as Record<string, unknown>;
   return {
     id: row.id, host: row.host, settings: row.settings, seats: row.seats, status: row.status, round: row.round, version: row.version,
-    state: extra.engine || null, rewards: extra.rewards || null, chat: extra.chat || [],
+    state: extra.engine || null, rewards: extra.rewards || null, chat: extra.chat || [], botAt: typeof extra.botAt === "number" ? extra.botAt : null,
     deadline: row.deadline ? Date.parse(row.deadline) : null
   };
 }
@@ -65,13 +65,13 @@ const db = {
     await admin!.from("glowletter_durak_games").delete().lt("updated_at", new Date(staleBefore).toISOString());
     const { error } = await admin!.from("glowletter_durak_games").insert({
       id: game.id, host: game.host, settings: game.settings, seats: game.seats, status: game.status, round: game.round,
-      state: { engine: game.state, rewards: game.rewards, chat: [] }, version: 0, deadline: game.deadline ? new Date(game.deadline as number).toISOString() : null
+      state: { engine: game.state, rewards: game.rewards, chat: [], botAt: game.botAt || null }, version: 0, deadline: game.deadline ? new Date(game.deadline as number).toISOString() : null
     });
     if (error) throw new Error("insert");
   },
   async save(game: Record<string, unknown>) {
     const { data, error } = await admin!.from("glowletter_durak_games").update({
-      seats: game.seats, status: game.status, round: game.round, state: { engine: game.state, rewards: game.rewards, chat: game.chat || [] },
+      seats: game.seats, status: game.status, round: game.round, state: { engine: game.state, rewards: game.rewards, chat: game.chat || [], botAt: game.botAt || null },
       version: (game.version as number) + 1, deadline: game.deadline ? new Date(game.deadline as number).toISOString() : null,
       updated_at: new Date().toISOString()
     }).eq("id", game.id).eq("version", game.version).select("id");

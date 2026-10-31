@@ -33,6 +33,7 @@
       chat: "Сообщение…", send: "Отправить", forbidden: "Такое сообщение нельзя отправить", emotes: "Эмоции",
       error: "Не получилось. Проверьте интернет", full: "Стол заполнен", gone: "Стол не найден", stale: "Стол обновился",
       ranking: "Рейтинг недели", rankingNote: "Выигрыш у живых игроков за неделю", empty: "Пока пусто — сыграйте первым!", stats: "Партий {g} · побед {w} · дурак {f}",
+      medals: "Медали", medalsNote: "Выигрыши считаются в партиях с живыми игроками", medalTotal: "Выиграть всего {n} $", medalBest: "Выиграть за партию {n} $", medalWins: "Побед: {n}", medalStreak: "Побед подряд: {n}", medalGames: "Сыграть партий: {n}", medalDone: "Получена", medalsCount: "{a} из {b}",
       rank0: "Новичок", rank1: "Любитель", rank2: "Знаток", rank3: "Мастер", rank4: "Гроссмейстер", rank5: "Легенда",
       emo_hi: "Привет!", emo_gg: "Хорошая игра", emo_wow: "Ого!", emo_think: "Думаю…", emo_lucky: "Повезло!", emo_oops: "Упс", emo_laugh: "Ха-ха", emo_clap: "Браво",
       bot_b1: "Мишка Тёпа", bot_b2: "Лиса Алиса", bot_b3: "Кот Баюн", noHints: "Подсказки закончились — купите в магазине", inviteSent: "Приглашение отправлено: {name}",
@@ -54,6 +55,7 @@
       chat: "Message…", send: "Send", forbidden: "This message can't be sent", emotes: "Emotes",
       error: "Something went wrong. Check the connection", full: "The table is full", gone: "Table not found", stale: "The table changed",
       ranking: "Weekly ranking", rankingNote: "Winnings against real players this week", empty: "Empty for now — play first!", stats: "Games {g} · wins {w} · fool {f}",
+      medals: "Medals", medalsNote: "Winnings count in games with real players", medalTotal: "Win {n} $ in total", medalBest: "Win {n} $ in one game", medalWins: "Wins: {n}", medalStreak: "Wins in a row: {n}", medalGames: "Games played: {n}", medalDone: "Earned", medalsCount: "{a} of {b}",
       rank0: "Newcomer", rank1: "Amateur", rank2: "Expert", rank3: "Master", rank4: "Grandmaster", rank5: "Legend",
       emo_hi: "Hi!", emo_gg: "Good game", emo_wow: "Wow!", emo_think: "Thinking…", emo_lucky: "Lucky!", emo_oops: "Oops", emo_laugh: "Ha-ha", emo_clap: "Bravo",
       bot_b1: "Teddy Tyopa", bot_b2: "Alice the Fox", bot_b3: "Bayun the Cat", noHints: "No hints left — buy more in the shop", inviteSent: "Invitation sent: {name}",
@@ -64,7 +66,7 @@
 
   const state = {
     root: null, view: "home", busy: false, game: null, wallet: null, mine: [], ranking: null,
-    setup: loadSetup(), selected: null, channel: null, channelId: "", poll: 0, tickTimer: 0, clock: 0,
+    setup: loadSetup(), selected: null, channel: null, channelId: "", poll: 0, tickTimer: 0, clock: 0, botTimer: 0,
     shownSeq: -1, shownTable: [], invited: new Set(), chatOpen: false, hint: null, bubbles: {}, lastChat: 0, rulesOpen: false
   };
 
@@ -204,6 +206,42 @@
     return tr(`rank${level}`);
   }
 
+  // Медали за суммы и серии: только из серверной статистики (её пишет glowletter_durak_settle).
+  const TIERS = [["#b8743a", "#f0b27a", "#6e3c14"], ["#9aa6b2", "#eef3f7", "#56606b"], ["#d9a73e", "#fff0b8", "#8a5c12"], ["#7fc6d6", "#e9fbff", "#2f6f7d"], ["#9b86f5", "#f1ecff", "#4b38a8"]];
+  const MEDALS = [
+    ["total", "won_total", [10000, 100000, 1000000, 10000000, 100000000], "💰", "medalTotal"],
+    ["best", "best_win", [5000, 50000, 250000, 1000000], "💎", "medalBest"],
+    ["wins", "wins", [1, 10, 50, 200, 500], "🏆", "medalWins"],
+    ["streak", "best_streak", [3, 5, 10], "🔥", "medalStreak"],
+    ["games", "games", [10, 100, 1000], "🃏", "medalGames"]
+  ];
+  const shortNum = value => value >= 1e6 ? `${value / 1e6}M` : value >= 1e3 ? `${value / 1e3}K` : String(value);
+
+  function medalSvg(tier, mark, done) {
+    const [base, light, dark] = TIERS[Math.min(tier, TIERS.length - 1)];
+    const id = `dkm${tier}`;
+    return `<svg class="dk-medal-svg" viewBox="0 0 64 80" aria-hidden="true" focusable="false"><defs><radialGradient id="${id}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="${light}"/><stop offset=".55" stop-color="${base}"/><stop offset="1" stop-color="${dark}"/></radialGradient></defs>
+      <path d="M18 2h11l5 24h-11Z" fill="${done ? "#a3213a" : "#4a3a3e"}"/><path d="M46 2H35l-5 24h11Z" fill="${done ? "#c8963e" : "#3a3033"}"/>
+      <circle cx="32" cy="50" r="24" fill="url(#${id})" stroke="${dark}" stroke-width="1.5"/><circle cx="32" cy="50" r="18.5" fill="none" stroke="${light}" stroke-width="1.2" stroke-dasharray="2 2.6" opacity=".85"/>
+      <text x="32" y="51" text-anchor="middle" dominant-baseline="central" font-size="17">${mark}</text></svg>`;
+  }
+
+  function medalsPanel(stats) {
+    let earned = 0;
+    let total = 0;
+    const cards = MEDALS.flatMap(([key, field, steps, mark, label]) => steps.map((goal, tier) => {
+      total += 1;
+      const value = Number(stats[field] || 0);
+      const done = value >= goal;
+      if (done) earned += 1;
+      const next = done || tier === 0 || value >= steps[tier - 1];
+      if (!done && !next) return "";
+      const pct = Math.min(100, Math.round(value / goal * 100));
+      return `<li class="dk-medal${done ? " is-done" : ""}" title="${esc(tr(label, { n: num(goal) }))}">${medalSvg(tier, mark, done)}<b>${esc(shortNum(goal))}</b><small>${esc(tr(label, { n: num(goal) }))}</small>${done ? `<i>${esc(tr("medalDone"))}</i>` : `<span class="dk-medal-bar"><span style="width:${pct}%"></span></span>`}</li>`;
+    })).join("");
+    return `<section class="dk-panel dk-medals"><h3>${esc(tr("medals"))} · ${esc(tr("medalsCount", { a: earned, b: total }))}</h3><ul>${cards}</ul><p class="dk-note">${esc(tr("medalsNote"))}</p></section>`;
+  }
+
   function seg(name, options, current) {
     return `<div class="dk-seg" role="radiogroup">${options.map(([value, label]) => `<button type="button" role="radio" aria-checked="${value === current}" class="${value === current ? "is-on" : ""}" data-set="${name}" data-value="${value}">${esc(label)}</button>`).join("")}</div>`;
   }
@@ -240,6 +278,7 @@
       </div>
       ${stats.games ? `<p class="dk-stats"><b>${esc(rankTitle(stats))}</b> · ${esc(tr("stats", { g: num(stats.games), w: num(stats.wins), f: num(stats.fools) }))}</p>` : ""}
       ${state.rulesOpen ? `<section class="dk-panel dk-rules"><h3>${esc(tr("rules"))}</h3><p>${esc(tr("rulesText"))}</p></section>` : ""}
+      ${signedIn() && w ? medalsPanel(stats) : ""}
     </div>`;
   }
 
@@ -469,7 +508,7 @@
   }
 
   function stopTable(full = true) {
-    clearInterval(state.poll); clearInterval(state.clock);
+    clearInterval(state.poll); clearInterval(state.clock); clearTimeout(state.botTimer);
     state.poll = 0; state.clock = 0;
     if (state.channel) { try { client()?.removeChannel?.(state.channel); } catch {} }
     state.channel = null;
@@ -502,8 +541,24 @@
     }
   }
 
+  // Ход бота: сервер называет паузу; тикает первый живой игрок за столом, остальные — подстраховкой позже.
+  function scheduleBot(view) {
+    clearTimeout(state.botTimer);
+    state.botTimer = 0;
+    if (view?.botIn == null || view.game?.phase !== "play" || !view.id) return;
+    const humans = (view.seats || []).map((seat, i) => ({ seat, i })).filter(({ seat }) => !seat.bot && !seat.auto);
+    const driver = humans.length ? humans[0].i : view.me;
+    const wait = view.botIn + (driver === view.me ? 120 : 2600);
+    state.botTimer = setTimeout(() => {
+      if (state.game?.id !== view.id || state.view !== "table" || ticking) return;
+      ticking = true;
+      call("tick", { game: view.id }).then(apply).catch(() => {}).finally(() => { ticking = false; });
+    }, wait);
+  }
+
   function apply(view) {
     if (!view) return;
+    scheduleBot(view);
     const before = state.game;
     const chat = view.chat || [];
     if (chat.length) {
