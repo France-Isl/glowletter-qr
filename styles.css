@@ -1883,3 +1883,7 @@ body:not(.is-reading) .cinematic-bg::after { content: ""; position: absolute; le
 body:not(.is-reading) .cinematic-bg::before { content: ""; position: absolute; left: 0; right: 0; top: calc(100vw * 1672 / 941 - var(--u) * 42); bottom: 0; background: radial-gradient(60% 40% at 20% 30%, rgba(190, 80, 24, .28), transparent 70%), radial-gradient(55% 45% at 85% 70%, rgba(200, 95, 30, .24), transparent 70%); pointer-events: none; }
 @media (min-width: 600px) { body:not(.is-reading) .cinematic-bg::before, body:not(.is-reading) .cinematic-bg::after { display: none; } }
 body:not(.is-reading) #homeScreen .brand-card .brand-copy { display: block; }
+/* Кубок рейтинга в шапке главного экрана (рядом с языком, коллекцией и меню) */
+.round-control .top-trophy { width: 22px; height: 22px; filter: drop-shadow(0 0 6px rgba(242, 180, 58, .55)); }
+body:not(.is-reading) .topbar .round-control .top-trophy { width: calc(var(--u) * 46); height: calc(var(--u) * 46); }
+body.is-reading #rankingButton { display: none; }

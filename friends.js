@@ -1363,6 +1363,7 @@
   function localizeHome() {
     const label = document.querySelector("#friendsOpenHomeLabel");
     if (label) label.textContent = tr("home");
+    document.querySelector("#rankingButton")?.setAttribute("aria-label", tr("ranking"));
     const tagline = document.querySelector("#homeBrandTagline");
     if (tagline) tagline.textContent = String(app()?.text?.("brand") || tagline.textContent).replace(/<[^>]+>/gu, " ").replace(/\s+/gu, " ").trim();
     for (const [selector, key] of [["#homeQuickTitle", "quickTitle"], ["#homeQuickWrite", "quickWrite"], ["#homeQuickDraw", "drawTogether"], ["#homeQuickBear", "bearSend"], ["#homeQuickStickers", "stickerPick"]]) {
@@ -1382,6 +1383,7 @@
 
   function init() {
     document.querySelector("#friendsOpenHome")?.addEventListener("click", () => open());
+    document.querySelector("#rankingButton")?.addEventListener("click", () => window.GlowLetterRanking?.open?.());
     document.querySelector("#homeQuick")?.addEventListener("click", event => {
       const action = event.target.closest("[data-home-quick]")?.dataset.homeQuick;
       if (action === "write") app()?.openComposer?.();
