@@ -255,6 +255,306 @@
         "rule": "design-system-color",
         "value": "rgba(255, 205, 110, .7)",
         "createdAt": "2026-10-31T17:13:21.566Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#4a3000",
+        "createdAt": "2026-10-31T17:57:04.829Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff6cc",
+        "createdAt": "2026-10-31T17:57:04.915Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(160,110,20,.22)",
+        "createdAt": "2026-10-31T17:57:04.998Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff7dc",
+        "createdAt": "2026-10-31T17:57:05.075Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#b8832a",
+        "createdAt": "2026-10-31T17:57:05.162Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#3a2600",
+        "createdAt": "2026-10-31T17:57:05.241Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f4e3c8",
+        "createdAt": "2026-10-31T17:57:05.326Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f3e6d3",
+        "createdAt": "2026-10-31T17:57:05.405Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(40, 0, 10, .5)",
+        "createdAt": "2026-10-31T17:57:05.491Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 210, 200, .3)",
+        "createdAt": "2026-10-31T17:57:05.565Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(70, 46, 22, .62)",
+        "createdAt": "2026-10-31T17:57:05.645Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(240, 190, 100, .35)",
+        "createdAt": "2026-10-31T17:57:05.735Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 150, 160, .6)",
+        "createdAt": "2026-10-31T17:57:05.815Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffb3bf",
+        "createdAt": "2026-10-31T17:57:05.895Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 120, 150, .7)",
+        "createdAt": "2026-10-31T17:57:05.980Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ff8fa6",
+        "createdAt": "2026-10-31T17:57:06.065Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(94, 74, 150, .8)",
+        "createdAt": "2026-10-31T17:57:06.145Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(52, 40, 96, .86)",
+        "createdAt": "2026-10-31T17:57:06.225Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#d9ccff",
+        "createdAt": "2026-10-31T17:57:06.310Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1a3a2a",
+        "createdAt": "2026-10-31T17:57:06.386Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f6e6c8",
+        "createdAt": "2026-10-31T17:57:06.474Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(74, 42, 26, .62)",
+        "createdAt": "2026-10-31T17:57:06.555Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 222, 180, .3)",
+        "createdAt": "2026-10-31T17:57:06.638Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(240, 190, 100, .4)",
+        "createdAt": "2026-10-31T17:57:06.719Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(190, 80, 24, .28)",
+        "createdAt": "2026-10-31T17:57:06.805Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(200, 95, 30, .24)",
+        "createdAt": "2026-10-31T17:57:06.885Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f6d27c",
+        "createdAt": "2026-10-31T17:57:06.965Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#7d1527",
+        "createdAt": "2026-10-31T17:57:07.051Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#d23a4c",
+        "createdAt": "2026-10-31T17:57:07.135Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(246, 176, 84, .3)",
+        "createdAt": "2026-10-31T17:57:07.222Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(40, 0, 10, .55)",
+        "createdAt": "2026-10-31T17:57:07.305Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 220, 205, .38)",
+        "createdAt": "2026-10-31T17:57:07.387Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(60, 0, 12, .6)",
+        "createdAt": "2026-10-31T17:57:07.468Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(246, 210, 124, .85)",
+        "createdAt": "2026-10-31T17:57:07.551Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff8dc",
+        "createdAt": "2026-10-31T17:57:07.632Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffd36b",
+        "createdAt": "2026-10-31T17:57:07.713Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 205, 100, .95)",
+        "createdAt": "2026-10-31T17:57:07.797Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffe39a",
+        "createdAt": "2026-10-31T17:57:07.876Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffc85a",
+        "createdAt": "2026-10-31T17:57:07.959Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffe7a6",
+        "createdAt": "2026-10-31T17:57:08.045Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff3c9",
+        "createdAt": "2026-10-31T17:57:08.139Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#b8862f",
+        "createdAt": "2026-10-31T17:57:08.222Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#a3213a",
+        "createdAt": "2026-10-31T17:57:08.309Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 231, 166, .7)",
+        "createdAt": "2026-10-31T17:57:08.401Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(48, 17, 27, .72)",
+        "createdAt": "2026-10-31T17:57:08.488Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#3d2a08",
+        "createdAt": "2026-10-31T17:57:08.576Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff0bf",
+        "createdAt": "2026-10-31T17:57:08.668Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#b8304a",
+        "createdAt": "2026-10-31T17:57:08.751Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#33204a",
+        "createdAt": "2026-10-31T17:57:08.830Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(170, 130, 230, .25)",
+        "createdAt": "2026-10-31T17:57:08.909Z",
+        "reason": "Claude: shipped home/games/settings styles measured from the owner's reference picture (home v96, owner-approved 31.10); incumbent palette, not drift"
       }
     ]
   }
