@@ -6,7 +6,8 @@
   glowletter-call:<комната>, где идут только служебные сигналы
   (offer/answer/ice) и присутствие (кто сейчас в звонке). Сам звук идёт
   напрямую между телефонами и шифруется WebRTC; на сервере ничего не
-  записывается. Ретрансляторов (TURN) нет — только STUN.
+  записывается. Если напрямую не соединиться (мобильный интернет, оператор),
+  звук идёт через ретранслятор: временный логин выдаёт функция turn.
 
   Общий звонок — до четырёх человек (MAX_PEOPLE): у каждой пары своё
   соединение («сетка»), предложение (offer) всегда делает тот, у кого id
@@ -97,7 +98,9 @@
   const SPEAK_LEVEL = 0.03;
   const METER_MS = 120;
   const videoConstraints = facing => ({ facingMode: facing, width: { ideal: 640 }, height: { ideal: 480 } });
-  const ICE_SERVERS = [{ urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"] }];
+  const ICE_SERVERS = [{ urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun.cloudflare.com:3478"] }];
+  const RELAY_URL = `${(window.NUR_APP_CONFIG || {}).supabaseUrl || ""}/functions/v1/turn`;
+  const RELAY_WAIT_MS = 4000;
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -136,9 +139,32 @@
     video: false, camera: false, facing: "user", cameraTrack: null, camOf: new Map(), stage: null, ui: null, self: null, tiles: new Map()
   };
 
+  // Ретранслятор звука выдаёт сервер (функция turn): временный логин. Он нужен, когда напрямую
+  // не соединиться — мобильный интернет, слабая сеть, ограничения у оператора. Нет ответа за 4 с
+  // или ретранслятор не настроен — звоним напрямую, как раньше.
+  const relay = { servers: [], until: 0, loading: null };
+
+  function loadRelay() {
+    if (Date.now() < relay.until) return Promise.resolve();
+    if (relay.loading) return relay.loading;
+    const token = cloud()?.getSession?.()?.access_token;
+    if (!token || !RELAY_URL.startsWith("https://")) return Promise.resolve();
+    const request = fetch(RELAY_URL, {
+      method: "POST", cache: "no-store", credentials: "omit",
+      headers: { "Content-Type": "application/json", apikey: window.NUR_APP_CONFIG?.supabasePublishableKey || "", Authorization: `Bearer ${token}` },
+      body: "{}"
+    }).then(response => (response.ok ? response.json() : null)).then(data => {
+      const servers = Array.isArray(data?.iceServers) ? data.iceServers.filter(server => server && server.urls) : [];
+      relay.servers = servers;
+      relay.until = Date.now() + (servers.length ? Math.max(600, (Number(data.ttl) || 3600) - 1800) : 600) * 1000;
+    }).catch(() => {});
+    relay.loading = Promise.race([request, new Promise(resolve => setTimeout(resolve, RELAY_WAIT_MS))]).finally(() => { relay.loading = null; });
+    return relay.loading;
+  }
+
   function iceServers() {
     const extra = Array.isArray(window.NUR_APP_CONFIG?.turnServers) ? window.NUR_APP_CONFIG.turnServers : [];
-    return [...ICE_SERVERS, ...extra];
+    return [...ICE_SERVERS, ...relay.servers, ...extra];
   }
 
   const live = () => call.phase === "connecting" || call.phase === "connected";
@@ -307,6 +333,7 @@
 
   async function openMedia(wantVideo) {
     const audio = { echoCancellation: true, noiseSuppression: true, autoGainControl: true };
+    const relayReady = loadRelay();
     native()?.prepare?.();
     let stream = null;
     if (wantVideo) {
@@ -332,6 +359,7 @@
     if (wantVideo && !call.camera) toast(tr("cameraFailed"));
     stream.getAudioTracks().forEach(track => { track.enabled = !call.muted; });
     if (audioTrack()) meterAdd(userId(), new MediaStream([audioTrack()]));
+    await relayReady;
     return true;
   }
 

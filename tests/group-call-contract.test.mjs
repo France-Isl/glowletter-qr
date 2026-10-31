@@ -29,8 +29,13 @@ assert.match(call, /call\.channel\.track\?\.\(\{ user_id: userId\(\), name: myNa
 assert.match(call, /peers: new Map\(\)/u);
 // Ушёл один — остальные продолжают; один остался — звонок завершён.
 assert.match(call, /if \(!othersIds\(\)\.length\) \{ end\(tr\("ended"\)\); return true; \}/u);
-// Только STUN: платных ретрансляторов нет.
+// В коде только STUN; ретранслятор (временный логин) выдаёт сервер, ключи — в секретах Supabase.
 assert.doesNotMatch(call, /turn:/u);
+assert.match(call, /const relayReady = loadRelay\(\);/u);
+assert.match(call, /return \[\.\.\.ICE_SERVERS, \.\.\.relay\.servers, \.\.\.extra\];/u);
+const turnFunction = fs.readFileSync(path.join(root, "supabase/functions/turn/index.ts"), "utf8");
+assert.match(turnFunction, /admin\.auth\.getUser\(match\[1\]\)/u);
+assert.match(turnFunction, /CLOUDFLARE_TURN_API_TOKEN/u);
 // Кольцо «говорит»: AnalyserNode на каждого, через requestAnimationFrame, останавливается в конце звонка.
 assert.match(call, /createAnalyser\(\)/u);
 assert.match(call, /requestAnimationFrame\(meterTick\)/u);
