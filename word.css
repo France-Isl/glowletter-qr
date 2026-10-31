@@ -1,0 +1,172 @@
+/* «Слово дня на двоих» (word.js). Живёт в карточке светлой бумажной панели игр (.glg-panel),
+   поэтому цвета — из светлых токенов панели. Состояние плитки видно не только по цвету:
+   на своём месте — точка, есть в слове — кольцо, нет в слове — чёрточка в верхнем углу (и aria-label). */
+.glw {
+  --glw-right: var(--emerald);
+  --glw-present: color-mix(in srgb, var(--saffron) 88%, var(--ui-ink));
+  --glw-absent: color-mix(in srgb, var(--ui-ink) 52%, var(--ui-panel));
+  --glw-on-fill: var(--ui-panel);
+  --glw-gap: 6px;
+  color: var(--ui-ink);
+  text-align: center;
+}
+.glw *, .glw *::before, .glw *::after { box-sizing: border-box; }
+.glw button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.glw button:focus-visible { outline: 3px solid color-mix(in srgb, var(--ui-accent) 35%, transparent); outline-offset: 2px; }
+
+.glw-head { margin-bottom: 14px; }
+.glw-title { margin: 0 0 6px; font-size: 16px; line-height: 1.25; }
+.glw-lead, .glw-muted { margin: 0 0 10px; color: var(--ui-muted); font-size: 13px; line-height: 1.5; }
+.glw-note {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border: 1px solid var(--ui-border);
+  border-radius: 999px;
+  background: var(--ui-soft);
+  color: var(--ui-accent-deep);
+  font-size: 11px;
+  font-weight: 700;
+}
+.glw-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin: 0; padding: 0; list-style: none; color: var(--ui-muted); font-size: 11px; }
+.glw-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.glw-mini { position: relative; display: inline-block; width: 18px; height: 18px; border-radius: 7px; }
+
+/* Поле */
+.glw-board { display: grid; gap: var(--glw-gap); width: min(100%, 330px); margin: 0 auto 16px; }
+.glw-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--glw-gap); }
+.glw-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: 0;
+  border: 2px solid var(--ui-border);
+  border-radius: 7px;
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  font-size: clamp(20px, 7vw, 28px);
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+}
+.glw-tile.is-filled { border-color: color-mix(in srgb, var(--ui-ink) 45%, transparent); }
+.glw-tile.is-right, .glw-mini.is-right, .glw-key.is-right { border-color: var(--glw-right); background: var(--glw-right); color: var(--glw-on-fill); }
+.glw-tile.is-present, .glw-mini.is-present, .glw-key.is-present { border-color: var(--glw-present); background: var(--glw-present); color: var(--glw-on-fill); }
+.glw-tile.is-absent, .glw-mini.is-absent, .glw-key.is-absent { border-color: var(--glw-absent); background: var(--glw-absent); color: var(--glw-on-fill); }
+
+/* Метки формы: точка / кольцо / чёрточка в углу. */
+.glw-tile.is-right::after, .glw-tile.is-present::after, .glw-tile.is-absent::after,
+.glw-mini.is-right::after, .glw-mini.is-present::after, .glw-mini.is-absent::after,
+.glw-key.is-right::after, .glw-key.is-present::after, .glw-key.is-absent::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 5px;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.glw-tile.is-right::after, .glw-mini.is-right::after, .glw-key.is-right::after { background: currentColor; }
+.glw-tile.is-present::after, .glw-mini.is-present::after, .glw-key.is-present::after { border: 2px solid currentColor; }
+.glw-tile.is-absent::after, .glw-mini.is-absent::after, .glw-key.is-absent::after { width: 9px; height: 2px; top: 7px; border-radius: 2px; background: currentColor; opacity: .85; }
+.glw-mini::after { inset-inline-end: 50% !important; top: 50% !important; transform: translate(50%, -50%); }
+html[dir="rtl"] .glw-mini::after, .glw[dir="rtl"] .glw-mini::after { transform: translate(-50%, -50%); }
+.glw-mini.is-absent::after { top: 50% !important; }
+.glw-key.is-right::after, .glw-key.is-present::after { width: 6px; height: 6px; inset-inline-end: 4px; top: 4px; }
+.glw-key.is-absent::after { width: 8px; top: 6px; inset-inline-end: 4px; }
+
+/* Анимации: плитка набрана, ряд открывается, ряд не принят. */
+.glw-tile.is-pop { animation: glw-pop .12s ease-out; }
+.glw-row.is-shake { animation: glw-shake .36s ease-in-out; }
+.glw-row.is-reveal .glw-tile { animation: glw-flip .5s ease-in-out backwards; animation-delay: calc(var(--i) * .3s); }
+.glw-row.is-reveal .glw-tile::after { animation: glw-mark .5s step-end backwards; animation-delay: calc(var(--i) * .3s); }
+@keyframes glw-pop { 50% { transform: scale(1.08); } }
+@keyframes glw-shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+@keyframes glw-flip {
+  0% { transform: rotateX(0); border-color: color-mix(in srgb, var(--ui-ink) 45%, transparent); background: var(--ui-surface); color: var(--ui-ink); }
+  49.9% { transform: rotateX(90deg); border-color: color-mix(in srgb, var(--ui-ink) 45%, transparent); background: var(--ui-surface); color: var(--ui-ink); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
+@keyframes glw-mark { 0% { opacity: 0; } 50% { opacity: 1; } }
+
+/* Клавиатура: клавиши 48px высотой, ширина ≥ 40px (на самых узких экранах ≥ 30px). */
+.glw-keyboard { width: min(100%, 520px); margin: 0 auto; }
+.glw-keys { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 5px; }
+.glw-key {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--ui-ink) 8%, var(--ui-surface));
+  color: var(--ui-ink);
+  font-size: 16px;
+  font-weight: 800;
+  touch-action: manipulation;
+  transition: transform .12s ease, background-color .2s ease;
+}
+.glw-key:active { transform: scale(.94); }
+.glw-actions { display: flex; gap: 5px; margin-top: 5px; }
+.glw-key.is-wide { flex: 1; font-size: 13px; letter-spacing: .02em; }
+.glw-erase { font-size: 20px; line-height: 1; }
+.glw[dir="rtl"] .glw-erase { display: inline-block; transform: scaleX(-1); }
+@media (max-width: 360px) {
+  .glw { --glw-gap: 5px; }
+  .glw-keys { grid-template-columns: repeat(auto-fill, minmax(30px, 1fr)); gap: 4px; }
+  .glw-key { font-size: 13px; }
+}
+
+/* Итог, таблица друзей, полный доступ */
+.glw-result, .glw-friends, .glw-lock {
+  margin: 0 auto 14px;
+  padding: 16px;
+  border: 1px solid var(--ui-border);
+  border-radius: 18px;
+  background: var(--ui-surface);
+  max-width: 520px;
+}
+.glw-result h3, .glw-friends h3, .glw-lock h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.3; }
+.glw-result.is-win h3 { color: var(--glw-right); }
+.glw-answer { margin: 0 0 6px; font-size: 16px; font-weight: 800; letter-spacing: .04em; }
+.glw-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0 0 14px; color: var(--ui-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.glw-next { margin: 14px 0 0; color: var(--ui-muted); font-size: 13px; }
+.glw-next b { color: var(--ui-ink); font-variant-numeric: tabular-nums; }
+.glw-friends { text-align: start; }
+.glw-friends h3 { text-align: center; }
+.glw-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.glw-table th { padding: 6px 4px; color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .04em; text-align: start; text-transform: uppercase; }
+.glw-table td { padding: 9px 4px; border-top: 1px solid var(--ui-border); vertical-align: middle; }
+.glw-table th:last-child, .glw-table td:last-child { text-align: end; }
+.glw-table tr.is-me td { background: var(--ui-soft); }
+.glw-name { max-width: 0; width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }
+.glw-num { font-variant-numeric: tabular-nums; }
+.glw-you { padding: 1px 7px; border-radius: 999px; background: var(--ui-accent); color: var(--glw-on-fill); font-size: 11px; font-weight: 800; letter-spacing: .04em; vertical-align: 1px; }
+
+.glw-primary, .glw-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.glw .glw-primary { border: 0; color: var(--glw-on-fill); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); box-shadow: 0 10px 22px color-mix(in srgb, var(--ui-accent-deep) 22%, transparent); }
+.glw .glw-secondary { margin-top: 4px; border: 1px solid var(--ui-border); background: var(--ui-surface); color: var(--ui-ink); }
+.glw.is-locked .glw-board { opacity: .55; filter: saturate(.7); }
+
+.glw-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glw-tile.is-pop, .glw-row.is-shake, .glw-row.is-reveal .glw-tile, .glw-row.is-reveal .glw-tile::after { animation: none; }
+  .glw-key { transition: none; }
+  .glw-key:active { transform: none; }
+}

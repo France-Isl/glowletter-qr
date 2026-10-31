@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_photo_label">Фото от друга</string>
+    <string name="widget_photo_description">Последнее фото, которое прислал друг</string>
+    <string name="widget_photo_empty">Здесь появится фото от друга</string>
+    <string name="widget_photo_from">От друга</string>
+</resources>

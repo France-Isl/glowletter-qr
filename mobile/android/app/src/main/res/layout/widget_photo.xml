@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «Фото на экран друга»: фото на весь виджет, имя друга внизу, пока фото нет — заглушка.
+     Только то, что умеет RemoteViews: без AppCompat-атрибутов. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_photo_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_photo_background">
+
+    <ImageView
+        android:id="@+id/widget_photo_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/widget_photo_label"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/widget_photo_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/widget_heart"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.15"
+        android:padding="14dp"
+        android:text="@string/widget_photo_empty"
+        android:textColor="@color/widget_cream"
+        android:textSize="13sp"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <TextView
+        android:id="@+id/widget_photo_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/widget_photo_caption"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="9dp"
+        android:textColor="@color/widget_cream"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</FrameLayout>

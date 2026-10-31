@@ -81,6 +81,7 @@ android {
         buildConfigField "int", "BUNDLED_WEB_BUNDLE_VERSION", "31"
         buildConfigField "int", "NATIVE_BRIDGE_API", "1"
         buildConfigField "String", "PUSH_POLL_URL", quoteBuildConfig("https://xzzngrquomyiglktroqi.supabase.co/rest/v1/rpc/glowletter_push_poll")
+        buildConfigField "String", "WIDGET_PHOTO_URL", quoteBuildConfig("https://xzzngrquomyiglktroqi.supabase.co/rest/v1/rpc/glowletter_widget_photo")
         buildConfigField "String", "SUPABASE_PUBLISHABLE_KEY", quoteBuildConfig("sb_publishable_g05_hxsxw6uNNOp9A7PxFw_dfGqvUuI")
         buildConfigField "String", "WEB_BUNDLE_CHANNEL", quoteBuildConfig("stable")
         buildConfigField "String", "WEB_BUNDLE_MANIFEST_URL", quoteBuildConfig(stableWebBundleManifestUrl)

@@ -77,8 +77,8 @@ assert.match(friends, /if \(state\.channelUser && pushOn\(\)\) disablePush\(\);/
 assert.match(read("privacy.html"), /Уведомления на телефон[\s\S]*Phone notifications/u);
 
 // Подключение и кеш.
-assert.ok(index.indexOf("friends.js?v=86") < index.indexOf("online.js?v=86"));
-assert.match(worker, /"online\.js\?v=86"/u);
+assert.ok(index.indexOf("friends.js?v=87") < index.indexOf("online.js?v=87"));
+assert.match(worker, /"online\.js\?v=87"/u);
 assert.match(worker, /"online\.js", "voice\.js"/u);
 
 console.log(JSON.stringify({ ok: true, languages: LANGUAGES.length, keys: ONLINE_KEYS.length }));
@@ -88,3 +88,16 @@ const proguard = read("mobile/android/app/proguard-rules.pro");
 assert.match(proguard, /-keep class \* extends androidx\.room\.RoomDatabase \{ <init>\(\); \}/u);
 assert.match(proguard, /-keep class androidx\.work\.impl\.WorkDatabase_Impl/u);
 assert.match(proguard, /-keep class \* extends androidx\.work\.ListenableWorker/u);
+
+// Фото на экран друга: виджет в манифесте, мост NurWidget, PushPoller подтягивает фото по ключу устройства.
+const androidManifest = read("mobile/android/app/src/main/AndroidManifest.xml");
+assert.match(androidManifest, /<receiver\s+android:name="\.PhotoWidget"[\s\S]{0,400}android\.appwidget\.action\.APPWIDGET_UPDATE[\s\S]{0,300}android:resource="@xml\/photo_widget_info"/u);
+assert.match(read("mobile/android/app/src/main/java/com/franceisl/nurpismo/MainActivity.java"), /new WidgetBridge\(this\), "NurWidget"/u);
+const widgetPoller = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/PushPoller.java");
+assert.match(widgetPoller, /PhotoWidget\.fetch\(context, token\)/u);
+assert.match(read("mobile/android/app/build.gradle"), /rpc\/glowletter_widget_photo/u);
+const photoWidget = read("mobile/android/app/src/main/java/com/franceisl/nurpismo/PhotoWidget.java");
+assert.match(photoWidget, /BuildConfig\.WIDGET_PHOTO_URL/u);
+assert.match(photoWidget, /options\.inSampleSize = sample/u);
+assert.match(photoWidget, /MAX_BASE64 = 650000/u);
+assert.match(read("mobile/android/app/src/main/res/xml/photo_widget_info.xml"), /android:updatePeriodMillis="0"/u);

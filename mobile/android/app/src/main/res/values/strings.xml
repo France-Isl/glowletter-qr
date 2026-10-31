@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">GlowLetter</string>
-    <string name="location_permission_reason">Разрешите приблизительное местоположение, чтобы показать погоду рядом с вами. Точные координаты приложению не нужны.</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">GlowLetter</string>
+    <string name="location_permission_reason" tools:ignore="MissingTranslation">Разрешите приблизительное местоположение, чтобы показать погоду рядом с вами. Точные координаты приложению не нужны.</string>
+    <!-- Виджет «Фото на экран друга»: английский по умолчанию, русский в values-ru. -->
+    <string name="widget_photo_label">Friend\'s photo</string>
+    <string name="widget_photo_description">The latest photo a friend sent you</string>
+    <string name="widget_photo_empty">A photo from your friend will appear here</string>
+    <string name="widget_photo_from">From a friend</string>
 </resources>

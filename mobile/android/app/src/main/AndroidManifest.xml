@@ -3,6 +3,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Звонок в приложении: режим разговора и громкая связь (обычное разрешение, без диалога). -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <queries>
         <intent>
@@ -40,6 +42,18 @@
                     android:scheme="${applicationId}" />
             </intent-filter>
         </activity>
+        <!-- «Фото на экран друга»: виджет с последним фото от друга. -->
+        <receiver
+            android:name=".PhotoWidget"
+            android:exported="false"
+            android:label="@string/widget_photo_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/photo_widget_info" />
+        </receiver>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.files"

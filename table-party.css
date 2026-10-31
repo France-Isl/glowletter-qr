@@ -1,0 +1,134 @@
+/* «Игровой стол» · игры для разговора (table-party.js). Светлая бумага окна стола, цвета — из токенов. */
+.gltp {
+  --gltp-ok: var(--emerald);
+  --gltp-warn: var(--madder, #9b2f3b);
+  display: grid;
+  gap: 12px;
+  color: var(--ui-ink);
+  font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.gltp *, .gltp *::before, .gltp *::after { box-sizing: border-box; }
+.gltp [hidden] { display: none !important; }
+.gltp button { font: inherit; color: inherit; cursor: pointer; }
+.gltp button:disabled { opacity: .5; cursor: not-allowed; }
+.gltp button:focus-visible, .gltp input:focus-visible, .gltp canvas:focus-visible { outline: 3px solid color-mix(in srgb, var(--ui-accent) 32%, transparent); outline-offset: 2px; }
+.gltp-main { display: grid; gap: 12px; min-width: 0; }
+.gltp h3 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(22px, 5.6vw, 28px); font-weight: 600; line-height: 1.1; }
+.gltp p { margin: 0; }
+.gltp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Строка роли и счёта */
+.gltp-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.gltp-pill { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 12px; border: 1px solid var(--ui-border); border-radius: 999px; background: var(--ui-surface); font-size: 13px; font-weight: 800; }
+.gltp-pill.is-me { border-color: transparent; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); }
+.gltp-meta { color: var(--ui-muted); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.gltp-away { padding: 10px 14px; border: 1px solid color-mix(in srgb, var(--gltp-warn) 30%, transparent); border-radius: 14px; color: var(--gltp-warn); background: color-mix(in srgb, var(--gltp-warn) 8%, transparent); font-size: 13px; font-weight: 700; }
+.gltp-turn { color: var(--ui-accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.gltp-tip, .gltp-muted { color: var(--ui-muted); font-size: 13px; line-height: 1.5; }
+.gltp-tip { min-height: 2.6em; }
+.gltp-label { color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.gltp-center-text { text-align: center; }
+
+.gltp-card { padding: 18px 16px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); box-shadow: 0 14px 32px color-mix(in srgb, var(--night-deep) 7%, transparent); }
+.gltp-center { display: grid; justify-items: center; gap: 10px; text-align: center; }
+.gltp-compact { padding: 12px 14px; gap: 4px; }
+.gltp-big { font-size: 40px; line-height: 1; }
+.gltp-score { color: var(--ui-accent-deep); font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(22px, 6vw, 30px); font-weight: 700; }
+.gltp-result { font-weight: 800; }
+.gltp-result.is-ok { color: var(--gltp-ok); }
+.gltp-bear { width: 120px; height: 120px; border: 3px solid var(--ui-gold, var(--gold)); border-radius: 50%; object-fit: cover; object-position: 38% 30%; }
+
+.gltp .glg-primary, .gltp .glg-secondary { min-height: 48px; }
+.gltp-wide { width: 100%; }
+.gltp-actions { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; }
+
+/* Таймер */
+.gltp-timer { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; }
+.gltp-timer b { min-width: 3.2em; font-size: 22px; font-variant-numeric: tabular-nums; }
+.gltp-timer.is-low b { color: var(--gltp-warn); }
+.gltp-progress { display: block; height: 8px; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--ui-accent) 12%, transparent); }
+.gltp-progress i { display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--ui-accent), var(--ui-gold, var(--gold))); transform: scaleX(var(--gltp-left, 1)); transform-origin: left center; transition: transform .25s linear; }
+html[dir="rtl"] .gltp-progress i { transform-origin: right center; }
+.gltp-timer.is-low .gltp-progress i { background: var(--gltp-warn); }
+
+/* «Объясни слово» */
+.gltp-word { display: grid; justify-items: center; gap: 6px; padding: 26px 16px; text-align: center; background: linear-gradient(145deg, color-mix(in srgb, var(--gold-bright) 28%, var(--ui-surface)), var(--ui-surface)); }
+.gltp-word small { color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.gltp-word strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(32px, 9vw, 44px); font-weight: 700; line-height: 1.05; overflow-wrap: anywhere; }
+.gltp-word.is-hit { animation: gltp-hit .45s cubic-bezier(.16, 1, .3, 1); }
+.gltp-words { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gltp-words li { padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+.gltp-words li.is-ok { color: var(--gltp-ok); background: color-mix(in srgb, var(--gltp-ok) 11%, transparent); }
+.gltp-words li.is-skip { color: var(--ui-muted); background: color-mix(in srgb, var(--ui-ink) 6%, transparent); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--ui-muted) 50%, transparent); }
+
+/* Ответ текстом */
+.gltp-guess { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.gltp-guess input { min-width: 0; min-height: 48px; padding: 0 14px; border: 1px solid var(--ui-border); border-radius: 14px; color: var(--ui-ink); background: var(--ui-panel); font: inherit; font-size: 16px; font-weight: 600; }
+.gltp-feedback { min-height: 1.3em; color: var(--ui-muted); font-size: 13px; font-weight: 700; }
+.gltp-feedback.is-ok { color: var(--gltp-ok); }
+.gltp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gltp-chips li { max-width: 100%; padding: 5px 11px; border: 1px solid var(--ui-border); border-radius: 999px; background: var(--ui-surface); font-size: 13px; overflow-wrap: anywhere; }
+.gltp-chips li.is-ok { border-color: color-mix(in srgb, var(--gltp-ok) 45%, transparent); color: var(--gltp-ok); font-weight: 800; }
+
+/* «Тёпа заблудился» */
+.gltp-board { position: relative; width: min(100%, 58vh, 460px); margin: 0 auto; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--night-deep); box-shadow: 0 16px 36px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.gltp-board canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; }
+.gltp-board canvas.is-bump { animation: gltp-bump .28s ease; }
+.gltp-hint { position: absolute; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 4px; min-width: 132px; padding: 14px 22px; border-radius: 20px; color: var(--gold-ink); background: color-mix(in srgb, var(--gold-bright) 94%, transparent); box-shadow: 0 18px 40px color-mix(in srgb, var(--night-deep) 40%, transparent); transform: translate(-50%, -50%); pointer-events: none; text-align: center; }
+.gltp-hint b { font-size: 64px; line-height: 1; }
+.gltp-hint span { font-size: 16px; font-weight: 800; }
+.gltp-hint.is-pop { animation: gltp-pop .5s cubic-bezier(.16, 1, .3, 1); }
+.gltp-cover { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 8px; padding: 18px; color: var(--ui-ink); background: color-mix(in srgb, var(--ui-panel) 90%, transparent); backdrop-filter: blur(4px); text-align: center; }
+.gltp-cover .glg-primary { margin-top: 6px; }
+.gltp-controls { display: grid; justify-items: center; }
+.gltp-key { display: grid; place-items: center; min-width: 52px; min-height: 52px; padding: 0 10px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-surface); font-size: 24px; font-weight: 800; line-height: 1; touch-action: manipulation; transition: transform .12s ease, background .18s ease; }
+.gltp-key:active { transform: scale(.94); background: color-mix(in srgb, var(--ui-accent) 14%, var(--ui-surface)); }
+.gltp-key-word { font-size: 13px; }
+.gltp-key.is-sent { animation: gltp-sent .5s ease; }
+.gltp-pad { display: grid; grid-template-columns: repeat(3, 60px); grid-template-rows: repeat(2, 60px); gap: 8px; grid-template-areas: ". up ." "left down right"; }
+.gltp-pad .gltp-key { width: 60px; height: 60px; font-size: 28px; }
+.gltp-key-up { grid-area: up; }
+.gltp-key-down { grid-area: down; }
+.gltp-key-left { grid-area: left; }
+.gltp-key-right { grid-area: right; }
+.gltp-hints { display: grid; grid-template-columns: repeat(4, minmax(48px, 1fr)); gap: 8px; width: 100%; max-width: 360px; }
+.gltp-hints .gltp-key-word { grid-column: span 2; }
+
+/* «Угадай рисунок» */
+.gltp-paper { position: relative; width: min(100%, 54vh, 460px); margin: 0 auto; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--ui-border); border-radius: 18px; background: #fff8ef; }
+.gltp-paper canvas { display: block; width: 100%; height: 100%; }
+.gltp-paper.is-live { border-color: var(--ui-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 16%, transparent); }
+.gltp-paper.is-live canvas { touch-action: none; cursor: crosshair; }
+.gltp-draw-word { font-size: 16px; font-weight: 800; text-align: center; }
+.gltp-mask { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 10px; text-align: center; }
+.gltp-mask span { font-size: 22px; font-weight: 800; letter-spacing: .32em; white-space: pre-wrap; }
+.gltp-mask small { color: var(--ui-muted); font-size: 11px; font-weight: 700; }
+.gltp-choices { display: grid; gap: 8px; width: 100%; }
+.gltp-choices .glg-secondary { min-height: 52px; font-size: 16px; }
+.gltp-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.gltp-swatch { width: 40px; height: 40px; padding: 0; border: 3px solid var(--ui-panel); border-radius: 50%; background: var(--gltp-swatch); box-shadow: 0 0 0 1px var(--ui-border); }
+.gltp-swatch.is-active { box-shadow: 0 0 0 3px var(--ui-accent); }
+.gltp-tool { display: inline-grid; place-items: center; min-width: 44px; min-height: 40px; padding: 0 12px; border: 1px solid var(--ui-border); border-radius: 14px; background: var(--ui-surface); font-size: 13px; font-weight: 800; }
+.gltp-tool.is-active { border-color: var(--ui-accent); color: var(--ui-accent-deep); background: color-mix(in srgb, var(--ui-accent) 12%, var(--ui-surface)); }
+.gltp-tool i { display: block; width: var(--gltp-dot); height: var(--gltp-dot); border-radius: 50%; background: currentColor; }
+
+/* «О чём поговорить» */
+.gltp-talk-card { display: grid; gap: 14px; min-height: 200px; align-content: center; padding: 24px 20px; background: linear-gradient(150deg, color-mix(in srgb, var(--gold-bright) 22%, var(--ui-surface)), var(--ui-surface) 60%); }
+.gltp-talk-card.is-new { animation: gltp-card .45s cubic-bezier(.16, 1, .3, 1); }
+.gltp-cat { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; color: var(--gold-ink); background: color-mix(in srgb, var(--gold-bright) 55%, transparent); font-size: 11px; font-weight: 800; }
+.gltp-talk-card[data-cat="travel"] .gltp-cat, .gltp-talk-card[data-cat="dreams"] .gltp-cat { color: var(--cream); background: var(--emerald); }
+.gltp-question { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(24px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; }
+.gltp-talk-progress { height: 6px; }
+
+@keyframes gltp-pop { from { opacity: 0; transform: translate(-50%, -50%) scale(.6); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes gltp-bump { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes gltp-hit { 40% { transform: scale(1.04); background: color-mix(in srgb, var(--emerald) 16%, var(--ui-surface)); } }
+@keyframes gltp-sent { 40% { background: color-mix(in srgb, var(--emerald) 20%, var(--ui-surface)); } }
+@keyframes gltp-card { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (min-width: 640px) {
+  .gltp-choices { grid-template-columns: repeat(3, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gltp *, .gltp *::before, .gltp *::after { animation: none !important; transition: none !important; }
+}

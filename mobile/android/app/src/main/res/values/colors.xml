@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="nur_night">#171722</color>
+    <!-- Виджет «Фото на экран друга»: цвета из styles.css (night, night-deep, gold-bright, cream). -->
+    <color name="widget_night">#14131F</color>
+    <color name="widget_night_deep">#0C0B14</color>
+    <color name="widget_gold">#F2CC74</color>
+    <color name="widget_gold_line">#66F2CC74</color>
+    <color name="widget_cream">#F6EFE0</color>
 </resources>
-

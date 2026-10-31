@@ -26,6 +26,11 @@
   const REACTIONS = Object.freeze({ heart: "❤️", sparkle: "✨", smile: "😊", laugh: "😂", sun: "☀️", flower: "🌸", star: "⭐", thumbs: "👍" });
   const GIFTS = Object.freeze({ flower: "🌷", tea: "☕", cake: "🍰", star: "⭐", balloon: "🎈", book: "📖", heart: "💝", sun: "☀️" });
   const VOICE_MAX_SECONDS = 60;
+  // 2.4.26: звонок, «Игровой стол», фото на экран друга и наклейки из «Сундука Тёпы».
+  const CALL_PATTERN = new RegExp(`^\\[\\[call:(${UUID})\\]\\]$`, "u");
+  const PLAY_PATTERN = new RegExp(`^\\[\\[play:(${UUID})\\]\\]$`, "u");
+  const PHOTO_PATTERN = new RegExp(`^\\[\\[photo:(${UUID})\\]\\]$`, "u");
+  const STICKER_PATTERN = /^\[\[sticker:(s(?:0[1-9]|1\d|20))\]\]$/u;
   const MIC = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="3.5" width="6" height="11" rx="3"/><path d="M5.8 11.5a6.2 6.2 0 0 0 12.4 0M12 17.7v3"/></svg>';
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.7 4.3 13a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5Z"/></svg>';
   const icon = id => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#${id}"/></svg>`;
@@ -55,7 +60,11 @@
       drawTogether: "Рисовать вместе", drawEyebrow: "GLOWLETTER · РИСУЕМ ВМЕСТЕ", drawTitle: "Общая открытка", drawWaiting: "{name} вот-вот присоединится…", drawWith: "{name} рисует с вами", drawInvite: "{name} зовёт рисовать вместе", drawYou: "Вы позвали рисовать вместе", drawJoin: "Рисовать", drawHeading: "Приглашение рисовать",
       drawUndo: "Отменить", drawClear: "Очистить", drawClearConfirm: "Очистить открытку для вас обоих?", drawEraser: "Ластик", drawSave: "Сохранить открытку", drawColor: "Цвет", drawSize: "Толщина", drawFile: "glowletter-card", drawSaved: "Открытка сохранена", drawOffline: "Нет связи — рисунок видите только вы.",
       voiceRecord: "Записать голосовое", voiceRecording: "Запись {time}", voiceCancel: "Отмена", voiceMessage: "Голосовое · {time}", voiceGone: "Голосовое больше недоступно", voiceDenied: "Нет доступа к микрофону. Разрешите его в настройках.", voiceUnsupported: "На этом устройстве запись голоса недоступна. Обновите приложение.", voiceShort: "Слишком коротко — запишите хотя бы секунду.", voiceNew: "{name}: голосовое сообщение", voiceNote: "Голосовые сообщения хранятся 30 дней.", voicePlay: "Слушать", voiceStop: "Стоп",
-      pushTitle: "Уведомления на телефон", pushNote: "Сообщим, когда друг написал вам, прочитал ваше письмо или ответил на него. Приложение проверяет новости примерно раз в 15 минут.", pushOn: "Включить", pushOff: "Выключить", pushEnabled: "Уведомления включены", pushDisabled: "Уведомления выключены", pushBlocked: "Разрешите уведомления для GlowLetter в настройках телефона.", pushChannel: "Друзья и письма", pushGame: "{name} зовёт вас играть", pushMany: "Новых сообщений: {n}", pushOpened: "Ваше письмо прочитали ✨", pushOpenedMany: "Прочитано ваших писем: {n}", pushReply: "Ответ на ваше письмо"
+      pushTitle: "Уведомления на телефон", pushNote: "Сообщим, когда друг написал вам, прочитал ваше письмо или ответил на него. Приложение проверяет новости примерно раз в 15 минут.", pushOn: "Включить", pushOff: "Выключить", pushEnabled: "Уведомления включены", pushDisabled: "Уведомления выключены", pushBlocked: "Разрешите уведомления для GlowLetter в настройках телефона.", pushChannel: "Друзья и письма", pushGame: "{name} зовёт вас играть", pushMany: "Новых сообщений: {n}", pushOpened: "Ваше письмо прочитали ✨", pushOpenedMany: "Прочитано ваших писем: {n}", pushReply: "Ответ на ваше письмо",
+      callChat: "Звонок", callMissed: "{name}: пропущенный звонок", callBack: "Перезвонить", callYou: "Вы звонили", callButton: "Позвонить", tableButton: "Игровой стол",
+      playInvite: "{name} зовёт за игровой стол", playYou: "Вы позвали за игровой стол", tableJoin: "К столу", tableHeading: "Игровой стол",
+      photoNew: "{name}: новое фото", photoYou: "Ваше фото", photoGone: "Фото больше не доступно", stickerNew: "{name}: наклейка", stickerPick: "Наклейки",
+      stickersNone: "Наклейки появляются в «Сундуке Тёпы» в «Нашем мире».", worldOpen: "Наш мир", pushCall: "📞 Пропущенный звонок: {name}", pushPhoto: "📸 {name}: новое фото", pushSticker: "🧸 {name}: наклейка"
     },
     en: {
       home: "Friends", eyebrow: "GLOWLETTER · FRIENDS", title: "Friends", close: "Close", back: "Back",
@@ -81,7 +90,11 @@
       drawTogether: "Draw together", drawEyebrow: "GLOWLETTER · DRAWING TOGETHER", drawTitle: "Our card", drawWaiting: "Waiting for {name}…", drawWith: "{name} is drawing with you", drawInvite: "{name} invites you to draw together", drawYou: "You invited to draw together", drawJoin: "Draw", drawHeading: "Drawing invitation",
       drawUndo: "Undo", drawClear: "Clear", drawClearConfirm: "Clear the card for both of you?", drawEraser: "Eraser", drawSave: "Save the card", drawColor: "Colour", drawSize: "Brush size", drawFile: "glowletter-card", drawSaved: "Card saved", drawOffline: "No connection — only you can see the drawing.",
       voiceRecord: "Record a voice message", voiceRecording: "Recording {time}", voiceCancel: "Cancel", voiceMessage: "Voice message · {time}", voiceGone: "This voice message is no longer available", voiceDenied: "No access to the microphone. Allow it in settings.", voiceUnsupported: "Voice recording isn’t available on this device. Update the app.", voiceShort: "Too short — record at least one second.", voiceNew: "{name}: voice message", voiceNote: "Voice messages are kept for 30 days.", voicePlay: "Play", voiceStop: "Stop",
-      pushTitle: "Phone notifications", pushNote: "We’ll let you know when a friend writes to you, reads your letter or replies to it. The app checks for news about every 15 minutes.", pushOn: "Turn on", pushOff: "Turn off", pushEnabled: "Notifications are on", pushDisabled: "Notifications are off", pushBlocked: "Allow notifications for GlowLetter in your phone settings.", pushChannel: "Friends and letters", pushGame: "{name} invites you to play", pushMany: "New messages: {n}", pushOpened: "Your letter has been read ✨", pushOpenedMany: "Letters read: {n}", pushReply: "A reply to your letter"
+      pushTitle: "Phone notifications", pushNote: "We’ll let you know when a friend writes to you, reads your letter or replies to it. The app checks for news about every 15 minutes.", pushOn: "Turn on", pushOff: "Turn off", pushEnabled: "Notifications are on", pushDisabled: "Notifications are off", pushBlocked: "Allow notifications for GlowLetter in your phone settings.", pushChannel: "Friends and letters", pushGame: "{name} invites you to play", pushMany: "New messages: {n}", pushOpened: "Your letter has been read ✨", pushOpenedMany: "Letters read: {n}", pushReply: "A reply to your letter",
+      callChat: "Call", callMissed: "Missed call from {name}", callBack: "Call back", callYou: "You called", callButton: "Call", tableButton: "Game table",
+      playInvite: "{name} invites you to the game table", playYou: "You invited them to the game table", tableJoin: "Join", tableHeading: "Game table",
+      photoNew: "{name}: new photo", photoYou: "Your photo", photoGone: "This photo is no longer available", stickerNew: "{name}: sticker", stickerPick: "Stickers",
+      stickersNone: "Stickers come from Teddy’s chest in Our world.", worldOpen: "Our world", pushCall: "📞 Missed call: {name}", pushPhoto: "📸 {name}: new photo", pushSticker: "🧸 {name}: sticker"
     },
     fr: {
       home: "Amis", eyebrow: "GLOWLETTER · AMIS", title: "Amis", close: "Fermer", back: "Retour",
@@ -107,12 +120,16 @@
       drawTogether: "Dessiner ensemble", drawEyebrow: "GLOWLETTER · DESSIN À DEUX", drawTitle: "Notre carte", drawWaiting: "On attend {name}…", drawWith: "{name} dessine avec vous", drawInvite: "{name} vous invite à dessiner ensemble", drawYou: "Vous avez invité à dessiner ensemble", drawJoin: "Dessiner", drawHeading: "Invitation à dessiner",
       drawUndo: "Annuler", drawClear: "Effacer", drawClearConfirm: "Effacer la carte pour vous deux ?", drawEraser: "Gomme", drawSave: "Enregistrer la carte", drawColor: "Couleur", drawSize: "Épaisseur", drawFile: "glowletter-carte", drawSaved: "Carte enregistrée", drawOffline: "Pas de connexion : vous seul voyez le dessin.",
       voiceRecord: "Enregistrer un message vocal", voiceRecording: "Enregistrement {time}", voiceCancel: "Annuler", voiceMessage: "Message vocal · {time}", voiceGone: "Ce message vocal n’est plus disponible", voiceDenied: "Pas d’accès au micro. Autorisez-le dans les réglages.", voiceUnsupported: "L’enregistrement vocal n’est pas disponible sur cet appareil. Mettez l’application à jour.", voiceShort: "Trop court : enregistrez au moins une seconde.", voiceNew: "{name} : message vocal", voiceNote: "Les messages vocaux sont conservés 30 jours.", voicePlay: "Écouter", voiceStop: "Stop",
-      pushTitle: "Notifications sur le téléphone", pushNote: "Nous vous prévenons quand un ami vous écrit, lit votre lettre ou y répond. L’application vérifie les nouveautés environ toutes les 15 minutes.", pushOn: "Activer", pushOff: "Désactiver", pushEnabled: "Notifications activées", pushDisabled: "Notifications désactivées", pushBlocked: "Autorisez les notifications de GlowLetter dans les réglages du téléphone.", pushChannel: "Amis et lettres", pushGame: "{name} vous invite à jouer", pushMany: "Nouveaux messages : {n}", pushOpened: "Votre lettre a été lue ✨", pushOpenedMany: "Lettres lues : {n}", pushReply: "Une réponse à votre lettre"
+      pushTitle: "Notifications sur le téléphone", pushNote: "Nous vous prévenons quand un ami vous écrit, lit votre lettre ou y répond. L’application vérifie les nouveautés environ toutes les 15 minutes.", pushOn: "Activer", pushOff: "Désactiver", pushEnabled: "Notifications activées", pushDisabled: "Notifications désactivées", pushBlocked: "Autorisez les notifications de GlowLetter dans les réglages du téléphone.", pushChannel: "Amis et lettres", pushGame: "{name} vous invite à jouer", pushMany: "Nouveaux messages : {n}", pushOpened: "Votre lettre a été lue ✨", pushOpenedMany: "Lettres lues : {n}", pushReply: "Une réponse à votre lettre",
+      callChat: "Appel", callMissed: "Appel manqué : {name}", callBack: "Rappeler", callYou: "Vous avez appelé", callButton: "Appeler", tableButton: "Table de jeu",
+      playInvite: "{name} vous invite à la table de jeu", playYou: "Invitation à la table de jeu envoyée", tableJoin: "Rejoindre", tableHeading: "Table de jeu",
+      photoNew: "{name} : nouvelle photo", photoYou: "Votre photo", photoGone: "Cette photo n’est plus disponible", stickerNew: "{name} : autocollant", stickerPick: "Autocollants",
+      stickersNone: "Les autocollants viennent du coffre de Nounours dans Notre monde.", worldOpen: "Notre monde", pushCall: "📞 Appel manqué : {name}", pushPhoto: "📸 {name} : nouvelle photo", pushSticker: "🧸 {name} : autocollant"
     }
   };
   Object.entries(window.GLOWLETTER_FRIENDS_I18N || {}).forEach(([code, pack]) => { if (!TEXT[code] && pack) TEXT[code] = pack; });
 
-  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null };
+  const state = { root: null, view: "list", me: null, rows: [], chatWith: null, messages: [], picking: false, bearPicking: false, busy: false, error: "", channel: null, channelUser: "", heartbeat: 0, lastFocus: null, lastReaction: 0, recording: null, voices: new Map(), playing: null, stickerPicking: false, photos: new Map() };
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -144,16 +161,28 @@
     const game = INVITE_PATTERN.exec(String(body || ""));
     if (game) return { kind: game[1], room: game[2] };
     const draw = DRAW_PATTERN.exec(String(body || ""));
-    return draw ? { kind: "draw", room: draw[1] } : null;
+    if (draw) return { kind: "draw", room: draw[1] };
+    const play = PLAY_PATTERN.exec(String(body || ""));
+    return play ? { kind: "play", room: play[1] } : null;
   };
+  const parseCall = body => CALL_PATTERN.exec(String(body || ""))?.[1] || "";
+  const parsePhoto = body => PHOTO_PATTERN.exec(String(body || ""))?.[1] || "";
+  const parseSticker = body => STICKER_PATTERN.exec(String(body || ""))?.[1] || "";
+  const world = () => window.GlowLetterWorld || null;
+  const stickerView = id => world()?.stickers?.[id] || "🧸";
+  const stickerLabel = id => world()?.text?.(`sticker_${id}`) || "";
   const parseReaction = body => REACT_PATTERN.exec(String(body || ""))?.[1] || "";
   const parseBear = body => { const match = BEAR_PATTERN.exec(String(body || "")); return match ? { outfit: match[1], gift: match[2] } : null; };
   const parseVoice = body => { const match = VOICE_PATTERN.exec(String(body || "")); return match ? { id: match[1], seconds: Number(match[2]) } : null; };
   const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
-  const inviteText = (invite, name) => invite.kind === "draw" ? tr("drawInvite", { name }) : tr("newInvite", { name, game: gameTitle(invite.kind) });
+  const inviteText = (invite, name) => invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? tr("playInvite", { name }) : tr("newInvite", { name, game: gameTitle(invite.kind) });
   const previewText = (body, name = "") => {
     const invite = parseInvite(body);
-    if (invite) return invite.kind === "draw" ? tr("drawInvite", { name }) : tr("inviteMessage", { game: gameTitle(invite.kind) });
+    if (invite) return invite.kind === "draw" ? tr("drawInvite", { name }) : invite.kind === "play" ? `🎲 ${tr("tableHeading")}` : tr("inviteMessage", { game: gameTitle(invite.kind) });
+    if (parseCall(body)) return `📞 ${tr("callChat")}`;
+    if (parsePhoto(body)) return `📸 ${tr("photoNew", { name })}`;
+    const sticker = parseSticker(body);
+    if (sticker) return `${stickerView(sticker)} ${stickerLabel(sticker)}`;
     const reaction = parseReaction(body);
     if (reaction) return REACTIONS[reaction];
     const bear = parseBear(body);
@@ -289,6 +318,25 @@
         const text = mine ? tr("drawYou") : tr("drawInvite", { name: nameOf(friend) });
         return `<li class="glf-bubble glf-invite${mine ? " is-mine" : ""}"><span>✏️ ${escapeHtml(text)}</span>${mine ? "" : `<button class="glg-primary glf-small" type="button" data-action="join-draw" data-room="${escapeHtml(invite.room)}">${escapeHtml(tr("drawJoin"))} →</button>`}<small>${time}</small></li>`;
       }
+      if (invite?.kind === "play") {
+        const text = mine ? tr("playYou") : tr("playInvite", { name: nameOf(friend) });
+        return `<li class="glf-bubble glf-invite${mine ? " is-mine" : ""}"><span>🎲 ${escapeHtml(text)}</span><button class="glg-primary glf-small" type="button" data-action="join-table" data-room="${escapeHtml(invite.room)}">${escapeHtml(tr("tableJoin"))} →</button><small>${time}</small></li>`;
+      }
+      if (parseCall(message.body)) {
+        const text = mine ? tr("callYou") : tr("callMissed", { name: nameOf(friend) });
+        return `<li class="glf-bubble glf-invite glf-call-note${mine ? " is-mine" : ""}"><span>📞 ${escapeHtml(text)}</span><button class="glg-secondary glf-small" type="button" data-action="call">${escapeHtml(tr("callBack"))}</button><small>${time}</small></li>`;
+      }
+      const photo = parsePhoto(message.body);
+      if (photo) {
+        const loaded = state.photos.get(photo);
+        if (loaded === undefined) loadPhoto(photo);
+        const view = loaded === "gone" ? `<span class="glf-photo-gone">${escapeHtml(tr("photoGone"))}</span>`
+          : loaded ? `<img class="glf-photo${loaded.frame ? ` glu-frame-${escapeHtml(loaded.frame)}` : ""}" src="${loaded.url}" alt="${escapeHtml(mine ? tr("photoYou") : tr("photoNew", { name: nameOf(friend) }))}">`
+          : `<span class="glf-photo is-loading" aria-hidden="true">📸</span>`;
+        return `<li class="glf-bubble glf-photo-bubble${mine ? " is-mine" : ""}">${view}<small>${time}</small></li>`;
+      }
+      const sticker = parseSticker(message.body);
+      if (sticker) return `<li class="glf-sticker${mine ? " is-mine" : ""}"><span aria-hidden="true">${stickerView(sticker)}</span><b>${escapeHtml(stickerLabel(sticker))}</b><small>${time}</small></li>`;
       if (invite) {
         const text = mine ? tr("inviteYou", { game: gameTitle(invite.kind) }) : tr("newInvite", { name: nameOf(friend), game: gameTitle(invite.kind) });
         return `<li class="glf-bubble glf-invite${mine ? " is-mine" : ""}"><span>🎲 ${escapeHtml(text)}</span>${mine ? "" : `<button class="glg-primary glf-small" type="button" data-action="join-game" data-room="${escapeHtml(invite.room)}">${escapeHtml(tr("invitePlay"))} →</button>`}<small>${time}</small></li>`;
@@ -318,11 +366,18 @@
       <div class="glf-react-row" role="group" aria-label="${escapeHtml(tr("reactions"))}">${Object.entries(REACTIONS).map(([kind, emoji]) => `<button type="button" data-action="react" data-kind="${kind}" aria-label="${escapeHtml(emoji)}">${emoji}</button>`).join("")}</div>
       ${renderCompose()}
       <p class="glg-error" role="alert">${escapeHtml(state.error)}</p>
+      <div class="glf-online-tools glf-call-tools">
+        <button class="glg-primary" type="button" data-action="call">📞 ${escapeHtml(tr("callButton"))}</button>
+        <button class="glg-secondary" type="button" data-action="table">🎲 ${escapeHtml(tr("tableButton"))}</button>
+        <button class="glg-secondary" type="button" data-action="world">🌍 ${escapeHtml(tr("worldOpen"))}</button>
+      </div>
       <div class="glf-online-tools">
         <button class="glg-secondary" type="button" data-action="bear-pick" aria-expanded="${state.bearPicking}">🧸 ${escapeHtml(tr("bearSend"))}</button>
+        <button class="glg-secondary" type="button" data-action="sticker-pick" aria-expanded="${Boolean(state.stickerPicking)}">🏷️ ${escapeHtml(tr("stickerPick"))}</button>
         <button class="glg-secondary" type="button" data-action="draw">✏️ ${escapeHtml(tr("drawTogether"))}</button>
       </div>
       ${state.bearPicking ? `<section class="glf-games glf-gifts"><h3>${escapeHtml(tr("bearPick"))}</h3><div class="glf-gift-grid">${Object.entries(GIFTS).map(([gift, emoji]) => `<button class="glg-secondary" type="button" data-action="send-bear" data-gift="${gift}" aria-label="${escapeHtml(tr(`gift_${gift}`))}" title="${escapeHtml(tr(`gift_${gift}`))}">${emoji}</button>`).join("")}</div></section>` : ""}
+      ${state.stickerPicking ? renderStickers() : ""}
       ${renderGamePicker()}
       <div class="glf-chat-tools"><button class="glg-link" type="button" data-action="remove">${escapeHtml(tr("remove"))}</button><button class="glg-link glg-danger" type="button" data-action="block">${escapeHtml(tr("block"))}</button></div>`;
   }
@@ -420,6 +475,12 @@
           return;
         }
         case "draw": return startDraw(state.chatWith);
+        case "call": { const friend = state.chatWith; if (friend) window.GlowLetterCall?.start?.({ user_id: friend.user_id, name: nameOf(friend) }); return; }
+        case "table": return startTable(state.chatWith);
+        case "join-table": { const friend = state.chatWith; if (!friend) return; close(); window.GlowLetterTable?.open?.({ room: target.dataset.room, friend: { user_id: friend.user_id, name: nameOf(friend) } }); return; }
+        case "world": { const friend = state.chatWith; close(); world()?.open?.(friend?.user_id); return; }
+        case "sticker-pick": state.stickerPicking = !state.stickerPicking; state.bearPicking = false; state.picking = false; if (state.stickerPicking) await world()?.loadOwned?.(); render(); return;
+        case "send-sticker": return sendSticker(state.chatWith?.user_id, target.dataset.id);
         case "join-draw": { const friend = state.chatWith; close(); online()?.draw?.(target.dataset.room, { id: friend?.user_id, name: nameOf(friend) }); return; }
         case "push-on": return enablePush();
         case "push-off": notify(tr("pushDisabled"), 2400); return disablePush();
@@ -548,7 +609,8 @@
   // Тексты уведомлений — на языке приложения; телефон подставляет имя и текст сам.
   const pushTexts = () => JSON.stringify({
     channel: tr("pushChannel"), noName: tr("noName"), text: tr("newMessage"), voice: tr("voiceNew"), bear: tr("bearVisit"),
-    draw: tr("drawInvite"), game: tr("pushGame"), many: tr("pushMany"), opened: tr("pushOpened"), openedMany: tr("pushOpenedMany"), reply: tr("pushReply")
+    draw: tr("drawInvite"), game: tr("pushGame"), many: tr("pushMany"), opened: tr("pushOpened"), openedMany: tr("pushOpenedMany"), reply: tr("pushReply"),
+    call: tr("pushCall"), photo: tr("pushPhoto"), sticker: tr("pushSticker")
   });
 
   function renderPush() {
@@ -577,6 +639,10 @@
     try { token = String(bridge.disable() || ""); } catch {}
     try { localStorage.removeItem(PUSH_USER_KEY); } catch {}
     if (/^[0-9a-f]{64}$/u.test(token)) await rpc("glowletter_push_unregister", { p_token: token }).catch(() => {});
+    // Виджет с фото друга работает на том же ключе устройства — выдаём ему новый.
+    if (window.NurWidget?.installed?.() && userId()) {
+      try { const fresh = await rpc("glowletter_push_register"); if (/^[0-9a-f]{64}$/u.test(String(fresh))) window.NurWidget.enable(String(fresh)); } catch {}
+    }
     render();
   }
 
@@ -630,6 +696,58 @@
         render();
       }
     });
+  }
+
+  async function startTable(friend) {
+    if (!friend) return;
+    if (!window.GlowLetterApp?.getState?.().premium) { window.GlowLetterApp?.openPaywall?.(); return; }
+    const call = window.GlowLetterCall;
+    const room = call?.active?.() ? call.room() : crypto.randomUUID();
+    if (!call?.active?.()) {
+      try { await sendSpecial(friend.user_id, `[[play:${room}]]`); }
+      catch (error) { state.error = String(error?.message) === "rate_limited" ? tr("rateLimited") : tr("failed"); render(); return; }
+    }
+    close();
+    window.GlowLetterTable?.open?.({ room, friend: { user_id: friend.user_id, name: nameOf(friend) } });
+  }
+
+  function renderStickers() {
+    const owned = (world()?.owned?.() || []).filter(item => item.startsWith("sticker:")).map(item => item.slice(8)).sort();
+    return `<section class="glf-games glf-gifts"><h3>${escapeHtml(tr("stickerPick"))}</h3>${owned.length
+      ? `<div class="glf-gift-grid glf-sticker-grid">${owned.map(id => `<button class="glg-secondary" type="button" data-action="send-sticker" data-id="${escapeHtml(id)}" title="${escapeHtml(stickerLabel(id))}" aria-label="${escapeHtml(stickerLabel(id))}">${stickerView(id)}</button>`).join("")}</div>`
+      : `<p class="glg-muted">${escapeHtml(tr("stickersNone"))}</p>`}</section>`;
+  }
+
+  async function sendSticker(friendId, id) {
+    if (!friendId || !STICKER_PATTERN.test(`[[sticker:${id}]]`)) return;
+    state.stickerPicking = false;
+    try { await sendSpecial(friendId, `[[sticker:${id}]]`); }
+    catch (error) { state.error = String(error?.message) === "rate_limited" ? tr("rateLimited") : tr("failed"); render(); }
+  }
+
+  // Фото из «Нашего мира»: приходит в переписку и в виджет на телефоне друга.
+  async function loadPhoto(id) {
+    if (state.photos.has(id)) return;
+    state.photos.set(id, null);
+    try {
+      const rows = await rpc("glowletter_photo_get", { p_id: id });
+      const row = Array.isArray(rows) ? rows[0] : rows;
+      if (!row?.image) state.photos.set(id, "gone");
+      else {
+        const bytes = Uint8Array.from(atob(row.image), character => character.charCodeAt(0));
+        state.photos.set(id, { url: URL.createObjectURL(new Blob([bytes], { type: row.mime_type })), frame: row.frame || "", base64: row.image });
+      }
+    } catch {
+      state.photos.delete(id);
+      return;
+    }
+    if (state.root && !state.root.hidden && state.view === "chat") render();
+  }
+
+  async function sendPhoto(friendId, mime, base64, frame) {
+    const id = await rpc("glowletter_photo_send", { p_to: friendId, p_mime: mime, p_image: base64, p_frame: frame || null });
+    if (state.chatWith?.user_id === friendId && state.view === "chat") await openChat(friendId);
+    return id;
   }
 
   async function startDraw(friend) {
@@ -792,6 +910,10 @@
       try { navigator.vibrate?.(40); } catch {}
       return;
     }
+    const callRoom = parseCall(message.body);
+    if (callRoom) window.GlowLetterCall?.incoming?.({ user_id: message.sender, name: nameOf(row) }, callRoom, message.created_at);
+    const photo = parsePhoto(message.body);
+    if (photo) toWidget(photo, nameOf(row));
     if (chatOpen) {
       if (!state.messages.some(item => item.id === message.id)) state.messages.push(message);
       render();
@@ -809,24 +931,37 @@
     if (invite) showInvitePopup(sender, message.sender, invite);
     else if (bear) showBear(sender, message);
     else if (parseVoice(message.body)) notify(tr("voiceNew", { name: nameOf(sender) }), 5000);
+    else if (callRoom) return;
+    else if (photo) notify(`📸 ${tr("photoNew", { name: nameOf(sender) })}`, 5000);
+    else if (parseSticker(message.body)) notify(`${nameOf(sender)}: ${previewText(message.body)}`, 4000);
     else notify(tr("newMessage", { name: nameOf(sender), text: previewText(message.body).slice(0, 80) }), 5000);
+  }
+
+  // Фото пришло, пока приложение открыто, — сразу в виджет на главном экране.
+  async function toWidget(id, name) {
+    const bridge = window.NurWidget;
+    if (!bridge?.installed?.()) return;
+    await loadPhoto(id);
+    const loaded = state.photos.get(id);
+    if (loaded?.base64) { try { bridge.show(id, name, loaded.base64); } catch {} }
   }
 
   // Большое окно «Имя зовёт вас в игру» поверх любого экрана — не нужно заходить в «Друзья».
   function showInvitePopup(sender, senderId, invite) {
     document.querySelector(".glf-invite-pop")?.remove();
     const drawing = invite.kind === "draw";
+    const table = invite.kind === "play";
     const pop = document.createElement("div");
     pop.className = "glf-invite-pop";
     pop.innerHTML = `
       <div class="glf-invite-pop-backdrop" data-pop="later"></div>
       <section class="glf-invite-pop-card" role="alertdialog" aria-modal="true" aria-labelledby="glfInvitePopTitle" aria-describedby="glfInvitePopText">
         <div class="glf-invite-pop-icon" aria-hidden="true">${drawing ? "✏️" : "🎲"}</div>
-        <p class="glf-invite-pop-eyebrow" id="glfInvitePopTitle">${escapeHtml(tr(drawing ? "drawHeading" : "inviteHeading"))}</p>
+        <p class="glf-invite-pop-eyebrow" id="glfInvitePopTitle">${escapeHtml(tr(drawing ? "drawHeading" : table ? "tableHeading" : "inviteHeading"))}</p>
         <h2 id="glfInvitePopText">${escapeHtml(inviteText(invite, nameOf(sender)))}</h2>
         <div class="glf-invite-pop-actions">
           <button class="glg-secondary" type="button" data-pop="later">${escapeHtml(tr("inviteLater"))}</button>
-          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(tr(drawing ? "drawJoin" : "invitePlay"))} →</button>
+          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(tr(drawing ? "drawJoin" : table ? "tableJoin" : "invitePlay"))} →</button>
         </div>
       </section>`;
     const done = () => { pop.classList.remove("is-open"); setTimeout(() => pop.remove(), 220); };
@@ -838,6 +973,7 @@
       if (senderId) rpc("glowletter_messages_mark_read", { p_from: senderId }).then(() => refresh(false)).catch(() => {});
       if (state.root && !state.root.hidden) close();
       if (drawing) online()?.draw?.(invite.room, { id: senderId, name: nameOf(sender) });
+      else if (table) window.GlowLetterTable?.open?.({ room: invite.room, friend: { user_id: senderId, name: nameOf(sender) } });
       else games()?.join?.(invite.room);
     });
     pop.addEventListener("keydown", event => { if (event.key === "Escape") done(); });
@@ -902,6 +1038,13 @@
       const fresh = Date.now() - 20 * 60 * 1000;
       const { data } = await db.from("glowletter_messages").select("id, sender, body, created_at")
         .eq("recipient", me).is("read_at", null).gte("created_at", since).order("created_at", { ascending: false }).limit(30);
+      // Открыли приложение по уведомлению, пока друг ещё звонит, — сразу входящий звонок.
+      const ringing = (data || []).find(item => parseCall(item.body) && Date.now() - new Date(item.created_at).getTime() < 45000);
+      if (ringing) {
+        const caller = state.rows.find(row => row.user_id === ringing.sender);
+        window.GlowLetterCall?.incoming?.({ user_id: ringing.sender, name: nameOf(caller) }, parseCall(ringing.body), ringing.created_at);
+        return;
+      }
       const message = (data || []).find(item => (parseInvite(item.body) && new Date(item.created_at).getTime() >= fresh) || parseBear(item.body));
       if (!message) return;
       const seenKey = `glowletter-invite-seen:${message.id}`;
@@ -952,6 +1095,9 @@
     text: (key, values) => tr(key, values),
     friends: () => state.rows.filter(row => row.status === "friend").map(row => ({ user_id: row.user_id, name: nameOf(row), online: isOnline(row) })),
     inviteToGame,
+    sendCallInvite: (friendId, room) => sendSpecial(friendId, `[[call:${room}]]`),
+    sendPlayInvite: (friendId, room) => sendSpecial(friendId, `[[play:${room}]]`),
+    sendPhoto,
     // Окно приглашения (для проверки и будущих ссылок-приглашений).
     showInvite: (name, kind, roomId) => { if (INVITE_PATTERN.test(`[[game:${kind}:${roomId}]]`)) showInvitePopup({ display_name: name }, "", { kind, room: roomId }); }
   });

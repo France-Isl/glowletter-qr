@@ -1,0 +1,146 @@
+/* «Игровой стол»: «Морской бой», «Четыре в ряд», «Шашки» (table-board.js).
+   Панель светлая, бумажная; доски темнее — море, дерево, вечерняя рамка. */
+.gltb {
+  --gltb-sea: color-mix(in srgb, var(--indigo) 72%, var(--emerald));
+  --gltb-sea-deep: color-mix(in srgb, var(--indigo) 62%, var(--night-deep));
+  --gltb-wood: color-mix(in srgb, var(--saffron) 68%, var(--gold-ink));
+  --gltb-wood-light: color-mix(in srgb, var(--cream) 78%, var(--gold));
+  --gltb-wood-dark: color-mix(in srgb, var(--saffron) 52%, var(--gold-ink));
+  --gltb-frame: color-mix(in srgb, var(--gold-ink) 82%, var(--night));
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 2px 0 14px;
+  color: var(--ui-ink);
+}
+.gltb *, .gltb *::before, .gltb *::after { box-sizing: border-box; }
+.gltb h3 { margin: 0; }
+
+.gltb-turn { margin: 0; padding: 8px 16px; border: 1px solid var(--ui-border); border-radius: 999px; background: var(--ui-surface); font-size: 13px; font-weight: 800; text-align: center; }
+.gltb-turn.is-mine { border-color: color-mix(in srgb, var(--emerald) 45%, transparent); color: var(--emerald); background: color-mix(in srgb, var(--emerald) 9%, var(--ui-surface)); }
+.gltb-legend { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ui-muted); font-size: 11px; font-weight: 700; }
+.gltb-hint { min-height: 1.3em; margin: 0; color: var(--ui-accent); font-size: 11px; font-weight: 800; text-align: center; }
+.gltb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.gltb-actions[hidden] { display: none; }
+
+/* Клетки — кнопки: фокус хорошо виден на любой доске. */
+.gltb [data-pos] { position: relative; margin: 0; padding: 0; border: 0; font: inherit; -webkit-tap-highlight-color: transparent; }
+.gltb [data-pos][aria-disabled="true"] { cursor: default; }
+.gltb [data-pos]:focus-visible { z-index: 1; outline: 3px solid var(--gold-bright); outline-offset: -3px; box-shadow: inset 0 0 0 5px color-mix(in srgb, var(--night-deep) 55%, transparent); }
+
+/* ——— Морской бой ——— */
+.gltb-sea-boards { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 16px; width: 100%; }
+.gltb-sea-side { display: grid; justify-items: center; gap: 8px; width: min(100%, 520px); }
+.gltb-sea-side[hidden] { display: none; }
+.gltb-sea-mine:not(.is-big) { width: min(64%, 280px); }
+.gltb-sea-title { color: var(--ui-muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.gltb-sea-count { margin: 0; color: var(--ui-muted); font-size: 11px; font-weight: 700; text-align: center; }
+.gltb-sea-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 5px;
+  border-radius: 16px;
+  background:
+    repeating-linear-gradient(170deg, color-mix(in srgb, var(--cream) 6%, transparent) 0 2px, transparent 2px 14px),
+    linear-gradient(160deg, var(--gltb-sea), var(--gltb-sea-deep));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--night-deep) 18%, transparent);
+}
+.gltb-sea-cell {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  color: var(--cream);
+  background: color-mix(in srgb, var(--cream) 9%, transparent);
+  font-size: clamp(15px, 4.6vw, 24px);
+  line-height: 1;
+  transition: background .18s ease, transform .18s ease;
+}
+.gltb-sea-mine:not(.is-big) .gltb-sea-cell { font-size: clamp(11px, 2.8vw, 14px); border-radius: 7px; }
+.gltb-sea-enemy .gltb-sea-cell[aria-disabled="false"] { cursor: crosshair; }
+.gltb-sea-enemy .gltb-sea-cell[aria-disabled="false"]:hover { background: color-mix(in srgb, var(--gold-bright) 26%, transparent); }
+
+/* Лодки с мишками: деревянный корпус, закруглённые нос и корма. */
+.gltb-sea-cell.is-boat { background: linear-gradient(180deg, color-mix(in srgb, var(--gltb-wood) 82%, var(--cream)), var(--gltb-wood)); }
+.gltb-sea-cell.is-solo { border-radius: 45%; }
+.gltb-sea-cell.is-h-start { border-radius: 45% 7px 7px 45%; }
+.gltb-sea-cell.is-h-end { border-radius: 7px 45% 45% 7px; }
+.gltb-sea-cell.is-v-start { border-radius: 45% 45% 7px 7px; }
+.gltb-sea-cell.is-v-end { border-radius: 7px 7px 45% 45%; }
+.gltb-sea-cell.is-boat.is-hit { box-shadow: inset 0 0 0 2px var(--madder); background: linear-gradient(180deg, color-mix(in srgb, var(--madder) 55%, var(--gltb-wood)), color-mix(in srgb, var(--madder) 70%, var(--gold-ink))); }
+.gltb-sea-cell.is-boat.is-sunk { box-shadow: none; background: color-mix(in srgb, var(--emerald) 70%, var(--gltb-sea-deep)); }
+.gltb-sea-cell.is-miss::after, .gltb-sea-cell.is-near::after { content: ""; width: 22%; aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--cream) 62%, transparent); }
+.gltb-sea-cell.is-near::after { background: color-mix(in srgb, var(--cream) 30%, transparent); }
+.gltb-sea-enemy .gltb-sea-cell.is-hit { color: var(--gold-bright); background: color-mix(in srgb, var(--madder) 78%, var(--night)); font-weight: 800; }
+.gltb-sea-enemy .gltb-sea-cell.is-sunk { background: color-mix(in srgb, var(--emerald) 72%, var(--night)); }
+.gltb-sea-enemy .gltb-sea-cell.is-wait { background: color-mix(in srgb, var(--gold-bright) 40%, transparent); animation: gltb-wait .9s ease-in-out infinite alternate; }
+.gltb-sea-enemy .gltb-sea-cell.is-reveal { background: color-mix(in srgb, var(--gltb-wood) 55%, transparent); opacity: .8; }
+@keyframes gltb-wait { to { background: color-mix(in srgb, var(--gold-bright) 12%, transparent); } }
+
+/* ——— Четыре в ряд ——— */
+.gltb-disc { display: inline-block; width: 18px; aspect-ratio: 1; border-radius: 50%; }
+.gltb-disc-gold { background: radial-gradient(circle at 34% 30%, var(--gold-bright), var(--gold) 58%, var(--ui-gold)); box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--gold-ink) 30%, transparent); }
+.gltb-disc-wine { background: radial-gradient(circle at 34% 30%, color-mix(in srgb, var(--madder) 55%, var(--cream)), var(--madder) 58%, var(--ui-accent-deep)); box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--night-deep) 30%, transparent); }
+.gltb-four-board {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  width: min(100%, 520px);
+  padding: 7px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--indigo) 86%, var(--cream)), color-mix(in srgb, var(--indigo) 70%, var(--night-deep)));
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--night-deep) 20%, transparent);
+}
+.gltb-four-col { display: grid; grid-template-rows: repeat(6, auto); gap: 4px; min-width: 0; padding: 3px; border-radius: 14px; background: transparent; transition: background .18s ease; }
+.gltb-four-col[aria-disabled="false"] { cursor: pointer; }
+.gltb-four-col[aria-disabled="false"]:hover { background: color-mix(in srgb, var(--cream) 14%, transparent); }
+.gltb-four-cell { position: relative; display: block; aspect-ratio: 1; border-radius: 50%; background: var(--ui-panel); box-shadow: inset 0 3px 5px color-mix(in srgb, var(--night-deep) 32%, transparent); }
+.gltb-four-cell .gltb-disc { position: absolute; inset: 7%; width: auto; }
+.gltb-four-cell .gltb-disc.is-win { box-shadow: 0 0 0 3px var(--cream), 0 0 0 6px var(--emerald); animation: gltb-glow 1.1s ease-in-out infinite alternate; }
+.gltb-four-cell .gltb-disc.is-drop { animation: gltb-drop .46s cubic-bezier(.32, 0, .67, 0) both, gltb-bounce .22s ease-out .46s; }
+@keyframes gltb-drop { from { transform: translateY(calc(var(--gltb-fall, 1) * -118%)); } to { transform: translateY(0); } }
+@keyframes gltb-bounce { 50% { transform: translateY(-9%); } }
+@keyframes gltb-glow { to { box-shadow: 0 0 0 3px var(--cream), 0 0 0 7px color-mix(in srgb, var(--emerald) 55%, transparent); } }
+
+/* ——— Шашки ——— */
+.gltb-ck-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: min(100%, 520px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 6px solid var(--gltb-frame);
+  border-radius: 14px;
+  background: var(--gltb-wood-light);
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--night-deep) 22%, transparent);
+}
+.gltb-ck-cell { display: grid; place-items: center; min-width: 0; aspect-ratio: 1; background: var(--gltb-wood-light); }
+.gltb-ck-cell.is-dark { background: var(--gltb-wood-dark); }
+.gltb-ck-cell.is-last { background: color-mix(in srgb, var(--gltb-wood-dark) 72%, var(--gold-bright)); }
+.gltb-ck-cell.is-movable { cursor: pointer; box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--gold-bright) 75%, transparent); }
+.gltb-ck-cell.is-selected { box-shadow: inset 0 0 0 4px var(--gold-bright); background: color-mix(in srgb, var(--gltb-wood-dark) 70%, var(--emerald)); }
+.gltb-ck-cell.is-target { cursor: pointer; }
+.gltb-ck-cell.is-target::after { content: ""; position: absolute; width: 30%; aspect-ratio: 1; border: 2px solid var(--cream); border-radius: 50%; background: var(--emerald); }
+.gltb-piece { display: grid; place-items: center; width: 78%; aspect-ratio: 1; border-radius: 50%; font-size: clamp(13px, 4vw, 24px); line-height: 1; transition: opacity .2s ease; }
+.gltb-piece-w { color: var(--ui-gold); background: radial-gradient(circle at 36% 30%, var(--paper), color-mix(in srgb, var(--cream) 80%, var(--gold)) 70%); box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent), 0 3px 0 color-mix(in srgb, var(--gold-ink) 55%, transparent); }
+.gltb-piece-b { color: var(--gold-bright); background: radial-gradient(circle at 36% 30%, color-mix(in srgb, var(--indigo) 40%, var(--night)), var(--night-deep) 72%); box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--gold) 30%, transparent), 0 3px 0 color-mix(in srgb, var(--night-deep) 60%, transparent); }
+.gltb-piece.is-mini { width: 18px; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 45%, transparent); }
+.gltb-ck-cell.is-taken .gltb-piece { opacity: .38; }
+.gltb-ck-draw { display: grid; justify-items: center; gap: 10px; min-height: 50px; }
+.gltb-ck-ask { margin: 0; color: var(--ui-ink); font-size: 13px; font-weight: 700; text-align: center; }
+.gltb-ck-offer:disabled { opacity: .55; cursor: default; }
+
+/* Узкие телефоны: доска чуть заходит на поля панели, чтобы клетки были ≥ 36px. */
+@media (max-width: 380px) {
+  .gltb-four-board, .gltb-ck-board, .gltb-sea-enemy, .gltb-sea-mine.is-big { width: calc(100% + 20px); max-width: none; margin-inline: -10px; }
+  .gltb-sea-grid { padding: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gltb-four-cell .gltb-disc.is-drop, .gltb-four-cell .gltb-disc.is-win, .gltb-sea-enemy .gltb-sea-cell.is-wait { animation: none; }
+  .gltb-sea-cell, .gltb-four-col, .gltb-piece { transition: none; }
+}

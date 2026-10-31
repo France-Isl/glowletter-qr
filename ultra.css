@@ -1,0 +1,181 @@
+/* 2.4.26 «Ультра-обновление»: звонок (glk-), «Игровой стол» (glt-), «Наш мир» (glu-),
+   фото и наклейки в переписке. Цвета — токены приложения; панели — светлая «бумага» glg-panel. */
+
+/* ——— Звонок ——— */
+.glk { position: fixed; z-index: 150; color: var(--cream); font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.glk[hidden] { display: none !important; }
+.glk button { font: inherit; color: inherit; cursor: pointer; }
+.glk button:focus-visible { outline: 3px solid color-mix(in srgb, var(--gold-bright) 70%, transparent); outline-offset: 2px; }
+.glk.is-full { inset: 0; display: grid; place-items: center; padding: max(20px, env(safe-area-inset-top)) 18px max(20px, env(safe-area-inset-bottom)); background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 46%), linear-gradient(170deg, var(--night), var(--night-deep)); animation: glk-in .32s cubic-bezier(.16, 1, .3, 1); }
+.glk-card { position: relative; display: grid; justify-items: center; gap: 10px; width: min(420px, 100%); text-align: center; }
+.glk-min { position: absolute; top: -6px; right: 0; width: 44px; height: 44px; border: 1px solid color-mix(in srgb, var(--cream) 22%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--cream) 8%, transparent); color: var(--cream); display: grid; place-items: center; padding: 0; }
+.glk-avatar { position: relative; width: 152px; height: 152px; margin-top: 18px; border: 2px solid color-mix(in srgb, var(--gold-bright) 70%, transparent); border-radius: 50%; overflow: visible; box-shadow: 0 0 0 10px color-mix(in srgb, var(--gold-bright) 10%, transparent); }
+.glk-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.glk-avatar.is-ringing { animation: glk-ring 1.6s ease-in-out infinite; }
+.glk-bear { position: absolute; right: -6px; bottom: -6px; font-size: 40px; opacity: 0; transform: scale(.4); }
+.glk-bear.is-on { animation: glk-bear 1.4s cubic-bezier(.16, 1, .3, 1); }
+.glk-name { margin: 8px 0 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 7.4vw, 40px); font-weight: 600; line-height: 1.05; overflow-wrap: anywhere; }
+.glk-status { margin: 0; color: color-mix(in srgb, var(--cream) 78%, transparent); font-size: 16px; font-weight: 700; }
+.glk-muted-note { margin: 0; padding: 6px 12px; border-radius: 999px; color: var(--gold-bright); background: color-mix(in srgb, var(--gold-bright) 12%, transparent); font-size: 13px; font-weight: 800; }
+.glk-tools { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; width: 100%; margin-top: 18px; }
+.glk-tool { display: grid; justify-items: center; gap: 6px; min-height: 78px; padding: 10px 4px; border: 1px solid color-mix(in srgb, var(--cream) 18%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--cream) 7%, transparent); font-size: 11px; font-weight: 800; line-height: 1.2; transition: transform .15s ease, background-color .2s ease; }
+.glk-tool:not(:disabled):active { transform: scale(.95); }
+.glk-tool:disabled { opacity: .45; cursor: default; }
+.glk-tool.is-on { border-color: var(--gold-bright); background: color-mix(in srgb, var(--gold-bright) 18%, transparent); }
+.glk-play { border-color: color-mix(in srgb, var(--gold-bright) 60%, transparent); }
+.glk-emoji { font-size: 24px; line-height: 1; }
+.glk-big { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 60px; padding: 0 26px; border: 0; border-radius: 28px; font-size: 16px; font-weight: 900; }
+.glk-end { margin-top: 14px; background: var(--madder); box-shadow: 0 14px 30px color-mix(in srgb, var(--madder) 35%, transparent); }
+.glk-end .glk-phone { transform: rotate(135deg); }
+.glk-answer { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; margin-top: 26px; }
+.glk-decline { background: var(--madder); }
+.glk-decline .glk-phone { transform: rotate(135deg); }
+.glk-accept { background: var(--emerald); animation: glk-pulse 1.4s ease-in-out infinite; }
+.glk.is-mini { top: max(10px, env(safe-area-inset-top)); left: 50%; display: flex; align-items: center; gap: 6px; padding: 6px; border: 1px solid color-mix(in srgb, var(--gold-bright) 45%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--night-deep) 92%, transparent); box-shadow: 0 14px 34px color-mix(in srgb, var(--night-deep) 40%, transparent); transform: translateX(-50%); }
+.glk-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; max-width: 58vw; padding: 0 12px; border: 0; background: none; font-size: 13px; font-weight: 800; }
+.glk-pill b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.glk-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 4px color-mix(in srgb, var(--emerald) 25%, transparent); }
+.glk-round { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: color-mix(in srgb, var(--cream) 12%, transparent); font-size: 17px; }
+.glk-round.is-on { background: color-mix(in srgb, var(--gold-bright) 28%, transparent); }
+.glk-round.glk-end { margin: 0; background: var(--madder); box-shadow: none; }
+.glk-toast { position: fixed; z-index: 160; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); max-width: min(420px, 90vw); margin: 0; padding: 12px 18px; border-radius: 16px; color: var(--cream); background: var(--night-deep); font-size: 13px; font-weight: 700; transform: translateX(-50%); }
+body.glk-active .glt-layer .glg-panel { padding-top: 56px; }
+@keyframes glk-in { from { opacity: 0; transform: scale(.98); } }
+@keyframes glk-ring { 0%, 100% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--gold-bright) 10%, transparent); } 50% { box-shadow: 0 0 0 22px color-mix(in srgb, var(--gold-bright) 4%, transparent); } }
+@keyframes glk-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes glk-bear { 0% { opacity: 0; transform: scale(.4) rotate(-20deg); } 30% { opacity: 1; transform: scale(1.1) rotate(8deg); } 80% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.9) translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) {
+  .glk.is-full, .glk-avatar.is-ringing, .glk-accept, .glk-bear.is-on { animation: none; }
+  .glk-bear.is-on { opacity: 1; transform: none; }
+}
+
+/* ——— «Игровой стол» ——— */
+.glt-layer { z-index: 114; }
+.glt-head { align-items: center; gap: 12px; }
+.glg-layer .glt-icon { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 1px solid var(--ui-border); border-radius: 50%; background: var(--ui-surface); font-size: 24px; line-height: 1; }
+.glt-head-text { flex: 1; min-width: 0; }
+.glt-head-text h2 { overflow-wrap: anywhere; }
+.glt-status { margin: 6px 0 0; color: var(--ui-muted); font-size: 13px; font-weight: 700; }
+.glt-status.is-here { color: var(--emerald); }
+.glt-status.is-here::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--emerald); vertical-align: 1px; }
+.glt-pick-title { margin: 6px 0 14px; }
+.glt-games { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.glg-layer .glt-game { display: flex; align-items: center; gap: 12px; min-height: 76px; padding: 12px 14px; border: 1px solid var(--ui-border); border-radius: 18px; color: var(--ui-ink); background: var(--ui-surface); text-align: left; transition: transform .15s ease, border-color .2s ease; }
+.glt-game:active { transform: scale(.97); }
+.glt-game:hover { border-color: var(--ui-accent); }
+.glt-game-icon { flex: none; font-size: 28px; line-height: 1; }
+.glt-game-text { display: grid; gap: 3px; min-width: 0; }
+.glt-game-text b { font-size: 16px; line-height: 1.2; }
+.glt-game-text small { color: var(--ui-muted); font-size: 11px; line-height: 1.3; }
+.glt-note { text-align: center; }
+.glt-stage { min-height: 200px; }
+.glt-after { display: grid; justify-items: center; gap: 8px; margin-top: 18px; padding: 18px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); text-align: center; }
+.glt-result { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 700; line-height: 1.1; }
+.glt-result-win { color: var(--emerald); }
+.glt-result-loss { color: var(--ui-accent); }
+.glt-points { margin: 0; color: var(--ui-gold, var(--gold)); font-weight: 900; }
+.glt-points:empty { display: none; }
+.glt-after-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.glt-toast { position: absolute; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); max-width: 90%; margin: 0; padding: 10px 16px; border-radius: 14px; color: var(--cream); background: color-mix(in srgb, var(--night-deep) 92%, transparent); font-size: 13px; font-weight: 700; transform: translateX(-50%); }
+
+/* ——— «Наш мир» ——— */
+.glu-body { display: grid; grid-auto-rows: max-content; gap: 14px; align-content: start; }
+.glu-friends { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.glg-layer .glu-chip { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 40px; padding: 0 14px; border: 1px solid var(--ui-border); border-radius: 999px; color: var(--ui-ink); background: var(--ui-surface); font-size: 13px; font-weight: 800; }
+.glg-layer .glu-chip.is-on { border-color: var(--ui-accent); color: var(--cream); background: var(--ui-accent); }
+.glu-online { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); }
+.glu-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.glu-card { padding: 16px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); }
+.glu-card h3 { margin: 0 0 10px; }
+.glu-card p { margin: 4px 0; }
+.glu-small { font-size: 11px; }
+.glu-big { font-size: 16px; font-weight: 900; }
+.glu-notice { margin: 0; padding: 10px 14px; border-radius: 14px; color: var(--ui-ink); background: color-mix(in srgb, var(--ui-gold, var(--gold)) 22%, transparent); font-size: 13px; font-weight: 800; text-align: center; }
+.glu-premium { display: grid; gap: 10px; text-align: center; }
+.glu-streak { display: flex; gap: 16px; align-items: center; }
+.glu-flame { position: relative; display: grid; place-items: center; flex: none; width: 84px; height: 84px; border-radius: 28px; background: color-mix(in srgb, var(--ui-ink) 8%, transparent); font-size: 40px; filter: grayscale(1); opacity: .6; }
+.glu-flame.is-lit { background: color-mix(in srgb, var(--amber, var(--saffron)) 22%, transparent); filter: none; opacity: 1; }
+.glu-flame b { position: absolute; right: 6px; bottom: 4px; color: var(--ui-ink); font-size: 16px; font-weight: 900; }
+.glu-streak-text { min-width: 0; }
+.glu-today { display: grid; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; color: var(--ui-muted); font-size: 13px; font-weight: 700; }
+.glu-today .is-done { color: var(--emerald); }
+.glu-league-name { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 3.5vw, 26px); font-weight: 700; }
+.glu-league-diamond { border-color: color-mix(in srgb, var(--indigo) 50%, transparent); background: linear-gradient(135deg, color-mix(in srgb, var(--indigo) 12%, var(--ui-surface)), var(--ui-surface)); }
+.glu-league-gold { border-color: color-mix(in srgb, var(--gold) 60%, transparent); }
+.glu-bar { height: 10px; margin: 8px 0; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--ui-ink) 10%, transparent); }
+.glu-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--ui-accent), var(--gold)); }
+.glu-title { margin-top: 10px !important; font-size: 13px; }
+.glu-pet-row { display: flex; gap: 14px; align-items: center; }
+.glu-pet-img { flex: none; width: 104px; height: 104px; border-radius: 28px; object-fit: cover; box-shadow: 0 10px 24px color-mix(in srgb, var(--night-deep) 16%, transparent); }
+.glu-mood-petWait { filter: saturate(.6); }
+.glu-pet-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.glu-pet-button { display: grid; justify-items: center; gap: 4px; min-height: 76px; padding: 8px 4px; border: 1px solid var(--ui-border); border-radius: 18px; color: var(--ui-ink); background: var(--ui-panel); transition: transform .15s ease; }
+.glu-pet-button span { font-size: 26px; line-height: 1; }
+.glu-pet-button b { font-size: 13px; }
+.glu-pet-button small { color: var(--ui-muted); font-size: 11px; }
+.glu-pet-button:not(:disabled):active { transform: scale(.95); }
+.glu-pet-button:disabled { opacity: .55; cursor: default; }
+.glg-layer .glu-chest-button { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 72px; border: 0; border-radius: 20px; color: var(--cream); background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-deep)); font-size: 16px; font-weight: 900; box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-accent-deep) 28%, transparent); }
+.glu-chest-button span { font-size: 32px; }
+.glu-reward { text-align: center; }
+.glu-reward-item { display: inline-flex; align-items: center; gap: 12px; margin: 6px 0; padding: 12px 18px; border-radius: 18px; background: var(--ui-panel); font-size: 16px; }
+.glu-sticker { font-size: 36px; line-height: 1; }
+.glu-collection summary { margin-top: 8px; color: var(--ui-accent); font-size: 13px; font-weight: 800; cursor: pointer; }
+.glu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; margin-top: 10px; }
+.glu-cell { display: grid; justify-items: center; gap: 4px; padding: 8px 4px; border-radius: 14px; background: var(--ui-panel); text-align: center; }
+.glu-cell > span:first-child { font-size: 26px; line-height: 1.2; }
+.glu-cell small { color: var(--ui-muted); font-size: 11px; line-height: 1.2; }
+.glu-cell.is-locked { opacity: .45; }
+.glu-frame-swatch { display: inline-block; width: 26px; height: 26px; border-radius: 7px; background: var(--ui-panel); }
+.glu-frames { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.glu-photo-preview { margin: 12px 0; padding: 0; border-radius: 18px; overflow: hidden; }
+.glu-photo-preview img { display: block; width: 100%; max-height: 360px; object-fit: cover; }
+/* Рамки: на превью, в переписке и в коллекции. */
+.glu-frame-f01 { border: 6px solid var(--gold); }
+.glu-frame-f02 { border: 6px dotted var(--madder); }
+.glu-frame-f03 { border: 6px double var(--gold-bright); box-shadow: 0 0 0 3px var(--night); }
+.glu-frame-f04 { border: 6px dashed var(--rose, var(--madder)); }
+.glu-frame-f05 { border: 6px dotted color-mix(in srgb, var(--indigo) 50%, var(--cream)); }
+.glu-frame-f06 { border: 6px solid var(--amber, var(--saffron)); }
+.glu-frame-f07 { border: 6px solid color-mix(in srgb, var(--indigo) 60%, var(--emerald)); }
+.glu-frame-f08 { border: 6px solid var(--night); box-shadow: inset 0 0 0 2px var(--gold-bright); }
+.glu-score, .glu-badge-list, .glu-rank { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.glu-score li { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 14px; background: var(--ui-panel); font-size: 13px; }
+.glu-score-num { font-size: 16px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.glu-badge-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.glu-badge-list li { display: grid; gap: 2px; padding: 10px; border-radius: 16px; background: var(--ui-panel); }
+.glu-badge-list li span { font-size: 26px; }
+.glu-badge-list li b { font-size: 13px; }
+.glu-badge-list li small { color: var(--ui-muted); font-size: 11px; }
+.glu-badge-list .is-locked { opacity: .5; }
+.glu-tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+.glu-switch { display: flex; gap: 10px; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; }
+.glu-switch input { width: 22px; height: 22px; accent-color: var(--ui-accent); }
+.glu-rank li { display: grid; grid-template-columns: 38px 1fr auto auto; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 14px; background: var(--ui-panel); font-size: 13px; }
+.glu-rank li b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.glu-rank li em { color: var(--ui-muted); font-size: 11px; font-style: normal; }
+.glu-rank li > span:last-child { font-weight: 900; font-variant-numeric: tabular-nums; }
+.glu-rank .is-mine { outline: 2px solid var(--ui-accent); }
+.glu-bear-small { width: 120px; border-radius: 20px; }
+@media (max-width: 380px) {
+  .glu-rank li { grid-template-columns: 30px 1fr auto; }
+  .glu-rank li em { display: none; }
+}
+
+/* ——— Переписка: звонок, фото, наклейки ——— */
+.glf-call-tools .glg-primary { flex: 1 1 100%; }
+.glf-photo-bubble { padding: 6px !important; }
+.glf-photo { display: block; width: min(240px, 62vw); max-height: 320px; border-radius: 14px; object-fit: cover; }
+.glf-photo.is-loading { display: grid; place-items: center; height: 160px; font-size: 32px; background: color-mix(in srgb, var(--ui-ink) 6%, transparent); }
+.glf-photo-gone { display: block; padding: 10px; color: var(--ui-muted); font-size: 13px; }
+.glf-sticker { display: grid; justify-items: start; gap: 2px; margin: 4px 0; list-style: none; }
+.glf-sticker.is-mine { justify-items: end; }
+.glf-sticker > span { font-size: 48px; line-height: 1.1; }
+.glf-sticker b { font-size: 13px; }
+.glf-sticker small { color: var(--ui-muted); font-size: 11px; }
+.glf-sticker-grid button { font-size: 26px; }
+
+/* Главная: «Наш мир» — широкая плитка под четырьмя, изумруд с золотой каймой. */
+.home-smart-actions .world-link { position: relative; grid-column: 1 / -1; gap: 10px; min-height: 56px; border-color: color-mix(in srgb, var(--gold-bright) 50%, transparent); border-radius: 20px; color: var(--cream); background: linear-gradient(135deg, color-mix(in srgb, var(--emerald) 82%, transparent), color-mix(in srgb, var(--night) 62%, transparent)); font-size: 13px; font-weight: 800; }
+.home-smart-actions .world-link > #worldOpenHomeLabel { color: inherit; }
+.home-smart-actions .world-link > b.replies-badge { position: absolute; top: 8px; inset-inline-end: 10px; min-width: 20px; padding: 2px 5px; letter-spacing: 0; }

@@ -69,6 +69,36 @@
         "rule": "design-system-font-size",
         "value": "64px",
         "createdAt": "2026-10-30T22:09:36.992Z"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "24px",
+        "createdAt": "2026-10-30T23:34:26.118Z",
+        "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "28px",
+        "createdAt": "2026-10-30T23:34:26.228Z",
+        "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "32px",
+        "createdAt": "2026-10-30T23:34:26.324Z",
+        "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "36px",
+        "createdAt": "2026-10-30T23:34:26.419Z",
+        "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "48px",
+        "createdAt": "2026-10-30T23:34:26.512Z",
+        "reason": "Claude: emoji glyph sizes for call tools, game icons, chest, stickers (2.4.26), not text"
       }
     ]
   }

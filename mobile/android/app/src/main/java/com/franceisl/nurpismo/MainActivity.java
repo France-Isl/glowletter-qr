@@ -50,6 +50,7 @@ public final class MainActivity extends ComponentActivity {
     private static final int FILE_CHOOSER_REQUEST = 4101;
     private static final int MICROPHONE_REQUEST = 4102;
     private static final int NOTIFY_REQUEST = 4103;
+    volatile boolean callActive = false;
     private static final int MAX_SPEECH_TEXT_LENGTH = Math.min(6000, TextToSpeech.getMaxSpeechInputLength());
     private static final String SPEECH_UTTERANCE_PREFIX = "glowletter-letter-";
     private static final String NATIVE_WEB_LOAD_QUERY = "_glowletter_native_load";
@@ -327,6 +328,8 @@ public final class MainActivity extends ComponentActivity {
         webView.addJavascriptInterface(new SpeechBridge(this), "NurSpeech");
         webView.addJavascriptInterface(new AppUpdateBridge(this), "NurAppUpdate");
         webView.addJavascriptInterface(new NotifyBridge(this), "NurNotify");
+        webView.addJavascriptInterface(new WidgetBridge(this), "NurWidget");
+        webView.addJavascriptInterface(new CallBridge(this), "NurCall");
         // «Голосовое письмо»: страница узнаёт, что эта сборка умеет давать микрофон.
         webView.addJavascriptInterface(new Object() {
             @android.webkit.JavascriptInterface
@@ -1161,7 +1164,8 @@ public final class MainActivity extends ComponentActivity {
         pendingSpeechText = null;
         pendingSpeechLanguage = null;
         dispatchSpeechState("stopped");
-        if (webView != null) {
+        // Во время звонка WebView не усыпляем: иначе разговор оборвётся при сворачивании.
+        if (webView != null && !callActive) {
             webView.onPause();
             // GlowLetter owns a single WebView in this process, so suspending the
             // shared WebView timer clock safely stops rain and decorative motion
