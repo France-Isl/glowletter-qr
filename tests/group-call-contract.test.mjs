@@ -47,7 +47,10 @@ assert.match(call, /sendCallInvite\?\.\(id, call\.room\)/u);
 
 // Видеозвонок: start(friend, { video: true }), камера по тем же соединениям, без камеры — звук и короткая заметка.
 assert.match(call, /start: \(friend, options\) => start\(friend, options\)/u);
-assert.match(call, /video: options\?\.video === true/u);
+assert.match(call, /video: VIDEO_CALLS && options\?\.video === true/u);
+// Владелец 01.11: видеозвонков нет — кнопки в чате нет, чужое видео не показывается.
+assert.match(call, /const VIDEO_CALLS = false;/u);
+assert.doesNotMatch(read("friends.js"), /video-call/u);
 assert.match(call, /facingMode: facing, width: \{ ideal: 640 \}, height: \{ ideal: 480 \}/u);
 assert.match(call, /if \(wantVideo && !call\.camera\) toast\(tr\("cameraFailed"\)\);/u);
 assert.match(call, /addTransceiver\(call\.cameraTrack \|\| "video"/u);

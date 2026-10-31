@@ -101,6 +101,8 @@
   const ICE_SERVERS = [{ urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun.cloudflare.com:3478"] }];
   const RELAY_URL = `${(window.NUR_APP_CONFIG || {}).supabaseUrl || ""}/functions/v1/turn`;
   const RELAY_WAIT_MS = 4000;
+  // Владелец 01.11: видеозвонков нет, только звук. Видео из старых версий приложения не показывается.
+  const VIDEO_CALLS = false;
 
   const app = () => window.GlowLetterApp || null;
   const cloud = () => window.GlowLetterCloud || null;
@@ -188,7 +190,7 @@
     if (!premium()) { app()?.openPaywall?.(); return false; }
     if (!supported()) { toast(tr("unsupported")); return false; }
     const room = crypto.randomUUID();
-    Object.assign(call, { phase: "outgoing", room, friend: { user_id: friend.user_id, name: friend.name || "" }, caller: true, note: "", expanded: true, video: options?.video === true });
+    Object.assign(call, { phase: "outgoing", room, friend: { user_id: friend.user_id, name: friend.name || "" }, caller: true, note: "", expanded: true, video: VIDEO_CALLS && options?.video === true });
     render();
     if (!(await openMedia(call.video))) { end(tr("micDenied")); return false; }
     if (call.phase !== "outgoing" || call.room !== room) return false;
@@ -447,6 +449,7 @@
   function onRemoteTrack(entry, track) {
     if (call.peers.get(entry.id) !== entry || !track) return;
     if (track.kind === "video") {
+      if (!VIDEO_CALLS) return;
       entry.videoTrack = track;
       entry.videoStream = new MediaStream([track]);
       track.onmute = track.onunmute = track.onended = () => renderStage();
@@ -479,7 +482,7 @@
     for (const transceiver of transceivers) {
       const kind = transceiver.receiver?.track?.kind;
       if (transceiver.stopped || !kind) continue;
-      if (kind === "video") call.video = true;
+      if (kind === "video" && VIDEO_CALLS) call.video = true;
       const track = kind === "audio" ? audioTrack() : call.cameraTrack;
       if (!transceiver.sender.track && track) { try { await transceiver.sender.replaceTrack(track); } catch {} }
       try { if (call.stream) transceiver.sender.setStreams?.(call.stream); } catch {}
@@ -649,7 +652,7 @@
       if (call.sawOthers && !next.size) { end(""); return; }
       call.note = next.size >= MAX_PEOPLE ? tr("full") : "";
       // Позвали в видеозвонок — видно по присутствию тех, кто уже в звонке.
-      call.video = [...next.values()].some(member => member.video);
+      call.video = VIDEO_CALLS && [...next.values()].some(member => member.video);
       render();
       return;
     }

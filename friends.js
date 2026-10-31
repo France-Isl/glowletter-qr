@@ -570,7 +570,6 @@
         <span class="glf-head-actions">
           ${window.GlowLetterRanking ? head("ranking", ICONS.trophy, tr("ranking")) : ""}
           ${head("call", ICONS.phone, tr("callButton"))}
-          ${head("video-call", ICONS.video, tr("videoCall"))}
           ${head("menu", ICONS.more, tr("menu"), ` aria-haspopup="dialog" aria-expanded="${state.menuOpen}"`)}
         </span>
       </div>
@@ -835,7 +834,6 @@
         case "emoji-insert": insertEmoji(target.dataset.emoji); return;
         case "close-picker": closePickers(); render(); return;
         case "attach": state.root?.querySelector(".glf-photo-input")?.click(); return;
-        case "video-call": { const friend = state.chatWith; if (friend) window.GlowLetterCall?.start?.({ user_id: friend.user_id, name: nameOf(friend) }, { video: true }); return; }
         case "ranking": close(); window.GlowLetterRanking?.open?.({ scope: "friends" }); return;
         case "replay-rain": playRain(target.dataset.kind); return;
         case "send-fx": { const form = state.root?.querySelector("form.glf-compose"); state.fxOpen = false; if (form) return sendMessage(form, target.dataset.fx); return; }
