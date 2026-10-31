@@ -75,7 +75,7 @@
       pushTitle: "Уведомления на телефон", pushNote: "Сообщим, когда друг написал вам, прочитал ваше письмо или ответил на него. Приложение проверяет новости примерно раз в 15 минут.", pushOn: "Включить", pushOff: "Выключить", pushEnabled: "Уведомления включены", pushDisabled: "Уведомления выключены", pushBlocked: "Разрешите уведомления для GlowLetter в настройках телефона.", pushChannel: "Друзья и письма", pushGame: "{name} зовёт вас играть", pushMany: "Новых сообщений: {n}", pushOpened: "Ваше письмо прочитали ✨", pushOpenedMany: "Прочитано ваших писем: {n}", pushReply: "Ответ на ваше письмо",
       callChat: "Звонок", callMissed: "{name}: пропущенный звонок", callBack: "Перезвонить", callYou: "Вы звонили", callButton: "Позвонить", tableButton: "Игровой стол", toolsMore: "Игры и подарки", menu: "Ещё", rainButton: "Дождь по экрану", rainPick: "Какой дождь отправить?", rain_hearts: "Сердечки", rain_petals: "Лепестки", rain_bouquets: "Букеты", rain_stars: "Звёзды", rain_confetti: "Конфетти", rain_butterflies: "Бабочки", rainYou: "Вы отправили дождь: {rain}", rainFrom: "{name} отправляет вам дождь: {rain}", rainAgain: "Ещё раз", fxTitle: "Отправить с эффектом", fx_hearts: "В сердечках", fx_glow: "Сияние", fx_big: "Крупно", fxHint: "Удержите, чтобы отправить с эффектом", likeFrom: "{name}: ❤️ на ваше сообщение", liked: "Сердечко",
       playInvite: "{name} зовёт за игровой стол", playYou: "Вы позвали за игровой стол", tableJoin: "К столу", tableHeading: "Игровой стол",
-      photoNew: "{name}: новое фото", photoYou: "Ваше фото", photoGone: "Фото больше не доступно", stickerNew: "{name}: наклейка", stickerPick: "Наклейки",
+      photoNew: "{name}: новое фото", photoYou: "Ваше фото", photoGone: "Фото больше не доступно", stickerNew: "{name}: наклейка", stickerPick: "Наклейки", quickTitle: "Быстрые действия", quickWrite: "Написать письмо", quickPick: "Выберите друга",
       stickersNone: "Наклейки появляются в «Сундуке Тёпы» в «Нашем мире».", worldOpen: "Наш мир", pushCall: "📞 Пропущенный звонок: {name}", pushPhoto: "📸 {name}: новое фото", pushSticker: "🧸 {name}: наклейка"
     },
     en: {
@@ -106,7 +106,7 @@
       pushTitle: "Phone notifications", pushNote: "We’ll let you know when a friend writes to you, reads your letter or replies to it. The app checks for news about every 15 minutes.", pushOn: "Turn on", pushOff: "Turn off", pushEnabled: "Notifications are on", pushDisabled: "Notifications are off", pushBlocked: "Allow notifications for GlowLetter in your phone settings.", pushChannel: "Friends and letters", pushGame: "{name} invites you to play", pushMany: "New messages: {n}", pushOpened: "Your letter has been read ✨", pushOpenedMany: "Letters read: {n}", pushReply: "A reply to your letter",
       callChat: "Call", callMissed: "Missed call from {name}", callBack: "Call back", callYou: "You called", callButton: "Call", tableButton: "Game table", toolsMore: "Games and gifts", menu: "More", rainButton: "Screen rain", rainPick: "Which rain to send?", rain_hearts: "Hearts", rain_petals: "Petals", rain_bouquets: "Bouquets", rain_stars: "Stars", rain_confetti: "Confetti", rain_butterflies: "Butterflies", rainYou: "You sent a rain: {rain}", rainFrom: "{name} sends you a rain: {rain}", rainAgain: "Again", fxTitle: "Send with an effect", fx_hearts: "With hearts", fx_glow: "Glow", fx_big: "Big", fxHint: "Hold to send with an effect", likeFrom: "{name}: ❤️ on your message", liked: "Heart",
       playInvite: "{name} invites you to the game table", playYou: "You invited them to the game table", tableJoin: "Join", tableHeading: "Game table",
-      photoNew: "{name}: new photo", photoYou: "Your photo", photoGone: "This photo is no longer available", stickerNew: "{name}: sticker", stickerPick: "Stickers",
+      photoNew: "{name}: new photo", photoYou: "Your photo", photoGone: "This photo is no longer available", stickerNew: "{name}: sticker", stickerPick: "Stickers", quickTitle: "Quick actions", quickWrite: "Write a letter", quickPick: "Choose a friend",
       stickersNone: "Stickers come from Teddy’s chest in Our world.", worldOpen: "Our world", pushCall: "📞 Missed call: {name}", pushPhoto: "📸 {name}: new photo", pushSticker: "🧸 {name}: sticker"
     },
     fr: {
@@ -137,7 +137,7 @@
       pushTitle: "Notifications sur le téléphone", pushNote: "Nous vous prévenons quand un ami vous écrit, lit votre lettre ou y répond. L’application vérifie les nouveautés environ toutes les 15 minutes.", pushOn: "Activer", pushOff: "Désactiver", pushEnabled: "Notifications activées", pushDisabled: "Notifications désactivées", pushBlocked: "Autorisez les notifications de GlowLetter dans les réglages du téléphone.", pushChannel: "Amis et lettres", pushGame: "{name} vous invite à jouer", pushMany: "Nouveaux messages : {n}", pushOpened: "Votre lettre a été lue ✨", pushOpenedMany: "Lettres lues : {n}", pushReply: "Une réponse à votre lettre",
       callChat: "Appel", callMissed: "Appel manqué : {name}", callBack: "Rappeler", callYou: "Vous avez appelé", callButton: "Appeler", tableButton: "Table de jeu", toolsMore: "Jeux et cadeaux", menu: "Plus", rainButton: "Pluie sur l’écran", rainPick: "Quelle pluie envoyer ?", rain_hearts: "Cœurs", rain_petals: "Pétales", rain_bouquets: "Bouquets", rain_stars: "Étoiles", rain_confetti: "Confettis", rain_butterflies: "Papillons", rainYou: "Vous avez envoyé une pluie : {rain}", rainFrom: "{name} vous envoie une pluie : {rain}", rainAgain: "Encore", fxTitle: "Envoyer avec un effet", fx_hearts: "En cœurs", fx_glow: "Éclat", fx_big: "En grand", fxHint: "Maintenez pour envoyer avec un effet", likeFrom: "{name} : ❤️ sur votre message", liked: "Cœur",
       playInvite: "{name} vous invite à la table de jeu", playYou: "Invitation à la table de jeu envoyée", tableJoin: "Rejoindre", tableHeading: "Table de jeu",
-      photoNew: "{name} : nouvelle photo", photoYou: "Votre photo", photoGone: "Cette photo n’est plus disponible", stickerNew: "{name} : autocollant", stickerPick: "Autocollants",
+      photoNew: "{name} : nouvelle photo", photoYou: "Votre photo", photoGone: "Cette photo n’est plus disponible", stickerNew: "{name} : autocollant", stickerPick: "Autocollants", quickTitle: "Actions rapides", quickWrite: "Écrire une lettre", quickPick: "Choisissez un ami",
       stickersNone: "Les autocollants viennent du coffre de Nounours dans Notre monde.", worldOpen: "Notre monde", pushCall: "📞 Appel manqué : {name}", pushPhoto: "📸 {name} : nouvelle photo", pushSticker: "🧸 {name} : autocollant"
     }
   };
@@ -291,6 +291,7 @@
 
   function close() {
     const root = state.root;
+    state.quick = "";
     if (!root || root.hidden) return;
     root.classList.remove("is-open");
     document.body.classList.remove("glg-open");
@@ -603,7 +604,7 @@
       switch (action) {
         case "close": close(); return;
         case "signin": close(); app()?.requestSignIn?.("friends"); return;
-        case "list": stopVoice(false); stopPlayback(); state.chatWith = null; state.view = "list"; render(); refresh(false); return;
+        case "list": state.quick = ""; stopVoice(false); stopPlayback(); state.chatWith = null; state.view = "list"; render(); refresh(false); return;
         case "save-name": {
           const name = cleanName(target.elements.name.value);
           if (!name) { state.error = tr("nameInvalid"); render(); return; }
@@ -762,7 +763,12 @@
     state.view = "chat";
     state.messages = [];
     state.newestShown = "";
+    const quickAction = state.quick;
+    state.quick = "";
+    if (quickAction === "bear") state.bearPicking = true;
+    if (quickAction === "sticker") { state.stickerPicking = true; world()?.loadOwned?.().then(() => { if (state.stickerPicking) render(); }); }
     render();
+    if (quickAction === "draw") { startDraw(friend); return; }
     const db = client();
     const me = userId();
     const { data } = await db.from("glowletter_messages").select("id, sender, recipient, body, created_at, read_at")
@@ -1357,10 +1363,30 @@
   function localizeHome() {
     const label = document.querySelector("#friendsOpenHomeLabel");
     if (label) label.textContent = tr("home");
+    const tagline = document.querySelector("#homeBrandTagline");
+    if (tagline) tagline.textContent = String(app()?.text?.("brand") || tagline.textContent).replace(/<[^>]+>/gu, " ").replace(/\s+/gu, " ").trim();
+    for (const [selector, key] of [["#homeQuickTitle", "quickTitle"], ["#homeQuickWrite", "quickWrite"], ["#homeQuickDraw", "drawTogether"], ["#homeQuickBear", "bearSend"], ["#homeQuickStickers", "stickerPick"]]) {
+      const node = document.querySelector(selector);
+      if (node) node.textContent = tr(key);
+    }
+  }
+
+  // Быстрые действия с главного экрана: «Рисовать вместе», «Тёпа в гости», «Наклейки» — сначала выбираем друга.
+  async function quick(action) {
+    state.quick = action;
+    await open();
+    const friends = state.rows.filter(row => row.status === "friend");
+    if (friends.length === 1) await openChat(friends[0].user_id);
+    else if (friends.length && state.quick) notify(tr("quickPick"), 3200);
   }
 
   function init() {
     document.querySelector("#friendsOpenHome")?.addEventListener("click", () => open());
+    document.querySelector("#homeQuick")?.addEventListener("click", event => {
+      const action = event.target.closest("[data-home-quick]")?.dataset.homeQuick;
+      if (action === "write") app()?.openComposer?.();
+      else if (action) quick(action);
+    });
     document.querySelector("#onlineStrip")?.addEventListener("click", onStrip);
     localizeHome();
     addEventListener("glowletter-language-changed", () => setTimeout(() => { localizeHome(); render(); renderStrip(); if (pushOn()) { try { notifier().setTexts(pushTexts()); } catch {} } }, 0));
