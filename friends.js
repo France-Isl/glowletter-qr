@@ -1545,7 +1545,31 @@
   }
 
   // Большое окно «Имя зовёт вас в игру» поверх любого экрана — не нужно заходить в «Друзья».
+  // Во время игры приглашение не всплывает: ждёт, пока человек выйдет из игры, и тогда показывается
+  // на главном экране с понятной кнопкой «Принять» (владелец 31.10). Во время звонка — можно.
+  const waitingInvites = [];
+  let inviteWatch = 0;
+
+  function playingNow() {
+    const durak = document.querySelector(".dk-root");
+    if (durak && !durak.hidden && ["table", "lobby"].includes(durak.dataset.view)) return true;
+    return Boolean(document.querySelector(".glt-layer:not([hidden]), .glo-draw:not([hidden]), #gamesLayer.is-play:not([hidden])"));
+  }
+
   function showInvitePopup(sender, senderId, invite) {
+    if (playingNow()) {
+      const same = waitingInvites.findIndex(item => item.invite.room === invite.room);
+      if (same >= 0) waitingInvites.splice(same, 1);
+      waitingInvites.push({ sender, senderId, invite, at: Date.now() });
+      if (!inviteWatch) inviteWatch = setInterval(() => {
+        while (waitingInvites.length && Date.now() - waitingInvites[0].at > 10 * 60_000) waitingInvites.shift();
+        if (!waitingInvites.length) { clearInterval(inviteWatch); inviteWatch = 0; return; }
+        if (playingNow() || document.querySelector(".glf-invite-pop")) return;
+        const next = waitingInvites.pop();
+        showInvitePopup(next.sender, next.senderId, next.invite);
+      }, 1500);
+      return;
+    }
     document.querySelector(".glf-invite-pop")?.remove();
     const drawing = invite.kind === "draw";
     const table = invite.kind === "play";
@@ -1559,8 +1583,8 @@
         <p class="glf-invite-pop-eyebrow" id="glfInvitePopTitle">${escapeHtml(tr(drawing ? "drawHeading" : table ? "tableHeading" : "inviteHeading"))}</p>
         <h2 id="glfInvitePopText">${escapeHtml(inviteText(invite, nameOf(sender)))}</h2>
         <div class="glf-invite-pop-actions">
-          <button class="glg-secondary" type="button" data-pop="later">${escapeHtml(tr("inviteLater"))}</button>
-          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(durak ? shopText("chatDurakJoin") : tr(drawing ? "drawJoin" : table ? "tableJoin" : "invitePlay"))} →</button>
+          <button class="glg-secondary" type="button" data-pop="later">${escapeHtml(tr("decline"))}</button>
+          <button class="glg-primary" type="button" data-pop="play">${escapeHtml(tr("accept"))} →</button>
         </div>
       </section>`;
     const done = () => { pop.classList.remove("is-open"); setTimeout(() => pop.remove(), 220); };
@@ -1725,7 +1749,10 @@
     sendPlayInvite: (friendId, room) => sendSpecial(friendId, `[[play:${room}]]`),
     sendPhoto,
     // Окно приглашения (для проверки и будущих ссылок-приглашений).
-    showInvite: (name, kind, roomId) => { if (INVITE_PATTERN.test(`[[game:${kind}:${roomId}]]`)) showInvitePopup({ display_name: name }, "", { kind, room: roomId }); }
+    showInvite: (name, kind, roomId) => {
+      const room = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u.test(roomId) ? roomId : "";
+      if (room && (INVITE_PATTERN.test(`[[game:${kind}:${room}]]`) || ["durak", "play", "draw"].includes(kind))) showInvitePopup({ display_name: name }, "", { kind, room });
+    }
   });
   init();
 })();

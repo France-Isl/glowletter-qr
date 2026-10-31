@@ -1466,6 +1466,14 @@
     root.style.left = `${Math.round(x)}px`;
     root.style.top = `${Math.round(y)}px`;
     root.style.transform = "none";
+    miniTop();
+  }
+
+  // Свёрнутый звонок наверху — игры опускают свою шапку под него (владелец 31.10: закрывал козырь).
+  function miniTop() {
+    const root = call.root;
+    const mini = Boolean(root && !root.hidden && root.classList.contains("is-mini"));
+    document.body.classList.toggle("glk-top", mini && root.getBoundingClientRect().top < 110);
   }
 
   function miniRestore() {
@@ -1583,6 +1591,7 @@
   function render() {
     const root = mount();
     document.body.classList.toggle("glk-active", call.phase !== "idle");
+    if (call.phase === "idle") document.body.classList.remove("glk-top");
     if (call.phase === "idle") { root.hidden = true; call.ui.innerHTML = ""; renderStage(); return; }
     root.hidden = false;
     if (call.reacting && (call.phase === "incoming" || !call.expanded || !live())) closeReactions(false);
@@ -1607,9 +1616,11 @@
         <button class="glk-round glk-mute${call.muted ? " is-on" : ""}" type="button" data-call="mute" aria-pressed="${call.muted}" aria-label="${escapeHtml(call.muted ? tr("unmute") : tr("mute"))}">${call.muted ? ICON.micOff : ICON.mic}</button>
         <button class="glk-round glk-end" type="button" data-call="hangup" aria-label="${escapeHtml(tr("hangup"))}"><span class="glk-phone">${ICON.phone}</span></button>`;
       if (miniDrag.id === null) miniRestore();
+      miniTop();
       return;
     }
     root.style.left = root.style.top = root.style.transform = "";
+    document.body.classList.remove("glk-top");
     const active = document.activeElement && root.contains(document.activeElement) ? document.activeElement : null;
     const focused = active?.dataset?.call ? `[data-call="${active.dataset.call}"]${active.dataset.id ? `[data-id="${CSS.escape(active.dataset.id)}"]` : ""}` : "";
     const videoOn = videoStageOn() && othersIds().length > 0;

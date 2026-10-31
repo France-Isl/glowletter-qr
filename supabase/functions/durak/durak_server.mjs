@@ -155,7 +155,9 @@ async function loadGame(db, id) {
 
 export async function handle(db, userId, body, now = Date.now()) {
   const action = String(body?.action || "");
-  const who = await db.identity(userId);
+  // Кто играет и стол читаем одновременно — ход отвечает быстрее (владелец 31.10: «лагает»).
+  const needsGame = action !== "create" && action !== "mine";
+  const [who, first] = await Promise.all([db.identity(userId), needsGame ? loadGame(db, body.game).catch(error => error) : null]);
   if (who.banned) throw new GameError("account_blocked", 403);
   const name = String(who.name || "").slice(0, 36);
 
@@ -174,7 +176,8 @@ export async function handle(db, userId, body, now = Date.now()) {
   }
 
   for (let attempt = 0; attempt < 4; attempt += 1) {
-    const game = await loadGame(db, body.game);
+    if (attempt === 0 && first instanceof Error) throw first;
+    const game = attempt === 0 ? first : await loadGame(db, body.game);
     try {
       const result = await step(db, game, userId, name, who, action, body, now);
       return result;

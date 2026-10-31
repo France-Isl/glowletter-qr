@@ -100,10 +100,12 @@
     const session = cloud()?.getSession?.();
     const token = session?.access_token;
     if (!token) throw Object.assign(new Error("authentication_required"), { code: "authentication_required" });
+    // Простой запрос (text/plain, ключ входа в теле): браузер не делает перед каждым ходом
+    // предварительный OPTIONS — ход доходит до сервера на один обмен быстрее (владелец 31.10: «лагает»).
     const response = await fetch(FUNCTION_URL, {
       method: "POST", cache: "no-store", credentials: "omit",
-      headers: { "Content-Type": "application/json", apikey: CONFIG.supabasePublishableKey || "", Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ action, ...payload })
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
+      body: JSON.stringify({ action, ...payload, token })
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw Object.assign(new Error(data.error || "error"), { code: data.error || "error", who: data.who || null });
@@ -473,13 +475,10 @@
     const status = g.phase !== "play" ? "" : myTurn ? (g.capture ? tr("ckCapture") : tr("ckYourTurn")) : tr("ckWait");
     q("[data-status]").innerHTML = `<span>${esc(status)}</span>${g.me >= 0 ? `<small>${esc(tr("ckYou", { side: sideName }))}</small>` : ""}`;
     q("[data-status]").classList.toggle("is-mine", myTurn);
-    const hints = state.wallet?.inventory?.hint || 0;
-    const withBots = view.seats.some(s => s.bot);
     const sure = Date.now() - state.ckResignAt < 3000;
     q("[data-buttons]").innerHTML = g.phase === "play" && g.me >= 0 ? `
       <button class="dk-btn is-take${sure ? " is-sure" : ""}" type="button" data-act="resign">${esc(sure ? tr("ckResignSure") : tr("ckResign"))}</button>
       <span class="dk-btn-gap"></span>
-      ${withBots && myTurn ? `<button class="dk-chip-btn" type="button" data-act="hint" title="${esc(tr("hints", { n: hints }))}">💡 ${hints}</button>` : ""}
       <button class="dk-chip-btn" type="button" data-act="chat" aria-label="${esc(tr("emotes"))}">💬</button>` : "";
     setOverlay(q("[data-overlay]"), g.phase === "over" ? ckResult(view) : state.chatOpen ? chatPanel(view) : "");
     state.shownSeq = g.seq;
@@ -525,12 +524,14 @@
     const myTurn = g.must.includes(g.me);
     const seats = view.seats;
 
-    q(".dk-top .dk-wallet")?.replaceWith(walletNode());
-    q("[data-info]").innerHTML = `<span class="dk-trump-chip">${esc(tr("trump"))} ${suitIcon(g.trump)}</span><span>${esc(tr(g.mode))}${view.settings.stake ? ` · ${esc(num(view.settings.stake))} $` : ""}</span>`;
+    const walletKey = `${state.wallet?.dollars}|${state.wallet?.coins}`;
+    if (root.__wallet !== walletKey) { root.__wallet = walletKey; q(".dk-top .dk-wallet")?.replaceWith(walletNode()); }
+    patch(q("[data-info]"), `${g.trump}|${g.mode}|${view.settings.stake}`, () => `<span class="dk-trump-chip">${esc(tr("trump"))} ${suitIcon(g.trump)}</span><span>${esc(tr(g.mode))}${view.settings.stake ? ` · ${esc(num(view.settings.stake))} $` : ""}</span>`);
 
     const opponents = relativeSeats(g);
     q("[data-opponents]").dataset.count = String(opponents.length);
-    q("[data-opponents]").innerHTML = opponents.map(i => {
+    const oppKey = JSON.stringify([view.deadline, g.phase, g.durak, ...opponents.map(i => [g.players[i].count, g.players[i].out, g.must.includes(i), seatStatus(g, i), seatName(seats[i]), seats[i]?.back, state.bubbles[i]?.until > Date.now() ? state.bubbles[i].text : ""])]);
+    patch(q("[data-opponents]"), oppKey, () => opponents.map(i => {
       const p = g.players[i], seat = seats[i];
       const shown = Math.min(p.count, 8);
       const active = g.must.includes(i) && g.phase === "play";
@@ -540,26 +541,26 @@
         <div class="dk-opp-id"${profileAttr(seat)}>${avatar(seat, i)}${active && view.deadline ? timerRing(view.deadline) : ""}<b>${esc(seatName(seat))}</b><small>${p.count} · ${esc(seatStatus(g, i))}</small></div>
         ${bubble && bubble.until > Date.now() ? `<div class="dk-bubble">${esc(bubble.text)}</div>` : ""}
       </div>`;
-    }).join("");
+    }).join(""));
 
-    q("[data-deck]").innerHTML = g.deck > 0 || g.trumpCard ? `
+    patch(q("[data-deck]"), `${g.deck}|${g.trumpCard}|${g.trump}|${state.wallet?.card_back}`, () => g.deck > 0 || g.trumpCard ? `
       ${g.deck > 0 ? `<span class="dk-card dk-trump-card">${cardImg(g.trumpCard)}</span>` : `<span class="dk-trump-ghost">${suitIcon(g.trump)}</span>`}
       ${g.deck > 1 ? `<span class="dk-card dk-pile" style="--depth:${Math.min(6, Math.ceil(g.deck / 5))}">${backImg()}</span>` : ""}
-      <b class="dk-count">${g.deck}</b>` : "";
-    q("[data-discard]").innerHTML = g.discard ? `<span class="dk-card dk-discard-pile">${backImg()}</span><b class="dk-count">${esc(tr("discard"))}</b>` : "";
+      <b class="dk-count">${g.deck}</b>` : "");
+    patch(q("[data-discard]"), `${Boolean(g.discard)}|${state.wallet?.card_back}`, () => g.discard ? `<span class="dk-card dk-discard-pile">${backImg()}</span><b class="dk-count">${esc(tr("discard"))}</b>` : "");
 
     // Стол: новые карты прилетают со стороны того, кто положил.
     const lastSeen = state.shownTable;
     const targets = state.selected ? legal.filter(a => a.card === state.selected && a.type === "defend").map(a => a.slot) : [];
-    q("[data-battle]").innerHTML = g.table.map((pair, slot) => {
+    const transferZone = drag.on && drag.options.some(a => a.type === "transfer");
+    if (patch(q("[data-battle]"), JSON.stringify([g.table, targets, transferZone]), () => g.table.map((pair, slot) => {
       const newA = !lastSeen[slot] || lastSeen[slot].a !== pair.a;
       const newD = pair.d && (!lastSeen[slot] || lastSeen[slot].d !== pair.d);
       return `<div class="dk-pair${targets.includes(slot) ? " is-target" : ""}" data-slot="${slot}">
         <span class="dk-card dk-attack${newA ? " is-new" : ""}" style="--r:${((slot * 37) % 9) - 4}deg">${cardImg(pair.a)}</span>
         ${pair.d ? `<span class="dk-card dk-defense${newD ? " is-new" : ""}" style="--r:${((slot * 53) % 11) + 4}deg">${cardImg(pair.d)}</span>` : ""}
       </div>`;
-    }).join("") + (drag.on && drag.options.some(a => a.type === "transfer") ? `<div class="dk-transfer-zone"><span>${esc(tr("transferTo"))} →</span></div>` : "");
-    state.shownTable = g.table.map(pair => ({ ...pair }));
+    }).join("") + (transferZone ? `<div class="dk-transfer-zone"><span>${esc(tr("transferTo"))} →</span></div>` : ""))) state.shownTable = g.table.map(pair => ({ ...pair }));
 
     let status = "";
     if (g.phase === "over") status = "";
@@ -568,35 +569,72 @@
       else if (!g.table.length) status = tr("yourTurn");
       else status = g.taking ? tr("takingAdd") : tr("attackOrPass");
     } else status = tr("waitTurn");
-    q("[data-status]").innerHTML = `${myTurn && view.deadline ? timerRing(view.deadline, true) : ""}<span>${esc(status)}</span>${g.deck ? `<small>${esc(tr("deckLeft", { n: g.deck }))}</small>` : ""}`;
+    patch(q("[data-status]"), `${myTurn && view.deadline}|${status}|${g.deck}`, () => `${myTurn && view.deadline ? timerRing(view.deadline, true) : ""}<span>${esc(status)}</span>${g.deck ? `<small>${esc(tr("deckLeft", { n: g.deck }))}</small>` : ""}`);
     q("[data-status]").classList.toggle("is-mine", myTurn);
 
     const canTake = legal.some(a => a.type === "take");
     const canPass = legal.some(a => a.type === "pass");
     const transfer = state.selected && legal.some(a => a.type === "transfer" && a.card === state.selected);
-    const hints = state.wallet?.inventory?.hint || 0;
-    const withBots = seats.some(s => s.bot);
-    q("[data-buttons]").innerHTML = g.phase === "play" ? `
+    patch(q("[data-buttons]"), `${g.phase}|${canTake}|${canPass}|${transfer}|${g.taking}`, () => g.phase === "play" ? `
       ${canTake ? `<button class="dk-btn is-take" type="button" data-act="take">${esc(tr("take"))}</button>` : ""}
       ${canPass ? `<button class="dk-btn is-pass" type="button" data-act="pass">${esc(g.taking ? tr("passTake") : tr("pass"))}</button>` : ""}
       ${transfer ? `<button class="dk-btn is-transfer" type="button" data-act="transfer">${esc(tr("transferTo"))} →</button>` : ""}
       <span class="dk-btn-gap"></span>
-      ${withBots && myTurn ? `<button class="dk-chip-btn" type="button" data-act="hint" title="${esc(tr("hints", { n: hints }))}">💡 ${hints}</button>` : ""}
-      <button class="dk-chip-btn" type="button" data-act="chat" aria-label="${esc(tr("emotes"))}">💬</button>` : "";
+      <button class="dk-chip-btn" type="button" data-act="chat" aria-label="${esc(tr("emotes"))}">💬</button>` : "");
 
-    const hand = g.hand;
-    const playable = new Set(legal.filter(a => a.card).map(a => a.card));
-    const count = hand.length;
-    const spread = Math.min(9, 60 / Math.max(1, count));
-    q("[data-hand]").innerHTML = hand.map((card, k) => {
-      const offset = k - (count - 1) / 2;
-      const isHint = state.hint?.card === card;
-      return `<button type="button" class="dk-card dk-hand-card${playable.has(card) && myTurn ? " is-playable" : ""}${state.selected === card ? " is-selected" : ""}${isHint ? " is-hint" : ""}${drag.on && drag.card === card ? " is-dragging" : ""}" style="--o:${offset};--a:${(offset * spread).toFixed(2)}deg;--z:${k}" data-card="${esc(card)}" aria-label="${esc(cardLabel(card))}">${cardImg(card)}</button>`;
-    }).join("");
-    q("[data-hand]").style.setProperty("--n", String(count));
+    renderHand(q("[data-hand]"), g.hand, new Set(legal.filter(a => a.card).map(a => a.card)), myTurn);
 
     setOverlay(q("[data-overlay]"), g.phase === "over" ? resultOverlay(view) : state.chatOpen ? chatPanel(view) : "");
     state.shownSeq = g.seq;
+  }
+
+  // Узел перерисовываем, только когда его содержимое изменилось (владелец 31.10: «лагает»):
+  // раньше каждый ответ сервера пересоздавал все карты стола и руки.
+  function patch(node, key, html) {
+    if (!node || node.__key === key) return false;
+    node.__key = key;
+    node.innerHTML = html();
+    return true;
+  }
+
+  // Рука: те же кнопки-карты переиспользуются, меняются только положение и подсветка.
+  // Веер считается по ширине экрана, чтобы крайние карты не уходили за рамку (владелец 31.10).
+  function renderHand(box, hand, playable, myTurn) {
+    if (!box) return;
+    const width = box.clientWidth || innerWidth;
+    let cardW = state.cardW && state.cardWAt === width ? state.cardW : 0;
+    if (!cardW) {
+      const probe = box.querySelector(".dk-hand-card") || box.appendChild(Object.assign(document.createElement("span"), { className: "dk-card dk-hand-card" }));
+      cardW = probe.offsetWidth || 92;
+      if (!probe.dataset.card) probe.remove();
+      state.cardW = cardW; state.cardWAt = width;
+    }
+    const n = hand.length;
+    const cardH = cardW * 1.4;
+    const fan = n > 1 ? Math.min(24, 4 * (n - 1)) : 0;
+    const half = fan / 2 * Math.PI / 180;
+    const reach = 1.1 * cardH * Math.sin(half) + cardW / 2 * Math.cos(half) + cardH / 2 * Math.sin(half);
+    const step = n > 1 ? Math.max(12, Math.min(cardW * .62, (width / 2 - 6 - reach) / ((n - 1) / 2))) : 0;
+    const angle = n > 1 ? fan / (n - 1) : 0;
+    const old = new Map([...box.children].map(el => [el.dataset.card, el]));
+    hand.forEach((card, k) => {
+      let el = old.get(card);
+      if (el) old.delete(card);
+      else {
+        el = document.createElement("button");
+        el.type = "button";
+        el.dataset.card = card;
+        el.setAttribute("aria-label", cardLabel(card));
+        el.innerHTML = cardImg(card);
+      }
+      const offset = k - (n - 1) / 2;
+      const className = `dk-card dk-hand-card${playable.has(card) && myTurn ? " is-playable" : ""}${state.selected === card ? " is-selected" : ""}${state.hint?.card === card ? " is-hint" : ""}${drag.on && drag.card === card ? " is-dragging" : ""}`;
+      if (el.className !== className) el.className = className;
+      const style = `--x:${(offset * step).toFixed(1)}px;--a:${(offset * angle).toFixed(2)}deg;--y:${(offset * offset * 1.2).toFixed(1)}px;--z:${k}`;
+      if (el.__style !== style) { el.__style = style; el.style.cssText = style; }
+      if (box.children[k] !== el) box.insertBefore(el, box.children[k] || null);
+    });
+    old.forEach(el => { if (el !== drag.el && el.dataset.card) el.remove(); });
   }
 
   // Окно поверх стола меняем, только когда в нём что-то изменилось: ходы ботов и таймер
@@ -802,7 +840,7 @@
 
   // ——— Карту можно взять пальцем и бросить: на стол — ход или подкинуть, на карту — отбиться,
   // в рамку «Перевести» — перевод. Простое касание работает, как раньше.
-  const drag = { id: null, card: "", el: null, ghost: null, x0: 0, y0: 0, w: 0, h: 0, on: false, options: [], over: null, until: 0 };
+  const drag = { id: null, card: "", el: null, ghost: null, x0: 0, y0: 0, w: 0, h: 0, on: false, options: [], over: null, until: 0, handTop: 0, frame: 0, x: 0, y: 0 };
 
   function dragOptions(card) {
     const g = state.game?.game;
@@ -825,9 +863,7 @@
     }
     const zone = under.closest(".dk-transfer-zone");
     if (zone && transfer) return { move: transfer, el: zone };
-    const tops = [...state.root.querySelectorAll(".dk-hand-card:not(.is-dragging)")].map(card => card.getBoundingClientRect().top);
-    const handTop = tops.length ? Math.min(...tops) : innerHeight * .8;
-    if (y > handTop && drag.y0 - y < 36) return null;
+    if (y > drag.handTop && drag.y0 - y < 36) return null;
     const battle = state.root.querySelector("[data-battle]");
     const attack = options.find(a => a.type === "attack");
     if (attack) return { move: attack, el: battle };
@@ -867,6 +903,8 @@
     drag.w = Math.max(rect.width, 90) * 1.12;
     drag.h = drag.w * 1.4;
     drag.on = true;
+    const tops = [...state.root.querySelectorAll(".dk-hand-card")].filter(card => card !== drag.el).map(card => card.getBoundingClientRect().top);
+    drag.handTop = tops.length ? Math.min(...tops) : innerHeight * .8;
     drag.ghost = document.createElement("div");
     drag.ghost.className = "dk-drag-ghost";
     drag.ghost.style.width = `${drag.w}px`;
@@ -885,16 +923,22 @@
     const dy = event.clientY - drag.y0;
     if (!drag.on) { if (Math.hypot(dx, dy) < 10) return; startDrag(); }
     event.preventDefault();
-    const tilt = Math.max(-14, Math.min(14, dx / 18));
-    drag.ghost.style.transform = `translate3d(${event.clientX - drag.w / 2}px, ${event.clientY - drag.h * .62}px, 0) rotate(${tilt}deg)`;
-    const hit = dropAt(event.clientX, event.clientY, dragOptions(drag.card));
-    markDrop(hit?.el);
+    drag.x = event.clientX; drag.y = event.clientY;
+    if (drag.frame) return;
+    drag.frame = requestAnimationFrame(() => {
+      drag.frame = 0;
+      if (!drag.on || !drag.ghost) return;
+      const tilt = Math.max(-14, Math.min(14, (drag.x - drag.x0) / 18));
+      drag.ghost.style.transform = `translate3d(${drag.x - drag.w / 2}px, ${drag.y - drag.h * .62}px, 0) rotate(${tilt}deg)`;
+      markDrop(dropAt(drag.x, drag.y, drag.options)?.el);
+    });
   }
 
   function onPointerUp(event) {
     if (drag.id !== event.pointerId) return;
     const wasOn = drag.on;
     const hit = wasOn && event.type === "pointerup" ? dropAt(event.clientX, event.clientY, dragOptions(drag.card)) : null;
+    if (drag.frame) { cancelAnimationFrame(drag.frame); drag.frame = 0; }
     markDrop(null);
     drag.ghost?.remove();
     drag.el?.classList.remove("is-dragging");

@@ -103,14 +103,30 @@ const db = {
     if (error) return false;
     return data === true;
   },
+  // Рассылка номера версии идёт в фоне: ответ игроку не ждёт её (EdgeRuntime.waitUntil).
   async broadcast(id: string, version: number) {
-    await fetch(`${supabaseUrl}/realtime/v1/api/broadcast`, {
+    const sending = fetch(`${supabaseUrl}/realtime/v1/api/broadcast`, {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: secretKey, Authorization: `Bearer ${secretKey}` },
       body: JSON.stringify({ messages: [{ topic: `glowletter-durak:${id}`, event: "v", payload: { v: version }, private: false }] })
-    });
+    }).catch(() => null);
+    const runtime = (globalThis as { EdgeRuntime?: { waitUntil?: (promise: Promise<unknown>) => void } }).EdgeRuntime;
+    if (runtime?.waitUntil) runtime.waitUntil(sending);
+    else await sending;
   }
 };
+
+// Подпись ключа входа проверяем на месте по открытым ключам проекта (getClaims, ключи кэшируются),
+// без запроса к серверу входа на каждый ход; если так нельзя — по-старому, через getUser.
+async function verifiedUser(token: string): Promise<string> {
+  try {
+    const { data, error } = await admin!.auth.getClaims(token);
+    const sub = data?.claims?.sub;
+    if (!error && typeof sub === "string" && sub && data?.claims?.role === "authenticated") return sub;
+  } catch { /* ниже — запасной путь */ }
+  const { data, error } = await admin!.auth.getUser(token);
+  return !error && data.user?.id ? data.user.id : "";
+}
 
 Deno.serve(async (request: Request) => {
   const origin = request.headers.get("origin") || "";
@@ -124,16 +140,20 @@ Deno.serve(async (request: Request) => {
   }
   if (request.method !== "POST") return json(request, { error: "method" }, 405);
   if (!admin) return json(request, { error: "not_configured" }, 503);
-  const match = (request.headers.get("authorization") || "").match(/^Bearer ([A-Za-z0-9._~-]{40,8192})$/u);
-  if (!match) return json(request, { error: "authentication_required" }, 401);
-  const { data: auth, error: authError } = await admin.auth.getUser(match[1]);
-  if (authError || !auth.user?.id) return json(request, { error: "authentication_required" }, 401);
   const text = await request.text();
-  if (!text || new TextEncoder().encode(text).byteLength > MAX_REQUEST_BYTES) return json(request, { error: "invalid" }, 400);
+  if (!text || new TextEncoder().encode(text).byteLength > MAX_REQUEST_BYTES + 8192) return json(request, { error: "invalid" }, 400);
   let body: Record<string, unknown>;
   try { body = JSON.parse(text); } catch { return json(request, { error: "invalid" }, 400); }
+  // Ключ входа — в заголовке (старые сборки) или в теле: запрос text/plain без своих заголовков
+  // браузер шлёт сразу, без лишнего предварительного OPTIONS (каждый ход на один обмен быстрее).
+  const bearer = (request.headers.get("authorization") || "").match(/^Bearer ([A-Za-z0-9._~-]{40,8192})$/u)?.[1]
+    || (typeof body.token === "string" && /^[A-Za-z0-9._~-]{40,8192}$/u.test(body.token) ? body.token : "");
+  delete body.token;
+  if (!bearer) return json(request, { error: "authentication_required" }, 401);
+  const userId = await verifiedUser(bearer);
+  if (!userId) return json(request, { error: "authentication_required" }, 401);
   try {
-    return json(request, await handle(db, auth.user.id, body));
+    return json(request, await handle(db, userId, body));
   } catch (error) {
     if (error instanceof GameError) return json(request, { error: error.code, who: error.who || undefined }, error.status);
     console.error("durak", error);
